@@ -1,0 +1,19 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "postActions" : [
+        {
+          "action" : "build",
+          "taskName" : "build",
+          "type" : "runTask"
+        }
+      ]
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "source .env\nnode .\/dist\/index.js --help"
+    }
+  },
+  "openLogOnRun" : "start"
+}
