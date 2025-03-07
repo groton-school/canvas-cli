@@ -313,19 +313,32 @@ type CreateOptions = {
   order: number;
 };
 export async function create({ assignment, course, order }: CreateOptions) {
+  const body = new URLSearchParams({
+    'assignment[name]': assignment.ShortDescription,
+    'assignment[position]': order.toString(),
+    'assignment[due_at]': new Date(assignment.DueDate).toISOString(),
+    'assignment[description]': assignment.LongDescription,
+    'assignment[published]': assignment.PublishInd.toString()
+  });
+
   const result = await OAuth2.requestJSON(
     Canvas.url(`/api/v1/courses/${course.id}/assignments`),
     'POST',
-    new URLSearchParams({
-      'assignment[name]': assignment.ShortDescription,
-      'assignment[position]': order.toString(),
-      'assignment[due_at]': new Date(assignment.DueDate).toISOString(),
-      'assignment[description]': assignment.LongDescription,
-      'assignment[published]': assignment.PublishInd.toString()
-    })
+    body
   );
   if (isError(result)) {
-    throw new Error(`Error creating assigment: ${Log.syntaxColor(result)}`);
+    throw new Error(
+      `Error creating assigment: ${Log.syntaxColor({
+        course: {
+          id: course.id,
+          name: course.name,
+          sis_course_id: course.sis_course_id
+        },
+        assignment: body.entries(),
+        order,
+        error: result
+      })}`
+    );
   }
   return result as Assignment;
 }

@@ -96,6 +96,36 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
   });
 }
 
+export async function handleDuplicateCourse(course: Course.Course) {
+  const next: Record<
+    string,
+    () => Promise<Course.Course | undefined> | Course.Course | undefined
+  > = {
+    'overlay existing content with snapshot': () => course,
+    'reset content and replace with snapshot': async () => {
+      return await Course.reset(course!);
+    },
+    'open in browser to examine': async () => {
+      open(Canvas.url(`/courses/${course!.id}`).toString());
+      return await next[
+        (await select({
+          message: `How would you like to proceed?`,
+          choices: Object.keys(next).filter(
+            (key) => key != 'open in browser to examine'
+          )
+        })) as keyof typeof next
+      ]();
+    },
+    skip: () => undefined
+  };
+  return await next[
+    (await select({
+      message: `A course named ${Colors.value(course.name)} with sis_course_id ${Colors.value(course.sis_course_id)} already exists in Canvas.`,
+      choices: Object.keys(next)
+    })) as keyof typeof next
+  ]();
+}
+
 export async function run() {
   if (!snapshotPath) {
     throw new Error(
@@ -121,77 +151,32 @@ export async function run() {
 
   for (const section of snapshots.map((snapshot) => new OneRoster(snapshot))) {
     let course = await Course.get(section);
-    let skip = false;
     if (course) {
-      const next: Record<string, () => Promise<boolean> | boolean> = {
-        'overlay existing content': () => false,
-        'reset content and replace': async () => {
-          course = await Course.reset(course!);
-          return false;
-        },
-        'open in browser': async () => {
-          open(Canvas.url(`/courses/${course!.id}`).toString());
-          return await next[
-            (await select({
-              message: `How would you like to proceed?`,
-              choices: Object.keys(next).filter(
-                (key) => key != 'open in browser'
-              )
-            })) as keyof typeof next
-          ]();
-        },
-        skip: () => true
-      };
-      skip =
-        await next[
-          (await select({
-            message: `A course named ${Colors.value(course.name)} with sis_course_id ${Colors.value(section.sis_course_id)} already exists in Canvas.`,
-            choices: Object.keys(next)
-          })) as keyof typeof next
-        ]();
+      course = await handleDuplicateCourse(course);
+    } else {
+      course = await Course.create(section);
     }
-    if (!skip) {
-      if (!course) {
-        course = await Course.create(section);
-      }
-
+    if (course) {
       if (
         section.snapshot.Assignments &&
         section.snapshot.Assignments.length > 0
       ) {
-        let created = 0;
-        try {
-          Progress.start({ max: section.snapshot.Assignments?.length });
-          section.snapshot.Assignments.sort(
-            (a, b) =>
-              new Date(a.DueDate).getTime() - new Date(b.DueDate).getTime()
-          )
-            .slice(0, 5)
-            .forEach(async (assignment, order) => {
-              const a = await Assignment.create({
-                assignment,
-                course: course!,
-                order
-              });
-              console.log(Log.syntaxColor(a));
-              if (a && a.name) {
-                created++;
-                Progress.caption(a.name);
-              }
-              Progress.increment();
-            });
-          if (created == section.snapshot.Assignments.length) {
-            Log.info(`✓ Created ${created} assigments`);
-          } else {
-            throw new Error(
-              `Created ${Colors.error(created)} of ${section.snapshot.Assignments.length} assignments`
-            );
-          }
-          Progress.stop();
-        } catch (error) {
-          Progress.stop();
-          console.error(error);
+        Progress.start({ max: section.snapshot.Assignments?.length });
+        let order = 0;
+        for (const assignment of section.snapshot.Assignments.sort(
+          (a, b) =>
+            new Date(a.DueDate).getTime() - new Date(b.DueDate).getTime()
+        )) {
+          const a = await Assignment.create({
+            assignment,
+            course: course!,
+            order
+          });
+          order++;
+          Progress.caption(a.name);
+          Progress.increment();
         }
+        Progress.stop();
       }
     }
   }

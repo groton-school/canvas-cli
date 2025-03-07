@@ -3,8 +3,10 @@ import {
   HTMLString,
   UUIDString
 } from '@battis/descriptive-types';
+import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
 import { OAuth2 } from '@oauth2-cli/qui-cli-plugin';
+import ora from 'ora';
 import { OneRoster } from '../OneRoster.js';
 import { isError } from './Error.js';
 import * as Canvas from './URL.js';
@@ -140,35 +142,63 @@ export async function get(section: OneRoster) {
   }
   const json = await result.json();
   if (isError(json)) {
-    throw new Error(`Error getting course: ${Log.syntaxColor(json)}`);
+    throw new Error(
+      `Error getting course: ${Log.syntaxColor({
+        sis_course_id: section.sis_course_id,
+        error: json
+      })}`
+    );
   }
   return json as Course;
 }
 
 export async function create(section: OneRoster) {
+  const spinner = ora(`Creating ${Colors.value(section.name)}`).start();
+  const body = new URLSearchParams({
+    'course[name]': section.name,
+    'course[term_id]': `sis_term)id:${section.sis_term_id}`,
+    'course[sis_course_id]': section.sis_course_id,
+    enable_sis_reactivation: 'true'
+  });
+
   const result = (await OAuth2.requestJSON(
     Canvas.url(`/api/v1/accounts/${section.account_id}/courses`),
     'POST',
-    new URLSearchParams({
-      'course[name]': section.name,
-      'course[term_id]': `sis_term)id:${section.sis_term_id}`,
-      'course[sis_course_id]': section.sis_course_id,
-      enable_sis_reactivation: 'true'
-    })
+    body
   )) as Course;
   if (isError(result)) {
-    throw new Error(`Error creating course: ${Log.syntaxColor(result)}`);
+    spinner.fail(`Error creating ${Colors.value(section.name)}`);
+    throw new Error(
+      `Error creating course: ${Log.syntaxColor({
+        account_id: section.account_id,
+        course: body.entries(),
+        error: result
+      })}`
+    );
   }
+  spinner.succeed(`Created ${Colors.value(section.name)}`);
   return result as Course;
 }
 
 export async function reset(course: Course) {
+  const spinner = ora(`Resetting ${Colors.value(course.name)}`).start();
   const result = await OAuth2.requestJSON(
     Canvas.url(`/api/v1/courses/${course.id}/reset_content`),
     'POST'
   );
   if (isError(result)) {
-    throw new Error(`Error resetting course: ${Log.syntaxColor(result)}`);
+    spinner.fail(`Error resetting ${Colors.value(course.name)}`);
+    throw new Error(
+      `Error resetting course: ${Log.syntaxColor({
+        course: {
+          id: course.id,
+          name: course.name,
+          sis_course_id: course.sis_course_id
+        },
+        error: result
+      })}`
+    );
   }
+  spinner.succeed(`Reset ${Colors.value(course.name)}`);
   return result as Course;
 }
