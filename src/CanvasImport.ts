@@ -9,6 +9,9 @@ import * as SnapshotMultiple from '@msar/snapshot-multiple/dist/SnapshotMultiple
 import { OAuth2 } from '@oauth2-cli/qui-cli-plugin';
 import open from 'open';
 import ora from 'ora';
+import * as Assignment from './Canvas/Assignment.js';
+import * as Course from './Canvas/Course.js';
+import * as Canvas from './Canvas/URL.js';
 import { OneRoster } from './OneRoster.js';
 
 await Core.configure({ core: { requirePositionals: true } });
@@ -25,31 +28,28 @@ export type Configuration = Plugin.Configuration & {
 export const name = 'sis-import';
 export const src = import.meta.dirname;
 
-let blackbaudInstanceId: string | undefined = undefined;
-let canvasInstanceUrl: URL | undefined = undefined;
-let termsPath: string | undefined = undefined;
-let departmentAccountMapPath: string | undefined = undefined;
-let coursesWithDepartmentsPath: string | undefined = undefined;
 let snapshotPath: string | undefined = undefined;
 
 export function configure(config: Configuration = {}) {
-  blackbaudInstanceId = Plugin.hydrate(
-    config.blackbaudInstanceId,
-    blackbaudInstanceId
-  );
-  if (config.canvasInstanceUrl) {
-    canvasInstanceUrl = new URL(config.canvasInstanceUrl);
-  }
-  termsPath = Plugin.hydrate(config.termsPath, termsPath);
-  departmentAccountMapPath = Plugin.hydrate(
-    config.departmentAccountMapPath,
-    departmentAccountMapPath
-  );
-  coursesWithDepartmentsPath = Plugin.hydrate(
-    config.coursesWithDepartmentsPath,
-    coursesWithDepartmentsPath
-  );
   snapshotPath = Plugin.hydrate(config.snapshotPath, snapshotPath);
+  if (config.canvasInstanceUrl) {
+    Canvas.setUrl(config.canvasInstanceUrl);
+  }
+  OneRoster.init({
+    blackbaudInstanceId: Plugin.hydrate(
+      config.blackbaudInstanceId,
+      OneRoster.instance
+    ),
+    termsPath: Plugin.hydrate(config.termsPath, OneRoster.termsPath),
+    departmentAccountMapPath: Plugin.hydrate(
+      config.departmentAccountMapPath,
+      OneRoster.departmentAccountMapPath
+    ),
+    coursesWithDepartmentsPath: Plugin.hydrate(
+      config.coursesWithDepartmentsPath,
+      OneRoster.coursesWithDepartmentsPath
+    )
+  });
 }
 
 export function options(): Plugin.Options {
@@ -96,38 +96,16 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
   });
 }
 
-function canvasURL(url: URL | string) {
-  return new URL(url, canvasInstanceUrl);
-}
-
 export async function run() {
-  if (
-    !snapshotPath ||
-    !blackbaudInstanceId ||
-    !canvasInstanceUrl ||
-    !termsPath ||
-    !departmentAccountMapPath ||
-    !coursesWithDepartmentsPath
-  ) {
+  if (!snapshotPath) {
     throw new Error(
       Log.syntaxColor({
-        snapshotPath,
-        blackbaudInstanceId,
-        canvasInstanceUrl,
-        termsPath,
-        departmentAccountMapPath,
-        coursesWithDepartmentsPath
+        snapshotPath
       })
     );
   }
-  OneRoster.init({
-    blackbaudInstanceId,
-    termsPath,
-    departmentAccountMapPath,
-    coursesWithDepartmentsPath
-  });
 
-  let spinner = ora(`Loading ${Colors.url(snapshotPath)}`).start();
+  const spinner = ora(`Loading ${Colors.url(snapshotPath)}`).start();
   let snapshots: SnapshotMultiple.Data = [];
   try {
     snapshots = await SnapshotMultiple.load(snapshotPath);
@@ -142,38 +120,17 @@ export async function run() {
   }
 
   for (const section of snapshots.map((snapshot) => new OneRoster(snapshot))) {
-    const response = await OAuth2.request(
-      canvasURL(`/api/v1/courses/sis_course_id:${section.sis_course_id}`)
-    );
-    let course: any;
+    let course = await Course.get(section);
     let skip = false;
-    if (response.status != 404) {
-      course = await response.json();
+    if (course) {
       const next: Record<string, () => Promise<boolean> | boolean> = {
         'overlay existing content': () => false,
         'reset content and replace': async () => {
-          const spinner = ora(`Resetting ${Colors.value(course.name)}`).start();
-          try {
-            if (!course.id) {
-              throw new Error(`Course has no id: ${Log.syntaxColor(course)}`);
-            }
-            course = await OAuth2.requestJSON(
-              canvasURL(`/api/v1/courses/${course.id}/reset_content`),
-              'POST'
-            );
-            if (!course || !course.id) {
-              throw new Error(
-                `Error resetting course: ${Log.syntaxColor(course)}`
-              );
-            }
-            spinner.succeed(`Reset ${Colors.value(course.name)}`);
-          } catch (error) {
-            spinner.fail(Colors.error((error as Error).message));
-          }
+          course = await Course.reset(course!);
           return false;
         },
         'open in browser': async () => {
-          open(canvasURL(`/courses/${course.id}`).toString());
+          open(Canvas.url(`/courses/${course!.id}`).toString());
           return await next[
             (await select({
               message: `How would you like to proceed?`,
@@ -195,29 +152,7 @@ export async function run() {
     }
     if (!skip) {
       if (!course) {
-        spinner = ora(
-          `Creating ${Colors.value(section.snapshot.SectionInfo?.GroupName)} course in Canvas`
-        ).start();
-        try {
-          course = await OAuth2.requestJSON(
-            canvasURL(`/api/v1/accounts/${section.account_id}/courses`),
-            'POST',
-            new URLSearchParams({
-              'course[name]': section.name,
-              'course[term_id]': `sis_term)id:${section.sis_term_id}`,
-              'course[sis_course_id]': section.sis_course_id,
-              enable_sis_reactivation: 'true'
-            })
-          );
-          if (!course || !course.id) {
-            throw new Error(
-              `Error creating course: ${Log.syntaxColor(course)}`
-            );
-          }
-          spinner.succeed(`Created ${Colors.value(course.name)}`);
-        } catch (error) {
-          spinner.fail(Colors.error((error as Error).message));
-        }
+        course = await Course.create(section);
       }
 
       if (
@@ -230,28 +165,21 @@ export async function run() {
           section.snapshot.Assignments.sort(
             (a, b) =>
               new Date(a.DueDate).getTime() - new Date(b.DueDate).getTime()
-          ).forEach(async (assignment, order) => {
-            const result: any = await OAuth2.requestJSON(
-              canvasURL(`/api/v1/courses/${course.id}/assignments`),
-              'POST',
-              new URLSearchParams({
-                'assignment[name]': assignment.ShortDescription,
-                'assignment[position]': order.toString(),
-                'assignment[due_at]': new Date(
-                  assignment.DueDate
-                ).toISOString(),
-                'assignment[description]': assignment.LongDescription,
-                'assignment[published]': assignment.PublishInd.toString()
-              })
-            );
-            if (result && result.name) {
-              Progress.caption(result.name);
+          )
+            .slice(0, 5)
+            .forEach(async (assignment, order) => {
+              const a = await Assignment.create({
+                assignment,
+                course: course!,
+                order
+              });
+              console.log(Log.syntaxColor(a));
+              if (a && a.name) {
+                created++;
+                Progress.caption(a.name);
+              }
               Progress.increment();
-              created++;
-            } else {
-              throw new Error(`Unexpected result: ${Log.syntaxColor(result)}`);
-            }
-          });
+            });
           if (created == section.snapshot.Assignments.length) {
             Log.info(`✓ Created ${created} assigments`);
           } else {

@@ -30,10 +30,25 @@ type CoursesWithDepartmentsRecord = {
 };
 
 export class OneRoster {
-  private static instance: string | number;
-  private static termsPath: PathString;
-  private static departmentAccountMapPath: PathString;
-  private static coursesWithDepartmentsPath: PathString;
+  private static _instance: string | number;
+  public static get instance() {
+    return OneRoster._instance;
+  }
+
+  private static _termsPath: PathString;
+  public static get termsPath() {
+    return OneRoster._termsPath;
+  }
+
+  private static _departmentAccountMapPath: PathString;
+  public static get departmentAccountMapPath() {
+    return OneRoster._departmentAccountMapPath;
+  }
+
+  private static _coursesWithDepartmentsPath: PathString;
+  public static get coursesWithDepartmentsPath() {
+    return OneRoster._coursesWithDepartmentsPath;
+  }
 
   private static _terms: AllTermsCsvRecord[];
   private static get terms() {
@@ -78,10 +93,10 @@ export class OneRoster {
     departmentAccountMapPath,
     coursesWithDepartmentsPath
   }: InitOptions) {
-    OneRoster.instance = blackbaudInstanceId;
-    OneRoster.termsPath = termsPath;
-    OneRoster.departmentAccountMapPath = departmentAccountMapPath;
-    OneRoster.coursesWithDepartmentsPath = coursesWithDepartmentsPath;
+    OneRoster._instance = blackbaudInstanceId;
+    OneRoster._termsPath = termsPath;
+    OneRoster._departmentAccountMapPath = departmentAccountMapPath;
+    OneRoster._coursesWithDepartmentsPath = coursesWithDepartmentsPath;
   }
 
   public constructor(public readonly snapshot: SnapshotMultiple.Item) {}
