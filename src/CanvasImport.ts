@@ -7,15 +7,19 @@ import { select } from '@inquirer/prompts';
 import * as SnapshotMultiple from '@msar/snapshot-multiple/dist/SnapshotMultiple.js';
 import open from 'open';
 import ora from 'ora';
-import * as Assignment from './Canvas/Assignment.js';
 import * as Course from './Canvas/Course.js';
 import * as Canvas from './Canvas/URL.js';
+import * as Flags from './Flags.js';
 import { OneRoster } from './OneRoster.js';
-import * as Snapshot from './Snapshot.js';
+import * as Assignments from './Snapshot/Assignments.js';
+import * as AssignmentTypes from './Snapshot/AssignmentTypes.js';
+import * as Snapshot from './Snapshot/Path.js';
 
 await Core.configure({ core: { requirePositionals: true } });
 
 export type Configuration = Plugin.Configuration & {
+  files?: boolean;
+  ignoreErrors?: boolean;
   blackbaudInstanceId?: string;
   canvasInstanceUrl?: string | URL;
   termsPath?: string;
@@ -28,6 +32,8 @@ export const name = 'sis-import';
 export const src = import.meta.dirname;
 
 export function configure(config: Configuration = {}) {
+  Flags.setFiles(config.files);
+  Flags.setIgnoreErrors(config.ignoreErrors);
   Snapshot.setPath(config.snapshotPath);
   if (config.canvasInstanceUrl) {
     Canvas.setUrl(config.canvasInstanceUrl);
@@ -51,6 +57,16 @@ export function configure(config: Configuration = {}) {
 
 export function options(): Plugin.Options {
   return {
+    flag: {
+      ignoreErrors: {
+        description: `Ignore data errors where possible (default ${Colors.value(Flags.ignoreErrors())}, ${Colors.value('--no-ignoreErrors')} to halt on errors)`,
+        default: Flags.ignoreErrors()
+      },
+      files: {
+        description: `Upload file attachments (default ${Colors.value(Flags.files())}, ${Colors.value('--no-files')} to skip)`,
+        default: Flags.files()
+      }
+    },
     opt: {
       blackbaudInstanceId: {
         description: `MySchoolApp instance identifier`
@@ -75,6 +91,8 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
   const {
     positionals: [snapshotPath],
     values: {
+      files,
+      ignoreErrors,
       blackbaudInstanceId = process.env.BLACKBAUD_INSTANCE_ID,
       canvasInstanceUrl = process.env.CANVAS_INSTANCE_URL,
       termsPath = process.env.TERMS_CSV,
@@ -82,7 +100,8 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
       coursesWithDepartmentsPath = process.env.COURSES_WITH_DEPARTMENTS_CSV
     }
   } = args;
-
+  Flags.setFiles(files as unknown as boolean);
+  Flags.setIgnoreErrors(ignoreErrors as unknown as boolean);
   configure({
     blackbaudInstanceId,
     canvasInstanceUrl,
@@ -155,23 +174,11 @@ export async function run() {
       course = await Course.create(section);
     }
     if (course) {
-      if (
-        section.snapshot.Assignments &&
-        section.snapshot.Assignments.length > 0
-      ) {
-        let order = 0;
-        for (const assignment of section.snapshot.Assignments.sort(
-          (a, b) =>
-            new Date(a.DueDate).getTime() - new Date(b.DueDate).getTime()
-        )) {
-          await Assignment.create({
-            assignment,
-            course: course!,
-            order
-          });
-          order++;
-        }
-      }
+      const assignmentGroups = await AssignmentTypes.create({
+        course,
+        section
+      });
+      await Assignments.create({ course, section, assignmentGroups });
     }
   }
 }

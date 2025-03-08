@@ -5,15 +5,16 @@ import {
 } from '@battis/descriptive-types';
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
-import { Item } from '@msar/snapshot-multiple/dist/SnapshotMultiple.js';
 import { OAuth2 } from '@oauth2-cli/qui-cli-plugin';
 import ora from 'ora';
-import { Course, debug } from './Course.js';
+import * as Debug from '../Debug.js';
+import * as Flags from '../Flags.js';
+import { CompleteAssignment } from '../Snapshot/Assignments.js';
+import { AssignmentGroup } from './AssignmentGroup.js';
+import { Course } from './Course.js';
 import { isError } from './Error.js';
 import * as File from './File.js';
 import * as Canvas from './URL.js';
-
-type ArrayElement<A> = A extends readonly (infer T)[] ? T : never;
 
 export type Assignment = {
   /** the ID of the assignment */
@@ -318,11 +319,17 @@ function definitionList(items: string[]) {
 }
 
 type CreateOptions = {
-  assignment: ArrayElement<Item['Assignments']>;
+  assignment: CompleteAssignment;
+  assignmentGroups?: AssignmentGroup[];
   course: Course;
   order: number;
 };
-export async function create({ assignment, course, order }: CreateOptions) {
+export async function create({
+  assignment,
+  assignmentGroups = [],
+  course,
+  order
+}: CreateOptions) {
   const spinner = ora(
     `Creating assignment ${Colors.value(assignment.ShortDescription)}`
   ).start();
@@ -335,23 +342,38 @@ export async function create({ assignment, course, order }: CreateOptions) {
   }
 
   const files = [];
-  for (const item of assignment.DownloadItems) {
-    const file = await File.upload({
-      course,
-      descriptor: item.DownloadUrl as unknown as File.Descriptor
-    });
-    files.push(
-      `<dt><a class="instructure_file_link inline_disabled" title="${file.filename}" href="/courses/${course.id}/files/${file.id}?wrap=1" target="_blank" rel="noopener" data-api-endpoint="/api/v1/courses/${course.id}/files/${file.id}" data-api-returntype="File">${file.filename}</a></dt><dd>${item.ShortDescription}</dd>`
-    );
+  if (Flags.files()) {
+    for (const item of assignment.DownloadItems) {
+      const file = await File.upload({
+        course,
+        descriptor: item.DownloadUrl as unknown as File.Descriptor
+      });
+      files.push(
+        `<dt><a class="instructure_file_link inline_disabled" title="${file.filename}" href="/courses/${course.id}/files/${file.id}?wrap=1" target="_blank" rel="noopener" data-api-endpoint="/api/v1/courses/${course.id}/files/${file.id}" data-api-returntype="File">${file.filename}</a></dt><dd>${item.ShortDescription}</dd>`
+      );
+    }
   }
-
   const body = new URLSearchParams({
     'assignment[name]': assignment.ShortDescription,
     'assignment[position]': order.toString(),
     'assignment[due_at]': new Date(assignment.DueDate).toISOString(),
+    'assignment[points_possible]': assignment.MaxPoints.toString(),
     'assignment[description]': `<div>${assignment.LongDescription}</div>${definitionList(links)}${definitionList(files)}`,
-    'assignment[published]': assignment.PublishInd.toString()
+    'assignment[published]': assignment.PublishInd.toString(),
+    // 'assignment[omit_from_final_grade]': (!assignment.IncCumGrade).toString(),
+    // 'assignment[hide_in_gradebook]': (!assignment.IncGradeBook).toString(),
+    'assignment[assignment_group_id]':
+      assignmentGroups
+        .find((g) => g.name == assignment.AssignmentType)
+        ?.id.toString() || 'null'
   });
+  let s = 0;
+  if (assignment.OnPaperSubmission) {
+    body.append(`assignment[submission_types][${s++}]`, 'on_paper');
+  }
+  if (assignment.DropboxInd) {
+    body.append(`assigment[submission_types][${s++}]`, 'online_upload');
+  }
 
   const result = (await OAuth2.requestJSON(
     Canvas.url(`/api/v1/courses/${course.id}/assignments`),
@@ -364,9 +386,8 @@ export async function create({ assignment, course, order }: CreateOptions) {
     );
     throw new Error(
       `Error creating assigment: ${Log.syntaxColor({
-        ...debug(course),
-        assignment: body.entries(),
-        order,
+        ...Debug.course(course),
+        assignment: Debug.URLSearchParams(body),
         error: result
       })}`
     );

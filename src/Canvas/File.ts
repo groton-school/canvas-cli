@@ -11,8 +11,9 @@ import fetch, { fileFromSync, FormData } from 'node-fetch';
 import fs from 'node:fs';
 import path from 'node:path';
 import ora from 'ora';
-import * as Snapshot from '../Snapshot.js';
-import { Course, debug } from './Course.js';
+import * as Debug from '../Debug.js';
+import * as Snapshot from '../Snapshot/Path.js';
+import { Course } from './Course.js';
 import { isError } from './Error.js';
 import * as Canvas from './URL.js';
 
@@ -153,7 +154,7 @@ export async function upload({
     default:
       throw new Error(
         `Error uploading file: ${Log.syntaxColor({
-          ...debug(course),
+          ...Debug.course(course),
           file: descriptor,
           filePath,
           confirm,

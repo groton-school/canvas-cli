@@ -6,8 +6,8 @@ import {
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
 import { OAuth2 } from '@oauth2-cli/qui-cli-plugin';
-import path from 'node:path';
 import ora from 'ora';
+import * as Debug from '../Debug.js';
 import { OneRoster } from '../OneRoster.js';
 import { isError } from './Error.js';
 import * as Canvas from './URL.js';
@@ -159,6 +159,7 @@ export async function create(section: OneRoster) {
     'course[name]': section.name,
     'course[term_id]': `sis_term)id:${section.sis_term_id}`,
     'course[sis_course_id]': section.sis_course_id,
+    'course[syllabus_body]': section.snapshot.SectionInfo?.Description || '',
     enable_sis_reactivation: 'true'
   });
 
@@ -191,17 +192,11 @@ export async function reset(course: Course) {
     spinner.fail(`Error resetting ${Colors.value(course.name)}`);
     throw new Error(
       `Error resetting course: ${Log.syntaxColor({
-        ...debug(course),
+        ...Debug.course(course),
         error: result
       })}`
     );
   }
   spinner.succeed(`Reset ${Colors.value(course.name)}`);
   return result as Course;
-}
-
-export function debug(course: Course) {
-  return {
-    course: { name: course.name, url: Canvas.url(`/courses/${course.id}`) }
-  };
 }

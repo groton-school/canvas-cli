@@ -26,6 +26,9 @@ importers:
       '@battis/qui-cli.root':
         specifier: ^2.0.2
         version: 2.0.2(@battis/qui-cli.plugin@2.2.0)
+      '@battis/typescript-tricks':
+        specifier: ^0.7.4
+        version: 0.7.4
       '@inquirer/prompts':
         specifier: ^7.3.2
         version: 7.3.2(@types/node@22.13.9)
@@ -181,6 +184,9 @@ packages:
     resolution: {integrity: sha512-cfDenYwWAzt44jegednC/bC0GEupqZGeq2DiZQ6zIamtjO9q5F8zQHpzXc7VclodQkYMgVDzZkNM5i32xRnwAg==}
     peerDependencies:
       '@battis/qui-cli.plugin': ^2.0
+
+  '@battis/typescript-tricks@0.7.4':
+    resolution: {integrity: sha512-WCe6ShJCn1/KoIqqeyfjeYesM/RR/7woWSnRGzYrjgcG3DcGDvGpZY0nk4196oSNy1mE+98v8U/IIZTqIehEyg==}
 
   '@colors/colors@1.6.0':
     resolution: {integrity: sha512-Ir+AOibqzrIsL6ajt3Rz3LskB7OiMVHqltZmspbW/TJuTVuyOMirVqAkjfY6JISiLHgyNqicAC8AyHHGzNd/dA==}
@@ -3511,6 +3517,8 @@ snapshots:
     dependencies:
       '@battis/qui-cli.plugin': 2.2.0
       app-root-path: 3.1.0
+
+  '@battis/typescript-tricks@0.7.4': {}
 
   '@colors/colors@1.6.0': {}
 
