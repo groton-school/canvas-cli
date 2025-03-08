@@ -312,7 +312,7 @@ export type Assignment = {
 
 function definitionList(items: string[]) {
   if (items.length) {
-    return `<dl>${items.map((item) => item.replace('<dd></dd>', '')).join()}</dl>`;
+    return `<dl>${items.map((item) => item.replace('<dd></dd>', '')).join('')}</dl>`;
   }
   return '';
 }
