@@ -1,22 +1,171 @@
 import {
+  DateString,
   DateTimeString,
   HTMLString,
-  URLString
+  URLString,
+  UUIDString
 } from '@battis/descriptive-types';
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
 import { OAuth2 } from '@oauth2-cli/qui-cli-plugin';
 import ora from 'ora';
 import * as Debug from '../Debug.js';
-import * as Flags from '../Flags.js';
-import { CompleteAssignment } from '../Snapshot/Assignments.js';
-import { AssignmentGroup } from './AssignmentGroup.js';
-import { Course } from './Course.js';
+import { stringify } from './API.js';
+import * as Courses from './Courses.js';
 import { isError } from './Error.js';
-import * as File from './File.js';
 import * as Canvas from './URL.js';
 
-export type Assignment = {
+type ExternalToolTagAttributes = {
+  /** URL to the external tool */
+  url: URLString;
+  /** Whether or not there is a new tab for the external tool */
+  new_tab: boolean;
+  /** the identifier for this tool_tag */
+  resource_link_id: string;
+};
+
+type LockInfo = {
+  /** Asset string for the object causing the lock */
+  asset_string: string;
+  /** (Optional) Time at which this was/will be unlocked. Must be before the due
+   * date. */
+  unlock_at?: DateTimeString;
+  /** (Optional) Time at which this was/will be locked. Must be after the due date. */
+  lock_at?: DateTimeString;
+  /** (Optional) Context module causing the lock. */
+  context_module?: any;
+  manually_locked: boolean;
+};
+
+type RubricRating = {
+  points: number;
+  id: string;
+  description: string;
+  long_description: string;
+};
+
+type RubricCriteria = {
+  points: number;
+  /** The id of rubric criteria. */
+  id: string;
+  /** (Optional) The id of the learning outcome this criteria uses, if any. */
+  learning_outcome_id?: string;
+  /** (Optional) The 3rd party vendor's GUID for the outcome this criteria
+   * references, if any. */
+  vendor_guid?: UUIDString;
+  description: string;
+  long_description: string;
+  criterion_use_range: boolean;
+  ratings: boolean;
+  ignore_for_scoring: boolean;
+};
+
+/** Object representing a due date for an assignment or quiz. If the due date
+ * came from an assignment override, it will have an 'id' field. */
+type AssignmentDate = {
+  /** (Optional, missing if 'base' is present) id of the assignment override this
+   * date represents */
+  id?: number;
+  /** (Optional, present if 'id' is missing) whether this date represents the
+   * assignment's or quiz's default due date */
+  base?: boolean;
+  title: string;
+  /** The due date for the assignment. Must be between the unlock date and the lock
+   * date if there are lock dates */
+  due_at: DateTimeString;
+  /** The unlock date for the assignment. Must be before the due date if there is a
+   * due date. */
+  unlock_at: DateTimeString;
+  /** The lock date for the assignment. Must be after the due date if there is a
+   * due date. */
+  lock_at: DateTimeString;
+};
+
+type TurnitinSettings = {
+  originality_report_visibility: string;
+  s_paper_check: boolean;
+  internet_check: boolean;
+  journal_check: boolean;
+  exclude_biblio: boolean;
+  exclude_quoted: boolean;
+  exclude_small_matches_type: string;
+  exclude_small_matches_value: number;
+};
+
+type NeedsGradingCount = {
+  /** The section ID */
+  section_id: string;
+  /** Number of submissions that need grading */
+  needs_grading_count: number;
+};
+
+type ScoreStatistic = {
+  /** Min score */
+  min: number;
+  /** Max score */
+  max: number;
+  /** Mean score */
+  mean: number;
+  /** Upper quartile score */
+  upper_q: number;
+  /** Median score */
+  median: number;
+  /** Lower quartile score */
+  lower_q: number;
+};
+
+type BasicUser = {
+  /** The user's ID */
+  id: string;
+  /** The user's name */
+  name: string;
+};
+
+type AssignmentOverride = {
+  /** the ID of the assignment override */
+  id: number;
+  /** the ID of the assignment the override applies to (present if the override
+   * applies to an assignment) */
+  assignment_id?: number;
+  /** the ID of the quiz the override applies to (present if the override applies
+   * to a quiz) */
+  quiz_id?: number;
+  /** the ID of the module the override applies to (present if the override applies
+   * to a module) */
+  context_module_id?: number;
+  /** the ID of the discussion the override applies to (present if the override
+   * applies to an ungraded discussion) */
+  discussion_topic_id?: number;
+  /** the ID of the page the override applies to (present if the override applies
+   * to a page) */
+  wiki_page_id?: number;
+  /** the ID of the file the override applies to (present if the override applies
+   * to a file) */
+  attachment_id?: number;
+  /** the IDs of the override's target students (present if the override targets an
+   * ad-hoc set of students) */
+  student_ids?: number[];
+  /** the ID of the override's target group (present if the override targets a
+   * group and the assignment is a group assignment) */
+  group_id?: number;
+  /** the ID of the overrides's target section (present if the override targets a
+   * section) */
+  course_section_id?: number;
+  /** the title of the override */
+  title: string;
+  /** the overridden due at (present if due_at is overridden) */
+  due_at?: DateTimeString;
+  /** the overridden all day flag (present if due_at is overridden) */
+  all_day?: boolean;
+  /** the overridden all day date (present if due_at is overridden) */
+  all_day_date?: DateString;
+  /** the overridden unlock at (present if unlock_at is overridden) */
+  unlock_at?: DateTimeString;
+  /** the overridden lock at, if any (present if lock_at is overridden) */
+  lock_at?: DateTimeString;
+};
+
+export type Model = {
   /** the ID of the assignment */
   id: number;
   /** the name of the assignment */
@@ -44,7 +193,7 @@ export type Assignment = {
   /** whether this assignment has overrides */
   has_overrides: boolean;
   /** (Optional) all dates associated with the assignment, if applicable */
-  all_dates?: any;
+  all_dates?: AssignmentDate[];
   /** the ID of the course the assignment belongs to */
   course_id: number;
   /** the URL to the assignment's web page */
@@ -78,7 +227,7 @@ export type Assignment = {
    *  size. - if type is 'words', this will be number > 0 representing how many
    *  words a match must contain for it to be considered NOTE: This flag will not
    *  appear unless your account has the Turnitin plugin available */
-  turnitin_settings: any;
+  turnitin_settings: TurnitinSettings;
   /** If this is a group assignment, boolean flag indicating whether or not
    *  students will be graded individually. */
   grade_group_students_individually: boolean;
@@ -86,7 +235,7 @@ export type Assignment = {
    *  include 'external_tool'. Only url and new_tab are included (new_tab defaults
    *  to false).  Use the 'External Tools' API if you need more information about
    *  an external tool. */
-  external_tool_tag_attributes: any;
+  external_tool_tag_attributes: ExternalToolTagAttributes;
   /** Boolean indicating if peer reviews are required for this assignment */
   peer_reviews: boolean;
   /** Boolean indicating peer reviews are assigned automatically. If false, the
@@ -117,10 +266,7 @@ export type Assignment = {
    *  NOTE: it's possible to be enrolled in multiple sections, and if a student is
    *  setup that way they will show an assignment that needs grading in multiple
    *  sections (effectively the count will be duplicated between sections) */
-  needs_grading_count_by_section: {
-    section_id: string;
-    needs_grading_count: number;
-  }[];
+  needs_grading_count_by_section: NeedsGradingCount[];
   /** the sorting order of the assignment in the group */
   position: number;
   /** (optional, present if Sync Grades to SIS feature is enabled) */
@@ -128,7 +274,7 @@ export type Assignment = {
   /** (optional, Third Party unique identifier for Assignment) */
   integration_id?: string;
   /** (optional, Third Party integration data for assignment) */
-  integration_data?: any;
+  integration_data?: object;
   /** the maximum points possible for the assignment */
   points_possible: number;
   /** the types of submissions allowed for this assignment list containing one or
@@ -171,7 +317,7 @@ export type Assignment = {
   locked_for_user: boolean;
   /** (Optional) Information for the user about the lock. Present when
    *  locked_for_user is true. */
-  lock_info?: any;
+  lock_info?: LockInfo;
   /** (Optional) An explanation of why this is locked for the user. Present when
    *  locked_for_user is true. */
   lock_explanation?: string;
@@ -219,7 +365,7 @@ export type Assignment = {
   assignment_visibility?: number[];
   /** (Optional) If 'overrides' is included in the 'include' parameter, includes an
    *  array of assignment override objects. */
-  overrides?: any;
+  overrides?: AssignmentOverride[];
   /** (Optional) If true, the assignment will be omitted from the student's final
    *  grade */
   omit_from_final_grade?: boolean;
@@ -255,25 +401,25 @@ export type Assignment = {
   allowed_attempts: number;
   /** Whether the assignment has manual posting enabled. Only relevant for courses
    *  using New Gradebook. */
-  post_manually: boolean;
+  post_manually?: boolean;
   /** (Optional) If 'score_statistics' and 'submission' are included in the
    *  'include' parameter and statistics are available, includes the min, max, and
    *  mode for this assignment */
-  score_statistics?: any;
+  score_statistics?: ScoreStatistic;
   /** (Optional) If retrieving a single assignment and 'can_submit' is included in
    *  the 'include' parameter, flags whether user has the right to submit the
    *  assignment (i.e. checks enrollment dates, submission types, locked status,
    *  attempts remaining, etc...). Including 'can submit' automatically includes
    *  'submission' in the include parameter. Not available when observed_users are
    *  included. */
-  can_submit: boolean;
+  can_submit?: boolean;
   /** (Optional) The academic benchmark(s) associated with the assignment or the
    *  assignment's rubric. Only included if 'ab_guid' is included in the 'include'
    *  parameter. */
   ab_guid: string[];
   /** The id of the attachment to be annotated by students. Relevant only if
    *  submission_types includes 'student_annotation'. */
-  annotatable_attachment_id: any;
+  annotatable_attachment_id?: number;
   /** (Optional) Boolean indicating whether student names are anonymized */
   anonymize_students?: boolean;
   /** (Optional) Boolean indicating whether the Respondus LockDown Browser® is
@@ -311,83 +457,149 @@ export type Assignment = {
   workflow_state: string;
 };
 
-function definitionList(items: string[]) {
-  if (items.length) {
-    return `<dl>${items.map((item) => item.replace('<dd></dd>', '')).join('')}</dl>`;
-  }
-  return '';
-}
+export type Parameters = {
+  /** The assignment name. */
+  'assignment[name]': string;
+  /** The position of this assignment in the group when displaying assignment lists. */
+  'assignment[position]'?: number;
+  /** List of supported submission types for the assignment. Unless the assignment is allowing online submissions, the array should only have one element.
+
+    If not allowing online submissions, your options are:
+
+    "online_quiz"
+    "none"
+    "on_paper"
+    "discussion_topic"
+    "external_tool"
+
+
+    If you are allowing online submissions, you can have one or many allowed submission types:
+
+    "online_upload"
+    "online_text_entry"
+    "online_url"
+    "media_recording" (Only valid when the Kaltura plugin is enabled)
+    "student_annotation"
+
+
+    Allowed values:
+    online_quiz, none, on_paper, discussion_topic, external_tool, online_upload, online_text_entry, online_url, media_recording, student_annotation */
+  'assignment[submission_types]'?: (
+    | 'online_quiz'
+    | 'none'
+    | 'on_paper'
+    | 'discussion_topic'
+    | 'external_tool'
+    | 'online_upload'
+    | 'online_text_entry'
+    | 'online_url'
+    | 'media_recording'
+    | 'student_annotation'
+  )[];
+  /** Allowed extensions if submission_types includes “online_upload”
+
+    Example:
+
+    allowed_extensions: ["docx","ppt"]
+     */
+  'assignment[allowed_extensions]'?: string[];
+  /** Only applies when the Turnitin plugin is enabled for a course and the submission_types array includes “online_upload”. Toggles Turnitin submissions for the assignment. Will be ignored if Turnitin is not available for the course. */
+  'assignment[turnitin_enabled]'?: boolean;
+  /** Only applies when the VeriCite plugin is enabled for a course and the submission_types array includes “online_upload”. Toggles VeriCite submissions for the assignment. Will be ignored if VeriCite is not available for the course. */
+  'assignment[vericite_enabled]'?: boolean;
+  /** Settings to send along to turnitin. See Assignment object definition for format. */
+  'assignment[turnitin_settings]'?: string;
+  /** Data used for SIS integrations. Requires admin-level token with the “Manage SIS” permission. JSON string required. */
+  'assignment[integration_data]'?: string;
+  /** Unique ID from third party integrations */
+  'assignment[integration_id]'?: string;
+  /** If submission_types does not include external_tool,discussion_topic, online_quiz, or on_paper, determines whether or not peer reviews will be turned on for the assignment. */
+  'assignment[peer_reviews]'?: boolean;
+  /** Whether peer reviews will be assigned automatically by Canvas or if teachers must manually assign peer reviews. Does not apply if peer reviews are not enabled. */
+  'assignment[automatic_peer_reviews]'?: boolean;
+  /** If true, Canvas will send a notification to students in the class notifying them that the content has changed. */
+  'assignment[notify_of_update]'?: boolean;
+  /** If present, the assignment will become a group assignment assigned to the group. */
+  'assignment[group_category_id]'?: number;
+  /** If this is a group assignment, teachers have the options to grade students individually. If false, Canvas will apply the assignment’s score to each member of the group. If true, the teacher can manually assign scores to each member of the group. */
+  'assignment[grade_group_students_individually]'?: number;
+  /** Hash of external tool parameters if submission_types is [“external_tool”]. See Assignment object definition for format. */
+  'assignment[external_tool_tag_attributes]'?: string;
+  /** The maximum points possible on the assignment. */
+  'assignment[points_possible]'?: number;
+  /** The strategy used for grading the assignment. The assignment defaults to “points” if this field is omitted.
+
+    Allowed values:
+    pass_fail, percent, letter_grade, gpa_scale, points, not_graded */
+  'assignment[grading_type]'?: string;
+  /** The day/time the assignment is due. Must be between the lock dates if there are lock dates. Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z. */
+  'assignment[due_at]'?: DateTimeString;
+  /** The day/time the assignment is locked after. Must be after the due date if there is a due date. Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z. */
+  'assignment[lock_at]'?: DateTimeString;
+  /** The day/time the assignment is unlocked. Must be before the due date if there is a due date. Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z. */
+  'assignment[unlock_at]'?: DateTimeString;
+  /** The assignment’s description, supports HTML. */
+  'assignment[description]'?: string;
+  /** The assignment group id to put the assignment in. Defaults to the top assignment group in the course. */
+  'assignment[assignment_group_id]'?: number;
+  /** List of overrides for the assignment. */
+  'assignment[assignment_overrides]'?: AssignmentOverride[];
+  /** Whether this assignment is only visible to overrides (Only useful if ‘differentiated assignments’ account setting is on) */
+  'assignment[only_visible_to_overrides]'?: boolean;
+  /** Whether this assignment is published. (Only useful if ‘draft state’ account setting is on) Unpublished assignments are not visible to students. */
+  'assignment[published]'?: boolean;
+  /** The grading standard id to set for the course. If no value is provided for this argument the current grading_standard will be un-set from this course. This will update the grading_type for the course to ‘letter_grade’ unless it is already ‘gpa_scale’. */
+  'assignment[grading_standard_id]'?: number;
+  /** Whether this assignment is counted towards a student’s final grade. */
+  'assignment[omit_from_final_grade]'?: boolean;
+  /** Whether this assignment is shown in the gradebook. */
+  'assignment[hide_in_gradebook]'?: boolean;
+  /** Whether this assignment should use the Quizzes 2 LTI tool. Sets the submission type to ‘external_tool’ and configures the external tool attributes to use the Quizzes 2 LTI tool configured for this course. Has no effect if no Quizzes 2 LTI tool is configured. */
+  'assignment[quiz_lti]'?: boolean;
+  /** Whether this assignment is moderated. */
+  'assignment[moderated_grading]'?: boolean;
+  /** The maximum number of provisional graders who may issue grades for this assignment. Only relevant for moderated assignments. Must be a positive value, and must be set to 1 if the course has fewer than two active instructors. Otherwise, the maximum value is the number of active instructors in the course minus one, or 10 if the course has more than 11 active instructors. */
+  'assignment[grader_count]'?: number;
+  /** The user ID of the grader responsible for choosing final grades for this assignment. Only relevant for moderated assignments. */
+  'assignment[final_grader_id]'?: number;
+  /** Boolean indicating if provisional graders’ comments are visible to other provisional graders. Only relevant for moderated assignments. */
+  'assignment[grader_comments_visible_to_graders]'?: boolean;
+  /** Boolean indicating if provisional graders’ identities are hidden from other provisional graders. Only relevant for moderated assignments. */
+  'assignment[graders_anonymous_to_graders]'?: boolean;
+  /** Boolean indicating if provisional grader identities are visible to the the final grader. Only relevant for moderated assignments. */
+  'assignment[graders_names_visible_to_final_grader]'?: boolean;
+  /** Boolean indicating if the assignment is graded anonymously. If true, graders cannot see student identities. */
+  'assignment[anonymous_grading]'?: boolean;
+  /** The number of submission attempts allowed for this assignment. Set to -1 for unlimited attempts. */
+  'assignment[allowed_attempts]'?: number;
+  /** The Attachment ID of the document being annotated.
+
+    Only applies when submission_types includes “student_annotation”. */
+  'assignment[annotatable_attachment_id]'?: number;
+};
 
 type CreateOptions = {
-  assignment: CompleteAssignment;
-  assignmentGroups?: AssignmentGroup[];
-  course: Course;
-  order: number;
+  course: Courses.Model;
+  args: Parameters;
 };
-export async function create({
-  assignment,
-  assignmentGroups = [],
-  course,
-  order
-}: CreateOptions) {
+export async function create({ course, args }: CreateOptions) {
   const spinner = ora(
-    `Creating assignment ${Colors.value(assignment.ShortDescription)}`
+    `Creating assignment ${Colors.value(args['assignment[name]'])}`
   ).start();
-
-  const links = [];
-  for (const item of assignment.LinkItems) {
-    links.push(
-      `<dt><a href="${item.UrlDisplay}">${item.ShortDescription}</a></dt>`
-    );
-  }
-
-  const files = [];
-  if (Flags.files()) {
-    for (const item of assignment.DownloadItems) {
-      const file = await File.upload({
-        course,
-        descriptor: item.DownloadUrl as unknown as File.Descriptor
-      });
-      files.push(
-        `<dt><a class="instructure_file_link inline_disabled" title="${file.filename}" href="/courses/${course.id}/files/${file.id}?wrap=1" target="_blank" rel="noopener" data-api-endpoint="/api/v1/courses/${course.id}/files/${file.id}" data-api-returntype="File">${file.filename}</a></dt><dd>${item.ShortDescription}</dd>`
-      );
-    }
-  }
-  const body = new URLSearchParams({
-    'assignment[name]': assignment.ShortDescription,
-    'assignment[position]': order.toString(),
-    'assignment[due_at]': new Date(assignment.DueDate).toISOString(),
-    'assignment[points_possible]': assignment.MaxPoints.toString(),
-    'assignment[description]': `<div>${assignment.LongDescription}</div>${definitionList(links)}${definitionList(files)}`,
-    'assignment[published]': assignment.PublishInd.toString(),
-    // 'assignment[omit_from_final_grade]': (!assignment.IncCumGrade).toString(),
-    // 'assignment[hide_in_gradebook]': (!assignment.IncGradeBook).toString(),
-    'assignment[assignment_group_id]':
-      assignmentGroups
-        .find((g) => g.name == assignment.AssignmentType)
-        ?.id.toString() || 'null'
-  });
-  let s = 0;
-  if (assignment.OnPaperSubmission) {
-    body.append(`assignment[submission_types][${s++}]`, 'on_paper');
-  }
-  if (assignment.DropboxInd) {
-    body.append(`assigment[submission_types][${s++}]`, 'online_upload');
-  }
 
   const result = (await OAuth2.requestJSON(
     Canvas.url(`/api/v1/courses/${course.id}/assignments`),
     'POST',
-    body
-  )) as Assignment;
+    new URLSearchParams(stringify(args))
+  )) as Model;
   if (isError(result)) {
     spinner.fail(
-      `Error creating assignment ${Colors.value(assignment.ShortDescription)}`
+      `Error creating assignment ${Colors.value(args['assignment[name]'])}`
     );
     throw new Error(
       `Error creating assigment: ${Log.syntaxColor({
         ...Debug.course(course),
-        assignment: Debug.URLSearchParams(body),
+        args,
         error: result
       })}`
     );

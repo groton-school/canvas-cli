@@ -3,8 +3,9 @@ import { Log } from '@battis/qui-cli.log';
 import { OAuth2 } from '@oauth2-cli/qui-cli-plugin';
 import ora from 'ora';
 import * as Debug from '../Debug.js';
-import { Assignment } from './Assignment.js';
-import { Course } from './Course.js';
+import { stringify } from './API.js';
+import * as Assignments from './Assignments.js';
+import * as Courses from './Courses.js';
 import { isError } from './Error.js';
 import * as Canvas from './URL.js';
 
@@ -17,7 +18,7 @@ export type GradingRules = {
   never_drop: number[];
 };
 
-export type AssignmentGroup = {
+export type Model = {
   /** the id of the Assignment Group */
   id: number;
   /** the name of the Assignment Group */
@@ -32,12 +33,12 @@ export type AssignmentGroup = {
   integration_data: any;
   /** the assignments in this Assignment Group (see the Assignment API for a
    * detailed list of fields) */
-  assignments: Assignment[];
+  assignments: Assignments.Model[];
   /** the grading rules that this Assignment Group has */
   rules: GradingRules | null;
 };
 
-export type AssignmentGroupData = {
+export type Parameters = {
   name?: string;
   position?: number;
   group_weight?: number;
@@ -46,34 +47,26 @@ export type AssignmentGroupData = {
 };
 
 type CreateOptions = {
-  course: Course;
-  data: AssignmentGroupData;
+  course: Courses.Model;
+  args: Parameters;
 };
 
-function stringify(obj: Record<string, any>) {
-  const stringified: Record<string, string> = {};
-  for (const key in obj) {
-    stringified[key] = obj[key].toString();
-  }
-  return stringified;
-}
-
-export async function create({ course, data }: CreateOptions) {
+export async function create({ course, args }: CreateOptions) {
   const spinner = ora(
-    `Creating assignment group ${Colors.value(data.name)}`
+    `Creating assignment group ${Colors.value(args.name)}`
   ).start();
-  const body = new URLSearchParams(stringify(data));
+  const body = new URLSearchParams(stringify(args));
   const result = (await OAuth2.requestJSON(
     Canvas.url(`/api/v1/courses/${course.id}/assignment_groups`),
     'POST',
     body
-  )) as AssignmentGroup;
+  )) as Model;
   if (isError(result)) {
-    spinner.fail(`Error creating assignment group ${Colors.value(data.name)}`);
+    spinner.fail(`Error creating assignment group ${Colors.value(args.name)}`);
     throw new Error(
       `Error creating assignment group: ${Log.syntaxColor({
         ...Debug.course(course),
-        assignmentGroup: data,
+        assignmentGroup: args,
         error: result
       })}`
     );

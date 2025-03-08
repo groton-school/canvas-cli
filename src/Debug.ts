@@ -1,7 +1,6 @@
-import { Course } from './Canvas/Course.js';
-import * as Canvas from './Canvas/URL.js';
+import * as Canvas from './Canvas.js';
 
-export function course(course: Course) {
+export function course(course: Canvas.Courses.Model) {
   return {
     course: { name: course.name, url: Canvas.url(`/courses/${course.id}`) }
   };

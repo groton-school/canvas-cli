@@ -1,16 +1,20 @@
 import { PathString } from '@battis/descriptive-types';
+import { Colors } from '@battis/qui-cli.colors';
+import { Log } from '@battis/qui-cli.log';
+import { hydrate } from '@battis/qui-cli.plugin';
 import { Root } from '@battis/qui-cli.root';
-import * as SnapshotMultiple from '@msar/snapshot-multiple/dist/SnapshotMultiple.js';
+import { Item } from '@msar/snapshot-multiple/dist/SnapshotMultiple.js';
 import { parse } from 'csv-parse/sync';
 import fs from 'node:fs';
 import path from 'node:path';
 
-type InitOptions = {
-  blackbaudInstanceId: string | number;
-  termsPath: PathString;
-  departmentAccountMapPath: PathString;
-  coursesWithDepartmentsPath: PathString;
-};
+let _instance: string | number;
+export function setInstanceId(value?: string | number) {
+  _instance = hydrate(value, _instance);
+}
+export function instance() {
+  return _instance;
+}
 
 type AllTermsCsvRecord = {
   'Term ID': number;
@@ -18,121 +22,110 @@ type AllTermsCsvRecord = {
   'Term Description': string;
 };
 
+let _termsPath: PathString | undefined = undefined;
+export function setTermsPath(value?: PathString) {
+  _termsPath = hydrate(value, _termsPath);
+}
+
 type DepartmentAccountMapRecord = {
   'Department Id': number;
   Department: string;
   'Canvas Account ID': number;
 };
 
+let _departmentAccountMapPath: PathString | undefined = undefined;
+export function setDepartmentAccountMapPath(value?: PathString) {
+  _departmentAccountMapPath = hydrate(value, _departmentAccountMapPath);
+}
+
 type CoursesWithDepartmentsRecord = {
   'Course ID': number;
   'Department Id': number;
 };
 
-export class OneRoster {
-  private static _instance: string | number;
-  public static get instance() {
-    return OneRoster._instance;
-  }
+let _coursesWithDepartmentsPath: PathString | undefined = undefined;
+export function setCoursesWithDepartmentsPath(value?: PathString) {
+  _coursesWithDepartmentsPath = hydrate(value, _coursesWithDepartmentsPath);
+}
 
-  private static _termsPath: PathString;
-  public static get termsPath() {
-    return OneRoster._termsPath;
+let _terms: AllTermsCsvRecord[] | undefined = undefined;
+function terms(): AllTermsCsvRecord[] {
+  if (!_terms) {
+    if (!_termsPath) {
+      throw new Error(`termsPath uninitialized`);
+    }
+    _terms = parse(fs.readFileSync(path.resolve(Root.path(), _termsPath)), {
+      columns: true
+    }) as AllTermsCsvRecord[];
   }
+  return _terms;
+}
 
-  private static _departmentAccountMapPath: PathString;
-  public static get departmentAccountMapPath() {
-    return OneRoster._departmentAccountMapPath;
+let _departmentAccountMap: DepartmentAccountMapRecord[] | undefined = undefined;
+function departmentAccountMap() {
+  if (!_departmentAccountMap) {
+    if (!_departmentAccountMapPath) {
+      throw new Error(`departmentAccountMapPath uninitialized`);
+    }
+    _departmentAccountMap = parse(
+      fs.readFileSync(path.resolve(Root.path(), _departmentAccountMapPath)),
+      { columns: true }
+    ) as DepartmentAccountMapRecord[];
   }
+  return _departmentAccountMap;
+}
 
-  private static _coursesWithDepartmentsPath: PathString;
-  public static get coursesWithDepartmentsPath() {
-    return OneRoster._coursesWithDepartmentsPath;
+let _coursesWithDepartments: CoursesWithDepartmentsRecord[] | undefined =
+  undefined;
+function coursesWithDepartments() {
+  if (!_coursesWithDepartments) {
+    if (!_coursesWithDepartmentsPath) {
+      throw new Error(`coursesWithDepartmentsPath uninitialized`);
+    }
+    _coursesWithDepartments = parse(
+      fs.readFileSync(path.resolve(Root.path(), _coursesWithDepartmentsPath)),
+      { columns: true }
+    ) as CoursesWithDepartmentsRecord[];
   }
+  return _coursesWithDepartments;
+}
 
-  private static _terms: AllTermsCsvRecord[];
-  private static get terms() {
-    if (!OneRoster._terms) {
-      OneRoster._terms = parse(
-        fs.readFileSync(path.resolve(Root.path(), OneRoster.termsPath)),
-        { columns: true }
+export function sis_course_id(snapshot: Item) {
+  return `crs-${instance()}-${snapshot.SectionInfo?.Id}`;
+}
+
+export function sis_term_id(snapshot: Item) {
+  return `as-trm-${instance()}-${
+    terms().find((term) => {
+      return (
+        term['School Year'] == snapshot.SectionInfo?.SchoolYear &&
+        term['Term Description'] == snapshot.SectionInfo.Duration
       );
-    }
-    return OneRoster._terms;
+    })?.['Term ID']
+  }`;
+}
+
+export function account_id(snapshot: Item) {
+  const departmentId = coursesWithDepartments().find(
+    (offering) => offering['Course ID'] == snapshot.SectionInfo?.OfferingId
+  )?.['Department Id'];
+  const account_id = departmentAccountMap().find(
+    (department) => department['Department Id'] == departmentId
+  )?.['Canvas Account ID'];
+  if (!account_id) {
+    throw new Error(
+      `Could not map ${Colors.value('account_id')} for section: ${Log.syntaxColor({ SectionInfo: snapshot.SectionInfo })}`
+    );
   }
+  return account_id;
+}
 
-  private static _departmentAccountMap: DepartmentAccountMapRecord[];
-  private static get departmentAccountMap() {
-    if (!OneRoster._departmentAccountMap) {
-      OneRoster._departmentAccountMap = parse(
-        fs.readFileSync(
-          path.resolve(Root.path(), OneRoster.departmentAccountMapPath)
-        ),
-        { columns: true }
-      );
-    }
-    return OneRoster._departmentAccountMap;
-  }
-
-  private static _coursesWithDepartments: CoursesWithDepartmentsRecord[];
-  private static get coursesWithDepartments() {
-    if (!OneRoster._coursesWithDepartments) {
-      OneRoster._coursesWithDepartments = parse(
-        fs.readFileSync(
-          path.resolve(Root.path(), OneRoster.coursesWithDepartmentsPath)
-        ),
-        { columns: true }
-      );
-    }
-    return OneRoster._coursesWithDepartments;
-  }
-
-  public static init({
-    blackbaudInstanceId,
-    termsPath,
-    departmentAccountMapPath,
-    coursesWithDepartmentsPath
-  }: InitOptions) {
-    OneRoster._instance = blackbaudInstanceId;
-    OneRoster._termsPath = termsPath;
-    OneRoster._departmentAccountMapPath = departmentAccountMapPath;
-    OneRoster._coursesWithDepartmentsPath = coursesWithDepartmentsPath;
-  }
-
-  public constructor(public readonly snapshot: SnapshotMultiple.Item) {}
-
-  public get sis_course_id() {
-    return `crs-${OneRoster.instance}-${this.snapshot.SectionInfo?.Id}`;
-  }
-
-  public get sis_term_id() {
-    return `as-trm-${OneRoster.instance}-${
-      OneRoster.terms.find((term) => {
-        return (
-          term['School Year'] == this.snapshot.SectionInfo?.SchoolYear &&
-          term['Term Description'] == this.snapshot.SectionInfo.Duration
-        );
-      })?.['Term ID']
-    }`;
-  }
-
-  public get account_id() {
-    const departmentId = OneRoster.coursesWithDepartments.find(
-      (offering) =>
-        offering['Course ID'] == this.snapshot.SectionInfo?.OfferingId
-    )?.['Department Id'];
-    return OneRoster.departmentAccountMap.find(
-      (department) => department['Department Id'] == departmentId
-    )?.['Canvas Account ID'];
-  }
-
-  public get name() {
-    if (this.snapshot.SectionInfo) {
-      return `${this.snapshot.SectionInfo?.GroupName} - ${this.snapshot.SectionInfo?.Identifier} (${
-        this.snapshot.SectionInfo?.Block
-      })`;
-    } else {
-      return 'Unnamed Course'; // https://canvas.instructure.com/doc/api/courses.html#method.courses.create
-    }
+export function name(snapshot: Item) {
+  if (snapshot.SectionInfo) {
+    return `${snapshot.SectionInfo?.GroupName} - ${snapshot.SectionInfo?.Identifier} (${
+      snapshot.SectionInfo?.Block
+    })`;
+  } else {
+    return 'Unnamed Course'; // https://canvas.instructure.com/doc/api/courses.html#method.courses.create
   }
 }
