@@ -3,16 +3,15 @@ import { Core } from '@battis/qui-cli.core';
 import '@battis/qui-cli.env';
 import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
-import { Progress } from '@battis/qui-cli.progress';
 import { select } from '@inquirer/prompts';
 import * as SnapshotMultiple from '@msar/snapshot-multiple/dist/SnapshotMultiple.js';
-import { OAuth2 } from '@oauth2-cli/qui-cli-plugin';
 import open from 'open';
 import ora from 'ora';
 import * as Assignment from './Canvas/Assignment.js';
 import * as Course from './Canvas/Course.js';
 import * as Canvas from './Canvas/URL.js';
 import { OneRoster } from './OneRoster.js';
+import * as Snapshot from './Snapshot.js';
 
 await Core.configure({ core: { requirePositionals: true } });
 
@@ -28,10 +27,8 @@ export type Configuration = Plugin.Configuration & {
 export const name = 'sis-import';
 export const src = import.meta.dirname;
 
-let snapshotPath: string | undefined = undefined;
-
 export function configure(config: Configuration = {}) {
-  snapshotPath = Plugin.hydrate(config.snapshotPath, snapshotPath);
+  Snapshot.setPath(config.snapshotPath);
   if (config.canvasInstanceUrl) {
     Canvas.setUrl(config.canvasInstanceUrl);
   }
@@ -127,6 +124,7 @@ export async function handleDuplicateCourse(course: Course.Course) {
 }
 
 export async function run() {
+  const snapshotPath = Snapshot.path();
   if (!snapshotPath) {
     throw new Error(
       Log.syntaxColor({
@@ -161,22 +159,18 @@ export async function run() {
         section.snapshot.Assignments &&
         section.snapshot.Assignments.length > 0
       ) {
-        Progress.start({ max: section.snapshot.Assignments?.length });
         let order = 0;
         for (const assignment of section.snapshot.Assignments.sort(
           (a, b) =>
             new Date(a.DueDate).getTime() - new Date(b.DueDate).getTime()
         )) {
-          const a = await Assignment.create({
+          await Assignment.create({
             assignment,
             course: course!,
             order
           });
           order++;
-          Progress.caption(a.name);
-          Progress.increment();
         }
-        Progress.stop();
       }
     }
   }

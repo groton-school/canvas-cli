@@ -20,12 +20,12 @@
     "@battis/qui-cli.env": "^2.0.3",
     "@battis/qui-cli.log": "^2.1.0",
     "@battis/qui-cli.plugin": "^2.2.0",
-    "@battis/qui-cli.progress": "^2.0.1",
     "@battis/qui-cli.root": "^2.0.2",
     "@inquirer/prompts": "^7.3.2",
     "@msar/snapshot-multiple": "^0.1.2",
     "@oauth2-cli/qui-cli-plugin": "^0.1.1",
     "csv-parse": "^5.6.0",
+    "node-fetch": "^3.3.2",
     "open": "^10.1.0",
     "ora": "^8.2.0"
   },

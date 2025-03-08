@@ -6,6 +6,7 @@ import {
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
 import { OAuth2 } from '@oauth2-cli/qui-cli-plugin';
+import path from 'node:path';
 import ora from 'ora';
 import { OneRoster } from '../OneRoster.js';
 import { isError } from './Error.js';
@@ -190,15 +191,17 @@ export async function reset(course: Course) {
     spinner.fail(`Error resetting ${Colors.value(course.name)}`);
     throw new Error(
       `Error resetting course: ${Log.syntaxColor({
-        course: {
-          id: course.id,
-          name: course.name,
-          sis_course_id: course.sis_course_id
-        },
+        ...debug(course),
         error: result
       })}`
     );
   }
   spinner.succeed(`Reset ${Colors.value(course.name)}`);
   return result as Course;
+}
+
+export function debug(course: Course) {
+  return {
+    course: { name: course.name, url: Canvas.url(`/courses/${course.id}`) }
+  };
 }

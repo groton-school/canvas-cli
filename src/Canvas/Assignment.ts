@@ -3,11 +3,14 @@ import {
   HTMLString,
   URLString
 } from '@battis/descriptive-types';
+import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
 import { Item } from '@msar/snapshot-multiple/dist/SnapshotMultiple.js';
 import { OAuth2 } from '@oauth2-cli/qui-cli-plugin';
-import { Course } from './Course.js';
+import ora from 'ora';
+import { Course, debug } from './Course.js';
 import { isError } from './Error.js';
+import * as File from './File.js';
 import * as Canvas from './URL.js';
 
 type ArrayElement<A> = A extends readonly (infer T)[] ? T : never;
@@ -307,38 +310,68 @@ export type Assignment = {
   workflow_state: string;
 };
 
+function definitionList(items: string[]) {
+  if (items.length) {
+    return `<dl>${items.map((item) => item.replace('<dd></dd>', '')).join()}</dl>`;
+  }
+  return '';
+}
+
 type CreateOptions = {
   assignment: ArrayElement<Item['Assignments']>;
   course: Course;
   order: number;
 };
 export async function create({ assignment, course, order }: CreateOptions) {
+  const spinner = ora(
+    `Creating assignment ${Colors.value(assignment.ShortDescription)}`
+  ).start();
+
+  const links = [];
+  for (const item of assignment.LinkItems) {
+    links.push(
+      `<dt><a href="${item.UrlDisplay}">${item.ShortDescription}</a></dt>`
+    );
+  }
+
+  const files = [];
+  for (const item of assignment.DownloadItems) {
+    const file = await File.upload({
+      course,
+      descriptor: item.DownloadUrl as unknown as File.Descriptor
+    });
+    files.push(
+      `<dt><a class="instructure_file_link inline_disabled" title="${file.filename}" href="/courses/${course.id}/files/${file.id}?wrap=1" target="_blank" rel="noopener" data-api-endpoint="/api/v1/courses/${course.id}/files/${file.id}" data-api-returntype="File">${file.filename}</a></dt><dd>${item.ShortDescription}</dd>`
+    );
+  }
+
   const body = new URLSearchParams({
     'assignment[name]': assignment.ShortDescription,
     'assignment[position]': order.toString(),
     'assignment[due_at]': new Date(assignment.DueDate).toISOString(),
-    'assignment[description]': assignment.LongDescription,
+    'assignment[description]': `<div>${assignment.LongDescription}</div>${definitionList(links)}${definitionList(files)}`,
     'assignment[published]': assignment.PublishInd.toString()
   });
 
-  const result = await OAuth2.requestJSON(
+  const result = (await OAuth2.requestJSON(
     Canvas.url(`/api/v1/courses/${course.id}/assignments`),
     'POST',
     body
-  );
+  )) as Assignment;
   if (isError(result)) {
+    spinner.fail(
+      `Error creating assignment ${Colors.value(assignment.ShortDescription)}`
+    );
     throw new Error(
       `Error creating assigment: ${Log.syntaxColor({
-        course: {
-          id: course.id,
-          name: course.name,
-          sis_course_id: course.sis_course_id
-        },
+        ...debug(course),
         assignment: body.entries(),
         order,
         error: result
       })}`
     );
   }
-  return result as Assignment;
+
+  spinner.succeed(`Created assignment ${Colors.value(result.name)}`);
+  return result;
 }
