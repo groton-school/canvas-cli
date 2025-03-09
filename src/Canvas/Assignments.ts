@@ -22,7 +22,7 @@ type ExternalToolTagAttributes = {
   resource_link_id: string;
 };
 
-type LockInfo = {
+export type LockInfo = {
   /** Asset string for the object causing the lock */
   asset_string: string;
   /** (Optional) Time at which this was/will be unlocked. Must be before the due

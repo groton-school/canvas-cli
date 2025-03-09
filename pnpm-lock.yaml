@@ -26,15 +26,12 @@ importers:
       '@battis/qui-cli.root':
         specifier: ^2.0.2
         version: 2.0.2(@battis/qui-cli.plugin@2.2.0)
-      '@battis/typescript-tricks':
-        specifier: ^0.7.4
-        version: 0.7.4
       '@inquirer/prompts':
         specifier: ^7.3.3
         version: 7.3.3(@types/node@22.13.10)
       '@msar/snapshot-multiple':
-        specifier: ^0.1.2
-        version: 0.1.2(he6gof67wfdrze3dn2ajtfqr6a)
+        specifier: ^0.2.0
+        version: 0.2.0(he6gof67wfdrze3dn2ajtfqr6a)
       '@oauth2-cli/canvas':
         specifier: ^0.2.0
         version: 0.2.0(ejs@3.1.10)
@@ -55,14 +52,17 @@ importers:
         version: 8.2.0
     devDependencies:
       '@battis/descriptive-types':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.2.0
+        version: 0.2.0
       '@battis/eslint-config':
         specifier: ^2.0.3
         version: 2.0.3(@eslint/js@9.21.0)(eslint-config-prettier@10.0.2(eslint@9.21.0(jiti@2.4.2)))(eslint-plugin-html@8.1.2)(eslint-plugin-markdown@5.1.0(eslint@9.21.0(jiti@2.4.2)))(eslint@9.21.0(jiti@2.4.2))(globals@14.0.0)(typescript-eslint@8.26.0(eslint@9.21.0(jiti@2.4.2))(typescript@5.8.2))(typescript@5.8.2)
       '@battis/prettier-config':
         specifier: ^1.5.7
         version: 1.5.7(typescript@5.8.2)
+      '@battis/typescript-tricks':
+        specifier: ^0.7.4
+        version: 0.7.4
       '@commitlint/cli':
         specifier: ^19.8.0
         version: 19.8.0(@types/node@22.13.10)(typescript@5.8.2)
@@ -90,8 +90,8 @@ importers:
 
 packages:
 
-  '@asamuzakjp/css-color@2.8.3':
-    resolution: {integrity: sha512-GIc76d9UI1hCvOATjZPyHFmE5qhRccp3/zGfMPapK3jBi+yocEzp6BBB0UnfRYP9NP4FANqUZYb0hnfs3TM3hw==}
+  '@asamuzakjp/css-color@3.1.1':
+    resolution: {integrity: sha512-hpRD68SV2OMcZCsrbdkccTw5FXjNDLo5OuqSHyHZfwweGsDWZwDJ2+gONyNAbazZclobMirACLw0lk8WVxIqxA==}
 
   '@babel/code-frame@7.26.2':
     resolution: {integrity: sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ==}
@@ -126,8 +126,8 @@ packages:
     resolution: {integrity: sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw==}
     engines: {node: '>=6.9.0'}
 
-  '@battis/descriptive-types@0.1.0':
-    resolution: {integrity: sha512-2M/tHqcrv1k2IFxFvwKuNT5K3WdXOsVYOXv3Vm+mO2DkUe9HURCqPpbOMUQgWq2rNN0tWINDMmaC3s1hETnKug==}
+  '@battis/descriptive-types@0.2.0':
+    resolution: {integrity: sha512-GaIdiabG7FCx8K7xIVnTbSTTLPLMFflMw+jmNMP76laGy+gRXlT41LJlroz8i6xIzBWF29NLnqxdECqISzOqLg==}
 
   '@battis/eslint-config@2.0.3':
     resolution: {integrity: sha512-O8HsLPplEj1li1eot7EgmG+LkIcnf/kwfJMR8WrV9MCEfiNAsreEi45AtQaVij57rs8SAvH33NWTg3G4j1YeJA==}
@@ -538,8 +538,8 @@ packages:
       '@battis/qui-cli.log': ^2.0
       '@battis/qui-cli.plugin': ^2.2
 
-  '@msar/snapshot-multiple@0.1.2':
-    resolution: {integrity: sha512-QU3nghKwdQ+gSglimrj8y+9R9VRN/cJiAP3X65cTOWhHzOrA8AA88aLKqNH/XZqiSwXQDytirdwIQlm0aFW+MA==}
+  '@msar/snapshot-multiple@0.2.0':
+    resolution: {integrity: sha512-IR8THEZ7in5E6nWmX6IH04enq06VSjVatKBeJc8DWalbvmHc7lOn+Sfk+48ZBUQp8ObVfE1xwV2aA8rBHiqCaQ==}
     peerDependencies:
       '@battis/qui-cli.colors': ^2.0
       '@battis/qui-cli.core': ^2.1
@@ -551,7 +551,7 @@ packages:
       '@msar/debug': 0.1.0
       '@msar/output': 0.1.0
       '@msar/puppeteer-session': 0.1.0
-      '@msar/snapshot': 0.1.2
+      '@msar/snapshot': 0.2.0
       '@msar/workflow': 0.1.0
 
   '@msar/snapshot@0.1.2':
@@ -1167,8 +1167,8 @@ packages:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
 
-  cssstyle@4.2.1:
-    resolution: {integrity: sha512-9+vem03dMXG7gDmZ62uqmRiMRNtinIZ9ZyuF6BdxzfOD+FdN5hretzynkn0ReS2DO2GSw76RWHs0UmJPI2zUjw==}
+  cssstyle@4.3.0:
+    resolution: {integrity: sha512-6r0NiY0xizYqfBvWp1G7WXJ06/bZyrk7Dc6PHql82C/pKGUTKu4yAX4Y8JPamb1ob9nBKuxWzCGTRuGwU3yxJQ==}
     engines: {node: '>=18'}
 
   csv-parse@5.6.0:
@@ -3384,7 +3384,7 @@ packages:
 
 snapshots:
 
-  '@asamuzakjp/css-color@2.8.3':
+  '@asamuzakjp/css-color@3.1.1':
     dependencies:
       '@csstools/css-calc': 2.1.2(@csstools/css-parser-algorithms@3.0.4(@csstools/css-tokenizer@3.0.3))(@csstools/css-tokenizer@3.0.3)
       '@csstools/css-color-parser': 3.0.8(@csstools/css-parser-algorithms@3.0.4(@csstools/css-tokenizer@3.0.3))(@csstools/css-tokenizer@3.0.3)
@@ -3437,7 +3437,7 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
-  '@battis/descriptive-types@0.1.0': {}
+  '@battis/descriptive-types@0.2.0': {}
 
   '@battis/eslint-config@2.0.3(@eslint/js@9.21.0)(eslint-config-prettier@10.0.2(eslint@9.21.0(jiti@2.4.2)))(eslint-plugin-html@8.1.2)(eslint-plugin-markdown@5.1.0(eslint@9.21.0(jiti@2.4.2)))(eslint@9.21.0(jiti@2.4.2))(globals@14.0.0)(typescript-eslint@8.26.0(eslint@9.21.0(jiti@2.4.2))(typescript@5.8.2))(typescript@5.8.2)':
     dependencies:
@@ -3908,7 +3908,7 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@msar/snapshot-multiple@0.1.2(he6gof67wfdrze3dn2ajtfqr6a)':
+  '@msar/snapshot-multiple@0.2.0(he6gof67wfdrze3dn2ajtfqr6a)':
     dependencies:
       '@battis/qui-cli.colors': 2.0.1(@battis/qui-cli.plugin@2.2.0)
       '@battis/qui-cli.core': 2.1.0(@battis/qui-cli.plugin@2.2.0)
@@ -4641,9 +4641,9 @@ snapshots:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  cssstyle@4.2.1:
+  cssstyle@4.3.0:
     dependencies:
-      '@asamuzakjp/css-color': 2.8.3
+      '@asamuzakjp/css-color': 3.1.1
       rrweb-cssom: 0.8.0
 
   csv-parse@5.6.0: {}
@@ -5626,7 +5626,7 @@ snapshots:
 
   jsdom@25.0.1:
     dependencies:
-      cssstyle: 4.2.1
+      cssstyle: 4.3.0
       data-urls: 5.0.0
       decimal.js: 10.5.0
       form-data: 4.0.2

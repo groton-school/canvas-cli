@@ -1,11 +1,9 @@
-import { DateTimeString } from '@battis/descriptive-types';
 import { Log } from '@battis/qui-cli.log';
 import { ArrayElement } from '@battis/typescript-tricks';
 import { Item } from '@msar/snapshot-multiple/dist/SnapshotMultiple.js';
 import path from 'node:path';
 import * as Canvas from '../Canvas.js';
 import * as Preferences from '../Preferences.js';
-import * as SkyAPI from '../SkyAPI.js';
 import * as Files from './Files.js';
 import * as IndexFile from './IndexFile.js';
 import { Annotated } from './Url.js';
@@ -17,35 +15,17 @@ type GradebookModel = ArrayElement<
 >;
 
 export type Model = Omit<SnapshotModel, 'ExtraCredit' | 'IncCumGrade'> &
-  SkyAPI.Assigments.Model &
   Partial<GradebookModel>;
-
-function datesEqual(a: DateTimeString, b: DateTimeString) {
-  const dateA = new Date(a);
-  const dateB = new Date(b);
-  dateA.setSeconds(0);
-  dateB.setSeconds(0);
-  return dateA.setMilliseconds(0) == dateB.setMilliseconds(0);
-}
 
 export async function hydrate(snapshot: Item) {
   const assignments: Model[] = [];
-  const skyAssignments = await SkyAPI.Assigments.listBySection(
-    snapshot.GroupId
-  );
-  for (const skyAssignment of skyAssignments) {
-    const snapshotAssignment = snapshot.Assignments?.find(
-      (snapshotAssignment) =>
-        datesEqual(snapshotAssignment.DueDate, skyAssignment.due_date) &&
-        datesEqual(snapshotAssignment.AssignmentDate, skyAssignment.date) &&
-        snapshotAssignment.ShortDescription == skyAssignment.name
-    );
+  for (const snapshotAssignment of snapshot.Assignments || []) {
     const gradebookAssignment = snapshot.Gradebook?.reduce(
       (gradebookAssignment: GradebookModel | undefined, markingPeriod) => {
         if (!gradebookAssignment) {
           return markingPeriod.gradebook.Assignments.reduce(
             (markingPeriodAssignment: GradebookModel | undefined, entry) => {
-              if (entry.AssignmentId == skyAssignment.id) {
+              if (entry.AssignmentId == snapshotAssignment.id) {
                 return entry;
               }
               return markingPeriodAssignment;
@@ -62,11 +42,10 @@ export async function hydrate(snapshot: Item) {
         ...snapshotAssignment,
         ExtraCredit: undefined,
         IncCumGrade: undefined,
-        ...gradebookAssignment,
-        ...skyAssignment
+        ...gradebookAssignment
       });
     } else {
-      const message = `Assignment unmatched: ${Log.syntaxColor({ skyAssignment, snapshotAssignment, gradebookAssignment })}`;
+      const message = `Assignment unmatched: ${Log.syntaxColor({ snapshotAssignment, gradebookAssignment })}`;
       if (Preferences.ignoreErrors()) {
         Log.warning(message);
       } else {
