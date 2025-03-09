@@ -16,10 +16,12 @@ export function instance() {
   return _instance;
 }
 
-type AllTermsCsvRecord = {
+type TermImportRecord = {
   'Term ID': number;
   'School Year': string;
   'Term Description': string;
+  Length: number;
+  term_id: string;
 };
 
 let _termsPath: PathString | undefined = undefined;
@@ -48,15 +50,15 @@ export function setCoursesWithDepartmentsPath(value?: PathString) {
   _coursesWithDepartmentsPath = hydrate(value, _coursesWithDepartmentsPath);
 }
 
-let _terms: AllTermsCsvRecord[] | undefined = undefined;
-function terms(): AllTermsCsvRecord[] {
+let _terms: TermImportRecord[] | undefined = undefined;
+function terms(): TermImportRecord[] {
   if (!_terms) {
     if (!_termsPath) {
       throw new Error(`termsPath uninitialized`);
     }
     _terms = parse(fs.readFileSync(path.resolve(Root.path(), _termsPath)), {
       columns: true
-    }) as AllTermsCsvRecord[];
+    }) as TermImportRecord[];
   }
   return _terms;
 }
@@ -95,14 +97,13 @@ export function sis_course_id(snapshot: Item) {
 }
 
 export function sis_term_id(snapshot: Item) {
-  return `as-trm-${instance()}-${
-    terms().find((term) => {
-      return (
-        term['School Year'] == snapshot.SectionInfo?.SchoolYear &&
-        term['Term Description'] == snapshot.SectionInfo.Duration
-      );
-    })?.['Term ID']
-  }`;
+  return terms().find((term) => {
+    return (
+      term['School Year'] == snapshot.SectionInfo?.SchoolYear &&
+      term['Term Description'] == snapshot.SectionInfo.Duration &&
+      term.Length == snapshot.SectionInfo?.Length
+    );
+  })?.term_id;
 }
 
 export function account_id(snapshot: Item) {
