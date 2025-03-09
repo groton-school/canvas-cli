@@ -279,7 +279,9 @@ type CreateOptions = {
 };
 
 export async function create({ args, account_id }: CreateOptions) {
-  const spinner = ora(`Creating ${Colors.value(args['course[name]'])}`).start();
+  const spinner = ora(
+    `Creating course ${Colors.value(args['course[name]'])}`
+  ).start();
 
   const result = (await canvas().fetch(
     `/api/v1/accounts/${account_id}/courses`,
@@ -296,13 +298,13 @@ export async function create({ args, account_id }: CreateOptions) {
     );
   }
   spinner.succeed(
-    `Created ${Colors.value(result.name)} at ${Colors.url(url(`/courses/${result.id}`))}`
+    `Created course ${Colors.value(result.name)} at ${Colors.url(url(`/courses/${result.id}`))}`
   );
   return result;
 }
 
 export async function reset(course: Model) {
-  const spinner = ora(`Resetting ${Colors.value(course.name)}`).start();
+  const spinner = ora(`Resetting course ${Colors.value(course.name)}`).start();
   const result = (await canvas().fetch(
     `/api/v1/courses/${course.id}/reset_content`,
     { method: 'POST' }
@@ -317,7 +319,7 @@ export async function reset(course: Model) {
     );
   }
   spinner.succeed(
-    `Reset ${Colors.value(course.name)} at ${Colors.url(url(`/courses/${course.id}`))}`
+    `Reset course ${Colors.value(result.name)} at ${Colors.url(url(`/courses/${result.id}`))}`
   );
   return result;
 }
@@ -328,4 +330,31 @@ export function basic(course: Model) {
     name: course.name,
     url: url(`/courses/${course.id}`)
   };
+}
+
+type UpdateOptions = {
+  course: Model;
+  args: Partial<Parameters>;
+};
+
+export async function update({ course, args }: UpdateOptions) {
+  const spinner = ora(`Resetting course ${Colors.value(course.name)}`).start();
+  const result = (await canvas().fetch(`/api/v1/courses/${course.id}`, {
+    method: 'PUT',
+    body: new URLSearchParams(stringify(args))
+  })) as Model;
+  if (isError(result)) {
+    spinner.fail(`Error updating course ${Colors.value(course.name)}`);
+    throw new Error(
+      `Error updating course: ${Log.syntaxColor({
+        ...basic(course),
+        args: stringify(args),
+        error: result
+      })}`
+    );
+  }
+  spinner.succeed(
+    `Updated course ${Colors.value(result.name)} at ${Colors.url(url(`/courses/${result.id}`))}`
+  );
+  return result;
 }

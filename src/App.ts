@@ -113,7 +113,15 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
   });
 }
 
-export async function handleDuplicateCourse(course: Canvas.Courses.Model) {
+type HandleDuplicatesOptions = {
+  course: Canvas.Courses.Model;
+  section: SnapshotMultiple.Item;
+};
+
+export async function handleDuplicateCourse({
+  course,
+  section
+}: HandleDuplicatesOptions) {
   const next: Record<
     string,
     () =>
@@ -123,7 +131,11 @@ export async function handleDuplicateCourse(course: Canvas.Courses.Model) {
   > = {
     'overlay existing content with snapshot': () => course,
     'reset content and replace with snapshot': async () => {
-      return await Canvas.Courses.reset(course!);
+      course = await Canvas.Courses.reset(course!);
+      const args = Snapshot.Section.toCanvasArgs(section);
+      delete args['course[sis_course_id]'];
+      delete args.enable_sis_reactivation;
+      return await Canvas.Courses.update({ course, args });
     },
     'open in browser to examine': async () => {
       open(Canvas.url(`/courses/${course!.id}`).toString());
@@ -175,7 +187,7 @@ export async function run() {
       sis_course_id: OneRoster.sis_course_id(section)
     });
     if (course) {
-      course = await handleDuplicateCourse(course);
+      course = await handleDuplicateCourse({ course, section });
     } else {
       course = await Canvas.Courses.create({
         account_id: OneRoster.account_id(section),
