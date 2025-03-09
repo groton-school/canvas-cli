@@ -8,6 +8,7 @@ import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
 import ora from 'ora';
 import { canvas, stringify } from './Client.js';
+import * as Enrollments from './Enrollments.js';
 import { isError } from './Error.js';
 import { url } from './URL.js';
 
@@ -87,7 +88,7 @@ export type Model = {
   locale: string;
   /**  A list of enrollments linking the current user to the course. for student
    *  enrollments, grading information may be included if include[]=total_scores  */
-  enrollments: any;
+  enrollments: Enrollments.Model[];
   /**  optional: the total number of active and invited students in the course  */
   total_students: number;
   /**  course calendar  */
