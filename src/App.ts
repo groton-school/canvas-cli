@@ -17,10 +17,6 @@ await Core.configure({ core: { requirePositionals: true } });
 
 export type Configuration = Plugin.Configuration & {
   blackbaudInstanceId?: string;
-  skyClientId?: string;
-  skyClientSecret?: string;
-  skySubscriptionKey?: string;
-  skyRedirectUri?: string;
   canvasInstanceUrl?: string | URL;
   termsPath?: string;
   departmentAccountMapPath?: string;
@@ -37,19 +33,6 @@ export function configure(config: Configuration = {}) {
   Preferences.setFiles(config.files);
   Preferences.setIgnoreErrors(config.ignoreErrors);
   Snapshot.setPath(config.snapshotPath);
-  if (
-    config.skyClientId &&
-    config.skyClientSecret &&
-    config.skySubscriptionKey &&
-    config.skyRedirectUri
-  ) {
-    SkyAPI.init({
-      client_id: config.skyClientId,
-      client_secret: config.skyClientSecret,
-      subscription_key: config.skySubscriptionKey,
-      redirect_uri: config.skyRedirectUri
-    });
-  }
   if (config.canvasInstanceUrl) {
     Canvas.setUrl(config.canvasInstanceUrl);
   }
@@ -75,18 +58,6 @@ export function options(): Plugin.Options {
       blackbaudInstanceId: {
         description: `MySchoolApp instance identifier`
       },
-      skyClientId: {
-        description: `Blackbaud SKY API client ID`
-      },
-      skyClientSecret: {
-        description: `Blackbaud SKY API client secret`
-      },
-      skySubscriptionKey: {
-        description: `Blackbaud SKY API subscription access key`
-      },
-      skyRedirectUri: {
-        description: `Blackbaud SKY API redirect URI`
-      },
       canvasInstanceUrl: {
         description: `Canvas instance URL`
       },
@@ -108,10 +79,6 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
     positionals: [snapshotPath],
     values: {
       blackbaudInstanceId = process.env.BLACKBAUD_INSTANCE_ID,
-      skyClientId = process.env.SKY_CLIENT_ID,
-      skyClientSecret = process.env.SKY_CLIENT_SECRET,
-      skySubscriptionKey = process.env.SKY_SUBSCRIPTION_KEY,
-      skyRedirectUri = process.env.SKY_REDIRECT_URI,
       canvasInstanceUrl = process.env.CANVAS_INSTANCE_URL,
       termsPath = process.env.TERMS_CSV,
       departmentAccountMapPath = process.env.DEPARTMENT_ACCOUNT_MAP_CSV,
@@ -122,12 +89,22 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
   } = args;
   Preferences.setFiles(files as unknown as boolean);
   Preferences.setIgnoreErrors(ignoreErrors as unknown as boolean);
+  SkyAPI.init({
+    client_id: process.env.SKY_CLIENT_ID!,
+    client_secret: process.env.SKY_CLIENT_SECRET!,
+    subscription_key: process.env.SKY_SUBSCRIPTION_KEY!,
+    redirect_uri: process.env.SKY_REDIRECT_URI!,
+    store: './var/sky-api.json'
+  });
+  Canvas.init({
+    instance_url: canvasInstanceUrl!,
+    client_id: process.env.CANVAS_CLIENT_ID!,
+    client_secret: process.env.CANVAS_CLIENT_SECRET!,
+    redirect_uri: process.env.CANVAS_REDIRECT_URI!,
+    store: './var/canvas.json'
+  });
   configure({
     blackbaudInstanceId,
-    skyClientId,
-    skyClientSecret,
-    skySubscriptionKey,
-    skyRedirectUri,
     canvasInstanceUrl,
     termsPath,
     departmentAccountMapPath,
@@ -217,6 +194,17 @@ export async function run() {
             args: Snapshot.AssignmentTypes.toCanvasArgs(assignmentType)
           })
         );
+      }
+      for (let order = 0; order < assignments.length; order++) {
+        await Canvas.Assignments.create({
+          course,
+          args: await Snapshot.Assignments.toCanvasArgs({
+            course,
+            assignmentGroups,
+            assignment: assignments[order],
+            order
+          })
+        });
       }
     }
   }

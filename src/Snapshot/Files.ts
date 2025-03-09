@@ -22,7 +22,7 @@ export function toCanvasArgs({
     name: file.FriendlyFileName || file.FileName,
     parent_folder_path: path.join(
       parent_folder_path,
-      (file.DownloadUrl as unknown as Annotated).localPath
+      path.dirname((file.DownloadUrl as unknown as Annotated).localPath)
     ),
     on_duplicate: 'overwrite'
   };

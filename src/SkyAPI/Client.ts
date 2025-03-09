@@ -1,14 +1,14 @@
-import { SkyAPI } from '@oauth2-cli/sky-api';
+import { Credentials, SkyAPI } from '@oauth2-cli/sky-api';
 
 let _sky: SkyAPI | undefined = undefined;
 
-export function init(options: ConstructorParameters<typeof SkyAPI>[0]) {
-  _sky = new SkyAPI({ ...options, store: './var/sky.json' });
+export function init(credentials: Credentials) {
+  _sky = new SkyAPI(credentials);
 }
 
 export function sky() {
   if (!_sky) {
-    throw new Error(`Sky API has not been initialized`);
+    throw new Error(`SKY API client has not been initialized`);
   }
   return _sky;
 }

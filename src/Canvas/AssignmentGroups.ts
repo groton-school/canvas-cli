@@ -1,13 +1,10 @@
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
-import { OAuth2 } from '@oauth2-cli/qui-cli-plugin';
 import ora from 'ora';
-import * as Debug from '../Debug.js';
-import { stringify } from './API.js';
 import * as Assignments from './Assignments.js';
+import { canvas, stringify } from './Client.js';
 import * as Courses from './Courses.js';
 import { isError } from './Error.js';
-import * as Canvas from './URL.js';
 
 export type GradingRules = {
   /** Number of lowest scores to be dropped for each user. */
@@ -56,21 +53,23 @@ export async function create({ course, args }: CreateOptions) {
     `Creating assignment group ${Colors.value(args.name)}`
   ).start();
   const body = new URLSearchParams(stringify(args));
-  const result = (await OAuth2.requestJSON(
-    Canvas.url(`/api/v1/courses/${course.id}/assignment_groups`),
-    'POST',
-    body
+  const result = (await canvas().fetch(
+    `/api/v1/courses/${course.id}/assignment_groups`,
+    {
+      method: 'POST',
+      body
+    }
   )) as Model;
   if (isError(result)) {
     spinner.fail(`Error creating assignment group ${Colors.value(args.name)}`);
     throw new Error(
       `Error creating assignment group: ${Log.syntaxColor({
-        ...Debug.course(course),
+        ...Courses.basic(course),
         assignmentGroup: args,
         error: result
       })}`
     );
   }
-  spinner.succeed(`Created assignment group ${result.name}`);
+  spinner.succeed(`Created assignment group ${Colors.value(result.name)}`);
   return result;
 }

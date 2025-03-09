@@ -7,13 +7,11 @@ import {
 } from '@battis/descriptive-types';
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
-import { OAuth2 } from '@oauth2-cli/qui-cli-plugin';
 import ora from 'ora';
-import * as Debug from '../Debug.js';
-import { stringify } from './API.js';
+import { canvas, stringify } from './Client.js';
 import * as Courses from './Courses.js';
 import { isError } from './Error.js';
-import * as Canvas from './URL.js';
+import { url } from './URL.js';
 
 type ExternalToolTagAttributes = {
   /** URL to the external tool */
@@ -587,10 +585,9 @@ export async function create({ course, args }: CreateOptions) {
     `Creating assignment ${Colors.value(args['assignment[name]'])}`
   ).start();
 
-  const result = (await OAuth2.requestJSON(
-    Canvas.url(`/api/v1/courses/${course.id}/assignments`),
-    'POST',
-    new URLSearchParams(stringify(args))
+  const result = (await canvas().fetch(
+    `/api/v1/courses/${course.id}/assignments`,
+    { method: 'POST', body: new URLSearchParams(stringify(args)) }
   )) as Model;
   if (isError(result)) {
     spinner.fail(
@@ -598,13 +595,15 @@ export async function create({ course, args }: CreateOptions) {
     );
     throw new Error(
       `Error creating assigment: ${Log.syntaxColor({
-        ...Debug.course(course),
-        args,
+        ...Courses.basic(course),
+        args: stringify(args),
         error: result
       })}`
     );
   }
 
-  spinner.succeed(`Created assignment ${Colors.value(result.name)}`);
+  spinner.succeed(
+    `Created assignment ${Colors.value(result.name)} at ${Colors.url(url(`/courses/${course.id}/assignments/${result.id}`))}`
+  );
   return result;
 }

@@ -6,15 +6,12 @@ import {
 } from '@battis/descriptive-types';
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
-import { OAuth2 } from '@oauth2-cli/qui-cli-plugin';
 import fetch, { fileFromSync, FormData } from 'node-fetch';
 import fs from 'node:fs';
 import ora from 'ora';
-import * as Debug from '../Debug.js';
-import { stringify } from './API.js';
+import { canvas, stringify } from './Client.js';
 import * as Courses from './Courses.js';
 import { isError } from './Error.js';
-import * as Canvas from './URL.js';
 
 type Folder = {
   context_type: string;
@@ -145,11 +142,10 @@ export async function upload({ course, localFilePath, args }: UploadOptions) {
   if (!args.size) {
     args.size = fs.statSync(localFilePath).size;
   }
-  const next = (await OAuth2.requestJSON(
-    Canvas.url(`/api/v1/courses/${course.id}/files`),
-    'POST',
-    new URLSearchParams(stringify(args))
-  )) as UploadResponse;
+  const next = (await canvas().fetch(`/api/v1/courses/${course.id}/files`, {
+    method: 'POST',
+    body: new URLSearchParams(stringify(args))
+  })) as UploadResponse;
 
   const body = new FormData();
   for (const key in next.upload_params) {
@@ -165,12 +161,12 @@ export async function upload({ course, localFilePath, args }: UploadOptions) {
     case 301:
     case 201:
       if (confirm.headers.has('location')) {
-        result = (await OAuth2.requestJSON(
+        result = (await canvas().fetch(
           confirm.headers.get('location')!
         )) as Model;
         if (!isError(result)) {
           spinner.succeed(
-            `Uploaded ${Colors.value(result.display_name)} to ${Colors.url(result.url)}`
+            `Uploaded file ${Colors.value(result.display_name)} to ${Colors.url(result.url)}`
           );
           return result;
         }
@@ -179,7 +175,7 @@ export async function upload({ course, localFilePath, args }: UploadOptions) {
     default:
       throw new Error(
         `Error uploading file: ${Log.syntaxColor({
-          ...Debug.course(course),
+          ...Courses.basic(course),
           args,
           localFilePath,
           confirm,

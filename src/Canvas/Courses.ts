@@ -6,12 +6,10 @@ import {
 } from '@battis/descriptive-types';
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
-import { OAuth2 } from '@oauth2-cli/qui-cli-plugin';
 import ora from 'ora';
-import * as Debug from '../Debug.js';
-import { stringify } from './API.js';
+import { canvas, stringify } from './Client.js';
 import { isError } from './Error.js';
-import * as Canvas from './URL.js';
+import { url } from './URL.js';
 
 type Term = {
   id: number;
@@ -164,24 +162,13 @@ export type Model = {
 type GetOptions = { id: number } | { sis_course_id: string };
 
 export async function get(identifier: GetOptions) {
-  const result = await OAuth2.request(
-    Canvas.url(
-      `/api/v1/courses/${'id' in identifier ? identifier.id : `sis_course_id:${identifier.sis_course_id}`}`
-    )
-  );
-  if (result.status === 404) {
+  const result = (await canvas().fetch(
+    `/api/v1/courses/${'id' in identifier ? identifier.id : `sis_course_id:${identifier.sis_course_id}`}`
+  )) as Model;
+  if (isError(result)) {
     return undefined;
   }
-  const json = (await result.json()) as Model;
-  if (isError(json)) {
-    throw new Error(
-      `Error getting course: ${Log.syntaxColor({
-        identifier,
-        error: json
-      })}`
-    );
-  }
-  return json;
+  return result;
 }
 
 export type Parameters = {
@@ -294,10 +281,9 @@ type CreateOptions = {
 export async function create({ args, account_id }: CreateOptions) {
   const spinner = ora(`Creating ${Colors.value(args['course[name]'])}`).start();
 
-  const result = (await OAuth2.requestJSON(
-    Canvas.url(`/api/v1/accounts/${account_id}/courses`),
-    'POST',
-    new URLSearchParams(stringify(args))
+  const result = (await canvas().fetch(
+    `/api/v1/accounts/${account_id}/courses`,
+    { method: 'POST', body: new URLSearchParams(stringify(args)) }
   )) as Model;
   if (isError(result)) {
     spinner.fail(`Error creating ${Colors.value(args['course[name]'])}`);
@@ -309,25 +295,37 @@ export async function create({ args, account_id }: CreateOptions) {
       })}`
     );
   }
-  spinner.succeed(`Created ${Colors.value(args['course[name]'])}`);
+  spinner.succeed(
+    `Created ${Colors.value(result.name)} at ${Colors.url(url(`/courses/${result.id}`))}`
+  );
   return result;
 }
 
 export async function reset(course: Model) {
   const spinner = ora(`Resetting ${Colors.value(course.name)}`).start();
-  const result = (await OAuth2.requestJSON(
-    Canvas.url(`/api/v1/courses/${course.id}/reset_content`),
-    'POST'
+  const result = (await canvas().fetch(
+    `/api/v1/courses/${course.id}/reset_content`,
+    { method: 'POST' }
   )) as Model;
   if (isError(result)) {
     spinner.fail(`Error resetting ${Colors.value(course.name)}`);
     throw new Error(
       `Error resetting course: ${Log.syntaxColor({
-        ...Debug.course(course),
+        ...basic(course),
         error: result
       })}`
     );
   }
-  spinner.succeed(`Reset ${Colors.value(course.name)}`);
+  spinner.succeed(
+    `Reset ${Colors.value(course.name)} at ${Colors.url(url(`/courses/${course.id}`))}`
+  );
   return result;
+}
+
+export function basic(course: Model) {
+  return {
+    id: course.id,
+    name: course.name,
+    url: url(`/courses/${course.id}`)
+  };
 }

@@ -1,3 +1,4 @@
+import { DateTimeString } from '@battis/descriptive-types';
 import { Log } from '@battis/qui-cli.log';
 import { ArrayElement } from '@battis/typescript-tricks';
 import { Item } from '@msar/snapshot-multiple/dist/SnapshotMultiple.js';
@@ -19,18 +20,25 @@ export type Model = Omit<SnapshotModel, 'ExtraCredit' | 'IncCumGrade'> &
   SkyAPI.Assigments.Model &
   Partial<GradebookModel>;
 
+function datesEqual(a: DateTimeString, b: DateTimeString) {
+  const dateA = new Date(a);
+  const dateB = new Date(b);
+  dateA.setSeconds(0);
+  dateB.setSeconds(0);
+  return dateA.setMilliseconds(0) == dateB.setMilliseconds(0);
+}
+
 export async function hydrate(snapshot: Item) {
   const assignments: Model[] = [];
   const skyAssignments = await SkyAPI.Assigments.listBySection(
     snapshot.GroupId
   );
-  console.log(skyAssignments);
   for (const skyAssignment of skyAssignments) {
     const snapshotAssignment = snapshot.Assignments?.find(
       (snapshotAssignment) =>
-        snapshotAssignment.DueDate == skyAssignment.due_date &&
-        snapshotAssignment.AssignmentDate == skyAssignment.date &&
-        snapshotAssignment.ShortDescription == skyAssignment.description
+        datesEqual(snapshotAssignment.DueDate, skyAssignment.due_date) &&
+        datesEqual(snapshotAssignment.AssignmentDate, skyAssignment.date) &&
+        snapshotAssignment.ShortDescription == skyAssignment.name
     );
     const gradebookAssignment = snapshot.Gradebook?.reduce(
       (gradebookAssignment: GradebookModel | undefined, markingPeriod) => {
@@ -58,7 +66,7 @@ export async function hydrate(snapshot: Item) {
         ...skyAssignment
       });
     } else {
-      const message = `Assignment unmatched: ${Log.syntaxColor(skyAssignment)}`;
+      const message = `Assignment unmatched: ${Log.syntaxColor({ skyAssignment, snapshotAssignment, gradebookAssignment })}`;
       if (Preferences.ignoreErrors()) {
         Log.warning(message);
       } else {
@@ -105,7 +113,10 @@ export async function toCanvasArgs({
         course,
         localFilePath: path.resolve(
           path.dirname(IndexFile.path()),
-          (item.DownloadUrl as unknown as Annotated).localPath
+          (item.DownloadUrl as unknown as Annotated).localPath.replace(
+            /^\//,
+            ''
+          )
         ),
         args: Files.toCanvasArgs({ file: item })
       });
@@ -123,8 +134,7 @@ export async function toCanvasArgs({
     'assignment[description]': `<div>${assignment.LongDescription}</div>${definitionList(links)}${definitionList(files)}`,
     'assignment[published]': assignment.PublishInd,
     'assignment[assignment_group_id]': assignmentGroups.find(
-      (assignmentGroup) =>
-        assignmentGroup.integration_data.type_id == assignment.type_id
+      (assignmentGroup) => assignmentGroup.name == assignment.type
     )?.id,
     'assignment[submission_types]': []
   };

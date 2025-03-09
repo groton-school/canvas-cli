@@ -29,9 +29,6 @@ export function toCanvasArgs(
 ): Canvas.AssigmentGroups.Parameters {
   return {
     name: assignmentType.type,
-    group_weight: assignmentType.Weight,
-    integration_data: {
-      type_id: assignmentType.type_id
-    }
+    group_weight: assignmentType.Weight
   };
 }
