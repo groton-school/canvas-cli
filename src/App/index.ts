@@ -148,14 +148,16 @@ export async function handleDuplicateCourse({
       | Canvas.Courses.Model
       | undefined
   > = {
-    update: () => course,
-    reset: async () => {
-      course = await Canvas.Courses.reset(course!);
+    update: async () => {
       const args = Snapshot.Section.toCanvasArgs(section);
       args['course[term_id]'] = `sis_term_id:${WORKSPACE_TERM}`;
       delete args['course[sis_course_id]'];
       delete args.enable_sis_reactivation;
       return await Canvas.Courses.update({ course, args });
+    },
+    reset: async () => {
+      course = await Canvas.Courses.reset(course!);
+      return await next.update();
     },
     browse: async () => {
       open(Canvas.url(`/courses/${course!.id}`).toString());
