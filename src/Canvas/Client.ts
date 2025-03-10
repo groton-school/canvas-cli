@@ -11,7 +11,11 @@ export function stringify(obj: Record<string, any>) {
       }
     } else {
       if (obj[key] !== undefined) {
-        stringified[key] = obj[key].toString();
+        if (obj[key] === null) {
+          stringified[key] = 'null';
+        } else {
+          stringified[key] = obj[key].toString();
+        }
       }
     }
   }
