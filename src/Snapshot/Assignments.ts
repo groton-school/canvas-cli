@@ -106,6 +106,10 @@ export async function toCanvasArgs({
     }
   }
   const args: Canvas.Assignments.Parameters = {
+    // FIXME strip HTML from assignment.ShortDescription
+    /* FIXME use only first line of assignment.ShortDescription
+     *   move the rest to the start of assignment[description]
+     */
     'assignment[name]': assignment.ShortDescription,
     'assignment[position]': order,
     'assignment[due_at]': new Date(assignment.DueDate).toISOString(),
