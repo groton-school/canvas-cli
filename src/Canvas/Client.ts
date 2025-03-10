@@ -23,6 +23,7 @@ let _client: Canvas | undefined = undefined;
 export function init(credentials: Credentials) {
   _client = new Canvas(credentials);
 }
+
 export function canvas() {
   if (!_client) {
     throw new Error(`Canvas client has not been initialiized`);

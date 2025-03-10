@@ -15,5 +15,6 @@
       "script" : "source .env\nnode .\/dist\/index.js --help"
     }
   },
+  "buildBeforeRunning" : true,
   "openLogOnRun" : "start"
 }

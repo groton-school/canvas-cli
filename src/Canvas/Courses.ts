@@ -167,6 +167,9 @@ export async function get(identifier: GetOptions) {
     `/api/v1/courses/${'id' in identifier ? identifier.id : `sis_course_id:${identifier.sis_course_id}`}`
   )) as Model;
   if (isError(result)) {
+    Log.debug(
+      `Error getting course: ${Log.syntaxColor({ identifier, error: result })}`
+    );
     return undefined;
   }
   return result;
@@ -279,6 +282,9 @@ type CreateOptions = {
   account_id: number;
 };
 
+/**
+ * @see https://canvas.instructure.com/doc/api/courses.html#method.courses.create
+ */
 export async function create({ args, account_id }: CreateOptions) {
   const spinner = ora(
     `Creating course ${Colors.value(args['course[name]'])}`
@@ -304,6 +310,9 @@ export async function create({ args, account_id }: CreateOptions) {
   return result;
 }
 
+/**
+ * @see https://canvas.instructure.com/doc/api/courses.html#method.courses.reset_content
+ */
 export async function reset(course: Model) {
   const spinner = ora(`Resetting course ${Colors.value(course.name)}`).start();
   const result = (await canvas().fetch(
@@ -335,11 +344,14 @@ export function basic(course: Model) {
 
 type UpdateOptions = {
   course: Model;
-  args: Partial<Parameters>;
+  args: Partial<Omit<Parameters, 'enroll_me'>>;
 };
 
+/**
+ * @see https://canvas.instructure.com/doc/api/courses.html#method.courses.update
+ */
 export async function update({ course, args }: UpdateOptions) {
-  const spinner = ora(`Resetting course ${Colors.value(course.name)}`).start();
+  const spinner = ora(`Updating course ${Colors.value(course.name)}`).start();
   const result = (await canvas().fetch(`/api/v1/courses/${course.id}`, {
     method: 'PUT',
     body: new URLSearchParams(stringify(args))

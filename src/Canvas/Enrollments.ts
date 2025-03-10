@@ -1,4 +1,10 @@
 import { DateTimeString, URLString } from '@battis/descriptive-types';
+import { Colors } from '@battis/qui-cli.colors';
+import { Log } from '@battis/qui-cli.log';
+import { isError } from '@battis/typescript-tricks';
+import ora from 'ora';
+import { canvas, stringify } from './Client.js';
+import * as Courses from './Courses.js';
 
 export type Grade = {
   /** The URL to the Canvas web UI page for the user's grades, if this is a student
@@ -100,18 +106,18 @@ export type Model = {
   /** The id of the enrollment role. */
   role_id: number;
   /** The created time of the enrollment, in ISO8601 format. */
-  created_at: DateTimeString;
+  created_at: DateTimeString<'ISO'>;
   /** The updated time of the enrollment, in ISO8601 format. */
-  updated_at: DateTimeString;
+  updated_at: DateTimeString<'ISO'>;
   /** The start time of the enrollment, in ISO8601 format. */
-  start_at: DateTimeString;
+  start_at: DateTimeString<'ISO'>;
   /** The end time of the enrollment, in ISO8601 format. */
-  end_at: DateTimeString;
+  end_at: DateTimeString<'ISO'>;
   /** The last activity time of the user for the enrollment, in ISO8601 format. */
-  last_activity_at: DateTimeString;
+  last_activity_at: DateTimeString<'ISO'>;
   /** The last attended date of the user for the enrollment in a course, in ISO8601
    * format. */
-  last_attended_at: DateTimeString;
+  last_attended_at: DateTimeString<'ISO'>;
   /** The total activity time of the user for the enrollment, in seconds. */
   total_activity_time: number;
   /** The URL to the Canvas web UI page for this course enrollment. */
@@ -193,3 +199,86 @@ export type Model = {
    * only available in course endpoints) */
   current_period_unposted_final_grade?: string;
 };
+
+type Parameters = {
+  /** The start time of the enrollment, in ISO8601 format. e.g. 2012-04-18T23:08:51Z */
+  'enrollment[start_at]'?: DateTimeString<'ISO'>;
+  /** The end time of the enrollment, in ISO8601 format. e.g. 2012-04-18T23:08:51Z */
+  'enrollment[end_at]'?: DateTimeString<'ISO'>;
+  /** The ID of the user to be enrolled in the course. */
+  'enrollment[user_id]': string;
+  /** Enroll the user as a student, teacher, TA, observer, or designer. If no value is given, the type will be inferred by enrollment if supplied, otherwise ‘StudentEnrollment’ will be used.
+
+    Allowed values:
+    StudentEnrollment, TeacherEnrollment, TaEnrollment, ObserverEnrollment, DesignerEnrollment */
+  'enrollment[type]':
+    | 'StudentEnrollment'
+    | 'TeacherEnrollment'
+    | 'TaEnrollment'
+    | 'ObserverEnrollment'
+    | 'DesignerEnrollment';
+  /** Assigns a custom course-level role to the user. */
+  'enrollment[role_id]'?: number;
+  /** If set to ‘active,’ student will be immediately enrolled in the course. Otherwise they will be required to accept a course invitation. Default is ‘invited.’.
+
+    If set to ‘inactive’, student will be listed in the course roster for teachers, but will not be able to participate in the course until their enrollment is activated.
+
+    Allowed values:
+    active, invited, inactive */
+  'enrollment[enrollment_state]'?: 'active' | 'invited' | 'inactive';
+  /** The ID of the course section to enroll the student in. If the section-specific URL is used, this argument is redundant and will be ignored. */
+  'enrollment[course_section_id]'?: number;
+  /** If set, the enrollment will only allow the user to see and interact with users enrolled in the section given by course_section_id.
+
+    For teachers and TAs, this includes grading privileges.
+
+    Section-limited students will not see any users (including teachers and TAs) not enrolled in their sections.
+
+    Users may have other enrollments that grant privileges to multiple sections in the same course. */
+  'enrollment[limit_privileges_to_course_section]'?: boolean;
+  /** If true, a notification will be sent to the enrolled user. Notifications are not sent by default. */
+  'enrollment[notify]'?: boolean;
+  /** If the current user is not allowed to manage enrollments in this course, but the course allows self-enrollment, the user can self- enroll as a student in the default section by passing in a valid code. When self-enrolling, the user_id must be ‘self’. The enrollment_state will be set to ‘active’ and all other arguments will be ignored. */
+  'enrollment[self_enrollment_code]'?: string;
+  /** If true, marks the enrollment as a self-enrollment, which gives students the ability to drop the course if desired. Defaults to false. */
+  'enrollment[self_enrolled]'?: boolean;
+  /** For an observer enrollment, the ID of a student to observe. This is a one-off operation; to automatically observe all a student’s enrollments (for example, as a parent), please use the User Observees API. */
+  'enrollment[associated_user_id]'?: number;
+  /** Required if the user is being enrolled from another trusted account. The unique identifier for the user (sis_user_id) must also be accompanied by the root_account parameter. The user_id will be ignored. */
+  'enrollment[sis_user_id]'?: string;
+  /** Required if the user is being enrolled from another trusted account. The unique identifier for the user (integration_id) must also be accompanied by the root_account parameter. The user_id will be ignored. */
+  'enrollment[integration_id]'?: string;
+  /** The domain of the account to search for the user. Will be a no-op unless the sis_user_id or integration_id parameter is also included. */
+  root_account?: string;
+};
+
+type CreateOptions = {
+  course: Courses.Model;
+  args: Parameters;
+};
+
+export async function create({ course, args }: CreateOptions) {
+  const spinner = ora(
+    `Creating ${Colors.value(args['enrollment[type]'])} in ${Colors.value(course.name)} for user ${Colors.value(args['enrollment[sis_user_id]'] || args['enrollment[user_id]'])}`
+  ).start();
+  const result = (await canvas().fetch(
+    `/api/v1/courses/${course.id}/enrollments`,
+    { method: 'POST', body: new URLSearchParams(stringify(args)) }
+  )) as Model;
+  if (isError(result) || !result.id) {
+    spinner.fail(
+      `Error creating ${Colors.value(args['enrollment[type]'])} in ${Colors.value(course.name)} for user ${Colors.value(args['enrollment[sis_user_id]'] || args['enrollment[user_id]'])}`
+    );
+    throw new Error(
+      `Error creating enrollment: ${Log.syntaxColor({
+        ...Courses.basic(course),
+        args: stringify(args),
+        error: result
+      })}`
+    );
+  }
+  spinner.succeed(
+    `Enrollment created in ${Colors.value(course.name)} for user ${Colors.value(args['enrollment[sis_user_id]'] || args['enrollment[user_id]'])}`
+  );
+  return result;
+}

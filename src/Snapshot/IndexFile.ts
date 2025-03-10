@@ -1,11 +1,14 @@
-let snapshotPath: string;
+import { hydrate } from '@battis/qui-cli.plugin';
+
+let _path: string | undefined = undefined;
 
 export function setPath(value?: string) {
-  if (value) {
-    snapshotPath = value;
-  }
+  _path = hydrate(value, _path);
 }
 
 export function path() {
-  return snapshotPath;
+  if (!_path) {
+    throw new Error(`Snapshot path has not been initialized`);
+  }
+  return _path;
 }

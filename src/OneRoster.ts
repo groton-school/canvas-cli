@@ -3,7 +3,7 @@ import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
 import { hydrate } from '@battis/qui-cli.plugin';
 import { Root } from '@battis/qui-cli.root';
-import { Item } from '@msar/snapshot-multiple/dist/SnapshotMultiple.js';
+import type { Item } from '@msar/snapshot-multiple/dist/SnapshotMultiple.d.ts';
 import { parse } from 'csv-parse/sync';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -93,22 +93,41 @@ function coursesWithDepartments() {
 }
 
 export function sis_course_id(snapshot: Item) {
+  if (!snapshot.SectionInfo) {
+    throw new Error('Missing SectionInfo');
+  }
   return `crs-${instance()}-${snapshot.SectionInfo?.Id}`;
 }
 
 export function sis_term_id(snapshot: Item) {
+  if (!snapshot.SectionInfo) {
+    throw new Error('Missing SectionInfo');
+  }
+
   return terms().find((term) => {
     return (
-      term['School Year'] == snapshot.SectionInfo?.SchoolYear &&
-      term['Term Description'] == snapshot.SectionInfo.Duration &&
-      term.Length == snapshot.SectionInfo?.Length
+      term['School Year'] == snapshot.SectionInfo!.SchoolYear &&
+      term['Term Description'] == snapshot.SectionInfo!.Duration &&
+      term.Length == snapshot.SectionInfo!.Length
     );
   })?.term_id;
 }
 
+/** sis_user_id for (head) teacher */
+export function sis_user_id(snapshot: Item) {
+  if (!snapshot.SectionInfo) {
+    throw new Error('Missing SectionInfo');
+  }
+  return `usr-${instance()}-${snapshot.SectionInfo.TeacherId}`;
+}
+
 export function account_id(snapshot: Item) {
+  if (!snapshot.SectionInfo) {
+    throw new Error('Missing SectionInfo');
+  }
+
   const departmentId = coursesWithDepartments().find(
-    (offering) => offering['Course ID'] == snapshot.SectionInfo?.OfferingId
+    (offering) => offering['Course ID'] == snapshot.SectionInfo!.OfferingId
   )?.['Department Id'];
   const account_id = departmentAccountMap().find(
     (department) => department['Department Id'] == departmentId

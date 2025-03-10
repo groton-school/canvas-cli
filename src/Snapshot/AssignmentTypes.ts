@@ -1,4 +1,4 @@
-import * as Canvas from '../Canvas.js';
+import * as Canvas from '../Canvas/index.js';
 import * as Assignments from './Assignments.js';
 
 export type Model = {
@@ -15,8 +15,8 @@ export function extract(assignments: Assignments.Model[]) {
       )
     ) {
       assignmentTypes.push({
-        type: assignment.type,
-        type_id: assignment.type_id,
+        type: assignment.type!,
+        type_id: assignment.type_id!,
         Weight: assignment.Weight
       });
     }

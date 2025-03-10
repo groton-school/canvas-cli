@@ -12,7 +12,7 @@
     },
     "run" : {
       "enabled" : true,
-      "script" : "source .env\nnode .\/dist\/index.js \"$SNAPSHOT_PATH\""
+      "script" : "source .env\nnode .\/dist\/index.js --stdoutLevel debug --no-ignoreErrors --no-assignments --duplicates reset \"$SNAPSHOT_PATH\""
     }
   },
   "buildBeforeRunning" : true,
