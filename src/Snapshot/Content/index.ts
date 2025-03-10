@@ -1,2 +1,2 @@
-export * as News from './Content/News.js';
-export * as Text from './Content/Text.js';
+export * as News from './News.js';
+export * as Text from './Text.js';
