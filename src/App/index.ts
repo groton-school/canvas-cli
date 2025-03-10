@@ -119,7 +119,7 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
     client_id: process.env.CANVAS_CLIENT_ID!,
     client_secret: process.env.CANVAS_CLIENT_SECRET!,
     redirect_uri: process.env.CANVAS_REDIRECT_URI!,
-    store: './var/canvas.json'
+    store: process.env.CANVAS_TOKEN_STORE
   });
   configure({
     blackbaudInstanceId,
