@@ -12,7 +12,7 @@
     },
     "run" : {
       "enabled" : true,
-      "script" : "source .env\nnode .\/dist\/index.js --help"
+      "script" : "canvas-import --help"
     }
   },
   "buildBeforeRunning" : true,

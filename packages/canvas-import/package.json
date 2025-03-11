@@ -1,0 +1,57 @@
+{
+  "name": "@msar/canvas-import",
+  "version": "0.0.0",
+  "homepage": "https://github.com/groton-school/canvas-import/tree/main/packages/canvas-import#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groton-school/canvas-import.git",
+    "directory": "packages/canvas-import"
+  },
+  "author": {
+    "name": "Seth Battis",
+    "email": "sbattis@groton.org"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "canvas-import": "./dist/index.js"
+  },
+  "scripts": {
+    "clean": "del ./dist",
+    "build": "run-s build:*",
+    "build:clean": "run-s clean",
+    "build:compile": "tsc",
+    "release": "commit-and-tag-version"
+  },
+  "dependencies": {
+    "@battis/qui-cli.colors": "^2.0.1",
+    "@battis/qui-cli.core": "^2.1.0",
+    "@battis/qui-cli.env": "^2.0.3",
+    "@battis/qui-cli.log": "^2.1.0",
+    "@battis/qui-cli.plugin": "^2.3.0",
+    "@battis/qui-cli.root": "^2.0.2",
+    "@inquirer/prompts": "^7.3.3",
+    "@msar/snapshot-multiple": "^0.2.0",
+    "@oauth2-cli/canvas": "^0.2.0",
+    "@oauth2-cli/sky-api": "^0.2.0",
+    "csv-parse": "^5.6.0",
+    "node-fetch": "^3.3.2",
+    "open": "^10.1.0",
+    "ora": "^8.2.0"
+  },
+  "devDependencies": {
+    "@battis/descriptive-types": "^0.2.0",
+    "@battis/typescript-tricks": "^0.7.4",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@commitlint/config-pnpm-scopes": "^19.8.0",
+    "@tsconfig/node20": "^20.1.4",
+    "commit-and-tag-version": "^12.5.0",
+    "datadirect": "^0.4.3",
+    "del-cli": "^6.0.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.8.2"
+  },
+  "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee"
+}
