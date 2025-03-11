@@ -1,9 +1,9 @@
 import { Log } from '@battis/qui-cli.log';
 import { ArrayElement } from '@battis/typescript-tricks';
+import * as Canvas from '@groton/canvas-types';
 import type { Item } from '@msar/snapshot-multiple/dist/SnapshotMultiple.d.ts';
 import path from 'node:path';
 import * as Preferences from '../App/Preferences.js';
-import * as Canvas from '../Canvas/index.js';
 import * as Files from './Files.js';
 import * as IndexFile from './IndexFile.js';
 import { Annotated } from './Url.js';

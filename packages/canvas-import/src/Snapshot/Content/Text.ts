@@ -1,6 +1,6 @@
+import * as Canvas from '@groton/canvas-types';
 import { api } from 'datadirect';
 import path from 'node:path';
-import * as Canvas from '../../Canvas/index.js';
 import * as IndexFile from '../IndexFile.js';
 import { Annotated } from '../Url.js';
 

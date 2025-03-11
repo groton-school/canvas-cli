@@ -1,0 +1,5 @@
+{
+  "path": ".",
+  "tag-prefix": "canvas-types/",
+  "releaseCommitMessageFormat": "chore(canvas-types): @groton/canvas-types@{{currentTag}}"
+}

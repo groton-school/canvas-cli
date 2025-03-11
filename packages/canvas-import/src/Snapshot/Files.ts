@@ -1,7 +1,7 @@
 import { ArrayElement } from '@battis/typescript-tricks';
+import * as Canvas from '@groton/canvas-types';
 import type { Item } from '@msar/snapshot-multiple/dist/SnapshotMultiple.d.ts';
 import path from 'node:path';
-import * as Canvas from '../Canvas/index.js';
 import { Annotated } from './Url.js';
 
 // TODO can this File model be generalized?

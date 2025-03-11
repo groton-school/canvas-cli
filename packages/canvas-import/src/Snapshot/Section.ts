@@ -1,5 +1,5 @@
+import * as Canvas from '@groton/canvas-types';
 import type { Item } from '@msar/snapshot-multiple/dist/SnapshotMultiple.d.ts';
-import * as Canvas from '../Canvas/index.js';
 import * as OneRoster from '../OneRoster.js';
 
 export function toCanvasArgs(section: Item): Canvas.Courses.Parameters {

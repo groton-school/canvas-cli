@@ -1,4 +1,4 @@
-import * as Canvas from '../Canvas/index.js';
+import * as Canvas from '@groton/canvas-types';
 import * as Assignments from './Assignments.js';
 
 export type Model = {

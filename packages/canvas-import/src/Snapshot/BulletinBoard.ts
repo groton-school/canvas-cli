@@ -1,5 +1,5 @@
+import * as Canvas from '@groton/canvas-types';
 import type { Item } from '@msar/snapshot-multiple/dist/SnapshotMultiple.d.ts';
-import * as Canvas from '../Canvas/index.js';
 import * as Content from './Content/index.js';
 
 export type Model = Item['BulletinBoard'];
