@@ -1,0 +1,29 @@
+<div><%- assignment.LongDescription %></div>
+
+<% if (links.length > 0) { %>
+    <h3>Links</h3>
+    <% links.forEach(link => { %>
+        <div>
+            <a href="<%= link.UrlDisplay %>"><%- link.ShortDescription %></a>
+        </div>
+    <% }) %>
+<% } %>
+
+<% if (downloads.length > 0) { %>
+    <h3>Downloads</h3>
+    <% downloads.forEach(download => { %>
+        <div>
+            <div>
+                <a class="instructure_file_link inline_disabled"
+                   title="<%= download.filename %>"
+                   href="<%= download.href %>"
+                   target="_blank"
+                   rel="noopener"
+                   data-api-endpoint="<%= download.endpoint %>"
+                   data-api-returntype="File"
+                ><%= download.filename %></a>
+            </div>
+            <div><%- download.ShortDescription %></div>
+        </div>
+    <% }) %>
+<%} %>

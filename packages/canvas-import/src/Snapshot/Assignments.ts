@@ -2,6 +2,7 @@ import { Log } from '@battis/qui-cli.log';
 import { ArrayElement } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-types';
 import type { Item } from '@msar/snapshot-multiple/dist/SnapshotMultiple.d.ts';
+import ejs from 'ejs';
 import path from 'node:path';
 import * as Preferences from '../App/Preferences.js';
 import * as Files from './Files.js';
@@ -85,7 +86,7 @@ export async function toCanvasArgs({
     );
   }
 
-  const files = [];
+  const downloads: Record<string, any> = [];
   if (Preferences.files()) {
     for (const item of assignment.DownloadItems) {
       const file = await Canvas.Files.upload({
@@ -100,9 +101,12 @@ export async function toCanvasArgs({
         args: Files.toCanvasArgs({ file: item })
       });
       // FIXME confirm whether or not these are absolute URLs or just paths
-      files.push(
-        `<dt><a class="instructure_file_link inline_disabled" title="${file.filename}" href="/courses/${course.id}/files/${file.id}?wrap=1" target="_blank" rel="noopener" data-api-endpoint="/api/v1/courses/${course.id}/files/${file.id}" data-api-returntype="File">${file.filename}</a></dt><dd>${item.ShortDescription}</dd>`
-      );
+      downloads.push({
+        ...item,
+        ...file,
+        href: Canvas.url(`/courses/${course.id}/files/${file.id}?wrap=1`),
+        endpoint: Canvas.url(`/api/v1/courses/${course.id}/files/${file.id}`)
+      });
     }
   }
   const args: Canvas.Assignments.Parameters = {
@@ -114,7 +118,10 @@ export async function toCanvasArgs({
     'assignment[position]': order,
     'assignment[due_at]': new Date(assignment.DueDate).toISOString(),
 
-    'assignment[description]': `<div>${assignment.LongDescription}</div>${definitionList(links)}${definitionList(files)}`,
+    'assignment[description]': await ejs.renderFile(
+      path.join(import.meta.dirname, 'Assignment.ejs'),
+      { assignment, links: assignment.LinkItems, downloads }
+    ),
     'assignment[published]': assignment.PublishInd,
     'assignment[assignment_group_id]': assignmentGroups.find(
       (assignmentGroup) => assignmentGroup.name == assignment.type

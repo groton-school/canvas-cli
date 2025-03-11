@@ -19,15 +19,15 @@ export async function toCanvasArgs({
       switch (widget.ContentType?.Content) {
         case 'News':
           if (widget.Content) {
-            // @ts-ignore-next-line
-            body += Content.News.widgetToHTML(widget.Content);
+            // @ts-expect-error
+            body += await Content.News.toHTML(widget.Content);
           }
           break;
         case 'Text':
           if (widget.Content) {
-            body += await Content.Text.widgetToHTML({
+            body += await Content.Text.toHTML({
               course,
-              // @ts-ignore-next-line
+              // @ts-expect-error
               text: widget.Content
             });
           }

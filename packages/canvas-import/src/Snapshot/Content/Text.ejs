@@ -1,0 +1,16 @@
+<div>
+    <h3><%= text.Description %></h3>
+    <div style="display: flex; flex-direction: row;">
+        <div style="display: flex; flex-direction: column;">
+            <% photos.forEach(photo => { %>
+            <div style="padding-right: 0.5em;">
+                <div>
+                    <img src="<%= photo.src %>" alt="<%= photo.photo_alttext %>" />
+                </div>
+                <div style="padding: 0.5em 0;"><%- photo.Caption %></div>
+            </div>
+            <% }) %>
+        </div>
+        <div><%- text.LongText %></div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import * as Canvas from '@groton/canvas-types';
 import { api } from 'datadirect';
+import ejs from 'ejs';
 import path from 'node:path';
 import * as IndexFile from '../IndexFile.js';
 import { Annotated } from '../Url.js';
@@ -10,7 +11,7 @@ type ItemToHTMLOptions = {
 };
 
 async function itemToHTML({ course, text }: ItemToHTMLOptions) {
-  let body = text.LongText;
+  const photos: Record<string, unknown>[] = [];
   if (text.Photos) {
     for (const photo of text.Photos) {
       const file = await Canvas.Files.upload({
@@ -22,12 +23,28 @@ async function itemToHTML({ course, text }: ItemToHTMLOptions) {
             ''
           )
         ),
-        args: { name: photo.OriginalFilename }
+        args: {
+          name: photo.OriginalFilename,
+          parent_folder_path: path.join(
+            'Imported Files',
+            path.dirname(
+              (
+                photo.LargeFilenameUrl as unknown as Annotated
+              ).localPath.replace(/^\//, '')
+            )
+          )
+        }
       });
-      body = `<img src="${Canvas.url(file.url)}" alt="${photo.photo_alttext}"/>${body}`;
+      photos.push({
+        ...photo,
+        src: Canvas.url(file.url).href
+      });
     }
   }
-  return `<dt class="title">${text.Description}</dt><dd class="body">${body}</dd>`;
+  return ejs.renderFile(path.join(import.meta.dirname, 'Text.ejs'), {
+    text,
+    photos
+  });
 }
 
 type WidgetToHtmlOptions = {
@@ -35,6 +52,10 @@ type WidgetToHtmlOptions = {
   text: api.datadirect.ContentItem.Text.Content;
 };
 
-export async function widgetToHTML({ course, text }: WidgetToHtmlOptions) {
-  return `<dl class="blackbaud datadirect content text">${(await Promise.all(text.map(async (t) => await itemToHTML({ course, text: t })))).join('')}</dl>`;
+export async function toHTML({ course, text }: WidgetToHtmlOptions) {
+  return (
+    await Promise.all(
+      text.map(async (t) => await itemToHTML({ course, text: t }))
+    )
+  ).join('');
 }

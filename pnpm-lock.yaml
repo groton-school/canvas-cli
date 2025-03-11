@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@battis/eslint-config':
         specifier: ^2.0.3
-        version: 2.0.3(@eslint/js@9.22.0)(eslint-config-prettier@10.1.1(eslint@9.22.0(jiti@2.4.2)))(eslint-plugin-html@8.1.2)(eslint-plugin-markdown@5.1.0(eslint@9.22.0(jiti@2.4.2)))(eslint@9.22.0(jiti@2.4.2))(globals@14.0.0)(typescript-eslint@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2))(typescript@5.8.2)
+        version: 2.0.3(@eslint/js@9.22.0)(eslint-config-prettier@10.1.1(eslint@9.22.0(jiti@2.4.2)))(eslint-plugin-html@8.1.2)(eslint-plugin-markdown@5.1.0(eslint@9.22.0(jiti@2.4.2)))(eslint@9.22.0(jiti@2.4.2))(globals@11.12.0)(typescript-eslint@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2))(typescript@5.8.2)
       '@battis/prettier-config':
         specifier: ^1.5.7
         version: 1.5.7(typescript@5.8.2)
@@ -96,6 +96,9 @@ importers:
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
+      '@types/ejs':
+        specifier: ^3.1.5
+        version: 3.1.5
       commit-and-tag-version:
         specifier: ^12.5.0
         version: 12.5.0
@@ -112,7 +115,7 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       typescript:
-        specifier: ^5.8.2
+        specifier: ^5.7.3
         version: 5.8.2
 
   packages/canvas-types:
@@ -1103,6 +1106,9 @@ packages:
 
   '@types/conventional-commits-parser@5.0.1':
     resolution: {integrity: sha512-7uz5EHdzz2TqoMfV7ee61Egf5y6NkcO4FB/1iCCQnbeiI1F3xzv3vK5dBCXUCLQgGYS+mUeigK1iKQzvED+QnQ==}
+
+  '@types/ejs@3.1.5':
+    resolution: {integrity: sha512-nv+GSx77ZtXiJzwKdsASqi+YQ5Z7vwHsTP0JY2SiQgjGckkBRKZnk8nIM+7oUZ1VCtuTz0+By4qVR7fqzp/Dfg==}
 
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
@@ -4884,14 +4890,14 @@ snapshots:
 
   '@battis/descriptive-types@0.2.0': {}
 
-  '@battis/eslint-config@2.0.3(@eslint/js@9.22.0)(eslint-config-prettier@10.1.1(eslint@9.22.0(jiti@2.4.2)))(eslint-plugin-html@8.1.2)(eslint-plugin-markdown@5.1.0(eslint@9.22.0(jiti@2.4.2)))(eslint@9.22.0(jiti@2.4.2))(globals@14.0.0)(typescript-eslint@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2))(typescript@5.8.2)':
+  '@battis/eslint-config@2.0.3(@eslint/js@9.22.0)(eslint-config-prettier@10.1.1(eslint@9.22.0(jiti@2.4.2)))(eslint-plugin-html@8.1.2)(eslint-plugin-markdown@5.1.0(eslint@9.22.0(jiti@2.4.2)))(eslint@9.22.0(jiti@2.4.2))(globals@11.12.0)(typescript-eslint@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2))(typescript@5.8.2)':
     dependencies:
       '@eslint/js': 9.22.0
       eslint: 9.22.0(jiti@2.4.2)
       eslint-config-prettier: 10.1.1(eslint@9.22.0(jiti@2.4.2))
       eslint-plugin-html: 8.1.2
       eslint-plugin-markdown: 5.1.0(eslint@9.22.0(jiti@2.4.2))
-      globals: 14.0.0
+      globals: 11.12.0
       typescript: 5.8.2
       typescript-eslint: 8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2)
 
@@ -6110,6 +6116,8 @@ snapshots:
   '@types/conventional-commits-parser@5.0.1':
     dependencies:
       '@types/node': 22.13.10
+
+  '@types/ejs@3.1.5': {}
 
   '@types/estree@1.0.6': {}
 
