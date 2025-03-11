@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "node-fetch": "^3.3.2",
-    "oauth2-cli": "workspace:*"
+    "oauth2-cli": "*"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",

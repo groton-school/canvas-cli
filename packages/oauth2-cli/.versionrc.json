@@ -1,5 +1,5 @@
 {
   "path": ".",
-  "tag-prefix": "canvas/",
-  "releaseCommitMessageFormat": "chore(canvas): @oauth2-cli/canvas@{{currentTag}}"
+  "tag-prefix": "oauth2-cli/",
+  "releaseCommitMessageFormat": "chore(oauth2-cli): @oauth2-cli/canvas@{{currentTag}}"
 }
