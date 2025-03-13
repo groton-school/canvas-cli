@@ -119,7 +119,7 @@ type BasicUser = {
   name: string;
 };
 
-type AssignmentOverride = {
+export type AssignmentOverride = {
   /** the ID of the assignment override */
   id: number;
   /** the ID of the assignment the override applies to (present if the override
