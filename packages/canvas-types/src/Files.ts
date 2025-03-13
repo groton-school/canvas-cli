@@ -135,6 +135,7 @@ type UploadResponse = {
   };
 };
 
+/** TODO expand capability to upload to account or user files as well */
 export async function upload({ course, localFilePath, args }: UploadOptions) {
   const spinner = ora(`Uploading file ${Colors.url(localFilePath)}`).start();
 

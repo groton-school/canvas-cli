@@ -1,3 +1,4 @@
+// TODO replace node-fetch dependency with native fetch when bumping to node@>=21
 import nodeFetch, { RequestInfo, RequestInit } from 'node-fetch';
 import path from 'node:path';
 import * as OAuth2 from 'oauth2-cli';
@@ -35,6 +36,8 @@ export class Canvas {
   }
 
   public async fetch(endpoint: URL | RequestInfo, init?: RequestInit) {
+    // TODO monitor quota usage and add delays as necessary
+    // TODO retry failed requests due to quota limits
     return await this.queue.add(
       (async () => {
         await this.getToken();

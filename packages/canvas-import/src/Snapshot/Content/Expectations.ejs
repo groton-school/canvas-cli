@@ -1,6 +1,7 @@
 <div>
     <h3>Expectations</h3>
     <% content.Content.forEach(item => { %>
+        <!-- FIXME need to archive Expectations attachments -->
         <div><small><a href="#"><%= item.ShortDescription %></a></small></div>
         <div><%- item.Description %></div>
     <% }); %>
