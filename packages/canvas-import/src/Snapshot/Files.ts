@@ -25,7 +25,6 @@ function isAnnotated(value?: unknown): value is Annotated {
   );
 }
 
-// TODO can this File model be generalized?
 type Model = ArrayElement<
   ArrayElement<
     NonNullable<SnapshotMultiple.Item['Assignments']>

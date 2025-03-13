@@ -52,7 +52,6 @@ export function configure(config: Configuration = {}) {
 }
 
 export function options(): Plugin.Options {
-  // FIXME remove unwanted command line flags from (multiple) imports of @msar/snapshot-multiple
   return {
     flag: {
       ignoreErrors: {
