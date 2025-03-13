@@ -1,0 +1,20 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "postActions" : [
+        {
+          "action" : "build",
+          "taskName" : "build",
+          "type" : "runTask"
+        }
+      ]
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "source .env\ncanvas-import --stdoutLevel debug --no-ignoreErrors --duplicates reset --no-topics --no-assignments \"$SNAPSHOT_PATH\""
+    }
+  },
+  "buildBeforeRunning" : true,
+  "openLogOnRun" : "start"
+}
