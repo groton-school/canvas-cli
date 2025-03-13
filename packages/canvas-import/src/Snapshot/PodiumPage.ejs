@@ -1,0 +1,46 @@
+<table>
+    <tbody>
+    <%
+      let row;
+      for (let r = 0; (row = page.filter(item => item.RowIndex == r)).length > 0; r++) { %>
+        <tr style="vertical-align: top;">
+        <%
+          let column;
+          for (let c = 0; (column = row.filter(item => item.ColumnIndex == c)).length > 0; c++) {
+            let width;
+            let colspan = 1;
+            switch (layout) {
+              case 0:
+                width = c == 0 ? '75%' : '25%';
+                break;
+              case 1:
+                width = c == 0 ? '25%' : '75%';
+                break;
+              case 2:
+                colspan = r == 0 ? '2' : colspan;
+                width = r > 0 && c == 0 ? '75%' : '25%';
+                break;
+              case 3:
+                colspan = r == 0 ? '2' : colspan;
+                width = r > 0 && c == 0 ? '25%' : '75%';
+                break;
+              case 4:
+                width = '50%';
+                break;
+              case 5:
+                width = '33%';
+            }
+        %>
+            <td colspan="<%= colspan %>" style="width: <%= width %>;">
+            <%
+              for (const content of column.sort((a, b) => a.CellIndex - b.CellIndex)) { %>
+                <%- include(
+                    `Content/${content.ContentType?.Content || 'Unknown'}`,
+                     { content }); %>
+              <% } %>
+            <td>
+        <% } %>
+        <tr>
+    <% } %>
+    </tbody>
+</table>

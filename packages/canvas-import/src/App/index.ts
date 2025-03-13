@@ -284,7 +284,7 @@ export async function run() {
           course,
           args: await Snapshot.BulletinBoard.toCanvasArgs({
             course,
-            bulletinBoard: section.BulletinBoard
+            section
           })
         });
       }

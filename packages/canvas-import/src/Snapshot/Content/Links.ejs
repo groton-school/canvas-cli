@@ -1,0 +1,9 @@
+<div>
+    <h3>Links</h3>
+    <dl>
+        <% content.Content.forEach(item => { %>
+            <dt><a href="<%= item.Url %>"><%= item.ShortDescription %></a></dt>
+            <dd><%- item.Description %></dd>
+        <% }); %>
+    </dl>
+</div>

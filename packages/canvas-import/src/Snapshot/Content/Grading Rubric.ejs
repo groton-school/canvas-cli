@@ -1,0 +1,8 @@
+<div>
+    <h3>Grading Rubric</h3>
+    <% content.Content.forEach(item => { %>
+        <!-- FIXME need to archive Grading Rubric attachments -->
+        <div><small><a href="#"><%= item.ShortDescription %></a></small></div>
+        <div><%- item.Description %></div>
+    <% }); %>
+</div>

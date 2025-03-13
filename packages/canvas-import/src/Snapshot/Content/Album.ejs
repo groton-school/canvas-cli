@@ -1,0 +1,23 @@
+<%
+const albums = content.Content.reduce((albums, photo) => {
+    if (!albums[photo.AlbumId]) {
+        albums[photo.AlbumId] = [photo];
+    } else {
+        albums[photo.AlbumId].push(photo);
+    }
+    return albums;
+}, {});
+%>
+<% for (const id in albums) { %>
+    <div>
+        <h3><%= albums[id][0].AlbumName %></h3>
+        <% for (const photo of albums[id]) { %>
+        <a href="">
+            <div>
+                <img id="<%= photo.FilenameUrl.id %>" src="<%= photo.FilenameUrl.preview_url %>" alt="<%= photo.FilenameUrl.display_name %>" height="100"/>
+            </div>
+            <div><small><%= photo.CoverCaption %></small></div>
+        </a>
+        <%} %>
+    </div>
+<%} %>

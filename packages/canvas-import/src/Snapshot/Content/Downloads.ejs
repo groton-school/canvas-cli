@@ -1,0 +1,9 @@
+<div>
+    <h3>Downloads</h3>
+    <dl>
+    <% for (const item of content.Content) { %>
+        <dt><a class="instructure_file_link inline_disabled" title="<%= item.DownloadUrl.display_name %>" href="<%= item.DownloadUrl.preview_url %>" target="_blank" rel="noopener noreferrer"><%= item.Description %></a></dt>
+        <dd><%- item.LongDescription %></dd>
+    <% } %>
+    </dl>
+</div>

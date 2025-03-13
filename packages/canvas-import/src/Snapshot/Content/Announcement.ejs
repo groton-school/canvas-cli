@@ -1,0 +1,10 @@
+<div>
+    <h3>Announcements</h3>
+    <dl>
+    <% content.Content.forEach(item => { %>
+        <dt><span><%= item.PublishDateDisplay %></span> <%= item.Name %></dt>
+        <dd>By: <%= item.Author %></dd>
+        <dd><%- item.Description %></dd>
+    <% }); %>
+    </dl>
+</div>

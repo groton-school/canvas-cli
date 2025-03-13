@@ -1,16 +1,17 @@
-<div>
-    <h3><%= text.Description %></h3>
-    <div style="display: flex; flex-direction: row;">
-        <div style="display: flex; flex-direction: column;">
-            <% photos.forEach(photo => { %>
-            <div style="padding-right: 0.5em;">
-                <div>
-                    <img src="<%= photo.src %>" alt="<%= photo.photo_alttext %>" />
-                </div>
-                <div style="padding: 0.5em 0;"><%- photo.Caption %></div>
-            </div>
-            <% }) %>
+<% content.Content.forEach(item => { %>
+    <div>
+        <h3><%= item.Description %></h3>
+        <div style="display: flex; flex-direction: row;">
+            <% if (item.Photos) {
+                for(const photo of item.Photos) { %>
+                <a href="photo." style="display: block;">
+                    <div>
+                        <img id="<%= photo.LargeFilenameUrl.id %>" src="<%= photo.LargeFilenameUrl.preview_url %>" alt="<%= photo.LargeFilenameUrl.display_name %>" height="100"/>
+                    </div>
+                    <div><%= photo.Caption %></div>
+                </a>
+            <% }} %>
+            <div><%- item.LongText %></div>
         </div>
-        <div><%- text.LongText %></div>
     </div>
-</div>
+<%}) %>
