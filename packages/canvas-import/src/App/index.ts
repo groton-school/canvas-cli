@@ -279,12 +279,15 @@ export async function run() {
         }
       }
 
-      if (Preferences.bulletinBoard()) {
+      if (Preferences.bulletinBoard() && section.BulletinBoard) {
         await Canvas.Pages.create({
           course,
-          args: await Snapshot.BulletinBoard.toCanvasArgs({
+          args: await Snapshot.PodiumPage.toCanvasArgs({
             course,
-            section
+            title: 'Bulletin Board',
+            body: section.BulletinBoard,
+            layout: section.SectionInfo?.LayoutId || 0,
+            front_page: true
           })
         });
       }

@@ -41,7 +41,8 @@
     "ejs": "^3.1.10",
     "node-fetch": "^3.3.2",
     "open": "^10.1.0",
-    "ora": "^8.2.0"
+    "ora": "^8.2.0",
+    "p-queue": "^8.1.0"
   },
   "devDependencies": {
     "@battis/descriptive-types": "^0.2.0",

@@ -1,13 +1,16 @@
 import { JSONValue } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-types';
-import { SnapshotMultiple } from '@msar/snapshot-multiple';
 import ejs from 'ejs';
 import path from 'node:path';
+import PQueue from 'p-queue';
 import * as IndexFile from './IndexFile.js';
 
 type ToCanvasArgsOptions = {
   course: Canvas.Courses.Model;
-  section: SnapshotMultiple.Item;
+  title: string;
+  body: JSONValue[];
+  layout: number;
+  front_page?: boolean;
 };
 
 type FileUploadOptions = {
@@ -76,23 +79,24 @@ async function fileUpload({
 
 export async function toCanvasArgs({
   course,
-  section
+  title,
+  body,
+  layout,
+  front_page = false
 }: ToCanvasArgsOptions): Promise<Canvas.Pages.Parameters> {
-  const bulletinBoard = await Promise.all(
-    section.BulletinBoard?.map(
-      async (entry) => await fileUpload({ course, entry })
-    ) || []
+  const page = await Promise.all(
+    body?.map(async (entry) => await fileUpload({ course, entry })) || []
   );
   return {
-    'wiki_page[title]': 'Bulletin Board',
+    'wiki_page[title]': title,
     'wiki_page[body]': await ejs.renderFile(
       path.join(import.meta.dirname, 'PodiumPage.ejs'),
       {
-        page: bulletinBoard,
-        layout: section.SectionInfo?.LayoutId
+        page,
+        layout
       }
     ),
     'wiki_page[published]': true,
-    'wiki_page[front_page]': true
+    'wiki_page[front_page]': front_page
   };
 }
