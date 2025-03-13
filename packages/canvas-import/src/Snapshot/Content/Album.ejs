@@ -14,7 +14,7 @@ const albums = content.Content.reduce((albums, photo) => {
         <% for (const photo of albums[id]) { %>
         <a href="">
             <div>
-                <img id="<%= photo.FilenameUrl.id %>" src="<%= photo.FilenameUrl.preview_url %>" alt="<%= photo.FilenameUrl.display_name %>" height="100"/>
+                <img id="<%= photo.FilenameUrl.id %>" src="<%= photo.FilenameUrl.url %>" alt="<%= photo.FilenameUrl.display_name %>" style="height: 3em;" />
             </div>
             <div><small><%= photo.CoverCaption %></small></div>
         </a>

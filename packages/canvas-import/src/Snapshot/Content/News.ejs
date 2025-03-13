@@ -5,7 +5,7 @@
         <dt><%= item.Name %></dt>
         <dd><%= item.PublishDate %></dd>
         <% for (const photo of item.PhotoList || []) { %>
-            <dd><img id="<%= photo.LargeFilenameUrl.id %>" src="<%= photo.LargeFilenameUrl.preview_url %>" alt="<%= photo.LargeFilenameUrl.display_name %>" height="100"/></dd>
+            <dd><img id="<%= photo.LargeFilenameUrl.id %>" src="<%= photo.LargeFilenameUrl.url %>" alt="<%= photo.LargeFilenameUrl.display_name %>" style="height: 2em;" /></dd>
         <% } %>
         <dd><%- item.BriefDescription %></dd>
         <dd><%- item.Description %></dd>
