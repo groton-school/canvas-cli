@@ -2,7 +2,6 @@ import { JSONValue } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-types';
 import ejs from 'ejs';
 import path from 'node:path';
-import PQueue from 'p-queue';
 import * as IndexFile from './IndexFile.js';
 
 type ToCanvasArgsOptions = {
