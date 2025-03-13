@@ -4,7 +4,7 @@ import '@battis/qui-cli.env';
 import * as Plugin from '@battis/qui-cli.plugin';
 import * as Canvas from '@groton/canvas-types';
 import { select } from '@inquirer/prompts';
-import type * as SnapshotMultiple from '@msar/snapshot-multiple/dist/SnapshotMultiple.d.ts';
+import { SnapshotMultiple } from '@msar/snapshot-multiple';
 import fs from 'node:fs';
 import path from 'node:path';
 import open from 'open';
@@ -26,10 +26,10 @@ export type Configuration = Plugin.Configuration & {
   coursesWithDepartmentsPath?: string;
   snapshotPath?: string;
   duplicates?: Preferences.DuplicateHandling;
-  files?: boolean;
   ignoreErrors?: boolean;
   assignments?: boolean;
   bulletinBoard?: boolean;
+  topics?: boolean;
 };
 
 export const name = 'sis-import';
@@ -38,9 +38,9 @@ export const src = path.dirname(import.meta.dirname);
 export function configure(config: Configuration = {}) {
   Preferences.setDuplicates(config.duplicates);
   Preferences.setIgnoreErrors(config.ignoreErrors);
-  Preferences.setFiles(config.files);
   Preferences.setAssignments(config.assignments);
   Preferences.setBulletinBoard(config.bulletinBoard);
+  Preferences.setTopics(config.topics);
   Snapshot.setPath(config.snapshotPath);
   if (config.canvasInstanceUrl) {
     Canvas.setUrl(config.canvasInstanceUrl);
@@ -52,22 +52,24 @@ export function configure(config: Configuration = {}) {
 }
 
 export function options(): Plugin.Options {
+  // FIXME remove unwanted command line flags from (multiple) imports of @msar/snapshot-multiple
   return {
     flag: {
       ignoreErrors: {
         description: `Ignore data errors where possible (default ${Colors.value(Preferences.ignoreErrors())}, ${Colors.value('--no-ignoreErrors')} to halt on errors)`,
         default: Preferences.ignoreErrors()
       },
-      files: {
-        description: `Upload file attachments (default ${Colors.value(Preferences.files())}, ${Colors.value('--no-files')} to skip)`,
-        default: Preferences.files()
-      },
       assignments: {
         description: `Create assignments (default ${Colors.value(Preferences.assignments())}, ${Colors.value('--no-assignments')} to skip)`,
-        default: Preferences.bulletinBoard()
+        default: Preferences.assignments()
       },
       bulletinBoard: {
-        description: `Create bulletin board (default ${Colors.value(Preferences.bulletinBoard())}, ${Colors.value('--no-bulletinBoard')} to skip)`
+        description: `Create bulletin board (default ${Colors.value(Preferences.bulletinBoard())}, ${Colors.value('--no-bulletinBoard')} to skip)`,
+        default: Preferences.bulletinBoard()
+      },
+      topics: {
+        description: `Create topics (default ${Colors.value(Preferences.topics())}, ${Colors.value('--no-topics')} to skip)`,
+        default: Preferences.topics()
       }
     },
     opt: {
@@ -290,6 +292,20 @@ export async function run() {
             front_page: true
           })
         });
+      }
+
+      if (Preferences.topics() && section.Topics) {
+        for (const topic of section.Topics) {
+          await Canvas.Pages.create({
+            course,
+            args: await Snapshot.PodiumPage.toCanvasArgs({
+              course,
+              title: topic.Name,
+              body: topic.Content,
+              layout: topic.LayoutId
+            })
+          });
+        }
       }
 
       const args: Canvas.Courses.Parameters = {

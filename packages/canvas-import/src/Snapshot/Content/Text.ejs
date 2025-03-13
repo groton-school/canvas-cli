@@ -1,4 +1,5 @@
-<% content.Content.forEach(item => { %>
+<% if (Array.isArray(content.Content)) { %>
+<% for (const item of content.Content) { %>
     <div>
         <h3><%= item.Description %></h3>
         <div style="display: flex; flex-direction: row;">
@@ -14,4 +15,7 @@
             <div><%- item.LongText %></div>
         </div>
     </div>
-<%}) %>
+<%} %>
+<% } else { %>
+<pre lang="json"><%= JSON.stringify(content, null, 2) %></pre>
+<% }%>

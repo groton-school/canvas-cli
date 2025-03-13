@@ -1,12 +1,14 @@
+
 <%
-const albums = content.Content.reduce((albums, photo) => {
-    if (!albums[photo.AlbumId]) {
-        albums[photo.AlbumId] = [photo];
-    } else {
-        albums[photo.AlbumId].push(photo);
-    }
-    return albums;
-}, {});
+if (Array.isArray(content.Content)) {
+    const albums = content.Content.reduce((albums, photo) => {
+        if (!albums[photo.AlbumId]) {
+            albums[photo.AlbumId] = [photo];
+        } else {
+            albums[photo.AlbumId].push(photo);
+        }
+        return albums;
+    }, {});
 %>
 <% for (const id in albums) { %>
     <div>
@@ -20,4 +22,6 @@ const albums = content.Content.reduce((albums, photo) => {
         </a>
         <%} %>
     </div>
-<%} %>
+<% }} else { %>
+<pre lang="json"><%= JSON.stringify(content, null, 2) %></pre>
+<% } %>

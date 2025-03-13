@@ -35,7 +35,7 @@
             <%
               for (const content of column.sort((a, b) => a.CellIndex - b.CellIndex)) { %>
                 <%- include(
-                    `Content/${content.ContentType?.Content || 'Unknown'}`,
+                    `Content/${content.ContentType?.Content || content.ObjectType?.Name || 'Unknown'}`,
                      { content }); %>
               <% } %>
             <td>

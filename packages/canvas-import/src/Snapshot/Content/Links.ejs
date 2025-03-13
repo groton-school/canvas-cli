@@ -1,9 +1,13 @@
 <div>
     <h3>Links</h3>
-    <dl>
-        <% content.Content.forEach(item => { %>
-            <dt><a href="<%= item.Url %>"><%= item.ShortDescription %></a></dt>
-            <dd><%- item.Description %></dd>
-        <% }); %>
-    </dl>
+    <% if (Array.isArray(content.Content)) { %>
+        <dl>
+            <% for (const item of content.Content) { %>
+                <dt><a href="<%= item.Url %>"><%= item.ShortDescription %></a></dt>
+                <dd><%- item.Description %></dd>
+            <% }; %>
+        </dl>
+    <% } else { %>
+        <pre lang="json"><%= JSON.stringify(content, null, 2) %></pre>
+    <% } %>
 </div>

@@ -1,10 +1,10 @@
 <% if (content.ContentId == 407) { %>
-    <p><br /></p>
+      <%- include('Spacer'); %>
 <% } else if (content.ContentId == 408) { %>
-    <hr />
+      <%- include('Horizontal Line'); %>
 <% } else { %>
 <div>
     <h3>Unknown</h3>
-    <pre><%= JSON.stringify(content, null, 2) %></pre>
+    <pre lang="json"><%= JSON.stringify(content, null, 2) %></pre>
 </div>
 <% } %>

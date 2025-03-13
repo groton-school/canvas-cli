@@ -1,24 +1,27 @@
 import { Log } from '@battis/qui-cli.log';
 import { ArrayElement } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-types';
-import type { Item } from '@msar/snapshot-multiple/dist/SnapshotMultiple.d.ts';
+import { SnapshotMultiple } from '@msar/snapshot-multiple';
 import ejs from 'ejs';
 import path from 'node:path';
+import { stripHtml } from 'string-strip-html';
 import * as Preferences from '../App/Preferences.js';
 import * as Files from './Files.js';
-import * as IndexFile from './IndexFile.js';
-import { Annotated } from './Url.js';
 
-type SnapshotModel = ArrayElement<NonNullable<Item['Assignments']>>;
+type SnapshotModel = ArrayElement<
+  NonNullable<SnapshotMultiple.Item['Assignments']>
+>;
 
 type GradebookModel = ArrayElement<
-  ArrayElement<NonNullable<Item['Gradebook']>>['gradebook']['Assignments']
+  ArrayElement<
+    NonNullable<SnapshotMultiple.Item['Gradebook']>
+  >['gradebook']['Assignments']
 >;
 
 export type Model = Omit<SnapshotModel, 'ExtraCredit' | 'IncCumGrade'> &
   Partial<GradebookModel>;
 
-export async function hydrate(snapshot: Item) {
+export async function hydrate(snapshot: SnapshotMultiple.Item) {
   const assignments: Model[] = [];
   for (const snapshotAssignment of snapshot.Assignments || []) {
     const gradebookAssignment = snapshot.Gradebook?.reduce(
@@ -59,13 +62,6 @@ export async function hydrate(snapshot: Item) {
   );
 }
 
-function definitionList(items: string[]) {
-  if (items.length) {
-    return `<dl>${items.map((item) => item.replace('<dd></dd>', '')).join('')}</dl>`;
-  }
-  return '';
-}
-
 type ToCanvasArgsOptions = {
   course: Canvas.Courses.Model;
   assignmentGroups: Canvas.AssigmentGroups.Model[];
@@ -79,48 +75,18 @@ export async function toCanvasArgs({
   assignment,
   order
 }: ToCanvasArgsOptions): Promise<Canvas.Assignments.Parameters> {
-  const links = [];
-  for (const item of assignment.LinkItems) {
-    links.push(
-      `<dt><a href="${item.UrlDisplay}">${item.ShortDescription}</a></dt>`
-    );
-  }
-
-  const downloads: Record<string, any> = [];
-  if (Preferences.files()) {
-    for (const item of assignment.DownloadItems) {
-      const file = await Canvas.Files.upload({
-        course,
-        localFilePath: path.resolve(
-          path.dirname(IndexFile.path()),
-          (item.DownloadUrl as unknown as Annotated).localPath.replace(
-            /^\//,
-            ''
-          )
-        ),
-        args: Files.toCanvasArgs({ file: item })
-      });
-      // FIXME confirm whether or not these are absolute URLs or just paths
-      downloads.push({
-        ...item,
-        ...file,
-        href: Canvas.url(`/courses/${course.id}/files/${file.id}?wrap=1`),
-        endpoint: Canvas.url(`/api/v1/courses/${course.id}/files/${file.id}`)
-      });
-    }
-  }
+  // @ts-expect-error 2322 assignment is no longer a pure model, but we don't need to know that
+  assignment = await Files.uploadLocalFiles({ course, entry: assignment });
   const args: Canvas.Assignments.Parameters = {
-    // FIXME strip HTML from assignment.ShortDescription
-    /* FIXME use only first line of assignment.ShortDescription
-     *   move the rest to the start of assignment[description]
-     */
-    'assignment[name]': assignment.ShortDescription,
+    'assignment[name]': stripHtml(
+      assignment.ShortDescription.split('<br/>').pop()!
+    ).result,
     'assignment[position]': order,
     'assignment[due_at]': new Date(assignment.DueDate).toISOString(),
 
     'assignment[description]': await ejs.renderFile(
       path.join(import.meta.dirname, 'Assignment.ejs'),
-      { assignment, links: assignment.LinkItems, downloads }
+      { assignment }
     ),
     'assignment[published]': assignment.PublishInd,
     'assignment[assignment_group_id]': assignmentGroups.find(

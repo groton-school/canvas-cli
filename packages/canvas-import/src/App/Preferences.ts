@@ -1,15 +1,5 @@
 import { hydrate } from '@battis/qui-cli.plugin';
 
-let _files = true;
-
-export function setFiles(value?: boolean) {
-  _files = hydrate(value, _files);
-}
-
-export function files() {
-  return _files;
-}
-
 let _ignoreErrors = true;
 
 export function setIgnoreErrors(value?: boolean) {
@@ -38,6 +28,16 @@ export function setBulletinBoard(value?: boolean) {
 
 export function bulletinBoard() {
   return _bulletinBoard;
+}
+
+let _topics = true;
+
+export function setTopics(value?: boolean) {
+  _topics = hydrate(value, _topics);
+}
+
+export function topics() {
+  return _topics;
 }
 
 export type DuplicateHandling = 'update' | 'reset' | 'skip' | 'browse';
