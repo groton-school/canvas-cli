@@ -1,4 +1,12 @@
 <div>
     <h3>Events</h3>
-    <pre><%= JSON.stringify(content, null, 2) %></pre>
+    <% for (const event of content.Content) { %>
+        <div>
+            <h4><%= event.Name %></h4>
+            <h5><%= (new Date(event.StartDate)).toLocaleString() %></h5>
+            <div><small>Start <%= event.StartTime %></small></div>
+            <div><small>End <%= event.EndTime %></small></div>
+            <div><%- event.BriefDescription %></div>
+        </div>
+    <% } %>
 </div>
