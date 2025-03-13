@@ -30,7 +30,8 @@
   },
   "dependencies": {
     "node-fetch": "^3.3.2",
-    "oauth2-cli": "^0.2.0"
+    "oauth2-cli": "^0.2.0",
+    "p-queue": "^8.1.0"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
