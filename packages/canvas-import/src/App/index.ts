@@ -326,6 +326,7 @@ export async function run() {
           args: { 'course[default_view]': 'wiki' }
         });
       }
+      fs.writeFileSync(Snapshot.path(), JSON.stringify(section, null, 2));
     }
   }
 }

@@ -19,17 +19,15 @@ export async function toCanvasArgs({
   layout,
   front_page = false
 }: ToCanvasArgsOptions): Promise<Canvas.Pages.Parameters> {
-  const page = await Promise.all(
-    body?.map(
-      async (entry) => await Files.uploadLocalFiles({ course, entry })
-    ) || []
-  );
+  for (const i in body) {
+    body[i] = await Files.uploadLocalFiles({ course, entry: body[i] });
+  }
   return {
     'wiki_page[title]': title,
     'wiki_page[body]': await ejs.renderFile(
       path.join(import.meta.dirname, 'PodiumPage.ejs'),
       {
-        page,
+        page: body,
         layout
       }
     ),

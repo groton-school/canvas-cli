@@ -116,10 +116,13 @@ export async function uploadLocalFiles({
         );
         (entry as Imported.Annotation).canvas = {
           args,
-          ...file
+          id: file.id,
+          display_name: file.display_name,
+          url: file.url,
+          created_at: file.created_at,
+          modified_at: file.modified_at
         };
       }
-      Log.debug({ entry });
     }
     return entry;
   }
