@@ -7,10 +7,11 @@ type Data = {
   args: JSONObject;
   created_at?: DateTimeString;
   modified_at?: DateTimeString;
+  [key: string]: any;
 };
 
 export type Annotation = Archive.Annotation & { canvas: Data };
 
-export function isAnnotated(obj: JSONObject): obj is Annotation {
+export function isAnnotated(obj: object): obj is Annotation {
   return Archive.isAnnotated(obj) && 'canvas' in obj;
 }
