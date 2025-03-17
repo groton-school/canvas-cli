@@ -9,3 +9,7 @@ type Data = {
 };
 
 export type Annotation = Archive.Annotation & { canvas: Data };
+
+export function isAnnotated(obj: JSONObject): obj is Annotation {
+  return Archive.isAnnotated(obj) && 'canvas' in obj;
+}
