@@ -1,6 +1,7 @@
 import { Colors } from '@battis/qui-cli.colors';
 import { Core } from '@battis/qui-cli.core';
 import '@battis/qui-cli.env';
+import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import * as Canvas from '@groton/canvas-types';
 import { select } from '@inquirer/prompts';
@@ -307,13 +308,24 @@ export async function run() {
         }
       }
 
-      const args: Canvas.Courses.Parameters = {
-        'course[term_id]': `sis_term_id:${OneRoster.sis_term_id(section)}`
-      };
-      if (Preferences.bulletinBoard()) {
-        args['course[default_view]'] = 'wiki';
+      try {
+        await Canvas.Courses.update({
+          course,
+          args: {
+            'course[term_id]': `sis_term_id:${OneRoster.sis_term_id(section)}`
+          }
+        });
+      } catch (_) {
+        Log.warning(
+          `Course ${Colors.value(course.name)} could not be moved out of the Import Workspace term.`
+        );
       }
-      await Canvas.Courses.update({ course, args });
+      if (Preferences.bulletinBoard()) {
+        await Canvas.Courses.update({
+          course,
+          args: { 'course[default_view]': 'wiki' }
+        });
+      }
     }
   }
 }

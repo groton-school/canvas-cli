@@ -1,13 +1,14 @@
 <div>
     <h3>Downloads</h3>
-    <% if (Array.isArray(content.Content)) { %>
         <dl>
+    <% if (Array.isArray(content.Content)) { %>
         <% for (const item of content.Content) { %>
-            <dt><a class="instructure_file_link inline_disabled" title="<%= item.DownloadUrl.display_name %>" href="<%= item.DownloadUrl.url %>" target="_blank" rel="noopener noreferrer"><%= item.Description %></a></dt>
+            <dt><a class="instructure_file_link inline_disabled" title="<%= item.DownloadUrl.canvas.display_name %>" href="<%= item.DownloadUrl.canvas.url %>" target="_blank" rel="noopener noreferrer"><%= item.Description %></a></dt>
             <dd><%- item.LongDescription %></dd>
         <% } %>
-        </dl>
     <% } else { %>
-        <pre lang="json"><%= JSON.stringify(content, null, 2) %></pre>
+            <dt><a class="instructure_file_link inline_disabled" title="<%= content.FilePath.canvas.display_name %>" href="<%= content.FilePath.canvas.url %>" target="_blank" rel="noopener noreferrer"><%= content.Description %></a></dt>
+            <dd><%- content.LongDescription %></dd>
     <% } %>
+        </dl>
 </div>

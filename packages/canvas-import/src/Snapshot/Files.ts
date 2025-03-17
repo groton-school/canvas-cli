@@ -1,5 +1,7 @@
 import { DateTimeString, PathString } from '@battis/descriptive-types';
-import { ArrayElement, JSONValue } from '@battis/typescript-tricks';
+import { Colors } from '@battis/qui-cli.colors';
+import { Log } from '@battis/qui-cli.log';
+import { ArrayElement, JSONObject, JSONValue } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-types';
 import * as Archive from '@msar/types.archive';
 import * as Imported from '@msar/types.import';
@@ -69,37 +71,60 @@ type UploadLocalFilesOptions = {
   name?: string;
 };
 
+function isEqual(a: JSONObject, b: JSONObject) {
+  const aKeys = Object.keys(a);
+  return (
+    aKeys.length === Object.keys(b).length &&
+    Object.keys(a).reduce((eq, key) => eq && a[key] == b[key], true)
+  );
+}
+
 export async function uploadLocalFiles({
   course,
   entry,
   name
 }: UploadLocalFilesOptions): Promise<JSONValue> {
-  let result: JSONValue;
   if (typeof entry !== 'object' || entry === null) {
     return entry;
   }
 
   if (Archive.isAnnotated(entry)) {
-    return getCached(
-      entry.localPath,
-      async () =>
-        await Canvas.Files.upload({
-          course,
-          localFilePath: path.join(
-            path.dirname(IndexFile.path()),
-            entry.localPath.replace(/^\//, '')
-          ),
-          args: {
-            parent_folder_path: path.join(
-              'Imported Files',
-              path.dirname(entry.localPath.replace(/^\//, ''))
-            ),
-            name: name || entry.filename
-          }
-        })
-    );
+    if (entry.error) {
+      Log.error(
+        `${Colors.error('Could not upload unarchived file:')} ${Log.syntaxColor(entry)}`
+      );
+    } else {
+      const args = {
+        parent_folder_path: path.join(
+          'Imported Files',
+          path.dirname(entry.localPath.replace(/^\//, ''))
+        ),
+        name: name || entry.filename
+      };
+      if (!Imported.isAnnotated(entry) || !isEqual(entry.canvas.args, args)) {
+        const file = await getCached(
+          entry.localPath,
+          async () =>
+            await Canvas.Files.upload({
+              course,
+              localFilePath: path.join(
+                path.dirname(IndexFile.path()),
+                entry.localPath.replace(/^\//, '')
+              ),
+              args
+            })
+        );
+        (entry as Imported.Annotation).canvas = {
+          args,
+          ...file
+        };
+      }
+      Log.debug({ entry });
+    }
+    return entry;
   }
 
+  let result: JSONValue;
   if (Array.isArray(entry)) {
     result = [];
     for (const elt of entry) {
