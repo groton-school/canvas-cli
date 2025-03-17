@@ -34,6 +34,7 @@
     "@battis/qui-cli.root": "^2.0.2",
     "@groton/canvas-types": "workspace:*",
     "@inquirer/prompts": "^7.3.3",
+    "@msar/types.archive": "^0.1.0",
     "@msar/types.import": "workspace:*",
     "@oauth2-cli/canvas": "^0.2.0",
     "@oauth2-cli/sky-api": "^0.2.0",

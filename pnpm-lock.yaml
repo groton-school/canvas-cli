@@ -53,6 +53,9 @@ importers:
       '@inquirer/prompts':
         specifier: ^7.3.3
         version: 7.3.3(@types/node@22.13.10)
+      '@msar/types.archive':
+        specifier: ^0.1.0
+        version: 0.1.0(ejs@3.1.10)
       '@msar/types.import':
         specifier: workspace:*
         version: link:../import

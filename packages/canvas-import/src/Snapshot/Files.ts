@@ -1,6 +1,7 @@
 import { DateTimeString, PathString } from '@battis/descriptive-types';
 import { ArrayElement, JSONValue } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-types';
+import * as Archive from '@msar/types.archive';
 import * as Imported from '@msar/types.import';
 import { EventEmitter } from 'node:events';
 import path from 'node:path';
@@ -12,18 +13,6 @@ export type Annotated = {
   localPath: PathString;
   filename: string;
 };
-
-function isAnnotated(value?: unknown): value is Annotated {
-  return (
-    value !== undefined &&
-    value !== null &&
-    typeof value === 'object' &&
-    'original' in value &&
-    'accessed' in value &&
-    'localPath' in value &&
-    'filename' in value
-  );
-}
 
 type Model = ArrayElement<
   ArrayElement<NonNullable<Imported.Data['Assignments']>>['DownloadItems']
@@ -90,7 +79,7 @@ export async function uploadLocalFiles({
     return entry;
   }
 
-  if (isAnnotated(entry)) {
+  if (Archive.isAnnotated(entry)) {
     return getCached(
       entry.localPath,
       async () =>
