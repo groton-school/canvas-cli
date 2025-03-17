@@ -1,0 +1,11 @@
+import { DateTimeString } from '@battis/descriptive-types';
+import { JSONObject } from '@battis/typescript-tricks';
+import * as Archive from '@msar/types.archive';
+
+type Data = {
+  id: number;
+  args: JSONObject;
+  created: DateTimeString;
+};
+
+export type Annotation = Archive.Annotation & { canvas: Data };
