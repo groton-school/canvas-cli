@@ -3,9 +3,10 @@ import { JSONObject } from '@battis/typescript-tricks';
 import * as Archive from '@msar/types.archive';
 
 type Data = {
-  id: number;
+  id?: number;
   args: JSONObject;
-  created: DateTimeString;
+  created_at?: DateTimeString;
+  modified_at?: DateTimeString;
 };
 
 export type Annotation = Archive.Annotation & { canvas: Data };
