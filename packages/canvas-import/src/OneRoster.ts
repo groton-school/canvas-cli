@@ -3,7 +3,7 @@ import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
 import { hydrate } from '@battis/qui-cli.plugin';
 import { Root } from '@battis/qui-cli.root';
-import { SnapshotMultiple } from '@msar/snapshot-multiple';
+import * as Imported from '@msar/types.import';
 import { parse } from 'csv-parse/sync';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -92,14 +92,14 @@ function coursesWithDepartments() {
   return _coursesWithDepartments;
 }
 
-export function sis_course_id(snapshot: SnapshotMultiple.Item) {
+export function sis_course_id(snapshot: Imported.Data) {
   if (!snapshot.SectionInfo) {
     throw new Error('Missing SectionInfo');
   }
   return `crs-${instance()}-${snapshot.SectionInfo?.Id}`;
 }
 
-export function sis_term_id(snapshot: SnapshotMultiple.Item) {
+export function sis_term_id(snapshot: Imported.Data) {
   if (!snapshot.SectionInfo) {
     throw new Error('Missing SectionInfo');
   }
@@ -114,14 +114,14 @@ export function sis_term_id(snapshot: SnapshotMultiple.Item) {
 }
 
 /** sis_user_id for (head) teacher */
-export function sis_user_id(snapshot: SnapshotMultiple.Item) {
+export function sis_user_id(snapshot: Imported.Data) {
   if (!snapshot.SectionInfo) {
     throw new Error('Missing SectionInfo');
   }
   return `usr-${instance()}-${snapshot.SectionInfo.TeacherId}`;
 }
 
-export function account_id(snapshot: SnapshotMultiple.Item) {
+export function account_id(snapshot: Imported.Data) {
   if (!snapshot.SectionInfo) {
     throw new Error('Missing SectionInfo');
   }
@@ -140,7 +140,7 @@ export function account_id(snapshot: SnapshotMultiple.Item) {
   return account_id;
 }
 
-export function name(snapshot: SnapshotMultiple.Item) {
+export function name(snapshot: Imported.Data) {
   if (snapshot.SectionInfo) {
     return `${snapshot.SectionInfo?.GroupName} - ${snapshot.SectionInfo?.Identifier} (${
       snapshot.SectionInfo?.Block

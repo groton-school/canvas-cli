@@ -1,7 +1,7 @@
 import { DateTimeString, PathString } from '@battis/descriptive-types';
 import { ArrayElement, JSONValue } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-types';
-import { SnapshotMultiple } from '@msar/snapshot-multiple';
+import * as Imported from '@msar/types.import';
 import { EventEmitter } from 'node:events';
 import path from 'node:path';
 import * as IndexFile from './IndexFile.js';
@@ -26,9 +26,7 @@ function isAnnotated(value?: unknown): value is Annotated {
 }
 
 type Model = ArrayElement<
-  ArrayElement<
-    NonNullable<SnapshotMultiple.Item['Assignments']>
-  >['DownloadItems']
+  ArrayElement<NonNullable<Imported.Data['Assignments']>>['DownloadItems']
 >;
 
 type ToCanvasArgsOptions = {

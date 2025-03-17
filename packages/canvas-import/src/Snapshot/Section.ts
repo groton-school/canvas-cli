@@ -1,9 +1,9 @@
 import * as Canvas from '@groton/canvas-types';
-import { SnapshotMultiple } from '@msar/snapshot-multiple';
+import * as Imported from '@msar/types.import';
 import * as OneRoster from '../OneRoster.js';
 
 export function toCanvasArgs(
-  section: SnapshotMultiple.Item
+  section: Imported.Data
 ): Canvas.Courses.Parameters {
   return {
     'course[name]': OneRoster.name(section),

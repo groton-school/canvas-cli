@@ -4,7 +4,7 @@ import '@battis/qui-cli.env';
 import * as Plugin from '@battis/qui-cli.plugin';
 import * as Canvas from '@groton/canvas-types';
 import { select } from '@inquirer/prompts';
-import { SnapshotMultiple } from '@msar/snapshot-multiple';
+import * as Imported from '@msar/types.import';
 import fs from 'node:fs';
 import path from 'node:path';
 import open from 'open';
@@ -52,7 +52,6 @@ export function configure(config: Configuration = {}) {
 }
 
 export function options(): Plugin.Options {
-  // FIXME remove unwanted command line flags from (multiple) imports of @msar/snapshot-multiple
   return {
     flag: {
       ignoreErrors: {
@@ -136,7 +135,7 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
 
 type HandleDuplicatesOptions = {
   course: Canvas.Courses.Model;
-  section: SnapshotMultiple.Item;
+  section: Imported.Data;
 };
 
 export async function handleDuplicateCourse({
@@ -205,7 +204,7 @@ export async function handleDuplicateCourse({
 
 export async function run() {
   const spinner = ora(`Loading ${Colors.url(Snapshot.path())}`).start();
-  let snapshots: SnapshotMultiple.Data = [];
+  let snapshots: Imported.Multiple.Data = [];
   try {
     snapshots = JSON.parse(fs.readFileSync(Snapshot.path()).toString()); //await SnapshotMultiple.load(Snapshot.path());
     if (!Array.isArray(snapshots)) {
@@ -301,7 +300,7 @@ export async function run() {
             args: await Snapshot.PodiumPage.toCanvasArgs({
               course,
               title: topic.Name,
-              body: topic.Content,
+              body: topic.Content || [],
               layout: topic.LayoutId
             })
           });

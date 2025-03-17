@@ -1,27 +1,25 @@
 import { Log } from '@battis/qui-cli.log';
 import { ArrayElement } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-types';
-import { SnapshotMultiple } from '@msar/snapshot-multiple';
+import * as Imported from '@msar/types.import';
 import ejs from 'ejs';
 import path from 'node:path';
 import { stripHtml } from 'string-strip-html';
 import * as Preferences from '../App/Preferences.js';
 import * as Files from './Files.js';
 
-type SnapshotModel = ArrayElement<
-  NonNullable<SnapshotMultiple.Item['Assignments']>
->;
+type SnapshotModel = ArrayElement<NonNullable<Imported.Data['Assignments']>>;
 
 type GradebookModel = ArrayElement<
   ArrayElement<
-    NonNullable<SnapshotMultiple.Item['Gradebook']>
+    NonNullable<Imported.Data['Gradebook']>
   >['gradebook']['Assignments']
 >;
 
 export type Model = Omit<SnapshotModel, 'ExtraCredit' | 'IncCumGrade'> &
   Partial<GradebookModel>;
 
-export async function hydrate(snapshot: SnapshotMultiple.Item) {
+export async function hydrate(snapshot: Imported.Data) {
   const assignments: Model[] = [];
   for (const snapshotAssignment of snapshot.Assignments || []) {
     const gradebookAssignment = snapshot.Gradebook?.reduce(
