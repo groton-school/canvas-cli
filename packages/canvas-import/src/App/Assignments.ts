@@ -68,7 +68,6 @@ export async function importAssignments({ course, section }: Options) {
       Preferences.duplicates() === 'update'
     ) {
       if (!Imported.isEqual(args, assignments[order].canvas!.args)) {
-        console.log({ old: assignments[order].canvas!.args, new: args });
         assignment = await Canvas.Assignments.update({
           course,
           assignment: {
