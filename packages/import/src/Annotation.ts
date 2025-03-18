@@ -4,6 +4,7 @@ import * as Archive from '@msar/types.archive';
 
 export type CanvasData = {
   id?: number;
+  blackbaud_id?: number;
   args: JSONObject;
   created_at?: DateTimeString;
   modified_at?: DateTimeString;
