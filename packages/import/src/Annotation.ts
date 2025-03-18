@@ -2,7 +2,7 @@ import { DateTimeString } from '@battis/descriptive-types';
 import { JSONObject } from '@battis/typescript-tricks';
 import * as Archive from '@msar/types.archive';
 
-type Data = {
+export type CanvasData = {
   id?: number;
   args: JSONObject;
   created_at?: DateTimeString;
@@ -10,7 +10,7 @@ type Data = {
   [key: string]: any;
 };
 
-export type Annotation = Archive.Annotation & { canvas: Data };
+export type Annotation = Archive.Annotation & { canvas: CanvasData };
 
 export function isAnnotated(obj: object): obj is Annotation {
   return Archive.isAnnotated(obj) && 'canvas' in obj;
