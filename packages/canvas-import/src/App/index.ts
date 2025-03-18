@@ -4,19 +4,18 @@ import '@battis/qui-cli.env';
 import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import * as Canvas from '@groton/canvas-types';
-import { select } from '@inquirer/prompts';
 import { Output } from '@msar/output';
 import * as Imported from '@msar/types.import';
 import fs from 'node:fs';
 import path from 'node:path';
-import open from 'open';
 import ora from 'ora';
 import * as OneRoster from '../OneRoster.js';
 import * as SkyAPI from '../SkyAPI/index.js';
 import * as Snapshot from '../Snapshot/index.js';
+import { importAssignments } from './Assignments.js';
+import { handleDuplicateCourse } from './Courses.js';
+import { importBulletinBoard, importTopics } from './Pages.js';
 import * as Preferences from './Preferences.js';
-
-const WORKSPACE_TERM = 'groton-canvas-import-workspace';
 
 await Core.configure({ core: { requirePositionals: true } });
 
@@ -135,75 +134,6 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
   });
 }
 
-type HandleDuplicatesOptions = {
-  course: Canvas.Courses.Model;
-  section: Imported.Data;
-};
-
-export async function handleDuplicateCourse({
-  course,
-  section
-}: HandleDuplicatesOptions) {
-  const next: Record<
-    Preferences.DuplicateHandling,
-    () =>
-      | Promise<Canvas.Courses.Model | undefined>
-      | Canvas.Courses.Model
-      | undefined
-  > = {
-    update: async () => {
-      const args = Snapshot.Section.toCanvasArgs(section);
-      args['course[term_id]'] = `sis_term_id:${WORKSPACE_TERM}`;
-      delete args['course[sis_course_id]'];
-      delete args.enable_sis_reactivation;
-      return await Canvas.Courses.update({ course, args });
-    },
-    reset: async () => {
-      course = await Canvas.Courses.reset(course!);
-      return await next.update();
-    },
-    browse: async () => {
-      open(Canvas.url(`/courses/${course!.id}`).toString());
-      return await next[
-        (await select({
-          message: `How would you like to proceed?`,
-          choices: Object.keys(next).filter(
-            (key) => key != 'open in browser to examine'
-          )
-        })) as keyof typeof next
-      ]();
-    },
-    skip: () => undefined
-  };
-  return await next[
-    (Preferences.duplicates() ||
-      (await select({
-        message: `A course named ${Colors.value(course.name)} with sis_course_id ${Colors.value(course.sis_course_id)} already exists in Canvas.`,
-        choices: [
-          {
-            value: 'update',
-            description:
-              'Import snapshot data into the course, potentially creating duplicate content'
-          },
-          {
-            value: 'reset',
-            description:
-              'Reset the course content, erasing all existing content, and replace it with the snapshot'
-          },
-          {
-            value: 'browse',
-            description:
-              'Open the current course in a browser and then make a decision about what to do'
-          },
-          {
-            value: 'skip',
-            description: 'Skip processing the snaphot import for this course'
-          }
-        ]
-      }))) as keyof typeof next
-  ]();
-}
-
 export async function run() {
   const spinner = ora(`Loading ${Colors.url(Snapshot.path())}`).start();
   let snapshots: Imported.Multiple.Data = [];
@@ -222,12 +152,12 @@ export async function run() {
   }
 
   let workspaceTerm = await Canvas.EnrollmentTerms.get({
-    sis_term_id: WORKSPACE_TERM
+    sis_term_id: Preferences.WORKSPACE_TERM
   });
   if (!workspaceTerm) {
     workspaceTerm = await Canvas.EnrollmentTerms.create({
       args: {
-        'enrollment_term[sis_term_id]': WORKSPACE_TERM,
+        'enrollment_term[sis_term_id]': Preferences.WORKSPACE_TERM,
         'enrollment_term[name]': 'Import Workspace'
       }
     });
@@ -244,7 +174,7 @@ export async function run() {
         account_id: OneRoster.account_id(section),
         args: {
           ...Snapshot.Section.toCanvasArgs(section),
-          'course[term_id]': `sis_term_id:${WORKSPACE_TERM}`
+          'course[term_id]': `sis_term_id:${Preferences.WORKSPACE_TERM}`
         }
       });
     }
@@ -266,77 +196,15 @@ export async function run() {
       });
 
       if (Preferences.assignments()) {
-        const assignments = await Snapshot.Assignments.hydrate(section);
-        const assignmentGroups: Canvas.AssigmentGroups.Model[] = [];
-        section.assignment_groups = {};
-        for (const assignmentType of Snapshot.AssignmentTypes.extract(
-          assignments
-        )) {
-          const args = Snapshot.AssignmentTypes.toCanvasArgs(assignmentType);
-          const group = await Canvas.AssigmentGroups.create({ course, args });
-          assignmentGroups.push(group);
-          section.assignment_groups[group.name] = {
-            id: group.id,
-            args
-          };
-        }
-        for (let order = 0; order < assignments.length; order++) {
-          const args = await Snapshot.Assignments.toCanvasArgs({
-            course,
-            assignmentGroups,
-            assignment: assignments[order],
-            order
-          });
-          const assignment = await Canvas.Assignments.create({ course, args });
-          const secAss = section.Assignments?.find(
-            (a) => a.AssignmentId == assignments[order].id
-          );
-          if (secAss) {
-            secAss.canvas = {
-              id: assignment.id,
-              args,
-              created_at: assignment.created_at
-            };
-          }
-        }
+        await importAssignments({ course, section });
       }
 
-      if (Preferences.bulletinBoard() && section.BulletinBoard) {
-        const args = await Snapshot.PodiumPage.toCanvasArgs({
-          course,
-          title: 'Bulletin Board',
-          body: section.BulletinBoard,
-          layout: section.SectionInfo?.LayoutId || 0,
-          front_page: true
-        });
-        const frontPage = await Canvas.Pages.create({ course, args });
-        if (frontPage) {
-          section.front_page = {
-            id: frontPage.page_id,
-            args,
-            created_at: frontPage.created_at
-          };
-        }
+      if (Preferences.bulletinBoard()) {
+        await importBulletinBoard({ course, section });
       }
 
       if (Preferences.topics() && section.Topics) {
-        for (const topic of section.Topics) {
-          const args = await Snapshot.PodiumPage.toCanvasArgs({
-            course,
-            title: topic.Name,
-            body: topic.Content || [],
-            layout: topic.LayoutId
-          });
-          const canvasTopic = await Canvas.Pages.create({
-            course,
-            args
-          });
-          topic.canvas = {
-            args,
-            id: canvasTopic.page_id,
-            created_at: canvasTopic.created_at
-          };
-        }
+        await importTopics({ course, section });
       }
 
       try {
