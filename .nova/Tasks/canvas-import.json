@@ -12,7 +12,7 @@
     },
     "run" : {
       "enabled" : true,
-      "script" : "source .env\ncanvas-import --no-ignoreErrors --duplicates reset \"$SNAPSHOT_PATH\""
+      "script" : "source .env\ncanvas-import --no-ignoreErrors --duplicates update \"$SNAPSHOT_PATH\""
     }
   },
   "buildBeforeRunning" : true,
