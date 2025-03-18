@@ -127,9 +127,10 @@ export async function create({ course, args }: CreateOptions) {
   const spinner = ora(
     `Creating page ${Colors.value(args['wiki_page[title]'])}`
   ).start();
+  const body = new URLSearchParams(stringify(args));
   const result = (await canvas().fetch(`/api/v1/courses/${course.id}/pages`, {
     method: 'POST',
-    body: new URLSearchParams(stringify(args))
+    body
   })) as Model;
   if (isError(result)) {
     spinner.fail(
@@ -142,5 +143,31 @@ export async function create({ course, args }: CreateOptions) {
   spinner.succeed(
     `Created ${result.front_page ? 'front ' : ''}page ${Colors.value(result.title)} at ${Colors.url(url(`/courses/${course.id}/pages/${result.url}`))}`
   );
+  return result;
+}
+
+type UpdateOptions = {
+  course: Courses.Model;
+  page: Model;
+  args: Parameters;
+};
+
+export async function update({ course, page, args }: UpdateOptions) {
+  const spinner = ora(
+    `Updating page ${Colors.value(page.title || page.page_id)}`
+  ).start();
+  const result = (await canvas().fetch(
+    `/api/v1/courses/${course.id}/pages/${page.page_id}`,
+    { method: 'PUT', body: new URLSearchParams(stringify(args)) }
+  )) as Model;
+  if (isError(result)) {
+    spinner.fail(
+      `Error updating page ${Colors.value(page.title || page.page_id)}`
+    );
+    throw new Error(
+      `Error updating page: ${Log.syntaxColor({ ...Courses.basic(course), page, args: stringify(args) })}`
+    );
+  }
+  spinner.succeed(`Updated page ${Colors.value(result.title)}`);
   return result;
 }
