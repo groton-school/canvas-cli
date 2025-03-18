@@ -143,7 +143,6 @@ export async function run() {
       throw new Error(`Error loading data`);
     }
     Output.configure({ outputPath: Snapshot.path() });
-    console.log({ outputPath: Output.outputPath() });
     spinner.succeed(
       `Loaded ${snapshots.length} section snapshot${snapshots.length > 1 ? 's' : ''}`
     );

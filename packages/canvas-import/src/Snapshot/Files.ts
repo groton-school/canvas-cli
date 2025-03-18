@@ -6,7 +6,9 @@ import * as Canvas from '@groton/canvas-types';
 import * as Archive from '@msar/types.archive';
 import * as Imported from '@msar/types.import';
 import { EventEmitter } from 'node:events';
+import fs from 'node:fs';
 import path from 'node:path';
+import * as Preferences from '../App/Preferences.js';
 import * as IndexFile from './IndexFile.js';
 
 export type Annotated = {
@@ -16,6 +18,7 @@ export type Annotated = {
   filename: string;
 };
 
+// FIXME too narrowly defined for reuse
 type Model = ArrayElement<
   ArrayElement<NonNullable<Imported.Data['Assignments']>>['DownloadItems']
 >;
@@ -61,6 +64,12 @@ export function toCanvasArgs({
       parent_folder_path,
       path.dirname((file.DownloadUrl as unknown as Annotated).localPath)
     ),
+    size: fs.statSync(
+      path.join(
+        path.dirname(IndexFile.path()),
+        (file.DownloadUrl as unknown as Annotated).localPath
+      )
+    ).size,
     on_duplicate: 'overwrite'
   };
 }
@@ -70,14 +79,6 @@ type UploadLocalFilesOptions = {
   entry: JSONValue;
   name?: string;
 };
-
-function isEqual(a: JSONObject, b: JSONObject) {
-  const aKeys = Object.keys(a);
-  return (
-    aKeys.length === Object.keys(b).length &&
-    Object.keys(a).reduce((eq, key) => eq && a[key] == b[key], true)
-  );
-}
 
 export async function uploadLocalFiles({
   course,
@@ -94,34 +95,59 @@ export async function uploadLocalFiles({
         `${Colors.error('Could not upload unarchived file:')} ${Log.syntaxColor(entry)}`
       );
     } else {
-      const args = {
+      // FIXME redundant manual Files.Parameters definition
+      const args: Canvas.Files.Parameters = {
         parent_folder_path: path.join(
           'Imported Files',
           path.dirname(entry.localPath.replace(/^\//, ''))
         ),
-        name: name || entry.filename
+        name: name || entry.filename,
+        size: fs.statSync(
+          path.join(path.dirname(IndexFile.path()), entry.localPath)
+        ).size,
+        on_duplicate: 'overwrite'
       };
-      if (!Imported.isAnnotated(entry) || !isEqual(entry.canvas.args, args)) {
-        const file = await getCached(
-          entry.localPath,
-          async () =>
-            await Canvas.Files.upload({
-              course,
-              localFilePath: path.join(
-                path.dirname(IndexFile.path()),
-                entry.localPath.replace(/^\//, '')
-              ),
-              args
-            })
-        );
-        (entry as Imported.Annotation).canvas = {
-          args,
-          id: file.id,
-          display_name: file.display_name,
-          url: file.url,
-          created_at: file.created_at,
-          modified_at: file.modified_at
-        };
+      if (
+        Imported.isAnnotated(entry) &&
+        Preferences.duplicates() === 'update'
+      ) {
+        if (!Imported.isEqual(args, entry.canvas.args)) {
+          // FIXME deal with changed files
+          Log.error(
+            Colors.error(
+              `File ${Colors.url(entry.localPath)} has changed but was not updated`
+            )
+          );
+          Log.error({ new: args, old: entry.canvas.args });
+        } else {
+          Log.info(`File ${Colors.url(entry.localPath)} is up-to-date`);
+        }
+      } else {
+        if (
+          !Imported.isAnnotated(entry) ||
+          !Imported.isEqual(entry.canvas.args, args)
+        ) {
+          const file = await getCached(
+            entry.localPath,
+            async () =>
+              await Canvas.Files.upload({
+                course,
+                localFilePath: path.join(
+                  path.dirname(IndexFile.path()),
+                  entry.localPath.replace(/^\//, '')
+                ),
+                args
+              })
+          );
+          (entry as Imported.Annotation).canvas = {
+            args,
+            id: file.id,
+            display_name: file.display_name,
+            url: file.url,
+            created_at: file.created_at,
+            modified_at: file.modified_at
+          };
+        }
       }
     }
     return entry;

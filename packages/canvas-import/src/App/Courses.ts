@@ -1,5 +1,6 @@
 import { Colors } from '@battis/qui-cli.colors';
 import '@battis/qui-cli.env';
+import { Log } from '@battis/qui-cli.log';
 import * as Canvas from '@groton/canvas-types';
 import { select } from '@inquirer/prompts';
 import * as Imported from '@msar/types.import';
@@ -27,10 +28,15 @@ export async function handleDuplicateCourse({ course, section }: Options) {
         );
       }
       const args = Snapshot.Section.toCanvasArgs(section);
-      args['course[term_id]'] = `sis_term_id:${Preferences.WORKSPACE_TERM}`;
-      delete args['course[sis_course_id]'];
-      delete args.enable_sis_reactivation;
-      return await Canvas.Courses.update({ course, args });
+      if (!Imported.isEqual(args, section.SectionInfo.canvas.args)) {
+        args['course[term_id]'] = `sis_term_id:${Preferences.WORKSPACE_TERM}`;
+        delete args['course[sis_course_id]'];
+        delete args.enable_sis_reactivation;
+        return await Canvas.Courses.update({ course, args });
+      } else {
+        Log.info(`Course ${Colors.value(course.name)} is up-to-date`);
+      }
+      return course;
     },
     reset: async () => {
       course = await Canvas.Courses.reset(course!);

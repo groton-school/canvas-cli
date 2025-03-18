@@ -62,14 +62,14 @@ export async function hydrate(snapshot: Imported.Data) {
 
 type ToCanvasArgsOptions = {
   course: Canvas.Courses.Model;
-  assignmentGroups: Canvas.AssigmentGroups.Model[];
+  assignmentGroup: Canvas.AssigmentGroups.Model;
   assignment: Model;
   order: number;
 };
 
 export async function toCanvasArgs({
   course,
-  assignmentGroups,
+  assignmentGroup,
   assignment,
   order
 }: ToCanvasArgsOptions): Promise<Canvas.Assignments.Parameters> {
@@ -87,9 +87,7 @@ export async function toCanvasArgs({
       { assignment }
     ),
     'assignment[published]': assignment.PublishInd,
-    'assignment[assignment_group_id]': assignmentGroups.find(
-      (assignmentGroup) => assignmentGroup.name == assignment.type
-    )?.id,
+    'assignment[assignment_group_id]': assignmentGroup.id,
     'assignment[submission_types]': []
   };
   if (assignment.OnPaperSubmission) {
