@@ -10,7 +10,7 @@ export type Data<
   D = DateTimeString
 > = Omit<Archive.Data<T, D>, 'SectionInfo' | 'Topics' | 'Assignments'> & {
   SectionInfo?: SectionInfo.Data;
-  assignment_groups?: Record<string, Annotation.CanvasData>;
+  assignment_groups?: Annotation.CanvasData[];
   Assignments?: Assignments.Data<T>;
   Topics?: Topics.Data<T>;
   front_page?: Annotation.CanvasData;
