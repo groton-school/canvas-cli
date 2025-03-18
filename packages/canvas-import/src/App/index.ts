@@ -5,6 +5,7 @@ import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import * as Canvas from '@groton/canvas-types';
 import { select } from '@inquirer/prompts';
+import { Output } from '@msar/output';
 import * as Imported from '@msar/types.import';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -211,6 +212,8 @@ export async function run() {
     if (!Array.isArray(snapshots)) {
       throw new Error(`Error loading data`);
     }
+    Output.configure({ outputPath: Snapshot.path() });
+    console.log({ outputPath: Output.outputPath() });
     spinner.succeed(
       `Loaded ${snapshots.length} section snapshot${snapshots.length > 1 ? 's' : ''}`
     );
@@ -246,6 +249,13 @@ export async function run() {
       });
     }
     if (course) {
+      if (section.SectionInfo) {
+        section.SectionInfo.canvas = {
+          id: course.id,
+          args: Snapshot.Section.toCanvasArgs(section),
+          created_at: course.created_at
+        };
+      }
       await Canvas.Enrollments.create({
         course,
         args: {
@@ -258,53 +268,74 @@ export async function run() {
       if (Preferences.assignments()) {
         const assignments = await Snapshot.Assignments.hydrate(section);
         const assignmentGroups: Canvas.AssigmentGroups.Model[] = [];
+        section.assignment_groups = {};
         for (const assignmentType of Snapshot.AssignmentTypes.extract(
           assignments
         )) {
-          assignmentGroups.push(
-            await Canvas.AssigmentGroups.create({
-              course,
-              args: Snapshot.AssignmentTypes.toCanvasArgs(assignmentType)
-            })
-          );
+          const args = Snapshot.AssignmentTypes.toCanvasArgs(assignmentType);
+          const group = await Canvas.AssigmentGroups.create({ course, args });
+          assignmentGroups.push(group);
+          section.assignment_groups[group.name] = {
+            id: group.id,
+            args
+          };
         }
         for (let order = 0; order < assignments.length; order++) {
-          await Canvas.Assignments.create({
+          const args = await Snapshot.Assignments.toCanvasArgs({
             course,
-            args: await Snapshot.Assignments.toCanvasArgs({
-              course,
-              assignmentGroups,
-              assignment: assignments[order],
-              order
-            })
+            assignmentGroups,
+            assignment: assignments[order],
+            order
           });
+          const assignment = await Canvas.Assignments.create({ course, args });
+          const secAss = section.Assignments?.find(
+            (a) => a.AssignmentId == assignments[order].id
+          );
+          if (secAss) {
+            secAss.canvas = {
+              id: assignment.id,
+              args,
+              created_at: assignment.created_at
+            };
+          }
         }
       }
 
       if (Preferences.bulletinBoard() && section.BulletinBoard) {
-        await Canvas.Pages.create({
+        const args = await Snapshot.PodiumPage.toCanvasArgs({
           course,
-          args: await Snapshot.PodiumPage.toCanvasArgs({
-            course,
-            title: 'Bulletin Board',
-            body: section.BulletinBoard,
-            layout: section.SectionInfo?.LayoutId || 0,
-            front_page: true
-          })
+          title: 'Bulletin Board',
+          body: section.BulletinBoard,
+          layout: section.SectionInfo?.LayoutId || 0,
+          front_page: true
         });
+        const frontPage = await Canvas.Pages.create({ course, args });
+        if (frontPage) {
+          section.front_page = {
+            id: frontPage.page_id,
+            args,
+            created_at: frontPage.created_at
+          };
+        }
       }
 
       if (Preferences.topics() && section.Topics) {
         for (const topic of section.Topics) {
-          await Canvas.Pages.create({
+          const args = await Snapshot.PodiumPage.toCanvasArgs({
             course,
-            args: await Snapshot.PodiumPage.toCanvasArgs({
-              course,
-              title: topic.Name,
-              body: topic.Content || [],
-              layout: topic.LayoutId
-            })
+            title: topic.Name,
+            body: topic.Content || [],
+            layout: topic.LayoutId
           });
+          const canvasTopic = await Canvas.Pages.create({
+            course,
+            args
+          });
+          topic.canvas = {
+            args,
+            id: canvasTopic.page_id,
+            created_at: canvasTopic.created_at
+          };
         }
       }
 
@@ -326,7 +357,11 @@ export async function run() {
           args: { 'course[default_view]': 'wiki' }
         });
       }
-      fs.writeFileSync(Snapshot.path(), JSON.stringify(section, null, 2));
     }
   }
+  Output.writeJSON(
+    Output.filePathFromOutputPath(Output.outputPath(), 'index.json'),
+    snapshots,
+    { overwrite: true }
+  );
 }
