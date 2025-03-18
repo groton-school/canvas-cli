@@ -12,7 +12,7 @@
     },
     "run" : {
       "enabled" : true,
-      "script" : "source .env\ncanvas-import --stdoutLevel debug --no-ignoreErrors --duplicates update --no-bulletinBoard --no-topics \"$SNAPSHOT_PATH\""
+      "script" : "source .env\ncanvas-import --stdoutLevel debug --no-ignoreErrors --pretty --duplicates update --no-bulletinBoard --no-topics \"$SNAPSHOT_PATH\""
     }
   },
   "buildBeforeRunning" : true,
