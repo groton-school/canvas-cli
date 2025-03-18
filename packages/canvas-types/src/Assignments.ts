@@ -607,3 +607,41 @@ export async function create({ course, args }: CreateOptions) {
   );
   return result;
 }
+
+type UpdateParameters = Partial<Omit<Parameters, 'assignment[quiz_lti]'>> & {
+  'assignment[sis_assignment_id]'?: string;
+  /** Data used for SIS integrations. Requires admin-level token with the “Manage SIS” permission. JSON string required. */
+  /** If true, updated_at will be set even if no changes were made. */
+  'assignment[force_updated_at]'?: boolean;
+};
+
+type UpdateOptions = {
+  course: Courses.Model;
+  assignment: Model;
+  args: UpdateParameters;
+};
+
+export async function update({ course, assignment, args }: UpdateOptions) {
+  const spinner = ora(
+    `Updating assignment ${Colors.value(assignment.name || assignment.id)}`
+  ).start();
+  const result = (await canvas().fetch(
+    `/api/v1/courses/${course.id}/assignments/${assignment.id}`,
+    { method: 'PUT', body: new URLSearchParams(stringify(args)) }
+  )) as Model;
+  if (isError(result)) {
+    spinner.fail(
+      `Error updating assignment ${Colors.value(assignment.name || assignment.id)}`
+    );
+    throw new Error(
+      `Error updating assignment: ${Log.syntaxColor({
+        ...Courses.basic(course),
+        assignment,
+        args: stringify(args),
+        error: result
+      })}`
+    );
+  }
+  spinner.succeed(`Updated assignment ${Colors.value(result.name)}`);
+  return result;
+}
