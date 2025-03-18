@@ -36,11 +36,16 @@ export type Model = {
 };
 
 export type Parameters = {
+  /** The assignment group’s name */
   name?: string;
+  /** The position of this assignment group in relation to the other assignment groups */
   position?: number;
+  /** The percent of the total grade that this assignment group represents */
   group_weight?: number;
+  /** The sis source id of the Assignment Group */
   sis_source_id?: string;
-  integration_data?: any;
+  /** The integration data of the Assignment Group */
+  integration_data?: object;
 };
 
 type CreateOptions = {
@@ -65,11 +70,43 @@ export async function create({ course, args }: CreateOptions) {
     throw new Error(
       `Error creating assignment group: ${Log.syntaxColor({
         ...Courses.basic(course),
-        assignmentGroup: args,
+        args: stringify(args),
         error: result
       })}`
     );
   }
   spinner.succeed(`Created assignment group ${Colors.value(result.name)}`);
+  return result;
+}
+
+type UpdateParameters = Parameters & {
+  /** The grading rules that are applied within this assignment group See the Assignment Group object definition for format */
+  rules?: string;
+};
+
+type UpdateOptions = {
+  course: Courses.Model;
+  assignmentGroup: Model;
+  args: UpdateParameters;
+};
+
+export async function update({ course, assignmentGroup, args }: UpdateOptions) {
+  const spinner = ora(
+    `Updating assignment group ${Colors.value(assignmentGroup.name || assignmentGroup.id)}`
+  ).start();
+  const body = new URLSearchParams(stringify(args));
+  const result = (await canvas().fetch(
+    `/api/v1/courses/${course.id}/assignment_groups/${assignmentGroup.id}`,
+    { method: 'PUT', body }
+  )) as Model;
+  if (isError(result)) {
+    spinner.fail(
+      `Error updating assignment group ${Colors.value(assignmentGroup.name || assignmentGroup.id)}`
+    );
+    throw new Error(
+      `Error updating assignment group: ${Log.syntaxColor({ course, assignmentGroup, args: stringify(args), error: result })}`
+    );
+  }
+  spinner.succeed(`Updated assignment group ${Colors.value(result.name)}`);
   return result;
 }
