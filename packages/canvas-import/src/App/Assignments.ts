@@ -14,34 +14,40 @@ type Options = {
 
 export async function importAssignments({ course, section }: Options) {
   const assignments = await Snapshot.Assignments.hydrate(section);
-  section.assignment_groups = section.assignment_groups || [];
+  section.assignment_groups =
+    (Preferences.duplicates() === 'update' ? section.assignment_groups : []) ||
+    [];
   for (const assignmentType of Snapshot.AssignmentTypes.extract(assignments)) {
     const args = Snapshot.AssignmentTypes.toCanvasArgs(assignmentType);
-    if (section.assignment_groups && Preferences.duplicates() === 'update') {
+    let processed = false;
+    if (Preferences.duplicates() === 'update') {
       const prev = section.assignment_groups.findIndex(
         (g) => g.blackbaud_id == assignmentType.type_id
       );
-      if (
-        prev &&
-        !Imported.isEqual(
-          args as JSONObject,
-          section.assignment_groups[prev].args as JSONObject
-        )
-      ) {
-        const result = await Canvas.AssigmentGroups.update({
-          course,
-          assignmentGroup: {
-            id: section.assignment_groups[prev].id!
-          } as Canvas.AssigmentGroups.Model,
-          args
-        });
-        if (result) {
-          section.assignment_groups[prev].args = args as JSONObject;
+      if (prev >= 0) {
+        if (
+          !Imported.isEqual(
+            args as JSONObject,
+            section.assignment_groups[prev].args as JSONObject
+          )
+        ) {
+          const result = await Canvas.AssigmentGroups.update({
+            course,
+            assignmentGroup: {
+              id: section.assignment_groups[prev].id!
+            } as Canvas.AssigmentGroups.Model,
+            args
+          });
+          if (result) {
+            section.assignment_groups[prev].args = args as JSONObject;
+          }
+        } else {
+          Log.info(`Assignment group ${Colors.value(args.name)} is up-to-date`);
         }
-      } else {
-        Log.info(`Assignment group ${Colors.value(args.name)} is up-to-date`);
+        processed = true;
       }
-    } else {
+    }
+    if (!processed) {
       const group = await Canvas.AssigmentGroups.create({ course, args });
       section.assignment_groups.push({
         id: group.id,
