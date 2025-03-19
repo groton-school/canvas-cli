@@ -1,1 +1,1 @@
-<a class="instructure_file_link inline_disabled" title="<%= file.display_name %>" href="<%= file.url %>" target="_blank" rel="noopener noreferrer"><%= file.display_name %></a>
+<a class="instructure_file_link inline_disabled" title="<%= file.display_name %>" href="<%= file.url %>" target="_blank" rel="noopener noreferrer"><%= locals.filename ? filename : file.display_name %></a>
