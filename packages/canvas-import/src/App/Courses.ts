@@ -28,14 +28,10 @@ export async function handleDuplicateCourse({ course, section }: Options) {
         );
       }
       const args = Snapshot.Section.toCanvasArgs(section);
-      if (!Imported.isEqual(args, section.SectionInfo.canvas.args)) {
-        args['course[term_id]'] = `sis_term_id:${Preferences.WORKSPACE_TERM}`;
-        delete args['course[sis_course_id]'];
-        delete args.enable_sis_reactivation;
-        return await Canvas.Courses.update({ course, args });
-      } else {
-        Log.info(`Course ${Colors.value(course.name)} is up-to-date`);
-      }
+      args['course[term_id]'] = `sis_term_id:${Preferences.WORKSPACE_TERM}`;
+      delete args['course[sis_course_id]'];
+      delete args.enable_sis_reactivation;
+      return await Canvas.Courses.update({ course, args });
       return course;
     },
     reset: async () => {
