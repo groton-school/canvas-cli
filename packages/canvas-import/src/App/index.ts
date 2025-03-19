@@ -162,6 +162,7 @@ export async function run() {
     });
   }
 
+  // TODO write partial updates to index or tmp piecemeal
   for (const section of snapshots) {
     let course = await Canvas.Courses.get({
       sis_course_id: OneRoster.sis_course_id(section)

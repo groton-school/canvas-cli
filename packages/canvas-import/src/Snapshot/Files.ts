@@ -80,6 +80,10 @@ type UploadLocalFilesOptions = {
   name?: string;
 };
 
+/*
+ * FIXME upload IMG elements with src="data:…"
+ *   see https://groton.instructure.com/courses/936/assignments/4087
+ */
 export async function uploadLocalFiles({
   course,
   entry,
