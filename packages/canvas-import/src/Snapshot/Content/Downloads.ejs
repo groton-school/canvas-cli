@@ -1,6 +1,6 @@
 <% if (content.Content.length > 0 || (content.FilePath && content.FilePath.canvas)) { %>
 <div>
-    <% if (!content.FilePath.canvas) { %>
+    <% if (!content.FilePath || !content.FilePath.canvas) { %>
     <h3>Downloads</h3>
     <dl>
         <% for (const item of content.Content) { %>
