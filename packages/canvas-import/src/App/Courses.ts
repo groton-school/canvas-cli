@@ -48,42 +48,42 @@ export async function handleDuplicateCourse({ course, section }: Options) {
     },
     browse: async () => {
       open(Canvas.url(`/courses/${course!.id}`).toString());
-      return await next[
-        (await select({
-          message: `How would you like to proceed?`,
-          choices: Object.keys(next).filter(
-            (key) => key != 'open in browser to examine'
-          )
-        })) as keyof typeof next
-      ]();
+      const choice = (await select({
+        message: `How would you like to proceed?`,
+        choices: Object.keys(next).filter(
+          (key) => key != 'open in browser to examine'
+        )
+      })) as keyof typeof next;
+      Preferences.setDuplicates(choice);
+      return await next[choice]();
     },
     skip: () => undefined
   };
-  return await next[
-    (Preferences.duplicates() ||
-      (await select({
-        message: `A course named ${Colors.value(course.name)} with sis_course_id ${Colors.value(course.sis_course_id)} already exists in Canvas.`,
-        choices: [
-          {
-            value: 'update',
-            description:
-              'Import snapshot data into the course, potentially creating duplicate content if previous Canvas import data was not exported to the index JSON file'
-          },
-          {
-            value: 'reset',
-            description:
-              'Reset the course content, erasing all existing content, and replace it with the snapshot'
-          },
-          {
-            value: 'browse',
-            description:
-              'Open the current course in a browser and then make a decision about what to do'
-          },
-          {
-            value: 'skip',
-            description: 'Skip processing the snaphot import for this course'
-          }
-        ]
-      }))) as keyof typeof next
-  ]();
+  const choice = (Preferences.duplicates() ||
+    (await select({
+      message: `A course named ${Colors.value(course.name)} with sis_course_id ${Colors.value(course.sis_course_id)} already exists in Canvas.`,
+      choices: [
+        {
+          value: 'update',
+          description:
+            'Import snapshot data into the course, potentially creating duplicate content if previous Canvas import data was not exported to the index JSON file'
+        },
+        {
+          value: 'reset',
+          description:
+            'Reset the course content, erasing all existing content, and replace it with the snapshot'
+        },
+        {
+          value: 'browse',
+          description:
+            'Open the current course in a browser and then make a decision about what to do'
+        },
+        {
+          value: 'skip',
+          description: 'Skip processing the snaphot import for this course'
+        }
+      ]
+    }))) as keyof typeof next;
+  Preferences.setDuplicates(choice);
+  return await next[choice]();
 }
