@@ -17,12 +17,7 @@
     <% for (const download of assignment.DownloadItems) { %>
         <div>
             <div>
-                <a class="instructure_file_link inline_disabled"
-                   title="<%= download.DownloadUrl.display_name %>"
-                   href="<%= download.DownloadUrl.url %>"
-                   target="_blank"
-                   rel="noopener"
-                ><%= download.DownloadUrl.display_name %></a>
+                <%- include('Content/CanvasFileLink', {file: download.DownloadUrl.canvas}) %>
             </div>
             <div><%- download.ShortDescription %></div>
         </div>

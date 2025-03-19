@@ -4,13 +4,13 @@
     <h3>Downloads</h3>
     <dl>
         <% for (const item of content.Content) { %>
-            <dt><a class="instructure_file_link inline_disabled" title="<%= item.DownloadUrl.canvas.display_name %>" href="<%= item.DownloadUrl.canvas.url %>" target="_blank" rel="noopener noreferrer"><%= item.Description %></a></dt>
+            <dt><%- include('CanvasFileLink', {file: item.DownloadUrl.canvas}) %></dt>
             <dd><%- item.LongDescription %></dd>
         <% } %>
         </dl>
     <% } else { %>
     <dl>
-            <dt><a class="instructure_file_link inline_disabled" title="<%= content.FilePath.canvas.display_name %>" href="<%= content.FilePath.canvas.url %>" target="_blank" rel="noopener noreferrer"><%= content.FilePath.canvas.display_name %></a></dt>
+            <dt><%- include('CanvasFileLink', {file: content.FilePath}) %></dt>
             <dd><%- content.LongDescription %></dd>
     </dl>
     <% } %>

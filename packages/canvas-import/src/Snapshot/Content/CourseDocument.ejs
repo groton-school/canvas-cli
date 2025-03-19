@@ -3,7 +3,7 @@
     <h3><%= documentType %></h3>
     <% content.Content.forEach(item => { %>
     <% if (item.AttachmentQueryString) { %>
-        <div><small><a class="instructure_file_link inline_disabled" title="<%= item.AttachmentQueryString.canvas.display_name %>" href="<%= item.AttachmentQueryString.canvas.url %>" target="_blank" rel="noopener noreferrer"><%= item.ShortDescription %></a></small></div>
+        <div><small><%- include('CanvasFileLink', {file: item.AttachmentQueryString.canvas}) %></small></div>
     <% } %>
         <div><%- item.Description %></div>
     <% }); %>
