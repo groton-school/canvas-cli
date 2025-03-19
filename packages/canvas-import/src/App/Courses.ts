@@ -45,6 +45,7 @@ export async function handleDuplicateCourse({ course, section }: Options) {
           id: course.id,
           args: {},
           created_at: course.created_at
+          // FIXME include CANVAS_INSTANCE_URL
         };
       }
       return await next.update();
