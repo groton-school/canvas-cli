@@ -11,7 +11,7 @@ import open from 'open';
 export type Configuration = { snapshotPath?: string; open?: boolean };
 
 export const name = 'canvas-import-open';
-export const src = import.meta.dirname;
+export const src = path.dirname(import.meta.dirname);
 
 let snapshotPath: string | undefined = undefined;
 let _open = false;
@@ -53,7 +53,7 @@ export function run() {
   ) as Imported.Multiple.Data;
   for (const snapshot of snapshots) {
     if (snapshot.SectionInfo?.canvas?.id) {
-      const url = `${process.env.CANVAS_INSTANCE_URL}/courses/${snapshot.SectionInfo.canvas.id}`;
+      const url = `${snapshot.SectionInfo.canvas.instance_url}/courses/${snapshot.SectionInfo.canvas.id}`;
       Log.info(
         Colors.url(`${Colors.value(snapshot.SectionInfo?.GroupName)} ${url}`)
       );
