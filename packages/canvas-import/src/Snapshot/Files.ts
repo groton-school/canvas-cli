@@ -123,31 +123,26 @@ export async function uploadLocalFiles({
           Log.info(`File ${Colors.url(entry.localPath)} is up-to-date`);
         }
       } else {
-        if (
-          !Imported.isAnnotated(entry) ||
-          !Imported.isEqual(entry.canvas.args, args)
-        ) {
-          const file = await getCached(
-            entry.localPath,
-            async () =>
-              await Canvas.Files.upload({
-                course,
-                localFilePath: path.join(
-                  path.dirname(IndexFile.path()),
-                  entry.localPath.replace(/^\//, '')
-                ),
-                args
-              })
-          );
-          (entry as Imported.Annotation).canvas = {
-            args,
-            id: file.id,
-            display_name: file.display_name,
-            url: file.url,
-            created_at: file.created_at,
-            modified_at: file.modified_at
-          };
-        }
+        const file = await getCached(
+          entry.localPath,
+          async () =>
+            await Canvas.Files.upload({
+              course,
+              localFilePath: path.join(
+                path.dirname(IndexFile.path()),
+                entry.localPath.replace(/^\//, '')
+              ),
+              args
+            })
+        );
+        (entry as Imported.Annotation).canvas = {
+          args,
+          id: file.id,
+          display_name: file.display_name,
+          url: file.url,
+          created_at: file.created_at,
+          modified_at: file.modified_at
+        };
       }
     }
     return entry;
