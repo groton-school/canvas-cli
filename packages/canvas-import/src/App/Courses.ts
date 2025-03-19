@@ -84,6 +84,7 @@ export async function handleDuplicateCourse({ course, section }: Options) {
         }
       ]
     }))) as keyof typeof next;
+  // FIXME track duplicates choice per-section or document that first choice applies to all
   Preferences.setDuplicates(choice);
   return await next[choice]();
 }
