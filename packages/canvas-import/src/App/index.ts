@@ -178,6 +178,7 @@ export async function run() {
       });
     }
     if (course) {
+      // TODO check instance_url and alert on mismatch with process.env.CANVAS_INSTANCE_URL
       // TODO consolidate in importCourse
       if (section.SectionInfo) {
         section.SectionInfo.canvas = {
@@ -187,6 +188,7 @@ export async function run() {
           created_at: course.created_at
         };
       }
+      // TODO cache enrollments for updating
       await Canvas.Enrollments.create({
         course,
         args: {
