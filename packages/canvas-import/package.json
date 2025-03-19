@@ -16,7 +16,7 @@
   "types": "./dist/index.d.ts",
   "bin": {
     "canvas-import": "./dist/index.js",
-    "canvas-import-open": "./dist/opener-register.js"
+    "canvas-import-open": "./dist/open.js"
   },
   "scripts": {
     "clean": "del ./dist",
