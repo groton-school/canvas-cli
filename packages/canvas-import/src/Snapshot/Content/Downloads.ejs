@@ -10,7 +10,7 @@
         </dl>
     <% } else { %>
     <dl>
-            <dt><%- include('CanvasFileLink', {file: content.FilePath}) %></dt>
+            <dt><%- include('CanvasFileLink', {file: content.FilePath.canvas}) %></dt>
             <dd><%- content.LongDescription %></dd>
     </dl>
     <% } %>
