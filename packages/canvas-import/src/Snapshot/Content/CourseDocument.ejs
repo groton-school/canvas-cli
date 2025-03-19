@@ -3,7 +3,7 @@
     <h3><%= documentType %></h3>
     <% content.Content.forEach(item => { %>
     <% if (item.AttachmentQueryString) { %>
-        <div><small><%- include('CanvasFileLink', {file: item.AttachmentQueryString.canvas, filename: item.ShortDescription}) %></small></div>
+        <div><small><%- include('Canvas/FileLink', {file: item.AttachmentQueryString.canvas, filename: item.ShortDescription}) %></small></div>
     <% } %>
         <div><%- item.Description %></div>
     <% }); %>

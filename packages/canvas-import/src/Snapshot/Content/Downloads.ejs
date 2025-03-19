@@ -4,13 +4,13 @@
     <h3>Downloads</h3>
     <dl>
         <% for (const item of content.Content) { %>
-            <dt><%- include('CanvasFileLink', {file: item.DownloadUrl.canvas, filename: item.Description}) %></dt>
+            <dt><%- include('Canvas/FileLink', {file: item.DownloadUrl.canvas, filename: item.Description}) %></dt>
             <dd><%- item.LongDescription %></dd>
         <% } %>
         </dl>
     <% } else { %>
     <dl>
-            <dt><%- include('CanvasFileLink', {file: content.FilePath.canvas, filename: content.ShortDescription}) %></dt>
+            <dt><%- include('Canvas/FileLink', {file: content.FilePath.canvas, filename: content.ShortDescription}) %></dt>
             <dd><%- content.LongDescription %></dd>
     </dl>
     <% } %>
