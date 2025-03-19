@@ -1,7 +1,7 @@
 import { DateTimeString, PathString } from '@battis/descriptive-types';
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
-import { ArrayElement, JSONObject, JSONValue } from '@battis/typescript-tricks';
+import { ArrayElement, JSONValue } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-types';
 import * as Archive from '@msar/types.archive';
 import * as Imported from '@msar/types.import';
