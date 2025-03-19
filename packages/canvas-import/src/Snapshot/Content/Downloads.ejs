@@ -1,16 +1,18 @@
 <% if (content.Content.length > 0 || (content.FilePath && content.FilePath.canvas)) { %>
 <div>
+    <% if (!content.FilePath.canvas) { %>
     <h3>Downloads</h3>
-        <dl>
-    <% if (Array.isArray(content.Content)) { %>
+    <dl>
         <% for (const item of content.Content) { %>
             <dt><a class="instructure_file_link inline_disabled" title="<%= item.DownloadUrl.canvas.display_name %>" href="<%= item.DownloadUrl.canvas.url %>" target="_blank" rel="noopener noreferrer"><%= item.Description %></a></dt>
             <dd><%- item.LongDescription %></dd>
         <% } %>
-    <% } else { %>
-            <dt><a class="instructure_file_link inline_disabled" title="<%= content.FilePath.canvas.display_name %>" href="<%= content.FilePath.canvas.url %>" target="_blank" rel="noopener noreferrer"><%= content.Description %></a></dt>
-            <dd><%- content.LongDescription %></dd>
-    <% } %>
         </dl>
+    <% } else { %>
+    <dl>
+            <dt><a class="instructure_file_link inline_disabled" title="<%= content.FilePath.canvas.display_name %>" href="<%= content.FilePath.canvas.url %>" target="_blank" rel="noopener noreferrer"><%= content.FilePath.canvas.display_name %></a></dt>
+            <dd><%- content.LongDescription %></dd>
+    </dl>
+    <% } %>
 </div>
 <% } %>
