@@ -178,9 +178,11 @@ export async function run() {
       });
     }
     if (course) {
+      // TODO consolidate in importCourse
       if (section.SectionInfo) {
         section.SectionInfo.canvas = {
           id: course.id,
+          instance_url: process.env.CANVAS_INSTANCE_URL,
           args: Snapshot.Section.toCanvasArgs(section),
           created_at: course.created_at
         };
