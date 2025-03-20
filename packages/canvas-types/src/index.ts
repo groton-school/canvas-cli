@@ -1,3 +1,4 @@
+export * as AnnouncementExternalFeeds from './AnnouncementExternalFeeds.js';
 export * as AssigmentGroups from './AssignmentGroups.js';
 export * as Assignments from './Assignments.js';
 export * from './Client.js';
