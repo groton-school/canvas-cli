@@ -36,7 +36,7 @@
     "@groton/canvas-types": "workspace:*",
     "@inquirer/prompts": "^7.4.0",
     "@msar/output": "^0.1.3",
-    "@msar/types.archive": "^0.1.2",
+    "@msar/types.archive": "^0.1.3",
     "@msar/types.import": "workspace:*",
     "@oauth2-cli/canvas": "^0.2.0",
     "@oauth2-cli/sky-api": "^0.2.1",

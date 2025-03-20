@@ -57,8 +57,8 @@ importers:
         specifier: ^0.1.3
         version: 0.1.3(@battis/qui-cli.colors@2.0.1(@battis/qui-cli.plugin@2.3.0))(@battis/qui-cli.log@2.1.0(@battis/qui-cli.colors@2.0.1(@battis/qui-cli.plugin@2.3.0))(@battis/qui-cli.plugin@2.3.0)(@battis/qui-cli.root@2.0.2(@battis/qui-cli.plugin@2.3.0)))(@battis/qui-cli.plugin@2.3.0)(@battis/qui-cli.root@2.0.2(@battis/qui-cli.plugin@2.3.0))(@msar/debug@0.1.0(@battis/qui-cli.colors@2.0.1(@battis/qui-cli.plugin@2.3.0))(@battis/qui-cli.log@2.1.0(@battis/qui-cli.colors@2.0.1(@battis/qui-cli.plugin@2.3.0))(@battis/qui-cli.plugin@2.3.0)(@battis/qui-cli.root@2.0.2(@battis/qui-cli.plugin@2.3.0)))(@battis/qui-cli.plugin@2.3.0))(@msar/workflow@0.1.0(@battis/qui-cli.colors@2.0.1(@battis/qui-cli.plugin@2.3.0))(@battis/qui-cli.plugin@2.3.0))
       '@msar/types.archive':
-        specifier: ^0.1.2
-        version: 0.1.2(@msar/types.snapshot@0.1.1(ejs@3.1.10))
+        specifier: ^0.1.3
+        version: 0.1.3(@msar/types.snapshot@0.1.3(ejs@3.1.10))
       '@msar/types.import':
         specifier: workspace:*
         version: link:../import
@@ -173,8 +173,8 @@ importers:
   packages/import:
     dependencies:
       '@msar/types.archive':
-        specifier: ^0.1.2
-        version: 0.1.2(@msar/types.snapshot@0.1.1(ejs@3.1.10))
+        specifier: ^0.1.3
+        version: 0.1.3(@msar/types.snapshot@0.1.3(ejs@3.1.10))
     devDependencies:
       '@battis/descriptive-types':
         specifier: ^0.2.0
@@ -182,6 +182,9 @@ importers:
       '@battis/typescript-tricks':
         specifier: ^0.7.4
         version: 0.7.4
+      '@msar/types.snapshot':
+        specifier: ^0.1.3
+        version: 0.1.3(ejs@3.1.10)
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
@@ -754,13 +757,13 @@ packages:
       '@msar/debug': 0.x
       '@msar/workflow': 0.x
 
-  '@msar/types.archive@0.1.2':
-    resolution: {integrity: sha512-2xCrbgxT4mY9FRGnm3k+MiTofW10bJ0RdNgQbKv3GAHMU6m9DY2eSZrM4S5Jz+Ik/PrfdHu78a7ja2nlql517g==}
+  '@msar/types.archive@0.1.3':
+    resolution: {integrity: sha512-x6Mum5Ja4Kssicgs28wj4GVBX+CCzK8uf0cZ2oWT7M2cTGjX353lrWCocagVFgmRGSVAETEjawAU3GpVu6mzvg==}
     peerDependencies:
-      '@msar/types.snapshot': 0.x
+      '@msar/types.snapshot': '>=0.1.3 <1.0'
 
-  '@msar/types.snapshot@0.1.1':
-    resolution: {integrity: sha512-ysnLnLJPjn7SbgOUZ3fMt4/YVSw+eob6vN33qqEb/M1+LimENCve1sckv/FbKr7vtjLtOvnAuru7hd3nIdSXKw==}
+  '@msar/types.snapshot@0.1.3':
+    resolution: {integrity: sha512-yD8BV0PmpG5WFIqcY5suqDqRJtiBX5v0KrM2FIrPsPw0N1LRhq72nAUpUtS1+CaW0sQJnz8T9FhPQCzaFkxdTg==}
 
   '@msar/workflow@0.1.0':
     resolution: {integrity: sha512-878mV1/3Km4yEJPIWvOSeWfqkxTbINPwNf2SwJWiAHg5908HoiZYmVGS+HX+a2ud6fb/unpiPRWmJLCom2g7xw==}
@@ -1747,9 +1750,6 @@ packages:
     resolution: {integrity: sha512-BS8PfmtDGnrgYdOonGZQdLZslWIeCGFP9tpan0hi1Co2Zr2NKADsvGYA8XxuG/4UWgJ6Cjtv+YJnB6MM69QGlQ==}
     engines: {node: '>= 0.4'}
 
-  datadirect@0.4.4:
-    resolution: {integrity: sha512-cm9dBE8S38+NrwllQdM87CzReRt7ta3HiMwkVJdU+wKWueWAB9WO74jEad1w+GXYbmw769ows2PJ+iErwxEqeA==}
-
   datadirect@0.4.5:
     resolution: {integrity: sha512-R5eRY3TVgZzj24Hnx5CofJ67VNzcYhyj/kbB5NBfyAHmOdaTNyn+bwOZRLPkQ3esg7XJpqunPHYAUhGS2cJjHA==}
 
@@ -2286,10 +2286,6 @@ packages:
   get-proto@1.0.1:
     resolution: {integrity: sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==}
     engines: {node: '>= 0.4'}
-
-  get-stdin@8.0.0:
-    resolution: {integrity: sha512-sY22aA6xchAzprjyqmSEQv4UbAAzRN0L2dQB0NlN5acTTK9Don6nhoc3eAbUnpZiCANAMfd/+40kVdKfFygohg==}
-    engines: {node: '>=10'}
 
   get-stdin@9.0.0:
     resolution: {integrity: sha512-dVKBjfWisLAicarI2Sf+JuBE/DghV4UzNAVe9yhEJuzeREd3JhOTE9cUaJTeSa77fsbQUK3pcOpJfM59+VKZaA==}
@@ -4168,8 +4164,8 @@ packages:
   sprintf-js@1.1.3:
     resolution: {integrity: sha512-Oo+0REFV59/rz3gfJNKQiBlwfHaSESl1pcGyABQsnnIfWOFt6JNj5gCog2U6MLZ//IGYD+nA8nI+mTShREReaA==}
 
-  sql-formatter@15.4.11:
-    resolution: {integrity: sha512-AfIjH0mYxv0NVzs4mbcGIAcos2Si20LeF9GMk0VmVA4A3gs1PFIixVu3rtcz34ls7ghPAjrDb+XbRly/aF6HAg==}
+  sql-formatter@15.5.1:
+    resolution: {integrity: sha512-H3XfFRpK8LybkU2mD2Vj3AF35YcfviwUuy3yl98Xp7DTneJJVB40L654DpHYIRctASNIQPoLo7+yCboOfkOpWA==}
     hasBin: true
 
   ssri@10.0.6:
@@ -4389,8 +4385,8 @@ packages:
     resolution: {integrity: sha512-aZbgViZrg1QNcG+LULa7nhZpJTZSLm/mXnHXnbAbjmN5aSa0y7V+wvv6+4WaBtpISJzThKy+PIPxc1Nq1EJ9mg==}
     engines: {node: '>= 14.0.0'}
 
-  ts-api-utils@2.0.1:
-    resolution: {integrity: sha512-dnlgjFSVetynI8nzgJ+qF62efpglpWRk8isUEWZGWlJYySCTD6aKvbUDu+zbPeDakk3bg5H4XpitHukgfL1m9w==}
+  ts-api-utils@2.1.0:
+    resolution: {integrity: sha512-CUgTZL1irw8u29bzrOD/nH85jqyc74D6SshFgujOIA7osm2Rz7dYH77agkx7H4FBNxDq7Cjf+IjaX/8zwFW+ZQ==}
     engines: {node: '>=18.12'}
     peerDependencies:
       typescript: '>=4.8.4'
@@ -5508,15 +5504,15 @@ snapshots:
       '@msar/debug': 0.1.0(@battis/qui-cli.colors@2.0.1(@battis/qui-cli.plugin@2.3.0))(@battis/qui-cli.log@2.1.0(@battis/qui-cli.colors@2.0.1(@battis/qui-cli.plugin@2.3.0))(@battis/qui-cli.plugin@2.3.0)(@battis/qui-cli.root@2.0.2(@battis/qui-cli.plugin@2.3.0)))(@battis/qui-cli.plugin@2.3.0)
       '@msar/workflow': 0.1.0(@battis/qui-cli.colors@2.0.1(@battis/qui-cli.plugin@2.3.0))(@battis/qui-cli.plugin@2.3.0)
 
-  '@msar/types.archive@0.1.2(@msar/types.snapshot@0.1.1(ejs@3.1.10))':
+  '@msar/types.archive@0.1.3(@msar/types.snapshot@0.1.3(ejs@3.1.10))':
     dependencies:
-      '@msar/types.snapshot': 0.1.1(ejs@3.1.10)
+      '@msar/types.snapshot': 0.1.3(ejs@3.1.10)
       datadirect: 0.4.5
 
-  '@msar/types.snapshot@0.1.1(ejs@3.1.10)':
+  '@msar/types.snapshot@0.1.3(ejs@3.1.10)':
     dependencies:
       '@oauth2-cli/sky-api': 0.2.1(ejs@3.1.10)
-      datadirect: 0.4.4
+      datadirect: 0.4.5
     transitivePeerDependencies:
       - ejs
       - supports-color
@@ -5975,7 +5971,7 @@ snapshots:
       graphemer: 1.4.0
       ignore: 5.3.2
       natural-compare: 1.4.0
-      ts-api-utils: 2.0.1(typescript@5.8.2)
+      ts-api-utils: 2.1.0(typescript@5.8.2)
       typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
@@ -6003,7 +5999,7 @@ snapshots:
       '@typescript-eslint/utils': 8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2)
       debug: 4.4.0
       eslint: 9.22.0(jiti@2.4.2)
-      ts-api-utils: 2.0.1(typescript@5.8.2)
+      ts-api-utils: 2.1.0(typescript@5.8.2)
       typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
@@ -6019,7 +6015,7 @@ snapshots:
       is-glob: 4.0.3
       minimatch: 9.0.5
       semver: 7.7.1
-      ts-api-utils: 2.0.1(typescript@5.8.2)
+      ts-api-utils: 2.1.0(typescript@5.8.2)
       typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
@@ -6672,8 +6668,6 @@ snapshots:
       es-errors: 1.3.0
       is-data-view: 1.0.2
 
-  datadirect@0.4.4: {}
-
   datadirect@0.4.5: {}
 
   dateformat@3.0.3: {}
@@ -7283,8 +7277,6 @@ snapshots:
     dependencies:
       dunder-proto: 1.0.1
       es-object-atoms: 1.1.1
-
-  get-stdin@8.0.0: {}
 
   get-stdin@9.0.0: {}
 
@@ -8897,7 +8889,7 @@ snapshots:
       jsox: 1.2.121
       node-sql-parser: 4.18.0
       prettier: 3.5.3
-      sql-formatter: 15.4.11
+      sql-formatter: 15.5.1
       tslib: 2.8.1
 
   prettier@3.5.3: {}
@@ -9374,10 +9366,9 @@ snapshots:
 
   sprintf-js@1.1.3: {}
 
-  sql-formatter@15.4.11:
+  sql-formatter@15.5.1:
     dependencies:
       argparse: 2.0.1
-      get-stdin: 8.0.0
       nearley: 2.20.1
 
   ssri@10.0.6:
@@ -9595,7 +9586,7 @@ snapshots:
 
   triple-beam@1.4.1: {}
 
-  ts-api-utils@2.0.1(typescript@5.8.2):
+  ts-api-utils@2.1.0(typescript@5.8.2):
     dependencies:
       typescript: 5.8.2
 
