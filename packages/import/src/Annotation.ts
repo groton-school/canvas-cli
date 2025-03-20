@@ -28,12 +28,20 @@ function isWeakEqual(a?: JSONValue, b?: JSONValue) {
   return true;
 }
 
-export function isEqual(a: CanvasData, b: CanvasData): boolean;
-export function isEqual(a: JSONObject, b: JSONObject): boolean;
+export function isEqual(a?: CanvasData, b?: CanvasData): boolean;
+export function isEqual(a?: JSONObject, b?: JSONObject): boolean;
 export function isEqual(
-  a: CanvasData | JSONObject,
-  b: CanvasData | JSONObject
+  a?: CanvasData | JSONObject,
+  b?: CanvasData | JSONObject
 ): boolean {
+  if (a === undefined) {
+    if (b === undefined) {
+      throw new Error(`Cannot compare two undefined values`);
+    }
+    return false;
+  } else if (b === undefined) {
+    return false;
+  }
   if (isCanvasData(a)) {
     if (isCanvasData(b)) {
       return (
