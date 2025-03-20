@@ -1,4 +1,4 @@
-import { DateTimeString } from '@battis/descriptive-types';
+import { DateTimeString, PathString } from '@battis/descriptive-types';
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import * as Archive from '@msar/types.archive';
 
@@ -65,3 +65,5 @@ export function isEqual(
     }
   }
 }
+
+export type PotentialAnnotation = PathString | Archive.Annotation | Annotation;

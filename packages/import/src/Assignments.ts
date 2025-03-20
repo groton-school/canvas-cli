@@ -1,8 +1,6 @@
-import { PathString } from '@battis/descriptive-types';
 import * as Archive from '@msar/types.archive';
 import * as Annotation from './Annotation.js';
 
-export type Item<T = PathString | Archive.Annotation | Annotation.Annotation> =
+export type Item<T = Annotation.PotentialAnnotation> =
   Archive.Assignments.Item<T> & { canvas?: Annotation.CanvasData };
-export type Data<T = PathString | Archive.Annotation | Annotation.Annotation> =
-  Item<T>[];
+export type Data<T = Annotation.PotentialAnnotation> = Item<T>[];
