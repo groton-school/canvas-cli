@@ -8,7 +8,7 @@ import * as Imported from '@msar/types.import';
 import { EventEmitter } from 'node:events';
 import fs from 'node:fs';
 import path from 'node:path';
-import * as Preferences from '../App/Preferences.js';
+import { Preferences } from '../App/index.js';
 import * as IndexFile from './IndexFile.js';
 
 export type Annotated = {

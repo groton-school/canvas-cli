@@ -17,6 +17,8 @@ import { handleDuplicateCourse } from './Courses.js';
 import { importBulletinBoard, importTopics } from './Pages.js';
 import * as Preferences from './Preferences.js';
 
+export * as Preferences from './Preferences.js';
+
 await Core.configure({ core: { requirePositionals: true } });
 
 export type Configuration = Plugin.Configuration & {

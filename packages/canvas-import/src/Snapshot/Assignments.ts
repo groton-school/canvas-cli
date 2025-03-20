@@ -5,7 +5,7 @@ import * as Imported from '@msar/types.import';
 import ejs from 'ejs';
 import path from 'node:path';
 import { stripHtml } from 'string-strip-html';
-import * as Preferences from '../App/Preferences.js';
+import { Preferences } from '../App/index.js';
 import * as Files from './Files.js';
 
 type SnapshotModel = ArrayElement<NonNullable<Imported.Data['Assignments']>>;
