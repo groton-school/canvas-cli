@@ -84,7 +84,8 @@ export async function toCanvasArgs({
 
     'assignment[description]': await ejs.renderFile(
       path.join(import.meta.dirname, 'Assignment.ejs'),
-      { assignment }
+      { assignment },
+      { rmWhitespace: true }
     ),
     'assignment[published]': assignment.PublishInd,
     'assignment[assignment_group_id]': assignmentGroup.id,

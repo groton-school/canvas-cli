@@ -48,7 +48,8 @@ export async function toCanvasArgs({
         course_id: course.id,
         page: body,
         layout
-      }
+      },
+      { rmWhitespace: true }
     ),
     'wiki_page[published]': true,
     'wiki_page[front_page]': front_page

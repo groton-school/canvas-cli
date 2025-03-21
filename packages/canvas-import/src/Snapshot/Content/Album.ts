@@ -55,7 +55,8 @@ export async function convertToPages({ course, item }: Options) {
       'wiki_page[title]': title,
       'wiki_page[body]': await ejs.renderFile(
         path.join(import.meta.dirname, 'Canvas/Album.ejs'),
-        { content: album.Content, course_id: course.id }
+        { content: album.Content, course_id: course.id },
+        { rmWhitespace: true }
       ),
       'wiki_page[published]': true
     };
