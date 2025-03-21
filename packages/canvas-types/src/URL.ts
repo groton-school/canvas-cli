@@ -7,3 +7,10 @@ export function setUrl(url: string | URL) {
 export function url(url: string | URL) {
   return new URL(url, base);
 }
+
+export function getUrl() {
+  if (!base) {
+    throw new Error(`Canvas instance URL not initialized`);
+  }
+  return base.toString();
+}
