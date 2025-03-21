@@ -6,6 +6,7 @@ import probe from 'probe-image-size';
 export type CanvasData = {
   id?: number;
   blackbaud_id?: number;
+  course_id?: number;
   args: JSONObject;
   created_at?: DateTimeString;
   modified_at?: DateTimeString;
