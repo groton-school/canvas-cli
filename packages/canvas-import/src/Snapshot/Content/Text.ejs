@@ -3,8 +3,16 @@
     <div>
         <h3><%= item.Description %></h3>
         <div style="display: flex; flex-direction: row;">
-            <% if (item.Photos) { %>
-                <%- include('Canvas/ImageGallery', {images: item.Photos.map(p => ({...p.LargeFilenameUrl.canvas, caption: p.Caption})), course_id, style: 'height: 100%'}) %>
+            <!-- TODO link to text photo album -->
+            <% if (item.Photos && item.Photos.length) { %>
+                <%- include('Canvas/Image', {
+                    image: item.Photos[0].LargeFilenameUrl.canvas,
+                    course_id,
+                    caption: item.Photos[0].Caption,
+                    dimensions: item.Photos[0].LargeFilenameUrl.dimensions,
+                    size: 300,
+                    style: "border: none; padding: 0; float: left;"
+                }) %>
             <% } %>
             <div><%- item.LongText %></div>
         </div>

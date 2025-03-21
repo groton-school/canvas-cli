@@ -5,9 +5,17 @@
         <% content.Content.forEach(item => { %>
         <dt><%= item.Name %></dt>
         <dd><%= item.PublishDate %></dd>
-        <% if (item.PhotoList && item.PhotoList.length) { %>
-            <dd><%- include('Canvas/ImageGallery', {images: item.PhotoList.map(p => ({...p.LargeFilenameUrl.canvas, caption: p.Caption})), course_id, style: 'width: 100%'}) %></dd>
-        <% } %>
+            <!-- TODO link to news photo album -->
+            <% if (item.PhotoList && item.PhotoList.length) { %>
+                <%- include('Canvas/Image', {
+                    image: item.PhotoList[0].LargeFilenameUrl.canvas,
+                    course_id,
+                    caption: item.PhotoList[0].Caption,
+                    dimensions: item.PhotoList[0].LargeFilenameUrl.dimensions,
+                    size: 300,
+                    style: "border: none; padding: 0; float: left;"
+                }) %>
+            <% } %>
         <dd><%- item.BriefDescription %></dd>
         <dd><%- item.Description %></dd>
         <% }) %>
