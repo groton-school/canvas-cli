@@ -1,6 +1,7 @@
 import { DateTimeString, PathString } from '@battis/descriptive-types';
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import * as Archive from '@msar/types.archive';
+import probe from 'probe-image-size';
 
 export type CanvasData = {
   id?: number;
@@ -11,7 +12,10 @@ export type CanvasData = {
   [key: string]: any;
 };
 
-export type Annotation = Archive.Annotation & { canvas: CanvasData };
+export type Annotation = Archive.Annotation & {
+  canvas: CanvasData;
+  dimensions?: probe.ProbeResult;
+};
 
 export function isCanvasData(obj: object): obj is CanvasData {
   return obj && 'args' in obj && typeof obj.args === 'object';

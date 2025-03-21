@@ -22,13 +22,15 @@
     "release": "commit-and-tag-version"
   },
   "dependencies": {
-    "@msar/types.archive": "^0.1.4"
+    "@msar/types.archive": "^0.1.4",
+    "probe-image-size": "^7.2.3"
   },
   "devDependencies": {
     "@battis/descriptive-types": "^0.2.0",
     "@battis/typescript-tricks": "^0.7.4",
     "@msar/types.snapshot": "^0.1.8",
     "@tsconfig/node20": "^20.1.4",
+    "@types/probe-image-size": "^7.2.5",
     "commit-and-tag-version": "^12.5.0",
     "del-cli": "^6.0.0",
     "ejs": "^3.1.10",
