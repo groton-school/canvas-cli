@@ -5,6 +5,7 @@
 ## Notes
 
 - Assignments --> Assignments
+  - Assignment Types --> Assignment Groups (assignments without types are put in the "Assignments" assignment group)
 - Bulletin Board --> Page (set to front page, with default course view defaulting to Pages)
   - RSS Reader --> Announcements External Feed (not shown on page)
 - Topic --> Page

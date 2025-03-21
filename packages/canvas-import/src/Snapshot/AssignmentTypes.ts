@@ -28,7 +28,7 @@ export function toCanvasArgs(
   assignmentType: Model
 ): Canvas.AssigmentGroups.Parameters {
   return {
-    name: assignmentType.type,
+    name: assignmentType.type !== '' ? assignmentType.type : 'Assignments',
     group_weight: assignmentType.Weight
   };
 }
