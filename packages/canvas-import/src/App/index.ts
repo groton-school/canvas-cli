@@ -3,7 +3,9 @@ import { Core } from '@battis/qui-cli.core';
 import '@battis/qui-cli.env';
 import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
+import { Validators } from '@battis/qui-cli.validators';
 import * as Canvas from '@groton/canvas-types';
+import { input } from '@inquirer/prompts';
 import { Output } from '@msar/output';
 import * as Imported from '@msar/types.import';
 import fs from 'node:fs';
@@ -35,8 +37,9 @@ export type Configuration = Plugin.Configuration & {
   topics?: boolean;
 };
 
-export const name = 'sis-import';
+export const name = 'canvas-import';
 export const src = path.dirname(import.meta.dirname);
+let canvasInstanceUrl: string | undefined;
 
 export function configure(config: Configuration = {}) {
   Preferences.setDuplicates(config.duplicates);
@@ -45,8 +48,34 @@ export function configure(config: Configuration = {}) {
   Preferences.setBulletinBoard(config.bulletinBoard);
   Preferences.setTopics(config.topics);
   Snapshot.setPath(config.snapshotPath);
-  if (config.canvasInstanceUrl) {
-    Canvas.setUrl(config.canvasInstanceUrl);
+  const oldCanvasInstanceUrl = canvasInstanceUrl;
+  canvasInstanceUrl = Plugin.hydrate(
+    config.canvasInstanceUrl,
+    canvasInstanceUrl
+  );
+  if (canvasInstanceUrl && canvasInstanceUrl !== oldCanvasInstanceUrl) {
+    Canvas.setUrl(canvasInstanceUrl);
+    if (
+      process.env.CANVAS_CLIENT_ID &&
+      process.env.CANVAS_CLIENT_SECRET &&
+      process.env.CANVAS_REDIRECT_URI
+    ) {
+      Log.info(`Using Canvas instance ${Colors.url(canvasInstanceUrl)}`);
+      const canvasConfig = {
+        instance_url: canvasInstanceUrl,
+        client_id: process.env.CANVAS_CLIENT_ID,
+        client_secret: process.env.CANVAS_CLIENT_SECRET,
+        redirect_uri: process.env.CANVAS_REDIRECT_URI
+      };
+      if (process.env.CANVAS_TOKEN_STORE) {
+        // @ts-ignore-error 2339 should really type CanvasConfig, but need to directly import @oauth2-cli/canvas for that
+        canvasConfig.store = path.join(
+          process.env.CANVAS_TOKEN_STORE,
+          `${new URL(canvasInstanceUrl).hostname}.json`
+        );
+      }
+      Canvas.init(canvasConfig);
+    }
   }
   OneRoster.setInstanceId(config.blackbaudInstanceId);
   OneRoster.setTermsPath(config.termsPath);
@@ -111,20 +140,21 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
       ...values
     }
   } = args;
-  SkyAPI.init({
-    client_id: process.env.SKY_CLIENT_ID!,
-    client_secret: process.env.SKY_CLIENT_SECRET!,
-    subscription_key: process.env.SKY_SUBSCRIPTION_KEY!,
-    redirect_uri: process.env.SKY_REDIRECT_URI!,
-    store: './var/sky-api.json'
-  });
-  Canvas.init({
-    instance_url: canvasInstanceUrl!,
-    client_id: process.env.CANVAS_CLIENT_ID!,
-    client_secret: process.env.CANVAS_CLIENT_SECRET!,
-    redirect_uri: process.env.CANVAS_REDIRECT_URI!,
-    store: process.env.CANVAS_TOKEN_STORE
-  });
+  if (
+    process.env.SKY_CLIENT_ID &&
+    process.env.SKY_CLIENT_SECRET &&
+    process.env.SKY_SUBSCRIPTION_KEY &&
+    process.env.SKY_REDIRECT_URI &&
+    process.env.SKY_TOKEN_STORAGE
+  ) {
+    SkyAPI.init({
+      client_id: process.env.SKY_CLIENT_ID,
+      client_secret: process.env.SKY_CLIENT_SECRET,
+      subscription_key: process.env.SKY_SUBSCRIPTION_KEY,
+      redirect_uri: process.env.SKY_REDIRECT_URI,
+      store: process.env.SKY_TOKEN_STORAGE
+    });
+  }
   configure({
     blackbaudInstanceId,
     canvasInstanceUrl,
@@ -134,6 +164,24 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
     snapshotPath,
     ...values
   });
+}
+
+let _workspaceTerm: Canvas.EnrollmentTerms.Model | undefined = undefined;
+async function workspaceTerm() {
+  if (!_workspaceTerm) {
+    _workspaceTerm = await Canvas.EnrollmentTerms.get({
+      sis_term_id: Preferences.WORKSPACE_TERM
+    });
+    if (!_workspaceTerm) {
+      _workspaceTerm = await Canvas.EnrollmentTerms.create({
+        args: {
+          'enrollment_term[sis_term_id]': Preferences.WORKSPACE_TERM,
+          'enrollment_term[name]': 'Import Workspace'
+        }
+      });
+    }
+  }
+  return _workspaceTerm;
 }
 
 export async function run() {
@@ -152,26 +200,28 @@ export async function run() {
     spinner.fail(Colors.error((error as Error).message));
   }
 
-  let workspaceTerm = await Canvas.EnrollmentTerms.get({
-    sis_term_id: Preferences.WORKSPACE_TERM
-  });
-  if (!workspaceTerm) {
-    workspaceTerm = await Canvas.EnrollmentTerms.create({
-      args: {
-        'enrollment_term[sis_term_id]': Preferences.WORKSPACE_TERM,
-        'enrollment_term[name]': 'Import Workspace'
-      }
-    });
-  }
-
   // TODO write partial updates to index or tmp piecemeal
   for (const section of snapshots) {
+    if (section.SectionInfo?.canvas?.instance_url) {
+      configure({
+        canvasInstanceUrl:
+          section.SectionInfo.canvas.instance_url ||
+          canvasInstanceUrl ||
+          (await input({
+            message: `What is the hostname for your Canvas instance?`,
+            validate: (value) => !!Validators.isHostname({})(value),
+            transformer: (hostname: string) => `https://${hostname}`
+          }))
+      });
+    }
+
     let course = await Canvas.Courses.get({
       sis_course_id: OneRoster.sis_course_id(section)
     });
     if (course) {
       course = await handleDuplicateCourse({ course, section });
     } else {
+      await workspaceTerm();
       course = await Canvas.Courses.create({
         account_id: OneRoster.account_id(section),
         args: {
@@ -181,12 +231,11 @@ export async function run() {
       });
     }
     if (course) {
-      // TODO check instance_url and alert on mismatch with process.env.CANVAS_INSTANCE_URL
       // TODO consolidate in importCourse
       if (section.SectionInfo) {
         section.SectionInfo.canvas = {
           id: course.id,
-          instance_url: process.env.CANVAS_INSTANCE_URL,
+          instance_url: canvasInstanceUrl,
           args: Snapshot.Section.toCanvasArgs(section),
           created_at: course.created_at
         };
