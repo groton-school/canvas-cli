@@ -25,7 +25,7 @@ await Core.configure({ core: { requirePositionals: true } });
 
 export type Configuration = Plugin.Configuration & {
   blackbaudInstanceId?: string;
-  canvasInstanceUrl?: string | URL;
+  canvasInstanceUrl?: string;
   termsPath?: string;
   departmentAccountMapPath?: string;
   coursesWithDepartmentsPath?: string;
@@ -39,7 +39,6 @@ export type Configuration = Plugin.Configuration & {
 
 export const name = 'canvas-import';
 export const src = path.dirname(import.meta.dirname);
-let canvasInstanceUrl: string | undefined;
 
 export function configure(config: Configuration = {}) {
   Preferences.setDuplicates(config.duplicates);
@@ -48,21 +47,16 @@ export function configure(config: Configuration = {}) {
   Preferences.setBulletinBoard(config.bulletinBoard);
   Preferences.setTopics(config.topics);
   Snapshot.setPath(config.snapshotPath);
-  const oldCanvasInstanceUrl = canvasInstanceUrl;
-  canvasInstanceUrl = Plugin.hydrate(
-    config.canvasInstanceUrl,
-    canvasInstanceUrl
-  );
-  if (canvasInstanceUrl && canvasInstanceUrl !== oldCanvasInstanceUrl) {
-    Canvas.setUrl(canvasInstanceUrl);
+  if (config.canvasInstanceUrl) {
+    Canvas.setUrl(config.canvasInstanceUrl);
     if (
       process.env.CANVAS_CLIENT_ID &&
       process.env.CANVAS_CLIENT_SECRET &&
       process.env.CANVAS_REDIRECT_URI
     ) {
-      Log.info(`Using Canvas instance ${Colors.url(canvasInstanceUrl)}`);
+      Log.info(`Using Canvas instance ${Colors.url(config.canvasInstanceUrl)}`);
       const canvasConfig = {
-        instance_url: canvasInstanceUrl,
+        instance_url: config.canvasInstanceUrl,
         client_id: process.env.CANVAS_CLIENT_ID,
         client_secret: process.env.CANVAS_CLIENT_SECRET,
         redirect_uri: process.env.CANVAS_REDIRECT_URI
@@ -71,7 +65,7 @@ export function configure(config: Configuration = {}) {
         // @ts-ignore-error 2339 should really type CanvasConfig, but need to directly import @oauth2-cli/canvas for that
         canvasConfig.store = path.join(
           process.env.CANVAS_TOKEN_STORE,
-          `${new URL(canvasInstanceUrl).hostname}.json`
+          `${new URL(config.canvasInstanceUrl).hostname}.json`
         );
       }
       Canvas.init(canvasConfig);
@@ -206,7 +200,8 @@ export async function run() {
       configure({
         canvasInstanceUrl:
           section.SectionInfo.canvas.instance_url ||
-          canvasInstanceUrl ||
+          Canvas.getUrl() ||
+          process.env.CANVAS_INSTANCE_URL ||
           (await input({
             message: `What is the hostname for your Canvas instance?`,
             validate: (value) => !!Validators.isHostname({})(value),
@@ -235,7 +230,7 @@ export async function run() {
       if (section.SectionInfo) {
         section.SectionInfo.canvas = {
           id: course.id,
-          instance_url: canvasInstanceUrl,
+          instance_url: Canvas.getUrl(),
           args: Snapshot.Section.toCanvasArgs(section),
           created_at: course.created_at
         };

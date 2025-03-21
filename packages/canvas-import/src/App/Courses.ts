@@ -37,7 +37,7 @@ export async function handleDuplicateCourse({ course, section }: Options) {
       if (section.SectionInfo) {
         section.SectionInfo.canvas = {
           id: course.id,
-          instance_url: process.env.CANVAS_INSTANCE_URL,
+          instance_url: Canvas.getUrl(),
           args: {},
           created_at: course.created_at
         };
