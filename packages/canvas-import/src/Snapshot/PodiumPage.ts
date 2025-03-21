@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-types';
 import * as Imported from '@msar/types.import';
 import ejs from 'ejs';
@@ -25,7 +26,7 @@ export async function toCanvasArgs({
   for (const i in body) {
     let item = (await Files.uploadLocalFiles({
       course,
-      entry: body[i]
+      entry: body[i] as JSONValue
     })) as Imported.Topics.Item | Imported.BulletinBoard.Item;
     if (Content.RSSReader.isRSSReaderContainer(item)) {
       item = await Content.RSSReader.convertToExternalFeed({

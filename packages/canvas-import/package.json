@@ -46,6 +46,7 @@
     "node-fetch": "^3.3.2",
     "open": "^10.1.0",
     "ora": "^8.2.0",
+    "probe-image-size": "^7.2.3",
     "string-strip-html": "^13.4.12"
   },
   "devDependencies": {
@@ -56,6 +57,7 @@
     "@commitlint/config-pnpm-scopes": "^19.8.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/ejs": "^3.1.5",
+    "@types/probe-image-size": "^7.2.5",
     "commit-and-tag-version": "^12.5.0",
     "copyfiles": "^2.4.1",
     "datadirect": "^0.4.5",

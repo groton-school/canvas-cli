@@ -1,9 +1,25 @@
-<div style="max-height: 90vh; border-radius: 1em; border: solid 1px lightgray; <%= locals.style ? style : '' %>">
+<%
+    const hostname = new URL(image.url).hostname;
+    let width = undefined;
+    let height = undefined;
+    if (locals.dimensions && locals.size) {
+        width = dimensions.width;
+        height = dimensions.height;
+        if (width > height && width > size) {
+            const ratio = size / width;
+            width = size;
+            height = height * ratio;
+        } else if (height >= width && height > size / 1.618) {
+            const ratio = (size / 1.618) / height;
+            height = size / 1.618;
+            width = width * ratio;
+        }
+    }
+%><div style="max-height: 90vh; border-radius: 1em; border: solid 1px lightgray; margin: 1em; padding: 1em; <%= locals.style ? style : '' %>">
     <div>
-        <% const hostname = new URL(image.url).hostname; %>
-        <img id="<%= image.id %>" src="https://<%= hostname %>/courses/<%= course_id %>/files/<%= image.id %>/preview" alt="<%= image.display_name %>" data-api-endpoint="http://<%= hostname %>/api/v1/courses/<%= course_id %>/files/<%= image.id %>" data-api-returntype="File" />
+        <img id="<%= image.id %>" src="https://<%= hostname %>/courses/<%= course_id %>/files/<%= image.id %>/preview" alt="<%= image.display_name %>" data-api-endpoint="http://<%= hostname %>/api/v1/courses/<%= course_id %>/files/<%= image.id %>" data-api-returntype="File" width="<%= width %>" height="<%= height %>" />
     </div>
     <% if (locals.caption) { %>
-        <div><small><%- caption %></small></div>
+        <div style="text-align: center;"><small><%- caption %></small></div>
     <% } %>
 </div>

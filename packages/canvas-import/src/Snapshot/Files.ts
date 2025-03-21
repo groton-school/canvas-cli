@@ -8,6 +8,7 @@ import * as Imported from '@msar/types.import';
 import { EventEmitter } from 'node:events';
 import fs from 'node:fs';
 import path from 'node:path';
+import probe from 'probe-image-size';
 import { Preferences } from '../App/index.js';
 import * as IndexFile from './IndexFile.js';
 
@@ -99,6 +100,10 @@ export async function uploadLocalFiles({
         `${Colors.error('Could not upload unarchived file:')} ${Log.syntaxColor(entry)}`
       );
     } else {
+      const localPath = path.join(
+        path.dirname(IndexFile.path()),
+        entry.localPath
+      );
       // FIXME redundant manual Files.Parameters definition
       const args: Canvas.Files.Parameters = {
         parent_folder_path: path.join(
@@ -106,11 +111,18 @@ export async function uploadLocalFiles({
           path.dirname(entry.localPath.replace(/^\//, ''))
         ),
         name: name || entry.filename,
-        size: fs.statSync(
-          path.join(path.dirname(IndexFile.path()), entry.localPath)
-        ).size,
+        size: fs.statSync(localPath).size,
         on_duplicate: 'overwrite'
       };
+      try {
+        if (!('dimensions' in entry)) {
+          (entry as Imported.Annotation).dimensions = await probe(
+            fs.createReadStream(localPath)
+          );
+        }
+      } catch (_) {
+        // ignore non-image probe errors
+      }
       if (
         Imported.isAnnotated(entry) &&
         Preferences.duplicates() === 'update'

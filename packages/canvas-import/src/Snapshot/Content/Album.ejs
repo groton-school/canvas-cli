@@ -8,7 +8,8 @@
                         image: Array.isArray(content.Content) ? content.Content[0].FilenameUrl.canvas : content.FilePath.canvas,
                         course_id,
                         caption: content.CoverCaption,
-                        style: "height: 4em;"
+                        dimensions: Array.isArray(content.Content) ? content.Content[0].FilenameUrl.dimensions : content.FilePath.dimensions,
+                        size: 100
                     }
                 )
             %>
