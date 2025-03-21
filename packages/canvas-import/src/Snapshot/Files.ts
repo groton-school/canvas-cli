@@ -30,28 +30,35 @@ type ToCanvasArgsOptions = {
 };
 
 const AWAITING = true;
-const cache: Record<string, Canvas.Files.Model | typeof AWAITING> = {};
+const cache: Record<
+  number,
+  Record<string, Canvas.Files.Model | typeof AWAITING>
+> = {};
 const ready = new EventEmitter();
 ready.setMaxListeners(1000);
 
 async function getCached(
+  course_id: number,
   localPath: string,
   uploader: () => Promise<Canvas.Files.Model>
 ): Promise<Canvas.Files.Model> {
-  if (localPath in cache) {
-    if (cache[localPath] === AWAITING) {
+  if (!(course_id in cache)) {
+    cache[course_id] = {};
+  }
+  if (localPath in cache[course_id]) {
+    if (cache[course_id][localPath] === AWAITING) {
       return new Promise((resolve) => {
-        ready.on(localPath, () =>
-          resolve(cache[localPath] as Canvas.Files.Model)
+        ready.on(`${course_id}:${localPath}`, () =>
+          resolve(cache[course_id][localPath] as Canvas.Files.Model)
         );
       });
     }
-    return cache[localPath] as Canvas.Files.Model;
+    return cache[course_id][localPath] as Canvas.Files.Model;
   } else {
-    cache[localPath] = AWAITING;
-    cache[localPath] = await uploader();
-    ready.emit(localPath);
-    return cache[localPath] as Canvas.Files.Model;
+    cache[course_id][localPath] = AWAITING;
+    cache[course_id][localPath] = await uploader();
+    ready.emit(`${course_id}:${localPath}`);
+    return cache[course_id][localPath] as Canvas.Files.Model;
   }
 }
 
@@ -81,6 +88,7 @@ type UploadLocalFilesOptions = {
   name?: string;
 };
 
+// TODO identify duplicate files
 /*
  * FIXME upload IMG elements with src="data:…"
  *   see https://groton.instructure.com/courses/936/assignments/4087
@@ -123,23 +131,22 @@ export async function uploadLocalFiles({
       } catch (_) {
         // ignore non-image probe errors
       }
+      let uploaded = false;
       if (
         Imported.isAnnotated(entry) &&
         Preferences.duplicates() === 'update'
       ) {
-        if (!Imported.isEqual(args, entry.canvas.args)) {
-          // FIXME deal with changed files
-          Log.error(
-            Colors.error(
-              `File ${Colors.url(entry.localPath)} has changed but was not updated`
-            )
-          );
-          Log.error({ new: args, old: entry.canvas.args });
-        } else {
+        if (
+          Imported.isEqual(args, entry.canvas.args) &&
+          entry.canvas.course_id === course.id
+        ) {
           Log.info(`File ${Colors.url(entry.localPath)} is up-to-date`);
+          uploaded = true;
         }
-      } else {
+      }
+      if (!uploaded) {
         const file = await getCached(
+          course.id,
           entry.localPath,
           async () =>
             await Canvas.Files.upload({
@@ -154,6 +161,7 @@ export async function uploadLocalFiles({
         (entry as Imported.Annotation).canvas = {
           args,
           id: file.id,
+          course_id: course.id,
           display_name: file.display_name,
           url: file.url,
           created_at: file.created_at,
