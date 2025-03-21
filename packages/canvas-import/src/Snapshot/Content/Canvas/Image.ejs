@@ -1,0 +1,9 @@
+<div style="max-height: 90vh; border-radius: 1em; border: solid 1px lightgray; <%= locals.style ? style : '' %>">
+    <div>
+        <% const hostname = new URL(image.url).hostname; %>
+        <img id="<%= image.id %>" src="https://<%= hostname %>/courses/<%= course_id %>/files/<%= image.id %>/preview" alt="<%= image.display_name %>" data-api-endpoint="http://<%= hostname %>/api/v1/courses/<%= course_id %>/files/<%= image.id %>" data-api-returntype="File" />
+    </div>
+    <% if (locals.caption) { %>
+        <div><small><%- caption %></small></div>
+    <% } %>
+</div>

@@ -1,0 +1,5 @@
+<div>
+    <% for (const item of content) { %>
+        <%- include('Image', {image: item.OriginalFilenameUrl.canvas, course_id, caption: item.Caption }); %>
+    <% } %>
+</div>

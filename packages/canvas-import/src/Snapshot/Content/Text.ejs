@@ -3,15 +3,9 @@
     <div>
         <h3><%= item.Description %></h3>
         <div style="display: flex; flex-direction: row;">
-            <% if (item.Photos) {
-                for(const photo of item.Photos) { %>
-                <a href="photo." style="display: block;">
-                    <div>
-                        <img id="<%= photo.LargeFilenameUrl.id %>" src="<%= photo.LargeFilenameUrl.url %>" alt="<%= photo.LargeFilenameUrl.display_name %>" style="height: 3em;"/>
-                    </div>
-                    <div><%= photo.Caption %></div>
-                </a>
-            <% }} %>
+            <% if (item.Photos) { %>
+                <%- include('Canvas/ImageGallery', {images: item.Photos.map(p => ({...p.LargeFilenameUrl.canvas, caption: p.Caption})), course_id, style: 'height: 100%'}) %>
+            <% } %>
             <div><%- item.LongText %></div>
         </div>
     </div>

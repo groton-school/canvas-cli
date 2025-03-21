@@ -1,27 +1,17 @@
-
-<%
-if (Array.isArray(content.Content)) {
-    const albums = content.Content.reduce((albums, photo) => {
-        if (!albums[photo.AlbumId]) {
-            albums[photo.AlbumId] = [photo];
-        } else {
-            albums[photo.AlbumId].push(photo);
-        }
-        return albums;
-    }, {});
-%>
-<% for (const id in albums) { %>
-    <div>
-        <h3><%= albums[id][0].AlbumName %></h3>
-        <% for (const photo of albums[id]) { %>
-        <a href="">
-            <div>
-                <img id="<%= photo.FilenameUrl.id %>" src="<%= photo.FilenameUrl.url %>" alt="<%= photo.FilenameUrl.display_name %>" style="height: 3em;" />
-            </div>
-            <div><small><%= photo.CoverCaption %></small></div>
+<div>
+    <% for (const album of content.AlbumContent || []) { %>
+        <h4><%= content.Content.reduce((title, cover) => cover.AlbumId === album.AlbumId ? cover.AlbumName : title, content.CoverTitle ) %></h4>
+        <a href="/courses/<%= course_id %>/pages/<%= album.canvas.url %>" style="display: block;">
+            <%- include(
+                    'Canvas/Image',
+                    {
+                        image: Array.isArray(content.Content) ? content.Content[0].FilenameUrl.canvas : content.FilePath.canvas,
+                        course_id,
+                        caption: content.CoverCaption,
+                        style: "height: 4em;"
+                    }
+                )
+            %>
         </a>
-        <%} %>
-    </div>
-<% }} else { %>
-<pre lang="json"><%= JSON.stringify(content, null, 2) %></pre>
-<% } %>
+    <% } %>
+</div>

@@ -1,0 +1,5 @@
+<%
+    style = locals.style ? style : undefined;
+    for (const image of images) { %>
+    <%- include('Image', {image, course_id, style}) %>
+<% } %>

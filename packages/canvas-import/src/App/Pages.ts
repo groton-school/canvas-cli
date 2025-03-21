@@ -55,36 +55,38 @@ export async function importBulletinBoard({ course, section }: Options) {
 export async function importTopics({ course, section }: Options) {
   if (section.Topics) {
     for (const topic of section.Topics) {
-      const args = await Snapshot.PodiumPage.toCanvasArgs({
-        course,
-        title: topic.Name,
-        body: topic.Content || [],
-        layout: topic.LayoutId
-      });
-      let canvasTopic: Canvas.Pages.Model | undefined = undefined;
-      if (topic.canvas?.id && Preferences.duplicates() === 'update') {
-        if (!Imported.isEqual(args, topic.canvas.args)) {
-          canvasTopic = await Canvas.Pages.update({
+      if (topic.Content) {
+        const args = await Snapshot.PodiumPage.toCanvasArgs({
+          course,
+          title: topic.Name,
+          body: topic.Content,
+          layout: topic.LayoutId
+        });
+        let canvasTopic: Canvas.Pages.Model | undefined = undefined;
+        if (topic.canvas?.id && Preferences.duplicates() === 'update') {
+          if (!Imported.isEqual(args, topic.canvas.args)) {
+            canvasTopic = await Canvas.Pages.update({
+              course,
+              page: { page_id: topic.canvas.id } as Canvas.Pages.Model,
+              args
+            });
+          } else {
+            Log.info(`Page ${Colors.value(topic.Name)} is up-to-date`);
+          }
+        } else {
+          canvasTopic = await Canvas.Pages.create({
             course,
-            page: { page_id: topic.canvas.id } as Canvas.Pages.Model,
             args
           });
-        } else {
-          Log.info(`Page ${Colors.value(topic.Name)} is up-to-date`);
         }
-      } else {
-        canvasTopic = await Canvas.Pages.create({
-          course,
-          args
-        });
-      }
-      if (canvasTopic) {
-        topic.canvas = {
-          id: canvasTopic.page_id,
-          blackbaud_id: topic.TopicId,
-          args,
-          created_at: canvasTopic.created_at
-        };
+        if (canvasTopic) {
+          topic.canvas = {
+            id: canvasTopic.page_id,
+            blackbaud_id: topic.TopicId,
+            args,
+            created_at: canvasTopic.created_at
+          };
+        }
       }
     }
   }

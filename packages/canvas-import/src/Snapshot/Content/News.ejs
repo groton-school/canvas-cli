@@ -5,8 +5,8 @@
         <% content.Content.forEach(item => { %>
         <dt><%= item.Name %></dt>
         <dd><%= item.PublishDate %></dd>
-        <% for (const photo of item.PhotoList || []) { %>
-            <dd><img id="<%= photo.LargeFilenameUrl.id %>" src="<%= photo.LargeFilenameUrl.url %>" alt="<%= photo.LargeFilenameUrl.display_name %>" style="height: 2em;" /></dd>
+        <% if (item.PhotoList && item.PhotoList.length) { %>
+            <dd><%- include('Canvas/ImageGallery', {images: item.PhotoList.map(p => ({...p.LargeFilenameUrl.canvas, caption: p.Caption})), course_id, style: 'width: 100%'}) %></dd>
         <% } %>
         <dd><%- item.BriefDescription %></dd>
         <dd><%- item.Description %></dd>
