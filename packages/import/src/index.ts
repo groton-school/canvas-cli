@@ -1,5 +1,6 @@
 import { BulletinBoard, GradeBook, Metadata } from '@msar/types.archive';
 
+export * as AlbumContent from './AlbumContent.js';
 export * from './Annotation.js';
 export * as Assignments from './Assignments.js';
 export * as ContentItem from './ContentItem.js';
