@@ -1,4 +1,14 @@
 <div>
-    <h3>Photo</h3>
-    <%- include('Album', { content, course_id }); %>
+    <h3><%= content.ShortDescription || 'Photo' %></h3>
+    <% if (content.Content && content.Content.length) { %>
+        <%- include('Album', { content, course_id }); %>
+    <% } else { %>
+        <%- include('Canvas/Image', {
+            image: content.FilePath.canvas,
+            course_id,
+            caption: content.LongDescription,
+            dimensions: content.FilePath.dimensions,
+            size: 600
+        }) %>
+    <% }%>
 </div>
