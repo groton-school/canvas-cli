@@ -2,7 +2,7 @@
     <h3><%= content.ShortDescription || 'Photo' %></h3>
     <% if (content.Content && content.Content.length) { %>
         <%- include('Album', { content, course_id }); %>
-    <% } else { %>
+    <% } else if (content.FilePath && content.FilePath.canvas) { %>
         <%- include('Canvas/Image', {
             image: content.FilePath.canvas,
             course_id,
@@ -10,5 +10,7 @@
             dimensions: content.FilePath.dimensions,
             size: 600
         }) %>
+    <% } else { %>
+        <%- include('Unknown', { content }); %>
     <% }%>
 </div>
