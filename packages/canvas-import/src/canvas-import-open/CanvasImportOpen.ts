@@ -3,6 +3,7 @@ import { Core } from '@battis/qui-cli.core';
 import '@battis/qui-cli.env';
 import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
+import { Root } from '@battis/qui-cli.root';
 import * as Imported from '@msar/types.import';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -49,7 +50,7 @@ export function run() {
     throw new Error(`Snapshot path ${Colors.value('arg0')} is not defined`);
   }
   const snapshots = JSON.parse(
-    fs.readFileSync(path.resolve(process.cwd(), snapshotPath)).toString()
+    fs.readFileSync(path.resolve(Root.path(), snapshotPath)).toString()
   ) as Imported.Multiple.Data;
   for (const snapshot of snapshots) {
     if (snapshot.SectionInfo?.canvas?.id) {
