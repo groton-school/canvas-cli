@@ -101,7 +101,6 @@ export async function toCanvasArgs({
     args['assignment[points_possible]'] = assignment.MaxPoints;
   } else {
     args['assignment[omit_from_final_grade]'] = true;
-    args['assignment[hide_in_gradebook]'] = true;
   }
 
   return args;
