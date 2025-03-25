@@ -1,11 +1,11 @@
 {
   "name": "@msar/types.import",
   "version": "0.0.0",
-  "homepage": "https://github.com/groton-school/canvas-import/tree/main/packages/import#readme",
+  "homepage": "https://github.com/groton-school/canvas-import/tree/main/packages/msar/types.import#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/groton-school/canvas-import.git",
-    "directory": "packages/import"
+    "directory": "packages/msar/types.import"
   },
   "author": {
     "name": "Seth Battis",

@@ -8,11 +8,11 @@
     "oauth",
     "cli"
   ],
-  "homepage": "https://github.com/groton-school/canvas-import/tree/main/packages/oauth2-cli#readme",
+  "homepage": "https://github.com/groton-school/canvas-import/tree/main/packages/oauth2-cli/canvas#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/groton-school/canvas-import.git",
-    "directory": "packages/oauth2-cli"
+    "directory": "packages/oauth2-cli/canvas"
   },
   "author": {
     "name": "Seth Battis",

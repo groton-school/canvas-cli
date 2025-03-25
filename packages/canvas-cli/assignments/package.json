@@ -1,6 +1,16 @@
 {
   "name": "@groton/canvas-assignments-cli",
   "version": "0.0.0",
+  "homepage": "https://github.com/groton-school/canvas-import/tree/main/packages/canvas-cli/assignments#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groton-school/canvas-import.git",
+    "directory": "packages/canvas-cli/assignments"
+  },
+  "author": {
+    "name": "Seth Battis",
+    "email": "sbattis@groton.org"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
