@@ -645,3 +645,93 @@ export async function update({ course, assignment, args }: UpdateOptions) {
   spinner.succeed(`Updated assignment ${Colors.value(result.name)}`);
   return result;
 }
+
+type ListParameters = {
+  /** Optional information to include with each assignment:
+
+    submission
+
+    The current user’s current Submission
+
+    assignment_visibility
+
+    An array of ids of students who can see the assignment
+
+    all_dates
+
+    An array of AssignmentDate structures, one for each override, and also a base if the assignment has an “Everyone” / “Everyone Else” date
+
+    overrides
+
+    An array of AssignmentOverride structures
+
+    observed_users
+
+    An array of submissions for observed users
+
+    can_edit
+
+    an extra Boolean value will be included with each Assignment (and AssignmentDate if all_dates is supplied) to indicate whether the caller can edit the assignment or date. Moderated grading and closed grading periods may restrict a user’s ability to edit an assignment.
+
+    score_statistics
+
+    An object containing min, max, and mean score on this assignment. This will not be included for students if there are less than 5 graded assignments or if disabled by the instructor. Only valid if ‘submission’ is also included.
+
+    ab_guid
+
+    An array of guid strings for academic benchmarks
+
+    Allowed values:
+    submission, assignment_visibility, all_dates, overrides, observed_users, can_edit, score_statistics, ab_guid */
+  include?: string[];
+  /** The partial title of the assignments to match and return. */
+  search_term?: string;
+  /** Apply assignment overrides for each assignment, defaults to true. */
+  override_assignment_dates?: boolean;
+  /** Split up “needs_grading_count” by sections into the “needs_grading_count_by_section” key, defaults to false */
+  needs_grading_count_by_section?: boolean;
+  /** If included, only return certain assignments depending on due date and submission status.
+
+    Allowed values:
+    past, overdue, undated, ungraded, unsubmitted, upcoming, future */
+  bucket?: string;
+  /** if set, return only assignments specified */
+  assignment_ids?: string[];
+  /** Determines the order of the assignments. Defaults to “position”.
+
+    Allowed values:
+    position, name, due_at */
+  order_by?: string;
+  /** Return only assignments that have post_to_sis set or not set. */
+  post_to_sis?: boolean;
+  /** Return only New Quizzes assignments */
+  new_quizzes?: boolean;
+
+  per_page?: number;
+};
+
+type ListOptions = {
+  course_id: number;
+  args: ListParameters;
+};
+
+export async function list({ course_id, args }: ListOptions) {
+  const spinner = ora(
+    `Listing assignments for course ${Colors.value(course_id)}`
+  ).start();
+  const result = (await canvas().fetch(
+    `/api/v1/courses/${course_id}/assignments?${new URLSearchParams(stringify(args)).toString()}`
+  )) as Model[];
+  if (isError(result)) {
+    spinner.fail(
+      `Error listing assignments for course ${Colors.value(course_id)}`
+    );
+    throw new Error(
+      `Error listing assignments: ${Log.syntaxColor({ course_id, args: stringify(args), error: result })}`
+    );
+  }
+  spinner.succeed(
+    `Listed ${result.length} assignments for course ${Colors.value(course_id)}`
+  );
+  return result;
+}
