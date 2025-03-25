@@ -1,2 +1,8 @@
 packages:
   - 'packages/*'
+  - '!packages/canvas-cli'
+  - 'packages/canvas-cli/*'
+  - '!packages/msar'
+  - 'packages/msar/*'
+  - '!packages/oauth2-cli'
+  - 'packages/oauth2-cli/*'
