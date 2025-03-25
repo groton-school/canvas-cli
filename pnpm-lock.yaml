@@ -33,6 +33,46 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
 
+  packages/assignments:
+    dependencies:
+      '@groton/canvas-types':
+        specifier: workspace:*
+        version: link:../canvas-types
+      '@oauth2-cli/canvas':
+        specifier: workspace:*
+        version: link:../oauth2-cli
+    devDependencies:
+      '@battis/qui-cli.colors':
+        specifier: ^2.0.1
+        version: 2.0.1(@battis/qui-cli.plugin@2.3.0)
+      '@battis/qui-cli.core':
+        specifier: ^2.1.0
+        version: 2.1.0(@battis/qui-cli.plugin@2.3.0)
+      '@battis/qui-cli.env':
+        specifier: ^2.0.4
+        version: 2.0.4(@battis/qui-cli.plugin@2.3.0)(@battis/qui-cli.root@2.0.2(@battis/qui-cli.plugin@2.3.0))
+      '@battis/qui-cli.log':
+        specifier: ^2.1.0
+        version: 2.1.0(@battis/qui-cli.colors@2.0.1(@battis/qui-cli.plugin@2.3.0))(@battis/qui-cli.plugin@2.3.0)(@battis/qui-cli.root@2.0.2(@battis/qui-cli.plugin@2.3.0))
+      '@battis/qui-cli.plugin':
+        specifier: ^2.3.0
+        version: 2.3.0
+      '@tsconfig/node20':
+        specifier: ^20.1.5
+        version: 20.1.5
+      commit-and-tag-version:
+        specifier: ^12.5.0
+        version: 12.5.0
+      del-cli:
+        specifier: ^6.0.0
+        version: 6.0.0
+      npm-run-all:
+        specifier: ^4.1.5
+        version: 4.1.5
+      typescript:
+        specifier: ^5.8.2
+        version: 5.8.2
+
   packages/canvas-import:
     dependencies:
       '@battis/qui-cli.colors':

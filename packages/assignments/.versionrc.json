@@ -1,0 +1,5 @@
+{
+  "path": ".",
+  "tag-prefix": "assignments/",
+  "releaseCommitMessageFormat": "chore(assignments): @groton/canvas-assignments-cli@{{currentTag}}"
+}
