@@ -8,4 +8,5 @@ export * as EnrollmentTerms from './EnrollmentTerms.js';
 export * from './Error.js';
 export * as Files from './Files.js';
 export * as Pages from './Pages.js';
+export * as Rubrics from './Rubrics.js';
 export * from './URL.js';
