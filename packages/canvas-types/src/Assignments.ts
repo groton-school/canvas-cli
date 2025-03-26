@@ -2,8 +2,7 @@ import {
   DateString,
   DateTimeString,
   HTMLString,
-  URLString,
-  UUIDString
+  URLString
 } from '@battis/descriptive-types';
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
@@ -11,6 +10,7 @@ import ora from 'ora';
 import { canvas, stringify } from './Client.js';
 import * as Courses from './Courses.js';
 import { isError } from './Error.js';
+import * as Rubrics from './Rubrics.js';
 import { url } from './URL.js';
 
 type ExternalToolTagAttributes = {
@@ -33,29 +33,6 @@ export type LockInfo = {
   /** (Optional) Context module causing the lock. */
   context_module?: any;
   manually_locked: boolean;
-};
-
-type RubricRating = {
-  points: number;
-  id: string;
-  description: string;
-  long_description: string;
-};
-
-type RubricCriteria = {
-  points: number;
-  /** The id of rubric criteria. */
-  id: string;
-  /** (Optional) The id of the learning outcome this criteria uses, if any. */
-  learning_outcome_id?: string;
-  /** (Optional) The 3rd party vendor's GUID for the outcome this criteria
-   * references, if any. */
-  vendor_guid?: UUIDString;
-  description: string;
-  long_description: string;
-  criterion_use_range: boolean;
-  ratings: boolean;
-  ignore_for_scoring: boolean;
 };
 
 /** Object representing a due date for an assignment or quiz. If the due date
@@ -354,10 +331,10 @@ export type Model = {
   use_rubric_for_grading?: boolean;
   /** (Optional) An object describing the basic attributes of the rubric, including
    *  the point total. Included if there is an associated rubric. */
-  rubric_settings?: any;
+  rubric_settings?: Partial<Rubrics.Model>;
   /** (Optional) A list of scoring criteria and ratings for each rubric criterion.
    *  Included if there is an associated rubric. */
-  rubric?: any;
+  rubric?: Rubrics.CreateParameters;
   /** (Optional) If 'assignment_visibility' is included in the 'include' parameter,
    *  includes an array of student IDs who can see this assignment. */
   assignment_visibility?: number[];
