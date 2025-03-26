@@ -140,14 +140,14 @@ importers:
         specifier: ^0.1.4
         version: 0.1.4(@battis/qui-cli.colors@2.0.1(@battis/qui-cli.plugin@2.3.0))(@battis/qui-cli.log@2.1.0(@battis/qui-cli.colors@2.0.1(@battis/qui-cli.plugin@2.3.0))(@battis/qui-cli.plugin@2.3.0)(@battis/qui-cli.root@2.0.2(@battis/qui-cli.plugin@2.3.0)))(@battis/qui-cli.plugin@2.3.0)(@battis/qui-cli.root@2.0.2(@battis/qui-cli.plugin@2.3.0))(@msar/debug@0.1.0(@battis/qui-cli.colors@2.0.1(@battis/qui-cli.plugin@2.3.0))(@battis/qui-cli.log@2.1.0(@battis/qui-cli.colors@2.0.1(@battis/qui-cli.plugin@2.3.0))(@battis/qui-cli.plugin@2.3.0)(@battis/qui-cli.root@2.0.2(@battis/qui-cli.plugin@2.3.0)))(@battis/qui-cli.plugin@2.3.0))(@msar/workflow@0.1.0(@battis/qui-cli.colors@2.0.1(@battis/qui-cli.plugin@2.3.0))(@battis/qui-cli.plugin@2.3.0))
       '@msar/types.archive':
-        specifier: ^0.1.4
-        version: 0.1.4(@msar/types.snapshot@0.1.9(ejs@3.1.10))
+        specifier: ^0.1.5
+        version: 0.1.5(@msar/types.snapshot@0.1.10(ejs@3.1.10))
       '@msar/types.import':
         specifier: workspace:*
         version: link:../types.import
       '@msar/types.snapshot':
-        specifier: ^0.1.9
-        version: 0.1.9(ejs@3.1.10)
+        specifier: ^0.1.10
+        version: 0.1.10(ejs@3.1.10)
       '@oauth2-cli/canvas':
         specifier: ^0.2.0
         version: 0.2.0(ejs@3.1.10)
@@ -231,8 +231,8 @@ importers:
   packages/msar/types.import:
     dependencies:
       '@msar/types.archive':
-        specifier: ^0.1.4
-        version: 0.1.4(@msar/types.snapshot@0.1.9(ejs@3.1.10))
+        specifier: ^0.1.5
+        version: 0.1.5(@msar/types.snapshot@0.1.10(ejs@3.1.10))
       probe-image-size:
         specifier: ^7.2.3
         version: 7.2.3
@@ -244,8 +244,8 @@ importers:
         specifier: ^0.7.4
         version: 0.7.4
       '@msar/types.snapshot':
-        specifier: ^0.1.9
-        version: 0.1.9(ejs@3.1.10)
+        specifier: ^0.1.10
+        version: 0.1.10(ejs@3.1.10)
       '@tsconfig/node20':
         specifier: ^20.1.5
         version: 20.1.5
@@ -908,6 +908,14 @@ packages:
     resolution: {integrity: sha512-9rJDWqiiidkI67sSHD7s90G0A9tE/NhZqLlsPYbVI1cg512D8JhAkK9vzGBWAphpb3iwRLWwP0HLvbSlq8X0oQ==}
     peerDependencies:
       '@msar/types.snapshot': '>=0.1.3 <1.0'
+
+  '@msar/types.archive@0.1.5':
+    resolution: {integrity: sha512-B7nMynuPKyKE5kaWOa1lncAf2ETw7epHoN9cOV6yagFxUJxm1d4KzYdjKoOXQvliZSOQJcFznxHfcFkPd4U0xg==}
+    peerDependencies:
+      '@msar/types.snapshot': '>=0.1.3 <1.0'
+
+  '@msar/types.snapshot@0.1.10':
+    resolution: {integrity: sha512-a7YwFF8CdhWCozyrZm9rBb4aTt/LfolMWnMLFQBbMjDRl6DNzcjvbT2rvWpzouDFaeLuTRs/LkWkvld0nJLz+w==}
 
   '@msar/types.snapshot@0.1.9':
     resolution: {integrity: sha512-DogJz9rT2ST20UGRAanDNkuLPY+GF/nWboNrIu2Cpp9ts/dSVGSsH66lazfZm6C13BHz/ZUW5xsbxgocH60oyQ==}
@@ -4493,8 +4501,8 @@ packages:
   sprintf-js@1.1.3:
     resolution: {integrity: sha512-Oo+0REFV59/rz3gfJNKQiBlwfHaSESl1pcGyABQsnnIfWOFt6JNj5gCog2U6MLZ//IGYD+nA8nI+mTShREReaA==}
 
-  sql-formatter@15.5.1:
-    resolution: {integrity: sha512-H3XfFRpK8LybkU2mD2Vj3AF35YcfviwUuy3yl98Xp7DTneJJVB40L654DpHYIRctASNIQPoLo7+yCboOfkOpWA==}
+  sql-formatter@15.5.2:
+    resolution: {integrity: sha512-+9xZgiv1DP/c7GxkkBUHRZOf4j35gquVdwEm0rg16qKRYeFkv1+/vEeO13fsUbbz06KUotIyASJ+hyau8LM8Kg==}
     hasBin: true
 
   ssri@10.0.6:
@@ -5954,6 +5962,19 @@ snapshots:
     dependencies:
       '@msar/types.snapshot': 0.1.9(ejs@3.1.10)
       datadirect: 0.4.5
+
+  '@msar/types.archive@0.1.5(@msar/types.snapshot@0.1.10(ejs@3.1.10))':
+    dependencies:
+      '@msar/types.snapshot': 0.1.10(ejs@3.1.10)
+      datadirect: 0.4.6
+
+  '@msar/types.snapshot@0.1.10(ejs@3.1.10)':
+    dependencies:
+      '@oauth2-cli/sky-api': 0.2.1(ejs@3.1.10)
+      datadirect: 0.4.6
+    transitivePeerDependencies:
+      - ejs
+      - supports-color
 
   '@msar/types.snapshot@0.1.9(ejs@3.1.10)':
     dependencies:
@@ -9531,7 +9552,7 @@ snapshots:
       jsox: 1.2.121
       node-sql-parser: 4.18.0
       prettier: 3.5.3
-      sql-formatter: 15.5.1
+      sql-formatter: 15.5.2
       tslib: 2.8.1
 
   prettier@3.5.3: {}
@@ -10067,7 +10088,7 @@ snapshots:
 
   sprintf-js@1.1.3: {}
 
-  sql-formatter@15.5.1:
+  sql-formatter@15.5.2:
     dependencies:
       argparse: 2.0.1
       nearley: 2.20.1
