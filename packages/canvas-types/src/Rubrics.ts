@@ -89,7 +89,7 @@ export type RubricAssociation = {
   /** the ID of the object this association links to */
   association_id: number;
   /** the type of object this association links to */
-  association_type: string;
+  association_type: 'Assignment' | 'Course' | 'Account';
   /** Whether or not the associated rubric is used for grade calculation */
   use_for_grading: boolean;
   summary_data: any;
@@ -104,31 +104,29 @@ export type RubricAssociation = {
   hide_outcome_results: boolean;
 };
 
-type CreateParameters = {
+export type CreateRubricRatingParameters = Omit<
+  RubricRating,
+  'id' | 'criterion_id'
+>;
+
+export type CreateRubricCriterionParameters = Omit<
+  RubricCriterion,
+  'id' | 'ratings'
+> & { ratings: CreateRubricRatingParameters[] };
+
+export type CreateParameters = {
   /** The id of the rubric */
   id?: number;
   /** The id of the rubric association object (not the course/assignment itself, but the join table record id). It can be used in place of rubric_association and rubric_association if desired. */
   rubric_association_id?: number;
   /** The title of the rubric */
   'rubric[title]'?: string;
+  'rubric[hide_points]'?: boolean;
   /** Whether or not you can write custom comments in the ratings field for a rubric */
   'rubric[free_form_criterion_comments]'?: boolean;
-  /** The id of the object with which this rubric is associated */
-  'rubric_association[association_id]'?: number;
-  /** The type of object this rubric is associated with
-
-    Allowed values:
-    Assignment, Course, Account */
-  'rubric_association[association_type]'?: 'Assignment' | 'Course' | 'Account';
-  /** Whether or not the associated rubric is used for grade calculation */
-  'rubric_association[use_for_grading]'?: boolean;
-  /** Whether or not the score total is displayed within the rubric. This option is only available if the rubric is not used for grading. */
-  'rubric_association[hide_score_total]'?: boolean;
-  /** Whether or not the association is for grading (and thus linked to an assignment) or if it’s to indicate the rubric should appear in its context */
-  'rubric_association[purpose]'?: string;
   /** An indexed Hash of RubricCriteria objects where the keys are integer ids and the values are the RubricCriteria objects */
-  'rubric[criteria]'?: Record<number, RubricCriterion>;
-};
+  'rubric[criteria]'?: CreateRubricCriterionParameters[];
+} & Omit<CreateAssociationParameters, 'rubric_association[rubric_id]'>;
 
 type CreateOptions = {
   course: Courses.Model;
@@ -152,5 +150,62 @@ export async function create({ course, args }: CreateOptions) {
     );
   }
   spinner.succeed(`Created rubric ${Colors.value(result.rubric.title)}`);
+  return result;
+}
+
+type CreateAssociationParameters = {
+  /** The id of the Rubric */
+  'rubric_association[rubric_id]': number;
+  /** The id of the object with which this rubric is associated */
+  'rubric_association[association_id]': number;
+  /** The type of object this rubric is associated with
+
+    Allowed values:
+    Assignment, Course, Account */
+  'rubric_association[association_type]': 'Assignment' | 'Course' | 'Account';
+  /** The name of the object this rubric is associated with */
+  'rubric_association[title]'?: string;
+  /** Whether or not the associated rubric is used for grade calculation */
+  'rubric_association[use_for_grading]': boolean;
+  /** Whether or not the score total is displayed within the rubric. This option is only available if the rubric is not used for grading. */
+  'rubric_association[hide_score_total]': boolean;
+  'rubric_association[hide_points]': boolean;
+  'rubric_association[hide_outcome_results]': boolean;
+  /** Whether or not the association is for grading (and thus linked to an assignment) or if it’s to indicate the rubric should appear in its context
+
+    Allowed values:
+    grading, bookmark */
+  'rubric_association[purpose]': 'grading' | 'bookmark';
+  /** Whether or not the associated rubric appears in its context */
+  'rubric_association[bookmarked]'?: boolean;
+};
+
+type CreateAssociationOptions = {
+  course_id: number;
+  args: CreateAssociationParameters;
+};
+
+export async function createAssociation({
+  course_id,
+  args
+}: CreateAssociationOptions) {
+  const spinner = ora(
+    `Associating rubric ${Colors.value(args['rubric_association[rubric_id]'])} with ${args['rubric_association[association_type]']} ${Colors.value(args['rubric_association[association_id]'])}`
+  ).start();
+  const result = (await canvas().fetch(
+    `/api/v1/courses/${course_id}/rubric_associations`,
+    { method: 'POST', body: new URLSearchParams(stringify(args)) }
+  )) as RubricAssociation;
+  if (isError(result)) {
+    spinner.fail(
+      `Error creating rubric ${Colors.value(args['rubric_association[rubric_id]'])} association with ${args['rubric_association[association_type]']} ${Colors.value(args['rubric_association[association_id]'])}`
+    );
+    throw new Error(
+      `Error creating rubric association: ${Log.syntaxColor({ course_id, args: stringify(args), error: result })}`
+    );
+  }
+  spinner.succeed(
+    `Associated rubric ${Colors.value(result.rubric_id)} with ${result.association_type} ${Colors.value(result.association_id)}`
+  );
   return result;
 }
