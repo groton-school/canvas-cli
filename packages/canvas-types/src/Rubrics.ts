@@ -126,7 +126,7 @@ export type CreateParameters = {
   'rubric[free_form_criterion_comments]'?: boolean;
   /** An indexed Hash of RubricCriteria objects where the keys are integer ids and the values are the RubricCriteria objects */
   'rubric[criteria]'?: CreateRubricCriterionParameters[];
-} & Omit<CreateAssociationParameters, 'rubric_association[rubric_id]'>;
+} & Omit<CreateRubricAssociationParameters, 'rubric_association[rubric_id]'>;
 
 type CreateOptions = {
   course: Courses.Model;
@@ -153,7 +153,7 @@ export async function create({ course, args }: CreateOptions) {
   return result;
 }
 
-type CreateAssociationParameters = {
+export type CreateRubricAssociationParameters = {
   /** The id of the Rubric */
   'rubric_association[rubric_id]': number;
   /** The id of the object with which this rubric is associated */
@@ -180,15 +180,15 @@ type CreateAssociationParameters = {
   'rubric_association[bookmarked]'?: boolean;
 };
 
-type CreateAssociationOptions = {
+type CreateRubricAssociationOptions = {
   course_id: number;
-  args: CreateAssociationParameters;
+  args: CreateRubricAssociationParameters;
 };
 
 export async function createAssociation({
   course_id,
   args
-}: CreateAssociationOptions) {
+}: CreateRubricAssociationOptions) {
   const spinner = ora(
     `Associating rubric ${Colors.value(args['rubric_association[rubric_id]'])} with ${args['rubric_association[association_type]']} ${Colors.value(args['rubric_association[association_id]'])}`
   ).start();
