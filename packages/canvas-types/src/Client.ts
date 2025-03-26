@@ -1,25 +1,45 @@
+import { Log } from '@battis/qui-cli.log';
 import { Canvas, Credentials } from '@oauth2-cli/canvas';
 
-export function stringify(obj: Record<string, any>) {
-  const stringified: Record<string, string> = {};
-  for (const key in obj) {
-    if (Array.isArray(obj[key])) {
-      for (const i in obj[key]) {
-        if (obj[key][i] !== undefined) {
-          stringified[`${key}[]`] = obj[key][i].toString();
-        }
-      }
+export function flatten(
+  value: unknown,
+  key?: string,
+  result: Record<string, string> = {},
+  numeric_indices = false
+): Record<string, string> {
+  if (value && typeof value === 'object') {
+    if (Array.isArray(value)) {
+      value.forEach(
+        (elt, i) =>
+          (result = flatten(
+            elt,
+            `${key}[${numeric_indices ? i : ''}]`,
+            result,
+            numeric_indices
+          ))
+      );
     } else {
-      if (obj[key] !== undefined) {
-        if (obj[key] === null) {
-          stringified[key] = 'null';
-        } else {
-          stringified[key] = obj[key].toString();
-        }
+      for (const prop in value) {
+        result = flatten(
+          (value as Record<string, unknown>)[prop],
+          key ? `${key}[${prop}]` : prop,
+          result,
+          numeric_indices
+        );
       }
     }
+  } else if (key) {
+    result[key] = typeof value === 'string' ? value : JSON.stringify(value);
+  } else {
+    throw new Error(Log.syntaxColor({ value, key, result }));
   }
-  return stringified;
+  return result;
+}
+
+export function stringify(
+  obj: Record<string, unknown>
+): Record<string, string> {
+  return flatten(obj);
 }
 
 let _client: Canvas | undefined = undefined;
