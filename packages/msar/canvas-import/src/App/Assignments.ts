@@ -90,6 +90,33 @@ export async function importAssignments({ course, section }: Options) {
       assignment = await Canvas.Assignments.create({ course, args });
     }
     if (assignment) {
+      if (assignments[order].Rubric && assignments[order].RubricId) {
+        const rubric = await Snapshot.Rubrics.getCached(
+          course.id,
+          assignment,
+          assignments[order].RubricId,
+          assignments[order].Rubric!
+        );
+        if (
+          rubric &&
+          rubric.rubric_association.association_id !== assignment.id &&
+          rubric.rubric_association.association_type !== 'Assignment'
+        ) {
+          await Canvas.Rubrics.createAssociation({
+            course_id: course.id,
+            args: {
+              'rubric_association[rubric_id]': rubric.rubric.id,
+              'rubric_association[association_type]': 'Assignment',
+              'rubric_association[association_id]': assignment.id,
+              'rubric_association[hide_points]': false,
+              'rubric_association[hide_score_total]': false,
+              'rubric_association[hide_outcome_results]': false,
+              'rubric_association[use_for_grading]': true,
+              'rubric_association[purpose]': 'grading'
+            }
+          });
+        }
+      }
       const i = section.Assignments?.findIndex(
         (a) => a.id == assignments[order].id
       );

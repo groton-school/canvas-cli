@@ -182,7 +182,12 @@ export async function run() {
   const spinner = ora(`Loading ${Colors.url(Snapshot.path())}`).start();
   let snapshots: Imported.Multiple.Data = [];
   try {
-    snapshots = JSON.parse(fs.readFileSync(Snapshot.path()).toString()); //await SnapshotMultiple.load(Snapshot.path());
+    const file = JSON.parse(fs.readFileSync(Snapshot.path()).toString());
+    if (Array.isArray(file)) {
+      snapshots = file;
+    } else {
+      snapshots = [file];
+    }
     if (!Array.isArray(snapshots)) {
       throw new Error(`Error loading data`);
     }
