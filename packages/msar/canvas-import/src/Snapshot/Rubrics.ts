@@ -3,7 +3,11 @@ import * as Canvas from '@groton/canvas-types';
 import * as Imported from '@msar/types.import';
 import { EventEmitter } from 'node:events';
 
-type CacheItem = Awaited<ReturnType<typeof Canvas.Rubrics.create>>;
+type CacheItem = Awaited<ReturnType<typeof Canvas.Rubrics.create>> & {
+  args?:
+    | Canvas.Rubrics.CreateParameters
+    | Canvas.Rubrics.CreateRubricAssociationParameters;
+};
 
 const AWAITING = true;
 const cache: Record<number, Record<number, CacheItem | typeof AWAITING>> = {};
@@ -71,10 +75,14 @@ export async function getCached(
     return cache[course_id][blackbaudId] as CacheItem;
   } else {
     cache[course_id][blackbaudId] = AWAITING;
-    cache[course_id][blackbaudId] = await Canvas.Rubrics.create({
-      course: { id: course_id } as Canvas.Courses.Model,
-      args: toCanvasArgs(assignment, rubric)
-    });
+    const args = toCanvasArgs(assignment, rubric);
+    cache[course_id][blackbaudId] = {
+      ...(await Canvas.Rubrics.create({
+        course: { id: course_id } as Canvas.Courses.Model,
+        args
+      })),
+      args
+    };
     ready.emit(`${course_id}:${blackbaudId}`);
     return cache[course_id][blackbaudId] as CacheItem;
   }

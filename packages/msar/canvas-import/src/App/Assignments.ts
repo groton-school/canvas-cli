@@ -97,14 +97,13 @@ export async function importAssignments({ course, section }: Options) {
           assignments[order].RubricId,
           assignments[order].Rubric!
         );
-        if (
-          rubric &&
-          rubric.rubric_association.association_id !== assignment.id &&
-          rubric.rubric_association.association_type !== 'Assignment'
-        ) {
-          await Canvas.Rubrics.createAssociation({
-            course_id: course.id,
-            args: {
+        if (rubric) {
+          let args = rubric.args;
+          if (
+            rubric.rubric_association.association_id !== assignment.id &&
+            rubric.rubric_association.association_type !== 'Assignment'
+          ) {
+            args = {
               'rubric_association[rubric_id]': rubric.rubric.id,
               'rubric_association[association_type]': 'Assignment',
               'rubric_association[association_id]': assignment.id,
@@ -113,8 +112,19 @@ export async function importAssignments({ course, section }: Options) {
               'rubric_association[hide_outcome_results]': false,
               'rubric_association[use_for_grading]': true,
               'rubric_association[purpose]': 'grading'
-            }
-          });
+            } as Canvas.Rubrics.CreateRubricAssociationParameters;
+            rubric.rubric_association = await Canvas.Rubrics.createAssociation({
+              course_id: course.id,
+              args: args as Canvas.Rubrics.CreateRubricAssociationParameters
+            });
+          }
+          assignments[order].Rubric!.canvas = {
+            id: rubric.rubric.id,
+            course_id: course.id,
+            rubric_association_id: rubric.rubric_association.id,
+            rubric_association_type: rubric.rubric_association.association_type,
+            args: args!
+          };
         }
       }
       const i = section.Assignments?.findIndex(
