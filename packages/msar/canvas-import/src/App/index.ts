@@ -202,7 +202,10 @@ export async function run() {
 
   // TODO write partial updates to index or tmp piecemeal
   for (let section of snapshots) {
-    if (section.SectionInfo?.canvas?.instance_url) {
+    if (
+      section.SectionInfo?.canvas?.instance_url &&
+      typeof section.SectionInfo.canvas.instance_url === 'string'
+    ) {
       configure({
         canvasInstanceUrl:
           section.SectionInfo.canvas.instance_url ||
@@ -232,6 +235,10 @@ export async function run() {
       });
     }
     if (course) {
+      section = Snapshot.Files.calculateHashes(
+        section as JSONObject
+      ) as Imported.Multiple.Item;
+
       // TODO consolidate in importCourse
       if (section.SectionInfo) {
         section.SectionInfo.canvas = {
@@ -250,10 +257,6 @@ export async function run() {
           'enrollment[enrollment_state]': 'active'
         }
       });
-
-      section = Snapshot.Files.calculateHashes(
-        section as JSONObject
-      ) as Imported.Multiple.Item;
 
       if (Preferences.assignments()) {
         await importAssignments({ course, section });

@@ -98,8 +98,14 @@ export function calculateHashes(entry: JSONValue): JSONValue {
           hash: entry.sha1_file_hash,
           filename: entry.filename
         };
+        Log.debug(
+          `Reusing stored hash value for ${Colors.url(entry.localPath)}`
+        );
       } else if (hashes[entry.localPath]) {
         entry.sha1_file_hash = hashes[entry.localPath].hash;
+        Log.debug(
+          `Reusing previously calculated hash for ${Colors.url(entry.localPath)}`
+        );
       } else {
         const spinner = ora(
           `Calculating hash for ${Colors.url(entry.localPath)}`
@@ -118,9 +124,9 @@ export function calculateHashes(entry: JSONValue): JSONValue {
             hash: entry.sha1_file_hash,
             filename: entry.filename
           };
-          spinner.succeed(
-            `Hashed ${Colors.url(entry.localPath)} to ${Colors.value(entry.sha1_file_hash)}`
-          );
+          const message = `Hashed ${Colors.url(entry.localPath)} to ${Colors.value(entry.sha1_file_hash)}`;
+          Log.debug(message);
+          spinner.succeed(message);
         } else {
           spinner.fail();
           throw new Error(
@@ -170,6 +176,9 @@ function selectPrimaryFile(
         `Error selecting primary file among duplicates: ${Log.syntaxColor({ annotation, primary, duplicates })}`
       );
     }
+    Log.debug(
+      `Selected ${Colors.url(primary)} as primary from ${Log.syntaxColor(duplicates)}`
+    );
     return { localPath: primary, filename: hashes[primary].filename };
   }
 }
@@ -189,11 +198,6 @@ export async function uploadLocalFiles({
   entry,
   name
 }: UploadLocalFilesOptions): Promise<JSONValue> {
-  if (!hashes.length) {
-    throw new Error(
-      `Attempted to upload local files without calculating hashes`
-    );
-  }
   if (typeof entry !== 'object' || entry === null) {
     return entry;
   }
