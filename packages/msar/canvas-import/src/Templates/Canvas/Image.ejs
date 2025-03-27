@@ -15,7 +15,9 @@
             width = width * ratio;
         }
     }
-%><div style="border-radius: 1em; border: solid 1px lightgray; margin: 1em; padding: 1em; min-width: calc(<%= width %>px + 1em); min-height: calc(<%= height %>px + 1em); <%= locals.style ? style : '' %>">
+%>
+<!-- TODO add link to actual image if scaled down -->
+<div style="border-radius: 1em; border: solid 1px lightgray; margin: 1em; padding: 1em; min-width: calc(<%= width %>px + 1em); min-height: calc(<%= height %>px + 1em); <%= locals.style ? style : '' %>">
     <div>
         <img id="<%= image.id %>" src="https://<%= hostname %>/courses/<%= course_id %>/files/<%= image.id %>/preview" alt="<%= image.display_name %>" data-api-endpoint="http://<%= hostname %>/api/v1/courses/<%= course_id %>/files/<%= image.id %>" data-api-returntype="File" width="<%= width %>" height="<%= height %>" />
     </div>
