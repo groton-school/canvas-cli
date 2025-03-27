@@ -1,10 +1,10 @@
 {
   "name": "@msar/canvas-import",
   "version": "0.0.0",
-  "homepage": "https://github.com/groton-school/canvas-import/tree/main/packages/msar/canvas-import#readme",
+  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/msar/canvas-import#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/groton-school/canvas-import.git",
+    "url": "https://github.com/groton-school/canvas-cli.git",
     "directory": "packages/msar/canvas-import"
   },
   "author": {

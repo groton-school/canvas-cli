@@ -1,10 +1,10 @@
 {
   "name": "@groton/canvas-types",
   "version": "0.0.0",
-  "homepage": "https://github.com/groton-school/canvas-import/tree/main/packages/canvas-types#readme",
+  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-types#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/groton-school/canvas-import.git",
+    "url": "https://github.com/groton-school/canvas-cli.git",
     "directory": "packages/canvas-types"
   },
   "author": {

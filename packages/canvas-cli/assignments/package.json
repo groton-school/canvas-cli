@@ -1,10 +1,10 @@
 {
   "name": "@groton/canvas-assignments-cli",
   "version": "0.0.0",
-  "homepage": "https://github.com/groton-school/canvas-import/tree/main/packages/canvas-cli/assignments#readme",
+  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/assignments#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/groton-school/canvas-import.git",
+    "url": "https://github.com/groton-school/canvas-cli.git",
     "directory": "packages/canvas-cli/assignments"
   },
   "author": {

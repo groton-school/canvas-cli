@@ -8,10 +8,10 @@
     "oauth",
     "cli"
   ],
-  "homepage": "https://github.com/groton-school/canvas-import/tree/main/packages/oauth2-cli/canvas#readme",
+  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/oauth2-cli/canvas#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/groton-school/canvas-import.git",
+    "url": "https://github.com/groton-school/canvas-cli.git",
     "directory": "packages/oauth2-cli/canvas"
   },
   "author": {
