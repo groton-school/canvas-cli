@@ -1,1 +1,18 @@
-<a class="instructure_file_link inline_disabled" title="<%= file.display_name %>" href="<%= file.url %>" target="_blank" rel="noopener noreferrer"><%= locals.filename ? filename : file.display_name %></a>
+<a class="instructure_file_link inline_disabled" title="<%= file.display_name %>" href="<%= file.url %>" target="_blank" rel="noopener noreferrer">
+    <% if (/\.pdf$/i.test(file.display_name)) { %>
+        <i class="icon-pdf"></i>
+    <% } else if (/\.docx?$/i.test(file.display_name)) { %>
+        <i class="icon-ms-word"></i>
+    <% } else if (/\.xlsx?$/i.test(file.display_name)) { %>
+        <i class="icon-ms-excel"></i>
+    <% } else if (/\.pptx?$/i.test(file.display_name)) { %>
+        <i class="icon-ms-ppt"></i>
+    <% } else if (/\.(gif|jpe?g|png|tiff|svg|bmp)$/i.test(file.display_name)) { %>
+        <i class="icon-image"></i>
+    <% } else if (/\.(py|jar|java)$/i.test(file.display_name)) { %>
+        <i class="icon-code"></i>
+    <% } else { %>
+        <i class="icon-document"></i>
+    <% } %>
+    <%- locals.filename ? filename : file.display_name %>
+</a>
