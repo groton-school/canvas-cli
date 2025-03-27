@@ -38,9 +38,10 @@ export function isAlbumContainer(
 type Options = {
   course: Canvas.Courses.Model;
   item: AlbumContainer;
+  parent: string;
 };
 
-export async function convertToPages({ course, item }: Options) {
+export async function convertToPages({ course, item, parent }: Options) {
   let albumContent = item.AlbumContent || [];
   if (!Array.isArray(albumContent)) {
     albumContent = [albumContent];
@@ -58,7 +59,7 @@ export async function convertToPages({ course, item }: Options) {
       ('AlbumDescription' in item && item.AlbumDescription) ||
       `${'ContentType' in item ? item.ContentType.Content : item.ObjectType.Name} Album`;
     const args: Canvas.Pages.Parameters = {
-      'wiki_page[title]': title,
+      'wiki_page[title]': `${parent}: ${title}`,
       'wiki_page[body]': await Templates.render(Templates.Canvas.MediaPage, {
         content: album.Content,
         course_id: course.id

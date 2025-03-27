@@ -38,7 +38,11 @@ export async function toCanvasArgs({
         item
       });
     } else if (Content.Album.isAlbumContainer(item)) {
-      item = await Content.Album.convertToPages({ course, item });
+      item = await Content.Album.convertToPages({
+        course,
+        item,
+        parent: title
+      });
     } else if (Content.Assignment.isAssignmentContainer(item)) {
       const identifiers = Content.Assignment.getIdentifiers(item);
       item.display = !assignmentIdentifiers.includes(identifiers);
