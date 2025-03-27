@@ -5,9 +5,11 @@ import { ArrayElement, JSONValue } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-types';
 import * as Archive from '@msar/types.archive';
 import * as Imported from '@msar/types.import';
+import crypto from 'node:crypto';
 import { EventEmitter } from 'node:events';
 import fs from 'node:fs';
 import path from 'node:path';
+import ora from 'ora';
 import probe from 'probe-image-size';
 import { Preferences } from '../App/index.js';
 import * as IndexFile from './IndexFile.js';
@@ -82,13 +84,102 @@ export function toCanvasArgs({
   };
 }
 
+type HashEntry = { hash: string; filename?: string };
+
+const hashes: Record<PathString, HashEntry> = {};
+
+export function calculateHashes(entry: JSONValue): JSONValue {
+  if (entry && typeof entry === 'object') {
+    if (Array.isArray(entry)) {
+      return entry.map(calculateHashes);
+    } else if (Imported.willBeAnnotated(entry)) {
+      if (entry.sha1_file_hash && typeof entry.sha1_file_hash === 'string') {
+        hashes[entry.localPath] = {
+          hash: entry.sha1_file_hash,
+          filename: entry.filename
+        };
+      } else if (hashes[entry.localPath]) {
+        entry.sha1_file_hash = hashes[entry.localPath].hash;
+      } else {
+        const spinner = ora(
+          `Calculating hash for ${Colors.url(entry.localPath)}`
+        ).start();
+        const filePath = path.join(
+          path.dirname(IndexFile.path()),
+          entry.localPath
+        );
+        const hash = crypto.createHash('sha1').setEncoding('hex');
+        const contents = fs.readFileSync(filePath).toString();
+        hash.write(contents);
+        hash.end();
+        entry.sha1_file_hash = hash.read();
+        if (entry.sha1_file_hash) {
+          hashes[entry.localPath] = {
+            hash: entry.sha1_file_hash,
+            filename: entry.filename
+          };
+          spinner.succeed(
+            `Hashed ${Colors.url(entry.localPath)} to ${Colors.value(entry.sha1_file_hash)}`
+          );
+        } else {
+          spinner.fail();
+          throw new Error(
+            `Failed to calculate hash for ${Colors.url(entry.localPath)}`
+          );
+        }
+      }
+    } else {
+      for (const prop of Object.getOwnPropertyNames(entry)) {
+        entry[prop] = calculateHashes(entry[prop]);
+      }
+    }
+  }
+  return entry;
+}
+
+type PrimaryFile = { localPath: PathString; filename?: string };
+
+function selectPrimaryFile(
+  annotation: Archive.Annotation | Imported.Annotation
+): PrimaryFile {
+  if ('original_localPath' in annotation) {
+    return {
+      localPath: annotation.localPath,
+      filename: hashes[annotation.localPath].filename
+    };
+  } else {
+    const hash = hashes[annotation.localPath].hash;
+    const duplicates = Object.getOwnPropertyNames(hashes).reduce(
+      (duplicates, localPath) => {
+        if (hashes[localPath].hash === hash) {
+          duplicates.push(localPath);
+        }
+        return duplicates;
+      },
+      [] as PathString[]
+    );
+    let primary = duplicates.filter((localPath) => /orig/i.test(localPath))[0];
+    if (!primary) {
+      primary = duplicates.filter((localPath) => /large/i.test(localPath))[0];
+    }
+    if (!primary) {
+      primary = duplicates[0];
+    }
+    if (!primary) {
+      throw new Error(
+        `Error selecting primary file among duplicates: ${Log.syntaxColor({ annotation, primary, duplicates })}`
+      );
+    }
+    return { localPath: primary, filename: hashes[primary].filename };
+  }
+}
+
 type UploadLocalFilesOptions = {
   course: Canvas.Courses.Model;
   entry: JSONValue;
   name?: string;
 };
 
-// TODO identify duplicate files
 /*
  * FIXME upload IMG elements with src="data:…"
  *   see https://groton.instructure.com/courses/936/assignments/4087
@@ -98,27 +189,40 @@ export async function uploadLocalFiles({
   entry,
   name
 }: UploadLocalFilesOptions): Promise<JSONValue> {
+  if (!hashes.length) {
+    throw new Error(
+      `Attempted to upload local files without calculating hashes`
+    );
+  }
   if (typeof entry !== 'object' || entry === null) {
     return entry;
   }
 
-  if (Archive.isAnnotated(entry)) {
+  if (Imported.willBeAnnotated(entry)) {
     if (entry.error) {
       Log.error(
         `${Colors.error('Could not upload unarchived file:')} ${Log.syntaxColor(entry)}`
       );
     } else {
-      const localPath = path.join(
-        path.dirname(IndexFile.path()),
-        entry.localPath
+      // eslint-disable-next-line prefer-const
+      let { localPath, filename } = selectPrimaryFile(
+        entry as Imported.Annotation
       );
+      if (!entry.sha1_file_hash) {
+        entry.sha1_file_hash = hashes[localPath].hash;
+      }
+      if (localPath !== entry.localPath) {
+        (entry as Imported.Annotation).original_localPath = entry.localPath;
+        entry.localPath = localPath;
+      }
+      localPath = path.join(path.dirname(IndexFile.path()), entry.localPath);
       // FIXME redundant manual Files.Parameters definition
       const args: Canvas.Files.Parameters = {
         parent_folder_path: path.join(
           'Imported Files',
           path.dirname(entry.localPath.replace(/^\//, ''))
         ),
-        name: name || entry.filename,
+        name: filename || name || entry.filename,
         size: fs.statSync(localPath).size,
         on_duplicate: 'overwrite'
       };
@@ -128,6 +232,7 @@ export async function uploadLocalFiles({
             fs.createReadStream(localPath)
           );
         }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (_) {
         // ignore non-image probe errors
       }

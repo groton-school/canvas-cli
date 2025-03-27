@@ -4,6 +4,7 @@ import '@battis/qui-cli.env';
 import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import { Validators } from '@battis/qui-cli.validators';
+import { JSONObject } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-types';
 import { input } from '@inquirer/prompts';
 import { Output } from '@msar/output';
@@ -62,7 +63,7 @@ export function configure(config: Configuration = {}) {
         redirect_uri: process.env.CANVAS_REDIRECT_URI
       };
       if (process.env.CANVAS_TOKEN_STORE) {
-        // @ts-ignore-error 2339 should really type CanvasConfig, but need to directly import @oauth2-cli/canvas for that
+        // @ts-expect-error 2339 should really type CanvasConfig, but need to directly import @oauth2-cli/canvas for that
         canvasConfig.store = path.join(
           process.env.CANVAS_TOKEN_STORE,
           `${new URL(config.canvasInstanceUrl).hostname}.json`
@@ -200,7 +201,7 @@ export async function run() {
   }
 
   // TODO write partial updates to index or tmp piecemeal
-  for (const section of snapshots) {
+  for (let section of snapshots) {
     if (section.SectionInfo?.canvas?.instance_url) {
       configure({
         canvasInstanceUrl:
@@ -250,6 +251,10 @@ export async function run() {
         }
       });
 
+      section = Snapshot.Files.calculateHashes(
+        section as JSONObject
+      ) as Imported.Multiple.Item;
+
       if (Preferences.assignments()) {
         await importAssignments({ course, section });
       }
@@ -269,6 +274,7 @@ export async function run() {
             'course[term_id]': `sis_term_id:${OneRoster.sis_term_id(section)}`
           }
         });
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (_) {
         Log.warning(
           `Course ${Colors.value(course.name)} could not be moved out of the Import Workspace term.`

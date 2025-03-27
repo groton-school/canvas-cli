@@ -10,12 +10,14 @@ export type CanvasData = {
   args: JSONObject;
   created_at?: DateTimeString;
   modified_at?: DateTimeString;
-  [key: string]: any;
+  [key: string]: JSONValue | undefined;
 };
 
 export type Annotation = Archive.Annotation & {
   canvas: CanvasData;
   dimensions?: probe.ProbeResult;
+  original_localPath?: PathString;
+  sha1_file_hash?: string;
 };
 
 export function isCanvasData(obj: object): obj is CanvasData {
@@ -24,6 +26,10 @@ export function isCanvasData(obj: object): obj is CanvasData {
 
 export function isAnnotated(obj: object): obj is Annotation {
   return Archive.isAnnotated(obj) && 'canvas' in obj;
+}
+
+export function willBeAnnotated(obj: object): obj is Annotation {
+  return Archive.isAnnotated(obj) && 'localPath' in obj;
 }
 
 function isWeakEqual(a?: JSONValue, b?: JSONValue) {
