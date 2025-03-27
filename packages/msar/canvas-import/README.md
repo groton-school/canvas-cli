@@ -13,3 +13,4 @@
 - Topic --> Page
   - Photo Album --> Page (with original widget replaced with cover image and caption and link to page)
 - All files uploaded to `Imported Files` subfolder of course files
+  - Files are de-duped before being uploaded, preferring images with `orig` or `large` in their filename if duplicates are encountered
