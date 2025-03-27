@@ -140,14 +140,14 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
     process.env.SKY_CLIENT_SECRET &&
     process.env.SKY_SUBSCRIPTION_KEY &&
     process.env.SKY_REDIRECT_URI &&
-    process.env.SKY_TOKEN_STORAGE
+    process.env.SKY_TOKEN_STORE
   ) {
     SkyAPI.init({
       client_id: process.env.SKY_CLIENT_ID,
       client_secret: process.env.SKY_CLIENT_SECRET,
       subscription_key: process.env.SKY_SUBSCRIPTION_KEY,
       redirect_uri: process.env.SKY_REDIRECT_URI,
-      store: process.env.SKY_TOKEN_STORAGE
+      store: process.env.SKY_TOKEN_STORE
     });
   }
   configure({
