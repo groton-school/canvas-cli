@@ -26,6 +26,7 @@ export async function toCanvasArgs({
 }: ToCanvasArgsOptions): Promise<Canvas.Pages.Parameters> {
   const assignmentIdentifiers: string[] = [];
   for (const i in body) {
+    // TODO upload only referenced files
     let item: Imported.BulletinBoard.Item | Imported.Topics.Item | undefined =
       (await Files.uploadLocalFiles({
         course,
