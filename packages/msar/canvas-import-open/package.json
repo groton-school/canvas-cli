@@ -1,11 +1,11 @@
 {
-  "name": "@msar/canvas-import",
+  "name": "@msar/canvas-import-open",
   "version": "0.0.0",
-  "homepage": "https://github.com/groton-school/canvas-import/tree/main/packages/msar/canvas-import#readme",
+  "homepage": "https://github.com/groton-school/canvas-import/tree/main/packages/msar/canvas-import-open#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/groton-school/canvas-import.git",
-    "directory": "packages/msar/canvas-import"
+    "directory": "packages/msar/canvas-import-open"
   },
   "author": {
     "name": "Seth Battis",
@@ -15,14 +15,13 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "canvas-import": "./dist/index.js"
+    "canvas-import-open": "./dist/index.js"
   },
   "scripts": {
     "clean": "del ./dist",
     "build": "run-s build:*",
     "build:clean": "run-s clean",
     "build:compile": "tsc",
-    "build:assets": "copyfiles -u 1 \"./src/**/*.ejs\" ./dist",
     "release": "commit-and-tag-version"
   },
   "dependencies": {
@@ -31,38 +30,19 @@
     "@battis/qui-cli.env": "^2.0.4",
     "@battis/qui-cli.log": "^2.1.0",
     "@battis/qui-cli.plugin": "^2.3.0",
-    "@groton/canvas-types": "workspace:*",
-    "@inquirer/prompts": "^7.4.0",
-    "@msar/output": "^0.1.4",
-    "@msar/types.archive": "^0.1.5",
+    "@battis/qui-cli.root": "^2.0.2",
     "@msar/types.import": "workspace:*",
-    "@msar/types.snapshot": "^0.1.10",
-    "@oauth2-cli/canvas": "^0.2.0",
-    "@oauth2-cli/sky-api": "^0.2.1",
-    "csv-parse": "^5.6.0",
     "ejs": "^3.1.10",
     "node-fetch": "^3.3.2",
-    "open": "^10.1.0",
-    "ora": "^8.2.0",
-    "probe-image-size": "^7.2.3",
-    "string-strip-html": "^13.4.12"
+    "open": "^10.1.0"
   },
   "devDependencies": {
-    "@battis/descriptive-types": "^0.2.0",
-    "@battis/qui-cli.root": "^2.0.2",
-    "@battis/qui-cli.validators": "^2.0.1",
-    "@battis/typescript-tricks": "^0.7.4",
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@commitlint/config-pnpm-scopes": "^19.8.0",
     "@tsconfig/node20": "^20.1.5",
-    "@types/ejs": "^3.1.5",
-    "@types/probe-image-size": "^7.2.5",
     "commit-and-tag-version": "^12.5.0",
-    "copyfiles": "^2.4.1",
-    "datadirect": "^0.4.6",
     "del-cli": "^6.0.0",
-    "ejs-lint": "^2.0.1",
     "npm-run-all": "^4.1.5",
     "typescript": "^5.8.2"
   },

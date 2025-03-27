@@ -12,7 +12,7 @@ import open from 'open';
 export type Configuration = { snapshotPath?: string; open?: boolean };
 
 export const name = 'canvas-import-open';
-export const src = path.dirname(import.meta.dirname);
+export const src = import.meta.dirname;
 
 let snapshotPath: string | undefined = undefined;
 let _open = false;
