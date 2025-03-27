@@ -17,9 +17,9 @@
     <% for (const download of assignment.DownloadItems) { %>
         <div>
             <div>
-                <%- include('Content/Canvas/FileLink', {file: download.DownloadUrl.canvas, filename: download.ShortDescription}) %>
+                <%- include('../Canvas/FileLink', {file: download.DownloadUrl.canvas, filename: download.ShortDescription}) %>
             </div>
-            <div><%- download.ShortDescription %></div>
+            <div style="text-decoration: none;"><%- download.ShortDescription %></div>
         </div>
     <% } %>
 <%} %>

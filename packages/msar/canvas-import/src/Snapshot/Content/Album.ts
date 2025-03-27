@@ -2,9 +2,8 @@ import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
 import * as Canvas from '@groton/canvas-types';
 import * as Imported from '@msar/types.import';
-import ejs from 'ejs';
-import path from 'node:path';
 import { Preferences } from '../../App/index.js';
+import * as Templates from '../../Templates/index.js';
 
 type AlbumContainer =
   | (NonNullable<Imported.BulletinBoard.Item> & {
@@ -22,16 +21,17 @@ export function isAlbumContainer(
   obj: NonNullable<Imported.BulletinBoard.Item | Imported.Topics.Item>
 ): obj is AlbumContainer {
   return (
-    ('ContentType' in obj &&
+    obj &&
+    (('ContentType' in obj &&
       (obj.ContentType?.Content == 'Photo' ||
         obj.ContentType?.Content == 'Video' ||
         obj.ContentType?.Content == 'Audio' ||
         obj.ContentType?.Content == 'Media')) ||
-    ('ObjectType' in obj &&
-      (obj.ObjectType?.Name == 'Photo' ||
-        obj.ObjectType?.Name == 'Video' ||
-        obj.ObjectType?.Name == 'Audio' ||
-        obj.ObjectType?.Name == 'Media'))
+      ('ObjectType' in obj &&
+        (obj.ObjectType?.Name == 'Photo' ||
+          obj.ObjectType?.Name == 'Video' ||
+          obj.ObjectType?.Name == 'Audio' ||
+          obj.ObjectType?.Name == 'Media')))
   );
 }
 
@@ -41,7 +41,11 @@ type Options = {
 };
 
 export async function convertToPages({ course, item }: Options) {
-  for (const album of item.AlbumContent || []) {
+  let albumContent = item.AlbumContent || [];
+  if (!Array.isArray(albumContent)) {
+    albumContent = [albumContent];
+  }
+  for (const album of albumContent) {
     const title =
       item.Content?.reduce(
         (title: string | undefined, cover) =>
@@ -50,14 +54,15 @@ export async function convertToPages({ course, item }: Options) {
             : title,
         undefined
       ) ||
+      ('ShortDescription' in item && item.ShortDescription) ||
+      ('AlbumDescription' in item && item.AlbumDescription) ||
       `${'ContentType' in item ? item.ContentType.Content : item.ObjectType.Name} Album`;
     const args: Canvas.Pages.Parameters = {
       'wiki_page[title]': title,
-      'wiki_page[body]': await ejs.renderFile(
-        path.join(import.meta.dirname, 'Canvas/Album.ejs'),
-        { content: album.Content, course_id: course.id },
-        { rmWhitespace: true }
-      ),
+      'wiki_page[body]': await Templates.render(Templates.Canvas.MediaPage, {
+        content: album.Content,
+        course_id: course.id
+      }),
       'wiki_page[published]': true
     };
     let processed = false;

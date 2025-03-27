@@ -14,7 +14,9 @@ type RSSReaderContainer = Omit<
 export function isRSSReaderContainer(
   obj: NonNullable<Imported.BulletinBoard.Item | Imported.Topics.Item>
 ): obj is RSSReaderContainer {
-  return 'ContentType' in obj && obj.ContentType?.Content == 'RSS Reader';
+  return (
+    obj && 'ContentType' in obj && obj.ContentType?.Content == 'RSS Reader'
+  );
 }
 
 type Options = {

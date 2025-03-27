@@ -1,0 +1,57 @@
+<div style="display: flex; flex-direction: row; flex-wrap:  wrap;">
+    <div>
+    <%
+      const isBulletinBoard = Array.isArray(content.Content);
+      let albumContent = content.AlbumContent || [];
+      if (!isBulletinBoard) {
+          albumContent = [albumContent]
+      }
+      let cover;
+      if(content.Content && content.Content.length) {
+        cover = content.Content[0];
+      }
+      if (!cover && content.AlbumContent && content.AlbumContent.Content) {
+          cover = content
+      }
+      let contentType = isBulletinBoard ? content.ContentType.Content : content.ObjectType.Name;
+      for (const album of albumContent) { %>
+        <a href="/courses/<%= course_id %>/pages/<%= album.canvas.url %>" style="display: block;">
+        <h4><%= (isBulletinBoard && content.Content.reduce((title, cover) => cover.AlbumId === album.AlbumId ? cover.AlbumName : title, content.CoverTitle )) || content.ShortDescription || content.AlbumDescription %></h4>
+              <% switch(contentType) {
+                    case 'Photo':
+                        let image;
+                        let dimensions;
+                        if (cover && cover.FilenameUrl) {
+                            image = cover.FilenameUrl.canvas;
+                            dimensions = cover.FilenameUrl.dimensions;
+                        } else if (cover && cover.FilePath) {
+                            image = cover.FilePath.canvas;
+                            dimensions = cover.FilePath.dimensions;
+                        }
+                        if (image && dimensions) { %>
+                            <%- include(
+                                '../../Canvas/Image',
+                                {
+                                    image,
+                                    course_id,
+                                    caption: content.CoverCaption,
+                                    dimensions,
+                                    size: locals.size ? size : 100
+                                }
+                            ); %><%
+                        } else { %>
+                           <i class="icon-image"></i>
+                        <% }
+                        break;
+                    case 'Audio':
+                    case 'Video': %>
+                        <%- include(`../../Canvas/${contentType}`, { content: isBulletinBoard ? cover : content.AlbumContent.Content[0], course_id, size: locals?.size ? size : 100 }) %>
+                        <% break;
+                    default: %>
+                        <%- include('Unknown', { title: contentType, content }); %>
+                <% } %>
+            <div><%- content.LongDescription %></div>
+        </a>
+    <% } %>
+    </div>
+</div>

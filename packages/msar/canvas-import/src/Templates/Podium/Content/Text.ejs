@@ -5,7 +5,7 @@
         <div style="display: flex; flex-direction: row;">
             <!-- TODO link to text photo album -->
             <% if (item.Photos && item.Photos.length) { %>
-                <%- include('Canvas/Image', {
+                <%- include('../../Canvas/Image', {
                     image: item.Photos[0].LargeFilenameUrl.canvas,
                     course_id,
                     caption: item.Photos[0].Caption,

@@ -2,10 +2,9 @@ import { Log } from '@battis/qui-cli.log';
 import { ArrayElement } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-types';
 import * as Imported from '@msar/types.import';
-import ejs from 'ejs';
-import path from 'node:path';
 import { stripHtml } from 'string-strip-html';
 import { Preferences } from '../App/index.js';
+import * as Templates from '../Templates/index.js';
 import * as Files from './Files.js';
 
 type SnapshotModel = ArrayElement<NonNullable<Imported.Data['Assignments']>>;
@@ -82,10 +81,9 @@ export async function toCanvasArgs({
     'assignment[position]': order,
     'assignment[due_at]': new Date(assignment.DueDate).toISOString(),
 
-    'assignment[description]': await ejs.renderFile(
-      path.join(import.meta.dirname, 'Assignment.ejs'),
-      { assignment },
-      { rmWhitespace: true }
+    'assignment[description]': await Templates.render(
+      Templates.Podium.Assignment,
+      { assignment }
     ),
     'assignment[published]': assignment.PublishInd,
     'assignment[assignment_group_id]': assignmentGroup.id,

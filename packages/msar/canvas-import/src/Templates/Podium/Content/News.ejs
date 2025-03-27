@@ -7,7 +7,7 @@
         <dd><%= item.PublishDate %></dd>
             <!-- TODO link to news photo album -->
             <% if (item.PhotoList && item.PhotoList.length) { %>
-                <%- include('Canvas/Image', {
+                <%- include('../../Canvas/Image', {
                     image: item.PhotoList[0].LargeFilenameUrl.canvas,
                     course_id,
                     caption: item.PhotoList[0].Caption,

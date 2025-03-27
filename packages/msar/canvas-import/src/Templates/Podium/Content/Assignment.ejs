@@ -1,0 +1,22 @@
+<% if (content.display) { %>
+    <div>
+        <h3>Assignments</h3>
+        <dl>
+            <% for(const assignment of content.Content) { %>
+                <% if (assignment.canvas) { %>
+                    <dt>
+                        <a href="/courses/<%= course_id %>/assignments/<%= assignment.canvas.id %>">
+                            <%= assignment.canvas.args['assignment[name]'] %>
+                        </a>
+                    </dt>
+                    <dd>
+                        <%= assignment.canvas.args['assignment[submission_types'] %>
+                        <%= assignment.canvas.args['assignment[due_at]'] ? `Due: ${new Date(assignment.canvas.args['assignment[due_at]']).toLocaleString()}` : '' %>
+                    </dd>
+                <% } else { %>
+                    <%- include('Unknown', {title: 'Assignment', content: assignment}) %>
+                <% } %>
+            <% } %>
+        </dl>
+    </div>
+<% } %>

@@ -1,0 +1,14 @@
+<% switch(content.ContentId) {
+    case 407: %>
+      <%- include('Spacer'); %>
+      <% break;
+    case 408: %>
+      <%- include('Horizontal Line'); %>
+      <% break;
+    default: %>
+        <div>
+            <h3><%= locals.title ? title : 'Unknown' %></h3>
+            <div>The data below is the raw snapshot from Blackbaud and has not been rendered.</div>
+            <pre lang="json"><%= JSON.stringify(content, null, 2) %></pre>
+        </div>
+<% } %>

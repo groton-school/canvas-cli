@@ -1,0 +1,19 @@
+<div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+    <% for (const item of content) { %>
+        <% if (/\/photo\//.test(item.FilenameUrl.original) && item.OriginalFilenameUrl) { %>
+            <%- include('Image', {
+                course_id,
+                image: item.OriginalFilenameUrl.canvas,
+                caption: item.Caption,
+                dimensions: item.OriginalFilenameUrl.dimensions,
+                size: 600
+            }); %>
+        <% } else if ( /\/audio\//.test(item.FilenameUrl.original)) { %>
+            <%- include('Audio', {content: item, course_id }); %>
+        <% } else if (/\/video\//.test(item.FilenameUrl.original)) { %>
+            <%- include('Video', {content: item, course_id }); %>
+        <% } else { %>
+            <%- include('../Unknown', {content: item}) %>
+        <% } %>
+    <% } %>
+</div>

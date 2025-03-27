@@ -2,7 +2,7 @@
     <tbody>
     <%
       let row;
-      for (let r = 0; (row = page.filter(item => item.RowIndex == r)).length > 0; r++) { %>
+      for (let r = 0; (row = page.filter(item => item && item.RowIndex == r)).length > 0; r++) { %>
         <tr style="vertical-align: top;">
         <%
           let column;

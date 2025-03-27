@@ -15,6 +15,7 @@ export async function importBulletinBoard({ course, section }: Options) {
   if (section.BulletinBoard) {
     const args = await Snapshot.PodiumPage.toCanvasArgs({
       course,
+      section,
       title: 'Bulletin Board',
       body: section.BulletinBoard,
       layout: section.SectionInfo?.LayoutId || 0,
@@ -58,6 +59,7 @@ export async function importTopics({ course, section }: Options) {
       if (topic.Content) {
         const args = await Snapshot.PodiumPage.toCanvasArgs({
           course,
+          section,
           title: topic.Name,
           body: topic.Content,
           layout: topic.LayoutId
