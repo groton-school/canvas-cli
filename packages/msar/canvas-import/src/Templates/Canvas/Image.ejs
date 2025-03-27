@@ -15,11 +15,16 @@
             width = width * ratio;
         }
     }
+    if (locals.zoom === undefined) {
+        zoom = true;
+    }
 %>
-<!-- TODO add link to actual image if scaled down -->
 <div style="border-radius: 1em; border: solid 1px lightgray; margin: 1em; padding: 1em; min-width: calc(<%= width %>px + 1em); min-height: calc(<%= height %>px + 1em); <%= locals.style ? style : '' %>">
-    <div>
+    <div style="display: flex; flex-direction: column;">
         <img id="<%= image.id %>" src="https://<%= hostname %>/courses/<%= course_id %>/files/<%= image.id %>/preview" alt="<%= image.display_name %>" data-api-endpoint="http://<%= hostname %>/api/v1/courses/<%= course_id %>/files/<%= image.id %>" data-api-returntype="File" width="<%= width %>" height="<%= height %>" />
+        <% if (zoom && locals.dimensions && (width < dimensions.width || height < dimensions.height)) { %>
+            <a style="text-align: right;" class="instructure_file_link inline_disabled" title="<%= image.display_name %>" href="<%= image.url %>" target="_blank" rel="noopener noreferrer" data-api-endpoint="http://<%= hostname %>/api/v1/courses/<%= course_id %>/files/<%= image.id %>" data-api-returntype="File"><i class="icon-zoom-in"></i> <%= image.display_name %></a>
+        <% } %>
     </div>
     <% if (locals.caption) { %>
         <div style="text-align: center;"><small><%- caption %></small></div>
