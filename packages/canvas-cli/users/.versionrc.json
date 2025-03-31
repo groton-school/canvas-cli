@@ -1,0 +1,5 @@
+{
+  "path": ".",
+  "tag-prefix": "users/",
+  "releaseCommitMessageFormat": "chore(users): @groton/canvas-users-cli@{{currentTag}}"
+}
