@@ -1,5 +1,5 @@
 // TODO replace node-fetch dependency with native fetch when bumping to node@>=21
-import nodeFetch, { RequestInfo, RequestInit } from 'node-fetch';
+import nodeFetch, { RequestInfo, RequestInit, Response } from 'node-fetch';
 import path from 'node:path';
 import * as OAuth2 from 'oauth2-cli';
 import PQueue from 'p-queue';
@@ -53,6 +53,24 @@ export class Canvas {
             }
           })
         ).json();
+      }).bind(this)
+    );
+  }
+
+  public async rawFetch(endpoint: URL | RequestInfo, init?: RequestInit) {
+    return await this.queue.add(
+      (async () => {
+        await this.getToken();
+        if (!this.token) {
+          throw new Error('No access token');
+        }
+        return await nodeFetch(new URL(endpoint, this.instance_url), {
+          ...init,
+          headers: {
+            ...init?.headers,
+            Authorization: `Bearer ${this.token.access_token}`
+          }
+        });
       }).bind(this)
     );
   }
