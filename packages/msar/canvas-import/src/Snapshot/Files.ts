@@ -190,6 +190,9 @@ type UploadLocalFilesOptions = {
 };
 
 /*
+ * FIXME set file (or whole Import folder permissions) to `Only available with link`
+ */
+/*
  * FIXME upload IMG elements with src="data:…"
  *   see https://groton.instructure.com/courses/936/assignments/4087
  */
