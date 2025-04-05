@@ -1,10 +1,10 @@
 import * as Swagger from '@groton/swagger-spec-ts';
 
-export type AnnotatedApi = Swagger.v1p2.ApiDeclaration & {
+export type AnnotatedApi = Omit<Swagger.v1p2.ApiDeclaration, 'models'> & {
   models: AnnotatedModel[];
 };
 
-export type AnnotatedModel = Swagger.v1p2.ModelsObject & {
+export type AnnotatedModel = Omit<Swagger.v1p2.ModelsObject, 'properties'> & {
   tsImports?: TSReference[];
   tsDeprecation?: TSDeprecation;
   tsExport?: TSExport;

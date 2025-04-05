@@ -3,14 +3,10 @@ import { Colors } from '@battis/qui-cli.colors';
 import { Core } from '@battis/qui-cli.core';
 import * as Plugin from '@battis/qui-cli.plugin';
 import { Root } from '@battis/qui-cli.root';
-import * as Swagger from '@groton/swagger-spec-ts';
-import Mustache from 'mustache';
 import fs from 'node:fs';
 import path from 'node:path';
-import * as prettier from 'prettier';
 import * as Download from '../Download.js';
-import { AnnotatedApi, TSName, TSReference } from './Annotation.js';
-import * as Resource from './Resource.js';
+import * as Resources from './Resources.js';
 
 type Configuration = Plugin.Configuration & {
   specPath?: PathString;
@@ -18,17 +14,8 @@ type Configuration = Plugin.Configuration & {
   outputPath?: PathString;
 };
 
-const PRETTIER_CONFIG = {
-  parser: 'typescript',
-  singleQuote: true,
-  trailingComma: 'none',
-  xmlWhitespaceSensitivity: 'ignore',
-  organizeImportsSkipDestructiveCodeActions: true,
-  plugins: ['prettier-plugin-organize-imports', 'prettier-plugin-jsdoc']
-};
-
 export const name = 'generate';
-export const src = path.dirname(import.meta.dirname);
+export const src = path.resolve(import.meta.dirname, '../..');
 
 let specPath = './spec';
 let templatePath = './templates';
@@ -73,122 +60,21 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
 }
 
 export async function run(results?: Plugin.AccumulatedResults) {
-  const resources: Record<PathString, AnnotatedApi> = {};
-  const index: Record<PathString, TSName[]> = {};
-
+  let specPaths: PathString[] | undefined = undefined;
   if (results && results[Download.name]) {
-    for (const filePath of results[Download.name]) {
-      const tsFilePath = toTSFilePath(path.join('./', path.basename(filePath)));
-      const api = JSON.parse(
-        fs.readFileSync(filePath).toString()
-      ) as Swagger.v1p2.ApiDeclaration;
-      resources[tsFilePath] = { ...api, models: Resource.annotate(api) };
-      index[tsFilePath] = resources[tsFilePath].models.map(
-        (model) => model.tsName
-      );
-    }
+    specPaths = results[Download.name];
   } else if (fs.lstatSync(specPath).isDirectory()) {
-    const fileNames = fs.readdirSync(specPath);
-    for (const fileName of fileNames) {
-      if (!fileName.startsWith('.')) {
-        const filePath = path.join(specPath, fileName);
-        const tsFilePath = toTSFilePath(path.join('./', fileName));
-        const api = JSON.parse(
-          fs.readFileSync(filePath).toString()
-        ) as Swagger.v1p2.ApiDeclaration;
-        resources[tsFilePath] = { ...api, models: Resource.annotate(api) };
-        index[tsFilePath] = resources[tsFilePath].models.map(
-          (model) => model.tsName
-        );
-      }
-    }
+    specPaths = fs
+      .readdirSync(specPath)
+      .filter((fileName) => !fileName.startsWith('.'))
+      .map((fileName) => path.join(specPath, fileName));
   } else {
-    const api = JSON.parse(
-      fs.readFileSync(specPath).toString()
-    ) as Swagger.v1p2.ApiDeclaration;
-    resources[toTSFilePath(specPath)] = {
-      ...api,
-      models: Resource.annotate(api)
-    };
+    specPaths = [specPath];
   }
-
-  for (const filePath in resources) {
-    for (const model of resources[filePath].models) {
-      for (const tsImport of model.tsImports || []) {
-        tsImport.filePath = Object.keys(index).find((filePath) =>
-          index[filePath].includes(tsImport.type)
-        );
-      }
-    }
+  if (!specPaths) {
+    throw new Error('No specPaths defined or received from Downloads');
   }
-
-  let template = fs
-    .readFileSync(path.resolve(Root.path(), templatePath, 'Resource.mustache'))
-    .toString();
-  fs.mkdirSync(path.resolve(Root.path(), outputPath, 'Resources'), {
-    recursive: true
-  });
-  for (const filePath in resources) {
-    if (resources[filePath].models.length) {
-      fs.writeFileSync(
-        path.resolve(
-          Root.path(),
-          outputPath,
-          'Resources',
-          path.basename(filePath, '.js') + '.ts'
-        ),
-        await prettier.format(
-          Mustache.render(template, {
-            ...resources[filePath],
-            tsImports: resources[filePath].models.reduce((tsImports, model) => {
-              for (const tsImport of model.tsImports || []) {
-                if (!tsImports.find((t) => t.type === tsImport.type)) {
-                  tsImports.push(tsImport);
-                }
-              }
-              return tsImports;
-            }, [] as TSReference[])
-          }),
-          PRETTIER_CONFIG
-        )
-      );
-    }
-  }
-  template = fs
-    .readFileSync(
-      path.resolve(Root.path(), templatePath, 'ResourceIndex.mustache')
-    )
-    .toString();
-  fs.writeFileSync(
-    path.resolve(Root.path(), outputPath, 'Resources', 'index.ts'),
-    await prettier.format(
-      Mustache.render(template, {
-        index: Object.keys(index)
-          .filter((filePath) => resources[filePath].models.length)
-          .map((filePath) => ({
-            tsNamespace: toTSNamespace(filePath),
-            filePath
-          }))
-      }),
-      PRETTIER_CONFIG
-    )
-  );
-}
-
-function toTSFilePath(filePath: PathString) {
-  return (
-    './' +
-    path
-      .basename(filePath, '.json')
-      .split('_')
-      .map((token) => token[0].toUpperCase() + token.slice(1))
-      .join('') +
-    '.js'
-  );
-}
-
-function toTSNamespace(filePath: PathString) {
-  return path.basename(filePath, '.js').replace(/[^a-z0-9_]+/gi, '_');
+  await Resources.generate({ specPaths, templatePath, outputPath });
 }
 
 await Plugin.register({ name, src, configure, options, init, run });
