@@ -26,9 +26,10 @@ type GenerateOptions = {
   specPaths: PathString[];
   outputPath: PathString;
   templatePath: PathString;
+  resourceDirName: string;
 };
 
-type IndexedResourceModels = {
+export type IndexedResourceModels = {
   resources: ResourceList;
   index: TypeIndex;
 };
@@ -47,16 +48,11 @@ const PRETTIER_CONFIG: Partial<prettier.RequiredOptions> = {
   plugins: ['prettier-plugin-organize-imports', 'prettier-plugin-jsdoc']
 };
 
-export async function generate({
-  specPaths,
-  outputPath,
-  templatePath
-}: GenerateOptions) {
+export async function generate({ specPaths, ...output }: GenerateOptions) {
   const resourceModels = annotateFileList(specPaths);
   annotateExports(resourceModels);
   const outputOptions = {
-    templatePath,
-    outputPath,
+    ...output,
     ...resourceModels
   };
   await outputResources(outputOptions);
@@ -156,12 +152,13 @@ function annotateExports({ resources, index }: IndexedResourceModels) {
 async function outputResources({
   templatePath,
   outputPath,
+  resourceDirName,
   resources
 }: OutputOptions) {
   const template = fs
     .readFileSync(path.resolve(Root.path(), templatePath, 'Resource.mustache'))
     .toString();
-  fs.mkdirSync(path.resolve(Root.path(), outputPath, 'Resources'), {
+  fs.mkdirSync(path.resolve(Root.path(), outputPath, resourceDirName), {
     recursive: true
   });
   for (const filePath in resources) {
@@ -170,7 +167,7 @@ async function outputResources({
         path.resolve(
           Root.path(),
           outputPath,
-          'Resources',
+          resourceDirName,
           path.basename(filePath, '.js') + '.ts'
         ),
         await prettier.format(
@@ -195,6 +192,7 @@ async function outputResources({
 async function outputResourceIndex({
   templatePath,
   outputPath,
+  resourceDirName,
   resources,
   index
 }: OutputOptions) {
@@ -204,7 +202,7 @@ async function outputResourceIndex({
     )
     .toString();
   fs.writeFileSync(
-    path.resolve(Root.path(), outputPath, 'Resources', 'index.ts'),
+    path.resolve(Root.path(), outputPath, resourceDirName, 'index.ts'),
     await prettier.format(
       Mustache.render(template, {
         index: Object.keys(index)
