@@ -115,6 +115,10 @@ function annotateApiDeclaration(
       properties
     };
     annotatedModel.tsExport = toTSExport(annotatedModel);
+    /*
+     * TODO force IDs to strings
+     *   https://developerdocs.instructure.com/services/canvas#schema
+     */
     annotatedModels.push(annotatedModel);
   }
   return annotatedModels.map((model) => {
