@@ -1,0 +1,5 @@
+{
+  "path": ".",
+  "tag-prefix": "spec/",
+  "releaseCommitMessageFormat": "release(spec): @groton/canvas-cli.spec@{{currentTag}}"
+}
