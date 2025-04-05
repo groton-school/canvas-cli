@@ -1,0 +1,5 @@
+{
+  "path": ".",
+  "tag-prefix": "swagger-spec-ts/",
+  "releaseCommitMessageFormat": "release(swagger-spec-ts): @groton/swagger-spec-ts@{{currentTag}}"
+}
