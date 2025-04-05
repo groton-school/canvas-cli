@@ -1,4 +1,4 @@
-import { DataTypeBase } from './DataTypeBase';
+import { DataTypeBase } from './DataTypeBase.js';
 
 export type ModelsObject = {
   id: string;

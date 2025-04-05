@@ -3,9 +3,9 @@ import {
   PathString,
   URLString
 } from '@battis/descriptive-types';
-import { AuthorizationObject } from './AuthorizationObject';
-import { ModelsObject } from './ModelsObject';
-import { OperationObject } from './OperationObject';
+import { AuthorizationObject } from './AuthorizationObject.js';
+import { ModelsObject } from './ModelsObject.js';
+import { OperationObject } from './OperationObject.js';
 
 export type ApiDeclaration = {
   swaggerVersion: '1.2';

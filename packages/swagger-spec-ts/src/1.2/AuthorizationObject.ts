@@ -1,4 +1,4 @@
-import { OAuth2GrantType } from './OAuth2GrantType';
+import { OAuth2GrantType } from './OAuth2GrantType.js';
 
 export type AuthorizationObject = BasicAuth | ApiKey | OAuth2;
 
