@@ -1,5 +1,5 @@
 import { DiscussionTopic } from './DiscussionTopics.js';
-import { Submission } from './PlagiarismDetectionSubmissions.js';
+import { Submission } from './Submissions.js';
 
 export type ExternalToolTagAttributes = {
   /** URL to the external tool */
@@ -55,7 +55,7 @@ export type RubricCriteria = {
   description: string;
   long_description: string;
   criterion_use_range: boolean;
-  ratings: RubricRating[];
+  ratings: string[];
   ignore_for_scoring: boolean;
 };
 
@@ -220,7 +220,7 @@ export type Assignment = {
   /** Whether this assignment has overrides */
   has_overrides: boolean;
   /** (Optional) all dates associated with the assignment, if applicable */
-  all_dates: AssignmentDate[];
+  all_dates: string[];
   /**
    * The ID of the course the assignment belongs to
    *
@@ -343,7 +343,7 @@ export type Assignment = {
    * grading in multiple sections (effectively the count will be duplicated
    * between sections)
    */
-  needs_grading_count_by_section: NeedsGradingCount[];
+  needs_grading_count_by_section: string[];
   /**
    * The sorting order of the assignment in the group
    *
@@ -355,7 +355,7 @@ export type Assignment = {
   /** (optional, Third Party unique identifier for Assignment) */
   integration_id: string;
   /** (optional, Third Party integration data for assignment) */
-  integration_data: unknown;
+  integration_data: object;
   /** The maximum points possible for the assignment */
   points_possible: number;
   /**
@@ -457,22 +457,22 @@ export type Assignment = {
    * (Optional) An object describing the basic attributes of the rubric,
    * including the point total. Included if there is an associated rubric.
    */
-  rubric_settings: unknown;
+  rubric_settings: object;
   /**
    * (Optional) A list of scoring criteria and ratings for each rubric
    * criterion. Included if there is an associated rubric.
    */
-  rubric: RubricCriteria[];
+  rubric: string[];
   /**
    * (Optional) If 'assignment_visibility' is included in the 'include'
    * parameter, includes an array of student IDs who can see this assignment.
    */
-  assignment_visibility: number[];
+  assignment_visibility: string[];
   /**
    * (Optional) If 'overrides' is included in the 'include' parameter, includes
    * an array of assignment override objects.
    */
-  overrides: AssignmentOverride[];
+  overrides: string[];
   /**
    * (Optional) If true, the assignment will be omitted from the student's final
    * grade
@@ -679,7 +679,7 @@ export type AssignmentOverride = {
    * The IDs of the override's target students (present if the override targets
    * an ad-hoc set of students)
    */
-  student_ids: number[];
+  student_ids: string[];
   /**
    * The ID of the override's target group (present if the override targets a
    * group and the assignment is a group assignment)

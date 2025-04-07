@@ -87,7 +87,7 @@ export type Group = {
    * Optional: the permissions the user has for the group. returned only for a
    * single group and include[]=permissions
    */
-  permissions: unknown;
+  permissions: object;
   /**
    * Optional: A list of users that are members in the group. Returned only if
    * include[]=users. WARNING: this collection's size is capped (if there are an
@@ -96,7 +96,7 @@ export type Group = {
    * certainty consider using the paginated
    * /api/v1/groups/<group_id>/memberships endpoint.
    */
-  users: User[];
+  users: string[];
 };
 
 export type GroupMembership = {

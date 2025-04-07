@@ -43,7 +43,7 @@ export type Progress = {
   /** Optional details about the job */
   message: string;
   /** Optional results of the job. omitted when job is still pending */
-  results: unknown;
+  results: object;
   /** Url where a progress update can be retrieved with an LTI access token */
   url: string;
 };

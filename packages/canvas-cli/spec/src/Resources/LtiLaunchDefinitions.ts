@@ -13,7 +13,7 @@ export type LtiLaunchDefinition = {
   /** The domain of the tool */
   domain: string;
   /** Placement-specific config for given placements */
-  placements: unknown;
+  placements: object;
 };
 
 /** A bare-bones LTI configuration for a specific placement */

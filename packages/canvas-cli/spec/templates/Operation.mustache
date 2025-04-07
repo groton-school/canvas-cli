@@ -1,0 +1,35 @@
+{{#tsImports}}
+import { {{type}} } from '{{{packagePath}}}{{{filePath}}}';
+{{/tsImports}}
+
+type Parameters = {
+    {{#tsFormParameters}}
+    /**
+     * {{description}}
+     *
+     * {{{tsType.description}}}
+     *
+     * {{tsDeprecation}}
+     */
+    {{{tsName}}}{{tsOptional}}: {{{tsType.type}}}
+    {{/tsFormParameters}}
+}
+
+type Options = {
+    parameters: Parameters;
+}
+
+/**
+ * {{summary}}
+ *
+ * {{{notes}}}
+ *
+ * nickname: {{nickname}}
+ *
+ * {{tsDeprecation}}
+ *
+ * {{description}}
+ */
+export async function {{tsName}}({ parameters }: Options): Promise<{{{tsType.type}}}> {
+  return await (await fetch(`{{{tsEndpoint}}}`, {method: "{{method}}", body: parameters})).json();
+}

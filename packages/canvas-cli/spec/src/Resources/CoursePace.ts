@@ -22,7 +22,7 @@ export type CoursePace = {
   /** Boolean value depending on exclude weekends setting */
   exclude_weekends: boolean;
   /** Array of strings representing the days of the work week */
-  selected_days_to_skip: number[];
+  selected_days_to_skip: string[];
   /** Set if the end date is set from course */
   hard_end_dates: boolean;
   /**
@@ -62,7 +62,7 @@ export type CoursePace = {
    */
   start_date: string;
   /** List of modules and items for this course pace */
-  modules: unknown;
+  modules: string[];
   /** Progress of pace publishing */
   progress: Progress;
 };
@@ -83,7 +83,7 @@ export type Module = {
    */
   position: number;
   /** List of module items */
-  items: ModuleItem[];
+  items: string[];
   /**
    * The ID of the context for this course pace
    *
@@ -188,7 +188,7 @@ export type Progress = {
   /** Optional details about the job */
   message: string;
   /** Optional results of the job. omitted when job is still pending */
-  results: unknown;
+  results: object;
   /** Url where a progress update can be retrieved */
   url: string;
 };

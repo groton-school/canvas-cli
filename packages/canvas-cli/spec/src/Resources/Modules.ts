@@ -31,7 +31,7 @@ export type Module = {
    */
   requirement_type: string;
   /** IDs of Modules that must be completed before this one is unlocked */
-  prerequisite_module_ids: number[];
+  prerequisite_module_ids: string[];
   /**
    * The number of items in the module
    *
@@ -45,7 +45,7 @@ export type Module = {
    * requested via include[]=items AND the module is not deemed too large by
    * Canvas.)
    */
-  items: ModuleItem[];
+  items: string[];
   /**
    * The state of this Module for the calling user one of 'locked', 'unlocked',
    * 'started', 'completed' (Optional; present only if the caller is a student
@@ -187,7 +187,7 @@ export type ModuleItemSequenceNode = {
   /** The next ModuleItem in the sequence */
   next: ModuleItem;
   /** The conditional release rule for the module item, if applicable */
-  mastery_path: unknown;
+  mastery_path: object;
 };
 
 export type ModuleItemSequence = {
@@ -195,9 +195,9 @@ export type ModuleItemSequence = {
    * An array containing one ModuleItemSequenceNode for each appearence of the
    * asset in the module sequence (up to 10 total)
    */
-  items: ModuleItemSequenceNode[];
+  items: string[];
   /** An array containing each Module referenced above */
-  modules: Module[];
+  modules: string[];
 };
 
 export type ModuleAssignmentOverride = {

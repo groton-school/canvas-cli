@@ -63,17 +63,17 @@ export type SisAssignment = {
    * Includes attributes of a assignment_group for convenience. For more details
    * see Assignments API.
    */
-  assignment_group: AssignmentGroupAttributes[];
+  assignment_group: string[];
   /**
    * Includes attributes of a section for convenience. For more details see
    * Sections API.
    */
-  sections: SectionAttributes[];
+  sections: string[];
   /**
    * Includes attributes of a user assignment overrides. For more details see
    * Assignments API.
    */
-  user_overrides: UserAssignmentOverrideAttributes[];
+  user_overrides: string[];
 };
 
 /**
@@ -98,7 +98,7 @@ export type AssignmentGroupAttributes = {
   /** The sis source id of the Assignment Group */
   sis_source_id: string;
   /** The integration data of the Assignment Group */
-  integration_data: unknown;
+  integration_data: object;
 };
 
 /** Some of the attributes of a section. For more details see Sections API. */
@@ -212,7 +212,7 @@ export type UserAssignmentOverrideAttributes = {
    * Includes attributes of a student for convenience. For more details see
    * Users API.
    */
-  students: StudentAttributes[];
+  students: string[];
 };
 
 /** Attributes of student. See Users API for more details */

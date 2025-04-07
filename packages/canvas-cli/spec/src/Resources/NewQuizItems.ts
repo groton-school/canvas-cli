@@ -73,22 +73,22 @@ export type QuestionItem = {
    * An object that contains the question data. See Appendix: Question Types for
    * more info about this field.
    */
-  interaction_data: unknown;
+  interaction_data: object;
   /**
    * An object that contains additional properties for some question types. See
    * Appendix: Question Types for more info about this field.
    */
-  properties: unknown;
+  properties: object;
   /**
    * Describes how to score the question. See Appendix: Question Types for more
    * info about this field.
    */
-  scoring_data: unknown;
+  scoring_data: object;
   /**
    * Feedback provided for each answer (rich content, only available on 'choice'
    * question types)
    */
-  answer_feedback: unknown;
+  answer_feedback: object;
   /**
    * The algorithm used to score the question. See Appendix: Question Types for
    * more info about this field.

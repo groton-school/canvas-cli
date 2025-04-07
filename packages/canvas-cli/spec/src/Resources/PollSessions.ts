@@ -42,7 +42,7 @@ export type PollSession = {
    * The results of the submissions of the poll. Each key is the poll choice id,
    * and the value is the count of submissions.
    */
-  results: unknown;
+  results: object;
   /**
    * If the poll session has public results, this will return an array of all
    * submissions, viewable by both students and teachers. If the results are not

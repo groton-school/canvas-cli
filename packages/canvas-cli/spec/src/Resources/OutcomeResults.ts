@@ -20,7 +20,7 @@ export type OutcomeResult = {
    */
   submitted_or_assessed_at: string;
   /** Unique identifiers of objects associated with this result */
-  links: unknown;
+  links: object;
   /**
    * Score's percent of maximum points possible for outcome, scaled to reflect
    * any custom mastery levels that differ from the learning outcome

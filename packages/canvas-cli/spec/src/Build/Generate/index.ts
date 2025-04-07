@@ -6,37 +6,42 @@ import { Root } from '@battis/qui-cli.root';
 import fs from 'node:fs';
 import path from 'node:path';
 import * as Download from '../Download.js';
-import * as Resources from './Resources.js';
+import * as Models from './Models.js';
+import * as Operations from './Operations.js';
+import { Overrides } from './Overrides.js';
 
 type Configuration = Plugin.Configuration & {
   specPath?: PathString;
+  overridePath?: PathString;
   templatePath?: PathString;
   outputPath?: PathString;
-  resourceDirName?: string;
+  modelDirName?: string;
+  operationsDirName?: string;
+  prettierConfigPath?: PathString;
 };
 
 export const name = 'generate';
 export const src = path.resolve(import.meta.dirname, '../..');
 
 let specPath = './spec';
+let overridePath = './overrides.json';
 let templatePath = './templates';
 let outputPath = './src';
-let resourceDirName = 'Resources';
+let modelDirName = 'Resources';
+let operationsDirName = 'Endpoints';
+let prettierConfigPath = './.prettierrc.json';
 
 export function configure(config: Configuration = {}) {
-  specPath = path.resolve(
-    Root.path(),
-    Plugin.hydrate(config.specPath, specPath)
+  specPath = Plugin.hydrate(config.specPath, specPath);
+  overridePath = Plugin.hydrate(config.overridePath, overridePath);
+  templatePath = Plugin.hydrate(config.templatePath, templatePath);
+  outputPath = Plugin.hydrate(config.outputPath, outputPath);
+  modelDirName = Plugin.hydrate(config.modelDirName, modelDirName);
+  operationsDirName = Plugin.hydrate(config.endpointDirName, operationsDirName);
+  prettierConfigPath = Plugin.hydrate(
+    config.prettierConfigPath,
+    prettierConfigPath
   );
-  templatePath = path.resolve(
-    Root.path(),
-    Plugin.hydrate(config.templatePath, templatePath)
-  );
-  outputPath = path.resolve(
-    Root.path(),
-    Plugin.hydrate(config.outputPath, outputPath)
-  );
-  resourceDirName = Plugin.hydrate(config.resourceDirName, resourceDirName);
 }
 
 export function options(): Plugin.Options {
@@ -46,6 +51,10 @@ export function options(): Plugin.Options {
         description: `Path to Swagger spec file or directory (default: ${Colors.url(specPath)})`,
         default: specPath
       },
+      overridePath: {
+        description: `Path to TypeScript types override JSON file (default: ${Colors.url(overridePath)})`,
+        default: overridePath
+      },
       templatePath: {
         description: `Path to Mustache template directory (default: ${Colors.url(templatePath)})`,
         default: templatePath
@@ -54,9 +63,13 @@ export function options(): Plugin.Options {
         description: `Path to output directory (default: ${Colors.url(outputPath)})`,
         default: outputPath
       },
-      resourceDirName: {
-        description: `Name of resource definitions directory (default: ${Colors.quotedValue(`"${resourceDirName}"`)})`,
-        default: resourceDirName
+      modelDirName: {
+        description: `Name of resource definitions directory (default: ${Colors.quotedValue(`"${modelDirName}"`)})`,
+        default: modelDirName
+      },
+      operationsDirName: {
+        description: `Name of endpoint definitions directory (default: ${Colors.quotedValue(`"${operationsDirName}"`)})`,
+        default: operationsDirName
       }
     }
   };
@@ -81,11 +94,20 @@ export async function run(results?: Plugin.AccumulatedResults) {
   if (!specPaths) {
     throw new Error('No specPaths defined or received from Downloads');
   }
-  await Resources.generate({
+  const overrides = JSON.parse(
+    fs.readFileSync(path.resolve(Root.path(), overridePath)).toString()
+  ) as Overrides;
+  const outputOptions = { templatePath, outputPath };
+  const models = await Models.generate({
     specPaths,
-    templatePath,
-    outputPath,
-    resourceDirName
+    overrides,
+    modelDirName,
+    ...outputOptions
+  });
+  await Operations.generate({
+    ...models,
+    operationsDirName,
+    ...outputOptions
   });
 }
 

@@ -1,4 +1,4 @@
-import { RubricRating } from './Assignments.js';
+import { RubricRating } from './Rubrics.js';
 
 export type Outcome = {
   /**
@@ -51,7 +51,7 @@ export type Outcome = {
    * Possible ratings for this outcome. included only if the outcome embeds a
    * rubric criterion. omitted in the abbreviated form.
    */
-  ratings: RubricRating[];
+  ratings: string[];
   /** Whether the current user can update the outcome */
   can_edit: boolean;
   /** Whether the outcome can be unlinked */

@@ -57,7 +57,7 @@ export type QuizSettings = {
    * IP address ranges from which users can take the quiz, if
    * 'filter_ip_address' is true
    */
-  filters: unknown;
+  filters: object;
   /**
    * Whether questions should be shown all at once ('none') or one-at-a-time
    * ('question')

@@ -9,5 +9,5 @@ export type QuizSubmissionEvent = {
   /** The type of event being sent */
   event_type: string;
   /** Custom contextual data for the specific event type */
-  event_data: unknown;
+  event_data: object;
 };

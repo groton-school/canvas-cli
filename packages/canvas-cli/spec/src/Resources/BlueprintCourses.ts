@@ -129,7 +129,7 @@ export type ChangeRecord = {
    * A list of ExceptionRecords for linked courses that did not receive this
    * update.
    */
-  exceptions: unknown[];
+  exceptions: string[];
 };
 
 /**
@@ -148,7 +148,7 @@ export type ExceptionRecord = {
    * prevented a blueprint change from being applied. One or more of ['content',
    * 'points', 'due_dates', 'availability_dates'].
    */
-  conflicting_changes: unknown[];
+  conflicting_changes: string[];
 };
 
 /** Associates a course with a blueprint */
@@ -166,5 +166,5 @@ export type BlueprintSubscription = {
    */
   template_id: number;
   /** The blueprint course subscribed to */
-  blueprint_course: unknown;
+  blueprint_course: object;
 };

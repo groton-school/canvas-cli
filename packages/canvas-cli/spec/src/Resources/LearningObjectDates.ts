@@ -49,12 +49,12 @@ export type LearningObjectDates = {
   /** Whether the learning object is visible to everyone */
   visible_to_everyone: boolean;
   /** Paginated list of AssignmentOverride objects */
-  overrides: AssignmentOverride[];
+  overrides: string[];
   /**
    * List of Checkpoint objects, only present if a learning object has
    * subAssignments
    */
-  checkpoints: LearningObjectDates[];
+  checkpoints: string[];
   /** The tag identifying the type of checkpoint (only present for checkpoints) */
   tag: string;
 };

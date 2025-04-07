@@ -12,7 +12,7 @@ export type GradingRules = {
    */
   drop_highest: number;
   /** Assignment IDs that should never be dropped. */
-  never_drop: number[];
+  never_drop: string[];
 };
 
 export type AssignmentGroup = {
@@ -39,12 +39,12 @@ export type AssignmentGroup = {
   /** The sis source id of the Assignment Group */
   sis_source_id: string;
   /** The integration data of the Assignment Group */
-  integration_data: unknown;
+  integration_data: object;
   /**
    * The assignments in this Assignment Group (see the Assignment API for a
    * detailed list of fields)
    */
-  assignments: number[];
+  assignments: string[];
   /** The grading rules that this Assignment Group has */
   rules: GradingRules;
 };

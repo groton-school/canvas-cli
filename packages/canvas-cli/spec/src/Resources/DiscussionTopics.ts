@@ -114,12 +114,12 @@ export type DiscussionTopic = {
    * DEPRECATED An array of topic_ids for the group discussions the user is a
    * part of.
    */
-  topic_children: number[];
+  topic_children: string[];
   /**
    * An array of group discussions the user is a part of. Fields include: id,
    * group_id
    */
-  group_topic_children: unknown[];
+  group_topic_children: string[];
   /**
    * If the topic is for grading and a group assignment this will point to the
    * original topic in the course.
@@ -143,9 +143,9 @@ export type DiscussionTopic = {
    */
   group_category_id: number;
   /** Array of file attachments. */
-  attachments: FileAttachment[];
+  attachments: string[];
   /** The current user's permissions on this topic. */
-  permissions: unknown;
+  permissions: object;
   /** Whether or not users can rate entries in this topic. */
   allow_rating: boolean;
   /** Whether or not grade permissions are required to rate entries. */

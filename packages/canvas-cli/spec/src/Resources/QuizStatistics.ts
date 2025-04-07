@@ -139,7 +139,7 @@ export type QuizStatisticsSubmissionStatistics = {
    * (ranges between 0 and 100%) while the value is the number of students who
    * received that score.
    */
-  scores: unknown;
+  scores: object;
   /** The mean of the number of questions answered correctly by each student. */
   correct_count_average: number;
   /** The mean of the number of questions answered incorrectly by each student. */

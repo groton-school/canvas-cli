@@ -74,5 +74,5 @@ export type Role = {
    * A dictionary of permissions keyed by name (see permissions input parameter
    * in the 'Create a role' API).
    */
-  permissions: unknown;
+  permissions: object;
 };

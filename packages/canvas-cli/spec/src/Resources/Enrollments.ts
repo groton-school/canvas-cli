@@ -1,6 +1,6 @@
 import { User } from './Users.js';
 
-export type Grade = {
+type Grade = {
   /**
    * The URL to the Canvas web UI page for the user's grades, if this is a
    * student enrollment.

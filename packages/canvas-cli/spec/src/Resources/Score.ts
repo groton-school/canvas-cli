@@ -37,5 +37,5 @@ export type Score = {
    * time that the submission was originally created - should use
    * ISO8601-formatted date with subsecond precision.
    */
-  submission: unknown;
+  submission: object;
 };

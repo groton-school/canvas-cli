@@ -32,7 +32,7 @@ export type NamesAndRoleMessage = {
    * Expanded LTI custom parameters that pertain to the member (as opposed to
    * the Context)
    */
-  'https://purl.imsglobal.org/spec/lti/claim/custom': unknown;
+  'https://purl.imsglobal.org/spec/lti/claim/custom': object;
 };
 
 /** A member of a LTI Context in one or more roles */
@@ -78,7 +78,7 @@ export type NamesAndRoleMembership = {
    * additional attributes which would appear in the LTI launch message were
    * this member to click the link referenced by the `rlid` query parameter
    */
-  message: NamesAndRoleMessage[];
+  message: string[];
 };
 
 export type NamesAndRoleMemberships = {
@@ -87,5 +87,5 @@ export type NamesAndRoleMemberships = {
   /** The LTI Context containing the memberships */
   context: NamesAndRoleContext;
   /** A list of NamesAndRoleMembership */
-  members: NamesAndRoleMembership[];
+  members: string[];
 };

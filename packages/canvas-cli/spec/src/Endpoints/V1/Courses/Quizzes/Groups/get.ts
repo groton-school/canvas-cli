@@ -1,0 +1,23 @@
+import { QuizGroup } from '../../../../../Resources/QuizQuestionGroups.js';
+
+type Parameters = {};
+
+type Options = {
+  parameters: Parameters;
+};
+
+/**
+ * Get a single quiz group
+ *
+ * Returns details of the quiz group with the given id.
+ *
+ * Nickname: get_single_quiz_group
+ */
+export async function get({ parameters }: Options): Promise<QuizGroup> {
+  return await (
+    await fetch(`/v1/courses/{course_id}/quizzes/{quiz_id}/groups/{id}`, {
+      method: 'GET',
+      body: parameters
+    })
+  ).json();
+}

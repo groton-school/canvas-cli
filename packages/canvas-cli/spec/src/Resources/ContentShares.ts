@@ -37,14 +37,14 @@ export type ContentShare = {
    * The user who shared the content. This field is provided only to receivers;
    * it is not populated in the sender's list of sent content shares.
    */
-  sender: unknown;
+  sender: object;
   /**
    * An Array of users the content is shared with. This field is provided only
    * to senders; an empty array will be returned for the receiving users.
    */
-  receivers: unknown[];
+  receivers: string[];
   /** The course the content was originally shared from. */
-  source_course: unknown;
+  source_course: object;
   /** Whether the recipient has viewed the content share. */
   read_state: string;
   /** The content export record associated with this content share */

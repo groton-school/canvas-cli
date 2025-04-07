@@ -5,5 +5,5 @@ export type Bookmark = {
   url: string;
   /** Type: integer */
   position: number;
-  data: unknown;
+  data: object;
 };

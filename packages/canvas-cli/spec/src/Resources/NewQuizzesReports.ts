@@ -42,7 +42,7 @@ export type Progress = {
    * For successfully completed jobs, this is a JSON object containing url of
    * the report and other details
    */
-  results: unknown;
+  results: object;
   /** Url where a progress update can be retrieved */
   url: string;
 };

@@ -41,7 +41,7 @@ export type Conversation = {
    * participation level, then alphabetical. Excludes current user, unless this
    * is a monologue.
    */
-  audience: number[];
+  audience: string[];
   /**
    * Most relevant shared contexts (courses and groups) between current user and
    * other participants. If there is only one participant, it will also include
@@ -54,7 +54,7 @@ export type Conversation = {
    */
   avatar_url: string;
   /** Array of users participating in the conversation. Includes current user. */
-  participants: ConversationParticipant[];
+  participants: string[];
   /**
    * Indicates whether the conversation is visible under the current scope and
    * filter. This attribute is always true in the index API response, and is

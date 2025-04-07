@@ -72,18 +72,18 @@ export type LtiLegacyConfiguration = {
   /** The description of the tool */
   description: string;
   /** A key-value listing of all custom fields the tool has requested */
-  custom_fields: unknown;
+  custom_fields: object;
   /** The default launch URL for the tool. Overridable by placements. */
   target_link_uri: string;
   /** 1.3 specific. URL used for initial login request */
   oidc_initiation_url: string;
   /** 1.3 specific. Region-specific login URLs for data protection compliance */
-  oidc_initiation_urls: unknown;
+  oidc_initiation_urls: object;
   /**
    * 1.3 specific. The tool's public JWK in JSON format. Discouraged in favor of
    * a url hosting a JWK set.
    */
-  public_jwk: unknown;
+  public_jwk: object;
   /**
    * 1.3 specific. The tool-hosted URL containing its public JWK keyset. Canvas
    * may cache JWKs up to 5 minutes.
@@ -92,7 +92,7 @@ export type LtiLegacyConfiguration = {
   /** 1.3 specific. List of LTI scopes requested by the tool */
   scopes: string[];
   /** Array of extensions for the tool */
-  extensions: unknown[];
+  extensions: string[];
 };
 
 /** A Registration's Canvas-specific tool configuration. */
@@ -102,7 +102,7 @@ export type LtiToolConfiguration = {
   /** The description of the tool */
   description: string;
   /** A key-value listing of all custom fields the tool has requested */
-  custom_fields: unknown;
+  custom_fields: object;
   /** The default launch URL for the tool. Overridable by placements. */
   target_link_uri: string;
   /**
@@ -117,12 +117,12 @@ export type LtiToolConfiguration = {
   /** 1.3 specific. URL used for initial login request */
   oidc_initiation_url: string;
   /** 1.3 specific. Region-specific login URLs for data protection compliance */
-  oidc_initiation_urls: unknown;
+  oidc_initiation_urls: object;
   /**
    * 1.3 specific. The tool's public JWK in JSON format. Discouraged in favor of
    * a url hosting a JWK set.
    */
-  public_jwk: unknown;
+  public_jwk: object;
   /**
    * 1.3 specific. The tool-hosted URL containing its public JWK keyset. Canvas
    * may cache JWKs up to 5 minutes.
@@ -138,7 +138,7 @@ export type LtiToolConfiguration = {
   /** Default launch settings for all placements */
   launch_settings: LtiLaunchSettings;
   /** List of placements configured by the tool */
-  placements: LtiPlacement[];
+  placements: string[];
 };
 
 /** Default launch settings for all placements */
@@ -148,12 +148,12 @@ export type LtiLaunchSettings = {
   /** The text of the link to the tool (if applicable). */
   text: string;
   /** Canvas-specific i18n for placement text. See the Navigation Placement docs. */
-  labels: unknown;
+  labels: object;
   /**
    * Placement-specific custom fields to send in the launch. Merged with
    * tool-level custom fields.
    */
-  custom_fields: unknown;
+  custom_fields: object;
   /**
    * Default iframe height. Not valid for all placements. Overrides tool-level
    * launch_height.
@@ -248,12 +248,12 @@ export type LtiPlacement = {
   /** The text of the link to the tool (if applicable). */
   text: string;
   /** Canvas-specific i18n for placement text. See the Navigation Placement docs. */
-  labels: unknown;
+  labels: object;
   /**
    * Placement-specific custom fields to send in the launch. Merged with
    * tool-level custom fields.
    */
-  custom_fields: unknown;
+  custom_fields: object;
   /**
    * Default iframe height. Not valid for all placements. Overrides tool-level
    * launch_height.
@@ -344,7 +344,7 @@ export type LtiOverlay = {
   /** The description of the tool */
   description: string;
   /** A key-value listing of all custom fields the tool has requested */
-  custom_fields: unknown;
+  custom_fields: object;
   /** The default launch URL for the tool. Overridable by placements. */
   target_link_uri: string;
   /**
@@ -364,7 +364,7 @@ export type LtiOverlay = {
   /** List of placements that the tool has requested but an admin has disabled */
   disabled_placements: string[];
   /** Placement-specific settings changed by an admin */
-  placements: unknown;
+  placements: object;
 };
 
 /**
@@ -409,5 +409,5 @@ export type ListLtiRegistrationsResponse = {
    */
   total: number;
   /** The paginated list of LTI::Registrations */
-  data: LtiRegistration[];
+  data: string[];
 };

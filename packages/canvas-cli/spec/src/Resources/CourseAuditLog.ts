@@ -103,7 +103,7 @@ export type CreatedEventData = {
    * :new_value]. The created event type also includes a created_source field to
    * specify what triggered the creation of the course.
    */
-  is_public: boolean[];
+  is_public: string[];
   /** The type of action that triggered the creation of the course. */
   created_source: string;
 };
@@ -142,5 +142,5 @@ export type UpdatedEventData = {
    * changed. The value is an array that contains the before and after values
    * for the change as in [:old_value, :new_value].
    */
-  is_public: boolean[];
+  is_public: string[];
 };

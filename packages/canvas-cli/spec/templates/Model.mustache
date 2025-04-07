@@ -1,0 +1,20 @@
+{{#tsImports}}
+import { {{type}} } from '{{{packagePath}}}{{{filePath}}}';
+{{/tsImports}}
+
+{{#models}}
+/**
+ * {{{description}}}
+ */
+{{tsExport}} type {{{tsName}}} = {
+{{#properties}}
+  /**
+   * {{{description}}}
+   *
+   * {{{tsType.description}}}
+   */
+  {{{tsName}}}{{tsType.optional}}: {{tsType.type}};
+{{/properties}}
+}
+
+{{/models}}

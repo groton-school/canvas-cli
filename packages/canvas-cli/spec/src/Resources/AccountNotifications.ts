@@ -26,7 +26,7 @@ export type AccountNotification = {
    * The roles to send the notification to. If roles is not passed it defaults
    * to all roles
    */
-  role_ids: number[];
+  role_ids: string[];
   /** The author of the notification. Available only to admins using include_all. */
-  author: unknown;
+  author: object;
 };

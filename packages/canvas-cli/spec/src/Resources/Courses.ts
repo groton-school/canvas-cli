@@ -104,7 +104,7 @@ export type Course = {
    */
   enrollment_term_id: number;
   /** A list of grading periods associated with the course */
-  grading_periods: GradingPeriod[];
+  grading_periods: string[];
   /**
    * The grading standard associated with the course
    *
@@ -137,7 +137,7 @@ export type Course = {
    * A list of enrollments linking the current user to the course. for student
    * enrollments, grading information may be included if include[]=total_scores
    */
-  enrollments: Enrollment[];
+  enrollments: string[];
   /**
    * Optional: the total number of active and invited students in the course
    *
@@ -178,7 +178,7 @@ export type Course = {
    * Optional: the permissions the user has for the course. returned only for a
    * single course and include[]=permissions
    */
-  permissions: unknown;
+  permissions: object;
   is_public: boolean;
   is_public_to_auth_users: boolean;
   public_syllabus: boolean;
@@ -210,12 +210,12 @@ export type Course = {
    */
   blueprint: boolean;
   /** Optional: Set of restrictions applied to all locked course objects */
-  blueprint_restrictions: unknown;
+  blueprint_restrictions: object;
   /**
    * Optional: Sets of restrictions differentiated by object type applied to
    * locked course objects
    */
-  blueprint_restrictions_by_object_type: unknown;
+  blueprint_restrictions_by_object_type: object;
   /**
    * Optional: whether the course is set as a template (requires the Course
    * Templates feature)

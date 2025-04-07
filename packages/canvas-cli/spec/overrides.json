@@ -1,0 +1,42 @@
+{
+  "tsReferences": [
+    {
+      "type": "Account",
+      "filePath": "/Resources/Accounts.ts"
+    },
+    {
+      "type": "CoursePace",
+      "filePath": "/Resources/CoursePace.ts"
+    },
+    {
+      "type": "OutcomeResult",
+      "filePath": "/Resources/OutcomeResults.ts"
+    },
+    {
+      "type": "File",
+      "filePath": "/Resources/Files.ts"
+    },
+    {
+      "type": "Result",
+      "filePath": "/Resources/Results.ts"
+    },
+    {
+      "type": "RubricRating",
+      "filePath": "/Resources/Rubrics.ts"
+    },
+    {
+      "type": "Submission",
+      "filePath": "/Resources/Submissions.ts"
+    }
+  ],
+  "annotatedModels": [
+    {
+      "tsName": "AccountReport",
+      "tsExport": ""
+    },
+    {
+      "tsName": "Grade",
+      "tsExport": ""
+    }
+  ]
+}

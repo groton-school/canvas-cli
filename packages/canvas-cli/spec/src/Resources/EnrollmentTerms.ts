@@ -34,7 +34,7 @@ export type EnrollmentTerm = {
   /** The state of the term. Can be 'active' or 'deleted'. */
   workflow_state: string;
   /** Term date overrides for specific enrollment types */
-  overrides: unknown;
+  overrides: object;
   /**
    * The number of courses in the term (available via include)
    *
@@ -45,5 +45,5 @@ export type EnrollmentTerm = {
 
 export type EnrollmentTermsList = {
   /** A paginated list of all terms in the account */
-  enrollment_terms: EnrollmentTerm[];
+  enrollment_terms: string[];
 };

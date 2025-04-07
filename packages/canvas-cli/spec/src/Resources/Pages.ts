@@ -76,7 +76,7 @@ export type Page = {
    * The block editor attributes for this page. (optionally included, and only
    * if this is a block editor created page)
    */
-  block_editor_attributes: unknown;
+  block_editor_attributes: object;
 };
 
 export type PageRevision = {

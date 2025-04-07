@@ -1,3 +1,4 @@
+import { uuid } from '';
 import { Assignment, AssignmentOverride } from './Assignments.js';
 
 export type CalendarEvent = {
@@ -77,7 +78,7 @@ export type CalendarEvent = {
    * reservations. If this is a course-level event, this will be a list of
    * section-level events (if any)
    */
-  child_events: number[];
+  child_events: string[];
   /** URL for this calendar event (to update, delete, etc.) */
   url: string;
   /** URL for a user to view this event */
@@ -152,7 +153,7 @@ export type CalendarEvent = {
   /** Boolean indicating whether this has important dates. */
   important_dates: boolean;
   /** Identifies the recurring event series this event may belong to. */
-  series_uuid: unknown;
+  series_uuid: uuid;
   /**
    * An iCalendar RRULE for defining how events in a recurring event series
    * repeat.

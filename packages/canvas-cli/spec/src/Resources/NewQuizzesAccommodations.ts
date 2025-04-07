@@ -3,9 +3,9 @@ export type AccommodationResponse = {
   /** Processing result message */
   message: string;
   /** List of successfully processed accommodations */
-  successful: unknown[];
+  successful: string[];
   /** List of accommodations that failed to process */
-  failed: unknown[];
+  failed: string[];
 };
 
 /** Request format for setting course-level accommodations */

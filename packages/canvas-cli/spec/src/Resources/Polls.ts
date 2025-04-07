@@ -25,5 +25,5 @@ export type Poll = {
    * An aggregate of the results of all associated poll sessions, with the poll
    * choice id as the key, and the aggregated submission count as the value.
    */
-  total_results: unknown;
+  total_results: object;
 };

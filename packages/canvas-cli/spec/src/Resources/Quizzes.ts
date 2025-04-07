@@ -156,7 +156,7 @@ export type Quiz = {
   /** Permissions the user has for the quiz */
   permissions: QuizPermissions;
   /** List of due dates for the quiz */
-  all_dates: AssignmentDate[];
+  all_dates: string[];
   /**
    * Current version number of the quiz
    *

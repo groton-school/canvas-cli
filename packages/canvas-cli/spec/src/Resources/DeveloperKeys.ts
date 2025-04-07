@@ -97,7 +97,7 @@ export type DeveloperKey = {
    * (LTI keys only) The tool's public JWK in JSON format. Discouraged in favor
    * of a url hosting a JWK set.
    */
-  public_jwk: unknown;
+  public_jwk: object;
   /**
    * (LTI keys only) The tool-hosted URL containing its public JWK keyset.
    * Canvas may cache JWKs up to 5 minutes.
@@ -107,7 +107,7 @@ export type DeveloperKey = {
    * (LTI keys only) The LTI IMS Registration object for this key, if key was
    * created via Dynamic Registration.
    */
-  lti_registration: unknown;
+  lti_registration: object;
   /** (LTI keys only) Returns true if key was created via Dynamic Registration. */
   is_lti_registration: boolean;
   /** Unused. */
