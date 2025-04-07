@@ -6,7 +6,12 @@ import Mustache from 'mustache';
 import fs from 'node:fs';
 import path from 'node:path';
 import * as prettier from 'prettier';
-import { AnnotatedOperation, TSName, TSReference } from './Annotation.js';
+import {
+  AnnotatedOperation,
+  AnnotatedParameter,
+  TSName,
+  TSReference
+} from './Annotation.js';
 import * as Models from './Models.js';
 import { Overrides } from './Overrides.js';
 import { toTSDeprecation, toTSPropertyName, toTSType } from './TypeScript.js';
@@ -48,6 +53,7 @@ export function annotateOperations(annotation: Models.Annotation): Annotation {
           if (tsType.tsReference) {
             tsImports.push(tsType.tsReference);
           }
+          // @ts-expect-error 2322
           const annotatedOperation: AnnotatedOperation = {
             ...operation,
             specPath,
@@ -61,7 +67,7 @@ export function annotateOperations(annotation: Models.Annotation): Annotation {
             tsName + '.ts'
           );
           for (const parameter of operation.parameters) {
-            const annotatedParameter = {
+            const annotatedParameter: AnnotatedParameter = {
               ...parameter,
               tsDeprecation: toTSDeprecation(parameter),
               tsName: toTSPropertyName(parameter.name),
@@ -78,15 +84,21 @@ export function annotateOperations(annotation: Models.Annotation): Annotation {
                 annotatedParameter.tsType.tsReference
               );
             }
-            const paramType =
-              'ts' +
+            const paramType = ('ts' +
               annotatedParameter.paramType[0].toUpperCase() +
               annotatedParameter.paramType.slice(1) +
-              'Parameters';
+              'Parameters') as
+              | 'tsBodyParameters'
+              | 'tsFormParameters'
+              | 'tsQueryParameters'
+              | 'tsPathParameters';
             if (!(paramType in annotatedOperation)) {
               annotatedOperation[paramType] = [];
             }
-            annotatedOperation[paramType].push(annotatedParameter);
+            if (Array.isArray(annotatedOperation[paramType])) {
+              // @ts-expect-error 2345
+              annotatedOperation[paramType].push(annotatedParameter);
+            }
           }
 
           operations[annotatedOperation.tsFilePath] = annotatedOperation;
@@ -212,6 +224,7 @@ async function outputOperations({
           }
         )
       );
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_) {
       throw new Error(`Error prettifying ${Colors.url(tsFilePath)}`);
     }

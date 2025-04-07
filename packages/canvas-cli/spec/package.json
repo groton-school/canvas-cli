@@ -1,7 +1,34 @@
 {
   "name": "@groton/canvas-cli.spec",
   "version": "0.0.0",
+  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/spec#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groton-school/canvas-cli.git",
+    "directory": "packages/canvas-cli/spec"
+  },
+  "author": {
+    "name": "Seth Battis",
+    "email": "sbattis@groton.org"
+  },
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "clean": "del ./dist",
+    "bin": "run-s bin:*",
+    "bin:clean": "del ./bin",
+    "bin:compile": "tsc -p tsconfig.bin.json",
+    "build": "run-s build:*",
+    "build:prepare": "run-s bin",
+    "build:clean": "run-s clean",
+    "build:generate": "node bin/Generate/index.js",
+    "build:compile": "tsc",
+    "release": "commit-and-tag-version"
+  },
+  "dependencies": {
+    "@groton/canvas-cli.client": "workspace:*"
+  },
   "devDependencies": {
     "@battis/descriptive-types": "^0.2.3",
     "@battis/qui-cli.colors": "^2.0.1",
@@ -23,7 +50,6 @@
     "prettier": "^3.5.3",
     "prettier-plugin-jsdoc": "^1.3.2",
     "prettier-plugin-organize-imports": "^4.1.0",
-    "tsx": "^4.19.3",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.3"
   }
 }

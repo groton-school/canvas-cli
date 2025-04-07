@@ -156,6 +156,7 @@ function annotateExports(annotation: Annotation, overrides?: Overrides) {
           for (const prop of Object.getOwnPropertyNames(
             override
           ) as (keyof AnnotatedModel)[]) {
+            // @ts-expect-error 2322
             model[prop] = override[prop];
           }
         }
@@ -180,8 +181,7 @@ async function outputModels({
   templatePath,
   outputPath,
   modelDirName,
-  models,
-  prettierConfig
+  models
 }: OutputOptions) {
   const template = fs
     .readFileSync(path.resolve(Root.path(), templatePath, 'Model.mustache'))

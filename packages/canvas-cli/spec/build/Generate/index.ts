@@ -21,7 +21,7 @@ type Configuration = Plugin.Configuration & {
 };
 
 export const name = 'generate';
-export const src = path.resolve(import.meta.dirname, '../..');
+export const src = path.dirname(import.meta.dirname);
 
 let specPath = './spec';
 let overridePath = './overrides.json';

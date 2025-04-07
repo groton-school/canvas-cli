@@ -54,4 +54,7 @@ export type TSType = {
 
 export type TSReference = {
   type: string;
-} & ({ filePath?: PathString } | { packagePath: string });
+} & (
+  | { filePath?: PathString; packagePath?: never }
+  | { packagePath: string; filePath?: never }
+);
