@@ -1,8 +1,0 @@
-.*
-/bin/
-/build/
-/overrides.json
-/tsconfig.json
-/src/
-/templates/
-/tsconfig.*
