@@ -1,11 +1,11 @@
 {
-  "name": "@groton/canvas-users-cli",
+  "name": "@groton/canvas-cli",
   "version": "0.0.0",
-  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/users#readme",
+  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/canvas-cli#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/groton-school/canvas-cli.git",
-    "directory": "packages/canvas-cli/users"
+    "directory": "packages/canvas-cli/canvas-cli"
   },
   "author": {
     "name": "Seth Battis",
@@ -22,9 +22,7 @@
     "release": "commit-and-tag-version"
   },
   "dependencies": {
-    "@groton/canvas-types": "workspace:*",
-    "@oauth2-cli/canvas": "workspace:*",
-    "ora": "^8.2.0"
+    "@oauth2-cli/canvas": "workspace:*"
   },
   "devDependencies": {
     "@battis/qui-cli.colors": "^2.0.1",
@@ -36,8 +34,7 @@
     "commit-and-tag-version": "^12.5.0",
     "del-cli": "^6.0.0",
     "npm-run-all": "^4.1.5",
-    "tsx": "^4.19.3",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.3"
   },
   "peerDependencies": {
     "@battis/qui-cli.colors": "2.x",

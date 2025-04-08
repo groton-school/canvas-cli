@@ -1,0 +1,5 @@
+{
+  "path": ".",
+  "tag-prefix": "canvas-cli/",
+  "releaseCommitMessageFormat": "release(canvas-cli): @groton/canvas-cli@{{currentTag}}"
+}
