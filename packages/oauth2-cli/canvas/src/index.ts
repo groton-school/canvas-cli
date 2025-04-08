@@ -1,8 +1,7 @@
 // TODO replace node-fetch dependency with native fetch when bumping to node@>=21
-import nodeFetch, { RequestInfo, RequestInit, Response } from 'node-fetch';
+import fetch, { RequestInfo, RequestInit } from 'node-fetch';
 import path from 'node:path';
 import * as OAuth2 from 'oauth2-cli';
-import PQueue from 'p-queue';
 
 export type Credentials = Omit<
   OAuth2.Credentials,
@@ -14,12 +13,13 @@ export type Credentials = Omit<
 export class Canvas {
   private client: OAuth2.Client;
   private token?: OAuth2.Token;
-  private instance_url: string;
-  private queue: PQueue;
+  private _instance_url: string;
+  public get instance_url() {
+    return this._instance_url;
+  }
 
   public constructor({ instance_url, ...credentials }: Credentials) {
-    this.instance_url = instance_url;
-    this.queue = new PQueue();
+    this._instance_url = instance_url;
     this.client = new OAuth2.Client({
       ...credentials,
       authorization_endpoint: path.join(
@@ -30,48 +30,22 @@ export class Canvas {
     });
   }
 
+  public async fetch(endpoint: URL | RequestInfo, init?: RequestInit) {
+    await this.getToken();
+    if (!this.token) {
+      throw new Error('No access token');
+    }
+    return await fetch(new URL(endpoint, this.instance_url), {
+      ...init,
+      headers: {
+        ...init?.headers,
+        Authorization: `Bearer ${this.token.access_token}`
+      }
+    });
+  }
+
   public async getToken() {
     this.token = await this.client.getToken();
     return this.token;
-  }
-
-  public async fetch(endpoint: URL | RequestInfo, init?: RequestInit) {
-    // TODO monitor quota usage and add delays as necessary
-    // TODO retry failed requests due to quota limits
-    return await this.queue.add(
-      (async () => {
-        await this.getToken();
-        if (!this.token) {
-          throw new Error('No access token');
-        }
-        return await (
-          await nodeFetch(new URL(endpoint, this.instance_url), {
-            ...init,
-            headers: {
-              ...init?.headers,
-              Authorization: `Bearer ${this.token.access_token}`
-            }
-          })
-        ).json();
-      }).bind(this)
-    );
-  }
-
-  public async rawFetch(endpoint: URL | RequestInfo, init?: RequestInit) {
-    return await this.queue.add(
-      (async () => {
-        await this.getToken();
-        if (!this.token) {
-          throw new Error('No access token');
-        }
-        return await nodeFetch(new URL(endpoint, this.instance_url), {
-          ...init,
-          headers: {
-            ...init?.headers,
-            Authorization: `Bearer ${this.token.access_token}`
-          }
-        });
-      }).bind(this)
-    );
   }
 }
