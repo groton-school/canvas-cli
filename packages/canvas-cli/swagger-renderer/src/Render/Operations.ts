@@ -1,4 +1,5 @@
 import { PathString } from '@battis/descriptive-types';
+import { Log } from '@battis/qui-cli.log';
 import * as Swagger from '@groton/swagger-spec-ts';
 import Mustache from 'mustache';
 import fs from 'node:fs';
@@ -12,7 +13,12 @@ import {
 import { importPath } from './importPath.js';
 import * as Models from './Models.js';
 import * as Overrides from './Overrides.js';
-import { toTSDeprecation, toTSPropertyName, toTSType } from './TypeScript.js';
+import {
+  toTSDeprecation,
+  toTSNamespace,
+  toTSPropertyName,
+  toTSType
+} from './TypeScript.js';
 import { writePrettier } from './writePrettier.js';
 
 type GenerateOptions = Models.Annotation & {
@@ -37,6 +43,7 @@ export async function generate({
   const annotation = annotateOperations({ spec, models, outputPath });
   annotateImports(annotation);
   await outputOperations({ ...annotation, outputPath, templatePath });
+  await outputOperationIndices(outputPath, templatePath);
   return annotation;
 }
 
@@ -53,7 +60,7 @@ export function annotateOperations({
     for (const spec of annotation.spec[specPath]) {
       for (const endpoint of spec.apis) {
         for (const operation of endpoint.operations || []) {
-          const tsImports: TSReference[] = [{...clientReference}];
+          const tsImports: TSReference[] = [{ ...clientReference }];
           const tsName = toTSMethodName(operation);
           let tsType = toTSType(operation);
           if (tsType.type === 'unknown' && operation.type) {
@@ -211,4 +218,39 @@ async function outputOperations({ operations, templatePath }: OutputOptions) {
       })
     );
   }
+}
+
+async function outputOperationIndices(
+  outputPath: PathString,
+  templatePath: PathString
+) {
+  const template = fs
+    .readFileSync(path.join(templatePath, 'OperationIndex.mustache'))
+    .toString();
+  async function recursiveIndex(outputPath: PathString) {
+    const modules = await Promise.all(
+      fs
+        .readdirSync(outputPath)
+        .filter((fileName) => !fileName.startsWith('.'))
+        .map((fileName) => ({
+          tsNamespace:`as ${toTSNamespace(fileName)}`,
+          filePath: path.join(outputPath, fileName)
+        }))
+        .map(async (module) => {
+          if (fs.lstatSync(module.filePath).isDirectory()) {
+            await recursiveIndex(module.filePath);
+            module.filePath = path.join(module.filePath, 'index.ts');
+          } else {
+            module.tsNamespace = '';
+          }
+          return module;
+        })
+    );
+    const filePath = path.join(outputPath, 'index.ts');
+    await writePrettier(
+      filePath,
+      Mustache.render(template, { modules: modules.map(module => ({...module, filePath: importPath(filePath, module.filePath)})) })
+    );
+  }
+  await recursiveIndex(outputPath);
 }
