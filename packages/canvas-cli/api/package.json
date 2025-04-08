@@ -1,0 +1,39 @@
+{
+  "name": "@groton/canvas-cli.api",
+  "version": "0.0.0",
+  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/spec#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groton-school/canvas-cli.git",
+    "directory": "packages/canvas-cli/spec"
+  },
+  "author": {
+    "name": "Seth Battis",
+    "email": "sbattis@groton.org"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "clean":"run-s clean:*",
+    "clean:render":"del ./src/Endpoints ./src/Resources ./src/map.json",
+    "clean:compilation": "del ./dist",
+    "build": "run-s build:*",
+    "build:clean": "run-s clean",
+    "build:render": "render --overridePath ./overrides.json --modelDirName Resources --operationsDirName Endpoints --map --logFilePath ./var/render.log",
+    "build:compile": "tsc",
+    "release": "commit-and-tag-version"
+  },
+  "dependencies": {
+    "@groton/canvas-cli.client": "workspace:*"
+  },
+  "devDependencies": {
+    "@groton/canvas-cli.swagger-renderer":"workspace:*",
+    "@battis/descriptive-types": "^0.2.3",
+    "@tsconfig/node20": "^20.1.5",
+    "commit-and-tag-version": "^12.5.0",
+    "del-cli": "^6.0.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.8.3"
+  }
+}

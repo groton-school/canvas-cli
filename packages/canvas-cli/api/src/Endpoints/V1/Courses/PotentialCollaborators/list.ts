@@ -1,0 +1,26 @@
+import { client } from '../../../../Client.js';
+import { User } from '../../../../Resources/Users.js';
+
+type Parameters = {};
+
+type Options = {
+  parameters: Parameters;
+};
+
+/**
+ * List potential members
+ *
+ * A paginated list of the users who can potentially be added to a collaboration
+ * in the given context.
+ *
+ * For courses, this consists of all enrolled users. For groups, it is comprised
+ * of the group members plus the admins of the course containing the group.
+ *
+ * Nickname: list_potential_members_courses
+ */
+export async function list({ parameters }: Options) {
+  return await client().fetchAs<string[]>(
+    `/v1/courses/{course_id}/potential_collaborators`,
+    { method: 'GET', params: parameters }
+  );
+}

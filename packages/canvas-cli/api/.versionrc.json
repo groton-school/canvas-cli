@@ -1,0 +1,5 @@
+{
+  "path": ".",
+  "tag-prefix": "api/",
+  "releaseCommitMessageFormat": "release(api): @groton/canvas-cli.api@{{currentTag}}"
+}
