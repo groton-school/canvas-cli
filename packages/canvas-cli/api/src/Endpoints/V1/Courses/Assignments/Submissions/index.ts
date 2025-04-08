@@ -1,0 +1,12 @@
+export * from '././get.js';
+export * from '././grade_or_comment_on_submission_courses.js';
+export * from '././list.js';
+export * from '././submit_assignment_courses.js';
+export * as Comments from './Comments/index.js';
+export * as DocumentAnnotations from './DocumentAnnotations/index.js';
+export * as Files from './Files/index.js';
+export * as PeerReviews from './PeerReviews/index.js';
+export * as Read from './Read/index.js';
+export * as RubricAssessments from './RubricAssessments/index.js';
+export * as RubricComments from './RubricComments/index.js';
+export * as UpdateGrades from './UpdateGrades/index.js';

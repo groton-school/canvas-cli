@@ -1,0 +1,18 @@
+export * from '././create.js';
+export * from '././delete_quiz.js';
+export * from '././edit_quiz.js';
+export * from '././get.js';
+export * from '././list.js';
+export * as AssignmentOverrides from './AssignmentOverrides/index.js';
+export * as DateDetails from './DateDetails/index.js';
+export * as Extensions from './Extensions/index.js';
+export * as Groups from './Groups/index.js';
+export * as IpFilters from './IpFilters/index.js';
+export * as Questions from './Questions/index.js';
+export * as Reorder from './Reorder/index.js';
+export * as Reports from './Reports/index.js';
+export * as Statistics from './Statistics/index.js';
+export * as Submission from './Submission/index.js';
+export * as Submissions from './Submissions/index.js';
+export * as SubmissionUsers from './SubmissionUsers/index.js';
+export * as ValidateAccessCode from './ValidateAccessCode/index.js';
