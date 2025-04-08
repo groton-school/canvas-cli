@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@battis/eslint-config": "^2.0.3",
-    "@battis/prettier-config": "^1.5.7",
+    "@battis/prettier-config": "^1.6.0",
     "@battis/qui-cli.plugin": "^2.3.0",
     "@msar/canvas-import": "workspace:*",
     "@msar/canvas-import-open": "workspace:*",
