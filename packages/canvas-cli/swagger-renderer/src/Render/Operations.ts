@@ -1,6 +1,6 @@
 import { PathString } from '@battis/descriptive-types';
 import * as Swagger from '@groton/swagger-spec-ts';
-import Mustache from 'mustache';
+import Handlebars from 'handlebars';
 import fs from 'node:fs';
 import path from 'node:path';
 import {
@@ -130,17 +130,25 @@ export function annotateOperations({
 
 function annotateImports({ operations, models }: Annotation) {
   for (const filePath in operations) {
-    operations[filePath].tsImports = operations[filePath].tsImports?.reduce((tsImports, tsReference) => {
-      const match = tsImports.find(t => t.type === tsReference.type);
-      if (!match) {
-        tsImports.push(tsReference);
-      } else {
-        if (match.filePath && match.filePath !== tsReference.filePath || match.packagePath && match.packagePath !== tsReference.packagePath) {
-          throw new TypeError(`Importing two identically named objects from different files.`);
+    operations[filePath].tsImports = operations[filePath].tsImports?.reduce(
+      (tsImports, tsReference) => {
+        const match = tsImports.find((t) => t.type === tsReference.type);
+        if (!match) {
+          tsImports.push(tsReference);
+        } else {
+          if (
+            (match.filePath && match.filePath !== tsReference.filePath) ||
+            (match.packagePath && match.packagePath !== tsReference.packagePath)
+          ) {
+            throw new TypeError(
+              `Importing two identically named objects from different files.`
+            );
+          }
         }
-      }
-      return tsImports;
-    }, [] as TSReference[])
+        return tsImports;
+      },
+      [] as TSReference[]
+    );
     for (const tsImport of operations[filePath].tsImports || []) {
       tsImport.filePath =
         tsImport.filePath ||
@@ -211,13 +219,13 @@ function toTSMethodName(operation: Swagger.v1p2.OperationObject): TSName {
 }
 
 async function outputOperations({ operations, templatePath }: OutputOptions) {
-  const template = fs
-    .readFileSync(path.join(templatePath, 'Operation.mustache'))
-    .toString();
+  const template = Handlebars.compile(
+    fs.readFileSync(path.join(templatePath, 'Operation.handlebars')).toString()
+  );
   for (const filePath in operations) {
     await writePrettier(
       filePath,
-      Mustache.render(template, {
+      template({
         ...operations[filePath],
         tsImports: operations[filePath].tsImports?.map((tsImport) => {
           if (tsImport.filePath) {
@@ -234,16 +242,18 @@ async function outputOperationIndices(
   outputPath: PathString,
   templatePath: PathString
 ) {
-  const template = fs
-    .readFileSync(path.join(templatePath, 'OperationIndex.mustache'))
-    .toString();
+  const template = Handlebars.compile(
+    fs
+      .readFileSync(path.join(templatePath, 'OperationIndex.handlebars'))
+      .toString()
+  );
   async function recursiveIndex(outputPath: PathString) {
     const modules = await Promise.all(
       fs
         .readdirSync(outputPath)
         .filter((fileName) => !fileName.startsWith('.'))
         .map((fileName) => ({
-          tsNamespace:`as ${toTSNamespace(fileName)}`,
+          tsNamespace: `as ${toTSNamespace(fileName)}`,
           filePath: path.join(outputPath, fileName)
         }))
         .map(async (module) => {
@@ -259,7 +269,12 @@ async function outputOperationIndices(
     const filePath = path.join(outputPath, 'index.ts');
     await writePrettier(
       filePath,
-      Mustache.render(template, { modules: modules.map(module => ({...module, filePath: importPath(filePath, module.filePath)})) })
+      template({
+        modules: modules.map((module) => ({
+          ...module,
+          filePath: importPath(filePath, module.filePath)
+        }))
+      })
     );
   }
   await recursiveIndex(outputPath);

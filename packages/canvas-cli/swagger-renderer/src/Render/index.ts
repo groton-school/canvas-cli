@@ -66,7 +66,7 @@ export function options(): Plugin.Options {
         default: overridePath
       },
       templatePath: {
-        description: `Path to Mustache template directory (default: ${Colors.url(templatePath)})`,
+        description: `Path to Handlebars template directory (default: ${Colors.url(templatePath)})`,
         default: templatePath
       },
       outputPath: {

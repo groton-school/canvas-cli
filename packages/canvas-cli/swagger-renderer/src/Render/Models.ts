@@ -1,6 +1,6 @@
 import { PathString } from '@battis/descriptive-types';
 import * as Swagger from '@groton/swagger-spec-ts';
-import Mustache from 'mustache';
+import Handlebars from 'handlebars';
 import fs from 'node:fs';
 import path from 'node:path';
 import {
@@ -147,15 +147,15 @@ async function outputModels({
   outputPath,
   models
 }: OutputOptions) {
-  const template = fs
-    .readFileSync(path.join(templatePath, 'Model.mustache'))
-    .toString();
+  const template = Handlebars.compile(
+    fs.readFileSync(path.join(templatePath, 'Model.handlebars')).toString()
+  );
   fs.mkdirSync(outputPath, { recursive: true });
   for (const filePath in models) {
     if (models[filePath].length) {
       await writePrettier(
         filePath,
-        Mustache.render(template, {
+        template({
           models: models[filePath],
           tsImports: models[filePath]
             .reduce((tsImports, model) => {
@@ -183,12 +183,12 @@ async function outputModelIndex({
   outputPath,
   models
 }: OutputOptions) {
-  const template = fs
-    .readFileSync(path.join(templatePath, 'ModelIndex.mustache'))
-    .toString();
+  const template = Handlebars.compile(
+    fs.readFileSync(path.join(templatePath, 'ModelIndex.handlebars')).toString()
+  );
   await writePrettier(
     path.join(outputPath, 'index.ts'),
-    Mustache.render(template, {
+    template({
       index: Object.keys(models)
         .filter((filePath) => models[filePath].length)
         .map((filePath) => ({
