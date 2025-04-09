@@ -3,7 +3,7 @@ import { {{type}} } from '{{{packagePath}}}{{{filePath}}}';
 {{/tsImports}}
 
 {{#if tsPathParameters}}
-type {{tsName}}PathParameters = {
+export type {{tsName}}PathParameters = {
     {{#tsPathParameters}}
     /**
      * {{description}}
@@ -18,7 +18,7 @@ type {{tsName}}PathParameters = {
 {{/if}}
 
 {{#if tsQueryParameters}}
-type {{tsName}}SearchParameters = {
+export type {{tsName}}SearchParameters = {
     {{#tsQueryParameters}}
     /**
      * {{description}}
@@ -33,7 +33,7 @@ type {{tsName}}SearchParameters = {
 {{/if}}
 
 {{#if tsFormParameters}}
-type {{tsName}}FormParameters = {
+export type {{tsName}}FormParameters = {
     {{#tsFormParameters}}
     /**
      * {{description}}
@@ -47,21 +47,8 @@ type {{tsName}}FormParameters = {
 }
 {{/if}}
 
-{{#if tsBodyParameters}}
-type {{tsName}}BodyParameters = {
-    {{#tsBodyParameters}}
-    /**
-     * {{description}}
-     *
-     * {{{tsType.description}}}
-     *
-     * {{tsDeprecation}}
-     */
-    {{{tsName}}}{{tsOptional}}: {{{tsType.type}}}
-    {{/tsBodyParameters}}
-}
-{{/if}}
- 
+{{!-- tsBodyParameters are not currently used in the Canvas API spec --}}
+
 type Options = {
   {{#if tsPathParameters}}
   pathParams: {{tsName}}PathParameters;
