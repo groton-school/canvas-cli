@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { License } from '../../../../Resources/Files.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   user_id: string;
 };

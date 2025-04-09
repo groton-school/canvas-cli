@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { DeveloperKey } from '../../../Resources/DeveloperKeys.js';
 
-type delete_developer_keyPathParameters = {
+export type delete_developer_keyPathParameters = {
   /** ID */
   id: string;
 };

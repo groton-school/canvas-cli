@@ -1,12 +1,12 @@
 import { Date } from '';
 import { client } from '../../../../../Client.js';
 
-type batch_update_grading_periods_grading_period_setsPathParameters = {
+export type batch_update_grading_periods_grading_period_setsPathParameters = {
   /** The id of the grading period set. */
   set_id: string;
 };
 
-type batch_update_grading_periods_grading_period_setsFormParameters = {
+export type batch_update_grading_periods_grading_period_setsFormParameters = {
   /**
    * The id of the grading period. If the id parameter does not exist, a new
    * grading period will be created.

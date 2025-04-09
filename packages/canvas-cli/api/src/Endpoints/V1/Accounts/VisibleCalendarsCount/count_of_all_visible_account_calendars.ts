@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type count_of_all_visible_account_calendarsPathParameters = {
+export type count_of_all_visible_account_calendarsPathParameters = {
   /** ID */
   account_id: string;
 };

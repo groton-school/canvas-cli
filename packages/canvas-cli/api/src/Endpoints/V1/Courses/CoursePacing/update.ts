@@ -2,7 +2,7 @@ import { Datetime } from '';
 import { client } from '../../../../Client.js';
 import { CoursePace } from '../../../../Resources/CoursePace.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
   /**
@@ -13,7 +13,7 @@ type updatePathParameters = {
   course_id: number;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * The id of the course pace
    *

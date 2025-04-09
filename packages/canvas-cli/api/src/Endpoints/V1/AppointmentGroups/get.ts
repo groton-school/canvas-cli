@@ -1,11 +1,11 @@
 import { client } from '../../../Client.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * Array of additional information to include. See include[] argument of
    * "List appointment groups" action.

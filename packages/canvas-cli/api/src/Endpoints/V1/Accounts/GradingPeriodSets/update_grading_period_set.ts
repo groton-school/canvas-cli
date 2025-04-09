@@ -1,13 +1,13 @@
 import { client } from '../../../../Client.js';
 
-type update_grading_period_setPathParameters = {
+export type update_grading_period_setPathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   id: string;
 };
 
-type update_grading_period_setFormParameters = {
+export type update_grading_period_setFormParameters = {
   /** A list of associated term ids for the grading period set */
   enrollment_term_ids: string[];
   /** The title of the grading period set */

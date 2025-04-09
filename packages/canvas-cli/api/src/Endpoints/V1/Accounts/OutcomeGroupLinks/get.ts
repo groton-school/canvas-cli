@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { OutcomeLink } from '../../../../Resources/OutcomeGroups.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * The detail level of the outcomes. Defaults to "abbrev". Specify "full"
    * for more information.

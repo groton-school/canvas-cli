@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type group_activity_streamPathParameters = {
+export type group_activity_streamPathParameters = {
   /** ID */
   group_id: string;
 };

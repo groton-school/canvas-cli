@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** Whether to enable the missing submission deduction late policy. */
   'late_policy[missing_submission_deduction_enabled]': boolean;
   /** How many percentage points to deduct from a missing submission. */

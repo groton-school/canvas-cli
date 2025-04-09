@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { ModuleItemSequence } from '../../../../Resources/Modules.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * The type of asset to find module sequence information for. Use the
    * ModuleItem if it is known (e.g., the user navigated from a module item),

@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type abort_all_pending_sis_importsPathParameters = {
+export type abort_all_pending_sis_importsPathParameters = {
   /** ID */
   account_id: string;
 };

@@ -1,7 +1,7 @@
 import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../../Client.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /**
    * The id of the course
    *
@@ -16,7 +16,7 @@ type createPathParameters = {
   rubric_association_id: number;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * (optional) Indicates whether this assessment is provisional, defaults to
    * false.

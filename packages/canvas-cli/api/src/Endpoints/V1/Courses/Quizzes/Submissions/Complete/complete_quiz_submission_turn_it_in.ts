@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type complete_quiz_submission_turn_it_inPathParameters = {
+export type complete_quiz_submission_turn_it_inPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -9,7 +9,7 @@ type complete_quiz_submission_turn_it_inPathParameters = {
   id: string;
 };
 
-type complete_quiz_submission_turn_it_inFormParameters = {
+export type complete_quiz_submission_turn_it_inFormParameters = {
   /**
    * The attempt number of the quiz submission that should be completed. Note
    * that this must be the latest attempt index, as earlier attempts can not

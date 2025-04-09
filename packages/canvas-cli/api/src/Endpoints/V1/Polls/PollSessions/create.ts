@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   poll_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * The id of the course this session is associated with.
    *

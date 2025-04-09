@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type mark_module_item_readPathParameters = {
+export type mark_module_item_readPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

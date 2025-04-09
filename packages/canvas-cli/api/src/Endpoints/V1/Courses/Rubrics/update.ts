@@ -1,7 +1,7 @@
 import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
   /**
@@ -12,7 +12,7 @@ type updatePathParameters = {
   id: number;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * The id of the rubric association object (not the course/assignment
    * itself, but the join table record id). It can be used in place of

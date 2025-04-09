@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** The identifier for the editor. */
   text_editor_preference: string;
 };

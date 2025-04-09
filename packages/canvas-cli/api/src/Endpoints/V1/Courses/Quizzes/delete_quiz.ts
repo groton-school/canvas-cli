@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Quiz } from '../../../../Resources/Quizzes.js';
 
-type delete_quizPathParameters = {
+export type delete_quizPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

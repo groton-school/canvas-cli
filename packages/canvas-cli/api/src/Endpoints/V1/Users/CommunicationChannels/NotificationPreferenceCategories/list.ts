@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   user_id: string;
   /** ID */

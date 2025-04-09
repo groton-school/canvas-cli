@@ -1,11 +1,11 @@
 import { client } from '../../../Client.js';
 
-type delete_calendar_eventPathParameters = {
+export type delete_calendar_eventPathParameters = {
   /** ID */
   id: string;
 };
 
-type delete_calendar_eventSearchParameters = {
+export type delete_calendar_eventSearchParameters = {
   /** Reason for deleting/canceling the event. */
   cancel_reason: string;
   /**

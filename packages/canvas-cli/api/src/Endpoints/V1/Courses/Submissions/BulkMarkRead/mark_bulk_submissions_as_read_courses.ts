@@ -1,11 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type mark_bulk_submissions_as_read_coursesPathParameters = {
+export type mark_bulk_submissions_as_read_coursesPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type mark_bulk_submissions_as_read_coursesFormParameters = {
+export type mark_bulk_submissions_as_read_coursesFormParameters = {
   /** No description */
   submissionIds: string[];
 };

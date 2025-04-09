@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { ContentShare } from '../../../../Resources/ContentShares.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   user_id: string;
   /** ID */

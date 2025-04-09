@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type patch_late_policyPathParameters = {
+export type patch_late_policyPathParameters = {
   /** ID */
   id: string;
 };
 
-type patch_late_policyFormParameters = {
+export type patch_late_policyFormParameters = {
   /** Whether to enable the missing submission deduction late policy. */
   'late_policy[missing_submission_deduction_enabled]': boolean;
   /** How many percentage points to deduct from a missing submission. */

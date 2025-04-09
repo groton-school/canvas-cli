@@ -4,7 +4,7 @@ import {
   QuizQuestion
 } from '../../../../../Resources/QuizQuestions.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
   /**
@@ -21,7 +21,7 @@ type updatePathParameters = {
   id: number;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** The name of the question. */
   'question[question_name]': string;
   /** The text of the question. */

@@ -1,12 +1,12 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * The ID of the existing outcome to link.
    *

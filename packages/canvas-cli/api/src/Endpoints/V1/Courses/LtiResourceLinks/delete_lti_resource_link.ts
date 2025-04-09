@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
-type delete_lti_resource_linkPathParameters = {
+export type delete_lti_resource_linkPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

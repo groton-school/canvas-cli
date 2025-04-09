@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type find_summary_groupsPathParameters = {
+export type find_summary_groupsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */

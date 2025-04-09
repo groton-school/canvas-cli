@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { FeatureFlag } from '../../../../../Resources/FeatureFlags.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   user_id: string;
   /** ID */

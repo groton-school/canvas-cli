@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { ListLtiRegistrationsResponse } from '../../../../Resources/LtiRegistrations.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * The number of registrations to return per page. Defaults to 15.
    *

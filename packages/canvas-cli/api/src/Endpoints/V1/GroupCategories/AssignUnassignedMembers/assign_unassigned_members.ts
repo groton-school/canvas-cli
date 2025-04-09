@@ -1,12 +1,12 @@
 import { GroupMembershipProgress } from '';
 import { client } from '../../../../Client.js';
 
-type assign_unassigned_membersPathParameters = {
+export type assign_unassigned_membersPathParameters = {
   /** ID */
   group_category_id: string;
 };
 
-type assign_unassigned_membersFormParameters = {
+export type assign_unassigned_membersFormParameters = {
   /**
    * The assigning is done asynchronously by default. If you would like to
    * override this and have the assigning done synchronously, set this value

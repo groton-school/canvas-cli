@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type export_groups_in_and_users_in_categoryPathParameters = {
+export type export_groups_in_and_users_in_categoryPathParameters = {
   /** ID */
   group_category_id: string;
 };

@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type course_activity_streamPathParameters = {
+export type course_activity_streamPathParameters = {
   /** ID */
   course_id: string;
 };

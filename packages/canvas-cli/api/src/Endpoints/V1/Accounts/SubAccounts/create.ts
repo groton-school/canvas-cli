@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Account } from '../../../../Resources/Accounts.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The name of the new sub-account. */
   'account[name]': string;
   /** The account's identifier in the Student Information System. */

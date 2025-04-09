@@ -1,11 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type reorder_pinned_topics_coursesPathParameters = {
+export type reorder_pinned_topics_coursesPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type reorder_pinned_topics_coursesFormParameters = {
+export type reorder_pinned_topics_coursesFormParameters = {
   /**
    * The ids of the pinned discussion topics in the desired order. (For
    * example, "order=104,102,103".)

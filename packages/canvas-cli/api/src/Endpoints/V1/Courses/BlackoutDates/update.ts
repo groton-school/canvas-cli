@@ -1,12 +1,12 @@
 import { BlackoutDateTheresultwhichshouldmatchtheinputwithmaybesomedifferentIDs } from '';
 import { client } from '../../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * [blackout_date, ...] An object containing the array of BlackoutDates we
    * want to exist after this operation. For array entries, if it has an id it

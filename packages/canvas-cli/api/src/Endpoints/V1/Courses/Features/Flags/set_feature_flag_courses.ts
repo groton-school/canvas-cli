@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { FeatureFlag } from '../../../../../Resources/FeatureFlags.js';
 
-type set_feature_flag_coursesPathParameters = {
+export type set_feature_flag_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   feature: string;
 };
 
-type set_feature_flag_coursesFormParameters = {
+export type set_feature_flag_coursesFormParameters = {
   /**
    * "off":: The feature is not available for the course, user, or account and
    * sub-accounts. "allowed":: (valid only on accounts) The feature is off in

@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
-type show_line_itemPathParameters = {
+export type show_line_itemPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   id: string;
 };
 
-type show_line_itemSearchParameters = {
+export type show_line_itemSearchParameters = {
   /**
    * Array of additional information to include.
    *

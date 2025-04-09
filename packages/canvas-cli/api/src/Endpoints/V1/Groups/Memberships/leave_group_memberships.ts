@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type leave_group_membershipsPathParameters = {
+export type leave_group_membershipsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */

@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { GradingStandard } from '../../../../Resources/GradingStandards.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The title for the Grading Standard. */
   title: string;
   /** Whether or not a grading scheme is points based. Defaults to false. */

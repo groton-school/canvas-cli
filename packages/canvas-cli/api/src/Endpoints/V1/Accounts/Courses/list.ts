@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Course } from '../../../../Resources/Courses.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * If true, include only courses with at least one enrollment. If false,
    * include only courses with no enrollments. If not present, do not filter

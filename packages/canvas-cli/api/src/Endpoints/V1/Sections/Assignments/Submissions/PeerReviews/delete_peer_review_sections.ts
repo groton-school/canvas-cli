@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { PeerReview } from '../../../../../../Resources/PeerReviews.js';
 
-type delete_peer_review_sectionsPathParameters = {
+export type delete_peer_review_sectionsPathParameters = {
   /** ID */
   section_id: string;
   /** ID */
@@ -10,7 +10,7 @@ type delete_peer_review_sectionsPathParameters = {
   submission_id: string;
 };
 
-type delete_peer_review_sectionsSearchParameters = {
+export type delete_peer_review_sectionsSearchParameters = {
   /**
    * User_id to delete as reviewer on this assignment
    *

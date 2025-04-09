@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { FeatureFlag } from '../../../../../Resources/FeatureFlags.js';
 
-type remove_feature_flag_accountsPathParameters = {
+export type remove_feature_flag_accountsPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

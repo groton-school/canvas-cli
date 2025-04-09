@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type moderate_all_eportfolios_for_userPathParameters = {
+export type moderate_all_eportfolios_for_userPathParameters = {
   /** ID */
   user_id: string;
 };
 
-type moderate_all_eportfolios_for_userFormParameters = {
+export type moderate_all_eportfolios_for_userFormParameters = {
   /** The spam status for all the ePortfolios */
   spam_status: string;
 };

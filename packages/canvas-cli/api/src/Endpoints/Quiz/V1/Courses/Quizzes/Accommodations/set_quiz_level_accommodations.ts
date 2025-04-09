@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { AccommodationResponse } from '../../../../../../Resources/NewQuizzesAccommodations.js';
 
-type set_quiz_level_accommodationsPathParameters = {
+export type set_quiz_level_accommodationsPathParameters = {
   /** The ID of the course where the quiz is located. */
   course_id: string;
   /**
@@ -12,7 +12,7 @@ type set_quiz_level_accommodationsPathParameters = {
   assignment_id: number;
 };
 
-type set_quiz_level_accommodationsFormParameters = {
+export type set_quiz_level_accommodationsFormParameters = {
   /**
    * The Canvas user ID of the student receiving accommodations.
    *

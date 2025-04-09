@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { DiscussionTopic } from '../../../../Resources/DiscussionTopics.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   group_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * If "all_dates" is passed, all dates associated with graded discussions'
    * assignments will be included. if "sections" is passed, includes the

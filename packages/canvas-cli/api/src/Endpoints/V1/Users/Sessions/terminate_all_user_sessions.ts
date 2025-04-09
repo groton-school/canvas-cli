@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type terminate_all_user_sessionsPathParameters = {
+export type terminate_all_user_sessionsPathParameters = {
   /** ID */
   id: string;
 };

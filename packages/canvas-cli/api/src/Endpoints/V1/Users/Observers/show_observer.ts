@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type show_observerPathParameters = {
+export type show_observerPathParameters = {
   /** ID */
   user_id: string;
   /** ID */

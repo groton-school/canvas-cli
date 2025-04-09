@@ -1,13 +1,13 @@
 import { client } from '../../../../Client.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   group_id: string;
   /** ID */
   topic_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * If "all_dates" is passed, all dates associated with graded discussions'
    * assignments will be included. if "sections" is passed, includes the

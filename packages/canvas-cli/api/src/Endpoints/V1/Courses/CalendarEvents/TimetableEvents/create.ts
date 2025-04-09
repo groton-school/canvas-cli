@@ -1,12 +1,12 @@
 import { DateTime } from '';
 import { client } from '../../../../../Client.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * Events will be created for the course section specified by
    * course_section_id. If not present, events will be created for the entire

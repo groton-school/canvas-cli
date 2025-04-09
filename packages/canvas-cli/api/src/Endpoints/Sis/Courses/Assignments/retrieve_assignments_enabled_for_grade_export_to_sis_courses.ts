@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type retrieve_assignments_enabled_for_grade_export_to_sis_coursesPathParameters =
+export type retrieve_assignments_enabled_for_grade_export_to_sis_coursesPathParameters =
   {
     /**
      * The ID of the course to query.
@@ -10,7 +10,7 @@ type retrieve_assignments_enabled_for_grade_export_to_sis_coursesPathParameters 
     course_id: number;
   };
 
-type retrieve_assignments_enabled_for_grade_export_to_sis_coursesSearchParameters =
+export type retrieve_assignments_enabled_for_grade_export_to_sis_coursesSearchParameters =
   {
     /**
      * The ID of the account to query.

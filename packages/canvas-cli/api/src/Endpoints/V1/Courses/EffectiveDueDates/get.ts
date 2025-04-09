@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /** No description */
   assignment_ids: string[];
 };

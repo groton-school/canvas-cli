@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { GroupMembership } from '../../../../Resources/Groups.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   group_id: string;
   /** ID */
   user_id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** Currently, the only allowed value is "accepted" */
   workflow_state: string;
   /** No description */

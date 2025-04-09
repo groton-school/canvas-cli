@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   group_id: string;
   /** ID */
   id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /** The type of content to enumerate. */
   type: string;
 };

@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The subject of the notification. */
   'account_notification[subject]': string;
   /** The message body of the notification. */

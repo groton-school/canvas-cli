@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { CustomColumn } from '../../../../Resources/CustomGradebookColumns.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** No description */
   'column[title]': string;
   /**

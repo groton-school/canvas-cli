@@ -1,14 +1,14 @@
 import { client } from '../../../../../../Client.js';
 import { PageRevision } from '../../../../../../Resources/Pages.js';
 
-type show_revision_groups_latestPathParameters = {
+export type show_revision_groups_latestPathParameters = {
   /** ID */
   group_id: string;
   /** ID */
   url_or_id: string;
 };
 
-type show_revision_groups_latestSearchParameters = {
+export type show_revision_groups_latestSearchParameters = {
   /** If set, exclude page content from results */
   summary: boolean;
 };

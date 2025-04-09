@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
-type delete_lti_registrationPathParameters = {
+export type delete_lti_registrationPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

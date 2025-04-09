@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { BlueprintMigration } from '../../../../../Resources/BlueprintCourses.js';
 
-type show_blueprint_migrationPathParameters = {
+export type show_blueprint_migrationPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

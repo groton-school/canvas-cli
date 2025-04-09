@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { CustomColumn } from '../../../../Resources/CustomGradebookColumns.js';
 
-type delete_custom_gradebook_columnPathParameters = {
+export type delete_custom_gradebook_columnPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

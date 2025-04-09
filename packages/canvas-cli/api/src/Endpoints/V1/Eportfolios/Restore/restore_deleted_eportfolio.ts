@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { ePortfolio } from '../../../../Resources/EPortfolios.js';
 
-type restore_deleted_eportfolioPathParameters = {
+export type restore_deleted_eportfolioPathParameters = {
   /** ID */
   eportfolio_id: string;
 };

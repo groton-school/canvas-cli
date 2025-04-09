@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { File } from '../../../Resources/Files.js';
 
-type delete_filePathParameters = {
+export type delete_filePathParameters = {
   /** ID */
   id: string;
 };
 
-type delete_fileSearchParameters = {
+export type delete_fileSearchParameters = {
   /**
    * This action is irreversible. If replace is set to true the file contents
    * will be replaced with a generic "file has been removed" file. This also

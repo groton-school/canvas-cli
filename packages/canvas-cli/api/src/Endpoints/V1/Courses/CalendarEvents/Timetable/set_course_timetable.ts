@@ -1,11 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type set_course_timetablePathParameters = {
+export type set_course_timetablePathParameters = {
   /** ID */
   course_id: string;
 };
 
-type set_course_timetableFormParameters = {
+export type set_course_timetableFormParameters = {
   /**
    * An array of timetable objects for the course section specified by
    * course_section_id. If course_section_id is set to "all", events will be

@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { Group } from '../../../../../Resources/Groups.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /** Only include groups that are in this type of context. */
   context_type: string;
   /**

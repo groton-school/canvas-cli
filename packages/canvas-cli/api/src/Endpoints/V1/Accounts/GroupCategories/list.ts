@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { GroupCategory } from '../../../../Resources/GroupCategories.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Filter group categories by their collaboration state:
    *

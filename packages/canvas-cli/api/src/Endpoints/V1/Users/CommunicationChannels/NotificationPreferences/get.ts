@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { NotificationPreference } from '../../../../../Resources/NotificationPreferences.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   user_id: string;
   /** ID */

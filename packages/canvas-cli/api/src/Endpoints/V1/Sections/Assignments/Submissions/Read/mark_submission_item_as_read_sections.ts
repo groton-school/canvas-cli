@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type mark_submission_item_as_read_sectionsPathParameters = {
+export type mark_submission_item_as_read_sectionsPathParameters = {
   /** ID */
   section_id: string;
   /** ID */

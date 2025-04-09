@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type post_reply_groupsPathParameters = {
+export type post_reply_groupsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */
@@ -9,7 +9,7 @@ type post_reply_groupsPathParameters = {
   entry_id: string;
 };
 
-type post_reply_groupsFormParameters = {
+export type post_reply_groupsFormParameters = {
   /** The body of the entry. */
   message: string;
   /**

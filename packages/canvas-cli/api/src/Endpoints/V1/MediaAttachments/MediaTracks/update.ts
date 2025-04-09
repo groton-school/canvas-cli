@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { MediaTrack } from '../../../../Resources/MediaObjects.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   attachment_id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * By default, an update returns id, locale, kind, media_object_id, and
    * user_id for each of the result MediaTracks. Use include[] to add

@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Search terms used for matching users/courses/groups (e.g. "bob smith").
    * If multiple terms are given (separated via whitespace), only results

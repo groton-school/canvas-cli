@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Folder } from '../../../../Resources/Files.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   user_id: string;
   /** ID */

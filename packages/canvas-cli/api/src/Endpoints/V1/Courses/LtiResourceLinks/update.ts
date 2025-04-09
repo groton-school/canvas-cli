@@ -2,14 +2,14 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../Client.js';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * The launch URL for this resource link. <b>Caution!</b> URL must match the
    * URL or domain of the tool associated with this resource link

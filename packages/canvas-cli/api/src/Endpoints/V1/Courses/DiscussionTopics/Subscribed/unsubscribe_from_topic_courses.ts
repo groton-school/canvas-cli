@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type unsubscribe_from_topic_coursesPathParameters = {
+export type unsubscribe_from_topic_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

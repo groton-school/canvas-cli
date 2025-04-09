@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { BlockEditorTemplate } from '../../../../Resources/BlockEditorTemplate.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /** Sort results by this field. */
   sort: string;
   /** The sorting order. Defaults to 'asc'. */

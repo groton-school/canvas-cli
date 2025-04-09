@@ -1,7 +1,7 @@
 import { RubricImport } from '';
 import { client } from '../../../../../Client.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

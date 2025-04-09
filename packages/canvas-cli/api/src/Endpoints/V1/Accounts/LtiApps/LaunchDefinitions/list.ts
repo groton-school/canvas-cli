@@ -1,11 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * The placements to return launch definitions for. If not provided, an
    * empty list will be returned.

@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
-type start_reportPathParameters = {
+export type start_reportPathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   report: string;
 };
 
-type start_reportFormParameters = {
+export type start_reportFormParameters = {
   /**
    * The parameters will vary for each report. To fetch a list of available
    * parameters for each report, see

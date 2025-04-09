@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   topic_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * A list of entry ids to retrieve. Entries will be returned in id order,
    * smallest id first.

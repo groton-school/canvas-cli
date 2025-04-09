@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Quiz } from '../../../../Resources/Quizzes.js';
 
-type edit_quizPathParameters = {
+export type edit_quizPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   id: string;
 };
 
-type edit_quizFormParameters = {
+export type edit_quizFormParameters = {
   /** If true, notifies users that the quiz has changed. Defaults to true */
   'quiz[notify_of_update]': boolean;
 };

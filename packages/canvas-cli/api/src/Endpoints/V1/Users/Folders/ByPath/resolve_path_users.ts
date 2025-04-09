@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { Folder } from '../../../../../Resources/Files.js';
 
-type resolve_path_usersPathParameters = {
+export type resolve_path_usersPathParameters = {
   /** ID */
   user_id: string;
 };

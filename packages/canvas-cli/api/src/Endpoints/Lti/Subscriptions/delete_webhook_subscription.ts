@@ -1,6 +1,6 @@
 import { client } from '../../../Client.js';
 
-type delete_webhook_subscriptionPathParameters = {
+export type delete_webhook_subscriptionPathParameters = {
   /** ID */
   id: string;
 };

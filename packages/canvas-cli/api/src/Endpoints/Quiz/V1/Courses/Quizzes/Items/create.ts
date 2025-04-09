@@ -2,7 +2,7 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../../../Client.js';
 import { QuizItem } from '../../../../../../Resources/NewQuizItems.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /**
    * No description
    *
@@ -17,7 +17,7 @@ type createPathParameters = {
   assignment_id: number;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * The position of the item within the quiz.
    *

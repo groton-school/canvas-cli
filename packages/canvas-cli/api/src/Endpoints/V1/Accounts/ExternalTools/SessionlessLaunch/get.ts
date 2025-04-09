@@ -1,11 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /** The external id of the tool to launch. */
   id: string;
   /** The LTI launch url for the external tool. */

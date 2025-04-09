@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { Group } from '../../../Resources/Groups.js';
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The name of the group */
   name: string;
   /** A description of the group */

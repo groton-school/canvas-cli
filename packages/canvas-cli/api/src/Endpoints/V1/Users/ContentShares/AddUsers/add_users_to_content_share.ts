@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { ContentShare } from '../../../../../Resources/ContentShares.js';
 
-type add_users_to_content_sharePathParameters = {
+export type add_users_to_content_sharePathParameters = {
   /** ID */
   user_id: string;
   /** ID */
   id: string;
 };
 
-type add_users_to_content_shareFormParameters = {
+export type add_users_to_content_shareFormParameters = {
   /**
    * IDs of users to share the content with.
    *

@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Folder } from '../../../../Resources/Files.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   group_id: string;
 };

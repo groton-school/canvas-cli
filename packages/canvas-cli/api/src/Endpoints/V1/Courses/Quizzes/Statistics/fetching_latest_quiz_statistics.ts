@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type fetching_latest_quiz_statisticsPathParameters = {
+export type fetching_latest_quiz_statisticsPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   quiz_id: string;
 };
 
-type fetching_latest_quiz_statisticsSearchParameters = {
+export type fetching_latest_quiz_statisticsSearchParameters = {
   /** Whether the statistics report should include all submissions attempts. */
   all_versions: boolean;
 };

@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { EnrollmentTermsList } from '../../../../Resources/EnrollmentTerms.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * If set, only returns terms that are in the given state. Defaults to
    * 'active'.

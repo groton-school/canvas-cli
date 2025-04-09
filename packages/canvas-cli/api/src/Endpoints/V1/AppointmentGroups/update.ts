@@ -1,11 +1,11 @@
 import { client } from '../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * Array of context codes (courses, e.g. course_1) this group should be
    * linked to (1 or more). Users in the course(s) with appropriate

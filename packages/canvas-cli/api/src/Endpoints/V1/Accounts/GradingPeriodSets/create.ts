@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** A list of associated term ids for the grading period set */
   enrollment_term_ids: string[];
   /** The title of the grading period set */

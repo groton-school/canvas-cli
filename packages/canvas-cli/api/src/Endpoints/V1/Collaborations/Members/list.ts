@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Collaborator } from '../../../../Resources/Collaborations.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * - "collaborator_lti_id": Optional information to include with each member.
    *   Represents an identifier to be used for the member in an LTI context.

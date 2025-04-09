@@ -1,12 +1,12 @@
 import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../Client.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * The id of the rubric
    *

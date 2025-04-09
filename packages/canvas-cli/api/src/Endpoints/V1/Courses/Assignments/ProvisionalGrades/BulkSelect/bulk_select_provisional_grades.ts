@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type bulk_select_provisional_gradesPathParameters = {
+export type bulk_select_provisional_gradesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

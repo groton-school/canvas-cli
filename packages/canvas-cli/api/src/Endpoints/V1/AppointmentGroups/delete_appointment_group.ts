@@ -1,11 +1,11 @@
 import { client } from '../../../Client.js';
 
-type delete_appointment_groupPathParameters = {
+export type delete_appointment_groupPathParameters = {
   /** ID */
   id: string;
 };
 
-type delete_appointment_groupSearchParameters = {
+export type delete_appointment_groupSearchParameters = {
   /** Reason for deleting/canceling the appointment group. */
   cancel_reason: string;
 };

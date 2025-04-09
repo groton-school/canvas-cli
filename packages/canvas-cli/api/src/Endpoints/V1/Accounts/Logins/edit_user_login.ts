@@ -1,13 +1,13 @@
 import { client } from '../../../../Client.js';
 
-type edit_user_loginPathParameters = {
+export type edit_user_loginPathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   id: string;
 };
 
-type edit_user_loginFormParameters = {
+export type edit_user_loginFormParameters = {
   /** The new unique ID for the login. */
   'login[unique_id]': string;
   /**

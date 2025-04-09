@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   group_id: string;
   /** ID */
@@ -9,7 +9,7 @@ type updatePathParameters = {
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** The updated body of the entry. */
   message: string;
 };

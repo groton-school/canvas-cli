@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type summary_feedback_groupsPathParameters = {
+export type summary_feedback_groupsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */
@@ -9,7 +9,7 @@ type summary_feedback_groupsPathParameters = {
   summary_id: string;
 };
 
-type summary_feedback_groupsFormParameters = {
+export type summary_feedback_groupsFormParameters = {
   /**
    * Required The action to take on the summary. Possible values are:
    *

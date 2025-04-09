@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Folder } from '../../../../Resources/Files.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The name of the folder */
   name: string;
   /**

@@ -2,12 +2,12 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../Client.js';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * The maximum score for the line item. Scores created for the Line Item may
    * exceed this value.

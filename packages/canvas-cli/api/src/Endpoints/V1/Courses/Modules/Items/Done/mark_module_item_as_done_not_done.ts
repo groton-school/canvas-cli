@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type mark_module_item_as_done_not_donePathParameters = {
+export type mark_module_item_as_done_not_donePathParameters = {
   /** ID */
   course_id: string;
   /** ID */

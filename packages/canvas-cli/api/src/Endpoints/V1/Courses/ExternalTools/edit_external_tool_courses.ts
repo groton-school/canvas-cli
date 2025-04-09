@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type edit_external_tool_coursesPathParameters = {
+export type edit_external_tool_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

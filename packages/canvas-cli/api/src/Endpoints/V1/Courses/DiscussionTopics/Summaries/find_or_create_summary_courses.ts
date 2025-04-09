@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type find_or_create_summary_coursesPathParameters = {
+export type find_or_create_summary_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   topic_id: string;
 };
 
-type find_or_create_summary_coursesFormParameters = {
+export type find_or_create_summary_coursesFormParameters = {
   /** Areas or topics for the summary to focus on. */
   userInput: string;
 };

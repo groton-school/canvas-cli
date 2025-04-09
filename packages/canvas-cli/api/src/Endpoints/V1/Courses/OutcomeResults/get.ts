@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * If specified, only the users whose ids are given will be included in the
    * results. SIS ids can be used, prefixed by "sis_user_id:". It is an error

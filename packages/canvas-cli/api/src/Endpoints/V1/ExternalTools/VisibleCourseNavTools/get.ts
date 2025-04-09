@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * List of context_codes to retrieve visible course nav tools for (for
    * example, +course_123+). Only courses are presently supported.

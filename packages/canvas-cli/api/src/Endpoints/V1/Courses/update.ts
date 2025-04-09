@@ -2,12 +2,12 @@ import { multipleBlueprintRestrictions } from '';
 import { client } from '../../../Client.js';
 import { BlueprintRestriction } from '../../../Resources/BlueprintCourses.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * The unique ID of the account to move the course to.
    *

@@ -1,7 +1,7 @@
 import { client } from '../../../../../../../Client.js';
 import { SubmissionHistory } from '../../../../../../../Resources/GradebookHistory.js';
 
-type lists_submissionsPathParameters = {
+export type lists_submissionsPathParameters = {
   /**
    * The id of the contextual course for this API call
    *

@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Course } from '../../../../Resources/Courses.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   user_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * - "needs_grading_count": Optional information to include with each Course.
    *   When needs_grading_count is given, and the current user has grading

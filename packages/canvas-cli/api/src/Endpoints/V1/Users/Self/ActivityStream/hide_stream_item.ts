@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type hide_stream_itemPathParameters = {
+export type hide_stream_itemPathParameters = {
   /** ID */
   id: string;
 };

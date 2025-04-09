@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type delete_question_groupPathParameters = {
+export type delete_question_groupPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

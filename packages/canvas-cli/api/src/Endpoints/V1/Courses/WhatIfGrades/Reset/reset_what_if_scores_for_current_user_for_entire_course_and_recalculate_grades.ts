@@ -1,7 +1,7 @@
 import { gradesGrades } from '';
 import { client } from '../../../../../Client.js';
 
-type reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesPathParameters =
+export type reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesPathParameters =
   {
     /** ID */
     course_id: string;

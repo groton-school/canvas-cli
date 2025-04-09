@@ -1,22 +1,24 @@
 import { client } from '../../../../Client.js';
 
-type enable_disable_or_clear_explicit_csp_setting_accountsPathParameters = {
-  /** ID */
-  account_id: string;
-};
+export type enable_disable_or_clear_explicit_csp_setting_accountsPathParameters =
+  {
+    /** ID */
+    account_id: string;
+  };
 
-type enable_disable_or_clear_explicit_csp_setting_accountsFormParameters = {
-  /**
-   * If set to "enabled" for an account, CSP will be enabled for all its
-   * courses and sub-accounts (that have not explicitly enabled or disabled
-   * it), using the allowed domains set on this account. If set to "disabled",
-   * CSP will be disabled for this account or course and for all sub-accounts
-   * that have not explicitly re-enabled it. If set to "inherited", this
-   * account or course will reset to the default state where CSP settings are
-   * inherited from the first parent account to have them explicitly set.
-   */
-  status: string;
-};
+export type enable_disable_or_clear_explicit_csp_setting_accountsFormParameters =
+  {
+    /**
+     * If set to "enabled" for an account, CSP will be enabled for all its
+     * courses and sub-accounts (that have not explicitly enabled or disabled
+     * it), using the allowed domains set on this account. If set to "disabled",
+     * CSP will be disabled for this account or course and for all sub-accounts
+     * that have not explicitly re-enabled it. If set to "inherited", this
+     * account or course will reset to the default state where CSP settings are
+     * inherited from the first parent account to have them explicitly set.
+     */
+    status: string;
+  };
 
 type Options = {
   pathParams: enable_disable_or_clear_explicit_csp_setting_accountsPathParameters;

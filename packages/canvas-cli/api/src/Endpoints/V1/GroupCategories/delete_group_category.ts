@@ -1,6 +1,6 @@
 import { client } from '../../../Client.js';
 
-type delete_group_categoryPathParameters = {
+export type delete_group_categoryPathParameters = {
   /** ID */
   group_category_id: string;
 };

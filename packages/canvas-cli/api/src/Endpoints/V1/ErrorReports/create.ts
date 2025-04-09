@@ -1,7 +1,7 @@
 import { SerializedHash } from '';
 import { client } from '../../../Client.js';
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The summary of the problem */
   'error[subject]': string;
   /** URL from which the report was issued */

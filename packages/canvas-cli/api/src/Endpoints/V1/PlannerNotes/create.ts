@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { PlannerNote } from '../../../Resources/Planner.js';
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The title of the planner note. */
   title: string;
   /** Text of the planner note. */

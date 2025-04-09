@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type add_messagePathParameters = {
+export type add_messagePathParameters = {
   /** ID */
   id: string;
 };
 
-type add_messageFormParameters = {
+export type add_messageFormParameters = {
   /** The message to be sent. */
   body: string;
   /**

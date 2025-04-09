@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { ePortfolio } from '../../../Resources/EPortfolios.js';
 
-type delete_eportfolioPathParameters = {
+export type delete_eportfolioPathParameters = {
   /** ID */
   id: string;
 };

@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type redirect_to_assignment_override_for_sectionPathParameters = {
+export type redirect_to_assignment_override_for_sectionPathParameters = {
   /** ID */
   course_section_id: string;
   /** ID */

@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { ContentMigration } from '../../../../Resources/ContentMigrations.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

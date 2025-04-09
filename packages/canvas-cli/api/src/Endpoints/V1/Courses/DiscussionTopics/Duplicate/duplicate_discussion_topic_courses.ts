@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { DiscussionTopic } from '../../../../../Resources/DiscussionTopics.js';
 
-type duplicate_discussion_topic_coursesPathParameters = {
+export type duplicate_discussion_topic_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

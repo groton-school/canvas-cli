@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type log_users_out_of_all_mobile_apps_idPathParameters = {
+export type log_users_out_of_all_mobile_apps_idPathParameters = {
   /** ID */
   id: string;
 };

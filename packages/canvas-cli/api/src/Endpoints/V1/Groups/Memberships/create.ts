@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { GroupMembership } from '../../../../Resources/Groups.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   group_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** No description */
   user_id: string;
   /**

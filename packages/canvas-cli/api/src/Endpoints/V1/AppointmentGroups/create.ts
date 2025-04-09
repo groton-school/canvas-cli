@@ -1,6 +1,6 @@
 import { client } from '../../../Client.js';
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * Array of context codes (courses, e.g. course_1) this group should be
    * linked to (1 or more). Users in the course(s) with appropriate

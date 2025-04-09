@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { PlannerNote } from '../../../Resources/Planner.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Only return notes with todo dates since the start_date (inclusive). No
    * default. The value should be formatted as: yyyy-mm-dd or ISO 8601

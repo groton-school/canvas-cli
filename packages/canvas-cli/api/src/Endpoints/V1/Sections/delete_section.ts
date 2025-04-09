@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { Section } from '../../../Resources/Sections.js';
 
-type delete_sectionPathParameters = {
+export type delete_sectionPathParameters = {
   /** ID */
   id: string;
 };

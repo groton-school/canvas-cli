@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { NewQuiz } from '../../../../../Resources/NewQuizzes.js';
 
-type update_single_quizPathParameters = {
+export type update_single_quizPathParameters = {
   /**
    * No description
    *
@@ -16,7 +16,7 @@ type update_single_quizPathParameters = {
   assignment_id: number;
 };
 
-type update_single_quizFormParameters = {
+export type update_single_quizFormParameters = {
   /** The title of the quiz. */
   'quiz[title]': string;
   /**

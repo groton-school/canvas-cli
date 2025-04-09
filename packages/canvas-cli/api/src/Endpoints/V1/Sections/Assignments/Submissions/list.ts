@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { Submission } from '../../../../../Resources/Submissions.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   section_id: string;
   /** ID */
   assignment_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Associations to include with the group. "group" will add group_id and
    * group_name.

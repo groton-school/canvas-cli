@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { SisImport } from '../../../../../Resources/SisImports.js';
 
-type abort_sis_importPathParameters = {
+export type abort_sis_importPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

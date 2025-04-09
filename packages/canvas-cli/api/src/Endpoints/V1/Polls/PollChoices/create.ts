@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   poll_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The descriptive text of the poll choice. */
   'poll_choices[text]': string[];
   /** Whether this poll choice is considered correct or not. Defaults to false. */

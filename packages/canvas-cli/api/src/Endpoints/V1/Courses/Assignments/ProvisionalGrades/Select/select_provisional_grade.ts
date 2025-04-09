@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type select_provisional_gradePathParameters = {
+export type select_provisional_gradePathParameters = {
   /** ID */
   course_id: string;
   /** ID */

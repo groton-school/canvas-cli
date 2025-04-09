@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { EnrollmentTerm } from '../../../../Resources/EnrollmentTerms.js';
 
-type delete_enrollment_termPathParameters = {
+export type delete_enrollment_termPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

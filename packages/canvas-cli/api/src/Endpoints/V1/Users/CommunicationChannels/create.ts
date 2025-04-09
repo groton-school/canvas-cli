@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { CommunicationChannel } from '../../../../Resources/CommunicationChannels.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   user_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** An email address or SMS number. Not required for "push" type channels. */
   'communication_channel[address]': string;
   /**

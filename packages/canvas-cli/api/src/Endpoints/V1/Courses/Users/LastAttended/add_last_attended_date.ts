@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { Enrollment } from '../../../../../Resources/Enrollments.js';
 
-type add_last_attended_datePathParameters = {
+export type add_last_attended_datePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   user_id: string;
 };
 
-type add_last_attended_dateFormParameters = {
+export type add_last_attended_dateFormParameters = {
   /**
    * The last attended date of a student enrollment in a course.
    *

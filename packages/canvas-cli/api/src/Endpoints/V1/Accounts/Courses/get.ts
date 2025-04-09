@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Course } from '../../../../Resources/Courses.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * - "all_courses": Also search recently deleted courses.
    * - "permissions": Include permissions the current user has for the course.

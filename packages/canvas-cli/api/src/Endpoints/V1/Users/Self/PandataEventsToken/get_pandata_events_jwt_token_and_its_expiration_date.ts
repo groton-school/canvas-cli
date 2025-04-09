@@ -1,9 +1,10 @@
 import { client } from '../../../../../Client.js';
 
-type get_pandata_events_jwt_token_and_its_expiration_dateFormParameters = {
-  /** The pandata events appKey for this mobile app */
-  app_key: string;
-};
+export type get_pandata_events_jwt_token_and_its_expiration_dateFormParameters =
+  {
+    /** The pandata events appKey for this mobile app */
+    app_key: string;
+  };
 
 type Options = {
   params?: get_pandata_events_jwt_token_and_its_expiration_dateFormParameters;

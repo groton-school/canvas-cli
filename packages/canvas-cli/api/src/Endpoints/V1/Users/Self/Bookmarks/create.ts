@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { Bookmark } from '../../../../../Resources/Bookmarks.js';
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The name of the bookmark */
   name: string;
   /** The url of the bookmark */

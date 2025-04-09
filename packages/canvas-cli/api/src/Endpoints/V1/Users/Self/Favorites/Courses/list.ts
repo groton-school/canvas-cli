@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { Course } from '../../../../../../Resources/Courses.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * When set, only return courses that are not configured as blueprint
    * courses.

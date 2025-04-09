@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Account } from '../../../../Resources/Accounts.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * If true, the entire account tree underneath this account will be returned
    * (though still paginated). If false, only direct sub-accounts of this

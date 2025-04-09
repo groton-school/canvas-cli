@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { AuthenticationProvider } from '../../../../../Resources/AuthenticationProviders.js';
 
-type restore_deleted_authentication_providerPathParameters = {
+export type restore_deleted_authentication_providerPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

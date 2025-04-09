@@ -1,6 +1,6 @@
 import { client } from '../../../Client.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /** Defaults to "reservable" */
   scope: string;
   /** Array of context codes used to limit returned results. */

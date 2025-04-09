@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
 
-type delete_outcome_group_globalPathParameters = {
+export type delete_outcome_group_globalPathParameters = {
   /** ID */
   id: string;
 };

@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { ExternalFeed } from '../../../../Resources/AnnouncementExternalFeeds.js';
 
-type delete_external_feed_coursesPathParameters = {
+export type delete_external_feed_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

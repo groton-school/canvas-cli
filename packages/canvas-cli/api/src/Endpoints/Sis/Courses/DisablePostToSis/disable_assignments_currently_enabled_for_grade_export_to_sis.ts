@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type disable_assignments_currently_enabled_for_grade_export_to_sisPathParameters =
+export type disable_assignments_currently_enabled_for_grade_export_to_sisPathParameters =
   {
     /**
      * The ID of the course.
@@ -10,7 +10,7 @@ type disable_assignments_currently_enabled_for_grade_export_to_sisPathParameters
     course_id: number;
   };
 
-type disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters =
+export type disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters =
   {
     /**
      * The ID of the grading period.

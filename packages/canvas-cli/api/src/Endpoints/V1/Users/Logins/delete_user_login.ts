@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type delete_user_loginPathParameters = {
+export type delete_user_loginPathParameters = {
   /** ID */
   user_id: string;
   /** ID */

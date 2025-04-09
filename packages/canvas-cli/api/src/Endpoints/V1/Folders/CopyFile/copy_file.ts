@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { File } from '../../../../Resources/Files.js';
 
-type copy_filePathParameters = {
+export type copy_filePathParameters = {
   /** ID */
   dest_folder_id: string;
 };
 
-type copy_fileFormParameters = {
+export type copy_fileFormParameters = {
   /** The id of the source file */
   source_file_id: string;
   /**

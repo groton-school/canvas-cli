@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type close_opened_poll_sessionPathParameters = {
+export type close_opened_poll_sessionPathParameters = {
   /** ID */
   poll_id: string;
   /** ID */

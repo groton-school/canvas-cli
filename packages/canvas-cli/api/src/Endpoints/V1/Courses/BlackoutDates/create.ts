@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { BlackoutDate } from '../../../../Resources/BlackoutDates.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * The start date of the blackout date.
    *

@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
-type cancel_progressPathParameters = {
+export type cancel_progressPathParameters = {
   /** ID */
   id: string;
 };

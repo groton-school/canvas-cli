@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type copy_course_contentPathParameters = {
+export type copy_course_contentPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type copy_course_contentFormParameters = {
+export type copy_course_contentFormParameters = {
   /** ID or SIS-ID of the course to copy the content from */
   source_course: string;
   /**

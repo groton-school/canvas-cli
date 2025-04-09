@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** The new outcome group title. */
   title: string;
   /** The new outcome group description. */

@@ -4,14 +4,14 @@ import {
   AssignmentOverride
 } from '../../../../Resources/Assignments.js';
 
-type edit_assignmentPathParameters = {
+export type edit_assignmentPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   id: string;
 };
 
-type edit_assignmentFormParameters = {
+export type edit_assignmentFormParameters = {
   /** The assignment name. */
   'assignment[name]': string;
   /**

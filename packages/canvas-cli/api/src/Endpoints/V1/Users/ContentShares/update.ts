@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { ContentShare } from '../../../../Resources/ContentShares.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   user_id: string;
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** Read state for the content share */
   read_state: string;
 };

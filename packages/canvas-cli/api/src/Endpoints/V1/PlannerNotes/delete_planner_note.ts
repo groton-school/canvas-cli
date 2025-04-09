@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { PlannerNote } from '../../../Resources/Planner.js';
 
-type delete_planner_notePathParameters = {
+export type delete_planner_notePathParameters = {
   /** ID */
   id: string;
 };

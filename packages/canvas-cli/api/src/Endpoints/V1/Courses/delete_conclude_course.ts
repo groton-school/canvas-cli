@@ -1,11 +1,11 @@
 import { client } from '../../../Client.js';
 
-type delete_conclude_coursePathParameters = {
+export type delete_conclude_coursePathParameters = {
   /** ID */
   id: string;
 };
 
-type delete_conclude_courseSearchParameters = {
+export type delete_conclude_courseSearchParameters = {
   /** The action to take on the course. */
   event: string;
 };

@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   course_id: string;
 };

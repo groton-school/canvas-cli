@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { BlackoutDate } from '../../../../../Resources/BlackoutDates.js';
 
-type new_blackout_date_coursesPathParameters = {
+export type new_blackout_date_coursesPathParameters = {
   /** ID */
   course_id: string;
 };

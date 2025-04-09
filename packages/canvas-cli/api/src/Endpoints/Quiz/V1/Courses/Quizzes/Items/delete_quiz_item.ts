@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { QuizItem } from '../../../../../../Resources/NewQuizItems.js';
 
-type delete_quiz_itemPathParameters = {
+export type delete_quiz_itemPathParameters = {
   /**
    * No description
    *

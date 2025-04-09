@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type add_recipientsPathParameters = {
+export type add_recipientsPathParameters = {
   /** ID */
   id: string;
 };
 
-type add_recipientsFormParameters = {
+export type add_recipientsFormParameters = {
   /**
    * An array of recipient ids. These may be user ids or course/group ids
    * prefixed with "course_" or "group_" respectively, e.g.

@@ -1,11 +1,11 @@
 import { client } from '../../../Client.js';
 
-type delete_folderPathParameters = {
+export type delete_folderPathParameters = {
   /** ID */
   id: string;
 };
 
-type delete_folderSearchParameters = {
+export type delete_folderSearchParameters = {
   /** Set to 'true' to allow deleting a non-empty folder */
   force: boolean;
 };

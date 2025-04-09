@@ -1,12 +1,12 @@
 import { JSON } from '';
 import { client } from '../../../../Client.js';
 
-type store_custom_dataPathParameters = {
+export type store_custom_dataPathParameters = {
   /** ID */
   user_id: string;
 };
 
-type store_custom_dataFormParameters = {
+export type store_custom_dataFormParameters = {
   /**
    * The namespace under which to store the data. This should be something
    * other Canvas API apps aren't likely to use, such as a reverse DNS for

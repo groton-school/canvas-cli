@@ -1,12 +1,12 @@
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
-type batch_retrieve_overrides_in_coursePathParameters = {
+export type batch_retrieve_overrides_in_coursePathParameters = {
   /** ID */
   course_id: string;
 };
 
-type batch_retrieve_overrides_in_courseSearchParameters = {
+export type batch_retrieve_overrides_in_courseSearchParameters = {
   /** Ids of overrides to retrieve */
   'assignment_overrides[id]': string[];
   /** Ids of assignments for each override */

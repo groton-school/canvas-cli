@@ -1,7 +1,7 @@
 import { account_calendarsAccountCalendartotal_resultsinteger } from '';
 import { client } from '../../../Client.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * When included, searches available account calendars for the term. Returns
    * matching results. Term must be at least 2 characters.

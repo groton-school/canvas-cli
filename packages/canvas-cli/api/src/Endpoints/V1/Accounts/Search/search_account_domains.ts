@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type search_account_domainsSearchParameters = {
+export type search_account_domainsSearchParameters = {
   /** Campus name */
   name: string;
   /** No description */

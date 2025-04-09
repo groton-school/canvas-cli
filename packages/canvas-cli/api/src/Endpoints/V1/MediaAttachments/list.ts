@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { MediaObject } from '../../../Resources/MediaObjects.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Field to sort on. Default is "title"
    *

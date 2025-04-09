@@ -1,7 +1,7 @@
 import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../Client.js';
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The id of the context for the subscription. */
   'subscription[ContextId]': string;
   /**

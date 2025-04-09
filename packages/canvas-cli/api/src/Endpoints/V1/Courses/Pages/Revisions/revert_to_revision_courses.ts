@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { PageRevision } from '../../../../../Resources/Pages.js';
 
-type revert_to_revision_coursesPathParameters = {
+export type revert_to_revision_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

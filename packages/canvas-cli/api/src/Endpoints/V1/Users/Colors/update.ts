@@ -1,13 +1,13 @@
 import { client } from '../../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
   /** ID */
   asset_string: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * The hexcode of the color to set for the context, if you choose to pass
    * the hexcode as a query parameter rather than in the request body you

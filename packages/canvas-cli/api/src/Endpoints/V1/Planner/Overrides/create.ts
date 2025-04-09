@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { PlannerOverride } from '../../../../Resources/Planner.js';
 
-type createFormParameters = {
+export type createFormParameters = {
   /** Type of the item that you are overriding in the planner */
   plannable_type: string;
   /**

@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type rate_entry_coursesPathParameters = {
+export type rate_entry_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -9,7 +9,7 @@ type rate_entry_coursesPathParameters = {
   entry_id: string;
 };
 
-type rate_entry_coursesFormParameters = {
+export type rate_entry_coursesFormParameters = {
   /**
    * A rating to set on this entry. Only 0 and 1 are accepted.
    *

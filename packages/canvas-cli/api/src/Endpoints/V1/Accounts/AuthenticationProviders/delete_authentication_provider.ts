@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type delete_authentication_providerPathParameters = {
+export type delete_authentication_providerPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

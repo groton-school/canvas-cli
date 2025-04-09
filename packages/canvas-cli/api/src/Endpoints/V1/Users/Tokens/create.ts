@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   user_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The purpose of the token. */
   'token[purpose]': string;
   /**

@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type retrieve_captured_eventsPathParameters = {
+export type retrieve_captured_eventsPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -9,7 +9,7 @@ type retrieve_captured_eventsPathParameters = {
   id: string;
 };
 
-type retrieve_captured_eventsSearchParameters = {
+export type retrieve_captured_eventsSearchParameters = {
   /**
    * The specific submission attempt to look up the events for. If
    * unspecified, the latest attempt will be used.

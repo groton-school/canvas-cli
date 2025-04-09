@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type disable_summary_groupsPathParameters = {
+export type disable_summary_groupsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */

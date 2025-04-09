@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
-type import_category_groupsPathParameters = {
+export type import_category_groupsPathParameters = {
   /** ID */
   group_category_id: string;
 };
 
-type import_category_groupsFormParameters = {
+export type import_category_groupsFormParameters = {
   /**
    * There are two ways to post group category import data - either via a
    * multipart/form-data form-field-style attachment, or via a non-multipart

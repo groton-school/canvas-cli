@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /** The partial name of the tools to match and return. */
   search_term: string;
   /** If true, then only tools that are meant to be selectable are returned. */

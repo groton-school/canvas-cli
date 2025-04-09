@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { NewQuiz } from '../../../../../Resources/NewQuizzes.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /**
    * No description
    *

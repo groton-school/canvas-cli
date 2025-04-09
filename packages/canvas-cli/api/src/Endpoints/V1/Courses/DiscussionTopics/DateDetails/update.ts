@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   discussion_topic_id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * The learning object's due date. Not applicable for ungraded discussions,
    * pages, and files.

@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { Report } from '../../../../../Resources/AccountReports.js';
 
-type abort_reportPathParameters = {
+export type abort_reportPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

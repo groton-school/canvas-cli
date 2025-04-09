@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { Day } from '../../../../../Resources/GradebookHistory.js';
 
-type days_in_gradebook_history_for_this_coursePathParameters = {
+export type days_in_gradebook_history_for_this_coursePathParameters = {
   /**
    * The id of the contextual course for this API call
    *

@@ -1,14 +1,14 @@
 import { client } from '../../../../../../Client.js';
 import { PageRevision } from '../../../../../../Resources/Pages.js';
 
-type show_revision_courses_latestPathParameters = {
+export type show_revision_courses_latestPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   url_or_id: string;
 };
 
-type show_revision_courses_latestSearchParameters = {
+export type show_revision_courses_latestSearchParameters = {
   /** If set, exclude page content from results */
   summary: boolean;
 };

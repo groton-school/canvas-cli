@@ -1,11 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * List of student ids to return submissions for. If this argument is
    * omitted, return submissions for the calling user. Students may only list

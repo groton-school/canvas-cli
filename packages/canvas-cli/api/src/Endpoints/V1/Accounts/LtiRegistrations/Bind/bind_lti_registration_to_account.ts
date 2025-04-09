@@ -1,14 +1,14 @@
 import { LtiRegistrationAccountBinding } from '';
 import { client } from '../../../../../Client.js';
 
-type bind_lti_registration_to_accountPathParameters = {
+export type bind_lti_registration_to_accountPathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   id: string;
 };
 
-type bind_lti_registration_to_accountFormParameters = {
+export type bind_lti_registration_to_accountFormParameters = {
   /**
    * The desired state for this registration/account binding. "allow" is only
    * valid for Site Admin registrations.

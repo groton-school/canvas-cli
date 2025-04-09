@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { PeerReview } from '../../../../../../Resources/PeerReviews.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -10,7 +10,7 @@ type getPathParameters = {
   submission_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /** Associations to include with the peer review. */
   include: string[];
 };

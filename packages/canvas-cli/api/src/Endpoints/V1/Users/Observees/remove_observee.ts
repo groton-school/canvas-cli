@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type remove_observeePathParameters = {
+export type remove_observeePathParameters = {
   /** ID */
   user_id: string;
   /** ID */
   observee_id: string;
 };
 
-type remove_observeeSearchParameters = {
+export type remove_observeeSearchParameters = {
   /**
    * If specified, only removes the link for the given root account
    *

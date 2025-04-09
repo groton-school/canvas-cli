@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Scope } from '../../../../Resources/ApiTokenScopes.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /** The attribute to group the scopes by. By default no grouping is done. */
   group_by: string;
 };

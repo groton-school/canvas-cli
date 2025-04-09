@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { PageRevision } from '../../../../../Resources/Pages.js';
 
-type revert_to_revision_groupsPathParameters = {
+export type revert_to_revision_groupsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */

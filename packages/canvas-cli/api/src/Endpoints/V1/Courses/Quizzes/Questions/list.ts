@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { QuizQuestion } from '../../../../../Resources/QuizQuestions.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   quiz_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * If specified, the endpoint will return the questions that were presented
    * for that submission. This is useful if the quiz has been modified after

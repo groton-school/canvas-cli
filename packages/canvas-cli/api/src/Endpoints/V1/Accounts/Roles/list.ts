@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Role } from '../../../../Resources/Roles.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** The id of the account to retrieve roles for. */
   account_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Filter by role state. If this argument is omitted, only 'active' roles
    * are returned.

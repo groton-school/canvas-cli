@@ -1,12 +1,12 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeGroup } from '../../../../../Resources/OutcomeGroups.js';
 
-type import_outcome_group_globalPathParameters = {
+export type import_outcome_group_globalPathParameters = {
   /** ID */
   id: string;
 };
 
-type import_outcome_group_globalFormParameters = {
+export type import_outcome_group_globalFormParameters = {
   /**
    * The ID of the source outcome group.
    *

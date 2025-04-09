@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { GroupCategory } from '../../../Resources/GroupCategories.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   group_category_id: string;
 };

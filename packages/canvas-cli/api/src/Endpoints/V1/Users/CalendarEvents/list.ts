@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { CalendarEvent } from '../../../../Resources/CalendarEvents.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   user_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /** Defaults to "event" */
   type: string;
   /**

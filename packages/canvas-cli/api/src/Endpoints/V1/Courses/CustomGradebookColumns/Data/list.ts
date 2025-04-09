@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { ColumnDatum } from '../../../../../Resources/CustomGradebookColumns.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * If true, hidden columns will be included in the result. If false or
    * absent, only visible columns will be returned.

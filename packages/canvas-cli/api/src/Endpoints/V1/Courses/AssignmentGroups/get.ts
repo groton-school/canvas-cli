@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { AssignmentGroup } from '../../../../Resources/AssignmentGroups.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   assignment_group_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * Associations to include with the group. "discussion_topic" and
    * "assignment_visibility" and "submission" are only valid if "assignments"

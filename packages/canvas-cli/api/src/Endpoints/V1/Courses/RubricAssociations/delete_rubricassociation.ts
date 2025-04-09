@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { RubricAssociation } from '../../../../Resources/Rubrics.js';
 
-type delete_rubricassociationPathParameters = {
+export type delete_rubricassociationPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

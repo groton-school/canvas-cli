@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { Conversation } from '../../../Resources/Conversations.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * When set, only return conversations of the specified type. For example,
    * set to "unread" to return only conversations that haven't been read. The

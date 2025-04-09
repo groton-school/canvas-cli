@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { Group } from '../../../Resources/Groups.js';
 
-type delete_groupPathParameters = {
+export type delete_groupPathParameters = {
   /** ID */
   group_id: string;
 };

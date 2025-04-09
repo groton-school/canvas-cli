@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Collaboration } from '../../../../Resources/Collaborations.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   group_id: string;
 };

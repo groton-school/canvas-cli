@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { OutcomeAlignment } from '../../../../Resources/OutcomeResults.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /**
    * The id of the course
    *
@@ -10,7 +10,7 @@ type getPathParameters = {
   course_id: number;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * The id of the student
    *

@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { DeveloperKey } from '../../../../Resources/DeveloperKeys.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Defaults to false. If true, lists keys inherited from Site Admin (and
    * consortium parent account, if applicable).

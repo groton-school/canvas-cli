@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { JWT } from '../../../../Resources/JwTs.js';
 
-type refresh_jwtFormParameters = {
+export type refresh_jwtFormParameters = {
   /**
    * An existing JWT token to be refreshed. The new token will have the same
    * context and workflows as the existing token.

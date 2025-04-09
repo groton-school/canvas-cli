@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type delete_entry_coursesPathParameters = {
+export type delete_entry_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

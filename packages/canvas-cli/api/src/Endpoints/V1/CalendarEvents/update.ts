@@ -1,11 +1,11 @@
 import { client } from '../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * Context code of the course, group, user, or account to move this event
    * to. Scheduler appointments and events with section-specific times cannot

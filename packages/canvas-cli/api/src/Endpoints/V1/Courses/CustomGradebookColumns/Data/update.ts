@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { ColumnDatum } from '../../../../../Resources/CustomGradebookColumns.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -10,7 +10,7 @@ type updatePathParameters = {
   user_id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** Column content. Setting this to blank will delete the datum object. */
   'column_data[content]': string;
 };

@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * The title for the new page. NOTE: changing a page's title will change its
    * url. The updated url will be returned in the result.

@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type add_tool_to_top_navigation_favoritesPathParameters = {
+export type add_tool_to_top_navigation_favoritesPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

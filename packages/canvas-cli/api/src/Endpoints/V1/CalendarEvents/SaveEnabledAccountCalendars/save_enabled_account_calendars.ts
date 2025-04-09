@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type save_enabled_account_calendarsFormParameters = {
+export type save_enabled_account_calendarsFormParameters = {
   /** Flag to mark account calendars feature as seen */
   mark_feature_as_seen: boolean;
   /** An array of account Ids to remember in the calendars list of the user */

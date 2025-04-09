@@ -1,7 +1,7 @@
 import { Hash } from '';
 import { client } from '../../../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -10,7 +10,7 @@ type updatePathParameters = {
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * The attempt number of the quiz submission that should be updated. This
    * attempt MUST be already completed.

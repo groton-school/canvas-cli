@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * The maximum score for the line item. Scores created for the Line Item may
    * exceed this value.

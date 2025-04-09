@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { RubricAssessment } from '../../../../../Resources/Rubrics.js';
 
-type grade_or_comment_on_submission_sectionsPathParameters = {
+export type grade_or_comment_on_submission_sectionsPathParameters = {
   /** ID */
   section_id: string;
   /** ID */
@@ -10,7 +10,7 @@ type grade_or_comment_on_submission_sectionsPathParameters = {
   user_id: string;
 };
 
-type grade_or_comment_on_submission_sectionsFormParameters = {
+export type grade_or_comment_on_submission_sectionsFormParameters = {
   /** Add a textual comment to the submission. */
   'comment[text_comment]': string;
   /**

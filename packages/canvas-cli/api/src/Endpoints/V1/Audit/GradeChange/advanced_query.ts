@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { GradeChangeEvent } from '../../../../Resources/GradeChangeLog.js';
 
-type advanced_querySearchParameters = {
+export type advanced_querySearchParameters = {
   /**
    * Restrict query to events in the specified course.
    *

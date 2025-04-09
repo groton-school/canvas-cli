@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * If specified, instead of returning one rollup for each user, all the user
    * rollups will be combined into one rollup for the course that will contain

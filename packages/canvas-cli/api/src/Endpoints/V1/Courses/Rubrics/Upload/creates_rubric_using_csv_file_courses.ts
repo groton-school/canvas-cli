@@ -1,7 +1,7 @@
 import { RubricImport } from '';
 import { client } from '../../../../../Client.js';
 
-type creates_rubric_using_csv_file_coursesPathParameters = {
+export type creates_rubric_using_csv_file_coursesPathParameters = {
   /** ID */
   course_id: string;
 };

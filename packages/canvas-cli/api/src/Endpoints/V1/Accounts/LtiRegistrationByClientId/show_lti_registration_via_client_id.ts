@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
-type show_lti_registration_via_client_idPathParameters = {
+export type show_lti_registration_via_client_idPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

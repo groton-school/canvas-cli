@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { ePortfolio } from '../../../../Resources/EPortfolios.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   user_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * Deleted:: Include deleted ePortfolios. Only available to admins who can
    * moderate_user_content.

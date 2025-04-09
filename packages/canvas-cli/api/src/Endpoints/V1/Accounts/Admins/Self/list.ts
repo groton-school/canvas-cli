@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { Admin } from '../../../../../Resources/Admins.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   account_id: string;
 };

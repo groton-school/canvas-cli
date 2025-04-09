@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type redirect_to_assignment_override_for_groupPathParameters = {
+export type redirect_to_assignment_override_for_groupPathParameters = {
   /** ID */
   group_id: string;
   /** ID */

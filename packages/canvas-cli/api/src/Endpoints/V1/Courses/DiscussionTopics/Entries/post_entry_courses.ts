@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type post_entry_coursesPathParameters = {
+export type post_entry_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   topic_id: string;
 };
 
-type post_entry_coursesFormParameters = {
+export type post_entry_coursesFormParameters = {
   /** The body of the entry. */
   message: string;
   /**

@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Role } from '../../../../Resources/Roles.js';
 
-type deactivate_rolePathParameters = {
+export type deactivate_rolePathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   id: string;
 };
 
-type deactivate_roleSearchParameters = {
+export type deactivate_roleSearchParameters = {
   /**
    * The unique identifier for the role
    *

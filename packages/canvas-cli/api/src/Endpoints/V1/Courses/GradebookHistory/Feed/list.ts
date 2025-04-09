@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { SubmissionVersion } from '../../../../../Resources/GradebookHistory.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /**
    * The id of the contextual course for this API call
    *
@@ -10,7 +10,7 @@ type listPathParameters = {
   course_id: number;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * The ID of the assignment for which you want to see submissions. If
    * absent, versions of submissions from any assignment in the course are

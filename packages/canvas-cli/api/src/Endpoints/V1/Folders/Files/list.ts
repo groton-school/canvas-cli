@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { File } from '../../../../Resources/Files.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Filter results by content-type. You can specify type/subtype pairs (e.g.,
    * 'image/jpeg'), or simply types (e.g., 'image', which will match

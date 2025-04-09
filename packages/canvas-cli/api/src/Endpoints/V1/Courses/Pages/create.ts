@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The title for the new page. */
   'wiki_page[title]': string;
   /** The content for the new page. */

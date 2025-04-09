@@ -2,12 +2,12 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../Client.js';
 import { ContentExport } from '../../../../Resources/ContentExports.js';
 
-type export_content_coursesPathParameters = {
+export type export_content_coursesPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type export_content_coursesFormParameters = {
+export type export_content_coursesFormParameters = {
   /**
    * "common_cartridge":: Export the contents of the course in the Common
    * Cartridge (.imscc) format "qti":: Export quizzes from a course in the QTI

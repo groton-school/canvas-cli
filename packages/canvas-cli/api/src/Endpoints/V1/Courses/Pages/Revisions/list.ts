@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { PageRevision } from '../../../../../Resources/Pages.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

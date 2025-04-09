@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { SearchResult } from '../../../../Resources/SmartSearch.js';
 
-type search_course_contentPathParameters = {
+export type search_course_contentPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type search_course_contentSearchParameters = {
+export type search_course_contentSearchParameters = {
   /** The search query */
   q: string;
   /**

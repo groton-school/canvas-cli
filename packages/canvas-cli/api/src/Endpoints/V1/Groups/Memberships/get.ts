@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { GroupMembership } from '../../../../Resources/Groups.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   group_id: string;
   /** ID */

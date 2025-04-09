@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
-type show_lti_registrationPathParameters = {
+export type show_lti_registrationPathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   id: string;
 };
 
-type show_lti_registrationSearchParameters = {
+export type show_lti_registrationSearchParameters = {
   /**
    * Array of additional data to include. Always includes [account_binding
    * configuration].

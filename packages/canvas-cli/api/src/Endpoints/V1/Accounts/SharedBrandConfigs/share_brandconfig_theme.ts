@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { SharedBrandConfig } from '../../../../Resources/SharedBrandConfigs.js';
 
-type share_brandconfig_themePathParameters = {
+export type share_brandconfig_themePathParameters = {
   /** ID */
   account_id: string;
 };
 
-type share_brandconfig_themeFormParameters = {
+export type share_brandconfig_themeFormParameters = {
   /** Name to share this BrandConfig (theme) as. */
   'shared_brand_config[name]': string;
   /** MD5 of brand_config to share */

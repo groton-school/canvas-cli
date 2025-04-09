@@ -1,12 +1,12 @@
 import { gradesGradessubmissionSubmission } from '';
 import { client } from '../../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * The score the student wants to test
    *

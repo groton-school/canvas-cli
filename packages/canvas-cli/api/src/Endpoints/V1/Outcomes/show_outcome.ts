@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { Outcome } from '../../../Resources/Outcomes.js';
 
-type show_outcomePathParameters = {
+export type show_outcomePathParameters = {
   /** ID */
   id: string;
 };
 
-type show_outcomeSearchParameters = {
+export type show_outcomeSearchParameters = {
   /**
    * If defaults are requested, then color and mastery level defaults will be
    * added to outcome ratings in the result. This will only take effect if the

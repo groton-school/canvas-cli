@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { Assignment } from '../../../../../Resources/Assignments.js';
 
-type duplicate_assignmentPathParameters = {
+export type duplicate_assignmentPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   assignment_id: string;
 };
 
-type duplicate_assignmentFormParameters = {
+export type duplicate_assignmentFormParameters = {
   /**
    * Optional information: When the root account has the feature
    * `newquizzes_on_quiz_page` enabled and this argument is set to "Quiz" the

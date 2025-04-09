@@ -1,6 +1,6 @@
 import { client } from '../../../Client.js';
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * Context code of the course, group, user, or account whose calendar this
    * event should be added to.

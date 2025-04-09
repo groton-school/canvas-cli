@@ -2,7 +2,7 @@ import { Datetime } from '';
 import { client } from '../../../../Client.js';
 import { CoursePace } from '../../../../Resources/CoursePace.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /**
    * The id of the course
    *
@@ -11,7 +11,7 @@ type createPathParameters = {
   course_id: number;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** End date of the course pace */
   end_date: Datetime;
   /** End date context (course, section, hupothetical) */

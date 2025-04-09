@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { SisImport } from '../../../../Resources/SisImports.js';
 
-type import_sis_dataPathParameters = {
+export type import_sis_dataPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type import_sis_dataFormParameters = {
+export type import_sis_dataFormParameters = {
   /**
    * Choose the data format for reading SIS data. With a standard Canvas
    * install, this option can only be 'instructure_csv', and if unprovided,

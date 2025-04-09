@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { PageView } from '../../../../Resources/Users.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   user_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * The beginning of the time range from which you want page views.
    *

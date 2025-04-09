@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
-type enrollment_by_idPathParameters = {
+export type enrollment_by_idPathParameters = {
   /** ID */
   account_id: string;
   /**

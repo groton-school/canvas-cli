@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { RubricAssociation } from '../../../../Resources/Rubrics.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * The id of the Rubric
    *

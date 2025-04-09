@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { LtiAssignment } from '../../../Resources/PlagiarismDetectionPlatformAssignments.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   assignment_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /** The id of the user. Can be a Canvas or LTI id for the user. */
   user_id: string;
 };

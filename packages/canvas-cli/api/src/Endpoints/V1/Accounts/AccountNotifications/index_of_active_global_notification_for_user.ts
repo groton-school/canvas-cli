@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
-type index_of_active_global_notification_for_userPathParameters = {
+export type index_of_active_global_notification_for_userPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type index_of_active_global_notification_for_userSearchParameters = {
+export type index_of_active_global_notification_for_userSearchParameters = {
   /** Include past and dismissed global announcements. */
   include_past: boolean;
   /**

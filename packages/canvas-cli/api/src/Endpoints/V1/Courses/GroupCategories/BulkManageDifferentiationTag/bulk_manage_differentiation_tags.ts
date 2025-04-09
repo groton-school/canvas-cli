@@ -2,12 +2,12 @@ import { GroupCategoryandgroupsoperationresults } from '';
 import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../../Client.js';
 
-type bulk_manage_differentiation_tagsPathParameters = {
+export type bulk_manage_differentiation_tagsPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type bulk_manage_differentiation_tagsFormParameters = {
+export type bulk_manage_differentiation_tagsFormParameters = {
   /**
    * A hash containing arrays of create/update/delete operations: { "create":
    * [ { "name": "New Group A" }, { "name": "New Group B" } ], "update": [ {

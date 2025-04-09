@@ -2,12 +2,12 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../Client.js';
 import { Account } from '../../../Resources/Accounts.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** Updates the account name */
   'account[name]': string;
   /**

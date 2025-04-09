@@ -1,11 +1,11 @@
 import { client } from '../../../Client.js';
 
-type edit_conversationPathParameters = {
+export type edit_conversationPathParameters = {
   /** ID */
   id: string;
 };
 
-type edit_conversationFormParameters = {
+export type edit_conversationFormParameters = {
   /** Change the state of this conversation */
   'conversation[workflow_state]': string;
   /**

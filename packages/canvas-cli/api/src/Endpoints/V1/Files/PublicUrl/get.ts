@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * The id of the submission the file is associated with. Provide this
    * argument to gain access to a file that has been submitted to an

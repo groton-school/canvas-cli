@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type reserve_time_slotPathParameters = {
+export type reserve_time_slotPathParameters = {
   /** ID */
   id: string;
 };
 
-type reserve_time_slotFormParameters = {
+export type reserve_time_slotFormParameters = {
   /**
    * User or group id for whom you are making the reservation (depends on the
    * participant type). Defaults to the current user (or user's candidate

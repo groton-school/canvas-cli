@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { ModuleItem } from '../../../../../Resources/CoursePace.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   module_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * If included, will return additional details specific to the content
    * associated with each item. Refer to the {api:Modules:Module%20Item Module

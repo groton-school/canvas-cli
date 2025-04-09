@@ -1,6 +1,6 @@
 import { client } from '../../../../../../../Client.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   section_id: string;
   /** ID */

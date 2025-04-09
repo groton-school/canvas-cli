@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type split_merged_users_into_separate_usersPathParameters = {
+export type split_merged_users_into_separate_usersPathParameters = {
   /** ID */
   id: string;
 };

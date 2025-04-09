@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Rubric } from '../../../../Resources/Rubrics.js';
 
-type delete_single_rubricPathParameters = {
+export type delete_single_rubricPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

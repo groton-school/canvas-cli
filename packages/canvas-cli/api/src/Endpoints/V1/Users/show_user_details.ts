@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { User } from '../../../Resources/Users.js';
 
-type show_user_detailsPathParameters = {
+export type show_user_detailsPathParameters = {
   /** ID */
   id: string;
 };
 
-type show_user_detailsSearchParameters = {
+export type show_user_detailsSearchParameters = {
   /**
    * Array of additional information to include on the user record. "locale",
    * "avatar_url", "permissions", "email", and "effective_locale" will always

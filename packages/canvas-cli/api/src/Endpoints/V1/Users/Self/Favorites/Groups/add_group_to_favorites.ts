@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { Favorite } from '../../../../../../Resources/Favorites.js';
 
-type add_group_to_favoritesPathParameters = {
+export type add_group_to_favoritesPathParameters = {
   /**
    * The ID or SIS ID of the group to add. The current user must be a member
    * of the group.

@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { BlueprintMigration } from '../../../../../Resources/BlueprintCourses.js';
 
-type begin_migration_to_push_to_associated_coursesPathParameters = {
+export type begin_migration_to_push_to_associated_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   template_id: string;
 };
 
-type begin_migration_to_push_to_associated_coursesFormParameters = {
+export type begin_migration_to_push_to_associated_coursesFormParameters = {
   /** An optional comment to be included in the sync history. */
   comment: string;
   /** Send a notification to the calling user when the sync completes. */

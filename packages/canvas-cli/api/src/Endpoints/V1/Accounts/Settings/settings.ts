@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type settingsPathParameters = {
+export type settingsPathParameters = {
   /** ID */
   account_id: string;
 };

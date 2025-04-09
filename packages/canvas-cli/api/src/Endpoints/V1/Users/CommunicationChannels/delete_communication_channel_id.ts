@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { CommunicationChannel } from '../../../../Resources/CommunicationChannels.js';
 
-type delete_communication_channel_idPathParameters = {
+export type delete_communication_channel_idPathParameters = {
   /** ID */
   user_id: string;
   /** ID */

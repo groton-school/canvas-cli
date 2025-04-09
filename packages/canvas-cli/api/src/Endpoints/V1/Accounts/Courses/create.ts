@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Course } from '../../../../Resources/Courses.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * The name of the course. If omitted, the course will be named "Unnamed
    * Course."

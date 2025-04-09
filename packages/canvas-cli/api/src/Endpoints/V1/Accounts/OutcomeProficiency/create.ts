@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Proficiency } from '../../../../Resources/ProficiencyRatings.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The description of the rating level. */
   'ratings[description]': string[];
   /**

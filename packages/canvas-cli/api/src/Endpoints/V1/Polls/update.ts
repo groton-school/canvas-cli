@@ -1,11 +1,11 @@
 import { client } from '../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** The title of the poll. */
   'polls[question]': string[];
   /** A brief description or instructions for the poll. */

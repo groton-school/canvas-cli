@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { JWT } from '../../../Resources/JwTs.js';
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * Adds additional data to the JWT to be used by the consuming service
    * workflow

@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { Outcome } from '../../../Resources/Outcomes.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** The new outcome title. */
   title: string;
   /**

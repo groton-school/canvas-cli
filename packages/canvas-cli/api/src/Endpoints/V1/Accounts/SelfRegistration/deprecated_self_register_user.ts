@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type deprecated_self_register_userPathParameters = {
+export type deprecated_self_register_userPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type deprecated_self_register_userFormParameters = {
+export type deprecated_self_register_userFormParameters = {
   /** The full name of the user. This name will be used by teacher for grading. */
   'user[name]': string;
   /**

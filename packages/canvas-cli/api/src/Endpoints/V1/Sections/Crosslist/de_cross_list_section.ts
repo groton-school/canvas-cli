@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Section } from '../../../../Resources/Sections.js';
 
-type de_cross_list_sectionPathParameters = {
+export type de_cross_list_sectionPathParameters = {
   /** ID */
   id: string;
 };
 
-type de_cross_list_sectionSearchParameters = {
+export type de_cross_list_sectionSearchParameters = {
   /**
    * Default is true. If false, any fields containing “sticky” changes will
    * not be updated. See SIS CSV Format documentation for information on which

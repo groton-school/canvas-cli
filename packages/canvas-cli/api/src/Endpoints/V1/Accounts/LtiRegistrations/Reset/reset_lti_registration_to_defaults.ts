@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { LtiRegistration } from '../../../../../Resources/LtiRegistrations.js';
 
-type reset_lti_registration_to_defaultsPathParameters = {
+export type reset_lti_registration_to_defaultsPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

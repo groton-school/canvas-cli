@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Rubric } from '../../../../Resources/Rubrics.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /** Related records to include in the response. */
   include: string[];
   /**

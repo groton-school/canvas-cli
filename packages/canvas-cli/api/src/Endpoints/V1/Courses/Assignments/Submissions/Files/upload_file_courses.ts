@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type upload_file_coursesPathParameters = {
+export type upload_file_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

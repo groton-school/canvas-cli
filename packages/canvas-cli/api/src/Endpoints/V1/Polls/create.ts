@@ -1,6 +1,6 @@
 import { client } from '../../../Client.js';
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The title of the poll. */
   'polls[question]': string[];
   /** A brief description or instructions for the poll. */

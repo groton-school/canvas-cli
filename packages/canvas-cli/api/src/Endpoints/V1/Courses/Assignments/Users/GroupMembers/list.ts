@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { BasicUser } from '../../../../../../Resources/Assignments.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

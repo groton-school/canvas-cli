@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { GroupMembership } from '../../../../Resources/Groups.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   group_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Only list memberships with the given workflow_states. By default it will
    * return all memberships.

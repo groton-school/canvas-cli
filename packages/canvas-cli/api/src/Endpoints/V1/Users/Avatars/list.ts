@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Avatar } from '../../../../Resources/Users.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   user_id: string;
 };

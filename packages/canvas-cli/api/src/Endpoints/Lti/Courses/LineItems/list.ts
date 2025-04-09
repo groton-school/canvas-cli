@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /** If specified only Line Items with this tag will be included. */
   tag: string;
   /** If specified only Line Items with this resource_id will be included. */

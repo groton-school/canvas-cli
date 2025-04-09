@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type mark_entry_as_unread_groupsPathParameters = {
+export type mark_entry_as_unread_groupsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */
@@ -9,7 +9,7 @@ type mark_entry_as_unread_groupsPathParameters = {
   entry_id: string;
 };
 
-type mark_entry_as_unread_groupsSearchParameters = {
+export type mark_entry_as_unread_groupsSearchParameters = {
   /**
    * A boolean value to set the entry's forced_read_state. No change is made
    * if this argument is not specified.

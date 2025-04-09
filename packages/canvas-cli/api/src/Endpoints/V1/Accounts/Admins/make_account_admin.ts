@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Admin } from '../../../../Resources/Admins.js';
 
-type make_account_adminPathParameters = {
+export type make_account_adminPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type make_account_adminFormParameters = {
+export type make_account_adminFormParameters = {
   /**
    * The id of the user to promote.
    *

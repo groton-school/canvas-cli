@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Assignment } from '../../../../Resources/Assignments.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Optional information to include with each assignment: submission:: The
    * current user's current +Submission+ assignment_visibility:: An array of

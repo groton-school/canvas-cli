@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Quiz } from '../../../../Resources/Quizzes.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The quiz title. */
   'quiz[title]': string;
   /** A description of the quiz. */

@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { Favorite } from '../../../../../../Resources/Favorites.js';
 
-type add_course_to_favoritesPathParameters = {
+export type add_course_to_favoritesPathParameters = {
   /**
    * The ID or SIS ID of the course to add. The current user must be
    * registered in the course.

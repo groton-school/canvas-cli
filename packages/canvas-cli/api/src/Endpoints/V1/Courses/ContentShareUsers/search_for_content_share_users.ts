@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type search_for_content_share_usersPathParameters = {
+export type search_for_content_share_usersPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type search_for_content_share_usersSearchParameters = {
+export type search_for_content_share_usersSearchParameters = {
   /**
    * Term used to find users. Will search available share users with the
    * search term in their name.

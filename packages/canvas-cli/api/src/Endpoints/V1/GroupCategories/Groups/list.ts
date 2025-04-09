@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Group } from '../../../../Resources/Groups.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   group_category_id: string;
 };

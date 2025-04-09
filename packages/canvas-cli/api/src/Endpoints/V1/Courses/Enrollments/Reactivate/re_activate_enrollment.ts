@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { Enrollment } from '../../../../../Resources/Enrollments.js';
 
-type re_activate_enrollmentPathParameters = {
+export type re_activate_enrollmentPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

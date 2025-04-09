@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { PageRevision } from '../../../../../Resources/Pages.js';
 
-type show_revision_courses_revision_idPathParameters = {
+export type show_revision_courses_revision_idPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -10,7 +10,7 @@ type show_revision_courses_revision_idPathParameters = {
   revision_id: string;
 };
 
-type show_revision_courses_revision_idSearchParameters = {
+export type show_revision_courses_revision_idSearchParameters = {
   /** If set, exclude page content from results */
   summary: boolean;
 };

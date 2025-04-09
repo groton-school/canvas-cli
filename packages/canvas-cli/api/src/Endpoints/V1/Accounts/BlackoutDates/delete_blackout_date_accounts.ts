@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { BlackoutDate } from '../../../../Resources/BlackoutDates.js';
 
-type delete_blackout_date_accountsPathParameters = {
+export type delete_blackout_date_accountsPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

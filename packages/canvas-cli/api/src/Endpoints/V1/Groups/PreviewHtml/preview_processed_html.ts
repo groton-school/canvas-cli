@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type preview_processed_htmlPathParameters = {
+export type preview_processed_htmlPathParameters = {
   /** ID */
   group_id: string;
 };
 
-type preview_processed_htmlFormParameters = {
+export type preview_processed_htmlFormParameters = {
   /** The html content to process */
   html: string;
 };

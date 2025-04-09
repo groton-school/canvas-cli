@@ -1,9 +1,10 @@
 import { client } from '../../../../Client.js';
 
-type redirect_to_root_outcome_group_for_context_accountsPathParameters = {
-  /** ID */
-  account_id: string;
-};
+export type redirect_to_root_outcome_group_for_context_accountsPathParameters =
+  {
+    /** ID */
+    account_id: string;
+  };
 
 type Options = {
   pathParams: redirect_to_root_outcome_group_for_context_accountsPathParameters;

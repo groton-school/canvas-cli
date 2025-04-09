@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type add_observee_with_credentialsPathParameters = {
+export type add_observee_with_credentialsPathParameters = {
   /** ID */
   user_id: string;
 };
 
-type add_observee_with_credentialsFormParameters = {
+export type add_observee_with_credentialsFormParameters = {
   /**
    * The login id for the user to observe. Required if access_token is
    * omitted.

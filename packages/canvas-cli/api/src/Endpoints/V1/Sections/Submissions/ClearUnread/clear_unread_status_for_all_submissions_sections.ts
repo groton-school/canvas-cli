@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type clear_unread_status_for_all_submissions_sectionsPathParameters = {
+export type clear_unread_status_for_all_submissions_sectionsPathParameters = {
   /** ID */
   section_id: string;
   /** ID */

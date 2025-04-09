@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /**
    * Filter by user_id (only valid for course or section enrollment queries).
    * If set to the current user's id, this is a way to determine if the user
@@ -11,7 +11,7 @@ type listPathParameters = {
   user_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * A list of enrollment types to return. Accepted values are
    * 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment',

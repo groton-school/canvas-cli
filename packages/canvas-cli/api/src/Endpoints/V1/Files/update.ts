@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { File } from '../../../Resources/Files.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** The new display name of the file, with a limit of 255 characters. */
   name: string;
   /**

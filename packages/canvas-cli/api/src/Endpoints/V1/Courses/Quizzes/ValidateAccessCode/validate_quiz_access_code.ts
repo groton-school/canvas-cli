@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type validate_quiz_access_codePathParameters = {
+export type validate_quiz_access_codePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   id: string;
 };
 
-type validate_quiz_access_codeFormParameters = {
+export type validate_quiz_access_codeFormParameters = {
   /** The access code being validated */
   access_code: string;
 };

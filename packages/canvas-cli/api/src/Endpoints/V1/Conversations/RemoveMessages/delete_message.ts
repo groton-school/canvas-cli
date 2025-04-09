@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type delete_messagePathParameters = {
+export type delete_messagePathParameters = {
   /** ID */
   id: string;
 };
 
-type delete_messageFormParameters = {
+export type delete_messageFormParameters = {
   /** Array of message ids to be deleted */
   remove: string[];
 };

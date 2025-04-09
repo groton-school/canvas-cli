@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type add_tool_to_rce_favoritesPathParameters = {
+export type add_tool_to_rce_favoritesPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

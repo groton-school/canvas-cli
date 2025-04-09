@@ -1,6 +1,6 @@
 import { client } from '../../../Client.js';
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * An array of recipient ids. These may be user ids or course/group ids
    * prefixed with "course_" or "group_" respectively, e.g.

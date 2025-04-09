@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { Module } from '../../../../../Resources/CoursePace.js';
 
-type re_lock_module_progressionsPathParameters = {
+export type re_lock_module_progressionsPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

@@ -1,14 +1,14 @@
 import { Numeric } from '';
 import { client } from '../../../../../Client.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   quiz_submission_id: string;
   /** ID */
   id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /** No description */
   answer: Numeric;
 };

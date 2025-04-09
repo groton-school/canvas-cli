@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { MigrationIssue } from '../../../../../Resources/ContentMigrations.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

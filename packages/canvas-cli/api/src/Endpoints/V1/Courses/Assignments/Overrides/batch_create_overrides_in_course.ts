@@ -1,12 +1,12 @@
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
-type batch_create_overrides_in_coursePathParameters = {
+export type batch_create_overrides_in_coursePathParameters = {
   /** ID */
   course_id: string;
 };
 
-type batch_create_overrides_in_courseFormParameters = {
+export type batch_create_overrides_in_courseFormParameters = {
   /**
    * Attributes for the new assignment overrides. See
    * {api:AssignmentOverridesController#create Create an assignment override}

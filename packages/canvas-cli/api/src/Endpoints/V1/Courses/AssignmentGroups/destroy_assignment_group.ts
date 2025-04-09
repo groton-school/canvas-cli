@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { AssignmentGroup } from '../../../../Resources/AssignmentGroups.js';
 
-type destroy_assignment_groupPathParameters = {
+export type destroy_assignment_groupPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   assignment_group_id: string;
 };
 
-type destroy_assignment_groupSearchParameters = {
+export type destroy_assignment_groupSearchParameters = {
   /**
    * The ID of an active Assignment Group to which the assignments that are
    * currently assigned to the destroyed Assignment Group will be assigned.

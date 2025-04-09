@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeGroup } from '../../../../../Resources/OutcomeGroups.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The title of the new outcome group. */
   title: string;
   /** The description of the new outcome group. */

@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type delete_access_tokenPathParameters = {
+export type delete_access_tokenPathParameters = {
   /** ID */
   user_id: string;
   /** ID */

@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type merge_user_into_another_user_destination_user_idPathParameters = {
+export type merge_user_into_another_user_destination_user_idPathParameters = {
   /** ID */
   id: string;
   /** ID */

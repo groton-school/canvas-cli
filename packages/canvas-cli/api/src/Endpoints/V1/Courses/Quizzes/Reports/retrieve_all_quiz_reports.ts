@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { QuizReport } from '../../../../../Resources/QuizReports.js';
 
-type retrieve_all_quiz_reportsPathParameters = {
+export type retrieve_all_quiz_reportsPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   quiz_id: string;
 };
 
-type retrieve_all_quiz_reportsSearchParameters = {
+export type retrieve_all_quiz_reportsSearchParameters = {
   /**
    * Whether to retrieve reports that consider all the submissions or only the
    * most recent. Defaults to false, ignored for item_analysis reports.

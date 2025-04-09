@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Module } from '../../../../Resources/CoursePace.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * - "items": Return module items inline if possible. This parameter suggests
    *   that Canvas return module items directly in the Module object JSON, to

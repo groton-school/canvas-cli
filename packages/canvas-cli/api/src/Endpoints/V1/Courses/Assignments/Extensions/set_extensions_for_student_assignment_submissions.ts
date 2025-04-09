@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type set_extensions_for_student_assignment_submissionsPathParameters = {
+export type set_extensions_for_student_assignment_submissionsPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   assignment_id: string;
 };
 
-type set_extensions_for_student_assignment_submissionsFormParameters = {
+export type set_extensions_for_student_assignment_submissionsFormParameters = {
   /**
    * The ID of the user we want to add assignment extensions for.
    *

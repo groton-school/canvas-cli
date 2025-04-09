@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type remove_quiz_migration_alertPathParameters = {
+export type remove_quiz_migration_alertPathParameters = {
   /** ID */
   id: string;
 };

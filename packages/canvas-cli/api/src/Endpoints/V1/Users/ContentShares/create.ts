@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { ContentShare } from '../../../../Resources/ContentShares.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   user_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * IDs of users to share the content with.
    *

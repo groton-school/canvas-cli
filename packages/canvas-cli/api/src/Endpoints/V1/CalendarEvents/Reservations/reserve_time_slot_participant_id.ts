@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type reserve_time_slot_participant_idPathParameters = {
+export type reserve_time_slot_participant_idPathParameters = {
   /** ID */
   id: string;
   /**
@@ -11,7 +11,7 @@ type reserve_time_slot_participant_idPathParameters = {
   participant_id: string;
 };
 
-type reserve_time_slot_participant_idFormParameters = {
+export type reserve_time_slot_participant_idFormParameters = {
   /** Comments to associate with this reservation */
   comments: string;
   /**

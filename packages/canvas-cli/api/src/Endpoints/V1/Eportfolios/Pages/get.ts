@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { ePortfolioPage } from '../../../../Resources/EPortfolios.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   eportfolio_id: string;
 };

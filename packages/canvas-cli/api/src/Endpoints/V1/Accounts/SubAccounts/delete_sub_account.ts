@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Account } from '../../../../Resources/Accounts.js';
 
-type delete_sub_accountPathParameters = {
+export type delete_sub_accountPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

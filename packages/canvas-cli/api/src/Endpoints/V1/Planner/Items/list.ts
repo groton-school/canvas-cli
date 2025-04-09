@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Only return items starting from the given date. The value should be
    * formatted as: yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.

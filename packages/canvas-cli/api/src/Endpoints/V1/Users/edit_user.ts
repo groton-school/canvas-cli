@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { User } from '../../../Resources/Users.js';
 
-type edit_userPathParameters = {
+export type edit_userPathParameters = {
   /** ID */
   id: string;
 };
 
-type edit_userFormParameters = {
+export type edit_userFormParameters = {
   /** The full name of the user. This name will be used by teacher for grading. */
   'user[name]': string;
   /**

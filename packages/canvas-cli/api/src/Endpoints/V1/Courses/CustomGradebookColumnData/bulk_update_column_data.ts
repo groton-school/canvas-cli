@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
-type bulk_update_column_dataPathParameters = {
+export type bulk_update_column_dataPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type bulk_update_column_dataFormParameters = {
+export type bulk_update_column_dataFormParameters = {
   /**
    * Column content. Setting this to an empty string will delete the data
    * object.

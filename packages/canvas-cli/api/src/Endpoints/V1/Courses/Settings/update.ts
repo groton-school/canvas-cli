@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * Let student final grades for a grading period or the total grades for the
    * course be overridden

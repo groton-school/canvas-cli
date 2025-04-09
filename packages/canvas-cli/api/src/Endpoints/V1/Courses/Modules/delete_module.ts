@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Module } from '../../../../Resources/CoursePace.js';
 
-type delete_modulePathParameters = {
+export type delete_modulePathParameters = {
   /** ID */
   course_id: string;
   /** ID */

@@ -2,7 +2,7 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../Client.js';
 import { DeveloperKey } from '../../../../Resources/DeveloperKeys.js';
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * The new public jwk that will be set to the tools current public jwk.
    *

@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type delete_custom_dataPathParameters = {
+export type delete_custom_dataPathParameters = {
   /** ID */
   user_id: string;
 };
 
-type delete_custom_dataSearchParameters = {
+export type delete_custom_dataSearchParameters = {
   /**
    * The namespace from which to delete the data. This should be something
    * other Canvas API apps aren't likely to use, such as a reverse DNS for

@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   account_id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * List of ids of courses to update. At most 500 courses may be updated in
    * one call.

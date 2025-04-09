@@ -1,13 +1,14 @@
 import { client } from '../../../../../../../Client.js';
 
-type mark_rubric_assessments_as_read_courses_rubric_commentsPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assignment_id: string;
-  /** ID */
-  user_id: string;
-};
+export type mark_rubric_assessments_as_read_courses_rubric_commentsPathParameters =
+  {
+    /** ID */
+    course_id: string;
+    /** ID */
+    assignment_id: string;
+    /** ID */
+    user_id: string;
+  };
 
 type Options = {
   pathParams: mark_rubric_assessments_as_read_courses_rubric_commentsPathParameters;

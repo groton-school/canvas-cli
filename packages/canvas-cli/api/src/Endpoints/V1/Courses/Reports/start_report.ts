@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
-type start_reportPathParameters = {
+export type start_reportPathParameters = {
   /**
    * The id of the course to report on.
    *
@@ -12,7 +12,7 @@ type start_reportPathParameters = {
   report_type: string;
 };
 
-type start_reportFormParameters = {
+export type start_reportFormParameters = {
   /**
    * The parameters will vary for each report. Note that the example
    * parameters provided below may not be valid for every report.

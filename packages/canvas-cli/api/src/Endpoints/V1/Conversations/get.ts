@@ -1,11 +1,11 @@
 import { client } from '../../../Client.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * (Obsolete) Submissions are no longer linked to conversations. This
    * parameter is ignored.

@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { EpubExport } from '../../../../Resources/EPubExports.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
 };

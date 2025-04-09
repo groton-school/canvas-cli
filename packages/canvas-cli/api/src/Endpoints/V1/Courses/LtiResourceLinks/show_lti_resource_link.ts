@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
-type show_lti_resource_linkPathParameters = {
+export type show_lti_resource_linkPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   id: string;
 };
 
-type show_lti_resource_linkSearchParameters = {
+export type show_lti_resource_linkSearchParameters = {
   /** Include deleted resource links in search. Default is false. */
   include_deleted: boolean;
 };

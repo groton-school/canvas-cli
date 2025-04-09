@@ -1,6 +1,6 @@
 import { client } from '../../../../../../../Client.js';
 
-type mark_document_annotations_as_read_sectionsPathParameters = {
+export type mark_document_annotations_as_read_sectionsPathParameters = {
   /** ID */
   section_id: string;
   /** ID */

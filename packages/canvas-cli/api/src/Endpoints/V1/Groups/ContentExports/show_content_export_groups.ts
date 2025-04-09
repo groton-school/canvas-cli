@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { ContentExport } from '../../../../Resources/ContentExports.js';
 
-type show_content_export_groupsPathParameters = {
+export type show_content_export_groupsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */

@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Assignment } from '../../../../Resources/Assignments.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * Associations to include with the assignment. The "assignment_visibility"
    * option requires that the Differentiated Assignments course feature be

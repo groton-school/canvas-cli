@@ -1,11 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type reorder_custom_columnsPathParameters = {
+export type reorder_custom_columnsPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type reorder_custom_columnsFormParameters = {
+export type reorder_custom_columnsFormParameters = {
   /**
    * No description
    *

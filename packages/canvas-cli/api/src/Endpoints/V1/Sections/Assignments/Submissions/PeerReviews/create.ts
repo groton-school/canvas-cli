@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { PeerReview } from '../../../../../../Resources/PeerReviews.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   section_id: string;
   /** ID */
@@ -10,7 +10,7 @@ type createPathParameters = {
   submission_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * User_id to assign as reviewer on this assignment
    *

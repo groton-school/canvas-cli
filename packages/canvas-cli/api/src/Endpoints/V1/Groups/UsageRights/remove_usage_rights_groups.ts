@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type remove_usage_rights_groupsPathParameters = {
+export type remove_usage_rights_groupsPathParameters = {
   /** ID */
   group_id: string;
 };
 
-type remove_usage_rights_groupsSearchParameters = {
+export type remove_usage_rights_groupsSearchParameters = {
   /** List of ids of files to remove associated usage rights from. */
   file_ids: string[];
   /**

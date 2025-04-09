@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type delete_bookmarkPathParameters = {
+export type delete_bookmarkPathParameters = {
   /** ID */
   id: string;
 };

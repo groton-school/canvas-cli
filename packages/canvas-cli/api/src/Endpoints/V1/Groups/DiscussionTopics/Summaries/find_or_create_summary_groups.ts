@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type find_or_create_summary_groupsPathParameters = {
+export type find_or_create_summary_groupsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */
   topic_id: string;
 };
 
-type find_or_create_summary_groupsFormParameters = {
+export type find_or_create_summary_groupsFormParameters = {
   /** Areas or topics for the summary to focus on. */
   userInput: string;
 };

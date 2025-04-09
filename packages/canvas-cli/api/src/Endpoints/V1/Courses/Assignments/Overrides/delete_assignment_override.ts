@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
-type delete_assignment_overridePathParameters = {
+export type delete_assignment_overridePathParameters = {
   /** ID */
   course_id: string;
   /** ID */

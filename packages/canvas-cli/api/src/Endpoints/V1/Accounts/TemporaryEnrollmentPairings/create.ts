@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { TemporaryEnrollmentPairing } from '../../../../Resources/TemporaryEnrollmentPairings.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The workflow state of the temporary enrollment pairing. */
   workflow_state: string;
   /**

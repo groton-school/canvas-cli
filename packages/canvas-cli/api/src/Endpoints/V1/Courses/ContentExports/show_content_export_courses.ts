@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { ContentExport } from '../../../../Resources/ContentExports.js';
 
-type show_content_export_coursesPathParameters = {
+export type show_content_export_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

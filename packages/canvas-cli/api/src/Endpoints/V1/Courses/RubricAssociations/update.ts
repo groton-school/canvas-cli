@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { RubricAssociation } from '../../../../Resources/Rubrics.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
   /**
@@ -12,7 +12,7 @@ type updatePathParameters = {
   id: number;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * The id of the Rubric
    *

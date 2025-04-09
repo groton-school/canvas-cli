@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type return_test_student_for_coursePathParameters = {
+export type return_test_student_for_coursePathParameters = {
   /** ID */
   course_id: string;
 };

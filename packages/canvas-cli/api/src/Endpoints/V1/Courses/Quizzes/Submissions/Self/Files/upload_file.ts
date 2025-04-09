@@ -1,13 +1,13 @@
 import { client } from '../../../../../../../Client.js';
 
-type upload_filePathParameters = {
+export type upload_filePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   quiz_id: string;
 };
 
-type upload_fileFormParameters = {
+export type upload_fileFormParameters = {
   /** The name of the quiz submission file */
   name: string;
   /** How to handle duplicate names */

@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
-type delete_reportPathParameters = {
+export type delete_reportPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

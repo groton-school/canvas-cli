@@ -1,11 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   user_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Only return items starting from the given date. The value should be
    * formatted as: yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.

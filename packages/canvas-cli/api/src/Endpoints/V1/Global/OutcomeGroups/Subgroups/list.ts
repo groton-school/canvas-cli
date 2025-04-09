@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeGroup } from '../../../../../Resources/OutcomeGroups.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   id: string;
 };

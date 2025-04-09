@@ -1,11 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /** The order results in which results are returned. Defaults to "name". */
   sort_column: string;
   /** If set, returns only the specified student. */

@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
-type query_progressPathParameters = {
+export type query_progressPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

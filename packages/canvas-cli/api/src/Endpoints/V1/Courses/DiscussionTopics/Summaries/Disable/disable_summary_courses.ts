@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type disable_summary_coursesPathParameters = {
+export type disable_summary_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

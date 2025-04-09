@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type show_access_tokenPathParameters = {
+export type show_access_tokenPathParameters = {
   /** ID */
   user_id: string;
   /** ID */

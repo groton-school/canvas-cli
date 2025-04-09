@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type post_entry_groupsPathParameters = {
+export type post_entry_groupsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */
   topic_id: string;
 };
 
-type post_entry_groupsFormParameters = {
+export type post_entry_groupsFormParameters = {
   /** The body of the entry. */
   message: string;
   /**

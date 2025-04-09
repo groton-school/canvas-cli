@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { GroupCategory } from '../../../Resources/GroupCategories.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   group_category_id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** Name of the group category */
   name: string;
   /**

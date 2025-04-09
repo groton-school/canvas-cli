@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { TemporaryEnrollmentPairing } from '../../../../Resources/TemporaryEnrollmentPairings.js';
 
-type delete_temporary_enrollment_pairingPathParameters = {
+export type delete_temporary_enrollment_pairingPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

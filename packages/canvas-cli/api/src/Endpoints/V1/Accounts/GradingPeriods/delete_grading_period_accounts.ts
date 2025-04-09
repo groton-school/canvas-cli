@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type delete_grading_period_accountsPathParameters = {
+export type delete_grading_period_accountsPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

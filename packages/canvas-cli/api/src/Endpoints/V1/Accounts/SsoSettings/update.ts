@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { SSOSettings } from '../../../../Resources/AuthenticationProviders.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   account_id: string;
 };

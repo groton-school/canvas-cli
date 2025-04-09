@@ -2,12 +2,12 @@ import { client } from '../../../../Client.js';
 import { Assignment } from '../../../../Resources/Assignments.js';
 import { File } from '../../../../Resources/Files.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** No description */
   title: string;
   /** No description */

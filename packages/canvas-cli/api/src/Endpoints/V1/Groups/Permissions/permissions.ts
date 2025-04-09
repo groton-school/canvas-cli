@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type permissionsPathParameters = {
+export type permissionsPathParameters = {
   /** ID */
   group_id: string;
 };
 
-type permissionsSearchParameters = {
+export type permissionsSearchParameters = {
   /**
    * List of permissions to check against the authenticated user. Permission
    * names are documented in the {api:RoleOverridesController#add_role Create

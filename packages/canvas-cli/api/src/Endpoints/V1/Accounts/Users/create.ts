@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * The full name of the user. This name will be used by teacher for grading.
    * Required if this is a self-registration.

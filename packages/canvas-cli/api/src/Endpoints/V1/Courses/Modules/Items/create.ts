@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { ModuleItem } from '../../../../../Resources/CoursePace.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   module_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The name of the module item and associated content */
   'module_item[title]': string;
   /** The type of content linked to the item */

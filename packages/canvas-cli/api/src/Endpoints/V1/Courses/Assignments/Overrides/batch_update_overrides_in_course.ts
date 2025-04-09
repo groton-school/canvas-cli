@@ -1,12 +1,12 @@
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
-type batch_update_overrides_in_coursePathParameters = {
+export type batch_update_overrides_in_coursePathParameters = {
   /** ID */
   course_id: string;
 };
 
-type batch_update_overrides_in_courseFormParameters = {
+export type batch_update_overrides_in_courseFormParameters = {
   /** Attributes for the updated overrides. */
   assignment_overrides: string[];
 };

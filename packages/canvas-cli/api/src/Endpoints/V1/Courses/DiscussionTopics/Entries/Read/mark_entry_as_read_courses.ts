@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type mark_entry_as_read_coursesPathParameters = {
+export type mark_entry_as_read_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -9,7 +9,7 @@ type mark_entry_as_read_coursesPathParameters = {
   entry_id: string;
 };
 
-type mark_entry_as_read_coursesFormParameters = {
+export type mark_entry_as_read_coursesFormParameters = {
   /**
    * A boolean value to set the entry's forced_read_state. No change is made
    * if this argument is not specified.

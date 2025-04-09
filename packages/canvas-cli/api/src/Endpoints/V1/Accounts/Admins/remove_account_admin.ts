@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Admin } from '../../../../Resources/Admins.js';
 
-type remove_account_adminPathParameters = {
+export type remove_account_adminPathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   user_id: string;
 };
 
-type remove_account_adminSearchParameters = {
+export type remove_account_adminSearchParameters = {
   /** [DEPRECATED] Account role to remove from the user. */
   role: string;
   /**

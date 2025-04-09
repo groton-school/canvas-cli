@@ -1,17 +1,19 @@
 import { QuizUserConversation } from '';
 import { client } from '../../../../../../Client.js';
 
-type send_message_to_unsubmitted_or_submitted_users_for_quizPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
-};
+export type send_message_to_unsubmitted_or_submitted_users_for_quizPathParameters =
+  {
+    /** ID */
+    course_id: string;
+    /** ID */
+    id: string;
+  };
 
-type send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters = {
-  /** - Body and recipients to send the message to. */
-  conversations: QuizUserConversation;
-};
+export type send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters =
+  {
+    /** - Body and recipients to send the message to. */
+    conversations: QuizUserConversation;
+  };
 
 type Options = {
   pathParams: send_message_to_unsubmitted_or_submitted_users_for_quizPathParameters;

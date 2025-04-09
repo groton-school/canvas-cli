@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { QuizSubmissionQuestion } from '../../../../Resources/QuizSubmissionQuestions.js';
 
-type answering_questionsPathParameters = {
+export type answering_questionsPathParameters = {
   /** ID */
   quiz_submission_id: string;
 };
 
-type answering_questionsFormParameters = {
+export type answering_questionsFormParameters = {
   /**
    * The attempt number of the quiz submission being taken. Note that this
    * must be the latest attempt index, as questions for earlier attempts can

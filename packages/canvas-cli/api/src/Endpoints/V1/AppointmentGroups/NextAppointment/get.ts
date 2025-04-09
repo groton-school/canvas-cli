@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { CalendarEvent } from '../../../../Resources/CalendarEvents.js';
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /** List of ids of appointment groups to search. */
   appointment_group_ids: string[];
 };

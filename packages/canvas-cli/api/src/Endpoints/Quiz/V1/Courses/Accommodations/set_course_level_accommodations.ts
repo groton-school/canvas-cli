@@ -1,12 +1,12 @@
 import { client } from '../../../../../Client.js';
 import { AccommodationResponse } from '../../../../../Resources/NewQuizzesAccommodations.js';
 
-type set_course_level_accommodationsPathParameters = {
+export type set_course_level_accommodationsPathParameters = {
   /** The ID of the course where accommodations should be applied. */
   course_id: string;
 };
 
-type set_course_level_accommodationsFormParameters = {
+export type set_course_level_accommodationsFormParameters = {
   /**
    * The Canvas user ID of the student receiving accommodations.
    *

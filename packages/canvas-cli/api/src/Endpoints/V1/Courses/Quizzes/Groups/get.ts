@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { QuizGroup } from '../../../../../Resources/QuizQuestionGroups.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

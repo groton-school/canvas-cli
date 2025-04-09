@@ -1,12 +1,12 @@
 import { client } from '../../../../../Client.js';
 
-type lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesPathParameters =
+export type lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesPathParameters =
   {
     /** ID */
     account_id: string;
   };
 
-type lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters =
+export type lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters =
   {
     /**
      * Whether sub-accounts and courses will be prevented from overriding

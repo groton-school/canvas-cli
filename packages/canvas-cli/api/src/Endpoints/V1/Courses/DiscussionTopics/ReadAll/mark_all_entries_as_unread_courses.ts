@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type mark_all_entries_as_unread_coursesPathParameters = {
+export type mark_all_entries_as_unread_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   topic_id: string;
 };
 
-type mark_all_entries_as_unread_coursesSearchParameters = {
+export type mark_all_entries_as_unread_coursesSearchParameters = {
   /**
    * A boolean value to set all of the entries' forced_read_state. No change
    * is made if this argument is not specified.

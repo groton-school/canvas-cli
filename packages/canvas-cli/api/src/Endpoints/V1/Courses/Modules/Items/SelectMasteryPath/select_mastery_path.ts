@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type select_mastery_pathPathParameters = {
+export type select_mastery_pathPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -9,7 +9,7 @@ type select_mastery_pathPathParameters = {
   id: string;
 };
 
-type select_mastery_pathFormParameters = {
+export type select_mastery_pathFormParameters = {
   /**
    * Assignment set chosen, as specified in the mastery_paths portion of the
    * context module item response

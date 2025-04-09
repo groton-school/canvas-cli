@@ -1,6 +1,6 @@
 import { client } from '../../../Client.js';
 
-type delete_conversationPathParameters = {
+export type delete_conversationPathParameters = {
   /** ID */
   id: string;
 };

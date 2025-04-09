@@ -1,11 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type query_by_userPathParameters = {
+export type query_by_userPathParameters = {
   /** ID */
   user_id: string;
 };
 
-type query_by_userSearchParameters = {
+export type query_by_userSearchParameters = {
   /**
    * The beginning of the time range from which you want events. Events are
    * stored for one year.

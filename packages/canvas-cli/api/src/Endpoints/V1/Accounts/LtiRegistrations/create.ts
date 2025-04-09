@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The name of the tool */
   name: string;
   /** A friendly nickname set by admins to override the tool name */

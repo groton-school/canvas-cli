@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeGroup } from '../../../../../Resources/OutcomeGroups.js';
 
-type import_outcome_group_accountsPathParameters = {
+export type import_outcome_group_accountsPathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   id: string;
 };
 
-type import_outcome_group_accountsFormParameters = {
+export type import_outcome_group_accountsFormParameters = {
   /**
    * The ID of the source outcome group.
    *

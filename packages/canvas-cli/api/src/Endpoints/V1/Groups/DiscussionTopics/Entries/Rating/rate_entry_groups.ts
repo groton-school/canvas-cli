@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type rate_entry_groupsPathParameters = {
+export type rate_entry_groupsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */
@@ -9,7 +9,7 @@ type rate_entry_groupsPathParameters = {
   entry_id: string;
 };
 
-type rate_entry_groupsFormParameters = {
+export type rate_entry_groupsFormParameters = {
   /**
    * A rating to set on this entry. Only 0 and 1 are accepted.
    *

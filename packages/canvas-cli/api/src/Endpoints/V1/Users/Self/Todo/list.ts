@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * "ungraded_quizzes":: Optionally include ungraded quizzes (such as
    * practice quizzes and surveys) in the list. These will be returned under a

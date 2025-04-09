@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
-type create_link_outcome_accounts_outcome_idPathParameters = {
+export type create_link_outcome_accounts_outcome_idPathParameters = {
   /** ID */
   account_id: string;
   /** ID */
@@ -14,7 +14,7 @@ type create_link_outcome_accounts_outcome_idPathParameters = {
   outcome_id: number;
 };
 
-type create_link_outcome_accounts_outcome_idFormParameters = {
+export type create_link_outcome_accounts_outcome_idFormParameters = {
   /**
    * The ID of the old outcome group. Only used if outcome_id is present.
    *

@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type redirect_to_root_outcome_group_for_context_coursesPathParameters = {
+export type redirect_to_root_outcome_group_for_context_coursesPathParameters = {
   /** ID */
   course_id: string;
 };

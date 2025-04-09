@@ -2,7 +2,7 @@ import { client } from '../../../../../../Client.js';
 import { Progress } from '../../../../../../Resources/CoursePace.js';
 import { RubricAssessment } from '../../../../../../Resources/Rubrics.js';
 
-type grade_or_comment_on_multiple_submissions_courses_assignmentsPathParameters =
+export type grade_or_comment_on_multiple_submissions_courses_assignmentsPathParameters =
   {
     /** ID */
     course_id: string;
@@ -10,7 +10,7 @@ type grade_or_comment_on_multiple_submissions_courses_assignmentsPathParameters 
     assignment_id: string;
   };
 
-type grade_or_comment_on_multiple_submissions_courses_assignmentsFormParameters =
+export type grade_or_comment_on_multiple_submissions_courses_assignmentsFormParameters =
   {
     /**
      * See documentation for the posted_grade argument in the

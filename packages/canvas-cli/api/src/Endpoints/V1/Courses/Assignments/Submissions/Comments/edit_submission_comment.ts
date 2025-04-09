@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { SubmissionComment } from '../../../../../../Resources/Submissions.js';
 
-type edit_submission_commentPathParameters = {
+export type edit_submission_commentPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -12,7 +12,7 @@ type edit_submission_commentPathParameters = {
   id: string;
 };
 
-type edit_submission_commentFormParameters = {
+export type edit_submission_commentFormParameters = {
   /** If this argument is present, edit the text of a comment. */
   comment: string;
 };

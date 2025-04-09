@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type delete_poll_choicePathParameters = {
+export type delete_poll_choicePathParameters = {
   /** ID */
   poll_id: string;
   /** ID */

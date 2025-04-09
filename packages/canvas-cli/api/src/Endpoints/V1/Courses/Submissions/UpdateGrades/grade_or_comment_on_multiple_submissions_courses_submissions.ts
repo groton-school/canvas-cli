@@ -2,13 +2,13 @@ import { client } from '../../../../../Client.js';
 import { Progress } from '../../../../../Resources/CoursePace.js';
 import { RubricAssessment } from '../../../../../Resources/Rubrics.js';
 
-type grade_or_comment_on_multiple_submissions_courses_submissionsPathParameters =
+export type grade_or_comment_on_multiple_submissions_courses_submissionsPathParameters =
   {
     /** ID */
     course_id: string;
   };
 
-type grade_or_comment_on_multiple_submissions_courses_submissionsFormParameters =
+export type grade_or_comment_on_multiple_submissions_courses_submissionsFormParameters =
   {
     /**
      * See documentation for the posted_grade argument in the

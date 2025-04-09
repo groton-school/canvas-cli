@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { Progress } from '../../../Resources/CoursePace.js';
 
-type batch_update_conversationsFormParameters = {
+export type batch_update_conversationsFormParameters = {
   /** List of conversations to update. Limited to 500 conversations. */
   conversation_ids: string[];
   /** The action to take on each conversation. */

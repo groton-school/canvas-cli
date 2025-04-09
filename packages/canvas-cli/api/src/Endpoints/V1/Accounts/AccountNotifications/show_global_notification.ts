@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
-type show_global_notificationPathParameters = {
+export type show_global_notificationPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

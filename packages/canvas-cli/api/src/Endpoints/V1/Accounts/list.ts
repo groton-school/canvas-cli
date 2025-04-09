@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { Account } from '../../../Resources/Accounts.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Array of additional information to include.
    *

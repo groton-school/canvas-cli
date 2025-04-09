@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { AuthenticationProvider } from '../../../../Resources/AuthenticationProviders.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   account_id: string;
 };

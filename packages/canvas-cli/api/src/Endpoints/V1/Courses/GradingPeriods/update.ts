@@ -1,14 +1,14 @@
 import { Date } from '';
 import { client } from '../../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** The date the grading period starts. */
   'grading_periods[start_date]': string[];
   /** No description */

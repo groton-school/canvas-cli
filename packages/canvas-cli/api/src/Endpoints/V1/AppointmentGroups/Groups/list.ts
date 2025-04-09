@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /** Limits results to the a given participation status, defaults to "all" */
   registration_status: string;
 };

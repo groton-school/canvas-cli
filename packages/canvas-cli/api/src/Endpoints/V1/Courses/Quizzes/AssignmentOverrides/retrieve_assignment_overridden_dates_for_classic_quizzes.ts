@@ -1,12 +1,13 @@
 import { client } from '../../../../../Client.js';
 import { QuizAssignmentOverrideSetContainer } from '../../../../../Resources/QuizAssignmentOverrides.js';
 
-type retrieve_assignment_overridden_dates_for_classic_quizzesPathParameters = {
-  /** ID */
-  course_id: string;
-};
+export type retrieve_assignment_overridden_dates_for_classic_quizzesPathParameters =
+  {
+    /** ID */
+    course_id: string;
+  };
 
-type retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters =
+export type retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters =
   {
     /**
      * An array of quiz IDs. If omitted, overrides for all quizzes available to

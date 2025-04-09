@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { TermsOfService } from '../../../../Resources/Accounts.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   account_id: string;
 };

@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type submit_captured_eventsPathParameters = {
+export type submit_captured_eventsPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -9,7 +9,7 @@ type submit_captured_eventsPathParameters = {
   id: string;
 };
 
-type submit_captured_eventsFormParameters = {
+export type submit_captured_eventsFormParameters = {
   /** The submission events to be recorded */
   quiz_submission_events: string[];
 };

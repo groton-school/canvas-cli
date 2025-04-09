@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { PlannerOverride } from '../../../../Resources/Planner.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** Determines whether the planner item is marked as completed */
   marked_complete: string;
   /** Determines whether the planner item shows in the opportunities list */

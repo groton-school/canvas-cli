@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { Folder } from '../../../../../../Resources/Files.js';
 
-type resolve_path_groups_full_pathPathParameters = {
+export type resolve_path_groups_full_pathPathParameters = {
   /** ID */
   group_id: string;
 };

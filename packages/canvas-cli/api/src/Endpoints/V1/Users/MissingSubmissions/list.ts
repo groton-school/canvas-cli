@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Assignment } from '../../../../Resources/Assignments.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** The student's ID */
   user_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Return missing submissions for the given observed user. Must be
    * accompanied by course_ids[]. The user making the request must be

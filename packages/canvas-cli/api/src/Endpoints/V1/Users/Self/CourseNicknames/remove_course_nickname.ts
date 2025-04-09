@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { CourseNickname } from '../../../../../Resources/Users.js';
 
-type remove_course_nicknamePathParameters = {
+export type remove_course_nicknamePathParameters = {
   /** ID */
   course_id: string;
 };

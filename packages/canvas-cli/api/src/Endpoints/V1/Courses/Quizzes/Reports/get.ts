@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { QuizReport } from '../../../../../Resources/QuizReports.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -10,7 +10,7 @@ type getPathParameters = {
   id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * Whether the output should include documents for the file and/or progress
    * objects associated with this report. (Note: JSON-API only)

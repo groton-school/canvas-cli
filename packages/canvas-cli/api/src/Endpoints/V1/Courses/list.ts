@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { Course } from '../../../Resources/Courses.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * When set, only return courses where the user is enrolled as this type.
    * For example, set to "teacher" to return only courses where the user is

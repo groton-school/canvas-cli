@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type accept_course_invitationPathParameters = {
+export type accept_course_invitationPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

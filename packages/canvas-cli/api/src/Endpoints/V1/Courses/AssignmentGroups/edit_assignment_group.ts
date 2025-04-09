@@ -2,14 +2,14 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../Client.js';
 import { AssignmentGroup } from '../../../../Resources/AssignmentGroups.js';
 
-type edit_assignment_groupPathParameters = {
+export type edit_assignment_groupPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   assignment_group_id: string;
 };
 
-type edit_assignment_groupFormParameters = {
+export type edit_assignment_groupFormParameters = {
   /** The assignment group's name */
   name: string;
   /**

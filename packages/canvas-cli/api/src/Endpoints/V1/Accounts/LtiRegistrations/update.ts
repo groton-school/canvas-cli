@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** The name of the tool */
   name: string;
   /** The admin-configured friendly display name for the registration */

@@ -2,14 +2,14 @@ import { Deprecated } from '';
 import { client } from '../../../../../Client.js';
 import { Role } from '../../../../../Resources/Roles.js';
 
-type activate_rolePathParameters = {
+export type activate_rolePathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   id: string;
 };
 
-type activate_roleFormParameters = {
+export type activate_roleFormParameters = {
   /**
    * The unique identifier for the role
    *

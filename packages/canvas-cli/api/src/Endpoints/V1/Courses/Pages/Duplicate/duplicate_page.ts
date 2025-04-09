@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { Page } from '../../../../../Resources/Pages.js';
 
-type duplicate_pagePathParameters = {
+export type duplicate_pagePathParameters = {
   /** ID */
   course_id: string;
   /** ID */

@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { MediaObject } from '../../../../Resources/MediaObjects.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   group_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Field to sort on. Default is "title"
    *

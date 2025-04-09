@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
-type index_of_reportsPathParameters = {
+export type index_of_reportsPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

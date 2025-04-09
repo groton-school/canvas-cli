@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { File } from '../../../../Resources/Files.js';
 
-type reset_link_verifierPathParameters = {
+export type reset_link_verifierPathParameters = {
   /** ID */
   id: string;
 };

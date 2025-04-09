@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { PairingCode } from '../../../../Resources/UserObservees.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   user_id: string;
 };

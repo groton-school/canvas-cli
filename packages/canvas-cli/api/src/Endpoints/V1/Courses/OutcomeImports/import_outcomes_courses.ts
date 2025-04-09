@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { OutcomeImport } from '../../../../Resources/OutcomeImports.js';
 
-type import_outcomes_coursesPathParameters = {
+export type import_outcomes_coursesPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type import_outcomes_coursesFormParameters = {
+export type import_outcomes_coursesFormParameters = {
   /**
    * Choose the data format for reading outcome data. With a standard Canvas
    * install, this option can only be 'instructure_csv', and if unprovided,

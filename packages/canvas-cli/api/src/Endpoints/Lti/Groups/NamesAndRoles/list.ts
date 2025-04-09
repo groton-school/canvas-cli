@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { NamesAndRoleMemberships } from '../../../../Resources/NamesAndRole.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   group_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * If specified only NamesAndRoleMemberships with access to the LTI link
    * references by this `rlid` will be included. Also causes the member array

@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { Result } from '../../../../../Resources/Results.js';
 
-type show_collection_of_resultsPathParameters = {
+export type show_collection_of_resultsPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

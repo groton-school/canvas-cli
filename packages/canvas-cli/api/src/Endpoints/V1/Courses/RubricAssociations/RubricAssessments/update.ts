@@ -1,7 +1,7 @@
 import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /**
    * The id of the rubric assessment
    *
@@ -22,7 +22,7 @@ type updatePathParameters = {
   rubric_association_id: number;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * (optional) Indicates whether this assessment is provisional, defaults to
    * false.

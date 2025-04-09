@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * The detail level of the outcomes. Defaults to "abbrev". Specify "full"
    * for more information.

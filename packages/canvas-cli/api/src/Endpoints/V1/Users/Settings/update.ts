@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-type updateSearchParameters = {
+export type updateSearchParameters = {
   /**
    * If true, require user to manually mark discussion posts as read (don't
    * auto-mark as read).

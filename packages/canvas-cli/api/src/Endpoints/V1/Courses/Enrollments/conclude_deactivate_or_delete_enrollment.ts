@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
-type conclude_deactivate_or_delete_enrollmentPathParameters = {
+export type conclude_deactivate_or_delete_enrollmentPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   id: string;
 };
 
-type conclude_deactivate_or_delete_enrollmentSearchParameters = {
+export type conclude_deactivate_or_delete_enrollmentSearchParameters = {
   /**
    * The action to take on the enrollment. When inactive, a user will still
    * appear in the course roster to admins, but be unable to participate.

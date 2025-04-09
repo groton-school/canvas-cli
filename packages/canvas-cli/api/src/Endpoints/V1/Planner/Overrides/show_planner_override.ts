@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { PlannerOverride } from '../../../../Resources/Planner.js';
 
-type show_planner_overridePathParameters = {
+export type show_planner_overridePathParameters = {
   /** ID */
   id: string;
 };

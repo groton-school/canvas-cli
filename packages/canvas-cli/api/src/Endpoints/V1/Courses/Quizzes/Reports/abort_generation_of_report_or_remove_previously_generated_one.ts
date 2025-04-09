@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type abort_generation_of_report_or_remove_previously_generated_onePathParameters =
+export type abort_generation_of_report_or_remove_previously_generated_onePathParameters =
   {
     /** ID */
     course_id: string;

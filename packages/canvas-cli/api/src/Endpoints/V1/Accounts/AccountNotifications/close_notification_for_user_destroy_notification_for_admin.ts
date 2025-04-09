@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
-type close_notification_for_user_destroy_notification_for_adminPathParameters =
+export type close_notification_for_user_destroy_notification_for_adminPathParameters =
   {
     /** ID */
     account_id: string;
@@ -9,7 +9,7 @@ type close_notification_for_user_destroy_notification_for_adminPathParameters =
     id: string;
   };
 
-type close_notification_for_user_destroy_notification_for_adminSearchParameters =
+export type close_notification_for_user_destroy_notification_for_adminSearchParameters =
   {
     /** Destroy the account notification. */
     remove: boolean;

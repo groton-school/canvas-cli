@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { ContentMigration } from '../../../../Resources/ContentMigrations.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   user_id: string;
   /** ID */

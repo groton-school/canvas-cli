@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   user_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * - "course_subject_tabs": Optional flag to return the tabs associated with a
    *   canvas_for_elementary subject course's home page instead of the typical

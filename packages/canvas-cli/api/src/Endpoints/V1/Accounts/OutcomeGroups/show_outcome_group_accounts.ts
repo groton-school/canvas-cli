@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
 
-type show_outcome_group_accountsPathParameters = {
+export type show_outcome_group_accountsPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

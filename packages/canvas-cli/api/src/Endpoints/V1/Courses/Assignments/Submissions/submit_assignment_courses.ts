@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type submit_assignment_coursesPathParameters = {
+export type submit_assignment_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   assignment_id: string;
 };
 
-type submit_assignment_coursesFormParameters = {
+export type submit_assignment_coursesFormParameters = {
   /** Include a textual comment with the submission. */
   'comment[text_comment]': string;
   /**

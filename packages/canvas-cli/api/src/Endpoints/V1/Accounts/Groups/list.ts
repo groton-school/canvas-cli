@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Group } from '../../../../Resources/Groups.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /** Will only include groups that the user belongs to if this is set */
   only_own_groups: boolean;
   /**

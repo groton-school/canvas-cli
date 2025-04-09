@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
-type show_page_groupsPathParameters = {
+export type show_page_groupsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */

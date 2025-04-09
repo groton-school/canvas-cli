@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Section } from '../../../../Resources/Sections.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The name of the section */
   'course_section[name]': string;
   /**

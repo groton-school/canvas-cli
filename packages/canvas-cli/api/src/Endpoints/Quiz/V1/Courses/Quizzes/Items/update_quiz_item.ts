@@ -2,7 +2,7 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../../../Client.js';
 import { QuizItem } from '../../../../../../Resources/NewQuizItems.js';
 
-type update_quiz_itemPathParameters = {
+export type update_quiz_itemPathParameters = {
   /**
    * No description
    *
@@ -23,7 +23,7 @@ type update_quiz_itemPathParameters = {
   item_id: number;
 };
 
-type update_quiz_itemFormParameters = {
+export type update_quiz_itemFormParameters = {
   /**
    * The position of the item within the quiz.
    *

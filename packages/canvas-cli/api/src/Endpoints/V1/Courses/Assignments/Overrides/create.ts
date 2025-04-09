@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   assignment_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * The IDs of the override's target students. If present, the IDs must each
    * identify a user with an active student enrollment in the course that is

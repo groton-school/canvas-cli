@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Submission } from '../../../../Resources/Submissions.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /** Associations to include with the group */
   include: string[];
   /** Returns submissions for only currently active enrollments */

@@ -1,11 +1,11 @@
 import { client } from '../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   media_object_id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** The new title. */
   user_entered_title: string;
 };

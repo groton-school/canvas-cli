@@ -1,12 +1,12 @@
 import { client } from '../../../../../Client.js';
 import { CourseNickname } from '../../../../../Resources/Users.js';
 
-type set_course_nicknamePathParameters = {
+export type set_course_nicknamePathParameters = {
   /** ID */
   course_id: string;
 };
 
-type set_course_nicknameFormParameters = {
+export type set_course_nicknameFormParameters = {
   /** The nickname to set. It must be non-empty and shorter than 60 characters. */
   nickname: string;
 };

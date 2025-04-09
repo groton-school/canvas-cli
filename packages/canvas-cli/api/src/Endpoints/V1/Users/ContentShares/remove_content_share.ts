@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type remove_content_sharePathParameters = {
+export type remove_content_sharePathParameters = {
   /** ID */
   user_id: string;
   /** ID */

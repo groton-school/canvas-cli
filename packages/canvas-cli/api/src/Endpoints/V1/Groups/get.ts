@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { Group } from '../../../Resources/Groups.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   group_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * - "permissions": Include permissions the current user has for the group.
    * - "tabs": Include the list of tabs configured for each group. See the

@@ -1,6 +1,6 @@
 import { client } from '../../../Client.js';
 
-type show_single_webhook_subscriptionPathParameters = {
+export type show_single_webhook_subscriptionPathParameters = {
   /** ID */
   id: string;
 };

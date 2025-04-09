@@ -1,6 +1,6 @@
 import { client } from '../../../../../../../Client.js';
 
-type mark_rubric_assessments_as_read_sections_rubric_assessmentsPathParameters =
+export type mark_rubric_assessments_as_read_sections_rubric_assessmentsPathParameters =
   {
     /** ID */
     section_id: string;

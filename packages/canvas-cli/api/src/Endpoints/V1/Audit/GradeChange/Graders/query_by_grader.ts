@@ -1,12 +1,12 @@
 import { client } from '../../../../../Client.js';
 import { GradeChangeEvent } from '../../../../../Resources/GradeChangeLog.js';
 
-type query_by_graderPathParameters = {
+export type query_by_graderPathParameters = {
   /** ID */
   grader_id: string;
 };
 
-type query_by_graderSearchParameters = {
+export type query_by_graderSearchParameters = {
   /**
    * The beginning of the time range from which you want events.
    *

@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type post_reply_coursesPathParameters = {
+export type post_reply_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -9,7 +9,7 @@ type post_reply_coursesPathParameters = {
   entry_id: string;
 };
 
-type post_reply_coursesFormParameters = {
+export type post_reply_coursesFormParameters = {
   /** The body of the entry. */
   message: string;
   /**

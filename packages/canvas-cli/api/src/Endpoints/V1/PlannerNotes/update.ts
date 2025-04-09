@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { PlannerNote } from '../../../Resources/Planner.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** The title of the planner note. */
   title: string;
   /** Text of the planner note. */

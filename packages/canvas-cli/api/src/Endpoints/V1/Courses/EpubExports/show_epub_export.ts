@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { EpubExport } from '../../../../Resources/EPubExports.js';
 
-type show_epub_exportPathParameters = {
+export type show_epub_exportPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

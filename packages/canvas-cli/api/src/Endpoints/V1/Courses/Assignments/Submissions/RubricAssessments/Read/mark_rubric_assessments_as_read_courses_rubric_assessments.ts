@@ -1,6 +1,6 @@
 import { client } from '../../../../../../../Client.js';
 
-type mark_rubric_assessments_as_read_courses_rubric_assessmentsPathParameters =
+export type mark_rubric_assessments_as_read_courses_rubric_assessmentsPathParameters =
   {
     /** ID */
     course_id: string;

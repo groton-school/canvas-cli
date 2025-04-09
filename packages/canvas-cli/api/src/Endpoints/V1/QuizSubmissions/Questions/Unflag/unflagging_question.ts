@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type unflagging_questionPathParameters = {
+export type unflagging_questionPathParameters = {
   /** ID */
   quiz_submission_id: string;
   /** ID */
   id: string;
 };
 
-type unflagging_questionFormParameters = {
+export type unflagging_questionFormParameters = {
   /**
    * The attempt number of the quiz submission being taken. Note that this
    * must be the latest attempt index, as questions for earlier attempts can

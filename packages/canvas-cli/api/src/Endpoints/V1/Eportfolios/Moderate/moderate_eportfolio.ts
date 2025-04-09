@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { ePortfolio } from '../../../../Resources/EPortfolios.js';
 
-type moderate_eportfolioPathParameters = {
+export type moderate_eportfolioPathParameters = {
   /** ID */
   eportfolio_id: string;
 };
 
-type moderate_eportfolioFormParameters = {
+export type moderate_eportfolioFormParameters = {
   /** The spam status for the ePortfolio */
   spam_status: string;
 };

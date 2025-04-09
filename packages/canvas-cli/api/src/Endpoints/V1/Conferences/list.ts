@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { Conference } from '../../../Resources/Conferences.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * If set to "live", returns only conferences that are live (i.e., have
    * started and not finished yet). If omitted, returns all conferences for

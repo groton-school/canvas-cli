@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { SubmissionComment } from '../../../../../../Resources/Submissions.js';
 
-type delete_submission_commentPathParameters = {
+export type delete_submission_commentPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

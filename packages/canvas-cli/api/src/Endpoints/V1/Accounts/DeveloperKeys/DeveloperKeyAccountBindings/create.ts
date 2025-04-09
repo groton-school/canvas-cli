@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { DeveloperKeyAccountBinding } from '../../../../../Resources/DeveloperKeyAccountBindings.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   developer_key_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * The workflow state for the binding. Must be one of "on", "off", or
    * "allow". Defaults to "off".

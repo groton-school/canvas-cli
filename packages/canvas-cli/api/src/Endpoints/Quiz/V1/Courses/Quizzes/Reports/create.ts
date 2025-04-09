@@ -1,14 +1,14 @@
 import { client } from '../../../../../../Client.js';
 import { Progress } from '../../../../../../Resources/CoursePace.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   assignment_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The type of report to be generated. */
   'quiz_report[report_type]': string;
   /** The format of report to be generated. */

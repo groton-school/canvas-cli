@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Role } from '../../../../Resources/Roles.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * The label for the role. Can only change the label of a custom role that
    * belongs directly to the account.

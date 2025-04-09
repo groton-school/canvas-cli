@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type flagging_questionPathParameters = {
+export type flagging_questionPathParameters = {
   /** ID */
   quiz_submission_id: string;
   /** ID */
   id: string;
 };
 
-type flagging_questionFormParameters = {
+export type flagging_questionFormParameters = {
   /**
    * The attempt number of the quiz submission being taken. Note that this
    * must be the latest attempt index, as questions for earlier attempts can

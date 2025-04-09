@@ -1,11 +1,11 @@
 import { client } from '../../../../../../Client.js';
 
-type add_multiple_allowed_domains_to_accountPathParameters = {
+export type add_multiple_allowed_domains_to_accountPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type add_multiple_allowed_domains_to_accountFormParameters = {
+export type add_multiple_allowed_domains_to_accountFormParameters = {
   /**
    * No description
    *

@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { AccountCalendar } from '../../../Resources/AccountCalendars.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   account_id: string;
 };

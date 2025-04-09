@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { MediaTrack } from '../../../../Resources/MediaObjects.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   attachment_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * By default, index returns id, locale, kind, media_object_id, and user_id
    * for each of the result MediaTracks. Use include[] to add additional

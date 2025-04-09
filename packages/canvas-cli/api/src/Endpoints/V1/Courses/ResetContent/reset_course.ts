@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Course } from '../../../../Resources/Courses.js';
 
-type reset_coursePathParameters = {
+export type reset_coursePathParameters = {
   /** ID */
   course_id: string;
 };

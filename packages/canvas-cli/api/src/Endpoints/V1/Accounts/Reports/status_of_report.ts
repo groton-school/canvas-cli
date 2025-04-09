@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
-type status_of_reportPathParameters = {
+export type status_of_reportPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

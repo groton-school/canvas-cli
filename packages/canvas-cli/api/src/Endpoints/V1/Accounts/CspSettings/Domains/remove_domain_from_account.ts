@@ -1,11 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type remove_domain_from_accountPathParameters = {
+export type remove_domain_from_accountPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type remove_domain_from_accountSearchParameters = {
+export type remove_domain_from_accountSearchParameters = {
   /** No description */
   domain: string;
 };

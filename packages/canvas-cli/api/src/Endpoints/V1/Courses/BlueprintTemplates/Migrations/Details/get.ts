@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { ChangeRecord } from '../../../../../../Resources/BlueprintCourses.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

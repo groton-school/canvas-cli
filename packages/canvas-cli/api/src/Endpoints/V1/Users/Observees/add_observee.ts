@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type add_observeePathParameters = {
+export type add_observeePathParameters = {
   /** ID */
   user_id: string;
   /** ID */
   observee_id: string;
 };
 
-type add_observeeFormParameters = {
+export type add_observeeFormParameters = {
   /**
    * The ID for the root account to associate with the observation link. If
    * not specified, a link will be created for each root account associated to

@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { UsageRights } from '../../../../Resources/Files.js';
 
-type set_usage_rights_coursesPathParameters = {
+export type set_usage_rights_coursesPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type set_usage_rights_coursesFormParameters = {
+export type set_usage_rights_coursesFormParameters = {
   /** List of ids of files to set usage rights for. */
   file_ids: string[];
   /**

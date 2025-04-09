@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type mark_topic_as_unread_coursesPathParameters = {
+export type mark_topic_as_unread_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

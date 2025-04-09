@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
-type delete_page_coursesPathParameters = {
+export type delete_page_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

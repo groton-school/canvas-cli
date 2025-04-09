@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type activity_stream_summarySearchParameters = {
+export type activity_stream_summarySearchParameters = {
   /**
    * If true, will only return objects for courses the user is actively
    * participating in

@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { AccountCalendar } from '../../../../Resources/AccountCalendars.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * When included, searches all descendent accounts of provided account for
    * the term. Returns matching results. Term must be at least 2 characters.

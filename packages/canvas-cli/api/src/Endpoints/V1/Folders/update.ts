@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { Folder } from '../../../Resources/Files.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** The new name of the folder */
   name: string;
   /**

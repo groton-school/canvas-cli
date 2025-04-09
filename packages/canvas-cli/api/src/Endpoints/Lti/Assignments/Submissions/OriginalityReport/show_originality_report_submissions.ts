@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { OriginalityReport } from '../../../../../Resources/OriginalityReports.js';
 
-type show_originality_report_submissionsPathParameters = {
+export type show_originality_report_submissionsPathParameters = {
   /** ID */
   assignment_id: string;
   /** ID */

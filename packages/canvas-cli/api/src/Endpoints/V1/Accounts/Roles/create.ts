@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Role } from '../../../../Resources/Roles.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** Label for the role. */
   label: string;
   /** Deprecated alias for label. */

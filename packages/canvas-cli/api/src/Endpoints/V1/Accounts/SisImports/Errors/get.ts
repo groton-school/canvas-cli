@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { SisImportError } from '../../../../../Resources/SisImportErrors.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /** If set, only shows errors on a sis import that would cause a failure. */
   failure: boolean;
 };

@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type remove_usage_rights_coursesPathParameters = {
+export type remove_usage_rights_coursesPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type remove_usage_rights_coursesSearchParameters = {
+export type remove_usage_rights_coursesSearchParameters = {
   /** List of ids of files to remove associated usage rights from. */
   file_ids: string[];
   /**

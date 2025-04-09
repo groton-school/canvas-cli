@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { Section } from '../../../Resources/Sections.js';
 
-type edit_sectionPathParameters = {
+export type edit_sectionPathParameters = {
   /** ID */
   id: string;
 };
 
-type edit_sectionFormParameters = {
+export type edit_sectionFormParameters = {
   /** The name of the section */
   'course_section[name]': string;
   /** The sis ID of the section. Must have manage_sis permission to set. */

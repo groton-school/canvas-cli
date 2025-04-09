@@ -1,13 +1,13 @@
 import { client } from '../../../../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   type: string;
   /** ID */
   address: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** The desired frequency for <X> notification */
   'notification_preferences[<X>][frequency]': string;
 };

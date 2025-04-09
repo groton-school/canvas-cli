@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { SharedBrandConfig } from '../../../Resources/SharedBrandConfigs.js';
 
-type un_share_brandconfig_themePathParameters = {
+export type un_share_brandconfig_themePathParameters = {
   /** ID */
   id: string;
 };

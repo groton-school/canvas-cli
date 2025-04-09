@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type submission_summary_sectionsPathParameters = {
+export type submission_summary_sectionsPathParameters = {
   /** ID */
   section_id: string;
   /** ID */
   assignment_id: string;
 };
 
-type submission_summary_sectionsSearchParameters = {
+export type submission_summary_sectionsSearchParameters = {
   /**
    * If this argument is true, the response will take into account student
    * groups.

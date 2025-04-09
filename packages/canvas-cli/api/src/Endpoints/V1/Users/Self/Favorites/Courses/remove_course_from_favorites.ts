@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { Favorite } from '../../../../../../Resources/Favorites.js';
 
-type remove_course_from_favoritesPathParameters = {
+export type remove_course_from_favoritesPathParameters = {
   /** The ID or SIS ID of the course to remove */
   id: string;
 };

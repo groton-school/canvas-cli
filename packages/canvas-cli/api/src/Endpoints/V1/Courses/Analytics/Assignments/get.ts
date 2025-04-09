@@ -1,11 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * If async is true, then the course_assignments call can happen asynch-
    * ronously and MAY return a response containing a progress_url key instead

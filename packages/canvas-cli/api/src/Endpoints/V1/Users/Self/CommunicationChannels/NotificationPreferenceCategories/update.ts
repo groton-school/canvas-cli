@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   communication_channel_id: string;
   /**
@@ -10,7 +10,7 @@ type updatePathParameters = {
   category: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** The desired frequency for each notification in the category */
   'notification_preferences[frequency]': string;
 };

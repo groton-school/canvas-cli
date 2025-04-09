@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type publish_provisional_grades_for_assignmentPathParameters = {
+export type publish_provisional_grades_for_assignmentPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

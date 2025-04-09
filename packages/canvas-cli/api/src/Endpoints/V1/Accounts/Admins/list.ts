@@ -2,12 +2,12 @@ import { Integer } from '';
 import { client } from '../../../../Client.js';
 import { Admin } from '../../../../Resources/Admins.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * Scope the results to those with user IDs equal to any of the IDs
    * specified here.

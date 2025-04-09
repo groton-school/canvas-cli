@@ -2,12 +2,12 @@ import { Deprecated } from '';
 import { client } from '../../../../Client.js';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
-type enroll_user_coursesPathParameters = {
+export type enroll_user_coursesPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type enroll_user_coursesFormParameters = {
+export type enroll_user_coursesFormParameters = {
   /**
    * The start time of the enrollment, in ISO8601 format. e.g.
    * 2012-04-18T23:08:51Z

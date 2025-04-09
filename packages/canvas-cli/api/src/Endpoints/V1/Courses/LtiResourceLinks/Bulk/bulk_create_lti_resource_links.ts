@@ -2,12 +2,12 @@ import { Hash } from '';
 import { client } from '../../../../../Client.js';
 import { LtiResourceLink } from '../../../../../Resources/LtiResourceLinks.js';
 
-type bulk_create_lti_resource_linksPathParameters = {
+export type bulk_create_lti_resource_linksPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type bulk_create_lti_resource_linksFormParameters = {
+export type bulk_create_lti_resource_linksFormParameters = {
   /**
    * Body [Required, Array] The POST body should be a JSON array of objects
    * containing the parameters for each link to create.

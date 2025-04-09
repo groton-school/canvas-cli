@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { File } from '../../../../../Resources/Files.js';
 
-type translate_file_referencePathParameters = {
+export type translate_file_referencePathParameters = {
   /** ID */
   course_id: string;
   /** ID */

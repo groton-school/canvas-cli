@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   quiz_submission_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /** Associations to include with the quiz submission question. */
   include: string[];
 };

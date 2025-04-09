@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   assessment_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * If set, restrict results to those for this user
    *

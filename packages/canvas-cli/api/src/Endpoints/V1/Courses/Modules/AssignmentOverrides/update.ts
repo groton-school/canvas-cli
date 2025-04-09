@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   context_module_id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * List of overrides to apply to the module. Overrides that already exist
    * should include an ID and will be updated if needed. New overrides will be

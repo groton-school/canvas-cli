@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { OriginalityReport } from '../../../../../Resources/OriginalityReports.js';
 
-type edit_originality_report_submissionsPathParameters = {
+export type edit_originality_report_submissionsPathParameters = {
   /** ID */
   assignment_id: string;
   /** ID */
@@ -10,7 +10,7 @@ type edit_originality_report_submissionsPathParameters = {
   id: string;
 };
 
-type edit_originality_report_submissionsFormParameters = {
+export type edit_originality_report_submissionsFormParameters = {
   /**
    * A number between 0 and 100 representing the measure of the specified
    * file's originality.

@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
-type unlink_outcome_coursesPathParameters = {
+export type unlink_outcome_coursesPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

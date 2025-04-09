@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
-type unlink_outcome_accountsPathParameters = {
+export type unlink_outcome_accountsPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

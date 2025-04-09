@@ -1,12 +1,12 @@
 import { Date } from '';
 import { client } from '../../../../../Client.js';
 
-type batch_update_grading_periods_coursesPathParameters = {
+export type batch_update_grading_periods_coursesPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type batch_update_grading_periods_coursesFormParameters = {
+export type batch_update_grading_periods_coursesFormParameters = {
   /** The id of the grading period set. */
   set_id: string;
   /**

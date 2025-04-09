@@ -1,17 +1,19 @@
 import { client } from '../../../../Client.js';
 
-type show_temporary_enrollment_recipient_and_provider_statusPathParameters = {
-  /** ID */
-  user_id: string;
-};
+export type show_temporary_enrollment_recipient_and_provider_statusPathParameters =
+  {
+    /** ID */
+    user_id: string;
+  };
 
-type show_temporary_enrollment_recipient_and_provider_statusSearchParameters = {
-  /**
-   * The ID of the account to check for temporary enrollment status. Defaults
-   * to the domain root account if not provided.
-   */
-  account_id: string;
-};
+export type show_temporary_enrollment_recipient_and_provider_statusSearchParameters =
+  {
+    /**
+     * The ID of the account to check for temporary enrollment status. Defaults
+     * to the domain root account if not provided.
+     */
+    account_id: string;
+  };
 
 type Options = {
   pathParams: show_temporary_enrollment_recipient_and_provider_statusPathParameters;

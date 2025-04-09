@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Module } from '../../../../Resources/CoursePace.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The name of the module */
   'module[name]': string;
   /**

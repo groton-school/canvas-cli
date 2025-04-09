@@ -1,11 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type add_allowed_domain_to_accountPathParameters = {
+export type add_allowed_domain_to_accountPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type add_allowed_domain_to_accountFormParameters = {
+export type add_allowed_domain_to_accountFormParameters = {
   /** No description */
   domain: string;
 };

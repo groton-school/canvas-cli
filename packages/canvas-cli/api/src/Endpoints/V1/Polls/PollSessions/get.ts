@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   poll_id: string;
   /** ID */

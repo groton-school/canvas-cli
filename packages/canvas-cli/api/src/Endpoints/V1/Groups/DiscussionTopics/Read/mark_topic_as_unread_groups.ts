@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type mark_topic_as_unread_groupsPathParameters = {
+export type mark_topic_as_unread_groupsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */

@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * If true, will only return objects for courses the user is actively
    * participating in

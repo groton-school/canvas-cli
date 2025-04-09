@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Tab } from '../../../../Resources/Tabs.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   tab_id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * The new position of the tab, 1-based
    *

@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { File } from '../../../Resources/Files.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * Array of additional information to include.
    *

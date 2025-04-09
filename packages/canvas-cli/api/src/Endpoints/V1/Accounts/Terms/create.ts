@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { EnrollmentTerm } from '../../../../Resources/EnrollmentTerms.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   account_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /** The name of the term. */
   'enrollment_term[name]': string;
   /**

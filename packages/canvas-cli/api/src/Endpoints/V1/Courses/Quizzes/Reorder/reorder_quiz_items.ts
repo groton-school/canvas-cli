@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type reorder_quiz_itemsPathParameters = {
+export type reorder_quiz_itemsPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   id: string;
 };
 
-type reorder_quiz_itemsFormParameters = {
+export type reorder_quiz_itemsFormParameters = {
   /**
    * The associated item's unique identifier
    *

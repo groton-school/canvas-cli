@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
-type delete_line_itemPathParameters = {
+export type delete_line_itemPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

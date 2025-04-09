@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { ExternalFeed } from '../../../../Resources/AnnouncementExternalFeeds.js';
 
-type delete_external_feed_groupsPathParameters = {
+export type delete_external_feed_groupsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */

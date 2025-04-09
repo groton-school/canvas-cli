@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { ModuleItem } from '../../../../../Resources/CoursePace.js';
 
-type show_module_itemPathParameters = {
+export type show_module_itemPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -10,7 +10,7 @@ type show_module_itemPathParameters = {
   id: string;
 };
 
-type show_module_itemSearchParameters = {
+export type show_module_itemSearchParameters = {
   /**
    * If included, will return additional details specific to the content
    * associated with this item. Refer to the {api:Modules:Module%20Item Module

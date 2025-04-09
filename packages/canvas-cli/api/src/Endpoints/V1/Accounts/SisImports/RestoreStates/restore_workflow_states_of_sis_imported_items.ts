@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { Progress } from '../../../../../Resources/CoursePace.js';
 
-type restore_workflow_states_of_sis_imported_itemsPathParameters = {
+export type restore_workflow_states_of_sis_imported_itemsPathParameters = {
   /** ID */
   account_id: string;
   /** ID */
   id: string;
 };
 
-type restore_workflow_states_of_sis_imported_itemsFormParameters = {
+export type restore_workflow_states_of_sis_imported_itemsFormParameters = {
   /** If set, will only restore items that were deleted from batch_mode. */
   batch_mode: boolean;
   /**

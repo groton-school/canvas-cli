@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { AccountCalendar } from '../../../Resources/AccountCalendars.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   account_id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /**
    * Allow administrators with `manage_account_calendar_events` permission to
    * create events on this calendar, and allow users to view this calendar and

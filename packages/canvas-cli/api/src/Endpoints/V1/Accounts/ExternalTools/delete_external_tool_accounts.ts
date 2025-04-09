@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type delete_external_tool_accountsPathParameters = {
+export type delete_external_tool_accountsPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { Favorite } from '../../../../../../Resources/Favorites.js';
 
-type remove_group_from_favoritesPathParameters = {
+export type remove_group_from_favoritesPathParameters = {
   /** The ID or SIS ID of the group to remove */
   id: string;
 };

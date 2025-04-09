@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Assignment } from '../../../../Resources/Assignments.js';
 
-type updatePathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   topic_id: string;
 };
 
-type updateFormParameters = {
+export type updateFormParameters = {
   /** No description */
   title: string;
   /** No description */

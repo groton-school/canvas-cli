@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { CalendarEvent } from '../../../Resources/CalendarEvents.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   id: string;
 };

@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type delete_user_from_root_accountPathParameters = {
+export type delete_user_from_root_accountPathParameters = {
   /** ID */
   account_id: string;
   /** ID */

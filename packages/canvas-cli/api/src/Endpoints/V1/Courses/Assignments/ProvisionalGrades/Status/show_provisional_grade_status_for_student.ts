@@ -1,13 +1,13 @@
 import { client } from '../../../../../../Client.js';
 
-type show_provisional_grade_status_for_studentPathParameters = {
+export type show_provisional_grade_status_for_studentPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   assignment_id: string;
 };
 
-type show_provisional_grade_status_for_studentSearchParameters = {
+export type show_provisional_grade_status_for_studentSearchParameters = {
   /**
    * The id of the student to show the status for
    *

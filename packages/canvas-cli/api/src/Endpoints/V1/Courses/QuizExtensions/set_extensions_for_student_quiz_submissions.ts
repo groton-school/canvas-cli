@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type set_extensions_for_student_quiz_submissionsPathParameters = {
+export type set_extensions_for_student_quiz_submissionsPathParameters = {
   /** ID */
   course_id: string;
 };
 
-type set_extensions_for_student_quiz_submissionsFormParameters = {
+export type set_extensions_for_student_quiz_submissionsFormParameters = {
   /**
    * The ID of the user we want to add quiz extensions for.
    *

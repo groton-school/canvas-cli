@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type subscribe_to_topic_groupsPathParameters = {
+export type subscribe_to_topic_groupsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */

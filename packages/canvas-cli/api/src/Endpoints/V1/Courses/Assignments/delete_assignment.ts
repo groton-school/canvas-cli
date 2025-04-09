@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Assignment } from '../../../../Resources/Assignments.js';
 
-type delete_assignmentPathParameters = {
+export type delete_assignmentPathParameters = {
   /** ID */
   course_id: string;
   /** ID */

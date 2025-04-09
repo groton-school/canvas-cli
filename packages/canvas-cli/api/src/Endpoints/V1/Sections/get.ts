@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { Section } from '../../../Resources/Sections.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * - "students": Associations to include with the group. Note: this is only
    *   available if you have permission to view users or grades in the course

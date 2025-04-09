@@ -1,11 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type invite_others_to_groupPathParameters = {
+export type invite_others_to_groupPathParameters = {
   /** ID */
   group_id: string;
 };
 
-type invite_others_to_groupFormParameters = {
+export type invite_others_to_groupFormParameters = {
   /** An array of email addresses to be sent invitations. */
   invitees: string[];
 };

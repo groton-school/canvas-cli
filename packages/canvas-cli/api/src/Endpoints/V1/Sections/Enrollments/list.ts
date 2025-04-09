@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
-type listPathParameters = {
+export type listPathParameters = {
   /** ID */
   section_id: string;
 };
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * A list of enrollment types to return. Accepted values are
    * 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment',

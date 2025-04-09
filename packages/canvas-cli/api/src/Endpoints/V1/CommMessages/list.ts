@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { CommMessage } from '../../../Resources/CommMessages.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /** The user id for whom you want to retrieve CommMessages */
   user_id: string;
   /**

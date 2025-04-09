@@ -1,6 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type mark_all_topic_as_read_groupsPathParameters = {
+export type mark_all_topic_as_read_groupsPathParameters = {
   /** ID */
   group_id: string;
 };

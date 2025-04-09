@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Role } from '../../../../Resources/Roles.js';
 
-type getPathParameters = {
+export type getPathParameters = {
   /** ID */
   id: string;
   /** The id of the account containing the role */
   account_id: string;
 };
 
-type getSearchParameters = {
+export type getSearchParameters = {
   /**
    * The unique identifier for the role
    *

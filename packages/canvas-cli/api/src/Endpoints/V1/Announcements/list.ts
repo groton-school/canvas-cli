@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { DiscussionTopic } from '../../../Resources/DiscussionTopics.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /**
    * List of context_codes to retrieve announcements for (for example,
    * +course_123+). Only courses are presently supported. The call will fail

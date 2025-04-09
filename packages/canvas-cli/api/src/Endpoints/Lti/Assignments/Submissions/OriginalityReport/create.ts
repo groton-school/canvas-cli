@@ -1,14 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { OriginalityReport } from '../../../../../Resources/OriginalityReports.js';
 
-type createPathParameters = {
+export type createPathParameters = {
   /** ID */
   assignment_id: string;
   /** ID */
   submission_id: string;
 };
 
-type createFormParameters = {
+export type createFormParameters = {
   /**
    * The id of the file being given an originality score. Required if creating
    * a report associated with a file.

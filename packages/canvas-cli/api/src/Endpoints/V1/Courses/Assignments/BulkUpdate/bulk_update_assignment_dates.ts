@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { Progress } from '../../../../../Resources/CoursePace.js';
 
-type bulk_update_assignment_datesPathParameters = {
+export type bulk_update_assignment_datesPathParameters = {
   /** ID */
   course_id: string;
 };

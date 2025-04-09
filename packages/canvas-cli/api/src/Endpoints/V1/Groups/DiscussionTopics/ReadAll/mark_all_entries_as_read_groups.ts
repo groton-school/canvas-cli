@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type mark_all_entries_as_read_groupsPathParameters = {
+export type mark_all_entries_as_read_groupsPathParameters = {
   /** ID */
   group_id: string;
   /** ID */
   topic_id: string;
 };
 
-type mark_all_entries_as_read_groupsFormParameters = {
+export type mark_all_entries_as_read_groupsFormParameters = {
   /**
    * A boolean value to set all of the entries' forced_read_state. No change
    * is made if this argument is not specified.

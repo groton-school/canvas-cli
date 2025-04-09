@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { CalendarEvent } from '../../../Resources/CalendarEvents.js';
 
-type listSearchParameters = {
+export type listSearchParameters = {
   /** Defaults to "event" */
   type: string;
   /**

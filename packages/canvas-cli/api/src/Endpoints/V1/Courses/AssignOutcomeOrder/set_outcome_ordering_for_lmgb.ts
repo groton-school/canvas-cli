@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type set_outcome_ordering_for_lmgbPathParameters = {
+export type set_outcome_ordering_for_lmgbPathParameters = {
   /** ID */
   course_id: string;
 };

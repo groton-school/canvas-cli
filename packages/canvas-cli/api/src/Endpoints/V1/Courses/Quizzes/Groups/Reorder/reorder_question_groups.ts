@@ -1,6 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type reorder_question_groupsPathParameters = {
+export type reorder_question_groupsPathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -9,7 +9,7 @@ type reorder_question_groupsPathParameters = {
   id: string;
 };
 
-type reorder_question_groupsFormParameters = {
+export type reorder_question_groupsFormParameters = {
   /**
    * The associated item's unique identifier
    *
