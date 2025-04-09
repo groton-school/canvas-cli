@@ -1,9 +1,14 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {};
+type publish_provisional_grades_for_assignmentPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  assignment_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: publish_provisional_grades_for_assignmentPathParameters;
 };
 
 /**
@@ -22,10 +27,13 @@ type Options = {
  * Nickname: publish_provisional_grades_for_assignment
  */
 export async function publish_provisional_grades_for_assignment({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/publish`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

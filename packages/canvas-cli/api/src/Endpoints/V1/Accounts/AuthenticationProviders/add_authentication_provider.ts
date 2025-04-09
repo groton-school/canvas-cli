@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { AuthenticationProvider } from '../../../../Resources/AuthenticationProviders.js';
 
-type Parameters = {};
+type add_authentication_providerPathParameters = {
+  /** ID */
+  account_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: add_authentication_providerPathParameters;
 };
 
 /**
@@ -325,9 +328,12 @@ type Options = {
  *
  * Nickname: add_authentication_provider
  */
-export async function add_authentication_provider({ parameters }: Options) {
+export async function add_authentication_provider({ pathParams }: Options) {
   return await client().fetchAs<AuthenticationProvider>(
     `/v1/accounts/{account_id}/authentication_providers`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

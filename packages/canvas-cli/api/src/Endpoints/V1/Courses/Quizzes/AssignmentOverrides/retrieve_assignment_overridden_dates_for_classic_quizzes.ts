@@ -1,10 +1,25 @@
 import { client } from '../../../../../Client.js';
 import { QuizAssignmentOverrideSetContainer } from '../../../../../Resources/QuizAssignmentOverrides.js';
 
-type Parameters = {};
+type retrieve_assignment_overridden_dates_for_classic_quizzesPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters =
+  {
+    /**
+     * An array of quiz IDs. If omitted, overrides for all quizzes available to
+     * the operating user will be returned.
+     *
+     * Format: 'int64'
+     */
+    'quiz_assignment_overrides[quiz_ids]': string[];
+  };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: retrieve_assignment_overridden_dates_for_classic_quizzesPathParameters;
+  searchParams?: retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters;
 };
 
 /**
@@ -16,10 +31,15 @@ type Options = {
  * Nickname: retrieve_assignment_overridden_dates_for_classic_quizzes
  */
 export async function retrieve_assignment_overridden_dates_for_classic_quizzes({
-  parameters
+  pathParams,
+  searchParams
 }: Options) {
   return await client().fetchAs<QuizAssignmentOverrideSetContainer>(
     `/v1/courses/{course_id}/quizzes/assignment_overrides`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

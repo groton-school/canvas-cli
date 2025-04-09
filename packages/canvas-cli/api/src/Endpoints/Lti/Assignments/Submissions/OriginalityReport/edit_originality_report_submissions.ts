@@ -1,7 +1,16 @@
 import { client } from '../../../../../Client.js';
 import { OriginalityReport } from '../../../../../Resources/OriginalityReports.js';
 
-type Parameters = {
+type edit_originality_report_submissionsPathParameters = {
+  /** ID */
+  assignment_id: string;
+  /** ID */
+  submission_id: string;
+  /** ID */
+  id: string;
+};
+
+type edit_originality_report_submissionsFormParameters = {
   /**
    * A number between 0 and 100 representing the measure of the specified
    * file's originality.
@@ -45,7 +54,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: edit_originality_report_submissionsPathParameters;
+  params?: edit_originality_report_submissionsFormParameters;
 };
 
 /**
@@ -57,10 +67,15 @@ type Options = {
  * Nickname: edit_originality_report_submissions
  */
 export async function edit_originality_report_submissions({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<OriginalityReport>(
     `/lti/assignments/{assignment_id}/submissions/{submission_id}/originality_report/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

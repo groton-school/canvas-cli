@@ -1,6 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type createFormParameters = {
   /** A list of associated term ids for the grading period set */
   enrollment_term_ids: string[];
   /** The title of the grading period set */
@@ -18,7 +23,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -28,9 +34,13 @@ type Options = {
  *
  * Nickname: create_grading_period_set
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/accounts/{account_id}/grading_period_sets`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

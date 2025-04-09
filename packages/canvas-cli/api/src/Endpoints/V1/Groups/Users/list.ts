@@ -1,10 +1,29 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  group_id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * The partial name or full ID of the users to match and return in the
+   * results list. Must be at least 3 characters.
+   */
+  search_term: string;
+  /** "avatar_url": Include users' avatar_urls. */
+  include: string[];
+  /**
+   * Whether to filter out inactive users from the results. Defaults to false
+   * unless explicitly provided.
+   */
+  exclude_inactive: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -14,9 +33,10 @@ type Options = {
  *
  * Nickname: list_group_s_users
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/groups/{group_id}/users`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

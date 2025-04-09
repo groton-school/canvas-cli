@@ -1,9 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type count_of_all_visible_account_calendarsPathParameters = {
+  /** ID */
+  account_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: count_of_all_visible_account_calendarsPathParameters;
 };
 
 /**
@@ -14,10 +17,13 @@ type Options = {
  * Nickname: count_of_all_visible_account_calendars
  */
 export async function count_of_all_visible_account_calendars({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<{ count: number }>(
     `/v1/accounts/{account_id}/visible_calendars_count`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

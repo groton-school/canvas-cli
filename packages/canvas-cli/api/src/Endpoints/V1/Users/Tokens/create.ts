@@ -1,6 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  user_id: string;
+};
+
+type createFormParameters = {
   /** The purpose of the token. */
   'token[purpose]': string;
   /**
@@ -14,7 +19,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -26,9 +32,10 @@ type Options = {
  *
  * Nickname: create_access_token
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/users/{user_id}/tokens`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

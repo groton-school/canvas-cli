@@ -1,9 +1,14 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type leave_group_usersPathParameters = {
+  /** ID */
+  group_id: string;
+  /** ID */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: leave_group_usersPathParameters;
 };
 
 /**
@@ -15,9 +20,9 @@ type Options = {
  *
  * Nickname: leave_group_users
  */
-export async function leave_group_users({ parameters }: Options) {
+export async function leave_group_users({ pathParams }: Options) {
   return await client().fetchAs<void>(`/v1/groups/{group_id}/users/{user_id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams
   });
 }

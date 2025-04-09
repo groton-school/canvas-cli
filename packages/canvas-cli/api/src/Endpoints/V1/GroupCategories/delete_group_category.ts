@@ -1,9 +1,12 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {};
+type delete_group_categoryPathParameters = {
+  /** ID */
+  group_category_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_group_categoryPathParameters;
 };
 
 /**
@@ -14,9 +17,12 @@ type Options = {
  *
  * Nickname: delete_group_category
  */
-export async function delete_group_category({ parameters }: Options) {
+export async function delete_group_category({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/group_categories/{group_category_id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

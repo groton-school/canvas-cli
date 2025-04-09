@@ -1,9 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type remove_quiz_migration_alertPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: remove_quiz_migration_alertPathParameters;
 };
 
 /**
@@ -16,9 +19,12 @@ type Options = {
  *
  * Nickname: remove_quiz_migration_alert
  */
-export async function remove_quiz_migration_alert({ parameters }: Options) {
+export async function remove_quiz_migration_alert({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{id}/dismiss_migration_limitation_message`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

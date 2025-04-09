@@ -1,10 +1,13 @@
 import { client } from '../../../Client.js';
 import { ePortfolio } from '../../../Resources/EPortfolios.js';
 
-type Parameters = {};
+type delete_eportfolioPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_eportfolioPathParameters;
 };
 
 /**
@@ -14,9 +17,9 @@ type Options = {
  *
  * Nickname: delete_eportfolio
  */
-export async function delete_eportfolio({ parameters }: Options) {
+export async function delete_eportfolio({ pathParams }: Options) {
   return await client().fetchAs<ePortfolio>(`/v1/eportfolios/{id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams
   });
 }

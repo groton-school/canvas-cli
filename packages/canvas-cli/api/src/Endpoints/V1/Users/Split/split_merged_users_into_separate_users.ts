@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type Parameters = {};
+type split_merged_users_into_separate_usersPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: split_merged_users_into_separate_usersPathParameters;
 };
 
 /**
@@ -66,10 +69,10 @@ type Options = {
  * Nickname: split_merged_users_into_separate_users
  */
 export async function split_merged_users_into_separate_users({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<string[]>(`/v1/users/{id}/split`, {
     method: 'POST',
-    params: parameters
+    pathParams
   });
 }

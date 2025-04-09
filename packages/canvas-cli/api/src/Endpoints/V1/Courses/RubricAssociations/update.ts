@@ -1,7 +1,18 @@
 import { client } from '../../../../Client.js';
 import { RubricAssociation } from '../../../../Resources/Rubrics.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  course_id: string;
+  /**
+   * The id of the RubricAssociation to update
+   *
+   * Format: 'int64'
+   */
+  id: number;
+};
+
+type updateFormParameters = {
   /**
    * The id of the Rubric
    *
@@ -36,7 +47,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -46,9 +58,13 @@ type Options = {
  *
  * Nickname: update_rubricassociation
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<RubricAssociation>(
     `/v1/courses/{course_id}/rubric_associations/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

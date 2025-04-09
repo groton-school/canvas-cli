@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Admin } from '../../../../Resources/Admins.js';
 
-type Parameters = {
+type make_account_adminPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type make_account_adminFormParameters = {
   /**
    * The id of the user to promote.
    *
@@ -25,7 +30,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: make_account_adminPathParameters;
+  params?: make_account_adminFormParameters;
 };
 
 /**
@@ -35,9 +41,10 @@ type Options = {
  *
  * Nickname: make_account_admin
  */
-export async function make_account_admin({ parameters }: Options) {
+export async function make_account_admin({ pathParams, params }: Options) {
   return await client().fetchAs<Admin>(`/v1/accounts/{account_id}/admins`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

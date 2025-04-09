@@ -1,9 +1,31 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  topic_id: string;
+};
+
+type getSearchParameters = {
+  /**
+   * If "all_dates" is passed, all dates associated with graded discussions'
+   * assignments will be included. if "sections" is passed, includes the
+   * course sections that are associated with the topic, if the topic is
+   * specific to certain sections of the course. If "sections_user_count" is
+   * passed, then: (a) If sections were asked for _and_ the topic is specific
+   * to certain course sections, includes the number of users in each section.
+   * (as part of the section json asked for above) (b) Else, includes at the
+   * root level the total number of users in the topic's context (group or
+   * course) that the topic applies to. If "overrides" is passed, the
+   * overrides for the assignment will be included
+   */
+  include: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -14,9 +36,13 @@ type Options = {
  *
  * Nickname: get_single_topic_courses
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/discussion_topics/{topic_id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

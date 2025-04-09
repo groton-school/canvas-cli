@@ -1,10 +1,27 @@
 import { client } from '../../../../Client.js';
 import { Role } from '../../../../Resources/Roles.js';
 
-type Parameters = {};
+type deactivate_rolePathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
+
+type deactivate_roleSearchParameters = {
+  /**
+   * The unique identifier for the role
+   *
+   * Format: 'int64'
+   */
+  role_id: number;
+  /** The name for the role */
+  role: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: deactivate_rolePathParameters;
+  searchParams?: deactivate_roleSearchParameters;
 };
 
 /**
@@ -17,9 +34,10 @@ type Options = {
  *
  * Nickname: deactivate_role
  */
-export async function deactivate_role({ parameters }: Options) {
+export async function deactivate_role({ pathParams, searchParams }: Options) {
   return await client().fetchAs<Role>(`/v1/accounts/{account_id}/roles/{id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

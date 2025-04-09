@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { OutcomeImport } from '../../../../Resources/OutcomeImports.js';
 
-type Parameters = {
+type import_outcomes_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type import_outcomes_coursesFormParameters = {
   /**
    * Choose the data format for reading outcome data. With a standard Canvas
    * install, this option can only be 'instructure_csv', and if unprovided,
@@ -46,7 +51,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: import_outcomes_coursesPathParameters;
+  params?: import_outcomes_coursesFormParameters;
 };
 
 /**
@@ -59,9 +65,13 @@ type Options = {
  *
  * Nickname: import_outcomes_courses
  */
-export async function import_outcomes_courses({ parameters }: Options) {
+export async function import_outcomes_courses({ pathParams, params }: Options) {
   return await client().fetchAs<OutcomeImport>(
     `/v1/courses/{course_id}/outcome_imports`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

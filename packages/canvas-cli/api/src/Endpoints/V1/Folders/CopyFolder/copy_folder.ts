@@ -1,13 +1,19 @@
 import { client } from '../../../../Client.js';
 import { Folder } from '../../../../Resources/Files.js';
 
-type Parameters = {
+type copy_folderPathParameters = {
+  /** ID */
+  dest_folder_id: string;
+};
+
+type copy_folderFormParameters = {
   /** The id of the source folder */
   source_folder_id: string;
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: copy_folderPathParameters;
+  params?: copy_folderFormParameters;
 };
 
 /**
@@ -23,9 +29,13 @@ type Options = {
  *
  * Nickname: copy_folder
  */
-export async function copy_folder({ parameters }: Options) {
+export async function copy_folder({ pathParams, params }: Options) {
   return await client().fetchAs<Folder>(
     `/v1/folders/{dest_folder_id}/copy_folder`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

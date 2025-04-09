@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { ContentMigration } from '../../../../Resources/ContentMigrations.js';
 
-type Parameters = {};
+type updatePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
 };
 
 /**
@@ -20,9 +25,12 @@ type Options = {
  *
  * Nickname: update_content_migration_courses
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams }: Options) {
   return await client().fetchAs<ContentMigration>(
     `/v1/courses/{course_id}/content_migrations/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

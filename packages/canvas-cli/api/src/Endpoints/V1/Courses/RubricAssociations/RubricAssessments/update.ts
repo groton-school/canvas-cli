@@ -1,7 +1,28 @@
 import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /**
+   * The id of the rubric assessment
+   *
+   * Format: 'int64'
+   */
+  id: number;
+  /**
+   * The id of the course
+   *
+   * Format: 'int64'
+   */
+  course_id: number;
+  /**
+   * The id of the object with which this rubric assessment is associated
+   *
+   * Format: 'int64'
+   */
+  rubric_association_id: number;
+};
+
+type updateFormParameters = {
   /**
    * (optional) Indicates whether this assessment is provisional, defaults to
    * false.
@@ -32,7 +53,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -44,9 +66,13 @@ type Options = {
  *
  * Nickname: update_single_rubric_assessment
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/rubric_associations/{rubric_association_id}/rubric_assessments/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

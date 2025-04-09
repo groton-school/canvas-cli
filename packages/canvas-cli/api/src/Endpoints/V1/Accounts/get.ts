@@ -1,10 +1,13 @@
 import { client } from '../../../Client.js';
 import { Account } from '../../../Resources/Accounts.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -15,9 +18,9 @@ type Options = {
  *
  * Nickname: get_single_account
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<Account>(`/v1/accounts/{id}`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

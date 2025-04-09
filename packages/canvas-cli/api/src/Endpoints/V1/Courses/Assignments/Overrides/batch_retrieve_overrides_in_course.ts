@@ -1,10 +1,21 @@
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
-type Parameters = {};
+type batch_retrieve_overrides_in_coursePathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type batch_retrieve_overrides_in_courseSearchParameters = {
+  /** Ids of overrides to retrieve */
+  'assignment_overrides[id]': string[];
+  /** Ids of assignments for each override */
+  'assignment_overrides[assignment_id]': string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: batch_retrieve_overrides_in_coursePathParameters;
+  searchParams?: batch_retrieve_overrides_in_courseSearchParameters;
 };
 
 /**
@@ -17,10 +28,15 @@ type Options = {
  * Nickname: batch_retrieve_overrides_in_course
  */
 export async function batch_retrieve_overrides_in_course({
-  parameters
+  pathParams,
+  searchParams
 }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/courses/{course_id}/assignments/overrides`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

@@ -1,9 +1,14 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type delete_topic_groupsPathParameters = {
+  /** ID */
+  group_id: string;
+  /** ID */
+  topic_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_topic_groupsPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: delete_topic_groups
  */
-export async function delete_topic_groups({ parameters }: Options) {
+export async function delete_topic_groups({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/groups/{group_id}/discussion_topics/{topic_id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

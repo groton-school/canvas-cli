@@ -1,9 +1,14 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  id: string;
+  /** ID */
+  asset_string: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -17,9 +22,9 @@ type Options = {
  *
  * Nickname: get_custom_color
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<void>(`/v1/users/{id}/colors/{asset_string}`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

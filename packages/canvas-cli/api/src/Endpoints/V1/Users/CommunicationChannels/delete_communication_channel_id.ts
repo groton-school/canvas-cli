@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { CommunicationChannel } from '../../../../Resources/CommunicationChannels.js';
 
-type Parameters = {};
+type delete_communication_channel_idPathParameters = {
+  /** ID */
+  user_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_communication_channel_idPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: delete_communication_channel_id
  */
-export async function delete_communication_channel_id({ parameters }: Options) {
+export async function delete_communication_channel_id({ pathParams }: Options) {
   return await client().fetchAs<CommunicationChannel>(
     `/v1/users/{user_id}/communication_channels/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

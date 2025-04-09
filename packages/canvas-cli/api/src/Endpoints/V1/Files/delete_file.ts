@@ -1,10 +1,24 @@
 import { client } from '../../../Client.js';
 import { File } from '../../../Resources/Files.js';
 
-type Parameters = {};
+type delete_filePathParameters = {
+  /** ID */
+  id: string;
+};
+
+type delete_fileSearchParameters = {
+  /**
+   * This action is irreversible. If replace is set to true the file contents
+   * will be replaced with a generic "file has been removed" file. This also
+   * destroys any previews that have been generated for the file. Must have
+   * manage files and become other users permissions
+   */
+  replace: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_filePathParameters;
+  searchParams?: delete_fileSearchParameters;
 };
 
 /**
@@ -18,9 +32,10 @@ type Options = {
  *
  * Nickname: delete_file
  */
-export async function delete_file({ parameters }: Options) {
+export async function delete_file({ pathParams, searchParams }: Options) {
   return await client().fetchAs<File>(`/v1/files/{id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

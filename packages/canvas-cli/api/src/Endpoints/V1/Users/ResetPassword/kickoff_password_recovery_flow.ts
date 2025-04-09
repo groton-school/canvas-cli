@@ -1,10 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * Kickoff password recovery flow
@@ -13,9 +9,8 @@ type Options = {
  *
  * Nickname: kickoff_password_recovery_flow
  */
-export async function kickoff_password_recovery_flow({ parameters }: Options) {
+export async function kickoff_password_recovery_flow({}: Options) {
   return await client().fetchAs<void>(`/v1/users/reset_password`, {
-    method: 'POST',
-    params: parameters
+    method: 'POST'
   });
 }

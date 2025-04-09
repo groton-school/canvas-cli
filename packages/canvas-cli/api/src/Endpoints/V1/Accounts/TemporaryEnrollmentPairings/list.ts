@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { TemporaryEnrollmentPairing } from '../../../../Resources/TemporaryEnrollmentPairings.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  account_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
 };
 
 /**
@@ -14,9 +17,12 @@ type Options = {
  *
  * Nickname: list_temporary_enrollment_pairings
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/accounts/{account_id}/temporary_enrollment_pairings`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

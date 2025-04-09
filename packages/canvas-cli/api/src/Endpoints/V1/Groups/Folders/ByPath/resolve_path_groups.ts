@@ -1,10 +1,13 @@
 import { client } from '../../../../../Client.js';
 import { Folder } from '../../../../../Resources/Files.js';
 
-type Parameters = {};
+type resolve_path_groupsPathParameters = {
+  /** ID */
+  group_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: resolve_path_groupsPathParameters;
 };
 
 /**
@@ -19,9 +22,12 @@ type Options = {
  *
  * Nickname: resolve_path_groups
  */
-export async function resolve_path_groups({ parameters }: Options) {
+export async function resolve_path_groups({ pathParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/groups/{group_id}/folders/by_path`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

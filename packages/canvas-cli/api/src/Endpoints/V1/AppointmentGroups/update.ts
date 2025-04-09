@@ -1,6 +1,11 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /**
    * Array of context codes (courses, e.g. course_1) this group should be
    * linked to (1 or more). Users in the course(s) with appropriate
@@ -64,7 +69,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -76,9 +82,10 @@ type Options = {
  *
  * Nickname: update_appointment_group
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/appointment_groups/{id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

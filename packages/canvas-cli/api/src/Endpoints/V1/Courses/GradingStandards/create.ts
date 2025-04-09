@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { GradingStandard } from '../../../../Resources/GradingStandards.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type createFormParameters = {
   /** The title for the Grading Standard. */
   title: string;
   /** Whether or not a grading scheme is points based. Defaults to false. */
@@ -33,7 +38,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -43,9 +49,13 @@ type Options = {
  *
  * Nickname: create_new_grading_standard_courses
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<GradingStandard>(
     `/v1/courses/{course_id}/grading_standards`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

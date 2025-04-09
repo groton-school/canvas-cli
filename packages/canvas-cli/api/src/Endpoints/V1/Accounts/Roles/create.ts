@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Role } from '../../../../Resources/Roles.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type createFormParameters = {
   /** Label for the role. */
   label: string;
   /** Deprecated alias for label. */
@@ -158,7 +163,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -168,9 +174,10 @@ type Options = {
  *
  * Nickname: create_new_role
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<Role>(`/v1/accounts/{account_id}/roles`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

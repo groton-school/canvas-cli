@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
-type Parameters = {};
+type cancel_progressPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: cancel_progressPathParameters;
 };
 
 /**
@@ -17,9 +20,9 @@ type Options = {
  *
  * Nickname: cancel_progress
  */
-export async function cancel_progress({ parameters }: Options) {
+export async function cancel_progress({ pathParams }: Options) {
   return await client().fetchAs<Progress>(`/v1/progress/{id}/cancel`, {
     method: 'POST',
-    params: parameters
+    pathParams
   });
 }

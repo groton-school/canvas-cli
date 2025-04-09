@@ -1,9 +1,20 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type listSearchParameters = {
+  /**
+   * Search terms used for matching users/courses/groups (e.g. "bob smith").
+   * If multiple terms are given (separated via whitespace), only results
+   * matching all terms will be returned.
+   */
+  search: string;
+  /** Only return courses with public content. Defaults to false. */
+  public_only: boolean;
+  /** Only return courses that allow self enrollment. Defaults to false. */
+  open_enrollment_only: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -13,9 +24,9 @@ type Options = {
  *
  * Nickname: list_all_courses
  */
-export async function list({ parameters }: Options) {
+export async function list({ searchParams }: Options) {
   return await client().fetchAs<void>(`/v1/search/all_courses`, {
     method: 'GET',
-    params: parameters
+    searchParams
   });
 }

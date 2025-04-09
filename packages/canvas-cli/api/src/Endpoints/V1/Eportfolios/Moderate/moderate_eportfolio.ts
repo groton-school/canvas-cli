@@ -1,13 +1,19 @@
 import { client } from '../../../../Client.js';
 import { ePortfolio } from '../../../../Resources/EPortfolios.js';
 
-type Parameters = {
+type moderate_eportfolioPathParameters = {
+  /** ID */
+  eportfolio_id: string;
+};
+
+type moderate_eportfolioFormParameters = {
   /** The spam status for the ePortfolio */
   spam_status: string;
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: moderate_eportfolioPathParameters;
+  params?: moderate_eportfolioFormParameters;
 };
 
 /**
@@ -18,9 +24,13 @@ type Options = {
  *
  * Nickname: moderate_eportfolio
  */
-export async function moderate_eportfolio({ parameters }: Options) {
+export async function moderate_eportfolio({ pathParams, params }: Options) {
   return await client().fetchAs<ePortfolio>(
     `/v1/eportfolios/{eportfolio_id}/moderate`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

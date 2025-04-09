@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type createFormParameters = {
   /**
    * The full name of the user. This name will be used by teacher for grading.
    * Required if this is a self-registration.
@@ -150,7 +155,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -165,9 +171,10 @@ type Options = {
  *
  * Nickname: create_user
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<User>(`/v1/accounts/{account_id}/users`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

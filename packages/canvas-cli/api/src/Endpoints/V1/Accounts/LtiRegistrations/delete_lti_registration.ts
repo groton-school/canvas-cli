@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
-type Parameters = {};
+type delete_lti_registrationPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_lti_registrationPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: delete_lti_registration
  */
-export async function delete_lti_registration({ parameters }: Options) {
+export async function delete_lti_registration({ pathParams }: Options) {
   return await client().fetchAs<LtiRegistration>(
     `/v1/accounts/{account_id}/lti_registrations/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

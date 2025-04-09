@@ -1,6 +1,15 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {
+type summary_feedback_groupsPathParameters = {
+  /** ID */
+  group_id: string;
+  /** ID */
+  topic_id: string;
+  /** ID */
+  summary_id: string;
+};
+
+type summary_feedback_groupsFormParameters = {
   /**
    * Required The action to take on the summary. Possible values are:
    *
@@ -17,7 +26,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: summary_feedback_groupsPathParameters;
+  params?: summary_feedback_groupsFormParameters;
 };
 
 /**
@@ -27,9 +37,13 @@ type Options = {
  *
  * Nickname: summary_feedback_groups
  */
-export async function summary_feedback_groups({ parameters }: Options) {
+export async function summary_feedback_groups({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/groups/{group_id}/discussion_topics/{topic_id}/summaries/{summary_id}/feedback`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

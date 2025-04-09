@@ -1,6 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type patch_late_policyPathParameters = {
+  /** ID */
+  id: string;
+};
+
+type patch_late_policyFormParameters = {
   /** Whether to enable the missing submission deduction late policy. */
   'late_policy[missing_submission_deduction_enabled]': boolean;
   /** How many percentage points to deduct from a missing submission. */
@@ -18,7 +23,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: patch_late_policyPathParameters;
+  params?: patch_late_policyFormParameters;
 };
 
 /**
@@ -28,9 +34,10 @@ type Options = {
  *
  * Nickname: patch_late_policy
  */
-export async function patch_late_policy({ parameters }: Options) {
+export async function patch_late_policy({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/courses/{id}/late_policy`, {
     method: 'PATCH',
-    params: parameters
+    pathParams,
+    params
   });
 }

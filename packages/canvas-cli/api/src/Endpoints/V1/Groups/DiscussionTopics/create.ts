@@ -2,7 +2,12 @@ import { client } from '../../../../Client.js';
 import { Assignment } from '../../../../Resources/Assignments.js';
 import { File } from '../../../../Resources/Files.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  group_id: string;
+};
+
+type createFormParameters = {
   /** No description */
   title: string;
   /** No description */
@@ -110,7 +115,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -120,9 +126,13 @@ type Options = {
  *
  * Nickname: create_new_discussion_topic_groups
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/groups/{group_id}/discussion_topics`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

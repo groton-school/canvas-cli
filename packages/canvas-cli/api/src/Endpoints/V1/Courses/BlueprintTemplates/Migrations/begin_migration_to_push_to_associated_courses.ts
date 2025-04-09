@@ -1,7 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { BlueprintMigration } from '../../../../../Resources/BlueprintCourses.js';
 
-type Parameters = {
+type begin_migration_to_push_to_associated_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  template_id: string;
+};
+
+type begin_migration_to_push_to_associated_coursesFormParameters = {
   /** An optional comment to be included in the sync history. */
   comment: string;
   /** Send a notification to the calling user when the sync completes. */
@@ -27,7 +34,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: begin_migration_to_push_to_associated_coursesPathParameters;
+  params?: begin_migration_to_push_to_associated_coursesFormParameters;
 };
 
 /**
@@ -39,10 +47,15 @@ type Options = {
  * Nickname: begin_migration_to_push_to_associated_courses
  */
 export async function begin_migration_to_push_to_associated_courses({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<BlueprintMigration>(
     `/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

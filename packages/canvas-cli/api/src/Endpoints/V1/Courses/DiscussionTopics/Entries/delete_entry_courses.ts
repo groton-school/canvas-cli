@@ -1,9 +1,16 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type delete_entry_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  topic_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_entry_coursesPathParameters;
 };
 
 /**
@@ -20,9 +27,12 @@ type Options = {
  *
  * Nickname: delete_entry_courses
  */
-export async function delete_entry_courses({ parameters }: Options) {
+export async function delete_entry_courses({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/discussion_topics/{topic_id}/entries/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

@@ -1,13 +1,23 @@
 import { client } from '../../../../../Client.js';
 import { ColumnDatum } from '../../../../../Resources/CustomGradebookColumns.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+  /** ID */
+  user_id: string;
+};
+
+type updateFormParameters = {
   /** Column content. Setting this to blank will delete the datum object. */
   'column_data[content]': string;
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -17,9 +27,13 @@ type Options = {
  *
  * Nickname: update_column_data
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<ColumnDatum>(
     `/v1/courses/{course_id}/custom_gradebook_columns/{id}/data/{user_id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

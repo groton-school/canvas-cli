@@ -1,9 +1,16 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {};
+type mark_module_item_readPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  module_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: mark_module_item_readPathParameters;
 };
 
 /**
@@ -19,9 +26,12 @@ type Options = {
  *
  * Nickname: mark_module_item_read
  */
-export async function mark_module_item_read({ parameters }: Options) {
+export async function mark_module_item_read({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/modules/{module_id}/items/{id}/mark_read`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

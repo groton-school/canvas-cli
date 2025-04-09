@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { CustomColumn } from '../../../../Resources/CustomGradebookColumns.js';
 
-type Parameters = {};
+type updatePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: update_custom_gradebook_column
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams }: Options) {
   return await client().fetchAs<CustomColumn>(
     `/v1/courses/{course_id}/custom_gradebook_columns/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

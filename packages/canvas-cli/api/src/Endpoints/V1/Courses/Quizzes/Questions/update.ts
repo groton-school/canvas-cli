@@ -4,7 +4,24 @@ import {
   QuizQuestion
 } from '../../../../../Resources/QuizQuestions.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  course_id: string;
+  /**
+   * The associated quiz's unique identifier.
+   *
+   * Format: 'int64'
+   */
+  quiz_id: number;
+  /**
+   * The quiz question's unique identifier.
+   *
+   * Format: 'int64'
+   */
+  id: number;
+};
+
+type updateFormParameters = {
   /** The name of the question. */
   'question[question_name]': string;
   /** The text of the question. */
@@ -47,7 +64,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -57,9 +75,13 @@ type Options = {
  *
  * Nickname: update_existing_quiz_question
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<QuizQuestion>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/questions/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

@@ -1,6 +1,13 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /** The subject of the notification. */
   'account_notification[subject]': string;
   /** The message body of the notification. */
@@ -30,7 +37,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -40,9 +48,13 @@ type Options = {
  *
  * Nickname: update_global_notification
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/accounts/{account_id}/account_notifications/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

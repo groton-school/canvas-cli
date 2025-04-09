@@ -1,9 +1,16 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type listSearchParameters = {
+  /**
+   * "ungraded_quizzes":: Optionally include ungraded quizzes (such as
+   * practice quizzes and surveys) in the list. These will be returned under a
+   * +quiz+ key instead of an +assignment+ key in response elements.
+   */
+  include: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -19,9 +26,9 @@ type Options = {
  *
  * Nickname: list_counts_for_todo_items
  */
-export async function list({ parameters }: Options) {
+export async function list({ searchParams }: Options) {
   return await client().fetchAs<void>(`/v1/users/self/todo_item_count`, {
     method: 'GET',
-    params: parameters
+    searchParams
   });
 }

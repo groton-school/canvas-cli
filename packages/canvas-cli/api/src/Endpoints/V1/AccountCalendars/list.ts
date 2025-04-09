@@ -1,10 +1,16 @@
 import { account_calendarsAccountCalendartotal_resultsinteger } from '';
 import { client } from '../../../Client.js';
 
-type Parameters = {};
+type listSearchParameters = {
+  /**
+   * When included, searches available account calendars for the term. Returns
+   * matching results. Term must be at least 2 characters.
+   */
+  search_term: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -16,9 +22,9 @@ type Options = {
  *
  * Nickname: list_available_account_calendars
  */
-export async function list({ parameters }: Options) {
+export async function list({ searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/account_calendars`, {
     method: 'GET',
-    params: parameters
+    searchParams
   });
 }

@@ -1,10 +1,15 @@
 import { client } from '../../../../../Client.js';
 import { LtiRegistration } from '../../../../../Resources/LtiRegistrations.js';
 
-type Parameters = {};
+type reset_lti_registration_to_defaultsPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: reset_lti_registration_to_defaultsPathParameters;
 };
 
 /**
@@ -17,10 +22,13 @@ type Options = {
  * Nickname: reset_lti_registration_to_defaults
  */
 export async function reset_lti_registration_to_defaults({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<LtiRegistration>(
     `/v1/accounts/{account_id}/lti_registrations/{id}/reset`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

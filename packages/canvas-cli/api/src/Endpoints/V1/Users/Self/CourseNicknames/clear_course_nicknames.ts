@@ -1,10 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * Clear course nicknames
@@ -13,9 +9,8 @@ type Options = {
  *
  * Nickname: clear_course_nicknames
  */
-export async function clear_course_nicknames({ parameters }: Options) {
+export async function clear_course_nicknames({}: Options) {
   return await client().fetchAs<void>(`/v1/users/self/course_nicknames`, {
-    method: 'DELETE',
-    params: parameters
+    method: 'DELETE'
   });
 }

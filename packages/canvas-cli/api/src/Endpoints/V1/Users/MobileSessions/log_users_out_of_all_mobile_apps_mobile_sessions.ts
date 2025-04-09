@@ -1,10 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * Log users out of all mobile apps
@@ -17,11 +13,8 @@ type Options = {
  *
  * Nickname: log_users_out_of_all_mobile_apps_mobile_sessions
  */
-export async function log_users_out_of_all_mobile_apps_mobile_sessions({
-  parameters
-}: Options) {
+export async function log_users_out_of_all_mobile_apps_mobile_sessions({}: Options) {
   return await client().fetchAs<void>(`/v1/users/mobile_sessions`, {
-    method: 'DELETE',
-    params: parameters
+    method: 'DELETE'
   });
 }

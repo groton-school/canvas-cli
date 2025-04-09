@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { Course } from '../../../../Resources/Courses.js';
 
-type Parameters = {};
+type reset_coursePathParameters = {
+  /** ID */
+  course_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: reset_coursePathParameters;
 };
 
 /**
@@ -15,9 +18,12 @@ type Options = {
  *
  * Nickname: reset_course
  */
-export async function reset_course({ parameters }: Options) {
+export async function reset_course({ pathParams }: Options) {
   return await client().fetchAs<Course>(
     `/v1/courses/{course_id}/reset_content`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

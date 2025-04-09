@@ -1,7 +1,16 @@
 import { client } from '../../../../../Client.js';
 import { RubricAssessment } from '../../../../../Resources/Rubrics.js';
 
-type Parameters = {
+type grade_or_comment_on_submission_by_anonymous_id_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  assignment_id: string;
+  /** ID */
+  anonymous_id: string;
+};
+
+type grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters = {
   /** Add a textual comment to the submission. */
   'comment[text_comment]': string;
   /**
@@ -97,7 +106,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: grade_or_comment_on_submission_by_anonymous_id_coursesPathParameters;
+  params?: grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters;
 };
 
 /**
@@ -111,10 +121,15 @@ type Options = {
  * Nickname: grade_or_comment_on_submission_by_anonymous_id_courses
  */
 export async function grade_or_comment_on_submission_by_anonymous_id_courses({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/anonymous_submissions/{anonymous_id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

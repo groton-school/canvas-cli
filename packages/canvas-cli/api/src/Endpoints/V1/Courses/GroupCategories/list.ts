@@ -1,10 +1,25 @@
 import { client } from '../../../../Client.js';
 import { GroupCategory } from '../../../../Resources/GroupCategories.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * Filter group categories by their collaboration state:
+   *
+   * - "all": Return both collaborative and non-collaborative group categories
+   * - "collaborative": Return only collaborative group categories (default)
+   * - "non_collaborative": Return only non-collaborative group categories
+   */
+  collaboration_state: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -16,9 +31,13 @@ type Options = {
  *
  * Nickname: list_group_categories_for_context_courses
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/courses/{course_id}/group_categories`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

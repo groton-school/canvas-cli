@@ -1,7 +1,16 @@
 import { Hash } from '';
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  quiz_id: string;
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /**
    * The attempt number of the quiz submission that should be updated. This
    * attempt MUST be already completed.
@@ -25,7 +34,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -44,9 +54,13 @@ type Options = {
  *
  * Nickname: update_student_question_scores_and_comments
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

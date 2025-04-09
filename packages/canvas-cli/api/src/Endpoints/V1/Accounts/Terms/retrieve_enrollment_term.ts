@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { EnrollmentTerm } from '../../../../Resources/EnrollmentTerms.js';
 
-type Parameters = {};
+type retrieve_enrollment_termPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: retrieve_enrollment_termPathParameters;
 };
 
 /**
@@ -15,9 +20,12 @@ type Options = {
  *
  * Nickname: retrieve_enrollment_term
  */
-export async function retrieve_enrollment_term({ parameters }: Options) {
+export async function retrieve_enrollment_term({ pathParams }: Options) {
   return await client().fetchAs<EnrollmentTerm>(
     `/v1/accounts/{account_id}/terms/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

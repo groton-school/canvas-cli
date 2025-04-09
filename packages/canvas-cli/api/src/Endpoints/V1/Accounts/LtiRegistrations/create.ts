@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type createFormParameters = {
   /** The name of the tool */
   name: string;
   /** A friendly nickname set by admins to override the tool name */
@@ -31,7 +36,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -44,9 +50,13 @@ type Options = {
  *
  * Nickname: create_lti_registration
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<LtiRegistration>(
     `/v1/accounts/{account_id}/lti_registrations`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

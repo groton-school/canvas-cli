@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
 
-type Parameters = {};
+type show_outcome_group_globalPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_outcome_group_globalPathParameters;
 };
 
 /**
@@ -12,9 +15,12 @@ type Options = {
  *
  * Nickname: show_outcome_group_global
  */
-export async function show_outcome_group_global({ parameters }: Options) {
+export async function show_outcome_group_global({ pathParams }: Options) {
   return await client().fetchAs<OutcomeGroup>(
     `/v1/global/outcome_groups/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

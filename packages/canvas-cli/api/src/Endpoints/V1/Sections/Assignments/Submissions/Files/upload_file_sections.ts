@@ -1,9 +1,16 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {};
+type upload_file_sectionsPathParameters = {
+  /** ID */
+  section_id: string;
+  /** ID */
+  assignment_id: string;
+  /** ID */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: upload_file_sectionsPathParameters;
 };
 
 /**
@@ -21,9 +28,12 @@ type Options = {
  *
  * Nickname: upload_file_sections
  */
-export async function upload_file_sections({ parameters }: Options) {
+export async function upload_file_sections({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/files`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

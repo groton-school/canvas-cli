@@ -1,9 +1,14 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -22,9 +27,12 @@ type Options = {
  *
  * Nickname: get_asset_id_mapping
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/content_migrations/{id}/asset_id_mapping`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

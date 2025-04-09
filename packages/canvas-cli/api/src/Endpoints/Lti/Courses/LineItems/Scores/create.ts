@@ -1,8 +1,15 @@
-import { resultUrlStringTheurltotheresultthatwascreated } from '';
 import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../../Client.js';
+import { resultUrlStringTheurltotheresultthatwascreated } from '../../../../../Overrides.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  line_item_id: string;
+};
+
+type createFormParameters = {
   /**
    * The lti_user_id or the Canvas user_id. Returns a 422 if user not found in
    * Canvas or is not a student.
@@ -105,7 +112,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -136,9 +144,13 @@ type Options = {
  *
  * Nickname: create_score
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<string[]>(
     `/lti/courses/{course_id}/line_items/{line_item_id}/scores`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

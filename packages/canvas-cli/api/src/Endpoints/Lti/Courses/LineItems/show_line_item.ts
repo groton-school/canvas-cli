@@ -1,10 +1,26 @@
 import { client } from '../../../../Client.js';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
-type Parameters = {};
+type show_line_itemPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
+
+type show_line_itemSearchParameters = {
+  /**
+   * Array of additional information to include.
+   *
+   * "launch_url":: includes the launch URL for this line item using the
+   * "https://canvas.instructure.com/lti/launch_url" extension
+   */
+  include: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_line_itemPathParameters;
+  searchParams?: show_line_itemSearchParameters;
 };
 
 /**
@@ -14,9 +30,13 @@ type Options = {
  *
  * Nickname: show_line_item
  */
-export async function show_line_item({ parameters }: Options) {
+export async function show_line_item({ pathParams, searchParams }: Options) {
   return await client().fetchAs<LineItem>(
     `/lti/courses/{course_id}/line_items/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

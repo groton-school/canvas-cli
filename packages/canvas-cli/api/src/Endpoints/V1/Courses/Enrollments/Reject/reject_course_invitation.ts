@@ -1,9 +1,14 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type reject_course_invitationPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: reject_course_invitationPathParameters;
 };
 
 /**
@@ -13,9 +18,12 @@ type Options = {
  *
  * Nickname: reject_course_invitation
  */
-export async function reject_course_invitation({ parameters }: Options) {
+export async function reject_course_invitation({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/enrollments/{id}/reject`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

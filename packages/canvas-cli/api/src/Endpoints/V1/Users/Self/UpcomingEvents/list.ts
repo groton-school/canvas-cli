@@ -1,10 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * List upcoming assignments, calendar events
@@ -13,9 +9,8 @@ type Options = {
  *
  * Nickname: list_upcoming_assignments_calendar_events
  */
-export async function list({ parameters }: Options) {
+export async function list({}: Options) {
   return await client().fetchAs<void>(`/v1/users/self/upcoming_events`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

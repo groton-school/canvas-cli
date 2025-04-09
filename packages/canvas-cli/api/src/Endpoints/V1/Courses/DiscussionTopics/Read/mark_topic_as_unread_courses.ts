@@ -1,9 +1,14 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type mark_topic_as_unread_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  topic_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: mark_topic_as_unread_coursesPathParameters;
 };
 
 /**
@@ -17,9 +22,12 @@ type Options = {
  *
  * Nickname: mark_topic_as_unread_courses
  */
-export async function mark_topic_as_unread_courses({ parameters }: Options) {
+export async function mark_topic_as_unread_courses({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/discussion_topics/{topic_id}/read`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

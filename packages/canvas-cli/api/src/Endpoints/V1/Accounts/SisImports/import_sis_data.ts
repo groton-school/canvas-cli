@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { SisImport } from '../../../../Resources/SisImports.js';
 
-type Parameters = {
+type import_sis_dataPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type import_sis_dataFormParameters = {
   /**
    * Choose the data format for reading SIS data. With a standard Canvas
    * install, this option can only be 'instructure_csv', and if unprovided,
@@ -149,7 +154,7 @@ type Parameters = {
    * calculated is by taking the size of the current import and dividing it by
    * the size of the previous import. The formula used is:
    *
-   * |(1 - current_file_size &#x2F; previous_file_size)| \* 100
+   * |(1 - current_file_size / previous_file_size)| \* 100
    *
    * See the SIS CSV Format documentation for more details. Required for
    * multi_term_batch_mode.
@@ -167,7 +172,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: import_sis_dataPathParameters;
+  params?: import_sis_dataFormParameters;
 };
 
 /**
@@ -181,9 +187,13 @@ type Options = {
  *
  * Nickname: import_sis_data
  */
-export async function import_sis_data({ parameters }: Options) {
+export async function import_sis_data({ pathParams, params }: Options) {
   return await client().fetchAs<SisImport>(
     `/v1/accounts/{account_id}/sis_imports`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

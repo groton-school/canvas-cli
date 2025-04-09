@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { TermsOfService } from '../../../../Resources/Accounts.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  account_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -14,9 +17,12 @@ type Options = {
  *
  * Nickname: get_terms_of_service
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<TermsOfService>(
     `/v1/accounts/{account_id}/terms_of_service`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { PlannerOverride } from '../../../../Resources/Planner.js';
 
-type Parameters = {};
+type show_planner_overridePathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_planner_overridePathParameters;
 };
 
 /**
@@ -14,9 +17,9 @@ type Options = {
  *
  * Nickname: show_planner_override
  */
-export async function show_planner_override({ parameters }: Options) {
+export async function show_planner_override({ pathParams }: Options) {
   return await client().fetchAs<PlannerOverride>(`/v1/planner/overrides/{id}`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

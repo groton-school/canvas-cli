@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { MediaTrack } from '../../../../Resources/MediaObjects.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  media_object_id: string;
+};
+
+type updateFormParameters = {
   /**
    * By default, an update returns id, locale, kind, media_object_id, and
    * user_id for each of the result MediaTracks. Use include[] to add
@@ -11,7 +16,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -24,9 +30,13 @@ type Options = {
  *
  * Nickname: update_media_tracks_media_objects
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/media_objects/{media_object_id}/media_tracks`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

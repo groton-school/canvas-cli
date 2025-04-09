@@ -1,7 +1,22 @@
 import { client } from '../../../../../Client.js';
 import { NewQuiz } from '../../../../../Resources/NewQuizzes.js';
 
-type Parameters = {
+type update_single_quizPathParameters = {
+  /**
+   * No description
+   *
+   * Format: 'int64'
+   */
+  course_id: number;
+  /**
+   * The id of the assignment associated with the quiz.
+   *
+   * Format: 'int64'
+   */
+  assignment_id: number;
+};
+
+type update_single_quizFormParameters = {
   /** The title of the quiz. */
   'quiz[title]': string;
   /**
@@ -188,7 +203,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: update_single_quizPathParameters;
+  params?: update_single_quizFormParameters;
 };
 
 /**
@@ -198,9 +214,13 @@ type Options = {
  *
  * Nickname: update_single_quiz
  */
-export async function update_single_quiz({ parameters }: Options) {
+export async function update_single_quiz({ pathParams, params }: Options) {
   return await client().fetchAs<NewQuiz>(
     `/quiz/v1/courses/{course_id}/quizzes/{assignment_id}`,
-    { method: 'PATCH', params: parameters }
+    {
+      method: 'PATCH',
+      pathParams,
+      params
+    }
   );
 }

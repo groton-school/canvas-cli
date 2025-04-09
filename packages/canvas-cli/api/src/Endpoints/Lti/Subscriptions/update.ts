@@ -1,9 +1,12 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {};
+type updatePathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
 };
 
 /**
@@ -13,9 +16,9 @@ type Options = {
  *
  * Nickname: update_webhook_subscription
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams }: Options) {
   return await client().fetchAs<void>(`/lti/subscriptions/{id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams
   });
 }

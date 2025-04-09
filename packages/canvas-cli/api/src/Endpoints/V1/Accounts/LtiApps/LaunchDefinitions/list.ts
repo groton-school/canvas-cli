@@ -1,9 +1,26 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * The placements to return launch definitions for. If not provided, an
+   * empty list will be returned.
+   */
+  'placements[Array]': string;
+  /**
+   * If true, only return launch definitions that are visible to the current
+   * user. Defaults to true.
+   */
+  'only_visible[Boolean]': string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -16,9 +33,13 @@ type Options = {
  *
  * Nickname: list_lti_launch_definitions_accounts
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/accounts/{account_id}/lti_apps/launch_definitions`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

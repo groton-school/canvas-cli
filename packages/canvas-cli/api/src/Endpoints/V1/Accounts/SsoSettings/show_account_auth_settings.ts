@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { SSOSettings } from '../../../../Resources/AuthenticationProviders.js';
 
-type Parameters = {};
+type show_account_auth_settingsPathParameters = {
+  /** ID */
+  account_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_account_auth_settingsPathParameters;
 };
 
 /**
@@ -17,9 +20,12 @@ type Options = {
  *
  * Nickname: show_account_auth_settings
  */
-export async function show_account_auth_settings({ parameters }: Options) {
+export async function show_account_auth_settings({ pathParams }: Options) {
   return await client().fetchAs<SSOSettings>(
     `/v1/accounts/{account_id}/sso_settings`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

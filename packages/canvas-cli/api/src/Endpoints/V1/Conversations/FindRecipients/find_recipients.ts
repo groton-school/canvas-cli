@@ -1,10 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * Find recipients
@@ -14,9 +10,8 @@ type Options = {
  *
  * Nickname: find_recipients
  */
-export async function find_recipients({ parameters }: Options) {
+export async function find_recipients({}: Options) {
   return await client().fetchAs<void>(`/v1/conversations/find_recipients`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

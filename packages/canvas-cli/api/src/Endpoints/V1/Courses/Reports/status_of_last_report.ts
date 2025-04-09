@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
-type Parameters = {};
+type status_of_last_reportPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  report_type: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: status_of_last_reportPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: status_of_last_report
  */
-export async function status_of_last_report({ parameters }: Options) {
+export async function status_of_last_report({ pathParams }: Options) {
   return await client().fetchAs<Report>(
     `/v1/courses/{course_id}/reports/{report_type}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

@@ -1,9 +1,14 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type delete_grading_period_setPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_grading_period_setPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: delete_grading_period_set
  */
-export async function delete_grading_period_set({ parameters }: Options) {
+export async function delete_grading_period_set({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/accounts/{account_id}/grading_period_sets/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

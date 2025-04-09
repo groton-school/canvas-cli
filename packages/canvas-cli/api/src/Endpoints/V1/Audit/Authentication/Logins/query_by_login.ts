@@ -1,9 +1,29 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type query_by_loginPathParameters = {
+  /** ID */
+  login_id: string;
+};
+
+type query_by_loginSearchParameters = {
+  /**
+   * The beginning of the time range from which you want events. Events are
+   * stored for one year.
+   *
+   * Format: date-time
+   */
+  start_time: string;
+  /**
+   * The end of the time range from which you want events.
+   *
+   * Format: date-time
+   */
+  end_time: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: query_by_loginPathParameters;
+  searchParams?: query_by_loginSearchParameters;
 };
 
 /**
@@ -13,9 +33,13 @@ type Options = {
  *
  * Nickname: query_by_login
  */
-export async function query_by_login({ parameters }: Options) {
+export async function query_by_login({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/audit/authentication/logins/{login_id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

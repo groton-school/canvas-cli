@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Folder } from '../../../../Resources/Files.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  group_id: string;
+};
+
+type createFormParameters = {
   /** The name of the folder */
   name: string;
   /**
@@ -45,7 +50,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -55,9 +61,10 @@ type Options = {
  *
  * Nickname: create_folder_groups
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<Folder>(`/v1/groups/{group_id}/folders`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

@@ -1,12 +1,22 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  group_id: string;
+  /** ID */
+  topic_id: string;
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /** The updated body of the entry. */
   message: string;
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -20,9 +30,13 @@ type Options = {
  *
  * Nickname: update_entry_groups
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/groups/{group_id}/discussion_topics/{topic_id}/entries/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

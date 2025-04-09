@@ -1,9 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type group_activity_streamPathParameters = {
+  /** ID */
+  group_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: group_activity_streamPathParameters;
 };
 
 /**
@@ -16,9 +19,9 @@ type Options = {
  *
  * Nickname: group_activity_stream
  */
-export async function group_activity_stream({ parameters }: Options) {
+export async function group_activity_stream({ pathParams }: Options) {
   return await client().fetchAs<void>(`/v1/groups/{group_id}/activity_stream`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

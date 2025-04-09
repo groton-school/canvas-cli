@@ -1,10 +1,20 @@
 import { client } from '../../../../Client.js';
 import { Grader } from '../../../../Resources/GradebookHistory.js';
 
-type Parameters = {};
+type details_for_given_date_in_gradebook_history_for_this_coursePathParameters =
+  {
+    /**
+     * The id of the contextual course for this API call
+     *
+     * Format: 'int64'
+     */
+    course_id: number;
+    /** The date for which you would like to see detailed information */
+    date: string;
+  };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: details_for_given_date_in_gradebook_history_for_this_coursePathParameters;
 };
 
 /**
@@ -17,10 +27,13 @@ type Options = {
  * Nickname: details_for_given_date_in_gradebook_history_for_this_course
  */
 export async function details_for_given_date_in_gradebook_history_for_this_course({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/courses/{course_id}/gradebook_history/{date}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

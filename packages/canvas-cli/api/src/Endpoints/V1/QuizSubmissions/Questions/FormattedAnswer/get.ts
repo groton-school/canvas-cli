@@ -1,10 +1,21 @@
 import { Numeric } from '';
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  quiz_submission_id: string;
+  /** ID */
+  id: string;
+};
+
+type getSearchParameters = {
+  /** No description */
+  answer: Numeric;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -15,9 +26,13 @@ type Options = {
  *
  * Nickname: get_formatted_student_numerical_answer
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/quiz_submissions/{quiz_submission_id}/questions/{id}/formatted_answer`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

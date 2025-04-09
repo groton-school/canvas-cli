@@ -1,10 +1,27 @@
 import { client } from '../../../../../../Client.js';
 import { PeerReview } from '../../../../../../Resources/PeerReviews.js';
 
-type Parameters = {};
+type delete_peer_review_sectionsPathParameters = {
+  /** ID */
+  section_id: string;
+  /** ID */
+  assignment_id: string;
+  /** ID */
+  submission_id: string;
+};
+
+type delete_peer_review_sectionsSearchParameters = {
+  /**
+   * User_id to delete as reviewer on this assignment
+   *
+   * Format: 'int64'
+   */
+  user_id: number;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_peer_review_sectionsPathParameters;
+  searchParams?: delete_peer_review_sectionsSearchParameters;
 };
 
 /**
@@ -14,9 +31,16 @@ type Options = {
  *
  * Nickname: delete_peer_review_sections
  */
-export async function delete_peer_review_sections({ parameters }: Options) {
+export async function delete_peer_review_sections({
+  pathParams,
+  searchParams
+}: Options) {
   return await client().fetchAs<PeerReview>(
     `/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams,
+      searchParams
+    }
   );
 }

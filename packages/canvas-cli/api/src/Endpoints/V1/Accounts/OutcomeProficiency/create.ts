@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Proficiency } from '../../../../Resources/ProficiencyRatings.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type createFormParameters = {
   /** The description of the rating level. */
   'ratings[description]': string[];
   /**
@@ -28,7 +33,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -40,9 +46,13 @@ type Options = {
  *
  * Nickname: create_update_proficiency_ratings_accounts
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<Proficiency>(
     `/v1/accounts/{account_id}/outcome_proficiency`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

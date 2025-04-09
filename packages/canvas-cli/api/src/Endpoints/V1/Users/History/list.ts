@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { HistoryEntry } from '../../../../Resources/History.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
 };
 
 /**
@@ -19,9 +22,9 @@ type Options = {
  *
  * Nickname: list_recent_history_for_user
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/users/{user_id}/history`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

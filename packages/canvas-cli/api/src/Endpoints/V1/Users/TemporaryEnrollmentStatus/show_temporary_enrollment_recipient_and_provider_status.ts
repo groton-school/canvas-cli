@@ -1,9 +1,21 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type show_temporary_enrollment_recipient_and_provider_statusPathParameters = {
+  /** ID */
+  user_id: string;
+};
+
+type show_temporary_enrollment_recipient_and_provider_statusSearchParameters = {
+  /**
+   * The ID of the account to check for temporary enrollment status. Defaults
+   * to the domain root account if not provided.
+   */
+  account_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_temporary_enrollment_recipient_and_provider_statusPathParameters;
+  searchParams?: show_temporary_enrollment_recipient_and_provider_statusSearchParameters;
 };
 
 /**
@@ -14,10 +26,15 @@ type Options = {
  * Nickname: show_temporary_enrollment_recipient_and_provider_status
  */
 export async function show_temporary_enrollment_recipient_and_provider_status({
-  parameters
+  pathParams,
+  searchParams
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/users/{user_id}/temporary_enrollment_status`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

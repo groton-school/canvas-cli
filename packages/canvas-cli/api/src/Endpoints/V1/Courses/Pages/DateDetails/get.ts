@@ -1,10 +1,15 @@
 import { client } from '../../../../../Client.js';
 import { LearningObjectDates } from '../../../../../Resources/LearningObjectDates.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  url_or_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -16,9 +21,12 @@ type Options = {
  *
  * Nickname: get_learning_object_s_date_information_pages
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<LearningObjectDates>(
     `/v1/courses/{course_id}/pages/{url_or_id}/date_details`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

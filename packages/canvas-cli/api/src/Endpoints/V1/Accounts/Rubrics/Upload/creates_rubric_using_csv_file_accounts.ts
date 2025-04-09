@@ -1,10 +1,13 @@
 import { RubricImport } from '';
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type creates_rubric_using_csv_file_accountsPathParameters = {
+  /** ID */
+  account_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: creates_rubric_using_csv_file_accountsPathParameters;
 };
 
 /**
@@ -15,10 +18,13 @@ type Options = {
  * Nickname: creates_rubric_using_csv_file_accounts
  */
 export async function creates_rubric_using_csv_file_accounts({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<RubricImport>(
     `/v1/accounts/{account_id}/rubrics/upload`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

@@ -1,10 +1,15 @@
 import { client } from '../../../../../Client.js';
 import { Module } from '../../../../../Resources/CoursePace.js';
 
-type Parameters = {};
+type re_lock_module_progressionsPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: re_lock_module_progressionsPathParameters;
 };
 
 /**
@@ -18,9 +23,12 @@ type Options = {
  *
  * Nickname: re_lock_module_progressions
  */
-export async function re_lock_module_progressions({ parameters }: Options) {
+export async function re_lock_module_progressions({ pathParams }: Options) {
   return await client().fetchAs<Module>(
     `/v1/courses/{course_id}/modules/{id}/relock`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

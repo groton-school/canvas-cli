@@ -1,9 +1,14 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  assignment_id: string;
+  /** ID */
+  submission_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -13,9 +18,12 @@ type Options = {
  *
  * Nickname: get_history_of_single_submission
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/lti/assignments/{assignment_id}/submissions/{submission_id}/history`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

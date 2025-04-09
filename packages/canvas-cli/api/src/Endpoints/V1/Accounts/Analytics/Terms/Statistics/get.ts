@@ -1,9 +1,14 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  term_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -15,9 +20,12 @@ type Options = {
  *
  * Nickname: get_department_level_statistics_terms
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/accounts/{account_id}/analytics/terms/{term_id}/statistics`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

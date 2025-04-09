@@ -2,7 +2,12 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../Client.js';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type createFormParameters = {
   /**
    * The maximum score for the line item. Scores created for the Line Item may
    * exceed this value.
@@ -54,7 +59,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -64,9 +70,13 @@ type Options = {
  *
  * Nickname: create_line_item
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<LineItem>(
     `/lti/courses/{course_id}/line_items`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

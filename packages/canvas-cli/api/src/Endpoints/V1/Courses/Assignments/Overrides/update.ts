@@ -1,7 +1,16 @@
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  assignment_id: string;
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /**
    * The IDs of the override's target students. If present, the IDs must each
    * identify a user with an active student enrollment in the course that is
@@ -46,7 +55,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -60,9 +70,13 @@ type Options = {
  *
  * Nickname: update_assignment_override
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<AssignmentOverride>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/overrides/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

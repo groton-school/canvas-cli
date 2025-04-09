@@ -1,10 +1,30 @@
 import { client } from '../../../../Client.js';
 import { BlockEditorTemplate } from '../../../../Resources/BlockEditorTemplate.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type listSearchParameters = {
+  /** Sort results by this field. */
+  sort: string;
+  /** The sorting order. Defaults to 'asc'. */
+  order: string;
+  /**
+   * If true, include draft templates. If false or omitted only published
+   * templates will be returned.
+   */
+  drafts: boolean;
+  /** What type of templates should be returned. */
+  type: string[];
+  /** No description */
+  include: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -14,9 +34,13 @@ type Options = {
  *
  * Nickname: list_block_templates
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/courses/{course_id}/block_editor_templates`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

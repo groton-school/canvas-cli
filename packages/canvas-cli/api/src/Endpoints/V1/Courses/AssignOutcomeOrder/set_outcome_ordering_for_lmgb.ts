@@ -1,9 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type set_outcome_ordering_for_lmgbPathParameters = {
+  /** ID */
+  course_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: set_outcome_ordering_for_lmgbPathParameters;
 };
 
 /**
@@ -13,9 +16,12 @@ type Options = {
  *
  * Nickname: set_outcome_ordering_for_lmgb
  */
-export async function set_outcome_ordering_for_lmgb({ parameters }: Options) {
+export async function set_outcome_ordering_for_lmgb({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/assign_outcome_order`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

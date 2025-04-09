@@ -1,10 +1,25 @@
 import { client } from '../../../../Client.js';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
-type Parameters = {};
+type conclude_deactivate_or_delete_enrollmentPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
+
+type conclude_deactivate_or_delete_enrollmentSearchParameters = {
+  /**
+   * The action to take on the enrollment. When inactive, a user will still
+   * appear in the course roster to admins, but be unable to participate.
+   * ("inactivate" and "deactivate" are equivalent tasks)
+   */
+  task: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: conclude_deactivate_or_delete_enrollmentPathParameters;
+  searchParams?: conclude_deactivate_or_delete_enrollmentSearchParameters;
 };
 
 /**
@@ -16,10 +31,15 @@ type Options = {
  * Nickname: conclude_deactivate_or_delete_enrollment
  */
 export async function conclude_deactivate_or_delete_enrollment({
-  parameters
+  pathParams,
+  searchParams
 }: Options) {
   return await client().fetchAs<Enrollment>(
     `/v1/courses/{course_id}/enrollments/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams,
+      searchParams
+    }
   );
 }

@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { GradingStandard } from '../../../../Resources/GradingStandards.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  grading_standard_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: get_single_grading_standard_in_context_accounts
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<GradingStandard>(
     `/v1/accounts/{account_id}/grading_standards/{grading_standard_id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

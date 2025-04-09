@@ -1,9 +1,16 @@
 import { client } from '../../../../../../../Client.js';
 
-type Parameters = {};
+type mark_document_annotations_as_read_sectionsPathParameters = {
+  /** ID */
+  section_id: string;
+  /** ID */
+  assignment_id: string;
+  /** ID */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: mark_document_annotations_as_read_sectionsPathParameters;
 };
 
 /**
@@ -18,10 +25,13 @@ type Options = {
  * Nickname: mark_document_annotations_as_read_sections
  */
 export async function mark_document_annotations_as_read_sections({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/document_annotations/read`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

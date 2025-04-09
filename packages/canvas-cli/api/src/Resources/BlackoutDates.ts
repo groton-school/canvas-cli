@@ -15,10 +15,6 @@ export type BlackoutDate = {
    * Type: integer
    */
   context_id: number;
-  /**
-   * Blackout dates are used to prevent scheduling assignments on a given date
-   * in course pacing.
-   */
   context_type: string;
   /**
    * The start date of the blackout date

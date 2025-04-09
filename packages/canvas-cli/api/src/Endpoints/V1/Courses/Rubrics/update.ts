@@ -1,7 +1,18 @@
 import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  course_id: string;
+  /**
+   * The id of the rubric
+   *
+   * Format: 'int64'
+   */
+  id: number;
+};
+
+type updateFormParameters = {
   /**
    * The id of the rubric association object (not the course/assignment
    * itself, but the join table record id). It can be used in place of
@@ -51,7 +62,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -68,9 +80,10 @@ type Options = {
  *
  * Nickname: update_single_rubric
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/courses/{course_id}/rubrics/{id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Account } from '../../../../Resources/Accounts.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type createFormParameters = {
   /** The name of the new sub-account. */
   'account[name]': string;
   /** The account's identifier in the Student Information System. */
@@ -27,7 +32,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -37,9 +43,13 @@ type Options = {
  *
  * Nickname: create_new_sub_account
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<Account>(
     `/v1/accounts/{account_id}/sub_accounts`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

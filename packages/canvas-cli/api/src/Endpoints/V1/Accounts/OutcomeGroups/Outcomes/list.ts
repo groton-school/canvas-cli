@@ -1,10 +1,24 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * The detail level of the outcomes. Defaults to "abbrev". Specify "full"
+   * for more information.
+   */
+  outcome_style: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -14,9 +28,13 @@ type Options = {
  *
  * Nickname: list_linked_outcomes_accounts
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/accounts/{account_id}/outcome_groups/{id}/outcomes`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

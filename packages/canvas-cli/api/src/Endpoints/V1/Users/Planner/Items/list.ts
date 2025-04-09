@@ -1,9 +1,47 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  user_id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * Only return items starting from the given date. The value should be
+   * formatted as: yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.
+   *
+   * Format: date
+   */
+  start_date: string;
+  /**
+   * Only return items up to the given date. The value should be formatted as:
+   * yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.
+   *
+   * Format: date
+   */
+  end_date: string;
+  /**
+   * List of context codes of courses and/or groups whose items you want to
+   * see. If not specified, defaults to all contexts associated to the current
+   * user. Note that concluded courses will be ignored unless specified in the
+   * includes[] parameter. The format of this field is the context type,
+   * followed by an underscore, followed by the context id. For example:
+   * course_42, group_123
+   */
+  context_codes: string[];
+  /**
+   * Return planner items for the given observed user. Must be accompanied by
+   * context_codes[]. The user making the request must be observing the
+   * observed user in all the courses specified by context_codes[].
+   */
+  observed_user_id: string;
+  /** Only return items that have new or unread activity */
+  filter: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -18,9 +56,10 @@ type Options = {
  *
  * Nickname: list_planner_items_users
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(`/v1/users/{user_id}/planner/items`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

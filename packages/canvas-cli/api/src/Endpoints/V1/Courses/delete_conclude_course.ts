@@ -1,9 +1,18 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {};
+type delete_conclude_coursePathParameters = {
+  /** ID */
+  id: string;
+};
+
+type delete_conclude_courseSearchParameters = {
+  /** The action to take on the course. */
+  event: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_conclude_coursePathParameters;
+  searchParams?: delete_conclude_courseSearchParameters;
 };
 
 /**
@@ -13,9 +22,13 @@ type Options = {
  *
  * Nickname: delete_conclude_course
  */
-export async function delete_conclude_course({ parameters }: Options) {
+export async function delete_conclude_course({
+  pathParams,
+  searchParams
+}: Options) {
   return await client().fetchAs<void>(`/v1/courses/{id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

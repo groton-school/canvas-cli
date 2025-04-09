@@ -1,10 +1,28 @@
 import { client } from '../../../../Client.js';
 import { Admin } from '../../../../Resources/Admins.js';
 
-type Parameters = {};
+type remove_account_adminPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  user_id: string;
+};
+
+type remove_account_adminSearchParameters = {
+  /** [DEPRECATED] Account role to remove from the user. */
+  role: string;
+  /**
+   * The id of the role representing the user's admin relationship with the
+   * account.
+   *
+   * Format: 'int64'
+   */
+  role_id: number;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: remove_account_adminPathParameters;
+  searchParams?: remove_account_adminSearchParameters;
 };
 
 /**
@@ -14,9 +32,16 @@ type Options = {
  *
  * Nickname: remove_account_admin
  */
-export async function remove_account_admin({ parameters }: Options) {
+export async function remove_account_admin({
+  pathParams,
+  searchParams
+}: Options) {
   return await client().fetchAs<Admin>(
     `/v1/accounts/{account_id}/admins/{user_id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams,
+      searchParams
+    }
   );
 }

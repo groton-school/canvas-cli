@@ -1,9 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type log_users_out_of_all_mobile_apps_idPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: log_users_out_of_all_mobile_apps_idPathParameters;
 };
 
 /**
@@ -18,10 +21,10 @@ type Options = {
  * Nickname: log_users_out_of_all_mobile_apps_id
  */
 export async function log_users_out_of_all_mobile_apps_id({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<void>(`/v1/users/{id}/mobile_sessions`, {
     method: 'DELETE',
-    params: parameters
+    pathParams
   });
 }

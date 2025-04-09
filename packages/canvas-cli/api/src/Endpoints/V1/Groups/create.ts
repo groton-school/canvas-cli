@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { Group } from '../../../Resources/Groups.js';
 
-type Parameters = {
+type createFormParameters = {
   /** The name of the group */
   name: string;
   /** A description of the group */
@@ -23,7 +23,7 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -34,9 +34,9 @@ type Options = {
  *
  * Nickname: create_group_groups
  */
-export async function create({ parameters }: Options) {
+export async function create({ params }: Options) {
   return await client().fetchAs<Group>(`/v1/groups`, {
     method: 'POST',
-    params: parameters
+    params
   });
 }

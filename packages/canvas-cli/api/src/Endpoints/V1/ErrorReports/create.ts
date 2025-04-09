@@ -1,7 +1,7 @@
 import { SerializedHash } from '';
 import { client } from '../../../Client.js';
 
-type Parameters = {
+type createFormParameters = {
   /** The summary of the problem */
   'error[subject]': string;
   /** URL from which the report was issued */
@@ -21,7 +21,7 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -34,9 +34,9 @@ type Options = {
  *
  * Nickname: create_error_report
  */
-export async function create({ parameters }: Options) {
+export async function create({ params }: Options) {
   return await client().fetchAs<void>(`/v1/error_reports`, {
     method: 'POST',
-    params: parameters
+    params
   });
 }

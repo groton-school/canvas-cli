@@ -1,10 +1,13 @@
 import { client } from '../../../../../../Client.js';
 import { Folder } from '../../../../../../Resources/Files.js';
 
-type Parameters = {};
+type resolve_path_courses_full_pathPathParameters = {
+  /** ID */
+  course_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: resolve_path_courses_full_pathPathParameters;
 };
 
 /**
@@ -19,9 +22,12 @@ type Options = {
  *
  * Nickname: resolve_path_courses_full_path
  */
-export async function resolve_path_courses_full_path({ parameters }: Options) {
+export async function resolve_path_courses_full_path({ pathParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/courses/{course_id}/folders/by_path/*full_path`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

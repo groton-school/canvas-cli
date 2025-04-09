@@ -1,10 +1,19 @@
 import { client } from '../../../../../Client.js';
 import { NotificationPreference } from '../../../../../Resources/NotificationPreferences.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  user_id: string;
+  /** ID */
+  type: string;
+  /** ID */
+  address: string;
+  /** ID */
+  notification: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -15,9 +24,12 @@ type Options = {
  *
  * Nickname: get_preference_type
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<NotificationPreference>(
     `/v1/users/{user_id}/communication_channels/{type}/{address}/notification_preferences/{notification}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

@@ -1,10 +1,23 @@
 import { client } from '../../../Client.js';
 import { Account } from '../../../Resources/Accounts.js';
 
-type Parameters = {};
+type listSearchParameters = {
+  /**
+   * Array of additional information to include.
+   *
+   * "lti_guid":: the 'tool_consumer_instance_guid' that will be sent for this
+   * account on LTI launches "registration_settings":: returns info about the
+   * privacy policy and terms of use "services":: returns services and whether
+   * they are enabled (requires account management permissions)
+   * "course_count":: returns the number of courses directly under each
+   * account "sub_account_count":: returns the number of sub-accounts directly
+   * under each account
+   */
+  include: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -16,9 +29,9 @@ type Options = {
  *
  * Nickname: list_accounts
  */
-export async function list({ parameters }: Options) {
+export async function list({ searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/accounts`, {
     method: 'GET',
-    params: parameters
+    searchParams
   });
 }

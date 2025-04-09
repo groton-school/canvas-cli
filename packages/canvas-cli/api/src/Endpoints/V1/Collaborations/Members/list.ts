@@ -1,10 +1,24 @@
 import { client } from '../../../../Client.js';
 import { Collaborator } from '../../../../Resources/Collaborations.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * - "collaborator_lti_id": Optional information to include with each member.
+   *   Represents an identifier to be used for the member in an LTI context.
+   * - "avatar_image_url": Optional information to include with each member. The
+   *   url for the avatar of a collaborator with type 'user'.
+   */
+  include: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -14,9 +28,10 @@ type Options = {
  *
  * Nickname: list_members_of_collaboration
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/collaborations/{id}/members`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

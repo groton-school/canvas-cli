@@ -1,10 +1,17 @@
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  assignment_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -14,9 +21,12 @@ type Options = {
  *
  * Nickname: get_single_assignment_override
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<AssignmentOverride>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/overrides/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { SSOSettings } from '../../../../Resources/AuthenticationProviders.js';
 
-type Parameters = {};
+type updatePathParameters = {
+  /** ID */
+  account_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
 };
 
 /**
@@ -22,9 +25,12 @@ type Options = {
  *
  * Nickname: update_account_auth_settings
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams }: Options) {
   return await client().fetchAs<SSOSettings>(
     `/v1/accounts/{account_id}/sso_settings`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

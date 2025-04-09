@@ -1,12 +1,20 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  type: string;
+  /** ID */
+  address: string;
+};
+
+type updateFormParameters = {
   /** The desired frequency for <X> notification */
   'notification_preferences[<X>][frequency]': string;
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -17,9 +25,13 @@ type Options = {
  *
  * Nickname: update_multiple_preferences_type
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/users/self/communication_channels/{type}/{address}/notification_preferences`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

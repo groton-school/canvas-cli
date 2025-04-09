@@ -77,10 +77,6 @@ export type AssignmentDate = {
    * assignment's or quiz's default due date
    */
   base: boolean;
-  /**
-   * Object representing a due date for an assignment or quiz. If the due date
-   * came from an assignment override, it will have an 'id' field.
-   */
   title: string;
   /**
    * The due date for the assignment. Must be between the unlock date and the

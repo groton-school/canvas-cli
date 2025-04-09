@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { PairingCode } from '../../../../Resources/UserObservees.js';
 
-type Parameters = {};
+type createPathParameters = {
+  /** ID */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
 };
 
 /**
@@ -15,9 +18,12 @@ type Options = {
  *
  * Nickname: create_observer_pairing_code
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams }: Options) {
   return await client().fetchAs<PairingCode>(
     `/v1/users/{user_id}/observer_pairing_codes`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

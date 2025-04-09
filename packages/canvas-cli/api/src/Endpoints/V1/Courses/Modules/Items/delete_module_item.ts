@@ -1,10 +1,17 @@
 import { client } from '../../../../../Client.js';
 import { ModuleItem } from '../../../../../Resources/CoursePace.js';
 
-type Parameters = {};
+type delete_module_itemPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  module_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_module_itemPathParameters;
 };
 
 /**
@@ -14,9 +21,12 @@ type Options = {
  *
  * Nickname: delete_module_item
  */
-export async function delete_module_item({ parameters }: Options) {
+export async function delete_module_item({ pathParams }: Options) {
   return await client().fetchAs<ModuleItem>(
     `/v1/courses/{course_id}/modules/{module_id}/items/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

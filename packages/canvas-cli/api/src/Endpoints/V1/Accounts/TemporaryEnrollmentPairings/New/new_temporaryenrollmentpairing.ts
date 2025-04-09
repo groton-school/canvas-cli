@@ -1,10 +1,13 @@
 import { client } from '../../../../../Client.js';
 import { TemporaryEnrollmentPairing } from '../../../../../Resources/TemporaryEnrollmentPairings.js';
 
-type Parameters = {};
+type new_temporaryenrollmentpairingPathParameters = {
+  /** ID */
+  account_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: new_temporaryenrollmentpairingPathParameters;
 };
 
 /**
@@ -14,9 +17,12 @@ type Options = {
  *
  * Nickname: new_temporaryenrollmentpairing
  */
-export async function new_temporaryenrollmentpairing({ parameters }: Options) {
+export async function new_temporaryenrollmentpairing({ pathParams }: Options) {
   return await client().fetchAs<TemporaryEnrollmentPairing>(
     `/v1/accounts/{account_id}/temporary_enrollment_pairings/new`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

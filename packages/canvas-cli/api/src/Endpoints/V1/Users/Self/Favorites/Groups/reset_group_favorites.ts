@@ -1,10 +1,6 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * Reset group favorites
@@ -14,9 +10,8 @@ type Options = {
  *
  * Nickname: reset_group_favorites
  */
-export async function reset_group_favorites({ parameters }: Options) {
+export async function reset_group_favorites({}: Options) {
   return await client().fetchAs<void>(`/v1/users/self/favorites/groups`, {
-    method: 'DELETE',
-    params: parameters
+    method: 'DELETE'
   });
 }

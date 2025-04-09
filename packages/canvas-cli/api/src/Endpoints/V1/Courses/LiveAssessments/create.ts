@@ -1,9 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type createPathParameters = {
+  /** ID */
+  course_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
 };
 
 /**
@@ -14,9 +17,12 @@ type Options = {
  *
  * Nickname: create_or_find_live_assessment
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/live_assessments`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

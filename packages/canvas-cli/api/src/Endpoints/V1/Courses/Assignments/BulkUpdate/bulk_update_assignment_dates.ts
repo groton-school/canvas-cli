@@ -1,10 +1,13 @@
 import { client } from '../../../../../Client.js';
 import { Progress } from '../../../../../Resources/CoursePace.js';
 
-type Parameters = {};
+type bulk_update_assignment_datesPathParameters = {
+  /** ID */
+  course_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: bulk_update_assignment_datesPathParameters;
 };
 
 /**
@@ -32,9 +35,12 @@ type Options = {
  *
  * Nickname: bulk_update_assignment_dates
  */
-export async function bulk_update_assignment_dates({ parameters }: Options) {
+export async function bulk_update_assignment_dates({ pathParams }: Options) {
   return await client().fetchAs<Progress>(
     `/v1/courses/{course_id}/assignments/bulk_update`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

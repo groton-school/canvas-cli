@@ -1,6 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  id: string;
+};
+
+type createFormParameters = {
   /** Whether to enable the missing submission deduction late policy. */
   'late_policy[missing_submission_deduction_enabled]': boolean;
   /** How many percentage points to deduct from a missing submission. */
@@ -18,7 +23,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -29,9 +35,10 @@ type Options = {
  *
  * Nickname: create_late_policy
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/courses/{id}/late_policy`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

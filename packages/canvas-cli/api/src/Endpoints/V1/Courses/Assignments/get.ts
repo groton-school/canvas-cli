@@ -1,10 +1,36 @@
 import { client } from '../../../../Client.js';
 import { Assignment } from '../../../../Resources/Assignments.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
+
+type getSearchParameters = {
+  /**
+   * Associations to include with the assignment. The "assignment_visibility"
+   * option requires that the Differentiated Assignments course feature be
+   * turned on. If "observed_users" is passed, submissions for observed users
+   * will also be included. For "score_statistics" to be included, the
+   * "submission" option must also be set.
+   */
+  include: string[];
+  /** Apply assignment overrides to the assignment, defaults to true. */
+  override_assignment_dates: boolean;
+  /**
+   * Split up "needs_grading_count" by sections into the
+   * "needs_grading_count_by_section" key, defaults to false
+   */
+  needs_grading_count_by_section: boolean;
+  /** All dates associated with the assignment, if applicable */
+  all_dates: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -14,9 +40,13 @@ type Options = {
  *
  * Nickname: get_single_assignment
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams, searchParams }: Options) {
   return await client().fetchAs<Assignment>(
     `/v1/courses/{course_id}/assignments/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

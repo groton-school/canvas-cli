@@ -1,12 +1,20 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type validate_quiz_access_codePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
+
+type validate_quiz_access_codeFormParameters = {
   /** The access code being validated */
   access_code: string;
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: validate_quiz_access_codePathParameters;
+  params?: validate_quiz_access_codeFormParameters;
 };
 
 /**
@@ -17,9 +25,16 @@ type Options = {
  *
  * Nickname: validate_quiz_access_code
  */
-export async function validate_quiz_access_code({ parameters }: Options) {
+export async function validate_quiz_access_code({
+  pathParams,
+  params
+}: Options) {
   return await client().fetchAs<boolean>(
     `/v1/courses/{course_id}/quizzes/{id}/validate_access_code`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

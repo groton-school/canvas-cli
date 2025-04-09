@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type Parameters = {};
+type show_observerPathParameters = {
+  /** ID */
+  user_id: string;
+  /** ID */
+  observer_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_observerPathParameters;
 };
 
 /**
@@ -16,9 +21,12 @@ type Options = {
  *
  * Nickname: show_observer
  */
-export async function show_observer({ parameters }: Options) {
+export async function show_observer({ pathParams }: Options) {
   return await client().fetchAs<User>(
     `/v1/users/{user_id}/observers/{observer_id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

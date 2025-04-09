@@ -1,6 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type unflagging_questionPathParameters = {
+  /** ID */
+  quiz_submission_id: string;
+  /** ID */
+  id: string;
+};
+
+type unflagging_questionFormParameters = {
   /**
    * The attempt number of the quiz submission being taken. Note that this
    * must be the latest attempt index, as questions for earlier attempts can
@@ -19,7 +26,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: unflagging_questionPathParameters;
+  params?: unflagging_questionFormParameters;
 };
 
 /**
@@ -30,9 +38,13 @@ type Options = {
  *
  * Nickname: unflagging_question
  */
-export async function unflagging_question({ parameters }: Options) {
+export async function unflagging_question({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/quiz_submissions/{quiz_submission_id}/questions/{id}/unflag`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

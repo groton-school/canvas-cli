@@ -1,10 +1,13 @@
 import { client } from '../../../Client.js';
 import { PlannerNote } from '../../../Resources/Planner.js';
 
-type Parameters = {};
+type delete_planner_notePathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_planner_notePathParameters;
 };
 
 /**
@@ -14,9 +17,9 @@ type Options = {
  *
  * Nickname: delete_planner_note
  */
-export async function delete_planner_note({ parameters }: Options) {
+export async function delete_planner_note({ pathParams }: Options) {
   return await client().fetchAs<PlannerNote>(`/v1/planner_notes/{id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams
   });
 }

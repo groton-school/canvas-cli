@@ -1,9 +1,12 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type abort_all_pending_sis_importsPathParameters = {
+  /** ID */
+  account_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: abort_all_pending_sis_importsPathParameters;
 };
 
 /**
@@ -13,9 +16,12 @@ type Options = {
  *
  * Nickname: abort_all_pending_sis_imports
  */
-export async function abort_all_pending_sis_imports({ parameters }: Options) {
+export async function abort_all_pending_sis_imports({ pathParams }: Options) {
   return await client().fetchAs<boolean>(
     `/v1/accounts/{account_id}/sis_imports/abort_all_pending`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

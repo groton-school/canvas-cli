@@ -1,9 +1,22 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type permissionsPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type permissionsSearchParameters = {
+  /**
+   * List of permissions to check against the authenticated user. Permission
+   * names are documented in the {api:RoleOverridesController#add_role Create
+   * a role} endpoint.
+   */
+  permissions: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: permissionsPathParameters;
+  searchParams?: permissionsSearchParameters;
 };
 
 /**
@@ -19,9 +32,10 @@ type Options = {
  *
  * Nickname: permissions
  */
-export async function permissions({ parameters }: Options) {
+export async function permissions({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(`/v1/accounts/{account_id}/permissions`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

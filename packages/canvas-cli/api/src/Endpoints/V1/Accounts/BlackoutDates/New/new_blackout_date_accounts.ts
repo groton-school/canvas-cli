@@ -1,10 +1,13 @@
 import { client } from '../../../../../Client.js';
 import { BlackoutDate } from '../../../../../Resources/BlackoutDates.js';
 
-type Parameters = {};
+type new_blackout_date_accountsPathParameters = {
+  /** ID */
+  account_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: new_blackout_date_accountsPathParameters;
 };
 
 /**
@@ -14,9 +17,12 @@ type Options = {
  *
  * Nickname: new_blackout_date_accounts
  */
-export async function new_blackout_date_accounts({ parameters }: Options) {
+export async function new_blackout_date_accounts({ pathParams }: Options) {
   return await client().fetchAs<BlackoutDate>(
     `/v1/accounts/{account_id}/blackout_dates/new`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

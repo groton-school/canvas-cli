@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type Parameters = {};
+type merge_user_into_another_user_destination_user_idPathParameters = {
+  /** ID */
+  id: string;
+  /** ID */
+  destination_user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: merge_user_into_another_user_destination_user_idPathParameters;
 };
 
 /**
@@ -66,10 +71,13 @@ type Options = {
  * Nickname: merge_user_into_another_user_destination_user_id
  */
 export async function merge_user_into_another_user_destination_user_id({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<User>(
     `/v1/users/{id}/merge_into/{destination_user_id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

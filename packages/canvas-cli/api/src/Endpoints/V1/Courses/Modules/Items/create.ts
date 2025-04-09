@@ -1,7 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { ModuleItem } from '../../../../../Resources/CoursePace.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  module_id: string;
+};
+
+type createFormParameters = {
   /** The name of the module item and associated content */
   'module_item[title]': string;
   /** The type of content linked to the item */
@@ -68,7 +75,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -78,9 +86,13 @@ type Options = {
  *
  * Nickname: create_module_item
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<ModuleItem>(
     `/v1/courses/{course_id}/modules/{module_id}/items`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

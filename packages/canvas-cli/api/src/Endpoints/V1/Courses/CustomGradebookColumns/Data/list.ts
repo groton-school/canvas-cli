@@ -1,10 +1,24 @@
 import { client } from '../../../../../Client.js';
 import { ColumnDatum } from '../../../../../Resources/CustomGradebookColumns.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * If true, hidden columns will be included in the result. If false or
+   * absent, only visible columns will be returned.
+   */
+  include_hidden: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -14,9 +28,13 @@ type Options = {
  *
  * Nickname: list_entries_for_column
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/courses/{course_id}/custom_gradebook_columns/{id}/data`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

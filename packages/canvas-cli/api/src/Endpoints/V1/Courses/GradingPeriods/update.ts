@@ -1,7 +1,14 @@
 import { Date } from '';
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /** The date the grading period starts. */
   'grading_periods[start_date]': string[];
   /** No description */
@@ -17,7 +24,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -27,9 +35,13 @@ type Options = {
  *
  * Nickname: update_single_grading_period
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/grading_periods/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

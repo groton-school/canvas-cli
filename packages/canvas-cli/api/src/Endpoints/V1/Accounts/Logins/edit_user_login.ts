@@ -1,6 +1,13 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type edit_user_loginPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
+
+type edit_user_loginFormParameters = {
   /** The new unique ID for the login. */
   'login[unique_id]': string;
   /**
@@ -56,7 +63,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: edit_user_loginPathParameters;
+  params?: edit_user_loginFormParameters;
 };
 
 /**
@@ -66,9 +74,10 @@ type Options = {
  *
  * Nickname: edit_user_login
  */
-export async function edit_user_login({ parameters }: Options) {
+export async function edit_user_login({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/accounts/{account_id}/logins/{id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

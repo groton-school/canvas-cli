@@ -1,9 +1,24 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {};
+type delete_calendar_eventPathParameters = {
+  /** ID */
+  id: string;
+};
+
+type delete_calendar_eventSearchParameters = {
+  /** Reason for deleting/canceling the event. */
+  cancel_reason: string;
+  /**
+   * Valid if the event whose ID is in the URL is part of a series. Delete
+   * just the event whose ID is in in the URL, all events in the series, or
+   * the given event and all those following.
+   */
+  which: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_calendar_eventPathParameters;
+  searchParams?: delete_calendar_eventSearchParameters;
 };
 
 /**
@@ -13,9 +28,13 @@ type Options = {
  *
  * Nickname: delete_calendar_event
  */
-export async function delete_calendar_event({ parameters }: Options) {
+export async function delete_calendar_event({
+  pathParams,
+  searchParams
+}: Options) {
   return await client().fetchAs<void>(`/v1/calendar_events/{id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

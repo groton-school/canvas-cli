@@ -1,9 +1,15 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {};
+type activity_stream_summarySearchParameters = {
+  /**
+   * If true, will only return objects for courses the user is actively
+   * participating in
+   */
+  only_active_courses: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  searchParams?: activity_stream_summarySearchParameters;
 };
 
 /**
@@ -13,9 +19,12 @@ type Options = {
  *
  * Nickname: activity_stream_summary
  */
-export async function activity_stream_summary({ parameters }: Options) {
+export async function activity_stream_summary({ searchParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/users/self/activity_stream/summary`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      searchParams
+    }
   );
 }

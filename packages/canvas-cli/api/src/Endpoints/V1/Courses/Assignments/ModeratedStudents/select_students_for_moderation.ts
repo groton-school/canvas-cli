@@ -1,13 +1,21 @@
 import { client } from '../../../../../Client.js';
 import { User } from '../../../../../Resources/Users.js';
 
-type Parameters = {
+type select_students_for_moderationPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  assignment_id: string;
+};
+
+type select_students_for_moderationFormParameters = {
   /** User ids for students to select for moderation */
   student_ids: string[];
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: select_students_for_moderationPathParameters;
+  params?: select_students_for_moderationFormParameters;
 };
 
 /**
@@ -17,9 +25,16 @@ type Options = {
  *
  * Nickname: select_students_for_moderation
  */
-export async function select_students_for_moderation({ parameters }: Options) {
+export async function select_students_for_moderation({
+  pathParams,
+  params
+}: Options) {
   return await client().fetchAs<string[]>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/moderated_students`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

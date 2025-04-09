@@ -1,10 +1,19 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  user_id: string;
+};
+
+type listSearchParameters = {
+  /** - "avatar_url": Optionally include avatar_url. */
+  include: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -22,9 +31,10 @@ type Options = {
  *
  * Nickname: list_observees
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/users/{user_id}/observees`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

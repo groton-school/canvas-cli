@@ -1,10 +1,22 @@
 import { client } from '../../../../Client.js';
 import { ePortfolio } from '../../../../Resources/EPortfolios.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  user_id: string;
+};
+
+type getSearchParameters = {
+  /**
+   * Deleted:: Include deleted ePortfolios. Only available to admins who can
+   * moderate_user_content.
+   */
+  include: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -14,9 +26,10 @@ type Options = {
  *
  * Nickname: get_all_eportfolios_for_user
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/users/{user_id}/eportfolios`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

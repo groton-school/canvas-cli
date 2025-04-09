@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { Quiz } from '../../../../Resources/Quizzes.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -14,9 +19,9 @@ type Options = {
  *
  * Nickname: get_single_quiz
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<Quiz>(`/v1/courses/{course_id}/quizzes/{id}`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

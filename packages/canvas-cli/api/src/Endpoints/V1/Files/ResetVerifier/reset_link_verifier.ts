@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { File } from '../../../../Resources/Files.js';
 
-type Parameters = {};
+type reset_link_verifierPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: reset_link_verifierPathParameters;
 };
 
 /**
@@ -17,9 +20,9 @@ type Options = {
  *
  * Nickname: reset_link_verifier
  */
-export async function reset_link_verifier({ parameters }: Options) {
+export async function reset_link_verifier({ pathParams }: Options) {
   return await client().fetchAs<File>(`/v1/files/{id}/reset_verifier`, {
     method: 'POST',
-    params: parameters
+    pathParams
   });
 }

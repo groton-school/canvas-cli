@@ -1,10 +1,6 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * Get the brand config variables that should be used for this domain
@@ -16,9 +12,8 @@ type Options = {
  *
  * Nickname: get_brand_config_variables_that_should_be_used_for_this_domain
  */
-export async function get({ parameters }: Options) {
+export async function get({}: Options) {
   return await client().fetchAs<void>(`/v1/brand_variables`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

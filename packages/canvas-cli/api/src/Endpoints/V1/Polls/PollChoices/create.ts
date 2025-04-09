@@ -1,6 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  poll_id: string;
+};
+
+type createFormParameters = {
   /** The descriptive text of the poll choice. */
   'poll_choices[text]': string[];
   /** Whether this poll choice is considered correct or not. Defaults to false. */
@@ -15,7 +20,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -25,9 +31,10 @@ type Options = {
  *
  * Nickname: create_single_poll_choice
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/polls/{poll_id}/poll_choices`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

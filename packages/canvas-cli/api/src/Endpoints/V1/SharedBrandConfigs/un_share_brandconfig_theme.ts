@@ -1,10 +1,13 @@
 import { client } from '../../../Client.js';
 import { SharedBrandConfig } from '../../../Resources/SharedBrandConfigs.js';
 
-type Parameters = {};
+type un_share_brandconfig_themePathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: un_share_brandconfig_themePathParameters;
 };
 
 /**
@@ -15,9 +18,12 @@ type Options = {
  *
  * Nickname: un_share_brandconfig_theme
  */
-export async function un_share_brandconfig_theme({ parameters }: Options) {
+export async function un_share_brandconfig_theme({ pathParams }: Options) {
   return await client().fetchAs<SharedBrandConfig>(
     `/v1/shared_brand_configs/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

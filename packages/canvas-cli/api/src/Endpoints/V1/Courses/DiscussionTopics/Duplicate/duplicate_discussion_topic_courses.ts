@@ -1,10 +1,15 @@
 import { client } from '../../../../../Client.js';
 import { DiscussionTopic } from '../../../../../Resources/DiscussionTopics.js';
 
-type Parameters = {};
+type duplicate_discussion_topic_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  topic_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: duplicate_discussion_topic_coursesPathParameters;
 };
 
 /**
@@ -15,10 +20,13 @@ type Options = {
  * Nickname: duplicate_discussion_topic_courses
  */
 export async function duplicate_discussion_topic_courses({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<DiscussionTopic>(
     `/v1/courses/{course_id}/discussion_topics/{topic_id}/duplicate`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

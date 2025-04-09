@@ -1,7 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { Progress } from '../../../../../Resources/CoursePace.js';
 
-type Parameters = {
+type restore_workflow_states_of_sis_imported_itemsPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
+
+type restore_workflow_states_of_sis_imported_itemsFormParameters = {
   /** If set, will only restore items that were deleted from batch_mode. */
   batch_mode: boolean;
   /**
@@ -17,7 +24,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: restore_workflow_states_of_sis_imported_itemsPathParameters;
+  params?: restore_workflow_states_of_sis_imported_itemsFormParameters;
 };
 
 /**
@@ -38,10 +46,15 @@ type Options = {
  * Nickname: restore_workflow_states_of_sis_imported_items
  */
 export async function restore_workflow_states_of_sis_imported_items({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<Progress>(
     `/v1/accounts/{account_id}/sis_imports/{id}/restore_states`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

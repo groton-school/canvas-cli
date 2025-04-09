@@ -1,11 +1,7 @@
 import { client } from '../../../Client.js';
 import { Account } from '../../../Resources/Accounts.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * List accounts for course admins
@@ -17,9 +13,8 @@ type Options = {
  *
  * Nickname: list_accounts_for_course_admins
  */
-export async function list({ parameters }: Options) {
+export async function list({}: Options) {
   return await client().fetchAs<string[]>(`/v1/course_accounts`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

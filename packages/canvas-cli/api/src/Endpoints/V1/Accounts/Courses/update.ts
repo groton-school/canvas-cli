@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type updateFormParameters = {
   /**
    * List of ids of courses to update. At most 500 courses may be updated in
    * one call.
@@ -25,7 +30,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -37,9 +43,10 @@ type Options = {
  *
  * Nickname: update_courses
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<Progress>(`/v1/accounts/{account_id}/courses`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

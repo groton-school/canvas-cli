@@ -1,7 +1,14 @@
 import { client } from '../../../../Client.js';
 import { GroupMembership } from '../../../../Resources/Groups.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  group_id: string;
+  /** ID */
+  user_id: string;
+};
+
+type updateFormParameters = {
   /** Currently, the only allowed value is "accepted" */
   workflow_state: string;
   /** No description */
@@ -9,7 +16,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -19,9 +27,13 @@ type Options = {
  *
  * Nickname: update_membership_users
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<GroupMembership>(
     `/v1/groups/{group_id}/users/{user_id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

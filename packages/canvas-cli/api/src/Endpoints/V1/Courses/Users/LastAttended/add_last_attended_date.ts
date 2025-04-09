@@ -1,7 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { Enrollment } from '../../../../../Resources/Enrollments.js';
 
-type Parameters = {
+type add_last_attended_datePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  user_id: string;
+};
+
+type add_last_attended_dateFormParameters = {
   /**
    * The last attended date of a student enrollment in a course.
    *
@@ -11,7 +18,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: add_last_attended_datePathParameters;
+  params?: add_last_attended_dateFormParameters;
 };
 
 /**
@@ -21,9 +29,13 @@ type Options = {
  *
  * Nickname: add_last_attended_date
  */
-export async function add_last_attended_date({ parameters }: Options) {
+export async function add_last_attended_date({ pathParams, params }: Options) {
   return await client().fetchAs<Enrollment>(
     `/v1/courses/{course_id}/users/{user_id}/last_attended`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

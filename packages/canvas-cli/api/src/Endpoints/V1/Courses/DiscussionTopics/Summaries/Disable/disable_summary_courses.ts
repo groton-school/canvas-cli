@@ -1,9 +1,14 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {};
+type disable_summary_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  topic_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: disable_summary_coursesPathParameters;
 };
 
 /**
@@ -13,9 +18,12 @@ type Options = {
  *
  * Nickname: disable_summary_courses
  */
-export async function disable_summary_courses({ parameters }: Options) {
+export async function disable_summary_courses({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/discussion_topics/{topic_id}/summaries/disable`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

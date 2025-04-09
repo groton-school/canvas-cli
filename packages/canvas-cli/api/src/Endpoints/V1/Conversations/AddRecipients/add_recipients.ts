@@ -1,6 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type add_recipientsPathParameters = {
+  /** ID */
+  id: string;
+};
+
+type add_recipientsFormParameters = {
   /**
    * An array of recipient ids. These may be user ids or course/group ids
    * prefixed with "course_" or "group_" respectively, e.g.
@@ -10,7 +15,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: add_recipientsPathParameters;
+  params?: add_recipientsFormParameters;
 };
 
 /**
@@ -22,9 +28,10 @@ type Options = {
  *
  * Nickname: add_recipients
  */
-export async function add_recipients({ parameters }: Options) {
+export async function add_recipients({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/conversations/{id}/add_recipients`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

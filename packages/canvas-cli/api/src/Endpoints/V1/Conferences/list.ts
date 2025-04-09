@@ -1,10 +1,17 @@
 import { client } from '../../../Client.js';
 import { Conference } from '../../../Resources/Conferences.js';
 
-type Parameters = {};
+type listSearchParameters = {
+  /**
+   * If set to "live", returns only conferences that are live (i.e., have
+   * started and not finished yet). If omitted, returns all conferences for
+   * this user's groups and courses.
+   */
+  state: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -18,9 +25,9 @@ type Options = {
  *
  * Nickname: list_conferences_for_current_user
  */
-export async function list({ parameters }: Options) {
+export async function list({ searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/conferences`, {
     method: 'GET',
-    params: parameters
+    searchParams
   });
 }

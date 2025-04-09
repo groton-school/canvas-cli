@@ -1,12 +1,18 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type moderate_all_eportfolios_for_userPathParameters = {
+  /** ID */
+  user_id: string;
+};
+
+type moderate_all_eportfolios_for_userFormParameters = {
   /** The spam status for all the ePortfolios */
   spam_status: string;
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: moderate_all_eportfolios_for_userPathParameters;
+  params?: moderate_all_eportfolios_for_userFormParameters;
 };
 
 /**
@@ -18,10 +24,12 @@ type Options = {
  * Nickname: moderate_all_eportfolios_for_user
  */
 export async function moderate_all_eportfolios_for_user({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<void>(`/v1/users/{user_id}/eportfolios`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

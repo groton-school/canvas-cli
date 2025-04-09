@@ -1,6 +1,15 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {
+type mark_entry_as_read_groupsPathParameters = {
+  /** ID */
+  group_id: string;
+  /** ID */
+  topic_id: string;
+  /** ID */
+  entry_id: string;
+};
+
+type mark_entry_as_read_groupsFormParameters = {
   /**
    * A boolean value to set the entry's forced_read_state. No change is made
    * if this argument is not specified.
@@ -9,7 +18,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: mark_entry_as_read_groupsPathParameters;
+  params?: mark_entry_as_read_groupsFormParameters;
 };
 
 /**
@@ -23,9 +33,16 @@ type Options = {
  *
  * Nickname: mark_entry_as_read_groups
  */
-export async function mark_entry_as_read_groups({ parameters }: Options) {
+export async function mark_entry_as_read_groups({
+  pathParams,
+  params
+}: Options) {
   return await client().fetchAs<void>(
     `/v1/groups/{group_id}/discussion_topics/{topic_id}/entries/{entry_id}/read`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

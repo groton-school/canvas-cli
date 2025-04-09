@@ -1,7 +1,14 @@
 import { client } from '../../../../Client.js';
 import { BlackoutDate } from '../../../../Resources/BlackoutDates.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /**
    * The start date of the blackout date.
    *
@@ -19,7 +26,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -29,9 +37,13 @@ type Options = {
  *
  * Nickname: update_blackout_date_accounts
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<BlackoutDate>(
     `/v1/accounts/{account_id}/blackout_dates/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

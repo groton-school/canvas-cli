@@ -1,10 +1,17 @@
 import { client } from '../../../../../Client.js';
 import { RubricAssessment } from '../../../../../Resources/Rubrics.js';
 
-type Parameters = {};
+type delete_single_rubric_assessmentPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  rubric_association_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_single_rubric_assessmentPathParameters;
 };
 
 /**
@@ -14,9 +21,12 @@ type Options = {
  *
  * Nickname: delete_single_rubric_assessment
  */
-export async function delete_single_rubric_assessment({ parameters }: Options) {
+export async function delete_single_rubric_assessment({ pathParams }: Options) {
   return await client().fetchAs<RubricAssessment>(
     `/v1/courses/{course_id}/rubric_associations/{rubric_association_id}/rubric_assessments/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

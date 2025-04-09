@@ -1,9 +1,17 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type abort_generation_of_report_or_remove_previously_generated_onePathParameters =
+  {
+    /** ID */
+    course_id: string;
+    /** ID */
+    quiz_id: string;
+    /** ID */
+    id: string;
+  };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: abort_generation_of_report_or_remove_previously_generated_onePathParameters;
 };
 
 /**
@@ -28,10 +36,13 @@ type Options = {
  * Nickname: abort_generation_of_report_or_remove_previously_generated_one
  */
 export async function abort_generation_of_report_or_remove_previously_generated_one({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/reports/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

@@ -1,10 +1,13 @@
 import { unread_countinteger } from '';
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -17,9 +20,12 @@ type Options = {
  *
  * Nickname: get_unread_shares_count
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<unread_countinteger>(
     `/v1/users/{user_id}/content_shares/unread_count`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

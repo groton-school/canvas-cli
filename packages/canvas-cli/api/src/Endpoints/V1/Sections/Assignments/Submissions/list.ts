@@ -1,10 +1,26 @@
 import { client } from '../../../../../Client.js';
 import { Submission } from '../../../../../Resources/Submissions.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  section_id: string;
+  /** ID */
+  assignment_id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * Associations to include with the group. "group" will add group_id and
+   * group_name.
+   */
+  include: string[];
+  /** If this argument is true, the response will be grouped by student groups. */
+  grouped: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -14,9 +30,13 @@ type Options = {
  *
  * Nickname: list_assignment_submissions_sections
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/sections/{section_id}/assignments/{assignment_id}/submissions`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

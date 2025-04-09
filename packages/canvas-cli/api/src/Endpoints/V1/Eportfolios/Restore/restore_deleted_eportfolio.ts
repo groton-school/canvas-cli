@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { ePortfolio } from '../../../../Resources/EPortfolios.js';
 
-type Parameters = {};
+type restore_deleted_eportfolioPathParameters = {
+  /** ID */
+  eportfolio_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: restore_deleted_eportfolioPathParameters;
 };
 
 /**
@@ -15,9 +18,12 @@ type Options = {
  *
  * Nickname: restore_deleted_eportfolio
  */
-export async function restore_deleted_eportfolio({ parameters }: Options) {
+export async function restore_deleted_eportfolio({ pathParams }: Options) {
   return await client().fetchAs<ePortfolio>(
     `/v1/eportfolios/{eportfolio_id}/restore`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

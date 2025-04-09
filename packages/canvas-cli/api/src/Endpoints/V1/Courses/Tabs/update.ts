@@ -1,7 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Tab } from '../../../../Resources/Tabs.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  tab_id: string;
+};
+
+type updateFormParameters = {
   /**
    * The new position of the tab, 1-based
    *
@@ -13,7 +20,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -25,9 +33,10 @@ type Options = {
  *
  * Nickname: update_tab_for_course
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<Tab>(`/v1/courses/{course_id}/tabs/{tab_id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

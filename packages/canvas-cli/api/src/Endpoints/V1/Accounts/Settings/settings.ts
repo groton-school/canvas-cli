@@ -1,9 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type settingsPathParameters = {
+  /** ID */
+  account_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: settingsPathParameters;
 };
 
 /**
@@ -16,9 +19,9 @@ type Options = {
  *
  * Nickname: settings
  */
-export async function settings({ parameters }: Options) {
+export async function settings({ pathParams }: Options) {
   return await client().fetchAs<void>(`/v1/accounts/{account_id}/settings`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type Parameters = {
+type add_observee_with_credentialsPathParameters = {
+  /** ID */
+  user_id: string;
+};
+
+type add_observee_with_credentialsFormParameters = {
   /**
    * The login id for the user to observe. Required if access_token is
    * omitted.
@@ -34,7 +39,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: add_observee_with_credentialsPathParameters;
+  params?: add_observee_with_credentialsFormParameters;
 };
 
 /**
@@ -50,9 +56,13 @@ type Options = {
  *
  * Nickname: add_observee_with_credentials
  */
-export async function add_observee_with_credentials({ parameters }: Options) {
+export async function add_observee_with_credentials({
+  pathParams,
+  params
+}: Options) {
   return await client().fetchAs<User>(`/v1/users/{user_id}/observees`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

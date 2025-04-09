@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { ExternalFeed } from '../../../../Resources/AnnouncementExternalFeeds.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  group_id: string;
+};
+
+type createFormParameters = {
   /** The url to the external rss or atom feed */
   url: string;
   /**
@@ -14,7 +19,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -24,9 +30,13 @@ type Options = {
  *
  * Nickname: create_external_feed_groups
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<ExternalFeed>(
     `/v1/groups/{group_id}/external_feeds`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

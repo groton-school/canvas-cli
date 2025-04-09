@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { CustomColumn } from '../../../../Resources/CustomGradebookColumns.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type createFormParameters = {
   /** No description */
   'column[title]': string;
   /**
@@ -22,7 +27,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -32,9 +38,13 @@ type Options = {
  *
  * Nickname: create_custom_gradebook_column
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<CustomColumn>(
     `/v1/courses/{course_id}/custom_gradebook_columns`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

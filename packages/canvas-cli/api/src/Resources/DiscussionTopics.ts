@@ -3,13 +3,9 @@ import { LockInfo } from './Assignments.js';
 
 /** A file attachment */
 export type FileAttachment = {
-  /** A file attachment */
   'content-type': string;
-  /** A file attachment */
   url: string;
-  /** A file attachment */
   filename: string;
-  /** A file attachment */
   display_name: string;
 };
 

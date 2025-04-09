@@ -1,10 +1,52 @@
 import { client } from '../../../../Client.js';
 import { File } from '../../../../Resources/Files.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * Filter results by content-type. You can specify type/subtype pairs (e.g.,
+   * 'image/jpeg'), or simply types (e.g., 'image', which will match
+   * 'image/gif', 'image/jpeg', etc.).
+   */
+  content_types: string[];
+  /**
+   * Exclude given content-types from your results. You can specify
+   * type/subtype pairs (e.g., 'image/jpeg'), or simply types (e.g., 'image',
+   * which will match 'image/gif', 'image/jpeg', etc.).
+   */
+  exclude_content_types: string[];
+  /** The partial name of the files to match and return. */
+  search_term: string;
+  /**
+   * Array of additional information to include.
+   *
+   * "user":: the user who uploaded the file or last edited its content
+   * "usage_rights":: copyright and license information for the file (see
+   * UsageRights)
+   */
+  include: string[];
+  /**
+   * Array of information to restrict to. Overrides include[]
+   *
+   * "names":: only returns file name information
+   */
+  only: string[];
+  /**
+   * Sort results by this field. Defaults to 'name'. Note that `sort=user`
+   * implies `include[]=user`.
+   */
+  sort: string;
+  /** The sorting order. Defaults to 'asc'. */
+  order: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -14,9 +56,10 @@ type Options = {
  *
  * Nickname: list_files_courses
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/courses/{course_id}/files`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

@@ -1,9 +1,12 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {};
+type show_single_webhook_subscriptionPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_single_webhook_subscriptionPathParameters;
 };
 
 /**
@@ -12,10 +15,10 @@ type Options = {
  * Nickname: show_single_webhook_subscription
  */
 export async function show_single_webhook_subscription({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<void>(`/lti/subscriptions/{id}`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

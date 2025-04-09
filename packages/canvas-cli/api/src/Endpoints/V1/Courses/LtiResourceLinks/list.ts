@@ -1,10 +1,28 @@
 import { client } from '../../../../Client.js';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * Include deleted resource links and links associated with deleted content
+   * in response. Default is false.
+   */
+  include_deleted: boolean;
+  /**
+   * The number of registrations to return per page. Defaults to 50.
+   *
+   * Format: 'int64'
+   */
+  per_page: number;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -18,9 +36,13 @@ type Options = {
  *
  * Nickname: list_lti_resource_links
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/courses/{course_id}/lti_resource_links`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

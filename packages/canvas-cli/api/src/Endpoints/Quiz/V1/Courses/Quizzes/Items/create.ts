@@ -2,7 +2,22 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../../../Client.js';
 import { QuizItem } from '../../../../../../Resources/NewQuizItems.js';
 
-type Parameters = {
+type createPathParameters = {
+  /**
+   * No description
+   *
+   * Format: 'int64'
+   */
+  course_id: number;
+  /**
+   * The id of the assignment associated with the quiz.
+   *
+   * Format: 'int64'
+   */
+  assignment_id: number;
+};
+
+type createFormParameters = {
   /**
    * The position of the item within the quiz.
    *
@@ -72,7 +87,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -82,9 +98,13 @@ type Options = {
  *
  * Nickname: create_quiz_item
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<QuizItem>(
     `/quiz/v1/courses/{course_id}/quizzes/{assignment_id}/items`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

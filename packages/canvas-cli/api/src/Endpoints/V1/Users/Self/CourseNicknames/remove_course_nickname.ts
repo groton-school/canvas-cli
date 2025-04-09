@@ -1,10 +1,13 @@
 import { client } from '../../../../../Client.js';
 import { CourseNickname } from '../../../../../Resources/Users.js';
 
-type Parameters = {};
+type remove_course_nicknamePathParameters = {
+  /** ID */
+  course_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: remove_course_nicknamePathParameters;
 };
 
 /**
@@ -15,9 +18,12 @@ type Options = {
  *
  * Nickname: remove_course_nickname
  */
-export async function remove_course_nickname({ parameters }: Options) {
+export async function remove_course_nickname({ pathParams }: Options) {
   return await client().fetchAs<CourseNickname>(
     `/v1/users/self/course_nicknames/{course_id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

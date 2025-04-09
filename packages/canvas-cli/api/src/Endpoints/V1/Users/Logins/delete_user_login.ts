@@ -1,9 +1,14 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type delete_user_loginPathParameters = {
+  /** ID */
+  user_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_user_loginPathParameters;
 };
 
 /**
@@ -13,9 +18,9 @@ type Options = {
  *
  * Nickname: delete_user_login
  */
-export async function delete_user_login({ parameters }: Options) {
+export async function delete_user_login({ pathParams }: Options) {
   return await client().fetchAs<void>(`/v1/users/{user_id}/logins/{id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams
   });
 }

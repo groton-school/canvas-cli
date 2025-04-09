@@ -1,10 +1,28 @@
 import { client } from '../../../../Client.js';
 import { AccountCalendar } from '../../../../Resources/AccountCalendars.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * When included, searches all descendent accounts of provided account for
+   * the term. Returns matching results. Term must be at least 2 characters.
+   * Can be combined with a filter value.
+   */
+  search_term: string;
+  /**
+   * When included, only returns calendars that are either visible or hidden.
+   * Can be combined with a search term.
+   */
+  filter: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -16,9 +34,13 @@ type Options = {
  *
  * Nickname: list_all_account_calendars
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/accounts/{account_id}/account_calendars`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

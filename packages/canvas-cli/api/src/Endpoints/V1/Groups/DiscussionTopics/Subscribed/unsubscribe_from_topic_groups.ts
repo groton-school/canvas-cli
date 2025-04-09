@@ -1,9 +1,14 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type unsubscribe_from_topic_groupsPathParameters = {
+  /** ID */
+  group_id: string;
+  /** ID */
+  topic_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: unsubscribe_from_topic_groupsPathParameters;
 };
 
 /**
@@ -15,9 +20,12 @@ type Options = {
  *
  * Nickname: unsubscribe_from_topic_groups
  */
-export async function unsubscribe_from_topic_groups({ parameters }: Options) {
+export async function unsubscribe_from_topic_groups({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/groups/{group_id}/discussion_topics/{topic_id}/subscribed`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

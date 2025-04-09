@@ -1,6 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  context_module_id: string;
+};
+
+type updateFormParameters = {
   /**
    * List of overrides to apply to the module. Overrides that already exist
    * should include an ID and will be updated if needed. New overrides will be
@@ -14,7 +21,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -25,9 +33,13 @@ type Options = {
  *
  * Nickname: update_module_s_overrides
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/modules/{context_module_id}/assignment_overrides`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

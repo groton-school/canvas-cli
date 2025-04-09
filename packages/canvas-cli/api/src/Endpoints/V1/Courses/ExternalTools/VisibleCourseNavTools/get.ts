@@ -1,9 +1,12 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -18,9 +21,12 @@ type Options = {
  *
  * Nickname: get_visible_course_navigation_tools_for_single_course
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/external_tools/visible_course_nav_tools`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

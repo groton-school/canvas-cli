@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { ContentExport } from '../../../../Resources/ContentExports.js';
 
-type Parameters = {};
+type show_content_export_usersPathParameters = {
+  /** ID */
+  user_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_content_export_usersPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: show_content_export_users
  */
-export async function show_content_export_users({ parameters }: Options) {
+export async function show_content_export_users({ pathParams }: Options) {
   return await client().fetchAs<ContentExport>(
     `/v1/users/{user_id}/content_exports/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

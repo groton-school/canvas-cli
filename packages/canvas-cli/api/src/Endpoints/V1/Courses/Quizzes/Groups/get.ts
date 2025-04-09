@@ -1,10 +1,17 @@
 import { client } from '../../../../../Client.js';
 import { QuizGroup } from '../../../../../Resources/QuizQuestionGroups.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  quiz_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -14,9 +21,12 @@ type Options = {
  *
  * Nickname: get_single_quiz_group
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<QuizGroup>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/groups/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

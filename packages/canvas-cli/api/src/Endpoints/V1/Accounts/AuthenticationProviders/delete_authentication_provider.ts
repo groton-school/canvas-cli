@@ -1,9 +1,14 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type delete_authentication_providerPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_authentication_providerPathParameters;
 };
 
 /**
@@ -13,9 +18,12 @@ type Options = {
  *
  * Nickname: delete_authentication_provider
  */
-export async function delete_authentication_provider({ parameters }: Options) {
+export async function delete_authentication_provider({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/accounts/{account_id}/authentication_providers/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

@@ -1,9 +1,14 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type redirect_to_assignment_override_for_groupPathParameters = {
+  /** ID */
+  group_id: string;
+  /** ID */
+  assignment_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: redirect_to_assignment_override_for_groupPathParameters;
 };
 
 /**
@@ -15,10 +20,13 @@ type Options = {
  * Nickname: redirect_to_assignment_override_for_group
  */
 export async function redirect_to_assignment_override_for_group({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/groups/{group_id}/assignments/{assignment_id}/override`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

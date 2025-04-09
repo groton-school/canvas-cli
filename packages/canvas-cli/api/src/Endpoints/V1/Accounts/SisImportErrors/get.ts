@@ -1,10 +1,19 @@
 import { client } from '../../../../Client.js';
 import { SisImportError } from '../../../../Resources/SisImportErrors.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type getSearchParameters = {
+  /** If set, only shows errors on a sis import that would cause a failure. */
+  failure: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -23,9 +32,13 @@ type Options = {
  *
  * Nickname: get_sis_import_error_list_sis_import_errors
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/accounts/{account_id}/sis_import_errors`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

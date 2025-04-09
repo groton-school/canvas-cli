@@ -1,10 +1,15 @@
 import { client } from '../../../../../Client.js';
 import { OriginalityReport } from '../../../../../Resources/OriginalityReports.js';
 
-type Parameters = {};
+type show_originality_report_filesPathParameters = {
+  /** ID */
+  assignment_id: string;
+  /** ID */
+  file_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_originality_report_filesPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: show_originality_report_files
  */
-export async function show_originality_report_files({ parameters }: Options) {
+export async function show_originality_report_files({ pathParams }: Options) {
   return await client().fetchAs<OriginalityReport>(
     `/lti/assignments/{assignment_id}/files/{file_id}/originality_report`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

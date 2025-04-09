@@ -1,9 +1,18 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {};
+type delete_appointment_groupPathParameters = {
+  /** ID */
+  id: string;
+};
+
+type delete_appointment_groupSearchParameters = {
+  /** Reason for deleting/canceling the appointment group. */
+  cancel_reason: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_appointment_groupPathParameters;
+  searchParams?: delete_appointment_groupSearchParameters;
 };
 
 /**
@@ -14,9 +23,13 @@ type Options = {
  *
  * Nickname: delete_appointment_group
  */
-export async function delete_appointment_group({ parameters }: Options) {
+export async function delete_appointment_group({
+  pathParams,
+  searchParams
+}: Options) {
   return await client().fetchAs<void>(`/v1/appointment_groups/{id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

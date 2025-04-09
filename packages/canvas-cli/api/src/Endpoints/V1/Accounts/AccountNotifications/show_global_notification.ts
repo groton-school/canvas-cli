@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
-type Parameters = {};
+type show_global_notificationPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_global_notificationPathParameters;
 };
 
 /**
@@ -15,9 +20,12 @@ type Options = {
  *
  * Nickname: show_global_notification
  */
-export async function show_global_notification({ parameters }: Options) {
+export async function show_global_notification({ pathParams }: Options) {
   return await client().fetchAs<AccountNotification>(
     `/v1/accounts/{account_id}/account_notifications/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

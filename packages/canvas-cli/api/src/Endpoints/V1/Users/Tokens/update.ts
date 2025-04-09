@@ -1,6 +1,13 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  user_id: string;
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /** The purpose of the token. */
   'token[purpose]': string;
   /**
@@ -16,7 +23,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -30,9 +38,10 @@ type Options = {
  *
  * Nickname: update_access_token
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/users/{user_id}/tokens/{id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

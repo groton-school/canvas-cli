@@ -1,10 +1,15 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
-type Parameters = {};
+type unlink_outcome_globalPathParameters = {
+  /** ID */
+  id: string;
+  /** ID */
+  outcome_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: unlink_outcome_globalPathParameters;
 };
 
 /**
@@ -17,9 +22,12 @@ type Options = {
  *
  * Nickname: unlink_outcome_global
  */
-export async function unlink_outcome_global({ parameters }: Options) {
+export async function unlink_outcome_global({ pathParams }: Options) {
   return await client().fetchAs<OutcomeLink>(
     `/v1/global/outcome_groups/{id}/outcomes/{outcome_id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

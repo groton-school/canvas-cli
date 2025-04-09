@@ -1,9 +1,12 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {};
+type delete_conversationPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_conversationPathParameters;
 };
 
 /**
@@ -16,9 +19,9 @@ type Options = {
  *
  * Nickname: delete_conversation
  */
-export async function delete_conversation({ parameters }: Options) {
+export async function delete_conversation({ pathParams }: Options) {
   return await client().fetchAs<void>(`/v1/conversations/{id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams
   });
 }

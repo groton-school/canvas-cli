@@ -1,9 +1,16 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  topic_id: string;
+  /** ID */
+  entry_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
 };
 
 /**
@@ -19,9 +26,12 @@ type Options = {
  *
  * Nickname: list_entry_replies_courses
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/discussion_topics/{topic_id}/entries/{entry_id}/replies`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

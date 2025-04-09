@@ -2,7 +2,16 @@ import { Datetime } from '';
 import { client } from '../../../../Client.js';
 import { CoursePace } from '../../../../Resources/CoursePace.js';
 
-type Parameters = {
+type createPathParameters = {
+  /**
+   * The id of the course
+   *
+   * Format: 'int64'
+   */
+  course_id: number;
+};
+
+type createFormParameters = {
   /** End date of the course pace */
   end_date: Datetime;
   /** End date context (course, section, hupothetical) */
@@ -32,7 +41,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -40,9 +50,13 @@ type Options = {
  *
  * Nickname: create_course_pace
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<CoursePace>(
     `/v1/courses/{course_id}/course_pacing`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

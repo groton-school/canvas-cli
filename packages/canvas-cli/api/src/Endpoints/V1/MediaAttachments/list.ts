@@ -1,10 +1,29 @@
 import { client } from '../../../Client.js';
 import { MediaObject } from '../../../Resources/MediaObjects.js';
 
-type Parameters = {};
+type listSearchParameters = {
+  /**
+   * Field to sort on. Default is "title"
+   *
+   * Title:: sorts on user_entered_title if available, title if not.
+   *
+   * Created_at:: sorts on the object's creation time.
+   */
+  sort: string;
+  /** Sort direction. Default is "asc" */
+  order: string;
+  /**
+   * Array of data to exclude. By excluding "sources" and "tracks", the api
+   * will not need to query kaltura, which greatly speeds up its response.
+   *
+   * Sources:: Do not query kaltura for media_sources tracks:: Do not query
+   * kaltura for media_tracks
+   */
+  exclude: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -15,9 +34,9 @@ type Options = {
  *
  * Nickname: list_media_objects_media_attachments
  */
-export async function list({ parameters }: Options) {
+export async function list({ searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/media_attachments`, {
     method: 'GET',
-    params: parameters
+    searchParams
   });
 }

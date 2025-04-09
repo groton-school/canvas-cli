@@ -1,9 +1,16 @@
 import { client } from '../../../../../../../Client.js';
 
-type Parameters = {};
+type mark_rubric_assessments_as_read_sections_rubric_commentsPathParameters = {
+  /** ID */
+  section_id: string;
+  /** ID */
+  assignment_id: string;
+  /** ID */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: mark_rubric_assessments_as_read_sections_rubric_commentsPathParameters;
 };
 
 /**
@@ -19,10 +26,13 @@ type Options = {
  * Nickname: mark_rubric_assessments_as_read_sections_rubric_comments
  */
 export async function mark_rubric_assessments_as_read_sections_rubric_comments({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/rubric_comments/read`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

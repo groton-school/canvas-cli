@@ -1,6 +1,11 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {
+type edit_conversationPathParameters = {
+  /** ID */
+  id: string;
+};
+
+type edit_conversationFormParameters = {
   /** Change the state of this conversation */
   'conversation[workflow_state]': string;
   /**
@@ -31,7 +36,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: edit_conversationPathParameters;
+  params?: edit_conversationFormParameters;
 };
 
 /**
@@ -41,9 +47,10 @@ type Options = {
  *
  * Nickname: edit_conversation
  */
-export async function edit_conversation({ parameters }: Options) {
+export async function edit_conversation({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/conversations/{id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

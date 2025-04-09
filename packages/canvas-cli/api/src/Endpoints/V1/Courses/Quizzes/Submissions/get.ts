@@ -1,9 +1,22 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  quiz_id: string;
+  /** ID */
+  id: string;
+};
+
+type getSearchParameters = {
+  /** Associations to include with the quiz submission. */
+  include: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -15,9 +28,13 @@ type Options = {
  *
  * Nickname: get_single_quiz_submission
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

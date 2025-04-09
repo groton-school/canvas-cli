@@ -1,9 +1,14 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type clear_unread_status_for_all_submissions_sectionsPathParameters = {
+  /** ID */
+  section_id: string;
+  /** ID */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: clear_unread_status_for_all_submissions_sectionsPathParameters;
 };
 
 /**
@@ -18,10 +23,13 @@ type Options = {
  * Nickname: clear_unread_status_for_all_submissions_sections
  */
 export async function clear_unread_status_for_all_submissions_sections({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/sections/{section_id}/submissions/{user_id}/clear_unread`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

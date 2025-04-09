@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { Profile } from '../../../../Resources/Users.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -17,9 +20,9 @@ type Options = {
  *
  * Nickname: get_user_profile
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<Profile>(`/v1/users/{user_id}/profile`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

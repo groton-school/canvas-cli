@@ -1,10 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * Unread count
@@ -13,9 +9,8 @@ type Options = {
  *
  * Nickname: unread_count
  */
-export async function unread_count({ parameters }: Options) {
+export async function unread_count({}: Options) {
   return await client().fetchAs<void>(`/v1/conversations/unread_count`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

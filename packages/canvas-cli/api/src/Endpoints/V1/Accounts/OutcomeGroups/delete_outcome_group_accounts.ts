@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
 
-type Parameters = {};
+type delete_outcome_group_accountsPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_outcome_group_accountsPathParameters;
 };
 
 /**
@@ -20,9 +25,12 @@ type Options = {
  *
  * Nickname: delete_outcome_group_accounts
  */
-export async function delete_outcome_group_accounts({ parameters }: Options) {
+export async function delete_outcome_group_accounts({ pathParams }: Options) {
   return await client().fetchAs<OutcomeGroup>(
     `/v1/accounts/{account_id}/outcome_groups/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

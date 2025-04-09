@@ -1,9 +1,23 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  topic_id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * A list of entry ids to retrieve. Entries will be returned in id order,
+   * smallest id first.
+   */
+  ids: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -17,9 +31,13 @@ type Options = {
  *
  * Nickname: list_entries_courses
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/discussion_topics/{topic_id}/entry_list`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

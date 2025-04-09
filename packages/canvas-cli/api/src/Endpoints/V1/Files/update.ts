@@ -1,7 +1,12 @@
 import { client } from '../../../Client.js';
 import { File } from '../../../Resources/Files.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /** The new display name of the file, with a limit of 255 characters. */
   name: string;
   /**
@@ -40,7 +45,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -50,9 +56,10 @@ type Options = {
  *
  * Nickname: update_file
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<File>(`/v1/files/{id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

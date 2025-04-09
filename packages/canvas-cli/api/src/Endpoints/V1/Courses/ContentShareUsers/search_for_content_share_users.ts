@@ -1,10 +1,22 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type Parameters = {};
+type search_for_content_share_usersPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type search_for_content_share_usersSearchParameters = {
+  /**
+   * Term used to find users. Will search available share users with the
+   * search term in their name.
+   */
+  search_term: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: search_for_content_share_usersPathParameters;
+  searchParams?: search_for_content_share_usersSearchParameters;
 };
 
 /**
@@ -16,9 +28,16 @@ type Options = {
  *
  * Nickname: search_for_content_share_users
  */
-export async function search_for_content_share_users({ parameters }: Options) {
+export async function search_for_content_share_users({
+  pathParams,
+  searchParams
+}: Options) {
   return await client().fetchAs<string[]>(
     `/v1/courses/{course_id}/content_share_users`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

@@ -1,9 +1,12 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type mark_all_topic_as_read_groupsPathParameters = {
+  /** ID */
+  group_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: mark_all_topic_as_read_groupsPathParameters;
 };
 
 /**
@@ -17,9 +20,12 @@ type Options = {
  *
  * Nickname: mark_all_topic_as_read_groups
  */
-export async function mark_all_topic_as_read_groups({ parameters }: Options) {
+export async function mark_all_topic_as_read_groups({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/groups/{group_id}/discussion_topics/read_all`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

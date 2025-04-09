@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { UsageRights } from '../../../../Resources/Files.js';
 
-type Parameters = {
+type set_usage_rights_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type set_usage_rights_coursesFormParameters = {
   /** List of ids of files to set usage rights for. */
   file_ids: string[];
   /**
@@ -29,7 +34,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: set_usage_rights_coursesPathParameters;
+  params?: set_usage_rights_coursesFormParameters;
 };
 
 /**
@@ -39,9 +45,16 @@ type Options = {
  *
  * Nickname: set_usage_rights_courses
  */
-export async function set_usage_rights_courses({ parameters }: Options) {
+export async function set_usage_rights_courses({
+  pathParams,
+  params
+}: Options) {
   return await client().fetchAs<UsageRights>(
     `/v1/courses/{course_id}/usage_rights`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

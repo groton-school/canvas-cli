@@ -1,10 +1,27 @@
 import { client } from '../../../../Client.js';
 import { Role } from '../../../../Resources/Roles.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** The id of the account to retrieve roles for. */
+  account_id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * Filter by role state. If this argument is omitted, only 'active' roles
+   * are returned.
+   */
+  state: string[];
+  /**
+   * If this argument is true, all roles inherited from parent accounts will
+   * be included.
+   */
+  show_inherited: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -14,9 +31,10 @@ type Options = {
  *
  * Nickname: list_roles
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/accounts/{account_id}/roles`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

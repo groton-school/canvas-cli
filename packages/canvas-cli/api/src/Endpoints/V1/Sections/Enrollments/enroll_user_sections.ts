@@ -2,7 +2,12 @@ import { Deprecated } from '';
 import { client } from '../../../../Client.js';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
-type Parameters = {
+type enroll_user_sectionsPathParameters = {
+  /** ID */
+  section_id: string;
+};
+
+type enroll_user_sectionsFormParameters = {
   /**
    * The start time of the enrollment, in ISO8601 format. e.g.
    * 2012-04-18T23:08:51Z
@@ -107,7 +112,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: enroll_user_sectionsPathParameters;
+  params?: enroll_user_sectionsFormParameters;
 };
 
 /**
@@ -117,9 +123,13 @@ type Options = {
  *
  * Nickname: enroll_user_sections
  */
-export async function enroll_user_sections({ parameters }: Options) {
+export async function enroll_user_sections({ pathParams, params }: Options) {
   return await client().fetchAs<Enrollment>(
     `/v1/sections/{section_id}/enrollments`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

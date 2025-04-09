@@ -1,10 +1,13 @@
 import { client } from '../../../Client.js';
 import { Group } from '../../../Resources/Groups.js';
 
-type Parameters = {};
+type delete_groupPathParameters = {
+  /** ID */
+  group_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_groupPathParameters;
 };
 
 /**
@@ -14,9 +17,9 @@ type Options = {
  *
  * Nickname: delete_group
  */
-export async function delete_group({ parameters }: Options) {
+export async function delete_group({ pathParams }: Options) {
   return await client().fetchAs<Group>(`/v1/groups/{group_id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams
   });
 }

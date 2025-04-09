@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { PlannerNote } from '../../../Resources/Planner.js';
 
-type Parameters = {
+type createFormParameters = {
   /** The title of the planner note. */
   title: string;
   /** Text of the planner note. */
@@ -41,7 +41,7 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -51,9 +51,9 @@ type Options = {
  *
  * Nickname: create_planner_note
  */
-export async function create({ parameters }: Options) {
+export async function create({ params }: Options) {
   return await client().fetchAs<PlannerNote>(`/v1/planner_notes`, {
     method: 'POST',
-    params: parameters
+    params
   });
 }

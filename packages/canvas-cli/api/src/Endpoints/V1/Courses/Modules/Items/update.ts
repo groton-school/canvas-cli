@@ -1,7 +1,16 @@
 import { client } from '../../../../../Client.js';
 import { ModuleItem } from '../../../../../Resources/CoursePace.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  module_id: string;
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /** The name of the module item */
   'module_item[title]': string;
   /**
@@ -48,7 +57,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -58,9 +68,13 @@ type Options = {
  *
  * Nickname: update_module_item
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<ModuleItem>(
     `/v1/courses/{course_id}/modules/{module_id}/items/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

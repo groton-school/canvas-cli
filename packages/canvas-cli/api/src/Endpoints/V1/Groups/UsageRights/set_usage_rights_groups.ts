@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { UsageRights } from '../../../../Resources/Files.js';
 
-type Parameters = {
+type set_usage_rights_groupsPathParameters = {
+  /** ID */
+  group_id: string;
+};
+
+type set_usage_rights_groupsFormParameters = {
   /** List of ids of files to set usage rights for. */
   file_ids: string[];
   /**
@@ -29,7 +34,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: set_usage_rights_groupsPathParameters;
+  params?: set_usage_rights_groupsFormParameters;
 };
 
 /**
@@ -39,9 +45,13 @@ type Options = {
  *
  * Nickname: set_usage_rights_groups
  */
-export async function set_usage_rights_groups({ parameters }: Options) {
+export async function set_usage_rights_groups({ pathParams, params }: Options) {
   return await client().fetchAs<UsageRights>(
     `/v1/groups/{group_id}/usage_rights`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

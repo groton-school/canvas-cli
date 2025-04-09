@@ -1,11 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { Group } from '../../../../../../Resources/Groups.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * List favorite groups
@@ -16,9 +12,8 @@ type Options = {
  *
  * Nickname: list_favorite_groups
  */
-export async function list({ parameters }: Options) {
+export async function list({}: Options) {
   return await client().fetchAs<string[]>(`/v1/users/self/favorites/groups`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

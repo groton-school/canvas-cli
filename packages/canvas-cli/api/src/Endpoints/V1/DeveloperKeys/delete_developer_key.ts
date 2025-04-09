@@ -1,10 +1,13 @@
 import { client } from '../../../Client.js';
 import { DeveloperKey } from '../../../Resources/DeveloperKeys.js';
 
-type Parameters = {};
+type delete_developer_keyPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_developer_keyPathParameters;
 };
 
 /**
@@ -15,9 +18,9 @@ type Options = {
  *
  * Nickname: delete_developer_key
  */
-export async function delete_developer_key({ parameters }: Options) {
+export async function delete_developer_key({ pathParams }: Options) {
   return await client().fetchAs<DeveloperKey>(`/v1/developer_keys/{id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams
   });
 }

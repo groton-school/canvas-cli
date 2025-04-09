@@ -1,9 +1,24 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type delete_quiz_questionPathParameters = {
+  /** ID */
+  course_id: string;
+  /**
+   * The associated quiz's unique identifier
+   *
+   * Format: 'int64'
+   */
+  quiz_id: number;
+  /**
+   * The quiz question's unique identifier
+   *
+   * Format: 'int64'
+   */
+  id: number;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_quiz_questionPathParameters;
 };
 
 /**
@@ -14,9 +29,12 @@ type Options = {
  *
  * Nickname: delete_quiz_question
  */
-export async function delete_quiz_question({ parameters }: Options) {
+export async function delete_quiz_question({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/questions/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

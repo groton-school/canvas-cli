@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  group_id: string;
+};
+
+type updateFormParameters = {
   /**
    * The title for the new page. NOTE: changing a page's title will change its
    * url. The updated url will be returned in the result.
@@ -26,7 +31,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -36,9 +42,10 @@ type Options = {
  *
  * Nickname: update_create_front_page_groups
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<Page>(`/v1/groups/{group_id}/front_page`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

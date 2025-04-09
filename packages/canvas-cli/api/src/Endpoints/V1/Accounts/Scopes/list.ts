@@ -1,10 +1,19 @@
 import { client } from '../../../../Client.js';
 import { Scope } from '../../../../Resources/ApiTokenScopes.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type listSearchParameters = {
+  /** The attribute to group the scopes by. By default no grouping is done. */
+  group_by: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -14,9 +23,10 @@ type Options = {
  *
  * Nickname: list_scopes
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/accounts/{account_id}/scopes`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

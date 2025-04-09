@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { PlannerOverride } from '../../../../Resources/Planner.js';
 
-type Parameters = {
+type createFormParameters = {
   /** Type of the item that you are overriding in the planner */
   plannable_type: string;
   /**
@@ -17,7 +17,7 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -27,9 +27,9 @@ type Options = {
  *
  * Nickname: create_planner_override
  */
-export async function create({ parameters }: Options) {
+export async function create({ params }: Options) {
   return await client().fetchAs<PlannerOverride>(`/v1/planner/overrides`, {
     method: 'POST',
-    params: parameters
+    params
   });
 }

@@ -1,12 +1,23 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  communication_channel_id: string;
+  /**
+   * The name of the category. Must be parameterized (e.g. The category
+   * "Course Content" should be "course_content")
+   */
+  category: string;
+};
+
+type updateFormParameters = {
   /** The desired frequency for each notification in the category */
   'notification_preferences[frequency]': string;
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -17,9 +28,13 @@ type Options = {
  *
  * Nickname: update_preferences_by_category
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/users/self/communication_channels/{communication_channel_id}/notification_preference_categories/{category}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

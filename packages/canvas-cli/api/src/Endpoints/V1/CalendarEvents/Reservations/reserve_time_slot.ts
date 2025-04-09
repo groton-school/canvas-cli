@@ -1,6 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type reserve_time_slotPathParameters = {
+  /** ID */
+  id: string;
+};
+
+type reserve_time_slotFormParameters = {
   /**
    * User or group id for whom you are making the reservation (depends on the
    * participant type). Defaults to the current user (or user's candidate
@@ -17,7 +22,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: reserve_time_slotPathParameters;
+  params?: reserve_time_slotFormParameters;
 };
 
 /**
@@ -27,9 +33,10 @@ type Options = {
  *
  * Nickname: reserve_time_slot
  */
-export async function reserve_time_slot({ parameters }: Options) {
+export async function reserve_time_slot({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/calendar_events/{id}/reservations`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

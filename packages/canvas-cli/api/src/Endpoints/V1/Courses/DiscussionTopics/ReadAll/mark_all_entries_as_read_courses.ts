@@ -1,6 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type mark_all_entries_as_read_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  topic_id: string;
+};
+
+type mark_all_entries_as_read_coursesFormParameters = {
   /**
    * A boolean value to set all of the entries' forced_read_state. No change
    * is made if this argument is not specified.
@@ -9,7 +16,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: mark_all_entries_as_read_coursesPathParameters;
+  params?: mark_all_entries_as_read_coursesFormParameters;
 };
 
 /**
@@ -24,10 +32,15 @@ type Options = {
  * Nickname: mark_all_entries_as_read_courses
  */
 export async function mark_all_entries_as_read_courses({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/discussion_topics/{topic_id}/read_all`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

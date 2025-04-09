@@ -1,7 +1,14 @@
 import { LtiRegistrationAccountBinding } from '';
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type bind_lti_registration_to_accountPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
+
+type bind_lti_registration_to_accountFormParameters = {
   /**
    * The desired state for this registration/account binding. "allow" is only
    * valid for Site Admin registrations.
@@ -10,7 +17,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: bind_lti_registration_to_accountPathParameters;
+  params?: bind_lti_registration_to_accountFormParameters;
 };
 
 /**
@@ -34,10 +42,15 @@ type Options = {
  * Nickname: bind_lti_registration_to_account
  */
 export async function bind_lti_registration_to_account({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<LtiRegistrationAccountBinding>(
     `/v1/accounts/{account_id}/lti_registrations/{id}/bind`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

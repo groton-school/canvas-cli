@@ -1,13 +1,21 @@
 import { QuizUserConversation } from '';
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {
+type send_message_to_unsubmitted_or_submitted_users_for_quizPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
+
+type send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters = {
   /** - Body and recipients to send the message to. */
   conversations: QuizUserConversation;
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: send_message_to_unsubmitted_or_submitted_users_for_quizPathParameters;
+  params?: send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters;
 };
 
 /**
@@ -23,10 +31,15 @@ type Options = {
  * Nickname: send_message_to_unsubmitted_or_submitted_users_for_quiz
  */
 export async function send_message_to_unsubmitted_or_submitted_users_for_quiz({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/quizzes/{id}/submission_users/message`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

@@ -1,10 +1,15 @@
 import { client } from '../../../../../Client.js';
 import { FeatureFlag } from '../../../../../Resources/FeatureFlags.js';
 
-type Parameters = {};
+type remove_feature_flag_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  feature: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: remove_feature_flag_coursesPathParameters;
 };
 
 /**
@@ -18,9 +23,12 @@ type Options = {
  *
  * Nickname: remove_feature_flag_courses
  */
-export async function remove_feature_flag_courses({ parameters }: Options) {
+export async function remove_feature_flag_courses({ pathParams }: Options) {
   return await client().fetchAs<FeatureFlag>(
     `/v1/courses/{course_id}/features/flags/{feature}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

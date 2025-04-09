@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
-type Parameters = {
+type bulk_update_column_dataPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type bulk_update_column_dataFormParameters = {
   /**
    * Column content. Setting this to an empty string will delete the data
    * object.
@@ -10,7 +15,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: bulk_update_column_dataPathParameters;
+  params?: bulk_update_column_dataFormParameters;
 };
 
 /**
@@ -25,9 +31,13 @@ type Options = {
  *
  * Nickname: bulk_update_column_data
  */
-export async function bulk_update_column_data({ parameters }: Options) {
+export async function bulk_update_column_data({ pathParams, params }: Options) {
   return await client().fetchAs<Progress>(
     `/v1/courses/{course_id}/custom_gradebook_column_data`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

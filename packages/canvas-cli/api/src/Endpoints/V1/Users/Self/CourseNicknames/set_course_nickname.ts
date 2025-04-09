@@ -1,13 +1,19 @@
 import { client } from '../../../../../Client.js';
 import { CourseNickname } from '../../../../../Resources/Users.js';
 
-type Parameters = {
+type set_course_nicknamePathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type set_course_nicknameFormParameters = {
   /** The nickname to set. It must be non-empty and shorter than 60 characters. */
   nickname: string;
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: set_course_nicknamePathParameters;
+  params?: set_course_nicknameFormParameters;
 };
 
 /**
@@ -19,9 +25,13 @@ type Options = {
  *
  * Nickname: set_course_nickname
  */
-export async function set_course_nickname({ parameters }: Options) {
+export async function set_course_nickname({ pathParams, params }: Options) {
   return await client().fetchAs<CourseNickname>(
     `/v1/users/self/course_nicknames/{course_id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

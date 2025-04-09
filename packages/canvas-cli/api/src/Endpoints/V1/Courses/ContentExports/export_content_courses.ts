@@ -2,7 +2,12 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../Client.js';
 import { ContentExport } from '../../../../Resources/ContentExports.js';
 
-type Parameters = {
+type export_content_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type export_content_coursesFormParameters = {
   /**
    * "common_cartridge":: Export the contents of the course in the Common
    * Cartridge (.imscc) format "qti":: Export quizzes from a course in the QTI
@@ -30,7 +35,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: export_content_coursesPathParameters;
+  params?: export_content_coursesFormParameters;
 };
 
 /**
@@ -48,9 +54,13 @@ type Options = {
  *
  * Nickname: export_content_courses
  */
-export async function export_content_courses({ parameters }: Options) {
+export async function export_content_courses({ pathParams, params }: Options) {
   return await client().fetchAs<ContentExport>(
     `/v1/courses/{course_id}/content_exports`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

@@ -1,10 +1,17 @@
 import { client } from '../../../../../Client.js';
 import { BlueprintMigration } from '../../../../../Resources/BlueprintCourses.js';
 
-type Parameters = {};
+type show_blueprint_importPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  subscription_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_blueprint_importPathParameters;
 };
 
 /**
@@ -16,9 +23,12 @@ type Options = {
  *
  * Nickname: show_blueprint_import
  */
-export async function show_blueprint_import({ parameters }: Options) {
+export async function show_blueprint_import({ pathParams }: Options) {
   return await client().fetchAs<BlueprintMigration>(
     `/v1/courses/{course_id}/blueprint_subscriptions/{subscription_id}/migrations/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

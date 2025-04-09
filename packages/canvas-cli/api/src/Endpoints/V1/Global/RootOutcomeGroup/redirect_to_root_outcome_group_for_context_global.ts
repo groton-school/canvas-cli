@@ -1,10 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * Redirect to root outcome group for context
@@ -14,11 +10,8 @@ type Options = {
  *
  * Nickname: redirect_to_root_outcome_group_for_context_global
  */
-export async function redirect_to_root_outcome_group_for_context_global({
-  parameters
-}: Options) {
+export async function redirect_to_root_outcome_group_for_context_global({}: Options) {
   return await client().fetchAs<void>(`/v1/global/root_outcome_group`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

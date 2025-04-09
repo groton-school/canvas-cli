@@ -2,7 +2,12 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../Client.js';
 import { DeveloperKey } from '../../../Resources/DeveloperKeys.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /**
    * No description
    *
@@ -52,7 +57,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -63,9 +69,10 @@ type Options = {
  *
  * Nickname: update_developer_key
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<DeveloperKey>(`/v1/developer_keys/{id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

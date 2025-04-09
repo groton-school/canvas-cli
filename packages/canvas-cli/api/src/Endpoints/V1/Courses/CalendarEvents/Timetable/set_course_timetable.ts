@@ -1,6 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type set_course_timetablePathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type set_course_timetableFormParameters = {
   /**
    * An array of timetable objects for the course section specified by
    * course_section_id. If course_section_id is set to "all", events will be
@@ -21,7 +26,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: set_course_timetablePathParameters;
+  params?: set_course_timetableFormParameters;
 };
 
 /**
@@ -36,9 +42,13 @@ type Options = {
  *
  * Nickname: set_course_timetable
  */
-export async function set_course_timetable({ parameters }: Options) {
+export async function set_course_timetable({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/calendar_events/timetable`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

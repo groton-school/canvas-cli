@@ -105,17 +105,9 @@ export type ReportParameters = {
    * crosslisted courses will be omitted.
    */
   xlist: boolean;
-  /**
-   * The parameters returned will vary for each report.
-   *
-   * Type: integer
-   */
+  /** Type: integer */
   sis_terms_csv: number;
-  /**
-   * The parameters returned will vary for each report.
-   *
-   * Type: integer
-   */
+  /** Type: integer */
   sis_accounts_csv: number;
   /**
    * If true, enrollment state will be included. If false, enrollment state will

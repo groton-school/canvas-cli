@@ -1,9 +1,14 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {};
+type bulk_select_provisional_gradesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  assignment_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: bulk_select_provisional_gradesPathParameters;
 };
 
 /**
@@ -15,9 +20,12 @@ type Options = {
  *
  * Nickname: bulk_select_provisional_grades
  */
-export async function bulk_select_provisional_grades({ parameters }: Options) {
+export async function bulk_select_provisional_grades({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/bulk_select`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

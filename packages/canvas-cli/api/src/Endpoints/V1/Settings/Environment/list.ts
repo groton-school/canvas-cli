@@ -1,10 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * List environment settings
@@ -14,9 +10,8 @@ type Options = {
  *
  * Nickname: list_environment_settings
  */
-export async function list({ parameters }: Options) {
+export async function list({}: Options) {
   return await client().fetchAs<void>(`/v1/settings/environment`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

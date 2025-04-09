@@ -1,9 +1,14 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type open_poll_sessionPathParameters = {
+  /** ID */
+  poll_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: open_poll_sessionPathParameters;
 };
 
 /**
@@ -11,9 +16,12 @@ type Options = {
  *
  * Nickname: open_poll_session
  */
-export async function open_poll_session({ parameters }: Options) {
+export async function open_poll_session({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/polls/{poll_id}/poll_sessions/{id}/open`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

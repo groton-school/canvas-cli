@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { Group } from '../../../../Resources/Groups.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  group_category_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
 };
 
 /**
@@ -14,9 +17,12 @@ type Options = {
  *
  * Nickname: list_groups_in_group_category
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/group_categories/{group_category_id}/groups`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

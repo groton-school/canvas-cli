@@ -1,10 +1,17 @@
 import { client } from '../../../../../../Client.js';
 import { ChangeRecord } from '../../../../../../Resources/BlueprintCourses.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  template_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -17,9 +24,12 @@ type Options = {
  *
  * Nickname: get_migration_details
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations/{id}/details`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

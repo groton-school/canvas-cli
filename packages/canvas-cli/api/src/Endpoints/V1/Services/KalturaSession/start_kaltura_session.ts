@@ -1,10 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * Start Kaltura session
@@ -14,9 +10,8 @@ type Options = {
  *
  * Nickname: start_kaltura_session
  */
-export async function start_kaltura_session({ parameters }: Options) {
+export async function start_kaltura_session({}: Options) {
   return await client().fetchAs<void>(`/v1/services/kaltura_session`, {
-    method: 'POST',
-    params: parameters
+    method: 'POST'
   });
 }

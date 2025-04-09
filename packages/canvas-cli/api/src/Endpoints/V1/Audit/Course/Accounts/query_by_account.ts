@@ -1,10 +1,29 @@
 import { client } from '../../../../../Client.js';
 import { CourseEvent } from '../../../../../Resources/CourseAuditLog.js';
 
-type Parameters = {};
+type query_by_accountPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type query_by_accountSearchParameters = {
+  /**
+   * The beginning of the time range from which you want events.
+   *
+   * Format: date-time
+   */
+  start_time: string;
+  /**
+   * The end of the time range from which you want events.
+   *
+   * Format: date-time
+   */
+  end_time: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: query_by_accountPathParameters;
+  searchParams?: query_by_accountSearchParameters;
 };
 
 /**
@@ -14,9 +33,13 @@ type Options = {
  *
  * Nickname: query_by_account
  */
-export async function query_by_account({ parameters }: Options) {
+export async function query_by_account({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/audit/course/accounts/{account_id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

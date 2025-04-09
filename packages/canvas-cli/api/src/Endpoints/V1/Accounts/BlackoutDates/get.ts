@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { BlackoutDate } from '../../../../Resources/BlackoutDates.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: get_single_blackout_date_accounts
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<BlackoutDate>(
     `/v1/accounts/{account_id}/blackout_dates/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

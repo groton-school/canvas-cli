@@ -1,10 +1,29 @@
 import { client } from '../../../../Client.js';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
-type Parameters = {};
+type index_of_active_global_notification_for_userPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type index_of_active_global_notification_for_userSearchParameters = {
+  /** Include past and dismissed global announcements. */
+  include_past: boolean;
+  /**
+   * Include all global announcements, regardless of user's role or
+   * availability date. Only available to account admins.
+   */
+  include_all: boolean;
+  /**
+   * Include a flag for each notification indicating whether it has been read
+   * by the user.
+   */
+  show_is_closed: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: index_of_active_global_notification_for_userPathParameters;
+  searchParams?: index_of_active_global_notification_for_userSearchParameters;
 };
 
 /**
@@ -19,10 +38,15 @@ type Options = {
  * Nickname: index_of_active_global_notification_for_user
  */
 export async function index_of_active_global_notification_for_user({
-  parameters
+  pathParams,
+  searchParams
 }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/accounts/{account_id}/account_notifications`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

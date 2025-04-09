@@ -1,9 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -13,9 +16,9 @@ type Options = {
  *
  * Nickname: get_current_settings_for_account_or_course_courses
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<void>(`/v1/courses/{course_id}/csp_settings`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

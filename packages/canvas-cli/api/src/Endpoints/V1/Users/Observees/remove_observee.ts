@@ -1,10 +1,25 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type Parameters = {};
+type remove_observeePathParameters = {
+  /** ID */
+  user_id: string;
+  /** ID */
+  observee_id: string;
+};
+
+type remove_observeeSearchParameters = {
+  /**
+   * If specified, only removes the link for the given root account
+   *
+   * Format: 'int64'
+   */
+  root_account_id: number;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: remove_observeePathParameters;
+  searchParams?: remove_observeeSearchParameters;
 };
 
 /**
@@ -14,9 +29,13 @@ type Options = {
  *
  * Nickname: remove_observee
  */
-export async function remove_observee({ parameters }: Options) {
+export async function remove_observee({ pathParams, searchParams }: Options) {
   return await client().fetchAs<User>(
     `/v1/users/{user_id}/observees/{observee_id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams,
+      searchParams
+    }
   );
 }

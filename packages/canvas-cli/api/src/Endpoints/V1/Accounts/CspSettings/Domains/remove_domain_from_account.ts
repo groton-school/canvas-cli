@@ -1,9 +1,18 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type remove_domain_from_accountPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type remove_domain_from_accountSearchParameters = {
+  /** No description */
+  domain: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: remove_domain_from_accountPathParameters;
+  searchParams?: remove_domain_from_accountSearchParameters;
 };
 
 /**
@@ -13,9 +22,16 @@ type Options = {
  *
  * Nickname: remove_domain_from_account
  */
-export async function remove_domain_from_account({ parameters }: Options) {
+export async function remove_domain_from_account({
+  pathParams,
+  searchParams
+}: Options) {
   return await client().fetchAs<void>(
     `/v1/accounts/{account_id}/csp_settings/domains`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams,
+      searchParams
+    }
   );
 }

@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
 
-type Parameters = {};
+type show_outcome_group_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_outcome_group_coursesPathParameters;
 };
 
 /**
@@ -12,9 +17,12 @@ type Options = {
  *
  * Nickname: show_outcome_group_courses
  */
-export async function show_outcome_group_courses({ parameters }: Options) {
+export async function show_outcome_group_courses({ pathParams }: Options) {
   return await client().fetchAs<OutcomeGroup>(
     `/v1/courses/{course_id}/outcome_groups/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

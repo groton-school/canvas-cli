@@ -1,7 +1,14 @@
 import { client } from '../../../../Client.js';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /** The new outcome group title. */
   title: string;
   /** The new outcome group description. */
@@ -17,7 +24,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -32,9 +40,13 @@ type Options = {
  *
  * Nickname: update_outcome_group_courses
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<OutcomeGroup>(
     `/v1/courses/{course_id}/outcome_groups/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

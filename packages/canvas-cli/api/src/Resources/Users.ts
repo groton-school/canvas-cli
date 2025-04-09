@@ -151,9 +151,7 @@ export type Profile = {
   short_name: string;
   /** User, sample */
   sortable_name: string;
-  /** Profile details for a Canvas user. */
   title: string;
-  /** Profile details for a Canvas user. */
   bio: string;
   /** Name pronunciation */
   pronunciation: string;
@@ -163,14 +161,12 @@ export type Profile = {
   login_id: string;
   /** Sis1 */
   sis_user_id: string;
-  /** Profile details for a Canvas user. */
   lti_user_id: string;
   /**
    * The avatar_url can change over time, so we recommend not caching it for
    * more than a few hours
    */
   avatar_url: string;
-  /** Profile details for a Canvas user. */
   calendar: CalendarLink;
   /**
    * Optional: This field is only returned in certain API calls, and will return

@@ -1,7 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { ContentShare } from '../../../../../Resources/ContentShares.js';
 
-type Parameters = {
+type add_users_to_content_sharePathParameters = {
+  /** ID */
+  user_id: string;
+  /** ID */
+  id: string;
+};
+
+type add_users_to_content_shareFormParameters = {
   /**
    * IDs of users to share the content with.
    *
@@ -11,7 +18,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: add_users_to_content_sharePathParameters;
+  params?: add_users_to_content_shareFormParameters;
 };
 
 /**
@@ -21,9 +29,16 @@ type Options = {
  *
  * Nickname: add_users_to_content_share
  */
-export async function add_users_to_content_share({ parameters }: Options) {
+export async function add_users_to_content_share({
+  pathParams,
+  params
+}: Options) {
   return await client().fetchAs<ContentShare>(
     `/v1/users/{user_id}/content_shares/{id}/add_users`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

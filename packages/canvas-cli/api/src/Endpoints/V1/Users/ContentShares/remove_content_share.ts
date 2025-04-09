@@ -1,9 +1,14 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type remove_content_sharePathParameters = {
+  /** ID */
+  user_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: remove_content_sharePathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: remove_content_share
  */
-export async function remove_content_share({ parameters }: Options) {
+export async function remove_content_share({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/users/{user_id}/content_shares/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

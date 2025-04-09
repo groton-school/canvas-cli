@@ -1,7 +1,12 @@
 import { DateTime } from '';
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type createFormParameters = {
   /**
    * Events will be created for the course section specified by
    * course_section_id. If not present, events will be created for the entire
@@ -30,7 +35,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -43,9 +49,13 @@ type Options = {
  *
  * Nickname: create_or_update_events_directly_for_course_timetable
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/calendar_events/timetable_events`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

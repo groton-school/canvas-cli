@@ -1,10 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * Get Kaltura config
@@ -13,9 +9,8 @@ type Options = {
  *
  * Nickname: get_kaltura_config
  */
-export async function get({ parameters }: Options) {
+export async function get({}: Options) {
   return await client().fetchAs<void>(`/v1/services/kaltura`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

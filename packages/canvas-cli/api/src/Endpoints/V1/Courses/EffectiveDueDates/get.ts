@@ -1,9 +1,18 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type getSearchParameters = {
+  /** No description */
+  assignment_ids: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -22,9 +31,13 @@ type Options = {
  *
  * Nickname: get_effective_due_dates
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/effective_due_dates`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

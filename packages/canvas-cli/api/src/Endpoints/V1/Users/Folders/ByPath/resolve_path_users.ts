@@ -1,10 +1,13 @@
 import { client } from '../../../../../Client.js';
 import { Folder } from '../../../../../Resources/Files.js';
 
-type Parameters = {};
+type resolve_path_usersPathParameters = {
+  /** ID */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: resolve_path_usersPathParameters;
 };
 
 /**
@@ -19,9 +22,12 @@ type Options = {
  *
  * Nickname: resolve_path_users
  */
-export async function resolve_path_users({ parameters }: Options) {
+export async function resolve_path_users({ pathParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/users/{user_id}/folders/by_path`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

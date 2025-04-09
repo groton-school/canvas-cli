@@ -1,6 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type enable_disable_or_clear_explicit_csp_setting_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type enable_disable_or_clear_explicit_csp_setting_coursesFormParameters = {
   /**
    * If set to "enabled" for an account, CSP will be enabled for all its
    * courses and sub-accounts (that have not explicitly enabled or disabled
@@ -14,7 +19,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: enable_disable_or_clear_explicit_csp_setting_coursesPathParameters;
+  params?: enable_disable_or_clear_explicit_csp_setting_coursesFormParameters;
 };
 
 /**
@@ -29,10 +35,12 @@ type Options = {
  * Nickname: enable_disable_or_clear_explicit_csp_setting_courses
  */
 export async function enable_disable_or_clear_explicit_csp_setting_courses({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<void>(`/v1/courses/{course_id}/csp_settings`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

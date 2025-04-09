@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { ContentShare } from '../../../../Resources/ContentShares.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  user_id: string;
+};
+
+type createFormParameters = {
   /**
    * IDs of users to share the content with.
    *
@@ -19,7 +24,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -29,9 +35,13 @@ type Options = {
  *
  * Nickname: create_content_share
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<ContentShare>(
     `/v1/users/{user_id}/content_shares`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

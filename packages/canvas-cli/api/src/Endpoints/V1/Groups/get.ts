@@ -1,10 +1,24 @@
 import { client } from '../../../Client.js';
 import { Group } from '../../../Resources/Groups.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  group_id: string;
+};
+
+type getSearchParameters = {
+  /**
+   * - "permissions": Include permissions the current user has for the group.
+   * - "tabs": Include the list of tabs configured for each group. See the
+   *   {api:TabsController#index List available tabs API} for more
+   *   information.
+   */
+  include: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -15,9 +29,10 @@ type Options = {
  *
  * Nickname: get_single_group
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams, searchParams }: Options) {
   return await client().fetchAs<Group>(`/v1/groups/{group_id}`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

@@ -1,9 +1,12 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  group_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -13,9 +16,9 @@ type Options = {
  *
  * Nickname: get_quota_information_groups
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<void>(`/v1/groups/{group_id}/files/quota`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

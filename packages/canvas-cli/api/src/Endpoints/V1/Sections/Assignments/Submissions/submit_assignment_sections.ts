@@ -1,6 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type submit_assignment_sectionsPathParameters = {
+  /** ID */
+  section_id: string;
+  /** ID */
+  assignment_id: string;
+};
+
+type submit_assignment_sectionsFormParameters = {
   /** Include a textual comment with the submission. */
   'comment[text_comment]': string;
   /**
@@ -86,7 +93,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: submit_assignment_sectionsPathParameters;
+  params?: submit_assignment_sectionsFormParameters;
 };
 
 /**
@@ -107,9 +115,16 @@ type Options = {
  *
  * Nickname: submit_assignment_sections
  */
-export async function submit_assignment_sections({ parameters }: Options) {
+export async function submit_assignment_sections({
+  pathParams,
+  params
+}: Options) {
   return await client().fetchAs<void>(
     `/v1/sections/{section_id}/assignments/{assignment_id}/submissions`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

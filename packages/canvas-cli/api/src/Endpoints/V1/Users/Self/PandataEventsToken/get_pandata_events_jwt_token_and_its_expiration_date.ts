@@ -1,12 +1,12 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type get_pandata_events_jwt_token_and_its_expiration_dateFormParameters = {
   /** The pandata events appKey for this mobile app */
   app_key: string;
 };
 
 type Options = {
-  parameters: Parameters;
+  params?: get_pandata_events_jwt_token_and_its_expiration_dateFormParameters;
 };
 
 /**
@@ -20,10 +20,10 @@ type Options = {
  * Nickname: get_pandata_events_jwt_token_and_its_expiration_date
  */
 export async function get_pandata_events_jwt_token_and_its_expiration_date({
-  parameters
+  params
 }: Options) {
   return await client().fetchAs<void>(`/v1/users/self/pandata_events_token`, {
     method: 'POST',
-    params: parameters
+    params
   });
 }

@@ -1,13 +1,19 @@
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
-type Parameters = {
+type batch_update_overrides_in_coursePathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type batch_update_overrides_in_courseFormParameters = {
   /** Attributes for the updated overrides. */
   assignment_overrides: string[];
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: batch_update_overrides_in_coursePathParameters;
+  params?: batch_update_overrides_in_courseFormParameters;
 };
 
 /**
@@ -30,10 +36,15 @@ type Options = {
  * Nickname: batch_update_overrides_in_course
  */
 export async function batch_update_overrides_in_course({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/courses/{course_id}/assignments/overrides`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

@@ -1,10 +1,13 @@
 import { client } from '../../../Client.js';
 import { Section } from '../../../Resources/Sections.js';
 
-type Parameters = {};
+type delete_sectionPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_sectionPathParameters;
 };
 
 /**
@@ -14,9 +17,9 @@ type Options = {
  *
  * Nickname: delete_section
  */
-export async function delete_section({ parameters }: Options) {
+export async function delete_section({ pathParams }: Options) {
   return await client().fetchAs<Section>(`/v1/sections/{id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams
   });
 }

@@ -1,7 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Section } from '../../../../Resources/Sections.js';
 
-type Parameters = {
+type cross_list_sectionPathParameters = {
+  /** ID */
+  id: string;
+  /** ID */
+  new_course_id: string;
+};
+
+type cross_list_sectionFormParameters = {
   /**
    * Default is true. If false, any fields containing “sticky” changes will
    * not be updated. See SIS CSV Format documentation for information on which
@@ -11,7 +18,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: cross_list_sectionPathParameters;
+  params?: cross_list_sectionFormParameters;
 };
 
 /**
@@ -23,9 +31,13 @@ type Options = {
  *
  * Nickname: cross_list_section
  */
-export async function cross_list_section({ parameters }: Options) {
+export async function cross_list_section({ pathParams, params }: Options) {
   return await client().fetchAs<Section>(
     `/v1/sections/{id}/crosslist/{new_course_id}`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

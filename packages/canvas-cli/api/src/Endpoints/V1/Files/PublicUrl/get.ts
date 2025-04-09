@@ -1,9 +1,25 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  id: string;
+};
+
+type getSearchParameters = {
+  /**
+   * The id of the submission the file is associated with. Provide this
+   * argument to gain access to a file that has been submitted to an
+   * assignment (Canvas will verify that the file belongs to the submission
+   * and the calling user has rights to view the submission).
+   *
+   * Format: 'int64'
+   */
+  submission_id: number;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -13,9 +29,10 @@ type Options = {
  *
  * Nickname: get_public_inline_preview_url
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(`/v1/files/{id}/public_url`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

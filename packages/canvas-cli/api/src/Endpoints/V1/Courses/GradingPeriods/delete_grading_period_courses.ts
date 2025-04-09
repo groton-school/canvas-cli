@@ -1,9 +1,14 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type delete_grading_period_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_grading_period_coursesPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: delete_grading_period_courses
  */
-export async function delete_grading_period_courses({ parameters }: Options) {
+export async function delete_grading_period_courses({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/grading_periods/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

@@ -1,6 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type add_messagePathParameters = {
+  /** ID */
+  id: string;
+};
+
+type add_messageFormParameters = {
   /** The message to be sent. */
   body: string;
   /**
@@ -22,7 +27,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: add_messagePathParameters;
+  params?: add_messageFormParameters;
 };
 
 /**
@@ -42,9 +48,10 @@ type Options = {
  *
  * Nickname: add_message
  */
-export async function add_message({ parameters }: Options) {
+export async function add_message({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/conversations/{id}/add_message`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

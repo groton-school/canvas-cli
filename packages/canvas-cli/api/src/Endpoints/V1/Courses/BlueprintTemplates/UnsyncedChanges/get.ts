@@ -1,10 +1,15 @@
 import { client } from '../../../../../Client.js';
 import { ChangeRecord } from '../../../../../Resources/BlueprintCourses.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  template_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -16,9 +21,12 @@ type Options = {
  *
  * Nickname: get_unsynced_changes
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/courses/{course_id}/blueprint_templates/{template_id}/unsynced_changes`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

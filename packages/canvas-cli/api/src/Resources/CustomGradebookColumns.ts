@@ -26,12 +26,7 @@ export type CustomColumn = {
 
 /** ColumnDatum objects contain the entry for a column for each user. */
 export type ColumnDatum = {
-  /** ColumnDatum objects contain the entry for a column for each user. */
   content: string;
-  /**
-   * ColumnDatum objects contain the entry for a column for each user.
-   *
-   * Type: integer
-   */
+  /** Type: integer */
   user_id: number;
 };

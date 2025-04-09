@@ -1,10 +1,6 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * List all Webhook Subscription for a tool proxy
@@ -20,9 +16,8 @@ type Options = {
  *
  * Nickname: list_all_webhook_subscription_for_tool_proxy
  */
-export async function list({ parameters }: Options) {
+export async function list({}: Options) {
   return await client().fetchAs<void>(`/lti/subscriptions`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

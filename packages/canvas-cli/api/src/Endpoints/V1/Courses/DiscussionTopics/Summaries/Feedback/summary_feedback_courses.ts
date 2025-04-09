@@ -1,6 +1,15 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {
+type summary_feedback_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  topic_id: string;
+  /** ID */
+  summary_id: string;
+};
+
+type summary_feedback_coursesFormParameters = {
   /**
    * Required The action to take on the summary. Possible values are:
    *
@@ -17,7 +26,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: summary_feedback_coursesPathParameters;
+  params?: summary_feedback_coursesFormParameters;
 };
 
 /**
@@ -27,9 +37,16 @@ type Options = {
  *
  * Nickname: summary_feedback_courses
  */
-export async function summary_feedback_courses({ parameters }: Options) {
+export async function summary_feedback_courses({
+  pathParams,
+  params
+}: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/discussion_topics/{topic_id}/summaries/{summary_id}/feedback`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

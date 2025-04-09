@@ -1,9 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type updatePathParameters = {
+  /** ID */
+  account_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
 };
 
 /**
@@ -21,9 +24,12 @@ type Options = {
  *
  * Nickname: update_several_calendars
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/accounts/{account_id}/account_calendars`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

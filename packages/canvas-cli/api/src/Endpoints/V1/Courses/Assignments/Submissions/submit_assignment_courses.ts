@@ -1,6 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type submit_assignment_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  assignment_id: string;
+};
+
+type submit_assignment_coursesFormParameters = {
   /** Include a textual comment with the submission. */
   'comment[text_comment]': string;
   /**
@@ -86,7 +93,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: submit_assignment_coursesPathParameters;
+  params?: submit_assignment_coursesFormParameters;
 };
 
 /**
@@ -107,9 +115,16 @@ type Options = {
  *
  * Nickname: submit_assignment_courses
  */
-export async function submit_assignment_courses({ parameters }: Options) {
+export async function submit_assignment_courses({
+  pathParams,
+  params
+}: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/submissions`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

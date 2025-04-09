@@ -1,7 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { OriginalityReport } from '../../../../../Resources/OriginalityReports.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  assignment_id: string;
+  /** ID */
+  submission_id: string;
+};
+
+type createFormParameters = {
   /**
    * The id of the file being given an originality score. Required if creating
    * a report associated with a file.
@@ -63,7 +70,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -73,9 +81,13 @@ type Options = {
  *
  * Nickname: create_originality_report
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<OriginalityReport>(
     `/lti/assignments/{assignment_id}/submissions/{submission_id}/originality_report`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

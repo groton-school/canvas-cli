@@ -1,10 +1,21 @@
 import { client } from '../../../../Client.js';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
-type Parameters = {};
+type show_lti_resource_linkPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
+
+type show_lti_resource_linkSearchParameters = {
+  /** Include deleted resource links in search. Default is false. */
+  include_deleted: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_lti_resource_linkPathParameters;
+  searchParams?: show_lti_resource_linkSearchParameters;
 };
 
 /**
@@ -18,9 +29,16 @@ type Options = {
  *
  * Nickname: show_lti_resource_link
  */
-export async function show_lti_resource_link({ parameters }: Options) {
+export async function show_lti_resource_link({
+  pathParams,
+  searchParams
+}: Options) {
   return await client().fetchAs<LtiResourceLink>(
     `/v1/courses/{course_id}/lti_resource_links/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

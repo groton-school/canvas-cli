@@ -1,7 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeGroup } from '../../../../../Resources/OutcomeGroups.js';
 
-type Parameters = {
+type import_outcome_group_accountsPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
+
+type import_outcome_group_accountsFormParameters = {
   /**
    * The ID of the source outcome group.
    *
@@ -20,7 +27,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: import_outcome_group_accountsPathParameters;
+  params?: import_outcome_group_accountsFormParameters;
 };
 
 /**
@@ -41,9 +49,16 @@ type Options = {
  *
  * Nickname: import_outcome_group_accounts
  */
-export async function import_outcome_group_accounts({ parameters }: Options) {
+export async function import_outcome_group_accounts({
+  pathParams,
+  params
+}: Options) {
   return await client().fetchAs<OutcomeGroup>(
     `/v1/accounts/{account_id}/outcome_groups/{id}/import`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

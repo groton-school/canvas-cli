@@ -1,10 +1,13 @@
 import { client } from '../../../../../Client.js';
 import { SisImport } from '../../../../../Resources/SisImports.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  account_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -19,9 +22,12 @@ type Options = {
  *
  * Nickname: get_current_importing_sis_import
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<SisImport>(
     `/v1/accounts/{account_id}/sis_imports/importing`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

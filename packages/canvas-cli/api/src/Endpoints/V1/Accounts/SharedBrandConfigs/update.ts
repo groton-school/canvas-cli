@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { SharedBrandConfig } from '../../../../Resources/SharedBrandConfigs.js';
 
-type Parameters = {};
+type updatePathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
 };
 
 /**
@@ -15,9 +20,12 @@ type Options = {
  *
  * Nickname: update_shared_theme
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams }: Options) {
   return await client().fetchAs<SharedBrandConfig>(
     `/v1/accounts/{account_id}/shared_brand_configs/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

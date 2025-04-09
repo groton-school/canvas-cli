@@ -1,6 +1,15 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {
+type reorder_question_groupsPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  quiz_id: string;
+  /** ID */
+  id: string;
+};
+
+type reorder_question_groupsFormParameters = {
   /**
    * The associated item's unique identifier
    *
@@ -12,7 +21,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: reorder_question_groupsPathParameters;
+  params?: reorder_question_groupsFormParameters;
 };
 
 /**
@@ -24,9 +34,13 @@ type Options = {
  *
  * Nickname: reorder_question_groups
  */
-export async function reorder_question_groups({ parameters }: Options) {
+export async function reorder_question_groups({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/groups/{id}/reorder`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

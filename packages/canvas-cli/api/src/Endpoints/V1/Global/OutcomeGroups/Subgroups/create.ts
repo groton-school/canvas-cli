@@ -1,7 +1,12 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeGroup } from '../../../../../Resources/OutcomeGroups.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  id: string;
+};
+
+type createFormParameters = {
   /** The title of the new outcome group. */
   title: string;
   /** The description of the new outcome group. */
@@ -11,7 +16,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -22,9 +28,13 @@ type Options = {
  *
  * Nickname: create_subgroup_global
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<OutcomeGroup>(
     `/v1/global/outcome_groups/{id}/subgroups`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

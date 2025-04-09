@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { Avatar } from '../../../../Resources/Users.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
 };
 
 /**
@@ -30,9 +33,9 @@ type Options = {
  *
  * Nickname: list_avatar_options
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/users/{user_id}/avatars`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

@@ -1,10 +1,19 @@
 import { client } from '../../../../../Client.js';
 import { Group } from '../../../../../Resources/Groups.js';
 
-type Parameters = {};
+type listSearchParameters = {
+  /** Only include groups that are in this type of context. */
+  context_type: string;
+  /**
+   * - "tabs": Include the list of tabs configured for each group. See the
+   *   {api:TabsController#index List available tabs API} for more
+   *   information.
+   */
+  include: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -14,9 +23,9 @@ type Options = {
  *
  * Nickname: list_your_groups
  */
-export async function list({ parameters }: Options) {
+export async function list({ searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/users/self/groups`, {
     method: 'GET',
-    params: parameters
+    searchParams
   });
 }

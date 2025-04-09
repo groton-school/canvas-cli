@@ -1,11 +1,7 @@
 import { client } from '../../../Client.js';
 import { InstAccessToken } from '../../../Resources/InstAccessTokens.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * Create InstAccess token
@@ -17,9 +13,8 @@ type Options = {
  *
  * Nickname: create_instaccess_token
  */
-export async function create({ parameters }: Options) {
+export async function create({}: Options) {
   return await client().fetchAs<InstAccessToken>(`/v1/inst_access_tokens`, {
-    method: 'POST',
-    params: parameters
+    method: 'POST'
   });
 }

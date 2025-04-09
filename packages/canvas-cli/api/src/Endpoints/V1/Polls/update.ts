@@ -1,6 +1,11 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /** The title of the poll. */
   'polls[question]': string[];
   /** A brief description or instructions for the poll. */
@@ -8,7 +13,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -18,9 +24,10 @@ type Options = {
  *
  * Nickname: update_single_poll
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/polls/{id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

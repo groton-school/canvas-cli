@@ -1,10 +1,43 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * The partial name or full ID of the users to match and return in the
+   * results list. Must be at least 3 characters.
+   *
+   * Note that the API will prefer matching on canonical user ID if the ID has
+   * a numeric form. It will only search against other fields if non-numeric
+   * in form, or if the numeric value doesn't yield any matches. Queries by
+   * administrative users will search on SIS ID, Integration ID, login ID,
+   * name, or email address
+   */
+  search_term: string;
+  /**
+   * When set, only return users enrolled with the specified course-level base
+   * role. This can be a base role type of 'student', 'teacher', 'ta',
+   * 'observer', or 'designer'.
+   */
+  enrollment_type: string;
+  /** The column to sort results by. */
+  sort: string;
+  /** The order to sort the given column by. */
+  order: string;
+  /**
+   * When set to true and used with an account context, returns users who have
+   * deleted pseudonyms for the context
+   */
+  include_deleted_users: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -18,9 +51,10 @@ type Options = {
  *
  * nickname: list_users_in_account
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/accounts/{account_id}/users`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

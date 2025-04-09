@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { AuthenticationProvider } from '../../../../Resources/AuthenticationProviders.js';
 
-type Parameters = {};
+type updatePathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
 };
 
 /**
@@ -17,9 +22,12 @@ type Options = {
  *
  * Nickname: update_authentication_provider
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams }: Options) {
   return await client().fetchAs<AuthenticationProvider>(
     `/v1/accounts/{account_id}/authentication_providers/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

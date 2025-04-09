@@ -1,6 +1,15 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {
+type complete_quiz_submission_turn_it_inPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  quiz_id: string;
+  /** ID */
+  id: string;
+};
+
+type complete_quiz_submission_turn_it_inFormParameters = {
   /**
    * The attempt number of the quiz submission that should be completed. Note
    * that this must be the latest attempt index, as earlier attempts can not
@@ -19,7 +28,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: complete_quiz_submission_turn_it_inPathParameters;
+  params?: complete_quiz_submission_turn_it_inFormParameters;
 };
 
 /**
@@ -41,10 +51,15 @@ type Options = {
  * Nickname: complete_quiz_submission_turn_it_in
  */
 export async function complete_quiz_submission_turn_it_in({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/complete`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

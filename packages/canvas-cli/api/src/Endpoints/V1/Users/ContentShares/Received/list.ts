@@ -1,10 +1,13 @@
 import { client } from '../../../../../Client.js';
 import { ContentShare } from '../../../../../Resources/ContentShares.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
 };
 
 /**
@@ -16,9 +19,12 @@ type Options = {
  *
  * Nickname: list_content_shares_received
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/users/{user_id}/content_shares/received`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

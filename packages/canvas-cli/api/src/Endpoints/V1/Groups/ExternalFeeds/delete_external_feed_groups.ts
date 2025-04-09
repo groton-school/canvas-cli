@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { ExternalFeed } from '../../../../Resources/AnnouncementExternalFeeds.js';
 
-type Parameters = {};
+type delete_external_feed_groupsPathParameters = {
+  /** ID */
+  group_id: string;
+  /** ID */
+  external_feed_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_external_feed_groupsPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: delete_external_feed_groups
  */
-export async function delete_external_feed_groups({ parameters }: Options) {
+export async function delete_external_feed_groups({ pathParams }: Options) {
   return await client().fetchAs<ExternalFeed>(
     `/v1/groups/{group_id}/external_feeds/{external_feed_id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

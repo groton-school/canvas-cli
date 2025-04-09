@@ -1,10 +1,15 @@
 import { client } from '../../../../../Client.js';
 import { FeatureFlag } from '../../../../../Resources/FeatureFlags.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  user_id: string;
+  /** ID */
+  feature: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -18,9 +23,12 @@ type Options = {
  *
  * Nickname: get_feature_flag_users
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<FeatureFlag>(
     `/v1/users/{user_id}/features/flags/{feature}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

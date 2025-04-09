@@ -1,10 +1,16 @@
 import { client } from '../../../../../../Client.js';
 import { Favorite } from '../../../../../../Resources/Favorites.js';
 
-type Parameters = {};
+type add_course_to_favoritesPathParameters = {
+  /**
+   * The ID or SIS ID of the course to add. The current user must be
+   * registered in the course.
+   */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: add_course_to_favoritesPathParameters;
 };
 
 /**
@@ -16,9 +22,12 @@ type Options = {
  *
  * Nickname: add_course_to_favorites
  */
-export async function add_course_to_favorites({ parameters }: Options) {
+export async function add_course_to_favorites({ pathParams }: Options) {
   return await client().fetchAs<Favorite>(
     `/v1/users/self/favorites/courses/{id}`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

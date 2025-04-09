@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Group } from '../../../../Resources/Groups.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  group_category_id: string;
+};
+
+type createFormParameters = {
   /** The name of the group */
   name: string;
   /** A description of the group */
@@ -23,7 +28,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -34,9 +40,13 @@ type Options = {
  *
  * Nickname: create_group_group_categories
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<Group>(
     `/v1/group_categories/{group_category_id}/groups`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

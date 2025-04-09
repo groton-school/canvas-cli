@@ -1,9 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type course_todo_itemsPathParameters = {
+  /** ID */
+  course_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: course_todo_itemsPathParameters;
 };
 
 /**
@@ -16,9 +19,9 @@ type Options = {
  *
  * Nickname: course_todo_items
  */
-export async function course_todo_items({ parameters }: Options) {
+export async function course_todo_items({ pathParams }: Options) {
   return await client().fetchAs<void>(`/v1/courses/{course_id}/todo`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

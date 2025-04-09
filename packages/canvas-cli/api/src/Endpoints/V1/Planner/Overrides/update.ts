@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { PlannerOverride } from '../../../../Resources/Planner.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /** Determines whether the planner item is marked as completed */
   marked_complete: string;
   /** Determines whether the planner item shows in the opportunities list */
@@ -9,7 +14,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -19,9 +25,10 @@ type Options = {
  *
  * Nickname: update_planner_override
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<PlannerOverride>(`/v1/planner/overrides/{id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

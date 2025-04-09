@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { ePortfolioPage } from '../../../../Resources/EPortfolios.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  eportfolio_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -14,9 +17,12 @@ type Options = {
  *
  * Nickname: get_eportfolio_pages
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/eportfolios/{eportfolio_id}/pages`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

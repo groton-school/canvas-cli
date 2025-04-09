@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type Parameters = {
+type deprecated_self_register_userPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type deprecated_self_register_userFormParameters = {
   /** The full name of the user. This name will be used by teacher for grading. */
   'user[name]': string;
   /**
@@ -34,7 +39,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: deprecated_self_register_userPathParameters;
+  params?: deprecated_self_register_userFormParameters;
 };
 
 /**
@@ -47,9 +53,16 @@ type Options = {
  *
  * Nickname: deprecated_self_register_user
  */
-export async function deprecated_self_register_user({ parameters }: Options) {
+export async function deprecated_self_register_user({
+  pathParams,
+  params
+}: Options) {
   return await client().fetchAs<User>(
     `/v1/accounts/{account_id}/self_registration`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

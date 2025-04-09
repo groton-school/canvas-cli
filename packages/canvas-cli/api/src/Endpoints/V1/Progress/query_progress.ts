@@ -1,10 +1,13 @@
 import { client } from '../../../Client.js';
 import { Progress } from '../../../Resources/CoursePace.js';
 
-type Parameters = {};
+type query_progressPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: query_progressPathParameters;
 };
 
 /**
@@ -14,9 +17,9 @@ type Options = {
  *
  * Nickname: query_progress
  */
-export async function query_progress({ parameters }: Options) {
+export async function query_progress({ pathParams }: Options) {
   return await client().fetchAs<Progress>(`/v1/progress/{id}`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

@@ -1,10 +1,22 @@
 import { client } from '../../../../Client.js';
 import { GroupMembership } from '../../../../Resources/Groups.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  group_id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * Only list memberships with the given workflow_states. By default it will
+   * return all memberships.
+   */
+  filter_states: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -14,9 +26,10 @@ type Options = {
  *
  * Nickname: list_group_memberships
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/groups/{group_id}/memberships`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

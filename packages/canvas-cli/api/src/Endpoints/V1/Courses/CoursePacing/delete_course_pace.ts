@@ -1,10 +1,29 @@
 import { client } from '../../../../Client.js';
 import { CoursePace } from '../../../../Resources/CoursePace.js';
 
-type Parameters = {};
+type delete_course_pacePathParameters = {
+  /** ID */
+  id: string;
+  /**
+   * The id of the course
+   *
+   * Format: 'int64'
+   */
+  course_id: number;
+};
+
+type delete_course_paceSearchParameters = {
+  /**
+   * The id of the course_pace
+   *
+   * Format: 'int64'
+   */
+  course_pace_id: number;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_course_pacePathParameters;
+  searchParams?: delete_course_paceSearchParameters;
 };
 
 /**
@@ -14,9 +33,16 @@ type Options = {
  *
  * Nickname: delete_course_pace
  */
-export async function delete_course_pace({ parameters }: Options) {
+export async function delete_course_pace({
+  pathParams,
+  searchParams
+}: Options) {
   return await client().fetchAs<CoursePace>(
     `/v1/courses/{course_id}/course_pacing/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams,
+      searchParams
+    }
   );
 }

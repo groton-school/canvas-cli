@@ -1,9 +1,22 @@
 import { client } from '../../../../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /**
+   * No description
+   *
+   * Format: 'int64'
+   */
+  course_id: number;
+  /**
+   * No description
+   *
+   * Format: 'int64'
+   */
+  assignment_id: number;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -15,9 +28,12 @@ type Options = {
  *
  * Nickname: get_items_media_upload_url
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/quiz/v1/courses/{course_id}/quizzes/{assignment_id}/items/media_upload_url`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

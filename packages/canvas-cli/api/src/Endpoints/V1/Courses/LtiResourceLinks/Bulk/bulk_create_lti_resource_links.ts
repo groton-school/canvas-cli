@@ -2,7 +2,12 @@ import { Hash } from '';
 import { client } from '../../../../../Client.js';
 import { LtiResourceLink } from '../../../../../Resources/LtiResourceLinks.js';
 
-type Parameters = {
+type bulk_create_lti_resource_linksPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type bulk_create_lti_resource_linksFormParameters = {
   /**
    * Body [Required, Array] The POST body should be a JSON array of objects
    * containing the parameters for each link to create.
@@ -17,7 +22,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: bulk_create_lti_resource_linksPathParameters;
+  params?: bulk_create_lti_resource_linksFormParameters;
 };
 
 /**
@@ -42,9 +48,16 @@ type Options = {
  *
  * Nickname: bulk_create_lti_resource_links
  */
-export async function bulk_create_lti_resource_links({ parameters }: Options) {
+export async function bulk_create_lti_resource_links({
+  pathParams,
+  params
+}: Options) {
   return await client().fetchAs<LtiResourceLink>(
     `/v1/courses/{course_id}/lti_resource_links/bulk`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

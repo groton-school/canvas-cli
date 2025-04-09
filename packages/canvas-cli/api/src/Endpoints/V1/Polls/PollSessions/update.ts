@@ -1,6 +1,13 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  poll_id: string;
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /**
    * The id of the course this session is associated with.
    *
@@ -18,7 +25,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -28,9 +36,13 @@ type Options = {
  *
  * Nickname: update_single_poll_session
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/polls/{poll_id}/poll_sessions/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

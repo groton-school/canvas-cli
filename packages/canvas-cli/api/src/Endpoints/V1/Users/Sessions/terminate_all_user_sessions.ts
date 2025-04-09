@@ -1,9 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type terminate_all_user_sessionsPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: terminate_all_user_sessionsPathParameters;
 };
 
 /**
@@ -16,9 +19,9 @@ type Options = {
  *
  * Nickname: terminate_all_user_sessions
  */
-export async function terminate_all_user_sessions({ parameters }: Options) {
+export async function terminate_all_user_sessions({ pathParams }: Options) {
   return await client().fetchAs<void>(`/v1/users/{id}/sessions`, {
     method: 'DELETE',
-    params: parameters
+    pathParams
   });
 }

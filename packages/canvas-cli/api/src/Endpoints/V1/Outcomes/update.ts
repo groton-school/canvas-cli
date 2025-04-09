@@ -1,7 +1,12 @@
 import { client } from '../../../Client.js';
 import { Outcome } from '../../../Resources/Outcomes.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /** The new outcome title. */
   title: string;
   /**
@@ -51,7 +56,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -72,9 +78,10 @@ type Options = {
  *
  * Nickname: update_outcome
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<Outcome>(`/v1/outcomes/{id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

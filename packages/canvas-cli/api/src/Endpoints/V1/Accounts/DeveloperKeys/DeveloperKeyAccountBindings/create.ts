@@ -1,7 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { DeveloperKeyAccountBinding } from '../../../../../Resources/DeveloperKeyAccountBindings.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  developer_key_id: string;
+};
+
+type createFormParameters = {
   /**
    * The workflow state for the binding. Must be one of "on", "off", or
    * "allow". Defaults to "off".
@@ -10,7 +17,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -23,9 +31,13 @@ type Options = {
  *
  * Nickname: create_developer_key_account_binding
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<DeveloperKeyAccountBinding>(
     `/v1/accounts/{account_id}/developer_keys/{developer_key_id}/developer_key_account_bindings`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

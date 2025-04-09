@@ -1,12 +1,18 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type mark_bulk_submissions_as_read_sectionsPathParameters = {
+  /** ID */
+  section_id: string;
+};
+
+type mark_bulk_submissions_as_read_sectionsFormParameters = {
   /** No description */
   submissionIds: string[];
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: mark_bulk_submissions_as_read_sectionsPathParameters;
+  params?: mark_bulk_submissions_as_read_sectionsFormParameters;
 };
 
 /**
@@ -20,10 +26,15 @@ type Options = {
  * Nickname: mark_bulk_submissions_as_read_sections
  */
 export async function mark_bulk_submissions_as_read_sections({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/sections/{section_id}/submissions/bulk_mark_read`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

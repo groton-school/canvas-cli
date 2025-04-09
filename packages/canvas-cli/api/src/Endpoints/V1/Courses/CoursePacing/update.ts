@@ -2,7 +2,18 @@ import { Datetime } from '';
 import { client } from '../../../../Client.js';
 import { CoursePace } from '../../../../Resources/CoursePace.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  id: string;
+  /**
+   * The id of the course
+   *
+   * Format: 'int64'
+   */
+  course_id: number;
+};
+
+type updateFormParameters = {
   /**
    * The id of the course pace
    *
@@ -24,7 +35,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -34,9 +46,13 @@ type Options = {
  *
  * Nickname: update_course_pace
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<CoursePace>(
     `/v1/courses/{course_id}/course_pacing/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

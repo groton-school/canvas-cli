@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
-type Parameters = {};
+type show_front_page_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_front_page_coursesPathParameters;
 };
 
 /**
@@ -14,9 +17,9 @@ type Options = {
  *
  * Nickname: show_front_page_courses
  */
-export async function show_front_page_courses({ parameters }: Options) {
+export async function show_front_page_courses({ pathParams }: Options) {
   return await client().fetchAs<Page>(`/v1/courses/{course_id}/front_page`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

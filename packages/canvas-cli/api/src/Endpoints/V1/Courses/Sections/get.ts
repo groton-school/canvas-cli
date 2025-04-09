@@ -1,10 +1,32 @@
 import { client } from '../../../../Client.js';
 import { Section } from '../../../../Resources/Sections.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
+
+type getSearchParameters = {
+  /**
+   * - "students": Associations to include with the group. Note: this is only
+   *   available if you have permission to view users or grades in the course
+   * - "avatar_url": Include the avatar URLs for students returned.
+   * - "enrollments": If 'students' is also included, return the section
+   *   enrollment for each student
+   * - "total_students": Returns the total amount of active and invited students
+   *   for the course section
+   * - "passback_status": Include the grade passback status.
+   * - "permissions": Include whether section grants :manage_calendar permission
+   *   to the caller
+   */
+  include: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -14,9 +36,13 @@ type Options = {
  *
  * Nickname: get_section_information_courses
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams, searchParams }: Options) {
   return await client().fetchAs<Section>(
     `/v1/courses/{course_id}/sections/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

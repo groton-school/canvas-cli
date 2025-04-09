@@ -1,9 +1,20 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type getSearchParameters = {
+  /** The order results in which results are returned. Defaults to "name". */
+  sort_column: string;
+  /** If set, returns only the specified student. */
+  student_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -20,9 +31,13 @@ type Options = {
  *
  * Nickname: get_course_level_student_summary_data
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/analytics/student_summaries`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

@@ -1,9 +1,16 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {};
+type mark_module_item_as_done_not_donePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  module_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: mark_module_item_as_done_not_donePathParameters;
 };
 
 /**
@@ -15,10 +22,13 @@ type Options = {
  * Nickname: mark_module_item_as_done_not_done
  */
 export async function mark_module_item_as_done_not_done({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/modules/{module_id}/items/{id}/done`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

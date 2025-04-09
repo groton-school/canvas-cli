@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { BlackoutDate } from '../../../../Resources/BlackoutDates.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type createFormParameters = {
   /**
    * The start date of the blackout date.
    *
@@ -19,7 +24,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -29,9 +35,13 @@ type Options = {
  *
  * Nickname: create_blackout_date_courses
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<BlackoutDate>(
     `/v1/courses/{course_id}/blackout_dates`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

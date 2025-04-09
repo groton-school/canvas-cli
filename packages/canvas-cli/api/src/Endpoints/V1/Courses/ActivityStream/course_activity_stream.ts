@@ -1,9 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type course_activity_streamPathParameters = {
+  /** ID */
+  course_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: course_activity_streamPathParameters;
 };
 
 /**
@@ -16,9 +19,12 @@ type Options = {
  *
  * Nickname: course_activity_stream
  */
-export async function course_activity_stream({ parameters }: Options) {
+export async function course_activity_stream({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/activity_stream`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

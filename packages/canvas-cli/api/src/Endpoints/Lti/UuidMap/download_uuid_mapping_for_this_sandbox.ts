@@ -1,10 +1,6 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * Download UUID Mapping for this Sandbox
@@ -16,11 +12,8 @@ type Options = {
  *
  * Nickname: download_uuid_mapping_for_this_sandbox
  */
-export async function download_uuid_mapping_for_this_sandbox({
-  parameters
-}: Options) {
+export async function download_uuid_mapping_for_this_sandbox({}: Options) {
   return await client().fetchAs<void>(`/lti/uuid_map`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

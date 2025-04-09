@@ -1,7 +1,12 @@
 import { Date } from '';
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type batch_update_grading_periods_grading_period_setsPathParameters = {
+  /** The id of the grading period set. */
+  set_id: string;
+};
+
+type batch_update_grading_periods_grading_period_setsFormParameters = {
   /**
    * The id of the grading period. If the id parameter does not exist, a new
    * grading period will be created.
@@ -40,7 +45,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: batch_update_grading_periods_grading_period_setsPathParameters;
+  params?: batch_update_grading_periods_grading_period_setsFormParameters;
 };
 
 /**
@@ -51,10 +57,15 @@ type Options = {
  * Nickname: batch_update_grading_periods_grading_period_sets
  */
 export async function batch_update_grading_periods_grading_period_sets({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/grading_period_sets/{set_id}/grading_periods/batch_update`,
-    { method: 'PATCH', params: parameters }
+    {
+      method: 'PATCH',
+      pathParams,
+      params
+    }
   );
 }

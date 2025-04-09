@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { Quiz } from '../../../../Resources/Quizzes.js';
 
-type Parameters = {};
+type delete_quizPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_quizPathParameters;
 };
 
 /**
@@ -12,9 +17,9 @@ type Options = {
  *
  * Nickname: delete_quiz
  */
-export async function delete_quiz({ parameters }: Options) {
+export async function delete_quiz({ pathParams }: Options) {
   return await client().fetchAs<Quiz>(`/v1/courses/{course_id}/quizzes/{id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams
   });
 }

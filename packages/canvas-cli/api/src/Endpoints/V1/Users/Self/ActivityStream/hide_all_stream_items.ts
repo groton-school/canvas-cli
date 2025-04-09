@@ -1,10 +1,6 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * Hide all stream items
@@ -13,9 +9,8 @@ type Options = {
  *
  * Nickname: hide_all_stream_items
  */
-export async function hide_all_stream_items({ parameters }: Options) {
+export async function hide_all_stream_items({}: Options) {
   return await client().fetchAs<void>(`/v1/users/self/activity_stream`, {
-    method: 'DELETE',
-    params: parameters
+    method: 'DELETE'
   });
 }

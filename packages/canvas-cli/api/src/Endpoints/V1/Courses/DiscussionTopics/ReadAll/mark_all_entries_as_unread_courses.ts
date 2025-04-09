@@ -1,9 +1,23 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type mark_all_entries_as_unread_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  topic_id: string;
+};
+
+type mark_all_entries_as_unread_coursesSearchParameters = {
+  /**
+   * A boolean value to set all of the entries' forced_read_state. No change
+   * is made if this argument is not specified.
+   */
+  forced_read_state: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: mark_all_entries_as_unread_coursesPathParameters;
+  searchParams?: mark_all_entries_as_unread_coursesSearchParameters;
 };
 
 /**
@@ -18,10 +32,15 @@ type Options = {
  * Nickname: mark_all_entries_as_unread_courses
  */
 export async function mark_all_entries_as_unread_courses({
-  parameters
+  pathParams,
+  searchParams
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/discussion_topics/{topic_id}/read_all`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams,
+      searchParams
+    }
   );
 }

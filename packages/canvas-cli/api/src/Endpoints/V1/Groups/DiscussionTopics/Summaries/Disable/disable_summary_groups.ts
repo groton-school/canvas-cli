@@ -1,9 +1,14 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {};
+type disable_summary_groupsPathParameters = {
+  /** ID */
+  group_id: string;
+  /** ID */
+  topic_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: disable_summary_groupsPathParameters;
 };
 
 /**
@@ -13,9 +18,12 @@ type Options = {
  *
  * Nickname: disable_summary_groups
  */
-export async function disable_summary_groups({ parameters }: Options) {
+export async function disable_summary_groups({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/groups/{group_id}/discussion_topics/{topic_id}/summaries/disable`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

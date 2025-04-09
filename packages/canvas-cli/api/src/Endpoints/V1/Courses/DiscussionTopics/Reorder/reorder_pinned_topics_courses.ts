@@ -1,6 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type reorder_pinned_topics_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type reorder_pinned_topics_coursesFormParameters = {
   /**
    * The ids of the pinned discussion topics in the desired order. (For
    * example, "order=104,102,103".)
@@ -11,7 +16,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: reorder_pinned_topics_coursesPathParameters;
+  params?: reorder_pinned_topics_coursesFormParameters;
 };
 
 /**
@@ -22,9 +28,16 @@ type Options = {
  *
  * Nickname: reorder_pinned_topics_courses
  */
-export async function reorder_pinned_topics_courses({ parameters }: Options) {
+export async function reorder_pinned_topics_courses({
+  pathParams,
+  params
+}: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/discussion_topics/reorder`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

@@ -1,10 +1,19 @@
 import { client } from '../../../Client.js';
 import { LtiAssignment } from '../../../Resources/PlagiarismDetectionPlatformAssignments.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  assignment_id: string;
+};
+
+type getSearchParameters = {
+  /** The id of the user. Can be a Canvas or LTI id for the user. */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -15,9 +24,13 @@ type Options = {
  *
  * Nickname: get_single_assignment_lti
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams, searchParams }: Options) {
   return await client().fetchAs<LtiAssignment>(
     `/lti/assignments/{assignment_id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

@@ -1,7 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
+
+type createFormParameters = {
   /**
    * The ID of the existing outcome to link.
    *
@@ -56,7 +63,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -87,9 +95,13 @@ type Options = {
  *
  * Nickname: create_link_outcome_accounts
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<OutcomeLink>(
     `/v1/accounts/{account_id}/outcome_groups/{id}/outcomes`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

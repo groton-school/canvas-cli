@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { Progress } from '../../../Resources/CoursePace.js';
 
-type Parameters = {
+type batch_update_conversationsFormParameters = {
   /** List of conversations to update. Limited to 500 conversations. */
   conversation_ids: string[];
   /** The action to take on each conversation. */
@@ -9,7 +9,7 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  params?: batch_update_conversationsFormParameters;
 };
 
 /**
@@ -21,9 +21,9 @@ type Options = {
  *
  * Nickname: batch_update_conversations
  */
-export async function batch_update_conversations({ parameters }: Options) {
+export async function batch_update_conversations({ params }: Options) {
   return await client().fetchAs<Progress>(`/v1/conversations`, {
     method: 'PUT',
-    params: parameters
+    params
   });
 }

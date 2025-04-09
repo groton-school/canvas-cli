@@ -1,10 +1,23 @@
 import { client } from '../../../../Client.js';
 import { Submission } from '../../../../Resources/Submissions.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  id: string;
+};
+
+type getSearchParameters = {
+  /** Associations to include with the group */
+  include: string[];
+  /** Returns submissions for only currently active enrollments */
+  only_current_enrollments: boolean;
+  /** Returns submissions for only published assignments */
+  only_published_assignments: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -12,9 +25,10 @@ type Options = {
  *
  * Nickname: get_users_most_recently_graded_submissions
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/users/{id}/graded_submissions`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

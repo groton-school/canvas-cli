@@ -1,9 +1,14 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type remove_tool_from_top_navigation_favoritesPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: remove_tool_from_top_navigation_favoritesPathParameters;
 };
 
 /**
@@ -15,10 +20,13 @@ type Options = {
  * Nickname: remove_tool_from_top_navigation_favorites
  */
 export async function remove_tool_from_top_navigation_favorites({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/accounts/{account_id}/external_tools/top_nav_favorites/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

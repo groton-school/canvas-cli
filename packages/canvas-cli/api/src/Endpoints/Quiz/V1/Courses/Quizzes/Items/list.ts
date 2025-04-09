@@ -1,10 +1,23 @@
 import { client } from '../../../../../../Client.js';
 import { QuizItem } from '../../../../../../Resources/NewQuizItems.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /**
+   * No description
+   *
+   * Format: 'int64'
+   */
+  course_id: number;
+  /**
+   * No description
+   *
+   * Format: 'int64'
+   */
+  assignment_id: number;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
 };
 
 /**
@@ -14,9 +27,12 @@ type Options = {
  *
  * Nickname: list_quiz_items
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams }: Options) {
   return await client().fetchAs<string[]>(
     `/quiz/v1/courses/{course_id}/quizzes/{assignment_id}/items`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

@@ -1,7 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
-type Parameters = {
+type start_reportPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  report: string;
+};
+
+type start_reportFormParameters = {
   /**
    * The parameters will vary for each report. To fetch a list of available
    * parameters for each report, see
@@ -31,7 +38,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: start_reportPathParameters;
+  params?: start_reportFormParameters;
 };
 
 /**
@@ -45,9 +53,13 @@ type Options = {
  *
  * Nickname: start_report
  */
-export async function start_report({ parameters }: Options) {
+export async function start_report({ pathParams, params }: Options) {
   return await client().fetchAs<Report>(
     `/v1/accounts/{account_id}/reports/{report}`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

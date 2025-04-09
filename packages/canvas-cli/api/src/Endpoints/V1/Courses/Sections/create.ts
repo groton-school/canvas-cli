@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Section } from '../../../../Resources/Sections.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type createFormParameters = {
   /** The name of the section */
   'course_section[name]': string;
   /**
@@ -39,7 +44,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -49,9 +55,10 @@ type Options = {
  *
  * Nickname: create_course_section
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<Section>(`/v1/courses/{course_id}/sections`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

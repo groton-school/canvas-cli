@@ -1,9 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -13,9 +16,9 @@ type Options = {
  *
  * Nickname: get_dashboard_positions
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<void>(`/v1/users/{id}/dashboard_positions`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

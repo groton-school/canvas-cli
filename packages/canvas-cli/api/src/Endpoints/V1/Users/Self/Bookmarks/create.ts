@@ -1,7 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { Bookmark } from '../../../../../Resources/Bookmarks.js';
 
-type Parameters = {
+type createFormParameters = {
   /** The name of the bookmark */
   name: string;
   /** The url of the bookmark */
@@ -17,7 +17,7 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -27,9 +27,9 @@ type Options = {
  *
  * Nickname: create_bookmark
  */
-export async function create({ parameters }: Options) {
+export async function create({ params }: Options) {
   return await client().fetchAs<Bookmark>(`/v1/users/self/bookmarks`, {
     method: 'POST',
-    params: parameters
+    params
   });
 }

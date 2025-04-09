@@ -1,10 +1,13 @@
 import { client } from '../../../Client.js';
 import { Folder } from '../../../Resources/Files.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -17,9 +20,9 @@ type Options = {
  *
  * Nickname: get_folder_folders
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<Folder>(`/v1/folders/{id}`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

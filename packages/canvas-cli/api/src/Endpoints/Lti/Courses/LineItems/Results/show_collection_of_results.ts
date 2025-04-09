@@ -1,10 +1,15 @@
 import { client } from '../../../../../Client.js';
 import { Result } from '../../../../../Resources/Results.js';
 
-type Parameters = {};
+type show_collection_of_resultsPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  line_item_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_collection_of_resultsPathParameters;
 };
 
 /**
@@ -19,9 +24,12 @@ type Options = {
  *
  * Nickname: show_collection_of_results
  */
-export async function show_collection_of_results({ parameters }: Options) {
+export async function show_collection_of_results({ pathParams }: Options) {
   return await client().fetchAs<Result>(
     `/lti/courses/{course_id}/line_items/{line_item_id}/results`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

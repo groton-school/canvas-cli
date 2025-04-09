@@ -1,6 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type createFormParameters = {
   /** The ID of the user to create the login for. */
   'user[id]': string;
   /** The unique ID for the new login. */
@@ -65,7 +70,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -75,9 +81,10 @@ type Options = {
  *
  * Nickname: create_user_login
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/accounts/{account_id}/logins`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

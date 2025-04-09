@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { JWT } from '../../../../Resources/JwTs.js';
 
-type Parameters = {
+type refresh_jwtFormParameters = {
   /**
    * An existing JWT token to be refreshed. The new token will have the same
    * context and workflows as the existing token.
@@ -10,7 +10,7 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  params?: refresh_jwtFormParameters;
 };
 
 /**
@@ -23,9 +23,9 @@ type Options = {
  *
  * Nickname: refresh_jwt
  */
-export async function refresh_jwt({ parameters }: Options) {
+export async function refresh_jwt({ params }: Options) {
   return await client().fetchAs<JWT>(`/v1/jwts/refresh`, {
     method: 'POST',
-    params: parameters
+    params
   });
 }

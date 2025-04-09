@@ -1,6 +1,6 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {
+type createFormParameters = {
   /**
    * Array of context codes (courses, e.g. course_1) this group should be
    * linked to (1 or more). Users in the course(s) with appropriate
@@ -64,7 +64,7 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -76,9 +76,9 @@ type Options = {
  *
  * Nickname: create_appointment_group
  */
-export async function create({ parameters }: Options) {
+export async function create({ params }: Options) {
   return await client().fetchAs<void>(`/v1/appointment_groups`, {
     method: 'POST',
-    params: parameters
+    params
   });
 }

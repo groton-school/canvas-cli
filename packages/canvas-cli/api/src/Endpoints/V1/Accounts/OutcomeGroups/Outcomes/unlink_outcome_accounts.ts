@@ -1,10 +1,17 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
-type Parameters = {};
+type unlink_outcome_accountsPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+  /** ID */
+  outcome_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: unlink_outcome_accountsPathParameters;
 };
 
 /**
@@ -17,9 +24,12 @@ type Options = {
  *
  * Nickname: unlink_outcome_accounts
  */
-export async function unlink_outcome_accounts({ parameters }: Options) {
+export async function unlink_outcome_accounts({ pathParams }: Options) {
   return await client().fetchAs<OutcomeLink>(
     `/v1/accounts/{account_id}/outcome_groups/{id}/outcomes/{outcome_id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

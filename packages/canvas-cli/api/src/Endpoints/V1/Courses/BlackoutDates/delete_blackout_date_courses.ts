@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { BlackoutDate } from '../../../../Resources/BlackoutDates.js';
 
-type Parameters = {};
+type delete_blackout_date_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_blackout_date_coursesPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: delete_blackout_date_courses
  */
-export async function delete_blackout_date_courses({ parameters }: Options) {
+export async function delete_blackout_date_courses({ pathParams }: Options) {
   return await client().fetchAs<BlackoutDate>(
     `/v1/courses/{course_id}/blackout_dates/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

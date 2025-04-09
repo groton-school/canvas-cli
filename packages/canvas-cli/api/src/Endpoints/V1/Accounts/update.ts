@@ -2,7 +2,12 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../Client.js';
 import { Account } from '../../../Resources/Accounts.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /** Updates the account name */
   'account[name]': string;
   /**
@@ -175,7 +180,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -185,9 +191,10 @@ type Options = {
  *
  * Nickname: update_account
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<Account>(`/v1/accounts/{id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

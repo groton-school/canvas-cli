@@ -2,7 +2,28 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../../../Client.js';
 import { QuizItem } from '../../../../../../Resources/NewQuizItems.js';
 
-type Parameters = {
+type update_quiz_itemPathParameters = {
+  /**
+   * No description
+   *
+   * Format: 'int64'
+   */
+  course_id: number;
+  /**
+   * The id of the assignment associated with the quiz.
+   *
+   * Format: 'int64'
+   */
+  assignment_id: number;
+  /**
+   * The id of the item associated with the quiz.
+   *
+   * Format: 'int64'
+   */
+  item_id: number;
+};
+
+type update_quiz_itemFormParameters = {
   /**
    * The position of the item within the quiz.
    *
@@ -72,7 +93,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: update_quiz_itemPathParameters;
+  params?: update_quiz_itemFormParameters;
 };
 
 /**
@@ -83,9 +105,13 @@ type Options = {
  *
  * Nickname: update_quiz_item
  */
-export async function update_quiz_item({ parameters }: Options) {
+export async function update_quiz_item({ pathParams, params }: Options) {
   return await client().fetchAs<QuizItem>(
     `/quiz/v1/courses/{course_id}/quizzes/{assignment_id}/items/{item_id}`,
-    { method: 'PATCH', params: parameters }
+    {
+      method: 'PATCH',
+      pathParams,
+      params
+    }
   );
 }

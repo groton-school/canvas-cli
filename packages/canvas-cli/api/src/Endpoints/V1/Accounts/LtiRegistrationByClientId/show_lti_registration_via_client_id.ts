@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
-type Parameters = {};
+type show_lti_registration_via_client_idPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  client_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_lti_registration_via_client_idPathParameters;
 };
 
 /**
@@ -16,10 +21,13 @@ type Options = {
  * Nickname: show_lti_registration_via_client_id
  */
 export async function show_lti_registration_via_client_id({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<LtiRegistration>(
     `/v1/accounts/{account_id}/lti_registration_by_client_id/{client_id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

@@ -1,6 +1,11 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type reorder_custom_columnsPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type reorder_custom_columnsFormParameters = {
   /**
    * No description
    *
@@ -10,7 +15,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: reorder_custom_columnsPathParameters;
+  params?: reorder_custom_columnsFormParameters;
 };
 
 /**
@@ -22,9 +28,13 @@ type Options = {
  *
  * Nickname: reorder_custom_columns
  */
-export async function reorder_custom_columns({ parameters }: Options) {
+export async function reorder_custom_columns({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/custom_gradebook_columns/reorder`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

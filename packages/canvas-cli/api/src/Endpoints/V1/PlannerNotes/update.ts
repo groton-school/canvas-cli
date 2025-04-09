@@ -1,7 +1,12 @@
 import { client } from '../../../Client.js';
 import { PlannerNote } from '../../../Resources/Planner.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /** The title of the planner note. */
   title: string;
   /** Text of the planner note. */
@@ -26,7 +31,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -36,9 +42,10 @@ type Options = {
  *
  * Nickname: update_planner_note
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<PlannerNote>(`/v1/planner_notes/{id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
-type Parameters = {};
+type delete_lti_resource_linkPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_lti_resource_linkPathParameters;
 };
 
 /**
@@ -21,9 +26,12 @@ type Options = {
  *
  * Nickname: delete_lti_resource_link
  */
-export async function delete_lti_resource_link({ parameters }: Options) {
+export async function delete_lti_resource_link({ pathParams }: Options) {
   return await client().fetchAs<LtiResourceLink>(
     `/v1/courses/{course_id}/lti_resource_links/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

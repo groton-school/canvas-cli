@@ -1,9 +1,26 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type search_account_domainsSearchParameters = {
+  /** Campus name */
+  name: string;
+  /** No description */
+  domain: string;
+  /**
+   * No description
+   *
+   * Format: 'float'
+   */
+  latitude: number;
+  /**
+   * No description
+   *
+   * Format: 'float'
+   */
+  longitude: number;
+};
 
 type Options = {
-  parameters: Parameters;
+  searchParams?: search_account_domainsSearchParameters;
 };
 
 /**
@@ -15,9 +32,9 @@ type Options = {
  *
  * Nickname: search_account_domains
  */
-export async function search_account_domains({ parameters }: Options) {
+export async function search_account_domains({ searchParams }: Options) {
   return await client().fetchAs<void>(`/v1/accounts/search`, {
     method: 'GET',
-    params: parameters
+    searchParams
   });
 }

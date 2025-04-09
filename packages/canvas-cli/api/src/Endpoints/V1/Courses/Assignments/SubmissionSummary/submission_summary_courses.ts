@@ -1,9 +1,23 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type submission_summary_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  assignment_id: string;
+};
+
+type submission_summary_coursesSearchParameters = {
+  /**
+   * If this argument is true, the response will take into account student
+   * groups.
+   */
+  grouped: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: submission_summary_coursesPathParameters;
+  searchParams?: submission_summary_coursesSearchParameters;
 };
 
 /**
@@ -14,9 +28,16 @@ type Options = {
  *
  * Nickname: submission_summary_courses
  */
-export async function submission_summary_courses({ parameters }: Options) {
+export async function submission_summary_courses({
+  pathParams,
+  searchParams
+}: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/submission_summary`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

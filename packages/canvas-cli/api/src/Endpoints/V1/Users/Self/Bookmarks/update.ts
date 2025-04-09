@@ -1,7 +1,12 @@
 import { client } from '../../../../../Client.js';
 import { Folder } from '../../../../../Resources/Files.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /** The name of the bookmark */
   name: string;
   /** The url of the bookmark */
@@ -17,7 +22,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -27,9 +33,10 @@ type Options = {
  *
  * Nickname: update_bookmark
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<Folder>(`/v1/users/self/bookmarks/{id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

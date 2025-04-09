@@ -1,10 +1,15 @@
 import { client } from '../../../../../Client.js';
 import { AuthenticationProvider } from '../../../../../Resources/AuthenticationProviders.js';
 
-type Parameters = {};
+type restore_deleted_authentication_providerPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: restore_deleted_authentication_providerPathParameters;
 };
 
 /**
@@ -17,10 +22,13 @@ type Options = {
  * Nickname: restore_deleted_authentication_provider
  */
 export async function restore_deleted_authentication_provider({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<AuthenticationProvider>(
     `/v1/accounts/{account_id}/authentication_providers/{id}/restore`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

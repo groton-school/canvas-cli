@@ -1,9 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type redirect_to_root_outcome_group_for_context_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: redirect_to_root_outcome_group_for_context_coursesPathParameters;
 };
 
 /**
@@ -15,10 +18,13 @@ type Options = {
  * Nickname: redirect_to_root_outcome_group_for_context_courses
  */
 export async function redirect_to_root_outcome_group_for_context_courses({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/root_outcome_group`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

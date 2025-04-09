@@ -1,9 +1,23 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type remove_usage_rights_groupsPathParameters = {
+  /** ID */
+  group_id: string;
+};
+
+type remove_usage_rights_groupsSearchParameters = {
+  /** List of ids of files to remove associated usage rights from. */
+  file_ids: string[];
+  /**
+   * List of ids of folders. Usage rights will be removed from all files in
+   * these folders.
+   */
+  folder_ids: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: remove_usage_rights_groupsPathParameters;
+  searchParams?: remove_usage_rights_groupsSearchParameters;
 };
 
 /**
@@ -13,9 +27,13 @@ type Options = {
  *
  * Nickname: remove_usage_rights_groups
  */
-export async function remove_usage_rights_groups({ parameters }: Options) {
+export async function remove_usage_rights_groups({
+  pathParams,
+  searchParams
+}: Options) {
   return await client().fetchAs<void>(`/v1/groups/{group_id}/usage_rights`, {
     method: 'DELETE',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

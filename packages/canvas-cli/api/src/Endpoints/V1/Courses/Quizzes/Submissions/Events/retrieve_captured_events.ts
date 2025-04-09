@@ -1,9 +1,27 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {};
+type retrieve_captured_eventsPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  quiz_id: string;
+  /** ID */
+  id: string;
+};
+
+type retrieve_captured_eventsSearchParameters = {
+  /**
+   * The specific submission attempt to look up the events for. If
+   * unspecified, the latest attempt will be used.
+   *
+   * Format: 'int64'
+   */
+  attempt: number;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: retrieve_captured_eventsPathParameters;
+  searchParams?: retrieve_captured_eventsSearchParameters;
 };
 
 /**
@@ -13,9 +31,16 @@ type Options = {
  *
  * Nickname: retrieve_captured_events
  */
-export async function retrieve_captured_events({ parameters }: Options) {
+export async function retrieve_captured_events({
+  pathParams,
+  searchParams
+}: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/events`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

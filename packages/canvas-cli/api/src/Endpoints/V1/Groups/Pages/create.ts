@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  group_id: string;
+};
+
+type createFormParameters = {
   /** The title for the new page. */
   'wiki_page[title]': string;
   /** The content for the new page. */
@@ -34,7 +39,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -44,9 +50,10 @@ type Options = {
  *
  * Nickname: create_page_groups
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<Page>(`/v1/groups/{group_id}/pages`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

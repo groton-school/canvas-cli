@@ -2,7 +2,7 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../Client.js';
 import { DeveloperKey } from '../../../../Resources/DeveloperKeys.js';
 
-type Parameters = {
+type updateFormParameters = {
   /**
    * The new public jwk that will be set to the tools current public jwk.
    *
@@ -12,7 +12,7 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -22,9 +22,12 @@ type Options = {
  *
  * Nickname: update_public_jwk
  */
-export async function update({ parameters }: Options) {
+export async function update({ params }: Options) {
   return await client().fetchAs<DeveloperKey>(
     `/lti/developer_key/update_public_jwk`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      params
+    }
   );
 }

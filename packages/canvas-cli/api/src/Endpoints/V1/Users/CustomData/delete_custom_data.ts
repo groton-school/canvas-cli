@@ -1,9 +1,22 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type delete_custom_dataPathParameters = {
+  /** ID */
+  user_id: string;
+};
+
+type delete_custom_dataSearchParameters = {
+  /**
+   * The namespace from which to delete the data. This should be something
+   * other Canvas API apps aren't likely to use, such as a reverse DNS for
+   * your organization.
+   */
+  ns: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_custom_dataPathParameters;
+  searchParams?: delete_custom_dataSearchParameters;
 };
 
 /**
@@ -76,9 +89,13 @@ type Options = {
  *
  * Nickname: delete_custom_data
  */
-export async function delete_custom_data({ parameters }: Options) {
+export async function delete_custom_data({
+  pathParams,
+  searchParams
+}: Options) {
   return await client().fetchAs<void>(`/v1/users/{user_id}/custom_data`, {
     method: 'DELETE',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

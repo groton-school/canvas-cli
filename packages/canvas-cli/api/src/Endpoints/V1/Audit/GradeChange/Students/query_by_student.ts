@@ -1,10 +1,29 @@
 import { client } from '../../../../../Client.js';
 import { GradeChangeEvent } from '../../../../../Resources/GradeChangeLog.js';
 
-type Parameters = {};
+type query_by_studentPathParameters = {
+  /** ID */
+  student_id: string;
+};
+
+type query_by_studentSearchParameters = {
+  /**
+   * The beginning of the time range from which you want events.
+   *
+   * Format: date-time
+   */
+  start_time: string;
+  /**
+   * The end of the time range from which you want events.
+   *
+   * Format: date-time
+   */
+  end_time: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: query_by_studentPathParameters;
+  searchParams?: query_by_studentSearchParameters;
 };
 
 /**
@@ -14,9 +33,13 @@ type Options = {
  *
  * Nickname: query_by_student
  */
-export async function query_by_student({ parameters }: Options) {
+export async function query_by_student({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/audit/grade_change/students/{student_id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

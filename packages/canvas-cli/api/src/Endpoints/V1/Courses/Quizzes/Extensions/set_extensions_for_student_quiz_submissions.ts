@@ -1,6 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type set_extensions_for_student_quiz_submissionsPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  quiz_id: string;
+};
+
+type set_extensions_for_student_quiz_submissionsFormParameters = {
   /**
    * The ID of the user we want to add quiz extensions for.
    *
@@ -43,7 +50,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: set_extensions_for_student_quiz_submissionsPathParameters;
+  params?: set_extensions_for_student_quiz_submissionsFormParameters;
 };
 
 /**
@@ -57,10 +65,15 @@ type Options = {
  * Nickname: set_extensions_for_student_quiz_submissions
  */
 export async function set_extensions_for_student_quiz_submissions({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/extensions`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

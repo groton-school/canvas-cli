@@ -72,37 +72,9 @@ export type CourseEvent = {
  * triggered the creation of the course.
  */
 export type CreatedEventData = {
-  /**
-   * The created event data object returns all the fields that were set in the
-   * format of the following example. If a field does not exist it was not set.
-   * The value of each field changed is in the format of [:old_value,
-   * :new_value]. The created event type also includes a created_source field to
-   * specify what triggered the creation of the course.
-   */
   name: string[];
-  /**
-   * The created event data object returns all the fields that were set in the
-   * format of the following example. If a field does not exist it was not set.
-   * The value of each field changed is in the format of [:old_value,
-   * :new_value]. The created event type also includes a created_source field to
-   * specify what triggered the creation of the course.
-   */
   start_at: string[];
-  /**
-   * The created event data object returns all the fields that were set in the
-   * format of the following example. If a field does not exist it was not set.
-   * The value of each field changed is in the format of [:old_value,
-   * :new_value]. The created event type also includes a created_source field to
-   * specify what triggered the creation of the course.
-   */
   conclude_at: string[];
-  /**
-   * The created event data object returns all the fields that were set in the
-   * format of the following example. If a field does not exist it was not set.
-   * The value of each field changed is in the format of [:old_value,
-   * :new_value]. The created event type also includes a created_source field to
-   * specify what triggered the creation of the course.
-   */
   is_public: string[];
   /** The type of action that triggered the creation of the course. */
   created_source: string;
@@ -115,32 +87,8 @@ export type CreatedEventData = {
  * the change as in [:old_value, :new_value].
  */
 export type UpdatedEventData = {
-  /**
-   * The updated event data object returns all the fields that have changed in
-   * the format of the following example. If a field does not exist it was not
-   * changed. The value is an array that contains the before and after values
-   * for the change as in [:old_value, :new_value].
-   */
   name: string[];
-  /**
-   * The updated event data object returns all the fields that have changed in
-   * the format of the following example. If a field does not exist it was not
-   * changed. The value is an array that contains the before and after values
-   * for the change as in [:old_value, :new_value].
-   */
   start_at: string[];
-  /**
-   * The updated event data object returns all the fields that have changed in
-   * the format of the following example. If a field does not exist it was not
-   * changed. The value is an array that contains the before and after values
-   * for the change as in [:old_value, :new_value].
-   */
   conclude_at: string[];
-  /**
-   * The updated event data object returns all the fields that have changed in
-   * the format of the following example. If a field does not exist it was not
-   * changed. The value is an array that contains the before and after values
-   * for the change as in [:old_value, :new_value].
-   */
   is_public: string[];
 };

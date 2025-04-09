@@ -1,10 +1,13 @@
 import { client } from '../../../Client.js';
 import { User } from '../../../Resources/Users.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -16,9 +19,9 @@ type Options = {
  *
  * Nickname: get_single_user_lti
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<User>(`/lti/users/{id}`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

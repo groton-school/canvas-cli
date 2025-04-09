@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { CommunicationChannel } from '../../../../Resources/CommunicationChannels.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  user_id: string;
+};
+
+type createFormParameters = {
   /** An email address or SMS number. Not required for "push" type channels. */
   'communication_channel[address]': string;
   /**
@@ -29,7 +34,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -39,9 +45,13 @@ type Options = {
  *
  * Nickname: create_communication_channel
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<CommunicationChannel>(
     `/v1/users/{user_id}/communication_channels`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

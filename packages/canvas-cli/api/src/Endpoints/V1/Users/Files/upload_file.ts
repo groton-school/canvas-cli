@@ -1,9 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type upload_filePathParameters = {
+  /** ID */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: upload_filePathParameters;
 };
 
 /**
@@ -21,9 +24,9 @@ type Options = {
  *
  * Nickname: upload_file
  */
-export async function upload_file({ parameters }: Options) {
+export async function upload_file({ pathParams }: Options) {
   return await client().fetchAs<void>(`/v1/users/{user_id}/files`, {
     method: 'POST',
-    params: parameters
+    pathParams
   });
 }

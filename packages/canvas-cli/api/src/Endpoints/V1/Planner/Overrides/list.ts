@@ -1,11 +1,7 @@
 import { client } from '../../../../Client.js';
 import { PlannerOverride } from '../../../../Resources/Planner.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * List planner overrides
@@ -14,9 +10,8 @@ type Options = {
  *
  * Nickname: list_planner_overrides
  */
-export async function list({ parameters }: Options) {
+export async function list({}: Options) {
   return await client().fetchAs<string[]>(`/v1/planner/overrides`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

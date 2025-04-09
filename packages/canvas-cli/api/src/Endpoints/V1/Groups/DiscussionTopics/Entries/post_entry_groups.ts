@@ -1,6 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type post_entry_groupsPathParameters = {
+  /** ID */
+  group_id: string;
+  /** ID */
+  topic_id: string;
+};
+
+type post_entry_groupsFormParameters = {
   /** The body of the entry. */
   message: string;
   /**
@@ -11,7 +18,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: post_entry_groupsPathParameters;
+  params?: post_entry_groupsFormParameters;
 };
 
 /**
@@ -22,9 +30,13 @@ type Options = {
  *
  * Nickname: post_entry_groups
  */
-export async function post_entry_groups({ parameters }: Options) {
+export async function post_entry_groups({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/groups/{group_id}/discussion_topics/{topic_id}/entries`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

@@ -1,7 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { BlueprintRestriction } from '../../../../../Resources/BlueprintCourses.js';
 
-type Parameters = {
+type set_or_remove_restrictions_on_blueprint_course_objectPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  template_id: string;
+};
+
+type set_or_remove_restrictions_on_blueprint_course_objectFormParameters = {
   /**
    * [String,
    * "assignment"|"attachment"|"discussion_topic"|"external_tool"|"lti-quiz"|"quiz"|"wiki_page"]
@@ -25,7 +32,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: set_or_remove_restrictions_on_blueprint_course_objectPathParameters;
+  params?: set_or_remove_restrictions_on_blueprint_course_objectFormParameters;
 };
 
 /**
@@ -37,10 +45,15 @@ type Options = {
  * Nickname: set_or_remove_restrictions_on_blueprint_course_object
  */
 export async function set_or_remove_restrictions_on_blueprint_course_object({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/blueprint_templates/{template_id}/restrict_item`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

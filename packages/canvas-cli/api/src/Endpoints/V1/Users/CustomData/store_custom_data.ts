@@ -1,7 +1,12 @@
 import { JSON } from '';
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type store_custom_dataPathParameters = {
+  /** ID */
+  user_id: string;
+};
+
+type store_custom_dataFormParameters = {
   /**
    * The namespace under which to store the data. This should be something
    * other Canvas API apps aren't likely to use, such as a reverse DNS for
@@ -17,7 +22,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: store_custom_dataPathParameters;
+  params?: store_custom_dataFormParameters;
 };
 
 /**
@@ -133,9 +139,10 @@ type Options = {
  *
  * Nickname: store_custom_data
  */
-export async function store_custom_data({ parameters }: Options) {
+export async function store_custom_data({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/users/{user_id}/custom_data`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

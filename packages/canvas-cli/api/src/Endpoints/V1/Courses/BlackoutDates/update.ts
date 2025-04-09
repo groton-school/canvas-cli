@@ -1,7 +1,12 @@
 import { BlackoutDateTheresultwhichshouldmatchtheinputwithmaybesomedifferentIDs } from '';
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type updateFormParameters = {
   /**
    * [blackout_date, ...] An object containing the array of BlackoutDates we
    * want to exist after this operation. For array entries, if it has an id it
@@ -12,7 +17,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -23,9 +29,13 @@ type Options = {
  *
  * Nickname: update_list_of_blackout_dates
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/courses/{course_id}/blackout_dates`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

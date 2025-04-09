@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { QuizSubmissionQuestion } from '../../../../Resources/QuizSubmissionQuestions.js';
 
-type Parameters = {
+type answering_questionsPathParameters = {
+  /** ID */
+  quiz_submission_id: string;
+};
+
+type answering_questionsFormParameters = {
   /**
    * The attempt number of the quiz submission being taken. Note that this
    * must be the latest attempt index, as questions for earlier attempts can
@@ -27,7 +32,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: answering_questionsPathParameters;
+  params?: answering_questionsFormParameters;
 };
 
 /**
@@ -37,9 +43,13 @@ type Options = {
  *
  * Nickname: answering_questions
  */
-export async function answering_questions({ parameters }: Options) {
+export async function answering_questions({ pathParams, params }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/quiz_submissions/{quiz_submission_id}/questions`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

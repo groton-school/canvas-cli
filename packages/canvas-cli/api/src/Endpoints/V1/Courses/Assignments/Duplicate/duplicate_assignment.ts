@@ -1,7 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { Assignment } from '../../../../../Resources/Assignments.js';
 
-type Parameters = {
+type duplicate_assignmentPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  assignment_id: string;
+};
+
+type duplicate_assignmentFormParameters = {
   /**
    * Optional information: When the root account has the feature
    * `newquizzes_on_quiz_page` enabled and this argument is set to "Quiz" the
@@ -13,7 +20,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: duplicate_assignmentPathParameters;
+  params?: duplicate_assignmentFormParameters;
 };
 
 /**
@@ -23,9 +31,13 @@ type Options = {
  *
  * Nickname: duplicate_assignment
  */
-export async function duplicate_assignment({ parameters }: Options) {
+export async function duplicate_assignment({ pathParams, params }: Options) {
   return await client().fetchAs<Assignment>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/duplicate`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

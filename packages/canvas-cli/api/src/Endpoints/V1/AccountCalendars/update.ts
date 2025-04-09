@@ -1,7 +1,12 @@
 import { client } from '../../../Client.js';
 import { AccountCalendar } from '../../../Resources/AccountCalendars.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type updateFormParameters = {
   /**
    * Allow administrators with `manage_account_calendar_events` permission to
    * create events on this calendar, and allow users to view this calendar and
@@ -16,7 +21,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -27,9 +33,13 @@ type Options = {
  *
  * Nickname: update_calendar
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<AccountCalendar>(
     `/v1/account_calendars/{account_id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

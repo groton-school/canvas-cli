@@ -1,10 +1,15 @@
 import { client } from '../../../../../Client.js';
 import { MigrationIssue } from '../../../../../Resources/ContentMigrations.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  content_migration_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: list_migration_issues_accounts
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/accounts/{account_id}/content_migrations/{content_migration_id}/migration_issues`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

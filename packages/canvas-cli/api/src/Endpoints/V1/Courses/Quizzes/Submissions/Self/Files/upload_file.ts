@@ -1,6 +1,13 @@
 import { client } from '../../../../../../../Client.js';
 
-type Parameters = {
+type upload_filePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  quiz_id: string;
+};
+
+type upload_fileFormParameters = {
   /** The name of the quiz submission file */
   name: string;
   /** How to handle duplicate names */
@@ -8,7 +15,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: upload_filePathParameters;
+  params?: upload_fileFormParameters;
 };
 
 /**
@@ -23,9 +31,13 @@ type Options = {
  *
  * Nickname: upload_file
  */
-export async function upload_file({ parameters }: Options) {
+export async function upload_file({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/self/files`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

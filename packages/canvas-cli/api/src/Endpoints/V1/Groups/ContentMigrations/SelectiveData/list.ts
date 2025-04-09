@@ -1,9 +1,20 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  group_id: string;
+  /** ID */
+  id: string;
+};
+
+type listSearchParameters = {
+  /** The type of content to enumerate. */
+  type: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -50,7 +61,7 @@ type Options = {
  *
  * Nickname: list_items_for_selective_import_groups
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<
     {
       type: string;
@@ -61,6 +72,7 @@ export async function list({ parameters }: Options) {
     }[]
   >(`/v1/groups/{group_id}/content_migrations/{id}/selective_data`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

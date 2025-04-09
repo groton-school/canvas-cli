@@ -1,10 +1,16 @@
 import { client } from '../../../../../../Client.js';
 import { Course } from '../../../../../../Resources/Courses.js';
 
-type Parameters = {};
+type listSearchParameters = {
+  /**
+   * When set, only return courses that are not configured as blueprint
+   * courses.
+   */
+  exclude_blueprint_courses: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -19,9 +25,9 @@ type Options = {
  *
  * Nickname: list_favorite_courses
  */
-export async function list({ parameters }: Options) {
+export async function list({ searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/users/self/favorites/courses`, {
     method: 'GET',
-    params: parameters
+    searchParams
   });
 }

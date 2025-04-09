@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { RubricAssociation } from '../../../../Resources/Rubrics.js';
 
-type Parameters = {};
+type delete_rubricassociationPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_rubricassociationPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: delete_rubricassociation
  */
-export async function delete_rubricassociation({ parameters }: Options) {
+export async function delete_rubricassociation({ pathParams }: Options) {
   return await client().fetchAs<RubricAssociation>(
     `/v1/courses/{course_id}/rubric_associations/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

@@ -1,6 +1,15 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {
+type rate_entry_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  topic_id: string;
+  /** ID */
+  entry_id: string;
+};
+
+type rate_entry_coursesFormParameters = {
   /**
    * A rating to set on this entry. Only 0 and 1 are accepted.
    *
@@ -10,7 +19,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: rate_entry_coursesPathParameters;
+  params?: rate_entry_coursesFormParameters;
 };
 
 /**
@@ -22,9 +32,13 @@ type Options = {
  *
  * Nickname: rate_entry_courses
  */
-export async function rate_entry_courses({ parameters }: Options) {
+export async function rate_entry_courses({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/discussion_topics/{topic_id}/entries/{entry_id}/rating`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

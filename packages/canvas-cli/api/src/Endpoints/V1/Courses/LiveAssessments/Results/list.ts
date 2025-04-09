@@ -1,9 +1,24 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  assessment_id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * If set, restrict results to those for this user
+   *
+   * Format: 'int64'
+   */
+  user_id: number;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -13,9 +28,13 @@ type Options = {
  *
  * Nickname: list_live_assessment_results
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/live_assessments/{assessment_id}/results`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

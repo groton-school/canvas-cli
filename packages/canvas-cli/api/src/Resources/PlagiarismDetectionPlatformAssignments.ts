@@ -1,20 +1,10 @@
 /** A Canvas assignment */
 export type LtiAssignment = {
-  /**
-   * A Canvas assignment
-   *
-   * Type: integer
-   */
+  /** Type: integer */
   id: number;
-  /** A Canvas assignment */
   name: string;
-  /** A Canvas assignment */
   description: string;
-  /**
-   * A Canvas assignment
-   *
-   * Type: integer
-   */
+  /** Type: integer */
   points_possible: number;
   /**
    * The due date for the assignment. If a user id is supplied and an assignment
@@ -24,14 +14,8 @@ export type LtiAssignment = {
    * Format: date-time
    */
   due_at: string;
-  /** A Canvas assignment */
   lti_id: string;
-  /**
-   * A Canvas assignment
-   *
-   * Type: integer
-   */
+  /** Type: integer */
   course_id: number;
-  /** A Canvas assignment */
   lti_course_id: string;
 };

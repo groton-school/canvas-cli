@@ -1,9 +1,15 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type getSearchParameters = {
+  /**
+   * List of context_codes to retrieve visible course nav tools for (for
+   * example, +course_123+). Only courses are presently supported.
+   */
+  context_codes: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -19,9 +25,12 @@ type Options = {
  *
  * Nickname: get_visible_course_navigation_tools
  */
-export async function get({ parameters }: Options) {
+export async function get({ searchParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/external_tools/visible_course_nav_tools`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      searchParams
+    }
   );
 }

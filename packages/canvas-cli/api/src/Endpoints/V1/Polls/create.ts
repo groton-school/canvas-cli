@@ -1,6 +1,6 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {
+type createFormParameters = {
   /** The title of the poll. */
   'polls[question]': string[];
   /** A brief description or instructions for the poll. */
@@ -8,7 +8,7 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -18,9 +18,9 @@ type Options = {
  *
  * Nickname: create_single_poll
  */
-export async function create({ parameters }: Options) {
+export async function create({ params }: Options) {
   return await client().fetchAs<void>(`/v1/polls`, {
     method: 'POST',
-    params: parameters
+    params
   });
 }

@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
-type Parameters = {
+type import_category_groupsPathParameters = {
+  /** ID */
+  group_category_id: string;
+};
+
+type import_category_groupsFormParameters = {
   /**
    * There are two ways to post group category import data - either via a
    * multipart/form-data form-field-style attachment, or via a non-multipart
@@ -26,7 +31,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: import_category_groupsPathParameters;
+  params?: import_category_groupsFormParameters;
 };
 
 /**
@@ -39,9 +45,13 @@ type Options = {
  *
  * Nickname: import_category_groups
  */
-export async function import_category_groups({ parameters }: Options) {
+export async function import_category_groups({ pathParams, params }: Options) {
   return await client().fetchAs<Progress>(
     `/v1/group_categories/{group_category_id}/import`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

@@ -1,12 +1,18 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type delete_messagePathParameters = {
+  /** ID */
+  id: string;
+};
+
+type delete_messageFormParameters = {
   /** Array of message ids to be deleted */
   remove: string[];
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_messagePathParameters;
+  params?: delete_messageFormParameters;
 };
 
 /**
@@ -18,9 +24,13 @@ type Options = {
  *
  * Nickname: delete_message
  */
-export async function delete_message({ parameters }: Options) {
+export async function delete_message({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/conversations/{id}/remove_messages`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

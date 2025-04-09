@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { EpubExport } from '../../../../Resources/EPubExports.js';
 
-type Parameters = {};
+type show_epub_exportPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_epub_exportPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: show_epub_export
  */
-export async function show_epub_export({ parameters }: Options) {
+export async function show_epub_export({ pathParams }: Options) {
   return await client().fetchAs<EpubExport>(
     `/v1/courses/{course_id}/epub_exports/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

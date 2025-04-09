@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { Folder } from '../../../../Resources/Files.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  group_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -17,9 +22,9 @@ type Options = {
  *
  * Nickname: get_folder_groups
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<Folder>(`/v1/groups/{group_id}/folders/{id}`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

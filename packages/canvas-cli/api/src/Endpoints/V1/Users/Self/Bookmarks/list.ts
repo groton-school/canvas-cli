@@ -1,11 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { Bookmark } from '../../../../../Resources/Bookmarks.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * List bookmarks
@@ -14,9 +10,8 @@ type Options = {
  *
  * Nickname: list_bookmarks
  */
-export async function list({ parameters }: Options) {
+export async function list({}: Options) {
   return await client().fetchAs<string[]>(`/v1/users/self/bookmarks`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

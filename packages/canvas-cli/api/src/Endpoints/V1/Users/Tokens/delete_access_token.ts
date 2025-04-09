@@ -1,9 +1,14 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type delete_access_tokenPathParameters = {
+  /** ID */
+  user_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_access_tokenPathParameters;
 };
 
 /**
@@ -13,9 +18,9 @@ type Options = {
  *
  * Nickname: delete_access_token
  */
-export async function delete_access_token({ parameters }: Options) {
+export async function delete_access_token({ pathParams }: Options) {
   return await client().fetchAs<void>(`/v1/users/{user_id}/tokens/{id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams
   });
 }

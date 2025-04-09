@@ -1,10 +1,15 @@
 import { client } from '../../../../../Client.js';
 import { File } from '../../../../../Resources/Files.js';
 
-type Parameters = {};
+type translate_file_referencePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  migration_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: translate_file_referencePathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: translate_file_reference
  */
-export async function translate_file_reference({ parameters }: Options) {
+export async function translate_file_reference({ pathParams }: Options) {
   return await client().fetchAs<File>(
     `/v1/courses/{course_id}/files/file_ref/{migration_id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

@@ -1,9 +1,14 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type add_tool_to_top_navigation_favoritesPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: add_tool_to_top_navigation_favoritesPathParameters;
 };
 
 /**
@@ -15,10 +20,13 @@ type Options = {
  * Nickname: add_tool_to_top_navigation_favorites
  */
 export async function add_tool_to_top_navigation_favorites({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/accounts/{account_id}/external_tools/top_nav_favorites/{id}`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

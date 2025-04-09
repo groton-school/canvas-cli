@@ -1,9 +1,12 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {};
+type delete_webhook_subscriptionPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_webhook_subscriptionPathParameters;
 };
 
 /**
@@ -11,9 +14,9 @@ type Options = {
  *
  * Nickname: delete_webhook_subscription
  */
-export async function delete_webhook_subscription({ parameters }: Options) {
+export async function delete_webhook_subscription({ pathParams }: Options) {
   return await client().fetchAs<void>(`/lti/subscriptions/{id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams
   });
 }

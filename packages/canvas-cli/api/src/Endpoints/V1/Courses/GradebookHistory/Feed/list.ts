@@ -1,10 +1,42 @@
 import { client } from '../../../../../Client.js';
 import { SubmissionVersion } from '../../../../../Resources/GradebookHistory.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /**
+   * The id of the contextual course for this API call
+   *
+   * Format: 'int64'
+   */
+  course_id: number;
+};
+
+type listSearchParameters = {
+  /**
+   * The ID of the assignment for which you want to see submissions. If
+   * absent, versions of submissions from any assignment in the course are
+   * included.
+   *
+   * Format: 'int64'
+   */
+  assignment_id: number;
+  /**
+   * The ID of the user for which you want to see submissions. If absent,
+   * versions of submissions from any user in the course are included.
+   *
+   * Format: 'int64'
+   */
+  user_id: number;
+  /**
+   * Returns submission versions in ascending date order (oldest first). If
+   * absent, returns submission versions in descending date order (newest
+   * first).
+   */
+  ascending: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -17,9 +49,13 @@ type Options = {
  *
  * Nickname: list_uncollated_submission_versions
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/courses/{course_id}/gradebook_history/feed`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

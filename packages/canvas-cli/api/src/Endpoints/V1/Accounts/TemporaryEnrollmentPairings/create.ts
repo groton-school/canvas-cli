@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { TemporaryEnrollmentPairing } from '../../../../Resources/TemporaryEnrollmentPairings.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type createFormParameters = {
   /** The workflow state of the temporary enrollment pairing. */
   workflow_state: string;
   /**
@@ -14,7 +19,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -24,9 +30,13 @@ type Options = {
  *
  * Nickname: create_temporary_enrollment_pairing
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<TemporaryEnrollmentPairing>(
     `/v1/accounts/{account_id}/temporary_enrollment_pairings`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

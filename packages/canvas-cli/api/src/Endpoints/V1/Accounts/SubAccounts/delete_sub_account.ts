@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { Account } from '../../../../Resources/Accounts.js';
 
-type Parameters = {};
+type delete_sub_accountPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_sub_accountPathParameters;
 };
 
 /**
@@ -15,9 +20,12 @@ type Options = {
  *
  * Nickname: delete_sub_account
  */
-export async function delete_sub_account({ parameters }: Options) {
+export async function delete_sub_account({ pathParams }: Options) {
   return await client().fetchAs<Account>(
     `/v1/accounts/{account_id}/sub_accounts/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

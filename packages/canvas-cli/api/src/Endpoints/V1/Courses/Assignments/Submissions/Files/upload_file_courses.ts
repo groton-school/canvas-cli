@@ -1,9 +1,16 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {};
+type upload_file_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  assignment_id: string;
+  /** ID */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: upload_file_coursesPathParameters;
 };
 
 /**
@@ -21,9 +28,12 @@ type Options = {
  *
  * Nickname: upload_file_courses
  */
-export async function upload_file_courses({ parameters }: Options) {
+export async function upload_file_courses({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/files`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

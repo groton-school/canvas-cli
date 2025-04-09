@@ -1,7 +1,7 @@
 import { client } from '../../../Client.js';
 import { JWT } from '../../../Resources/JwTs.js';
 
-type Parameters = {
+type createFormParameters = {
   /**
    * Adds additional data to the JWT to be used by the consuming service
    * workflow
@@ -34,7 +34,7 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -47,9 +47,9 @@ type Options = {
  *
  * Nickname: create_jwt
  */
-export async function create({ parameters }: Options) {
+export async function create({ params }: Options) {
   return await client().fetchAs<JWT>(`/v1/jwts`, {
     method: 'POST',
-    params: parameters
+    params
   });
 }

@@ -4,7 +4,12 @@ import {
   AssignmentOverride
 } from '../../../../Resources/Assignments.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type createFormParameters = {
   /** The assignment name. */
   'assignment[name]': string;
   /**
@@ -234,7 +239,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -245,9 +251,13 @@ type Options = {
  *
  * Nickname: create_assignment
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<Assignment>(
     `/v1/courses/{course_id}/assignments`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

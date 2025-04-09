@@ -1,9 +1,20 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type fetching_latest_quiz_statisticsPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  quiz_id: string;
+};
+
+type fetching_latest_quiz_statisticsSearchParameters = {
+  /** Whether the statistics report should include all submissions attempts. */
+  all_versions: boolean;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: fetching_latest_quiz_statisticsPathParameters;
+  searchParams?: fetching_latest_quiz_statisticsSearchParameters;
 };
 
 /**
@@ -17,9 +28,16 @@ type Options = {
  *
  * Nickname: fetching_latest_quiz_statistics
  */
-export async function fetching_latest_quiz_statistics({ parameters }: Options) {
+export async function fetching_latest_quiz_statistics({
+  pathParams,
+  searchParams
+}: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/statistics`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

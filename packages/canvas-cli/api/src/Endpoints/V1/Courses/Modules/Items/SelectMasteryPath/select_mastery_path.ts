@@ -1,6 +1,15 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {
+type select_mastery_pathPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  module_id: string;
+  /** ID */
+  id: string;
+};
+
+type select_mastery_pathFormParameters = {
   /**
    * Assignment set chosen, as specified in the mastery_paths portion of the
    * context module item response
@@ -14,7 +23,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: select_mastery_pathPathParameters;
+  params?: select_mastery_pathFormParameters;
 };
 
 /**
@@ -27,9 +37,13 @@ type Options = {
  *
  * Nickname: select_mastery_path
  */
-export async function select_mastery_path({ parameters }: Options) {
+export async function select_mastery_path({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/modules/{module_id}/items/{id}/select_mastery_path`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

@@ -1,10 +1,28 @@
 import { client } from '../../../../../Client.js';
 import { QuizReport } from '../../../../../Resources/QuizReports.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  quiz_id: string;
+  /** ID */
+  id: string;
+};
+
+type getSearchParameters = {
+  /**
+   * Whether the output should include documents for the file and/or progress
+   * objects associated with this report. (Note: JSON-API only)
+   *
+   * String[]
+   */
+  include: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -14,9 +32,13 @@ type Options = {
  *
  * Nickname: get_quiz_report
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams, searchParams }: Options) {
   return await client().fetchAs<QuizReport>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/reports/{id}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

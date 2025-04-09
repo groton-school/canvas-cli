@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { Course } from '../../../../Resources/Courses.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type createFormParameters = {
   /**
    * The name of the course. If omitted, the course will be named "Unnamed
    * Course."
@@ -134,7 +139,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -144,9 +150,10 @@ type Options = {
  *
  * Nickname: create_new_course
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<Course>(`/v1/accounts/{account_id}/courses`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

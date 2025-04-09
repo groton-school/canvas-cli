@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
-type Parameters = {};
+type return_test_student_for_coursePathParameters = {
+  /** ID */
+  course_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: return_test_student_for_coursePathParameters;
 };
 
 /**
@@ -16,9 +19,12 @@ type Options = {
  *
  * Nickname: return_test_student_for_course
  */
-export async function return_test_student_for_course({ parameters }: Options) {
+export async function return_test_student_for_course({ pathParams }: Options) {
   return await client().fetchAs<User>(
     `/v1/courses/{course_id}/student_view_student`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

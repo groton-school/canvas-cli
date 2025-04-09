@@ -1,9 +1,16 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type delete_question_groupPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  quiz_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_question_groupPathParameters;
 };
 
 /**
@@ -16,9 +23,12 @@ type Options = {
  *
  * Nickname: delete_question_group
  */
-export async function delete_question_group({ parameters }: Options) {
+export async function delete_question_group({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/groups/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

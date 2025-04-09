@@ -1,9 +1,16 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {};
+type select_provisional_gradePathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  assignment_id: string;
+  /** ID */
+  provisional_grade_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: select_provisional_gradePathParameters;
 };
 
 /**
@@ -15,9 +22,12 @@ type Options = {
  *
  * Nickname: select_provisional_grade
  */
-export async function select_provisional_grade({ parameters }: Options) {
+export async function select_provisional_grade({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/{provisional_grade_id}/select`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

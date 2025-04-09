@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { CustomColumn } from '../../../../Resources/CustomGradebookColumns.js';
 
-type Parameters = {};
+type delete_custom_gradebook_columnPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_custom_gradebook_columnPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: delete_custom_gradebook_column
  */
-export async function delete_custom_gradebook_column({ parameters }: Options) {
+export async function delete_custom_gradebook_column({ pathParams }: Options) {
   return await client().fetchAs<CustomColumn>(
     `/v1/courses/{course_id}/custom_gradebook_columns/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

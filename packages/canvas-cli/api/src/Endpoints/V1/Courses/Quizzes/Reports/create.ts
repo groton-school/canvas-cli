@@ -1,7 +1,14 @@
 import { client } from '../../../../../Client.js';
 import { QuizReport } from '../../../../../Resources/QuizReports.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  quiz_id: string;
+};
+
+type createFormParameters = {
   /** The type of report to be generated. */
   'quiz_report[report_type]': string;
   /**
@@ -19,7 +26,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -37,9 +45,13 @@ type Options = {
  *
  * Nickname: create_quiz_report
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<QuizReport>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/reports`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

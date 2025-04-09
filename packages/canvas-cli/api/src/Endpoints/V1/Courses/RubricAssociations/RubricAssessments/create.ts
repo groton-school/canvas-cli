@@ -1,7 +1,22 @@
 import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type createPathParameters = {
+  /**
+   * The id of the course
+   *
+   * Format: 'int64'
+   */
+  course_id: number;
+  /**
+   * The id of the object with which this rubric assessment is associated
+   *
+   * Format: 'int64'
+   */
+  rubric_association_id: number;
+};
+
+type createFormParameters = {
   /**
    * (optional) Indicates whether this assessment is provisional, defaults to
    * false.
@@ -32,7 +47,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -44,9 +60,13 @@ type Options = {
  *
  * Nickname: create_single_rubric_assessment
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/rubric_associations/{rubric_association_id}/rubric_assessments`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

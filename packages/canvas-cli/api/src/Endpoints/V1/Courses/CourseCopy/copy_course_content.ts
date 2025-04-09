@@ -1,6 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type copy_course_contentPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type copy_course_contentFormParameters = {
   /** ID or SIS-ID of the course to copy the content from */
   source_course: string;
   /**
@@ -16,7 +21,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: copy_course_contentPathParameters;
+  params?: copy_course_contentFormParameters;
 };
 
 /**
@@ -33,9 +39,10 @@ type Options = {
  *
  * Nickname: copy_course_content
  */
-export async function copy_course_content({ parameters }: Options) {
+export async function copy_course_content({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/courses/{course_id}/course_copy`, {
     method: 'POST',
-    params: parameters
+    pathParams,
+    params
   });
 }

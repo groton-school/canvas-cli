@@ -1,7 +1,7 @@
 import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../Client.js';
 
-type Parameters = {
+type createFormParameters = {
   /** The id of the context for the subscription. */
   'subscription[ContextId]': string;
   /**
@@ -28,7 +28,7 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -38,9 +38,9 @@ type Options = {
  *
  * Nickname: create_webhook_subscription
  */
-export async function create({ parameters }: Options) {
+export async function create({ params }: Options) {
   return await client().fetchAs<void>(`/lti/subscriptions`, {
     method: 'POST',
-    params: parameters
+    params
   });
 }

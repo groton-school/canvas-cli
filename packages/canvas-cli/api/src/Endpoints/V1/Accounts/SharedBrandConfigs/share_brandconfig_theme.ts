@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { SharedBrandConfig } from '../../../../Resources/SharedBrandConfigs.js';
 
-type Parameters = {
+type share_brandconfig_themePathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type share_brandconfig_themeFormParameters = {
   /** Name to share this BrandConfig (theme) as. */
   'shared_brand_config[name]': string;
   /** MD5 of brand_config to share */
@@ -9,7 +14,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: share_brandconfig_themePathParameters;
+  params?: share_brandconfig_themeFormParameters;
 };
 
 /**
@@ -20,9 +26,13 @@ type Options = {
  *
  * Nickname: share_brandconfig_theme
  */
-export async function share_brandconfig_theme({ parameters }: Options) {
+export async function share_brandconfig_theme({ pathParams, params }: Options) {
   return await client().fetchAs<SharedBrandConfig>(
     `/v1/accounts/{account_id}/shared_brand_configs`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

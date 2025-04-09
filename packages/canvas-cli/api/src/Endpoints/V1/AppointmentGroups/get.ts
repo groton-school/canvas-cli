@@ -1,9 +1,25 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  id: string;
+};
+
+type getSearchParameters = {
+  /**
+   * Array of additional information to include. See include[] argument of
+   * "List appointment groups" action.
+   *
+   * "child_events":: reservations of time slots time slots "appointments"::
+   * will always be returned "all_context_codes":: all context codes
+   * associated with this appointment group
+   */
+  include: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
+  searchParams?: getSearchParameters;
 };
 
 /**
@@ -13,9 +29,10 @@ type Options = {
  *
  * Nickname: get_single_appointment_group
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(`/v1/appointment_groups/{id}`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

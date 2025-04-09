@@ -1,7 +1,18 @@
 import { client } from '../../../../../../Client.js';
 import { AccommodationResponse } from '../../../../../../Resources/NewQuizzesAccommodations.js';
 
-type Parameters = {
+type set_quiz_level_accommodationsPathParameters = {
+  /** The ID of the course where the quiz is located. */
+  course_id: string;
+  /**
+   * The ID of the assignment/quiz that needs accommodations.
+   *
+   * Format: 'int64'
+   */
+  assignment_id: number;
+};
+
+type set_quiz_level_accommodationsFormParameters = {
   /**
    * The Canvas user ID of the student receiving accommodations.
    *
@@ -30,7 +41,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: set_quiz_level_accommodationsPathParameters;
+  params?: set_quiz_level_accommodationsFormParameters;
 };
 
 /**
@@ -52,9 +64,16 @@ type Options = {
  *
  * Nickname: set_quiz_level_accommodations
  */
-export async function set_quiz_level_accommodations({ parameters }: Options) {
+export async function set_quiz_level_accommodations({
+  pathParams,
+  params
+}: Options) {
   return await client().fetchAs<AccommodationResponse>(
     `/quiz/v1/courses/{course_id}/quizzes/{assignment_id}/accommodations`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

@@ -1,12 +1,22 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {
+type submit_captured_eventsPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  quiz_id: string;
+  /** ID */
+  id: string;
+};
+
+type submit_captured_eventsFormParameters = {
   /** The submission events to be recorded */
   quiz_submission_events: string[];
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: submit_captured_eventsPathParameters;
+  params?: submit_captured_eventsFormParameters;
 };
 
 /**
@@ -18,9 +28,13 @@ type Options = {
  *
  * Nickname: submit_captured_events
  */
-export async function submit_captured_events({ parameters }: Options) {
+export async function submit_captured_events({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/events`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

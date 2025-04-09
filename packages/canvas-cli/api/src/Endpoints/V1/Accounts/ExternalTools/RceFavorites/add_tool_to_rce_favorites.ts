@@ -1,9 +1,14 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type add_tool_to_rce_favoritesPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: add_tool_to_rce_favoritesPathParameters;
 };
 
 /**
@@ -15,9 +20,12 @@ type Options = {
  *
  * Nickname: add_tool_to_rce_favorites
  */
-export async function add_tool_to_rce_favorites({ parameters }: Options) {
+export async function add_tool_to_rce_favorites({ pathParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/accounts/{account_id}/external_tools/rce_favorites/{id}`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams
+    }
   );
 }

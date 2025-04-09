@@ -1,9 +1,27 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type listSearchParameters = {
+  /** The partial name of the tools to match and return. */
+  search_term: string;
+  /** If true, then only tools that are meant to be selectable are returned. */
+  selectable: boolean;
+  /**
+   * If true, then include tools installed in all accounts above the current
+   * context
+   */
+  include_parents: boolean;
+  /** The placement type to filter by. */
+  placement: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -15,9 +33,13 @@ type Options = {
  *
  * Nickname: list_external_tools_accounts
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(
     `/v1/accounts/{account_id}/external_tools`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

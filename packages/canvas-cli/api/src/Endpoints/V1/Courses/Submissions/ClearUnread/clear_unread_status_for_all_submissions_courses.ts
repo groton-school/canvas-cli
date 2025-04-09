@@ -1,9 +1,14 @@
 import { client } from '../../../../../Client.js';
 
-type Parameters = {};
+type clear_unread_status_for_all_submissions_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  user_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: clear_unread_status_for_all_submissions_coursesPathParameters;
 };
 
 /**
@@ -18,10 +23,13 @@ type Options = {
  * Nickname: clear_unread_status_for_all_submissions_courses
  */
 export async function clear_unread_status_for_all_submissions_courses({
-  parameters
+  pathParams
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/submissions/{user_id}/clear_unread`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

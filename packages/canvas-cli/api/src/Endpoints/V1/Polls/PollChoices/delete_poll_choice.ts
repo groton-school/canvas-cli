@@ -1,9 +1,14 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type delete_poll_choicePathParameters = {
+  /** ID */
+  poll_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_poll_choicePathParameters;
 };
 
 /**
@@ -14,9 +19,9 @@ type Options = {
  *
  * Nickname: delete_poll_choice
  */
-export async function delete_poll_choice({ parameters }: Options) {
+export async function delete_poll_choice({ pathParams }: Options) {
   return await client().fetchAs<void>(`/v1/polls/{poll_id}/poll_choices/{id}`, {
     method: 'DELETE',
-    params: parameters
+    pathParams
   });
 }

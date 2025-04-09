@@ -1,11 +1,7 @@
 import { client } from '../../../Client.js';
 import { CourseEpubExport } from '../../../Resources/EPubExports.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * List courses with their latest ePub export
@@ -15,9 +11,8 @@ type Options = {
  *
  * Nickname: list_courses_with_their_latest_epub_export
  */
-export async function list({ parameters }: Options) {
+export async function list({}: Options) {
   return await client().fetchAs<string[]>(`/v1/epub_exports`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

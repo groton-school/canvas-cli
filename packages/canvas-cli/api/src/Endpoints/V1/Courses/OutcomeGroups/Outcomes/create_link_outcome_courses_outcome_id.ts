@@ -1,7 +1,20 @@
 import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
-type Parameters = {
+type create_link_outcome_courses_outcome_idPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  id: string;
+  /**
+   * The ID of the existing outcome to link.
+   *
+   * Format: 'int64'
+   */
+  outcome_id: number;
+};
+
+type create_link_outcome_courses_outcome_idFormParameters = {
   /**
    * The ID of the old outcome group. Only used if outcome_id is present.
    *
@@ -50,7 +63,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: create_link_outcome_courses_outcome_idPathParameters;
+  params?: create_link_outcome_courses_outcome_idFormParameters;
 };
 
 /**
@@ -82,10 +96,15 @@ type Options = {
  * Nickname: create_link_outcome_courses_outcome_id
  */
 export async function create_link_outcome_courses_outcome_id({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<OutcomeLink>(
     `/v1/courses/{course_id}/outcome_groups/{id}/outcomes/{outcome_id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

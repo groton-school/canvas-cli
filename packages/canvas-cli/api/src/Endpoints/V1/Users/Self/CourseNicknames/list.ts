@@ -1,11 +1,7 @@
 import { client } from '../../../../../Client.js';
 import { CourseNickname } from '../../../../../Resources/Users.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * List course nicknames
@@ -14,9 +10,8 @@ type Options = {
  *
  * Nickname: list_course_nicknames
  */
-export async function list({ parameters }: Options) {
+export async function list({}: Options) {
   return await client().fetchAs<string[]>(`/v1/users/self/course_nicknames`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

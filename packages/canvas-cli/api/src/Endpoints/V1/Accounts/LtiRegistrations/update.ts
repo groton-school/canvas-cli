@@ -1,7 +1,14 @@
 import { client } from '../../../../Client.js';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /** The name of the tool */
   name: string;
   /** The admin-configured friendly display name for the registration */
@@ -27,7 +34,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -40,9 +48,13 @@ type Options = {
  *
  * Nickname: update_lti_registration
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<LtiRegistration>(
     `/v1/accounts/{account_id}/lti_registrations/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

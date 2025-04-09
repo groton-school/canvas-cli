@@ -1,10 +1,15 @@
 import { client } from '../../../../../Client.js';
 import { SisImport } from '../../../../../Resources/SisImports.js';
 
-type Parameters = {};
+type abort_sis_importPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: abort_sis_importPathParameters;
 };
 
 /**
@@ -18,9 +23,12 @@ type Options = {
  *
  * Nickname: abort_sis_import
  */
-export async function abort_sis_import({ parameters }: Options) {
+export async function abort_sis_import({ pathParams }: Options) {
   return await client().fetchAs<SisImport>(
     `/v1/accounts/{account_id}/sis_imports/{id}/abort`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams
+    }
   );
 }

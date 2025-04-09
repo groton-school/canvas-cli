@@ -1,7 +1,12 @@
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
-type Parameters = {
+type batch_create_overrides_in_coursePathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type batch_create_overrides_in_courseFormParameters = {
   /**
    * Attributes for the new assignment overrides. See
    * {api:AssignmentOverridesController#create Create an assignment override}
@@ -11,7 +16,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: batch_create_overrides_in_coursePathParameters;
+  params?: batch_create_overrides_in_courseFormParameters;
 };
 
 /**
@@ -31,10 +37,15 @@ type Options = {
  * Nickname: batch_create_overrides_in_course
  */
 export async function batch_create_overrides_in_course({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/courses/{course_id}/assignments/overrides`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

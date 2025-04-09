@@ -1,6 +1,6 @@
 import { client } from '../../../Client.js';
 
-type Parameters = {
+type createFormParameters = {
   /**
    * An array of recipient ids. These may be user ids or course/group ids
    * prefixed with "course_" or "group_" respectively, e.g.
@@ -72,7 +72,7 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -83,9 +83,9 @@ type Options = {
  *
  * Nickname: create_conversation
  */
-export async function create({ parameters }: Options) {
+export async function create({ params }: Options) {
   return await client().fetchAs<void>(`/v1/conversations`, {
     method: 'POST',
-    params: parameters
+    params
   });
 }

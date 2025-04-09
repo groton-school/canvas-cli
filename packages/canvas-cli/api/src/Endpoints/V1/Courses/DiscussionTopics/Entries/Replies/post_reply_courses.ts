@@ -1,6 +1,15 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {
+type post_reply_coursesPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  topic_id: string;
+  /** ID */
+  entry_id: string;
+};
+
+type post_reply_coursesFormParameters = {
   /** The body of the entry. */
   message: string;
   /**
@@ -11,7 +20,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: post_reply_coursesPathParameters;
+  params?: post_reply_coursesFormParameters;
 };
 
 /**
@@ -26,9 +36,13 @@ type Options = {
  *
  * Nickname: post_reply_courses
  */
-export async function post_reply_courses({ parameters }: Options) {
+export async function post_reply_courses({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/discussion_topics/{topic_id}/entries/{entry_id}/replies`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

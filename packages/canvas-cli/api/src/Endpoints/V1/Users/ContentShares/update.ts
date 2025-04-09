@@ -1,13 +1,21 @@
 import { client } from '../../../../Client.js';
 import { ContentShare } from '../../../../Resources/ContentShares.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  user_id: string;
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /** Read state for the content share */
   read_state: string;
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -17,9 +25,13 @@ type Options = {
  *
  * Nickname: update_content_share
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<ContentShare>(
     `/v1/users/{user_id}/content_shares/{id}`,
-    { method: 'PUT', params: parameters }
+    {
+      method: 'PUT',
+      pathParams,
+      params
+    }
   );
 }

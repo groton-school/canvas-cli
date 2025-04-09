@@ -2,7 +2,12 @@ import { GroupCategoryandgroupsoperationresults } from '';
 import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../../Client.js';
 
-type Parameters = {
+type bulk_manage_differentiation_tagsPathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type bulk_manage_differentiation_tagsFormParameters = {
   /**
    * A hash containing arrays of create/update/delete operations: { "create":
    * [ { "name": "New Group A" }, { "name": "New Group B" } ], "update": [ {
@@ -25,7 +30,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: bulk_manage_differentiation_tagsPathParameters;
+  params?: bulk_manage_differentiation_tagsFormParameters;
 };
 
 /**
@@ -41,10 +47,15 @@ type Options = {
  * Nickname: bulk_manage_differentiation_tags
  */
 export async function bulk_manage_differentiation_tags({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<GroupCategoryandgroupsoperationresults>(
     `/v1/courses/{course_id}/group_categories/bulk_manage_differentiation_tag`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

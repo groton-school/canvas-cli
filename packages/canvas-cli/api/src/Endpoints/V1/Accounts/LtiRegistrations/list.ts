@@ -1,10 +1,48 @@
 import { client } from '../../../../Client.js';
 import { ListLtiRegistrationsResponse } from '../../../../Resources/LtiRegistrations.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * The number of registrations to return per page. Defaults to 15.
+   *
+   * Format: 'int64'
+   */
+  per_page: number;
+  /**
+   * The page number to return. Defaults to 1.
+   *
+   * Format: 'int64'
+   */
+  page: number;
+  /**
+   * The field to sort by. Choices are: name, nickname, lti_version,
+   * installed, installed_by, updated_by, updated, and on. Defaults to
+   * installed.
+   */
+  sort: string;
+  /** The order to sort the given column by. Defaults to desc. */
+  dir: string;
+  /**
+   * Array of additional data to include. Always includes [account_binding].
+   *
+   * "account_binding":: the registration's binding to the given account
+   * "configuration":: the registration's Canvas-style tool configuration,
+   * without any overlays applied. "overlaid_configuration":: the
+   * registration's Canvas-style tool configuration, with all overlays
+   * applied. "overlay":: the registration's admin-defined configuration
+   * overlay
+   */
+  include: string[];
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -17,9 +55,13 @@ type Options = {
  *
  * Nickname: list_lti_registrations_in_account
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<ListLtiRegistrationsResponse>(
     `/v1/accounts/{account_id}/lti_registrations`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

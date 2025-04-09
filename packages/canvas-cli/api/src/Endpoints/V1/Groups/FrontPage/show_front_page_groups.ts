@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
-type Parameters = {};
+type show_front_page_groupsPathParameters = {
+  /** ID */
+  group_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: show_front_page_groupsPathParameters;
 };
 
 /**
@@ -14,9 +17,9 @@ type Options = {
  *
  * Nickname: show_front_page_groups
  */
-export async function show_front_page_groups({ parameters }: Options) {
+export async function show_front_page_groups({ pathParams }: Options) {
   return await client().fetchAs<Page>(`/v1/groups/{group_id}/front_page`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

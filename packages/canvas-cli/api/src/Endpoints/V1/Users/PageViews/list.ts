@@ -1,10 +1,29 @@
 import { client } from '../../../../Client.js';
 import { PageView } from '../../../../Resources/Users.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  user_id: string;
+};
+
+type listSearchParameters = {
+  /**
+   * The beginning of the time range from which you want page views.
+   *
+   * Format: date-time
+   */
+  start_time: string;
+  /**
+   * The end of the time range from which you want page views.
+   *
+   * Format: date-time
+   */
+  end_time: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -16,9 +35,10 @@ type Options = {
  *
  * Nickname: list_user_page_views
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/users/{user_id}/page_views`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

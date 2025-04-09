@@ -1,10 +1,27 @@
 import { client } from '../../../Client.js';
 import { CommMessage } from '../../../Resources/CommMessages.js';
 
-type Parameters = {};
+type listSearchParameters = {
+  /** The user id for whom you want to retrieve CommMessages */
+  user_id: string;
+  /**
+   * The beginning of the time range you want to retrieve message from. Up to
+   * a year prior to the current date is available.
+   *
+   * Format: date-time
+   */
+  start_time: string;
+  /**
+   * The end of the time range you want to retrieve messages for. Up to a year
+   * prior to the current date is available.
+   *
+   * Format: date-time
+   */
+  end_time: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -14,9 +31,9 @@ type Options = {
  *
  * Nickname: list_of_commmessages_for_user
  */
-export async function list({ parameters }: Options) {
+export async function list({ searchParams }: Options) {
   return await client().fetchAs<string[]>(`/v1/comm_messages`, {
     method: 'GET',
-    params: parameters
+    searchParams
   });
 }

@@ -1,9 +1,18 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  id: string;
+};
+
+type listSearchParameters = {
+  /** Limits results to the a given participation status, defaults to "all" */
+  registration_status: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
+  searchParams?: listSearchParameters;
 };
 
 /**
@@ -15,9 +24,10 @@ type Options = {
  *
  * Nickname: list_student_group_participants
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(`/v1/appointment_groups/{id}/groups`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

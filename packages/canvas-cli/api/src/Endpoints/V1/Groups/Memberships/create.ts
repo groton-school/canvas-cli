@@ -1,7 +1,12 @@
 import { client } from '../../../../Client.js';
 import { GroupMembership } from '../../../../Resources/Groups.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  group_id: string;
+};
+
+type createFormParameters = {
   /** No description */
   user_id: string;
   /**
@@ -13,7 +18,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -24,9 +30,13 @@ type Options = {
  *
  * Nickname: create_membership
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<GroupMembership>(
     `/v1/groups/{group_id}/memberships`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

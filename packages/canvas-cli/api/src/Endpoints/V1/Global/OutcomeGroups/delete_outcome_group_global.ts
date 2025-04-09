@@ -1,10 +1,13 @@
 import { client } from '../../../../Client.js';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
 
-type Parameters = {};
+type delete_outcome_group_globalPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: delete_outcome_group_globalPathParameters;
 };
 
 /**
@@ -20,9 +23,12 @@ type Options = {
  *
  * Nickname: delete_outcome_group_global
  */
-export async function delete_outcome_group_global({ parameters }: Options) {
+export async function delete_outcome_group_global({ pathParams }: Options) {
   return await client().fetchAs<OutcomeGroup>(
     `/v1/global/outcome_groups/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams
+    }
   );
 }

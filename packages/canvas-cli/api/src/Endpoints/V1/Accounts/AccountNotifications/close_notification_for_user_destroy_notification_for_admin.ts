@@ -1,10 +1,23 @@
 import { client } from '../../../../Client.js';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
-type Parameters = {};
+type close_notification_for_user_destroy_notification_for_adminPathParameters =
+  {
+    /** ID */
+    account_id: string;
+    /** ID */
+    id: string;
+  };
+
+type close_notification_for_user_destroy_notification_for_adminSearchParameters =
+  {
+    /** Destroy the account notification. */
+    remove: boolean;
+  };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: close_notification_for_user_destroy_notification_for_adminPathParameters;
+  searchParams?: close_notification_for_user_destroy_notification_for_adminSearchParameters;
 };
 
 /**
@@ -20,10 +33,15 @@ type Options = {
  * Nickname: close_notification_for_user_destroy_notification_for_admin
  */
 export async function close_notification_for_user_destroy_notification_for_admin({
-  parameters
+  pathParams,
+  searchParams
 }: Options) {
   return await client().fetchAs<AccountNotification>(
     `/v1/accounts/{account_id}/account_notifications/{id}`,
-    { method: 'DELETE', params: parameters }
+    {
+      method: 'DELETE',
+      pathParams,
+      searchParams
+    }
   );
 }

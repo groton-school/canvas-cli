@@ -1,11 +1,7 @@
 import { client } from '../../../Client.js';
 import { Account } from '../../../Resources/Accounts.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * Get accounts that admins can manage
@@ -16,9 +12,8 @@ type Options = {
  *
  * Nickname: get_accounts_that_admins_can_manage
  */
-export async function get({ parameters }: Options) {
+export async function get({}: Options) {
   return await client().fetchAs<string[]>(`/v1/manageable_accounts`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

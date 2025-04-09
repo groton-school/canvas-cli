@@ -1,10 +1,13 @@
 import { client } from '../../../Client.js';
 import { CalendarEvent } from '../../../Resources/CalendarEvents.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -12,9 +15,9 @@ type Options = {
  *
  * Nickname: get_single_calendar_event_or_assignment
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<CalendarEvent>(`/v1/calendar_events/{id}`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

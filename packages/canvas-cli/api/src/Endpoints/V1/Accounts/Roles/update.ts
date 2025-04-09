@@ -1,7 +1,14 @@
 import { client } from '../../../../Client.js';
 import { Role } from '../../../../Resources/Roles.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
+
+type updateFormParameters = {
   /**
    * The label for the role. Can only change the label of a custom role that
    * belongs directly to the account.
@@ -29,7 +36,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -43,9 +51,10 @@ type Options = {
  *
  * Nickname: update_role
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<Role>(`/v1/accounts/{account_id}/roles/{id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

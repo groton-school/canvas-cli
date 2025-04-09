@@ -1,10 +1,6 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
-
-type Options = {
-  parameters: Parameters;
-};
+type Options = {};
 
 /**
  * List opened poll sessions
@@ -13,9 +9,8 @@ type Options = {
  *
  * Nickname: list_opened_poll_sessions
  */
-export async function list({ parameters }: Options) {
+export async function list({}: Options) {
   return await client().fetchAs<void>(`/v1/poll_sessions/opened`, {
-    method: 'GET',
-    params: parameters
+    method: 'GET'
   });
 }

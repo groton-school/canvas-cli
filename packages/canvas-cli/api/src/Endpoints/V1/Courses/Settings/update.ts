@@ -1,6 +1,11 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type updatePathParameters = {
+  /** ID */
+  course_id: string;
+};
+
+type updateFormParameters = {
   /**
    * Let student final grades for a grading period or the total grades for the
    * course be overridden
@@ -72,7 +77,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -82,9 +88,10 @@ type Options = {
  *
  * Nickname: update_course_settings
  */
-export async function update({ parameters }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<void>(`/v1/courses/{course_id}/settings`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

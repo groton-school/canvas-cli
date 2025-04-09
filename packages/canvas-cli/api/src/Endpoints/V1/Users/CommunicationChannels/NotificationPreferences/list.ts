@@ -1,10 +1,17 @@
 import { client } from '../../../../../Client.js';
 import { NotificationPreference } from '../../../../../Resources/NotificationPreferences.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  user_id: string;
+  /** ID */
+  type: string;
+  /** ID */
+  address: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
 };
 
 /**
@@ -14,9 +21,12 @@ type Options = {
  *
  * Nickname: list_preferences_type
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/users/{user_id}/communication_channels/{type}/{address}/notification_preferences`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

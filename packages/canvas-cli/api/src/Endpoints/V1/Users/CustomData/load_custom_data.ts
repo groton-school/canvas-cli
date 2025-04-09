@@ -1,9 +1,22 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type load_custom_dataPathParameters = {
+  /** ID */
+  user_id: string;
+};
+
+type load_custom_dataSearchParameters = {
+  /**
+   * The namespace from which to retrieve the data. This should be something
+   * other Canvas API apps aren't likely to use, such as a reverse DNS for
+   * your organization.
+   */
+  ns: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: load_custom_dataPathParameters;
+  searchParams?: load_custom_dataSearchParameters;
 };
 
 /**
@@ -23,9 +36,10 @@ type Options = {
  *
  * Nickname: load_custom_data
  */
-export async function load_custom_data({ parameters }: Options) {
+export async function load_custom_data({ pathParams, searchParams }: Options) {
   return await client().fetchAs<void>(`/v1/users/{user_id}/custom_data`, {
     method: 'GET',
-    params: parameters
+    pathParams,
+    searchParams
   });
 }

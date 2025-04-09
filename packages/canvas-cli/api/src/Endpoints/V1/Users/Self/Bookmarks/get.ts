@@ -1,10 +1,13 @@
 import { client } from '../../../../../Client.js';
 import { Bookmark } from '../../../../../Resources/Bookmarks.js';
 
-type Parameters = {};
+type getPathParameters = {
+  /** ID */
+  id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: getPathParameters;
 };
 
 /**
@@ -14,9 +17,9 @@ type Options = {
  *
  * Nickname: get_bookmark
  */
-export async function get({ parameters }: Options) {
+export async function get({ pathParams }: Options) {
   return await client().fetchAs<Bookmark>(`/v1/users/self/bookmarks/{id}`, {
     method: 'GET',
-    params: parameters
+    pathParams
   });
 }

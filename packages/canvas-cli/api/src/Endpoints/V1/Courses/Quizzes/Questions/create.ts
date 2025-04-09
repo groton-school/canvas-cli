@@ -4,7 +4,14 @@ import {
   QuizQuestion
 } from '../../../../../Resources/QuizQuestions.js';
 
-type Parameters = {
+type createPathParameters = {
+  /** ID */
+  course_id: string;
+  /** ID */
+  quiz_id: string;
+};
+
+type createFormParameters = {
   /** The name of the question. */
   'question[question_name]': string;
   /** The text of the question. */
@@ -47,7 +54,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: createPathParameters;
+  params?: createFormParameters;
 };
 
 /**
@@ -57,9 +65,13 @@ type Options = {
  *
  * Nickname: create_single_quiz_question
  */
-export async function create({ parameters }: Options) {
+export async function create({ pathParams, params }: Options) {
   return await client().fetchAs<QuizQuestion>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/questions`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

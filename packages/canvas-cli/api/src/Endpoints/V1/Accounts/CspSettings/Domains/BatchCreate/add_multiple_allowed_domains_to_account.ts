@@ -1,6 +1,11 @@
 import { client } from '../../../../../../Client.js';
 
-type Parameters = {
+type add_multiple_allowed_domains_to_accountPathParameters = {
+  /** ID */
+  account_id: string;
+};
+
+type add_multiple_allowed_domains_to_accountFormParameters = {
   /**
    * No description
    *
@@ -10,7 +15,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: add_multiple_allowed_domains_to_accountPathParameters;
+  params?: add_multiple_allowed_domains_to_accountFormParameters;
 };
 
 /**
@@ -22,10 +28,15 @@ type Options = {
  * Nickname: add_multiple_allowed_domains_to_account
  */
 export async function add_multiple_allowed_domains_to_account({
-  parameters
+  pathParams,
+  params
 }: Options) {
   return await client().fetchAs<void>(
     `/v1/accounts/{account_id}/csp_settings/domains/batch_create`,
-    { method: 'POST', params: parameters }
+    {
+      method: 'POST',
+      pathParams,
+      params
+    }
   );
 }

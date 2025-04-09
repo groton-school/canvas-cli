@@ -1,9 +1,42 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {};
+type retrieve_assignments_enabled_for_grade_export_to_sis_accountsPathParameters =
+  {
+    /**
+     * The ID of the account to query.
+     *
+     * Format: 'int64'
+     */
+    account_id: number;
+  };
+
+type retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters =
+  {
+    /**
+     * The ID of the course to query.
+     *
+     * Format: 'int64'
+     */
+    course_id: number;
+    /**
+     * When searching on an account,
+     *
+     * Format: date-time
+     */
+    starts_before: string;
+    /**
+     * When searching on an account,
+     *
+     * Format: date-time
+     */
+    ends_after: string;
+    /** Array of additional */
+    include: string;
+  };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: retrieve_assignments_enabled_for_grade_export_to_sis_accountsPathParameters;
+  searchParams?: retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters;
 };
 
 /**
@@ -37,10 +70,15 @@ type Options = {
  * Nickname: retrieve_assignments_enabled_for_grade_export_to_sis_accounts
  */
 export async function retrieve_assignments_enabled_for_grade_export_to_sis_accounts({
-  parameters
+  pathParams,
+  searchParams
 }: Options) {
   return await client().fetchAs<void>(
     `/sis/accounts/{account_id}/assignments`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
   );
 }

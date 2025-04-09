@@ -1,7 +1,12 @@
 import { client } from '../../../Client.js';
 import { Group } from '../../../Resources/Groups.js';
 
-type Parameters = {
+type edit_groupPathParameters = {
+  /** ID */
+  group_id: string;
+};
+
+type edit_groupFormParameters = {
   /** The name of the group */
   name: string;
   /** A description of the group */
@@ -45,7 +50,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: edit_groupPathParameters;
+  params?: edit_groupFormParameters;
 };
 
 /**
@@ -58,9 +64,10 @@ type Options = {
  *
  * Nickname: edit_group
  */
-export async function edit_group({ parameters }: Options) {
+export async function edit_group({ pathParams, params }: Options) {
   return await client().fetchAs<Group>(`/v1/groups/{group_id}`, {
     method: 'PUT',
-    params: parameters
+    pathParams,
+    params
   });
 }

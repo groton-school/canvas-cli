@@ -1,10 +1,15 @@
 import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
-type Parameters = {};
+type index_of_reportsPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  report: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: index_of_reportsPathParameters;
 };
 
 /**
@@ -14,9 +19,12 @@ type Options = {
  *
  * Nickname: index_of_reports
  */
-export async function index_of_reports({ parameters }: Options) {
+export async function index_of_reports({ pathParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/accounts/{account_id}/reports/{report}`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }

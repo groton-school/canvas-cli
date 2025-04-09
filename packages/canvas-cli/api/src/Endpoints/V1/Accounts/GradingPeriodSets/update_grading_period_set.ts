@@ -1,6 +1,13 @@
 import { client } from '../../../../Client.js';
 
-type Parameters = {
+type update_grading_period_setPathParameters = {
+  /** ID */
+  account_id: string;
+  /** ID */
+  id: string;
+};
+
+type update_grading_period_setFormParameters = {
   /** A list of associated term ids for the grading period set */
   enrollment_term_ids: string[];
   /** The title of the grading period set */
@@ -18,7 +25,8 @@ type Parameters = {
 };
 
 type Options = {
-  parameters: Parameters;
+  pathParams: update_grading_period_setPathParameters;
+  params?: update_grading_period_setFormParameters;
 };
 
 /**
@@ -30,9 +38,16 @@ type Options = {
  *
  * Nickname: update_grading_period_set
  */
-export async function update_grading_period_set({ parameters }: Options) {
+export async function update_grading_period_set({
+  pathParams,
+  params
+}: Options) {
   return await client().fetchAs<void>(
     `/v1/accounts/{account_id}/grading_period_sets/{id}`,
-    { method: 'PATCH', params: parameters }
+    {
+      method: 'PATCH',
+      pathParams,
+      params
+    }
   );
 }

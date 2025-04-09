@@ -1,10 +1,13 @@
 import { client } from '../../../../../Client.js';
 import { Admin } from '../../../../../Resources/Admins.js';
 
-type Parameters = {};
+type listPathParameters = {
+  /** ID */
+  account_id: string;
+};
 
 type Options = {
-  parameters: Parameters;
+  pathParams: listPathParameters;
 };
 
 /**
@@ -17,9 +20,12 @@ type Options = {
  *
  * Nickname: list_my_admin_roles
  */
-export async function list({ parameters }: Options) {
+export async function list({ pathParams }: Options) {
   return await client().fetchAs<string[]>(
     `/v1/accounts/{account_id}/admins/self`,
-    { method: 'GET', params: parameters }
+    {
+      method: 'GET',
+      pathParams
+    }
   );
 }
