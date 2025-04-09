@@ -2,7 +2,33 @@
 import { {{type}} } from '{{{packagePath}}}{{{filePath}}}';
 {{/tsImports}}
 
-type Parameters = {
+type {{tsName}}PathParameters = {
+    {{#tsPathParameters}}
+    /**
+     * {{description}}
+     *
+     * {{{tsType.description}}}
+     *
+     * {{tsDeprecation}}
+     */
+    {{{tsName}}}{{tsOptional}}: {{{tsType.type}}}
+    {{/tsPathParameters}}
+}
+
+type {{tsName}}SearchParameters = {
+    {{#tsQueryParameters}}
+    /**
+     * {{description}}
+     *
+     * {{{tsType.description}}}
+     *
+     * {{tsDeprecation}}
+     */
+    {{{tsName}}}{{tsOptional}}: {{{tsType.type}}}
+    {{/tsQueryParameters}}
+}
+
+type {{tsName}}FormParameters = {
     {{#tsFormParameters}}
     /**
      * {{description}}
@@ -15,8 +41,23 @@ type Parameters = {
     {{/tsFormParameters}}
 }
 
+type {{tsName}}BodyParameters = {
+    {{#tsBodyParameters}}
+    /**
+     * {{description}}
+     *
+     * {{{tsType.description}}}
+     *
+     * {{tsDeprecation}}
+     */
+    {{{tsName}}}{{tsOptional}}: {{{tsType.type}}}
+    {{/tsBodyParameters}}
+}
+ 
 type Options = {
-    parameters: Parameters;
+  pathParams: {{tsName}}PathParameters
+  searchParams?: {{tsName}}SearchParameters
+  params?: {{tsName}}FormParameters;
 }
 
 /**
@@ -30,6 +71,15 @@ type Options = {
  *
  * {{description}}
  */
-export async function {{tsName}}({ parameters }: Options) {
-  return await client().fetchAs<{{{tsType.type}}}>(`{{{tsEndpoint}}}`, {method: "{{method}}", params: parameters});
+export async function {{tsName}}({ 
+  pathParams, 
+  searchParams, 
+  params
+   }: Options) {
+  return await client().fetchAs<{{{tsType.type}}}>(`{{{tsEndpoint}}}`, {
+      method: "{{method}}", 
+      pathParams, 
+      searchParams, 
+      params 
+    });
 }
