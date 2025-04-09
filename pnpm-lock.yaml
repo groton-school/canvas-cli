@@ -146,9 +146,9 @@ importers:
       '@battis/qui-cli.root':
         specifier: ^2.0.2
         version: 2.0.2(@battis/qui-cli.plugin@2.3.0)
-      mustache:
-        specifier: ^4.2.0
-        version: 4.2.0
+      handlebars:
+        specifier: ^4.7.8
+        version: 4.7.8
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
@@ -180,9 +180,6 @@ importers:
       '@tsconfig/node20':
         specifier: ^20.1.5
         version: 20.1.5
-      '@types/mustache':
-        specifier: ^4.2.5
-        version: 4.2.5
       commit-and-tag-version:
         specifier: ^12.5.0
         version: 12.5.0
@@ -213,6 +210,9 @@ importers:
       '@battis/qui-cli.plugin':
         specifier: ^2.3.0
         version: 2.3.0
+      '@groton/canvas-cli.api':
+        specifier: workspace:*
+        version: link:../../canvas-cli/api
       '@inquirer/prompts':
         specifier: ^7.4.1
         version: 7.4.1(@types/node@22.14.0)
@@ -228,9 +228,6 @@ importers:
       '@msar/types.snapshot':
         specifier: ^0.1.10
         version: 0.1.10(ejs@3.1.10)
-      '@oauth2-cli/canvas':
-        specifier: ^0.2.0
-        version: 0.2.0(ejs@3.1.10)
       '@oauth2-cli/sky-api':
         specifier: ^0.2.1
         version: 0.2.1(ejs@3.1.10)
@@ -1133,9 +1130,6 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@oauth2-cli/canvas@0.2.0':
-    resolution: {integrity: sha512-qCBXy06J5nQ7W1Q9QxtcvUwcXZ7FpnLnp5XYgCLS2IW6vQb1OeDR1HO8mmvAr2HOmb/ha/+t6iaQnOozjfI0qA==}
-
   '@oauth2-cli/sky-api@0.2.1':
     resolution: {integrity: sha512-Wd0IJYeecfb6huOwwcKsnKopdo9OOlPvrYxJRBVT5BFDVynT1Y7z9sFAgpaFg1SYPhodW2HcrdVlZaVxfUuE2A==}
 
@@ -1338,9 +1332,6 @@ packages:
 
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
-
-  '@types/mustache@4.2.5':
-    resolution: {integrity: sha512-PLwiVvTBg59tGFL/8VpcGvqOu3L4OuveNvPi0EYbWchRdEVP++yRUXJPFl+CApKEq13017/4Nf7aQ5lTtHUNsA==}
 
   '@types/mute-stream@0.0.1':
     resolution: {integrity: sha512-0yQLzYhCqGz7CQPE3iDmYjhb7KMBFOP+tBkyw+/Y2YyDI5wpS7itXXxneN1zSsUwWx3Ji6YiVYrhAnpQGS/vkw==}
@@ -3599,10 +3590,6 @@ packages:
   multimatch@5.0.0:
     resolution: {integrity: sha512-ypMKuglUrZUD99Tk2bUQ+xNQj43lPEfAeX2o9cTteAmShXy2VHDJpuwu1o0xqoKCt9jLVAvwyFKdLTPXKAfJyA==}
     engines: {node: '>=10'}
-
-  mustache@4.2.0:
-    resolution: {integrity: sha512-71ippSywq5Yb7/tVYyGbkBggbU8H3u5Rz56fH60jGFgr8uHwxs+aSKeqmluIVzM0m0kB7xQjKS6qPfd0b2ZoqQ==}
-    hasBin: true
 
   mute-stream@0.0.8:
     resolution: {integrity: sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==}
@@ -6045,14 +6032,6 @@ snapshots:
   '@nx/nx-win32-x64-msvc@20.7.2':
     optional: true
 
-  '@oauth2-cli/canvas@0.2.0(ejs@3.1.10)':
-    dependencies:
-      node-fetch: 3.3.2
-      oauth2-cli: 0.2.0(ejs@3.1.10)
-    transitivePeerDependencies:
-      - ejs
-      - supports-color
-
   '@oauth2-cli/sky-api@0.2.1(ejs@3.1.10)':
     dependencies:
       node-fetch: 3.3.2
@@ -6277,8 +6256,6 @@ snapshots:
   '@types/minimist@1.2.5': {}
 
   '@types/ms@2.1.0': {}
-
-  '@types/mustache@4.2.5': {}
 
   '@types/mute-stream@0.0.1':
     dependencies:
@@ -8876,8 +8853,6 @@ snapshots:
       array-union: 2.1.0
       arrify: 2.0.1
       minimatch: 3.0.5
-
-  mustache@4.2.0: {}
 
   mute-stream@0.0.8: {}
 
