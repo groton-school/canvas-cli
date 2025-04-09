@@ -1,8 +1,8 @@
 export * from '././create.js';
 export * from '././delete_quiz.js';
-export * from '././edit_quiz.js';
 export * from '././get.js';
 export * from '././list.js';
+export * from '././update.js';
 export * as AssignmentOverrides from './AssignmentOverrides/index.js';
 export * as DateDetails from './DateDetails/index.js';
 export * as Extensions from './Extensions/index.js';

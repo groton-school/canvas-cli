@@ -4,14 +4,14 @@ import {
   AssignmentOverride
 } from '../../../../Resources/Assignments.js';
 
-export type edit_assignmentPathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   id: string;
 };
 
-export type edit_assignmentFormParameters = {
+export type updateFormParameters = {
   /** The assignment name. */
   'assignment[name]': string;
   /**
@@ -251,8 +251,8 @@ export type edit_assignmentFormParameters = {
 };
 
 type Options = {
-  pathParams: edit_assignmentPathParameters;
-  params?: edit_assignmentFormParameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -262,7 +262,7 @@ type Options = {
  *
  * Nickname: edit_assignment
  */
-export async function edit_assignment({ pathParams, params }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<Assignment>(
     `/v1/courses/{course_id}/assignments/{id}`,
     {

@@ -1,5 +1,5 @@
-export * from '././edit_user.js';
 export * from '././show_user_details.js';
+export * from '././update.js';
 export * as ActivityStream from './ActivityStream/index.js';
 export * as Avatars from './Avatars/index.js';
 export * as CalendarEvents from './CalendarEvents/index.js';

@@ -1,7 +1,7 @@
 import { client } from '../../../../../../Client.js';
 import { SubmissionComment } from '../../../../../../Resources/Submissions.js';
 
-export type edit_submission_commentPathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -12,14 +12,14 @@ export type edit_submission_commentPathParameters = {
   id: string;
 };
 
-export type edit_submission_commentFormParameters = {
+export type updateFormParameters = {
   /** If this argument is present, edit the text of a comment. */
   comment: string;
 };
 
 type Options = {
-  pathParams: edit_submission_commentPathParameters;
-  params?: edit_submission_commentFormParameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -29,7 +29,7 @@ type Options = {
  *
  * Nickname: edit_submission_comment
  */
-export async function edit_submission_comment({ pathParams, params }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<SubmissionComment>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/comments/{id}`,
     {

@@ -1,7 +1,7 @@
 export * from '././create.js';
 export * from '././delete_group.js';
-export * from '././edit_group.js';
 export * from '././get.js';
+export * from '././update.js';
 export * as ActivityStream from './ActivityStream/index.js';
 export * as Assignments from './Assignments/index.js';
 export * as Collaborations from './Collaborations/index.js';

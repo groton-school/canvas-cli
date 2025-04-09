@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { Section } from '../../../Resources/Sections.js';
 
-export type edit_sectionPathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-export type edit_sectionFormParameters = {
+export type updateFormParameters = {
   /** The name of the section */
   'course_section[name]': string;
   /** The sis ID of the section. Must have manage_sis permission to set. */
@@ -42,8 +42,8 @@ export type edit_sectionFormParameters = {
 };
 
 type Options = {
-  pathParams: edit_sectionPathParameters;
-  params?: edit_sectionFormParameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -53,7 +53,7 @@ type Options = {
  *
  * Nickname: edit_section
  */
-export async function edit_section({ pathParams, params }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<Section>(`/v1/sections/{id}`, {
     method: 'PUT',
     pathParams,

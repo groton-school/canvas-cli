@@ -1,8 +1,8 @@
 import { client } from '../../../../../../Client.js';
 
-export type upload_file_coursesPathParameters = {
+export type uploadPathParameters = {
   /** ID */
-  course_id: string;
+  section_id: string;
   /** ID */
   assignment_id: string;
   /** ID */
@@ -10,7 +10,7 @@ export type upload_file_coursesPathParameters = {
 };
 
 type Options = {
-  pathParams: upload_file_coursesPathParameters;
+  pathParams: uploadPathParameters;
 };
 
 /**
@@ -26,11 +26,11 @@ type Options = {
  * including the new file id. The caller can then POST to submit the
  * +online_upload+ assignment with these file ids.
  *
- * Nickname: upload_file_courses
+ * Nickname: upload_file_sections
  */
-export async function upload_file_courses({ pathParams }: Options) {
+export async function upload({ pathParams }: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/files`,
+    `/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/files`,
     {
       method: 'POST',
       pathParams

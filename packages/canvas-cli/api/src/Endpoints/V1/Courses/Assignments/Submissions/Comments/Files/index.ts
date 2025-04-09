@@ -1,1 +1,1 @@
-export * from '././upload_file.js';
+export * from '././upload.js';

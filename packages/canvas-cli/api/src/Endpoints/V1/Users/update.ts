@@ -1,12 +1,12 @@
 import { client } from '../../../Client.js';
 import { User } from '../../../Resources/Users.js';
 
-export type edit_userPathParameters = {
+export type updatePathParameters = {
   /** ID */
   id: string;
 };
 
-export type edit_userFormParameters = {
+export type updateFormParameters = {
   /** The full name of the user. This name will be used by teacher for grading. */
   'user[name]': string;
   /**
@@ -85,8 +85,8 @@ export type edit_userFormParameters = {
 };
 
 type Options = {
-  pathParams: edit_userPathParameters;
-  params?: edit_userFormParameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -97,7 +97,7 @@ type Options = {
  *
  * Nickname: edit_user
  */
-export async function edit_user({ pathParams, params }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<User>(`/v1/users/{id}`, {
     method: 'PUT',
     pathParams,

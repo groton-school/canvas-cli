@@ -1,9 +1,9 @@
-export * from '././batch_update_conversations.js';
+export * from '././batchUpdate.js';
 export * from '././create.js';
 export * from '././delete_conversation.js';
-export * from '././edit_conversation.js';
 export * from '././get.js';
 export * from '././list.js';
+export * from '././update.js';
 export * as AddMessage from './AddMessage/index.js';
 export * as AddRecipients from './AddRecipients/index.js';
 export * as Batches from './Batches/index.js';

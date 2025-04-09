@@ -1,14 +1,14 @@
 import { client } from '../../../../Client.js';
 
-export type edit_external_tool_coursesPathParameters = {
+export type updatePathParameters = {
   /** ID */
-  course_id: string;
+  account_id: string;
   /** ID */
   external_tool_id: string;
 };
 
 type Options = {
-  pathParams: edit_external_tool_coursesPathParameters;
+  pathParams: updatePathParameters;
 };
 
 /**
@@ -16,11 +16,11 @@ type Options = {
  *
  * Update the specified external tool. Uses same parameters as create
  *
- * Nickname: edit_external_tool_courses
+ * Nickname: edit_external_tool_accounts
  */
-export async function edit_external_tool_courses({ pathParams }: Options) {
+export async function update({ pathParams }: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/external_tools/{external_tool_id}`,
+    `/v1/accounts/{account_id}/external_tools/{external_tool_id}`,
     {
       method: 'PUT',
       pathParams

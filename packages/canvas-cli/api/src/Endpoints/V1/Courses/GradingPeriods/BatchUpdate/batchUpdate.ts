@@ -1,12 +1,12 @@
 import { Date } from '';
 import { client } from '../../../../../Client.js';
 
-export type batch_update_grading_periods_coursesPathParameters = {
+export type batchUpdatePathParameters = {
   /** ID */
   course_id: string;
 };
 
-export type batch_update_grading_periods_coursesFormParameters = {
+export type batchUpdateFormParameters = {
   /** The id of the grading period set. */
   set_id: string;
   /**
@@ -47,8 +47,8 @@ export type batch_update_grading_periods_coursesFormParameters = {
 };
 
 type Options = {
-  pathParams: batch_update_grading_periods_coursesPathParameters;
-  params?: batch_update_grading_periods_coursesFormParameters;
+  pathParams: batchUpdatePathParameters;
+  params?: batchUpdateFormParameters;
 };
 
 /**
@@ -58,10 +58,7 @@ type Options = {
  *
  * Nickname: batch_update_grading_periods_courses
  */
-export async function batch_update_grading_periods_courses({
-  pathParams,
-  params
-}: Options) {
+export async function batchUpdate({ pathParams, params }: Options) {
   return await client().fetchAs<void>(
     `/v1/courses/{course_id}/grading_periods/batch_update`,
     {

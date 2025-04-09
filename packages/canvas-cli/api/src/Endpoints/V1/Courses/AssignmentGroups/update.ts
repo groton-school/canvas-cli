@@ -2,14 +2,14 @@ import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../Client.js';
 import { AssignmentGroup } from '../../../../Resources/AssignmentGroups.js';
 
-export type edit_assignment_groupPathParameters = {
+export type updatePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
   assignment_group_id: string;
 };
 
-export type edit_assignment_groupFormParameters = {
+export type updateFormParameters = {
   /** The assignment group's name */
   name: string;
   /**
@@ -41,8 +41,8 @@ export type edit_assignment_groupFormParameters = {
 };
 
 type Options = {
-  pathParams: edit_assignment_groupPathParameters;
-  params?: edit_assignment_groupFormParameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -52,7 +52,7 @@ type Options = {
  *
  * Nickname: edit_assignment_group
  */
-export async function edit_assignment_group({ pathParams, params }: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<AssignmentGroup>(
     `/v1/courses/{course_id}/assignment_groups/{assignment_group_id}`,
     {

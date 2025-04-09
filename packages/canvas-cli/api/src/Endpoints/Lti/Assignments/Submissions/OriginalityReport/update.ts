@@ -1,14 +1,16 @@
 import { client } from '../../../../../Client.js';
 import { OriginalityReport } from '../../../../../Resources/OriginalityReports.js';
 
-export type edit_originality_report_filesPathParameters = {
+export type updatePathParameters = {
   /** ID */
   assignment_id: string;
   /** ID */
-  file_id: string;
+  submission_id: string;
+  /** ID */
+  id: string;
 };
 
-export type edit_originality_report_filesFormParameters = {
+export type updateFormParameters = {
   /**
    * A number between 0 and 100 representing the measure of the specified
    * file's originality.
@@ -52,8 +54,8 @@ export type edit_originality_report_filesFormParameters = {
 };
 
 type Options = {
-  pathParams: edit_originality_report_filesPathParameters;
-  params?: edit_originality_report_filesFormParameters;
+  pathParams: updatePathParameters;
+  params?: updateFormParameters;
 };
 
 /**
@@ -62,14 +64,11 @@ type Options = {
  * Modify an existing originality report. An alternative to this endpoint is to
  * POST the same parameters listed below to the CREATE endpoint.
  *
- * Nickname: edit_originality_report_files
+ * Nickname: edit_originality_report_submissions
  */
-export async function edit_originality_report_files({
-  pathParams,
-  params
-}: Options) {
+export async function update({ pathParams, params }: Options) {
   return await client().fetchAs<OriginalityReport>(
-    `/lti/assignments/{assignment_id}/files/{file_id}/originality_report`,
+    `/lti/assignments/{assignment_id}/submissions/{submission_id}/originality_report/{id}`,
     {
       method: 'PUT',
       pathParams,

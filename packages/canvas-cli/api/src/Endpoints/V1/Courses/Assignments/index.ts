@@ -1,8 +1,8 @@
 export * from '././create.js';
 export * from '././delete_assignment.js';
-export * from '././edit_assignment.js';
 export * from '././get.js';
 export * from '././list.js';
+export * from '././update.js';
 export * as AnonymousProvisionalGrades from './AnonymousProvisionalGrades/index.js';
 export * as AnonymousSubmissions from './AnonymousSubmissions/index.js';
 export * as BulkUpdate from './BulkUpdate/index.js';
