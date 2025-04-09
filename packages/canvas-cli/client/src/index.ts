@@ -8,8 +8,9 @@ import { isError, stringify } from './Utilities/index.js';
 export * as Utilities from './Utilities/index.js';
 
 type RequestInitParams = RequestInit & {
-  params?: JSONObject;
+  pathParams?: JSONObject;
   searchParams?: JSONObject;
+  params?: JSONObject;
 };
 type RequestInitMethod = Omit<RequestInitParams, 'method'>;
 
@@ -39,22 +40,32 @@ export class Client extends Canvas {
 
   public async fetchAs<T = JSONValue>(
     endpoint: URL | RequestInfo,
-    init?: RequestInitParams
+    { pathParams, searchParams, params, ...init }: RequestInitParams = {}
   ): Promise<T> {
     // TODO monitor quota usage and add delays as necessary
     // TODO retry failed requests due to quota limits
     let result: T | undefined = undefined;
     let next: string | undefined = endpoint.toString();
-    if (init) {
-      if (init.params) {
-        init.body = new URLSearchParams(stringify(init.params));
-      }
-      if (init.searchParams) {
-        endpoint = `${endpoint}${endpoint.toString().includes('?') ? '&' : '?'}${new URLSearchParams(stringify(init.searchParams))}`;
-      }
+    endpoint = endpoint.toString();
+    if (pathParams) {
+      endpoint = Object.keys(pathParams || {}).reduce((endpoint, paramName) => {
+        if (pathParams[paramName]) {
+          return endpoint.replaceAll(
+            `{${paramName}}`,
+            pathParams[paramName].toString()
+          );
+        }
+        return endpoint;
+      }, endpoint);
+    }
+    if (params) {
+      init.body = new URLSearchParams(stringify(params));
+    }
+    if (searchParams) {
+      endpoint = `${endpoint}${endpoint.includes('?') ? '&' : '?'}${new URLSearchParams(stringify(searchParams))}`;
     }
     do {
-      const response = await this.fetch(next, init);
+      const response = await this.fetch(next, result ? undefined : init);
       const page = (await response.json()) as T;
       if (isError(page)) {
         throw new Error(
@@ -64,7 +75,6 @@ export class Client extends Canvas {
       if (Array.isArray(page)) {
         if (!result) {
           result = page;
-          init = undefined;
         } else {
           result.push(...page);
         }
@@ -77,7 +87,7 @@ export class Client extends Canvas {
 
     if (result === undefined) {
       throw new Error(
-        `Unexpected undefined result: ${JSON.stringify({ endpoint, init })}`
+        `Unexpected undefined result: ${JSON.stringify({ endpoint, init: result ? undefined : init })}`
       );
     }
     return result;
