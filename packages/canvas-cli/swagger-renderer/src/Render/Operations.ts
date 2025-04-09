@@ -103,6 +103,7 @@ export function annotateOperations({
                 annotatedParameter.tsType.tsReference
               );
             }
+
             const paramType = ('ts' +
               annotatedParameter.paramType[0].toUpperCase() +
               annotatedParameter.paramType.slice(1) +
@@ -120,7 +121,8 @@ export function annotateOperations({
             }
           }
 
-          operations[annotatedOperation.tsFilePath] = annotatedOperation;
+          operations[annotatedOperation.tsFilePath] =
+            Overrides.operation(annotatedOperation);
         }
       }
     }
@@ -206,11 +208,18 @@ function toTSMethodName(operation: Swagger.v1p2.OperationObject): TSName {
     case 'POST':
       if (operation.nickname.startsWith('create_')) {
         return 'create';
+      } else if (operation.nickname.startsWith('upload_file')) {
+        return 'upload';
       }
     // eslint-disable-next-line no-fallthrough
     case 'PUT':
-      if (operation.nickname.startsWith('update_')) {
+      if (operation.nickname.startsWith('update_') || operation.nickname.startsWith('edit_')) {
         return 'update';
+      }
+    // eslint-disable-next-line no-fallthrough
+    case 'PATCH':
+      if (operation.nickname.startsWith('batch_update_')) {
+        return 'batchUpdate';
       }
     // eslint-disable-next-line no-fallthrough
     default:
@@ -229,7 +238,10 @@ async function outputOperations({ operations, templatePath }: OutputOptions) {
         ...operations[filePath],
         tsImports: operations[filePath].tsImports?.map((tsImport) => {
           if (tsImport.filePath) {
-            tsImport.filePath = importPath(filePath, tsImport.filePath);
+            return {
+              ...tsImport,
+              filePath: importPath(filePath, tsImport.filePath)
+            };
           }
           return tsImport;
         })

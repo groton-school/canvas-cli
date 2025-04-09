@@ -1,5 +1,4 @@
 import { PathString } from '@battis/descriptive-types';
-import { Log } from '@battis/qui-cli.log';
 import path from 'node:path';
 
 export function importPath(from: PathString, to: PathString) {
@@ -8,6 +7,5 @@ export function importPath(from: PathString, to: PathString) {
     relative = `./${relative}`;
   }
   relative = relative.replace(/\.ts$/, '.js');
-  Log.debug({ from, to, relative });
   return relative;
 }

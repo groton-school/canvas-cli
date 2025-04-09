@@ -6,24 +6,24 @@ import fs from 'node:fs';
 import path from 'node:path';
 import * as prettier from 'prettier';
 
-export async function writePrettier(filePath: PathString, content: string) {
-  filePath = path.resolve(Root.path(), filePath);
-  const dir = path.dirname(filePath);
+export async function writePrettier(filepath: PathString, content: string) {
+  filepath = path.resolve(Root.path(), filepath);
+  const dir = path.dirname(filepath);
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
   try {
     fs.writeFileSync(
-      filePath,
+      filepath,
       await prettier.format(content, {
-        filePath,
-        ...(await prettier.resolveConfig(filePath))
+        filepath,
+        ...(await prettier.resolveConfig(filepath))
       })
     );
   } catch (error) {
     Log.error(
-      `Error making ${Colors.url(filePath)} prettier: ${(error as Error).message}`
+      `Error making ${Colors.url(filepath)} prettier: ${(error as Error).message}`
     );
-    fs.writeFileSync(filePath, content);
+    fs.writeFileSync(filepath, content);
   }
 }

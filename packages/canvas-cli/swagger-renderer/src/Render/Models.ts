@@ -168,7 +168,10 @@ async function outputModels({
             }, [] as TSReference[])
             .map((tsImport) => {
               if (tsImport.filePath) {
-                tsImport.filePath = importPath(filePath, tsImport.filePath);
+                return {
+                  ...tsImport,
+                  filePath: importPath(filePath, tsImport.filePath)
+                };
               }
               return tsImport;
             })

@@ -1,6 +1,6 @@
 import { PathString } from '@battis/descriptive-types';
 import { Colors } from '@battis/qui-cli.colors';
-import { Core } from '@battis/qui-cli.core';
+import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import { Root } from '@battis/qui-cli.root';
 import fs from 'node:fs';
@@ -101,32 +101,36 @@ export async function run(results?: Plugin.AccumulatedResults) {
       .readdirSync(specPath)
       .filter((fileName) => !fileName.startsWith('.'))
       .map((fileName) => path.join(specPath, fileName));
-      spinner.text = `Using specs found in directory ${Colors.url(specPath)}`
+    spinner.text = `Using specs found in directory ${Colors.url(specPath)}`;
   } else {
     specPaths = [specPath];
-    spinner.text = `Using spec file ${Colors.url(specPath)}}`
+    spinner.text = `Using spec file ${Colors.url(specPath)}}`;
   }
   if (!specPaths) {
-    spinner.fail(`No specs found`)
+    spinner.fail(`No specs found`);
     throw new Error('No specPaths defined or received from Downloads');
   }
   spinner.succeed(`Loaded specs`);
 
-  spinner.start(`Checking for overrides`)
+  templatePath = path.resolve(Root.path(), templatePath);
+  Log.info(`Templates will be read from ${Colors.url(templatePath)}`);
+  outputPath = path.resolve(Root.path(), outputPath);
+  Log.info(
+    `Rendered TypeScript files will be written to ${Colors.url(outputPath)}`
+  );
+
+  spinner.start(`Checking for overrides`);
+  Overrides.setOutputPath(outputPath);
   if (overridePath) {
-    overridePath = path.resolve(Root.path(), overridePath)
+    overridePath = path.resolve(Root.path(), overridePath);
     Overrides.setOverrides(
-      JSON.parse(
-        fs.readFileSync(overridePath).toString()
-      )
+      JSON.parse(fs.readFileSync(overridePath).toString())
     );
-    spinner.succeed(`Overrides loaded from ${Colors.url(overridePath)}`)
+    spinner.succeed(`Overrides loaded from ${Colors.url(overridePath)}`);
   } else {
-    spinner.info(`No overrides`)
+    spinner.info(`No overrides`);
   }
 
-  templatePath = path.resolve(Root.path(), templatePath);
-  outputPath = path.resolve(Root.path(), outputPath);
 
   const { spec, models } = await Models.generate({
     specPaths,
