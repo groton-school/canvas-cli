@@ -1,4 +1,4 @@
-import * as Canvas from '@groton/canvas-types';
+import * as Canvas from '@groton/canvas-cli.api';
 import * as Assignments from './Assignments.js';
 
 export type Model = {
@@ -26,7 +26,7 @@ export function extract(assignments: Assignments.Model[]) {
 
 export function toCanvasArgs(
   assignmentType: Model
-): Canvas.AssigmentGroups.Parameters {
+): Canvas.V1.Courses.AssignmentGroups.createFormParameters {
   return {
     name: assignmentType.type !== '' ? assignmentType.type : 'Assignments',
     group_weight: assignmentType.Weight

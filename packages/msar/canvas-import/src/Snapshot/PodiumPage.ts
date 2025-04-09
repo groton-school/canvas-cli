@@ -1,12 +1,12 @@
 import { JSONValue } from '@battis/typescript-tricks';
-import * as Canvas from '@groton/canvas-types';
+import * as Canvas from '@groton/canvas-cli.api';
 import * as Imported from '@msar/types.import';
 import * as Templates from '../Templates/index.js';
 import * as Content from './Content/index.js';
 import * as Files from './Files.js';
 
 type ToCanvasArgsOptions = {
-  course: Canvas.Courses.Model;
+  course: Canvas.Resources.Course;
   section: Imported.Data;
   title: string;
   body: NonNullable<
@@ -23,7 +23,7 @@ export async function toCanvasArgs({
   body,
   layout,
   front_page = false
-}: ToCanvasArgsOptions): Promise<Canvas.Pages.Parameters> {
+}: ToCanvasArgsOptions): Promise<Canvas.V1.Courses.Pages.createFormParameters> {
   const assignmentIdentifiers: string[] = [];
   for (const i in body) {
     // TODO upload only referenced files

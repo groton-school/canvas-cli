@@ -1,6 +1,6 @@
 import { Colors } from '@battis/qui-cli.colors';
 import '@battis/qui-cli.env';
-import * as Canvas from '@groton/canvas-types';
+import * as Canvas from '@groton/canvas-cli.api';
 import { select } from '@inquirer/prompts';
 import * as Imported from '@msar/types.import';
 import open from 'open';
@@ -8,7 +8,7 @@ import * as Snapshot from '../Snapshot/index.js';
 import * as Preferences from './Preferences.js';
 
 type Options = {
-  course: Canvas.Courses.Model;
+  course: Canvas.Resources.Course;
   section: Imported.Data;
 };
 
@@ -16,8 +16,8 @@ export async function handleDuplicateCourse({ course, section }: Options) {
   const next: Record<
     Preferences.DuplicateHandling,
     () =>
-      | Promise<Canvas.Courses.Model | undefined>
-      | Canvas.Courses.Model
+      | Promise<Canvas.Resources.Course | undefined>
+      | Canvas.Resources.Course
       | undefined
   > = {
     update: async () => {
@@ -26,18 +26,23 @@ export async function handleDuplicateCourse({ course, section }: Options) {
           `Missing Canvas import information, cannot update ${Colors.value(section.SectionInfo?.GroupName)}`
         );
       }
-      const args = Snapshot.Section.toCanvasArgs(section);
-      args['course[term_id]'] = `sis_term_id:${Preferences.WORKSPACE_TERM}`;
-      delete args['course[sis_course_id]'];
-      delete args.enable_sis_reactivation;
-      return await Canvas.Courses.update({ course, args });
+      const params = Snapshot.Section.toCanvasArgs(section);
+      params['course[term_id]'] = `sis_term_id:${Preferences.WORKSPACE_TERM}`;
+      delete params['course[sis_course_id]'];
+      delete params.enable_sis_reactivation;
+      return await Canvas.V1.Courses.update({
+        pathParams: { id: course.id.toString() },
+        params
+      });
     },
     reset: async () => {
-      course = await Canvas.Courses.reset(course!);
+      course = await Canvas.V1.Courses.ResetContent.reset_course({
+        pathParams: { course_id: course.id.toString() }
+      });
       if (section.SectionInfo) {
         section.SectionInfo.canvas = {
           id: course.id,
-          instance_url: Canvas.getUrl(),
+          instance_url: Canvas.client().instance_url,
           args: {},
           created_at: course.created_at
         };
@@ -45,7 +50,12 @@ export async function handleDuplicateCourse({ course, section }: Options) {
       return await next.update();
     },
     browse: async () => {
-      open(Canvas.url(`/courses/${course!.id}`).toString());
+      open(
+        new URL(
+          `/courses/${course!.id}`,
+          Canvas.client().instance_url
+        ).toString()
+      );
       const choice = (await select({
         message: `How would you like to proceed?`,
         choices: Object.keys(next).filter(

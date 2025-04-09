@@ -1,6 +1,6 @@
 import { Log } from '@battis/qui-cli.log';
 import { ArrayElement } from '@battis/typescript-tricks';
-import * as Canvas from '@groton/canvas-types';
+import * as Canvas from '@groton/canvas-cli.api';
 import * as Imported from '@msar/types.import';
 import { stripHtml } from 'string-strip-html';
 import { Preferences } from '../App/index.js';
@@ -60,8 +60,8 @@ export async function hydrate(snapshot: Imported.Data) {
 }
 
 type ToCanvasArgsOptions = {
-  course: Canvas.Courses.Model;
-  assignmentGroup: Canvas.AssigmentGroups.Model;
+  course: Canvas.Resources.Course;
+  assignmentGroup: Canvas.Resources.AssignmentGroup;
   assignment: Model;
   order: number;
 };
@@ -71,10 +71,10 @@ export async function toCanvasArgs({
   assignmentGroup,
   assignment,
   order
-}: ToCanvasArgsOptions): Promise<Canvas.Assignments.Parameters> {
+}: ToCanvasArgsOptions): Promise<Canvas.V1.Courses.Assignments.createFormParameters> {
   // @ts-expect-error 2322 assignment is no longer a pure model, but we don't need to know that
   assignment = await Files.uploadLocalFiles({ course, entry: assignment });
-  const args: Canvas.Assignments.Parameters = {
+  const args: Canvas.V1.Courses.Assignments.createFormParameters = {
     'assignment[name]': stripHtml(
       assignment.ShortDescription.split('<br/>').pop()!
     ).result,
@@ -88,7 +88,7 @@ export async function toCanvasArgs({
     'assignment[published]': assignment.PublishInd,
     'assignment[assignment_group_id]': assignmentGroup.id,
     'assignment[submission_types]': []
-  };
+  } ;
   if (assignment.OnPaperSubmission) {
     args['assignment[submission_types]']?.push('on_paper');
   }

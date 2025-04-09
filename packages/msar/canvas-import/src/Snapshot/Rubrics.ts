@@ -1,12 +1,12 @@
 import '@battis/qui-cli.env';
-import * as Canvas from '@groton/canvas-types';
+import * as Canvas from '@groton/canvas-cli.api';
 import * as Imported from '@msar/types.import';
 import { EventEmitter } from 'node:events';
 
-type CacheItem = Awaited<ReturnType<typeof Canvas.Rubrics.create>> & {
+type CacheItem = Awaited<ReturnType<typeof Canvas.V1.Courses.Rubrics.create>> & {
   args?:
-    | Canvas.Rubrics.CreateParameters
-    | Canvas.Rubrics.CreateRubricAssociationParameters;
+    | Canvas.V1.Courses.Rubrics.createFormParameters
+    | Canvas.V1.Courses.RubricAssociations.createFormParameters;
 };
 
 const AWAITING = true;
@@ -15,9 +15,9 @@ const ready = new EventEmitter();
 ready.setMaxListeners(1000);
 
 function toCanvasArgs(
-  assignment: Canvas.Assignments.Model,
+  assignment: Canvas.Resources.Assignment,
   rubric: NonNullable<Imported.Assignments.Item['Rubric']>
-): Canvas.Rubrics.CreateParameters {
+): Canvas.V1.Courses.Rubrics.createFormParameters {
   return {
     'rubric[title]': rubric.Name,
     'rubric[hide_points]': false,
@@ -57,7 +57,7 @@ function toCanvasArgs(
 
 export async function getCached(
   course_id: number,
-  assignment: Canvas.Assignments.Model,
+  assignment: Canvas.Resources.Assignment,
   blackbaudId: number,
   rubric: NonNullable<Imported.Assignments.Item['Rubric']>
 ): Promise<CacheItem> {
@@ -77,9 +77,9 @@ export async function getCached(
     cache[course_id][blackbaudId] = AWAITING;
     const args = toCanvasArgs(assignment, rubric);
     cache[course_id][blackbaudId] = {
-      ...(await Canvas.Rubrics.create({
-        course: { id: course_id } as Canvas.Courses.Model,
-        args
+      ...(await Canvas.V1.Courses.Rubrics.create({
+        pathParams: { course_id },
+        params: args
       })),
       args
     };

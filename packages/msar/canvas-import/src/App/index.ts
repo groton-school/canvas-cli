@@ -5,7 +5,7 @@ import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import { Validators } from '@battis/qui-cli.validators';
 import { JSONObject } from '@battis/typescript-tricks';
-import * as Canvas from '@groton/canvas-types';
+import * as Canvas from '@groton/canvas-cli.api';
 import { input } from '@inquirer/prompts';
 import { Output } from '@msar/output';
 import * as Imported from '@msar/types.import';
@@ -49,7 +49,6 @@ export function configure(config: Configuration = {}) {
   Preferences.setTopics(config.topics);
   Snapshot.setPath(config.snapshotPath);
   if (config.canvasInstanceUrl) {
-    Canvas.setUrl(config.canvasInstanceUrl);
     if (
       process.env.CANVAS_CLIENT_ID &&
       process.env.CANVAS_CLIENT_SECRET &&
@@ -161,15 +160,19 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
   });
 }
 
-let _workspaceTerm: Canvas.EnrollmentTerms.Model | undefined = undefined;
+let _workspaceTerm: Canvas.Resources.EnrollmentTerm | undefined = undefined;
 async function workspaceTerm() {
   if (!_workspaceTerm) {
-    _workspaceTerm = await Canvas.EnrollmentTerms.get({
-      sis_term_id: Preferences.WORKSPACE_TERM
+    _workspaceTerm = await Canvas.V1.Accounts.Terms.retrieve_enrollment_term({
+      pathParams: {
+        account_id: '1',
+        id: `sis_term_id:${Preferences.WORKSPACE_TERM}`
+      }
     });
     if (!_workspaceTerm) {
-      _workspaceTerm = await Canvas.EnrollmentTerms.create({
-        args: {
+      _workspaceTerm = await Canvas.V1.Accounts.Terms.create({
+        pathParams: { account_id: '1' },
+        params: {
           'enrollment_term[sis_term_id]': Preferences.WORKSPACE_TERM,
           'enrollment_term[name]': 'Import Workspace'
         }
@@ -209,7 +212,7 @@ export async function run() {
       configure({
         canvasInstanceUrl:
           section.SectionInfo.canvas.instance_url ||
-          Canvas.getUrl() ||
+          Canvas.client().instance_url ||
           process.env.CANVAS_INSTANCE_URL ||
           (await input({
             message: `What is the hostname for your Canvas instance?`,
@@ -219,16 +222,17 @@ export async function run() {
       });
     }
 
-    let course = await Canvas.Courses.get({
-      sis_course_id: OneRoster.sis_course_id(section)
-    });
+    let course: Canvas.Resources.Course | undefined =
+      await Canvas.V1.Courses.get({
+        pathParams: { id: `sis_course_id:${OneRoster.sis_course_id(section)}` }
+      });
     if (course) {
       course = await handleDuplicateCourse({ course, section });
     } else {
       await workspaceTerm();
-      course = await Canvas.Courses.create({
-        account_id: OneRoster.account_id(section),
-        args: {
+      course = await Canvas.V1.Accounts.Courses.create({
+        pathParams: { account_id: OneRoster.account_id(section).toString() },
+        params: {
           ...Snapshot.Section.toCanvasArgs(section),
           'course[term_id]': `sis_term_id:${Preferences.WORKSPACE_TERM}`
         }
@@ -243,15 +247,15 @@ export async function run() {
       if (section.SectionInfo) {
         section.SectionInfo.canvas = {
           id: course.id,
-          instance_url: Canvas.getUrl(),
+          instance_url: Canvas.client().instance_url,
           args: Snapshot.Section.toCanvasArgs(section),
           created_at: course.created_at
         };
       }
       // TODO cache enrollments for updating
-      await Canvas.Enrollments.create({
-        course,
-        args: {
+      await Canvas.V1.Courses.Enrollments.enroll_user_courses({
+        pathParams: { course_id: course.id.toString() },
+        params: {
           'enrollment[user_id]': `sis_user_id:${OneRoster.sis_user_id(section)}`,
           'enrollment[type]': 'TeacherEnrollment',
           'enrollment[enrollment_state]': 'active'
@@ -271,9 +275,9 @@ export async function run() {
       }
 
       try {
-        await Canvas.Courses.update({
-          course,
-          args: {
+        await Canvas.V1.Courses.update({
+          pathParams: { id: course.id.toString() },
+          params: {
             'course[term_id]': `sis_term_id:${OneRoster.sis_term_id(section)}`
           }
         });
@@ -284,9 +288,9 @@ export async function run() {
         );
       }
       if (Preferences.bulletinBoard()) {
-        await Canvas.Courses.update({
-          course,
-          args: { 'course[default_view]': 'wiki' }
+        await Canvas.V1.Courses.update({
+          pathParams: { id: course.id.toString() },
+          params: { 'course[default_view]': 'wiki' }
         });
       }
     }

@@ -2,7 +2,7 @@ import { DateTimeString, PathString } from '@battis/descriptive-types';
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
 import { ArrayElement, JSONValue } from '@battis/typescript-tricks';
-import * as Canvas from '@groton/canvas-types';
+import * as Canvas from '@groton/canvas-cli.api';
 import * as Archive from '@msar/types.archive';
 import * as Imported from '@msar/types.import';
 import crypto from 'node:crypto';
@@ -34,7 +34,7 @@ type ToCanvasArgsOptions = {
 const AWAITING = true;
 const cache: Record<
   number,
-  Record<string, Canvas.Files.Model | typeof AWAITING>
+  Record<string, Canvas.Resources.File | typeof AWAITING>
 > = {};
 const ready = new EventEmitter();
 ready.setMaxListeners(1000);
@@ -42,8 +42,8 @@ ready.setMaxListeners(1000);
 async function getCached(
   course_id: number,
   localPath: string,
-  uploader: () => Promise<Canvas.Files.Model>
-): Promise<Canvas.Files.Model> {
+  uploader: () => Promise<Canvas.Resources.File>
+): Promise<Canvas.Resources.File> {
   if (!(course_id in cache)) {
     cache[course_id] = {};
   }
@@ -51,23 +51,23 @@ async function getCached(
     if (cache[course_id][localPath] === AWAITING) {
       return new Promise((resolve) => {
         ready.on(`${course_id}:${localPath}`, () =>
-          resolve(cache[course_id][localPath] as Canvas.Files.Model)
+          resolve(cache[course_id][localPath] as Canvas.Resources.File)
         );
       });
     }
-    return cache[course_id][localPath] as Canvas.Files.Model;
+    return cache[course_id][localPath] as Canvas.Resources.File;
   } else {
     cache[course_id][localPath] = AWAITING;
     cache[course_id][localPath] = await uploader();
     ready.emit(`${course_id}:${localPath}`);
-    return cache[course_id][localPath] as Canvas.Files.Model;
+    return cache[course_id][localPath] as Canvas.Resources.File;
   }
 }
 
 export function toCanvasArgs({
   file,
   parent_folder_path = 'Imported Files'
-}: ToCanvasArgsOptions): Canvas.Files.Parameters {
+}: ToCanvasArgsOptions): Canvas.V1.Courses.Files.uploadFormParameters {
   return {
     name: file.FriendlyFileName || file.FileName,
     parent_folder_path: path.join(
@@ -184,7 +184,7 @@ function selectPrimaryFile(
 }
 
 type UploadLocalFilesOptions = {
-  course: Canvas.Courses.Model;
+  course: Canvas.Resources.Course;
   entry: JSONValue;
   name?: string;
 };
@@ -224,7 +224,7 @@ export async function uploadLocalFiles({
       }
       localPath = path.join(path.dirname(IndexFile.path()), entry.localPath);
       // FIXME redundant manual Files.Parameters definition
-      const args: Canvas.Files.Parameters = {
+      const params: Canvas.V1.Courses.Files.uploadFormParameters = {
         parent_folder_path: path.join(
           'Imported Files',
           path.dirname(entry.localPath.replace(/^\//, ''))
@@ -249,7 +249,7 @@ export async function uploadLocalFiles({
         Preferences.duplicates() === 'update'
       ) {
         if (
-          Imported.isEqual(args, entry.canvas.args) &&
+          Imported.isEqual(params, entry.canvas.args) &&
           entry.canvas.course_id === course.id
         ) {
           Log.info(`File ${Colors.url(entry.localPath)} is up-to-date`);
@@ -261,17 +261,17 @@ export async function uploadLocalFiles({
           course.id,
           entry.localPath,
           async () =>
-            await Canvas.Files.upload({
-              course,
+            await Canvas.upload({
+              pathParams: { course_id: course.id.toString() },
               localFilePath: path.join(
                 path.dirname(IndexFile.path()),
                 entry.localPath.replace(/^\//, '')
               ),
-              args
+              params
             })
         );
         (entry as Imported.Annotation).canvas = {
-          args,
+          args: params,
           id: file.id,
           course_id: course.id,
           display_name: file.display_name,
