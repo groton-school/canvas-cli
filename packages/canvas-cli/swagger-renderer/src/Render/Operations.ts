@@ -1,5 +1,4 @@
 import { PathString } from '@battis/descriptive-types';
-import { Log } from '@battis/qui-cli.log';
 import * as Swagger from '@groton/swagger-spec-ts';
 import Mustache from 'mustache';
 import fs from 'node:fs';
