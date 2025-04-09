@@ -27,6 +27,10 @@
     {
       "type": "Submission",
       "filePath": "/Users/sbattis/Documents/GitHub/canvas-cli/packages/canvas-cli/api/src/Resources/Submissions.ts"
+    },
+    {
+      "type":"resultUrlStringTheurltotheresultthatwascreated",
+      "filePath":"/Users/sbattis/Documents/GitHub/canvas-cli/packages/canvas-cli/api/src/Overrides.ts"
     }
   ],
   "tsTypes": {
