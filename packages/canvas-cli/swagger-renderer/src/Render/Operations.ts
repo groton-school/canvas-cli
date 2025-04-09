@@ -130,6 +130,17 @@ export function annotateOperations({
 
 function annotateImports({ operations, models }: Annotation) {
   for (const filePath in operations) {
+    operations[filePath].tsImports = operations[filePath].tsImports?.reduce((tsImports, tsReference) => {
+      const match = tsImports.find(t => t.type === tsReference.type);
+      if (!match) {
+        tsImports.push(tsReference);
+      } else {
+        if (match.filePath && match.filePath !== tsReference.filePath || match.packagePath && match.packagePath !== tsReference.packagePath) {
+          throw new TypeError(`Importing two identically named objects from different files.`);
+        }
+      }
+      return tsImports;
+    }, [] as TSReference[])
     for (const tsImport of operations[filePath].tsImports || []) {
       tsImport.filePath =
         tsImport.filePath ||
