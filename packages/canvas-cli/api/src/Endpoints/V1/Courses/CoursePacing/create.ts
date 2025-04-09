@@ -1,5 +1,4 @@
 import { Datetime } from '';
-import { Datetime } from '';
 import { client } from '../../../../Client.js';
 import { CoursePace } from '../../../../Resources/CoursePace.js';
 

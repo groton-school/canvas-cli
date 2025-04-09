@@ -1,8 +1,5 @@
 import { client } from '../../../../Client.js';
-import {
-  QuizSubmissionQuestion,
-  QuizSubmissionQuestion
-} from '../../../../Resources/QuizSubmissionQuestions.js';
+import { QuizSubmissionQuestion } from '../../../../Resources/QuizSubmissionQuestions.js';
 
 type Parameters = {
   /**

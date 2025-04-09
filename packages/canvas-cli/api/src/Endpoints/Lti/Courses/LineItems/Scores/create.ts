@@ -1,5 +1,5 @@
 import { resultUrlStringTheurltotheresultthatwascreated } from '';
-import { JSONObject, JSONObject } from '@battis/typescript-tricks';
+import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../../Client.js';
 
 type Parameters = {

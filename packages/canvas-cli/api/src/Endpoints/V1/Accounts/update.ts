@@ -1,4 +1,4 @@
-import { JSONObject, JSONObject } from '@battis/typescript-tricks';
+import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../Client.js';
 import { Account } from '../../../Resources/Accounts.js';
 

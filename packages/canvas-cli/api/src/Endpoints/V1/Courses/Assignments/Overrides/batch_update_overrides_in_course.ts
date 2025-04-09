@@ -1,8 +1,5 @@
 import { client } from '../../../../../Client.js';
-import {
-  AssignmentOverride,
-  AssignmentOverride
-} from '../../../../../Resources/Assignments.js';
+import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
 type Parameters = {
   /** Attributes for the updated overrides. */

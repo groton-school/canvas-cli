@@ -1,9 +1,4 @@
-import {
-  JSONObject,
-  JSONObject,
-  JSONObject,
-  JSONObject
-} from '@battis/typescript-tricks';
+import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../../../Client.js';
 import { QuizItem } from '../../../../../../Resources/NewQuizItems.js';
 
