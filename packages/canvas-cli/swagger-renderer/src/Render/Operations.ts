@@ -71,6 +71,14 @@ export function annotateOperations({
           if (tsType.tsReference) {
             tsImports.push(tsType.tsReference);
           }
+          let tsPaginated: true | undefined = undefined;
+          if (tsType.type.endsWith('[]')) {
+            tsPaginated = true;
+            tsImports.push({
+              type: 'Paginated',
+              packagePath: '@groton/canvas-cli.client'
+            });
+          }
           // @ts-expect-error 2322
           const annotatedOperation: AnnotatedOperation = {
             ...operation,
@@ -78,7 +86,8 @@ export function annotateOperations({
             tsImports,
             tsType,
             tsEndpoint: endpoint.path,
-            tsName
+            tsName,
+            tsPaginated
           };
           annotatedOperation.tsFilePath = path.join(
             outputPath,
@@ -213,7 +222,10 @@ function toTSMethodName(operation: Swagger.v1p2.OperationObject): TSName {
       }
     // eslint-disable-next-line no-fallthrough
     case 'PUT':
-      if (operation.nickname.startsWith('update_') || operation.nickname.startsWith('edit_')) {
+      if (
+        operation.nickname.startsWith('update_') ||
+        operation.nickname.startsWith('edit_')
+      ) {
         return 'update';
       }
     // eslint-disable-next-line no-fallthrough

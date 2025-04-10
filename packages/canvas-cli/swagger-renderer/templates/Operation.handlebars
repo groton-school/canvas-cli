@@ -29,8 +29,11 @@ export type {{tsName}}SearchParameters = {
      */
     {{{tsName}}}{{tsOptional}}: {{{tsType.type}}}
     {{/tsQueryParameters}}
-}
+}{{#if tsPaginated}} & Paginated{{/if}}
 {{/if}}
+{{#unless tsQueryParameters}}{{#if tsPaginated}}
+export type {{tsName}}SearchParameters = Paginated;
+{{/if}}{{/unless}}
 
 {{#if tsFormParameters}}
 export type {{tsName}}FormParameters = {
