@@ -1,5 +1,5 @@
-import { GroupMembershipProgress } from '';
 import { client } from '../../../../Client.js';
+import { GroupMembershipProgress } from '../../../../Overrides.js';
 
 export type assign_unassigned_membersPathParameters = {
   /** ID */

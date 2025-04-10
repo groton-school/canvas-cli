@@ -44,7 +44,8 @@
       "filePath": "Overrides.ts"
     },
     { "type": "gradesGrades", "filePath": "Overrides.ts" },
-    { "type": "SerializedHash", "filePath": "Overrides.ts" }
+    { "type": "SerializedHash", "filePath": "Overrides.ts" },
+    { "type": "GroupMembershipProgress", "filePath": "Overrides.ts" }
   ],
   "tsTypes": {
     "Positive Integer": { "type": "number" },
@@ -224,6 +225,18 @@
           "description": "An array of additional information to include in the upload success response. See Files API for more information.",
           "tsType": { "type": "string[]" },
           "tsOptional": "?"
+        }
+      ]
+    },
+    "edit_assignment": {
+      "tsFormParameters": [
+        {
+          "tsName": "\"assignment[submission_types]\"",
+          "description": "Only applies if the assignment doesn't have student submissions.\n\nList of supported submission types for the assignment.\nUnless the assignment is allowing online submissions, the array should\nonly have one element.\n\nIf not allowing online submissions, your options are:\n  \"online_quiz\"\n  \"none\"\n  \"on_paper\"\n  \"discussion_topic\"\n  \"external_tool\"\n\nIf you are allowing online submissions, you can have one or many\nallowed submission types:\n\n  \"online_upload\"\n  \"online_text_entry\"\n  \"online_url\"\n  \"media_recording\" (Only valid when the Kaltura plugin is enabled)\n  \"student_annotation\"",
+          "tsOptional": "?",
+          "tsType": {
+            "type": "('online_quiz'|'none'|'on_paper'|'discussion_topic'|'external_tool'|'online_upload'|'online_text_entry'|'online_url'|'media_recording'|'student_annotation')[]"
+          }
         }
       ]
     }

@@ -37,7 +37,18 @@ export type updateFormParameters = {
    * "online_upload" "online_text_entry" "online_url" "media_recording" (Only
    * valid when the Kaltura plugin is enabled) "student_annotation"
    */
-  'assignment[submission_types]': string[];
+  'assignment[submission_types]'?: (
+    | 'online_quiz'
+    | 'none'
+    | 'on_paper'
+    | 'discussion_topic'
+    | 'external_tool'
+    | 'online_upload'
+    | 'online_text_entry'
+    | 'online_url'
+    | 'media_recording'
+    | 'student_annotation'
+  )[];
   /**
    * Allowed extensions if submission_types includes "online_upload"
    *
@@ -242,12 +253,6 @@ export type updateFormParameters = {
   'assignment[annotatable_attachment_id]': number;
   /** If true, updated_at will be set even if no changes were made. */
   'assignment[force_updated_at]': boolean;
-  /**
-   * Only applies if the assignment doesn't have student submissions.
-   *
-   * @deprecated
-   */
-  'assignment[submission_types]': string[];
 };
 
 type Options = {
