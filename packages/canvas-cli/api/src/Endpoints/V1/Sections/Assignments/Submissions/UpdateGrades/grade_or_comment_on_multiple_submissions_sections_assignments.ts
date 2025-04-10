@@ -41,7 +41,7 @@ export type grade_or_comment_on_multiple_submissions_sections_assignmentsFormPar
      *
      * Format: 'int64'
      */
-    'grade_data[<student_id>][file_ids]': string[];
+    'grade_data[<student_id>][file_ids]': number[];
     /**
      * Specifies which assignment to grade. This argument is not necessary when
      * using the assignment-specific endpoints.

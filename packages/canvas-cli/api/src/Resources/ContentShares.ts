@@ -45,7 +45,7 @@ export type ContentShare = {
    * An Array of users the content is shared with. This field is provided only
    * to senders; an empty array will be returned for the receiving users.
    */
-  receivers: string[];
+  receivers: JSONObject[];
   /**
    * The course the content was originally shared from.
    *

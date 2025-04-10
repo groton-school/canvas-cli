@@ -15,7 +15,7 @@ export type reorder_question_groupsFormParameters = {
    *
    * Format: 'int64'
    */
-  'order[id]': string[];
+  'order[id]': number[];
   /** The type of item is always 'question' for a group */
   'order[type]': string[];
 };

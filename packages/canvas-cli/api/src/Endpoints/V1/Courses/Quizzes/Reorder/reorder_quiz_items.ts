@@ -13,7 +13,7 @@ export type reorder_quiz_itemsFormParameters = {
    *
    * Format: 'int64'
    */
-  'order[id]': string[];
+  'order[id]': number[];
   /** The type of item is either 'question' or 'group' */
   'order[type]': string[];
 };

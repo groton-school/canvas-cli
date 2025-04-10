@@ -131,7 +131,7 @@ export type ChangeRecord = {
    * A list of ExceptionRecords for linked courses that did not receive this
    * update.
    */
-  exceptions: string[];
+  exceptions: JSONObject[];
 };
 
 /**
@@ -150,7 +150,7 @@ export type ExceptionRecord = {
    * prevented a blueprint change from being applied. One or more of ['content',
    * 'points', 'due_dates', 'availability_dates'].
    */
-  conflicting_changes: string[];
+  conflicting_changes: JSONObject[];
 };
 
 /** Associates a course with a blueprint */

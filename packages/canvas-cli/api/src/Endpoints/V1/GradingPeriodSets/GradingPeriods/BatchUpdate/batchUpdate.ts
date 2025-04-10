@@ -22,18 +22,18 @@ export type batchUpdateFormParameters = {
    * creating a new grading period, but not for updating an existing grading
    * period.
    */
-  'grading_periods[start_date]': string[];
+  'grading_periods[start_date]': Date[];
   /**
    * The date the grading period ends. The end_date is required for creating a
    * new grading period, but not for updating an existing grading period.
    */
-  'grading_periods[end_date]': string[];
+  'grading_periods[end_date]': Date[];
   /**
    * The date after which grades can no longer be changed for a grading
    * period. The close_date is required for creating a new grading period, but
    * not for updating an existing grading period.
    */
-  'grading_periods[close_date]': string[];
+  'grading_periods[close_date]': Date[];
   /**
    * A weight value that contributes to the overall weight of a grading period
    * set which is used to calculate how much assignments in this period
@@ -41,7 +41,7 @@ export type batchUpdateFormParameters = {
    *
    * Format: 'float'
    */
-  'grading_periods[weight]': string[];
+  'grading_periods[weight]': number[];
 };
 
 type Options = {

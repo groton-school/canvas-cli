@@ -15,7 +15,7 @@ export type Grader = {
    * of an assignment to make another API call to find all submissions for a
    * grader/assignment combination on a given date.
    */
-  assignments: string[];
+  assignments: number[];
 };
 
 export type Day = {
@@ -141,5 +141,5 @@ export type SubmissionHistory = {
    */
   submission_id: number;
   /** An array of all the versions of this submission */
-  versions: string[];
+  versions: SubmissionVersion[];
 };

@@ -33,7 +33,7 @@ type Options = {
  * Nickname: list_scopes
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/accounts/{account_id}/scopes`, {
+  return await client().fetchAs<Scope[]>(`/v1/accounts/{account_id}/scopes`, {
     method: 'GET',
     pathParams,
     searchParams

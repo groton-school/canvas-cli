@@ -18,7 +18,7 @@ export type QuizAssignmentOverrideSet = {
 /** Container for set of assignment-overridden dates for a quiz. */
 export type QuizAssignmentOverrideSetContainer = {
   /** The QuizAssignmentOverrideSet */
-  quiz_assignment_overrides: string[];
+  quiz_assignment_overrides: QuizAssignmentOverrideSet[];
 };
 
 /** Set of assignment-overridden dates for a quiz. */

@@ -40,7 +40,7 @@ type Options = {
 export async function details_for_given_date_in_gradebook_history_for_this_course({
   pathParams
 }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<Grader[]>(
     `/v1/courses/{course_id}/gradebook_history/{date}`,
     {
       method: 'GET',

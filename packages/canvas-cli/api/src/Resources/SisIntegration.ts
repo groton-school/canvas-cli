@@ -65,17 +65,17 @@ export type SisAssignment = {
    * Includes attributes of a assignment_group for convenience. For more details
    * see Assignments API.
    */
-  assignment_group: string[];
+  assignment_group: AssignmentGroupAttributes[];
   /**
    * Includes attributes of a section for convenience. For more details see
    * Sections API.
    */
-  sections: string[];
+  sections: SectionAttributes[];
   /**
    * Includes attributes of a user assignment overrides. For more details see
    * Assignments API.
    */
-  user_overrides: string[];
+  user_overrides: UserAssignmentOverrideAttributes[];
 };
 
 /**
@@ -218,7 +218,7 @@ export type UserAssignmentOverrideAttributes = {
    * Includes attributes of a student for convenience. For more details see
    * Users API.
    */
-  students: string[];
+  students: StudentAttributes[];
 };
 
 /** Attributes of student. See Users API for more details */

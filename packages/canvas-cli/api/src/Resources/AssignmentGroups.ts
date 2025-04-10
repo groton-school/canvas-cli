@@ -14,7 +14,7 @@ export type GradingRules = {
    */
   drop_highest: number;
   /** Assignment IDs that should never be dropped. */
-  never_drop: string[];
+  never_drop: number[];
 };
 
 export type AssignmentGroup = {
@@ -50,7 +50,7 @@ export type AssignmentGroup = {
    * The assignments in this Assignment Group (see the Assignment API for a
    * detailed list of fields)
    */
-  assignments: string[];
+  assignments: number[];
   /** The grading rules that this Assignment Group has */
   rules: GradingRules;
 };

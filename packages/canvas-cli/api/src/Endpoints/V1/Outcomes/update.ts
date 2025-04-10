@@ -32,7 +32,7 @@ export type updateFormParameters = {
    *
    * Format: 'int64'
    */
-  'ratings[points]': string[];
+  'ratings[points]': number[];
   /**
    * The new calculation method. If the Outcomes New Decaying Average
    * Calculation Method FF is ENABLED then "weighted_average" can be used and

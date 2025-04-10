@@ -18,7 +18,7 @@ export type bulk_create_lti_resource_linksFormParameters = {
   /** Each object may contain a title. */
   title: string[];
   /** Custom parameters to be sent to the tool when launching this link. */
-  custom: string[];
+  custom: Hash[];
 };
 
 type Options = {

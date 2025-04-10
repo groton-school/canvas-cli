@@ -59,7 +59,7 @@ export type AppointmentGroup = {
    * The start and end times of slots reserved by the current user as well as
    * the id of the calendar event for the reservation (see include[] argument)
    */
-  reserved_times: string[];
+  reserved_times: Appointment[];
   /**
    * Boolean indicating whether observer users should be able to sign-up for an
    * appointment
@@ -74,7 +74,7 @@ export type AppointmentGroup = {
    * The sub-context codes (i.e. course sections and group categories) this
    * appointment group is restricted to
    */
-  sub_context_codes: string[];
+  sub_context_codes: number[];
   /**
    * Current state of the appointment group ('pending', 'active' or 'deleted').
    * 'pending' indicates that it has not been published yet and is invisible to
@@ -97,12 +97,12 @@ export type AppointmentGroup = {
    * Calendar Events representing the time slots (see include[] argument) Refer
    * to the Calendar Events API for more information
    */
-  appointments: string[];
+  appointments: CalendarEvent[];
   /**
    * Newly created time slots (same format as appointments above). Only returned
    * in Create/Update responses where new time slots have been added
    */
-  new_appointments: string[];
+  new_appointments: CalendarEvent[];
   /**
    * Maximum number of time slots a user may register for, or null if no limit
    *

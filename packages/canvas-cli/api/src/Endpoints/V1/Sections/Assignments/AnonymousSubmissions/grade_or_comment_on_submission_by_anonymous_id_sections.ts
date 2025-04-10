@@ -36,7 +36,7 @@ export type grade_or_comment_on_submission_by_anonymous_id_sectionsFormParameter
      *
      * Format: 'int64'
      */
-    'comment[file_ids]': string[];
+    'comment[file_ids]': number[];
     /** Whether this assignment is visible to the owner of the submission */
     'include[visibility]': string;
     /**

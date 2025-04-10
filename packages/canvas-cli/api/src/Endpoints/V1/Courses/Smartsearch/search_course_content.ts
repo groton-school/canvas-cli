@@ -42,7 +42,7 @@ export async function search_course_content({
   pathParams,
   searchParams
 }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<SearchResult[]>(
     `/v1/courses/{course_id}/smartsearch`,
     {
       method: 'GET',

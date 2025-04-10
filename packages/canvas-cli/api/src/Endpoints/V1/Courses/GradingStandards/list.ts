@@ -29,7 +29,7 @@ type Options = {
  * Nickname: list_grading_standards_available_in_context_courses
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<GradingStandard[]>(
     `/v1/courses/{course_id}/grading_standards`,
     {
       method: 'GET',

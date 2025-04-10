@@ -34,7 +34,7 @@ export type createFormParameters = {
    *
    * Format: 'int64'
    */
-  'grading_scheme_entry[value]': string[];
+  'grading_scheme_entry[value]': number[];
 };
 
 type Options = {

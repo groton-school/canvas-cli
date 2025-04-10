@@ -75,7 +75,7 @@ export type CreatedEventData = {
   name: string[];
   start_at: string[];
   conclude_at: string[];
-  is_public: string[];
+  is_public: boolean[];
   /** The type of action that triggered the creation of the course. */
   created_source: string;
 };
@@ -90,5 +90,5 @@ export type UpdatedEventData = {
   name: string[];
   start_at: string[];
   conclude_at: string[];
-  is_public: string[];
+  is_public: boolean[];
 };

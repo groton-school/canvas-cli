@@ -11,15 +11,15 @@ export type createFormParameters = {
    *
    * Format: 'int64'
    */
-  'poll_sessions[course_id]': string[];
+  'poll_sessions[course_id]': number[];
   /**
    * The id of the course section this session is associated with.
    *
    * Format: 'int64'
    */
-  'poll_sessions[course_section_id]': string[];
+  'poll_sessions[course_section_id]': number[];
   /** Whether or not results are viewable by students. */
-  'poll_sessions[has_public_results]': string[];
+  'poll_sessions[has_public_results]': boolean[];
 };
 
 type Options = {

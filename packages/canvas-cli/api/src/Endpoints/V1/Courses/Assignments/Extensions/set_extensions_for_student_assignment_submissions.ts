@@ -13,14 +13,14 @@ export type set_extensions_for_student_assignment_submissionsFormParameters = {
    *
    * Format: 'int64'
    */
-  'assignment_extensions[user_id]': string[];
+  'assignment_extensions[user_id]': number[];
   /**
    * Number of times the student is allowed to re-take the assignment over the
    * limit.
    *
    * Format: 'int64'
    */
-  'assignment_extensions[extra_attempts]': string[];
+  'assignment_extensions[extra_attempts]': number[];
 };
 
 type Options = {

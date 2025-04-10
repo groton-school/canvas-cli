@@ -43,7 +43,7 @@ type Options = {
  * Nickname: query_by_student
  */
 export async function query_by_student({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<GradeChangeEvent[]>(
     `/v1/audit/grade_change/students/{student_id}`,
     {
       method: 'GET',

@@ -32,7 +32,7 @@ type Options = {
  * Nickname: list_potential_members_groups
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<User[]>(
     `/v1/groups/{group_id}/potential_collaborators`,
     {
       method: 'GET',

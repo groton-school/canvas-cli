@@ -46,7 +46,7 @@ export async function query_by_assignment({
   pathParams,
   searchParams
 }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<GradeChangeEvent[]>(
     `/v1/audit/grade_change/assignments/{assignment_id}`,
     {
       method: 'GET',

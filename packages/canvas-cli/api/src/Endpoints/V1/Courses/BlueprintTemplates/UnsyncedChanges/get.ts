@@ -32,7 +32,7 @@ type Options = {
  * Nickname: get_unsynced_changes
  */
 export async function get({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<ChangeRecord[]>(
     `/v1/courses/{course_id}/blueprint_templates/{template_id}/unsynced_changes`,
     {
       method: 'GET',

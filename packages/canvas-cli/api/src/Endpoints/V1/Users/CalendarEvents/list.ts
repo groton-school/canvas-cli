@@ -103,7 +103,7 @@ type Options = {
  * Nickname: list_calendar_events_for_user
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<CalendarEvent[]>(
     `/v1/users/{user_id}/calendar_events`,
     {
       method: 'GET',

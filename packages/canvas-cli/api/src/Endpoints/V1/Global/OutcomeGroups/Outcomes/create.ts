@@ -44,7 +44,7 @@ export type createFormParameters = {
    *
    * Format: 'int64'
    */
-  'ratings[points]': string[];
+  'ratings[points]': number[];
   /**
    * The new calculation method. Defaults to "decaying_average" if the
    * Outcomes New Decaying Average Calculation Method FF is ENABLED then

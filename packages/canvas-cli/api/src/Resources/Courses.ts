@@ -105,7 +105,7 @@ export type Course = {
    */
   enrollment_term_id: number;
   /** A list of grading periods associated with the course */
-  grading_periods: string[];
+  grading_periods: GradingPeriod[];
   /**
    * The grading standard associated with the course
    *
@@ -138,7 +138,7 @@ export type Course = {
    * A list of enrollments linking the current user to the course. for student
    * enrollments, grading information may be included if include[]=total_scores
    */
-  enrollments: string[];
+  enrollments: Enrollment[];
   /**
    * Optional: the total number of active and invited students in the course
    *

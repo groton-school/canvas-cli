@@ -28,7 +28,7 @@ type Options = {
  * Nickname: list_temporary_enrollment_pairings
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<TemporaryEnrollmentPairing[]>(
     `/v1/accounts/{account_id}/temporary_enrollment_pairings`,
     {
       method: 'GET',

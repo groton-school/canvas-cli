@@ -46,7 +46,7 @@ type Options = {
  * Nickname: lists_submissions
  */
 export async function lists_submissions({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<SubmissionHistory[]>(
     `/v1/courses/{course_id}/gradebook_history/{date}/graders/{grader_id}/assignments/{assignment_id}/submissions`,
     {
       method: 'GET',

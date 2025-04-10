@@ -30,7 +30,7 @@ type Options = {
  * Nickname: list_subgroups_courses
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<OutcomeGroup[]>(
     `/v1/courses/{course_id}/outcome_groups/{id}/subgroups`,
     {
       method: 'GET',

@@ -49,7 +49,7 @@ type Options = {
  * Nickname: list_questions_in_quiz_or_submission
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<QuizQuestion[]>(
     `/v1/courses/{course_id}/quizzes/{quiz_id}/questions`,
     {
       method: 'GET',

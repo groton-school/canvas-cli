@@ -24,7 +24,7 @@ export type CoursePace = {
   /** Boolean value depending on exclude weekends setting */
   exclude_weekends: boolean;
   /** Array of strings representing the days of the work week */
-  selected_days_to_skip: string[];
+  selected_days_to_skip: number[];
   /** Set if the end date is set from course */
   hard_end_dates: boolean;
   /**
@@ -64,7 +64,7 @@ export type CoursePace = {
    */
   start_date: string;
   /** List of modules and items for this course pace */
-  modules: string[];
+  modules: unknown;
   /** Progress of pace publishing */
   progress: Progress;
 };
@@ -85,7 +85,7 @@ export type Module = {
    */
   position: number;
   /** List of module items */
-  items: string[];
+  items: ModuleItem[];
   /**
    * The ID of the context for this course pace
    *

@@ -12,7 +12,7 @@ export type reorder_pinned_topics_groupsFormParameters = {
    *
    * Format: 'int64'
    */
-  order: string[];
+  order: number[];
 };
 
 type Options = {

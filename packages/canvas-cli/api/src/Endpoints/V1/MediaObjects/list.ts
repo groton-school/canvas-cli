@@ -42,7 +42,7 @@ type Options =
  * Nickname: list_media_objects_media_objects
  */
 export async function list({ searchParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/media_objects`, {
+  return await client().fetchAs<MediaObject[]>(`/v1/media_objects`, {
     method: 'GET',
     searchParams
   });

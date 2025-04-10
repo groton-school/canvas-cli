@@ -52,7 +52,7 @@ type Options = {
  * Nickname: list_modules
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/courses/{course_id}/modules`, {
+  return await client().fetchAs<Module[]>(`/v1/courses/{course_id}/modules`, {
     method: 'GET',
     pathParams,
     searchParams

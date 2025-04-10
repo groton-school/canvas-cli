@@ -16,12 +16,12 @@ export type update_grading_period_setFormParameters = {
    * A boolean to determine whether the grading periods in the set are
    * weighted
    */
-  'grading_period_set[weighted]': string[];
+  'grading_period_set[weighted]': boolean[];
   /**
    * A boolean to determine whether the totals for all grading periods in the
    * set are displayed
    */
-  'grading_period_set[display_totals_for_all_grading_periods]': string[];
+  'grading_period_set[display_totals_for_all_grading_periods]': boolean[];
 };
 
 type Options = {

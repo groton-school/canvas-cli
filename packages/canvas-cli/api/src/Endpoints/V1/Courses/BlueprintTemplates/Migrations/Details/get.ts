@@ -35,7 +35,7 @@ type Options = {
  * Nickname: get_migration_details
  */
 export async function get({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<ChangeRecord[]>(
     `/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations/{id}/details`,
     {
       method: 'GET',

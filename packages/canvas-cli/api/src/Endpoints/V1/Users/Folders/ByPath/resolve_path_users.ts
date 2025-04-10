@@ -33,7 +33,7 @@ type Options = {
  * Nickname: resolve_path_users
  */
 export async function resolve_path_users({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<Folder[]>(
     `/v1/users/{user_id}/folders/by_path`,
     {
       method: 'GET',

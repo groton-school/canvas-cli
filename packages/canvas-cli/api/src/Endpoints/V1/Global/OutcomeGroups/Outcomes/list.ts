@@ -36,7 +36,7 @@ type Options = {
  * Nickname: list_linked_outcomes_global
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<OutcomeLink[]>(
     `/v1/global/outcome_groups/{id}/outcomes`,
     {
       method: 'GET',

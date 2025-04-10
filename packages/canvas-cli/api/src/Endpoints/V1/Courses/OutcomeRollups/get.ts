@@ -25,7 +25,7 @@ export type getSearchParameters = {
    *
    * Format: 'int64'
    */
-  user_ids: string[];
+  user_ids: number[];
   /**
    * If specified, only the outcomes whose ids are given will be included in
    * the results. it is an error to specify an id for an outcome which is not
@@ -33,7 +33,7 @@ export type getSearchParameters = {
    *
    * Format: 'int64'
    */
-  outcome_ids: string[];
+  outcome_ids: number[];
   /**
    * [String,
    * "courses"|"outcomes"|"outcomes.alignments"|"outcome_groups"|"outcome_links"|"outcome_paths"|"users"]

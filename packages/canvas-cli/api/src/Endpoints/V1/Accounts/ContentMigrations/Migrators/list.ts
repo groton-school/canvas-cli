@@ -28,7 +28,7 @@ type Options = {
  * Nickname: list_migration_systems_accounts
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<Migrator[]>(
     `/v1/accounts/{account_id}/content_migrations/migrators`,
     {
       method: 'GET',

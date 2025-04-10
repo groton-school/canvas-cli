@@ -29,7 +29,7 @@ type Options = {
  * Nickname: list_content_exports_groups
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<ContentExport[]>(
     `/v1/groups/{group_id}/content_exports`,
     {
       method: 'GET',

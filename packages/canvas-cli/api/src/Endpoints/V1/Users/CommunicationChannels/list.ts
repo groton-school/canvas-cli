@@ -29,7 +29,7 @@ type Options = {
  * Nickname: list_user_communication_channels
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<CommunicationChannel[]>(
     `/v1/users/{user_id}/communication_channels`,
     {
       method: 'GET',

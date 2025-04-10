@@ -56,7 +56,7 @@ export type RubricCriteria = {
   description: string;
   long_description: string;
   criterion_use_range: boolean;
-  ratings: string[];
+  ratings: RubricRating[];
   ignore_for_scoring: boolean;
 };
 
@@ -217,7 +217,7 @@ export type Assignment = {
   /** Whether this assignment has overrides */
   has_overrides: boolean;
   /** (Optional) all dates associated with the assignment, if applicable */
-  all_dates: string[];
+  all_dates: AssignmentDate[];
   /**
    * The ID of the course the assignment belongs to
    *
@@ -340,7 +340,7 @@ export type Assignment = {
    * grading in multiple sections (effectively the count will be duplicated
    * between sections)
    */
-  needs_grading_count_by_section: string[];
+  needs_grading_count_by_section: NeedsGradingCount[];
   /**
    * The sorting order of the assignment in the group
    *
@@ -465,17 +465,17 @@ export type Assignment = {
    * (Optional) A list of scoring criteria and ratings for each rubric
    * criterion. Included if there is an associated rubric.
    */
-  rubric: string[];
+  rubric: RubricCriteria[];
   /**
    * (Optional) If 'assignment_visibility' is included in the 'include'
    * parameter, includes an array of student IDs who can see this assignment.
    */
-  assignment_visibility: string[];
+  assignment_visibility: number[];
   /**
    * (Optional) If 'overrides' is included in the 'include' parameter, includes
    * an array of assignment override objects.
    */
-  overrides: string[];
+  overrides: AssignmentOverride[];
   /**
    * (Optional) If true, the assignment will be omitted from the student's final
    * grade
@@ -682,7 +682,7 @@ export type AssignmentOverride = {
    * The IDs of the override's target students (present if the override targets
    * an ad-hoc set of students)
    */
-  student_ids: string[];
+  student_ids: number[];
   /**
    * The ID of the override's target group (present if the override targets a
    * group and the assignment is a group assignment)

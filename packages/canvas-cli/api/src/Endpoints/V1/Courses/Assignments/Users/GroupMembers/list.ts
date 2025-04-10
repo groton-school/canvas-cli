@@ -32,7 +32,7 @@ type Options = {
  * Nickname: list_group_members_for_student_on_assignment
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<BasicUser[]>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/users/{user_id}/group_members`,
     {
       method: 'GET',

@@ -13,7 +13,7 @@ export type createFormParameters = {
    *
    * Format: 'int64'
    */
-  'poll_submissions[poll_choice_id]': string[];
+  'poll_submissions[poll_choice_id]': number[];
 };
 
 type Options = {

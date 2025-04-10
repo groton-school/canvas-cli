@@ -35,7 +35,7 @@ type Options = {
 export async function days_in_gradebook_history_for_this_course({
   pathParams
 }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<Day[]>(
     `/v1/courses/{course_id}/gradebook_history/days`,
     {
       method: 'GET',

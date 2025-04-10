@@ -11,7 +11,7 @@ export type reorder_custom_columnsFormParameters = {
    *
    * Format: 'int64'
    */
-  order: string[];
+  order: number[];
 };
 
 type Options = {

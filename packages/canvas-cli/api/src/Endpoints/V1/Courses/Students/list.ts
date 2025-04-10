@@ -31,7 +31,7 @@ type Options = {
  * Nickname: list_students
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/courses/{course_id}/students`, {
+  return await client().fetchAs<User[]>(`/v1/courses/{course_id}/students`, {
     method: 'GET',
     pathParams
   });

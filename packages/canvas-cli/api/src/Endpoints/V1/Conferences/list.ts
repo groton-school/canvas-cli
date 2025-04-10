@@ -33,7 +33,7 @@ type Options =
  * Nickname: list_conferences_for_current_user
  */
 export async function list({ searchParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/conferences`, {
+  return await client().fetchAs<Conference[]>(`/v1/conferences`, {
     method: 'GET',
     searchParams
   });

@@ -24,21 +24,21 @@ export type Rubric = {
   free_form_criterion_comments: boolean;
   hide_score_total: boolean;
   /** An array with all of this Rubric's grading Criteria */
-  data: string[];
+  data: RubricCriterion[];
   /**
    * If an assessment type is included in the 'include' parameter, includes an
    * array of rubric assessment objects for a given rubric, based on the
    * assessment type requested. If the user does not request an assessment type
    * this key will be absent.
    */
-  assessments: string[];
+  assessments: RubricAssessment[];
   /**
    * If an association type is included in the 'include' parameter, includes an
    * array of rubric association objects for a given rubric, based on the
    * association type requested. If the user does not request an association
    * type this key will be absent.
    */
-  associations: string[];
+  associations: RubricAssociation[];
 };
 
 export type RubricCriterion = {
@@ -50,7 +50,7 @@ export type RubricCriterion = {
   points: number;
   criterion_use_range: boolean;
   /** The possible ratings for this Criterion */
-  ratings: string[];
+  ratings: RubricRating[];
 };
 
 export type RubricRating = {
@@ -109,7 +109,7 @@ export type RubricAssessment = {
    * assessments will have their full details contained in their data hash. If
    * the user does not request a style, this key will be absent.
    */
-  data: string[];
+  data: JSONObject[];
   /**
    * (Optional) If 'comments_only' is included in the 'style' parameter,
    * returned assessments will include only the comments portion of their data

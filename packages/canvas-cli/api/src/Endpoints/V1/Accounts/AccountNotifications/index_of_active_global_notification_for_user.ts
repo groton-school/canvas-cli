@@ -50,7 +50,7 @@ export async function index_of_active_global_notification_for_user({
   pathParams,
   searchParams
 }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<AccountNotification[]>(
     `/v1/accounts/{account_id}/account_notifications`,
     {
       method: 'GET',

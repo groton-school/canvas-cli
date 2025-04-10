@@ -50,7 +50,7 @@ type Options = {
  * Nickname: list_media_objects_groups_media_objects
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<MediaObject[]>(
     `/v1/groups/{group_id}/media_objects`,
     {
       method: 'GET',

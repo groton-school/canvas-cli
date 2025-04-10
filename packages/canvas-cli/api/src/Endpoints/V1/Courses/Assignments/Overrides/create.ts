@@ -16,7 +16,7 @@ export type createFormParameters = {
    *
    * Format: 'int64'
    */
-  'assignment_override[student_ids]': string[];
+  'assignment_override[student_ids]': number[];
   /**
    * The title of the adhoc assignment override. Required if student_ids is
    * present, ignored otherwise (the title is set to the name of the targetted

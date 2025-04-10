@@ -40,7 +40,7 @@ export async function batch_retrieve_overrides_in_course({
   pathParams,
   searchParams
 }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<AssignmentOverride[]>(
     `/v1/courses/{course_id}/assignments/overrides`,
     {
       method: 'GET',

@@ -14,5 +14,5 @@ export type Proficiency = {
    * An array of proficiency ratings. See the ProficiencyRating specification
    * above.
    */
-  ratings: string[];
+  ratings: unknown;
 };

@@ -38,9 +38,12 @@ type Options = {
  * Nickname: list_members_of_collaboration
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/collaborations/{id}/members`, {
-    method: 'GET',
-    pathParams,
-    searchParams
-  });
+  return await client().fetchAs<Collaborator[]>(
+    `/v1/collaborations/{id}/members`,
+    {
+      method: 'GET',
+      pathParams,
+      searchParams
+    }
+  );
 }

@@ -1,3 +1,4 @@
+import { array } from '';
 import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../Client.js';
 import { DeveloperKey } from '../../../Resources/DeveloperKeys.js';
@@ -30,7 +31,7 @@ export type updateFormParameters = {
   /** Deprecated in favor of redirect_uris. Do not use. */
   'developer_key[redirect_uri]': string;
   /** List of URLs used during OAuth2 flow to validate given redirect URI. */
-  'developer_key[redirect_uris]': string[];
+  'developer_key[redirect_uris]': array;
   /** User-specified code representing the vendor that uses the key. */
   'developer_key[vendor_code]': string;
   /** Defaults to true. If false, key will not be visible in the UI. */
@@ -46,7 +47,7 @@ export type updateFormParameters = {
    */
   'developer_key[client_credentials_audience]': string;
   /** List of API endpoints key is allowed to access. */
-  'developer_key[scopes]': string[];
+  'developer_key[scopes]': array;
   /** If true, then token requests with this key must include scopes. */
   'developer_key[require_scopes]': boolean;
   /**

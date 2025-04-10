@@ -6,7 +6,7 @@ export type Grade = {
   /** The total points possible for the course */
   possible: number;
   /** The dropped grades for the course */
-  dropped: string[];
+  dropped: unknown;
 };
 
 export type AssignmentGroupGrade = {
@@ -31,7 +31,7 @@ export type AssignmentGroupGrade = {
   /** The grade for the Assignment Group */
   grade: number;
   /** The dropped grades for the Assignment Group */
-  dropped: string[];
+  dropped: unknown;
 };
 
 export type GradeGroup = {

@@ -50,7 +50,7 @@ type Options = {
  * Nickname: list_media_objects_courses_media_attachments
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<MediaObject[]>(
     `/v1/courses/{course_id}/media_attachments`,
     {
       method: 'GET',

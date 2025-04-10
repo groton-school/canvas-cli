@@ -52,14 +52,14 @@ export type listSearchParameters = {
    *
    * Format: 'int64'
    */
-  by_teachers: string[];
+  by_teachers: number[];
   /**
    * List of Account IDs; if supplied, include only courses associated with
    * one of the referenced subaccounts.
    *
    * Format: 'int64'
    */
-  by_subaccounts: string[];
+  by_subaccounts: number[];
   /**
    * If present, only return courses that have at least one enrollment.
    * Equivalent to 'with_enrollments=true'; retained for compatibility.
@@ -141,7 +141,7 @@ type Options = {
  * Nickname: list_active_courses_in_account
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/accounts/{account_id}/courses`, {
+  return await client().fetchAs<Course[]>(`/v1/accounts/{account_id}/courses`, {
     method: 'GET',
     pathParams,
     searchParams

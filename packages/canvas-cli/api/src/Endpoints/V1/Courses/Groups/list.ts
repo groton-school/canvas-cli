@@ -48,7 +48,7 @@ type Options = {
  * Nickname: list_groups_available_in_context_courses
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/courses/{course_id}/groups`, {
+  return await client().fetchAs<Group[]>(`/v1/courses/{course_id}/groups`, {
     method: 'GET',
     pathParams,
     searchParams

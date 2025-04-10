@@ -14,7 +14,7 @@ export type createFormParameters = {
    *
    * Format: 'int64'
    */
-  members: string[];
+  members: number[];
 };
 
 type Options = {

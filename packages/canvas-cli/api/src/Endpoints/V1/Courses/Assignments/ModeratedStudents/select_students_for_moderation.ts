@@ -13,7 +13,7 @@ export type select_students_for_moderationSearchParameters = Paginated;
 
 export type select_students_for_moderationFormParameters = {
   /** User ids for students to select for moderation */
-  student_ids: string[];
+  student_ids: number[];
 };
 
 type Options = {
@@ -40,7 +40,7 @@ export async function select_students_for_moderation({
   pathParams,
   params
 }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<User[]>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/moderated_students`,
     {
       method: 'POST',

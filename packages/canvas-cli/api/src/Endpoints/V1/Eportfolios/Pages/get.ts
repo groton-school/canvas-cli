@@ -28,7 +28,7 @@ type Options = {
  * Nickname: get_eportfolio_pages
  */
 export async function get({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<ePortfolioPage[]>(
     `/v1/eportfolios/{eportfolio_id}/pages`,
     {
       method: 'GET',

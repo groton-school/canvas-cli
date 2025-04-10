@@ -51,5 +51,5 @@ export type EnrollmentTerm = {
 
 export type EnrollmentTermsList = {
   /** A paginated list of all terms in the account */
-  enrollment_terms: string[];
+  enrollment_terms: EnrollmentTerm[];
 };

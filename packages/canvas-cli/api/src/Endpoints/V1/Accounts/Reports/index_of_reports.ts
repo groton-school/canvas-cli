@@ -30,7 +30,7 @@ type Options = {
  * Nickname: index_of_reports
  */
 export async function index_of_reports({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<Report[]>(
     `/v1/accounts/{account_id}/reports/{report}`,
     {
       method: 'GET',

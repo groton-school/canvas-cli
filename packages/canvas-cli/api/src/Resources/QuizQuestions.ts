@@ -37,7 +37,7 @@ export type QuizQuestion = {
   /** The comments to display regardless of how the student answered. */
   neutral_comments: string;
   /** An array of available answers to display to the student. */
-  answers: string[];
+  answers: Answer[];
 };
 
 export type Answer = {

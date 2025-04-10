@@ -31,7 +31,7 @@ type Options =
  * Nickname: list_your_groups
  */
 export async function list({ searchParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/users/self/groups`, {
+  return await client().fetchAs<Group[]>(`/v1/users/self/groups`, {
     method: 'GET',
     searchParams
   });

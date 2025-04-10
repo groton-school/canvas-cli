@@ -42,7 +42,7 @@ type Options = {
  * Nickname: update_media_tracks_media_attachments
  */
 export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<MediaTrack[]>(
     `/v1/media_attachments/{attachment_id}/media_tracks`,
     {
       method: 'PUT',

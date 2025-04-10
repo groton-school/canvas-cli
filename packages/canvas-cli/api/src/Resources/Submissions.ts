@@ -65,7 +65,7 @@ export type Submission = {
   /** The raw score */
   score: number;
   /** Associated comments for a submission (optional) */
-  submission_comments: string[];
+  submission_comments: SubmissionComment[];
   /**
    * The types of submission ex:
    * ('online_text_entry'|'online_url'|'online_upload'|'online_quiz'|'media_recording'|'student_annotation')

@@ -32,7 +32,7 @@ type Options = {
  * Nickname: list_new_quizzes
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<NewQuiz[]>(
     `/quiz/v1/courses/{course_id}/quizzes`,
     {
       method: 'GET',

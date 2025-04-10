@@ -82,7 +82,7 @@ export type NamesAndRoleMembership = {
    * additional attributes which would appear in the LTI launch message were
    * this member to click the link referenced by the `rlid` query parameter
    */
-  message: string[];
+  message: NamesAndRoleMessage[];
 };
 
 export type NamesAndRoleMemberships = {
@@ -91,5 +91,5 @@ export type NamesAndRoleMemberships = {
   /** The LTI Context containing the memberships */
   context: NamesAndRoleContext;
   /** A list of NamesAndRoleMembership */
-  members: string[];
+  members: NamesAndRoleMembership[];
 };

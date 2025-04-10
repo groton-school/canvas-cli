@@ -29,7 +29,7 @@ type Options = {
  * Nickname: list_all_folders_users
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/users/{user_id}/folders`, {
+  return await client().fetchAs<Folder[]>(`/v1/users/{user_id}/folders`, {
     method: 'GET',
     pathParams
   });

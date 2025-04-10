@@ -17,20 +17,20 @@ export type updateFormParameters = {
    *
    * Format: 'int64'
    */
-  'quiz_submissions[attempt]': string[];
+  'quiz_submissions[attempt]': number[];
   /**
    * Amount of positive or negative points to fudge the total score by.
    *
    * Format: 'float'
    */
-  'quiz_submissions[fudge_points]': string[];
+  'quiz_submissions[fudge_points]': number[];
   /**
    * A set of scores and comments for each question answered by the student.
    * The keys are the question IDs, and the values are hashes of `score` and
    * `comment` entries. See {Appendix: Manual Scoring} for more on this
    * parameter.
    */
-  'quiz_submissions[questions]': string[];
+  'quiz_submissions[questions]': Hash[];
 };
 
 type Options = {

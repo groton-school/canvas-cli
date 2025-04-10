@@ -103,7 +103,7 @@ export type UsageRights = {
   /** Explanation of the action performed */
   message: string;
   /** List of ids of files that were updated */
-  file_ids: string[];
+  file_ids: number[];
 };
 
 export type License = {

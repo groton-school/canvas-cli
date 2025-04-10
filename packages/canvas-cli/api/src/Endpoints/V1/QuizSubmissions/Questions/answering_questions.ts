@@ -31,7 +31,7 @@ export type answering_questionsFormParameters = {
    * See {Appendix: Question Answer Formats} for the accepted answer formats
    * for each question type.
    */
-  quiz_questions: string[];
+  quiz_questions: QuizSubmissionQuestion[];
 };
 
 type Options = {
@@ -55,7 +55,7 @@ type Options = {
  * Nickname: answering_questions
  */
 export async function answering_questions({ pathParams, params }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<QuizSubmissionQuestion[]>(
     `/v1/quiz_submissions/{quiz_submission_id}/questions`,
     {
       method: 'POST',

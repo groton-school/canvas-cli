@@ -31,7 +31,7 @@ type Options = {
  * Nickname: list_revisions_courses
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<PageRevision[]>(
     `/v1/courses/{course_id}/pages/{url_or_id}/revisions`,
     {
       method: 'GET',

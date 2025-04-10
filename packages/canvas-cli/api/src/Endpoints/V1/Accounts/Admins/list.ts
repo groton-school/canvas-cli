@@ -13,7 +13,7 @@ export type listSearchParameters = {
    * Scope the results to those with user IDs equal to any of the IDs
    * specified here.
    */
-  user_id: string[];
+  user_id: Integer[];
 } & Paginated;
 
 type Options = {
@@ -37,7 +37,7 @@ type Options = {
  * Nickname: list_account_admins
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/accounts/{account_id}/admins`, {
+  return await client().fetchAs<Admin[]>(`/v1/accounts/{account_id}/admins`, {
     method: 'GET',
     pathParams,
     searchParams

@@ -22,7 +22,7 @@ type Options =
  * Nickname: get_accounts_that_admins_can_manage
  */
 export async function get({}: Options) {
-  return await client().fetchAs<string[]>(`/v1/manageable_accounts`, {
+  return await client().fetchAs<Account[]>(`/v1/manageable_accounts`, {
     method: 'GET'
   });
 }

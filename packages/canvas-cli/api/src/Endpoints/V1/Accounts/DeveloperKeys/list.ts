@@ -36,7 +36,7 @@ type Options = {
  * Nickname: list_developer_keys
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<DeveloperKey[]>(
     `/v1/accounts/{account_id}/developer_keys`,
     {
       method: 'GET',

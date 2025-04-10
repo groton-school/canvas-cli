@@ -38,7 +38,7 @@ type Options = {
  * Nickname: list_linked_outcomes_accounts
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<OutcomeLink[]>(
     `/v1/accounts/{account_id}/outcome_groups/{id}/outcomes`,
     {
       method: 'GET',

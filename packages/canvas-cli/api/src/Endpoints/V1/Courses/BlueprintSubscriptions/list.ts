@@ -29,7 +29,7 @@ type Options = {
  * Nickname: list_blueprint_subscriptions
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<BlueprintSubscription[]>(
     `/v1/courses/{course_id}/blueprint_subscriptions`,
     {
       method: 'GET',

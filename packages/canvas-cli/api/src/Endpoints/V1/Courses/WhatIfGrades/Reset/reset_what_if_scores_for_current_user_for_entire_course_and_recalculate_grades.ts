@@ -32,7 +32,7 @@ type Options = {
 export async function reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_grades({
   pathParams
 }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<gradesGrades[]>(
     `/v1/courses/{course_id}/what_if_grades/reset`,
     {
       method: 'PUT',

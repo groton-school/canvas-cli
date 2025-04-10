@@ -11,7 +11,7 @@ export type batchUpdateSearchParameters = Paginated;
 
 export type batchUpdateFormParameters = {
   /** Attributes for the updated overrides. */
-  assignment_overrides: string[];
+  assignment_overrides: AssignmentOverride[];
 };
 
 type Options = {
@@ -47,7 +47,7 @@ type Options = {
  * Nickname: batch_update_overrides_in_course
  */
 export async function batchUpdate({ pathParams, params }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<AssignmentOverride[]>(
     `/v1/courses/{course_id}/assignments/overrides`,
     {
       method: 'PUT',

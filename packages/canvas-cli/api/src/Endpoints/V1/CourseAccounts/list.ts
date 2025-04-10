@@ -23,7 +23,7 @@ type Options =
  * Nickname: list_accounts_for_course_admins
  */
 export async function list({}: Options) {
-  return await client().fetchAs<string[]>(`/v1/course_accounts`, {
+  return await client().fetchAs<Account[]>(`/v1/course_accounts`, {
     method: 'GET'
   });
 }

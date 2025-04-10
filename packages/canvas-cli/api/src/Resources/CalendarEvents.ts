@@ -78,7 +78,7 @@ export type CalendarEvent = {
    * reservations. If this is a course-level event, this will be a list of
    * section-level events (if any)
    */
-  child_events: string[];
+  child_events: number[];
   /** URL for this calendar event (to update, delete, etc.) */
   url: string;
   /** URL for a user to view this event */

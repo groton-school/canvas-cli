@@ -31,7 +31,7 @@ type Options = {
  * Nickname: list_my_admin_roles
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<Admin[]>(
     `/v1/accounts/{account_id}/admins/self`,
     {
       method: 'GET',

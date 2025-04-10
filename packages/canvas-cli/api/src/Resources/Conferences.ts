@@ -45,11 +45,11 @@ export type Conference = {
   /** The title of the conference */
   title: string;
   /** Array of user ids that are participants in the conference */
-  users: string[];
+  users: number[];
   /** Array of user ids that are invitees in the conference */
-  invitees: string[];
+  invitees: number[];
   /** Array of user ids that are attendees in the conference */
-  attendees: string[];
+  attendees: number[];
   /** True if the conference type has advanced settings. */
   has_advanced_settings: boolean;
   /** If true the conference is long running and has no expected end time */
@@ -61,7 +61,7 @@ export type Conference = {
    */
   user_settings: JSONObject;
   /** A List of recordings for the conference */
-  recordings: string[];
+  recordings: ConferenceRecording[];
   /** URL for the conference, may be null if the conference type doesn't set it */
   url: string;
   /**

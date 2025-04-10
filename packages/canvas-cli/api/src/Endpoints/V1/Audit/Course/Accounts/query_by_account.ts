@@ -43,7 +43,7 @@ type Options = {
  * Nickname: query_by_account
  */
 export async function query_by_account({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<CourseEvent[]>(
     `/v1/audit/course/accounts/{account_id}`,
     {
       method: 'GET',

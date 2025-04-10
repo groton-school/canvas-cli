@@ -9,14 +9,14 @@ export type createFormParameters = {
   /** The descriptive text of the poll choice. */
   'poll_choices[text]': string[];
   /** Whether this poll choice is considered correct or not. Defaults to false. */
-  'poll_choices[is_correct]': string[];
+  'poll_choices[is_correct]': boolean[];
   /**
    * The order this poll choice should be returned in the context it's sibling
    * poll choices.
    *
    * Format: 'int64'
    */
-  'poll_choices[position]': string[];
+  'poll_choices[position]': number[];
 };
 
 type Options = {

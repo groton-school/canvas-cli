@@ -99,7 +99,7 @@ export type Group = {
    * certainty consider using the paginated
    * /api/v1/groups/<group_id>/memberships endpoint.
    */
-  users: string[];
+  users: User[];
 };
 
 export type GroupMembership = {

@@ -15,21 +15,21 @@ export type createFormParameters = {
    *
    * Format: 'int64'
    */
-  'ratings[points]': string[];
+  'ratings[points]': number[];
   /**
    * Indicates the rating level where mastery is first achieved. Only one
    * rating in a proficiency should be marked for mastery.
    *
    * Format: 'int64'
    */
-  'ratings[mastery]': string[];
+  'ratings[mastery]': number[];
   /**
    * The color associated with the rating level. Should be a hex color code
    * like '00FFFF'.
    *
    * Format: 'int64'
    */
-  'ratings[color]': string[];
+  'ratings[color]': number[];
 };
 
 type Options = {

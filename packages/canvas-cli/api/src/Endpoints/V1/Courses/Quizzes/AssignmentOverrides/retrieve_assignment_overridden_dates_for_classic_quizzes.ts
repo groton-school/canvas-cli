@@ -15,7 +15,7 @@ export type retrieve_assignment_overridden_dates_for_classic_quizzesSearchParame
      *
      * Format: 'int64'
      */
-    'quiz_assignment_overrides[quiz_ids]': string[];
+    'quiz_assignment_overrides[quiz_ids]': number[];
   };
 
 type Options = {

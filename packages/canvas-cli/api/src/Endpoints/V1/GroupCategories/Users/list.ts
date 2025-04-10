@@ -41,7 +41,7 @@ type Options = {
  * Nickname: list_users_in_group_category
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<User[]>(
     `/v1/group_categories/{group_category_id}/users`,
     {
       method: 'GET',

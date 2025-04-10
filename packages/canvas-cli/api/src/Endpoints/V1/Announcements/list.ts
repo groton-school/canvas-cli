@@ -1,3 +1,4 @@
+import { array } from '';
 import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
 import { DiscussionTopic } from '../../../Resources/DiscussionTopics.js';
@@ -61,7 +62,7 @@ export type listSearchParameters = {
    * root level the total number of users in the topic's context (group or
    * course) that the topic applies to.
    */
-  include: string[];
+  include: array;
 } & Paginated;
 
 type Options =
@@ -84,7 +85,7 @@ type Options =
  * Nickname: list_announcements
  */
 export async function list({ searchParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/announcements`, {
+  return await client().fetchAs<DiscussionTopic[]>(`/v1/announcements`, {
     method: 'GET',
     searchParams
   });

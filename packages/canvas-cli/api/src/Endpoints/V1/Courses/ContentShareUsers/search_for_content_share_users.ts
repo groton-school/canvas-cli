@@ -41,7 +41,7 @@ export async function search_for_content_share_users({
   pathParams,
   searchParams
 }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<User[]>(
     `/v1/courses/{course_id}/content_share_users`,
     {
       method: 'GET',

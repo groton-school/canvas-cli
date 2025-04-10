@@ -214,9 +214,9 @@ export type SisImport = {
    * Only imports that are complete will get this data. An array of
    * CSV_file/warning_message pairs.
    */
-  processing_warnings: string[];
+  processing_warnings: string[][];
   /** An array of CSV_file/error_message pairs. */
-  processing_errors: string[];
+  processing_errors: string[][];
   /** Whether the import was run in batch mode. */
   batch_mode: boolean;
   /** The term the batch was limited to. */
@@ -247,5 +247,5 @@ export type SisImport = {
    */
   diffed_against_import_id: number;
   /** An array of CSV files for processing */
-  csv_attachments: string[];
+  csv_attachments: File[][];
 };

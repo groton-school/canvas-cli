@@ -10,9 +10,9 @@ export type updatePathParameters = {
 
 export type updateFormParameters = {
   /** The date the grading period starts. */
-  'grading_periods[start_date]': string[];
+  'grading_periods[start_date]': Date[];
   /** No description */
-  'grading_periods[end_date]': string[];
+  'grading_periods[end_date]': Date[];
   /**
    * A weight value that contributes to the overall weight of a grading period
    * set which is used to calculate how much assignments in this period
@@ -20,7 +20,7 @@ export type updateFormParameters = {
    *
    * Format: 'float'
    */
-  'grading_periods[weight]': string[];
+  'grading_periods[weight]': number[];
 };
 
 type Options = {

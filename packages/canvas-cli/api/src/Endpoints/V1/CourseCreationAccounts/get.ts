@@ -21,7 +21,7 @@ type Options =
  * Nickname: get_accounts_that_users_can_create_courses_in
  */
 export async function get({}: Options) {
-  return await client().fetchAs<string[]>(`/v1/course_creation_accounts`, {
+  return await client().fetchAs<Account[]>(`/v1/course_creation_accounts`, {
     method: 'GET'
   });
 }

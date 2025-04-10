@@ -54,5 +54,5 @@ export type GradingStandard = {
    * A list of GradingSchemeEntry that make up the Grading Standard as an array
    * of values with the scheme name and value
    */
-  grading_scheme: string[];
+  grading_scheme: GradingSchemeEntry[];
 };

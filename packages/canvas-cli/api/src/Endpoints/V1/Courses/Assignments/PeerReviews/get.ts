@@ -35,7 +35,7 @@ type Options = {
  * Nickname: get_all_peer_reviews_courses_peer_reviews
  */
 export async function get({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<PeerReview[]>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/peer_reviews`,
     {
       method: 'GET',

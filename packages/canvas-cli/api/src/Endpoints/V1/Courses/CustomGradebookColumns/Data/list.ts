@@ -38,7 +38,7 @@ type Options = {
  * Nickname: list_entries_for_column
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<ColumnDatum[]>(
     `/v1/courses/{course_id}/custom_gradebook_columns/{id}/data`,
     {
       method: 'GET',

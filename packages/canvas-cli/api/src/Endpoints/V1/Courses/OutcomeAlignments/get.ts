@@ -40,7 +40,7 @@ type Options = {
  * get_aligned_assignments_for_outcome_in_course_for_particular_student
  */
 export async function get({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<OutcomeAlignment[]>(
     `/v1/courses/{course_id}/outcome_alignments`,
     {
       method: 'GET',

@@ -33,7 +33,7 @@ type Options = {
  * Nickname: list_recent_history_for_user
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/users/{user_id}/history`, {
+  return await client().fetchAs<HistoryEntry[]>(`/v1/users/{user_id}/history`, {
     method: 'GET',
     pathParams
   });

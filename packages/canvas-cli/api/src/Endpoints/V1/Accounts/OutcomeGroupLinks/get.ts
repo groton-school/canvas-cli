@@ -39,7 +39,7 @@ type Options = {
  * Nickname: get_all_outcome_links_for_context_accounts
  */
 export async function get({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<OutcomeLink[]>(
     `/v1/accounts/{account_id}/outcome_group_links`,
     {
       method: 'GET',

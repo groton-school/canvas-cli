@@ -20,7 +20,7 @@ type Options =
  * Nickname: list_bookmarks
  */
 export async function list({}: Options) {
-  return await client().fetchAs<string[]>(`/v1/users/self/bookmarks`, {
+  return await client().fetchAs<Bookmark[]>(`/v1/users/self/bookmarks`, {
     method: 'GET'
   });
 }

@@ -105,7 +105,7 @@ export type User = {
    * return a list of the users active enrollments. See the List enrollments API
    * for more details about the format of these records.
    */
-  enrollments: string[];
+  enrollments: Enrollment[];
   /**
    * Optional: This field can be requested with certain API calls, and will
    * return the users primary email address.

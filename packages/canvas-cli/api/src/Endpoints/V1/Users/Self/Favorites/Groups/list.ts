@@ -22,7 +22,7 @@ type Options =
  * Nickname: list_favorite_groups
  */
 export async function list({}: Options) {
-  return await client().fetchAs<string[]>(`/v1/users/self/favorites/groups`, {
+  return await client().fetchAs<Group[]>(`/v1/users/self/favorites/groups`, {
     method: 'GET'
   });
 }

@@ -103,7 +103,7 @@ export type LtiLegacyConfiguration = {
   /** 1.3 specific. List of LTI scopes requested by the tool */
   scopes: string[];
   /** Array of extensions for the tool */
-  extensions: string[];
+  extensions: JSONObject[];
 };
 
 /** A Registration's Canvas-specific tool configuration. */
@@ -159,7 +159,7 @@ export type LtiToolConfiguration = {
   /** Default launch settings for all placements */
   launch_settings: LtiLaunchSettings;
   /** List of placements configured by the tool */
-  placements: string[];
+  placements: LtiPlacement[];
 };
 
 /** Default launch settings for all placements */
@@ -450,5 +450,5 @@ export type ListLtiRegistrationsResponse = {
    */
   total: number;
   /** The paginated list of LTI::Registrations */
-  data: string[];
+  data: LtiRegistration[];
 };

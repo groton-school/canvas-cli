@@ -29,7 +29,7 @@ type Options = {
  * Nickname: list_content_exports_courses
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<ContentExport[]>(
     `/v1/courses/{course_id}/content_exports`,
     {
       method: 'GET',

@@ -24,7 +24,7 @@ export type start_reportFormParameters = {
    *
    * Format: 'int64'
    */
-  'parameters[section_ids]': string[];
+  'parameters[section_ids]': number[];
 };
 
 type Options = {

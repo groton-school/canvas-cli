@@ -35,7 +35,7 @@ type Options = {
  * Nickname: get_import_details
  */
 export async function get({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<ChangeRecord[]>(
     `/v1/courses/{course_id}/blueprint_subscriptions/{subscription_id}/migrations/{id}/details`,
     {
       method: 'GET',

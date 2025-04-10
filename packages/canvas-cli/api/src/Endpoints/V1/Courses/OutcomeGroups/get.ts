@@ -26,7 +26,7 @@ type Options = {
  * Nickname: get_all_outcome_groups_for_context_courses
  */
 export async function get({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<OutcomeGroup[]>(
     `/v1/courses/{course_id}/outcome_groups`,
     {
       method: 'GET',

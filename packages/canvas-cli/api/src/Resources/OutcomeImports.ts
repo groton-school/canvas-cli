@@ -54,5 +54,5 @@ export type OutcomeImport = {
   /** The user that initiated the outcome_import. See the Users API for details. */
   user: User;
   /** An array of row number / error message pairs. Returns the first 25 errors. */
-  processing_errors: string[];
+  processing_errors: JSONObject[][];
 };

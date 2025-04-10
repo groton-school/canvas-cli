@@ -81,7 +81,7 @@ type Options = {
 export async function split_merged_users_into_separate_users({
   pathParams
 }: Options) {
-  return await client().fetchAs<string[]>(`/v1/users/{id}/split`, {
+  return await client().fetchAs<User[]>(`/v1/users/{id}/split`, {
     method: 'POST',
     pathParams
   });

@@ -31,7 +31,7 @@ type Options = {
  * Nickname: list_assignment_overrides
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<AssignmentOverride[]>(
     `/v1/courses/{course_id}/assignments/{assignment_id}/overrides`,
     {
       method: 'GET',

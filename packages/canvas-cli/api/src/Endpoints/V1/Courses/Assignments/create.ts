@@ -149,7 +149,7 @@ export type createFormParameters = {
    */
   'assignment[assignment_group_id]': number;
   /** List of overrides for the assignment. */
-  'assignment[assignment_overrides]': string[];
+  'assignment[assignment_overrides]': AssignmentOverride[];
   /**
    * Whether this assignment is only visible to overrides (Only useful if
    * 'differentiated assignments' account setting is on)

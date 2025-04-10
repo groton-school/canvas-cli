@@ -20,7 +20,10 @@ type Options =
  * Nickname: list_course_nicknames
  */
 export async function list({}: Options) {
-  return await client().fetchAs<string[]>(`/v1/users/self/course_nicknames`, {
-    method: 'GET'
-  });
+  return await client().fetchAs<CourseNickname[]>(
+    `/v1/users/self/course_nicknames`,
+    {
+      method: 'GET'
+    }
+  );
 }

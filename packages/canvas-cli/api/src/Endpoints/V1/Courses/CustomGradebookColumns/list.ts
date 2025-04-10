@@ -33,7 +33,7 @@ type Options = {
  * Nickname: list_custom_gradebook_columns
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<CustomColumn[]>(
     `/v1/courses/{course_id}/custom_gradebook_columns`,
     {
       method: 'GET',

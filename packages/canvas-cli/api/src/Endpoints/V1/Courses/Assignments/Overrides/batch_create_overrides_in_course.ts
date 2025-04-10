@@ -15,7 +15,7 @@ export type batch_create_overrides_in_courseFormParameters = {
    * {api:AssignmentOverridesController#create Create an assignment override}
    * for available attributes
    */
-  assignment_overrides: string[];
+  assignment_overrides: AssignmentOverride[];
 };
 
 type Options = {
@@ -51,7 +51,7 @@ export async function batch_create_overrides_in_course({
   pathParams,
   params
 }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<AssignmentOverride[]>(
     `/v1/courses/{course_id}/assignments/overrides`,
     {
       method: 'POST',

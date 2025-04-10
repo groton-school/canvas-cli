@@ -16,9 +16,9 @@ export type createFormParameters = {
   /** An array of event objects to use. */
   events: string[];
   /** Start time for the event */
-  'events[start_at]': string[];
+  'events[start_at]': DateTime[];
   /** End time for the event */
-  'events[end_at]': string[];
+  'events[end_at]': DateTime[];
   /** Location name for the event */
   'events[location_name]': string[];
   /**

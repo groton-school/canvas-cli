@@ -73,7 +73,7 @@ export type listSearchParameters = {
    *
    * Format: 'int64'
    */
-  user_ids: string[];
+  user_ids: number[];
   /**
    * When set, only return users where the enrollment workflow state is of one
    * of the given types. "active" and "invited" enrollments are returned by
@@ -104,7 +104,7 @@ type Options = {
  * Nickname: list_users_in_course_users
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/courses/{course_id}/users`, {
+  return await client().fetchAs<User[]>(`/v1/courses/{course_id}/users`, {
     method: 'GET',
     pathParams,
     searchParams

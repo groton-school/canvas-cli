@@ -33,7 +33,7 @@ type Options = {
  * Nickname: resolve_path_groups_full_path
  */
 export async function resolve_path_groups_full_path({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<Folder[]>(
     `/v1/groups/{group_id}/folders/by_path/*full_path`,
     {
       method: 'GET',

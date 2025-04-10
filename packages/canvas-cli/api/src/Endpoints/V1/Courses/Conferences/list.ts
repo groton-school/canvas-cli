@@ -31,7 +31,7 @@ type Options = {
  * Nickname: list_conferences_courses
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<Conference[]>(
     `/v1/courses/{course_id}/conferences`,
     {
       method: 'GET',

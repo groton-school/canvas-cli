@@ -128,10 +128,10 @@ export type HelpLinks = {
   /** Help link button icon */
   help_link_icon: string;
   /** Help links defined by the account. Could include default help links. */
-  custom_help_links: string[];
+  custom_help_links: HelpLink[];
   /**
    * Default help links provided when account has not set help links of their
    * own.
    */
-  default_help_links: string[];
+  default_help_links: HelpLink[];
 };

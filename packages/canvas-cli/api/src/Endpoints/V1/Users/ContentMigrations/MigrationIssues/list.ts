@@ -30,7 +30,7 @@ type Options = {
  * Nickname: list_migration_issues_users
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<MigrationIssue[]>(
     `/v1/users/{user_id}/content_migrations/{content_migration_id}/migration_issues`,
     {
       method: 'GET',

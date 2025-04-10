@@ -5,9 +5,9 @@ export type AccommodationResponse = {
   /** Processing result message */
   message: string;
   /** List of successfully processed accommodations */
-  successful: string[];
+  successful: JSONObject[];
   /** List of accommodations that failed to process */
-  failed: string[];
+  failed: JSONObject[];
 };
 
 /** Request format for setting course-level accommodations */

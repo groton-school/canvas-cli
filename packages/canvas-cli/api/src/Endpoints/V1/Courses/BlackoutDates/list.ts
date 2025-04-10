@@ -28,7 +28,7 @@ type Options = {
  * Nickname: list_blackout_dates_courses
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<BlackoutDate[]>(
     `/v1/courses/{course_id}/blackout_dates`,
     {
       method: 'GET',

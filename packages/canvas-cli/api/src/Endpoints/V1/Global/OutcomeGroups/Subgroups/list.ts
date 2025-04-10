@@ -28,7 +28,7 @@ type Options = {
  * Nickname: list_subgroups_global
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<OutcomeGroup[]>(
     `/v1/global/outcome_groups/{id}/subgroups`,
     {
       method: 'GET',

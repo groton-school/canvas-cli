@@ -28,7 +28,7 @@ type Options = {
  * Nickname: list_folders_and_files
  */
 export async function list({ pathParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/folders/{id}/all`, {
+  return await client().fetchAs<Folder[]>(`/v1/folders/{id}/all`, {
     method: 'GET',
     pathParams
   });

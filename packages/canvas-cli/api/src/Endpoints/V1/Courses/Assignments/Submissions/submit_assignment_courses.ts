@@ -56,7 +56,7 @@ export type submit_assignment_coursesFormParameters = {
    *
    * Format: 'int64'
    */
-  'submission[file_ids]': string[];
+  'submission[file_ids]': number[];
   /**
    * The media comment id to submit. Media comment ids can be submitted via
    * this API, however, note that there is not yet an API to generate or list

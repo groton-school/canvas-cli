@@ -62,7 +62,7 @@ type Options =
  * Nickname: list_conversations
  */
 export async function list({ searchParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/conversations`, {
+  return await client().fetchAs<Conversation[]>(`/v1/conversations`, {
     method: 'GET',
     searchParams
   });

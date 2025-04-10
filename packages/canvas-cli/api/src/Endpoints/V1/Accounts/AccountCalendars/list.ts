@@ -44,7 +44,7 @@ type Options = {
  * Nickname: list_all_account_calendars
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<AccountCalendar[]>(
     `/v1/accounts/{account_id}/account_calendars`,
     {
       method: 'GET',

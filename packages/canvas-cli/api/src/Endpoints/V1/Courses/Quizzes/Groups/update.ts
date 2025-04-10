@@ -17,13 +17,13 @@ export type updateFormParameters = {
    *
    * Format: 'int64'
    */
-  'quiz_groups[pick_count]': string[];
+  'quiz_groups[pick_count]': number[];
   /**
    * The number of points to assign to each question in the group.
    *
    * Format: 'int64'
    */
-  'quiz_groups[question_points]': string[];
+  'quiz_groups[question_points]': number[];
 };
 
 type Options = {

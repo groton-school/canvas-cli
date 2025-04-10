@@ -19,7 +19,7 @@ export type updateFormParameters = {
    *
    * Format: 'int64'
    */
-  'assignment_override[student_ids]': string[];
+  'assignment_override[student_ids]': number[];
   /**
    * The title of an adhoc assignment override. Ignored unless the override
    * being updated is adhoc.

@@ -90,7 +90,7 @@ export type listSearchParameters = {
    * enrollments returned from the endpoint to enrollments that were created
    * from a sis_import with that sis_user_id
    */
-  created_for_sis_id: string[];
+  created_for_sis_id: boolean[];
 } & Paginated;
 
 type Options = {
@@ -128,7 +128,7 @@ type Options = {
  * Nickname: list_enrollments_sections
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<Enrollment[]>(
     `/v1/sections/{section_id}/enrollments`,
     {
       method: 'GET',

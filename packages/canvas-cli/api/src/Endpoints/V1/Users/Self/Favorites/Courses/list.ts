@@ -33,7 +33,7 @@ type Options =
  * Nickname: list_favorite_courses
  */
 export async function list({ searchParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/users/self/favorites/courses`, {
+  return await client().fetchAs<Course[]>(`/v1/users/self/favorites/courses`, {
     method: 'GET',
     searchParams
   });

@@ -41,7 +41,7 @@ type Options = {
  * Nickname: list_roles
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/accounts/{account_id}/roles`, {
+  return await client().fetchAs<Role[]>(`/v1/accounts/{account_id}/roles`, {
     method: 'GET',
     pathParams,
     searchParams

@@ -37,7 +37,7 @@ type Options =
  * Nickname: list_accounts
  */
 export async function list({ searchParams }: Options) {
-  return await client().fetchAs<string[]>(`/v1/accounts`, {
+  return await client().fetchAs<Account[]>(`/v1/accounts`, {
     method: 'GET',
     searchParams
   });

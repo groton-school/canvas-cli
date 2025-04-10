@@ -59,7 +59,7 @@ type Options = {
  * Nickname: list_missing_submissions
  */
 export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<string[]>(
+  return await client().fetchAs<Assignment[]>(
     `/v1/users/{user_id}/missing_submissions`,
     {
       method: 'GET',
