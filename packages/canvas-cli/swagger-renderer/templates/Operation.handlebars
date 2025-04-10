@@ -64,10 +64,10 @@ type Options = {{#if tsPathParameters}}{
     strict?: false;
   } | {
     {{#if tsQueryParameters}}
-    searchParams?: {{tsName}}SearchParameters;
+    searchParams: {{tsName}}SearchParameters;
     {{/if}}
     {{#if tsFormParameters}}
-    params?: {{tsName}}FormParameters;
+    params: {{tsName}}FormParameters;
     {{/if}}
     strict: true;
   });
