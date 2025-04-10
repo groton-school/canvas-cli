@@ -1,6 +1,6 @@
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
-import * as Canvas from '@groton/canvas-types';
+import * as Canvas from '@groton/canvas-cli.api';
 import * as Imported from '@msar/types.import';
 import { Preferences } from '../../App/index.js';
 
@@ -20,35 +20,36 @@ export function isRSSReaderContainer(
 }
 
 type Options = {
-  course: Canvas.Courses.Model;
+  course: Canvas.Resources.Course;
   item: RSSReaderContainer;
 };
 
 export async function convertToExternalFeed({ course, item }: Options) {
-  const args: Canvas.AnnouncementExternalFeeds.Parameters = {
-    url: item.Content.Url,
-    verbosity: 'truncate'
-  };
+  const params: Partial<Canvas.V1.Courses.ExternalFeeds.createFormParameters> =
+    {
+      url: item.Content.Url,
+      verbosity: 'truncate'
+    };
   let processed = false;
   if (item.Content.canvas && Preferences.duplicates() === 'update') {
-    if (Imported.isEqual(args, item.Content.canvas?.args)) {
-      Log.info(`External feed ${Colors.url(args.url)} is up-to-date`);
+    if (Imported.isEqual(params, item.Content.canvas?.args)) {
+      Log.info(`External feed ${Colors.url(params.url)} is up-to-date`);
     } else {
       Log.warning(
-        `External feed ${Colors.url(args.url)} needs to be updated: ${Log.syntaxColor({ canvas: item.Content.canvas, args })}`
+        `External feed ${Colors.url(params.url)} needs to be updated: ${Log.syntaxColor({ canvas: item.Content.canvas, params })}`
       );
     }
     processed = true;
   }
   if (!processed) {
-    const feed = await Canvas.AnnouncementExternalFeeds.create({
-      course,
-      args
+    const feed = await Canvas.V1.Courses.ExternalFeeds.create({
+      pathParams: { course_id: course.id.toString() },
+      params
     });
     if (feed) {
       item.Content.canvas = {
         id: feed.id,
-        args,
+        args: params,
         created_at: feed.created_at
       };
     }

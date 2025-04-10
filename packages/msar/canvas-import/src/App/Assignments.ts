@@ -34,7 +34,8 @@ export async function importAssignments({ course, section }: Options) {
           const result = await Canvas.V1.Courses.AssignmentGroups.update({
             pathParams: {
               course_id: course.id.toString(),
-              assignment_group_id: section.assignment_groups[prev].id!.toString()
+              assignment_group_id:
+                section.assignment_groups[prev].id!.toString()
             },
             params
           });
@@ -42,7 +43,9 @@ export async function importAssignments({ course, section }: Options) {
             section.assignment_groups[prev].args = params as JSONObject;
           }
         } else {
-          Log.info(`Assignment group ${Colors.value(params.name)} is up-to-date`);
+          Log.info(
+            `Assignment group ${Colors.value(params.name)} is up-to-date`
+          );
         }
         processed = true;
       }
@@ -118,7 +121,7 @@ export async function importAssignments({ course, section }: Options) {
               'rubric_association[hide_outcome_results]': false,
               'rubric_association[use_for_grading]': true,
               'rubric_association[purpose]': 'grading'
-            } as Canvas.V1.Courses.RubricAssociations.createFormParameters;
+            } as Partial<Canvas.V1.Courses.RubricAssociations.createFormParameters>;
             rubric.rubric_association =
               await Canvas.V1.Courses.RubricAssociations.create({
                 pathParams: { course_id: course.id.toString() },
@@ -139,7 +142,7 @@ export async function importAssignments({ course, section }: Options) {
       );
       section.Assignments![i!].canvas = {
         id: assignment.id,
-        args,
+        args: params,
         created_at: assignment.created_at
       };
     }

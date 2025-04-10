@@ -23,7 +23,9 @@ export async function toCanvasArgs({
   body,
   layout,
   front_page = false
-}: ToCanvasArgsOptions): Promise<Canvas.V1.Courses.Pages.createFormParameters> {
+}: ToCanvasArgsOptions): Promise<
+  Partial<Canvas.V1.Courses.Pages.createFormParameters>
+> {
   const assignmentIdentifiers: string[] = [];
   for (const i in body) {
     // TODO upload only referenced files

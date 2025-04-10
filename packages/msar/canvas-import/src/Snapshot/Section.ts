@@ -4,7 +4,7 @@ import * as OneRoster from '../OneRoster.js';
 
 export function toCanvasArgs(
   section: Imported.Data
-): Canvas.V1.Accounts.Courses.createFormParameters {
+): Partial<Canvas.V1.Accounts.Courses.createFormParameters> {
   return {
     'course[name]': OneRoster.name(section),
     'course[term_id]': `sis_term_id:${OneRoster.sis_term_id(section)}`,

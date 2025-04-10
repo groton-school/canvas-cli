@@ -1,9 +1,13 @@
 import '@battis/qui-cli.env';
 import * as Canvas from '@groton/canvas-cli.api';
+import { Course } from '@groton/canvas-cli.api/dist/Endpoints/V1/Audit/index.js';
+import * as Client from '@groton/canvas-cli.client';
 import * as Imported from '@msar/types.import';
 import { EventEmitter } from 'node:events';
 
-type CacheItem = Awaited<ReturnType<typeof Canvas.V1.Courses.Rubrics.create>> & {
+type CacheItem = Awaited<
+  ReturnType<typeof Canvas.V1.Courses.Rubrics.create>
+> & {
   args?:
     | Canvas.V1.Courses.Rubrics.createFormParameters
     | Canvas.V1.Courses.RubricAssociations.createFormParameters;
@@ -22,7 +26,7 @@ function toCanvasArgs(
     'rubric[title]': rubric.Name,
     'rubric[hide_points]': false,
     'rubric[free_form_criterion_comments]': false,
-    ...Canvas.flatten(
+    ...Client.Utilities.flatten(
       rubric.Skills.sort((a, b) => a.SortOrder - b.SortOrder).map(
         (skill): Canvas.Rubrics.CreateRubricCriterionParameters => ({
           description: skill.Name,

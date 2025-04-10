@@ -26,7 +26,7 @@ export function extract(assignments: Assignments.Model[]) {
 
 export function toCanvasArgs(
   assignmentType: Model
-): Canvas.V1.Courses.AssignmentGroups.createFormParameters {
+): Partial<Canvas.V1.Courses.AssignmentGroups.createFormParameters> {
   return {
     name: assignmentType.type !== '' ? assignmentType.type : 'Assignments',
     group_weight: assignmentType.Weight

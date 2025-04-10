@@ -1,6 +1,6 @@
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
-import * as Canvas from '@groton/canvas-types';
+import * as Canvas from '@groton/canvas-cli.api';
 import * as Imported from '@msar/types.import';
 import { Preferences } from '../../App/index.js';
 import * as Templates from '../../Templates/index.js';
@@ -36,7 +36,7 @@ export function isAlbumContainer(
 }
 
 type Options = {
-  course: Canvas.Courses.Model;
+  course: Canvas.Resources.Course;
   item: AlbumContainer;
   parent: string;
 };
@@ -58,7 +58,7 @@ export async function convertToPages({ course, item, parent }: Options) {
       ('ShortDescription' in item && item.ShortDescription) ||
       ('AlbumDescription' in item && item.AlbumDescription) ||
       `${'ContentType' in item ? item.ContentType.Content : item.ObjectType.Name} Album`;
-    const args: Canvas.Pages.Parameters = {
+    const params: Partial<Canvas.V1.Courses.Pages.createFormParameters> = {
       'wiki_page[title]': `${parent}: ${title}`,
       'wiki_page[body]': await Templates.render(Templates.Canvas.MediaPage, {
         content: album.Content,
@@ -68,14 +68,16 @@ export async function convertToPages({ course, item, parent }: Options) {
     };
     let processed = false;
     if (album.canvas?.id && Preferences.duplicates() == 'update') {
-      if (!Imported.isEqual(args, album.canvas.args)) {
-        const result = await Canvas.Pages.update({
-          course,
-          page: { page_id: album.canvas.id } as Canvas.Pages.Model,
-          args
+      if (!Imported.isEqual(params, album.canvas.args)) {
+        const result = await Canvas.V1.Courses.Pages.update({
+          pathParams: {
+            course_id: course.id.toString(),
+            url_or_id: album.canvas.id.toString()
+          },
+          params
         });
         if (result) {
-          album.canvas.args = args;
+          album.canvas.args = params;
         }
       } else {
         Log.info(`Album page ${Colors.value(title)} is up-to-date`);
@@ -83,12 +85,15 @@ export async function convertToPages({ course, item, parent }: Options) {
       processed = true;
     }
     if (!processed) {
-      const result = await Canvas.Pages.create({ course, args });
+      const result = await Canvas.V1.Courses.Pages.create({
+        pathParams: { course_id: course.id.toString() },
+        params
+      });
       if (result) {
         album.canvas = {
           id: result.page_id,
           url: result.url,
-          args,
+          args: params,
           created_at: result.created_at
         };
       }

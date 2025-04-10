@@ -32,7 +32,7 @@ export async function handleDuplicateCourse({ course, section }: Options) {
       delete params.enable_sis_reactivation;
       return await Canvas.V1.Courses.update({
         pathParams: { id: course.id.toString() },
-        params
+        params: params as Partial<Canvas.V1.Courses.updateFormParameters>
       });
     },
     reset: async () => {
