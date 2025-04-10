@@ -7,7 +7,7 @@ import path from 'node:path';
 
 export type Configuration = {
   canvasInstanceUrl?: string;
-  courseId?: number;
+  courseId?: string;
   hideInGradebook?: boolean;
 };
 

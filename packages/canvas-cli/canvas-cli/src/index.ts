@@ -6,12 +6,9 @@ import path from 'node:path';
 const [command] = process.argv.splice(2, 1);
 
 const commands = fs
-  .readdirSync(path.join(import.meta.dirname, 'commands'))
-  .filter((f) => !/\.map$/.test(f))
-  .map((command) => command.replace(/\.[jt]s$/, ''));
-const ext =
-  path.basename(path.resolve(import.meta.dirname)) === 'dist' ? 'js' : 'ts';
-const filename = `${command}.${ext}`;
+  .readdirSync(import.meta.dirname)
+  .filter((token) => !/\.([jt]s|map)$/.test(token))
+  .map((token) => token.toLowerCase());
 if (commands.includes(command)) {
   process.argv[1] = path.join(import.meta.dirname, 'commands', filename);
   import(process.argv[1]);
