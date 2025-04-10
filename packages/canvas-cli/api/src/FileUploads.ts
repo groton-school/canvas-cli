@@ -4,7 +4,7 @@ import { isError } from '@groton/canvas-cli.client/dist/Utilities/isError.js';
 import fetch, { fileFromSync, FormData } from 'node-fetch';
 import fs from 'node:fs';
 import { client } from './Client.js';
-import * as Endpoints from './Endpoints/index.js';
+import { V1 as v1 } from './Endpoints/index.js'; 
 import * as Resources from './Resources/index.js';
 
 type UploadOptions = {
@@ -14,20 +14,20 @@ type UploadOptions = {
 };
 
 type UploadPathParameters =
-  | Endpoints.V1.Courses.Assignments.Submissions.Files.uploadPathParameters
-  | Endpoints.V1.Courses.Files.uploadPathParameters
-  | Endpoints.V1.Courses.Quizzes.Submissions.Self.Files.uploadPathParameters
-  | Endpoints.V1.Folders.Files.uploadPathParameters
-  | Endpoints.V1.Groups.Files.uploadPathParameters
-  | Endpoints.V1.Users.Files.uploadPathParameters;
+  | v1.Courses.Assignments.Submissions.Files.uploadPathParameters
+  | v1.Courses.Files.uploadPathParameters
+  | v1.Courses.Quizzes.Submissions.Self.Files.uploadPathParameters
+  | v1.Folders.Files.uploadPathParameters
+  | v1.Groups.Files.uploadPathParameters
+  | v1.Users.Files.uploadPathParameters;
 
 type UploadFormParameters =
-  | Endpoints.V1.Courses.Assignments.Submissions.Files.uploadFormParameters
-  | Endpoints.V1.Courses.Files.uploadFormParameters
-  | Endpoints.V1.Courses.Quizzes.Submissions.Self.Files.uploadFormParameters
-  | Endpoints.V1.Folders.Files.uploadFormParameters
-  | Endpoints.V1.Groups.Files.uploadFormParameters
-  | Endpoints.V1.Users.Files.uploadFormParameters;
+  | v1.Courses.Assignments.Submissions.Files.uploadFormParameters
+  | v1.Courses.Files.uploadFormParameters
+  | v1.Courses.Quizzes.Submissions.Self.Files.uploadFormParameters
+  | v1.Folders.Files.uploadFormParameters
+  | v1.Groups.Files.uploadFormParameters
+  | v1.Users.Files.uploadFormParameters;
 
 export type UploadResponse = {
   upload_url: URLString;
@@ -47,24 +47,24 @@ export async function upload({
   let next: UploadResponse;
   if (isCourseFile(pathParams)) {
     if (isAssignmentSubmission(pathParams)) {
-      next = await Endpoints.V1.Courses.Assignments.Submissions.Files.upload({
+      next = await v1.Courses.Assignments.Submissions.Files.upload({
         pathParams,
         params
       });
     } else if (isQuizSubmission(pathParams)) {
-      next = await Endpoints.V1.Courses.Quizzes.Submissions.Self.Files.upload({
+      next = await v1.Courses.Quizzes.Submissions.Self.Files.upload({
         pathParams,
         params
       });
     } else {
-      next = await Endpoints.V1.Courses.Files.upload({ pathParams, params });
+      next = await v1.Courses.Files.upload({ pathParams, params });
     }
   } else if (isFolderUpload(pathParams)) {
-    next = await Endpoints.V1.Folders.Files.upload({ pathParams, params });
+    next = await v1.Folders.Files.upload({ pathParams, params });
   } else if (isGroupUpload(pathParams)) {
-    next = await Endpoints.V1.Groups.Files.upload({ pathParams, params });
+    next = await v1.Groups.Files.upload({ pathParams, params });
   } else {
-    next = await Endpoints.V1.Users.Files.upload({ pathParams, params });
+    next = await v1.Users.Files.upload({ pathParams, params });
   }
 
   const body = new FormData();
@@ -102,9 +102,9 @@ export async function upload({
 }
 
 type CoursePathParams =
-  | Endpoints.V1.Courses.Files.uploadPathParameters
-  | Endpoints.V1.Courses.Assignments.Submissions.Files.uploadPathParameters
-  | Endpoints.V1.Courses.Quizzes.Submissions.Self.Files.uploadPathParameters;
+  | v1.Courses.Files.uploadPathParameters
+  | v1.Courses.Assignments.Submissions.Files.uploadPathParameters
+  | v1.Courses.Quizzes.Submissions.Self.Files.uploadPathParameters;
 
 function isCourseFile(
   params: UploadPathParameters
@@ -114,24 +114,24 @@ function isCourseFile(
 
 function isAssignmentSubmission(
   params: CoursePathParams
-): params is Endpoints.V1.Courses.Assignments.Submissions.Files.uploadPathParameters {
+): params is v1.Courses.Assignments.Submissions.Files.uploadPathParameters {
   return 'assignment_id' in params && 'user_id' in params;
 }
 
 function isQuizSubmission(
   params: CoursePathParams
-): params is Endpoints.V1.Courses.Quizzes.Submissions.Self.Files.uploadPathParameters {
+): params is v1.Courses.Quizzes.Submissions.Self.Files.uploadPathParameters {
   return 'quiz_id' in params;
 }
 
 function isFolderUpload(
   params: UploadPathParameters
-): params is Endpoints.V1.Folders.Files.uploadPathParameters {
+): params is v1.Folders.Files.uploadPathParameters {
   return 'folder_id' in params;
 }
 
 function isGroupUpload(
   params: UploadPathParameters
-): params is Endpoints.V1.Groups.Files.uploadPathParameters {
+): params is v1.Groups.Files.uploadPathParameters {
   return 'group_id' in params;
 }

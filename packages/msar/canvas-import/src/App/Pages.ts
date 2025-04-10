@@ -23,7 +23,7 @@ export async function importBulletinBoard({ course, section }: Options) {
     });
     if (section.front_page?.id && Preferences.duplicates() === 'update') {
       if (!Imported.isEqual(params, section.front_page.args)) {
-        const frontPage = await Canvas.V1.Courses.Pages.update({
+        const frontPage = await Canvas.v1.Courses.Pages.update({
           pathParams: {
             course_id: course.id.toString(),
             url_or_id: section.front_page.id.toString()
@@ -43,7 +43,7 @@ export async function importBulletinBoard({ course, section }: Options) {
         );
       }
     } else {
-      const frontPage = await Canvas.V1.Courses.Pages.create({
+      const frontPage = await Canvas.v1.Courses.Pages.create({
         pathParams: { course_id: course.id.toString() },
         params
       });
@@ -72,7 +72,7 @@ export async function importTopics({ course, section }: Options) {
         let canvasTopic: Canvas.Resources.Page | undefined = undefined;
         if (topic.canvas?.id && Preferences.duplicates() === 'update') {
           if (!Imported.isEqual(params, topic.canvas.args)) {
-            canvasTopic = await Canvas.V1.Courses.Pages.update({
+            canvasTopic = await Canvas.v1.Courses.Pages.update({
               pathParams: {
                 course_id: course.id.toString(),
                 url_or_id: topic.canvas.id.toString()
@@ -83,7 +83,7 @@ export async function importTopics({ course, section }: Options) {
             Log.info(`Page ${Colors.value(topic.Name)} is up-to-date`);
           }
         } else {
-          canvasTopic = await Canvas.V1.Courses.Pages.create({
+          canvasTopic = await Canvas.v1.Courses.Pages.create({
             pathParams: { course_id: course.id.toString() },
             params
           });

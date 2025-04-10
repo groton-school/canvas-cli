@@ -67,7 +67,7 @@ async function getCached(
 export function toCanvasArgs({
   file,
   parent_folder_path = 'Imported Files'
-}: ToCanvasArgsOptions): Canvas.V1.Courses.Files.uploadFormParameters {
+}: ToCanvasArgsOptions): Canvas.v1.Courses.Files.uploadFormParameters {
   return {
     name: file.FriendlyFileName || file.FileName,
     parent_folder_path: path.join(
@@ -224,7 +224,7 @@ export async function uploadLocalFiles({
       }
       localPath = path.join(path.dirname(IndexFile.path()), entry.localPath);
       // FIXME redundant manual Files.Parameters definition
-      const params: Canvas.V1.Courses.Files.uploadFormParameters = {
+      const params: Canvas.v1.Courses.Files.uploadFormParameters = {
         parent_folder_path: path.join(
           'Imported Files',
           path.dirname(entry.localPath.replace(/^\//, ''))

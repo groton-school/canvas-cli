@@ -31,7 +31,7 @@ export async function importAssignments({ course, section }: Options) {
             section.assignment_groups[prev].args as JSONObject
           )
         ) {
-          const result = await Canvas.V1.Courses.AssignmentGroups.update({
+          const result = await Canvas.v1.Courses.AssignmentGroups.update({
             pathParams: {
               course_id: course.id.toString(),
               assignment_group_id:
@@ -51,7 +51,7 @@ export async function importAssignments({ course, section }: Options) {
       }
     }
     if (!processed) {
-      const group = await Canvas.V1.Courses.AssignmentGroups.create({
+      const group = await Canvas.v1.Courses.AssignmentGroups.create({
         pathParams: { course_id: course.id.toString() },
         params
       });
@@ -80,7 +80,7 @@ export async function importAssignments({ course, section }: Options) {
       Preferences.duplicates() === 'update'
     ) {
       if (!Imported.isEqual(params, assignments[order].canvas!.args)) {
-        assignment = await Canvas.V1.Courses.Assignments.update({
+        assignment = await Canvas.v1.Courses.Assignments.update({
           pathParams: {
             course_id: course.id.toString(),
             id: assignments[order].canvas!.id!.toString()
@@ -93,7 +93,7 @@ export async function importAssignments({ course, section }: Options) {
         );
       }
     } else {
-      assignment = await Canvas.V1.Courses.Assignments.create({
+      assignment = await Canvas.v1.Courses.Assignments.create({
         pathParams: { course_id: course.id.toString() },
         params
       });
@@ -121,9 +121,9 @@ export async function importAssignments({ course, section }: Options) {
               'rubric_association[hide_outcome_results]': false,
               'rubric_association[use_for_grading]': true,
               'rubric_association[purpose]': 'grading'
-            } as Partial<Canvas.V1.Courses.RubricAssociations.createFormParameters>;
+            } as Partial<Canvas.v1.Courses.RubricAssociations.createFormParameters>;
             rubric.rubric_association =
-              await Canvas.V1.Courses.RubricAssociations.create({
+              await Canvas.v1.Courses.RubricAssociations.create({
                 pathParams: { course_id: course.id.toString() },
                 params
               });

@@ -24,7 +24,7 @@ export async function toCanvasArgs({
   layout,
   front_page = false
 }: ToCanvasArgsOptions): Promise<
-  Partial<Canvas.V1.Courses.Pages.createFormParameters>
+  Partial<Canvas.v1.Courses.Pages.createFormParameters>
 > {
   const assignmentIdentifiers: string[] = [];
   for (const i in body) {

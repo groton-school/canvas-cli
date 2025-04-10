@@ -163,14 +163,14 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
 let _workspaceTerm: Canvas.Resources.EnrollmentTerm | undefined = undefined;
 async function workspaceTerm() {
   if (!_workspaceTerm) {
-    _workspaceTerm = await Canvas.V1.Accounts.Terms.retrieve_enrollment_term({
+    _workspaceTerm = await Canvas.v1.Accounts.Terms.retrieve_enrollment_term({
       pathParams: {
         account_id: '1',
         id: `sis_term_id:${Preferences.WORKSPACE_TERM}`
       }
     });
     if (!_workspaceTerm) {
-      _workspaceTerm = await Canvas.V1.Accounts.Terms.create({
+      _workspaceTerm = await Canvas.v1.Accounts.Terms.create({
         pathParams: { account_id: '1' },
         params: {
           'enrollment_term[sis_term_id]': Preferences.WORKSPACE_TERM,
@@ -223,14 +223,14 @@ export async function run() {
     }
 
     let course: Canvas.Resources.Course | undefined =
-      await Canvas.V1.Courses.get({
+      await Canvas.v1.Courses.get({
         pathParams: { id: `sis_course_id:${OneRoster.sis_course_id(section)}` }
       });
     if (course) {
       course = await handleDuplicateCourse({ course, section });
     } else {
       await workspaceTerm();
-      course = await Canvas.V1.Accounts.Courses.create({
+      course = await Canvas.v1.Accounts.Courses.create({
         pathParams: { account_id: OneRoster.account_id(section).toString() },
         params: {
           ...Snapshot.Section.toCanvasArgs(section),
@@ -253,7 +253,7 @@ export async function run() {
         };
       }
       // TODO cache enrollments for updating
-      await Canvas.V1.Courses.Enrollments.enroll_user_courses({
+      await Canvas.v1.Courses.Enrollments.enroll_user_courses({
         pathParams: { course_id: course.id.toString() },
         params: {
           'enrollment[user_id]': `sis_user_id:${OneRoster.sis_user_id(section)}`,
@@ -275,7 +275,7 @@ export async function run() {
       }
 
       try {
-        await Canvas.V1.Courses.update({
+        await Canvas.v1.Courses.update({
           pathParams: { id: course.id.toString() },
           params: {
             'course[term_id]': `sis_term_id:${OneRoster.sis_term_id(section)}`
@@ -288,7 +288,7 @@ export async function run() {
         );
       }
       if (Preferences.bulletinBoard()) {
-        await Canvas.V1.Courses.update({
+        await Canvas.v1.Courses.update({
           pathParams: { id: course.id.toString() },
           params: { 'course[default_view]': 'wiki' }
         });

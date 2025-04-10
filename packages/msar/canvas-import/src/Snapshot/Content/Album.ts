@@ -58,7 +58,7 @@ export async function convertToPages({ course, item, parent }: Options) {
       ('ShortDescription' in item && item.ShortDescription) ||
       ('AlbumDescription' in item && item.AlbumDescription) ||
       `${'ContentType' in item ? item.ContentType.Content : item.ObjectType.Name} Album`;
-    const params: Partial<Canvas.V1.Courses.Pages.createFormParameters> = {
+    const params: Partial<Canvas.v1.Courses.Pages.createFormParameters> = {
       'wiki_page[title]': `${parent}: ${title}`,
       'wiki_page[body]': await Templates.render(Templates.Canvas.MediaPage, {
         content: album.Content,
@@ -69,7 +69,7 @@ export async function convertToPages({ course, item, parent }: Options) {
     let processed = false;
     if (album.canvas?.id && Preferences.duplicates() == 'update') {
       if (!Imported.isEqual(params, album.canvas.args)) {
-        const result = await Canvas.V1.Courses.Pages.update({
+        const result = await Canvas.v1.Courses.Pages.update({
           pathParams: {
             course_id: course.id.toString(),
             url_or_id: album.canvas.id.toString()
@@ -85,7 +85,7 @@ export async function convertToPages({ course, item, parent }: Options) {
       processed = true;
     }
     if (!processed) {
-      const result = await Canvas.V1.Courses.Pages.create({
+      const result = await Canvas.v1.Courses.Pages.create({
         pathParams: { course_id: course.id.toString() },
         params
       });

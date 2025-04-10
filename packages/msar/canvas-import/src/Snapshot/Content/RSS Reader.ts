@@ -25,7 +25,7 @@ type Options = {
 };
 
 export async function convertToExternalFeed({ course, item }: Options) {
-  const params: Partial<Canvas.V1.Courses.ExternalFeeds.createFormParameters> =
+  const params: Partial<Canvas.v1.Courses.ExternalFeeds.createFormParameters> =
     {
       url: item.Content.Url,
       verbosity: 'truncate'
@@ -42,7 +42,7 @@ export async function convertToExternalFeed({ course, item }: Options) {
     processed = true;
   }
   if (!processed) {
-    const feed = await Canvas.V1.Courses.ExternalFeeds.create({
+    const feed = await Canvas.v1.Courses.ExternalFeeds.create({
       pathParams: { course_id: course.id.toString() },
       params
     });

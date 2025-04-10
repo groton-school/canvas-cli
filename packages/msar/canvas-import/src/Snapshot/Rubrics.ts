@@ -6,11 +6,11 @@ import * as Imported from '@msar/types.import';
 import { EventEmitter } from 'node:events';
 
 type CacheItem = Awaited<
-  ReturnType<typeof Canvas.V1.Courses.Rubrics.create>
+  ReturnType<typeof Canvas.v1.Courses.Rubrics.create>
 > & {
   args?:
-    | Canvas.V1.Courses.Rubrics.createFormParameters
-    | Canvas.V1.Courses.RubricAssociations.createFormParameters;
+    | Canvas.v1.Courses.Rubrics.createFormParameters
+    | Canvas.v1.Courses.RubricAssociations.createFormParameters;
 };
 
 const AWAITING = true;
@@ -21,7 +21,7 @@ ready.setMaxListeners(1000);
 function toCanvasArgs(
   assignment: Canvas.Resources.Assignment,
   rubric: NonNullable<Imported.Assignments.Item['Rubric']>
-): Canvas.V1.Courses.Rubrics.createFormParameters {
+): Canvas.v1.Courses.Rubrics.createFormParameters {
   return {
     'rubric[title]': rubric.Name,
     'rubric[hide_points]': false,
@@ -81,7 +81,7 @@ export async function getCached(
     cache[course_id][blackbaudId] = AWAITING;
     const args = toCanvasArgs(assignment, rubric);
     cache[course_id][blackbaudId] = {
-      ...(await Canvas.V1.Courses.Rubrics.create({
+      ...(await Canvas.v1.Courses.Rubrics.create({
         pathParams: { course_id },
         params: args
       })),
