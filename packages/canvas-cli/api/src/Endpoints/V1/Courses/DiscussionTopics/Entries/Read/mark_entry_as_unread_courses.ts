@@ -25,7 +25,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: mark_entry_as_unread_coursesSearchParameters;
+      searchParams: mark_entry_as_unread_coursesSearchParameters;
       strict: true;
     }
 );

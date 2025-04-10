@@ -28,7 +28,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: copy_fileFormParameters;
+      params: copy_fileFormParameters;
       strict: true;
     }
 );

@@ -210,7 +210,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: update_single_quizFormParameters;
+      params: update_single_quizFormParameters;
       strict: true;
     }
 );

@@ -14,7 +14,7 @@ type Options =
       strict?: false;
     }
   | {
-      searchParams?: activity_stream_summarySearchParameters;
+      searchParams: activity_stream_summarySearchParameters;
       strict: true;
     };
 

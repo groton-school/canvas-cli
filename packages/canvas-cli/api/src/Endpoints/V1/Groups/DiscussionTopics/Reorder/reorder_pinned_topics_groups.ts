@@ -23,7 +23,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: reorder_pinned_topics_groupsFormParameters;
+      params: reorder_pinned_topics_groupsFormParameters;
       strict: true;
     }
 );

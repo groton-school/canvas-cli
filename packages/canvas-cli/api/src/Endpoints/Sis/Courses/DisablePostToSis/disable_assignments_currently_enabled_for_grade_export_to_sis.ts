@@ -28,7 +28,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters;
+      params: disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters;
       strict: true;
     }
 );

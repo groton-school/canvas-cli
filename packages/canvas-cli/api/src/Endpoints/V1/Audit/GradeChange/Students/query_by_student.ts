@@ -30,7 +30,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: query_by_studentSearchParameters;
+      searchParams: query_by_studentSearchParameters;
       strict: true;
     }
 );

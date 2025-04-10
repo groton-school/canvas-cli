@@ -59,7 +59,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: updateFormParameters;
+      params: updateFormParameters;
       strict: true;
     }
 );

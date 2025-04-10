@@ -25,7 +25,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: add_last_attended_dateFormParameters;
+      params: add_last_attended_dateFormParameters;
       strict: true;
     }
 );

@@ -46,7 +46,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: add_observee_with_credentialsFormParameters;
+      params: add_observee_with_credentialsFormParameters;
       strict: true;
     }
 );

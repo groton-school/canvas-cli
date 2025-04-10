@@ -22,7 +22,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: permissionsSearchParameters;
+      searchParams: permissionsSearchParameters;
       strict: true;
     }
 );

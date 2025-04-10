@@ -18,7 +18,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: preview_processed_htmlFormParameters;
+      params: preview_processed_htmlFormParameters;
       strict: true;
     }
 );

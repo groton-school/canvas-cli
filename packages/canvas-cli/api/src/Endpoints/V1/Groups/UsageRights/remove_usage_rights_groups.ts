@@ -23,7 +23,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: remove_usage_rights_groupsSearchParameters;
+      searchParams: remove_usage_rights_groupsSearchParameters;
       strict: true;
     }
 );

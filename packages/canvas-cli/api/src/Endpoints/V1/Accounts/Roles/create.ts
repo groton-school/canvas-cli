@@ -170,7 +170,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: createFormParameters;
+      params: createFormParameters;
       strict: true;
     }
 );

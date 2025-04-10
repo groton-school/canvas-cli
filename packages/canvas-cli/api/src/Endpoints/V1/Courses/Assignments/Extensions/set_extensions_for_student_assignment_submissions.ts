@@ -31,7 +31,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: set_extensions_for_student_assignment_submissionsFormParameters;
+      params: set_extensions_for_student_assignment_submissionsFormParameters;
       strict: true;
     }
 );

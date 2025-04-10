@@ -23,7 +23,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: assign_unassigned_membersFormParameters;
+      params: assign_unassigned_membersFormParameters;
       strict: true;
     }
 );

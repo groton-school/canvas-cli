@@ -42,7 +42,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: retrieve_assignments_enabled_for_grade_export_to_sis_coursesSearchParameters;
+      searchParams: retrieve_assignments_enabled_for_grade_export_to_sis_coursesSearchParameters;
       strict: true;
     }
 );

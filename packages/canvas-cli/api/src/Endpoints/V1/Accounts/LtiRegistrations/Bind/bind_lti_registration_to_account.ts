@@ -24,7 +24,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: bind_lti_registration_to_accountFormParameters;
+      params: bind_lti_registration_to_accountFormParameters;
       strict: true;
     }
 );

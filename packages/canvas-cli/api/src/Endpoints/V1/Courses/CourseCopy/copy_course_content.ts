@@ -28,7 +28,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: copy_course_contentFormParameters;
+      params: copy_course_contentFormParameters;
       strict: true;
     }
 );

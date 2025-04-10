@@ -25,7 +25,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: cross_list_sectionFormParameters;
+      params: cross_list_sectionFormParameters;
       strict: true;
     }
 );

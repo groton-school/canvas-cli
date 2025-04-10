@@ -30,7 +30,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: query_by_assignmentSearchParameters;
+      searchParams: query_by_assignmentSearchParameters;
       strict: true;
     }
 );

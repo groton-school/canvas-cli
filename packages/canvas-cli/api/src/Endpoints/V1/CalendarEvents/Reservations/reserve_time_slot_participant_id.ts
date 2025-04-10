@@ -29,7 +29,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: reserve_time_slot_participant_idFormParameters;
+      params: reserve_time_slot_participant_idFormParameters;
       strict: true;
     }
 );

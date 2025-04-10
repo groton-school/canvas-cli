@@ -41,7 +41,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: set_or_remove_restrictions_on_blueprint_course_objectFormParameters;
+      params: set_or_remove_restrictions_on_blueprint_course_objectFormParameters;
       strict: true;
     }
 );

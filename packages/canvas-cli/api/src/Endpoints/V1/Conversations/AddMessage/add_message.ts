@@ -34,7 +34,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: add_messageFormParameters;
+      params: add_messageFormParameters;
       strict: true;
     }
 );

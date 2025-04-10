@@ -15,7 +15,7 @@ type Options =
       strict?: false;
     }
   | {
-      params?: refresh_jwtFormParameters;
+      params: refresh_jwtFormParameters;
       strict: true;
     };
 

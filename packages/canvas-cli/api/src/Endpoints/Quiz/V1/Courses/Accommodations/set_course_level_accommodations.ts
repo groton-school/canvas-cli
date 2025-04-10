@@ -40,7 +40,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: set_course_level_accommodationsFormParameters;
+      params: set_course_level_accommodationsFormParameters;
       strict: true;
     }
 );

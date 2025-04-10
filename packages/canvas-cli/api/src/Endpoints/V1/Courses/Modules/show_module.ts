@@ -35,7 +35,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: show_moduleSearchParameters;
+      searchParams: show_moduleSearchParameters;
       strict: true;
     }
 );

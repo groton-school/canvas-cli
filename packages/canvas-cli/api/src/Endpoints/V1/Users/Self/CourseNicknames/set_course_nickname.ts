@@ -19,7 +19,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: set_course_nicknameFormParameters;
+      params: set_course_nicknameFormParameters;
       strict: true;
     }
 );

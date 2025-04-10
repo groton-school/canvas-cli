@@ -68,7 +68,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: create_link_outcome_global_outcome_idFormParameters;
+      params: create_link_outcome_global_outcome_idFormParameters;
       strict: true;
     }
 );

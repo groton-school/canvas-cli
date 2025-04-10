@@ -28,7 +28,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: destroy_assignment_groupSearchParameters;
+      searchParams: destroy_assignment_groupSearchParameters;
       strict: true;
     }
 );

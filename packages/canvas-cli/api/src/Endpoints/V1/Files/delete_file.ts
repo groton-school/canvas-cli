@@ -24,7 +24,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: delete_fileSearchParameters;
+      searchParams: delete_fileSearchParameters;
       strict: true;
     }
 );

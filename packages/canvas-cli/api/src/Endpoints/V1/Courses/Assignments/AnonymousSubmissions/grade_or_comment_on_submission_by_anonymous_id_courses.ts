@@ -115,7 +115,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters;
+      params: grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters;
       strict: true;
     }
 );

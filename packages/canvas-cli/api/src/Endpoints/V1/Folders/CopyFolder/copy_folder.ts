@@ -19,7 +19,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: copy_folderFormParameters;
+      params: copy_folderFormParameters;
       strict: true;
     }
 );

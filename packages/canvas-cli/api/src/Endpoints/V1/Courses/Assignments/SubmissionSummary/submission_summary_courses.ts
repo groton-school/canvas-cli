@@ -23,7 +23,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: submission_summary_coursesSearchParameters;
+      searchParams: submission_summary_coursesSearchParameters;
       strict: true;
     }
 );

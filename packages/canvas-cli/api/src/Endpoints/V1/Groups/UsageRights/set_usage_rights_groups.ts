@@ -41,7 +41,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: set_usage_rights_groupsFormParameters;
+      params: set_usage_rights_groupsFormParameters;
       strict: true;
     }
 );

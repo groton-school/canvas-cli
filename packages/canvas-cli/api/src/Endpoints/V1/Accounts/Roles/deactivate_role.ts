@@ -27,7 +27,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: deactivate_roleSearchParameters;
+      searchParams: deactivate_roleSearchParameters;
       strict: true;
     }
 );

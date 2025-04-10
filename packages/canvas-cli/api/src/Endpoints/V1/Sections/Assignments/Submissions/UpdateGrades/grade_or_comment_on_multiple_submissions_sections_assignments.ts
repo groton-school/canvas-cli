@@ -59,7 +59,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: grade_or_comment_on_multiple_submissions_sections_assignmentsFormParameters;
+      params: grade_or_comment_on_multiple_submissions_sections_assignmentsFormParameters;
       strict: true;
     }
 );

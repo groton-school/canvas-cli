@@ -22,7 +22,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: batch_retrieve_overrides_in_courseSearchParameters;
+      searchParams: batch_retrieve_overrides_in_courseSearchParameters;
       strict: true;
     }
 );

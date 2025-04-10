@@ -23,7 +23,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: close_notification_for_user_destroy_notification_for_adminSearchParameters;
+      searchParams: close_notification_for_user_destroy_notification_for_adminSearchParameters;
       strict: true;
     }
 );

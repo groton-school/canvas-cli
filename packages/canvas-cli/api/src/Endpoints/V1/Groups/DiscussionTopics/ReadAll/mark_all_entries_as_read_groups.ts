@@ -23,7 +23,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: mark_all_entries_as_read_groupsFormParameters;
+      params: mark_all_entries_as_read_groupsFormParameters;
       strict: true;
     }
 );

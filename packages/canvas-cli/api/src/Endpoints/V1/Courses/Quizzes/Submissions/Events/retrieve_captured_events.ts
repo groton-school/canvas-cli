@@ -27,7 +27,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: retrieve_captured_eventsSearchParameters;
+      searchParams: retrieve_captured_eventsSearchParameters;
       strict: true;
     }
 );

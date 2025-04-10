@@ -28,7 +28,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: reorder_question_groupsFormParameters;
+      params: reorder_question_groupsFormParameters;
       strict: true;
     }
 );

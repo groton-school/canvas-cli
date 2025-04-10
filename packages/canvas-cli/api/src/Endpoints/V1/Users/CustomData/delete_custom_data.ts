@@ -22,7 +22,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: delete_custom_dataSearchParameters;
+      searchParams: delete_custom_dataSearchParameters;
       strict: true;
     }
 );

@@ -26,7 +26,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: show_line_itemSearchParameters;
+      searchParams: show_line_itemSearchParameters;
       strict: true;
     }
 );

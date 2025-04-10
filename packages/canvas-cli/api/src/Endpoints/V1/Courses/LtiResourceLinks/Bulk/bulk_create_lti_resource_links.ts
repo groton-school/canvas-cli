@@ -29,7 +29,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: bulk_create_lti_resource_linksFormParameters;
+      params: bulk_create_lti_resource_linksFormParameters;
       strict: true;
     }
 );

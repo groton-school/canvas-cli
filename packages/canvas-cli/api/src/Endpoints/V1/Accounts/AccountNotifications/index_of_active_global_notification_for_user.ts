@@ -30,7 +30,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: index_of_active_global_notification_for_userSearchParameters;
+      searchParams: index_of_active_global_notification_for_userSearchParameters;
       strict: true;
     }
 );

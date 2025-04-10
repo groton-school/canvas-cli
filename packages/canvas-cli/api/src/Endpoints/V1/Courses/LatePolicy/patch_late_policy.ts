@@ -30,7 +30,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: patch_late_policyFormParameters;
+      params: patch_late_policyFormParameters;
       strict: true;
     }
 );

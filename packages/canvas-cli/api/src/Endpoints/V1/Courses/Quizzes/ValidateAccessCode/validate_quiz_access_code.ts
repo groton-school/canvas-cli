@@ -20,7 +20,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: validate_quiz_access_codeFormParameters;
+      params: validate_quiz_access_codeFormParameters;
       strict: true;
     }
 );

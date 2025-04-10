@@ -25,7 +25,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: mark_entry_as_unread_groupsSearchParameters;
+      searchParams: mark_entry_as_unread_groupsSearchParameters;
       strict: true;
     }
 );

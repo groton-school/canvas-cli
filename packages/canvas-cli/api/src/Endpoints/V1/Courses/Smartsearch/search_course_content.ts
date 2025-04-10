@@ -26,7 +26,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: search_course_contentSearchParameters;
+      searchParams: search_course_contentSearchParameters;
       strict: true;
     }
 );

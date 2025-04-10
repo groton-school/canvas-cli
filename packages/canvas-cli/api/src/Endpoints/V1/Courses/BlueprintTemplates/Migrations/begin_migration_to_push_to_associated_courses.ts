@@ -41,7 +41,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: begin_migration_to_push_to_associated_coursesFormParameters;
+      params: begin_migration_to_push_to_associated_coursesFormParameters;
       strict: true;
     }
 );

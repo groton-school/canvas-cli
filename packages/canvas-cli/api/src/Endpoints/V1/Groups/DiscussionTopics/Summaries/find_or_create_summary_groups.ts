@@ -20,7 +20,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: find_or_create_summary_groupsFormParameters;
+      params: find_or_create_summary_groupsFormParameters;
       strict: true;
     }
 );

@@ -18,7 +18,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: mark_bulk_submissions_as_read_coursesFormParameters;
+      params: mark_bulk_submissions_as_read_coursesFormParameters;
       strict: true;
     }
 );

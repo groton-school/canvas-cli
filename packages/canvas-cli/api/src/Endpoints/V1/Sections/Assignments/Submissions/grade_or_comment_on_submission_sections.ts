@@ -123,7 +123,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: grade_or_comment_on_submission_sectionsFormParameters;
+      params: grade_or_comment_on_submission_sectionsFormParameters;
       strict: true;
     }
 );

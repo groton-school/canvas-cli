@@ -25,7 +25,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: add_users_to_content_shareFormParameters;
+      params: add_users_to_content_shareFormParameters;
       strict: true;
     }
 );

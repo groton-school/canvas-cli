@@ -38,7 +38,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: import_category_groupsFormParameters;
+      params: import_category_groupsFormParameters;
       strict: true;
     }
 );

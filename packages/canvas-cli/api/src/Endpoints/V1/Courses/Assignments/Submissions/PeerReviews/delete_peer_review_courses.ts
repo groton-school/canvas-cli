@@ -27,7 +27,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: delete_peer_review_coursesSearchParameters;
+      searchParams: delete_peer_review_coursesSearchParameters;
       strict: true;
     }
 );

@@ -45,7 +45,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: start_reportFormParameters;
+      params: start_reportFormParameters;
       strict: true;
     }
 );

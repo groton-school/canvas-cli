@@ -179,7 +179,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: import_sis_dataFormParameters;
+      params: import_sis_dataFormParameters;
       strict: true;
     }
 );

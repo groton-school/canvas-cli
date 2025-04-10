@@ -52,7 +52,7 @@ type Options =
       strict?: false;
     }
   | {
-      searchParams?: find_recipients_searchSearchParameters;
+      searchParams: find_recipients_searchSearchParameters;
       strict: true;
     };
 

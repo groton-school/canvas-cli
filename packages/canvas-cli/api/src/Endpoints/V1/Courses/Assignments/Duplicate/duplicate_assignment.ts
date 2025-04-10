@@ -27,7 +27,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: duplicate_assignmentFormParameters;
+      params: duplicate_assignmentFormParameters;
       strict: true;
     }
 );

@@ -48,7 +48,7 @@ type Options =
       strict?: false;
     }
   | {
-      searchParams?: advanced_querySearchParameters;
+      searchParams: advanced_querySearchParameters;
       strict: true;
     };
 

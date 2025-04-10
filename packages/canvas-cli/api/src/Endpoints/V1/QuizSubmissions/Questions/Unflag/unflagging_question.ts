@@ -33,7 +33,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: unflagging_questionFormParameters;
+      params: unflagging_questionFormParameters;
       strict: true;
     }
 );

@@ -34,7 +34,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: import_outcome_group_coursesFormParameters;
+      params: import_outcome_group_coursesFormParameters;
       strict: true;
     }
 );

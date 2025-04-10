@@ -33,7 +33,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: set_course_timetableFormParameters;
+      params: set_course_timetableFormParameters;
       strict: true;
     }
 );

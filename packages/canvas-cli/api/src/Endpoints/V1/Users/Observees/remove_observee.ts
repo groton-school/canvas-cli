@@ -25,7 +25,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: remove_observeeSearchParameters;
+      searchParams: remove_observeeSearchParameters;
       strict: true;
     }
 );

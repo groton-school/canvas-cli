@@ -30,7 +30,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: show_module_itemSearchParameters;
+      searchParams: show_module_itemSearchParameters;
       strict: true;
     }
 );

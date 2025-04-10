@@ -23,7 +23,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: search_for_content_share_usersSearchParameters;
+      searchParams: search_for_content_share_usersSearchParameters;
       strict: true;
     }
 );

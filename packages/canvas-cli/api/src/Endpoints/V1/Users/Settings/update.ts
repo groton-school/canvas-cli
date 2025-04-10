@@ -42,7 +42,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: updateSearchParameters;
+      searchParams: updateSearchParameters;
       strict: true;
     }
 );

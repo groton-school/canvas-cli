@@ -58,7 +58,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: import_outcomes_accountsFormParameters;
+      params: import_outcomes_accountsFormParameters;
       strict: true;
     }
 );

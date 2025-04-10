@@ -46,7 +46,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: deprecated_self_register_userFormParameters;
+      params: deprecated_self_register_userFormParameters;
       strict: true;
     }
 );

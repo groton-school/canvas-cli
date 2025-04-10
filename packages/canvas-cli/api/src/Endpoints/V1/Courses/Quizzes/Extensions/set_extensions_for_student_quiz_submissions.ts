@@ -57,7 +57,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: set_extensions_for_student_quiz_submissionsFormParameters;
+      params: set_extensions_for_student_quiz_submissionsFormParameters;
       strict: true;
     }
 );

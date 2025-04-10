@@ -40,7 +40,7 @@ type Options =
       strict?: false;
     }
   | {
-      searchParams?: listSearchParameters;
+      searchParams: listSearchParameters;
       strict: true;
     };
 

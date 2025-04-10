@@ -21,7 +21,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: show_revision_courses_latestSearchParameters;
+      searchParams: show_revision_courses_latestSearchParameters;
       strict: true;
     }
 );

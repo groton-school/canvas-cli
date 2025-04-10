@@ -20,7 +20,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: show_provisional_grade_status_for_studentSearchParameters;
+      searchParams: show_provisional_grade_status_for_studentSearchParameters;
       strict: true;
     }
 );

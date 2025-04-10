@@ -48,7 +48,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: set_quiz_level_accommodationsFormParameters;
+      params: set_quiz_level_accommodationsFormParameters;
       strict: true;
     }
 );

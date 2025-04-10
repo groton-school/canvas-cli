@@ -25,7 +25,7 @@ type Options =
       strict?: false;
     }
   | {
-      searchParams?: search_account_domainsSearchParameters;
+      searchParams: search_account_domainsSearchParameters;
       strict: true;
     };
 

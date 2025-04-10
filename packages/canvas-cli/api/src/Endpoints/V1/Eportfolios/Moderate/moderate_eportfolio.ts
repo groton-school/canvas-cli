@@ -19,7 +19,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: moderate_eportfolioFormParameters;
+      params: moderate_eportfolioFormParameters;
       strict: true;
     }
 );

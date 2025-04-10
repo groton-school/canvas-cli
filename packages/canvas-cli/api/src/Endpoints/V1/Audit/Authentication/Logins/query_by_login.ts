@@ -29,7 +29,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: query_by_loginSearchParameters;
+      searchParams: query_by_loginSearchParameters;
       strict: true;
     }
 );

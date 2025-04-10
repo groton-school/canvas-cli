@@ -24,7 +24,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: select_students_for_moderationFormParameters;
+      params: select_students_for_moderationFormParameters;
       strict: true;
     }
 );

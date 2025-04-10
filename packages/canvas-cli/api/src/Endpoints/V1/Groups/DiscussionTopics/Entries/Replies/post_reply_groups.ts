@@ -27,7 +27,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: post_reply_groupsFormParameters;
+      params: post_reply_groupsFormParameters;
       strict: true;
     }
 );

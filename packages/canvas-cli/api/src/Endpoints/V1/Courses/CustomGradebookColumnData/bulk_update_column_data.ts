@@ -22,7 +22,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: bulk_update_column_dataFormParameters;
+      params: bulk_update_column_dataFormParameters;
       strict: true;
     }
 );

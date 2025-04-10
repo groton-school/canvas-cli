@@ -24,7 +24,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: delete_calendar_eventSearchParameters;
+      searchParams: delete_calendar_eventSearchParameters;
       strict: true;
     }
 );

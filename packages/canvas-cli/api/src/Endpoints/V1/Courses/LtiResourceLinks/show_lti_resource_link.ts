@@ -21,7 +21,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: show_lti_resource_linkSearchParameters;
+      searchParams: show_lti_resource_linkSearchParameters;
       strict: true;
     }
 );

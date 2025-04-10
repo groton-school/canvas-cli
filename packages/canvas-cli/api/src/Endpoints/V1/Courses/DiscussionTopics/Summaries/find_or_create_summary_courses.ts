@@ -20,7 +20,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: find_or_create_summary_coursesFormParameters;
+      params: find_or_create_summary_coursesFormParameters;
       strict: true;
     }
 );

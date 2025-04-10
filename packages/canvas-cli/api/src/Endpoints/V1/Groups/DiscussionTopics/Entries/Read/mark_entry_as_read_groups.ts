@@ -25,7 +25,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: mark_entry_as_read_groupsFormParameters;
+      params: mark_entry_as_read_groupsFormParameters;
       strict: true;
     }
 );

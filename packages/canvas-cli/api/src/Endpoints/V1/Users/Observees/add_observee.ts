@@ -27,7 +27,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: add_observeeFormParameters;
+      params: add_observeeFormParameters;
       strict: true;
     }
 );

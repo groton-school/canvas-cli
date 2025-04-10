@@ -23,7 +23,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: show_outcomeSearchParameters;
+      searchParams: show_outcomeSearchParameters;
       strict: true;
     }
 );

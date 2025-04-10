@@ -13,7 +13,7 @@ type Options =
       strict?: false;
     }
   | {
-      params?: save_enabled_account_calendarsFormParameters;
+      params: save_enabled_account_calendarsFormParameters;
       strict: true;
     };
 

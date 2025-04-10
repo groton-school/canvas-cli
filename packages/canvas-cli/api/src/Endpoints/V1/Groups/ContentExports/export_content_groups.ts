@@ -42,7 +42,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: export_content_groupsFormParameters;
+      params: export_content_groupsFormParameters;
       strict: true;
     }
 );

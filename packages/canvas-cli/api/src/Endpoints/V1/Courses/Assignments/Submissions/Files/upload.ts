@@ -84,7 +84,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: uploadFormParameters;
+      params: uploadFormParameters;
       strict: true;
     }
 );

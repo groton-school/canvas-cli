@@ -18,7 +18,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: delete_conclude_courseSearchParameters;
+      searchParams: delete_conclude_courseSearchParameters;
       strict: true;
     }
 );

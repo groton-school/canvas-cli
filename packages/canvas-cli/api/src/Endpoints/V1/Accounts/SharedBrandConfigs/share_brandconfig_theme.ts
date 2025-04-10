@@ -21,7 +21,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: share_brandconfig_themeFormParameters;
+      params: share_brandconfig_themeFormParameters;
       strict: true;
     }
 );

@@ -32,7 +32,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: update_grading_period_setFormParameters;
+      params: update_grading_period_setFormParameters;
       strict: true;
     }
 );

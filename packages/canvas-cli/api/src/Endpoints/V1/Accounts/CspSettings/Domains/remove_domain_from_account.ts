@@ -18,7 +18,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: remove_domain_from_accountSearchParameters;
+      searchParams: remove_domain_from_accountSearchParameters;
       strict: true;
     }
 );

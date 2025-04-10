@@ -23,7 +23,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters;
+      params: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters;
       strict: true;
     }
 );

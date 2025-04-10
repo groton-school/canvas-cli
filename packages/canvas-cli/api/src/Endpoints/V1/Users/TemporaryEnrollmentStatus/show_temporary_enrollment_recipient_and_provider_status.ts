@@ -23,7 +23,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: show_temporary_enrollment_recipient_and_provider_statusSearchParameters;
+      searchParams: show_temporary_enrollment_recipient_and_provider_statusSearchParameters;
       strict: true;
     }
 );

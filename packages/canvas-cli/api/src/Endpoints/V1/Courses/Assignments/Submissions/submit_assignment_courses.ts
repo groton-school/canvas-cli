@@ -100,7 +100,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: submit_assignment_coursesFormParameters;
+      params: submit_assignment_coursesFormParameters;
       strict: true;
     }
 );

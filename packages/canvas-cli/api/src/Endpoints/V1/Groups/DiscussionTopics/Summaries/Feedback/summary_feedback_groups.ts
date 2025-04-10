@@ -33,7 +33,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: summary_feedback_groupsFormParameters;
+      params: summary_feedback_groupsFormParameters;
       strict: true;
     }
 );

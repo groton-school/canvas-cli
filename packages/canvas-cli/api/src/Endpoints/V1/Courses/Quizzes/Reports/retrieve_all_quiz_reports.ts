@@ -25,7 +25,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: retrieve_all_quiz_reportsSearchParameters;
+      searchParams: retrieve_all_quiz_reportsSearchParameters;
       strict: true;
     }
 );

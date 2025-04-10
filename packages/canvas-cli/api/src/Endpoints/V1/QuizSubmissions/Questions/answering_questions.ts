@@ -42,7 +42,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: answering_questionsFormParameters;
+      params: answering_questionsFormParameters;
       strict: true;
     }
 );

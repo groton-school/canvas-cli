@@ -25,7 +25,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: conclude_deactivate_or_delete_enrollmentSearchParameters;
+      searchParams: conclude_deactivate_or_delete_enrollmentSearchParameters;
       strict: true;
     }
 );

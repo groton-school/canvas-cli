@@ -54,7 +54,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: batchUpdateFormParameters;
+      params: batchUpdateFormParameters;
       strict: true;
     }
 );

@@ -28,7 +28,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: activate_roleFormParameters;
+      params: activate_roleFormParameters;
       strict: true;
     }
 );

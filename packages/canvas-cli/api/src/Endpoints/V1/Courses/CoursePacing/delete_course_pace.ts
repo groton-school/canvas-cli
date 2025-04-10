@@ -29,7 +29,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: delete_course_paceSearchParameters;
+      searchParams: delete_course_paceSearchParameters;
       strict: true;
     }
 );

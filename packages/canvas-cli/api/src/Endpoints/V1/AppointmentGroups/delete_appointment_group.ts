@@ -18,7 +18,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: delete_appointment_groupSearchParameters;
+      searchParams: delete_appointment_groupSearchParameters;
       strict: true;
     }
 );

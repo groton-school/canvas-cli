@@ -18,7 +18,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: moderate_all_eportfolios_for_userFormParameters;
+      params: moderate_all_eportfolios_for_userFormParameters;
       strict: true;
     }
 );

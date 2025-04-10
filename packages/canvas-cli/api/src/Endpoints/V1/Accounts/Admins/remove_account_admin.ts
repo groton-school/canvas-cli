@@ -28,7 +28,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: remove_account_adminSearchParameters;
+      searchParams: remove_account_adminSearchParameters;
       strict: true;
     }
 );

@@ -18,7 +18,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: add_allowed_domain_to_accountFormParameters;
+      params: add_allowed_domain_to_accountFormParameters;
       strict: true;
     }
 );

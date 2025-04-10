@@ -41,7 +41,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: getSearchParameters;
+      searchParams: getSearchParameters;
       strict: true;
     }
 );

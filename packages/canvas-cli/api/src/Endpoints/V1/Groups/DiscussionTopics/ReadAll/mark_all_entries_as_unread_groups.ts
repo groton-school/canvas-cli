@@ -23,7 +23,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: mark_all_entries_as_unread_groupsSearchParameters;
+      searchParams: mark_all_entries_as_unread_groupsSearchParameters;
       strict: true;
     }
 );

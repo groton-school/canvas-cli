@@ -29,7 +29,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: store_custom_dataFormParameters;
+      params: store_custom_dataFormParameters;
       strict: true;
     }
 );

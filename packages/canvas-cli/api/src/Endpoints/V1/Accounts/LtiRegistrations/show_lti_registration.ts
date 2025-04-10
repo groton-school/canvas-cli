@@ -31,7 +31,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: show_lti_registrationSearchParameters;
+      searchParams: show_lti_registrationSearchParameters;
       strict: true;
     }
 );

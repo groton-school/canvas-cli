@@ -20,7 +20,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: fetching_latest_quiz_statisticsSearchParameters;
+      searchParams: fetching_latest_quiz_statisticsSearchParameters;
       strict: true;
     }
 );

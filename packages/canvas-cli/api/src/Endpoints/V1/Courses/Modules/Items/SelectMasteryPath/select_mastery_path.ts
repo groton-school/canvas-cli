@@ -30,7 +30,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: select_mastery_pathFormParameters;
+      params: select_mastery_pathFormParameters;
       strict: true;
     }
 );

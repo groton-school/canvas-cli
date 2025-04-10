@@ -26,7 +26,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: reorder_quiz_itemsFormParameters;
+      params: reorder_quiz_itemsFormParameters;
       strict: true;
     }
 );

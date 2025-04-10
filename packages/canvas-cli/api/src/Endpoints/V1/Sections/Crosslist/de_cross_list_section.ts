@@ -23,7 +23,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: de_cross_list_sectionSearchParameters;
+      searchParams: de_cross_list_sectionSearchParameters;
       strict: true;
     }
 );

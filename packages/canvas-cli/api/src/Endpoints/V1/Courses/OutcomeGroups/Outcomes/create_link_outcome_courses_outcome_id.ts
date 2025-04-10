@@ -70,7 +70,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: create_link_outcome_courses_outcome_idFormParameters;
+      params: create_link_outcome_courses_outcome_idFormParameters;
       strict: true;
     }
 );

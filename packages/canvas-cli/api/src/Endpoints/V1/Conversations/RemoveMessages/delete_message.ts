@@ -18,7 +18,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: delete_messageFormParameters;
+      params: delete_messageFormParameters;
       strict: true;
     }
 );

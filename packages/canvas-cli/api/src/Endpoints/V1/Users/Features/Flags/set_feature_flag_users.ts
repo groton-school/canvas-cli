@@ -27,7 +27,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: set_feature_flag_usersFormParameters;
+      params: set_feature_flag_usersFormParameters;
       strict: true;
     }
 );

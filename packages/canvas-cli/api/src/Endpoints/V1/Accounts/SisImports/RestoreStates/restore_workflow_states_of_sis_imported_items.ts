@@ -31,7 +31,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: restore_workflow_states_of_sis_imported_itemsFormParameters;
+      params: restore_workflow_states_of_sis_imported_itemsFormParameters;
       strict: true;
     }
 );

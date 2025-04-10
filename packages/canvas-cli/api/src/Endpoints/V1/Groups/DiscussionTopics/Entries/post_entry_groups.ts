@@ -25,7 +25,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: post_entry_groupsFormParameters;
+      params: post_entry_groupsFormParameters;
       strict: true;
     }
 );

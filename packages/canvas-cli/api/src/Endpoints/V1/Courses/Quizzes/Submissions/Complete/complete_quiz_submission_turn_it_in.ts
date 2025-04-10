@@ -35,7 +35,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: complete_quiz_submission_turn_it_inFormParameters;
+      params: complete_quiz_submission_turn_it_inFormParameters;
       strict: true;
     }
 );

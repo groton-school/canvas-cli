@@ -22,7 +22,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: submit_captured_eventsFormParameters;
+      params: submit_captured_eventsFormParameters;
       strict: true;
     }
 );

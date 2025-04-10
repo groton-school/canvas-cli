@@ -28,7 +28,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: enable_disable_or_clear_explicit_csp_setting_coursesFormParameters;
+      params: enable_disable_or_clear_explicit_csp_setting_coursesFormParameters;
       strict: true;
     }
 );

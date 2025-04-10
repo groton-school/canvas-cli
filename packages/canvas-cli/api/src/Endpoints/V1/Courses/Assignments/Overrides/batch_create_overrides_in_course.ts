@@ -26,7 +26,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: batch_create_overrides_in_courseFormParameters;
+      params: batch_create_overrides_in_courseFormParameters;
       strict: true;
     }
 );

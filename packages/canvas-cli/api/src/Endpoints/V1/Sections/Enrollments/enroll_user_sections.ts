@@ -119,7 +119,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: enroll_user_sectionsFormParameters;
+      params: enroll_user_sectionsFormParameters;
       strict: true;
     }
 );

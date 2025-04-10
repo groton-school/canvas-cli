@@ -37,7 +37,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: make_account_adminFormParameters;
+      params: make_account_adminFormParameters;
       strict: true;
     }
 );

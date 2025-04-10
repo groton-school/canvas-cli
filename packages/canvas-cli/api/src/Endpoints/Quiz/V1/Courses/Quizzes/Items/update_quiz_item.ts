@@ -100,7 +100,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: update_quiz_itemFormParameters;
+      params: update_quiz_itemFormParameters;
       strict: true;
     }
 );

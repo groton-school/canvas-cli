@@ -22,7 +22,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: add_recipientsFormParameters;
+      params: add_recipientsFormParameters;
       strict: true;
     }
 );

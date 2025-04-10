@@ -29,7 +29,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: query_by_accountSearchParameters;
+      searchParams: query_by_accountSearchParameters;
       strict: true;
     }
 );

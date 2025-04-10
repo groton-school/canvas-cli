@@ -18,7 +18,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: invite_others_to_groupFormParameters;
+      params: invite_others_to_groupFormParameters;
       strict: true;
     }
 );

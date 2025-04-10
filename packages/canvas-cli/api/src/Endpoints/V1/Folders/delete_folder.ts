@@ -18,7 +18,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: delete_folderSearchParameters;
+      searchParams: delete_folderSearchParameters;
       strict: true;
     }
 );

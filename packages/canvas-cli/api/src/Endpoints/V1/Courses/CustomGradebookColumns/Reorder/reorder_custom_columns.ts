@@ -22,7 +22,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: reorder_custom_columnsFormParameters;
+      params: reorder_custom_columnsFormParameters;
       strict: true;
     }
 );

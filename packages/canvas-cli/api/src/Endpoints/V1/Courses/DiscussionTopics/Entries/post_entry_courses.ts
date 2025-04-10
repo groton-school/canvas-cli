@@ -25,7 +25,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: post_entry_coursesFormParameters;
+      params: post_entry_coursesFormParameters;
       strict: true;
     }
 );

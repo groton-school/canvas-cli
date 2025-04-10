@@ -26,7 +26,7 @@ type Options = {
       strict?: false;
     }
   | {
-      searchParams?: retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters;
+      searchParams: retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters;
       strict: true;
     }
 );

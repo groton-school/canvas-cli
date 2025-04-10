@@ -23,7 +23,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters;
+      params: send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters;
       strict: true;
     }
 );

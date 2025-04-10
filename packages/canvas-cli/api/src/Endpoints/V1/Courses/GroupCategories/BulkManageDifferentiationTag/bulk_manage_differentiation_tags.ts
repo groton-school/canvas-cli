@@ -37,7 +37,7 @@ type Options = {
       strict?: false;
     }
   | {
-      params?: bulk_manage_differentiation_tagsFormParameters;
+      params: bulk_manage_differentiation_tagsFormParameters;
       strict: true;
     }
 );
