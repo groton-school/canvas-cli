@@ -22,7 +22,12 @@
     "release": "commit-and-tag-version"
   },
   "dependencies": {
-    "@oauth2-cli/canvas": "workspace:*"
+    "@apollo/client": "^3.13.7",
+    "@groton/canvas-cli.api": "workspace:*",
+    "@inquirer/prompts": "^7.4.1",
+    "@oauth2-cli/canvas": "workspace:*",
+    "graphql": "^16.10.0",
+    "ora": "^8.2.0"
   },
   "devDependencies": {
     "@battis/qui-cli.colors": "^2.0.1",
