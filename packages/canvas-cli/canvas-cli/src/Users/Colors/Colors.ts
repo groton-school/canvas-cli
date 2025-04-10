@@ -2,7 +2,7 @@ import { Colors } from '@battis/qui-cli.colors';
 import '@battis/qui-cli.env';
 import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
-import * as Canvas from '@groton/canvas-types';
+import * as Canvas from '@groton/canvas-cli.api';
 import path from 'node:path';
 import ora from 'ora';
 
@@ -13,11 +13,11 @@ export type Configuration = Plugin.Configuration & {
   overwrite?: boolean;
 };
 
-export const name = '@groton/canvas-users-cli';
-export const src = import.meta.dirname;
+export const name = 'Users/Colors';
+export const src = path.resolve(import.meta.dirname, '../..');
 
 let canvas_instance_url: string | undefined = undefined;
-let account_id: number | undefined = undefined;
+let account_id: string | undefined = undefined;
 let term_id: number | undefined = undefined;
 let overwrite = false;
 
@@ -30,7 +30,6 @@ export function configure(config: Configuration = {}) {
     canvas_instance_url
   );
   if (config.canvasInstanceUrl) {
-    Canvas.setUrl(config.canvasInstanceUrl);
     if (
       process.env.CANVAS_CLIENT_ID &&
       process.env.CANVAS_CLIENT_SECRET &&
@@ -66,13 +65,13 @@ export function options(): Plugin.Options {
     opt: {
       canvasInstanceUrl: {
         description: `URL of canvas instance`
+      },
+      accountId: {
+        description: `Canvas account ID to include`,
+        default: '1'
       }
     },
     num: {
-      accountId: {
-        description: `Canvas account ID to include`,
-        default: 1
-      },
       termId: {
         description: `Canvas term ID to include`
       }
@@ -92,6 +91,10 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
 }
 
 export async function run() {
+  if (!account_id) {
+    throw new Error(`account_id must be defined`);
+  }
+
   const colors = {
     RD: '#ad4928',
     OR: '#ea6a32',
@@ -101,61 +104,36 @@ export async function run() {
     DB: '#386ea5',
     PR: '#834692'
   };
-
-  const args: Record<string, unknown> = { per_page: 100 };
-  if (term_id) {
-    args.enrollment_term_id = term_id;
-  }
-  const urlArgs = new URLSearchParams(Canvas.stringify(args));
-  let response = await Canvas.canvas().rawFetch(
-    `/api/v1/accounts/${account_id}/courses?${urlArgs}`
-  );
-  if (response) {
-    let matches;
-    do {
-      const courses = (await response!.json()) as Canvas.Courses.Model[];
-      for (const course of courses) {
-        const spinner = ora(course.name).start();
-        let applied = false;
-        const enrollments = (await Canvas.canvas().fetch(
-          `/api/v1/courses/${course.id}/enrollments?${urlArgs}`
-        )) as Record<string, unknown>[];
-        const context = `course_${course.id}`;
-        const blockMatches = /\(([A-Z]{1,2})\s*[^)]*\)$/.exec(course.name);
-        if (blockMatches && blockMatches.length >= 2) {
-          const block = blockMatches[1];
-          if (block in colors) {
-            for (const enrollment of enrollments) {
-              spinner.text = `${course.name} (user ${enrollment.user.id})`;
-              await Canvas.canvas().fetch(
-                `/api/v1/users/${enrollment.user.id}/colors/${context}`,
-                {
-                  method: 'PUT',
-                  body: new URLSearchParams(
-                    Canvas.stringify({
-                      hexcode: colors[block as keyof typeof colors]
-                    })
-                  )
-                }
-              );
-            }
-            applied = true;
-          }
-        }
-        if (applied) {
-          spinner.succeed(
-            `${enrollments.length} users in ${course.name} ${Colors.url(`${canvas_instance_url}/courses/${course.id}`)}`
-          );
-        } else {
-          spinner.fail(course.name);
+  const per_page = 100;
+  for (const course of await Canvas.v1.Accounts.Courses.list({
+    pathParams: { account_id },
+    searchParams: { enrollment_term_id: term_id, per_page }
+  })) {
+    const spinner = ora(course.name).start();
+    let applied = 0;
+    const blockMatches = /\(([A-Z]{1,2})\s*[^)]*\)$/.exec(course.name);
+    if (blockMatches && blockMatches.length >= 2) {
+      const block = blockMatches[1];
+      if (block in colors) {
+        const asset_string = `course_${course.id}`;
+        for (const enrollment of await Canvas.v1.Courses.Enrollments.list({
+          pathParams: { course_id: course.id.toString() },
+          searchParams: { per_page }
+        })) {
+          Canvas.v1.Users.Colors.update({
+            pathParams: { id: enrollment.user_id.toString(), asset_string },
+            params: { hexcode: colors[block as keyof typeof colors] }
+          });
+          applied++;
         }
       }
-      matches = /<([^>]+)>;\s*rel="next"/gm.exec(
-        response!.headers.get('link') || ''
+    }
+    if (applied > 0) {
+      spinner.succeed(
+        `${applied} users in ${course.name} ${Colors.url(`${Canvas.client().instance_url}/courses/${course.id}`)}`
       );
-      if (matches && matches.length >= 2) {
-        response = await Canvas.canvas().rawFetch(matches[1]);
-      }
-    } while (matches && matches[1]);
+    } else {
+      spinner.fail(course.name);
+    }
   }
 }
