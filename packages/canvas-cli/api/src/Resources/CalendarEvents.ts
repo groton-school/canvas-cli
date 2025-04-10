@@ -1,4 +1,4 @@
-import { uuid } from '';
+import { uuid } from '../Overrides.js';
 import { Assignment, AssignmentOverride } from './Assignments.js';
 
 export type CalendarEvent = {

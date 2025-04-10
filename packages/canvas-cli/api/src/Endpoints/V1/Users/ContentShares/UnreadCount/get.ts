@@ -1,5 +1,5 @@
-import { unread_countinteger } from '';
 import { client } from '../../../../../Client.js';
+import { unread_countinteger } from '../../../../../Overrides.js';
 
 export type getPathParameters = {
   /** ID */

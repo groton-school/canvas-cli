@@ -1,5 +1,5 @@
-import { Date } from '';
 import { client } from '../../../../../Client.js';
+import { Date } from '../../../../../Overrides.js';
 
 export type batchUpdatePathParameters = {
   /** ID */

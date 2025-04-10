@@ -1,5 +1,5 @@
-import { Hash } from '';
 import { client } from '../../../../../Client.js';
+import { Hash } from '../../../../../Overrides.js';
 
 export type updatePathParameters = {
   /** ID */

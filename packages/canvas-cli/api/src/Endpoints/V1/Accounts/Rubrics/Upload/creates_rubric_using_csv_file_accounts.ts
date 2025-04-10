@@ -1,5 +1,5 @@
-import { RubricImport } from '';
 import { client } from '../../../../../Client.js';
+import { RubricImport } from '../../../../../Overrides.js';
 
 export type creates_rubric_using_csv_file_accountsPathParameters = {
   /** ID */

@@ -1,5 +1,5 @@
-import { UsedLocations } from '';
 import { client } from '../../../../../Client.js';
+import { UsedLocations } from '../../../../../Overrides.js';
 
 export type getPathParameters = {
   /** ID */

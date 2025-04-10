@@ -1,6 +1,6 @@
-import { Integer } from '';
 import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
+import { Integer } from '../../../../Overrides.js';
 import { Admin } from '../../../../Resources/Admins.js';
 
 export type listPathParameters = {

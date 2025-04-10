@@ -1,5 +1,5 @@
-import { Hash } from '';
 import { client } from '../../../../../Client.js';
+import { Hash } from '../../../../../Overrides.js';
 import { LtiResourceLink } from '../../../../../Resources/LtiResourceLinks.js';
 
 export type bulk_create_lti_resource_linksPathParameters = {

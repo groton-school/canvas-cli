@@ -1,5 +1,5 @@
-import { LtiRegistrationAccountBinding } from '';
 import { JSONObject } from '@battis/typescript-tricks';
+import { LtiRegistrationAccountBinding } from '../Overrides.js';
 import { User } from './Users.js';
 
 /** A registration of an LTI tool in Canvas */

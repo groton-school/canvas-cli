@@ -1,6 +1,6 @@
-import { GroupCategoryandgroupsoperationresults } from '';
 import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../../Client.js';
+import { GroupCategoryandgroupsoperationresults } from '../../../../../Overrides.js';
 
 export type bulk_manage_differentiation_tagsPathParameters = {
   /** ID */

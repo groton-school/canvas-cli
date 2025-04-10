@@ -1,6 +1,6 @@
-import { array } from '';
 import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
+import { array } from '../../../Overrides.js';
 import { DiscussionTopic } from '../../../Resources/DiscussionTopics.js';
 
 export type listSearchParameters = {

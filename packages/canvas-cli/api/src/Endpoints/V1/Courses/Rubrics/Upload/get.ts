@@ -1,5 +1,5 @@
-import { RubricImport } from '';
 import { client } from '../../../../../Client.js';
+import { RubricImport } from '../../../../../Overrides.js';
 
 export type getPathParameters = {
   /** ID */

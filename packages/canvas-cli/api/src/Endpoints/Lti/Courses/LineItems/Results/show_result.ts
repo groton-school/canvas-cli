@@ -1,5 +1,5 @@
 import { client } from '../../../../../Client.js';
-import { Result } from '../../../../../Resources/Results.js';
+import { Result } from '../../../../../Resources/LiveAssessments.js';
 
 export type show_resultPathParameters = {
   /** ID */

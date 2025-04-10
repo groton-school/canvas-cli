@@ -1,6 +1,8 @@
-import { QuestionItemStimulusItemBankEntryItemBankItem } from '';
-import { QuestionItemStimulusItem } from '';
 import { JSONObject } from '@battis/typescript-tricks';
+import {
+  QuestionItemStimulusItem,
+  QuestionItemStimulusItemBankEntryItemBankItem
+} from '../Overrides.js';
 
 /**
  * Individual items within a quiz, whether they're questions, stimuli, banked

@@ -1,5 +1,5 @@
-import { DateTime } from '';
 import { client } from '../../../../../Client.js';
+import { DateTime } from '../../../../../Overrides.js';
 
 export type createPathParameters = {
   /** ID */

@@ -1,5 +1,5 @@
-import { multipleBlueprintRestrictions } from '';
 import { client } from '../../../Client.js';
+import { multipleBlueprintRestrictions } from '../../../Overrides.js';
 import { BlueprintRestriction } from '../../../Resources/BlueprintCourses.js';
 
 export type updatePathParameters = {

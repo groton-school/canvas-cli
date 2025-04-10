@@ -1,5 +1,5 @@
-import { Numeric } from '';
 import { client } from '../../../../../Client.js';
+import { Numeric } from '../../../../../Overrides.js';
 
 export type getPathParameters = {
   /** ID */

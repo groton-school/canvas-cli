@@ -1,5 +1,5 @@
-import { LtiRegistrationAccountBinding } from '';
 import { client } from '../../../../../Client.js';
+import { LtiRegistrationAccountBinding } from '../../../../../Overrides.js';
 
 export type bind_lti_registration_to_accountPathParameters = {
   /** ID */

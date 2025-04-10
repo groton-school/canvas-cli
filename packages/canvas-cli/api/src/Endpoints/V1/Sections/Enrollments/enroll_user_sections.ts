@@ -1,4 +1,3 @@
-import { Deprecated } from '';
 import { client } from '../../../../Client.js';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
@@ -30,8 +29,12 @@ export type enroll_user_sectionsFormParameters = {
    * supplied, otherwise 'StudentEnrollment' will be used.
    */
   'enrollment[type]': string;
-  /** Assigns a custom course-level role to the user. */
-  'enrollment[role]': Deprecated;
+  /**
+   * Assigns a custom course-level role to the user.
+   *
+   * @deprecated
+   */
+  'enrollment[role]': string;
   /**
    * Assigns a custom course-level role to the user.
    *

@@ -1,6 +1,6 @@
-import { gradesGradessubmissionSubmission } from '';
 import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
+import { gradesGradessubmissionSubmission } from '../../../../Overrides.js';
 
 export type updatePathParameters = {
   /** ID */

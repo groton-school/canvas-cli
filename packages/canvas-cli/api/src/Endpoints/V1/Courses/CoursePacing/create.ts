@@ -1,4 +1,3 @@
-import { Datetime } from '';
 import { client } from '../../../../Client.js';
 import { CoursePace } from '../../../../Resources/CoursePace.js';
 
@@ -12,12 +11,20 @@ export type createPathParameters = {
 };
 
 export type createFormParameters = {
-  /** End date of the course pace */
-  end_date: Datetime;
+  /**
+   * End date of the course pace
+   *
+   * Format: date-time
+   */
+  end_date: string;
   /** End date context (course, section, hupothetical) */
   end_date_context: string;
-  /** Start date of the course pace */
-  start_date: Datetime;
+  /**
+   * Start date of the course pace
+   *
+   * Format: date-time
+   */
+  start_date: string;
   /** Start date context (course, section, hupothetical) */
   start_date_context: string;
   /** Course pace dates excludes weekends if true */

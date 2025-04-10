@@ -1,6 +1,6 @@
-import { account_calendarsAccountCalendartotal_resultsinteger } from '';
 import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
+import { account_calendarsAccountCalendartotal_resultsinteger } from '../../../Overrides.js';
 
 export type listSearchParameters = {
   /**

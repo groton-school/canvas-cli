@@ -1,4 +1,3 @@
-import { Deprecated } from '';
 import { client } from '../../../../../Client.js';
 import { Role } from '../../../../../Resources/Roles.js';
 
@@ -16,8 +15,12 @@ export type activate_roleFormParameters = {
    * Format: 'int64'
    */
   role_id: number;
-  /** The name for the role */
-  role: Deprecated;
+  /**
+   * The name for the role
+   *
+   * @deprecated
+   */
+  role: string;
 };
 
 type Options = {

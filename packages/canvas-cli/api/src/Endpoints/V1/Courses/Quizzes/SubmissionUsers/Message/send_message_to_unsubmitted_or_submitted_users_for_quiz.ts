@@ -1,5 +1,5 @@
-import { QuizUserConversation } from '';
 import { client } from '../../../../../../Client.js';
+import { QuizUserConversation } from '../../../../../../Overrides.js';
 
 export type send_message_to_unsubmitted_or_submitted_users_for_quizPathParameters =
   {

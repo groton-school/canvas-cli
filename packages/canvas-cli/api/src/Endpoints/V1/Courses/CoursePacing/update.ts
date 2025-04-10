@@ -1,4 +1,3 @@
-import { Datetime } from '';
 import { client } from '../../../../Client.js';
 import { CoursePace } from '../../../../Resources/CoursePace.js';
 
@@ -20,8 +19,12 @@ export type updateFormParameters = {
    * Format: 'int64'
    */
   course_pace_id: number;
-  /** End date of the course pace */
-  end_date: Datetime;
+  /**
+   * End date of the course pace
+   *
+   * Format: date-time
+   */
+  end_date: string;
   /** Course pace dates excludes weekends if true */
   exclude_weekends: boolean;
   /** [Array<String>] Course pace dates excludes weekends if true */

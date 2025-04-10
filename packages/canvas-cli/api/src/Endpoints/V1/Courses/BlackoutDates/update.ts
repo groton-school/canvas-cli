@@ -1,6 +1,6 @@
-import { BlackoutDateTheresultwhichshouldmatchtheinputwithmaybesomedifferentIDs } from '';
 import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
+import { BlackoutDateTheresultwhichshouldmatchtheinputwithmaybesomedifferentIDs } from '../../../../Overrides.js';
 
 export type updatePathParameters = {
   /** ID */

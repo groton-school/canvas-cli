@@ -1,5 +1,5 @@
-import { SerializedHash } from '';
 import { client } from '../../../Client.js';
+import { SerializedHash } from '../../../Overrides.js';
 
 export type createFormParameters = {
   /** The summary of the problem */

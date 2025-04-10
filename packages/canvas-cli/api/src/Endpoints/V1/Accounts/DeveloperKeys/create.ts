@@ -1,6 +1,6 @@
-import { array } from '';
 import { JSONObject } from '@battis/typescript-tricks';
 import { client } from '../../../../Client.js';
+import { array } from '../../../../Overrides.js';
 import { DeveloperKey } from '../../../../Resources/DeveloperKeys.js';
 
 export type createPathParameters = {

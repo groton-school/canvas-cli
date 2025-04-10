@@ -1,5 +1,5 @@
-import { JSON } from '';
 import { client } from '../../../../Client.js';
+import { JSON } from '../../../../Overrides.js';
 
 export type store_custom_dataPathParameters = {
   /** ID */

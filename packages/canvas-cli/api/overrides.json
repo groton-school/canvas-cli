@@ -1,60 +1,58 @@
 {
   "tsReferences": [
-    {
-      "type": "Account",
-      "filePath": "Resources/Accounts.ts"
-    },
-    {
-      "type": "CoursePace",
-      "filePath": "Resources/CoursePace.ts"
-    },
-    {
-      "type": "OutcomeResult",
-      "filePath": "Resources/OutcomeResults.ts"
-    },
-    {
-      "type": "File",
-      "filePath": "Resources/Files.ts"
-    },
-    {
-      "type": "Result",
-      "filePath": "Resources/Results.ts"
-    },
-    {
-      "type": "RubricRating",
-      "filePath": "Resources/Rubrics.ts"
-    },
-    {
-      "type": "Submission",
-      "filePath": "Resources/Submissions.ts"
-    },
+    { "type": "Account", "filePath": "Resources/Accounts.ts" },
+    { "type": "CoursePace", "filePath": "Resources/CoursePace.ts" },
+    { "type": "OutcomeResult", "filePath": "Resources/OutcomeResults.ts" },
+    { "type": "File", "filePath": "Resources/Files.ts" },
+    { "type": "RubricRating", "filePath": "Resources/Rubrics.ts" },
+    { "type": "Submission", "filePath": "Resources/Submissions.ts" },
     {
       "type": "resultUrlStringTheurltotheresultthatwascreated",
       "filePath": "Overrides.ts"
-    }
+    },
+    { "type": "Integer", "filePath": "Overrides.ts" },
+    { "type": "DateTime", "filePath": "Overrides.ts" },
+    { "type": "DateTime", "filePath": "Overrides.ts" },
+    { "type": "Date", "filePath": "Overrides.ts" },
+    { "type": "Hash", "filePath": "Overrides.ts" },
+    { "type": "Numeric", "filePath": "Overrides.ts" },
+    { "type": "JSON", "filePath": "Overrides.ts" },
+    { "type": "uuid", "filePath": "Overrides.ts" },
+    { "type": "unread_countinteger", "filePath": "Overrides.ts" },
+    { "type": "gradesGradessubmissionSubmission", "filePath": "Overrides.ts" },
+    {
+      "type": "GroupCategoryandgroupsoperationresults",
+      "filePath": "Overrides.ts"
+    },
+    { "type": "RubricImport", "filePath": "Overrides.ts" },
+    { "type": "UsedLocations", "filePath": "Overrides.ts" },
+    {
+      "type": "account_calendarsAccountCalendartotal_resultsinteger",
+      "filePath": "Overrides.ts"
+    },
+    { "type": "LtiRegistrationAccountBinding", "filePath": "Overrides.ts" },
+    { "type": "array", "filePath": "Overrides.ts" },
+    { "type": "multipleBlueprintRestrictions", "filePath": "Overrides.ts" },
+    {
+      "type": "BlackoutDateTheresultwhichshouldmatchtheinputwithmaybesomedifferentIDs",
+      "filePath": "Overrides.ts"
+    },
+    { "type": "QuizUserConversation", "filePath": "Overrides.ts" },
+    { "type": "QuestionItemStimulusItem", "filePath": "Overrides.ts" },
+    {
+      "type": "QuestionItemStimulusItemBankEntryItemBankItem",
+      "filePath": "Overrides.ts"
+    },
+    { "type": "gradesGrades", "filePath": "Overrides.ts" },
+    { "type": "SerializedHash", "filePath": "Overrides.ts" }
   ],
   "tsTypes": {
-    "Positive Integer": {
-      "type": "number"
-    },
-    "Integer": {
-      "type": "number"
-    },
-    "[Integer]": {
-      "type": "number[]"
-    },
-    "DateTime": {
-      "type": "string",
-      "description": "format: date-time"
-    },
-    "datetime": {
-      "type": "string",
-      "description": "format: date-time"
-    },
-    "Date": {
-      "type": "string",
-      "description": "format: date"
-    },
+    "Positive Integer": { "type": "number" },
+    "Integer": { "type": "number" },
+    "DateTime": { "type": "string", "description": "format: date-time" },
+    "Datetime": { "type": "string", "description": "format: date-time" },
+    "datetime": { "type": "string", "description": "format: date-time" },
+    "Date": { "type": "string", "description": "format: date" },
     "object": {
       "type": "JSONObject",
       "tsReference": {
@@ -69,16 +67,9 @@
         "packagePath": "@battis/typescript-tricks"
       }
     },
-    "URL": {
-      "type": "string",
-      "description": "format: url"
-    },
-    "Array": {
-      "type": "string[]"
-    },
-    "String[]": {
-      "type": "string[]"
-    },
+    "URL": { "type": "string", "description": "format: url" },
+    "Array": { "type": "string[]" },
+    "String[]": { "type": "string[]" },
     "Hash": {
       "type": "JSONObject",
       "tsReference": {
@@ -97,18 +88,13 @@
       "type": "{ count: number }",
       "description": "format: integer"
     },
-    "{success: true}": {
-      "type": "{ success: true }"
-    },
+    "{success: true}": { "type": "{ success: true }" },
     "list of content items": {
       "type": "{type: string, property: string, title?: string, count?: number, sub_items_url?: string}[]"
     },
-    "array of outcome ids": {
-      "type": "string[]"
-    },
-    "a CSV file in the format that can be imported": {
-      "type": "string"
-    }
+    "array of outcome ids": { "type": "string[]" },
+    "a CSV file in the format that can be imported": { "type": "string" },
+    "Deprecated": { "type": "string", "description": "@deprecated" }
   },
   "operations": {
     "upload_file": {
