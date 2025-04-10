@@ -1,4 +1,5 @@
 import { gradesGrades } from '';
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 
 export type reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesPathParameters =
@@ -6,6 +7,9 @@ export type reset_what_if_scores_for_current_user_for_entire_course_and_recalcul
     /** ID */
     course_id: string;
   };
+
+export type reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters =
+  Paginated;
 
 type Options = {
   pathParams: reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesPathParameters;

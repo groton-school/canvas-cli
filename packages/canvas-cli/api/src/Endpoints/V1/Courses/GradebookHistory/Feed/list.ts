@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { SubmissionVersion } from '../../../../../Resources/GradebookHistory.js';
 
@@ -32,7 +33,7 @@ export type listSearchParameters = {
    * first).
    */
   ascending: boolean;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

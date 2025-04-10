@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { OutcomeAlignment } from '../../../../Resources/OutcomeResults.js';
 
@@ -17,7 +18,7 @@ export type getSearchParameters = {
    * Format: 'int64'
    */
   student_id: number;
-};
+} & Paginated;
 
 type Options = {
   pathParams: getPathParameters;

@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../../../Client.js';
 import { SubmissionHistory } from '../../../../../../../Resources/GradebookHistory.js';
 
@@ -23,6 +24,8 @@ export type lists_submissionsPathParameters = {
    */
   assignment_id: number;
 };
+
+export type lists_submissionsSearchParameters = Paginated;
 
 type Options = {
   pathParams: lists_submissionsPathParameters;

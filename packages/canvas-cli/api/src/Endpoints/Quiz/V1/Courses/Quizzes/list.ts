@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { NewQuiz } from '../../../../../Resources/NewQuizzes.js';
 
@@ -9,6 +10,8 @@ export type listPathParameters = {
    */
   course_id: number;
 };
+
+export type listSearchParameters = Paginated;
 
 type Options = {
   pathParams: listPathParameters;

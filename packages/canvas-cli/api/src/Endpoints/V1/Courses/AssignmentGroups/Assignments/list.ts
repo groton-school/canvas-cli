@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { Assignment } from '../../../../../Resources/Assignments.js';
 
@@ -49,7 +50,7 @@ export type listSearchParameters = {
   post_to_sis: boolean;
   /** Return only New Quizzes assignments */
   new_quizzes: boolean;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
@@ -5,6 +6,8 @@ export type batch_create_overrides_in_coursePathParameters = {
   /** ID */
   course_id: string;
 };
+
+export type batch_create_overrides_in_courseSearchParameters = Paginated;
 
 export type batch_create_overrides_in_courseFormParameters = {
   /**

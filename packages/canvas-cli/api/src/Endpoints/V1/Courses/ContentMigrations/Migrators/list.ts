@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { Migrator } from '../../../../../Resources/ContentMigrations.js';
 
@@ -5,6 +6,8 @@ export type listPathParameters = {
   /** ID */
   course_id: string;
 };
+
+export type listSearchParameters = Paginated;
 
 type Options = {
   pathParams: listPathParameters;

@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { Section } from '../../../../Resources/Sections.js';
 
@@ -25,7 +26,7 @@ export type listSearchParameters = {
    * matching results. Term must be at least 2 characters.
    */
   search_term: string;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { Submission } from '../../../../Resources/Submissions.js';
 
@@ -13,7 +14,7 @@ export type getSearchParameters = {
   only_current_enrollments: boolean;
   /** Returns submissions for only published assignments */
   only_published_assignments: boolean;
-};
+} & Paginated;
 
 type Options = {
   pathParams: getPathParameters;

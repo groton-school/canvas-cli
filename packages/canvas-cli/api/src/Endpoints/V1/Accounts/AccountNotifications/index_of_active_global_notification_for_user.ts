@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
@@ -19,7 +20,7 @@ export type index_of_active_global_notification_for_userSearchParameters = {
    * by the user.
    */
   show_is_closed: boolean;
-};
+} & Paginated;
 
 type Options = {
   pathParams: index_of_active_global_notification_for_userPathParameters;

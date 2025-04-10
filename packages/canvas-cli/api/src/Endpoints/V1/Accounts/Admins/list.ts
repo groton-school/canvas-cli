@@ -1,4 +1,5 @@
 import { Integer } from '';
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { Admin } from '../../../../Resources/Admins.js';
 
@@ -13,7 +14,7 @@ export type listSearchParameters = {
    * specified here.
    */
   user_id: string[];
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

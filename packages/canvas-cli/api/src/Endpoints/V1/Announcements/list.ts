@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
 import { DiscussionTopic } from '../../../Resources/DiscussionTopics.js';
 
@@ -61,7 +62,7 @@ export type listSearchParameters = {
    * course) that the topic applies to.
    */
   include: string[];
-};
+} & Paginated;
 
 type Options =
   | {

@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { QuizSubmissionQuestion } from '../../../../Resources/QuizSubmissionQuestions.js';
 
@@ -5,6 +6,8 @@ export type answering_questionsPathParameters = {
   /** ID */
   quiz_submission_id: string;
 };
+
+export type answering_questionsSearchParameters = Paginated;
 
 export type answering_questionsFormParameters = {
   /**

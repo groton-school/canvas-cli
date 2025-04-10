@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { MediaTrack } from '../../../../Resources/MediaObjects.js';
 
@@ -13,7 +14,7 @@ export type listSearchParameters = {
    * fields. For example include[]=content
    */
   include: string[];
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

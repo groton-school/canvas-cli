@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { Quiz } from '../../../../Resources/Quizzes.js';
 
@@ -9,7 +10,7 @@ export type listPathParameters = {
 export type listSearchParameters = {
   /** The partial title of the quizzes to match and return. */
   search_term: string;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

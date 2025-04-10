@@ -1,10 +1,13 @@
 import { gradesGradessubmissionSubmission } from '';
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 
 export type updatePathParameters = {
   /** ID */
   id: string;
 };
+
+export type updateSearchParameters = Paginated;
 
 export type updateFormParameters = {
   /**

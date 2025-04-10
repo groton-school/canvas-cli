@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../../Client.js';
 import { Folder } from '../../../../../../Resources/Files.js';
 
@@ -5,6 +6,8 @@ export type resolve_path_groups_full_pathPathParameters = {
   /** ID */
   group_id: string;
 };
+
+export type resolve_path_groups_full_pathSearchParameters = Paginated;
 
 type Options = {
   pathParams: resolve_path_groups_full_pathPathParameters;

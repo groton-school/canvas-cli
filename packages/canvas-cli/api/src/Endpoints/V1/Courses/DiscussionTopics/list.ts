@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { DiscussionTopic } from '../../../../Resources/DiscussionTopics.js';
 
@@ -46,7 +47,7 @@ export type listSearchParameters = {
    * Defaults to false.
    */
   exclude_context_module_locked_topics: boolean;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

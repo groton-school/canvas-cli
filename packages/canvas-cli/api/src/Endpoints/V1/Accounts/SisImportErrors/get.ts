@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { SisImportError } from '../../../../Resources/SisImportErrors.js';
 
@@ -9,7 +10,7 @@ export type getPathParameters = {
 export type getSearchParameters = {
   /** If set, only shows errors on a sis import that would cause a failure. */
   failure: boolean;
-};
+} & Paginated;
 
 type Options = {
   pathParams: getPathParameters;

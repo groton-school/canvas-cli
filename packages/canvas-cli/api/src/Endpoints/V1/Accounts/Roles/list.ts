@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { Role } from '../../../../Resources/Roles.js';
 
@@ -17,7 +18,7 @@ export type listSearchParameters = {
    * be included.
    */
   show_inherited: boolean;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

@@ -1,4 +1,5 @@
 import { JSONObject } from '@battis/typescript-tricks';
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { resultUrlStringTheurltotheresultthatwascreated } from '../../../../../Overrides.js';
 
@@ -8,6 +9,8 @@ export type createPathParameters = {
   /** ID */
   line_item_id: string;
 };
+
+export type createSearchParameters = Paginated;
 
 export type createFormParameters = {
   /**

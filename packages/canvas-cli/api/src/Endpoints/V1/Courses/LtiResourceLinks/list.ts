@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
@@ -18,7 +19,7 @@ export type listSearchParameters = {
    * Format: 'int64'
    */
   per_page: number;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

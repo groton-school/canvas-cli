@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { QuizReport } from '../../../../../Resources/QuizReports.js';
 
@@ -14,7 +15,7 @@ export type retrieve_all_quiz_reportsSearchParameters = {
    * most recent. Defaults to false, ignored for item_analysis reports.
    */
   includes_all_versions: boolean;
-};
+} & Paginated;
 
 type Options = {
   pathParams: retrieve_all_quiz_reportsPathParameters;

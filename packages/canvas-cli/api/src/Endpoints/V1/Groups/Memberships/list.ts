@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { GroupMembership } from '../../../../Resources/Groups.js';
 
@@ -12,7 +13,7 @@ export type listSearchParameters = {
    * return all memberships.
    */
   filter_states: string[];
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

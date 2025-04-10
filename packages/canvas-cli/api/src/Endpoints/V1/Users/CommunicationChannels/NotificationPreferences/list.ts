@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { NotificationPreference } from '../../../../../Resources/NotificationPreferences.js';
 
@@ -9,6 +10,8 @@ export type listPathParameters = {
   /** ID */
   address: string;
 };
+
+export type listSearchParameters = Paginated;
 
 type Options = {
   pathParams: listPathParameters;

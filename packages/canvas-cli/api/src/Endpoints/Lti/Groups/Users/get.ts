@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -5,6 +6,8 @@ export type getPathParameters = {
   /** ID */
   group_id: string;
 };
+
+export type getSearchParameters = Paginated;
 
 type Options = {
   pathParams: getPathParameters;

@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { User } from '../../../../../Resources/Users.js';
 
@@ -7,6 +8,8 @@ export type select_students_for_moderationPathParameters = {
   /** ID */
   assignment_id: string;
 };
+
+export type select_students_for_moderationSearchParameters = Paginated;
 
 export type select_students_for_moderationFormParameters = {
   /** User ids for students to select for moderation */

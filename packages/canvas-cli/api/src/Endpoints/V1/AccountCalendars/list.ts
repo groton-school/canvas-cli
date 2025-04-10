@@ -1,4 +1,5 @@
 import { account_calendarsAccountCalendartotal_resultsinteger } from '';
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
 
 export type listSearchParameters = {
@@ -7,7 +8,7 @@ export type listSearchParameters = {
    * matching results. Term must be at least 2 characters.
    */
   search_term: string;
-};
+} & Paginated;
 
 type Options =
   | {

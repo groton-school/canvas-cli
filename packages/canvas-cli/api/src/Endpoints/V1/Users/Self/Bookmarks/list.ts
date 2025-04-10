@@ -1,5 +1,8 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { Bookmark } from '../../../../../Resources/Bookmarks.js';
+
+export type listSearchParameters = Paginated;
 
 type Options =
   | {

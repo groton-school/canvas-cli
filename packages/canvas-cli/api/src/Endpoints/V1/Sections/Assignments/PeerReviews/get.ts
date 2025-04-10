@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { PeerReview } from '../../../../../Resources/PeerReviews.js';
 
@@ -11,7 +12,7 @@ export type getPathParameters = {
 export type getSearchParameters = {
   /** Associations to include with the peer review. */
   include: string[];
-};
+} & Paginated;
 
 type Options = {
   pathParams: getPathParameters;

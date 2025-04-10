@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -17,7 +18,7 @@ export type listSearchParameters = {
    * group category.
    */
   unassigned: boolean;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

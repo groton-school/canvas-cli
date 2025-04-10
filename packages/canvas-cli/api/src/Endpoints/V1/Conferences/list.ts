@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
 import { Conference } from '../../../Resources/Conferences.js';
 
@@ -8,7 +9,7 @@ export type listSearchParameters = {
    * this user's groups and courses.
    */
   state: string;
-};
+} & Paginated;
 
 type Options =
   | {

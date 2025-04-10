@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
 import { PlannerNote } from '../../../Resources/Planner.js';
 
@@ -28,7 +29,7 @@ export type listSearchParameters = {
    * associated with any particular course.
    */
   context_codes: string[];
-};
+} & Paginated;
 
 type Options =
   | {

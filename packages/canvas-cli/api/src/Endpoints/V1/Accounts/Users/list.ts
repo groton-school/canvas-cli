@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -33,7 +34,7 @@ export type listSearchParameters = {
    * deleted pseudonyms for the context
    */
   include_deleted_users: boolean;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

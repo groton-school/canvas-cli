@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { SearchResult } from '../../../../Resources/SmartSearch.js';
 
@@ -15,7 +16,7 @@ export type search_course_contentSearchParameters = {
    * +discussion_topics+.
    */
   filter: string[];
-};
+} & Paginated;
 
 type Options = {
   pathParams: search_course_contentPathParameters;

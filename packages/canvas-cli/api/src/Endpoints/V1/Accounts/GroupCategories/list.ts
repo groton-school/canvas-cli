@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { GroupCategory } from '../../../../Resources/GroupCategories.js';
 
@@ -15,7 +16,7 @@ export type listSearchParameters = {
    * - "non_collaborative": Return only non-collaborative group categories
    */
   collaboration_state: string;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

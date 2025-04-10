@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { CustomColumn } from '../../../../Resources/CustomGradebookColumns.js';
 
@@ -9,7 +10,7 @@ export type listPathParameters = {
 export type listSearchParameters = {
   /** Include hidden parameters (defaults to false) */
   include_hidden: boolean;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

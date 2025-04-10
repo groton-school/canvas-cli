@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../../Client.js';
 import { ChangeRecord } from '../../../../../../Resources/BlueprintCourses.js';
 
@@ -9,6 +10,8 @@ export type getPathParameters = {
   /** ID */
   id: string;
 };
+
+export type getSearchParameters = Paginated;
 
 type Options = {
   pathParams: getPathParameters;

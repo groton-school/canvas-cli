@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 
 export type listPathParameters = {
@@ -10,7 +11,7 @@ export type listPathParameters = {
 export type listSearchParameters = {
   /** The type of content to enumerate. */
   type: string;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

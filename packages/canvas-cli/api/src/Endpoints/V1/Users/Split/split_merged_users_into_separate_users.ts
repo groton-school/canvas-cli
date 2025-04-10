@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -5,6 +6,8 @@ export type split_merged_users_into_separate_usersPathParameters = {
   /** ID */
   id: string;
 };
+
+export type split_merged_users_into_separate_usersSearchParameters = Paginated;
 
 type Options = {
   pathParams: split_merged_users_into_separate_usersPathParameters;

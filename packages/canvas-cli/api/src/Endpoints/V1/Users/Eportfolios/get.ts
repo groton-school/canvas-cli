@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { ePortfolio } from '../../../../Resources/EPortfolios.js';
 
@@ -12,7 +13,7 @@ export type getSearchParameters = {
    * moderate_user_content.
    */
   include: string[];
-};
+} & Paginated;
 
 type Options = {
   pathParams: getPathParameters;

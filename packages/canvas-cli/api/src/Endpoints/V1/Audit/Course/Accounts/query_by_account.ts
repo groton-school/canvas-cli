@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { CourseEvent } from '../../../../../Resources/CourseAuditLog.js';
 
@@ -19,7 +20,7 @@ export type query_by_accountSearchParameters = {
    * Format: date-time
    */
   end_time: string;
-};
+} & Paginated;
 
 type Options = {
   pathParams: query_by_accountPathParameters;

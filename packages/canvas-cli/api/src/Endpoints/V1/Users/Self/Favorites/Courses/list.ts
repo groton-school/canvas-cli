@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../../Client.js';
 import { Course } from '../../../../../../Resources/Courses.js';
 
@@ -7,7 +8,7 @@ export type listSearchParameters = {
    * courses.
    */
   exclude_blueprint_courses: boolean;
-};
+} & Paginated;
 
 type Options =
   | {

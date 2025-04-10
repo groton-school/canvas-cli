@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
 import { Course } from '../../../Resources/Courses.js';
 
@@ -145,7 +146,7 @@ export type listSearchParameters = {
    * "deleted", for all other enrollment types
    */
   state: string[];
-};
+} & Paginated;
 
 type Options =
   | {

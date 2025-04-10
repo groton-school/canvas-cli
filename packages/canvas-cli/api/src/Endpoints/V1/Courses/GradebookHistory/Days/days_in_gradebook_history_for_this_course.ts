@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { Day } from '../../../../../Resources/GradebookHistory.js';
 
@@ -9,6 +10,9 @@ export type days_in_gradebook_history_for_this_coursePathParameters = {
    */
   course_id: number;
 };
+
+export type days_in_gradebook_history_for_this_courseSearchParameters =
+  Paginated;
 
 type Options = {
   pathParams: days_in_gradebook_history_for_this_coursePathParameters;

@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { Collaborator } from '../../../../Resources/Collaborations.js';
 
@@ -14,7 +15,7 @@ export type listSearchParameters = {
    *   url for the avatar of a collaborator with type 'user'.
    */
   include: string[];
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

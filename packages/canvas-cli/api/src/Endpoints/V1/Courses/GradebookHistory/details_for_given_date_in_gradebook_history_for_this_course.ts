@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { Grader } from '../../../../Resources/GradebookHistory.js';
 
@@ -12,6 +13,9 @@ export type details_for_given_date_in_gradebook_history_for_this_coursePathParam
     /** The date for which you would like to see detailed information */
     date: string;
   };
+
+export type details_for_given_date_in_gradebook_history_for_this_courseSearchParameters =
+  Paginated;
 
 type Options = {
   pathParams: details_for_given_date_in_gradebook_history_for_this_coursePathParameters;

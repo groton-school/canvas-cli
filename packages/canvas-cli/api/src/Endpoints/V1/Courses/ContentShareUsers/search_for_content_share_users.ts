@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -12,7 +13,7 @@ export type search_for_content_share_usersSearchParameters = {
    * search term in their name.
    */
   search_term: string;
-};
+} & Paginated;
 
 type Options = {
   pathParams: search_for_content_share_usersPathParameters;

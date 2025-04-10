@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { Course } from '../../../../Resources/Courses.js';
 
@@ -111,7 +112,7 @@ export type listSearchParameters = {
   homeroom: boolean;
   /** If set, only include courses associated with this account */
   account_id: string;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

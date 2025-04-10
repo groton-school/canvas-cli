@@ -1,10 +1,13 @@
 import { BlackoutDateTheresultwhichshouldmatchtheinputwithmaybesomedifferentIDs } from '';
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 
 export type updatePathParameters = {
   /** ID */
   course_id: string;
 };
+
+export type updateSearchParameters = Paginated;
 
 export type updateFormParameters = {
   /**

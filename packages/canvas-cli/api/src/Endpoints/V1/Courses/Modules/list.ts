@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { Module } from '../../../../Resources/CoursePace.js';
 
@@ -28,7 +29,7 @@ export type listSearchParameters = {
   search_term: string;
   /** Returns module completion information for the student with this id. */
   student_id: string;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

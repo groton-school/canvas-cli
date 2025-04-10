@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { DeveloperKey } from '../../../../Resources/DeveloperKeys.js';
 
@@ -12,7 +13,7 @@ export type listSearchParameters = {
    * consortium parent account, if applicable).
    */
   inherited: boolean;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

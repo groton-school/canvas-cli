@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
@@ -7,6 +8,8 @@ export type index_of_reportsPathParameters = {
   /** ID */
   report: string;
 };
+
+export type index_of_reportsSearchParameters = Paginated;
 
 type Options = {
   pathParams: index_of_reportsPathParameters;

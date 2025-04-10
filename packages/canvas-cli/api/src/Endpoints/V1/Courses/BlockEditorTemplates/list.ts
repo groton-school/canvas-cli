@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { BlockEditorTemplate } from '../../../../Resources/BlockEditorTemplate.js';
 
@@ -20,7 +21,7 @@ export type listSearchParameters = {
   type: string[];
   /** No description */
   include: string[];
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

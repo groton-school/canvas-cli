@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { AssignmentGroup } from '../../../../Resources/AssignmentGroups.js';
 
@@ -46,7 +47,7 @@ export type listSearchParameters = {
    * exist. In addition, the current user must be a student.)
    */
   scope_assignments_to_student: boolean;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -79,7 +80,7 @@ export type listSearchParameters = {
    * default.
    */
   enrollment_state: string[];
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

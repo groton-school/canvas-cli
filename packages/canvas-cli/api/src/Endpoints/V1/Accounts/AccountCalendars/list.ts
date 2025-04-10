@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { AccountCalendar } from '../../../../Resources/AccountCalendars.js';
 
@@ -18,7 +19,7 @@ export type listSearchParameters = {
    * Can be combined with a search term.
    */
   filter: string;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
@@ -88,7 +89,7 @@ export type listSearchParameters = {
    * from a sis_import with that sis_user_id
    */
   created_for_sis_id: string[];
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

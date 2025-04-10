@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../../Client.js';
 import { BasicUser } from '../../../../../../Resources/Assignments.js';
 
@@ -9,6 +10,8 @@ export type listPathParameters = {
   /** ID */
   user_id: string;
 };
+
+export type listSearchParameters = Paginated;
 
 type Options = {
   pathParams: listPathParameters;

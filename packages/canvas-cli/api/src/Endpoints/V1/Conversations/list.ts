@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
 import { Conversation } from '../../../Resources/Conversations.js';
 
@@ -40,7 +41,7 @@ export type listSearchParameters = {
    * user participanting in the conversation
    */
   include: string[];
-};
+} & Paginated;
 
 type Options =
   | {

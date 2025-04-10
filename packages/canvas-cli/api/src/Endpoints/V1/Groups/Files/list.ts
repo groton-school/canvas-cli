@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { File } from '../../../../Resources/Files.js';
 
@@ -42,7 +43,7 @@ export type listSearchParameters = {
   sort: string;
   /** The sorting order. Defaults to 'asc'. */
   order: string;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

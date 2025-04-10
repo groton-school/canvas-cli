@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { MediaObject } from '../../../../Resources/MediaObjects.js';
 
@@ -25,7 +26,7 @@ export type listSearchParameters = {
    * kaltura for media_tracks
    */
   exclude: string[];
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

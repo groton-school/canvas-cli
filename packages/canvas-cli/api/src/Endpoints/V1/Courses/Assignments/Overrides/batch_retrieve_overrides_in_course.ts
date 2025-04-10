@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
@@ -11,7 +12,7 @@ export type batch_retrieve_overrides_in_courseSearchParameters = {
   'assignment_overrides[id]': string[];
   /** Ids of assignments for each override */
   'assignment_overrides[assignment_id]': string[];
-};
+} & Paginated;
 
 type Options = {
   pathParams: batch_retrieve_overrides_in_coursePathParameters;

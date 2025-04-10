@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { ePortfolioPage } from '../../../../Resources/EPortfolios.js';
 
@@ -5,6 +6,8 @@ export type getPathParameters = {
   /** ID */
   eportfolio_id: string;
 };
+
+export type getSearchParameters = Paginated;
 
 type Options = {
   pathParams: getPathParameters;

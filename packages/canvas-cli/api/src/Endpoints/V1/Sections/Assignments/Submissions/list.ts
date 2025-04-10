@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { Submission } from '../../../../../Resources/Submissions.js';
 
@@ -16,7 +17,7 @@ export type listSearchParameters = {
   include: string[];
   /** If this argument is true, the response will be grouped by student groups. */
   grouped: boolean;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

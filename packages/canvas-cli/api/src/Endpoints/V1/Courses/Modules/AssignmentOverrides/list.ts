@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { ModuleAssignmentOverride } from '../../../../../Resources/Modules.js';
 
@@ -7,6 +8,8 @@ export type listPathParameters = {
   /** ID */
   context_module_id: string;
 };
+
+export type listSearchParameters = Paginated;
 
 type Options = {
   pathParams: listPathParameters;

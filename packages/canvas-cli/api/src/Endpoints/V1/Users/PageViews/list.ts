@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { PageView } from '../../../../Resources/Users.js';
 
@@ -19,7 +20,7 @@ export type listSearchParameters = {
    * Format: date-time
    */
   end_time: string;
-};
+} & Paginated;
 
 type Options = {
   pathParams: listPathParameters;

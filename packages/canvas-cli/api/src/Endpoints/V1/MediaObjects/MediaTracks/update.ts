@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { MediaTrack } from '../../../../Resources/MediaObjects.js';
 
@@ -5,6 +6,8 @@ export type updatePathParameters = {
   /** ID */
   media_object_id: string;
 };
+
+export type updateSearchParameters = Paginated;
 
 export type updateFormParameters = {
   /**

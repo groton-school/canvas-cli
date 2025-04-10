@@ -1,3 +1,4 @@
+import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
 import { Account } from '../../../Resources/Accounts.js';
 
@@ -14,7 +15,7 @@ export type listSearchParameters = {
    * under each account
    */
   include: string[];
-};
+} & Paginated;
 
 type Options =
   | {
