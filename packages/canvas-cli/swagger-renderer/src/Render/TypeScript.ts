@@ -65,7 +65,7 @@ export function toTSType(property: Swagger.v1p2.DataType): TSType {
           if ('$ref' in property.items && property.items.$ref === 'Array') {
             tsType.type = 'string[]';
             Log.warning(
-              ` Interpretting an array with ${Colors.value('items.$ref')}: ${Colors.quotedValue(`"Array"`)} as ${Colors.value(tsType.type)}`
+              `Interpretting an array with ${Colors.value('items.$ref')}: ${Colors.quotedValue(`"Array"`)} as ${Colors.value(tsType.type)}`
             );
             break;
           } else {
@@ -74,10 +74,6 @@ export function toTSType(property: Swagger.v1p2.DataType): TSType {
             tsType.tsReference = itemType.tsReference;
           }
         }
-        tsType.type = 'string[]';
-        Log.warning(
-          `Interpretting ${Colors.value('type')}: ${Colors.quotedValue(`"${property.type}"`)} as  ${Colors.value(tsType.type)}`
-        );
         break;
       default:
         Log.warning(
