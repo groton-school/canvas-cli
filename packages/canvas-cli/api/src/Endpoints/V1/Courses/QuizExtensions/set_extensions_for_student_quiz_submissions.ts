@@ -49,8 +49,16 @@ export type set_extensions_for_student_quiz_submissionsFormParameters = {
 
 type Options = {
   pathParams: set_extensions_for_student_quiz_submissionsPathParameters;
-  params?: set_extensions_for_student_quiz_submissionsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<set_extensions_for_student_quiz_submissionsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: set_extensions_for_student_quiz_submissionsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Set extensions for student quiz submissions

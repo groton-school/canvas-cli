@@ -9,7 +9,14 @@ export type leave_group_usersPathParameters = {
 
 type Options = {
   pathParams: leave_group_usersPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Leave a group

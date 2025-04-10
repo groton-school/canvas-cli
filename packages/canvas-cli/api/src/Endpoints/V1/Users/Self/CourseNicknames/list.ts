@@ -1,7 +1,13 @@
 import { client } from '../../../../../Client.js';
 import { CourseNickname } from '../../../../../Resources/Users.js';
 
-type Options = {};
+type Options =
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    };
 
 /**
  * List course nicknames

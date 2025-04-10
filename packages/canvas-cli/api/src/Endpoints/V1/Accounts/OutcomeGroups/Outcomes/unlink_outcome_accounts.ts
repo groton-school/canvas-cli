@@ -12,7 +12,14 @@ export type unlink_outcome_accountsPathParameters = {
 
 type Options = {
   pathParams: unlink_outcome_accountsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Unlink an outcome

@@ -10,7 +10,14 @@ export type delete_external_feed_groupsPathParameters = {
 
 type Options = {
   pathParams: delete_external_feed_groupsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete an external feed

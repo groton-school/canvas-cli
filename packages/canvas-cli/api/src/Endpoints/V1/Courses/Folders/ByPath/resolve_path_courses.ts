@@ -8,7 +8,14 @@ export type resolve_path_coursesPathParameters = {
 
 type Options = {
   pathParams: resolve_path_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Resolve path

@@ -17,7 +17,14 @@ export type revert_to_revision_coursesPathParameters = {
 
 type Options = {
   pathParams: revert_to_revision_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Revert to revision

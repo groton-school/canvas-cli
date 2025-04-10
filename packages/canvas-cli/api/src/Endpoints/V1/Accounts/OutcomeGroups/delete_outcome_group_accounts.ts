@@ -10,7 +10,14 @@ export type delete_outcome_group_accountsPathParameters = {
 
 type Options = {
   pathParams: delete_outcome_group_accountsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete an outcome group

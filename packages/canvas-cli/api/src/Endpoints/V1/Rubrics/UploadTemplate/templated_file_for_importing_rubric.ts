@@ -1,6 +1,12 @@
 import { client } from '../../../../Client.js';
 
-type Options = {};
+type Options =
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    };
 
 /**
  * Templated file for importing a rubric

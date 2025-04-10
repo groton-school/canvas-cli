@@ -9,7 +9,14 @@ export type delete_user_loginPathParameters = {
 
 type Options = {
   pathParams: delete_user_loginPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a user login

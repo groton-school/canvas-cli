@@ -22,8 +22,16 @@ export type activate_roleFormParameters = {
 
 type Options = {
   pathParams: activate_rolePathParameters;
-  params?: activate_roleFormParameters;
-};
+} & (
+  | {
+      params?: Partial<activate_roleFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: activate_roleFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Activate a role

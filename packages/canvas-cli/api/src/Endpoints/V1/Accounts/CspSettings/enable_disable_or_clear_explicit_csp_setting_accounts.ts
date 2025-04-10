@@ -22,8 +22,16 @@ export type enable_disable_or_clear_explicit_csp_setting_accountsFormParameters 
 
 type Options = {
   pathParams: enable_disable_or_clear_explicit_csp_setting_accountsPathParameters;
-  params?: enable_disable_or_clear_explicit_csp_setting_accountsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<enable_disable_or_clear_explicit_csp_setting_accountsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: enable_disable_or_clear_explicit_csp_setting_accountsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Enable, disable, or clear explicit CSP setting

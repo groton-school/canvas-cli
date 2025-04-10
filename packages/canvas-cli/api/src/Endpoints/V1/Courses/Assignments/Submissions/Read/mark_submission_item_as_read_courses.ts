@@ -13,7 +13,14 @@ export type mark_submission_item_as_read_coursesPathParameters = {
 
 type Options = {
   pathParams: mark_submission_item_as_read_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Mark submission item as read

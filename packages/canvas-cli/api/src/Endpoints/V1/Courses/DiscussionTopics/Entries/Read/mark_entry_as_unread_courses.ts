@@ -19,8 +19,16 @@ export type mark_entry_as_unread_coursesSearchParameters = {
 
 type Options = {
   pathParams: mark_entry_as_unread_coursesPathParameters;
-  searchParams?: mark_entry_as_unread_coursesSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<mark_entry_as_unread_coursesSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: mark_entry_as_unread_coursesSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Mark entry as unread

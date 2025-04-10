@@ -21,8 +21,16 @@ export type post_reply_groupsFormParameters = {
 
 type Options = {
   pathParams: post_reply_groupsPathParameters;
-  params?: post_reply_groupsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<post_reply_groupsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: post_reply_groupsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Post a reply

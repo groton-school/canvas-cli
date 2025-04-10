@@ -7,7 +7,14 @@ export type hide_stream_itemPathParameters = {
 
 type Options = {
   pathParams: hide_stream_itemPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Hide a stream item

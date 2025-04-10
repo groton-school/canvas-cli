@@ -10,7 +10,14 @@ export type updatePathParameters = {
 
 type Options = {
   pathParams: updatePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Update a custom gradebook column

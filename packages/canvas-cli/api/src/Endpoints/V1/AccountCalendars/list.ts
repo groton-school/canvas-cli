@@ -9,9 +9,15 @@ export type listSearchParameters = {
   search_term: string;
 };
 
-type Options = {
-  searchParams?: listSearchParameters;
-};
+type Options =
+  | {
+      searchParams?: Partial<listSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: listSearchParameters;
+      strict: true;
+    };
 
 /**
  * List available account calendars

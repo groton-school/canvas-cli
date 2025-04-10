@@ -9,7 +9,14 @@ export type redirect_to_assignment_override_for_sectionPathParameters = {
 
 type Options = {
   pathParams: redirect_to_assignment_override_for_sectionPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Redirect to the assignment override for a section

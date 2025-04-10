@@ -10,7 +10,14 @@ export type delete_communication_channel_idPathParameters = {
 
 type Options = {
   pathParams: delete_communication_channel_idPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a communication channel

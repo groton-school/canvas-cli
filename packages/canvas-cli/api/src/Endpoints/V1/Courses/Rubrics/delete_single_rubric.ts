@@ -10,7 +10,14 @@ export type delete_single_rubricPathParameters = {
 
 type Options = {
   pathParams: delete_single_rubricPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a single rubric

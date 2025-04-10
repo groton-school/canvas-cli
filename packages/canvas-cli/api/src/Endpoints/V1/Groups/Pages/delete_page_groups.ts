@@ -10,7 +10,14 @@ export type delete_page_groupsPathParameters = {
 
 type Options = {
   pathParams: delete_page_groupsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete page

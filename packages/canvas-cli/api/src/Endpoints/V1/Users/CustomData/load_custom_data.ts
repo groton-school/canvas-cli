@@ -16,8 +16,16 @@ export type load_custom_dataSearchParameters = {
 
 type Options = {
   pathParams: load_custom_dataPathParameters;
-  searchParams?: load_custom_dataSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<load_custom_dataSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: load_custom_dataSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Load custom data

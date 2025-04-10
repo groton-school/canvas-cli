@@ -12,7 +12,14 @@ export type delete_reportPathParameters = {
 
 type Options = {
   pathParams: delete_reportPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a Report

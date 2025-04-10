@@ -8,7 +8,14 @@ export type show_front_page_groupsPathParameters = {
 
 type Options = {
   pathParams: show_front_page_groupsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show front page

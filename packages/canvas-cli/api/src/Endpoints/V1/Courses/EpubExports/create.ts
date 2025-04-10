@@ -8,7 +8,14 @@ export type createPathParameters = {
 
 type Options = {
   pathParams: createPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Create ePub Export

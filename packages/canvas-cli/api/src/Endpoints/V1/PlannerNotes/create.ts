@@ -40,9 +40,15 @@ export type createFormParameters = {
   linked_object_id: number;
 };
 
-type Options = {
-  params?: createFormParameters;
-};
+type Options =
+  | {
+      params?: Partial<createFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: createFormParameters;
+      strict: true;
+    };
 
 /**
  * Create a planner note

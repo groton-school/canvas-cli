@@ -7,7 +7,14 @@ export type settingsPathParameters = {
 
 type Options = {
   pathParams: settingsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Settings

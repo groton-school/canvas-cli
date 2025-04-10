@@ -8,9 +8,15 @@ export type activity_stream_summarySearchParameters = {
   only_active_courses: boolean;
 };
 
-type Options = {
-  searchParams?: activity_stream_summarySearchParameters;
-};
+type Options =
+  | {
+      searchParams?: Partial<activity_stream_summarySearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: activity_stream_summarySearchParameters;
+      strict: true;
+    };
 
 /**
  * Activity stream summary

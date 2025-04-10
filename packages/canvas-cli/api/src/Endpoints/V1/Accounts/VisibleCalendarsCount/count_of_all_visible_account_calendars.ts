@@ -7,7 +7,14 @@ export type count_of_all_visible_account_calendarsPathParameters = {
 
 type Options = {
   pathParams: count_of_all_visible_account_calendarsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Count of all visible account calendars

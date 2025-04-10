@@ -26,7 +26,14 @@ export type lists_submissionsPathParameters = {
 
 type Options = {
   pathParams: lists_submissionsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Lists submissions

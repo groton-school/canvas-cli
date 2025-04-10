@@ -52,8 +52,16 @@ export type import_outcomes_coursesFormParameters = {
 
 type Options = {
   pathParams: import_outcomes_coursesPathParameters;
-  params?: import_outcomes_coursesFormParameters;
-};
+} & (
+  | {
+      params?: Partial<import_outcomes_coursesFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: import_outcomes_coursesFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Import Outcomes

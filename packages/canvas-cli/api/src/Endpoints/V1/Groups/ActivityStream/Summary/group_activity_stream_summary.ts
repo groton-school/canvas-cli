@@ -7,7 +7,14 @@ export type group_activity_stream_summaryPathParameters = {
 
 type Options = {
   pathParams: group_activity_stream_summaryPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Group activity stream summary

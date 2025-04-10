@@ -35,8 +35,16 @@ export type begin_migration_to_push_to_associated_coursesFormParameters = {
 
 type Options = {
   pathParams: begin_migration_to_push_to_associated_coursesPathParameters;
-  params?: begin_migration_to_push_to_associated_coursesFormParameters;
-};
+} & (
+  | {
+      params?: Partial<begin_migration_to_push_to_associated_coursesFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: begin_migration_to_push_to_associated_coursesFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Begin a migration to push to associated courses

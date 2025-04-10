@@ -7,7 +7,14 @@ export type listPathParameters = {
 
 type Options = {
   pathParams: listPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * List live assessments

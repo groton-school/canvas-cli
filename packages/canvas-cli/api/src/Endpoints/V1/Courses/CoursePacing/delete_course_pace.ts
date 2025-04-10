@@ -23,8 +23,16 @@ export type delete_course_paceSearchParameters = {
 
 type Options = {
   pathParams: delete_course_pacePathParameters;
-  searchParams?: delete_course_paceSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<delete_course_paceSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: delete_course_paceSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Delete a Course pace

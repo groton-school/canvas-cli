@@ -33,8 +33,16 @@ export type answering_questionsFormParameters = {
 
 type Options = {
   pathParams: answering_questionsPathParameters;
-  params?: answering_questionsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<answering_questionsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: answering_questionsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Answering questions

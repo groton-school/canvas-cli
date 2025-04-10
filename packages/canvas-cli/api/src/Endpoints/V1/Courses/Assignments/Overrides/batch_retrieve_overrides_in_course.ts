@@ -15,8 +15,16 @@ export type batch_retrieve_overrides_in_courseSearchParameters = {
 
 type Options = {
   pathParams: batch_retrieve_overrides_in_coursePathParameters;
-  searchParams?: batch_retrieve_overrides_in_courseSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<batch_retrieve_overrides_in_courseSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: batch_retrieve_overrides_in_courseSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Batch retrieve overrides in a course

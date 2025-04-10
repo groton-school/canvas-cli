@@ -10,7 +10,14 @@ export type duplicate_discussion_topic_coursesPathParameters = {
 
 type Options = {
   pathParams: duplicate_discussion_topic_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Duplicate discussion topic

@@ -11,7 +11,14 @@ export type mark_module_item_readPathParameters = {
 
 type Options = {
   pathParams: mark_module_item_readPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Mark module item read

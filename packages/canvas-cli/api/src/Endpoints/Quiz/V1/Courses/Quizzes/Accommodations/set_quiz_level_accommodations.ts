@@ -42,8 +42,16 @@ export type set_quiz_level_accommodationsFormParameters = {
 
 type Options = {
   pathParams: set_quiz_level_accommodationsPathParameters;
-  params?: set_quiz_level_accommodationsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<set_quiz_level_accommodationsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: set_quiz_level_accommodationsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Set Quiz-Level Accommodations

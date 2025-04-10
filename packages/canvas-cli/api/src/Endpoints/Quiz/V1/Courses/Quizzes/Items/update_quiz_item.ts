@@ -94,8 +94,16 @@ export type update_quiz_itemFormParameters = {
 
 type Options = {
   pathParams: update_quiz_itemPathParameters;
-  params?: update_quiz_itemFormParameters;
-};
+} & (
+  | {
+      params?: Partial<update_quiz_itemFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: update_quiz_itemFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Update a quiz item

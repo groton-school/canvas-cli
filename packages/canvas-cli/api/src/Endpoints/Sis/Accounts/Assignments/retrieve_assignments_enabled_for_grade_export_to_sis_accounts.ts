@@ -36,8 +36,16 @@ export type retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchP
 
 type Options = {
   pathParams: retrieve_assignments_enabled_for_grade_export_to_sis_accountsPathParameters;
-  searchParams?: retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Retrieve assignments enabled for grade export to SIS

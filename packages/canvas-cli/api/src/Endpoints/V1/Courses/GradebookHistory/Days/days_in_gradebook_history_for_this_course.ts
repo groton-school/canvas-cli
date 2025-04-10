@@ -12,7 +12,14 @@ export type days_in_gradebook_history_for_this_coursePathParameters = {
 
 type Options = {
   pathParams: days_in_gradebook_history_for_this_coursePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Days in gradebook history for this course

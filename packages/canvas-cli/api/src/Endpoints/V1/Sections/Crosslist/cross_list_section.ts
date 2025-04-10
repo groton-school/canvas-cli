@@ -19,8 +19,16 @@ export type cross_list_sectionFormParameters = {
 
 type Options = {
   pathParams: cross_list_sectionPathParameters;
-  params?: cross_list_sectionFormParameters;
-};
+} & (
+  | {
+      params?: Partial<cross_list_sectionFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: cross_list_sectionFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Cross-list a Section

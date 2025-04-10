@@ -10,7 +10,14 @@ export type show_outcome_group_coursesPathParameters = {
 
 type Options = {
   pathParams: show_outcome_group_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show an outcome group

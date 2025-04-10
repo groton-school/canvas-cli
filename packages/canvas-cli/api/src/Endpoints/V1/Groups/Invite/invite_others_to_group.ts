@@ -12,8 +12,16 @@ export type invite_others_to_groupFormParameters = {
 
 type Options = {
   pathParams: invite_others_to_groupPathParameters;
-  params?: invite_others_to_groupFormParameters;
-};
+} & (
+  | {
+      params?: Partial<invite_others_to_groupFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: invite_others_to_groupFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Invite others to a group

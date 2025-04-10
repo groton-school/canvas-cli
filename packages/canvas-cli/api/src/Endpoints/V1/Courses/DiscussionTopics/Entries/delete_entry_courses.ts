@@ -11,7 +11,14 @@ export type delete_entry_coursesPathParameters = {
 
 type Options = {
   pathParams: delete_entry_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete an entry

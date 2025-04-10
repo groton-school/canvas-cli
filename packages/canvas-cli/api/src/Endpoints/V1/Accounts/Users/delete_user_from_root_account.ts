@@ -10,7 +10,14 @@ export type delete_user_from_root_accountPathParameters = {
 
 type Options = {
   pathParams: delete_user_from_root_accountPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a user from the root account

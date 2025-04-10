@@ -1,7 +1,13 @@
 import { client } from '../../../Client.js';
 import { InstAccessToken } from '../../../Resources/InstAccessTokens.js';
 
-type Options = {};
+type Options =
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    };
 
 /**
  * Create InstAccess token

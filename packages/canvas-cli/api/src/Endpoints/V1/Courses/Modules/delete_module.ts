@@ -10,7 +10,14 @@ export type delete_modulePathParameters = {
 
 type Options = {
   pathParams: delete_modulePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete module

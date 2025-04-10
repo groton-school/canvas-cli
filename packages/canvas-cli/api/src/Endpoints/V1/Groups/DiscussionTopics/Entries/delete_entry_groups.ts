@@ -11,7 +11,14 @@ export type delete_entry_groupsPathParameters = {
 
 type Options = {
   pathParams: delete_entry_groupsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete an entry

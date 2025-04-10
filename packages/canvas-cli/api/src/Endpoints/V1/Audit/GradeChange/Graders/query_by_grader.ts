@@ -23,8 +23,16 @@ export type query_by_graderSearchParameters = {
 
 type Options = {
   pathParams: query_by_graderPathParameters;
-  searchParams?: query_by_graderSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<query_by_graderSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: query_by_graderSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Query by grader

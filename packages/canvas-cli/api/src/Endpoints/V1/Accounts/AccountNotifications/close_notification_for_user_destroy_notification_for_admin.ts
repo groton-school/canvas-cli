@@ -17,8 +17,16 @@ export type close_notification_for_user_destroy_notification_for_adminSearchPara
 
 type Options = {
   pathParams: close_notification_for_user_destroy_notification_for_adminPathParameters;
-  searchParams?: close_notification_for_user_destroy_notification_for_adminSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<close_notification_for_user_destroy_notification_for_adminSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: close_notification_for_user_destroy_notification_for_adminSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Close notification for user. Destroy notification for admin

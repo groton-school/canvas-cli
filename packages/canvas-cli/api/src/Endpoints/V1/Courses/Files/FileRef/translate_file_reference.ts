@@ -10,7 +10,14 @@ export type translate_file_referencePathParameters = {
 
 type Options = {
   pathParams: translate_file_referencePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Translate file reference

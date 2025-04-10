@@ -27,8 +27,16 @@ export type unflagging_questionFormParameters = {
 
 type Options = {
   pathParams: unflagging_questionPathParameters;
-  params?: unflagging_questionFormParameters;
-};
+} & (
+  | {
+      params?: Partial<unflagging_questionFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: unflagging_questionFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Unflagging a question.

@@ -35,8 +35,16 @@ export type set_or_remove_restrictions_on_blueprint_course_objectFormParameters 
 
 type Options = {
   pathParams: set_or_remove_restrictions_on_blueprint_course_objectPathParameters;
-  params?: set_or_remove_restrictions_on_blueprint_course_objectFormParameters;
-};
+} & (
+  | {
+      params?: Partial<set_or_remove_restrictions_on_blueprint_course_objectFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: set_or_remove_restrictions_on_blueprint_course_objectFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Set or remove restrictions on a blueprint course object

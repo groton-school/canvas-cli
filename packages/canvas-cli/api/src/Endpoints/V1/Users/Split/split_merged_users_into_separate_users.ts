@@ -8,7 +8,14 @@ export type split_merged_users_into_separate_usersPathParameters = {
 
 type Options = {
   pathParams: split_merged_users_into_separate_usersPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Split merged users into separate users

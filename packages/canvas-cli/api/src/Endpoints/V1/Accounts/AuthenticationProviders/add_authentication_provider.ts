@@ -8,7 +8,14 @@ export type add_authentication_providerPathParameters = {
 
 type Options = {
   pathParams: add_authentication_providerPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Add authentication provider

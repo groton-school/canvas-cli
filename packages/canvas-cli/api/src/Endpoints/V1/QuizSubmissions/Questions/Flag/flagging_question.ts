@@ -27,8 +27,16 @@ export type flagging_questionFormParameters = {
 
 type Options = {
   pathParams: flagging_questionPathParameters;
-  params?: flagging_questionFormParameters;
-};
+} & (
+  | {
+      params?: Partial<flagging_questionFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: flagging_questionFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Flagging a question.

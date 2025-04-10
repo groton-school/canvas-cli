@@ -16,8 +16,16 @@ export type permissionsSearchParameters = {
 
 type Options = {
   pathParams: permissionsPathParameters;
-  searchParams?: permissionsSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<permissionsSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: permissionsSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Permissions

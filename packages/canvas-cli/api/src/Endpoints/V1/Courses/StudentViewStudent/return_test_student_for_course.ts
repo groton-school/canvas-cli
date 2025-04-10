@@ -8,7 +8,14 @@ export type return_test_student_for_coursePathParameters = {
 
 type Options = {
   pathParams: return_test_student_for_coursePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Return test student for course

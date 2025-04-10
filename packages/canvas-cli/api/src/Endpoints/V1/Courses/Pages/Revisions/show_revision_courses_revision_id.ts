@@ -17,8 +17,16 @@ export type show_revision_courses_revision_idSearchParameters = {
 
 type Options = {
   pathParams: show_revision_courses_revision_idPathParameters;
-  searchParams?: show_revision_courses_revision_idSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<show_revision_courses_revision_idSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: show_revision_courses_revision_idSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Show revision

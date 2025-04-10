@@ -26,8 +26,16 @@ export type import_outcome_group_globalFormParameters = {
 
 type Options = {
   pathParams: import_outcome_group_globalPathParameters;
-  params?: import_outcome_group_globalFormParameters;
-};
+} & (
+  | {
+      params?: Partial<import_outcome_group_globalFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: import_outcome_group_globalFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Import an outcome group

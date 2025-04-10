@@ -20,8 +20,16 @@ export type reorder_quiz_itemsFormParameters = {
 
 type Options = {
   pathParams: reorder_quiz_itemsPathParameters;
-  params?: reorder_quiz_itemsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<reorder_quiz_itemsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: reorder_quiz_itemsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Reorder quiz items

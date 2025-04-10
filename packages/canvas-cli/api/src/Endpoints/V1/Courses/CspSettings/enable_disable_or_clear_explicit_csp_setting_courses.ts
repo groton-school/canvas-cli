@@ -22,8 +22,16 @@ export type enable_disable_or_clear_explicit_csp_setting_coursesFormParameters =
 
 type Options = {
   pathParams: enable_disable_or_clear_explicit_csp_setting_coursesPathParameters;
-  params?: enable_disable_or_clear_explicit_csp_setting_coursesFormParameters;
-};
+} & (
+  | {
+      params?: Partial<enable_disable_or_clear_explicit_csp_setting_coursesFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: enable_disable_or_clear_explicit_csp_setting_coursesFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Enable, disable, or clear explicit CSP setting

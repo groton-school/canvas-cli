@@ -8,7 +8,14 @@ export type reset_link_verifierPathParameters = {
 
 type Options = {
   pathParams: reset_link_verifierPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Reset link verifier

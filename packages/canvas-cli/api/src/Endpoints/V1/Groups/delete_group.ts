@@ -8,7 +8,14 @@ export type delete_groupPathParameters = {
 
 type Options = {
   pathParams: delete_groupPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a group

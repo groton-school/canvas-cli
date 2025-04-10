@@ -23,8 +23,16 @@ export type query_by_accountSearchParameters = {
 
 type Options = {
   pathParams: query_by_accountPathParameters;
-  searchParams?: query_by_accountSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<query_by_accountSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: query_by_accountSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Query by account.

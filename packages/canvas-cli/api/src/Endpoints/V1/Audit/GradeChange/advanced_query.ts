@@ -41,9 +41,15 @@ export type advanced_querySearchParameters = {
   end_time: string;
 };
 
-type Options = {
-  searchParams?: advanced_querySearchParameters;
-};
+type Options =
+  | {
+      searchParams?: Partial<advanced_querySearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: advanced_querySearchParameters;
+      strict: true;
+    };
 
 /**
  * Advanced query

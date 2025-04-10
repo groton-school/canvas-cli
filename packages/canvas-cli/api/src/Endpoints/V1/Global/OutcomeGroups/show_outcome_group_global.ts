@@ -8,7 +8,14 @@ export type show_outcome_group_globalPathParameters = {
 
 type Options = {
   pathParams: show_outcome_group_globalPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show an outcome group

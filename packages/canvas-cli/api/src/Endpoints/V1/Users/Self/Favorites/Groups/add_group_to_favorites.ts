@@ -11,7 +11,14 @@ export type add_group_to_favoritesPathParameters = {
 
 type Options = {
   pathParams: add_group_to_favoritesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Add group to favorites

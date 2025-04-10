@@ -9,7 +9,14 @@ export type disable_summary_coursesPathParameters = {
 
 type Options = {
   pathParams: disable_summary_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Disable summary

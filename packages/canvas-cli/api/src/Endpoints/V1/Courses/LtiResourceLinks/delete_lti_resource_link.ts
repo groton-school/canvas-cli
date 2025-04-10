@@ -10,7 +10,14 @@ export type delete_lti_resource_linkPathParameters = {
 
 type Options = {
   pathParams: delete_lti_resource_linkPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete an LTI Resource Link

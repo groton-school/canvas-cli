@@ -10,7 +10,14 @@ export type show_observerPathParameters = {
 
 type Options = {
   pathParams: show_observerPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show an observer

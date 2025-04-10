@@ -12,7 +12,14 @@ export type delete_assignment_overridePathParameters = {
 
 type Options = {
   pathParams: delete_assignment_overridePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete an assignment override

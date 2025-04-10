@@ -24,8 +24,16 @@ export type show_module_itemSearchParameters = {
 
 type Options = {
   pathParams: show_module_itemPathParameters;
-  searchParams?: show_module_itemSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<show_module_itemSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: show_module_itemSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Show module item

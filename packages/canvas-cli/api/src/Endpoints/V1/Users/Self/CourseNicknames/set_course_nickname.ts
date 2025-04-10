@@ -13,8 +13,16 @@ export type set_course_nicknameFormParameters = {
 
 type Options = {
   pathParams: set_course_nicknamePathParameters;
-  params?: set_course_nicknameFormParameters;
-};
+} & (
+  | {
+      params?: Partial<set_course_nicknameFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: set_course_nicknameFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Set course nickname

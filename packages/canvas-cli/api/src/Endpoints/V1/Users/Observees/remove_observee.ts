@@ -19,8 +19,16 @@ export type remove_observeeSearchParameters = {
 
 type Options = {
   pathParams: remove_observeePathParameters;
-  searchParams?: remove_observeeSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<remove_observeeSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: remove_observeeSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Remove an observee

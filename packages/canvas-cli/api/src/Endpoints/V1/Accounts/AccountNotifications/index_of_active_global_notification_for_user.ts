@@ -23,8 +23,16 @@ export type index_of_active_global_notification_for_userSearchParameters = {
 
 type Options = {
   pathParams: index_of_active_global_notification_for_userPathParameters;
-  searchParams?: index_of_active_global_notification_for_userSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<index_of_active_global_notification_for_userSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: index_of_active_global_notification_for_userSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Index of active global notification for the user

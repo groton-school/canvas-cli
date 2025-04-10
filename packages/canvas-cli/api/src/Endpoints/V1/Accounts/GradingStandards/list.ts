@@ -8,7 +8,14 @@ export type listPathParameters = {
 
 type Options = {
   pathParams: listPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * List the grading standards available in a context.

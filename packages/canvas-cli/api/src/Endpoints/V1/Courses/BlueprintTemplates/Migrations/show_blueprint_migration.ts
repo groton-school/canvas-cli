@@ -12,7 +12,14 @@ export type show_blueprint_migrationPathParameters = {
 
 type Options = {
   pathParams: show_blueprint_migrationPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show a blueprint migration

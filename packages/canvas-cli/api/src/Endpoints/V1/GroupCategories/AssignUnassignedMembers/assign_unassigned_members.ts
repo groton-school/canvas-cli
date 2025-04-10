@@ -17,8 +17,16 @@ export type assign_unassigned_membersFormParameters = {
 
 type Options = {
   pathParams: assign_unassigned_membersPathParameters;
-  params?: assign_unassigned_membersFormParameters;
-};
+} & (
+  | {
+      params?: Partial<assign_unassigned_membersFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: assign_unassigned_membersFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Assign unassigned members

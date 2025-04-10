@@ -12,8 +12,16 @@ export type mark_bulk_submissions_as_read_coursesFormParameters = {
 
 type Options = {
   pathParams: mark_bulk_submissions_as_read_coursesPathParameters;
-  params?: mark_bulk_submissions_as_read_coursesFormParameters;
-};
+} & (
+  | {
+      params?: Partial<mark_bulk_submissions_as_read_coursesFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: mark_bulk_submissions_as_read_coursesFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Mark bulk submissions as read

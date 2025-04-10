@@ -53,8 +53,16 @@ export type grade_or_comment_on_multiple_submissions_courses_assignmentsFormPara
 
 type Options = {
   pathParams: grade_or_comment_on_multiple_submissions_courses_assignmentsPathParameters;
-  params?: grade_or_comment_on_multiple_submissions_courses_assignmentsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<grade_or_comment_on_multiple_submissions_courses_assignmentsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: grade_or_comment_on_multiple_submissions_courses_assignmentsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Grade or comment on multiple submissions

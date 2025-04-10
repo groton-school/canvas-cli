@@ -8,9 +8,15 @@ export type batchUpdateFormParameters = {
   event: string;
 };
 
-type Options = {
-  params?: batchUpdateFormParameters;
-};
+type Options =
+  | {
+      params?: Partial<batchUpdateFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: batchUpdateFormParameters;
+      strict: true;
+    };
 
 /**
  * Batch update conversations

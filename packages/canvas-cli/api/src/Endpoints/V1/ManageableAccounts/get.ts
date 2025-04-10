@@ -1,7 +1,13 @@
 import { client } from '../../../Client.js';
 import { Account } from '../../../Resources/Accounts.js';
 
-type Options = {};
+type Options =
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    };
 
 /**
  * Get accounts that admins can manage

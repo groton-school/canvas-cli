@@ -20,9 +20,15 @@ export type listSearchParameters = {
   end_time: string;
 };
 
-type Options = {
-  searchParams?: listSearchParameters;
-};
+type Options =
+  | {
+      searchParams?: Partial<listSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: listSearchParameters;
+      strict: true;
+    };
 
 /**
  * List of CommMessages for a user

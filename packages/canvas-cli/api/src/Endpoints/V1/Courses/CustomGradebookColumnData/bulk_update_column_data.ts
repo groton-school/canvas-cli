@@ -16,8 +16,16 @@ export type bulk_update_column_dataFormParameters = {
 
 type Options = {
   pathParams: bulk_update_column_dataPathParameters;
-  params?: bulk_update_column_dataFormParameters;
-};
+} & (
+  | {
+      params?: Partial<bulk_update_column_dataFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: bulk_update_column_dataFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Bulk update column data

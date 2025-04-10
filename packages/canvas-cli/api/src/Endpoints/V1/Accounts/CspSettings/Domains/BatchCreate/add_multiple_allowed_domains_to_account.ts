@@ -16,8 +16,16 @@ export type add_multiple_allowed_domains_to_accountFormParameters = {
 
 type Options = {
   pathParams: add_multiple_allowed_domains_to_accountPathParameters;
-  params?: add_multiple_allowed_domains_to_accountFormParameters;
-};
+} & (
+  | {
+      params?: Partial<add_multiple_allowed_domains_to_accountFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: add_multiple_allowed_domains_to_accountFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Add multiple allowed domains to an account

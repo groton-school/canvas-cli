@@ -18,7 +18,14 @@ export type getPathParameters = {
 
 type Options = {
   pathParams: getPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Get a new quiz

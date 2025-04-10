@@ -9,7 +9,14 @@ export type clear_unread_status_for_all_submissions_coursesPathParameters = {
 
 type Options = {
   pathParams: clear_unread_status_for_all_submissions_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Clear unread status for all submissions.

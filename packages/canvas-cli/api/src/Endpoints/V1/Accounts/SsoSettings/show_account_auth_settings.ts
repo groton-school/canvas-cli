@@ -8,7 +8,14 @@ export type show_account_auth_settingsPathParameters = {
 
 type Options = {
   pathParams: show_account_auth_settingsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show account auth settings

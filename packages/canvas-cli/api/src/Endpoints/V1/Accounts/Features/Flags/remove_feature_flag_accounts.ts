@@ -10,7 +10,14 @@ export type remove_feature_flag_accountsPathParameters = {
 
 type Options = {
   pathParams: remove_feature_flag_accountsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Remove feature flag

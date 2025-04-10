@@ -63,9 +63,15 @@ export type createFormParameters = {
   'appointment_group[allow_observer_signup]': boolean;
 };
 
-type Options = {
-  params?: createFormParameters;
-};
+type Options =
+  | {
+      params?: Partial<createFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: createFormParameters;
+      strict: true;
+    };
 
 /**
  * Create an appointment group

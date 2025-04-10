@@ -9,7 +9,14 @@ export type getPathParameters = {
 
 type Options = {
   pathParams: getPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Get IDs of outcome groups created after successful import

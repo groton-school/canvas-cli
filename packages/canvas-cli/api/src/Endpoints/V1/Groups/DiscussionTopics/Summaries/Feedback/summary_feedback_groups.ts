@@ -27,8 +27,16 @@ export type summary_feedback_groupsFormParameters = {
 
 type Options = {
   pathParams: summary_feedback_groupsPathParameters;
-  params?: summary_feedback_groupsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<summary_feedback_groupsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: summary_feedback_groupsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Summary Feedback

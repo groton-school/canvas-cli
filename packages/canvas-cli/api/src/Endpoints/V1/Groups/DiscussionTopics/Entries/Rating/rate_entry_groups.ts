@@ -20,8 +20,16 @@ export type rate_entry_groupsFormParameters = {
 
 type Options = {
   pathParams: rate_entry_groupsPathParameters;
-  params?: rate_entry_groupsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<rate_entry_groupsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: rate_entry_groupsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Rate entry

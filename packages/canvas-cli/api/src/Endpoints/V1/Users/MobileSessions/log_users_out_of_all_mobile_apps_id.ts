@@ -7,7 +7,14 @@ export type log_users_out_of_all_mobile_apps_idPathParameters = {
 
 type Options = {
   pathParams: log_users_out_of_all_mobile_apps_idPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Log users out of all mobile apps

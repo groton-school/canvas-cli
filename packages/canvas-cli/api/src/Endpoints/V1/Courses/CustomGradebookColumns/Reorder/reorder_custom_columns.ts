@@ -16,8 +16,16 @@ export type reorder_custom_columnsFormParameters = {
 
 type Options = {
   pathParams: reorder_custom_columnsPathParameters;
-  params?: reorder_custom_columnsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<reorder_custom_columnsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: reorder_custom_columnsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Reorder custom columns

@@ -17,7 +17,14 @@ export type getPathParameters = {
 
 type Options = {
   pathParams: getPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Get items media_upload_url

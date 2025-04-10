@@ -9,7 +9,14 @@ export type mark_topic_as_unread_groupsPathParameters = {
 
 type Options = {
   pathParams: mark_topic_as_unread_groupsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Mark topic as unread

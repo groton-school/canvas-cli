@@ -8,7 +8,14 @@ export type bulk_update_assignment_datesPathParameters = {
 
 type Options = {
   pathParams: bulk_update_assignment_datesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Bulk update assignment dates

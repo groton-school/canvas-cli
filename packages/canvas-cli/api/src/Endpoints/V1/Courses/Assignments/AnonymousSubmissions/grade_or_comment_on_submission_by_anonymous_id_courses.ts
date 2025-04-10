@@ -109,8 +109,16 @@ export type grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters
 
 type Options = {
   pathParams: grade_or_comment_on_submission_by_anonymous_id_coursesPathParameters;
-  params?: grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters;
-};
+} & (
+  | {
+      params?: Partial<grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Grade or comment on a submission by anonymous id

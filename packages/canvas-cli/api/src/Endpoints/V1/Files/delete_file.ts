@@ -18,8 +18,16 @@ export type delete_fileSearchParameters = {
 
 type Options = {
   pathParams: delete_filePathParameters;
-  searchParams?: delete_fileSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<delete_fileSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: delete_fileSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Delete file

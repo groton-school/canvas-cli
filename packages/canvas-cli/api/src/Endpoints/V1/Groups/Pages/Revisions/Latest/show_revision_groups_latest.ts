@@ -15,8 +15,16 @@ export type show_revision_groups_latestSearchParameters = {
 
 type Options = {
   pathParams: show_revision_groups_latestPathParameters;
-  searchParams?: show_revision_groups_latestSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<show_revision_groups_latestSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: show_revision_groups_latestSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Show revision

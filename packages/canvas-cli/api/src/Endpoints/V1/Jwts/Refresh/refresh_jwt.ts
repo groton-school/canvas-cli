@@ -9,9 +9,15 @@ export type refresh_jwtFormParameters = {
   jwt: string;
 };
 
-type Options = {
-  params?: refresh_jwtFormParameters;
-};
+type Options =
+  | {
+      params?: Partial<refresh_jwtFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: refresh_jwtFormParameters;
+      strict: true;
+    };
 
 /**
  * Refresh JWT

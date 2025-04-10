@@ -22,8 +22,16 @@ export type reorder_question_groupsFormParameters = {
 
 type Options = {
   pathParams: reorder_question_groupsPathParameters;
-  params?: reorder_question_groupsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<reorder_question_groupsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: reorder_question_groupsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Reorder question groups

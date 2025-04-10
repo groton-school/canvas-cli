@@ -1,7 +1,13 @@
 import { client } from '../../../../Client.js';
 import { PlannerOverride } from '../../../../Resources/Planner.js';
 
-type Options = {};
+type Options =
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    };
 
 /**
  * List planner overrides

@@ -8,7 +8,14 @@ export type show_front_page_coursesPathParameters = {
 
 type Options = {
   pathParams: show_front_page_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show front page

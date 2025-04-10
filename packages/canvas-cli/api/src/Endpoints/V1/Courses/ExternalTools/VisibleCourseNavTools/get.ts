@@ -7,7 +7,14 @@ export type getPathParameters = {
 
 type Options = {
   pathParams: getPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Get visible course navigation tools for a single course

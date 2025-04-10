@@ -8,7 +8,14 @@ export type redirect_to_root_outcome_group_for_context_accountsPathParameters =
 
 type Options = {
   pathParams: redirect_to_root_outcome_group_for_context_accountsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Redirect to root outcome group for context

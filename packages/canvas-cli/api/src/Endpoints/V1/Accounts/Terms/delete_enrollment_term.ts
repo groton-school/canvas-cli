@@ -10,7 +10,14 @@ export type delete_enrollment_termPathParameters = {
 
 type Options = {
   pathParams: delete_enrollment_termPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete enrollment term

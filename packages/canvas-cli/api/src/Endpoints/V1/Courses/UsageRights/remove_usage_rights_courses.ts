@@ -17,8 +17,16 @@ export type remove_usage_rights_coursesSearchParameters = {
 
 type Options = {
   pathParams: remove_usage_rights_coursesPathParameters;
-  searchParams?: remove_usage_rights_coursesSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<remove_usage_rights_coursesSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: remove_usage_rights_coursesSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Remove usage rights

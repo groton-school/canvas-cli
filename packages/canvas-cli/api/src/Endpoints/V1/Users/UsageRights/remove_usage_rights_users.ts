@@ -17,8 +17,16 @@ export type remove_usage_rights_usersSearchParameters = {
 
 type Options = {
   pathParams: remove_usage_rights_usersPathParameters;
-  searchParams?: remove_usage_rights_usersSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<remove_usage_rights_usersSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: remove_usage_rights_usersSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Remove usage rights

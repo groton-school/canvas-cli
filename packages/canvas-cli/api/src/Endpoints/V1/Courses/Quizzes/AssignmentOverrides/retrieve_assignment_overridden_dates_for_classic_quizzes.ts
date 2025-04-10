@@ -20,8 +20,16 @@ export type retrieve_assignment_overridden_dates_for_classic_quizzesSearchParame
 
 type Options = {
   pathParams: retrieve_assignment_overridden_dates_for_classic_quizzesPathParameters;
-  searchParams?: retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Retrieve assignment-overridden dates for Classic Quizzes

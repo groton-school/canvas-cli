@@ -9,7 +9,14 @@ export type unsubscribe_from_topic_groupsPathParameters = {
 
 type Options = {
   pathParams: unsubscribe_from_topic_groupsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Unsubscribe from a topic

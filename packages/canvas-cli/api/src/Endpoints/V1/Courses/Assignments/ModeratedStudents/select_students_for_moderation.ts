@@ -15,8 +15,16 @@ export type select_students_for_moderationFormParameters = {
 
 type Options = {
   pathParams: select_students_for_moderationPathParameters;
-  params?: select_students_for_moderationFormParameters;
-};
+} & (
+  | {
+      params?: Partial<select_students_for_moderationFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: select_students_for_moderationFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Select students for moderation

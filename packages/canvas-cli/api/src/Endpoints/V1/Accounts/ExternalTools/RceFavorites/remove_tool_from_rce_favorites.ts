@@ -9,7 +9,14 @@ export type remove_tool_from_rce_favoritesPathParameters = {
 
 type Options = {
   pathParams: remove_tool_from_rce_favoritesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Remove tool from RCE Favorites

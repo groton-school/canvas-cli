@@ -40,8 +40,16 @@ export type getSearchParameters = {
 
 type Options = {
   pathParams: getPathParameters;
-  searchParams?: getSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<getSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: getSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Get outcome results

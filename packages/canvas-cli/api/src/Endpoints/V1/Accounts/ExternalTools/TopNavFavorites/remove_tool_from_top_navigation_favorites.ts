@@ -9,7 +9,14 @@ export type remove_tool_from_top_navigation_favoritesPathParameters = {
 
 type Options = {
   pathParams: remove_tool_from_top_navigation_favoritesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Remove tool from Top Navigation Favorites

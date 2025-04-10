@@ -23,8 +23,16 @@ export type query_by_loginSearchParameters = {
 
 type Options = {
   pathParams: query_by_loginPathParameters;
-  searchParams?: query_by_loginSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<query_by_loginSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: query_by_loginSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Query by login.

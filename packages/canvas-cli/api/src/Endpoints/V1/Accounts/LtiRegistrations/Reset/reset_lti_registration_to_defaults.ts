@@ -10,7 +10,14 @@ export type reset_lti_registration_to_defaultsPathParameters = {
 
 type Options = {
   pathParams: reset_lti_registration_to_defaultsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Reset an LTI Registration to Defaults

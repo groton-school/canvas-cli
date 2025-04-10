@@ -10,7 +10,14 @@ export type show_page_coursesPathParameters = {
 
 type Options = {
   pathParams: show_page_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show page

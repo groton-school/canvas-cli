@@ -13,7 +13,14 @@ export type mark_submission_item_as_read_sectionsPathParameters = {
 
 type Options = {
   pathParams: mark_submission_item_as_read_sectionsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Mark submission item as read

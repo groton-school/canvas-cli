@@ -17,8 +17,16 @@ export type send_message_to_unsubmitted_or_submitted_users_for_quizFormParameter
 
 type Options = {
   pathParams: send_message_to_unsubmitted_or_submitted_users_for_quizPathParameters;
-  params?: send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters;
-};
+} & (
+  | {
+      params?: Partial<send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Send a message to unsubmitted or submitted users for the quiz

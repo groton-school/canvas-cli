@@ -11,9 +11,15 @@ export type updateFormParameters = {
   public_jwk: JSONObject;
 };
 
-type Options = {
-  params?: updateFormParameters;
-};
+type Options =
+  | {
+      params?: Partial<updateFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: updateFormParameters;
+      strict: true;
+    };
 
 /**
  * Update Public JWK

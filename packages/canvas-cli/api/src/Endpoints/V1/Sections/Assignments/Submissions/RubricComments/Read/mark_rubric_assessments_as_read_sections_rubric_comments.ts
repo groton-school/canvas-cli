@@ -12,7 +12,14 @@ export type mark_rubric_assessments_as_read_sections_rubric_commentsPathParamete
 
 type Options = {
   pathParams: mark_rubric_assessments_as_read_sections_rubric_commentsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Mark rubric assessments as read

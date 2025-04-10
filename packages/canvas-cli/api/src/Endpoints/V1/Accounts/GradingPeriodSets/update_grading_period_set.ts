@@ -26,8 +26,16 @@ export type update_grading_period_setFormParameters = {
 
 type Options = {
   pathParams: update_grading_period_setPathParameters;
-  params?: update_grading_period_setFormParameters;
-};
+} & (
+  | {
+      params?: Partial<update_grading_period_setFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: update_grading_period_setFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Update a grading period set

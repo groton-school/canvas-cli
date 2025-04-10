@@ -10,7 +10,14 @@ export type delete_custom_gradebook_columnPathParameters = {
 
 type Options = {
   pathParams: delete_custom_gradebook_columnPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a custom gradebook column

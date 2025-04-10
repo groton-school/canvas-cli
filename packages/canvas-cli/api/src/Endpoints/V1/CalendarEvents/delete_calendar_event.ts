@@ -18,8 +18,16 @@ export type delete_calendar_eventSearchParameters = {
 
 type Options = {
   pathParams: delete_calendar_eventPathParameters;
-  searchParams?: delete_calendar_eventSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<delete_calendar_eventSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: delete_calendar_eventSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Delete a calendar event

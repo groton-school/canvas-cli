@@ -35,8 +35,16 @@ export type set_usage_rights_coursesFormParameters = {
 
 type Options = {
   pathParams: set_usage_rights_coursesPathParameters;
-  params?: set_usage_rights_coursesFormParameters;
-};
+} & (
+  | {
+      params?: Partial<set_usage_rights_coursesFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: set_usage_rights_coursesFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Set usage rights

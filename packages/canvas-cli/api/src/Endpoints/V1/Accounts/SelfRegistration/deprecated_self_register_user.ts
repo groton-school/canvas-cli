@@ -40,8 +40,16 @@ export type deprecated_self_register_userFormParameters = {
 
 type Options = {
   pathParams: deprecated_self_register_userPathParameters;
-  params?: deprecated_self_register_userFormParameters;
-};
+} & (
+  | {
+      params?: Partial<deprecated_self_register_userFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: deprecated_self_register_userFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * [DEPRECATED] Self register a user

@@ -7,7 +7,14 @@ export type createPathParameters = {
 
 type Options = {
   pathParams: createPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Create or find a live assessment

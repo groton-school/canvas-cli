@@ -20,8 +20,16 @@ export type retrieve_assignment_overridden_dates_for_new_quizzesSearchParameters
 
 type Options = {
   pathParams: retrieve_assignment_overridden_dates_for_new_quizzesPathParameters;
-  searchParams?: retrieve_assignment_overridden_dates_for_new_quizzesSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<retrieve_assignment_overridden_dates_for_new_quizzesSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: retrieve_assignment_overridden_dates_for_new_quizzesSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Retrieve assignment-overridden dates for New Quizzes

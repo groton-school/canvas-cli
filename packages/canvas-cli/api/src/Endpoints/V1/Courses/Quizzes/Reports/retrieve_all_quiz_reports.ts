@@ -18,8 +18,16 @@ export type retrieve_all_quiz_reportsSearchParameters = {
 
 type Options = {
   pathParams: retrieve_all_quiz_reportsPathParameters;
-  searchParams?: retrieve_all_quiz_reportsSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<retrieve_all_quiz_reportsSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: retrieve_all_quiz_reportsSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Retrieve all quiz reports

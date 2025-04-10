@@ -9,7 +9,14 @@ export type remove_content_sharePathParameters = {
 
 type Options = {
   pathParams: remove_content_sharePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Remove content share

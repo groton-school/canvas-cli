@@ -78,8 +78,16 @@ export type uploadFormParameters = {
 
 type Options = {
   pathParams: uploadPathParameters;
-  params?: uploadFormParameters;
-};
+} & (
+  | {
+      params?: Partial<uploadFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: uploadFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Upload a file

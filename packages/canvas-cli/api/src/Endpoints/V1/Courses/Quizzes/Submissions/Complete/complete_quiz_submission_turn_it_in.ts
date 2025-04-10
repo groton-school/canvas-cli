@@ -29,8 +29,16 @@ export type complete_quiz_submission_turn_it_inFormParameters = {
 
 type Options = {
   pathParams: complete_quiz_submission_turn_it_inPathParameters;
-  params?: complete_quiz_submission_turn_it_inFormParameters;
-};
+} & (
+  | {
+      params?: Partial<complete_quiz_submission_turn_it_inFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: complete_quiz_submission_turn_it_inFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Complete the quiz submission (turn it in).

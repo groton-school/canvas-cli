@@ -35,8 +35,16 @@ export type set_usage_rights_groupsFormParameters = {
 
 type Options = {
   pathParams: set_usage_rights_groupsPathParameters;
-  params?: set_usage_rights_groupsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<set_usage_rights_groupsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: set_usage_rights_groupsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Set usage rights

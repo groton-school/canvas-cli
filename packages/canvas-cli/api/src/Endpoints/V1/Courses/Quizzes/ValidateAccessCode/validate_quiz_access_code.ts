@@ -14,8 +14,16 @@ export type validate_quiz_access_codeFormParameters = {
 
 type Options = {
   pathParams: validate_quiz_access_codePathParameters;
-  params?: validate_quiz_access_codeFormParameters;
-};
+} & (
+  | {
+      params?: Partial<validate_quiz_access_codeFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: validate_quiz_access_codeFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Validate quiz access code

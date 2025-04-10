@@ -7,7 +7,14 @@ export type group_activity_streamPathParameters = {
 
 type Options = {
   pathParams: group_activity_streamPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Group activity stream

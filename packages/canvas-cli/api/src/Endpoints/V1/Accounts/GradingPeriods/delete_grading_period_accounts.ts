@@ -9,7 +9,14 @@ export type delete_grading_period_accountsPathParameters = {
 
 type Options = {
   pathParams: delete_grading_period_accountsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a grading period

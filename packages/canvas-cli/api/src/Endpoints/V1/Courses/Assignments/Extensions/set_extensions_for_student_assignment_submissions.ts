@@ -25,8 +25,16 @@ export type set_extensions_for_student_assignment_submissionsFormParameters = {
 
 type Options = {
   pathParams: set_extensions_for_student_assignment_submissionsPathParameters;
-  params?: set_extensions_for_student_assignment_submissionsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<set_extensions_for_student_assignment_submissionsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: set_extensions_for_student_assignment_submissionsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Set extensions for student assignment submissions

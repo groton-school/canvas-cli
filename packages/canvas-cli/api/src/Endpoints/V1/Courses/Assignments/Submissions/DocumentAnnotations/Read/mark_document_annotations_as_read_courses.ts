@@ -11,7 +11,14 @@ export type mark_document_annotations_as_read_coursesPathParameters = {
 
 type Options = {
   pathParams: mark_document_annotations_as_read_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Mark document annotations as read

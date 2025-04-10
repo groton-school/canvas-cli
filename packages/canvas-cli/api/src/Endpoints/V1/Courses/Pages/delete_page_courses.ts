@@ -10,7 +10,14 @@ export type delete_page_coursesPathParameters = {
 
 type Options = {
   pathParams: delete_page_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete page

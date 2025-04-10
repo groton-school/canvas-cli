@@ -16,8 +16,16 @@ export type add_recipientsFormParameters = {
 
 type Options = {
   pathParams: add_recipientsPathParameters;
-  params?: add_recipientsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<add_recipientsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: add_recipientsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Add recipients

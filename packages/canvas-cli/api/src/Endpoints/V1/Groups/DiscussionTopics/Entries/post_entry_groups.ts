@@ -19,8 +19,16 @@ export type post_entry_groupsFormParameters = {
 
 type Options = {
   pathParams: post_entry_groupsPathParameters;
-  params?: post_entry_groupsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<post_entry_groupsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: post_entry_groupsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Post an entry

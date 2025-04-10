@@ -9,7 +9,14 @@ export type accept_course_invitationPathParameters = {
 
 type Options = {
   pathParams: accept_course_invitationPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Accept Course Invitation

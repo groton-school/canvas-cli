@@ -9,7 +9,14 @@ export type reset_what_if_scores_for_current_user_for_entire_course_and_recalcul
 
 type Options = {
   pathParams: reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Reset the what-if scores for the current user for an entire course and

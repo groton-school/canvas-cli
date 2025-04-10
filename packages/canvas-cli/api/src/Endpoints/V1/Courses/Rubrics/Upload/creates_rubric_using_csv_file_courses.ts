@@ -8,7 +8,14 @@ export type creates_rubric_using_csv_file_coursesPathParameters = {
 
 type Options = {
   pathParams: creates_rubric_using_csv_file_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Creates a rubric using a CSV file

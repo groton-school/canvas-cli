@@ -10,7 +10,14 @@ export type show_lti_registration_via_client_idPathParameters = {
 
 type Options = {
   pathParams: show_lti_registration_via_client_idPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show an LTI Registration (via the client_id)

@@ -32,8 +32,16 @@ export type import_category_groupsFormParameters = {
 
 type Options = {
   pathParams: import_category_groupsPathParameters;
-  params?: import_category_groupsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<import_category_groupsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: import_category_groupsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Import category groups

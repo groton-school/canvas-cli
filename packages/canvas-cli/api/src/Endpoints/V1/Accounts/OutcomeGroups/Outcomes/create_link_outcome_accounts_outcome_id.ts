@@ -64,8 +64,16 @@ export type create_link_outcome_accounts_outcome_idFormParameters = {
 
 type Options = {
   pathParams: create_link_outcome_accounts_outcome_idPathParameters;
-  params?: create_link_outcome_accounts_outcome_idFormParameters;
-};
+} & (
+  | {
+      params?: Partial<create_link_outcome_accounts_outcome_idFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: create_link_outcome_accounts_outcome_idFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Create/link an outcome

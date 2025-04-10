@@ -15,8 +15,16 @@ export type show_revision_courses_latestSearchParameters = {
 
 type Options = {
   pathParams: show_revision_courses_latestPathParameters;
-  searchParams?: show_revision_courses_latestSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<show_revision_courses_latestSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: show_revision_courses_latestSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Show revision

@@ -23,8 +23,16 @@ export type store_custom_dataFormParameters = {
 
 type Options = {
   pathParams: store_custom_dataPathParameters;
-  params?: store_custom_dataFormParameters;
-};
+} & (
+  | {
+      params?: Partial<store_custom_dataFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: store_custom_dataFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Store custom data

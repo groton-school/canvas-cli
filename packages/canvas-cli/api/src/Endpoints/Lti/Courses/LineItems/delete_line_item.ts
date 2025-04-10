@@ -10,7 +10,14 @@ export type delete_line_itemPathParameters = {
 
 type Options = {
   pathParams: delete_line_itemPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a Line Item

@@ -7,7 +7,14 @@ export type abort_all_pending_sis_importsPathParameters = {
 
 type Options = {
   pathParams: abort_all_pending_sis_importsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Abort all pending SIS imports

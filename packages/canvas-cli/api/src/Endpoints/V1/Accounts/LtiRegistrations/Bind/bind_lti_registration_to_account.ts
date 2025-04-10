@@ -18,8 +18,16 @@ export type bind_lti_registration_to_accountFormParameters = {
 
 type Options = {
   pathParams: bind_lti_registration_to_accountPathParameters;
-  params?: bind_lti_registration_to_accountFormParameters;
-};
+} & (
+  | {
+      params?: Partial<bind_lti_registration_to_accountFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: bind_lti_registration_to_accountFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Bind an LTI Registration to an Account

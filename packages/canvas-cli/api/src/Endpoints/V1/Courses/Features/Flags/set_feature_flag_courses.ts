@@ -21,8 +21,16 @@ export type set_feature_flag_coursesFormParameters = {
 
 type Options = {
   pathParams: set_feature_flag_coursesPathParameters;
-  params?: set_feature_flag_coursesFormParameters;
-};
+} & (
+  | {
+      params?: Partial<set_feature_flag_coursesFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: set_feature_flag_coursesFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Set feature flag

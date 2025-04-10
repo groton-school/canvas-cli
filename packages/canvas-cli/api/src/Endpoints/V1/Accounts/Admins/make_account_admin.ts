@@ -31,8 +31,16 @@ export type make_account_adminFormParameters = {
 
 type Options = {
   pathParams: make_account_adminPathParameters;
-  params?: make_account_adminFormParameters;
-};
+} & (
+  | {
+      params?: Partial<make_account_adminFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: make_account_adminFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Make an account admin

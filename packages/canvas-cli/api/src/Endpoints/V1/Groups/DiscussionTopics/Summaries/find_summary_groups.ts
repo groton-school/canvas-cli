@@ -9,7 +9,14 @@ export type find_summary_groupsPathParameters = {
 
 type Options = {
   pathParams: find_summary_groupsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Find Summary

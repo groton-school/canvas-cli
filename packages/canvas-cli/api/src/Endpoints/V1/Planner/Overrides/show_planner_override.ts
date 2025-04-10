@@ -8,7 +8,14 @@ export type show_planner_overridePathParameters = {
 
 type Options = {
   pathParams: show_planner_overridePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show a planner override

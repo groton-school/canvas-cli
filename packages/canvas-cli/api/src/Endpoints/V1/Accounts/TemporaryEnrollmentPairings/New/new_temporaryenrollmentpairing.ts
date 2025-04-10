@@ -8,7 +8,14 @@ export type new_temporaryenrollmentpairingPathParameters = {
 
 type Options = {
   pathParams: new_temporaryenrollmentpairingPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * New TemporaryEnrollmentPairing

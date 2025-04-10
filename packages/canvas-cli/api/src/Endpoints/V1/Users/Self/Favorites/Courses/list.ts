@@ -9,9 +9,15 @@ export type listSearchParameters = {
   exclude_blueprint_courses: boolean;
 };
 
-type Options = {
-  searchParams?: listSearchParameters;
-};
+type Options =
+  | {
+      searchParams?: Partial<listSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: listSearchParameters;
+      strict: true;
+    };
 
 /**
  * List favorite courses

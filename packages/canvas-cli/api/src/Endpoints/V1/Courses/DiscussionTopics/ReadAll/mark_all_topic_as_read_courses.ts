@@ -7,7 +7,14 @@ export type mark_all_topic_as_read_coursesPathParameters = {
 
 type Options = {
   pathParams: mark_all_topic_as_read_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Mark all topic as read

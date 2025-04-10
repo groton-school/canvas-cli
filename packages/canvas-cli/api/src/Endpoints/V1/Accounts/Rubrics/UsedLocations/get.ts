@@ -10,7 +10,14 @@ export type getPathParameters = {
 
 type Options = {
   pathParams: getPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Get the courses and assignments for

@@ -17,8 +17,16 @@ export type mark_all_entries_as_unread_groupsSearchParameters = {
 
 type Options = {
   pathParams: mark_all_entries_as_unread_groupsPathParameters;
-  searchParams?: mark_all_entries_as_unread_groupsSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<mark_all_entries_as_unread_groupsSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: mark_all_entries_as_unread_groupsSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Mark all entries as unread

@@ -17,8 +17,16 @@ export type show_user_detailsSearchParameters = {
 
 type Options = {
   pathParams: show_user_detailsPathParameters;
-  searchParams?: show_user_detailsSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<show_user_detailsSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: show_user_detailsSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Show user details

@@ -113,8 +113,16 @@ export type enroll_user_sectionsFormParameters = {
 
 type Options = {
   pathParams: enroll_user_sectionsPathParameters;
-  params?: enroll_user_sectionsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<enroll_user_sectionsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: enroll_user_sectionsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Enroll a user

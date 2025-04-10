@@ -48,8 +48,16 @@ export type batchUpdateFormParameters = {
 
 type Options = {
   pathParams: batchUpdatePathParameters;
-  params?: batchUpdateFormParameters;
-};
+} & (
+  | {
+      params?: Partial<batchUpdateFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: batchUpdateFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Batch update grading periods

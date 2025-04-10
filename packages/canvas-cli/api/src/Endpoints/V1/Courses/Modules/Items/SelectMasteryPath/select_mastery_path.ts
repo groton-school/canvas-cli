@@ -24,8 +24,16 @@ export type select_mastery_pathFormParameters = {
 
 type Options = {
   pathParams: select_mastery_pathPathParameters;
-  params?: select_mastery_pathFormParameters;
-};
+} & (
+  | {
+      params?: Partial<select_mastery_pathFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: select_mastery_pathFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Select a mastery path

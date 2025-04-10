@@ -27,8 +27,16 @@ export type set_course_timetableFormParameters = {
 
 type Options = {
   pathParams: set_course_timetablePathParameters;
-  params?: set_course_timetableFormParameters;
-};
+} & (
+  | {
+      params?: Partial<set_course_timetableFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: set_course_timetableFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Set a course timetable

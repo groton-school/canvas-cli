@@ -12,8 +12,16 @@ export type delete_messageFormParameters = {
 
 type Options = {
   pathParams: delete_messagePathParameters;
-  params?: delete_messageFormParameters;
-};
+} & (
+  | {
+      params?: Partial<delete_messageFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: delete_messageFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Delete a message

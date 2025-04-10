@@ -19,8 +19,16 @@ export type add_last_attended_dateFormParameters = {
 
 type Options = {
   pathParams: add_last_attended_datePathParameters;
-  params?: add_last_attended_dateFormParameters;
-};
+} & (
+  | {
+      params?: Partial<add_last_attended_dateFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: add_last_attended_dateFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Add last attended date

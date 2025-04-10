@@ -22,8 +22,16 @@ export type copy_fileFormParameters = {
 
 type Options = {
   pathParams: copy_filePathParameters;
-  params?: copy_fileFormParameters;
-};
+} & (
+  | {
+      params?: Partial<copy_fileFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: copy_fileFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Copy a file

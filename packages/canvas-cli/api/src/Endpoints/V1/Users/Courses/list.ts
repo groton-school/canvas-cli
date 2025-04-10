@@ -115,8 +115,16 @@ export type listSearchParameters = {
 
 type Options = {
   pathParams: listPathParameters;
-  searchParams?: listSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<listSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: listSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * List courses for a user

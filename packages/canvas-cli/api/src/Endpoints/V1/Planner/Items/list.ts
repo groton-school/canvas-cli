@@ -34,9 +34,15 @@ export type listSearchParameters = {
   filter: string;
 };
 
-type Options = {
-  searchParams?: listSearchParameters;
-};
+type Options =
+  | {
+      searchParams?: Partial<listSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: listSearchParameters;
+      strict: true;
+    };
 
 /**
  * List planner items

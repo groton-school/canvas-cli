@@ -14,8 +14,16 @@ export type find_or_create_summary_coursesFormParameters = {
 
 type Options = {
   pathParams: find_or_create_summary_coursesPathParameters;
-  params?: find_or_create_summary_coursesFormParameters;
-};
+} & (
+  | {
+      params?: Partial<find_or_create_summary_coursesFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: find_or_create_summary_coursesFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Find or Create Summary

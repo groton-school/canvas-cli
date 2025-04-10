@@ -15,8 +15,16 @@ export type show_lti_resource_linkSearchParameters = {
 
 type Options = {
   pathParams: show_lti_resource_linkPathParameters;
-  searchParams?: show_lti_resource_linkSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<show_lti_resource_linkSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: show_lti_resource_linkSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Show an LTI Resource Link

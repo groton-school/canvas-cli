@@ -40,8 +40,16 @@ export type add_observee_with_credentialsFormParameters = {
 
 type Options = {
   pathParams: add_observee_with_credentialsPathParameters;
-  params?: add_observee_with_credentialsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<add_observee_with_credentialsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: add_observee_with_credentialsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Add an observee with credentials

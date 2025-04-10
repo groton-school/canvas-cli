@@ -7,7 +7,14 @@ export type terminate_all_user_sessionsPathParameters = {
 
 type Options = {
   pathParams: terminate_all_user_sessionsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Terminate all user sessions

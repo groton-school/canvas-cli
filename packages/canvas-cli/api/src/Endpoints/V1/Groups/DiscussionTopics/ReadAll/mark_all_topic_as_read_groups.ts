@@ -7,7 +7,14 @@ export type mark_all_topic_as_read_groupsPathParameters = {
 
 type Options = {
   pathParams: mark_all_topic_as_read_groupsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Mark all topic as read

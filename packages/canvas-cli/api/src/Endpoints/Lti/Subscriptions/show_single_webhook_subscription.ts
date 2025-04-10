@@ -7,7 +7,14 @@ export type show_single_webhook_subscriptionPathParameters = {
 
 type Options = {
   pathParams: show_single_webhook_subscriptionPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show a single Webhook Subscription

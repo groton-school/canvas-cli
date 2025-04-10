@@ -22,8 +22,16 @@ export type destroy_assignment_groupSearchParameters = {
 
 type Options = {
   pathParams: destroy_assignment_groupPathParameters;
-  searchParams?: destroy_assignment_groupSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<destroy_assignment_groupSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: destroy_assignment_groupSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Destroy an Assignment Group

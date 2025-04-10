@@ -21,8 +21,16 @@ export type add_observeeFormParameters = {
 
 type Options = {
   pathParams: add_observeePathParameters;
-  params?: add_observeeFormParameters;
-};
+} & (
+  | {
+      params?: Partial<add_observeeFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: add_observeeFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Add an observee

@@ -9,7 +9,14 @@ export type delete_access_tokenPathParameters = {
 
 type Options = {
   pathParams: delete_access_tokenPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete an access token

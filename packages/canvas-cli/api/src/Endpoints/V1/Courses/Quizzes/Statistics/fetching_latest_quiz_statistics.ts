@@ -14,8 +14,16 @@ export type fetching_latest_quiz_statisticsSearchParameters = {
 
 type Options = {
   pathParams: fetching_latest_quiz_statisticsPathParameters;
-  searchParams?: fetching_latest_quiz_statisticsSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<fetching_latest_quiz_statisticsSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: fetching_latest_quiz_statisticsSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Fetching the latest quiz statistics

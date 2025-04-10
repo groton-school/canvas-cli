@@ -8,7 +8,14 @@ export type remove_group_from_favoritesPathParameters = {
 
 type Options = {
   pathParams: remove_group_from_favoritesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Remove group from favorites

@@ -7,7 +7,14 @@ export type course_todo_itemsPathParameters = {
 
 type Options = {
   pathParams: course_todo_itemsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Course TODO items

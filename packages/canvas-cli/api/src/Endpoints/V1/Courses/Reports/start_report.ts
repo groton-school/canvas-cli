@@ -29,8 +29,16 @@ export type start_reportFormParameters = {
 
 type Options = {
   pathParams: start_reportPathParameters;
-  params?: start_reportFormParameters;
-};
+} & (
+  | {
+      params?: Partial<start_reportFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: start_reportFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Start a Report

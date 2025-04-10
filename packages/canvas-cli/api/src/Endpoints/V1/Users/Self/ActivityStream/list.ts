@@ -8,9 +8,15 @@ export type listSearchParameters = {
   only_active_courses: boolean;
 };
 
-type Options = {
-  searchParams?: listSearchParameters;
-};
+type Options =
+  | {
+      searchParams?: Partial<listSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: listSearchParameters;
+      strict: true;
+    };
 
 /**
  * List the activity stream

@@ -36,8 +36,16 @@ export type export_content_groupsFormParameters = {
 
 type Options = {
   pathParams: export_content_groupsPathParameters;
-  params?: export_content_groupsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<export_content_groupsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: export_content_groupsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Export content

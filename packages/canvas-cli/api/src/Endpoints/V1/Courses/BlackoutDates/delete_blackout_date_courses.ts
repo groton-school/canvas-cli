@@ -10,7 +10,14 @@ export type delete_blackout_date_coursesPathParameters = {
 
 type Options = {
   pathParams: delete_blackout_date_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete Blackout Date

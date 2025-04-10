@@ -10,7 +10,14 @@ export type show_originality_report_filesPathParameters = {
 
 type Options = {
   pathParams: show_originality_report_filesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show an Originality Report

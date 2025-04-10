@@ -19,8 +19,16 @@ export type search_course_contentSearchParameters = {
 
 type Options = {
   pathParams: search_course_contentPathParameters;
-  searchParams?: search_course_contentSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<search_course_contentSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: search_course_contentSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Search course content

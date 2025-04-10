@@ -94,8 +94,16 @@ export type submit_assignment_sectionsFormParameters = {
 
 type Options = {
   pathParams: submit_assignment_sectionsPathParameters;
-  params?: submit_assignment_sectionsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<submit_assignment_sectionsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: submit_assignment_sectionsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Submit an assignment

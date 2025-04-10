@@ -21,8 +21,16 @@ export type duplicate_assignmentFormParameters = {
 
 type Options = {
   pathParams: duplicate_assignmentPathParameters;
-  params?: duplicate_assignmentFormParameters;
-};
+} & (
+  | {
+      params?: Partial<duplicate_assignmentFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: duplicate_assignmentFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Duplicate assignment

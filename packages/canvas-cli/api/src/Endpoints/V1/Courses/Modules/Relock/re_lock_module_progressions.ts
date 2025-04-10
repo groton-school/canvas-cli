@@ -10,7 +10,14 @@ export type re_lock_module_progressionsPathParameters = {
 
 type Options = {
   pathParams: re_lock_module_progressionsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Re-lock module progressions

@@ -13,8 +13,16 @@ export type moderate_eportfolioFormParameters = {
 
 type Options = {
   pathParams: moderate_eportfolioPathParameters;
-  params?: moderate_eportfolioFormParameters;
-};
+} & (
+  | {
+      params?: Partial<moderate_eportfolioFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: moderate_eportfolioFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Moderate an ePortfolio

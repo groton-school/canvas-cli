@@ -6,9 +6,15 @@ export type getSearchParameters = {
   appointment_group_ids: string[];
 };
 
-type Options = {
-  searchParams?: getSearchParameters;
-};
+type Options =
+  | {
+      searchParams?: Partial<getSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: getSearchParameters;
+      strict: true;
+    };
 
 /**
  * Get next appointment

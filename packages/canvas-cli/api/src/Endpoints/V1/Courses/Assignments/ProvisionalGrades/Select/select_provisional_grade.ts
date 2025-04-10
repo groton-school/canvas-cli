@@ -11,7 +11,14 @@ export type select_provisional_gradePathParameters = {
 
 type Options = {
   pathParams: select_provisional_gradePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Select provisional grade

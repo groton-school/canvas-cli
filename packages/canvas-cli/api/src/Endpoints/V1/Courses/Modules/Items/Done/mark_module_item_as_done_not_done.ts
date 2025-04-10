@@ -11,7 +11,14 @@ export type mark_module_item_as_done_not_donePathParameters = {
 
 type Options = {
   pathParams: mark_module_item_as_done_not_donePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Mark module item as done/not done

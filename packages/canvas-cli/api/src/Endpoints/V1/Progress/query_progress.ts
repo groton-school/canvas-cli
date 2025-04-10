@@ -8,7 +8,14 @@ export type query_progressPathParameters = {
 
 type Options = {
   pathParams: query_progressPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Query progress

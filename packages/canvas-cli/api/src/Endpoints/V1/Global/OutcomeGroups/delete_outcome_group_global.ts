@@ -8,7 +8,14 @@ export type delete_outcome_group_globalPathParameters = {
 
 type Options = {
   pathParams: delete_outcome_group_globalPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete an outcome group

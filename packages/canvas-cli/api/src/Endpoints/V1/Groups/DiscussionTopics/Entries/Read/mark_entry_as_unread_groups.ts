@@ -19,8 +19,16 @@ export type mark_entry_as_unread_groupsSearchParameters = {
 
 type Options = {
   pathParams: mark_entry_as_unread_groupsPathParameters;
-  searchParams?: mark_entry_as_unread_groupsSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<mark_entry_as_unread_groupsSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: mark_entry_as_unread_groupsSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Mark entry as unread

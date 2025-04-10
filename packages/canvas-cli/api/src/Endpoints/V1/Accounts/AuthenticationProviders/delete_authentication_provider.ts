@@ -9,7 +9,14 @@ export type delete_authentication_providerPathParameters = {
 
 type Options = {
   pathParams: delete_authentication_providerPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete authentication provider

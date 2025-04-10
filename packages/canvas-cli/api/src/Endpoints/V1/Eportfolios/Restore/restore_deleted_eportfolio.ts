@@ -8,7 +8,14 @@ export type restore_deleted_eportfolioPathParameters = {
 
 type Options = {
   pathParams: restore_deleted_eportfolioPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Restore a deleted ePortfolio

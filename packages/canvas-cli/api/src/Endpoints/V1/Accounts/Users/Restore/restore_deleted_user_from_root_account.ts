@@ -10,7 +10,14 @@ export type restore_deleted_user_from_root_accountPathParameters = {
 
 type Options = {
   pathParams: restore_deleted_user_from_root_accountPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Restore a deleted user from a root account

@@ -8,7 +8,14 @@ export type remove_course_from_favoritesPathParameters = {
 
 type Options = {
   pathParams: remove_course_from_favoritesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Remove course from favorites

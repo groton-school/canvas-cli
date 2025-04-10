@@ -19,8 +19,16 @@ export type post_entry_coursesFormParameters = {
 
 type Options = {
   pathParams: post_entry_coursesPathParameters;
-  params?: post_entry_coursesFormParameters;
-};
+} & (
+  | {
+      params?: Partial<post_entry_coursesFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: post_entry_coursesFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Post an entry

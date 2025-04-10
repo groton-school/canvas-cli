@@ -12,8 +12,16 @@ export type mark_bulk_submissions_as_read_sectionsFormParameters = {
 
 type Options = {
   pathParams: mark_bulk_submissions_as_read_sectionsPathParameters;
-  params?: mark_bulk_submissions_as_read_sectionsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<mark_bulk_submissions_as_read_sectionsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: mark_bulk_submissions_as_read_sectionsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Mark bulk submissions as read

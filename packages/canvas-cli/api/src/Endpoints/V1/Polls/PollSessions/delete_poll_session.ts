@@ -9,7 +9,14 @@ export type delete_poll_sessionPathParameters = {
 
 type Options = {
   pathParams: delete_poll_sessionPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a poll session

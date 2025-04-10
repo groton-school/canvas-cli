@@ -9,7 +9,14 @@ export type delete_poll_choicePathParameters = {
 
 type Options = {
   pathParams: delete_poll_choicePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a poll choice

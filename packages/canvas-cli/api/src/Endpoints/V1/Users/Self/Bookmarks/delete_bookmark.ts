@@ -7,7 +7,14 @@ export type delete_bookmarkPathParameters = {
 
 type Options = {
   pathParams: delete_bookmarkPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete bookmark

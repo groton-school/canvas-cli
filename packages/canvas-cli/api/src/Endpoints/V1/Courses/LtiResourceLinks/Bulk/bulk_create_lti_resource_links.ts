@@ -23,8 +23,16 @@ export type bulk_create_lti_resource_linksFormParameters = {
 
 type Options = {
   pathParams: bulk_create_lti_resource_linksPathParameters;
-  params?: bulk_create_lti_resource_linksFormParameters;
-};
+} & (
+  | {
+      params?: Partial<bulk_create_lti_resource_linksFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: bulk_create_lti_resource_linksFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Bulk Create LTI Resource Links

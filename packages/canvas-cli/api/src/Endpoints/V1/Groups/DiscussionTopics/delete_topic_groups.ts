@@ -9,7 +9,14 @@ export type delete_topic_groupsPathParameters = {
 
 type Options = {
   pathParams: delete_topic_groupsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a topic

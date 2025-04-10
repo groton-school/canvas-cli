@@ -10,7 +10,14 @@ export type delete_temporary_enrollment_pairingPathParameters = {
 
 type Options = {
   pathParams: delete_temporary_enrollment_pairingPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete Temporary Enrollment Pairing

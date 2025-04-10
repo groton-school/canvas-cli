@@ -8,7 +8,14 @@ export type un_share_brandconfig_themePathParameters = {
 
 type Options = {
   pathParams: un_share_brandconfig_themePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Un-share a BrandConfig (Theme)

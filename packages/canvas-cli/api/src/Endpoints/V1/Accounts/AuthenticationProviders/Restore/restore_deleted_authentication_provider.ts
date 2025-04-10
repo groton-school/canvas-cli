@@ -10,7 +10,14 @@ export type restore_deleted_authentication_providerPathParameters = {
 
 type Options = {
   pathParams: restore_deleted_authentication_providerPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Restore a deleted authentication provider

@@ -36,8 +36,16 @@ export type createFormParameters = {
 
 type Options = {
   pathParams: createPathParameters;
-  params?: createFormParameters;
-};
+} & (
+  | {
+      params?: Partial<createFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: createFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Create or update events directly for a course timetable

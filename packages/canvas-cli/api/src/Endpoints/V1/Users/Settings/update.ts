@@ -36,8 +36,16 @@ export type updateSearchParameters = {
 
 type Options = {
   pathParams: updatePathParameters;
-  searchParams?: updateSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<updateSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: updateSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Update user settings.

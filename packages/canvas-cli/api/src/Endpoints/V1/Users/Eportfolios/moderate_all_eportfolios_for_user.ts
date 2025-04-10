@@ -12,8 +12,16 @@ export type moderate_all_eportfolios_for_userFormParameters = {
 
 type Options = {
   pathParams: moderate_all_eportfolios_for_userPathParameters;
-  params?: moderate_all_eportfolios_for_userFormParameters;
-};
+} & (
+  | {
+      params?: Partial<moderate_all_eportfolios_for_userFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: moderate_all_eportfolios_for_userFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Moderate all ePortfolios for a User

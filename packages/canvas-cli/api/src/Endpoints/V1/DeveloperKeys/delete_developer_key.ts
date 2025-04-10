@@ -8,7 +8,14 @@ export type delete_developer_keyPathParameters = {
 
 type Options = {
   pathParams: delete_developer_keyPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a Developer Key

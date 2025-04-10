@@ -9,7 +9,14 @@ export type show_access_tokenPathParameters = {
 
 type Options = {
   pathParams: show_access_tokenPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show an access token

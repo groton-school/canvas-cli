@@ -21,8 +21,16 @@ export type deactivate_roleSearchParameters = {
 
 type Options = {
   pathParams: deactivate_rolePathParameters;
-  searchParams?: deactivate_roleSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<deactivate_roleSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: deactivate_roleSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Deactivate a role

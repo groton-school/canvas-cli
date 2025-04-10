@@ -1,7 +1,13 @@
 import { client } from '../../../../../../Client.js';
 import { Group } from '../../../../../../Resources/Groups.js';
 
-type Options = {};
+type Options =
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    };
 
 /**
  * List favorite groups

@@ -9,7 +9,14 @@ export type delete_external_tool_accountsPathParameters = {
 
 type Options = {
   pathParams: delete_external_tool_accountsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete an external tool

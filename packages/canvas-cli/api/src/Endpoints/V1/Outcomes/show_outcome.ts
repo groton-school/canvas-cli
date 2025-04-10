@@ -17,8 +17,16 @@ export type show_outcomeSearchParameters = {
 
 type Options = {
   pathParams: show_outcomePathParameters;
-  searchParams?: show_outcomeSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<show_outcomeSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: show_outcomeSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Show an outcome

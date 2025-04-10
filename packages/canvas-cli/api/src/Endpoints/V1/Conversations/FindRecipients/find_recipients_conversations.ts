@@ -46,9 +46,15 @@ export type find_recipients_conversationsSearchParameters = {
   permissions: string[];
 };
 
-type Options = {
-  searchParams?: find_recipients_conversationsSearchParameters;
-};
+type Options =
+  | {
+      searchParams?: Partial<find_recipients_conversationsSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: find_recipients_conversationsSearchParameters;
+      strict: true;
+    };
 
 /**
  * Find recipients

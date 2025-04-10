@@ -21,8 +21,16 @@ export type delete_peer_review_sectionsSearchParameters = {
 
 type Options = {
   pathParams: delete_peer_review_sectionsPathParameters;
-  searchParams?: delete_peer_review_sectionsSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<delete_peer_review_sectionsSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: delete_peer_review_sectionsSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Delete Peer Review

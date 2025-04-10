@@ -7,7 +7,14 @@ export type delete_webhook_subscriptionPathParameters = {
 
 type Options = {
   pathParams: delete_webhook_subscriptionPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a Webhook Subscription

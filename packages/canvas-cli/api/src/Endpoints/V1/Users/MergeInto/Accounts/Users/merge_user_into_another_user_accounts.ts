@@ -12,7 +12,14 @@ export type merge_user_into_another_user_accountsPathParameters = {
 
 type Options = {
   pathParams: merge_user_into_another_user_accountsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Merge user into another user

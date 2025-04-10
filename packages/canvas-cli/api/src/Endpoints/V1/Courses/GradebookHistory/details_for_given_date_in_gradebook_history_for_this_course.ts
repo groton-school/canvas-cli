@@ -15,7 +15,14 @@ export type details_for_given_date_in_gradebook_history_for_this_coursePathParam
 
 type Options = {
   pathParams: details_for_given_date_in_gradebook_history_for_this_coursePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Details for a given date in gradebook history for this course

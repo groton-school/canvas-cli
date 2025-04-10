@@ -21,8 +21,16 @@ export type set_feature_flag_usersFormParameters = {
 
 type Options = {
   pathParams: set_feature_flag_usersPathParameters;
-  params?: set_feature_flag_usersFormParameters;
-};
+} & (
+  | {
+      params?: Partial<set_feature_flag_usersFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: set_feature_flag_usersFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Set feature flag

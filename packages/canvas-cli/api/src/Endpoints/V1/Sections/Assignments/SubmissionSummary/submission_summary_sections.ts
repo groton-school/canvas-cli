@@ -17,8 +17,16 @@ export type submission_summary_sectionsSearchParameters = {
 
 type Options = {
   pathParams: submission_summary_sectionsPathParameters;
-  searchParams?: submission_summary_sectionsSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<submission_summary_sectionsSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: submission_summary_sectionsSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Submission Summary

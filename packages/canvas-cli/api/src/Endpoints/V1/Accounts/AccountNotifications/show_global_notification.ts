@@ -10,7 +10,14 @@ export type show_global_notificationPathParameters = {
 
 type Options = {
   pathParams: show_global_notificationPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show a global notification

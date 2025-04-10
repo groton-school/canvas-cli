@@ -10,7 +10,14 @@ export type delete_rubricassociationPathParameters = {
 
 type Options = {
   pathParams: delete_rubricassociationPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a RubricAssociation

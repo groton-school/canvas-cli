@@ -8,7 +8,14 @@ export type remove_course_nicknamePathParameters = {
 
 type Options = {
   pathParams: remove_course_nicknamePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Remove course nickname

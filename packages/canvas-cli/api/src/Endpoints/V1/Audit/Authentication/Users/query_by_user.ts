@@ -23,8 +23,16 @@ export type query_by_userSearchParameters = {
 
 type Options = {
   pathParams: query_by_userPathParameters;
-  searchParams?: query_by_userSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<query_by_userSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: query_by_userSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Query by user.

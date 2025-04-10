@@ -10,7 +10,14 @@ export type status_of_last_reportPathParameters = {
 
 type Options = {
   pathParams: status_of_last_reportPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Status of last Report

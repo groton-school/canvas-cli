@@ -9,7 +9,14 @@ export type bulk_select_provisional_gradesPathParameters = {
 
 type Options = {
   pathParams: bulk_select_provisional_gradesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Bulk select provisional grades

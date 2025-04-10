@@ -23,8 +23,16 @@ export type reserve_time_slot_participant_idFormParameters = {
 
 type Options = {
   pathParams: reserve_time_slot_participant_idPathParameters;
-  params?: reserve_time_slot_participant_idFormParameters;
-};
+} & (
+  | {
+      params?: Partial<reserve_time_slot_participant_idFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: reserve_time_slot_participant_idFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Reserve a time slot

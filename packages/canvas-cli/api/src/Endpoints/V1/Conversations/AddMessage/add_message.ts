@@ -28,8 +28,16 @@ export type add_messageFormParameters = {
 
 type Options = {
   pathParams: add_messagePathParameters;
-  params?: add_messageFormParameters;
-};
+} & (
+  | {
+      params?: Partial<add_messageFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: add_messageFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Add a message

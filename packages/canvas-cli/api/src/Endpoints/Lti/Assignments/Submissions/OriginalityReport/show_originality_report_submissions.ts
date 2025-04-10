@@ -12,7 +12,14 @@ export type show_originality_report_submissionsPathParameters = {
 
 type Options = {
   pathParams: show_originality_report_submissionsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show an Originality Report

@@ -19,8 +19,16 @@ export type mark_entry_as_read_groupsFormParameters = {
 
 type Options = {
   pathParams: mark_entry_as_read_groupsPathParameters;
-  params?: mark_entry_as_read_groupsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<mark_entry_as_read_groupsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: mark_entry_as_read_groupsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Mark entry as read

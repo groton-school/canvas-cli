@@ -10,7 +10,14 @@ export type delete_sub_accountPathParameters = {
 
 type Options = {
   pathParams: delete_sub_accountPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a sub-account

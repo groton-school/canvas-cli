@@ -25,8 +25,16 @@ export type restore_workflow_states_of_sis_imported_itemsFormParameters = {
 
 type Options = {
   pathParams: restore_workflow_states_of_sis_imported_itemsPathParameters;
-  params?: restore_workflow_states_of_sis_imported_itemsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<restore_workflow_states_of_sis_imported_itemsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: restore_workflow_states_of_sis_imported_itemsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Restore workflow_states of SIS imported items

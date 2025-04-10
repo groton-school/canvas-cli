@@ -10,7 +10,14 @@ export type index_of_reportsPathParameters = {
 
 type Options = {
   pathParams: index_of_reportsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Index of Reports

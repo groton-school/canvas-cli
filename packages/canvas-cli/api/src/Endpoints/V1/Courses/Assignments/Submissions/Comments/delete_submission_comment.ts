@@ -14,7 +14,14 @@ export type delete_submission_commentPathParameters = {
 
 type Options = {
   pathParams: delete_submission_commentPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a submission comment

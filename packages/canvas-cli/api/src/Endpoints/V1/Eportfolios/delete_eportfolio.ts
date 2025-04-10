@@ -8,7 +8,14 @@ export type delete_eportfolioPathParameters = {
 
 type Options = {
   pathParams: delete_eportfolioPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete an ePortfolio

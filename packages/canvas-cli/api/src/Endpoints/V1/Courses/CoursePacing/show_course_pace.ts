@@ -23,8 +23,16 @@ export type show_course_paceSearchParameters = {
 
 type Options = {
   pathParams: show_course_pacePathParameters;
-  searchParams?: show_course_paceSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<show_course_paceSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: show_course_paceSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Show a Course pace

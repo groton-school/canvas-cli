@@ -27,8 +27,16 @@ export type summary_feedback_coursesFormParameters = {
 
 type Options = {
   pathParams: summary_feedback_coursesPathParameters;
-  params?: summary_feedback_coursesFormParameters;
-};
+} & (
+  | {
+      params?: Partial<summary_feedback_coursesFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: summary_feedback_coursesFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Summary Feedback

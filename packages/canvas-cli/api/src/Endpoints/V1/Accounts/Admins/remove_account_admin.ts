@@ -22,8 +22,16 @@ export type remove_account_adminSearchParameters = {
 
 type Options = {
   pathParams: remove_account_adminPathParameters;
-  searchParams?: remove_account_adminSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<remove_account_adminSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: remove_account_adminSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Remove account admin

@@ -11,7 +11,14 @@ export type uploadPathParameters = {
 
 type Options = {
   pathParams: uploadPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Upload a file

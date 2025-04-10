@@ -19,8 +19,16 @@ export type add_users_to_content_shareFormParameters = {
 
 type Options = {
   pathParams: add_users_to_content_sharePathParameters;
-  params?: add_users_to_content_shareFormParameters;
-};
+} & (
+  | {
+      params?: Partial<add_users_to_content_shareFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: add_users_to_content_shareFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Add users to content share

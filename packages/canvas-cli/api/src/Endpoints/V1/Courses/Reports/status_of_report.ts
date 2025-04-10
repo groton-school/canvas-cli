@@ -12,7 +12,14 @@ export type status_of_reportPathParameters = {
 
 type Options = {
   pathParams: status_of_reportPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Status of a Report

@@ -12,7 +12,14 @@ export type show_blueprint_importPathParameters = {
 
 type Options = {
   pathParams: show_blueprint_importPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show a blueprint import

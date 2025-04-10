@@ -25,8 +25,16 @@ export type show_lti_registrationSearchParameters = {
 
 type Options = {
   pathParams: show_lti_registrationPathParameters;
-  searchParams?: show_lti_registrationSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<show_lti_registrationSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: show_lti_registrationSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Show an LTI Registration

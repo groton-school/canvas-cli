@@ -16,8 +16,16 @@ export type delete_custom_dataSearchParameters = {
 
 type Options = {
   pathParams: delete_custom_dataPathParameters;
-  searchParams?: delete_custom_dataSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<delete_custom_dataSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: delete_custom_dataSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Delete custom data

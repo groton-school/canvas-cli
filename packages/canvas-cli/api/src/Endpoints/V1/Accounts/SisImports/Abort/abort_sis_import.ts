@@ -10,7 +10,14 @@ export type abort_sis_importPathParameters = {
 
 type Options = {
   pathParams: abort_sis_importPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Abort SIS import

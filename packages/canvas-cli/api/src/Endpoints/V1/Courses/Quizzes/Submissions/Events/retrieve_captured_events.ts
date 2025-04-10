@@ -21,8 +21,16 @@ export type retrieve_captured_eventsSearchParameters = {
 
 type Options = {
   pathParams: retrieve_captured_eventsPathParameters;
-  searchParams?: retrieve_captured_eventsSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<retrieve_captured_eventsSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: retrieve_captured_eventsSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Retrieve captured events

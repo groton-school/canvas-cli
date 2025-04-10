@@ -12,7 +12,14 @@ export type show_resultPathParameters = {
 
 type Options = {
   pathParams: show_resultPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show a Result

@@ -22,8 +22,16 @@ export type disable_assignments_currently_enabled_for_grade_export_to_sisFormPar
 
 type Options = {
   pathParams: disable_assignments_currently_enabled_for_grade_export_to_sisPathParameters;
-  params?: disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters;
-};
+} & (
+  | {
+      params?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Disable assignments currently enabled for grade export to SIS

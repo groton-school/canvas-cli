@@ -12,8 +12,16 @@ export type remove_domain_from_accountSearchParameters = {
 
 type Options = {
   pathParams: remove_domain_from_accountPathParameters;
-  searchParams?: remove_domain_from_accountSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<remove_domain_from_accountSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: remove_domain_from_accountSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Remove a domain from account

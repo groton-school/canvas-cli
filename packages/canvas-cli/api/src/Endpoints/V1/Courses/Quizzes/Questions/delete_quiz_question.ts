@@ -19,7 +19,14 @@ export type delete_quiz_questionPathParameters = {
 
 type Options = {
   pathParams: delete_quiz_questionPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a quiz question

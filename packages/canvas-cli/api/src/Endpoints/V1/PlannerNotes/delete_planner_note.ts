@@ -8,7 +8,14 @@ export type delete_planner_notePathParameters = {
 
 type Options = {
   pathParams: delete_planner_notePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a planner note

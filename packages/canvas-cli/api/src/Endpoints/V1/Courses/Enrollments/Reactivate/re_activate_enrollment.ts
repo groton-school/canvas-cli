@@ -10,7 +10,14 @@ export type re_activate_enrollmentPathParameters = {
 
 type Options = {
   pathParams: re_activate_enrollmentPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Re-activate an enrollment

@@ -20,8 +20,16 @@ export type show_line_itemSearchParameters = {
 
 type Options = {
   pathParams: show_line_itemPathParameters;
-  searchParams?: show_line_itemSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<show_line_itemSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: show_line_itemSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Show a Line Item

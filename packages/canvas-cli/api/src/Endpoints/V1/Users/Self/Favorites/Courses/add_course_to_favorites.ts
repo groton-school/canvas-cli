@@ -11,7 +11,14 @@ export type add_course_to_favoritesPathParameters = {
 
 type Options = {
   pathParams: add_course_to_favoritesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Add course to favorites

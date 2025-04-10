@@ -8,7 +8,14 @@ export type delete_planner_overridePathParameters = {
 
 type Options = {
   pathParams: delete_planner_overridePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a planner override

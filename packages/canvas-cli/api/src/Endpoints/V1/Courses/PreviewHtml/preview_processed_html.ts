@@ -12,8 +12,16 @@ export type preview_processed_htmlFormParameters = {
 
 type Options = {
   pathParams: preview_processed_htmlPathParameters;
-  params?: preview_processed_htmlFormParameters;
-};
+} & (
+  | {
+      params?: Partial<preview_processed_htmlFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: preview_processed_htmlFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Preview processed html

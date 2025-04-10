@@ -8,7 +8,14 @@ export type resolve_path_groupsPathParameters = {
 
 type Options = {
   pathParams: resolve_path_groupsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Resolve path

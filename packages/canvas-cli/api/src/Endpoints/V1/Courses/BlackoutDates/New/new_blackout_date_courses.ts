@@ -8,7 +8,14 @@ export type new_blackout_date_coursesPathParameters = {
 
 type Options = {
   pathParams: new_blackout_date_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * New Blackout Date

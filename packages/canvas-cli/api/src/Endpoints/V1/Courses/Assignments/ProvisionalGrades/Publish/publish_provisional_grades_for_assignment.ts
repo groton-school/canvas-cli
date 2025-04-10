@@ -9,7 +9,14 @@ export type publish_provisional_grades_for_assignmentPathParameters = {
 
 type Options = {
   pathParams: publish_provisional_grades_for_assignmentPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Publish provisional grades for an assignment

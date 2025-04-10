@@ -7,9 +7,15 @@ export type save_enabled_account_calendarsFormParameters = {
   enabled_account_calendars: string[];
 };
 
-type Options = {
-  params?: save_enabled_account_calendarsFormParameters;
-};
+type Options =
+  | {
+      params?: Partial<save_enabled_account_calendarsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: save_enabled_account_calendarsFormParameters;
+      strict: true;
+    };
 
 /**
  * Save enabled account calendars

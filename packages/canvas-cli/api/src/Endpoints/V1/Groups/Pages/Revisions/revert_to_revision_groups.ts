@@ -17,7 +17,14 @@ export type revert_to_revision_groupsPathParameters = {
 
 type Options = {
   pathParams: revert_to_revision_groupsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Revert to revision

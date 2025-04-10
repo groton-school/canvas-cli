@@ -9,7 +9,14 @@ export type mark_topic_as_read_coursesPathParameters = {
 
 type Options = {
   pathParams: mark_topic_as_read_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Mark topic as read

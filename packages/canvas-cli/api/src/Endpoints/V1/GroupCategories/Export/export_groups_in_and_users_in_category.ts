@@ -7,7 +7,14 @@ export type export_groups_in_and_users_in_categoryPathParameters = {
 
 type Options = {
   pathParams: export_groups_in_and_users_in_categoryPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Export groups in and users in category

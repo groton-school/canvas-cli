@@ -10,7 +10,14 @@ export type show_content_export_groupsPathParameters = {
 
 type Options = {
   pathParams: show_content_export_groupsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show content export

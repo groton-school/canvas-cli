@@ -12,7 +12,14 @@ export type delete_single_rubric_assessmentPathParameters = {
 
 type Options = {
   pathParams: delete_single_rubric_assessmentPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a single rubric assessment

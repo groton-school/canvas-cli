@@ -12,8 +12,16 @@ export type add_allowed_domain_to_accountFormParameters = {
 
 type Options = {
   pathParams: add_allowed_domain_to_accountPathParameters;
-  params?: add_allowed_domain_to_accountFormParameters;
-};
+} & (
+  | {
+      params?: Partial<add_allowed_domain_to_accountFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: add_allowed_domain_to_accountFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Add an allowed domain to account

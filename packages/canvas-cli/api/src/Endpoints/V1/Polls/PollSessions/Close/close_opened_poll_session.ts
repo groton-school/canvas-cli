@@ -9,7 +9,14 @@ export type close_opened_poll_sessionPathParameters = {
 
 type Options = {
   pathParams: close_opened_poll_sessionPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Close an opened poll session

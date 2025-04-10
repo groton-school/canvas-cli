@@ -1,6 +1,12 @@
 import { client } from '../../../Client.js';
 
-type Options = {};
+type Options =
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    };
 
 /**
  * Get the brand config variables that should be used for this domain

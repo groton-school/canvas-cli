@@ -12,8 +12,16 @@ export type delete_folderSearchParameters = {
 
 type Options = {
   pathParams: delete_folderPathParameters;
-  searchParams?: delete_folderSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<delete_folderSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: delete_folderSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Delete folder

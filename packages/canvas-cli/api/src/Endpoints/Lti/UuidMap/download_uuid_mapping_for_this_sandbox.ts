@@ -1,6 +1,12 @@
 import { client } from '../../../Client.js';
 
-type Options = {};
+type Options =
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    };
 
 /**
  * Download UUID Mapping for this Sandbox

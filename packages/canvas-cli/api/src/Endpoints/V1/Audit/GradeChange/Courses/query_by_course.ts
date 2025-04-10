@@ -23,8 +23,16 @@ export type query_by_courseSearchParameters = {
 
 type Options = {
   pathParams: query_by_coursePathParameters;
-  searchParams?: query_by_courseSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<query_by_courseSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: query_by_courseSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Query by course

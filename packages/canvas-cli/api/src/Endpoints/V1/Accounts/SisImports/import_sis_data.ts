@@ -173,8 +173,16 @@ export type import_sis_dataFormParameters = {
 
 type Options = {
   pathParams: import_sis_dataPathParameters;
-  params?: import_sis_dataFormParameters;
-};
+} & (
+  | {
+      params?: Partial<import_sis_dataFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: import_sis_dataFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Import SIS data

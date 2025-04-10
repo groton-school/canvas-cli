@@ -13,8 +13,16 @@ export type copy_folderFormParameters = {
 
 type Options = {
   pathParams: copy_folderPathParameters;
-  params?: copy_folderFormParameters;
-};
+} & (
+  | {
+      params?: Partial<copy_folderFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: copy_folderFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Copy a folder

@@ -10,7 +10,14 @@ export type merge_user_into_another_user_destination_user_idPathParameters = {
 
 type Options = {
   pathParams: merge_user_into_another_user_destination_user_idPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Merge user into another user

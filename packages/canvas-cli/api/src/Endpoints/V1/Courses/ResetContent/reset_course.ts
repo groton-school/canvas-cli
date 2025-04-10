@@ -8,7 +8,14 @@ export type reset_coursePathParameters = {
 
 type Options = {
   pathParams: reset_coursePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Reset a course

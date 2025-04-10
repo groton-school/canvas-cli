@@ -10,7 +10,14 @@ export type delete_assignmentPathParameters = {
 
 type Options = {
   pathParams: delete_assignmentPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete an assignment

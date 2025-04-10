@@ -31,8 +31,16 @@ export type bulk_manage_differentiation_tagsFormParameters = {
 
 type Options = {
   pathParams: bulk_manage_differentiation_tagsPathParameters;
-  params?: bulk_manage_differentiation_tagsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<bulk_manage_differentiation_tagsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: bulk_manage_differentiation_tagsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Bulk manage differentiation tags

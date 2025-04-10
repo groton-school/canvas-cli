@@ -7,7 +7,14 @@ export type updatePathParameters = {
 
 type Options = {
   pathParams: updatePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Update several calendars

@@ -1,7 +1,13 @@
 import { client } from '../../../../../Client.js';
 import { Bookmark } from '../../../../../Resources/Bookmarks.js';
 
-type Options = {};
+type Options =
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    };
 
 /**
  * List bookmarks

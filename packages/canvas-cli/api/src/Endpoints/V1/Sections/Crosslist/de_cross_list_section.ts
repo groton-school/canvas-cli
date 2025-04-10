@@ -17,8 +17,16 @@ export type de_cross_list_sectionSearchParameters = {
 
 type Options = {
   pathParams: de_cross_list_sectionPathParameters;
-  searchParams?: de_cross_list_sectionSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<de_cross_list_sectionSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: de_cross_list_sectionSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * De-cross-list a Section

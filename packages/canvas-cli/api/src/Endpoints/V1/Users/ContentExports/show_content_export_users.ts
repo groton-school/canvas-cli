@@ -10,7 +10,14 @@ export type show_content_export_usersPathParameters = {
 
 type Options = {
   pathParams: show_content_export_usersPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show content export

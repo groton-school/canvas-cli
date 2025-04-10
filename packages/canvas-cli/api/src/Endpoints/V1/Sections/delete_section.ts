@@ -8,7 +8,14 @@ export type delete_sectionPathParameters = {
 
 type Options = {
   pathParams: delete_sectionPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a section

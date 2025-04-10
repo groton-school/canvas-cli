@@ -12,8 +12,16 @@ export type delete_conclude_courseSearchParameters = {
 
 type Options = {
   pathParams: delete_conclude_coursePathParameters;
-  searchParams?: delete_conclude_courseSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<delete_conclude_courseSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: delete_conclude_courseSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Delete/Conclude a course

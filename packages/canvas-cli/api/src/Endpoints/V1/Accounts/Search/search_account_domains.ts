@@ -19,9 +19,15 @@ export type search_account_domainsSearchParameters = {
   longitude: number;
 };
 
-type Options = {
-  searchParams?: search_account_domainsSearchParameters;
-};
+type Options =
+  | {
+      searchParams?: Partial<search_account_domainsSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: search_account_domainsSearchParameters;
+      strict: true;
+    };
 
 /**
  * Search account domains

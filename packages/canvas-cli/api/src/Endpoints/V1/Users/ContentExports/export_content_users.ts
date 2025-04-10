@@ -36,8 +36,16 @@ export type export_content_usersFormParameters = {
 
 type Options = {
   pathParams: export_content_usersPathParameters;
-  params?: export_content_usersFormParameters;
-};
+} & (
+  | {
+      params?: Partial<export_content_usersFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: export_content_usersFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Export content

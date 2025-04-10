@@ -7,7 +7,14 @@ export type remove_quiz_migration_alertPathParameters = {
 
 type Options = {
   pathParams: remove_quiz_migration_alertPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Remove quiz migration alert

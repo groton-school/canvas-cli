@@ -28,8 +28,16 @@ export type import_outcome_group_coursesFormParameters = {
 
 type Options = {
   pathParams: import_outcome_group_coursesPathParameters;
-  params?: import_outcome_group_coursesFormParameters;
-};
+} & (
+  | {
+      params?: Partial<import_outcome_group_coursesFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: import_outcome_group_coursesFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Import an outcome group

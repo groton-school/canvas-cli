@@ -16,8 +16,16 @@ export type submit_captured_eventsFormParameters = {
 
 type Options = {
   pathParams: submit_captured_eventsPathParameters;
-  params?: submit_captured_eventsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<submit_captured_eventsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: submit_captured_eventsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Submit captured events

@@ -10,7 +10,14 @@ export type show_epub_exportPathParameters = {
 
 type Options = {
   pathParams: show_epub_exportPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show ePub export

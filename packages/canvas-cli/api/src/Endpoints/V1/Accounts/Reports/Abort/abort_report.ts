@@ -12,7 +12,14 @@ export type abort_reportPathParameters = {
 
 type Options = {
   pathParams: abort_reportPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Abort a Report

@@ -10,7 +10,14 @@ export type duplicate_pagePathParameters = {
 
 type Options = {
   pathParams: duplicate_pagePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Duplicate page

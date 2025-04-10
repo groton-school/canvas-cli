@@ -23,8 +23,16 @@ export type query_by_assignmentSearchParameters = {
 
 type Options = {
   pathParams: query_by_assignmentPathParameters;
-  searchParams?: query_by_assignmentSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<query_by_assignmentSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: query_by_assignmentSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Query by assignment

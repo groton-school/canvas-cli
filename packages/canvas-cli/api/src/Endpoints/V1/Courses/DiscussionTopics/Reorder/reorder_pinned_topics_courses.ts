@@ -17,8 +17,16 @@ export type reorder_pinned_topics_coursesFormParameters = {
 
 type Options = {
   pathParams: reorder_pinned_topics_coursesPathParameters;
-  params?: reorder_pinned_topics_coursesFormParameters;
-};
+} & (
+  | {
+      params?: Partial<reorder_pinned_topics_coursesFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: reorder_pinned_topics_coursesFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Reorder pinned topics

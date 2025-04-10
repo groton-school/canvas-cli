@@ -34,8 +34,16 @@ export type set_course_level_accommodationsFormParameters = {
 
 type Options = {
   pathParams: set_course_level_accommodationsPathParameters;
-  params?: set_course_level_accommodationsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<set_course_level_accommodationsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: set_course_level_accommodationsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Set Course-Level Accommodations

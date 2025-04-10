@@ -36,8 +36,16 @@ export type export_content_coursesFormParameters = {
 
 type Options = {
   pathParams: export_content_coursesPathParameters;
-  params?: export_content_coursesFormParameters;
-};
+} & (
+  | {
+      params?: Partial<export_content_coursesFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: export_content_coursesFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Export content

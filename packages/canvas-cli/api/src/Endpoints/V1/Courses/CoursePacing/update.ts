@@ -36,8 +36,16 @@ export type updateFormParameters = {
 
 type Options = {
   pathParams: updatePathParameters;
-  params?: updateFormParameters;
-};
+} & (
+  | {
+      params?: Partial<updateFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: updateFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Update a Course pace

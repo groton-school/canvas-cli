@@ -22,9 +22,15 @@ export type createFormParameters = {
   sis_group_id: string;
 };
 
-type Options = {
-  params?: createFormParameters;
-};
+type Options =
+  | {
+      params?: Partial<createFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: createFormParameters;
+      strict: true;
+    };
 
 /**
  * Create a group

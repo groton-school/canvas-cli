@@ -204,8 +204,16 @@ export type update_single_quizFormParameters = {
 
 type Options = {
   pathParams: update_single_quizPathParameters;
-  params?: update_single_quizFormParameters;
-};
+} & (
+  | {
+      params?: Partial<update_single_quizFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: update_single_quizFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Update a single quiz

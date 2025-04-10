@@ -14,7 +14,14 @@ export type enrollment_by_idPathParameters = {
 
 type Options = {
   pathParams: enrollment_by_idPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Enrollment by ID

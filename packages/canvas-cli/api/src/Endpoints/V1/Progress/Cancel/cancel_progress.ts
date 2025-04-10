@@ -8,7 +8,14 @@ export type cancel_progressPathParameters = {
 
 type Options = {
   pathParams: cancel_progressPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Cancel progress

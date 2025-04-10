@@ -10,7 +10,14 @@ export type show_page_groupsPathParameters = {
 
 type Options = {
   pathParams: show_page_groupsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show page

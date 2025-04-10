@@ -9,7 +9,14 @@ export type add_tool_to_rce_favoritesPathParameters = {
 
 type Options = {
   pathParams: add_tool_to_rce_favoritesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Add tool to RCE Favorites

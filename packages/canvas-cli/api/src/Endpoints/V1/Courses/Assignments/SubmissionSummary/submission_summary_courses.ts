@@ -17,8 +17,16 @@ export type submission_summary_coursesSearchParameters = {
 
 type Options = {
   pathParams: submission_summary_coursesPathParameters;
-  searchParams?: submission_summary_coursesSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<submission_summary_coursesSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: submission_summary_coursesSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Submission Summary

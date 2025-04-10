@@ -14,8 +14,16 @@ export type find_or_create_summary_groupsFormParameters = {
 
 type Options = {
   pathParams: find_or_create_summary_groupsPathParameters;
-  params?: find_or_create_summary_groupsFormParameters;
-};
+} & (
+  | {
+      params?: Partial<find_or_create_summary_groupsFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: find_or_create_summary_groupsFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Find or Create Summary

@@ -9,7 +9,14 @@ export type subscribe_to_topic_coursesPathParameters = {
 
 type Options = {
   pathParams: subscribe_to_topic_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Subscribe to a topic

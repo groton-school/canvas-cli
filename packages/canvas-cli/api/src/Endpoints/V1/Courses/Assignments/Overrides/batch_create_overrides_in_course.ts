@@ -17,8 +17,16 @@ export type batch_create_overrides_in_courseFormParameters = {
 
 type Options = {
   pathParams: batch_create_overrides_in_coursePathParameters;
-  params?: batch_create_overrides_in_courseFormParameters;
-};
+} & (
+  | {
+      params?: Partial<batch_create_overrides_in_courseFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: batch_create_overrides_in_courseFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Batch create overrides in a course

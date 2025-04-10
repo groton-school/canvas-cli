@@ -12,7 +12,14 @@ export type abort_generation_of_report_or_remove_previously_generated_onePathPar
 
 type Options = {
   pathParams: abort_generation_of_report_or_remove_previously_generated_onePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Abort the generation of a report, or remove a previously generated one

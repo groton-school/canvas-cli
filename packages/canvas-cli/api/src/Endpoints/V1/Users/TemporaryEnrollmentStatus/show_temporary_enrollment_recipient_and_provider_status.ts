@@ -17,8 +17,16 @@ export type show_temporary_enrollment_recipient_and_provider_statusSearchParamet
 
 type Options = {
   pathParams: show_temporary_enrollment_recipient_and_provider_statusPathParameters;
-  searchParams?: show_temporary_enrollment_recipient_and_provider_statusSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<show_temporary_enrollment_recipient_and_provider_statusSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: show_temporary_enrollment_recipient_and_provider_statusSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Show Temporary Enrollment recipient and provider status

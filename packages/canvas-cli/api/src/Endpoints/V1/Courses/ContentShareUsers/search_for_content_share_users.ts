@@ -16,8 +16,16 @@ export type search_for_content_share_usersSearchParameters = {
 
 type Options = {
   pathParams: search_for_content_share_usersPathParameters;
-  searchParams?: search_for_content_share_usersSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<search_for_content_share_usersSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: search_for_content_share_usersSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Search for content share users

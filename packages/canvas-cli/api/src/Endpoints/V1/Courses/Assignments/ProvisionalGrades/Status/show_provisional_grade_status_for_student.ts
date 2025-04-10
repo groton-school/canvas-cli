@@ -18,8 +18,16 @@ export type show_provisional_grade_status_for_studentSearchParameters = {
 
 type Options = {
   pathParams: show_provisional_grade_status_for_studentPathParameters;
-  searchParams?: show_provisional_grade_status_for_studentSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<show_provisional_grade_status_for_studentSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: show_provisional_grade_status_for_studentSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Show provisional grade status for a student

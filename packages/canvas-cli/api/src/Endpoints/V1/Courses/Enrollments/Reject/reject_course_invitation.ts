@@ -9,7 +9,14 @@ export type reject_course_invitationPathParameters = {
 
 type Options = {
   pathParams: reject_course_invitationPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Reject Course Invitation

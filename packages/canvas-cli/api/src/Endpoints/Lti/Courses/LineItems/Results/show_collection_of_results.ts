@@ -10,7 +10,14 @@ export type show_collection_of_resultsPathParameters = {
 
 type Options = {
   pathParams: show_collection_of_resultsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Show a collection of Results

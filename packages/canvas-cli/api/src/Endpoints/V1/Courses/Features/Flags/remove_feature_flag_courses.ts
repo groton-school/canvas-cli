@@ -10,7 +10,14 @@ export type remove_feature_flag_coursesPathParameters = {
 
 type Options = {
   pathParams: remove_feature_flag_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Remove feature flag

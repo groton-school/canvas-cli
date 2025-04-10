@@ -23,8 +23,16 @@ export type query_by_studentSearchParameters = {
 
 type Options = {
   pathParams: query_by_studentPathParameters;
-  searchParams?: query_by_studentSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<query_by_studentSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: query_by_studentSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Query by student

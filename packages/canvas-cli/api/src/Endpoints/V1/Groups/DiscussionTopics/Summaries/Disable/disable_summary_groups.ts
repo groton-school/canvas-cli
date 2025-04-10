@@ -9,7 +9,14 @@ export type disable_summary_groupsPathParameters = {
 
 type Options = {
   pathParams: disable_summary_groupsPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Disable summary

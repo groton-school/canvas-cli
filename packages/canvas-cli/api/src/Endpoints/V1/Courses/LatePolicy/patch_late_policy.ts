@@ -24,8 +24,16 @@ export type patch_late_policyFormParameters = {
 
 type Options = {
   pathParams: patch_late_policyPathParameters;
-  params?: patch_late_policyFormParameters;
-};
+} & (
+  | {
+      params?: Partial<patch_late_policyFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: patch_late_policyFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Patch a late policy

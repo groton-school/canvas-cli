@@ -7,7 +7,14 @@ export type set_outcome_ordering_for_lmgbPathParameters = {
 
 type Options = {
   pathParams: set_outcome_ordering_for_lmgbPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Set outcome ordering for LMGB

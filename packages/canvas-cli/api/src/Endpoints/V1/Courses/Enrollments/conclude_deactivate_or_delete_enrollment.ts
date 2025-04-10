@@ -19,8 +19,16 @@ export type conclude_deactivate_or_delete_enrollmentSearchParameters = {
 
 type Options = {
   pathParams: conclude_deactivate_or_delete_enrollmentPathParameters;
-  searchParams?: conclude_deactivate_or_delete_enrollmentSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<conclude_deactivate_or_delete_enrollmentSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: conclude_deactivate_or_delete_enrollmentSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Conclude, deactivate, or delete an enrollment

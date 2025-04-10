@@ -10,7 +10,14 @@ export type delete_lti_registrationPathParameters = {
 
 type Options = {
   pathParams: delete_lti_registrationPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete an LTI Registration

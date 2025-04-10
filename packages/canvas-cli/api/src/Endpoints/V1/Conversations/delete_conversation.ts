@@ -7,7 +7,14 @@ export type delete_conversationPathParameters = {
 
 type Options = {
   pathParams: delete_conversationPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a conversation

@@ -9,7 +9,14 @@ export type open_poll_sessionPathParameters = {
 
 type Options = {
   pathParams: open_poll_sessionPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Open a poll session

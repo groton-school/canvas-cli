@@ -17,8 +17,16 @@ export type lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesForm
 
 type Options = {
   pathParams: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesPathParameters;
-  params?: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters;
-};
+} & (
+  | {
+      params?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Lock or unlock current CSP settings for sub-accounts and courses

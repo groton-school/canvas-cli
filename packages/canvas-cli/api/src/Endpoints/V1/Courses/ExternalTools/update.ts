@@ -9,7 +9,14 @@ export type updatePathParameters = {
 
 type Options = {
   pathParams: updatePathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Edit an external tool

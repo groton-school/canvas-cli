@@ -1,7 +1,13 @@
 import { client } from '../../../Client.js';
 import { CourseEpubExport } from '../../../Resources/EPubExports.js';
 
-type Options = {};
+type Options =
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    };
 
 /**
  * List courses with their latest ePub export

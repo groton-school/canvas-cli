@@ -12,8 +12,16 @@ export type delete_appointment_groupSearchParameters = {
 
 type Options = {
   pathParams: delete_appointment_groupPathParameters;
-  searchParams?: delete_appointment_groupSearchParameters;
-};
+} & (
+  | {
+      searchParams?: Partial<delete_appointment_groupSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: delete_appointment_groupSearchParameters;
+      strict: true;
+    }
+);
 
 /**
  * Delete an appointment group

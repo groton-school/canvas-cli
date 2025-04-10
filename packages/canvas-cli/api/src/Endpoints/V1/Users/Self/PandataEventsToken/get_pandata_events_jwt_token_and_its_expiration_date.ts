@@ -6,9 +6,15 @@ export type get_pandata_events_jwt_token_and_its_expiration_dateFormParameters =
     app_key: string;
   };
 
-type Options = {
-  params?: get_pandata_events_jwt_token_and_its_expiration_dateFormParameters;
-};
+type Options =
+  | {
+      params?: Partial<get_pandata_events_jwt_token_and_its_expiration_dateFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: get_pandata_events_jwt_token_and_its_expiration_dateFormParameters;
+      strict: true;
+    };
 
 /**
  * Get a Pandata Events jwt token and its expiration date

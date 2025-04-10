@@ -10,7 +10,14 @@ export type retrieve_enrollment_termPathParameters = {
 
 type Options = {
   pathParams: retrieve_enrollment_termPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Retrieve enrollment term

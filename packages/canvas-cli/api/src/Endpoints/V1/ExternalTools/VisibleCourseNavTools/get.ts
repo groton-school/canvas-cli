@@ -8,9 +8,15 @@ export type getSearchParameters = {
   context_codes: string[];
 };
 
-type Options = {
-  searchParams?: getSearchParameters;
-};
+type Options =
+  | {
+      searchParams?: Partial<getSearchParameters>;
+      strict?: false;
+    }
+  | {
+      searchParams?: getSearchParameters;
+      strict: true;
+    };
 
 /**
  * Get visible course navigation tools

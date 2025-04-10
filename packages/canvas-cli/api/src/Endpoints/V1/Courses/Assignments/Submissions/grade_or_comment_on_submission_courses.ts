@@ -117,8 +117,16 @@ export type grade_or_comment_on_submission_coursesFormParameters = {
 
 type Options = {
   pathParams: grade_or_comment_on_submission_coursesPathParameters;
-  params?: grade_or_comment_on_submission_coursesFormParameters;
-};
+} & (
+  | {
+      params?: Partial<grade_or_comment_on_submission_coursesFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: grade_or_comment_on_submission_coursesFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Grade or comment on a submission

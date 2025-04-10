@@ -7,7 +7,14 @@ export type course_activity_streamPathParameters = {
 
 type Options = {
   pathParams: course_activity_streamPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Course activity stream

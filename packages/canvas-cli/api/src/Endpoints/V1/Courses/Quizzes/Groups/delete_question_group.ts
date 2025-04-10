@@ -11,7 +11,14 @@ export type delete_question_groupPathParameters = {
 
 type Options = {
   pathParams: delete_question_groupPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Delete a question group

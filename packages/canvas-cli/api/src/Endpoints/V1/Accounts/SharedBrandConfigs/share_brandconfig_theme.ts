@@ -15,8 +15,16 @@ export type share_brandconfig_themeFormParameters = {
 
 type Options = {
   pathParams: share_brandconfig_themePathParameters;
-  params?: share_brandconfig_themeFormParameters;
-};
+} & (
+  | {
+      params?: Partial<share_brandconfig_themeFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: share_brandconfig_themeFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Share a BrandConfig (Theme)

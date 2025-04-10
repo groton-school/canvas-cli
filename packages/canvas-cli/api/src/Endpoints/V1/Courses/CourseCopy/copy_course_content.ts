@@ -22,8 +22,16 @@ export type copy_course_contentFormParameters = {
 
 type Options = {
   pathParams: copy_course_contentPathParameters;
-  params?: copy_course_contentFormParameters;
-};
+} & (
+  | {
+      params?: Partial<copy_course_contentFormParameters>;
+      strict?: false;
+    }
+  | {
+      params?: copy_course_contentFormParameters;
+      strict: true;
+    }
+);
 
 /**
  * Copy course content

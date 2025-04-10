@@ -9,7 +9,14 @@ export type find_summary_coursesPathParameters = {
 
 type Options = {
   pathParams: find_summary_coursesPathParameters;
-};
+} & (
+  | {
+      strict?: false;
+    }
+  | {
+      strict: true;
+    }
+);
 
 /**
  * Find Summary
