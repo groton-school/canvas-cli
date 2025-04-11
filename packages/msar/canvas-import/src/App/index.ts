@@ -160,7 +160,8 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
   });
 }
 
-let _workspaceTerm: Canvas.Resources.EnrollmentTerm | undefined = undefined;
+let _workspaceTerm: Canvas.EnrollmentTerms.EnrollmentTerm | undefined =
+  undefined;
 async function workspaceTerm() {
   if (!_workspaceTerm) {
     _workspaceTerm = await Canvas.v1.Accounts.Terms.retrieve_enrollment_term({
@@ -222,10 +223,11 @@ export async function run() {
       });
     }
 
-    let course: Canvas.Resources.Course | undefined =
-      await Canvas.v1.Courses.get({
+    let course: Canvas.Courses.Course | undefined = await Canvas.v1.Courses.get(
+      {
         pathParams: { id: `sis_course_id:${OneRoster.sis_course_id(section)}` }
-      });
+      }
+    );
     if (course) {
       course = await handleDuplicateCourse({ course, section });
     } else {

@@ -6,7 +6,7 @@ import * as Content from './Content/index.js';
 import * as Files from './Files.js';
 
 type ToCanvasArgsOptions = {
-  course: Canvas.Resources.Course;
+  course: Canvas.Courses.Course;
   section: Imported.Data;
   title: string;
   body: NonNullable<

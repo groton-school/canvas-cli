@@ -36,7 +36,7 @@ export function isAlbumContainer(
 }
 
 type Options = {
-  course: Canvas.Resources.Course;
+  course: Canvas.Courses.Course;
   item: AlbumContainer;
   parent: string;
 };

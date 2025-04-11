@@ -60,8 +60,8 @@ export async function hydrate(snapshot: Imported.Data) {
 }
 
 type ToCanvasArgsOptions = {
-  course: Canvas.Resources.Course;
-  assignmentGroup: Canvas.Resources.AssignmentGroup;
+  course: Canvas.Courses.Course;
+  assignmentGroup: Canvas.AssignmentGroups.AssignmentGroup;
   assignment: Model;
   order: number;
 };
@@ -71,7 +71,9 @@ export async function toCanvasArgs({
   assignmentGroup,
   assignment,
   order
-}: ToCanvasArgsOptions): Promise<Partial<Canvas.v1.Courses.Assignments.createFormParameters>> {
+}: ToCanvasArgsOptions): Promise<
+  Partial<Canvas.v1.Courses.Assignments.createFormParameters>
+> {
   // @ts-expect-error 2322 assignment is no longer a pure model, but we don't need to know that
   assignment = await Files.uploadLocalFiles({ course, entry: assignment });
   const args: Partial<Canvas.v1.Courses.Assignments.createFormParameters> = {
@@ -88,7 +90,7 @@ export async function toCanvasArgs({
     'assignment[published]': assignment.PublishInd,
     'assignment[assignment_group_id]': assignmentGroup.id,
     'assignment[submission_types]': []
-  } ;
+  };
   if (assignment.OnPaperSubmission) {
     args['assignment[submission_types]']?.push('on_paper');
   }

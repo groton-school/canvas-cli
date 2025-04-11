@@ -19,7 +19,7 @@ const ready = new EventEmitter();
 ready.setMaxListeners(1000);
 
 function toCanvasArgs(
-  assignment: Canvas.Resources.Assignment,
+  assignment: Canvas.Assignments.Assignment,
   rubric: NonNullable<Imported.Assignments.Item['Rubric']>
 ): Canvas.v1.Courses.Rubrics.createFormParameters {
   return {

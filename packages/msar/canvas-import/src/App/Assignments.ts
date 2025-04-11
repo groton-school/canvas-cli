@@ -8,7 +8,7 @@ import * as Snapshot from '../Snapshot/index.js';
 import * as Preferences from './Preferences.js';
 
 type Options = {
-  course: Canvas.Resources.Course;
+  course: Canvas.Courses.Course;
   section: Imported.Data;
 };
 

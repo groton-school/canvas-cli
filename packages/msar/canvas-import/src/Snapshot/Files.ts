@@ -34,7 +34,7 @@ type ToCanvasArgsOptions = {
 const AWAITING = true;
 const cache: Record<
   number,
-  Record<string, Canvas.Resources.File | typeof AWAITING>
+  Record<string, Canvas.Files.File | typeof AWAITING>
 > = {};
 const ready = new EventEmitter();
 ready.setMaxListeners(1000);
@@ -42,8 +42,8 @@ ready.setMaxListeners(1000);
 async function getCached(
   course_id: number,
   localPath: string,
-  uploader: () => Promise<Canvas.Resources.File>
-): Promise<Canvas.Resources.File> {
+  uploader: () => Promise<Canvas.Files.File>
+): Promise<Canvas.Files.File> {
   if (!(course_id in cache)) {
     cache[course_id] = {};
   }
@@ -51,16 +51,16 @@ async function getCached(
     if (cache[course_id][localPath] === AWAITING) {
       return new Promise((resolve) => {
         ready.on(`${course_id}:${localPath}`, () =>
-          resolve(cache[course_id][localPath] as Canvas.Resources.File)
+          resolve(cache[course_id][localPath] as Canvas.Files.File)
         );
       });
     }
-    return cache[course_id][localPath] as Canvas.Resources.File;
+    return cache[course_id][localPath] as Canvas.Files.File;
   } else {
     cache[course_id][localPath] = AWAITING;
     cache[course_id][localPath] = await uploader();
     ready.emit(`${course_id}:${localPath}`);
-    return cache[course_id][localPath] as Canvas.Resources.File;
+    return cache[course_id][localPath] as Canvas.Files.File;
   }
 }
 
@@ -184,7 +184,7 @@ function selectPrimaryFile(
 }
 
 type UploadLocalFilesOptions = {
-  course: Canvas.Resources.Course;
+  course: Canvas.Courses.Course;
   entry: JSONValue;
   name?: string;
 };

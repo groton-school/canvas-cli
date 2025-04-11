@@ -8,7 +8,7 @@ import * as Snapshot from '../Snapshot/index.js';
 import * as Preferences from './Preferences.js';
 
 type Options = {
-  course: Canvas.Resources.Course;
+  course: Canvas.Courses.Course;
   section: Imported.Data;
 };
 
@@ -16,8 +16,8 @@ export async function handleDuplicateCourse({ course, section }: Options) {
   const next: Record<
     Preferences.DuplicateHandling,
     () =>
-      | Promise<Canvas.Resources.Course | undefined>
-      | Canvas.Resources.Course
+      | Promise<Canvas.Courses.Course | undefined>
+      | Canvas.Courses.Course
       | undefined
   > = {
     update: async () => {

@@ -20,7 +20,7 @@ export function isRSSReaderContainer(
 }
 
 type Options = {
-  course: Canvas.Resources.Course;
+  course: Canvas.Courses.Course;
   item: RSSReaderContainer;
 };
 
