@@ -4,7 +4,7 @@ import { isError } from '@groton/canvas-cli.client/dist/Utilities/isError.js';
 import fetch, { fileFromSync, FormData } from 'node-fetch';
 import fs from 'node:fs';
 import { client } from './Client.js';
-import { V1 as v1 } from './Endpoints/index.js'; 
+import { V1 as v1 } from './Endpoints/index.js';
 import * as Resources from './Resources/index.js';
 
 type UploadOptions = {
@@ -75,12 +75,12 @@ export async function upload({
     method: 'POST',
     body
   });
-  let result: Resources.File;
+  let result: Resources.Files.File;
   switch (confirm.status) {
     case 301:
     case 201:
       if (confirm.headers.has('location')) {
-        result = await client().fetchAs<Resources.File>(
+        result = await client().fetchAs<Resources.Files.File>(
           confirm.headers.get('location')!
         );
         if (!isError(result)) {
