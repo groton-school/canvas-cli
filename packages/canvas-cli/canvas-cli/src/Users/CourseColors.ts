@@ -13,7 +13,7 @@ export type Configuration = Plugin.Configuration & {
   overwrite?: boolean;
 };
 
-export const name = 'Users/Colors';
+export const name = 'Users/CourseColors';
 export const src = path.resolve(import.meta.dirname, '../..');
 
 let canvas_instance_url: string | undefined = undefined;

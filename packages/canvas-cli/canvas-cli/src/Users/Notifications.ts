@@ -51,9 +51,7 @@ export function options(): Plugin.Options {
     opt: {
       canvasInstanceUrl: {
         description: `URL of canvas instance`
-      }
-    },
-    opt: {
+      },
       accountId: {
         description: `Canvas account ID to include`,
         default: '1'
@@ -82,41 +80,52 @@ export async function run() {
     cache: new InMemoryCache()
   });
   const [UpdateCourseNotificationPreferences] = useMutation(gql`
-mutation DisableCourseNotifications($courseId: ID!) {
-  updateNotificationPreferences(
-    input: {contextType: Course, courseId: $courseId, isPolicyOverride: true, enabled: false}
-  ) {
-    user {
-      _id
-      notificationPreferencesEnabled(contextType: Course, courseId: $courseId)
-      notificationPreferences {
-        channels {
+    mutation DisableCourseNotifications($courseId: ID!) {
+      updateNotificationPreferences(
+        input: {
+          contextType: Course
+          courseId: $courseId
+          isPolicyOverride: true
+          enabled: false
+        }
+      ) {
+        user {
           _id
-          path
-          pathType
-          notificationPolicyOverrides(contextType: Course, courseId: $courseId) {
-            notification {
+          notificationPreferencesEnabled(
+            contextType: Course
+            courseId: $courseId
+          )
+          notificationPreferences {
+            channels {
               _id
-              category
-              categoryDisplayName
-              name
+              path
+              pathType
+              notificationPolicyOverrides(
+                contextType: Course
+                courseId: $courseId
+              ) {
+                notification {
+                  _id
+                  category
+                  categoryDisplayName
+                  name
+                  __typename
+                }
+                __typename
+              }
               __typename
             }
             __typename
           }
           __typename
         }
+        errors {
+          message
+          __typename
+        }
         __typename
       }
-      __typename
     }
-    errors {
-      message
-      __typename
-    }
-    __typename
-  }
-}
   `);
 
   const per_page = 100;
