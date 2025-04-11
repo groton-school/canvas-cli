@@ -36,7 +36,14 @@ export function toTSTypeName(id: string): TSName {
 }
 
 export function toTSNamespace(filePath: PathString): TSName {
-  return path.basename(filePath, '.js').replace(/[^a-z0-9_]+/gi, '_');
+  return path
+    .basename(filePath, '.ts')
+    .replace(/[^a-z0-9_]+/gi, '_')
+    .split('_')
+    .map((token) =>
+      token.length ? token[0].toUpperCase() + token.slice(1) : ''
+    )
+    .join('');
 }
 
 export function toTSType(property: Swagger.v1p2.DataType): TSType {
