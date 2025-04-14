@@ -69,7 +69,7 @@ export async function importTopics({ course, section }: Options) {
           body: topic.Content,
           layout: topic.LayoutId
         });
-        let canvasTopic: Canvas.Resources.Page | undefined = undefined;
+        let canvasTopic: Canvas.Pages.Page | undefined = undefined;
         if (topic.canvas?.id && Preferences.duplicates() === 'update') {
           if (!Imported.isEqual(params, topic.canvas.args)) {
             canvasTopic = await Canvas.v1.Courses.Pages.update({

@@ -70,11 +70,11 @@ export async function importAssignments({ course, section }: Options) {
         id: section.assignment_groups.find(
           (g) => g.blackbaud_id == assignments[order].type_id
         )!.id!
-      } as Canvas.Resources.AssignmentGroup,
+      } as Canvas.AssignmentGroups.AssignmentGroup,
       assignment: assignments[order],
       order
     });
-    let assignment: Canvas.Resources.Assignment | undefined = undefined;
+    let assignment: Canvas.Assignments.Assignment | undefined = undefined;
     if (
       assignments[order].canvas?.id &&
       Preferences.duplicates() === 'update'
