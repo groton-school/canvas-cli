@@ -1,22 +1,11 @@
-import { Colors } from '@battis/qui-cli.colors';
-import { Log } from '@battis/qui-cli.log';
-import fs from 'node:fs';
+import { register } from '@battis/qui-cli.plugin';
+import { build } from '@battis/qui-cli.structured';
 import path from 'node:path';
+import * as API from './API.js';
 
-const [command] = process.argv.splice(2, 1);
-
-const commands = fs
-  .readdirSync(import.meta.dirname)
-  .filter((token) => !/\.([jt]s|map)$/.test(token))
-  .map((token) => token.toLowerCase());
-if (commands.includes(command)) {
-  process.argv[1] = path.join(import.meta.dirname, 'commands', filename);
-  import(process.argv[1]);
-} else if (/^-?-h(elp)?$/.test(command)) {
-  Log.info(`Usage:
-  ${path.basename(process.argv[1])} command -h --help
-
-  Available commands: ${commands.map((command) => Colors.value(command)).join(', ')}
-
-  -h --help         Usage`);
-}
+await register(API);
+await build({
+  fileName: import.meta.filename,
+  commandDirPath: path.join(import.meta.dirname, 'Commands'),
+  commandName: 'canvas'
+});

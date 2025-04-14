@@ -1,57 +1,25 @@
 import { ApolloClient, gql, InMemoryCache, useMutation } from '@apollo/client';
-import { Colors } from '@battis/qui-cli.colors';
 import '@battis/qui-cli.env';
 import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import * as Canvas from '@groton/canvas-cli.api';
 
 export type Configuration = Plugin.Configuration & {
-  canvasInstanceUrl?: string;
   account_id?: string;
 };
 
 export const name = '@groton/canvas-notifications-cli';
 export const src = import.meta.dirname;
 
-let canvas_instance_url: string | undefined = undefined;
 let account_id: string | undefined = undefined;
 
 export function configure(config: Configuration = {}) {
   account_id = Plugin.hydrate(config.account_id, account_id);
-  canvas_instance_url = Plugin.hydrate(
-    config.canvasInstanceUrl,
-    canvas_instance_url
-  );
-  if (
-    config.canvasInstanceUrl &&
-    process.env.CANVAS_CLIENT_ID &&
-    process.env.CANVAS_CLIENT_SECRET &&
-    process.env.CANVAS_REDIRECT_URI
-  ) {
-    Log.info(`Using Canvas instance ${Colors.url(config.canvasInstanceUrl)}`);
-    const canvasConfig = {
-      instance_url: config.canvasInstanceUrl,
-      client_id: process.env.CANVAS_CLIENT_ID,
-      client_secret: process.env.CANVAS_CLIENT_SECRET,
-      redirect_uri: process.env.CANVAS_REDIRECT_URI
-    };
-    if (process.env.CANVAS_TOKEN_STORE) {
-      // @ts-expect-error 2339 should really type CanvasConfig, but need to directly import @oauth2-cli/canvas for that
-      canvasConfig.store = path.join(
-        process.env.CANVAS_TOKEN_STORE,
-        `${new URL(config.canvasInstanceUrl).hostname}.json`
-      );
-    }
-    Canvas.init(canvasConfig);
-  }
 }
 
 export function options(): Plugin.Options {
   return {
     opt: {
-      canvasInstanceUrl: {
-        description: `URL of canvas instance`
-      },
       accountId: {
         description: `Canvas account ID to include`,
         default: '1'

@@ -23,6 +23,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.13.7",
+    "@battis/qui-cli.root": "^2.0.2",
+    "@battis/qui-cli.structured": "^0.1.1",
     "@groton/canvas-cli.api": "workspace:*",
     "@inquirer/prompts": "^7.4.1",
     "@oauth2-cli/canvas": "workspace:*",
@@ -36,6 +38,7 @@
     "@battis/qui-cli.log": "^2.1.0",
     "@battis/qui-cli.plugin": "^2.3.0",
     "@tsconfig/node20": "^20.1.5",
+    "@types/csv-parse": "^1.2.5",
     "commit-and-tag-version": "^12.5.1",
     "del-cli": "^6.0.0",
     "npm-run-all": "^4.1.5",
