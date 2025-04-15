@@ -1,4 +1,5 @@
-import { ApolloClient, gql, InMemoryCache, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client/core';
 import '@battis/qui-cli.env';
 import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
