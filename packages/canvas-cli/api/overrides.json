@@ -56,34 +56,42 @@
     "Date": { "type": "string", "description": "format: date" },
     "object": {
       "type": "JSONObject",
-      "tsReference": {
-        "type": "JSONObject",
-        "packagePath": "@battis/typescript-tricks"
-      }
+      "tsReferences": [
+        {
+          "type": "JSONObject",
+          "packagePath": "@battis/typescript-tricks"
+        }
+      ]
     },
     "Object": {
       "type": "JSONObject",
-      "tsReference": {
-        "type": "JSONObject",
-        "packagePath": "@battis/typescript-tricks"
-      }
+      "tsReferences": [
+        {
+          "type": "JSONObject",
+          "packagePath": "@battis/typescript-tricks"
+        }
+      ]
     },
     "URL": { "type": "string", "description": "format: url" },
     "Array": { "type": "string[]" },
     "String[]": { "type": "string[]" },
     "Hash": {
       "type": "JSONObject",
-      "tsReference": {
-        "type": "JSONObject",
-        "packagePath": "@battis/typescript-tricks"
-      }
+      "tsReferences": [
+        {
+          "type": "JSONObject",
+          "packagePath": "@battis/typescript-tricks"
+        }
+      ]
     },
     "json": {
       "type": "JSONObject",
-      "tsReference": {
-        "type": "JSONObject",
-        "packagePath": "@battis/typescript-tricks"
-      }
+      "tsReferences": [
+        {
+          "type": "JSONObject",
+          "packagePath": "@battis/typescript-tricks"
+        }
+      ]
     },
     "{ \"count\": \"integer\" }": {
       "type": "{ count: number }",
@@ -107,10 +115,12 @@
       ],
       "tsType": {
         "type": "UploadResponse",
-        "tsReference": {
-          "type": "UploadResponse",
-          "filePath": "FileUploads.ts"
-        }
+        "tsReferences": [
+          {
+            "type": "UploadResponse",
+            "filePath": "FileUploads.ts"
+          }
+        ]
       },
       "tsFormParameters": [
         {
@@ -172,10 +182,12 @@
       ],
       "tsType": {
         "type": "UploadResponse",
-        "tsReference": {
-          "type": "UploadResponse",
-          "filePath": "FileUploads.ts"
-        }
+        "tsReferences": [
+          {
+            "type": "UploadResponse",
+            "filePath": "FileUploads.ts"
+          }
+        ]
       },
       "tsFormParameters": [
         {
