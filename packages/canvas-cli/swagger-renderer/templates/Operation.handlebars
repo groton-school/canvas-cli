@@ -83,27 +83,8 @@ type Options = {{#if tsPathParameters}}{
  *
  * {{description}}
  */
-export async function {{tsName}}({ 
-  {{#if tsPathParameters}}
-  pathParams, 
-  {{/if}}
-  {{#if tsQueryParameters}}
-  searchParams, 
-  {{/if}}
-  {{#if tsFormParameters}}
-  params
-  {{/if}}
-   }: Options) {
+export async function {{tsName}}(options: Options) {
   return await client().fetchAs<{{{tsType.type}}}>(`{{{tsEndpoint}}}`, {
-      method: "{{method}}", 
-      {{#if tsPathParameters}}
-      pathParams, 
-      {{/if}}
-      {{#if tsQueryParameters}}
-      searchParams, 
-      {{/if}}
-      {{#if tsFormParameters}}
-      params 
-      {{/if}}
+      method: "{{method}}", ...options
     });
 }
