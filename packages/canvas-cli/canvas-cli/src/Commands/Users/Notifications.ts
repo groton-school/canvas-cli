@@ -3,13 +3,14 @@ import '@battis/qui-cli.env';
 import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import * as Canvas from '@groton/canvas-cli.api';
+import path from 'node:path';
 
 export type Configuration = Plugin.Configuration & {
   account_id?: string;
 };
 
 export const name = '@groton/canvas-notifications-cli';
-export const src = import.meta.dirname;
+export const src = path.resolve(import.meta.dirname, '../..');
 
 let account_id: string | undefined = undefined;
 
