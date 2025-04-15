@@ -1,7 +1,6 @@
 import { Colors } from '@battis/qui-cli.colors';
 import { Core } from '@battis/qui-cli.core';
 import '@battis/qui-cli.env';
-import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import { Root } from '@battis/qui-cli.root';
 import * as Canvas from '@groton/canvas-cli.api';
@@ -60,47 +59,49 @@ export async function run() {
     }
   );
 
+  let spinner = ora(`Loading user list from Canvas`).start();
   const users = await Canvas.v1.Accounts.Users.list({
     // FIXME pagination on array response endpoints
     // @ts-expect-error 2353 -- per_page should be declared in api
     pathParams: { account_id: '1', per_page: 100 }
   });
+  spinner.succeed(`${users.length} Canvas users loaded`);
 
-  for (const { user_id: id, sis_user_id, path_to_avatar } of data) {
-    let user_id = id;
-    if (sis_user_id && !user_id) {
-      user_id = users
-        .find((user) => user.sis_user_id === sis_user_id)!
-        .id.toString();
-    }
-    const spinner = ora(
-      users.find((user) => user.id.toString() === user_id)?.name
-    ).start();
-    if (!user_id) {
+  for (const { user_id, sis_user_id, path_to_avatar } of data) {
+    spinner = ora(`User ID ${Colors.value(user_id || sis_user_id)}`).start();
+    const user = users.find(
+      (user) =>
+        user.id.toString() === user_id || user.sis_user_id === sis_user_id
+    );
+    if (!user) {
       spinner.fail(
-        `No Canvas ID found for sis_user_id ${Colors.value(sis_user_id)}`
+        `No Canvas user found for user ID ${Colors.value(sis_user_id)}`
       );
       continue;
+    } else {
+      spinner.text = user.name;
     }
     const file = await Canvas.upload({
-      pathParams: { user_id },
+      pathParams: { user_id: user.id.toString() },
       params: {
         name: 'avatar.jpg',
         parent_folder_path: 'profile pictures',
-        // @ts-ignore
-        as_user_id: user_id
+        // FIXME masquerade parameters
+        // @ts-expect-error 2353 -- need masquerade parameters on all endpoints
+        as_user_id: user.id.toString()
       },
       localFilePath: path_to_avatar
     });
     const avatars = await Canvas.v1.Users.Avatars.list({
-      pathParams: { user_id }
+      pathParams: { user_id: user.id.toString() }
     });
     const token = avatars.find(
+      // FIXME Avatars are sometimes Files
       (avatar) => 'uuid' in avatar && avatar.uuid === file.uuid
     )?.token;
     if (token) {
       await Canvas.v1.Users.update({
-        pathParams: { id: user_id },
+        pathParams: { id: user.id.toString() },
         params: { 'user[avatar][token]': token }
       });
       spinner.succeed();
