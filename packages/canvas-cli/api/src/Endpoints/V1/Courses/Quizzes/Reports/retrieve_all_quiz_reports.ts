@@ -37,16 +37,12 @@ type Options = {
  *
  * Nickname: retrieve_all_quiz_reports
  */
-export async function retrieve_all_quiz_reports({
-  pathParams,
-  searchParams
-}: Options) {
+export async function retrieve_all_quiz_reports(options: Options) {
   return await client().fetchAs<QuizReport[]>(
-    `/v1/courses/{course_id}/quizzes/{quiz_id}/reports`,
+    `/api/v1/courses/{course_id}/quizzes/{quiz_id}/reports`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

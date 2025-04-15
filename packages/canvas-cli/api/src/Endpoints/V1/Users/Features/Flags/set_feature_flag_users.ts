@@ -41,13 +41,12 @@ type Options = {
  *
  * Nickname: set_feature_flag_users
  */
-export async function set_feature_flag_users({ pathParams, params }: Options) {
+export async function set_feature_flag_users(options: Options) {
   return await client().fetchAs<FeatureFlag>(
-    `/v1/users/{user_id}/features/flags/{feature}`,
+    `/api/v1/users/{user_id}/features/flags/{feature}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

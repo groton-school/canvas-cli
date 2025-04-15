@@ -26,9 +26,12 @@ type Options = {
  *
  * Nickname: settings
  */
-export async function settings({ pathParams }: Options) {
-  return await client().fetchAs<void>(`/v1/accounts/{account_id}/settings`, {
-    method: 'GET',
-    pathParams
-  });
+export async function settings(options: Options) {
+  return await client().fetchAs<void>(
+    `/api/v1/accounts/{account_id}/settings`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

@@ -101,9 +101,9 @@ type Options =
  *
  * Nickname: create_calendar_event
  */
-export async function create({ params }: Options) {
-  return await client().fetchAs<void>(`/v1/calendar_events`, {
+export async function create(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/calendar_events`, {
     method: 'POST',
-    params
+    ...options
   });
 }

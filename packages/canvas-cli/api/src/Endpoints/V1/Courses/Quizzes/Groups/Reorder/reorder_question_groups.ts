@@ -42,13 +42,12 @@ type Options = {
  *
  * Nickname: reorder_question_groups
  */
-export async function reorder_question_groups({ pathParams, params }: Options) {
+export async function reorder_question_groups(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/quizzes/{quiz_id}/groups/{id}/reorder`,
+    `/api/v1/courses/{course_id}/quizzes/{quiz_id}/groups/{id}/reorder`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

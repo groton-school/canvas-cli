@@ -26,9 +26,9 @@ type Options = {
  *
  * Nickname: terminate_all_user_sessions
  */
-export async function terminate_all_user_sessions({ pathParams }: Options) {
-  return await client().fetchAs<void>(`/v1/users/{id}/sessions`, {
+export async function terminate_all_user_sessions(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/users/{id}/sessions`, {
     method: 'DELETE',
-    pathParams
+    ...options
   });
 }

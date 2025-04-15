@@ -31,10 +31,9 @@ type Options = {
  *
  * Nickname: invite_others_to_group
  */
-export async function invite_others_to_group({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/groups/{group_id}/invite`, {
+export async function invite_others_to_group(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/groups/{group_id}/invite`, {
     method: 'POST',
-    pathParams,
-    params
+    ...options
   });
 }

@@ -109,13 +109,12 @@ type Options = {
  *
  * Nickname: list_submissions_for_multiple_assignments_sections
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/sections/{section_id}/students/submissions`,
+    `/api/v1/sections/{section_id}/students/submissions`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

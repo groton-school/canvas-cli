@@ -41,10 +41,12 @@ type Options = {
  *
  * Nickname: list_external_tools_groups
  */
-export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<void>(`/v1/groups/{group_id}/external_tools`, {
-    method: 'GET',
-    pathParams,
-    searchParams
-  });
+export async function list(options: Options) {
+  return await client().fetchAs<void>(
+    `/api/v1/groups/{group_id}/external_tools`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

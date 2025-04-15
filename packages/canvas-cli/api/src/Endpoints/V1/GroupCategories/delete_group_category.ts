@@ -24,12 +24,12 @@ type Options = {
  *
  * Nickname: delete_group_category
  */
-export async function delete_group_category({ pathParams }: Options) {
+export async function delete_group_category(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/group_categories/{group_category_id}`,
+    `/api/v1/group_categories/{group_category_id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

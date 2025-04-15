@@ -64,10 +64,9 @@ type Options = {
  *
  * Nickname: list_planner_items_users
  */
-export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<void>(`/v1/users/{user_id}/planner/items`, {
+export async function list(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/users/{user_id}/planner/items`, {
     method: 'GET',
-    pathParams,
-    searchParams
+    ...options
   });
 }

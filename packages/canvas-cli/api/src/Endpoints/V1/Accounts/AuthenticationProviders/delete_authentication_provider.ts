@@ -25,12 +25,12 @@ type Options = {
  *
  * Nickname: delete_authentication_provider
  */
-export async function delete_authentication_provider({ pathParams }: Options) {
+export async function delete_authentication_provider(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/authentication_providers/{id}`,
+    `/api/v1/accounts/{account_id}/authentication_providers/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

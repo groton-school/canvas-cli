@@ -32,16 +32,12 @@ type Options = {
  *
  * Nickname: find_or_create_summary_groups
  */
-export async function find_or_create_summary_groups({
-  pathParams,
-  params
-}: Options) {
+export async function find_or_create_summary_groups(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/groups/{group_id}/discussion_topics/{topic_id}/summaries`,
+    `/api/v1/groups/{group_id}/discussion_topics/{topic_id}/summaries`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

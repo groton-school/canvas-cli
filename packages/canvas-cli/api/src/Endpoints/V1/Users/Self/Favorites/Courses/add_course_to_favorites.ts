@@ -29,12 +29,12 @@ type Options = {
  *
  * Nickname: add_course_to_favorites
  */
-export async function add_course_to_favorites({ pathParams }: Options) {
+export async function add_course_to_favorites(options: Options) {
   return await client().fetchAs<Favorite>(
-    `/v1/users/self/favorites/courses/{id}`,
+    `/api/v1/users/self/favorites/courses/{id}`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

@@ -91,10 +91,9 @@ type Options = {
  *
  * Nickname: create_single_rubric
  */
-export async function create({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/courses/{course_id}/rubrics`, {
+export async function create(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/courses/{course_id}/rubrics`, {
     method: 'POST',
-    pathParams,
-    params
+    ...options
   });
 }

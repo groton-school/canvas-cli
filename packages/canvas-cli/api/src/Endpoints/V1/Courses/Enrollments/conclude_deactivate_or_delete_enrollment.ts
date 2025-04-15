@@ -38,16 +38,14 @@ type Options = {
  *
  * Nickname: conclude_deactivate_or_delete_enrollment
  */
-export async function conclude_deactivate_or_delete_enrollment({
-  pathParams,
-  searchParams
-}: Options) {
+export async function conclude_deactivate_or_delete_enrollment(
+  options: Options
+) {
   return await client().fetchAs<Enrollment>(
-    `/v1/courses/{course_id}/enrollments/{id}`,
+    `/api/v1/courses/{course_id}/enrollments/{id}`,
     {
       method: 'DELETE',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

@@ -40,10 +40,9 @@ type Options = {
  *
  * Nickname: delete_file
  */
-export async function delete_file({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<File>(`/v1/files/{id}`, {
+export async function delete_file(options: Options) {
+  return await client().fetchAs<File>(`/api/v1/files/{id}`, {
     method: 'DELETE',
-    pathParams,
-    searchParams
+    ...options
   });
 }

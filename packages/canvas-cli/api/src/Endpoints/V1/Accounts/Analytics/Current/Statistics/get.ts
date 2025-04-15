@@ -25,12 +25,12 @@ type Options = {
  *
  * Nickname: get_department_level_statistics_current
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/analytics/current/statistics`,
+    `/api/v1/accounts/{account_id}/analytics/current/statistics`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

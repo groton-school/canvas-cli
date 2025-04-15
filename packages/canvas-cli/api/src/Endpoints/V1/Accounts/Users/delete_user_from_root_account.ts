@@ -32,12 +32,12 @@ type Options = {
  *
  * Nickname: delete_user_from_root_account
  */
-export async function delete_user_from_root_account({ pathParams }: Options) {
+export async function delete_user_from_root_account(options: Options) {
   return await client().fetchAs<User>(
-    `/v1/accounts/{account_id}/users/{user_id}`,
+    `/api/v1/accounts/{account_id}/users/{user_id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

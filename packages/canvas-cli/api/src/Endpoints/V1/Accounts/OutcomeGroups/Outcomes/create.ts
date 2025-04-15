@@ -103,13 +103,12 @@ type Options = {
  *
  * Nickname: create_link_outcome_accounts
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<OutcomeLink>(
-    `/v1/accounts/{account_id}/outcome_groups/{id}/outcomes`,
+    `/api/v1/accounts/{account_id}/outcome_groups/{id}/outcomes`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

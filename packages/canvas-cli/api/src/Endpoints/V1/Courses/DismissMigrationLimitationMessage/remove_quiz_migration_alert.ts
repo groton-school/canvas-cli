@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: remove_quiz_migration_alert
  */
-export async function remove_quiz_migration_alert({ pathParams }: Options) {
+export async function remove_quiz_migration_alert(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{id}/dismiss_migration_limitation_message`,
+    `/api/v1/courses/{id}/dismiss_migration_limitation_message`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

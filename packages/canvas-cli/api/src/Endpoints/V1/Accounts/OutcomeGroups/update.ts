@@ -48,13 +48,12 @@ type Options = {
  *
  * Nickname: update_outcome_group_accounts
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<OutcomeGroup>(
-    `/v1/accounts/{account_id}/outcome_groups/{id}`,
+    `/api/v1/accounts/{account_id}/outcome_groups/{id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

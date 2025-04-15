@@ -26,14 +26,14 @@ type Options = {
  *
  * Nickname: redirect_to_assignment_override_for_group
  */
-export async function redirect_to_assignment_override_for_group({
-  pathParams
-}: Options) {
+export async function redirect_to_assignment_override_for_group(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/groups/{group_id}/assignments/{assignment_id}/override`,
+    `/api/v1/groups/{group_id}/assignments/{assignment_id}/override`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

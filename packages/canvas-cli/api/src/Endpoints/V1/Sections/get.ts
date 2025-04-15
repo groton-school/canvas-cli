@@ -42,10 +42,9 @@ type Options = {
  *
  * Nickname: get_section_information_sections
  */
-export async function get({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<Section>(`/v1/sections/{id}`, {
+export async function get(options: Options) {
+  return await client().fetchAs<Section>(`/api/v1/sections/{id}`, {
     method: 'GET',
-    pathParams,
-    searchParams
+    ...options
   });
 }

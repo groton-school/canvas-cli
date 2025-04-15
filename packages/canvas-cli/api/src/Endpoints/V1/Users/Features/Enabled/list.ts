@@ -24,9 +24,12 @@ type Options = {
  *
  * Nickname: list_enabled_features_users
  */
-export async function list({ pathParams }: Options) {
-  return await client().fetchAs<void>(`/v1/users/{user_id}/features/enabled`, {
-    method: 'GET',
-    pathParams
-  });
+export async function list(options: Options) {
+  return await client().fetchAs<void>(
+    `/api/v1/users/{user_id}/features/enabled`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

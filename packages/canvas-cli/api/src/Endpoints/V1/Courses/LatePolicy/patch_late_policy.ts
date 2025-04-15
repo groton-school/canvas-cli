@@ -42,10 +42,9 @@ type Options = {
  *
  * Nickname: patch_late_policy
  */
-export async function patch_late_policy({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/courses/{id}/late_policy`, {
+export async function patch_late_policy(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/courses/{id}/late_policy`, {
     method: 'PATCH',
-    pathParams,
-    params
+    ...options
   });
 }

@@ -46,13 +46,12 @@ type Options = {
  *
  * Nickname: batch_update_overrides_in_course
  */
-export async function batchUpdate({ pathParams, params }: Options) {
+export async function batchUpdate(options: Options) {
   return await client().fetchAs<AssignmentOverride[]>(
-    `/v1/courses/{course_id}/assignments/overrides`,
+    `/api/v1/courses/{course_id}/assignments/overrides`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

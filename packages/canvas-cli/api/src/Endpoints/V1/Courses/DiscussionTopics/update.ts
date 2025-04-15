@@ -130,13 +130,12 @@ type Options = {
  *
  * Nickname: update_topic_courses
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/discussion_topics/{topic_id}`,
+    `/api/v1/courses/{course_id}/discussion_topics/{topic_id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

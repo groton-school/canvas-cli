@@ -33,12 +33,12 @@ type Options = {
  *
  * Nickname: get_department_level_grade_data_current
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/analytics/current/grades`,
+    `/api/v1/accounts/{account_id}/analytics/current/grades`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

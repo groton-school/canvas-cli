@@ -42,13 +42,12 @@ type Options = {
  *
  * Nickname: query_by_student
  */
-export async function query_by_student({ pathParams, searchParams }: Options) {
+export async function query_by_student(options: Options) {
   return await client().fetchAs<GradeChangeEvent[]>(
-    `/v1/audit/grade_change/students/{student_id}`,
+    `/api/v1/audit/grade_change/students/{student_id}`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

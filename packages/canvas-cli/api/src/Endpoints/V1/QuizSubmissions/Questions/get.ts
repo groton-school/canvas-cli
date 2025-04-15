@@ -32,13 +32,12 @@ type Options = {
  *
  * Nickname: get_all_quiz_submission_questions
  */
-export async function get({ pathParams, searchParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/quiz_submissions/{quiz_submission_id}/questions`,
+    `/api/v1/quiz_submissions/{quiz_submission_id}/questions`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

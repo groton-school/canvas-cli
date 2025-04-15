@@ -24,14 +24,14 @@ type Options = {
  *
  * Nickname: redirect_to_root_outcome_group_for_context_courses
  */
-export async function redirect_to_root_outcome_group_for_context_courses({
-  pathParams
-}: Options) {
+export async function redirect_to_root_outcome_group_for_context_courses(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/root_outcome_group`,
+    `/api/v1/courses/{course_id}/root_outcome_group`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

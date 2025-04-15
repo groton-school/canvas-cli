@@ -44,16 +44,14 @@ type Options = {
  *
  * Nickname: enable_disable_or_clear_explicit_csp_setting_accounts
  */
-export async function enable_disable_or_clear_explicit_csp_setting_accounts({
-  pathParams,
-  params
-}: Options) {
+export async function enable_disable_or_clear_explicit_csp_setting_accounts(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/csp_settings`,
+    `/api/v1/accounts/{account_id}/csp_settings`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

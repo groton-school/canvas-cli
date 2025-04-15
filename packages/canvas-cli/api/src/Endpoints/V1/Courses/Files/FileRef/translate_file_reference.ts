@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: translate_file_reference
  */
-export async function translate_file_reference({ pathParams }: Options) {
+export async function translate_file_reference(options: Options) {
   return await client().fetchAs<File>(
-    `/v1/courses/{course_id}/files/file_ref/{migration_id}`,
+    `/api/v1/courses/{course_id}/files/file_ref/{migration_id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

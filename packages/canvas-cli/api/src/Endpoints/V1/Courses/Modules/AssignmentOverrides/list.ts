@@ -30,12 +30,12 @@ type Options = {
  *
  * Nickname: list_module_s_overrides
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<ModuleAssignmentOverride[]>(
-    `/v1/courses/{course_id}/modules/{context_module_id}/assignment_overrides`,
+    `/api/v1/courses/{course_id}/modules/{context_module_id}/assignment_overrides`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

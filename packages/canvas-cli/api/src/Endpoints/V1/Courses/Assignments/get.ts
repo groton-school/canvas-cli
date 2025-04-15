@@ -48,13 +48,12 @@ type Options = {
  *
  * Nickname: get_single_assignment
  */
-export async function get({ pathParams, searchParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<Assignment>(
-    `/v1/courses/{course_id}/assignments/{id}`,
+    `/api/v1/courses/{course_id}/assignments/{id}`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

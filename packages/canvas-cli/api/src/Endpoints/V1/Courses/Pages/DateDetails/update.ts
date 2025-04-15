@@ -69,13 +69,12 @@ type Options = {
  *
  * Nickname: update_learning_object_s_date_information_pages
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/pages/{url_or_id}/date_details`,
+    `/api/v1/courses/{course_id}/pages/{url_or_id}/date_details`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

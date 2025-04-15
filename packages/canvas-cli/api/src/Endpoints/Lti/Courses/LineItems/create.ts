@@ -78,13 +78,12 @@ type Options = {
  *
  * Nickname: create_line_item
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<LineItem>(
-    `/lti/courses/{course_id}/line_items`,
+    `/api/lti/courses/{course_id}/line_items`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

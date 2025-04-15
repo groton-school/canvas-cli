@@ -41,13 +41,12 @@ type Options = {
  *
  * Nickname: show_course_pace
  */
-export async function show_course_pace({ pathParams, searchParams }: Options) {
+export async function show_course_pace(options: Options) {
   return await client().fetchAs<CoursePace>(
-    `/v1/courses/{course_id}/course_pacing/{id}`,
+    `/api/v1/courses/{course_id}/course_pacing/{id}`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

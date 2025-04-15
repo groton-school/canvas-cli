@@ -36,13 +36,12 @@ type Options = {
  *
  * Nickname: submit_captured_events
  */
-export async function submit_captured_events({ pathParams, params }: Options) {
+export async function submit_captured_events(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/events`,
+    `/api/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/events`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

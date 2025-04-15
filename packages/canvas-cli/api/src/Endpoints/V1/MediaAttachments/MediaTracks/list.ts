@@ -36,13 +36,12 @@ type Options = {
  *
  * Nickname: list_media_tracks_for_media_object_or_attachment_media_attachments
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<MediaTrack[]>(
-    `/v1/media_attachments/{attachment_id}/media_tracks`,
+    `/api/v1/media_attachments/{attachment_id}/media_tracks`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

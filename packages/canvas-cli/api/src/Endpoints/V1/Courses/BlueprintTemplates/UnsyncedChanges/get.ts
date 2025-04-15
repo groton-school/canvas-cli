@@ -31,12 +31,12 @@ type Options = {
  *
  * Nickname: get_unsynced_changes
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<ChangeRecord[]>(
-    `/v1/courses/{course_id}/blueprint_templates/{template_id}/unsynced_changes`,
+    `/api/v1/courses/{course_id}/blueprint_templates/{template_id}/unsynced_changes`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

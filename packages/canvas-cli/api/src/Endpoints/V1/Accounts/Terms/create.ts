@@ -63,13 +63,12 @@ type Options = {
  *
  * Nickname: create_enrollment_term
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<EnrollmentTerm>(
-    `/v1/accounts/{account_id}/terms`,
+    `/api/v1/accounts/{account_id}/terms`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

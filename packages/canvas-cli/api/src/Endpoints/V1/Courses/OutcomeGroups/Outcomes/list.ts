@@ -37,13 +37,12 @@ type Options = {
  *
  * Nickname: list_linked_outcomes_courses
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<OutcomeLink[]>(
-    `/v1/courses/{course_id}/outcome_groups/{id}/outcomes`,
+    `/api/v1/courses/{course_id}/outcome_groups/{id}/outcomes`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

@@ -30,12 +30,12 @@ type Options = {
  *
  * Nickname: remove_feature_flag_users
  */
-export async function remove_feature_flag_users({ pathParams }: Options) {
+export async function remove_feature_flag_users(options: Options) {
   return await client().fetchAs<FeatureFlag>(
-    `/v1/users/{user_id}/features/flags/{feature}`,
+    `/api/v1/users/{user_id}/features/flags/{feature}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

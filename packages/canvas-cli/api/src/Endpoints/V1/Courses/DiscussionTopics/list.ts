@@ -69,13 +69,12 @@ type Options = {
  *
  * Nickname: list_discussion_topics_courses
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<DiscussionTopic[]>(
-    `/v1/courses/{course_id}/discussion_topics`,
+    `/api/v1/courses/{course_id}/discussion_topics`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

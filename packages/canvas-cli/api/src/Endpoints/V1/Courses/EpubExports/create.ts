@@ -32,12 +32,12 @@ type Options = {
  *
  * Nickname: create_epub_export
  */
-export async function create({ pathParams }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<EpubExport>(
-    `/v1/courses/{course_id}/epub_exports`,
+    `/api/v1/courses/{course_id}/epub_exports`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

@@ -31,14 +31,14 @@ type Options = {
  *
  * Nickname: mark_document_annotations_as_read_courses
  */
-export async function mark_document_annotations_as_read_courses({
-  pathParams
-}: Options) {
+export async function mark_document_annotations_as_read_courses(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/document_annotations/read`,
+    `/api/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/document_annotations/read`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

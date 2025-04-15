@@ -57,16 +57,12 @@ type Options = {
  *
  * Nickname: import_outcome_group_courses
  */
-export async function import_outcome_group_courses({
-  pathParams,
-  params
-}: Options) {
+export async function import_outcome_group_courses(options: Options) {
   return await client().fetchAs<OutcomeGroup>(
-    `/v1/courses/{course_id}/outcome_groups/{id}/import`,
+    `/api/v1/courses/{course_id}/outcome_groups/{id}/import`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

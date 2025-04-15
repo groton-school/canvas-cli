@@ -35,13 +35,9 @@ type Options = {
  *
  * Nickname: de_cross_list_section
  */
-export async function de_cross_list_section({
-  pathParams,
-  searchParams
-}: Options) {
-  return await client().fetchAs<Section>(`/v1/sections/{id}/crosslist`, {
+export async function de_cross_list_section(options: Options) {
+  return await client().fetchAs<Section>(`/api/v1/sections/{id}/crosslist`, {
     method: 'DELETE',
-    pathParams,
-    searchParams
+    ...options
   });
 }

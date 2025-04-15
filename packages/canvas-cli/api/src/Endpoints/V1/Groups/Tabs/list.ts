@@ -35,10 +35,9 @@ type Options = {
  *
  * Nickname: list_available_tabs_for_course_or_group_groups
  */
-export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<void>(`/v1/groups/{group_id}/tabs`, {
+export async function list(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/groups/{group_id}/tabs`, {
     method: 'GET',
-    pathParams,
-    searchParams
+    ...options
   });
 }

@@ -40,16 +40,14 @@ type Options = {
  *
  * Nickname: close_notification_for_user_destroy_notification_for_admin
  */
-export async function close_notification_for_user_destroy_notification_for_admin({
-  pathParams,
-  searchParams
-}: Options) {
+export async function close_notification_for_user_destroy_notification_for_admin(
+  options: Options
+) {
   return await client().fetchAs<AccountNotification>(
-    `/v1/accounts/{account_id}/account_notifications/{id}`,
+    `/api/v1/accounts/{account_id}/account_notifications/{id}`,
     {
       method: 'DELETE',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

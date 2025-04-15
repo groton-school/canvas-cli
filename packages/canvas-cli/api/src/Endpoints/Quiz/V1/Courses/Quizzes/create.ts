@@ -215,13 +215,12 @@ type Options = {
  *
  * Nickname: create_new_quiz
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<NewQuiz>(
-    `/quiz/v1/courses/{course_id}/quizzes`,
+    `/api/quiz/v1/courses/{course_id}/quizzes`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

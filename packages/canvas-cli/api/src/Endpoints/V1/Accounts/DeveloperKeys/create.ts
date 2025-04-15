@@ -78,13 +78,12 @@ type Options = {
  *
  * Nickname: create_developer_key
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<DeveloperKey>(
-    `/v1/accounts/{account_id}/developer_keys`,
+    `/api/v1/accounts/{account_id}/developer_keys`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

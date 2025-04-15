@@ -54,16 +54,14 @@ type Options = {
  *
  * Nickname: set_or_remove_restrictions_on_blueprint_course_object
  */
-export async function set_or_remove_restrictions_on_blueprint_course_object({
-  pathParams,
-  params
-}: Options) {
+export async function set_or_remove_restrictions_on_blueprint_course_object(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/blueprint_templates/{template_id}/restrict_item`,
+    `/api/v1/courses/{course_id}/blueprint_templates/{template_id}/restrict_item`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

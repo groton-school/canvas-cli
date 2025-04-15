@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: return_test_student_for_course
  */
-export async function return_test_student_for_course({ pathParams }: Options) {
+export async function return_test_student_for_course(options: Options) {
   return await client().fetchAs<User>(
-    `/v1/courses/{course_id}/student_view_student`,
+    `/api/v1/courses/{course_id}/student_view_student`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

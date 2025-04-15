@@ -33,16 +33,12 @@ type Options = {
  *
  * Nickname: mark_bulk_submissions_as_read_sections
  */
-export async function mark_bulk_submissions_as_read_sections({
-  pathParams,
-  params
-}: Options) {
+export async function mark_bulk_submissions_as_read_sections(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/sections/{section_id}/submissions/bulk_mark_read`,
+    `/api/v1/sections/{section_id}/submissions/bulk_mark_read`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

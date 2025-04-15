@@ -39,16 +39,12 @@ type Options = {
  *
  * Nickname: mark_all_entries_as_read_courses
  */
-export async function mark_all_entries_as_read_courses({
-  pathParams,
-  params
-}: Options) {
+export async function mark_all_entries_as_read_courses(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/discussion_topics/{topic_id}/read_all`,
+    `/api/v1/courses/{course_id}/discussion_topics/{topic_id}/read_all`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

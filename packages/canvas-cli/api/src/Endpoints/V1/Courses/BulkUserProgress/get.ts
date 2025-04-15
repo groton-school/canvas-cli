@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: get_bulk_user_progress
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/bulk_user_progress`,
+    `/api/v1/courses/{course_id}/bulk_user_progress`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

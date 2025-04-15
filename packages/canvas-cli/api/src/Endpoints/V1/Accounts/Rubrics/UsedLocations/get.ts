@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: get_courses_and_assignments_for_accounts
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<UsedLocations>(
-    `/v1/accounts/{account_id}/rubrics/{id}/used_locations`,
+    `/api/v1/accounts/{account_id}/rubrics/{id}/used_locations`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

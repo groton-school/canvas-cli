@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: show_content_export_users
  */
-export async function show_content_export_users({ pathParams }: Options) {
+export async function show_content_export_users(options: Options) {
   return await client().fetchAs<ContentExport>(
-    `/v1/users/{user_id}/content_exports/{id}`,
+    `/api/v1/users/{user_id}/content_exports/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

@@ -37,13 +37,12 @@ type Options = {
  *
  * Nickname: remove_observee
  */
-export async function remove_observee({ pathParams, searchParams }: Options) {
+export async function remove_observee(options: Options) {
   return await client().fetchAs<User>(
-    `/v1/users/{user_id}/observees/{observee_id}`,
+    `/api/v1/users/{user_id}/observees/{observee_id}`,
     {
       method: 'DELETE',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

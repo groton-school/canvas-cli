@@ -24,9 +24,9 @@ type Options = {
  *
  * Nickname: query_progress
  */
-export async function query_progress({ pathParams }: Options) {
-  return await client().fetchAs<Progress>(`/v1/progress/{id}`, {
+export async function query_progress(options: Options) {
+  return await client().fetchAs<Progress>(`/api/v1/progress/{id}`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

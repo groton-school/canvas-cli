@@ -23,9 +23,9 @@ type Options = {
  *
  * Nickname: get_single_poll
  */
-export async function get({ pathParams }: Options) {
-  return await client().fetchAs<void>(`/v1/polls/{id}`, {
+export async function get(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/polls/{id}`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

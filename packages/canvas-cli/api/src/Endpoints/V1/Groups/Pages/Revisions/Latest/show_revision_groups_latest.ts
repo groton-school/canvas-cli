@@ -34,16 +34,12 @@ type Options = {
  *
  * Nickname: show_revision_groups_latest
  */
-export async function show_revision_groups_latest({
-  pathParams,
-  searchParams
-}: Options) {
+export async function show_revision_groups_latest(options: Options) {
   return await client().fetchAs<PageRevision>(
-    `/v1/groups/{group_id}/pages/{url_or_id}/revisions/latest`,
+    `/api/v1/groups/{group_id}/pages/{url_or_id}/revisions/latest`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

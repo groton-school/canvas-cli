@@ -35,12 +35,12 @@ type Options = {
  *
  * Nickname: upload_file_sections
  */
-export async function upload({ pathParams }: Options) {
+export async function upload(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/files`,
+    `/api/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/files`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

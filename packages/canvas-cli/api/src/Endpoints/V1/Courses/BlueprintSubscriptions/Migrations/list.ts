@@ -35,12 +35,12 @@ type Options = {
  *
  * Nickname: list_blueprint_imports
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<BlueprintMigration[]>(
-    `/v1/courses/{course_id}/blueprint_subscriptions/{subscription_id}/migrations`,
+    `/api/v1/courses/{course_id}/blueprint_subscriptions/{subscription_id}/migrations`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

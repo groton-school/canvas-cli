@@ -33,14 +33,14 @@ type Options = {
  *
  * Nickname: publish_provisional_grades_for_assignment
  */
-export async function publish_provisional_grades_for_assignment({
-  pathParams
-}: Options) {
+export async function publish_provisional_grades_for_assignment(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/publish`,
+    `/api/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/publish`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

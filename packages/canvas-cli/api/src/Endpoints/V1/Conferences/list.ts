@@ -32,9 +32,9 @@ type Options =
  *
  * Nickname: list_conferences_for_current_user
  */
-export async function list({ searchParams }: Options) {
-  return await client().fetchAs<Conference[]>(`/v1/conferences`, {
+export async function list(options: Options) {
+  return await client().fetchAs<Conference[]>(`/api/v1/conferences`, {
     method: 'GET',
-    searchParams
+    ...options
   });
 }

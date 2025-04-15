@@ -25,12 +25,12 @@ type Options = {
  *
  * Nickname: disable_summary_courses
  */
-export async function disable_summary_courses({ pathParams }: Options) {
+export async function disable_summary_courses(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/discussion_topics/{topic_id}/summaries/disable`,
+    `/api/v1/courses/{course_id}/discussion_topics/{topic_id}/summaries/disable`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

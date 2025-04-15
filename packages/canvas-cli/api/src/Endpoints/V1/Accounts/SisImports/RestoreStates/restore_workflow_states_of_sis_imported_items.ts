@@ -53,16 +53,14 @@ type Options = {
  *
  * Nickname: restore_workflow_states_of_sis_imported_items
  */
-export async function restore_workflow_states_of_sis_imported_items({
-  pathParams,
-  params
-}: Options) {
+export async function restore_workflow_states_of_sis_imported_items(
+  options: Options
+) {
   return await client().fetchAs<Progress>(
-    `/v1/accounts/{account_id}/sis_imports/{id}/restore_states`,
+    `/api/v1/accounts/{account_id}/sis_imports/{id}/restore_states`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

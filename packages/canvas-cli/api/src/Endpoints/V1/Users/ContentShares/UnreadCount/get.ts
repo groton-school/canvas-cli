@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: get_unread_shares_count
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<unread_countinteger>(
-    `/v1/users/{user_id}/content_shares/unread_count`,
+    `/api/v1/users/{user_id}/content_shares/unread_count`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: delete_poll_session
  */
-export async function delete_poll_session({ pathParams }: Options) {
+export async function delete_poll_session(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/polls/{poll_id}/poll_sessions/{id}`,
+    `/api/v1/polls/{poll_id}/poll_sessions/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

@@ -28,9 +28,12 @@ type Options = {
  *
  * Nickname: get_uploaded_media_folder_for_user_groups
  */
-export async function get({ pathParams }: Options) {
-  return await client().fetchAs<Folder>(`/v1/groups/{group_id}/folders/media`, {
-    method: 'GET',
-    pathParams
-  });
+export async function get(options: Options) {
+  return await client().fetchAs<Folder>(
+    `/api/v1/groups/{group_id}/folders/media`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

@@ -31,12 +31,12 @@ type Options = {
  *
  * Nickname: update_several_calendars
  */
-export async function update({ pathParams }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/account_calendars`,
+    `/api/v1/accounts/{account_id}/account_calendars`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

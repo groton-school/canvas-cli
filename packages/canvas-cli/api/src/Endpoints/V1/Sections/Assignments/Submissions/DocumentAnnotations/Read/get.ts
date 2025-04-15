@@ -28,12 +28,12 @@ type Options = {
  *
  * Nickname: get_document_annotations_read_state_sections
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/document_annotations/read`,
+    `/api/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/document_annotations/read`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

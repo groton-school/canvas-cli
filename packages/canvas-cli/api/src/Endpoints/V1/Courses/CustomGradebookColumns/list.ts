@@ -32,13 +32,12 @@ type Options = {
  *
  * Nickname: list_custom_gradebook_columns
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<CustomColumn[]>(
-    `/v1/courses/{course_id}/custom_gradebook_columns`,
+    `/api/v1/courses/{course_id}/custom_gradebook_columns`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

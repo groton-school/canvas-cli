@@ -32,13 +32,12 @@ type Options = {
  *
  * Nickname: get_single_assignment_lti
  */
-export async function get({ pathParams, searchParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<LtiAssignment>(
-    `/lti/assignments/{assignment_id}`,
+    `/api/lti/assignments/{assignment_id}`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

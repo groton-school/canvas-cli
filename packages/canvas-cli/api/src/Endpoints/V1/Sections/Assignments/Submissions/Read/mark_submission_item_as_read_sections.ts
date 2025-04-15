@@ -33,14 +33,12 @@ type Options = {
  *
  * Nickname: mark_submission_item_as_read_sections
  */
-export async function mark_submission_item_as_read_sections({
-  pathParams
-}: Options) {
+export async function mark_submission_item_as_read_sections(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/read/{item}`,
+    `/api/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/read/{item}`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

@@ -41,10 +41,12 @@ type Options = {
  *
  * Nickname: reserve_time_slot
  */
-export async function reserve_time_slot({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/calendar_events/{id}/reservations`, {
-    method: 'POST',
-    pathParams,
-    params
-  });
+export async function reserve_time_slot(options: Options) {
+  return await client().fetchAs<void>(
+    `/api/v1/calendar_events/{id}/reservations`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
 }

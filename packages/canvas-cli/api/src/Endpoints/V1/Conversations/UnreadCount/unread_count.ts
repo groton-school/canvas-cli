@@ -15,8 +15,9 @@ type Options =
  *
  * Nickname: unread_count
  */
-export async function unread_count({}: Options) {
-  return await client().fetchAs<void>(`/v1/conversations/unread_count`, {
-    method: 'GET'
+export async function unread_count(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/conversations/unread_count`, {
+    method: 'GET',
+    ...options
   });
 }

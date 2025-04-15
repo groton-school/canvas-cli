@@ -57,13 +57,12 @@ type Options = {
  *
  * Nickname: update_lti_resource_link
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<LtiResourceLink>(
-    `/v1/courses/{course_id}/lti_resource_links/{id}`,
+    `/api/v1/courses/{course_id}/lti_resource_links/{id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

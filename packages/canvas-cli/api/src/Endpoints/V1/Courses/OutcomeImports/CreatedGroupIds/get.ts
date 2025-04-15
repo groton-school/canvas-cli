@@ -35,12 +35,12 @@ type Options = {
  *
  * Nickname: get_ids_of_outcome_groups_created_after_successful_import_courses
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<string[]>(
-    `/v1/courses/{course_id}/outcome_imports/{id}/created_group_ids`,
+    `/api/v1/courses/{course_id}/outcome_imports/{id}/created_group_ids`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

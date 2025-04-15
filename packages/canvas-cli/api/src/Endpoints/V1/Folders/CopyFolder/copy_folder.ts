@@ -37,13 +37,12 @@ type Options = {
  *
  * Nickname: copy_folder
  */
-export async function copy_folder({ pathParams, params }: Options) {
+export async function copy_folder(options: Options) {
   return await client().fetchAs<Folder>(
-    `/v1/folders/{dest_folder_id}/copy_folder`,
+    `/api/v1/folders/{dest_folder_id}/copy_folder`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

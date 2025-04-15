@@ -34,9 +34,9 @@ type Options =
  *
  * Nickname: list_todo_items
  */
-export async function list({ searchParams }: Options) {
-  return await client().fetchAs<void>(`/v1/users/self/todo`, {
+export async function list(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/users/self/todo`, {
     method: 'GET',
-    searchParams
+    ...options
   });
 }

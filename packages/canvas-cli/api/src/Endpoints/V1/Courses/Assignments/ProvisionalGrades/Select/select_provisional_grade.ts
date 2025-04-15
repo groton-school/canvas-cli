@@ -29,12 +29,12 @@ type Options = {
  *
  * Nickname: select_provisional_grade
  */
-export async function select_provisional_grade({ pathParams }: Options) {
+export async function select_provisional_grade(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/{provisional_grade_id}/select`,
+    `/api/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/{provisional_grade_id}/select`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

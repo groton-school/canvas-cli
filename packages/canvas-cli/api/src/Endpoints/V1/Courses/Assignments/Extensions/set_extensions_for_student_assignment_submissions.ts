@@ -47,16 +47,14 @@ type Options = {
  *
  * Nickname: set_extensions_for_student_assignment_submissions
  */
-export async function set_extensions_for_student_assignment_submissions({
-  pathParams,
-  params
-}: Options) {
+export async function set_extensions_for_student_assignment_submissions(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/assignments/{assignment_id}/extensions`,
+    `/api/v1/courses/{course_id}/assignments/{assignment_id}/extensions`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

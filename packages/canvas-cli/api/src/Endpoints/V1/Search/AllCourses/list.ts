@@ -30,9 +30,9 @@ type Options =
  *
  * Nickname: list_all_courses
  */
-export async function list({ searchParams }: Options) {
-  return await client().fetchAs<void>(`/v1/search/all_courses`, {
+export async function list(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/search/all_courses`, {
     method: 'GET',
-    searchParams
+    ...options
   });
 }

@@ -23,9 +23,9 @@ type Options = {
  *
  * Nickname: get_late_policy
  */
-export async function get({ pathParams }: Options) {
-  return await client().fetchAs<void>(`/v1/courses/{id}/late_policy`, {
+export async function get(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/courses/{id}/late_policy`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

@@ -40,10 +40,9 @@ type Options = {
  *
  * Nickname: create_access_token
  */
-export async function create({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/users/{user_id}/tokens`, {
+export async function create(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/users/{user_id}/tokens`, {
     method: 'POST',
-    pathParams,
-    params
+    ...options
   });
 }

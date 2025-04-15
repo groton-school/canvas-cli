@@ -70,7 +70,7 @@ type Options = {
  *
  * Nickname: list_items_for_selective_import_users
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<
     {
       type: string;
@@ -79,9 +79,8 @@ export async function list({ pathParams, searchParams }: Options) {
       count?: number;
       sub_items_url?: string;
     }[]
-  >(`/v1/users/{user_id}/content_migrations/{id}/selective_data`, {
+  >(`/api/v1/users/{user_id}/content_migrations/{id}/selective_data`, {
     method: 'GET',
-    pathParams,
-    searchParams
+    ...options
   });
 }

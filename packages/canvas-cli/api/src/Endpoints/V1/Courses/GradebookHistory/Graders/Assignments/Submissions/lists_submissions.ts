@@ -45,12 +45,12 @@ type Options = {
  *
  * Nickname: lists_submissions
  */
-export async function lists_submissions({ pathParams }: Options) {
+export async function lists_submissions(options: Options) {
   return await client().fetchAs<SubmissionHistory[]>(
-    `/v1/courses/{course_id}/gradebook_history/{date}/graders/{grader_id}/assignments/{assignment_id}/submissions`,
+    `/api/v1/courses/{course_id}/gradebook_history/{date}/graders/{grader_id}/assignments/{assignment_id}/submissions`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

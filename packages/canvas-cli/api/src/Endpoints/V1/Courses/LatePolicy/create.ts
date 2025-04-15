@@ -43,10 +43,9 @@ type Options = {
  *
  * Nickname: create_late_policy
  */
-export async function create({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/courses/{id}/late_policy`, {
+export async function create(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/courses/{id}/late_policy`, {
     method: 'POST',
-    pathParams,
-    params
+    ...options
   });
 }

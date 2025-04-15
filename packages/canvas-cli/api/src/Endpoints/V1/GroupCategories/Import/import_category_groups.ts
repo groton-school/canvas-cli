@@ -53,13 +53,12 @@ type Options = {
  *
  * Nickname: import_category_groups
  */
-export async function import_category_groups({ pathParams, params }: Options) {
+export async function import_category_groups(options: Options) {
   return await client().fetchAs<Progress>(
-    `/v1/group_categories/{group_category_id}/import`,
+    `/api/v1/group_categories/{group_category_id}/import`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

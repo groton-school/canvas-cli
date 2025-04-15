@@ -26,9 +26,12 @@ type Options = {
  *
  * Nickname: get_single_quiz
  */
-export async function get({ pathParams }: Options) {
-  return await client().fetchAs<Quiz>(`/v1/courses/{course_id}/quizzes/{id}`, {
-    method: 'GET',
-    pathParams
-  });
+export async function get(options: Options) {
+  return await client().fetchAs<Quiz>(
+    `/api/v1/courses/{course_id}/quizzes/{id}`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

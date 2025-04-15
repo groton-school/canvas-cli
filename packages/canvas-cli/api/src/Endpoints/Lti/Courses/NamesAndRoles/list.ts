@@ -49,13 +49,12 @@ type Options = {
  *
  * Nickname: list_course_memberships
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<NamesAndRoleMemberships>(
-    `/lti/courses/{course_id}/names_and_roles`,
+    `/api/lti/courses/{course_id}/names_and_roles`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

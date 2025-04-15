@@ -36,10 +36,12 @@ type Options = {
  *
  * Nickname: add_recipients
  */
-export async function add_recipients({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/conversations/{id}/add_recipients`, {
-    method: 'POST',
-    pathParams,
-    params
-  });
+export async function add_recipients(options: Options) {
+  return await client().fetchAs<void>(
+    `/api/v1/conversations/{id}/add_recipients`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
 }

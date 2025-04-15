@@ -68,13 +68,12 @@ type Options = {
  *
  * Nickname: create_single_rubric_assessment
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/rubric_associations/{rubric_association_id}/rubric_assessments`,
+    `/api/v1/courses/{course_id}/rubric_associations/{rubric_association_id}/rubric_assessments`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

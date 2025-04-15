@@ -40,10 +40,9 @@ type Options = {
  *
  * Nickname: list_roles
  */
-export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<Role[]>(`/v1/accounts/{account_id}/roles`, {
+export async function list(options: Options) {
+  return await client().fetchAs<Role[]>(`/api/v1/accounts/{account_id}/roles`, {
     method: 'GET',
-    pathParams,
-    searchParams
+    ...options
   });
 }

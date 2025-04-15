@@ -42,16 +42,12 @@ type Options = {
  *
  * Nickname: query_by_assignment
  */
-export async function query_by_assignment({
-  pathParams,
-  searchParams
-}: Options) {
+export async function query_by_assignment(options: Options) {
   return await client().fetchAs<GradeChangeEvent[]>(
-    `/v1/audit/grade_change/assignments/{assignment_id}`,
+    `/api/v1/audit/grade_change/assignments/{assignment_id}`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

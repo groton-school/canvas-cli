@@ -36,16 +36,12 @@ type Options = {
  *
  * Nickname: select_students_for_moderation
  */
-export async function select_students_for_moderation({
-  pathParams,
-  params
-}: Options) {
+export async function select_students_for_moderation(options: Options) {
   return await client().fetchAs<User[]>(
-    `/v1/courses/{course_id}/assignments/{assignment_id}/moderated_students`,
+    `/api/v1/courses/{course_id}/assignments/{assignment_id}/moderated_students`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

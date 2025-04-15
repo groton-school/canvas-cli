@@ -34,12 +34,12 @@ type Options = {
  *
  * Nickname: get_asset_id_mapping
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/content_migrations/{id}/asset_id_mapping`,
+    `/api/v1/courses/{course_id}/content_migrations/{id}/asset_id_mapping`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

@@ -32,12 +32,12 @@ type Options = {
  *
  * Nickname: update_content_migration_accounts
  */
-export async function update({ pathParams }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<ContentMigration>(
-    `/v1/accounts/{account_id}/content_migrations/{id}`,
+    `/api/v1/accounts/{account_id}/content_migrations/{id}`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

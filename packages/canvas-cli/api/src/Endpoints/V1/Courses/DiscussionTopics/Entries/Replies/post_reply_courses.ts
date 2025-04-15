@@ -44,13 +44,12 @@ type Options = {
  *
  * Nickname: post_reply_courses
  */
-export async function post_reply_courses({ pathParams, params }: Options) {
+export async function post_reply_courses(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/discussion_topics/{topic_id}/entries/{entry_id}/replies`,
+    `/api/v1/courses/{course_id}/discussion_topics/{topic_id}/entries/{entry_id}/replies`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

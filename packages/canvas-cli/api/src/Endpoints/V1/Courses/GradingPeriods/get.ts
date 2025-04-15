@@ -25,12 +25,12 @@ type Options = {
  *
  * Nickname: get_single_grading_period
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/grading_periods/{id}`,
+    `/api/v1/courses/{course_id}/grading_periods/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: get_content_migration_courses
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<ContentMigration>(
-    `/v1/courses/{course_id}/content_migrations/{id}`,
+    `/api/v1/courses/{course_id}/content_migrations/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

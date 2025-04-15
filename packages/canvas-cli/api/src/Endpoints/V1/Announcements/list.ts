@@ -84,9 +84,9 @@ type Options =
  *
  * Nickname: list_announcements
  */
-export async function list({ searchParams }: Options) {
-  return await client().fetchAs<DiscussionTopic[]>(`/v1/announcements`, {
+export async function list(options: Options) {
+  return await client().fetchAs<DiscussionTopic[]>(`/api/v1/announcements`, {
     method: 'GET',
-    searchParams
+    ...options
   });
 }

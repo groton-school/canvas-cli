@@ -51,13 +51,12 @@ type Options = {
  *
  * Nickname: create_new_sub_account
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<Account>(
-    `/v1/accounts/{account_id}/sub_accounts`,
+    `/api/v1/accounts/{account_id}/sub_accounts`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

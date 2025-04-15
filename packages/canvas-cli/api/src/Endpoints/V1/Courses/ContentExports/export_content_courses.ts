@@ -62,13 +62,12 @@ type Options = {
  *
  * Nickname: export_content_courses
  */
-export async function export_content_courses({ pathParams, params }: Options) {
+export async function export_content_courses(options: Options) {
   return await client().fetchAs<ContentExport>(
-    `/v1/courses/{course_id}/content_exports`,
+    `/api/v1/courses/{course_id}/content_exports`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

@@ -29,12 +29,12 @@ type Options = {
  *
  * Nickname: get_user_in_a_course_level_messaging_data
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/analytics/users/{student_id}/communication`,
+    `/api/v1/courses/{course_id}/analytics/users/{student_id}/communication`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

@@ -24,9 +24,9 @@ type Options = {
  *
  * Nickname: delete_group
  */
-export async function delete_group({ pathParams }: Options) {
-  return await client().fetchAs<Group>(`/v1/groups/{group_id}`, {
+export async function delete_group(options: Options) {
+  return await client().fetchAs<Group>(`/api/v1/groups/{group_id}`, {
     method: 'DELETE',
-    pathParams
+    ...options
   });
 }

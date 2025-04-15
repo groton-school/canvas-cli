@@ -47,16 +47,12 @@ type Options = {
  *
  * Nickname: batch_create_overrides_in_course
  */
-export async function batch_create_overrides_in_course({
-  pathParams,
-  params
-}: Options) {
+export async function batch_create_overrides_in_course(options: Options) {
   return await client().fetchAs<AssignmentOverride[]>(
-    `/v1/courses/{course_id}/assignments/overrides`,
+    `/api/v1/courses/{course_id}/assignments/overrides`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

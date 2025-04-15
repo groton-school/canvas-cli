@@ -25,12 +25,12 @@ type Options = {
  *
  * Nickname: reset_course
  */
-export async function reset_course({ pathParams }: Options) {
+export async function reset_course(options: Options) {
   return await client().fetchAs<Course>(
-    `/v1/courses/{course_id}/reset_content`,
+    `/api/v1/courses/{course_id}/reset_content`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

@@ -40,16 +40,12 @@ type Options = {
  *
  * Nickname: destroy_assignment_group
  */
-export async function destroy_assignment_group({
-  pathParams,
-  searchParams
-}: Options) {
+export async function destroy_assignment_group(options: Options) {
   return await client().fetchAs<AssignmentGroup>(
-    `/v1/courses/{course_id}/assignment_groups/{assignment_group_id}`,
+    `/api/v1/courses/{course_id}/assignment_groups/{assignment_group_id}`,
     {
       method: 'DELETE',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

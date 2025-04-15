@@ -34,13 +34,12 @@ type Options = {
  *
  * Nickname: get_formatted_student_numerical_answer
  */
-export async function get({ pathParams, searchParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/quiz_submissions/{quiz_submission_id}/questions/{id}/formatted_answer`,
+    `/api/v1/quiz_submissions/{quiz_submission_id}/questions/{id}/formatted_answer`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

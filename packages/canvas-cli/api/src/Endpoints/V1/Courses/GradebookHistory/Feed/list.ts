@@ -58,13 +58,12 @@ type Options = {
  *
  * Nickname: list_uncollated_submission_versions
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<SubmissionVersion[]>(
-    `/v1/courses/{course_id}/gradebook_history/feed`,
+    `/api/v1/courses/{course_id}/gradebook_history/feed`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

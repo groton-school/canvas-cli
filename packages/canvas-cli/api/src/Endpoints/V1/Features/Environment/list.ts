@@ -17,8 +17,9 @@ type Options =
  *
  * Nickname: list_environment_features
  */
-export async function list({}: Options) {
-  return await client().fetchAs<void>(`/v1/features/environment`, {
-    method: 'GET'
+export async function list(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/features/environment`, {
+    method: 'GET',
+    ...options
   });
 }

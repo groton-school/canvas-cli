@@ -134,13 +134,12 @@ type Options = {
  *
  * Nickname: create_new_discussion_topic_groups
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/groups/{group_id}/discussion_topics`,
+    `/api/v1/groups/{group_id}/discussion_topics`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

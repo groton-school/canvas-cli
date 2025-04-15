@@ -34,13 +34,12 @@ type Options = {
  *
  * Nickname: get_users_most_recently_graded_submissions
  */
-export async function get({ pathParams, searchParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<Submission[]>(
-    `/v1/users/{id}/graded_submissions`,
+    `/api/v1/users/{id}/graded_submissions`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

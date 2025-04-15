@@ -24,12 +24,12 @@ type Options = {
  *
  * Nickname: get_help_links
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<HelpLinks>(
-    `/v1/accounts/{account_id}/help_links`,
+    `/api/v1/accounts/{account_id}/help_links`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

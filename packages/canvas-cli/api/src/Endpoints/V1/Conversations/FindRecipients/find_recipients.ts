@@ -16,8 +16,9 @@ type Options =
  *
  * Nickname: find_recipients
  */
-export async function find_recipients({}: Options) {
-  return await client().fetchAs<void>(`/v1/conversations/find_recipients`, {
-    method: 'GET'
+export async function find_recipients(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/conversations/find_recipients`, {
+    method: 'GET',
+    ...options
   });
 }

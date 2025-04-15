@@ -23,9 +23,12 @@ type Options = {
  *
  * Nickname: get_dashboard_positions
  */
-export async function get({ pathParams }: Options) {
-  return await client().fetchAs<void>(`/v1/users/{id}/dashboard_positions`, {
-    method: 'GET',
-    pathParams
-  });
+export async function get(options: Options) {
+  return await client().fetchAs<void>(
+    `/api/v1/users/{id}/dashboard_positions`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

@@ -30,12 +30,12 @@ type Options = {
  *
  * Nickname: delete_submission_comment
  */
-export async function delete_submission_comment({ pathParams }: Options) {
+export async function delete_submission_comment(options: Options) {
   return await client().fetchAs<SubmissionComment>(
-    `/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/comments/{id}`,
+    `/api/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/comments/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

@@ -39,13 +39,12 @@ type Options = {
  *
  * Nickname: add_observee
  */
-export async function add_observee({ pathParams, params }: Options) {
+export async function add_observee(options: Options) {
   return await client().fetchAs<User>(
-    `/v1/users/{user_id}/observees/{observee_id}`,
+    `/api/v1/users/{user_id}/observees/{observee_id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

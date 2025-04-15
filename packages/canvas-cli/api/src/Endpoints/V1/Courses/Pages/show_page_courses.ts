@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: show_page_courses
  */
-export async function show_page_courses({ pathParams }: Options) {
+export async function show_page_courses(options: Options) {
   return await client().fetchAs<Page>(
-    `/v1/courses/{course_id}/pages/{url_or_id}`,
+    `/api/v1/courses/{course_id}/pages/{url_or_id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

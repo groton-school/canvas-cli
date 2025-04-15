@@ -18,8 +18,9 @@ type Options =
  *
  * Nickname: get_running_batches
  */
-export async function get({}: Options) {
-  return await client().fetchAs<void>(`/v1/conversations/batches`, {
-    method: 'GET'
+export async function get(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/conversations/batches`, {
+    method: 'GET',
+    ...options
   });
 }

@@ -25,12 +25,12 @@ type Options = {
  *
  * Nickname: get_single_submission
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/lti/assignments/{assignment_id}/submissions/{submission_id}`,
+    `/api/lti/assignments/{assignment_id}/submissions/{submission_id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

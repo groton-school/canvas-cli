@@ -55,10 +55,9 @@ type Options = {
  *
  * Nickname: get_single_course_courses
  */
-export async function get({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<Course>(`/v1/courses/{id}`, {
+export async function get(options: Options) {
+  return await client().fetchAs<Course>(`/api/v1/courses/{id}`, {
     method: 'GET',
-    pathParams,
-    searchParams
+    ...options
   });
 }

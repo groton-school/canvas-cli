@@ -25,12 +25,12 @@ type Options = {
  *
  * Nickname: get_single_group_category
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<GroupCategory>(
-    `/v1/group_categories/{group_category_id}`,
+    `/api/v1/group_categories/{group_category_id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

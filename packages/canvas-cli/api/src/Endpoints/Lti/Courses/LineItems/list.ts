@@ -47,13 +47,12 @@ type Options = {
  *
  * Nickname: list_line_items
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<LineItem>(
-    `/lti/courses/{course_id}/line_items`,
+    `/api/lti/courses/{course_id}/line_items`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

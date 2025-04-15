@@ -41,9 +41,9 @@ type Options =
  *
  * Nickname: list_media_objects_media_attachments
  */
-export async function list({ searchParams }: Options) {
-  return await client().fetchAs<MediaObject[]>(`/v1/media_attachments`, {
+export async function list(options: Options) {
+  return await client().fetchAs<MediaObject[]>(`/api/v1/media_attachments`, {
     method: 'GET',
-    searchParams
+    ...options
   });
 }

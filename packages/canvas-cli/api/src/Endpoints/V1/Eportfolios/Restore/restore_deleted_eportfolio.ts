@@ -25,12 +25,12 @@ type Options = {
  *
  * Nickname: restore_deleted_eportfolio
  */
-export async function restore_deleted_eportfolio({ pathParams }: Options) {
+export async function restore_deleted_eportfolio(options: Options) {
   return await client().fetchAs<ePortfolio>(
-    `/v1/eportfolios/{eportfolio_id}/restore`,
+    `/api/v1/eportfolios/{eportfolio_id}/restore`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

@@ -123,16 +123,12 @@ type Options = {
  *
  * Nickname: submit_assignment_sections
  */
-export async function submit_assignment_sections({
-  pathParams,
-  params
-}: Options) {
+export async function submit_assignment_sections(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/sections/{section_id}/assignments/{assignment_id}/submissions`,
+    `/api/v1/sections/{section_id}/assignments/{assignment_id}/submissions`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

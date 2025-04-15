@@ -36,12 +36,12 @@ type Options = {
  *
  * Nickname: delete_quiz_question
  */
-export async function delete_quiz_question({ pathParams }: Options) {
+export async function delete_quiz_question(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/quizzes/{quiz_id}/questions/{id}`,
+    `/api/v1/courses/{course_id}/quizzes/{quiz_id}/questions/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

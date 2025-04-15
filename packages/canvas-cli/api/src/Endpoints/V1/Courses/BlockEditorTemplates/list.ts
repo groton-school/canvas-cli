@@ -43,13 +43,12 @@ type Options = {
  *
  * Nickname: list_block_templates
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<BlockEditorTemplate[]>(
-    `/v1/courses/{course_id}/block_editor_templates`,
+    `/api/v1/courses/{course_id}/block_editor_templates`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

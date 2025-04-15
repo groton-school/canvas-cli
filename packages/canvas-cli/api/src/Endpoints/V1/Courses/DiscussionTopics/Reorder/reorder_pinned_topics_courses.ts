@@ -36,16 +36,12 @@ type Options = {
  *
  * Nickname: reorder_pinned_topics_courses
  */
-export async function reorder_pinned_topics_courses({
-  pathParams,
-  params
-}: Options) {
+export async function reorder_pinned_topics_courses(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/discussion_topics/reorder`,
+    `/api/v1/courses/{course_id}/discussion_topics/reorder`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

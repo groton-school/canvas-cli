@@ -25,12 +25,12 @@ type Options =
  *
  * Nickname: activity_stream_summary
  */
-export async function activity_stream_summary({ searchParams }: Options) {
+export async function activity_stream_summary(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/users/self/activity_stream/summary`,
+    `/api/v1/users/self/activity_stream/summary`,
     {
       method: 'GET',
-      searchParams
+      ...options
     }
   );
 }

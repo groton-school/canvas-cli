@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: show_epub_export
  */
-export async function show_epub_export({ pathParams }: Options) {
+export async function show_epub_export(options: Options) {
   return await client().fetchAs<EpubExport>(
-    `/v1/courses/{course_id}/epub_exports/{id}`,
+    `/api/v1/courses/{course_id}/epub_exports/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

@@ -57,13 +57,12 @@ type Options = {
  *
  * Nickname: create_or_update_events_directly_for_course_timetable
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/calendar_events/timetable_events`,
+    `/api/v1/courses/{course_id}/calendar_events/timetable_events`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

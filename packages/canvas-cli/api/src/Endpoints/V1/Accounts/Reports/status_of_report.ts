@@ -28,12 +28,12 @@ type Options = {
  *
  * Nickname: status_of_report
  */
-export async function status_of_report({ pathParams }: Options) {
+export async function status_of_report(options: Options) {
   return await client().fetchAs<Report>(
-    `/v1/accounts/{account_id}/reports/{report}/{id}`,
+    `/api/v1/accounts/{account_id}/reports/{report}/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

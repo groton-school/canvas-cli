@@ -20,8 +20,9 @@ type Options =
  *
  * Nickname: get_accounts_that_users_can_create_courses_in
  */
-export async function get({}: Options) {
-  return await client().fetchAs<Account[]>(`/v1/course_creation_accounts`, {
-    method: 'GET'
+export async function get(options: Options) {
+  return await client().fetchAs<Account[]>(`/api/v1/course_creation_accounts`, {
+    method: 'GET',
+    ...options
   });
 }

@@ -125,13 +125,12 @@ type Options = {
  *
  * Nickname: list_enrollments_users
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<Enrollment[]>(
-    `/v1/users/{user_id}/enrollments`,
+    `/api/v1/users/{user_id}/enrollments`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

@@ -24,12 +24,12 @@ type Options = {
  *
  * Nickname: get_course_nickname
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<CourseNickname>(
-    `/v1/users/self/course_nicknames/{course_id}`,
+    `/api/v1/users/self/course_nicknames/{course_id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: get_status_of_rubric_import_courses
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<RubricImport>(
-    `/v1/courses/{course_id}/rubrics/upload/{id}`,
+    `/api/v1/courses/{course_id}/rubrics/upload/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

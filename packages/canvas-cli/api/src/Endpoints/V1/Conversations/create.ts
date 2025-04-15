@@ -89,9 +89,9 @@ type Options =
  *
  * Nickname: create_conversation
  */
-export async function create({ params }: Options) {
-  return await client().fetchAs<void>(`/v1/conversations`, {
+export async function create(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/conversations`, {
     method: 'POST',
-    params
+    ...options
   });
 }

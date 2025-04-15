@@ -32,12 +32,12 @@ type Options = {
  *
  * Nickname: update_account_auth_settings
  */
-export async function update({ pathParams }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<SSOSettings>(
-    `/v1/accounts/{account_id}/sso_settings`,
+    `/api/v1/accounts/{account_id}/sso_settings`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

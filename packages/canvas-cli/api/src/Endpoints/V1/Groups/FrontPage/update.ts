@@ -50,10 +50,9 @@ type Options = {
  *
  * Nickname: update_create_front_page_groups
  */
-export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<Page>(`/v1/groups/{group_id}/front_page`, {
+export async function update(options: Options) {
+  return await client().fetchAs<Page>(`/api/v1/groups/{group_id}/front_page`, {
     method: 'PUT',
-    pathParams,
-    params
+    ...options
   });
 }

@@ -42,14 +42,14 @@ type Options = {
  *
  * Nickname: abort_generation_of_report_or_remove_previously_generated_one
  */
-export async function abort_generation_of_report_or_remove_previously_generated_one({
-  pathParams
-}: Options) {
+export async function abort_generation_of_report_or_remove_previously_generated_one(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/quizzes/{quiz_id}/reports/{id}`,
+    `/api/v1/courses/{course_id}/quizzes/{quiz_id}/reports/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

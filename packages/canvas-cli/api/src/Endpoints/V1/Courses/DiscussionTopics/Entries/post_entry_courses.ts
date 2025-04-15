@@ -38,13 +38,12 @@ type Options = {
  *
  * Nickname: post_entry_courses
  */
-export async function post_entry_courses({ pathParams, params }: Options) {
+export async function post_entry_courses(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/discussion_topics/{topic_id}/entries`,
+    `/api/v1/courses/{course_id}/discussion_topics/{topic_id}/entries`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

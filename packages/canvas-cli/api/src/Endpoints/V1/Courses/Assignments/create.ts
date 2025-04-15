@@ -259,13 +259,12 @@ type Options = {
  *
  * Nickname: create_assignment
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<Assignment>(
-    `/v1/courses/{course_id}/assignments`,
+    `/api/v1/courses/{course_id}/assignments`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

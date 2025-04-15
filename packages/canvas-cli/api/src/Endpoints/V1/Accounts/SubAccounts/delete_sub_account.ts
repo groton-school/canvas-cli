@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: delete_sub_account
  */
-export async function delete_sub_account({ pathParams }: Options) {
+export async function delete_sub_account(options: Options) {
   return await client().fetchAs<Account>(
-    `/v1/accounts/{account_id}/sub_accounts/{id}`,
+    `/api/v1/accounts/{account_id}/sub_accounts/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

@@ -37,14 +37,14 @@ type Options = {
  *
  * Nickname: details_for_given_date_in_gradebook_history_for_this_course
  */
-export async function details_for_given_date_in_gradebook_history_for_this_course({
-  pathParams
-}: Options) {
+export async function details_for_given_date_in_gradebook_history_for_this_course(
+  options: Options
+) {
   return await client().fetchAs<Grader[]>(
-    `/v1/courses/{course_id}/gradebook_history/{date}`,
+    `/api/v1/courses/{course_id}/gradebook_history/{date}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

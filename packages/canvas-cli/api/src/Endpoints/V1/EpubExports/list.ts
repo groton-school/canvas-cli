@@ -20,8 +20,9 @@ type Options =
  *
  * Nickname: list_courses_with_their_latest_epub_export
  */
-export async function list({}: Options) {
-  return await client().fetchAs<CourseEpubExport[]>(`/v1/epub_exports`, {
-    method: 'GET'
+export async function list(options: Options) {
+  return await client().fetchAs<CourseEpubExport[]>(`/api/v1/epub_exports`, {
+    method: 'GET',
+    ...options
   });
 }

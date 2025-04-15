@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: delete_grading_period_accounts
  */
-export async function delete_grading_period_accounts({ pathParams }: Options) {
+export async function delete_grading_period_accounts(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/grading_periods/{id}`,
+    `/api/v1/accounts/{account_id}/grading_periods/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

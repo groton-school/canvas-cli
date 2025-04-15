@@ -64,10 +64,12 @@ type Options = {
  *
  * Nickname: get_file_courses
  */
-export async function get({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<File>(`/v1/courses/{course_id}/files/{id}`, {
-    method: 'GET',
-    pathParams,
-    searchParams
-  });
+export async function get(options: Options) {
+  return await client().fetchAs<File>(
+    `/api/v1/courses/{course_id}/files/{id}`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

@@ -49,13 +49,12 @@ type Options = {
  *
  * Nickname: list_media_objects_courses_media_objects
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<MediaObject[]>(
-    `/v1/courses/{course_id}/media_objects`,
+    `/api/v1/courses/{course_id}/media_objects`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

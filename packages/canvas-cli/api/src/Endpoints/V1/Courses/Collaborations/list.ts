@@ -31,12 +31,12 @@ type Options = {
  *
  * Nickname: list_collaborations_courses
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<Collaboration[]>(
-    `/v1/courses/{course_id}/collaborations`,
+    `/api/v1/courses/{course_id}/collaborations`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

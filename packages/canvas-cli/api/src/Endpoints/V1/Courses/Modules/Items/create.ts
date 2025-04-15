@@ -94,13 +94,12 @@ type Options = {
  *
  * Nickname: create_module_item
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<ModuleItem>(
-    `/v1/courses/{course_id}/modules/{module_id}/items`,
+    `/api/v1/courses/{course_id}/modules/{module_id}/items`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

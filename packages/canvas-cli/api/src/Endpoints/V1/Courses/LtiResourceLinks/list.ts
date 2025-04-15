@@ -45,13 +45,12 @@ type Options = {
  *
  * Nickname: list_lti_resource_links
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<LtiResourceLink[]>(
-    `/v1/courses/{course_id}/lti_resource_links`,
+    `/api/v1/courses/{course_id}/lti_resource_links`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

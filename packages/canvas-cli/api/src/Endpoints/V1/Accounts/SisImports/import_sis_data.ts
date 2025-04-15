@@ -195,13 +195,12 @@ type Options = {
  *
  * Nickname: import_sis_data
  */
-export async function import_sis_data({ pathParams, params }: Options) {
+export async function import_sis_data(options: Options) {
   return await client().fetchAs<SisImport>(
-    `/v1/accounts/{account_id}/sis_imports`,
+    `/api/v1/accounts/{account_id}/sis_imports`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

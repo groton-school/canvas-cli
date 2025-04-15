@@ -275,13 +275,12 @@ type Options = {
  *
  * Nickname: edit_assignment
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<Assignment>(
-    `/v1/courses/{course_id}/assignments/{id}`,
+    `/api/v1/courses/{course_id}/assignments/{id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

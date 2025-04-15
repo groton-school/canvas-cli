@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: get_course_level_participation_data
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/analytics/activity`,
+    `/api/v1/courses/{course_id}/analytics/activity`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

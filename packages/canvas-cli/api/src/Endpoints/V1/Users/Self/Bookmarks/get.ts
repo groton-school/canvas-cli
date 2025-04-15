@@ -24,9 +24,9 @@ type Options = {
  *
  * Nickname: get_bookmark
  */
-export async function get({ pathParams }: Options) {
-  return await client().fetchAs<Bookmark>(`/v1/users/self/bookmarks/{id}`, {
+export async function get(options: Options) {
+  return await client().fetchAs<Bookmark>(`/api/v1/users/self/bookmarks/{id}`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

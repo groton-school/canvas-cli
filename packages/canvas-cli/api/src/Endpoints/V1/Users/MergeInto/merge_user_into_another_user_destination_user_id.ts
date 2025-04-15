@@ -77,14 +77,14 @@ type Options = {
  *
  * Nickname: merge_user_into_another_user_destination_user_id
  */
-export async function merge_user_into_another_user_destination_user_id({
-  pathParams
-}: Options) {
+export async function merge_user_into_another_user_destination_user_id(
+  options: Options
+) {
   return await client().fetchAs<User>(
-    `/v1/users/{id}/merge_into/{destination_user_id}`,
+    `/api/v1/users/{id}/merge_into/{destination_user_id}`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

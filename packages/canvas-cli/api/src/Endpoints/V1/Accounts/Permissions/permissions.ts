@@ -40,10 +40,12 @@ type Options = {
  *
  * Nickname: permissions
  */
-export async function permissions({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<void>(`/v1/accounts/{account_id}/permissions`, {
-    method: 'GET',
-    pathParams,
-    searchParams
-  });
+export async function permissions(options: Options) {
+  return await client().fetchAs<void>(
+    `/api/v1/accounts/{account_id}/permissions`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

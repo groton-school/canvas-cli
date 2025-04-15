@@ -39,13 +39,12 @@ type Options = {
  *
  * Nickname: create_peer_review_courses
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<PeerReview>(
-    `/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews`,
+    `/api/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

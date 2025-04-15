@@ -34,13 +34,12 @@ type Options = {
  *
  * Nickname: get_single_submission_by_anonymous_id_courses
  */
-export async function get({ pathParams, searchParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/assignments/{assignment_id}/anonymous_submissions/{anonymous_id}`,
+    `/api/v1/courses/{course_id}/assignments/{assignment_id}/anonymous_submissions/{anonymous_id}`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

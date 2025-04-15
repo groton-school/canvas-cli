@@ -24,9 +24,9 @@ type Options = {
  *
  * Nickname: list_user_logins_users
  */
-export async function list({ pathParams }: Options) {
-  return await client().fetchAs<void>(`/v1/users/{user_id}/logins`, {
+export async function list(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/users/{user_id}/logins`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

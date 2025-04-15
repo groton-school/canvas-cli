@@ -36,13 +36,12 @@ type Options = {
  *
  * Nickname: update_preferences_by_category
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/users/self/communication_channels/{communication_channel_id}/notification_preference_categories/{category}`,
+    `/api/v1/users/self/communication_channels/{communication_channel_id}/notification_preference_categories/{category}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

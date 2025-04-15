@@ -31,12 +31,12 @@ type Options = {
  *
  * Nickname: list_potential_members_groups
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<User[]>(
-    `/v1/groups/{group_id}/potential_collaborators`,
+    `/api/v1/groups/{group_id}/potential_collaborators`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

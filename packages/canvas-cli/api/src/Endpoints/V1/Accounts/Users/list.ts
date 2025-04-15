@@ -60,10 +60,9 @@ type Options = {
  *
  * nickname: list_users_in_account
  */
-export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<User[]>(`/v1/accounts/{account_id}/users`, {
+export async function list(options: Options) {
+  return await client().fetchAs<User[]>(`/api/v1/accounts/{account_id}/users`, {
     method: 'GET',
-    pathParams,
-    searchParams
+    ...options
   });
 }

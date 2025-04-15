@@ -40,13 +40,12 @@ type Options = {
  *
  * Nickname: rate_entry_groups
  */
-export async function rate_entry_groups({ pathParams, params }: Options) {
+export async function rate_entry_groups(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/groups/{group_id}/discussion_topics/{topic_id}/entries/{entry_id}/rating`,
+    `/api/v1/groups/{group_id}/discussion_topics/{topic_id}/entries/{entry_id}/rating`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

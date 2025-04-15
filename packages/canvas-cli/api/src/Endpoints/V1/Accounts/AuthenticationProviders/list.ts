@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: list_authentication_providers
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<AuthenticationProvider[]>(
-    `/v1/accounts/{account_id}/authentication_providers`,
+    `/api/v1/accounts/{account_id}/authentication_providers`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

@@ -23,12 +23,12 @@ type Options = {
  *
  * Nickname: close_opened_poll_session
  */
-export async function close_opened_poll_session({ pathParams }: Options) {
+export async function close_opened_poll_session(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/polls/{poll_id}/poll_sessions/{id}/close`,
+    `/api/v1/polls/{poll_id}/poll_sessions/{id}/close`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

@@ -26,9 +26,9 @@ type Options = {
  *
  * Nickname: get_single_user_lti
  */
-export async function get({ pathParams }: Options) {
-  return await client().fetchAs<User>(`/lti/users/{id}`, {
+export async function get(options: Options) {
+  return await client().fetchAs<User>(`/api/lti/users/{id}`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

@@ -39,16 +39,14 @@ type Options = {
  *
  * Nickname: retrieve_assignment_overridden_dates_for_classic_quizzes
  */
-export async function retrieve_assignment_overridden_dates_for_classic_quizzes({
-  pathParams,
-  searchParams
-}: Options) {
+export async function retrieve_assignment_overridden_dates_for_classic_quizzes(
+  options: Options
+) {
   return await client().fetchAs<QuizAssignmentOverrideSetContainer>(
-    `/v1/courses/{course_id}/quizzes/assignment_overrides`,
+    `/api/v1/courses/{course_id}/quizzes/assignment_overrides`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

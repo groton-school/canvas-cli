@@ -28,12 +28,12 @@ type Options = {
  *
  * Nickname: show_result
  */
-export async function show_result({ pathParams }: Options) {
+export async function show_result(options: Options) {
   return await client().fetchAs<Result>(
-    `/lti/courses/{course_id}/line_items/{line_item_id}/results/{id}`,
+    `/api/lti/courses/{course_id}/line_items/{line_item_id}/results/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

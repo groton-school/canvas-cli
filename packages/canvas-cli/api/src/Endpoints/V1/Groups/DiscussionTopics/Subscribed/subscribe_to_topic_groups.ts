@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: subscribe_to_topic_groups
  */
-export async function subscribe_to_topic_groups({ pathParams }: Options) {
+export async function subscribe_to_topic_groups(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/groups/{group_id}/discussion_topics/{topic_id}/subscribed`,
+    `/api/v1/groups/{group_id}/discussion_topics/{topic_id}/subscribed`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

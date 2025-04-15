@@ -36,16 +36,12 @@ type Options = {
  *
  * Nickname: assign_unassigned_members
  */
-export async function assign_unassigned_members({
-  pathParams,
-  params
-}: Options) {
+export async function assign_unassigned_members(options: Options) {
   return await client().fetchAs<GroupMembershipProgress>(
-    `/v1/group_categories/{group_category_id}/assign_unassigned_members`,
+    `/api/v1/group_categories/{group_category_id}/assign_unassigned_members`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

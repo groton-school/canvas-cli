@@ -69,10 +69,9 @@ type Options = {
  *
  * Nickname: create_folder_courses
  */
-export async function create({ pathParams, params }: Options) {
-  return await client().fetchAs<Folder>(`/v1/courses/{course_id}/folders`, {
+export async function create(options: Options) {
+  return await client().fetchAs<Folder>(`/api/v1/courses/{course_id}/folders`, {
     method: 'POST',
-    pathParams,
-    params
+    ...options
   });
 }

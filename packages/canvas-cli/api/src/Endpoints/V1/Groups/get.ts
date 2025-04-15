@@ -37,10 +37,9 @@ type Options = {
  *
  * Nickname: get_single_group
  */
-export async function get({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<Group>(`/v1/groups/{group_id}`, {
+export async function get(options: Options) {
+  return await client().fetchAs<Group>(`/api/v1/groups/{group_id}`, {
     method: 'GET',
-    pathParams,
-    searchParams
+    ...options
   });
 }

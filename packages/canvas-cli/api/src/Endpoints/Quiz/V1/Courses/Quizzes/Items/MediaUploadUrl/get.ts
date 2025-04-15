@@ -35,12 +35,12 @@ type Options = {
  *
  * Nickname: get_items_media_upload_url
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/quiz/v1/courses/{course_id}/quizzes/{assignment_id}/items/media_upload_url`,
+    `/api/quiz/v1/courses/{course_id}/quizzes/{assignment_id}/items/media_upload_url`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

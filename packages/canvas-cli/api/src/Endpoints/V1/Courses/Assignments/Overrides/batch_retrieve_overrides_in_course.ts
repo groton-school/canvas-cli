@@ -36,16 +36,12 @@ type Options = {
  *
  * Nickname: batch_retrieve_overrides_in_course
  */
-export async function batch_retrieve_overrides_in_course({
-  pathParams,
-  searchParams
-}: Options) {
+export async function batch_retrieve_overrides_in_course(options: Options) {
   return await client().fetchAs<AssignmentOverride[]>(
-    `/v1/courses/{course_id}/assignments/overrides`,
+    `/api/v1/courses/{course_id}/assignments/overrides`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

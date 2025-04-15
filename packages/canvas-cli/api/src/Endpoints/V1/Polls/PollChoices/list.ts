@@ -23,9 +23,9 @@ type Options = {
  *
  * Nickname: list_poll_choices_in_poll
  */
-export async function list({ pathParams }: Options) {
-  return await client().fetchAs<void>(`/v1/polls/{poll_id}/poll_choices`, {
+export async function list(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/polls/{poll_id}/poll_choices`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

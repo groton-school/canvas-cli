@@ -56,16 +56,12 @@ type Options = {
  *
  * Nickname: bulk_create_lti_resource_links
  */
-export async function bulk_create_lti_resource_links({
-  pathParams,
-  params
-}: Options) {
+export async function bulk_create_lti_resource_links(options: Options) {
   return await client().fetchAs<LtiResourceLink>(
-    `/v1/courses/{course_id}/lti_resource_links/bulk`,
+    `/api/v1/courses/{course_id}/lti_resource_links/bulk`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

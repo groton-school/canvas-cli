@@ -30,12 +30,12 @@ type Options = {
  *
  * Nickname: get_proficiency_ratings_courses
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<Proficiency>(
-    `/v1/courses/{course_id}/outcome_proficiency`,
+    `/api/v1/courses/{course_id}/outcome_proficiency`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

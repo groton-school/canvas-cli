@@ -38,13 +38,12 @@ type Options = {
  *
  * Nickname: update_entry_groups
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/groups/{group_id}/discussion_topics/{topic_id}/entries/{id}`,
+    `/api/v1/groups/{group_id}/discussion_topics/{topic_id}/entries/{id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

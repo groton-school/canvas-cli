@@ -28,12 +28,12 @@ type Options = {
  *
  * Nickname: get_uploaded_media_folder_for_user_courses
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<Folder>(
-    `/v1/courses/{course_id}/folders/media`,
+    `/api/v1/courses/{course_id}/folders/media`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

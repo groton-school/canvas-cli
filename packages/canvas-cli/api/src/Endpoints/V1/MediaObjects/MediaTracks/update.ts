@@ -41,13 +41,12 @@ type Options = {
  *
  * Nickname: update_media_tracks_media_objects
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<MediaTrack[]>(
-    `/v1/media_objects/{media_object_id}/media_tracks`,
+    `/api/v1/media_objects/{media_object_id}/media_tracks`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

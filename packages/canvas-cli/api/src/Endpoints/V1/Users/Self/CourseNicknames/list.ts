@@ -19,11 +19,12 @@ type Options =
  *
  * Nickname: list_course_nicknames
  */
-export async function list({}: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<CourseNickname[]>(
-    `/v1/users/self/course_nicknames`,
+    `/api/v1/users/self/course_nicknames`,
     {
-      method: 'GET'
+      method: 'GET',
+      ...options
     }
   );
 }

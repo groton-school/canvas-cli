@@ -37,16 +37,12 @@ type Options = {
  *
  * Nickname: add_users_to_content_share
  */
-export async function add_users_to_content_share({
-  pathParams,
-  params
-}: Options) {
+export async function add_users_to_content_share(options: Options) {
   return await client().fetchAs<ContentShare>(
-    `/v1/users/{user_id}/content_shares/{id}/add_users`,
+    `/api/v1/users/{user_id}/content_shares/{id}/add_users`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

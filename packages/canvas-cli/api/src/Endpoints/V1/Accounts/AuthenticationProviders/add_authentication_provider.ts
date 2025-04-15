@@ -335,12 +335,12 @@ type Options = {
  *
  * Nickname: add_authentication_provider
  */
-export async function add_authentication_provider({ pathParams }: Options) {
+export async function add_authentication_provider(options: Options) {
   return await client().fetchAs<AuthenticationProvider>(
-    `/v1/accounts/{account_id}/authentication_providers`,
+    `/api/v1/accounts/{account_id}/authentication_providers`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: get_single_grading_standard_in_context_accounts
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<GradingStandard>(
-    `/v1/accounts/{account_id}/grading_standards/{grading_standard_id}`,
+    `/api/v1/accounts/{account_id}/grading_standards/{grading_standard_id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

@@ -38,16 +38,12 @@ type Options = {
  *
  * Nickname: search_course_content
  */
-export async function search_course_content({
-  pathParams,
-  searchParams
-}: Options) {
+export async function search_course_content(options: Options) {
   return await client().fetchAs<SearchResult[]>(
-    `/v1/courses/{course_id}/smartsearch`,
+    `/api/v1/courses/{course_id}/smartsearch`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

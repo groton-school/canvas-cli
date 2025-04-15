@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: update_shared_theme
  */
-export async function update({ pathParams }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<SharedBrandConfig>(
-    `/v1/accounts/{account_id}/shared_brand_configs/{id}`,
+    `/api/v1/accounts/{account_id}/shared_brand_configs/{id}`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

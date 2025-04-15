@@ -36,16 +36,14 @@ type Options = {
  *
  * Nickname: show_provisional_grade_status_for_student
  */
-export async function show_provisional_grade_status_for_student({
-  pathParams,
-  searchParams
-}: Options) {
+export async function show_provisional_grade_status_for_student(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/status`,
+    `/api/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/status`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

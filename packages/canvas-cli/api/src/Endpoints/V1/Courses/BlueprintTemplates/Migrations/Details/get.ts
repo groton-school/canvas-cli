@@ -34,12 +34,12 @@ type Options = {
  *
  * Nickname: get_migration_details
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<ChangeRecord[]>(
-    `/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations/{id}/details`,
+    `/api/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations/{id}/details`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

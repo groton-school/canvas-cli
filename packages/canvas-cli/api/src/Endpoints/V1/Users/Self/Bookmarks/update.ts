@@ -41,10 +41,9 @@ type Options = {
  *
  * Nickname: update_bookmark
  */
-export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<Folder>(`/v1/users/self/bookmarks/{id}`, {
+export async function update(options: Options) {
+  return await client().fetchAs<Folder>(`/api/v1/users/self/bookmarks/{id}`, {
     method: 'PUT',
-    pathParams,
-    params
+    ...options
   });
 }

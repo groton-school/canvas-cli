@@ -55,10 +55,9 @@ type Options = {
  *
  * Nickname: edit_conversation
  */
-export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/conversations/{id}`, {
+export async function update(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/conversations/{id}`, {
     method: 'PUT',
-    pathParams,
-    params
+    ...options
   });
 }

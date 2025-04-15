@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: delete_module
  */
-export async function delete_module({ pathParams }: Options) {
+export async function delete_module(options: Options) {
   return await client().fetchAs<Module>(
-    `/v1/courses/{course_id}/modules/{id}`,
+    `/api/v1/courses/{course_id}/modules/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

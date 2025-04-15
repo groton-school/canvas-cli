@@ -28,12 +28,12 @@ type Options =
  *
  * Nickname: update_public_jwk
  */
-export async function update({ params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<DeveloperKey>(
-    `/lti/developer_key/update_public_jwk`,
+    `/api/lti/developer_key/update_public_jwk`,
     {
       method: 'PUT',
-      params
+      ...options
     }
   );
 }

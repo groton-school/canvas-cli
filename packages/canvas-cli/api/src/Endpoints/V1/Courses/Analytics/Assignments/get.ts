@@ -39,13 +39,12 @@ type Options = {
  *
  * Nickname: get_course_level_assignment_data
  */
-export async function get({ pathParams, searchParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/analytics/assignments`,
+    `/api/v1/courses/{course_id}/analytics/assignments`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

@@ -99,13 +99,12 @@ type Options = {
  *
  * Nickname: upload_file
  */
-export async function upload({ pathParams, params }: Options) {
+export async function upload(options: Options) {
   return await client().fetchAs<UploadResponse>(
-    `/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/self/files`,
+    `/api/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/self/files`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

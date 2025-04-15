@@ -77,16 +77,14 @@ type Options = {
  *
  * Nickname: retrieve_assignments_enabled_for_grade_export_to_sis_accounts
  */
-export async function retrieve_assignments_enabled_for_grade_export_to_sis_accounts({
-  pathParams,
-  searchParams
-}: Options) {
+export async function retrieve_assignments_enabled_for_grade_export_to_sis_accounts(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/sis/accounts/{account_id}/assignments`,
+    `/api/sis/accounts/{account_id}/assignments`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

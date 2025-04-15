@@ -54,13 +54,12 @@ type Options = {
  *
  * Nickname: create_update_proficiency_ratings_courses
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<Proficiency>(
-    `/v1/courses/{course_id}/outcome_proficiency`,
+    `/api/v1/courses/{course_id}/outcome_proficiency`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

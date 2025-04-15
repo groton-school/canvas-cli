@@ -31,10 +31,9 @@ type Options = {
  *
  * Nickname: delete_folder
  */
-export async function delete_folder({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<void>(`/v1/folders/{id}`, {
+export async function delete_folder(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/folders/{id}`, {
     method: 'DELETE',
-    pathParams,
-    searchParams
+    ...options
   });
 }

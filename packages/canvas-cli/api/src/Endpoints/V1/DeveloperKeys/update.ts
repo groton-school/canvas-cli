@@ -78,10 +78,9 @@ type Options = {
  *
  * Nickname: update_developer_key
  */
-export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<DeveloperKey>(`/v1/developer_keys/{id}`, {
+export async function update(options: Options) {
+  return await client().fetchAs<DeveloperKey>(`/api/v1/developer_keys/{id}`, {
     method: 'PUT',
-    pathParams,
-    params
+    ...options
   });
 }

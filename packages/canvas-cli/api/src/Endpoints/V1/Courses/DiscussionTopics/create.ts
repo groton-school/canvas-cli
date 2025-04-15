@@ -134,13 +134,12 @@ type Options = {
  *
  * Nickname: create_new_discussion_topic_courses
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/discussion_topics`,
+    `/api/v1/courses/{course_id}/discussion_topics`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

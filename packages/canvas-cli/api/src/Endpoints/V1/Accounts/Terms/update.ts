@@ -71,13 +71,12 @@ type Options = {
  *
  * Nickname: update_enrollment_term
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<EnrollmentTerm>(
-    `/v1/accounts/{account_id}/terms/{id}`,
+    `/api/v1/accounts/{account_id}/terms/{id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

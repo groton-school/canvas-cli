@@ -24,9 +24,9 @@ type Options = {
  *
  * Nickname: delete_eportfolio
  */
-export async function delete_eportfolio({ pathParams }: Options) {
-  return await client().fetchAs<ePortfolio>(`/v1/eportfolios/{id}`, {
+export async function delete_eportfolio(options: Options) {
+  return await client().fetchAs<ePortfolio>(`/api/v1/eportfolios/{id}`, {
     method: 'DELETE',
-    pathParams
+    ...options
   });
 }

@@ -41,13 +41,12 @@ type Options = {
  *
  * Nickname: reorder_quiz_items
  */
-export async function reorder_quiz_items({ pathParams, params }: Options) {
+export async function reorder_quiz_items(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/quizzes/{id}/reorder`,
+    `/api/v1/courses/{course_id}/quizzes/{id}/reorder`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

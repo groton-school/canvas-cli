@@ -45,13 +45,12 @@ type Options = {
  *
  * Nickname: summary_feedback_groups
  */
-export async function summary_feedback_groups({ pathParams, params }: Options) {
+export async function summary_feedback_groups(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/groups/{group_id}/discussion_topics/{topic_id}/summaries/{summary_id}/feedback`,
+    `/api/v1/groups/{group_id}/discussion_topics/{topic_id}/summaries/{summary_id}/feedback`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

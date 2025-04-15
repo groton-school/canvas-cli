@@ -26,14 +26,14 @@ type Options = {
  *
  * Nickname: redirect_to_assignment_override_for_section
  */
-export async function redirect_to_assignment_override_for_section({
-  pathParams
-}: Options) {
+export async function redirect_to_assignment_override_for_section(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/sections/{course_section_id}/assignments/{assignment_id}/override`,
+    `/api/v1/sections/{course_section_id}/assignments/{assignment_id}/override`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

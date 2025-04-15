@@ -27,11 +27,9 @@ type Options = {
  *
  * Nickname: log_users_out_of_all_mobile_apps_id
  */
-export async function log_users_out_of_all_mobile_apps_id({
-  pathParams
-}: Options) {
-  return await client().fetchAs<void>(`/v1/users/{id}/mobile_sessions`, {
+export async function log_users_out_of_all_mobile_apps_id(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/users/{id}/mobile_sessions`, {
     method: 'DELETE',
-    pathParams
+    ...options
   });
 }

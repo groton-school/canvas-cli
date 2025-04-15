@@ -179,10 +179,9 @@ type Options = {
  *
  * Nickname: create_user
  */
-export async function create({ pathParams, params }: Options) {
-  return await client().fetchAs<User>(`/v1/accounts/{account_id}/users`, {
+export async function create(options: Options) {
+  return await client().fetchAs<User>(`/api/v1/accounts/{account_id}/users`, {
     method: 'POST',
-    pathParams,
-    params
+    ...options
   });
 }

@@ -47,10 +47,12 @@ type Options = {
  *
  * Nickname: copy_course_content
  */
-export async function copy_course_content({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/courses/{course_id}/course_copy`, {
-    method: 'POST',
-    pathParams,
-    params
-  });
+export async function copy_course_content(options: Options) {
+  return await client().fetchAs<void>(
+    `/api/v1/courses/{course_id}/course_copy`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
 }

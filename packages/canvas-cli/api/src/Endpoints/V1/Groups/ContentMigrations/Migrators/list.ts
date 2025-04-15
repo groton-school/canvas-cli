@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: list_migration_systems_groups
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<Migrator[]>(
-    `/v1/groups/{group_id}/content_migrations/migrators`,
+    `/api/v1/groups/{group_id}/content_migrations/migrators`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

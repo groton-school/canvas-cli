@@ -44,13 +44,12 @@ type Options = {
  *
  * Nickname: get_sub_accounts_of_account
  */
-export async function get({ pathParams, searchParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<Account[]>(
-    `/v1/accounts/{account_id}/sub_accounts`,
+    `/api/v1/accounts/{account_id}/sub_accounts`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

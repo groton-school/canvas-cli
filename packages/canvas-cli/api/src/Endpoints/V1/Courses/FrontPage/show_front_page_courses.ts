@@ -24,9 +24,12 @@ type Options = {
  *
  * Nickname: show_front_page_courses
  */
-export async function show_front_page_courses({ pathParams }: Options) {
-  return await client().fetchAs<Page>(`/v1/courses/{course_id}/front_page`, {
-    method: 'GET',
-    pathParams
-  });
+export async function show_front_page_courses(options: Options) {
+  return await client().fetchAs<Page>(
+    `/api/v1/courses/{course_id}/front_page`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

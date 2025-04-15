@@ -23,9 +23,9 @@ type Options = {
  *
  * Nickname: get_course_settings
  */
-export async function get({ pathParams }: Options) {
-  return await client().fetchAs<void>(`/v1/courses/{course_id}/settings`, {
+export async function get(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/courses/{course_id}/settings`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

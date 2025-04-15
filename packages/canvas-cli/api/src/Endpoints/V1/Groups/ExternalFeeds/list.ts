@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: list_external_feeds_groups
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<ExternalFeed[]>(
-    `/v1/groups/{group_id}/external_feeds`,
+    `/api/v1/groups/{group_id}/external_feeds`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

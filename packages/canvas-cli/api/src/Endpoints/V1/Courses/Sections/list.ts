@@ -48,10 +48,12 @@ type Options = {
  *
  * Nickname: list_course_sections
  */
-export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<Section[]>(`/v1/courses/{course_id}/sections`, {
-    method: 'GET',
-    pathParams,
-    searchParams
-  });
+export async function list(options: Options) {
+  return await client().fetchAs<Section[]>(
+    `/api/v1/courses/{course_id}/sections`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

@@ -31,16 +31,12 @@ type Options = {
  *
  * Nickname: add_allowed_domain_to_account
  */
-export async function add_allowed_domain_to_account({
-  pathParams,
-  params
-}: Options) {
+export async function add_allowed_domain_to_account(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/csp_settings/domains`,
+    `/api/v1/accounts/{account_id}/csp_settings/domains`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: get_content_share
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<ContentShare>(
-    `/v1/users/{user_id}/content_shares/{id}`,
+    `/api/v1/users/{user_id}/content_shares/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

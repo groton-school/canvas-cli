@@ -23,14 +23,12 @@ type Options = {
  *
  * Nickname: count_of_all_visible_account_calendars
  */
-export async function count_of_all_visible_account_calendars({
-  pathParams
-}: Options) {
+export async function count_of_all_visible_account_calendars(options: Options) {
   return await client().fetchAs<{ count: number }>(
-    `/v1/accounts/{account_id}/visible_calendars_count`,
+    `/api/v1/accounts/{account_id}/visible_calendars_count`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: query_progress
  */
-export async function query_progress({ pathParams }: Options) {
+export async function query_progress(options: Options) {
   return await client().fetchAs<Progress>(
-    `/lti/courses/{course_id}/progress/{id}`,
+    `/api/lti/courses/{course_id}/progress/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

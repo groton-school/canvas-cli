@@ -15,8 +15,9 @@ type Options =
  *
  * Nickname: kickoff_password_recovery_flow
  */
-export async function kickoff_password_recovery_flow({}: Options) {
-  return await client().fetchAs<void>(`/v1/users/reset_password`, {
-    method: 'POST'
+export async function kickoff_password_recovery_flow(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/users/reset_password`, {
+    method: 'POST',
+    ...options
   });
 }

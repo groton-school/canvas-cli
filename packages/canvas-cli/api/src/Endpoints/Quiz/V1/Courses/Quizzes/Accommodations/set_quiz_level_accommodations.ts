@@ -72,16 +72,12 @@ type Options = {
  *
  * Nickname: set_quiz_level_accommodations
  */
-export async function set_quiz_level_accommodations({
-  pathParams,
-  params
-}: Options) {
+export async function set_quiz_level_accommodations(options: Options) {
   return await client().fetchAs<AccommodationResponse>(
-    `/quiz/v1/courses/{course_id}/quizzes/{assignment_id}/accommodations`,
+    `/api/quiz/v1/courses/{course_id}/quizzes/{assignment_id}/accommodations`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

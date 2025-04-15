@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: show_global_notification
  */
-export async function show_global_notification({ pathParams }: Options) {
+export async function show_global_notification(options: Options) {
   return await client().fetchAs<AccountNotification>(
-    `/v1/accounts/{account_id}/account_notifications/{id}`,
+    `/api/v1/accounts/{account_id}/account_notifications/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

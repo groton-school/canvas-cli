@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: delete_lti_registration
  */
-export async function delete_lti_registration({ pathParams }: Options) {
+export async function delete_lti_registration(options: Options) {
   return await client().fetchAs<LtiRegistration>(
-    `/v1/accounts/{account_id}/lti_registrations/{id}`,
+    `/api/v1/accounts/{account_id}/lti_registrations/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

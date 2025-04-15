@@ -57,16 +57,12 @@ type Options = {
  *
  * Nickname: import_outcome_group_accounts
  */
-export async function import_outcome_group_accounts({
-  pathParams,
-  params
-}: Options) {
+export async function import_outcome_group_accounts(options: Options) {
   return await client().fetchAs<OutcomeGroup>(
-    `/v1/accounts/{account_id}/outcome_groups/{id}/import`,
+    `/api/v1/accounts/{account_id}/outcome_groups/{id}/import`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

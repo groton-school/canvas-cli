@@ -28,12 +28,12 @@ type Options = {
  *
  * Nickname: delete_single_rubric_assessment
  */
-export async function delete_single_rubric_assessment({ pathParams }: Options) {
+export async function delete_single_rubric_assessment(options: Options) {
   return await client().fetchAs<RubricAssessment>(
-    `/v1/courses/{course_id}/rubric_associations/{rubric_association_id}/rubric_assessments/{id}`,
+    `/api/v1/courses/{course_id}/rubric_associations/{rubric_association_id}/rubric_assessments/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

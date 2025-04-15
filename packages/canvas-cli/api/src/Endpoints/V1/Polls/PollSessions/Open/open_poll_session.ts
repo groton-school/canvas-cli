@@ -23,12 +23,12 @@ type Options = {
  *
  * Nickname: open_poll_session
  */
-export async function open_poll_session({ pathParams }: Options) {
+export async function open_poll_session(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/polls/{poll_id}/poll_sessions/{id}/open`,
+    `/api/v1/polls/{poll_id}/poll_sessions/{id}/open`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

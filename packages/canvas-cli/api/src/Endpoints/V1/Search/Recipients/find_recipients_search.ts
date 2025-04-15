@@ -67,9 +67,9 @@ type Options =
  *
  * Nickname: find_recipients_search
  */
-export async function find_recipients_search({ searchParams }: Options) {
-  return await client().fetchAs<void>(`/v1/search/recipients`, {
+export async function find_recipients_search(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/search/recipients`, {
     method: 'GET',
-    searchParams
+    ...options
   });
 }

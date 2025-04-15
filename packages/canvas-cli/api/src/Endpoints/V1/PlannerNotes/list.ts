@@ -50,9 +50,9 @@ type Options =
  *
  * Nickname: list_planner_notes
  */
-export async function list({ searchParams }: Options) {
-  return await client().fetchAs<PlannerNote[]>(`/v1/planner_notes`, {
+export async function list(options: Options) {
+  return await client().fetchAs<PlannerNote[]>(`/api/v1/planner_notes`, {
     method: 'GET',
-    searchParams
+    ...options
   });
 }

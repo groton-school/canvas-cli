@@ -32,9 +32,9 @@ type Options =
  *
  * Nickname: list_counts_for_todo_items
  */
-export async function list({ searchParams }: Options) {
-  return await client().fetchAs<void>(`/v1/users/self/todo_item_count`, {
+export async function list(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/users/self/todo_item_count`, {
     method: 'GET',
-    searchParams
+    ...options
   });
 }

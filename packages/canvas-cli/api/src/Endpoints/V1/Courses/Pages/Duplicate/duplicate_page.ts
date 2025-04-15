@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: duplicate_page
  */
-export async function duplicate_page({ pathParams }: Options) {
+export async function duplicate_page(options: Options) {
   return await client().fetchAs<Page>(
-    `/v1/courses/{course_id}/pages/{url_or_id}/duplicate`,
+    `/api/v1/courses/{course_id}/pages/{url_or_id}/duplicate`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

@@ -28,14 +28,12 @@ type Options = {
  *
  * Nickname: delete_communication_channel_type
  */
-export async function delete_communication_channel_type({
-  pathParams
-}: Options) {
+export async function delete_communication_channel_type(options: Options) {
   return await client().fetchAs<CommunicationChannel>(
-    `/v1/users/{user_id}/communication_channels/{type}/{address}`,
+    `/api/v1/users/{user_id}/communication_channels/{type}/{address}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

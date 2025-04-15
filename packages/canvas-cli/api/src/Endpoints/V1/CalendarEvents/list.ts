@@ -82,9 +82,9 @@ type Options =
  *
  * Nickname: list_calendar_events
  */
-export async function list({ searchParams }: Options) {
-  return await client().fetchAs<CalendarEvent[]>(`/v1/calendar_events`, {
+export async function list(options: Options) {
+  return await client().fetchAs<CalendarEvent[]>(`/api/v1/calendar_events`, {
     method: 'GET',
-    searchParams
+    ...options
   });
 }

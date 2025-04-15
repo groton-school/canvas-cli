@@ -140,10 +140,12 @@ type Options = {
  *
  * Nickname: list_active_courses_in_account
  */
-export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<Course[]>(`/v1/accounts/{account_id}/courses`, {
-    method: 'GET',
-    pathParams,
-    searchParams
-  });
+export async function list(options: Options) {
+  return await client().fetchAs<Course[]>(
+    `/api/v1/accounts/{account_id}/courses`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

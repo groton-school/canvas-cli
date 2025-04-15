@@ -25,12 +25,12 @@ type Options = {
  *
  * Nickname: reject_course_invitation
  */
-export async function reject_course_invitation({ pathParams }: Options) {
+export async function reject_course_invitation(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/enrollments/{id}/reject`,
+    `/api/v1/courses/{course_id}/enrollments/{id}/reject`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

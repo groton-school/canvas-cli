@@ -41,16 +41,12 @@ type Options = {
  *
  * Nickname: mark_entry_as_unread_groups
  */
-export async function mark_entry_as_unread_groups({
-  pathParams,
-  searchParams
-}: Options) {
+export async function mark_entry_as_unread_groups(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/groups/{group_id}/discussion_topics/{topic_id}/entries/{entry_id}/read`,
+    `/api/v1/groups/{group_id}/discussion_topics/{topic_id}/entries/{entry_id}/read`,
     {
       method: 'DELETE',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

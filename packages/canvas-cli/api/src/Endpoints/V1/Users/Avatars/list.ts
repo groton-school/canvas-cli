@@ -43,9 +43,9 @@ type Options = {
  *
  * Nickname: list_avatar_options
  */
-export async function list({ pathParams }: Options) {
-  return await client().fetchAs<Avatar[]>(`/v1/users/{user_id}/avatars`, {
+export async function list(options: Options) {
+  return await client().fetchAs<Avatar[]>(`/api/v1/users/{user_id}/avatars`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

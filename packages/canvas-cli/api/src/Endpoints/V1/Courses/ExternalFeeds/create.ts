@@ -38,13 +38,12 @@ type Options = {
  *
  * Nickname: create_external_feed_courses
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<ExternalFeed>(
-    `/v1/courses/{course_id}/external_feeds`,
+    `/api/v1/courses/{course_id}/external_feeds`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

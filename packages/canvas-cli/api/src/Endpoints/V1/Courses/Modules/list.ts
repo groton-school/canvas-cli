@@ -51,10 +51,12 @@ type Options = {
  *
  * Nickname: list_modules
  */
-export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<Module[]>(`/v1/courses/{course_id}/modules`, {
-    method: 'GET',
-    pathParams,
-    searchParams
-  });
+export async function list(options: Options) {
+  return await client().fetchAs<Module[]>(
+    `/api/v1/courses/{course_id}/modules`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

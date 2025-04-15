@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: bulk_select_provisional_grades
  */
-export async function bulk_select_provisional_grades({ pathParams }: Options) {
+export async function bulk_select_provisional_grades(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/bulk_select`,
+    `/api/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/bulk_select`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

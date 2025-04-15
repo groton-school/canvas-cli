@@ -30,12 +30,12 @@ type Options = {
  *
  * Nickname: re_lock_module_progressions
  */
-export async function re_lock_module_progressions({ pathParams }: Options) {
+export async function re_lock_module_progressions(options: Options) {
   return await client().fetchAs<Module>(
-    `/v1/courses/{course_id}/modules/{id}/relock`,
+    `/api/v1/courses/{course_id}/modules/{id}/relock`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

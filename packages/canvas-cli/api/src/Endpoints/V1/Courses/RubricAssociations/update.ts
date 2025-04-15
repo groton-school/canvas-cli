@@ -66,13 +66,12 @@ type Options = {
  *
  * Nickname: update_rubricassociation
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<RubricAssociation>(
-    `/v1/courses/{course_id}/rubric_associations/{id}`,
+    `/api/v1/courses/{course_id}/rubric_associations/{id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

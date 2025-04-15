@@ -155,12 +155,11 @@ type Options = {
  *
  * Nickname: create_score
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<
     resultUrlStringTheurltotheresultthatwascreated[]
-  >(`/lti/courses/{course_id}/line_items/{line_item_id}/scores`, {
+  >(`/api/lti/courses/{course_id}/line_items/{line_item_id}/scores`, {
     method: 'POST',
-    pathParams,
-    params
+    ...options
   });
 }

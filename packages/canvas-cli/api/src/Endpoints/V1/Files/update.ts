@@ -64,10 +64,9 @@ type Options = {
  *
  * Nickname: update_file
  */
-export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<File>(`/v1/files/{id}`, {
+export async function update(options: Options) {
+  return await client().fetchAs<File>(`/api/v1/files/{id}`, {
     method: 'PUT',
-    pathParams,
-    params
+    ...options
   });
 }

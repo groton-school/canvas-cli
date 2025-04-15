@@ -38,13 +38,12 @@ type Options = {
  *
  * Nickname: show_line_item
  */
-export async function show_line_item({ pathParams, searchParams }: Options) {
+export async function show_line_item(options: Options) {
   return await client().fetchAs<LineItem>(
-    `/lti/courses/{course_id}/line_items/{id}`,
+    `/api/lti/courses/{course_id}/line_items/{id}`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

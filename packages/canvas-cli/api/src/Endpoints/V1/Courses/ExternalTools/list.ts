@@ -41,13 +41,12 @@ type Options = {
  *
  * Nickname: list_external_tools_courses
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/external_tools`,
+    `/api/v1/courses/{course_id}/external_tools`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

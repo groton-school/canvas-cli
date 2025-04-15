@@ -32,10 +32,12 @@ type Options = {
  *
  * Nickname: list_scopes
  */
-export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<Scope[]>(`/v1/accounts/{account_id}/scopes`, {
-    method: 'GET',
-    pathParams,
-    searchParams
-  });
+export async function list(options: Options) {
+  return await client().fetchAs<Scope[]>(
+    `/api/v1/accounts/{account_id}/scopes`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

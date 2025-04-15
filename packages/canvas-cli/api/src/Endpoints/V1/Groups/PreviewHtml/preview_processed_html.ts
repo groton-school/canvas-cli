@@ -30,10 +30,12 @@ type Options = {
  *
  * Nickname: preview_processed_html
  */
-export async function preview_processed_html({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/groups/{group_id}/preview_html`, {
-    method: 'POST',
-    pathParams,
-    params
-  });
+export async function preview_processed_html(options: Options) {
+  return await client().fetchAs<void>(
+    `/api/v1/groups/{group_id}/preview_html`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
 }

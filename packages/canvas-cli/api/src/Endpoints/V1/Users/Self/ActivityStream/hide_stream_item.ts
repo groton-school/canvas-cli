@@ -23,9 +23,12 @@ type Options = {
  *
  * Nickname: hide_stream_item
  */
-export async function hide_stream_item({ pathParams }: Options) {
-  return await client().fetchAs<void>(`/v1/users/self/activity_stream/{id}`, {
-    method: 'DELETE',
-    pathParams
-  });
+export async function hide_stream_item(options: Options) {
+  return await client().fetchAs<void>(
+    `/api/v1/users/self/activity_stream/{id}`,
+    {
+      method: 'DELETE',
+      ...options
+    }
+  );
 }

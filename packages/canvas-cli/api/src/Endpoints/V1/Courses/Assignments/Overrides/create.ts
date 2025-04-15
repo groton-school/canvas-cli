@@ -98,13 +98,12 @@ type Options = {
  *
  * Nickname: create_assignment_override
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<AssignmentOverride>(
-    `/v1/courses/{course_id}/assignments/{assignment_id}/overrides`,
+    `/api/v1/courses/{course_id}/assignments/{assignment_id}/overrides`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

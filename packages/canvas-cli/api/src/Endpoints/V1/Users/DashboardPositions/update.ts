@@ -28,9 +28,12 @@ type Options = {
  *
  * Nickname: update_dashboard_positions
  */
-export async function update({ pathParams }: Options) {
-  return await client().fetchAs<void>(`/v1/users/{id}/dashboard_positions`, {
-    method: 'PUT',
-    pathParams
-  });
+export async function update(options: Options) {
+  return await client().fetchAs<void>(
+    `/api/v1/users/{id}/dashboard_positions`,
+    {
+      method: 'PUT',
+      ...options
+    }
+  );
 }

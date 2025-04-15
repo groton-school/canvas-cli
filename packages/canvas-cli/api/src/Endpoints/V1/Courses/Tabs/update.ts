@@ -41,10 +41,12 @@ type Options = {
  *
  * Nickname: update_tab_for_course
  */
-export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<Tab>(`/v1/courses/{course_id}/tabs/{tab_id}`, {
-    method: 'PUT',
-    pathParams,
-    params
-  });
+export async function update(options: Options) {
+  return await client().fetchAs<Tab>(
+    `/api/v1/courses/{course_id}/tabs/{tab_id}`,
+    {
+      method: 'PUT',
+      ...options
+    }
+  );
 }

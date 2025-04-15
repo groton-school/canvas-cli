@@ -27,9 +27,9 @@ type Options =
  *
  * Nickname: batch_update_conversations
  */
-export async function batchUpdate({ params }: Options) {
-  return await client().fetchAs<Progress>(`/v1/conversations`, {
+export async function batchUpdate(options: Options) {
+  return await client().fetchAs<Progress>(`/api/v1/conversations`, {
     method: 'PUT',
-    params
+    ...options
   });
 }

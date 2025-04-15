@@ -28,12 +28,12 @@ type Options = {
  *
  * Nickname: get_learning_object_s_date_information_discussion_topics
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<LearningObjectDates>(
-    `/v1/courses/{course_id}/discussion_topics/{discussion_topic_id}/date_details`,
+    `/api/v1/courses/{course_id}/discussion_topics/{discussion_topic_id}/date_details`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

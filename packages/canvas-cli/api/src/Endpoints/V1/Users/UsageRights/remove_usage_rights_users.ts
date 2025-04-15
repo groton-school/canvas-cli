@@ -35,13 +35,9 @@ type Options = {
  *
  * Nickname: remove_usage_rights_users
  */
-export async function remove_usage_rights_users({
-  pathParams,
-  searchParams
-}: Options) {
-  return await client().fetchAs<void>(`/v1/users/{user_id}/usage_rights`, {
+export async function remove_usage_rights_users(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/users/{user_id}/usage_rights`, {
     method: 'DELETE',
-    pathParams,
-    searchParams
+    ...options
   });
 }

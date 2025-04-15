@@ -24,14 +24,12 @@ type Options = {
  *
  * Nickname: creates_rubric_using_csv_file_courses
  */
-export async function creates_rubric_using_csv_file_courses({
-  pathParams
-}: Options) {
+export async function creates_rubric_using_csv_file_courses(options: Options) {
   return await client().fetchAs<RubricImport>(
-    `/v1/courses/{course_id}/rubrics/upload`,
+    `/api/v1/courses/{course_id}/rubrics/upload`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

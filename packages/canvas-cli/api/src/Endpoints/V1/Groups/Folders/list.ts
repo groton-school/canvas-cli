@@ -28,9 +28,9 @@ type Options = {
  *
  * Nickname: list_all_folders_groups
  */
-export async function list({ pathParams }: Options) {
-  return await client().fetchAs<Folder[]>(`/v1/groups/{group_id}/folders`, {
+export async function list(options: Options) {
+  return await client().fetchAs<Folder[]>(`/api/v1/groups/{group_id}/folders`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

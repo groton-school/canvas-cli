@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: delete_assignment
  */
-export async function delete_assignment({ pathParams }: Options) {
+export async function delete_assignment(options: Options) {
   return await client().fetchAs<Assignment>(
-    `/v1/courses/{course_id}/assignments/{id}`,
+    `/api/v1/courses/{course_id}/assignments/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

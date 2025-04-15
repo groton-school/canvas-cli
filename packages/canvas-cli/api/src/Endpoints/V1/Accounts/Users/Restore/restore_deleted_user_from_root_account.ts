@@ -27,14 +27,12 @@ type Options = {
  *
  * Nickname: restore_deleted_user_from_root_account
  */
-export async function restore_deleted_user_from_root_account({
-  pathParams
-}: Options) {
+export async function restore_deleted_user_from_root_account(options: Options) {
   return await client().fetchAs<User>(
-    `/v1/accounts/{account_id}/users/{user_id}/restore`,
+    `/api/v1/accounts/{account_id}/users/{user_id}/restore`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

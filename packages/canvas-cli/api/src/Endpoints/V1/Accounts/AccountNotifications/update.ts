@@ -56,13 +56,12 @@ type Options = {
  *
  * Nickname: update_global_notification
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/account_notifications/{id}`,
+    `/api/v1/accounts/{account_id}/account_notifications/{id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

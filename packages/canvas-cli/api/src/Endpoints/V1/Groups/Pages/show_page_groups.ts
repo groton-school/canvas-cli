@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: show_page_groups
  */
-export async function show_page_groups({ pathParams }: Options) {
+export async function show_page_groups(options: Options) {
   return await client().fetchAs<Page>(
-    `/v1/groups/{group_id}/pages/{url_or_id}`,
+    `/api/v1/groups/{group_id}/pages/{url_or_id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

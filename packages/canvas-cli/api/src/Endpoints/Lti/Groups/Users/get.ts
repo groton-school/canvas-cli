@@ -28,9 +28,9 @@ type Options = {
  *
  * Nickname: get_all_users_in_group_lti
  */
-export async function get({ pathParams }: Options) {
-  return await client().fetchAs<User[]>(`/lti/groups/{group_id}/users`, {
+export async function get(options: Options) {
+  return await client().fetchAs<User[]>(`/api/lti/groups/{group_id}/users`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

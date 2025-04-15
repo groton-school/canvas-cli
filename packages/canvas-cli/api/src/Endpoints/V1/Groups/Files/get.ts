@@ -64,10 +64,9 @@ type Options = {
  *
  * Nickname: get_file_groups
  */
-export async function get({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<File>(`/v1/groups/{group_id}/files/{id}`, {
+export async function get(options: Options) {
+  return await client().fetchAs<File>(`/api/v1/groups/{group_id}/files/{id}`, {
     method: 'GET',
-    pathParams,
-    searchParams
+    ...options
   });
 }

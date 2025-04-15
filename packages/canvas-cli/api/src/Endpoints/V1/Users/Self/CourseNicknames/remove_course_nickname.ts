@@ -25,12 +25,12 @@ type Options = {
  *
  * Nickname: remove_course_nickname
  */
-export async function remove_course_nickname({ pathParams }: Options) {
+export async function remove_course_nickname(options: Options) {
   return await client().fetchAs<CourseNickname>(
-    `/v1/users/self/course_nicknames/{course_id}`,
+    `/api/v1/users/self/course_nicknames/{course_id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

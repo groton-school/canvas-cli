@@ -24,9 +24,12 @@ type Options = {
  *
  * Nickname: show_planner_override
  */
-export async function show_planner_override({ pathParams }: Options) {
-  return await client().fetchAs<PlannerOverride>(`/v1/planner/overrides/{id}`, {
-    method: 'GET',
-    pathParams
-  });
+export async function show_planner_override(options: Options) {
+  return await client().fetchAs<PlannerOverride>(
+    `/api/v1/planner/overrides/{id}`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

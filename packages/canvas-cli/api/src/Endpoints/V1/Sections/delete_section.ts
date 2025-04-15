@@ -24,9 +24,9 @@ type Options = {
  *
  * Nickname: delete_section
  */
-export async function delete_section({ pathParams }: Options) {
-  return await client().fetchAs<Section>(`/v1/sections/{id}`, {
+export async function delete_section(options: Options) {
+  return await client().fetchAs<Section>(`/api/v1/sections/{id}`, {
     method: 'DELETE',
-    pathParams
+    ...options
   });
 }

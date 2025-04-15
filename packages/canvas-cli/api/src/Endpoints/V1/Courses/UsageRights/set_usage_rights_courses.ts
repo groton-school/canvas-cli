@@ -53,16 +53,12 @@ type Options = {
  *
  * Nickname: set_usage_rights_courses
  */
-export async function set_usage_rights_courses({
-  pathParams,
-  params
-}: Options) {
+export async function set_usage_rights_courses(options: Options) {
   return await client().fetchAs<UsageRights>(
-    `/v1/courses/{course_id}/usage_rights`,
+    `/api/v1/courses/{course_id}/usage_rights`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

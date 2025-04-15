@@ -54,10 +54,9 @@ type Options = {
  *
  * Nickname: update_user_settings
  */
-export async function update({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<void>(`/v1/users/{id}/settings`, {
+export async function update(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/users/{id}/settings`, {
     method: 'GET',
-    pathParams,
-    searchParams
+    ...options
   });
 }

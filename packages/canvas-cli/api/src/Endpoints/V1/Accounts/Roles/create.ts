@@ -182,10 +182,9 @@ type Options = {
  *
  * Nickname: create_new_role
  */
-export async function create({ pathParams, params }: Options) {
-  return await client().fetchAs<Role>(`/v1/accounts/{account_id}/roles`, {
+export async function create(options: Options) {
+  return await client().fetchAs<Role>(`/api/v1/accounts/{account_id}/roles`, {
     method: 'POST',
-    pathParams,
-    params
+    ...options
   });
 }

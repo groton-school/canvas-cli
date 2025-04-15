@@ -42,13 +42,12 @@ type Options = {
  *
  * Nickname: query_by_course
  */
-export async function query_by_course({ pathParams, searchParams }: Options) {
+export async function query_by_course(options: Options) {
   return await client().fetchAs<CourseEvent[]>(
-    `/v1/audit/course/courses/{course_id}`,
+    `/api/v1/audit/course/courses/{course_id}`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

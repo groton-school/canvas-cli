@@ -16,8 +16,9 @@ type Options =
  *
  * Nickname: reset_group_favorites
  */
-export async function reset_group_favorites({}: Options) {
-  return await client().fetchAs<void>(`/v1/users/self/favorites/groups`, {
-    method: 'DELETE'
+export async function reset_group_favorites(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/users/self/favorites/groups`, {
+    method: 'DELETE',
+    ...options
   });
 }

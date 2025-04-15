@@ -25,12 +25,12 @@ type Options = {
  *
  * Nickname: delete_external_tool_accounts
  */
-export async function delete_external_tool_accounts({ pathParams }: Options) {
+export async function delete_external_tool_accounts(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/external_tools/{external_tool_id}`,
+    `/api/v1/accounts/{account_id}/external_tools/{external_tool_id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

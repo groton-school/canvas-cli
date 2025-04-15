@@ -24,12 +24,12 @@ type Options = {
  *
  * Nickname: show_outcome_group_accounts
  */
-export async function show_outcome_group_accounts({ pathParams }: Options) {
+export async function show_outcome_group_accounts(options: Options) {
   return await client().fetchAs<OutcomeGroup>(
-    `/v1/accounts/{account_id}/outcome_groups/{id}`,
+    `/api/v1/accounts/{account_id}/outcome_groups/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

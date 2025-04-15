@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: delete_custom_gradebook_column
  */
-export async function delete_custom_gradebook_column({ pathParams }: Options) {
+export async function delete_custom_gradebook_column(options: Options) {
   return await client().fetchAs<CustomColumn>(
-    `/v1/courses/{course_id}/custom_gradebook_columns/{id}`,
+    `/api/v1/courses/{course_id}/custom_gradebook_columns/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

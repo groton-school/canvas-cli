@@ -54,16 +54,14 @@ type Options = {
  *
  * Nickname: begin_migration_to_push_to_associated_courses
  */
-export async function begin_migration_to_push_to_associated_courses({
-  pathParams,
-  params
-}: Options) {
+export async function begin_migration_to_push_to_associated_courses(
+  options: Options
+) {
   return await client().fetchAs<BlueprintMigration>(
-    `/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations`,
+    `/api/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

@@ -21,8 +21,9 @@ type Options =
  *
  * Nickname: get_accounts_that_admins_can_manage
  */
-export async function get({}: Options) {
-  return await client().fetchAs<Account[]>(`/v1/manageable_accounts`, {
-    method: 'GET'
+export async function get(options: Options) {
+  return await client().fetchAs<Account[]>(`/api/v1/manageable_accounts`, {
+    method: 'GET',
+    ...options
   });
 }

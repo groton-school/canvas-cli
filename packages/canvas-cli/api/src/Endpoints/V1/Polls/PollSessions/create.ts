@@ -42,10 +42,9 @@ type Options = {
  *
  * Nickname: create_single_poll_session
  */
-export async function create({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/polls/{poll_id}/poll_sessions`, {
+export async function create(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/polls/{poll_id}/poll_sessions`, {
     method: 'POST',
-    pathParams,
-    params
+    ...options
   });
 }

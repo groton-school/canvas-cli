@@ -46,10 +46,9 @@ type Options = {
  *
  * Nickname: list_pages_courses
  */
-export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<Page[]>(`/v1/courses/{course_id}/pages`, {
+export async function list(options: Options) {
+  return await client().fetchAs<Page[]>(`/api/v1/courses/{course_id}/pages`, {
     method: 'GET',
-    pathParams,
-    searchParams
+    ...options
   });
 }

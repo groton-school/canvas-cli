@@ -113,13 +113,12 @@ type Options = {
  *
  * Nickname: update_quiz_item
  */
-export async function update_quiz_item({ pathParams, params }: Options) {
+export async function update_quiz_item(options: Options) {
   return await client().fetchAs<QuizItem>(
-    `/quiz/v1/courses/{course_id}/quizzes/{assignment_id}/items/{item_id}`,
+    `/api/quiz/v1/courses/{course_id}/quizzes/{assignment_id}/items/{item_id}`,
     {
       method: 'PATCH',
-      pathParams,
-      params
+      ...options
     }
   );
 }

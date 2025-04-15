@@ -31,12 +31,12 @@ type Options = {
  *
  * Nickname: show_collection_of_results
  */
-export async function show_collection_of_results({ pathParams }: Options) {
+export async function show_collection_of_results(options: Options) {
   return await client().fetchAs<Result>(
-    `/lti/courses/{course_id}/line_items/{line_item_id}/results`,
+    `/api/lti/courses/{course_id}/line_items/{line_item_id}/results`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

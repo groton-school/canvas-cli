@@ -54,13 +54,12 @@ type Options = {
  *
  * Nickname: answering_questions
  */
-export async function answering_questions({ pathParams, params }: Options) {
+export async function answering_questions(options: Options) {
   return await client().fetchAs<QuizSubmissionQuestion[]>(
-    `/v1/quiz_submissions/{quiz_submission_id}/questions`,
+    `/api/v1/quiz_submissions/{quiz_submission_id}/questions`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

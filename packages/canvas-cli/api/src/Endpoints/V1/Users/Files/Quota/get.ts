@@ -23,9 +23,9 @@ type Options = {
  *
  * Nickname: get_quota_information_users
  */
-export async function get({ pathParams }: Options) {
-  return await client().fetchAs<void>(`/v1/users/{user_id}/files/quota`, {
+export async function get(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/users/{user_id}/files/quota`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

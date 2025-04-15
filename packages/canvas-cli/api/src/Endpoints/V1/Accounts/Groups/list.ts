@@ -47,10 +47,12 @@ type Options = {
  *
  * Nickname: list_groups_available_in_context_accounts
  */
-export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<Group[]>(`/v1/accounts/{account_id}/groups`, {
-    method: 'GET',
-    pathParams,
-    searchParams
-  });
+export async function list(options: Options) {
+  return await client().fetchAs<Group[]>(
+    `/api/v1/accounts/{account_id}/groups`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

@@ -46,13 +46,12 @@ type Options = {
  *
  * Nickname: flagging_question
  */
-export async function flagging_question({ pathParams, params }: Options) {
+export async function flagging_question(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/quiz_submissions/{quiz_submission_id}/questions/{id}/flag`,
+    `/api/v1/quiz_submissions/{quiz_submission_id}/questions/{id}/flag`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

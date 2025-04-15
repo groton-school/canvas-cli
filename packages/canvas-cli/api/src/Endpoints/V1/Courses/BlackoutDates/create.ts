@@ -43,13 +43,12 @@ type Options = {
  *
  * Nickname: create_blackout_date_courses
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<BlackoutDate>(
-    `/v1/courses/{course_id}/blackout_dates`,
+    `/api/v1/courses/{course_id}/blackout_dates`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

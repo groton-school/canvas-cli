@@ -43,13 +43,12 @@ type Options = {
  *
  * Nickname: update_single_grading_period
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/grading_periods/{id}`,
+    `/api/v1/courses/{course_id}/grading_periods/{id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

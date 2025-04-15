@@ -39,13 +39,12 @@ type Options = {
  *
  * Nickname: get_single_rubric_accounts
  */
-export async function get({ pathParams, searchParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<Rubric>(
-    `/v1/accounts/{account_id}/rubrics/{id}`,
+    `/api/v1/accounts/{account_id}/rubrics/{id}`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

@@ -26,14 +26,14 @@ type Options = {
  *
  * Nickname: remove_tool_from_top_navigation_favorites
  */
-export async function remove_tool_from_top_navigation_favorites({
-  pathParams
-}: Options) {
+export async function remove_tool_from_top_navigation_favorites(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/external_tools/top_nav_favorites/{id}`,
+    `/api/v1/accounts/{account_id}/external_tools/top_nav_favorites/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

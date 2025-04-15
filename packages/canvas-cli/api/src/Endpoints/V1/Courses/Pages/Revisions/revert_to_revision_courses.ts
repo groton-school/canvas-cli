@@ -33,12 +33,12 @@ type Options = {
  *
  * Nickname: revert_to_revision_courses
  */
-export async function revert_to_revision_courses({ pathParams }: Options) {
+export async function revert_to_revision_courses(options: Options) {
   return await client().fetchAs<PageRevision>(
-    `/v1/courses/{course_id}/pages/{url_or_id}/revisions/{revision_id}`,
+    `/api/v1/courses/{course_id}/pages/{url_or_id}/revisions/{revision_id}`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

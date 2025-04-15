@@ -28,12 +28,12 @@ type Options = {
  *
  * Nickname: delete_report
  */
-export async function delete_report({ pathParams }: Options) {
+export async function delete_report(options: Options) {
   return await client().fetchAs<Report>(
-    `/v1/accounts/{account_id}/reports/{report}/{id}`,
+    `/api/v1/accounts/{account_id}/reports/{report}/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

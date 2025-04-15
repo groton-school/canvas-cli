@@ -27,9 +27,9 @@ type Options = {
  *
  * Nickname: get_user_profile
  */
-export async function get({ pathParams }: Options) {
-  return await client().fetchAs<Profile>(`/v1/users/{user_id}/profile`, {
+export async function get(options: Options) {
+  return await client().fetchAs<Profile>(`/api/v1/users/{user_id}/profile`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

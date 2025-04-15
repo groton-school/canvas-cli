@@ -90,10 +90,9 @@ type Options = {
  *
  * Nickname: update_appointment_group
  */
-export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/appointment_groups/{id}`, {
+export async function update(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/appointment_groups/{id}`, {
     method: 'PUT',
-    pathParams,
-    params
+    ...options
   });
 }

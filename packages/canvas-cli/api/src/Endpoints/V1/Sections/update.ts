@@ -61,10 +61,9 @@ type Options = {
  *
  * Nickname: edit_section
  */
-export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<Section>(`/v1/sections/{id}`, {
+export async function update(options: Options) {
+  return await client().fetchAs<Section>(`/api/v1/sections/{id}`, {
     method: 'PUT',
-    pathParams,
-    params
+    ...options
   });
 }

@@ -38,13 +38,12 @@ type Options = {
  *
  * Nickname: create_temporary_enrollment_pairing
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<TemporaryEnrollmentPairing>(
-    `/v1/accounts/{account_id}/temporary_enrollment_pairings`,
+    `/api/v1/accounts/{account_id}/temporary_enrollment_pairings`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

@@ -28,12 +28,12 @@ type Options = {
  *
  * Nickname: show_observee
  */
-export async function show_observee({ pathParams }: Options) {
+export async function show_observee(options: Options) {
   return await client().fetchAs<User>(
-    `/v1/users/{user_id}/observees/{observee_id}`,
+    `/api/v1/users/{user_id}/observees/{observee_id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

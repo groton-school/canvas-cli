@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: show_account_auth_settings
  */
-export async function show_account_auth_settings({ pathParams }: Options) {
+export async function show_account_auth_settings(options: Options) {
   return await client().fetchAs<SSOSettings>(
-    `/v1/accounts/{account_id}/sso_settings`,
+    `/api/v1/accounts/{account_id}/sso_settings`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

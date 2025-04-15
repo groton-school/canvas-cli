@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: delete_blackout_date_courses
  */
-export async function delete_blackout_date_courses({ pathParams }: Options) {
+export async function delete_blackout_date_courses(options: Options) {
   return await client().fetchAs<BlackoutDate>(
-    `/v1/courses/{course_id}/blackout_dates/{id}`,
+    `/api/v1/courses/{course_id}/blackout_dates/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

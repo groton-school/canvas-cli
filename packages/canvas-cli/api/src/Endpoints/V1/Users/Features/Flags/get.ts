@@ -30,12 +30,12 @@ type Options = {
  *
  * Nickname: get_feature_flag_users
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<FeatureFlag>(
-    `/v1/users/{user_id}/features/flags/{feature}`,
+    `/api/v1/users/{user_id}/features/flags/{feature}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

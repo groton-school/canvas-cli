@@ -57,13 +57,12 @@ type Options = {
  *
  * Nickname: create_new_grading_standard_courses
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<GradingStandard>(
-    `/v1/courses/{course_id}/grading_standards`,
+    `/api/v1/courses/{course_id}/grading_standards`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

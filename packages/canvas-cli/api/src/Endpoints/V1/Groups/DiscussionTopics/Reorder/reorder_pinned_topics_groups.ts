@@ -36,16 +36,12 @@ type Options = {
  *
  * Nickname: reorder_pinned_topics_groups
  */
-export async function reorder_pinned_topics_groups({
-  pathParams,
-  params
-}: Options) {
+export async function reorder_pinned_topics_groups(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/groups/{group_id}/discussion_topics/reorder`,
+    `/api/v1/groups/{group_id}/discussion_topics/reorder`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

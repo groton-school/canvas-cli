@@ -34,13 +34,12 @@ type Options = {
  *
  * Nickname: share_brandconfig_theme
  */
-export async function share_brandconfig_theme({ pathParams, params }: Options) {
+export async function share_brandconfig_theme(options: Options) {
   return await client().fetchAs<SharedBrandConfig>(
-    `/v1/accounts/{account_id}/shared_brand_configs`,
+    `/api/v1/accounts/{account_id}/shared_brand_configs`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

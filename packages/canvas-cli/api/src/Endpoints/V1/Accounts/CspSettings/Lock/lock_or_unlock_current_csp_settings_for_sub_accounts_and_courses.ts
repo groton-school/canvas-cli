@@ -36,16 +36,14 @@ type Options = {
  *
  * Nickname: lock_or_unlock_current_csp_settings_for_sub_accounts_and_courses
  */
-export async function lock_or_unlock_current_csp_settings_for_sub_accounts_and_courses({
-  pathParams,
-  params
-}: Options) {
+export async function lock_or_unlock_current_csp_settings_for_sub_accounts_and_courses(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/csp_settings/lock`,
+    `/api/v1/accounts/{account_id}/csp_settings/lock`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

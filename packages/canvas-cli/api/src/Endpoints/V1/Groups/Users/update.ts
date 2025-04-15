@@ -35,13 +35,12 @@ type Options = {
  *
  * Nickname: update_membership_users
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<GroupMembership>(
-    `/v1/groups/{group_id}/users/{user_id}`,
+    `/api/v1/groups/{group_id}/users/{user_id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

@@ -39,16 +39,12 @@ type Options = {
  *
  * Nickname: retrieve_captured_events
  */
-export async function retrieve_captured_events({
-  pathParams,
-  searchParams
-}: Options) {
+export async function retrieve_captured_events(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/events`,
+    `/api/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/events`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

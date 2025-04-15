@@ -74,13 +74,12 @@ type Options = {
  *
  * Nickname: edit_originality_report_submissions
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<OriginalityReport>(
-    `/lti/assignments/{assignment_id}/submissions/{submission_id}/originality_report/{id}`,
+    `/api/lti/assignments/{assignment_id}/submissions/{submission_id}/originality_report/{id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

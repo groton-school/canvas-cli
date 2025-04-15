@@ -58,16 +58,12 @@ type Options = {
  *
  * Nickname: complete_quiz_submission_turn_it_in
  */
-export async function complete_quiz_submission_turn_it_in({
-  pathParams,
-  params
-}: Options) {
+export async function complete_quiz_submission_turn_it_in(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/complete`,
+    `/api/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/complete`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

@@ -36,13 +36,12 @@ type Options = {
  *
  * Nickname: reorder_custom_columns
  */
-export async function reorder_custom_columns({ pathParams, params }: Options) {
+export async function reorder_custom_columns(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/custom_gradebook_columns/reorder`,
+    `/api/v1/courses/{course_id}/custom_gradebook_columns/reorder`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

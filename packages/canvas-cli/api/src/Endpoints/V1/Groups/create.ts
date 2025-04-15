@@ -40,9 +40,9 @@ type Options =
  *
  * Nickname: create_group_groups
  */
-export async function create({ params }: Options) {
-  return await client().fetchAs<Group>(`/v1/groups`, {
+export async function create(options: Options) {
+  return await client().fetchAs<Group>(`/api/v1/groups`, {
     method: 'POST',
-    params
+    ...options
   });
 }

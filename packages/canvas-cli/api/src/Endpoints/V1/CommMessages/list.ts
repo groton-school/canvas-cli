@@ -38,9 +38,9 @@ type Options =
  *
  * Nickname: list_of_commmessages_for_user
  */
-export async function list({ searchParams }: Options) {
-  return await client().fetchAs<CommMessage[]>(`/v1/comm_messages`, {
+export async function list(options: Options) {
+  return await client().fetchAs<CommMessage[]>(`/api/v1/comm_messages`, {
     method: 'GET',
-    searchParams
+    ...options
   });
 }

@@ -21,8 +21,12 @@ type Options =
  *
  * Nickname: list_favorite_groups
  */
-export async function list({}: Options) {
-  return await client().fetchAs<Group[]>(`/v1/users/self/favorites/groups`, {
-    method: 'GET'
-  });
+export async function list(options: Options) {
+  return await client().fetchAs<Group[]>(
+    `/api/v1/users/self/favorites/groups`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

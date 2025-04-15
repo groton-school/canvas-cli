@@ -33,12 +33,12 @@ type Options = {
  *
  * Nickname: mark_module_item_read
  */
-export async function mark_module_item_read({ pathParams }: Options) {
+export async function mark_module_item_read(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/modules/{module_id}/items/{id}/mark_read`,
+    `/api/v1/courses/{course_id}/modules/{module_id}/items/{id}/mark_read`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

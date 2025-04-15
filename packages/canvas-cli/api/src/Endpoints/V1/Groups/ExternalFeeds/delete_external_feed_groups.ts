@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: delete_external_feed_groups
  */
-export async function delete_external_feed_groups({ pathParams }: Options) {
+export async function delete_external_feed_groups(options: Options) {
   return await client().fetchAs<ExternalFeed>(
-    `/v1/groups/{group_id}/external_feeds/{external_feed_id}`,
+    `/api/v1/groups/{group_id}/external_feeds/{external_feed_id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

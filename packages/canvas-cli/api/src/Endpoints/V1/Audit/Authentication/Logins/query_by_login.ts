@@ -41,13 +41,12 @@ type Options = {
  *
  * Nickname: query_by_login
  */
-export async function query_by_login({ pathParams, searchParams }: Options) {
+export async function query_by_login(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/audit/authentication/logins/{login_id}`,
+    `/api/v1/audit/authentication/logins/{login_id}`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

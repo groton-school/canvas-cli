@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: list_licenses_users
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<License[]>(
-    `/v1/users/{user_id}/content_licenses`,
+    `/api/v1/users/{user_id}/content_licenses`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

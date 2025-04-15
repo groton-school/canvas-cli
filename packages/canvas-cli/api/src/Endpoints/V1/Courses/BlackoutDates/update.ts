@@ -40,12 +40,11 @@ type Options = {
  *
  * Nickname: update_list_of_blackout_dates
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<
     BlackoutDateTheresultwhichshouldmatchtheinputwithmaybesomedifferentIDs[]
-  >(`/v1/courses/{course_id}/blackout_dates`, {
+  >(`/api/v1/courses/{course_id}/blackout_dates`, {
     method: 'PUT',
-    pathParams,
-    params
+    ...options
   });
 }

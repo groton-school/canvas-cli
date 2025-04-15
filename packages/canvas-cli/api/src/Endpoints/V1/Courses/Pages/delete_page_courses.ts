@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: delete_page_courses
  */
-export async function delete_page_courses({ pathParams }: Options) {
+export async function delete_page_courses(options: Options) {
   return await client().fetchAs<Page>(
-    `/v1/courses/{course_id}/pages/{url_or_id}`,
+    `/api/v1/courses/{course_id}/pages/{url_or_id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

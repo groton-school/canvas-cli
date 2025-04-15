@@ -30,16 +30,12 @@ type Options = {
  *
  * Nickname: remove_domain_from_account
  */
-export async function remove_domain_from_account({
-  pathParams,
-  searchParams
-}: Options) {
+export async function remove_domain_from_account(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/csp_settings/domains`,
+    `/api/v1/accounts/{account_id}/csp_settings/domains`,
     {
       method: 'DELETE',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

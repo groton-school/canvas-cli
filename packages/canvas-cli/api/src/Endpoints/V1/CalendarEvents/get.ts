@@ -22,9 +22,9 @@ type Options = {
  *
  * Nickname: get_single_calendar_event_or_assignment
  */
-export async function get({ pathParams }: Options) {
-  return await client().fetchAs<CalendarEvent>(`/v1/calendar_events/{id}`, {
+export async function get(options: Options) {
+  return await client().fetchAs<CalendarEvent>(`/api/v1/calendar_events/{id}`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

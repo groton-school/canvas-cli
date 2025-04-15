@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: get_eportfolio_pages
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<ePortfolioPage[]>(
-    `/v1/eportfolios/{eportfolio_id}/pages`,
+    `/api/v1/eportfolios/{eportfolio_id}/pages`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

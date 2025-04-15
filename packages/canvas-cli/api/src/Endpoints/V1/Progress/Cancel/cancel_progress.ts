@@ -27,9 +27,9 @@ type Options = {
  *
  * Nickname: cancel_progress
  */
-export async function cancel_progress({ pathParams }: Options) {
-  return await client().fetchAs<Progress>(`/v1/progress/{id}/cancel`, {
+export async function cancel_progress(options: Options) {
+  return await client().fetchAs<Progress>(`/api/v1/progress/{id}/cancel`, {
     method: 'POST',
-    pathParams
+    ...options
   });
 }

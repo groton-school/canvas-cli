@@ -15,8 +15,9 @@ type Options =
  *
  * Nickname: list_upcoming_assignments_calendar_events
  */
-export async function list({}: Options) {
-  return await client().fetchAs<void>(`/v1/users/self/upcoming_events`, {
-    method: 'GET'
+export async function list(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/users/self/upcoming_events`, {
+    method: 'GET',
+    ...options
   });
 }

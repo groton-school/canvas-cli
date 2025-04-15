@@ -64,9 +64,12 @@ type Options =
  *
  * Nickname: advanced_query
  */
-export async function advanced_query({ searchParams }: Options) {
-  return await client().fetchAs<GradeChangeEvent[]>(`/v1/audit/grade_change`, {
-    method: 'GET',
-    searchParams
-  });
+export async function advanced_query(options: Options) {
+  return await client().fetchAs<GradeChangeEvent[]>(
+    `/api/v1/audit/grade_change`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

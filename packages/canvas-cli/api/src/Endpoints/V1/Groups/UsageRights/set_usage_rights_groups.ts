@@ -53,13 +53,12 @@ type Options = {
  *
  * Nickname: set_usage_rights_groups
  */
-export async function set_usage_rights_groups({ pathParams, params }: Options) {
+export async function set_usage_rights_groups(options: Options) {
   return await client().fetchAs<UsageRights>(
-    `/v1/groups/{group_id}/usage_rights`,
+    `/api/v1/groups/{group_id}/usage_rights`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

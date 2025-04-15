@@ -23,9 +23,9 @@ type Options = {
  *
  * Nickname: get_icon_metadata
  */
-export async function get({ pathParams }: Options) {
-  return await client().fetchAs<void>(`/v1/files/{id}/icon_metadata`, {
+export async function get(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/files/{id}/icon_metadata`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

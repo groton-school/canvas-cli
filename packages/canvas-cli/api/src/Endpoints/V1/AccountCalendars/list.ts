@@ -29,11 +29,11 @@ type Options =
  *
  * Nickname: list_available_account_calendars
  */
-export async function list({ searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<
     account_calendarsAccountCalendartotal_resultsinteger[]
-  >(`/v1/account_calendars`, {
+  >(`/api/v1/account_calendars`, {
     method: 'GET',
-    searchParams
+    ...options
   });
 }

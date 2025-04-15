@@ -49,16 +49,12 @@ type Options = {
  *
  * Nickname: bind_lti_registration_to_account
  */
-export async function bind_lti_registration_to_account({
-  pathParams,
-  params
-}: Options) {
+export async function bind_lti_registration_to_account(options: Options) {
   return await client().fetchAs<LtiRegistrationAccountBinding>(
-    `/v1/accounts/{account_id}/lti_registrations/{id}/bind`,
+    `/api/v1/accounts/{account_id}/lti_registrations/{id}/bind`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

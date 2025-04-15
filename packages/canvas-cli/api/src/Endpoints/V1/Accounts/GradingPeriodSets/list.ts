@@ -23,12 +23,12 @@ type Options = {
  *
  * Nickname: list_grading_period_sets
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/grading_period_sets`,
+    `/api/v1/accounts/{account_id}/grading_period_sets`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

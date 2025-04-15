@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: get_available_quiz_ip_filters
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/quizzes/{quiz_id}/ip_filters`,
+    `/api/v1/courses/{course_id}/quizzes/{quiz_id}/ip_filters`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

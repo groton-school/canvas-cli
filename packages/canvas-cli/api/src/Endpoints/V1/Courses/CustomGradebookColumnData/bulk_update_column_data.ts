@@ -39,13 +39,12 @@ type Options = {
  *
  * Nickname: bulk_update_column_data
  */
-export async function bulk_update_column_data({ pathParams, params }: Options) {
+export async function bulk_update_column_data(options: Options) {
   return await client().fetchAs<Progress>(
-    `/v1/courses/{course_id}/custom_gradebook_column_data`,
+    `/api/v1/courses/{course_id}/custom_gradebook_column_data`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

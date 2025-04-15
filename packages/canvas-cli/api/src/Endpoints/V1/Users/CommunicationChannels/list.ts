@@ -28,12 +28,12 @@ type Options = {
  *
  * Nickname: list_user_communication_channels
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<CommunicationChannel[]>(
-    `/v1/users/{user_id}/communication_channels`,
+    `/api/v1/users/{user_id}/communication_channels`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: get_single_temporary_enrollment_pairing
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<TemporaryEnrollmentPairing>(
-    `/v1/accounts/{account_id}/temporary_enrollment_pairings/{id}`,
+    `/api/v1/accounts/{account_id}/temporary_enrollment_pairings/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

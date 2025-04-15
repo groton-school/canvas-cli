@@ -41,13 +41,12 @@ type Options = {
  *
  * Nickname: query_by_user
  */
-export async function query_by_user({ pathParams, searchParams }: Options) {
+export async function query_by_user(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/audit/authentication/users/{user_id}`,
+    `/api/v1/audit/authentication/users/{user_id}`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

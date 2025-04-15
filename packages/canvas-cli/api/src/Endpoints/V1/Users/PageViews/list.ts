@@ -44,10 +44,12 @@ type Options = {
  *
  * Nickname: list_user_page_views
  */
-export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<PageView[]>(`/v1/users/{user_id}/page_views`, {
-    method: 'GET',
-    pathParams,
-    searchParams
-  });
+export async function list(options: Options) {
+  return await client().fetchAs<PageView[]>(
+    `/api/v1/users/{user_id}/page_views`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

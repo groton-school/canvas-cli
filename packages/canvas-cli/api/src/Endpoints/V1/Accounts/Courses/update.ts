@@ -51,10 +51,12 @@ type Options = {
  *
  * Nickname: update_courses
  */
-export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<Progress>(`/v1/accounts/{account_id}/courses`, {
-    method: 'PUT',
-    pathParams,
-    params
-  });
+export async function update(options: Options) {
+  return await client().fetchAs<Progress>(
+    `/api/v1/accounts/{account_id}/courses`,
+    {
+      method: 'PUT',
+      ...options
+    }
+  );
 }

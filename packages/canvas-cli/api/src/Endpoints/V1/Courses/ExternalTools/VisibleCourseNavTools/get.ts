@@ -28,12 +28,12 @@ type Options = {
  *
  * Nickname: get_visible_course_navigation_tools_for_single_course
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/external_tools/visible_course_nav_tools`,
+    `/api/v1/courses/{course_id}/external_tools/visible_course_nav_tools`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

@@ -36,13 +36,9 @@ type Options = {
  *
  * Nickname: delete_calendar_event
  */
-export async function delete_calendar_event({
-  pathParams,
-  searchParams
-}: Options) {
-  return await client().fetchAs<void>(`/v1/calendar_events/{id}`, {
+export async function delete_calendar_event(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/calendar_events/{id}`, {
     method: 'DELETE',
-    pathParams,
-    searchParams
+    ...options
   });
 }

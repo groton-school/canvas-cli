@@ -30,12 +30,12 @@ type Options = {
  *
  * Nickname: get_sis_import_status
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<SisImport>(
-    `/v1/accounts/{account_id}/sis_imports/{id}`,
+    `/api/v1/accounts/{account_id}/sis_imports/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

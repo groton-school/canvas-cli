@@ -61,9 +61,9 @@ type Options =
  *
  * Nickname: list_conversations
  */
-export async function list({ searchParams }: Options) {
-  return await client().fetchAs<Conversation[]>(`/v1/conversations`, {
+export async function list(options: Options) {
+  return await client().fetchAs<Conversation[]>(`/api/v1/conversations`, {
     method: 'GET',
-    searchParams
+    ...options
   });
 }

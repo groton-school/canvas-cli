@@ -18,8 +18,9 @@ type Options =
  *
  * Nickname: download_uuid_mapping_for_this_sandbox
  */
-export async function download_uuid_mapping_for_this_sandbox({}: Options) {
-  return await client().fetchAs<void>(`/lti/uuid_map`, {
-    method: 'GET'
+export async function download_uuid_mapping_for_this_sandbox(options: Options) {
+  return await client().fetchAs<void>(`/api/lti/uuid_map`, {
+    method: 'GET',
+    ...options
   });
 }

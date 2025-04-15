@@ -34,12 +34,12 @@ type Options = {
  *
  * Nickname: delete_new_quiz
  */
-export async function delete_new_quiz({ pathParams }: Options) {
+export async function delete_new_quiz(options: Options) {
   return await client().fetchAs<NewQuiz>(
-    `/quiz/v1/courses/{course_id}/quizzes/{assignment_id}`,
+    `/api/quiz/v1/courses/{course_id}/quizzes/{assignment_id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

@@ -33,13 +33,12 @@ type Options = {
  *
  * Nickname: set_course_nickname
  */
-export async function set_course_nickname({ pathParams, params }: Options) {
+export async function set_course_nickname(options: Options) {
   return await client().fetchAs<CourseNickname>(
-    `/v1/users/self/course_nicknames/{course_id}`,
+    `/api/v1/users/self/course_nicknames/{course_id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

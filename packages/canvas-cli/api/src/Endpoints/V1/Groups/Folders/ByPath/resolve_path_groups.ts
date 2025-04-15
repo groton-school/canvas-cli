@@ -32,12 +32,12 @@ type Options = {
  *
  * Nickname: resolve_path_groups
  */
-export async function resolve_path_groups({ pathParams }: Options) {
+export async function resolve_path_groups(options: Options) {
   return await client().fetchAs<Folder[]>(
-    `/v1/groups/{group_id}/folders/by_path`,
+    `/api/v1/groups/{group_id}/folders/by_path`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

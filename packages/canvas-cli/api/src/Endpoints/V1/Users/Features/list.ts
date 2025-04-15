@@ -28,9 +28,9 @@ type Options = {
  *
  * Nickname: list_features_users
  */
-export async function list({ pathParams }: Options) {
-  return await client().fetchAs<Feature[]>(`/v1/users/{user_id}/features`, {
+export async function list(options: Options) {
+  return await client().fetchAs<Feature[]>(`/api/v1/users/{user_id}/features`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

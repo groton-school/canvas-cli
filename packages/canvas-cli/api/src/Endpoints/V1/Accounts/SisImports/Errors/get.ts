@@ -43,13 +43,12 @@ type Options = {
  *
  * Nickname: get_sis_import_error_list_sis_imports
  */
-export async function get({ pathParams, searchParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<SisImportError[]>(
-    `/v1/accounts/{account_id}/sis_imports/{id}/errors`,
+    `/api/v1/accounts/{account_id}/sis_imports/{id}/errors`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

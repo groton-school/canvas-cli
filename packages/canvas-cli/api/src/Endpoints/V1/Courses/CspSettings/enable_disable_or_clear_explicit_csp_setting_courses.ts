@@ -44,13 +44,14 @@ type Options = {
  *
  * Nickname: enable_disable_or_clear_explicit_csp_setting_courses
  */
-export async function enable_disable_or_clear_explicit_csp_setting_courses({
-  pathParams,
-  params
-}: Options) {
-  return await client().fetchAs<void>(`/v1/courses/{course_id}/csp_settings`, {
-    method: 'PUT',
-    pathParams,
-    params
-  });
+export async function enable_disable_or_clear_explicit_csp_setting_courses(
+  options: Options
+) {
+  return await client().fetchAs<void>(
+    `/api/v1/courses/{course_id}/csp_settings`,
+    {
+      method: 'PUT',
+      ...options
+    }
+  );
 }

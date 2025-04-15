@@ -26,12 +26,12 @@ type Options =
  *
  * Nickname: get_next_appointment
  */
-export async function get({ searchParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<CalendarEvent[]>(
-    `/v1/appointment_groups/next_appointment`,
+    `/api/v1/appointment_groups/next_appointment`,
     {
       method: 'GET',
-      searchParams
+      ...options
     }
   );
 }

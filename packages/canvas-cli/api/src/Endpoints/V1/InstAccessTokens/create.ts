@@ -19,8 +19,9 @@ type Options =
  *
  * Nickname: create_instaccess_token
  */
-export async function create({}: Options) {
-  return await client().fetchAs<InstAccessToken>(`/v1/inst_access_tokens`, {
-    method: 'POST'
+export async function create(options: Options) {
+  return await client().fetchAs<InstAccessToken>(`/api/v1/inst_access_tokens`, {
+    method: 'POST',
+    ...options
   });
 }

@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: update_custom_gradebook_column
  */
-export async function update({ pathParams }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<CustomColumn>(
-    `/v1/courses/{course_id}/custom_gradebook_columns/{id}`,
+    `/api/v1/courses/{course_id}/custom_gradebook_columns/{id}`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

@@ -42,10 +42,9 @@ type Options = {
  *
  * Nickname: show_user_details
  */
-export async function show_user_details({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<User>(`/v1/users/{id}`, {
+export async function show_user_details(options: Options) {
+  return await client().fetchAs<User>(`/api/v1/users/{id}`, {
     method: 'GET',
-    pathParams,
-    searchParams
+    ...options
   });
 }

@@ -67,13 +67,12 @@ type Options = {
  *
  * Nickname: update_group_category
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<GroupCategory>(
-    `/v1/group_categories/{group_category_id}`,
+    `/api/v1/group_categories/{group_category_id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

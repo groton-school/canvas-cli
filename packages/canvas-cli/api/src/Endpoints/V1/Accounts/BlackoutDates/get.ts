@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: get_single_blackout_date_accounts
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<BlackoutDate>(
-    `/v1/accounts/{account_id}/blackout_dates/{id}`,
+    `/api/v1/accounts/{account_id}/blackout_dates/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

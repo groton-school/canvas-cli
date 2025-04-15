@@ -40,16 +40,14 @@ type Options = {
  *
  * Nickname: send_message_to_unsubmitted_or_submitted_users_for_quiz
  */
-export async function send_message_to_unsubmitted_or_submitted_users_for_quiz({
-  pathParams,
-  params
-}: Options) {
+export async function send_message_to_unsubmitted_or_submitted_users_for_quiz(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/quizzes/{id}/submission_users/message`,
+    `/api/v1/courses/{course_id}/quizzes/{id}/submission_users/message`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

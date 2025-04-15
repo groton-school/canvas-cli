@@ -46,16 +46,14 @@ type Options = {
  *
  * Nickname: index_of_active_global_notification_for_user
  */
-export async function index_of_active_global_notification_for_user({
-  pathParams,
-  searchParams
-}: Options) {
+export async function index_of_active_global_notification_for_user(
+  options: Options
+) {
   return await client().fetchAs<AccountNotification[]>(
-    `/v1/accounts/{account_id}/account_notifications`,
+    `/api/v1/accounts/{account_id}/account_notifications`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

@@ -28,9 +28,12 @@ type Options = {
  *
  * Nickname: list_all_folders_courses
  */
-export async function list({ pathParams }: Options) {
-  return await client().fetchAs<Folder[]>(`/v1/courses/{course_id}/folders`, {
-    method: 'GET',
-    pathParams
-  });
+export async function list(options: Options) {
+  return await client().fetchAs<Folder[]>(
+    `/api/v1/courses/{course_id}/folders`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

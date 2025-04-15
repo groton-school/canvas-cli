@@ -25,14 +25,14 @@ type Options = {
  *
  * Nickname: redirect_to_root_outcome_group_for_context_accounts
  */
-export async function redirect_to_root_outcome_group_for_context_accounts({
-  pathParams
-}: Options) {
+export async function redirect_to_root_outcome_group_for_context_accounts(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/root_outcome_group`,
+    `/api/v1/accounts/{account_id}/root_outcome_group`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

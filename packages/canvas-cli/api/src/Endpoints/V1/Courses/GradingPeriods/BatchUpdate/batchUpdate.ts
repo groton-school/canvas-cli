@@ -66,13 +66,12 @@ type Options = {
  *
  * Nickname: batch_update_grading_periods_courses
  */
-export async function batchUpdate({ pathParams, params }: Options) {
+export async function batchUpdate(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/grading_periods/batch_update`,
+    `/api/v1/courses/{course_id}/grading_periods/batch_update`,
     {
       method: 'PATCH',
-      pathParams,
-      params
+      ...options
     }
   );
 }

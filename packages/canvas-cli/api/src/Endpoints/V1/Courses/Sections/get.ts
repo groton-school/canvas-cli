@@ -44,13 +44,12 @@ type Options = {
  *
  * Nickname: get_section_information_courses
  */
-export async function get({ pathParams, searchParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<Section>(
-    `/v1/courses/{course_id}/sections/{id}`,
+    `/api/v1/courses/{course_id}/sections/{id}`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

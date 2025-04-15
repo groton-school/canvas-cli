@@ -18,8 +18,9 @@ type Options =
  *
  * Nickname: get_brand_config_variables_that_should_be_used_for_this_domain
  */
-export async function get({}: Options) {
-  return await client().fetchAs<void>(`/v1/brand_variables`, {
-    method: 'GET'
+export async function get(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/brand_variables`, {
+    method: 'GET',
+    ...options
   });
 }

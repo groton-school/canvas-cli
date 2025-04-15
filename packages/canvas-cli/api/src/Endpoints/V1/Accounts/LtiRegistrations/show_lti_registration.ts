@@ -44,16 +44,12 @@ type Options = {
  *
  * Nickname: show_lti_registration
  */
-export async function show_lti_registration({
-  pathParams,
-  searchParams
-}: Options) {
+export async function show_lti_registration(options: Options) {
   return await client().fetchAs<LtiRegistration>(
-    `/v1/accounts/{account_id}/lti_registrations/{id}`,
+    `/api/v1/accounts/{account_id}/lti_registrations/{id}`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

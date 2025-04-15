@@ -30,12 +30,12 @@ type Options = {
  *
  * Nickname: list_recently_logged_in_students
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<User[]>(
-    `/v1/courses/{course_id}/recent_students`,
+    `/api/v1/courses/{course_id}/recent_students`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

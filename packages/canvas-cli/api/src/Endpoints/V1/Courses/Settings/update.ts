@@ -96,10 +96,9 @@ type Options = {
  *
  * Nickname: update_course_settings
  */
-export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/courses/{course_id}/settings`, {
+export async function update(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/courses/{course_id}/settings`, {
     method: 'PUT',
-    pathParams,
-    params
+    ...options
   });
 }

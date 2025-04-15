@@ -43,13 +43,12 @@ type Options = {
  *
  * Nickname: activate_role
  */
-export async function activate_role({ pathParams, params }: Options) {
+export async function activate_role(options: Options) {
   return await client().fetchAs<Role>(
-    `/v1/accounts/{account_id}/roles/{id}/activate`,
+    `/api/v1/accounts/{account_id}/roles/{id}/activate`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

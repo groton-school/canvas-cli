@@ -88,10 +88,12 @@ type Options = {
  *
  * Nickname: update_single_rubric
  */
-export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/courses/{course_id}/rubrics/{id}`, {
-    method: 'PUT',
-    pathParams,
-    params
-  });
+export async function update(options: Options) {
+  return await client().fetchAs<void>(
+    `/api/v1/courses/{course_id}/rubrics/{id}`,
+    {
+      method: 'PUT',
+      ...options
+    }
+  );
 }

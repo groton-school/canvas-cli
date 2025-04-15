@@ -33,9 +33,9 @@ type Options =
  *
  * Nickname: create_bookmark
  */
-export async function create({ params }: Options) {
-  return await client().fetchAs<Bookmark>(`/v1/users/self/bookmarks`, {
+export async function create(options: Options) {
+  return await client().fetchAs<Bookmark>(`/api/v1/users/self/bookmarks`, {
     method: 'POST',
-    params
+    ...options
   });
 }

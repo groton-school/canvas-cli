@@ -34,16 +34,12 @@ type Options = {
  *
  * Nickname: show_revision_courses_latest
  */
-export async function show_revision_courses_latest({
-  pathParams,
-  searchParams
-}: Options) {
+export async function show_revision_courses_latest(options: Options) {
   return await client().fetchAs<PageRevision>(
-    `/v1/courses/{course_id}/pages/{url_or_id}/revisions/latest`,
+    `/api/v1/courses/{course_id}/pages/{url_or_id}/revisions/latest`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

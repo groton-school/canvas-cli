@@ -73,16 +73,14 @@ type Options = {
  *
  * Nickname: grade_or_comment_on_multiple_submissions_courses_submissions
  */
-export async function grade_or_comment_on_multiple_submissions_courses_submissions({
-  pathParams,
-  params
-}: Options) {
+export async function grade_or_comment_on_multiple_submissions_courses_submissions(
+  options: Options
+) {
   return await client().fetchAs<Progress>(
-    `/v1/courses/{course_id}/submissions/update_grades`,
+    `/api/v1/courses/{course_id}/submissions/update_grades`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: delete_rubricassociation
  */
-export async function delete_rubricassociation({ pathParams }: Options) {
+export async function delete_rubricassociation(options: Options) {
   return await client().fetchAs<RubricAssociation>(
-    `/v1/courses/{course_id}/rubric_associations/{id}`,
+    `/api/v1/courses/{course_id}/rubric_associations/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

@@ -16,8 +16,11 @@ type Options =
  *
  * Nickname: redirect_to_root_outcome_group_for_context_global
  */
-export async function redirect_to_root_outcome_group_for_context_global({}: Options) {
-  return await client().fetchAs<void>(`/v1/global/root_outcome_group`, {
-    method: 'GET'
+export async function redirect_to_root_outcome_group_for_context_global(
+  options: Options
+) {
+  return await client().fetchAs<void>(`/api/v1/global/root_outcome_group`, {
+    method: 'GET',
+    ...options
   });
 }

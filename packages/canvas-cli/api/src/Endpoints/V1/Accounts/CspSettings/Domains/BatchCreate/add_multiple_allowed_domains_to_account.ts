@@ -35,16 +35,14 @@ type Options = {
  *
  * Nickname: add_multiple_allowed_domains_to_account
  */
-export async function add_multiple_allowed_domains_to_account({
-  pathParams,
-  params
-}: Options) {
+export async function add_multiple_allowed_domains_to_account(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/csp_settings/domains/batch_create`,
+    `/api/v1/accounts/{account_id}/csp_settings/domains/batch_create`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

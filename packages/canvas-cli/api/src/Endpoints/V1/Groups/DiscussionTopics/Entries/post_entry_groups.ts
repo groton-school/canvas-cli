@@ -38,13 +38,12 @@ type Options = {
  *
  * Nickname: post_entry_groups
  */
-export async function post_entry_groups({ pathParams, params }: Options) {
+export async function post_entry_groups(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/groups/{group_id}/discussion_topics/{topic_id}/entries`,
+    `/api/v1/groups/{group_id}/discussion_topics/{topic_id}/entries`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

@@ -32,10 +32,9 @@ type Options = {
  *
  * Nickname: update_single_poll
  */
-export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/polls/{id}`, {
+export async function update(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/polls/{id}`, {
     method: 'PUT',
-    pathParams,
-    params
+    ...options
   });
 }

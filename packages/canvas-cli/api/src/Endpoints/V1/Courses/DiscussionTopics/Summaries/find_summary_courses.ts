@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: find_summary_courses
  */
-export async function find_summary_courses({ pathParams }: Options) {
+export async function find_summary_courses(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/discussion_topics/{topic_id}/summaries`,
+    `/api/v1/courses/{course_id}/discussion_topics/{topic_id}/summaries`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

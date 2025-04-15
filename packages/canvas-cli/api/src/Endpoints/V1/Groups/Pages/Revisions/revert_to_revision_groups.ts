@@ -33,12 +33,12 @@ type Options = {
  *
  * Nickname: revert_to_revision_groups
  */
-export async function revert_to_revision_groups({ pathParams }: Options) {
+export async function revert_to_revision_groups(options: Options) {
   return await client().fetchAs<PageRevision>(
-    `/v1/groups/{group_id}/pages/{url_or_id}/revisions/{revision_id}`,
+    `/api/v1/groups/{group_id}/pages/{url_or_id}/revisions/{revision_id}`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

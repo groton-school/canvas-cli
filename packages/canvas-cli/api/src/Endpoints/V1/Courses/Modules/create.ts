@@ -56,10 +56,9 @@ type Options = {
  *
  * Nickname: create_module
  */
-export async function create({ pathParams, params }: Options) {
-  return await client().fetchAs<Module>(`/v1/courses/{course_id}/modules`, {
+export async function create(options: Options) {
+  return await client().fetchAs<Module>(`/api/v1/courses/{course_id}/modules`, {
     method: 'POST',
-    pathParams,
-    params
+    ...options
   });
 }

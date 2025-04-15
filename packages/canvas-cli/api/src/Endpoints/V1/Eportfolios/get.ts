@@ -24,9 +24,9 @@ type Options = {
  *
  * Nickname: get_eportfolio
  */
-export async function get({ pathParams }: Options) {
-  return await client().fetchAs<ePortfolio>(`/v1/eportfolios/{id}`, {
+export async function get(options: Options) {
+  return await client().fetchAs<ePortfolio>(`/api/v1/eportfolios/{id}`, {
     method: 'GET',
-    pathParams
+    ...options
   });
 }

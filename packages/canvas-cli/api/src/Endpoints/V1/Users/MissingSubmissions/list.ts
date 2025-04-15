@@ -58,13 +58,12 @@ type Options = {
  *
  * Nickname: list_missing_submissions
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<Assignment[]>(
-    `/v1/users/{user_id}/missing_submissions`,
+    `/api/v1/users/{user_id}/missing_submissions`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

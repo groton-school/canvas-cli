@@ -39,16 +39,12 @@ type Options = {
  *
  * Nickname: mark_all_entries_as_unread_courses
  */
-export async function mark_all_entries_as_unread_courses({
-  pathParams,
-  searchParams
-}: Options) {
+export async function mark_all_entries_as_unread_courses(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/discussion_topics/{topic_id}/read_all`,
+    `/api/v1/courses/{course_id}/discussion_topics/{topic_id}/read_all`,
     {
       method: 'DELETE',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

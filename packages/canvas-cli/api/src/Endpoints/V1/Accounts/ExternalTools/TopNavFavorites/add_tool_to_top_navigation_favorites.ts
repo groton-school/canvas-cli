@@ -26,14 +26,12 @@ type Options = {
  *
  * Nickname: add_tool_to_top_navigation_favorites
  */
-export async function add_tool_to_top_navigation_favorites({
-  pathParams
-}: Options) {
+export async function add_tool_to_top_navigation_favorites(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/external_tools/top_nav_favorites/{id}`,
+    `/api/v1/accounts/{account_id}/external_tools/top_nav_favorites/{id}`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

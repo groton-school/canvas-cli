@@ -39,13 +39,12 @@ type Options = {
  *
  * Nickname: cross_list_section
  */
-export async function cross_list_section({ pathParams, params }: Options) {
+export async function cross_list_section(options: Options) {
   return await client().fetchAs<Section>(
-    `/v1/sections/{id}/crosslist/{new_course_id}`,
+    `/api/v1/sections/{id}/crosslist/{new_course_id}`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

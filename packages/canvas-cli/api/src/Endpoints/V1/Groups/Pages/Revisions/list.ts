@@ -30,12 +30,12 @@ type Options = {
  *
  * Nickname: list_revisions_groups
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<PageRevision[]>(
-    `/v1/groups/{group_id}/pages/{url_or_id}/revisions`,
+    `/api/v1/groups/{group_id}/pages/{url_or_id}/revisions`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

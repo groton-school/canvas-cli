@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: delete_enrollment_term
  */
-export async function delete_enrollment_term({ pathParams }: Options) {
+export async function delete_enrollment_term(options: Options) {
   return await client().fetchAs<EnrollmentTerm>(
-    `/v1/accounts/{account_id}/terms/{id}`,
+    `/api/v1/accounts/{account_id}/terms/{id}`,
     {
       method: 'DELETE',
-      pathParams
+      ...options
     }
   );
 }

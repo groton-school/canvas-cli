@@ -40,13 +40,12 @@ type Options = {
  *
  * Nickname: update_submission_s_what_if_score_and_calculate_grades
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<gradesGradessubmissionSubmission[]>(
-    `/v1/submissions/{id}/what_if_grades`,
+    `/api/v1/submissions/{id}/what_if_grades`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

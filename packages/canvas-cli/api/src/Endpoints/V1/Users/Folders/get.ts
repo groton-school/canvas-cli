@@ -29,9 +29,12 @@ type Options = {
  *
  * Nickname: get_folder_users
  */
-export async function get({ pathParams }: Options) {
-  return await client().fetchAs<Folder>(`/v1/users/{user_id}/folders/{id}`, {
-    method: 'GET',
-    pathParams
-  });
+export async function get(options: Options) {
+  return await client().fetchAs<Folder>(
+    `/api/v1/users/{user_id}/folders/{id}`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

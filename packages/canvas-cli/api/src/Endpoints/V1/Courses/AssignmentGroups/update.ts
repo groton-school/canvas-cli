@@ -60,13 +60,12 @@ type Options = {
  *
  * Nickname: edit_assignment_group
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<AssignmentGroup>(
-    `/v1/courses/{course_id}/assignment_groups/{assignment_group_id}`,
+    `/api/v1/courses/{course_id}/assignment_groups/{assignment_group_id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

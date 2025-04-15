@@ -42,13 +42,12 @@ type Options = {
  *
  * Nickname: create_grading_period_set
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/grading_period_sets`,
+    `/api/v1/accounts/{account_id}/grading_period_sets`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

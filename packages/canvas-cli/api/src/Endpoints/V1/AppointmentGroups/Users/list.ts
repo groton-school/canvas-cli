@@ -32,10 +32,9 @@ type Options = {
  *
  * Nickname: list_user_participants
  */
-export async function list({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<void>(`/v1/appointment_groups/{id}/users`, {
+export async function list(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/appointment_groups/{id}/users`, {
     method: 'GET',
-    pathParams,
-    searchParams
+    ...options
   });
 }

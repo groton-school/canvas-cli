@@ -246,13 +246,12 @@ type Options = {
  *
  * Nickname: create_external_tool_accounts
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/external_tools`,
+    `/api/v1/accounts/{account_id}/external_tools`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

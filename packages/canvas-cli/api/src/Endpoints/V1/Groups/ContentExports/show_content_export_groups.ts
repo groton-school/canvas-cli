@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: show_content_export_groups
  */
-export async function show_content_export_groups({ pathParams }: Options) {
+export async function show_content_export_groups(options: Options) {
   return await client().fetchAs<ContentExport>(
-    `/v1/groups/{group_id}/content_exports/{id}`,
+    `/api/v1/groups/{group_id}/content_exports/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

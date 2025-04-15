@@ -28,14 +28,12 @@ type Options = {
  *
  * Nickname: show_originality_report_submissions
  */
-export async function show_originality_report_submissions({
-  pathParams
-}: Options) {
+export async function show_originality_report_submissions(options: Options) {
   return await client().fetchAs<OriginalityReport>(
-    `/lti/assignments/{assignment_id}/submissions/{submission_id}/originality_report/{id}`,
+    `/api/lti/assignments/{assignment_id}/submissions/{submission_id}/originality_report/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

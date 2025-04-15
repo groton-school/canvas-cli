@@ -53,13 +53,12 @@ type Options = {
  *
  * Nickname: create_communication_channel
  */
-export async function create({ pathParams, params }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<CommunicationChannel>(
-    `/v1/users/{user_id}/communication_channels`,
+    `/api/v1/users/{user_id}/communication_channels`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

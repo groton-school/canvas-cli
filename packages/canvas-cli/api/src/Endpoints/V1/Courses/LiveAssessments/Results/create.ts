@@ -25,12 +25,12 @@ type Options = {
  *
  * Nickname: create_live_assessment_results
  */
-export async function create({ pathParams }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/live_assessments/{assessment_id}/results`,
+    `/api/v1/courses/{course_id}/live_assessments/{assessment_id}/results`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

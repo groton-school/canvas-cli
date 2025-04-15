@@ -147,10 +147,9 @@ type Options = {
  *
  * Nickname: store_custom_data
  */
-export async function store_custom_data({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/users/{user_id}/custom_data`, {
+export async function store_custom_data(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/users/{user_id}/custom_data`, {
     method: 'PUT',
-    pathParams,
-    params
+    ...options
   });
 }

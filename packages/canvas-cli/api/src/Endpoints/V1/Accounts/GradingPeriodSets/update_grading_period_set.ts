@@ -46,16 +46,12 @@ type Options = {
  *
  * Nickname: update_grading_period_set
  */
-export async function update_grading_period_set({
-  pathParams,
-  params
-}: Options) {
+export async function update_grading_period_set(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/grading_period_sets/{id}`,
+    `/api/v1/accounts/{account_id}/grading_period_sets/{id}`,
     {
       method: 'PATCH',
-      pathParams,
-      params
+      ...options
     }
   );
 }

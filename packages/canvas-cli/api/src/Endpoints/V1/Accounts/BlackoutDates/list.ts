@@ -27,12 +27,12 @@ type Options = {
  *
  * Nickname: list_blackout_dates_accounts
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<BlackoutDate[]>(
-    `/v1/accounts/{account_id}/blackout_dates`,
+    `/api/v1/accounts/{account_id}/blackout_dates`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

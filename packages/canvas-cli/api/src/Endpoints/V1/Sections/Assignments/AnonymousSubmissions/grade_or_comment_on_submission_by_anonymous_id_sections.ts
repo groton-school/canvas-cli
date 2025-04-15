@@ -130,16 +130,14 @@ type Options = {
  *
  * Nickname: grade_or_comment_on_submission_by_anonymous_id_sections
  */
-export async function grade_or_comment_on_submission_by_anonymous_id_sections({
-  pathParams,
-  params
-}: Options) {
+export async function grade_or_comment_on_submission_by_anonymous_id_sections(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/sections/{section_id}/assignments/{assignment_id}/anonymous_submissions/{anonymous_id}`,
+    `/api/v1/sections/{section_id}/assignments/{assignment_id}/anonymous_submissions/{anonymous_id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

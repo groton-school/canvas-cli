@@ -35,16 +35,14 @@ type Options = {
  *
  * Nickname: show_temporary_enrollment_recipient_and_provider_status
  */
-export async function show_temporary_enrollment_recipient_and_provider_status({
-  pathParams,
-  searchParams
-}: Options) {
+export async function show_temporary_enrollment_recipient_and_provider_status(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/users/{user_id}/temporary_enrollment_status`,
+    `/api/v1/users/{user_id}/temporary_enrollment_status`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

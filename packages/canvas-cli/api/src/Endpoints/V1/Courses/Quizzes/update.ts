@@ -35,10 +35,12 @@ type Options = {
  *
  * Nickname: edit_quiz
  */
-export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<Quiz>(`/v1/courses/{course_id}/quizzes/{id}`, {
-    method: 'PUT',
-    pathParams,
-    params
-  });
+export async function update(options: Options) {
+  return await client().fetchAs<Quiz>(
+    `/api/v1/courses/{course_id}/quizzes/{id}`,
+    {
+      method: 'PUT',
+      ...options
+    }
+  );
 }

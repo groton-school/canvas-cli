@@ -72,10 +72,9 @@ type Options = {
  *
  * Nickname: edit_group
  */
-export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<Group>(`/v1/groups/{group_id}`, {
+export async function update(options: Options) {
+  return await client().fetchAs<Group>(`/api/v1/groups/{group_id}`, {
     method: 'PUT',
-    pathParams,
-    params
+    ...options
   });
 }

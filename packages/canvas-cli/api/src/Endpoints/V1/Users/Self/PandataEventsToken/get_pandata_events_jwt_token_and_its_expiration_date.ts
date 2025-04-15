@@ -26,11 +26,14 @@ type Options =
  *
  * Nickname: get_pandata_events_jwt_token_and_its_expiration_date
  */
-export async function get_pandata_events_jwt_token_and_its_expiration_date({
-  params
-}: Options) {
-  return await client().fetchAs<void>(`/v1/users/self/pandata_events_token`, {
-    method: 'POST',
-    params
-  });
+export async function get_pandata_events_jwt_token_and_its_expiration_date(
+  options: Options
+) {
+  return await client().fetchAs<void>(
+    `/api/v1/users/self/pandata_events_token`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
 }

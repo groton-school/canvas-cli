@@ -23,12 +23,12 @@ type Options = {
  *
  * Nickname: get_current_settings_for_account_or_course_accounts
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/accounts/{account_id}/csp_settings`,
+    `/api/v1/accounts/{account_id}/csp_settings`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

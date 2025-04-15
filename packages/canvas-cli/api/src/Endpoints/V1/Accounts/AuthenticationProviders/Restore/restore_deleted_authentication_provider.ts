@@ -28,14 +28,14 @@ type Options = {
  *
  * Nickname: restore_deleted_authentication_provider
  */
-export async function restore_deleted_authentication_provider({
-  pathParams
-}: Options) {
+export async function restore_deleted_authentication_provider(
+  options: Options
+) {
   return await client().fetchAs<AuthenticationProvider>(
-    `/v1/accounts/{account_id}/authentication_providers/{id}/restore`,
+    `/api/v1/accounts/{account_id}/authentication_providers/{id}/restore`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

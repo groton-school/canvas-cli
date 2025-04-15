@@ -25,12 +25,12 @@ type Options = {
  *
  * Nickname: create_observer_pairing_code
  */
-export async function create({ pathParams }: Options) {
+export async function create(options: Options) {
   return await client().fetchAs<PairingCode>(
-    `/v1/users/{user_id}/observer_pairing_codes`,
+    `/api/v1/users/{user_id}/observer_pairing_codes`,
     {
       method: 'POST',
-      pathParams
+      ...options
     }
   );
 }

@@ -56,13 +56,12 @@ type Options = {
  *
  * Nickname: update_lti_registration
  */
-export async function update({ pathParams, params }: Options) {
+export async function update(options: Options) {
   return await client().fetchAs<LtiRegistration>(
-    `/v1/accounts/{account_id}/lti_registrations/{id}`,
+    `/api/v1/accounts/{account_id}/lti_registrations/{id}`,
     {
       method: 'PUT',
-      pathParams,
-      params
+      ...options
     }
   );
 }

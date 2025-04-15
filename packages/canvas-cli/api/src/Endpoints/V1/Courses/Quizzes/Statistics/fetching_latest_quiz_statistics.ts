@@ -36,16 +36,12 @@ type Options = {
  *
  * Nickname: fetching_latest_quiz_statistics
  */
-export async function fetching_latest_quiz_statistics({
-  pathParams,
-  searchParams
-}: Options) {
+export async function fetching_latest_quiz_statistics(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/quizzes/{quiz_id}/statistics`,
+    `/api/v1/courses/{course_id}/quizzes/{quiz_id}/statistics`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

@@ -36,16 +36,12 @@ type Options = {
  *
  * Nickname: submission_summary_sections
  */
-export async function submission_summary_sections({
-  pathParams,
-  searchParams
-}: Options) {
+export async function submission_summary_sections(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/sections/{section_id}/assignments/{assignment_id}/submission_summary`,
+    `/api/v1/sections/{section_id}/assignments/{assignment_id}/submission_summary`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

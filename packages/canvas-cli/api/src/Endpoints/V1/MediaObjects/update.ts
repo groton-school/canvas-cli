@@ -28,10 +28,12 @@ type Options = {
  *
  * Nickname: update_media_object_media_objects
  */
-export async function update({ pathParams, params }: Options) {
-  return await client().fetchAs<void>(`/v1/media_objects/{media_object_id}`, {
-    method: 'PUT',
-    pathParams,
-    params
-  });
+export async function update(options: Options) {
+  return await client().fetchAs<void>(
+    `/api/v1/media_objects/{media_object_id}`,
+    {
+      method: 'PUT',
+      ...options
+    }
+  );
 }

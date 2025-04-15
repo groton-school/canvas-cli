@@ -31,12 +31,12 @@ type Options =
  *
  * Nickname: get_visible_course_navigation_tools
  */
-export async function get({ searchParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/external_tools/visible_course_nav_tools`,
+    `/api/v1/external_tools/visible_course_nav_tools`,
     {
       method: 'GET',
-      searchParams
+      ...options
     }
   );
 }

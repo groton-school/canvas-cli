@@ -28,12 +28,12 @@ type Options = {
  *
  * Nickname: list_features_accounts
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<Feature[]>(
-    `/v1/accounts/{account_id}/features`,
+    `/api/v1/accounts/{account_id}/features`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

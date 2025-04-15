@@ -158,10 +158,12 @@ type Options = {
  *
  * Nickname: create_new_course
  */
-export async function create({ pathParams, params }: Options) {
-  return await client().fetchAs<Course>(`/v1/accounts/{account_id}/courses`, {
-    method: 'POST',
-    pathParams,
-    params
-  });
+export async function create(options: Options) {
+  return await client().fetchAs<Course>(
+    `/api/v1/accounts/{account_id}/courses`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
 }

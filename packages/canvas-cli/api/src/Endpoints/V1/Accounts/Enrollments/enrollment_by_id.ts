@@ -30,12 +30,12 @@ type Options = {
  *
  * Nickname: enrollment_by_id
  */
-export async function enrollment_by_id({ pathParams }: Options) {
+export async function enrollment_by_id(options: Options) {
   return await client().fetchAs<Enrollment>(
-    `/v1/accounts/{account_id}/enrollments/{id}`,
+    `/api/v1/accounts/{account_id}/enrollments/{id}`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

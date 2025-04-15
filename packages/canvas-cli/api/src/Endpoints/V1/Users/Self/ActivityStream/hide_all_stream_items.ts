@@ -15,8 +15,9 @@ type Options =
  *
  * Nickname: hide_all_stream_items
  */
-export async function hide_all_stream_items({}: Options) {
-  return await client().fetchAs<void>(`/v1/users/self/activity_stream`, {
-    method: 'DELETE'
+export async function hide_all_stream_items(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/users/self/activity_stream`, {
+    method: 'DELETE',
+    ...options
   });
 }

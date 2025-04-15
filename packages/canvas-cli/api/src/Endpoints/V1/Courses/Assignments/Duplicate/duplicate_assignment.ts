@@ -39,13 +39,12 @@ type Options = {
  *
  * Nickname: duplicate_assignment
  */
-export async function duplicate_assignment({ pathParams, params }: Options) {
+export async function duplicate_assignment(options: Options) {
   return await client().fetchAs<Assignment>(
-    `/v1/courses/{course_id}/assignments/{assignment_id}/duplicate`,
+    `/api/v1/courses/{course_id}/assignments/{assignment_id}/duplicate`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

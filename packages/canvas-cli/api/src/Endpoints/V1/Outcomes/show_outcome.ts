@@ -35,10 +35,9 @@ type Options = {
  *
  * Nickname: show_outcome
  */
-export async function show_outcome({ pathParams, searchParams }: Options) {
-  return await client().fetchAs<Outcome>(`/v1/outcomes/{id}`, {
+export async function show_outcome(options: Options) {
+  return await client().fetchAs<Outcome>(`/api/v1/outcomes/{id}`, {
     method: 'GET',
-    pathParams,
-    searchParams
+    ...options
   });
 }

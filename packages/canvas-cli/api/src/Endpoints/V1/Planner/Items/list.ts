@@ -56,9 +56,9 @@ type Options =
  *
  * Nickname: list_planner_items_planner
  */
-export async function list({ searchParams }: Options) {
-  return await client().fetchAs<void>(`/v1/planner/items`, {
+export async function list(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/planner/items`, {
     method: 'GET',
-    searchParams
+    ...options
   });
 }

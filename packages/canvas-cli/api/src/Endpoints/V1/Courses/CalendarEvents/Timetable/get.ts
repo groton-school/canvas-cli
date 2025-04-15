@@ -25,12 +25,12 @@ type Options = {
  *
  * Nickname: get_course_timetable
  */
-export async function get({ pathParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/calendar_events/timetable`,
+    `/api/v1/courses/{course_id}/calendar_events/timetable`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

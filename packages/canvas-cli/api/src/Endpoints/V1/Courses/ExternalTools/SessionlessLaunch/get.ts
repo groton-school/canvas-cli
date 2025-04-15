@@ -55,13 +55,12 @@ type Options = {
  *
  * Nickname: get_sessionless_launch_url_for_external_tool_courses
  */
-export async function get({ pathParams, searchParams }: Options) {
+export async function get(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/external_tools/sessionless_launch`,
+    `/api/v1/courses/{course_id}/external_tools/sessionless_launch`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

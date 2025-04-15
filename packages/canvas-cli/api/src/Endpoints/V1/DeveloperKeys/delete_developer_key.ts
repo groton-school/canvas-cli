@@ -25,9 +25,9 @@ type Options = {
  *
  * Nickname: delete_developer_key
  */
-export async function delete_developer_key({ pathParams }: Options) {
-  return await client().fetchAs<DeveloperKey>(`/v1/developer_keys/{id}`, {
+export async function delete_developer_key(options: Options) {
+  return await client().fetchAs<DeveloperKey>(`/api/v1/developer_keys/{id}`, {
     method: 'DELETE',
-    pathParams
+    ...options
   });
 }

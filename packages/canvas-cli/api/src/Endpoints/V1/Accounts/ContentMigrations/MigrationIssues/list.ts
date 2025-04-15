@@ -29,12 +29,12 @@ type Options = {
  *
  * Nickname: list_migration_issues_accounts
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<MigrationIssue[]>(
-    `/v1/accounts/{account_id}/content_migrations/{content_migration_id}/migration_issues`,
+    `/api/v1/accounts/{account_id}/content_migrations/{content_migration_id}/migration_issues`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

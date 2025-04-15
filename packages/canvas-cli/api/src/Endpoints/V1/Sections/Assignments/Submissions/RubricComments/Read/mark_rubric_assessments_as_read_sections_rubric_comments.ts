@@ -33,14 +33,14 @@ type Options = {
  *
  * Nickname: mark_rubric_assessments_as_read_sections_rubric_comments
  */
-export async function mark_rubric_assessments_as_read_sections_rubric_comments({
-  pathParams
-}: Options) {
+export async function mark_rubric_assessments_as_read_sections_rubric_comments(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/rubric_comments/read`,
+    `/api/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/rubric_comments/read`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

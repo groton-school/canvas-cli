@@ -32,12 +32,12 @@ type Options = {
  *
  * Nickname: resolve_path_courses_full_path
  */
-export async function resolve_path_courses_full_path({ pathParams }: Options) {
+export async function resolve_path_courses_full_path(options: Options) {
   return await client().fetchAs<Folder[]>(
-    `/v1/courses/{course_id}/folders/by_path/*full_path`,
+    `/api/v1/courses/{course_id}/folders/by_path/*full_path`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

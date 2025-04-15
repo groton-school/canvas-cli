@@ -30,13 +30,9 @@ type Options = {
  *
  * Nickname: delete_conclude_course
  */
-export async function delete_conclude_course({
-  pathParams,
-  searchParams
-}: Options) {
-  return await client().fetchAs<void>(`/v1/courses/{id}`, {
+export async function delete_conclude_course(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/courses/{id}`, {
     method: 'DELETE',
-    pathParams,
-    searchParams
+    ...options
   });
 }

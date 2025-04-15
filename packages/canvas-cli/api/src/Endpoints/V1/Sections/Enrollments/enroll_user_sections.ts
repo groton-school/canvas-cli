@@ -134,13 +134,12 @@ type Options = {
  *
  * Nickname: enroll_user_sections
  */
-export async function enroll_user_sections({ pathParams, params }: Options) {
+export async function enroll_user_sections(options: Options) {
   return await client().fetchAs<Enrollment>(
-    `/v1/sections/{section_id}/enrollments`,
+    `/api/v1/sections/{section_id}/enrollments`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

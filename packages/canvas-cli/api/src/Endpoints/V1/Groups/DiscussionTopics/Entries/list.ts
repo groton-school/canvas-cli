@@ -38,12 +38,12 @@ type Options = {
  *
  * Nickname: list_topic_entries_groups
  */
-export async function list({ pathParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/groups/{group_id}/discussion_topics/{topic_id}/entries`,
+    `/api/v1/groups/{group_id}/discussion_topics/{topic_id}/entries`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

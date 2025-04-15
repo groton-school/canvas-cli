@@ -28,14 +28,12 @@ type Options = {
  *
  * Nickname: mark_module_item_as_done_not_done
  */
-export async function mark_module_item_as_done_not_done({
-  pathParams
-}: Options) {
+export async function mark_module_item_as_done_not_done(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/courses/{course_id}/modules/{module_id}/items/{id}/done`,
+    `/api/v1/courses/{course_id}/modules/{module_id}/items/{id}/done`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

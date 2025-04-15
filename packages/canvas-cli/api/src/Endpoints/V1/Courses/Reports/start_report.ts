@@ -48,13 +48,12 @@ type Options = {
  *
  * Nickname: start_report
  */
-export async function start_report({ pathParams, params }: Options) {
+export async function start_report(options: Options) {
   return await client().fetchAs<Report>(
-    `/v1/courses/{course_id}/reports/{report_type}`,
+    `/api/v1/courses/{course_id}/reports/{report_type}`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

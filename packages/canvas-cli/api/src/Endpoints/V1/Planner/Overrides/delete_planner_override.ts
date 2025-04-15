@@ -24,9 +24,12 @@ type Options = {
  *
  * Nickname: delete_planner_override
  */
-export async function delete_planner_override({ pathParams }: Options) {
-  return await client().fetchAs<PlannerOverride>(`/v1/planner/overrides/{id}`, {
-    method: 'DELETE',
-    pathParams
-  });
+export async function delete_planner_override(options: Options) {
+  return await client().fetchAs<PlannerOverride>(
+    `/api/v1/planner/overrides/{id}`,
+    {
+      method: 'DELETE',
+      ...options
+    }
+  );
 }

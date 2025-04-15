@@ -40,16 +40,12 @@ type Options = {
  *
  * Nickname: remove_account_admin
  */
-export async function remove_account_admin({
-  pathParams,
-  searchParams
-}: Options) {
+export async function remove_account_admin(options: Options) {
   return await client().fetchAs<Admin>(
-    `/v1/accounts/{account_id}/admins/{user_id}`,
+    `/api/v1/accounts/{account_id}/admins/{user_id}`,
     {
       method: 'DELETE',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

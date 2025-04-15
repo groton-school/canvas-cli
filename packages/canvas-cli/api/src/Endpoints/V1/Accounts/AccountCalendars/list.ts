@@ -43,13 +43,12 @@ type Options = {
  *
  * Nickname: list_all_account_calendars
  */
-export async function list({ pathParams, searchParams }: Options) {
+export async function list(options: Options) {
   return await client().fetchAs<AccountCalendar[]>(
-    `/v1/accounts/{account_id}/account_calendars`,
+    `/api/v1/accounts/{account_id}/account_calendars`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

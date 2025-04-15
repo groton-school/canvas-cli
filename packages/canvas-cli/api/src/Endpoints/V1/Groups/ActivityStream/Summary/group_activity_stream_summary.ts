@@ -26,12 +26,12 @@ type Options = {
  *
  * Nickname: group_activity_stream_summary
  */
-export async function group_activity_stream_summary({ pathParams }: Options) {
+export async function group_activity_stream_summary(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/groups/{group_id}/activity_stream/summary`,
+    `/api/v1/groups/{group_id}/activity_stream/summary`,
     {
       method: 'GET',
-      pathParams
+      ...options
     }
   );
 }

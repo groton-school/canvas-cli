@@ -32,13 +32,12 @@ type Options = {
  *
  * Nickname: delete_message
  */
-export async function delete_message({ pathParams, params }: Options) {
+export async function delete_message(options: Options) {
   return await client().fetchAs<void>(
-    `/v1/conversations/{id}/remove_messages`,
+    `/api/v1/conversations/{id}/remove_messages`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

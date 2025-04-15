@@ -37,16 +37,12 @@ type Options = {
  *
  * Nickname: search_for_content_share_users
  */
-export async function search_for_content_share_users({
-  pathParams,
-  searchParams
-}: Options) {
+export async function search_for_content_share_users(options: Options) {
   return await client().fetchAs<User[]>(
-    `/v1/courses/{course_id}/content_share_users`,
+    `/api/v1/courses/{course_id}/content_share_users`,
     {
       method: 'GET',
-      pathParams,
-      searchParams
+      ...options
     }
   );
 }

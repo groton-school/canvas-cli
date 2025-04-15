@@ -54,16 +54,12 @@ type Options = {
  *
  * Nickname: bulk_manage_differentiation_tags
  */
-export async function bulk_manage_differentiation_tags({
-  pathParams,
-  params
-}: Options) {
+export async function bulk_manage_differentiation_tags(options: Options) {
   return await client().fetchAs<GroupCategoryandgroupsoperationresults>(
-    `/v1/courses/{course_id}/group_categories/bulk_manage_differentiation_tag`,
+    `/api/v1/courses/{course_id}/group_categories/bulk_manage_differentiation_tag`,
     {
       method: 'POST',
-      pathParams,
-      params
+      ...options
     }
   );
 }

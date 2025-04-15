@@ -29,14 +29,14 @@ type Options = {
  *
  * Nickname: clear_unread_status_for_all_submissions_sections
  */
-export async function clear_unread_status_for_all_submissions_sections({
-  pathParams
-}: Options) {
+export async function clear_unread_status_for_all_submissions_sections(
+  options: Options
+) {
   return await client().fetchAs<void>(
-    `/v1/sections/{section_id}/submissions/{user_id}/clear_unread`,
+    `/api/v1/sections/{section_id}/submissions/{user_id}/clear_unread`,
     {
       method: 'PUT',
-      pathParams
+      ...options
     }
   );
 }

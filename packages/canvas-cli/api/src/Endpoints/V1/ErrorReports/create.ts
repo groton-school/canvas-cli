@@ -40,9 +40,9 @@ type Options =
  *
  * Nickname: create_error_report
  */
-export async function create({ params }: Options) {
-  return await client().fetchAs<void>(`/v1/error_reports`, {
+export async function create(options: Options) {
+  return await client().fetchAs<void>(`/api/v1/error_reports`, {
     method: 'POST',
-    params
+    ...options
   });
 }

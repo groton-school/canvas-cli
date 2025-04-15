@@ -27,9 +27,9 @@ type Options = {
  *
  * Nickname: reset_link_verifier
  */
-export async function reset_link_verifier({ pathParams }: Options) {
-  return await client().fetchAs<File>(`/v1/files/{id}/reset_verifier`, {
+export async function reset_link_verifier(options: Options) {
+  return await client().fetchAs<File>(`/api/v1/files/{id}/reset_verifier`, {
     method: 'POST',
-    pathParams
+    ...options
   });
 }
