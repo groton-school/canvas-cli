@@ -17,6 +17,9 @@ importers:
       '@battis/qui-cli.plugin':
         specifier: ^2.3.0
         version: 2.3.0
+      '@groton/canvas-cli':
+        specifier: workspace:*
+        version: link:packages/canvas-cli/canvas-cli
       '@msar/canvas-import':
         specifier: workspace:*
         version: link:packages/msar/canvas-import
