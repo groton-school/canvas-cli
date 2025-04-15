@@ -8,7 +8,7 @@ export type TSName = string;
 
 export type TSType = {
   type: string;
-  tsReference?: TSReference;
+  tsReferences?: TSReference[];
   optional?: '?';
   description?: string;
 };

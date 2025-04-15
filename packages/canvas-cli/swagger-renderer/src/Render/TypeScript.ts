@@ -45,7 +45,7 @@ export function toTSType(property: Swagger.v1p2.DataType): TSType {
   if (Swagger.v1p2.isRefType(property)) {
     return {
       type: toTSTypeName(property.$ref),
-      tsReference: { type: toTSTypeName(property.$ref) }
+      tsReferences: [{ type: toTSTypeName(property.$ref) }]
     };
   }
   let tsType = Overrides.tsType(property.type);
@@ -73,7 +73,7 @@ export function toTSType(property: Swagger.v1p2.DataType): TSType {
           } else {
             const itemType = toTSType(property.items);
             tsType.type = `${itemType.type}[]`;
-            tsType.tsReference = itemType.tsReference;
+            tsType.tsReferences = itemType.tsReferences;
           }
         }
         break;

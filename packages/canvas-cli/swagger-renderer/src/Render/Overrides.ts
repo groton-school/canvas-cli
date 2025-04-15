@@ -25,20 +25,18 @@ export function setOverrides(overrides: Collection) {
     }
   }
   for (const name in _overrides.tsTypes) {
-    if (_overrides.tsTypes[name].tsReference?.filePath) {
-      _overrides.tsTypes[name].tsReference.filePath = path.resolve(
-        outputPath(),
-        _overrides.tsTypes[name].tsReference.filePath
-      );
+    for (const ref of _overrides.tsTypes[name].tsReferences || []) {
+      if (ref.filePath) {
+        ref.filePath = path.resolve(outputPath(), ref.filePath);
+      }
     }
   }
   for (const nickname in _overrides.operations) {
-    if (_overrides.operations[nickname].tsType?.tsReference?.filePath) {
-      _overrides.operations[nickname].tsType.tsReference.filePath =
-        path.resolve(
-          outputPath(),
-          _overrides.operations[nickname].tsType.tsReference.filePath
-        );
+    for (const ref of _overrides.operations[nickname].tsType?.tsReferences ||
+      []) {
+      if (ref.filePath) {
+        ref.filePath = path.resolve(outputPath(), ref.filePath);
+      }
     }
     for (const tsImport of _overrides.operations[nickname].tsImports || []) {
       if (tsImport.filePath) {

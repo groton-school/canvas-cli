@@ -61,11 +61,11 @@ export function annotateOperations({
           if (tsType.type === 'unknown' && operation.type) {
             tsType = {
               type: operation.type,
-              tsReference: { type: operation.type }
+              tsReferences: [{ type: operation.type }]
             };
           }
-          if (tsType.tsReference) {
-            tsImports.push(tsType.tsReference);
+          if (tsType.tsReferences) {
+            tsImports.push(...tsType.tsReferences);
           }
           let tsPaginated: true | undefined = undefined;
           if (tsType.type.endsWith('[]')) {
@@ -102,12 +102,12 @@ export function annotateOperations({
             if (annotatedParameter.tsType.type === 'unknown') {
               annotatedParameter.tsType = {
                 type: parameter.type,
-                tsReference: { type: parameter.type }
+                tsReferences: [{ type: parameter.type }]
               };
             }
-            if (annotatedParameter.tsType.tsReference) {
+            if (annotatedParameter.tsType.tsReferences) {
               annotatedOperation.tsImports!.push(
-                annotatedParameter.tsType.tsReference
+                ...annotatedParameter.tsType.tsReferences
               );
             }
 

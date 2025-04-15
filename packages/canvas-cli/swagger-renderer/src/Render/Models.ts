@@ -94,8 +94,8 @@ function annotateModels(
         tsType: toTSType(property)
       };
       properties.push(annotatedProperty);
-      if (annotatedProperty.tsType.tsReference) {
-        tsImports.push(annotatedProperty.tsType.tsReference);
+      if (annotatedProperty.tsType.tsReferences) {
+        tsImports.push(...annotatedProperty.tsType.tsReferences);
       }
     }
 
