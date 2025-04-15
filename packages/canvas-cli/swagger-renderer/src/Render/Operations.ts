@@ -85,7 +85,9 @@ export function annotateOperations({
             specPath,
             tsImports,
             tsType,
-            tsEndpoint: endpoint.path,
+            tsEndpoint: decodeURIComponent(
+              new URL(spec.basePath + endpoint.path).pathname
+            ),
             tsName,
             tsPaginated
           };
