@@ -2,13 +2,8 @@ import { PathString } from '@battis/descriptive-types';
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
 import path from 'node:path';
-import {
-  AnnotatedOperation,
-  AnnotatedParameter,
-  TSName,
-  TSReference,
-  TSType
-} from './Annotation.js';
+import { AnnotatedOperation, AnnotatedParameter } from './Annotation.js';
+import { TSName, TSReference, TSType } from './TSAnnotation.js';
 
 export type Collection = {
   /** Import paths for ambiguously specified types */

@@ -1,5 +1,12 @@
 import { PathString } from '@battis/descriptive-types';
 import * as Swagger from '@groton/swagger-spec-ts';
+import {
+  TSDeprecation,
+  TSExport,
+  TSName,
+  TSReference,
+  TSType
+} from './TSAnnotation.js';
 
 export type AnnotatedApiObject = Swagger.v1p2.ApiObject & {
   operations: AnnotatedOperation[];
@@ -16,7 +23,7 @@ export type AnnotatedOperation = Swagger.v1p2.OperationObject & {
   tsQueryParameters?: (AnnotatedParameter & { paramType: 'query' })[];
   tsBodyParameters?: (AnnotatedParameter & { paramType: 'body' })[];
   tsFormParameters?: (AnnotatedParameter & { paramType: 'form' })[];
-  tsPaginated?: boolean
+  tsPaginated?: boolean;
 };
 
 export type AnnotatedParameter = Swagger.v1p2.ParameterObject & {
@@ -39,23 +46,3 @@ export type AnnotatedProperty = Swagger.v1p2.DataTypeBase & {
   tsName: TSName;
   tsType: TSType;
 };
-
-export type TSDeprecation = string | undefined;
-
-export type TSExport = 'export' | '' | undefined;
-
-export type TSName = string;
-
-export type TSType = {
-  type: string;
-  tsReference?: TSReference;
-  optional?: '?';
-  description?: string;
-};
-
-export type TSReference = {
-  type: string;
-} & (
-  | { filePath?: PathString; packagePath?: never }
-  | { packagePath: string; filePath?: never }
-);

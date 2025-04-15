@@ -3,14 +3,10 @@ import * as Swagger from '@groton/swagger-spec-ts';
 import Handlebars from 'handlebars';
 import fs from 'node:fs';
 import path from 'node:path';
-import {
-  AnnotatedModel,
-  AnnotatedProperty,
-  TSReference,
-  TSType
-} from './Annotation.js';
+import { AnnotatedModel, AnnotatedProperty } from './Annotation.js';
 import { importPath } from './importPath.js';
 import * as Overrides from './Overrides.js';
+import { TSReference, TSType } from './TSAnnotation.js';
 import {
   toTSDeprecation,
   toTSExport,

@@ -3,14 +3,9 @@ import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
 import * as Swagger from '@groton/swagger-spec-ts';
 import path from 'node:path';
-import {
-  AnnotatedModel,
-  TSDeprecation,
-  TSExport,
-  TSName,
-  TSType
-} from './Annotation.js';
+import { AnnotatedModel } from './Annotation.js';
 import * as Overrides from './Overrides.js';
+import { TSDeprecation, TSExport, TSName, TSType } from './TSAnnotation.js';
 
 export function toTSDeprecation(obj: object): TSDeprecation {
   if ('deprecated' in obj && obj.deprecated) {
