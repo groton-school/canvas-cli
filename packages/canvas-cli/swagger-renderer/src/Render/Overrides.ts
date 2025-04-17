@@ -2,16 +2,15 @@ import { PathString } from '@battis/descriptive-types';
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
 import path from 'node:path';
-import { AnnotatedOperation, AnnotatedParameter } from './Annotation.js';
-import { TSName, TSReference, TSType } from './TSAnnotation.js';
+import * as Annotations from './Annotations/index.js';
 
 export type Collection = {
   /** Import paths for ambiguously specified types */
-  tsReferences?: TSReference[];
+  tsReferences?: Annotations.TypeScript.Reference[];
   /** Hash of non-standard type values to TSType definitions */
-  tsTypes?: Record<string, TSType>;
+  tsTypes?: Record<string, Annotations.TypeScript.Type>;
   /** Hash of OperationObject.nickname to partial OperationObject definitions */
-  operations?: Record<string, Partial<AnnotatedOperation>>;
+  operations?: Record<string, Partial<Annotations.Swagger.Operation>>;
 };
 
 let _overrides: Collection = {};
@@ -73,12 +72,12 @@ function outputPath() {
   return _outputPath;
 }
 
-export function tsReference(type: TSName) {
+export function tsReference(type: Annotations.TypeScript.Name) {
   return _overrides.tsReferences?.find((ref) => ref.type === type);
 }
 
 export function tsType(type: string) {
-  let result: TSType | undefined = undefined;
+  let result: Annotations.TypeScript.Type | undefined = undefined;
   if (_overrides.tsTypes && _overrides.tsTypes[type]) {
     result = { description: type, ..._overrides.tsTypes[type] };
     Log.debug(
@@ -88,7 +87,7 @@ export function tsType(type: string) {
   return result;
 }
 
-export function operation(operation: AnnotatedOperation) {
+export function operation(operation: Annotations.Swagger.Operation) {
   if (_overrides.operations && _overrides.operations[operation.nickname]) {
     const override = _overrides.operations[operation.nickname];
     Log.debug(
@@ -110,7 +109,7 @@ export function operation(operation: AnnotatedOperation) {
         // @ts-expect-error 7053
         result[paramType] = result[paramType].reduce((params, param) => {
           const i = params.findIndex(
-            (p: AnnotatedParameter) => p.tsName === param.tsName
+            (p: Annotations.Swagger.Parameter) => p.tsName === param.tsName
           );
           if (i >= 0) {
             params[i] = param;

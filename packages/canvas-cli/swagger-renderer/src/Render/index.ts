@@ -7,9 +7,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import ora from 'ora';
 import * as Download from '../Download.js';
-import * as Models from './Models.js';
-import * as Operations from './Operations.js';
-import * as Overrides from './Overrides.js';
+import * as Models from './Models/index.js';
+import * as Operations from './Operations/index.js';
+import * as Transforms from './Transforms/index.js';
 
 type Configuration = Plugin.Configuration & {
   specPath?: PathString;
@@ -120,28 +120,27 @@ export async function run(results?: Plugin.AccumulatedResults) {
   );
 
   spinner.start(`Checking for overrides`);
-  Overrides.setOutputPath(outputPath);
+  let overrides;
   if (overridePath) {
     overridePath = path.resolve(Root.path(), overridePath);
-    Overrides.setOverrides(
-      JSON.parse(fs.readFileSync(overridePath).toString())
-    );
+    overrides = JSON.parse(fs.readFileSync(overridePath).toString());
     spinner.succeed(`Overrides loaded from ${Colors.url(overridePath)}`);
   } else {
     spinner.info(`No overrides`);
   }
 
-
-  const { spec, models } = await Models.generate({
+  const { spec, models } = await Models.render({
     specPaths,
     templatePath,
-    outputPath: path.join(outputPath, modelDirName)
+    outputPath: path.join(outputPath, modelDirName),
+    postTransforms: [Transforms.Post.OverrideImports(overrides.tsReferences)]
   });
-  const operations = await Operations.generate({
+  const operations = await Operations.render({
     spec,
     models,
     templatePath,
-    outputPath: path.join(outputPath, operationsDirName)
+    outputPath: path.join(outputPath, operationsDirName),
+    postTransforms: [Transforms.Post.OverrideImports(overrides.tsReferences)]
   });
   if (map) {
     fs.writeFileSync(

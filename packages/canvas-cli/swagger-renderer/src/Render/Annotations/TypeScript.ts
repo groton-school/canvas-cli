@@ -1,19 +1,19 @@
 import { PathString } from '@battis/descriptive-types';
 
-export type TSDeprecation = string | undefined;
+export type Deprecation = string | undefined;
 
-export type TSExport = 'export' | '' | undefined;
+export type Export = 'export' | '' | undefined;
 
-export type TSName = string;
+export type Name = string;
 
-export type TSType = {
+export type Type = {
   type: string;
-  tsReferences?: TSReference[];
+  tsReferences?: Reference[];
   optional?: '?';
   description?: string;
 };
 
-export type TSReference = {
+export type Reference = {
   type: string;
 } & (
   | { filePath?: PathString; packagePath?: never }
