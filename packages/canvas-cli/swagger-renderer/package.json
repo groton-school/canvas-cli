@@ -1,11 +1,11 @@
 {
   "name": "@groton/canvas-cli.swagger-renderer",
   "version": "0.0.1",
-  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/spec#readme",
+  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/swagger-renderer#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/groton-school/canvas-cli.git",
-    "directory": "packages/canvas-cli/spec"
+    "directory": "packages/canvas-cli/swagger-renderer"
   },
   "author": {
     "name": "Seth Battis",
