@@ -15,6 +15,11 @@ export type getSearchParameters = {
    */
   recursive: boolean;
   /**
+   * Sorts the accounts by id or name. Only applies when recursive is false.
+   * Defaults to id.
+   */
+  order: string;
+  /**
    * Array of additional information to include.
    *
    * "course_count":: returns the number of courses directly under each

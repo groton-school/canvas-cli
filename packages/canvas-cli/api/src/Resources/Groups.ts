@@ -100,6 +100,12 @@ export type Group = {
    * /api/v1/groups/<group_id>/memberships endpoint.
    */
   users: User[];
+  /**
+   * Indicates whether this group category is non-collaborative. A value of true
+   * means these group categories rely on the manage_tags permissions and do not
+   * have collaborative features
+   */
+  non_collaborative: boolean;
 };
 
 export type GroupMembership = {

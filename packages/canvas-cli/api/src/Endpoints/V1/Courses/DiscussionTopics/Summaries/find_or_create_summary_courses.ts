@@ -28,7 +28,8 @@ type Options = {
 /**
  * Find or Create Summary
  *
- * Generates a summary for a discussion topic.
+ * Generates a summary for a discussion topic. Returns the summary text and
+ * usage information.
  *
  * Nickname: find_or_create_summary_courses
  */

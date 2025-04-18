@@ -20,12 +20,13 @@
     "clean:compilation": "del ./dist",
     "build": "run-s build:*",
     "build:clean": "run-s clean",
-    "build:render": "render --overridePath ./overrides.json --modelDirName Resources --operationsDirName Endpoints --map --logFilePath ./var/render.log",
+    "build:render": "swagger-renderer render --overridePath ./overrides.json --modelDirName Resources --operationsDirName Endpoints --map --logFilePath ./var/render.log",
     "build:compile": "tsc",
     "release": "commit-and-tag-version"
   },
   "dependencies": {
-    "@groton/canvas-cli.client": "workspace:*"
+    "@groton/canvas-cli.client": "workspace:*",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "@battis/descriptive-types": "^0.2.3",

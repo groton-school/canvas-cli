@@ -65,4 +65,10 @@ export type GroupCategory = {
    * API for more information
    */
   progress: Progress;
+  /**
+   * Indicates whether this group category is non-collaborative. A value of true
+   * means these group categories rely on the manage_tags permissions and do not
+   * have collaborative features
+   */
+  non_collaborative: boolean;
 };

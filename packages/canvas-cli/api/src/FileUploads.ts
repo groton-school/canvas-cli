@@ -1,5 +1,4 @@
 import { URLString } from '@battis/descriptive-types';
-import { Log } from '@battis/qui-cli.log';
 import { isError } from '@groton/canvas-cli.client/dist/Utilities/isError.js';
 import fetch, { fileFromSync, FormData } from 'node-fetch';
 import fs from 'node:fs';
@@ -90,12 +89,12 @@ export async function upload({
     // eslint-disable-next-line no-fallthrough
     default:
       throw new Error(
-        `Error uploading file: ${Log.syntaxColor({
+        `Error uploading file: ${{
           params,
           localFilePath,
           confirm,
           error: await confirm.json()
-        })}`
+        }}`
       );
   }
 }
