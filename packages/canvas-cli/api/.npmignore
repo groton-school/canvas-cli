@@ -1,4 +1,5 @@
 .*
+/spec/
 /overrides.json
 /tsconfig.json
 /src/
