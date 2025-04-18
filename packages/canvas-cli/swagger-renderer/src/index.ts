@@ -1,11 +1,6 @@
-import { Core } from '@battis/qui-cli.core';
-import { register } from '@battis/qui-cli.plugin';
-import { Root } from '@battis/qui-cli.root';
-import * as Render from './Render/index.js';
+import { build } from '@battis/qui-cli.structured';
 
-Root.configure({root: process.cwd()});
-
-console.log(process.cwd());
-
-await register(Render);
-await Core.run();
+await build({
+  fileName: import.meta.filename,
+  commandName: 'swagger-renderer'
+});

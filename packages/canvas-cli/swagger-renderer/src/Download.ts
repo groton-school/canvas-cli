@@ -10,6 +10,8 @@ import path from 'node:path';
 import ora from 'ora';
 import PQueue from 'p-queue';
 
+Root.configure({ root: process.cwd() });
+
 type Configuration = Plugin.Configuration & {
   instanceUrl?: URLString;
   specPath?: PathString;

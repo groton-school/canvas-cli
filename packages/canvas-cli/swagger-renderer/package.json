@@ -15,7 +15,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "render": "./dist/index.js"
+    "swagger-renderer": "./dist/index.js"
   },
   "scripts": {
     "clean": "del ./dist",
@@ -28,8 +28,9 @@
     "@battis/qui-cli.colors": "^2.0.1",
     "@battis/qui-cli.core": "^2.1.0",
     "@battis/qui-cli.log": "^2.1.0",
-    "@battis/qui-cli.plugin": "^2.3.0",
+    "@battis/qui-cli.plugin": "^2.3.1",
     "@battis/qui-cli.root": "^2.0.2",
+    "@battis/qui-cli.structured": "^0.1.1",
     "handlebars": "^4.7.8",
     "node-fetch": "^3.3.2",
     "ora": "^8.2.0",
