@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.2](https://github.com/groton-school/canvas-cli/compare/swagger-renderer/0.0.1...swagger-renderer/0.0.2) (2025-05-10)
+
+
+### Bug Fixes
+
+* bandaid on incomplete documentation by making searchParams partials ([041fe07](https://github.com/groton-school/canvas-cli/commit/041fe07755aa1008e072bb1939ae08543c6ef4c8))
+
 ## 0.0.1 (2025-04-18)
 
 
