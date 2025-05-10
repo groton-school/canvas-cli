@@ -37,9 +37,9 @@
     "open": "^10.1.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.8.0",
-    "@commitlint/config-conventional": "^19.8.0",
-    "@commitlint/config-pnpm-scopes": "^19.8.0",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/config-pnpm-scopes": "^19.8.1",
     "@tsconfig/node20": "^20.1.5",
     "commit-and-tag-version": "^12.5.1",
     "del-cli": "^6.0.0",
