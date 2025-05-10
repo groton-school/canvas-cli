@@ -33,7 +33,7 @@
     "@battis/qui-cli.plugin": "^2.3.1",
     "@groton/canvas-cli.api": "workspace:*",
     "@groton/canvas-cli.client": "workspace:*",
-    "@inquirer/prompts": "^7.5.0",
+    "@inquirer/prompts": "^7.5.1",
     "@msar/output": "^0.1.4",
     "@msar/types.archive": "^0.1.5",
     "@msar/types.import": "workspace:*",
