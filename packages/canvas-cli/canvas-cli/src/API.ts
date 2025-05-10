@@ -1,5 +1,6 @@
 import { Colors } from '@battis/qui-cli.colors';
 import '@battis/qui-cli.env';
+import '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import { Root } from '@battis/qui-cli.root';
 import * as Canvas from '@groton/canvas-cli.api';
@@ -75,7 +76,7 @@ export async function run() {
   if (!redirectUri) {
     throw new Error(`${Colors.value('redirectUri')} must be defined`);
   }
-  
+
   Canvas.init({
     instance_url: instanceUrl,
     client_id: clientId,
