@@ -2,6 +2,7 @@ import { Colors } from '@battis/qui-cli.colors';
 import '@battis/qui-cli.env';
 import * as Plugin from '@battis/qui-cli.plugin';
 import * as Canvas from '@groton/canvas-cli.api';
+import * as BrandColors from '@groton/colors';
 import path from 'node:path';
 import ora from 'ora';
 
@@ -63,13 +64,13 @@ export async function run() {
   }
 
   const colors = {
-    RD: '#ad4928',
-    OR: '#ea6a32',
-    YE: '#ffd91c',
-    GR: '#3d8028',
-    LB: '#4898dc',
-    DB: '#386ea5',
-    PR: '#834692'
+    RD: BrandColors.Red,
+    OR: BrandColors.Orange,
+    YE: BrandColors.Yellow,
+    GR: BrandColors.Green,
+    LB: BrandColors.LightBlue,
+    DB: BrandColors.DarkBlue,
+    PR: BrandColors.Purple
   };
   const per_page = 100;
   for (const course of await Canvas.v1.Accounts.Courses.list({
