@@ -7,24 +7,20 @@ export function flatten(
   if (value && typeof value === 'object') {
     if (Array.isArray(value)) {
       value.forEach((elt, i) =>
-        result.push(
-          flatten(
-            elt,
-            `${key}[${numeric_indices ? i : ''}]`,
-            result,
-            numeric_indices
-          )
+        flatten(
+          elt,
+          `${key}[${numeric_indices ? i : ''}]`,
+          result,
+          numeric_indices
         )
       );
     } else {
       for (const prop in value) {
-        result.push(
-          flatten(
-            (value as Record<string, unknown>)[prop],
-            key ? `${key}[${prop}]` : prop,
-            result,
-            numeric_indices
-          )
+        flatten(
+          (value as Record<string, unknown>)[prop],
+          key ? `${key}[${prop}]` : prop,
+          result,
+          numeric_indices
         );
       }
     }
