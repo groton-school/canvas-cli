@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.0](https://github.com/groton-school/canvas-cli/compare/utilities/0.0.1...utilities/0.1.0) (2025-05-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **canvas-cli.utilities:** redesign flatten and stringify to return a url/body-ready string
+
+### Bug Fixes
+
+* **canvas-cli.utilities:** redesign flatten and stringify to return a url/body-ready string ([0350690](https://github.com/groton-school/canvas-cli/commit/035069068cd37cc669cfb856226e728bbfbd288b))
+
 ## 0.0.1 (2025-05-10)
 
 
