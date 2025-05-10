@@ -57,10 +57,10 @@ export class Client extends Canvas {
       );
     }
     if (params) {
-      init.body = new URLSearchParams(stringify(params));
+      init.body = stringify(params);
     }
     if (searchParams) {
-      nextEndpoint = `${nextEndpoint}${nextEndpoint.includes('?') ? '&' : '?'}${new URLSearchParams(stringify(searchParams))}`;
+      nextEndpoint = `${nextEndpoint}${nextEndpoint.includes('?') ? '&' : '?'}${stringify(searchParams)}`;
     }
     do {
       const response = await this.fetch(
