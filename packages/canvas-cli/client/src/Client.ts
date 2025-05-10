@@ -1,9 +1,9 @@
 import { Canvas } from '@oauth2-cli/canvas';
 // TODO replace node-fetch dependency with native fetch when bumping to node@>=21
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
+import { isError, stringify } from '@groton/canvas-cli.utilities';
 import nodeFetch, { RequestInfo, RequestInit } from 'node-fetch';
 import PQueue from 'p-queue';
-import { isError, stringify } from './Utilities/index.js';
 
 type RequestInitParams = RequestInit & {
   pathParams?: JSONObject;

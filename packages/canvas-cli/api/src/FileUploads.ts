@@ -1,5 +1,5 @@
 import { URLString } from '@battis/descriptive-types';
-import { isError } from '@groton/canvas-cli.client/dist/Utilities/isError.js';
+import { isError } from '@groton/canvas-cli.utilities';
 import fetch, { fileFromSync, FormData } from 'node-fetch';
 import fs from 'node:fs';
 import { client } from './Client.js';

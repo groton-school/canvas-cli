@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@groton/canvas-cli.client": "workspace:*",
+    "@groton/canvas-cli.utilities": "workspace:*",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
