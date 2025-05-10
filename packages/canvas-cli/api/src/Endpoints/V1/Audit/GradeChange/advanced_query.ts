@@ -2,7 +2,7 @@ import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { GradeChangeEvent } from '../../../../Resources/GradeChangeLog.js';
 
-export type advanced_querySearchParameters = {
+export type advanced_querySearchParameters = Partial<{
   /**
    * Restrict query to events in the specified course.
    *
@@ -40,7 +40,8 @@ export type advanced_querySearchParameters = {
    * Format: date-time
    */
   end_time: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options =
   | {

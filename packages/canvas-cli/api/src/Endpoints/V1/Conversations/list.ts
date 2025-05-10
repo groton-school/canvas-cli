@@ -2,7 +2,7 @@ import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
 import { Conversation } from '../../../Resources/Conversations.js';
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * When set, only return conversations of the specified type. For example,
    * set to "unread" to return only conversations that haven't been read. The
@@ -41,7 +41,8 @@ export type listSearchParameters = {
    * user participanting in the conversation
    */
   include: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options =
   | {

@@ -6,14 +6,14 @@ export type de_cross_list_sectionPathParameters = {
   id: string;
 };
 
-export type de_cross_list_sectionSearchParameters = {
+export type de_cross_list_sectionSearchParameters = Partial<{
   /**
    * Default is true. If false, any fields containing “sticky” changes will
    * not be updated. See SIS CSV Format documentation for information on which
    * fields can have SIS stickiness
    */
   override_sis_stickiness: boolean;
-};
+}>;
 
 type Options = {
   pathParams: de_cross_list_sectionPathParameters;

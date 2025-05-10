@@ -7,7 +7,7 @@ export type query_by_graderPathParameters = {
   grader_id: string;
 };
 
-export type query_by_graderSearchParameters = {
+export type query_by_graderSearchParameters = Partial<{
   /**
    * The beginning of the time range from which you want events.
    *
@@ -20,7 +20,8 @@ export type query_by_graderSearchParameters = {
    * Format: date-time
    */
   end_time: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: query_by_graderPathParameters;

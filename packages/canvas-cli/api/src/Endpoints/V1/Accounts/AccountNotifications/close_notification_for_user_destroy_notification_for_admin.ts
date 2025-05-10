@@ -10,10 +10,10 @@ export type close_notification_for_user_destroy_notification_for_adminPathParame
   };
 
 export type close_notification_for_user_destroy_notification_for_adminSearchParameters =
-  {
+  Partial<{
     /** Destroy the account notification. */
     remove: boolean;
-  };
+  }>;
 
 type Options = {
   pathParams: close_notification_for_user_destroy_notification_for_adminPathParameters;

@@ -7,7 +7,7 @@ export type listPathParameters = {
   user_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** Defaults to "event" */
   type: string;
   /**
@@ -78,7 +78,8 @@ export type listSearchParameters = {
    * will be returned.
    */
   blackout_date: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

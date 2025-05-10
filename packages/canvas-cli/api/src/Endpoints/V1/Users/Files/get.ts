@@ -8,7 +8,7 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * Array of additional information to include.
    *
@@ -42,7 +42,7 @@ export type getSearchParameters = {
    * Format: 'int64'
    */
   replacement_chain_context_id: number;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

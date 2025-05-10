@@ -11,7 +11,7 @@ export type listPathParameters = {
   course_id: number;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * The ID of the assignment for which you want to see submissions. If
    * absent, versions of submissions from any assignment in the course are
@@ -33,7 +33,8 @@ export type listSearchParameters = {
    * first).
    */
   ascending: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

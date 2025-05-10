@@ -7,7 +7,7 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Filter group categories by their collaboration state:
    *
@@ -16,7 +16,8 @@ export type listSearchParameters = {
    * - "non_collaborative": Return only non-collaborative group categories
    */
   collaboration_state: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

@@ -10,7 +10,7 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * Whether the output should include documents for the file and/or progress
    * objects associated with this report. (Note: JSON-API only)
@@ -18,7 +18,7 @@ export type getSearchParameters = {
    * String[]
    */
   include: string[];
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

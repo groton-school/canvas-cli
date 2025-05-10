@@ -5,7 +5,7 @@ export type listPathParameters = {
   section_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * List of student ids to return submissions for. If this argument is
    * omitted, return submissions for the calling user. Students may only list
@@ -86,7 +86,7 @@ export type listSearchParameters = {
    * `grouped` argument.
    */
   include: string[];
-};
+}>;
 
 type Options = {
   pathParams: listPathParameters;

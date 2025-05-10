@@ -8,7 +8,7 @@ export type getPathParameters = {
   account_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * The unique identifier for the role
    *
@@ -17,7 +17,7 @@ export type getSearchParameters = {
   role_id: number;
   /** The name for the role */
   role: string;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

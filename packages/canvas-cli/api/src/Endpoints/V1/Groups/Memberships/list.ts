@@ -7,13 +7,14 @@ export type listPathParameters = {
   group_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Only list memberships with the given workflow_states. By default it will
    * return all memberships.
    */
   filter_states: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

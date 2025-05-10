@@ -1,13 +1,13 @@
 import { client } from '../../../../../Client.js';
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * "ungraded_quizzes":: Optionally include ungraded quizzes (such as
    * practice quizzes and surveys) in the list. These will be returned under a
    * +quiz+ key instead of an +assignment+ key in response elements.
    */
   include: string[];
-};
+}>;
 
 type Options =
   | {

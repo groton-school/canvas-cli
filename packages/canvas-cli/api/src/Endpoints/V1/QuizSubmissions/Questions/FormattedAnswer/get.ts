@@ -8,10 +8,10 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /** No description */
   answer: Numeric;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

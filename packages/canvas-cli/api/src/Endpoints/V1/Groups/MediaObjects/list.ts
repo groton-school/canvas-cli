@@ -7,7 +7,7 @@ export type listPathParameters = {
   group_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Field to sort on. Default is "title"
    *
@@ -26,7 +26,8 @@ export type listSearchParameters = {
    * kaltura for media_tracks
    */
   exclude: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

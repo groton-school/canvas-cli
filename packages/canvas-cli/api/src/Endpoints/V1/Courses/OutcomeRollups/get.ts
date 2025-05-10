@@ -5,7 +5,7 @@ export type getPathParameters = {
   course_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * If specified, instead of returning one rollup for each user, all the user
    * rollups will be combined into one rollup for the course that will contain
@@ -76,7 +76,7 @@ export type getSearchParameters = {
    * score
    */
   contributing_scores: boolean;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

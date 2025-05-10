@@ -6,7 +6,7 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * If specified only NamesAndRoleMemberships with access to the LTI link
    * references by this `rlid` will be included. Also causes the member array
@@ -27,7 +27,7 @@ export type listSearchParameters = {
    * page. Defaults to 50.
    */
   limit: string;
-};
+}>;
 
 type Options = {
   pathParams: listPathParameters;

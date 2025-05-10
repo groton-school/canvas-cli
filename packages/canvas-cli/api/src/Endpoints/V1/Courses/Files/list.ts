@@ -7,7 +7,7 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Filter results by content-type. You can specify type/subtype pairs (e.g.,
    * 'image/jpeg'), or simply types (e.g., 'image', which will match
@@ -43,7 +43,8 @@ export type listSearchParameters = {
   sort: string;
   /** The sorting order. Defaults to 'asc'. */
   order: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

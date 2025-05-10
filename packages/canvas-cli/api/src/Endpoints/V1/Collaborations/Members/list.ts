@@ -7,7 +7,7 @@ export type listPathParameters = {
   id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * - "collaborator_lti_id": Optional information to include with each member.
    *   Represents an identifier to be used for the member in an LTI context.
@@ -15,7 +15,8 @@ export type listSearchParameters = {
    *   url for the avatar of a collaborator with type 'user'.
    */
   include: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

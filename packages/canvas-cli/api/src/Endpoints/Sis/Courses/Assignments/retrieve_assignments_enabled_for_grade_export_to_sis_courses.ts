@@ -11,7 +11,7 @@ export type retrieve_assignments_enabled_for_grade_export_to_sis_coursesPathPara
   };
 
 export type retrieve_assignments_enabled_for_grade_export_to_sis_coursesSearchParameters =
-  {
+  Partial<{
     /**
      * The ID of the account to query.
      *
@@ -32,7 +32,7 @@ export type retrieve_assignments_enabled_for_grade_export_to_sis_coursesSearchPa
     ends_after: string;
     /** Array of additional */
     include: string;
-  };
+  }>;
 
 type Options = {
   pathParams: retrieve_assignments_enabled_for_grade_export_to_sis_coursesPathParameters;

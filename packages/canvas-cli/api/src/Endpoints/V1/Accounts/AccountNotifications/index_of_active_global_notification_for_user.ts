@@ -7,20 +7,22 @@ export type index_of_active_global_notification_for_userPathParameters = {
   account_id: string;
 };
 
-export type index_of_active_global_notification_for_userSearchParameters = {
-  /** Include past and dismissed global announcements. */
-  include_past: boolean;
-  /**
-   * Include all global announcements, regardless of user's role or
-   * availability date. Only available to account admins.
-   */
-  include_all: boolean;
-  /**
-   * Include a flag for each notification indicating whether it has been read
-   * by the user.
-   */
-  show_is_closed: boolean;
-} & Paginated;
+export type index_of_active_global_notification_for_userSearchParameters =
+  Partial<{
+    /** Include past and dismissed global announcements. */
+    include_past: boolean;
+    /**
+     * Include all global announcements, regardless of user's role or
+     * availability date. Only available to account admins.
+     */
+    include_all: boolean;
+    /**
+     * Include a flag for each notification indicating whether it has been read
+     * by the user.
+     */
+    show_is_closed: boolean;
+  }> &
+    Paginated;
 
 type Options = {
   pathParams: index_of_active_global_notification_for_userPathParameters;

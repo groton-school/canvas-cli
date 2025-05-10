@@ -7,10 +7,11 @@ export type getPathParameters = {
   account_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /** If set, only shows errors on a sis import that would cause a failure. */
   failure: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: getPathParameters;

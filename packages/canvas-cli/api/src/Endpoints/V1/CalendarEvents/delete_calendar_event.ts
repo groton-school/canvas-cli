@@ -5,7 +5,7 @@ export type delete_calendar_eventPathParameters = {
   id: string;
 };
 
-export type delete_calendar_eventSearchParameters = {
+export type delete_calendar_eventSearchParameters = Partial<{
   /** Reason for deleting/canceling the event. */
   cancel_reason: string;
   /**
@@ -14,7 +14,7 @@ export type delete_calendar_eventSearchParameters = {
    * the given event and all those following.
    */
   which: string;
-};
+}>;
 
 type Options = {
   pathParams: delete_calendar_eventPathParameters;

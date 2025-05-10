@@ -8,10 +8,10 @@ export type show_lti_resource_linkPathParameters = {
   id: string;
 };
 
-export type show_lti_resource_linkSearchParameters = {
+export type show_lti_resource_linkSearchParameters = Partial<{
   /** Include deleted resource links in search. Default is false. */
   include_deleted: boolean;
-};
+}>;
 
 type Options = {
   pathParams: show_lti_resource_linkPathParameters;

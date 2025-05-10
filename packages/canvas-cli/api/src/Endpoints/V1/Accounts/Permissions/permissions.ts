@@ -5,14 +5,14 @@ export type permissionsPathParameters = {
   account_id: string;
 };
 
-export type permissionsSearchParameters = {
+export type permissionsSearchParameters = Partial<{
   /**
    * List of permissions to check against the authenticated user. Permission
    * names are documented in the {api:RoleOverridesController#add_role Create
    * a role} endpoint.
    */
   permissions: string[];
-};
+}>;
 
 type Options = {
   pathParams: permissionsPathParameters;

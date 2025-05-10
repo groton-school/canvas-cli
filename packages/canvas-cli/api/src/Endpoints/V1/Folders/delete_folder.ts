@@ -5,10 +5,10 @@ export type delete_folderPathParameters = {
   id: string;
 };
 
-export type delete_folderSearchParameters = {
+export type delete_folderSearchParameters = Partial<{
   /** Set to 'true' to allow deleting a non-empty folder */
   force: boolean;
-};
+}>;
 
 type Options = {
   pathParams: delete_folderPathParameters;

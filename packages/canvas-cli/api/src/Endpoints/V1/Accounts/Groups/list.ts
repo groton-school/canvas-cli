@@ -7,7 +7,7 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** Will only include groups that the user belongs to if this is set */
   only_own_groups: boolean;
   /**
@@ -24,7 +24,8 @@ export type listSearchParameters = {
    * - "non_collaborative": Return only non-collaborative groups
    */
   collaboration_state: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

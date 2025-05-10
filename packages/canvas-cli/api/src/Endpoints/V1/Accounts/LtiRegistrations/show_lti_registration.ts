@@ -8,7 +8,7 @@ export type show_lti_registrationPathParameters = {
   id: string;
 };
 
-export type show_lti_registrationSearchParameters = {
+export type show_lti_registrationSearchParameters = Partial<{
   /**
    * Array of additional data to include. Always includes [account_binding
    * configuration].
@@ -23,7 +23,7 @@ export type show_lti_registrationSearchParameters = {
    * the registration's overlay's edit history
    */
   include: string[];
-};
+}>;
 
 type Options = {
   pathParams: show_lti_registrationPathParameters;

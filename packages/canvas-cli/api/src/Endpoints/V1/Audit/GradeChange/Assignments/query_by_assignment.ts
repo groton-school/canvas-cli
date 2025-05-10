@@ -7,7 +7,7 @@ export type query_by_assignmentPathParameters = {
   assignment_id: string;
 };
 
-export type query_by_assignmentSearchParameters = {
+export type query_by_assignmentSearchParameters = Partial<{
   /**
    * The beginning of the time range from which you want events.
    *
@@ -20,7 +20,8 @@ export type query_by_assignmentSearchParameters = {
    * Format: date-time
    */
   end_time: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: query_by_assignmentPathParameters;

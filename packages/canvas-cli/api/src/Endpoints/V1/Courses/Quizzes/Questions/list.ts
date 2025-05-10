@@ -9,7 +9,7 @@ export type listPathParameters = {
   quiz_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * If specified, the endpoint will return the questions that were presented
    * for that submission. This is useful if the quiz has been modified after
@@ -26,7 +26,8 @@ export type listSearchParameters = {
    * Format: 'int64'
    */
   quiz_submission_attempt: number;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

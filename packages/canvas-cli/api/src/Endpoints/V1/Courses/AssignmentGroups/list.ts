@@ -7,7 +7,7 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Associations to include with the group. "discussion_topic", "all_dates",
    * "can_edit", "assignment_visibility" & "submission" are only valid if
@@ -47,7 +47,8 @@ export type listSearchParameters = {
    * exist. In addition, the current user must be a student.)
    */
   scope_assignments_to_student: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

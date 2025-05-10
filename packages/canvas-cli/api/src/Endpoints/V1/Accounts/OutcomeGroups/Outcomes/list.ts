@@ -9,13 +9,14 @@ export type listPathParameters = {
   id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * The detail level of the outcomes. Defaults to "abbrev". Specify "full"
    * for more information.
    */
   outcome_style: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

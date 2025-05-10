@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-export type search_account_domainsSearchParameters = {
+export type search_account_domainsSearchParameters = Partial<{
   /** Campus name */
   name: string;
   /** No description */
@@ -17,7 +17,7 @@ export type search_account_domainsSearchParameters = {
    * Format: 'float'
    */
   longitude: number;
-};
+}>;
 
 type Options =
   | {

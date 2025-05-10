@@ -8,7 +8,7 @@ export type retrieve_assignment_overridden_dates_for_classic_quizzesPathParamete
   };
 
 export type retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters =
-  {
+  Partial<{
     /**
      * An array of quiz IDs. If omitted, overrides for all quizzes available to
      * the operating user will be returned.
@@ -16,7 +16,7 @@ export type retrieve_assignment_overridden_dates_for_classic_quizzesSearchParame
      * Format: 'int64'
      */
     'quiz_assignment_overrides[quiz_ids]': number[];
-  };
+  }>;
 
 type Options = {
   pathParams: retrieve_assignment_overridden_dates_for_classic_quizzesPathParameters;

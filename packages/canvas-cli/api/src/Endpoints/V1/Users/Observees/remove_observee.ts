@@ -8,14 +8,14 @@ export type remove_observeePathParameters = {
   observee_id: string;
 };
 
-export type remove_observeeSearchParameters = {
+export type remove_observeeSearchParameters = Partial<{
   /**
    * If specified, only removes the link for the given root account
    *
    * Format: 'int64'
    */
   root_account_id: number;
-};
+}>;
 
 type Options = {
   pathParams: remove_observeePathParameters;

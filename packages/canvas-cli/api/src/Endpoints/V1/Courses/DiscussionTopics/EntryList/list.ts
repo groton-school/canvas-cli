@@ -7,13 +7,13 @@ export type listPathParameters = {
   topic_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * A list of entry ids to retrieve. Entries will be returned in id order,
    * smallest id first.
    */
   ids: string[];
-};
+}>;
 
 type Options = {
   pathParams: listPathParameters;

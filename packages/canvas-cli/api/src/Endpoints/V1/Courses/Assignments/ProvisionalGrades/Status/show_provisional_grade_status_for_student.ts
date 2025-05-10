@@ -7,14 +7,15 @@ export type show_provisional_grade_status_for_studentPathParameters = {
   assignment_id: string;
 };
 
-export type show_provisional_grade_status_for_studentSearchParameters = {
-  /**
-   * The id of the student to show the status for
-   *
-   * Format: 'int64'
-   */
-  student_id: number;
-};
+export type show_provisional_grade_status_for_studentSearchParameters =
+  Partial<{
+    /**
+     * The id of the student to show the status for
+     *
+     * Format: 'int64'
+     */
+    student_id: number;
+  }>;
 
 type Options = {
   pathParams: show_provisional_grade_status_for_studentPathParameters;

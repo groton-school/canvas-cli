@@ -5,10 +5,10 @@ export type delete_appointment_groupPathParameters = {
   id: string;
 };
 
-export type delete_appointment_groupSearchParameters = {
+export type delete_appointment_groupSearchParameters = Partial<{
   /** Reason for deleting/canceling the appointment group. */
   cancel_reason: string;
-};
+}>;
 
 type Options = {
   pathParams: delete_appointment_groupPathParameters;

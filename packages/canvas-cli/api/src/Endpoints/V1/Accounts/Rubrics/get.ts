@@ -8,7 +8,7 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /** Related records to include in the response. */
   include: string[];
   /**
@@ -17,7 +17,7 @@ export type getSearchParameters = {
    * comments. If not included, both data and comments are omitted.
    */
   style: string;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

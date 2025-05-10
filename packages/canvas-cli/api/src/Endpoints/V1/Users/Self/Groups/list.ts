@@ -2,7 +2,7 @@ import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../Client.js';
 import { Group } from '../../../../../Resources/Groups.js';
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** Only include groups that are in this type of context. */
   context_type: string;
   /**
@@ -11,7 +11,8 @@ export type listSearchParameters = {
    *   information.
    */
   include: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options =
   | {

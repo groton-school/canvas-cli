@@ -7,14 +7,15 @@ export type listPathParameters = {
   media_object_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * By default, index returns id, locale, kind, media_object_id, and user_id
    * for each of the result MediaTracks. Use include[] to add additional
    * fields. For example include[]=content
    */
   include: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

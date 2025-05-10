@@ -11,14 +11,15 @@ export type getPathParameters = {
   course_id: number;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * The id of the student
    *
    * Format: 'int64'
    */
   student_id: number;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: getPathParameters;

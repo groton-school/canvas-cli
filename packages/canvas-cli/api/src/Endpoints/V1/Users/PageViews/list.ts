@@ -7,7 +7,7 @@ export type listPathParameters = {
   user_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * The beginning of the time range from which you want page views.
    *
@@ -20,7 +20,8 @@ export type listSearchParameters = {
    * Format: date-time
    */
   end_time: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

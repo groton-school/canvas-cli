@@ -9,7 +9,7 @@ export type listPathParameters = {
   module_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * If included, will return additional details specific to the content
    * associated with each item. Refer to the {api:Modules:Module%20Item Module
@@ -21,7 +21,8 @@ export type listSearchParameters = {
   search_term: string;
   /** Returns module completion information for the student with this id. */
   student_id: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

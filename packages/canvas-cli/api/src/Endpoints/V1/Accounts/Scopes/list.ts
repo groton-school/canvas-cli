@@ -7,10 +7,11 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** The attribute to group the scopes by. By default no grouping is done. */
   group_by: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

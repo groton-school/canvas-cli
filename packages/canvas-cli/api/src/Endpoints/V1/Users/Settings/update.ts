@@ -5,7 +5,7 @@ export type updatePathParameters = {
   id: string;
 };
 
-export type updateSearchParameters = {
+export type updateSearchParameters = Partial<{
   /**
    * If true, require user to manually mark discussion posts as read (don't
    * auto-mark as read).
@@ -32,7 +32,7 @@ export type updateSearchParameters = {
    * instead of the canvas for elementary view.
    */
   elementary_dashboard_disabled: boolean;
-};
+}>;
 
 type Options = {
   pathParams: updatePathParameters;

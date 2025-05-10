@@ -9,10 +9,10 @@ export type getPathParameters = {
   anonymous_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /** Associations to include with the group. */
   include: string[];
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

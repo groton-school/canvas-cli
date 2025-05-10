@@ -12,14 +12,14 @@ export type show_course_pacePathParameters = {
   course_id: number;
 };
 
-export type show_course_paceSearchParameters = {
+export type show_course_paceSearchParameters = Partial<{
   /**
    * The id of the course_pace
    *
    * Format: 'int64'
    */
   course_pace_id: number;
-};
+}>;
 
 type Options = {
   pathParams: show_course_pacePathParameters;

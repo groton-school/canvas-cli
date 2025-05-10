@@ -7,7 +7,7 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Optional information to include with each assignment: submission:: The
    * current user's current +Submission+ assignment_visibility:: An array of
@@ -48,7 +48,8 @@ export type listSearchParameters = {
   post_to_sis: boolean;
   /** Return only New Quizzes assignments */
   new_quizzes: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

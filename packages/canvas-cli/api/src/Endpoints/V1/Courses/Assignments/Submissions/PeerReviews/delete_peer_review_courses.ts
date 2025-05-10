@@ -10,14 +10,14 @@ export type delete_peer_review_coursesPathParameters = {
   submission_id: string;
 };
 
-export type delete_peer_review_coursesSearchParameters = {
+export type delete_peer_review_coursesSearchParameters = Partial<{
   /**
    * User_id to delete as reviewer on this assignment
    *
    * Format: 'int64'
    */
   user_id: number;
-};
+}>;
 
 type Options = {
   pathParams: delete_peer_review_coursesPathParameters;

@@ -9,13 +9,14 @@ export type retrieve_all_quiz_reportsPathParameters = {
   quiz_id: string;
 };
 
-export type retrieve_all_quiz_reportsSearchParameters = {
+export type retrieve_all_quiz_reportsSearchParameters = Partial<{
   /**
    * Whether to retrieve reports that consider all the submissions or only the
    * most recent. Defaults to false, ignored for item_analysis reports.
    */
   includes_all_versions: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: retrieve_all_quiz_reportsPathParameters;

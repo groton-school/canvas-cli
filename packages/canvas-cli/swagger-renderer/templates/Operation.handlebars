@@ -18,7 +18,7 @@ export type {{tsName}}PathParameters = {
 {{/if}}
 
 {{#if tsQueryParameters}}
-export type {{tsName}}SearchParameters = {
+export type {{tsName}}SearchParameters = Partial<{
     {{#tsQueryParameters}}
     /**
      * {{description}}
@@ -29,7 +29,7 @@ export type {{tsName}}SearchParameters = {
      */
     {{{tsName}}}{{tsOptional}}: {{{tsType.type}}}
     {{/tsQueryParameters}}
-}{{#if tsPaginated}} & Paginated{{/if}}
+}>{{#if tsPaginated}} & Paginated{{/if}}
 {{/if}}
 {{#unless tsQueryParameters}}{{#if tsPaginated}}
 export type {{tsName}}SearchParameters = Paginated;

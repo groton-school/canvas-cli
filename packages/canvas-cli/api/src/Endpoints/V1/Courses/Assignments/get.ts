@@ -8,7 +8,7 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * Associations to include with the assignment. The "assignment_visibility"
    * option requires that the Differentiated Assignments course feature be
@@ -26,7 +26,7 @@ export type getSearchParameters = {
   needs_grading_count_by_section: boolean;
   /** All dates associated with the assignment, if applicable */
   all_dates: boolean;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

@@ -7,13 +7,14 @@ export type getPathParameters = {
   user_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * Deleted:: Include deleted ePortfolios. Only available to admins who can
    * moderate_user_content.
    */
   include: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: getPathParameters;

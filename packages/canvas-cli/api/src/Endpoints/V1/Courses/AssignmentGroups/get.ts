@@ -8,7 +8,7 @@ export type getPathParameters = {
   assignment_group_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * Associations to include with the group. "discussion_topic" and
    * "assignment_visibility" and "submission" are only valid if "assignments"
@@ -27,7 +27,7 @@ export type getSearchParameters = {
    * Format: 'int64'
    */
   grading_period_id: number;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

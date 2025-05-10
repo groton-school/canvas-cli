@@ -7,10 +7,11 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** Include hidden parameters (defaults to false) */
   include_hidden: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

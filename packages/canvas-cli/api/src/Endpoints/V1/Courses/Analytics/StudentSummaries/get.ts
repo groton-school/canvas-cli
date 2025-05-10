@@ -5,12 +5,12 @@ export type getPathParameters = {
   course_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /** The order results in which results are returned. Defaults to "name". */
   sort_column: string;
   /** If set, returns only the specified student. */
   student_id: string;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

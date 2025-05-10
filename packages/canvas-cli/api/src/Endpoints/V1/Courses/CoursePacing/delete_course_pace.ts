@@ -12,14 +12,14 @@ export type delete_course_pacePathParameters = {
   course_id: number;
 };
 
-export type delete_course_paceSearchParameters = {
+export type delete_course_paceSearchParameters = Partial<{
   /**
    * The id of the course_pace
    *
    * Format: 'int64'
    */
   course_pace_id: number;
-};
+}>;
 
 type Options = {
   pathParams: delete_course_pacePathParameters;

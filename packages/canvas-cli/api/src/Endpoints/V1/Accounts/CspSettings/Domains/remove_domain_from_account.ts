@@ -5,10 +5,10 @@ export type remove_domain_from_accountPathParameters = {
   account_id: string;
 };
 
-export type remove_domain_from_accountSearchParameters = {
+export type remove_domain_from_accountSearchParameters = Partial<{
   /** No description */
   domain: string;
-};
+}>;
 
 type Options = {
   pathParams: remove_domain_from_accountPathParameters;

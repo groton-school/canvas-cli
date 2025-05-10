@@ -7,7 +7,7 @@ export type listPathParameters = {
   group_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** Sort results by this field. */
   sort: string;
   /** The sorting order. Defaults to 'asc'. */
@@ -24,7 +24,8 @@ export type listSearchParameters = {
    *   is a block_editor page, returns the block_editor_attributes.
    */
   include: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

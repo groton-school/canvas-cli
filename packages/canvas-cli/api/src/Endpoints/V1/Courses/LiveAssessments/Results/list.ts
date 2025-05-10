@@ -7,14 +7,14 @@ export type listPathParameters = {
   assessment_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * If set, restrict results to those for this user
    *
    * Format: 'int64'
    */
   user_id: number;
-};
+}>;
 
 type Options = {
   pathParams: listPathParameters;

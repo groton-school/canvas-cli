@@ -9,7 +9,7 @@ export type retrieve_captured_eventsPathParameters = {
   id: string;
 };
 
-export type retrieve_captured_eventsSearchParameters = {
+export type retrieve_captured_eventsSearchParameters = Partial<{
   /**
    * The specific submission attempt to look up the events for. If
    * unspecified, the latest attempt will be used.
@@ -17,7 +17,7 @@ export type retrieve_captured_eventsSearchParameters = {
    * Format: 'int64'
    */
   attempt: number;
-};
+}>;
 
 type Options = {
   pathParams: retrieve_captured_eventsPathParameters;

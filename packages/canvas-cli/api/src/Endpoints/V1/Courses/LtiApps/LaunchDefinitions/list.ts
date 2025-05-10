@@ -5,7 +5,7 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * The placements to return launch definitions for. If not provided, an
    * empty list will be returned.
@@ -16,7 +16,7 @@ export type listSearchParameters = {
    * user. Defaults to true.
    */
   'only_visible[Boolean]': string;
-};
+}>;
 
 type Options = {
   pathParams: listPathParameters;

@@ -8,7 +8,7 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * - "students": Associations to include with the group. Note: this is only
    *   available if you have permission to view users or grades in the course
@@ -22,7 +22,7 @@ export type getSearchParameters = {
    *   to the caller
    */
   include: string[];
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

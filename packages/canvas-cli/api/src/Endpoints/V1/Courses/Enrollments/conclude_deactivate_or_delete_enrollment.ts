@@ -8,14 +8,14 @@ export type conclude_deactivate_or_delete_enrollmentPathParameters = {
   id: string;
 };
 
-export type conclude_deactivate_or_delete_enrollmentSearchParameters = {
+export type conclude_deactivate_or_delete_enrollmentSearchParameters = Partial<{
   /**
    * The action to take on the enrollment. When inactive, a user will still
    * appear in the course roster to admins, but be unable to participate.
    * ("inactivate" and "deactivate" are equivalent tasks)
    */
   task: string;
-};
+}>;
 
 type Options = {
   pathParams: conclude_deactivate_or_delete_enrollmentPathParameters;

@@ -6,7 +6,7 @@ export type delete_filePathParameters = {
   id: string;
 };
 
-export type delete_fileSearchParameters = {
+export type delete_fileSearchParameters = Partial<{
   /**
    * This action is irreversible. If replace is set to true the file contents
    * will be replaced with a generic "file has been removed" file. This also
@@ -14,7 +14,7 @@ export type delete_fileSearchParameters = {
    * manage files and become other users permissions
    */
   replace: boolean;
-};
+}>;
 
 type Options = {
   pathParams: delete_filePathParameters;

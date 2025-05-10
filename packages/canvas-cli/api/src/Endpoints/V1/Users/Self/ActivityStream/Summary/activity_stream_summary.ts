@@ -1,12 +1,12 @@
 import { client } from '../../../../../../Client.js';
 
-export type activity_stream_summarySearchParameters = {
+export type activity_stream_summarySearchParameters = Partial<{
   /**
    * If true, will only return objects for courses the user is actively
    * participating in
    */
   only_active_courses: boolean;
-};
+}>;
 
 type Options =
   | {

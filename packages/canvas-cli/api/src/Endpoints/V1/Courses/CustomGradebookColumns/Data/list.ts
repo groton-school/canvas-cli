@@ -9,13 +9,14 @@ export type listPathParameters = {
   id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * If true, hidden columns will be included in the result. If false or
    * absent, only visible columns will be returned.
    */
   include_hidden: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

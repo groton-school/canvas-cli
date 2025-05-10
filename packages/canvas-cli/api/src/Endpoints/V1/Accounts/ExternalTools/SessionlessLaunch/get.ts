@@ -5,7 +5,7 @@ export type getPathParameters = {
   account_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /** The external id of the tool to launch. */
   id: string;
   /** The LTI launch url for the external tool. */
@@ -28,7 +28,7 @@ export type getSearchParameters = {
   launch_type: string;
   /** The identifier to lookup a resource link. */
   resource_link_lookup_uuid: string;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

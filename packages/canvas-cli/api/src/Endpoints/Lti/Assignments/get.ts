@@ -6,10 +6,10 @@ export type getPathParameters = {
   assignment_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /** The id of the user. Can be a Canvas or LTI id for the user. */
   user_id: string;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

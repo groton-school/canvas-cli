@@ -6,7 +6,7 @@ export type getPathParameters = {
   group_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * - "permissions": Include permissions the current user has for the group.
    * - "tabs": Include the list of tabs configured for each group. See the
@@ -14,7 +14,7 @@ export type getSearchParameters = {
    *   information.
    */
   include: string[];
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

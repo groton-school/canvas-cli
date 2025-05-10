@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-export type find_recipients_searchSearchParameters = {
+export type find_recipients_searchSearchParameters = Partial<{
   /**
    * Search terms used for matching users/courses/groups (e.g. "bob smith").
    * If multiple terms are given (separated via whitespace), only results
@@ -44,7 +44,7 @@ export type find_recipients_searchSearchParameters = {
    * if they don't grant the permission(s).
    */
   permissions: string[];
-};
+}>;
 
 type Options =
   | {

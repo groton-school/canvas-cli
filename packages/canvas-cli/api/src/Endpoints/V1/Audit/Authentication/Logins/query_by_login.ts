@@ -5,7 +5,7 @@ export type query_by_loginPathParameters = {
   login_id: string;
 };
 
-export type query_by_loginSearchParameters = {
+export type query_by_loginSearchParameters = Partial<{
   /**
    * The beginning of the time range from which you want events. Events are
    * stored for one year.
@@ -19,7 +19,7 @@ export type query_by_loginSearchParameters = {
    * Format: date-time
    */
   end_time: string;
-};
+}>;
 
 type Options = {
   pathParams: query_by_loginPathParameters;

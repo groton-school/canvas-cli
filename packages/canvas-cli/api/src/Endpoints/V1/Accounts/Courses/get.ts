@@ -8,7 +8,7 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * - "all_courses": Also search recently deleted courses.
    * - "permissions": Include permissions the current user has for the course.
@@ -33,7 +33,7 @@ export type getSearchParameters = {
    * Format: 'int64'
    */
   teacher_limit: number;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

@@ -6,14 +6,14 @@ export type show_user_detailsPathParameters = {
   id: string;
 };
 
-export type show_user_detailsSearchParameters = {
+export type show_user_detailsSearchParameters = Partial<{
   /**
    * Array of additional information to include on the user record. "locale",
    * "avatar_url", "permissions", "email", and "effective_locale" will always
    * be returned
    */
   include: string[];
-};
+}>;
 
 type Options = {
   pathParams: show_user_detailsPathParameters;

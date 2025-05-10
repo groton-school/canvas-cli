@@ -8,7 +8,7 @@ export type show_modulePathParameters = {
   id: string;
 };
 
-export type show_moduleSearchParameters = {
+export type show_moduleSearchParameters = Partial<{
   /**
    * - "items": Return module items inline if possible. This parameter suggests
    *   that Canvas return module items directly in the Module object JSON, to
@@ -25,7 +25,7 @@ export type show_moduleSearchParameters = {
   include: string[];
   /** Returns module completion information for the student with this id. */
   student_id: string;
-};
+}>;
 
 type Options = {
   pathParams: show_modulePathParameters;

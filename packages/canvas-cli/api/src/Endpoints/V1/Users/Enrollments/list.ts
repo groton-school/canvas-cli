@@ -12,7 +12,7 @@ export type listPathParameters = {
   user_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * A list of enrollment types to return. Accepted values are
    * 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment',
@@ -89,7 +89,8 @@ export type listSearchParameters = {
    * from a sis_import with that sis_user_id
    */
   created_for_sis_id: boolean[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

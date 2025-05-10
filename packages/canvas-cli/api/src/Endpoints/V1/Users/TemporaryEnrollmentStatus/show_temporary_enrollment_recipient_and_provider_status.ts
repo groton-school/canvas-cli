@@ -7,13 +7,13 @@ export type show_temporary_enrollment_recipient_and_provider_statusPathParameter
   };
 
 export type show_temporary_enrollment_recipient_and_provider_statusSearchParameters =
-  {
+  Partial<{
     /**
      * The ID of the account to check for temporary enrollment status. Defaults
      * to the domain root account if not provided.
      */
     account_id: string;
-  };
+  }>;
 
 type Options = {
   pathParams: show_temporary_enrollment_recipient_and_provider_statusPathParameters;

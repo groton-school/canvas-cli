@@ -5,7 +5,7 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * (Obsolete) Submissions are no longer linked to conversations. This
    * parameter is ignored.
@@ -32,7 +32,7 @@ export type getSearchParameters = {
    * should explicitly send true if that is the desired behavior.
    */
   auto_mark_as_read: boolean;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

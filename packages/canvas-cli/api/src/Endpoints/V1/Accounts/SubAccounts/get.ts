@@ -7,7 +7,7 @@ export type getPathParameters = {
   account_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * If true, the entire account tree underneath this account will be returned
    * (though still paginated). If false, only direct sub-accounts of this
@@ -27,7 +27,8 @@ export type getSearchParameters = {
    * under each account
    */
   include: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: getPathParameters;

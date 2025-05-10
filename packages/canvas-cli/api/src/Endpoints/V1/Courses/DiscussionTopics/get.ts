@@ -7,7 +7,7 @@ export type getPathParameters = {
   topic_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * If "all_dates" is passed, all dates associated with graded discussions'
    * assignments will be included. if "sections" is passed, includes the
@@ -21,7 +21,7 @@ export type getSearchParameters = {
    * overrides for the assignment will be included
    */
   include: string[];
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

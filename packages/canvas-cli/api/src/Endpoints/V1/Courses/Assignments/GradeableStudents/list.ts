@@ -5,10 +5,10 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** Assignments being requested */
   assignment_ids: string[];
-};
+}>;
 
 type Options = {
   pathParams: listPathParameters;

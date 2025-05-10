@@ -5,10 +5,10 @@ export type delete_conclude_coursePathParameters = {
   id: string;
 };
 
-export type delete_conclude_courseSearchParameters = {
+export type delete_conclude_courseSearchParameters = Partial<{
   /** The action to take on the course. */
   event: string;
-};
+}>;
 
 type Options = {
   pathParams: delete_conclude_coursePathParameters;

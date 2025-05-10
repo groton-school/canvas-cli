@@ -10,10 +10,10 @@ export type show_revision_courses_revision_idPathParameters = {
   revision_id: string;
 };
 
-export type show_revision_courses_revision_idSearchParameters = {
+export type show_revision_courses_revision_idSearchParameters = Partial<{
   /** If set, exclude page content from results */
   summary: boolean;
-};
+}>;
 
 type Options = {
   pathParams: show_revision_courses_revision_idPathParameters;

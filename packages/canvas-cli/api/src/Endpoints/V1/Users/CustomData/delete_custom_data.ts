@@ -5,14 +5,14 @@ export type delete_custom_dataPathParameters = {
   user_id: string;
 };
 
-export type delete_custom_dataSearchParameters = {
+export type delete_custom_dataSearchParameters = Partial<{
   /**
    * The namespace from which to delete the data. This should be something
    * other Canvas API apps aren't likely to use, such as a reverse DNS for
    * your organization.
    */
   ns: string;
-};
+}>;
 
 type Options = {
   pathParams: delete_custom_dataPathParameters;

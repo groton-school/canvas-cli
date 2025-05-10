@@ -2,7 +2,7 @@ import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
 import { Course } from '../../../Resources/Courses.js';
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * When set, only return courses where the user is enrolled as this type.
    * For example, set to "teacher" to return only courses where the user is
@@ -146,7 +146,8 @@ export type listSearchParameters = {
    * "deleted", for all other enrollment types
    */
   state: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options =
   | {

@@ -7,7 +7,7 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * The partial name or full ID of the users to match and return in the
    * results list.
@@ -80,7 +80,8 @@ export type listSearchParameters = {
    * default.
    */
   enrollment_state: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

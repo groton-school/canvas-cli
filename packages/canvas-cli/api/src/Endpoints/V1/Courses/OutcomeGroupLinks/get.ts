@@ -7,7 +7,7 @@ export type getPathParameters = {
   course_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * The detail level of the outcomes. Defaults to "abbrev". Specify "full"
    * for more information.
@@ -18,7 +18,8 @@ export type getSearchParameters = {
    * "full" for more information.
    */
   outcome_group_style: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: getPathParameters;

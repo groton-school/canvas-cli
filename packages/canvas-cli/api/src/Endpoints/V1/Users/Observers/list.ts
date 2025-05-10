@@ -7,10 +7,11 @@ export type listPathParameters = {
   user_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** - "avatar_url": Optionally include avatar_url. */
   include: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

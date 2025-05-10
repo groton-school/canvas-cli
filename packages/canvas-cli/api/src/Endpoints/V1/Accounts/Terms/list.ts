@@ -6,7 +6,7 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * If set, only returns terms that are in the given state. Defaults to
    * 'active'.
@@ -24,7 +24,7 @@ export type listSearchParameters = {
    * keyword is matched against term name.
    */
   term_name: string;
-};
+}>;
 
 type Options = {
   pathParams: listPathParameters;

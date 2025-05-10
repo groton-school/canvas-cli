@@ -7,7 +7,7 @@ export type listPathParameters = {
   user_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Return missing submissions for the given observed user. Must be
    * accompanied by course_ids[]. The user making the request must be
@@ -34,7 +34,8 @@ export type listSearchParameters = {
    * passed.
    */
   course_ids: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

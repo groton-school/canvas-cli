@@ -8,10 +8,11 @@ export type listPathParameters = {
   id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** The type of content to enumerate. */
   type: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

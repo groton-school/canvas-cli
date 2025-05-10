@@ -5,7 +5,7 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** The partial name of the tools to match and return. */
   search_term: string;
   /** If true, then only tools that are meant to be selectable are returned. */
@@ -17,7 +17,7 @@ export type listSearchParameters = {
   include_parents: boolean;
   /** The placement type to filter by. */
   placement: string;
-};
+}>;
 
 type Options = {
   pathParams: listPathParameters;

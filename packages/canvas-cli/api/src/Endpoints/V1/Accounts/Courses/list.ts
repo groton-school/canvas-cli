@@ -7,7 +7,7 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * If true, include only courses with at least one enrollment. If false,
    * include only courses with no enrollments. If not present, do not filter
@@ -118,7 +118,8 @@ export type listSearchParameters = {
   ends_after: string;
   /** If set, only return homeroom courses. */
   homeroom: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

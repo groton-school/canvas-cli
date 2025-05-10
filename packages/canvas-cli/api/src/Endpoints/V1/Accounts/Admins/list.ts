@@ -8,13 +8,14 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Scope the results to those with user IDs equal to any of the IDs
    * specified here.
    */
   user_id: Integer[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

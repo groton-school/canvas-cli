@@ -2,13 +2,14 @@ import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../../../Client.js';
 import { Course } from '../../../../../../Resources/Courses.js';
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * When set, only return courses that are not configured as blueprint
    * courses.
    */
   exclude_blueprint_courses: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options =
   | {

@@ -7,10 +7,10 @@ export type fetching_latest_quiz_statisticsPathParameters = {
   quiz_id: string;
 };
 
-export type fetching_latest_quiz_statisticsSearchParameters = {
+export type fetching_latest_quiz_statisticsSearchParameters = Partial<{
   /** Whether the statistics report should include all submissions attempts. */
   all_versions: boolean;
-};
+}>;
 
 type Options = {
   pathParams: fetching_latest_quiz_statisticsPathParameters;

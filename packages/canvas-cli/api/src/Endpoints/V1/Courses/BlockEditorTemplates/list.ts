@@ -7,7 +7,7 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** Sort results by this field. */
   sort: string;
   /** The sorting order. Defaults to 'asc'. */
@@ -21,7 +21,8 @@ export type listSearchParameters = {
   type: string[];
   /** No description */
   include: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

@@ -7,13 +7,14 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Defaults to false. If true, lists keys inherited from Site Admin (and
    * consortium parent account, if applicable).
    */
   inherited: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

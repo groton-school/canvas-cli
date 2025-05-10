@@ -1,6 +1,6 @@
 import { client } from '../../../Client.js';
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** Defaults to "reservable" */
   scope: string;
   /** Array of context codes used to limit returned results. */
@@ -17,7 +17,7 @@ export type listSearchParameters = {
    * all context codes associated with this appointment group
    */
   include: string[];
-};
+}>;
 
 type Options =
   | {

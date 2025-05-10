@@ -6,7 +6,7 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** If specified only Line Items with this tag will be included. */
   tag: string;
   /** If specified only Line Items with this resource_id will be included. */
@@ -25,7 +25,7 @@ export type listSearchParameters = {
    * "https://canvas.instructure.com/lti/launch_url" extension
    */
   include: string[];
-};
+}>;
 
 type Options = {
   pathParams: listPathParameters;

@@ -5,7 +5,7 @@ export type listPathParameters = {
   group_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * - "course_subject_tabs": Optional flag to return the tabs associated with a
    *   canvas_for_elementary subject course's home page instead of the typical
@@ -13,7 +13,7 @@ export type listSearchParameters = {
    *   context in a canvas_for_elementary-enabled account or sub-account.
    */
   include: string[];
-};
+}>;
 
 type Options = {
   pathParams: listPathParameters;

@@ -2,7 +2,7 @@ import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
 import { MediaObject } from '../../../Resources/MediaObjects.js';
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Field to sort on. Default is "title"
    *
@@ -21,7 +21,8 @@ export type listSearchParameters = {
    * kaltura for media_tracks
    */
   exclude: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options =
   | {

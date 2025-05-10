@@ -8,7 +8,7 @@ export type remove_account_adminPathParameters = {
   user_id: string;
 };
 
-export type remove_account_adminSearchParameters = {
+export type remove_account_adminSearchParameters = Partial<{
   /** [DEPRECATED] Account role to remove from the user. */
   role: string;
   /**
@@ -18,7 +18,7 @@ export type remove_account_adminSearchParameters = {
    * Format: 'int64'
    */
   role_id: number;
-};
+}>;
 
 type Options = {
   pathParams: remove_account_adminPathParameters;

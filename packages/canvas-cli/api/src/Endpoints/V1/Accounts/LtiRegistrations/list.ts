@@ -6,7 +6,7 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * The number of registrations to return per page. Defaults to 15.
    *
@@ -38,7 +38,7 @@ export type listSearchParameters = {
    * overlay
    */
   include: string[];
-};
+}>;
 
 type Options = {
   pathParams: listPathParameters;

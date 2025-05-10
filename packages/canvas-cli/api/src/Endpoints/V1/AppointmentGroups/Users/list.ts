@@ -5,10 +5,10 @@ export type listPathParameters = {
   id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** Limits results to the a given participation status, defaults to "all" */
   registration_status: string;
-};
+}>;
 
 type Options = {
   pathParams: listPathParameters;

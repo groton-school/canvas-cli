@@ -7,7 +7,7 @@ export type listPathParameters = {
   group_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * If "all_dates" is passed, all dates associated with graded discussions'
    * assignments will be included. if "sections" is passed, includes the
@@ -47,7 +47,8 @@ export type listSearchParameters = {
    * Defaults to false.
    */
   exclude_context_module_locked_topics: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

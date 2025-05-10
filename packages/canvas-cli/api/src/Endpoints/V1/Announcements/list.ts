@@ -3,7 +3,7 @@ import { client } from '../../../Client.js';
 import { array } from '../../../Overrides.js';
 import { DiscussionTopic } from '../../../Resources/DiscussionTopics.js';
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * List of context_codes to retrieve announcements for (for example,
    * +course_123+). Only courses are presently supported. The call will fail
@@ -63,7 +63,8 @@ export type listSearchParameters = {
    * course) that the topic applies to.
    */
   include: array;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options =
   | {

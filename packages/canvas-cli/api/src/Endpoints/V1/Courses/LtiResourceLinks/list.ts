@@ -7,7 +7,7 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Include deleted resource links and links associated with deleted content
    * in response. Default is false.
@@ -19,7 +19,8 @@ export type listSearchParameters = {
    * Format: 'int64'
    */
   per_page: number;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

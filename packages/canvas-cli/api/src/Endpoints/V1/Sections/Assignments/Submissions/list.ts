@@ -9,7 +9,7 @@ export type listPathParameters = {
   assignment_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Associations to include with the group. "group" will add group_id and
    * group_name.
@@ -17,7 +17,8 @@ export type listSearchParameters = {
   include: string[];
   /** If this argument is true, the response will be grouped by student groups. */
   grouped: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

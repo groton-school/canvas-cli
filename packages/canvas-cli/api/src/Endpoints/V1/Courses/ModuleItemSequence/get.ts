@@ -6,7 +6,7 @@ export type getPathParameters = {
   course_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * The type of asset to find module sequence information for. Use the
    * ModuleItem if it is known (e.g., the user navigated from a module item),
@@ -20,7 +20,7 @@ export type getSearchParameters = {
    * Format: 'int64'
    */
   asset_id: number;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

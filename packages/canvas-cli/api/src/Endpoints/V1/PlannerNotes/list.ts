@@ -2,7 +2,7 @@ import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
 import { PlannerNote } from '../../../Resources/Planner.js';
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Only return notes with todo dates since the start_date (inclusive). No
    * default. The value should be formatted as: yyyy-mm-dd or ISO 8601
@@ -29,7 +29,8 @@ export type listSearchParameters = {
    * associated with any particular course.
    */
   context_codes: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options =
   | {

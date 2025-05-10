@@ -7,7 +7,7 @@ export type listPathParameters = {
   user_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * - "needs_grading_count": Optional information to include with each Course.
    *   When needs_grading_count is given, and the current user has grading
@@ -112,7 +112,8 @@ export type listSearchParameters = {
   homeroom: boolean;
   /** If set, only include courses associated with this account */
   account_id: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

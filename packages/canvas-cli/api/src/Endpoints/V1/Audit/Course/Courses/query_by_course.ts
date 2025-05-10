@@ -7,7 +7,7 @@ export type query_by_coursePathParameters = {
   course_id: string;
 };
 
-export type query_by_courseSearchParameters = {
+export type query_by_courseSearchParameters = Partial<{
   /**
    * The beginning of the time range from which you want events.
    *
@@ -20,7 +20,8 @@ export type query_by_courseSearchParameters = {
    * Format: date-time
    */
   end_time: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: query_by_coursePathParameters;

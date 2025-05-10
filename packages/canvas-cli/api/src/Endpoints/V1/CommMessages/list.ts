@@ -2,7 +2,7 @@ import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
 import { CommMessage } from '../../../Resources/CommMessages.js';
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** The user id for whom you want to retrieve CommMessages */
   user_id: string;
   /**
@@ -19,7 +19,8 @@ export type listSearchParameters = {
    * Format: date-time
    */
   end_time: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options =
   | {

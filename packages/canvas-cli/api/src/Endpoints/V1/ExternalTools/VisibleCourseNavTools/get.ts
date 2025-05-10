@@ -1,12 +1,12 @@
 import { client } from '../../../../Client.js';
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * List of context_codes to retrieve visible course nav tools for (for
    * example, +course_123+). Only courses are presently supported.
    */
   context_codes: string[];
-};
+}>;
 
 type Options =
   | {

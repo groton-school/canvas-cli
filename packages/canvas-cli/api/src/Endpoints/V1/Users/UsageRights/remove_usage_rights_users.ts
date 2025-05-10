@@ -5,7 +5,7 @@ export type remove_usage_rights_usersPathParameters = {
   user_id: string;
 };
 
-export type remove_usage_rights_usersSearchParameters = {
+export type remove_usage_rights_usersSearchParameters = Partial<{
   /** List of ids of files to remove associated usage rights from. */
   file_ids: string[];
   /**
@@ -13,7 +13,7 @@ export type remove_usage_rights_usersSearchParameters = {
    * these folders.
    */
   folder_ids: string[];
-};
+}>;
 
 type Options = {
   pathParams: remove_usage_rights_usersPathParameters;

@@ -8,7 +8,7 @@ export type show_line_itemPathParameters = {
   id: string;
 };
 
-export type show_line_itemSearchParameters = {
+export type show_line_itemSearchParameters = Partial<{
   /**
    * Array of additional information to include.
    *
@@ -16,7 +16,7 @@ export type show_line_itemSearchParameters = {
    * "https://canvas.instructure.com/lti/launch_url" extension
    */
   include: string[];
-};
+}>;
 
 type Options = {
   pathParams: show_line_itemPathParameters;

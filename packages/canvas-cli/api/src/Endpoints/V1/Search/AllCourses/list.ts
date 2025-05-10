@@ -1,6 +1,6 @@
 import { client } from '../../../../Client.js';
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Search terms used for matching users/courses/groups (e.g. "bob smith").
    * If multiple terms are given (separated via whitespace), only results
@@ -11,7 +11,7 @@ export type listSearchParameters = {
   public_only: boolean;
   /** Only return courses that allow self enrollment. Defaults to false. */
   open_enrollment_only: boolean;
-};
+}>;
 
 type Options =
   | {

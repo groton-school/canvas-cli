@@ -7,7 +7,7 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * When included, searches all descendent accounts of provided account for
    * the term. Returns matching results. Term must be at least 2 characters.
@@ -19,7 +19,8 @@ export type listSearchParameters = {
    * Can be combined with a search term.
    */
   filter: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

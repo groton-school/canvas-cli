@@ -5,7 +5,7 @@ export type getPathParameters = {
   course_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * If specified, only the users whose ids are given will be included in the
    * results. SIS ids can be used, prefixed by "sis_user_id:". It is an error
@@ -36,7 +36,7 @@ export type getSearchParameters = {
    * student rollup scores will be included
    */
   include_hidden: boolean;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

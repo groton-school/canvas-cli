@@ -7,12 +7,13 @@ export type batch_retrieve_overrides_in_coursePathParameters = {
   course_id: string;
 };
 
-export type batch_retrieve_overrides_in_courseSearchParameters = {
+export type batch_retrieve_overrides_in_courseSearchParameters = Partial<{
   /** Ids of overrides to retrieve */
   'assignment_overrides[id]': string[];
   /** Ids of assignments for each override */
   'assignment_overrides[assignment_id]': string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: batch_retrieve_overrides_in_coursePathParameters;

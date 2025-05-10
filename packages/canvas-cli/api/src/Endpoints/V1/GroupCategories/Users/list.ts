@@ -7,7 +7,7 @@ export type listPathParameters = {
   group_category_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * The partial name or full ID of the users to match and return in the
    * results list. Must be at least 3 characters.
@@ -18,7 +18,8 @@ export type listSearchParameters = {
    * group category.
    */
   unassigned: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

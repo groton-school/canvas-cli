@@ -2,7 +2,7 @@ import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../Client.js';
 import { CalendarEvent } from '../../../Resources/CalendarEvents.js';
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /** Defaults to "event" */
   type: string;
   /**
@@ -62,7 +62,8 @@ export type listSearchParameters = {
    * will be returned.
    */
   blackout_date: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options =
   | {

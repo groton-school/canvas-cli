@@ -7,14 +7,15 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /** Associations to include with the group */
   include: string[];
   /** Returns submissions for only currently active enrollments */
   only_current_enrollments: boolean;
   /** Returns submissions for only published assignments */
   only_published_assignments: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: getPathParameters;

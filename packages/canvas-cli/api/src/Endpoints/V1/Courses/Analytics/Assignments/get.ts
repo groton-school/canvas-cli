@@ -5,7 +5,7 @@ export type getPathParameters = {
   course_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * If async is true, then the course_assignments call can happen asynch-
    * ronously and MAY return a response containing a progress_url key instead
@@ -15,7 +15,7 @@ export type getSearchParameters = {
    * be passed back normally, as documented in the example response.
    */
   async: boolean;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

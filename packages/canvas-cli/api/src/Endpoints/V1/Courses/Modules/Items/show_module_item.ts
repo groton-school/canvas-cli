@@ -10,7 +10,7 @@ export type show_module_itemPathParameters = {
   id: string;
 };
 
-export type show_module_itemSearchParameters = {
+export type show_module_itemSearchParameters = Partial<{
   /**
    * If included, will return additional details specific to the content
    * associated with this item. Refer to the {api:Modules:Module%20Item Module
@@ -20,7 +20,7 @@ export type show_module_itemSearchParameters = {
   include: string[];
   /** Returns module completion information for the student with this id. */
   student_id: string;
-};
+}>;
 
 type Options = {
   pathParams: show_module_itemPathParameters;

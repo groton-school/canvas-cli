@@ -8,7 +8,7 @@ export type deactivate_rolePathParameters = {
   id: string;
 };
 
-export type deactivate_roleSearchParameters = {
+export type deactivate_roleSearchParameters = Partial<{
   /**
    * The unique identifier for the role
    *
@@ -17,7 +17,7 @@ export type deactivate_roleSearchParameters = {
   role_id: number;
   /** The name for the role */
   role: string;
-};
+}>;
 
 type Options = {
   pathParams: deactivate_rolePathParameters;

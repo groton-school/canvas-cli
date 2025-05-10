@@ -7,13 +7,13 @@ export type submission_summary_sectionsPathParameters = {
   assignment_id: string;
 };
 
-export type submission_summary_sectionsSearchParameters = {
+export type submission_summary_sectionsSearchParameters = Partial<{
   /**
    * If this argument is true, the response will take into account student
    * groups.
    */
   grouped: boolean;
-};
+}>;
 
 type Options = {
   pathParams: submission_summary_sectionsPathParameters;

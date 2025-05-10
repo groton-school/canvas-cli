@@ -5,10 +5,10 @@ export type getPathParameters = {
   quiz_submission_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /** Associations to include with the quiz submission question. */
   include: string[];
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

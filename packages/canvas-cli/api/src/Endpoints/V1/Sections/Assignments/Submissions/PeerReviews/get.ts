@@ -11,10 +11,11 @@ export type getPathParameters = {
   submission_id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /** Associations to include with the peer review. */
   include: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: getPathParameters;

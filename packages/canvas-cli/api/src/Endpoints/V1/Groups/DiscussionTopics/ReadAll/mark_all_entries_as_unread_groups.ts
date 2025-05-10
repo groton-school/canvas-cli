@@ -7,13 +7,13 @@ export type mark_all_entries_as_unread_groupsPathParameters = {
   topic_id: string;
 };
 
-export type mark_all_entries_as_unread_groupsSearchParameters = {
+export type mark_all_entries_as_unread_groupsSearchParameters = Partial<{
   /**
    * A boolean value to set all of the entries' forced_read_state. No change
    * is made if this argument is not specified.
    */
   forced_read_state: boolean;
-};
+}>;
 
 type Options = {
   pathParams: mark_all_entries_as_unread_groupsPathParameters;

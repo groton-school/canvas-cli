@@ -5,7 +5,7 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * The id of the submission the file is associated with. Provide this
    * argument to gain access to a file that has been submitted to an
@@ -15,7 +15,7 @@ export type getSearchParameters = {
    * Format: 'int64'
    */
   submission_id: number;
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;

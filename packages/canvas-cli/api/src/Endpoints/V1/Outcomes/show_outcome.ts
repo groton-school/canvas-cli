@@ -6,14 +6,14 @@ export type show_outcomePathParameters = {
   id: string;
 };
 
-export type show_outcomeSearchParameters = {
+export type show_outcomeSearchParameters = Partial<{
   /**
    * If defaults are requested, then color and mastery level defaults will be
    * added to outcome ratings in the result. This will only take effect if the
    * Account Level Mastery Scales FF is DISABLED
    */
   add_defaults: boolean;
-};
+}>;
 
 type Options = {
   pathParams: show_outcomePathParameters;

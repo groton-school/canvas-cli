@@ -8,10 +8,10 @@ export type show_revision_courses_latestPathParameters = {
   url_or_id: string;
 };
 
-export type show_revision_courses_latestSearchParameters = {
+export type show_revision_courses_latestSearchParameters = Partial<{
   /** If set, exclude page content from results */
   summary: boolean;
-};
+}>;
 
 type Options = {
   pathParams: show_revision_courses_latestPathParameters;

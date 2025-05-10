@@ -5,7 +5,7 @@ export type listPathParameters = {
   user_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Only return items starting from the given date. The value should be
    * formatted as: yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.
@@ -37,7 +37,7 @@ export type listSearchParameters = {
   observed_user_id: string;
   /** Only return items that have new or unread activity */
   filter: string;
-};
+}>;
 
 type Options = {
   pathParams: listPathParameters;

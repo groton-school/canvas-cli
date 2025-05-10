@@ -7,7 +7,7 @@ export type search_course_contentPathParameters = {
   course_id: string;
 };
 
-export type search_course_contentSearchParameters = {
+export type search_course_contentSearchParameters = Partial<{
   /** The search query */
   q: string;
   /**
@@ -16,7 +16,8 @@ export type search_course_contentSearchParameters = {
    * +discussion_topics+.
    */
   filter: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: search_course_contentPathParameters;

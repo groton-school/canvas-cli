@@ -7,7 +7,7 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * - "items": Return module items inline if possible. This parameter suggests
    *   that Canvas return module items directly in the Module object JSON, to
@@ -29,7 +29,8 @@ export type listSearchParameters = {
   search_term: string;
   /** Returns module completion information for the student with this id. */
   student_id: string;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

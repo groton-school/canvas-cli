@@ -2,10 +2,11 @@ import { Paginated } from '@groton/canvas-cli.client';
 import { client } from '../../../../Client.js';
 import { CalendarEvent } from '../../../../Resources/CalendarEvents.js';
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /** List of ids of appointment groups to search. */
   appointment_group_ids: string[];
-} & Paginated;
+}> &
+  Paginated;
 
 type Options =
   | {

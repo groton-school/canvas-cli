@@ -7,7 +7,7 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = {
+export type listSearchParameters = Partial<{
   /**
    * Filter by role state. If this argument is omitted, only 'active' roles
    * are returned.
@@ -18,7 +18,8 @@ export type listSearchParameters = {
    * be included.
    */
   show_inherited: boolean;
-} & Paginated;
+}> &
+  Paginated;
 
 type Options = {
   pathParams: listPathParameters;

@@ -5,7 +5,7 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = {
+export type getSearchParameters = Partial<{
   /**
    * Array of additional information to include. See include[] argument of
    * "List appointment groups" action.
@@ -15,7 +15,7 @@ export type getSearchParameters = {
    * associated with this appointment group
    */
   include: string[];
-};
+}>;
 
 type Options = {
   pathParams: getPathParameters;
