@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.4](https://github.com/groton-school/canvas-cli/compare/api/0.0.3...api/0.0.4) (2025-05-10)
+
+
+### Features
+
+* updated API spec to current as of 2025-05-10 ([b3562bc](https://github.com/groton-school/canvas-cli/commit/b3562bcad7fe4ce6e02c153852d8bfc82e4ce060))
+
 ## [0.0.3](https://github.com/groton-school/canvas-cli/compare/api/0.0.2...api/0.0.3) (2025-05-10)
 
 
