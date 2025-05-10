@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.1](https://github.com/groton-school/canvas-cli/compare/utilities/0.1.0...utilities/0.1.1) (2025-05-10)
+
+
+### Bug Fixes
+
+* **canvas-cli.utilities:** only add values to query string once ([899590b](https://github.com/groton-school/canvas-cli/commit/899590bd6e37f69f8202d56c2c6391e10c8725aa))
+
 ## [0.1.0](https://github.com/groton-school/canvas-cli/compare/utilities/0.0.1...utilities/0.1.0) (2025-05-10)
 
 
