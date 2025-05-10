@@ -61,7 +61,8 @@ export type createFormParameters = {
   'account_navigation[selection_height]': string;
   /**
    * The layout type to use when launching the tool. Must be "full_width",
-   * "full_width_in_context", "in_nav_context", "borderless", or "default"
+   * "full_width_in_context", "full_width_with_nav", "in_nav_context",
+   * "borderless", or "default"
    */
   'account_navigation[display_type]': string;
   /** The url of the external tool for user navigation */
@@ -112,7 +113,8 @@ export type createFormParameters = {
   'course_navigation[default]': string;
   /**
    * The layout type to use when launching the tool. Must be "full_width",
-   * "full_width_in_context", "in_nav_context", "borderless", or "default"
+   * "full_width_in_context", "full_width_with_nav", "in_nav_context",
+   * "borderless", or "default"
    */
   'course_navigation[display_type]': string;
   /** The url of the external tool */

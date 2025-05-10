@@ -257,8 +257,7 @@ export type updateFormParameters = {
   /**
    * Enable or disable Course Pacing for the course. This setting only has an
    * effect when the Course Pacing feature flag is enabled for the
-   * sub-account. Otherwise, Course Pacing are always disabled. Note: Course
-   * Pacing is in active development.
+   * sub-account. Otherwise, Course Pacing are always disabled.
    */
   'course[enable_course_paces]': boolean;
   /**

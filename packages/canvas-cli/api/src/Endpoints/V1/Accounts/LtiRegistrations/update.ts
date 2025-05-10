@@ -13,6 +13,8 @@ export type updateFormParameters = {
   name: string;
   /** The admin-configured friendly display name for the registration */
   admin_nickname: string;
+  /** A description of the tool. Cannot exceed 2048 bytes. */
+  description: string;
   /**
    * [Lti::ToolConfiguration | Lti::LegacyConfiguration] The LTI 1.3
    * configuration for the tool. Note that updating the base tool

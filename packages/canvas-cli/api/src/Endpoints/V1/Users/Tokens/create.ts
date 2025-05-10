@@ -14,7 +14,11 @@ export type createFormParameters = {
    * Format: date-time
    */
   'token[expires_at]': string;
-  /** The scopes to associate with the token. */
+  /**
+   * The scopes to associate with the token. Ignored if the default developer
+   * key does not have the "enable scopes" option enabled. In such cases, the
+   * token will inherit the user's permissions instead.
+   */
   'token[scopes]': string[];
 };
 

@@ -45,7 +45,11 @@
     },
     { "type": "gradesGrades", "filePath": "Overrides.ts" },
     { "type": "SerializedHash", "filePath": "Overrides.ts" },
-    { "type": "GroupMembershipProgress", "filePath": "Overrides.ts" }
+    { "type": "GroupMembershipProgress", "filePath": "Overrides.ts" },
+    {
+      "type": "GroupMembershiporaJSONresponsedetailingpartialfailuresifsomemembershipscouldnotbecreated",
+      "filePath": "Overrides.ts"
+    }
   ],
   "tsTypes": {
     "Positive Integer": { "type": "number" },

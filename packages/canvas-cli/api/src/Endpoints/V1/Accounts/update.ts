@@ -153,6 +153,8 @@ export type updateFormParameters = {
    * enable_as_k5_account is true.
    */
   'account[settings][use_classic_font_in_k5][value]': boolean;
+  /** Enable or disable Canvas Career for this account */
+  'account[settings][horizon_account][value]': boolean;
   /**
    * Default is true. If false, any fields containing “sticky” changes will
    * not be updated. See SIS CSV Format documentation for information on which

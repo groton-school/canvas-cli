@@ -21,7 +21,8 @@ type Options = {
 /**
  * Disable summary
  *
- * Disables the summary for a discussion topic.
+ * Deprecated, to remove after VICE-5047 gets merged Disables the summary for a
+ * discussion topic.
  *
  * Nickname: disable_summary_courses
  */

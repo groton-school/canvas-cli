@@ -74,3 +74,5 @@ export type GroupMembershipProgress =
       workflow_state: string;
       url: URLString;
     };
+export type GroupMembershiporaJSONresponsedetailingpartialfailuresifsomemembershipscouldnotbecreated =
+  GroupMembership | JSONObject;

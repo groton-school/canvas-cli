@@ -118,6 +118,8 @@ export type StimulusItem = {
   source_url: string;
   /** Where the stimulus appears relative to questions ('top' or 'left') */
   orientation: string;
+  /** If the stimulus is treated as a passage (text - no question block) */
+  passage: boolean;
 };
 
 export type BankEntryItem = {

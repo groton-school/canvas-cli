@@ -7,12 +7,17 @@ export type createPathParameters = {
 };
 
 export type createFormParameters = {
-  /** The name of the tool */
+  /**
+   * The name of the tool. If one isn't provided, it will be inferred from the
+   * configuration's title.
+   */
   name: string;
   /** A friendly nickname set by admins to override the tool name */
   admin_nickname: string;
   /** The vendor of the tool */
   vendor: string;
+  /** A description of the tool. Cannot exceed 2048 bytes. */
+  description: string;
   /**
    * [Required, Lti::ToolConfiguration | Lti::LegacyConfiguration] The LTI 1.3
    * configuration for the tool

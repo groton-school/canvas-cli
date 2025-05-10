@@ -1,7 +1,7 @@
 import { client } from '../../../../Client.js';
 import { Rubric } from '../../../../Resources/Rubrics.js';
 
-export type delete_single_rubricPathParameters = {
+export type delete_singlePathParameters = {
   /** ID */
   course_id: string;
   /** ID */
@@ -9,7 +9,7 @@ export type delete_single_rubricPathParameters = {
 };
 
 type Options = {
-  pathParams: delete_single_rubricPathParameters;
+  pathParams: delete_singlePathParameters;
 } & (
   | {
       strict?: false;
@@ -20,13 +20,13 @@ type Options = {
 );
 
 /**
- * Delete a single rubric
+ * Delete a single
  *
  * Deletes a Rubric and removes all RubricAssociations.
  *
- * Nickname: delete_single_rubric
+ * Nickname: delete_single
  */
-export async function delete_single_rubric(options: Options) {
+export async function delete_single(options: Options) {
   return await client().fetchAs<Rubric>(
     `/api/v1/courses/{course_id}/rubrics/{id}`,
     {
