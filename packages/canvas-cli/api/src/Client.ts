@@ -1,5 +1,7 @@
 import * as Canvas from '@groton/canvas-cli.client';
 
+// TODO redesign api Client to be extensible for both Node and web
+
 let _client: Canvas.Client | undefined = undefined;
 
 export function init(...args: ConstructorParameters<typeof Canvas.Client>) {
