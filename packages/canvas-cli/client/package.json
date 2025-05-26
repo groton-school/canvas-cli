@@ -22,6 +22,8 @@
     "release": "commit-and-tag-version"
   },
   "dependencies": {
+    "@battis/qui-cli.colors": "^2.0.1",
+    "@battis/qui-cli.log": "^2.1.0",
     "@groton/canvas-cli.utilities": "workspace:*",
     "@oauth2-cli/canvas": "workspace:*",
     "node-fetch": "^3.3.2",

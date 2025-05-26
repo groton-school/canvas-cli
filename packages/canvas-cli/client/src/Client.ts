@@ -1,5 +1,7 @@
 import { Canvas } from '@oauth2-cli/canvas';
 // TODO replace node-fetch dependency with native fetch when bumping to node@>=21
+import { Colors } from '@battis/qui-cli.colors';
+import { Log } from '@battis/qui-cli.log';
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import { isError, stringify } from '@groton/canvas-cli.utilities';
 import nodeFetch, { RequestInfo, RequestInit } from 'node-fetch';
@@ -60,6 +62,11 @@ export class Client extends Canvas {
     }
     if (params) {
       init.body = stringify(params);
+      if (!init.headers) {
+        init.headers = [];
+      }
+      // @ts-expect-error 7053
+      init.headers['Content-Type'] = 'application/x-www-form-urlencoded';
     }
     if (searchParams) {
       nextEndpoint = `${nextEndpoint}${nextEndpoint.includes('?') ? '&' : '?'}${stringify(searchParams)}`;
@@ -71,6 +78,9 @@ export class Client extends Canvas {
       );
       if (response.ok) {
         const page = (await response.json()) as T;
+        Log.debug(
+          `${Colors.command(`${Colors.keyword(init.method || 'GET')} ${nextEndpoint}`)}${result ? '' : init.body && typeof init.body === 'object' ? `\n${Log.syntaxColor(init.body)}` : ''}\n\n${Log.syntaxColor(page as object)}`
+        );
         if (isError(page)) {
           throw new Error(
             `Error: ${JSON.stringify({ endpoint, init, response, error: page })}`
@@ -91,19 +101,20 @@ export class Client extends Canvas {
           result = page;
         }
       } else {
-        throw new Error(
-          JSON.stringify(
-            {
-              url: response.url,
-              status: response.status,
-              statusText: response.statusText,
-              headers: response.headers,
-              response: response.text()
-            },
-            null,
-            2
-          )
+        const details = {
+          url: response.url,
+          body: result ? undefined : init.body,
+          status: response.status,
+          statusText: response.statusText,
+          headers: response.headers,
+          response: response.text()
+        };
+        Log.error(
+          `${Colors.command(`${Colors.keyword(init.method || 'GET')} ${nextEndpoint}`)}\n${Log.syntaxColor(
+            details
+          )}`
         );
+        throw new Error(JSON.stringify(details, null, 2));
       }
     } while (Array.isArray(result) && nextEndpoint);
 
