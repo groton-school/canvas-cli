@@ -1,7 +1,7 @@
 import { Colors } from '@battis/qui-cli.colors';
-import '@battis/qui-cli.env';
 import * as Plugin from '@battis/qui-cli.plugin';
 import * as Canvas from '@groton/canvas-cli.api';
+import * as GrotonColors from '@groton/colors';
 import path from 'node:path';
 import ora from 'ora';
 
@@ -59,46 +59,86 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
 
 export async function run() {
   if (!account_id) {
-    throw new Error(`account_id must be defined`);
+    throw new Error(`accountId must be defined`);
+  }
+  if (!term_id) {
+    throw new Error(`termId must be defined`);
   }
 
-  const colors = {
-    RD: '#ad4928',
-    OR: '#ea6a32',
-    YE: '#ffd91c',
-    GR: '#3d8028',
-    LB: '#4898dc',
-    DB: '#386ea5',
-    PR: '#834692'
-  };
+  const colors = Object.keys(GrotonColors)
+    .filter((key) => key.length === 2)
+    .reduce(
+      (colors, key) => {
+        colors[key] = GrotonColors[key as keyof typeof GrotonColors];
+        return colors;
+      },
+      {} as Record<string, string>
+    );
+
+  const colorCache: Record<
+    Canvas.Enrollments.Enrollment['sis_section_id'],
+    Canvas.v1.Users.Colors.updateFormParameters['hexcode']
+  > = {};
+
+  function blockFrom(course?: Canvas.Courses.Course) {
+    let block: string | undefined = undefined;
+    const blockMatches =
+      course && /\(([A-Z]{1,2})[^)]*\)$/.exec(course.course_code);
+    if (blockMatches && blockMatches.length >= 2) {
+      block = blockMatches[1];
+    }
+    return block;
+  }
+
   const per_page = 100;
-  for (const course of await Canvas.v1.Accounts.Courses.list({
+  const courses = await await Canvas.v1.Accounts.Courses.list({
     pathParams: { account_id },
     searchParams: { enrollment_term_id: term_id, per_page }
-  })) {
+  });
+
+  function colorOf(enrollment: Canvas.Enrollments.Enrollment) {
+    const course = courses.find(
+      (course) => course.sis_course_id === enrollment.sis_section_id
+    );
+    if (course) {
+      if (!(course.sis_course_id in colorCache)) {
+        const block = blockFrom(course);
+        if (block && block in colors) {
+          colorCache[course.sis_course_id] = colors[block];
+        }
+      }
+      return colorCache[course.sis_course_id];
+    }
+    return undefined;
+  }
+
+  for (const course of courses) {
     const spinner = ora(course.name).start();
     let applied = 0;
-    const blockMatches = /\(([A-Z]{1,2})\s*[^)]*\)$/.exec(course.name);
-    if (blockMatches && blockMatches.length >= 2) {
-      const block = blockMatches[1];
-      if (block in colors) {
-        const asset_string = `course_${course.id}`;
-        for (const enrollment of await Canvas.v1.Courses.Enrollments.list({
-          pathParams: { course_id: course.id.toString() },
-          searchParams: { per_page }
-        })) {
-          Canvas.v1.Users.Colors.update({
-            pathParams: { id: enrollment.user_id.toString(), asset_string },
-            params: { hexcode: colors[block as keyof typeof colors] }
+    const block = blockFrom(course);
+    if (block && block in colors) {
+      for (const enrollment of await Canvas.v1.Courses.Enrollments.list({
+        pathParams: { course_id: course.id.toString() },
+        searchParams: { per_page }
+      })) {
+        const hexcode = colorOf(enrollment);
+        if (hexcode) {
+          await Canvas.v1.Users.Colors.update({
+            pathParams: {
+              id: enrollment.user_id.toString(),
+              asset_string: `course_${course.id}`
+            },
+            params: { hexcode }
           });
           applied++;
         }
       }
-    }
-    if (applied > 0) {
-      spinner.succeed(
-        `${applied} users in ${course.name} ${Colors.url(`${Canvas.client().instance_url}/courses/${course.id}`)}`
-      );
+
+      if (applied > 0) {
+        spinner.succeed(
+          `${applied} users updated in ${course.name} ${Colors.url(`${Canvas.client().instance_url}/courses/${course.id}`)}`
+        );
+      }
     } else {
       spinner.fail(course.name);
     }
