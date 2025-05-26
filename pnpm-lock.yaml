@@ -88,8 +88,8 @@ importers:
         specifier: workspace:*
         version: link:../api
       '@groton/colors':
-        specifier: ^0.1.1
-        version: 0.1.1
+        specifier: ^0.1.2
+        version: 0.1.2
       '@inquirer/prompts':
         specifier: ^7.5.3
         version: 7.5.3(@types/node@22.15.21)
@@ -139,6 +139,12 @@ importers:
 
   packages/canvas-cli/client:
     dependencies:
+      '@battis/qui-cli.colors':
+        specifier: ^2.0.1
+        version: 2.0.1(@battis/qui-cli.plugin@2.3.1)
+      '@battis/qui-cli.log':
+        specifier: ^2.1.0
+        version: 2.1.0(@battis/qui-cli.colors@2.0.1(@battis/qui-cli.plugin@2.3.1))(@battis/qui-cli.plugin@2.3.1)(@battis/qui-cli.root@2.0.2(@battis/qui-cli.plugin@2.3.1))
       '@groton/canvas-cli.utilities':
         specifier: workspace:*
         version: link:../utilities
@@ -835,8 +841,8 @@ packages:
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
 
-  '@groton/colors@0.1.1':
-    resolution: {integrity: sha512-eeg35bqkQAyGPMRIDwim37kJgms+lM1LJHqN4PKJHeRdp611WkkMtx8BW/POomN63G5OVffOpLuT5tb+97pmdQ==}
+  '@groton/colors@0.1.2':
+    resolution: {integrity: sha512-m/hY7IhW4UymYBe3eUu3GKkqOvSeJFkuE3BQqwZPexeXc+1M2Lv4MkSfL0a/EbwERDDysBW4oKX+CxlFqgUE4w==}
 
   '@gwhitney/detect-indent@7.0.1':
     resolution: {integrity: sha512-7bQW+gkKa2kKZPeJf6+c6gFK9ARxQfn+FKy9ScTBppyKRWH2KzsmweXUoklqeEiHiNVWaeP5csIdsNq6w7QhzA==}
@@ -5716,7 +5722,7 @@ snapshots:
     dependencies:
       graphql: 16.11.0
 
-  '@groton/colors@0.1.1': {}
+  '@groton/colors@0.1.2': {}
 
   '@gwhitney/detect-indent@7.0.1': {}
 

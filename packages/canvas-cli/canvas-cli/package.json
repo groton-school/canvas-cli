@@ -29,7 +29,7 @@
     "@battis/qui-cli.root": "^2.0.2",
     "@battis/qui-cli.structured": "^0.1.1",
     "@groton/canvas-cli.api": "workspace:*",
-    "@groton/colors": "^0.1.1",
+    "@groton/colors": "^0.1.2",
     "@inquirer/prompts": "^7.5.3",
     "@oauth2-cli/canvas": "workspace:*",
     "csv-parse": "^5.6.0",
