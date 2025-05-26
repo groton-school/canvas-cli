@@ -26,11 +26,9 @@ export function flatten(
     }
   } else if (key) {
     result.push(
-      `${key}=${
-        typeof value === 'string'
-          ? value
-          : encodeURIComponent(JSON.stringify(value))
-      }`
+      `${key}=${encodeURIComponent(
+        typeof value === 'string' ? value : JSON.stringify(value)
+      )}`
     );
   } else {
     throw new Error(`key undefined`);
