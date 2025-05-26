@@ -1,5 +1,6 @@
 import { Colors } from '@battis/qui-cli.colors';
-import '@battis/qui-cli.env';
+import { Env } from '@battis/qui-cli.env';
+import '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import { Root } from '@battis/qui-cli.root';
 import * as Canvas from '@groton/canvas-cli.api';
@@ -16,7 +17,7 @@ export type Configuration = Plugin.Configuration & {
 export const name = '@groton/canvas-cli.api-plugin';
 export const src = import.meta.dirname;
 
-let instanceUrl: string | undefined = process.env.CANVAS_INSTANCE_URL;
+let instanceUrl: string | undefined = undefined;
 let clientId: string | undefined = undefined;
 let clientSecret: string | undefined = undefined;
 let redirectUri: string | undefined = undefined;
@@ -32,11 +33,13 @@ export function configure(config: Configuration = {}) {
 }
 
 export function options(): Plugin.Options {
+  // FIXME manually calling Env.configure() is usually unnecessary
+  Env.configure({});
   return {
     opt: {
       instanceUrl: {
         description: `Required, Canvas Instance URL. (default: environment variable ${Colors.value('CANVAS_INSTANCE_URL')}, current value is ${Colors.quotedValue(`"${instanceUrl || 'undefined'}"`)})`,
-        default: instanceUrl
+        default: instanceUrl || process.env.CANVAS_INSTANCE_URL
       },
       clientId: {
         description: `Required, Canvas developer key ID. (default: environment variable ${Colors.value('CANVAS_CLIENT_ID')})`,
@@ -48,7 +51,7 @@ export function options(): Plugin.Options {
       },
       redirectUri: {
         description: `Required, redirect URI registered with Canvas developer key. Must be a localhost url. (default: environment variable ${Colors.value('CANVAS_REDIRECT_URI')})`,
-        default: redirectUri || process.env.CANVAS_REDIRECT_URI
+        default: (redirectUri = process.env.CANVAS_REDIRECT_URI)
       },
       tokenStorage: {
         description: `Optional, path to token storage files. (default: environemnt variable ${Colors.value('CANVAS_TOKEN_STORAGE')}, current value is ${Colors.quotedValue(`"${tokenStorage || 'undefined'}"`)})`,
@@ -75,7 +78,7 @@ export async function run() {
   if (!redirectUri) {
     throw new Error(`${Colors.value('redirectUri')} must be defined`);
   }
-  
+
   Canvas.init({
     instance_url: instanceUrl,
     client_id: clientId,
