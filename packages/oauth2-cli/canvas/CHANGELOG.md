@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.1](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/0.2.1...oauth2-cli/0.3.1) (2025-05-31)
+
+
+### Bug Fixes
+
+* bumping version to suppress bad 0.3.0 release ([8fdba8c](https://github.com/groton-school/canvas-cli/commit/8fdba8c26c1b913308d6de2937788b9d4d4ee8fa))
+
 ## [0.2.1](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/0.2.0...oauth2-cli/0.2.1) (2025-04-18)
 
 
