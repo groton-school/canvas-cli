@@ -1,4 +1,5 @@
 import { client } from '../../../../Client.js';
+import { PlannerItem } from '../../../../Overrides.js';
 
 export type listSearchParameters = Partial<{
   /**
@@ -57,7 +58,7 @@ type Options =
  * Nickname: list_planner_items_planner
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/planner/items`, {
+  return await client().fetchAs<PlannerItem[]>(`/api/v1/planner/items`, {
     method: 'GET',
     ...options
   });

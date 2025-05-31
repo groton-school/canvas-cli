@@ -1,4 +1,5 @@
 import { client } from '../../../../../Client.js';
+import { PlannerItem } from '../../../../../Overrides.js';
 
 export type listPathParameters = {
   /** ID */
@@ -65,8 +66,11 @@ type Options = {
  * Nickname: list_planner_items_users
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/users/{user_id}/planner/items`, {
-    method: 'GET',
-    ...options
-  });
+  return await client().fetchAs<PlannerItem[]>(
+    `/api/v1/users/{user_id}/planner/items`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
 }

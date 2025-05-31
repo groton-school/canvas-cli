@@ -49,6 +49,10 @@
     {
       "type": "GroupMembershiporaJSONresponsedetailingpartialfailuresifsomemembershipscouldnotbecreated",
       "filePath": "Overrides.ts"
+    },
+    {
+      "type": "PlannerItem",
+      "filePath": "Overrides.ts"
     }
   ],
   "tsTypes": {
@@ -255,6 +259,28 @@
           }
         }
       ]
+    },
+    "list_planner_items_planner": {
+      "tsImports": [
+        {
+          "type": "PlannerItem",
+          "filePath": "Overrides.ts"
+        }
+      ],
+      "tsType": {
+        "type": "PlannerItem[]"
+      }
+    },
+    "list_planner_items_users": {
+      "tsImports": [
+        {
+          "type": "PlannerItem",
+          "filePath": "Overrides.ts"
+        }
+      ],
+      "tsType": {
+        "type": "PlannerItem[]"
+      }
     }
   }
 }
