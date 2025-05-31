@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.5](https://github.com/groton-school/canvas-cli/compare/api/0.0.4...api/0.0.5) (2025-05-31)
+
+
+### Features
+
+* define Canvas.Planner.PlannerItem in overrides ([4b08a1c](https://github.com/groton-school/canvas-cli/commit/4b08a1c3d2b97a897ef04ac81b490ace0aac2719))
+
 ## [0.0.4](https://github.com/groton-school/canvas-cli/compare/api/0.0.3...api/0.0.4) (2025-05-10)
 
 
