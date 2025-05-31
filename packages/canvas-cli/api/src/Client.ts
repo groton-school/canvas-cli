@@ -1,11 +1,28 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-cli.client';
 
-// TODO redesign api Client to be extensible for both Node and web
+export interface Client {
+  instance_url: string;
+  fetchAs<T = JSONValue>(
+    endpoint: string | URL,
+    params?: Parameters<Canvas.Client['fetchAs']>[1]
+  ): Promise<T>;
+}
 
-let _client: Canvas.Client | undefined = undefined;
+function isClient(obj: object): obj is Client {
+  return 'fetchAs' in obj;
+}
 
-export function init(...args: ConstructorParameters<typeof Canvas.Client>) {
-  _client = new Canvas.Client(...args);
+let _client: Client | undefined = undefined;
+
+export function init(client: Client): void;
+export function init(oauth2Credentials: Canvas.Credentials): void;
+export function init(arg: Canvas.Credentials | Client) {
+  if (isClient(arg)) {
+    _client = arg;
+  } else {
+    _client = new Canvas.Client(arg);
+  }
 }
 
 export function client() {

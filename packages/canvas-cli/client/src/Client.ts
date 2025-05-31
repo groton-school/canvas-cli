@@ -7,8 +7,6 @@ import { isError, stringify } from '@groton/canvas-cli.utilities';
 import nodeFetch, { RequestInfo, RequestInit } from 'node-fetch';
 import PQueue from 'p-queue';
 
-// TODO redesign/rename Client as `node-client` to differentiate from `web-client`
-
 type RequestInitParams = RequestInit & {
   pathParams?: JSONObject;
   searchParams?: JSONObject;
