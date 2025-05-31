@@ -1,11 +1,15 @@
-import { JSONValue } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-cli.client';
 
 export interface Client {
   instance_url: string;
   fetchAs<T = JSONValue>(
     endpoint: string | URL,
-    params?: Parameters<Canvas.Client['fetchAs']>[1]
+    params?: {
+      pathParams: Record<string, string | number>;
+      searchParams: JSONObject;
+      params: JSONObject;
+    }
   ): Promise<T>;
 }
 
