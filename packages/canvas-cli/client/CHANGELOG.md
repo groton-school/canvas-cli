@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.1](https://github.com/groton-school/canvas-cli/compare/client/0.0.3...client/0.1.1) (2025-05-31)
+
+
+### Features
+
+* **canvas-cli.client:** add @battis/qui-cli.log support for detailed logging of requests ([6e64c04](https://github.com/groton-school/canvas-cli/commit/6e64c0436def5f52b2765d629aa1824b1fcddb11))
+
+
+### Bug Fixes
+
+* **canvas-cli.client:** bump version to suppress bad 0.1.0 release ([8932b63](https://github.com/groton-school/canvas-cli/commit/8932b63057832299038e5749c211906cb92c7e54))
+
 ## [0.0.3](https://github.com/groton-school/canvas-cli/compare/client/0.0.2...client/0.0.3) (2025-05-10)
 
 

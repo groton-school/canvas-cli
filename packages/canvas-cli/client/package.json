@@ -1,6 +1,6 @@
 {
   "name": "@groton/canvas-cli.client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/client#readme",
   "repository": {
     "type": "git",
