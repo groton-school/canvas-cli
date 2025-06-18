@@ -17,9 +17,9 @@
     "release:publish": "pnpm publish -r --otp $(op item get npm --otp) --access public"
   },
   "devDependencies": {
-    "@battis/eslint-config": "^2.0.3",
-    "@battis/prettier-config": "^1.6.0",
-    "@battis/qui-cli.plugin": "^2.3.1",
+    "@battis/eslint-config": "^2.0.4",
+    "@battis/prettier-config": "^1.6.2",
+    "@battis/qui-cli.plugin": "^2.3.2",
     "@groton/canvas-cli": "workspace:*",
     "@msar/canvas-import": "workspace:*",
     "@msar/canvas-import-open": "workspace:*",
