@@ -56,18 +56,18 @@ type Options = {{#if tsPathParameters}}{
   pathParams: {{tsName}}PathParameters;
   } & {{/if}}({
     {{#if tsQueryParameters}}
-    searchParams?: Partial<{{tsName}}SearchParameters>;
+      searchParams?: Partial<{{tsName}}SearchParameters>;
     {{/if}}
     {{#if tsFormParameters}}
-    params?: Partial<{{tsName}}FormParameters>;
+      params?: Partial<{{tsName}}FormParameters>;
     {{/if}}
     strict?: false;
   } | {
     {{#if tsQueryParameters}}
-    searchParams: {{tsName}}SearchParameters;
+      searchParams: {{tsName}}SearchParameters;
     {{/if}}
     {{#if tsFormParameters}}
-    params: {{tsName}}FormParameters;
+      params: {{tsName}}FormParameters;
     {{/if}}
     strict: true;
   }){{#if tsUpload}} & {
