@@ -159,7 +159,7 @@ function annotateImports({ operations, models }: Annotation) {
             (match.packagePath && match.packagePath !== tsReference.packagePath)
           ) {
             throw new TypeError(
-              `Importing two identically named objects from different files.`
+              `Importing two identically named objects from different files: ${JSON.stringify({ tsReference, match })}.`
             );
           }
         }
