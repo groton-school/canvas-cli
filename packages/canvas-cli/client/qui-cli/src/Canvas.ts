@@ -1,13 +1,18 @@
 import { URLString } from '@battis/descriptive-types';
 import { Colors } from '@battis/qui-cli.colors';
-import '@battis/qui-cli.env';
+import { Env } from '@battis/qui-cli.env';
 import * as Plugin from '@battis/qui-cli.plugin';
+import { Root } from '@battis/qui-cli.root';
 import * as Canvas from '@groton/canvas-cli.api';
 import { Client } from '@groton/canvas-cli.client.node-cli';
+import path from 'node:path';
 
 export * from '@groton/canvas-cli.api/dist/Client.js';
 export * from '@groton/canvas-cli.api/dist/Endpoints/index.js';
 export * from '@groton/canvas-cli.api/dist/Resources/index.js';
+
+// FIXME manually configuring Env should be unnecessary
+Env.configure({ root: Root.path() });
 
 export type Configuration = Plugin.Configuration & {
   instanceUrl?: URLString;
@@ -80,23 +85,21 @@ export function options(): Plugin.Options {
   };
 }
 
-export function init({
-  values: { instanceUrl, clientId, clientSecret, redirectUri, tokenStorage }
-}: Plugin.ExpectedArguments<typeof options>) {
+export function init({ values }: Plugin.ExpectedArguments<typeof options>) {
   configure({
-    instanceUrl: instanceUrl || process.env[env.instanceUrl],
-    clientId: clientId || process.env[env.clientId],
-    clientSecret: clientSecret || process.env[env.clientSecret],
-    redirectUri: redirectUri || process.env[env.redirecutUri],
-    tokenStorage
+    instanceUrl: values.instanceUrl || process.env[env.instanceUrl],
+    clientId: values.clientId || process.env[env.clientId],
+    clientSecret: values.clientSecret || process.env[env.clientSecret],
+    redirectUri: values.redirectUri || process.env[env.redirecutUri],
+    tokenStorage: values.tokenStorage
   });
   Canvas.init(
     new Client({
-      instance_url: instanceUrl,
-      client_id: clientId,
-      client_secret: clientSecret,
+      instance_url: instanceUrl!,
+      client_id: clientId!,
+      client_secret: clientSecret!,
       redirect_uri: redirectUri,
-      store: tokenStorage
+      store: path.join(tokenStorage, new URL(instanceUrl!).host + '.json')
     })
   );
 }

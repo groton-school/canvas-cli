@@ -219,6 +219,9 @@ importers:
       '@battis/qui-cli.plugin':
         specifier: ^2.3.2
         version: 2.3.2
+      '@battis/qui-cli.root':
+        specifier: ^2.0.3
+        version: 2.0.3(@battis/qui-cli.plugin@2.3.2)
       '@oauth2-cli/canvas':
         specifier: workspace:*
         version: link:../../../oauth2-cli/canvas
