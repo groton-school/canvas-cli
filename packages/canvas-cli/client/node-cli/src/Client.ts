@@ -3,8 +3,9 @@ import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
+import * as Base from '@groton/canvas-cli.client.base';
 import { isError, stringify } from '@groton/canvas-cli.utilities';
-import nodeFetch, { RequestInfo, RequestInit } from 'node-fetch';
+import nodeFetch, { fileFromSync, RequestInfo, RequestInit } from 'node-fetch';
 import PQueue from 'p-queue';
 
 type RequestInitParams = RequestInit & {
@@ -14,7 +15,7 @@ type RequestInitParams = RequestInit & {
 };
 type RequestInitMethod = Omit<RequestInitParams, 'method'>;
 
-export class Client extends Canvas {
+export class Client extends Canvas implements Base.Base {
   private queue = new PQueue();
 
   public async fetch(endpoint: URL | RequestInfo, init?: RequestInit) {
@@ -122,6 +123,45 @@ export class Client extends Canvas {
       );
     }
     return result;
+  }
+
+  public async upload<T = JSONValue>({
+    response,
+    file
+  }: Base.UploadParams): Promise<T> {
+    const body = new FormData();
+    for (const key in response.upload_params) {
+      body.append(key, response.upload_params[key]);
+    }
+    if (file.filePath) {
+      body.append('file', fileFromSync(file.filePath));
+    } else if (file.url) {
+      // FIXME implement URL upload too!
+    }
+    const confirm = await fetch(response.upload_url, {
+      method: 'POST',
+      body
+    });
+    let result: T;
+    switch (confirm.status) {
+      case 301:
+      case 201:
+        if (confirm.headers.has('location')) {
+          result = await this.fetchAs<T>(confirm.headers.get('location')!);
+          if (!isError(result)) {
+            return result;
+          }
+        }
+      // eslint-disable-next-line no-fallthrough
+      default:
+        throw new Error(
+          `Error uploading file: ${{
+            file,
+            confirm,
+            error: await confirm.json()
+          }}`
+        );
+    }
   }
 
   public async get<T = JSONValue>(
