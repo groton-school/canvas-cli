@@ -72,9 +72,17 @@ export function annotateOperations({
             tsPaginated = true;
             tsImports.push({
               type: 'Paginated',
-              packagePath: '@groton/canvas-cli.client'
+              packagePath: '@groton/canvas-cli.client.base'
             });
           }
+          const tsUpload = tsName === 'upload';
+          if (tsUpload) {
+            tsImports.push({
+              type: 'FileLocation',
+              packagePath: '@groton/canvas-cli.client.base'
+            });
+          }
+
           // @ts-expect-error 2322
           const annotatedOperation: AnnotatedOperation = {
             ...operation,
@@ -85,6 +93,7 @@ export function annotateOperations({
               new URL(spec.basePath + endpoint.path).pathname
             ),
             tsName,
+            tsUpload,
             tsPaginated
           };
           annotatedOperation.tsFilePath = path.join(

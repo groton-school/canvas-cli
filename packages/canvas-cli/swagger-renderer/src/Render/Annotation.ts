@@ -24,6 +24,7 @@ export type AnnotatedOperation = Swagger.v1p2.OperationObject & {
   tsBodyParameters?: (AnnotatedParameter & { paramType: 'body' })[];
   tsFormParameters?: (AnnotatedParameter & { paramType: 'form' })[];
   tsPaginated?: boolean;
+  tsUpload?: boolean;
 };
 
 export type AnnotatedParameter = Swagger.v1p2.ParameterObject & {

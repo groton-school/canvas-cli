@@ -70,7 +70,9 @@ type Options = {{#if tsPathParameters}}{
     params: {{tsName}}FormParameters;
     {{/if}}
     strict: true;
-  });
+  }){{#if tsUpload}} & {
+    file: FileLocation
+  }{{/if}};
 
 /**
  * {{summary}}
@@ -83,8 +85,13 @@ type Options = {{#if tsPathParameters}}{
  *
  * {{description}}
  */
-export async function {{tsName}}(options: Options) {
-  return await client().fetchAs<{{{tsType.type}}}>(`{{{tsEndpoint}}}`, {
+export async function {{tsName}}({{#if tsUpload}}{file, ...options}{{else}}options{{/if}}: Options) {
+  const response = await client().fetchAs<{{{tsType.type}}}>(`{{{tsEndpoint}}}`, {
       method: "{{method}}", ...options
     });
+  {{#if tsUpload}}
+    return await client().upload<File>({response, file});
+  {{else}}
+    return response;
+  {{/if}}
 }
