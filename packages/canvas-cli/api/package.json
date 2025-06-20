@@ -25,7 +25,7 @@
     "release": "commit-and-tag-version"
   },
   "dependencies": {
-    "@groton/canvas-cli.client": "workspace:*",
+    "@groton/canvas-cli.client.base": "workspace:*",
     "@groton/canvas-cli.utilities": "workspace:*",
     "node-fetch": "^3.3.2"
   },
