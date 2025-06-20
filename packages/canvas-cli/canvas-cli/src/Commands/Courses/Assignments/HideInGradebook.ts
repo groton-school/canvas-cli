@@ -1,7 +1,7 @@
 import { Colors } from '@battis/qui-cli.colors';
 import '@battis/qui-cli.env';
 import * as Plugin from '@battis/qui-cli.plugin';
-import * as Canvas from '@groton/canvas-cli.api';
+import { Canvas } from '@groton/canvas-cli.client.qui-cli';
 import path from 'node:path';
 
 export type Configuration = {

@@ -1,6 +1,6 @@
 import { Colors } from '@battis/qui-cli.colors';
 import * as Plugin from '@battis/qui-cli.plugin';
-import * as Canvas from '@groton/canvas-cli.api';
+import { Canvas } from '@groton/canvas-cli.client.qui-cli';
 import * as GrotonColors from '@groton/colors';
 import path from 'node:path';
 import ora from 'ora';

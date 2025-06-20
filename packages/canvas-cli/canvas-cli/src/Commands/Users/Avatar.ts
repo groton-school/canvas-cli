@@ -3,7 +3,7 @@ import { Core } from '@battis/qui-cli.core';
 import '@battis/qui-cli.env';
 import * as Plugin from '@battis/qui-cli.plugin';
 import { Root } from '@battis/qui-cli.root';
-import * as Canvas from '@groton/canvas-cli.api';
+import { Canvas } from '@groton/canvas-cli.client.qui-cli';
 import { parse } from 'csv-parse/sync';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -81,7 +81,7 @@ export async function run() {
     } else {
       spinner.text = user.name;
     }
-    const file = await Canvas.upload({
+    const file = await Canvas.v1.Users.Files.upload({
       pathParams: { user_id: user.id.toString() },
       params: {
         name: 'avatar.jpg',
@@ -90,7 +90,7 @@ export async function run() {
         // @ts-expect-error 2353 -- need masquerade parameters on all endpoints
         as_user_id: user.id.toString()
       },
-      localFilePath: path_to_avatar
+      file: { filePath: path_to_avatar }
     });
     const avatars = await Canvas.v1.Users.Avatars.list({
       pathParams: { user_id: user.id.toString() }
