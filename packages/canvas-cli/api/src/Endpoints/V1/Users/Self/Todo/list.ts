@@ -35,8 +35,9 @@ type Options =
  * Nickname: list_todo_items
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/users/self/todo`, {
+  const response = await client().fetchAs<void>(`/api/v1/users/self/todo`, {
     method: 'GET',
     ...options
   });
+  return response;
 }

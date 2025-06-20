@@ -40,11 +40,12 @@ type Options = {
  * Nickname: get_effective_due_dates
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/effective_due_dates`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

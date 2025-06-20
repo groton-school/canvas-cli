@@ -64,11 +64,12 @@ type Options = {
  * Nickname: create_course_section
  */
 export async function create(options: Options) {
-  return await client().fetchAs<Section>(
+  const response = await client().fetchAs<Section>(
     `/api/v1/courses/{course_id}/sections`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

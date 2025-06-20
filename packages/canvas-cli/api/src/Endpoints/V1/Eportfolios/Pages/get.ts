@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { ePortfolioPage } from '../../../../Resources/EPortfolios.js';
 
@@ -28,11 +28,12 @@ type Options = {
  * Nickname: get_eportfolio_pages
  */
 export async function get(options: Options) {
-  return await client().fetchAs<ePortfolioPage[]>(
+  const response = await client().fetchAs<ePortfolioPage[]>(
     `/api/v1/eportfolios/{eportfolio_id}/pages`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

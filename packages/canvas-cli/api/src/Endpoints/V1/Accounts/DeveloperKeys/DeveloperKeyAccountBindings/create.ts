@@ -40,11 +40,12 @@ type Options = {
  * Nickname: create_developer_key_account_binding
  */
 export async function create(options: Options) {
-  return await client().fetchAs<DeveloperKeyAccountBinding>(
+  const response = await client().fetchAs<DeveloperKeyAccountBinding>(
     `/api/v1/accounts/{account_id}/developer_keys/{developer_key_id}/developer_key_account_bindings`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

@@ -27,11 +27,12 @@ type Options = {
  * Nickname: delete_blackout_date_accounts
  */
 export async function delete_blackout_date_accounts(options: Options) {
-  return await client().fetchAs<BlackoutDate>(
+  const response = await client().fetchAs<BlackoutDate>(
     `/api/v1/accounts/{account_id}/blackout_dates/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

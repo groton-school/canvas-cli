@@ -65,11 +65,12 @@ type Options = {
  * Nickname: batch_update_grading_periods_grading_period_sets
  */
 export async function batchUpdate(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/grading_period_sets/{set_id}/grading_periods/batch_update`,
     {
       method: 'PATCH',
       ...options
     }
   );
+  return response;
 }

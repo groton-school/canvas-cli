@@ -36,11 +36,12 @@ type Options = {
  * Nickname: update_migration_issue_groups
  */
 export async function update(options: Options) {
-  return await client().fetchAs<MigrationIssue>(
+  const response = await client().fetchAs<MigrationIssue>(
     `/api/v1/groups/{group_id}/content_migrations/{content_migration_id}/migration_issues/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

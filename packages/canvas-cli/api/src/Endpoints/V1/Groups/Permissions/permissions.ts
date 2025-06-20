@@ -37,8 +37,12 @@ type Options = {
  * Nickname: permissions
  */
 export async function permissions(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/groups/{group_id}/permissions`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/groups/{group_id}/permissions`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

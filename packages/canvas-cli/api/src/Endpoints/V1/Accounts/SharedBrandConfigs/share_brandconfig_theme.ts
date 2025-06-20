@@ -35,11 +35,12 @@ type Options = {
  * Nickname: share_brandconfig_theme
  */
 export async function share_brandconfig_theme(options: Options) {
-  return await client().fetchAs<SharedBrandConfig>(
+  const response = await client().fetchAs<SharedBrandConfig>(
     `/api/v1/accounts/{account_id}/shared_brand_configs`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

@@ -79,8 +79,12 @@ type Options = {
  * Nickname: update_developer_key
  */
 export async function update(options: Options) {
-  return await client().fetchAs<DeveloperKey>(`/api/v1/developer_keys/{id}`, {
-    method: 'PUT',
-    ...options
-  });
+  const response = await client().fetchAs<DeveloperKey>(
+    `/api/v1/developer_keys/{id}`,
+    {
+      method: 'PUT',
+      ...options
+    }
+  );
+  return response;
 }

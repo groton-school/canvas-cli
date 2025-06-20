@@ -25,8 +25,9 @@ type Options = {
  * Nickname: delete_poll
  */
 export async function delete_poll(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/polls/{id}`, {
+  const response = await client().fetchAs<void>(`/api/v1/polls/{id}`, {
     method: 'DELETE',
     ...options
   });
+  return response;
 }

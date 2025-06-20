@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { ExternalFeed } from '../../../../Resources/AnnouncementExternalFeeds.js';
 
@@ -28,11 +28,12 @@ type Options = {
  * Nickname: list_external_feeds_groups
  */
 export async function list(options: Options) {
-  return await client().fetchAs<ExternalFeed[]>(
+  const response = await client().fetchAs<ExternalFeed[]>(
     `/api/v1/groups/{group_id}/external_feeds`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

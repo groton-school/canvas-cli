@@ -34,11 +34,12 @@ type Options = {
  * Nickname: update_planner_override
  */
 export async function update(options: Options) {
-  return await client().fetchAs<PlannerOverride>(
+  const response = await client().fetchAs<PlannerOverride>(
     `/api/v1/planner/overrides/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

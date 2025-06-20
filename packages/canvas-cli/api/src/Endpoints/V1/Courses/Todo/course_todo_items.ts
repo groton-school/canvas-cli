@@ -27,8 +27,12 @@ type Options = {
  * Nickname: course_todo_items
  */
 export async function course_todo_items(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/courses/{course_id}/todo`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/courses/{course_id}/todo`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

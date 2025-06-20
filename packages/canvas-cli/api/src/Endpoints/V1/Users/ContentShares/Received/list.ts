@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { ContentShare } from '../../../../../Resources/ContentShares.js';
 
@@ -30,11 +30,12 @@ type Options = {
  * Nickname: list_content_shares_received
  */
 export async function list(options: Options) {
-  return await client().fetchAs<ContentShare[]>(
+  const response = await client().fetchAs<ContentShare[]>(
     `/api/v1/users/{user_id}/content_shares/received`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

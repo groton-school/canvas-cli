@@ -47,11 +47,12 @@ type Options = {
  * Nickname: list_enrollment_terms
  */
 export async function list(options: Options) {
-  return await client().fetchAs<EnrollmentTermsList>(
+  const response = await client().fetchAs<EnrollmentTermsList>(
     `/api/v1/accounts/{account_id}/terms`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

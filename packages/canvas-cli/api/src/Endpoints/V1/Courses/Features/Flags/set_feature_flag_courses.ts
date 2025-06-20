@@ -42,11 +42,12 @@ type Options = {
  * Nickname: set_feature_flag_courses
  */
 export async function set_feature_flag_courses(options: Options) {
-  return await client().fetchAs<FeatureFlag>(
+  const response = await client().fetchAs<FeatureFlag>(
     `/api/v1/courses/{course_id}/features/flags/{feature}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

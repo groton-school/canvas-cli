@@ -32,11 +32,12 @@ type Options = {
  * Nickname: update_text_editor_preference
  */
 export async function update(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/users/{id}/text_editor_preference`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

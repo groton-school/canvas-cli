@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { AuthenticationProvider } from '../../../../Resources/AuthenticationProviders.js';
 
@@ -28,11 +28,12 @@ type Options = {
  * Nickname: list_authentication_providers
  */
 export async function list(options: Options) {
-  return await client().fetchAs<AuthenticationProvider[]>(
+  const response = await client().fetchAs<AuthenticationProvider[]>(
     `/api/v1/accounts/{account_id}/authentication_providers`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -65,8 +65,9 @@ type Options = {
  * Nickname: update_file
  */
 export async function update(options: Options) {
-  return await client().fetchAs<File>(`/api/v1/files/{id}`, {
+  const response = await client().fetchAs<File>(`/api/v1/files/{id}`, {
     method: 'PUT',
     ...options
   });
+  return response;
 }

@@ -40,11 +40,12 @@ type Options = {
  * Nickname: get_course_level_student_summary_data
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/analytics/student_summaries`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

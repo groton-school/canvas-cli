@@ -46,11 +46,12 @@ type Options = {
  * Nickname: update_blackout_date_accounts
  */
 export async function update(options: Options) {
-  return await client().fetchAs<BlackoutDate>(
+  const response = await client().fetchAs<BlackoutDate>(
     `/api/v1/accounts/{account_id}/blackout_dates/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

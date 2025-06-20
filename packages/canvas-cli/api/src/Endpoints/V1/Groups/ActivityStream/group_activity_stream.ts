@@ -27,11 +27,12 @@ type Options = {
  * Nickname: group_activity_stream
  */
 export async function group_activity_stream(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/groups/{group_id}/activity_stream`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

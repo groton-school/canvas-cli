@@ -30,11 +30,12 @@ type Options = {
  * Nickname: select_provisional_grade
  */
 export async function select_provisional_grade(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/{provisional_grade_id}/select`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

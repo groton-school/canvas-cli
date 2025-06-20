@@ -42,11 +42,12 @@ type Options = {
  * Nickname: query_by_login
  */
 export async function query_by_login(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/audit/authentication/logins/{login_id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

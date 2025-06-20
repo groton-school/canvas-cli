@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
 
@@ -26,11 +26,12 @@ type Options = {
  * Nickname: get_all_outcome_groups_for_context_accounts
  */
 export async function get(options: Options) {
-  return await client().fetchAs<OutcomeGroup[]>(
+  const response = await client().fetchAs<OutcomeGroup[]>(
     `/api/v1/accounts/{account_id}/outcome_groups`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

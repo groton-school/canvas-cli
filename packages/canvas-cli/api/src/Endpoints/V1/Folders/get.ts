@@ -28,8 +28,9 @@ type Options = {
  * Nickname: get_folder_folders
  */
 export async function get(options: Options) {
-  return await client().fetchAs<Folder>(`/api/v1/folders/{id}`, {
+  const response = await client().fetchAs<Folder>(`/api/v1/folders/{id}`, {
     method: 'GET',
     ...options
   });
+  return response;
 }

@@ -62,11 +62,12 @@ type Options = {
  * Nickname: deprecated_self_register_user
  */
 export async function deprecated_self_register_user(options: Options) {
-  return await client().fetchAs<User>(
+  const response = await client().fetchAs<User>(
     `/api/v1/accounts/{account_id}/self_registration`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

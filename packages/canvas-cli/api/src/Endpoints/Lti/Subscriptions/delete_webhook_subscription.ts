@@ -22,8 +22,9 @@ type Options = {
  * Nickname: delete_webhook_subscription
  */
 export async function delete_webhook_subscription(options: Options) {
-  return await client().fetchAs<void>(`/api/lti/subscriptions/{id}`, {
+  const response = await client().fetchAs<void>(`/api/lti/subscriptions/{id}`, {
     method: 'DELETE',
     ...options
   });
+  return response;
 }

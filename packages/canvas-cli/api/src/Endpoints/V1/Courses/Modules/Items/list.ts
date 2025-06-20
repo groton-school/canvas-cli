@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { ModuleItem } from '../../../../../Resources/CoursePace.js';
 
@@ -45,11 +45,12 @@ type Options = {
  * Nickname: list_module_items
  */
 export async function list(options: Options) {
-  return await client().fetchAs<ModuleItem[]>(
+  const response = await client().fetchAs<ModuleItem[]>(
     `/api/v1/courses/{course_id}/modules/{module_id}/items`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -25,8 +25,9 @@ type Options = {
  * Nickname: query_progress
  */
 export async function query_progress(options: Options) {
-  return await client().fetchAs<Progress>(`/api/v1/progress/{id}`, {
+  const response = await client().fetchAs<Progress>(`/api/v1/progress/{id}`, {
     method: 'GET',
     ...options
   });
+  return response;
 }

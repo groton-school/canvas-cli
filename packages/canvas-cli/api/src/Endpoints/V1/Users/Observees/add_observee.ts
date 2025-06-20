@@ -40,11 +40,12 @@ type Options = {
  * Nickname: add_observee
  */
 export async function add_observee(options: Options) {
-  return await client().fetchAs<User>(
+  const response = await client().fetchAs<User>(
     `/api/v1/users/{user_id}/observees/{observee_id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

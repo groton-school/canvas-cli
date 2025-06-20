@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { BlueprintSubscription } from '../../../../Resources/BlueprintCourses.js';
 
@@ -29,11 +29,12 @@ type Options = {
  * Nickname: list_blueprint_subscriptions
  */
 export async function list(options: Options) {
-  return await client().fetchAs<BlueprintSubscription[]>(
+  const response = await client().fetchAs<BlueprintSubscription[]>(
     `/api/v1/courses/{course_id}/blueprint_subscriptions`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

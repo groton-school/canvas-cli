@@ -29,11 +29,12 @@ type Options = {
  * Nickname: status_of_report
  */
 export async function status_of_report(options: Options) {
-  return await client().fetchAs<Report>(
+  const response = await client().fetchAs<Report>(
     `/api/v1/accounts/{account_id}/reports/{report}/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

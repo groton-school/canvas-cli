@@ -35,11 +35,12 @@ type Options = {
  * Nickname: delete_entry_groups
  */
 export async function delete_entry_groups(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/groups/{group_id}/discussion_topics/{topic_id}/entries/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

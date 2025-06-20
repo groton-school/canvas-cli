@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { BlackoutDate } from '../../../../Resources/BlackoutDates.js';
 
@@ -28,11 +28,12 @@ type Options = {
  * Nickname: list_blackout_dates_courses
  */
 export async function list(options: Options) {
-  return await client().fetchAs<BlackoutDate[]>(
+  const response = await client().fetchAs<BlackoutDate[]>(
     `/api/v1/courses/{course_id}/blackout_dates`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

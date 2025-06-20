@@ -29,11 +29,12 @@ type Options = {
  * Nickname: get_single_assignment_override
  */
 export async function get(options: Options) {
-  return await client().fetchAs<AssignmentOverride>(
+  const response = await client().fetchAs<AssignmentOverride>(
     `/api/v1/courses/{course_id}/assignments/{assignment_id}/overrides/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -41,11 +41,12 @@ type Options = {
  * Nickname: update_custom_color
  */
 export async function update(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/users/{id}/colors/{asset_string}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

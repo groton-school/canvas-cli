@@ -31,11 +31,12 @@ type Options = {
  * Nickname: get_sis_import_status
  */
 export async function get(options: Options) {
-  return await client().fetchAs<SisImport>(
+  const response = await client().fetchAs<SisImport>(
     `/api/v1/accounts/{account_id}/sis_imports/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

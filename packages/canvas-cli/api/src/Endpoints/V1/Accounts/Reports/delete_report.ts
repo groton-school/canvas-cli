@@ -29,11 +29,12 @@ type Options = {
  * Nickname: delete_report
  */
 export async function delete_report(options: Options) {
-  return await client().fetchAs<Report>(
+  const response = await client().fetchAs<Report>(
     `/api/v1/accounts/{account_id}/reports/{report}/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

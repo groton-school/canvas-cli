@@ -36,11 +36,12 @@ type Options = {
 export async function mark_rubric_assessments_as_read_courses_rubric_comments(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/rubric_comments/read`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

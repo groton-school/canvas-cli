@@ -72,11 +72,12 @@ type Options = {
  * Nickname: update_enrollment_term
  */
 export async function update(options: Options) {
-  return await client().fetchAs<EnrollmentTerm>(
+  const response = await client().fetchAs<EnrollmentTerm>(
     `/api/v1/accounts/{account_id}/terms/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

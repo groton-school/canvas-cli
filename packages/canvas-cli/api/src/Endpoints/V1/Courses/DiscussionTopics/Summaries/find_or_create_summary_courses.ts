@@ -34,11 +34,12 @@ type Options = {
  * Nickname: find_or_create_summary_courses
  */
 export async function find_or_create_summary_courses(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/discussion_topics/{topic_id}/summaries`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

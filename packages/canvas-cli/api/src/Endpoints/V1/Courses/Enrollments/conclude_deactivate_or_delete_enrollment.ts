@@ -41,11 +41,12 @@ type Options = {
 export async function conclude_deactivate_or_delete_enrollment(
   options: Options
 ) {
-  return await client().fetchAs<Enrollment>(
+  const response = await client().fetchAs<Enrollment>(
     `/api/v1/courses/{course_id}/enrollments/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

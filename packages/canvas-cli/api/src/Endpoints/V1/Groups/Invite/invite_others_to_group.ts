@@ -32,8 +32,12 @@ type Options = {
  * Nickname: invite_others_to_group
  */
 export async function invite_others_to_group(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/groups/{group_id}/invite`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/groups/{group_id}/invite`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
+  return response;
 }

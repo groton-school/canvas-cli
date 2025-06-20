@@ -55,11 +55,12 @@ type Options = {
  * Nickname: create_lti_resource_link
  */
 export async function create(options: Options) {
-  return await client().fetchAs<LtiResourceLink>(
+  const response = await client().fetchAs<LtiResourceLink>(
     `/api/v1/courses/{course_id}/lti_resource_links`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

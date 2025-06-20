@@ -92,8 +92,12 @@ type Options = {
  * Nickname: create_single_rubric
  */
 export async function create(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/courses/{course_id}/rubrics`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/courses/{course_id}/rubrics`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
+  return response;
 }

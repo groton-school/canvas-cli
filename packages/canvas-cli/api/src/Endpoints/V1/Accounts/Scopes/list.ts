@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Scope } from '../../../../Resources/ApiTokenScopes.js';
 
@@ -34,11 +34,12 @@ type Options = {
  * Nickname: list_scopes
  */
 export async function list(options: Options) {
-  return await client().fetchAs<Scope[]>(
+  const response = await client().fetchAs<Scope[]>(
     `/api/v1/accounts/{account_id}/scopes`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

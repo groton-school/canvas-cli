@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
@@ -48,11 +48,12 @@ type Options = {
  * Nickname: batch_create_overrides_in_course
  */
 export async function batch_create_overrides_in_course(options: Options) {
-  return await client().fetchAs<AssignmentOverride[]>(
+  const response = await client().fetchAs<AssignmentOverride[]>(
     `/api/v1/courses/{course_id}/assignments/overrides`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

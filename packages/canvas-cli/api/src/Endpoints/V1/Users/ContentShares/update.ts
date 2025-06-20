@@ -34,11 +34,12 @@ type Options = {
  * Nickname: update_content_share
  */
 export async function update(options: Options) {
-  return await client().fetchAs<ContentShare>(
+  const response = await client().fetchAs<ContentShare>(
     `/api/v1/users/{user_id}/content_shares/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

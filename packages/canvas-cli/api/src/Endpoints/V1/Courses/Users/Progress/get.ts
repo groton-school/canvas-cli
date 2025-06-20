@@ -31,11 +31,12 @@ type Options = {
  * Nickname: get_user_progress
  */
 export async function get(options: Options) {
-  return await client().fetchAs<CourseProgress>(
+  const response = await client().fetchAs<CourseProgress>(
     `/api/v1/courses/{course_id}/users/{user_id}/progress`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

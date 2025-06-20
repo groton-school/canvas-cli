@@ -34,11 +34,12 @@ type Options = {
  * Nickname: set_course_nickname
  */
 export async function set_course_nickname(options: Options) {
-  return await client().fetchAs<CourseNickname>(
+  const response = await client().fetchAs<CourseNickname>(
     `/api/v1/users/self/course_nicknames/{course_id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

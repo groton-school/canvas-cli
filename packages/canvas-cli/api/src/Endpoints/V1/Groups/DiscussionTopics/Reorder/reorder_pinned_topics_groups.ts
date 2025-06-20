@@ -37,11 +37,12 @@ type Options = {
  * Nickname: reorder_pinned_topics_groups
  */
 export async function reorder_pinned_topics_groups(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/groups/{group_id}/discussion_topics/reorder`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

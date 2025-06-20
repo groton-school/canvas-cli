@@ -28,11 +28,12 @@ type Options = {
  * Nickname: show_lti_registration_via_client_id
  */
 export async function show_lti_registration_via_client_id(options: Options) {
-  return await client().fetchAs<LtiRegistration>(
+  const response = await client().fetchAs<LtiRegistration>(
     `/api/v1/accounts/{account_id}/lti_registration_by_client_id/{client_id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

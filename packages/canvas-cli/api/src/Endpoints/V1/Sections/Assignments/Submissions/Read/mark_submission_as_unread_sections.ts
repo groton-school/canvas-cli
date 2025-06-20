@@ -30,11 +30,12 @@ type Options = {
  * Nickname: mark_submission_as_unread_sections
  */
 export async function mark_submission_as_unread_sections(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/read`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

@@ -40,11 +40,12 @@ type Options = {
  * Nickname: get_single_role
  */
 export async function get(options: Options) {
-  return await client().fetchAs<Role>(
+  const response = await client().fetchAs<Role>(
     `/api/v1/accounts/{account_id}/roles/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

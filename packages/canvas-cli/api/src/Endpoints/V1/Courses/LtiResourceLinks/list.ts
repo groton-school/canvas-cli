@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
@@ -47,11 +47,12 @@ type Options = {
  * Nickname: list_lti_resource_links
  */
 export async function list(options: Options) {
-  return await client().fetchAs<LtiResourceLink[]>(
+  const response = await client().fetchAs<LtiResourceLink[]>(
     `/api/v1/courses/{course_id}/lti_resource_links`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

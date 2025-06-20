@@ -55,11 +55,12 @@ type Options = {
  * Nickname: create_global_notification
  */
 export async function create(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/account_notifications`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

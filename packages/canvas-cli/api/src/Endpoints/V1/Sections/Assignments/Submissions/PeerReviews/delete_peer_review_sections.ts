@@ -40,11 +40,12 @@ type Options = {
  * Nickname: delete_peer_review_sections
  */
 export async function delete_peer_review_sections(options: Options) {
-  return await client().fetchAs<PeerReview>(
+  const response = await client().fetchAs<PeerReview>(
     `/api/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

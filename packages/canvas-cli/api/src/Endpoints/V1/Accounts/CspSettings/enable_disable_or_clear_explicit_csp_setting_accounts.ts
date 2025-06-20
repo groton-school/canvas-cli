@@ -47,11 +47,12 @@ type Options = {
 export async function enable_disable_or_clear_explicit_csp_setting_accounts(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/csp_settings`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

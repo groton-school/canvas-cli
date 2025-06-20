@@ -26,11 +26,12 @@ type Options = {
  * Nickname: get_department_level_statistics_current
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/analytics/current/statistics`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

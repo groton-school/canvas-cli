@@ -82,8 +82,12 @@ type Options =
  * Nickname: list_activity_stream_activity_stream
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/users/activity_stream`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/users/activity_stream`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

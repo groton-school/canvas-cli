@@ -43,11 +43,12 @@ type Options = {
 export async function send_message_to_unsubmitted_or_submitted_users_for_quiz(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/quizzes/{id}/submission_users/message`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

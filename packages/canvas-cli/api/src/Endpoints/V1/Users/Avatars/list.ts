@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Avatar } from '../../../../Resources/Users.js';
 
@@ -44,8 +44,12 @@ type Options = {
  * Nickname: list_avatar_options
  */
 export async function list(options: Options) {
-  return await client().fetchAs<Avatar[]>(`/api/v1/users/{user_id}/avatars`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<Avatar[]>(
+    `/api/v1/users/{user_id}/avatars`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

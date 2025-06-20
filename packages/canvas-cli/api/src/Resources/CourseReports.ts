@@ -36,6 +36,12 @@ export type Report = {
   ended_at: string;
   /** The report parameters */
   parameters: ReportParameters;
+  /**
+   * The progress of the report
+   *
+   * Type: integer
+   */
+  progress: number;
 };
 
 /** The parameters returned will vary for each report. */

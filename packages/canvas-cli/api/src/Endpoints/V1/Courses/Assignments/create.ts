@@ -260,11 +260,12 @@ type Options = {
  * Nickname: create_assignment
  */
 export async function create(options: Options) {
-  return await client().fetchAs<Assignment>(
+  const response = await client().fetchAs<Assignment>(
     `/api/v1/courses/{course_id}/assignments`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

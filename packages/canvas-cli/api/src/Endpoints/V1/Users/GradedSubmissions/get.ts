@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Submission } from '../../../../Resources/Submissions.js';
 
@@ -36,11 +36,12 @@ type Options = {
  * Nickname: get_users_most_recently_graded_submissions
  */
 export async function get(options: Options) {
-  return await client().fetchAs<Submission[]>(
+  const response = await client().fetchAs<Submission[]>(
     `/api/v1/users/{id}/graded_submissions`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

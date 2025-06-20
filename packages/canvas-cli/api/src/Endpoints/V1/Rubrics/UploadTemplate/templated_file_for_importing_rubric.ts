@@ -14,8 +14,12 @@ type Options =
  * Nickname: templated_file_for_importing_rubric
  */
 export async function templated_file_for_importing_rubric(options: Options) {
-  return await client().fetchAs<string>(`/api/v1/rubrics/upload_template`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<string>(
+    `/api/v1/rubrics/upload_template`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

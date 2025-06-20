@@ -180,8 +180,12 @@ type Options = {
  * Nickname: create_user
  */
 export async function create(options: Options) {
-  return await client().fetchAs<User>(`/api/v1/accounts/{account_id}/users`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<User>(
+    `/api/v1/accounts/{account_id}/users`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
+  return response;
 }

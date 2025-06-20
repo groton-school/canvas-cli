@@ -38,8 +38,9 @@ type Options =
  * Nickname: list_appointment_groups
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/appointment_groups`, {
+  const response = await client().fetchAs<void>(`/api/v1/appointment_groups`, {
     method: 'GET',
     ...options
   });
+  return response;
 }

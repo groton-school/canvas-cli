@@ -52,11 +52,12 @@ type Options = {
  * Nickname: update_courses
  */
 export async function update(options: Options) {
-  return await client().fetchAs<Progress>(
+  const response = await client().fetchAs<Progress>(
     `/api/v1/accounts/{account_id}/courses`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

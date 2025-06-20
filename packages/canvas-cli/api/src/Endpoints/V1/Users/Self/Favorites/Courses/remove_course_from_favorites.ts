@@ -25,11 +25,12 @@ type Options = {
  * Nickname: remove_course_from_favorites
  */
 export async function remove_course_from_favorites(options: Options) {
-  return await client().fetchAs<Favorite>(
+  const response = await client().fetchAs<Favorite>(
     `/api/v1/users/self/favorites/courses/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

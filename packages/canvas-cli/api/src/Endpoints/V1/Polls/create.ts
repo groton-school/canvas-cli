@@ -25,8 +25,9 @@ type Options =
  * Nickname: create_single_poll
  */
 export async function create(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/polls`, {
+  const response = await client().fetchAs<void>(`/api/v1/polls`, {
     method: 'POST',
     ...options
   });
+  return response;
 }

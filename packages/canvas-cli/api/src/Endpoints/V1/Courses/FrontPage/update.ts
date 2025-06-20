@@ -51,11 +51,12 @@ type Options = {
  * Nickname: update_create_front_page_courses
  */
 export async function update(options: Options) {
-  return await client().fetchAs<Page>(
+  const response = await client().fetchAs<Page>(
     `/api/v1/courses/{course_id}/front_page`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

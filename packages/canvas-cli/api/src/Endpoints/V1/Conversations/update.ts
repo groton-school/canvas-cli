@@ -56,8 +56,9 @@ type Options = {
  * Nickname: edit_conversation
  */
 export async function update(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/conversations/{id}`, {
+  const response = await client().fetchAs<void>(`/api/v1/conversations/{id}`, {
     method: 'PUT',
     ...options
   });
+  return response;
 }

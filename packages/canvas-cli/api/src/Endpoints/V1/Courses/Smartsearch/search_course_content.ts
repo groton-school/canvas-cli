@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { SearchResult } from '../../../../Resources/SmartSearch.js';
 
@@ -16,6 +16,12 @@ export type search_course_contentSearchParameters = Partial<{
    * +discussion_topics+.
    */
   filter: string[];
+  /**
+   * Optional information to include with each search result: modules:: An
+   * array of module objects that the search result belongs to. status:: The
+   * published status for all results and the due_date for all assignments.
+   */
+  include: string[];
 }> &
   Paginated;
 
@@ -40,11 +46,12 @@ type Options = {
  * Nickname: search_course_content
  */
 export async function search_course_content(options: Options) {
-  return await client().fetchAs<SearchResult[]>(
+  const response = await client().fetchAs<SearchResult[]>(
     `/api/v1/courses/{course_id}/smartsearch`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

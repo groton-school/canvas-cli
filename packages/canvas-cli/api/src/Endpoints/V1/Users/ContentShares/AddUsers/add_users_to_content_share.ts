@@ -38,11 +38,12 @@ type Options = {
  * Nickname: add_users_to_content_share
  */
 export async function add_users_to_content_share(options: Options) {
-  return await client().fetchAs<ContentShare>(
+  const response = await client().fetchAs<ContentShare>(
     `/api/v1/users/{user_id}/content_shares/{id}/add_users`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

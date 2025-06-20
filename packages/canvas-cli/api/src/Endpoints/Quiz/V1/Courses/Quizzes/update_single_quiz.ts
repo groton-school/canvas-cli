@@ -223,11 +223,12 @@ type Options = {
  * Nickname: update_single_quiz
  */
 export async function update_single_quiz(options: Options) {
-  return await client().fetchAs<NewQuiz>(
+  const response = await client().fetchAs<NewQuiz>(
     `/api/quiz/v1/courses/{course_id}/quizzes/{assignment_id}`,
     {
       method: 'PATCH',
       ...options
     }
   );
+  return response;
 }

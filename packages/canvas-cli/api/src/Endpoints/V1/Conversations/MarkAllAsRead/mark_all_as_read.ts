@@ -16,11 +16,12 @@ type Options =
  * Nickname: mark_all_as_read
  */
 export async function mark_all_as_read(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/conversations/mark_all_as_read`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

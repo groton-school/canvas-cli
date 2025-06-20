@@ -34,11 +34,12 @@ type Options = {
  * Nickname: validate_quiz_access_code
  */
 export async function validate_quiz_access_code(options: Options) {
-  return await client().fetchAs<boolean>(
+  const response = await client().fetchAs<boolean>(
     `/api/v1/courses/{course_id}/quizzes/{id}/validate_access_code`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

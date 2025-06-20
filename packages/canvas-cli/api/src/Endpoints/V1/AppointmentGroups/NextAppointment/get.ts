@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { CalendarEvent } from '../../../../Resources/CalendarEvents.js';
 
@@ -28,11 +28,12 @@ type Options =
  * Nickname: get_next_appointment
  */
 export async function get(options: Options) {
-  return await client().fetchAs<CalendarEvent[]>(
+  const response = await client().fetchAs<CalendarEvent[]>(
     `/api/v1/appointment_groups/next_appointment`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

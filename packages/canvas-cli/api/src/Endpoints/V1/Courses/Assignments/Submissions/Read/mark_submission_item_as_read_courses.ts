@@ -34,11 +34,12 @@ type Options = {
  * Nickname: mark_submission_item_as_read_courses
  */
 export async function mark_submission_item_as_read_courses(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/read/{item}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

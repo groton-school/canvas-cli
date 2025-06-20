@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -79,8 +79,9 @@ type Options = {
  * Nickname: split_merged_users_into_separate_users
  */
 export async function split_merged_users_into_separate_users(options: Options) {
-  return await client().fetchAs<User[]>(`/api/v1/users/{id}/split`, {
+  const response = await client().fetchAs<User[]>(`/api/v1/users/{id}/split`, {
     method: 'POST',
     ...options
   });
+  return response;
 }

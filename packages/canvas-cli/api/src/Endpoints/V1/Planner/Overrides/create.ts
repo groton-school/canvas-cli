@@ -34,8 +34,12 @@ type Options =
  * Nickname: create_planner_override
  */
 export async function create(options: Options) {
-  return await client().fetchAs<PlannerOverride>(`/api/v1/planner/overrides`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<PlannerOverride>(
+    `/api/v1/planner/overrides`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
+  return response;
 }

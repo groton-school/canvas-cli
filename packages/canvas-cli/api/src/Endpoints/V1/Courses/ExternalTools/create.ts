@@ -249,11 +249,12 @@ type Options = {
  * Nickname: create_external_tool_courses
  */
 export async function create(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/external_tools`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

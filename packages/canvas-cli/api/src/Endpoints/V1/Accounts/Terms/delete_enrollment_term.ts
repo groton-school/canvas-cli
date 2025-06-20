@@ -27,11 +27,12 @@ type Options = {
  * Nickname: delete_enrollment_term
  */
 export async function delete_enrollment_term(options: Options) {
-  return await client().fetchAs<EnrollmentTerm>(
+  const response = await client().fetchAs<EnrollmentTerm>(
     `/api/v1/accounts/{account_id}/terms/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

@@ -30,11 +30,12 @@ type Options = {
  * Nickname: get_folder_courses
  */
 export async function get(options: Options) {
-  return await client().fetchAs<Folder>(
+  const response = await client().fetchAs<Folder>(
     `/api/v1/courses/{course_id}/folders/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

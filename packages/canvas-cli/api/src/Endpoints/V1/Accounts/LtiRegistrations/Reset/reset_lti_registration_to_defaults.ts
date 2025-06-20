@@ -29,11 +29,12 @@ type Options = {
  * Nickname: reset_lti_registration_to_defaults
  */
 export async function reset_lti_registration_to_defaults(options: Options) {
-  return await client().fetchAs<LtiRegistration>(
+  const response = await client().fetchAs<LtiRegistration>(
     `/api/v1/accounts/{account_id}/lti_registrations/{id}/reset`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

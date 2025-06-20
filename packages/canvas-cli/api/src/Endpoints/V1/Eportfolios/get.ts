@@ -25,8 +25,12 @@ type Options = {
  * Nickname: get_eportfolio
  */
 export async function get(options: Options) {
-  return await client().fetchAs<ePortfolio>(`/api/v1/eportfolios/{id}`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<ePortfolio>(
+    `/api/v1/eportfolios/{id}`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

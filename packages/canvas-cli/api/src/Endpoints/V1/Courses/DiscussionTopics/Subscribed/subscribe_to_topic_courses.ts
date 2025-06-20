@@ -28,11 +28,12 @@ type Options = {
  * Nickname: subscribe_to_topic_courses
  */
 export async function subscribe_to_topic_courses(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/discussion_topics/{topic_id}/subscribed`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

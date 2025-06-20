@@ -29,11 +29,12 @@ type Options = {
 export async function redirect_to_assignment_override_for_section(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/sections/{course_section_id}/assignments/{assignment_id}/override`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

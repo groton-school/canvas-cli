@@ -26,11 +26,12 @@ type Options = {
  * Nickname: delete_authentication_provider
  */
 export async function delete_authentication_provider(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/authentication_providers/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

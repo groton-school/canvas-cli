@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { BlockEditorTemplate } from '../../../../Resources/BlockEditorTemplate.js';
 
@@ -45,11 +45,12 @@ type Options = {
  * Nickname: list_block_templates
  */
 export async function list(options: Options) {
-  return await client().fetchAs<BlockEditorTemplate[]>(
+  const response = await client().fetchAs<BlockEditorTemplate[]>(
     `/api/v1/courses/{course_id}/block_editor_templates`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

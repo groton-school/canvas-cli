@@ -44,11 +44,12 @@ type Options = {
  * Nickname: create_blackout_date_accounts
  */
 export async function create(options: Options) {
-  return await client().fetchAs<BlackoutDate>(
+  const response = await client().fetchAs<BlackoutDate>(
     `/api/v1/accounts/{account_id}/blackout_dates`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

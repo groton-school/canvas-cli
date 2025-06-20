@@ -24,8 +24,12 @@ type Options = {
  * Nickname: get_late_policy
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/courses/{id}/late_policy`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/courses/{id}/late_policy`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

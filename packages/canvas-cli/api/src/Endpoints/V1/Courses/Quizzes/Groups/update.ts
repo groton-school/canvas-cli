@@ -47,11 +47,12 @@ type Options = {
  * Nickname: update_question_group
  */
 export async function update(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/groups/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { gradesGradessubmissionSubmission } from '../../../../Overrides.js';
 
@@ -41,11 +41,12 @@ type Options = {
  * Nickname: update_submission_s_what_if_score_and_calculate_grades
  */
 export async function update(options: Options) {
-  return await client().fetchAs<gradesGradessubmissionSubmission[]>(
+  const response = await client().fetchAs<gradesGradessubmissionSubmission[]>(
     `/api/v1/submissions/{id}/what_if_grades`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

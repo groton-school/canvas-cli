@@ -31,11 +31,12 @@ type Options = {
  * Nickname: delete_submission_comment
  */
 export async function delete_submission_comment(options: Options) {
-  return await client().fetchAs<SubmissionComment>(
+  const response = await client().fetchAs<SubmissionComment>(
     `/api/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/comments/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

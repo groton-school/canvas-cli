@@ -50,11 +50,12 @@ type Options = {
  * Nickname: list_course_memberships
  */
 export async function list(options: Options) {
-  return await client().fetchAs<NamesAndRoleMemberships>(
+  const response = await client().fetchAs<NamesAndRoleMemberships>(
     `/api/lti/courses/{course_id}/names_and_roles`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

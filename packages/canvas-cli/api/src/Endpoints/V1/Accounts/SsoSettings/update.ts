@@ -33,11 +33,12 @@ type Options = {
  * Nickname: update_account_auth_settings
  */
 export async function update(options: Options) {
-  return await client().fetchAs<SSOSettings>(
+  const response = await client().fetchAs<SSOSettings>(
     `/api/v1/accounts/{account_id}/sso_settings`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

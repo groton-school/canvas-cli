@@ -63,11 +63,12 @@ type Options = {
  * Nickname: export_content_groups
  */
 export async function export_content_groups(options: Options) {
-  return await client().fetchAs<ContentExport>(
+  const response = await client().fetchAs<ContentExport>(
     `/api/v1/groups/{group_id}/content_exports`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

@@ -34,11 +34,12 @@ type Options = {
  * Nickname: list_entry_replies_courses
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/discussion_topics/{topic_id}/entries/{entry_id}/replies`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

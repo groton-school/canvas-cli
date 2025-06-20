@@ -276,11 +276,12 @@ type Options = {
  * Nickname: edit_assignment
  */
 export async function update(options: Options) {
-  return await client().fetchAs<Assignment>(
+  const response = await client().fetchAs<Assignment>(
     `/api/v1/courses/{course_id}/assignments/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

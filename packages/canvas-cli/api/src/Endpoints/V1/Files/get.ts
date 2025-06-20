@@ -63,8 +63,9 @@ type Options = {
  * Nickname: get_file_files
  */
 export async function get(options: Options) {
-  return await client().fetchAs<File>(`/api/v1/files/{id}`, {
+  const response = await client().fetchAs<File>(`/api/v1/files/{id}`, {
     method: 'GET',
     ...options
   });
+  return response;
 }

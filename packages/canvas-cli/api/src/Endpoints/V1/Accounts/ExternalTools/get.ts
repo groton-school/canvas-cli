@@ -26,11 +26,12 @@ type Options = {
  * Nickname: get_single_external_tool_accounts
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/external_tools/{external_tool_id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

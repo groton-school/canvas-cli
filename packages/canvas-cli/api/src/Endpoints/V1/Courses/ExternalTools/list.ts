@@ -42,11 +42,12 @@ type Options = {
  * Nickname: list_external_tools_courses
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/external_tools`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

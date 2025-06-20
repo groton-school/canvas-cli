@@ -33,11 +33,12 @@ type Options = {
  * Nickname: delete_user_from_root_account
  */
 export async function delete_user_from_root_account(options: Options) {
-  return await client().fetchAs<User>(
+  const response = await client().fetchAs<User>(
     `/api/v1/accounts/{account_id}/users/{user_id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
@@ -31,11 +31,12 @@ type Options = {
  * Nickname: list_assignment_overrides
  */
 export async function list(options: Options) {
-  return await client().fetchAs<AssignmentOverride[]>(
+  const response = await client().fetchAs<AssignmentOverride[]>(
     `/api/v1/courses/{course_id}/assignments/{assignment_id}/overrides`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

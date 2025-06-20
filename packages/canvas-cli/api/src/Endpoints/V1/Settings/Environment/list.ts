@@ -17,8 +17,12 @@ type Options =
  * Nickname: list_environment_settings
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/settings/environment`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/settings/environment`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

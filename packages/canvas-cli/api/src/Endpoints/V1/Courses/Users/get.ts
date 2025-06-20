@@ -30,11 +30,12 @@ type Options = {
  * Nickname: get_single_user
  */
 export async function get(options: Options) {
-  return await client().fetchAs<User>(
+  const response = await client().fetchAs<User>(
     `/api/v1/courses/{course_id}/users/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

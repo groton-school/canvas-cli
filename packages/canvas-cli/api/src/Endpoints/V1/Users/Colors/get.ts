@@ -30,11 +30,12 @@ type Options = {
  * Nickname: get_custom_color
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/users/{id}/colors/{asset_string}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

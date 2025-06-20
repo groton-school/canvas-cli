@@ -27,11 +27,12 @@ type Options = {
  * Nickname: show_content_export_users
  */
 export async function show_content_export_users(options: Options) {
-  return await client().fetchAs<ContentExport>(
+  const response = await client().fetchAs<ContentExport>(
     `/api/v1/users/{user_id}/content_exports/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

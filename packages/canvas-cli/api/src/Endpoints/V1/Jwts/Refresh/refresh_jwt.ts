@@ -30,8 +30,9 @@ type Options =
  * Nickname: refresh_jwt
  */
 export async function refresh_jwt(options: Options) {
-  return await client().fetchAs<JWT>(`/api/v1/jwts/refresh`, {
+  const response = await client().fetchAs<JWT>(`/api/v1/jwts/refresh`, {
     method: 'POST',
     ...options
   });
+  return response;
 }

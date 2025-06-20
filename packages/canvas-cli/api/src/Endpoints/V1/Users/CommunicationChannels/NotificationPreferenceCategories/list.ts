@@ -27,11 +27,12 @@ type Options = {
  * Nickname: list_of_preference_categories
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/users/{user_id}/communication_channels/{communication_channel_id}/notification_preference_categories`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

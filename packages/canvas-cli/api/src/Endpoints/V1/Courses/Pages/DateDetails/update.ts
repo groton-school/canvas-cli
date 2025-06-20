@@ -70,11 +70,12 @@ type Options = {
  * Nickname: update_learning_object_s_date_information_pages
  */
 export async function update(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/pages/{url_or_id}/date_details`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

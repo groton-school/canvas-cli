@@ -61,11 +61,12 @@ type Options = {
  * Nickname: update_module
  */
 export async function update(options: Options) {
-  return await client().fetchAs<Module>(
+  const response = await client().fetchAs<Module>(
     `/api/v1/courses/{course_id}/modules/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

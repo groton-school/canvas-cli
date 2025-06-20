@@ -27,11 +27,12 @@ type Options = {
  * Nickname: get_single_group_membership_users
  */
 export async function get(options: Options) {
-  return await client().fetchAs<GroupMembership>(
+  const response = await client().fetchAs<GroupMembership>(
     `/api/v1/groups/{group_id}/users/{user_id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

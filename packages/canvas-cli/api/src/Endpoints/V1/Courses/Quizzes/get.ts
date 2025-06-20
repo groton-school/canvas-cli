@@ -27,11 +27,12 @@ type Options = {
  * Nickname: get_single_quiz
  */
 export async function get(options: Options) {
-  return await client().fetchAs<Quiz>(
+  const response = await client().fetchAs<Quiz>(
     `/api/v1/courses/{course_id}/quizzes/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 import { PeerReview } from '../../../../../../Resources/PeerReviews.js';
 
@@ -38,11 +38,12 @@ type Options = {
  * Nickname: get_all_peer_reviews_sections_submissions
  */
 export async function get(options: Options) {
-  return await client().fetchAs<PeerReview[]>(
+  const response = await client().fetchAs<PeerReview[]>(
     `/api/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

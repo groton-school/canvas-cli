@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type getPathParameters = {
@@ -36,11 +36,12 @@ type Options = {
  * Nickname: get_ids_of_outcome_groups_created_after_successful_import_accounts
  */
 export async function get(options: Options) {
-  return await client().fetchAs<string[]>(
+  const response = await client().fetchAs<string[]>(
     `/api/v1/accounts/{account_id}/outcome_imports/{id}/created_group_ids`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

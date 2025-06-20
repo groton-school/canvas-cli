@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { array } from '../../../Overrides.js';
 import { DiscussionTopic } from '../../../Resources/DiscussionTopics.js';
@@ -86,8 +86,12 @@ type Options =
  * Nickname: list_announcements
  */
 export async function list(options: Options) {
-  return await client().fetchAs<DiscussionTopic[]>(`/api/v1/announcements`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<DiscussionTopic[]>(
+    `/api/v1/announcements`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

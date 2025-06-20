@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { PlannerNote } from '../../../Resources/Planner.js';
 
@@ -52,8 +52,12 @@ type Options =
  * Nickname: list_planner_notes
  */
 export async function list(options: Options) {
-  return await client().fetchAs<PlannerNote[]>(`/api/v1/planner_notes`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<PlannerNote[]>(
+    `/api/v1/planner_notes`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

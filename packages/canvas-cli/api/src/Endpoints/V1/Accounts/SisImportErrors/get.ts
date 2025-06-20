@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { SisImportError } from '../../../../Resources/SisImportErrors.js';
 
@@ -43,11 +43,12 @@ type Options = {
  * Nickname: get_sis_import_error_list_sis_import_errors
  */
 export async function get(options: Options) {
-  return await client().fetchAs<SisImportError[]>(
+  const response = await client().fetchAs<SisImportError[]>(
     `/api/v1/accounts/{account_id}/sis_import_errors`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

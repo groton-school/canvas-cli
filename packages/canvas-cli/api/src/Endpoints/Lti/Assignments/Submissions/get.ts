@@ -26,11 +26,12 @@ type Options = {
  * Nickname: get_single_submission
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/lti/assignments/{assignment_id}/submissions/{submission_id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

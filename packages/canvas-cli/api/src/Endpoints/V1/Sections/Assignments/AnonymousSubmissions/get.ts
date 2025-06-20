@@ -35,11 +35,12 @@ type Options = {
  * Nickname: get_single_submission_by_anonymous_id_sections
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/sections/{section_id}/assignments/{assignment_id}/anonymous_submissions/{anonymous_id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

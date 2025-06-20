@@ -70,11 +70,12 @@ type Options = {
  * Nickname: create_folder_accounts
  */
 export async function create(options: Options) {
-  return await client().fetchAs<Folder>(
+  const response = await client().fetchAs<Folder>(
     `/api/v1/accounts/{account_id}/folders`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

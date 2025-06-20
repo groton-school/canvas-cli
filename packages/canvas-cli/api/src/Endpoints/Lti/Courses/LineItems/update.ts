@@ -65,11 +65,12 @@ type Options = {
  * Nickname: update_line_item
  */
 export async function update(options: Options) {
-  return await client().fetchAs<LineItem>(
+  const response = await client().fetchAs<LineItem>(
     `/api/lti/courses/{course_id}/line_items/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

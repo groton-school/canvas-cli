@@ -31,11 +31,12 @@ type Options = {
  * Nickname: re_lock_module_progressions
  */
 export async function re_lock_module_progressions(options: Options) {
-  return await client().fetchAs<Module>(
+  const response = await client().fetchAs<Module>(
     `/api/v1/courses/{course_id}/modules/{id}/relock`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

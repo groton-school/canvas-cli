@@ -216,11 +216,12 @@ type Options = {
  * Nickname: create_new_quiz
  */
 export async function create(options: Options) {
-  return await client().fetchAs<NewQuiz>(
+  const response = await client().fetchAs<NewQuiz>(
     `/api/quiz/v1/courses/{course_id}/quizzes`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

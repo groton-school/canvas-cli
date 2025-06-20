@@ -31,11 +31,12 @@ type Options = {
  * Nickname: get_proficiency_ratings_courses
  */
 export async function get(options: Options) {
-  return await client().fetchAs<Proficiency>(
+  const response = await client().fetchAs<Proficiency>(
     `/api/v1/courses/{course_id}/outcome_proficiency`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

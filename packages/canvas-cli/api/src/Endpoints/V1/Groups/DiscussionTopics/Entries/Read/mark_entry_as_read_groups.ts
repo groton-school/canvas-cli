@@ -42,11 +42,12 @@ type Options = {
  * Nickname: mark_entry_as_read_groups
  */
 export async function mark_entry_as_read_groups(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/groups/{group_id}/discussion_topics/{topic_id}/entries/{entry_id}/read`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

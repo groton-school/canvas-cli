@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { MediaTrack } from '../../../../Resources/MediaObjects.js';
 
@@ -42,11 +42,12 @@ type Options = {
  * Nickname: update_media_tracks_media_attachments
  */
 export async function update(options: Options) {
-  return await client().fetchAs<MediaTrack[]>(
+  const response = await client().fetchAs<MediaTrack[]>(
     `/api/v1/media_attachments/{attachment_id}/media_tracks`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

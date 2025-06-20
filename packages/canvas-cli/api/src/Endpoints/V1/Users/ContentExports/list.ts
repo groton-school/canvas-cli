@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { ContentExport } from '../../../../Resources/ContentExports.js';
 
@@ -29,11 +29,12 @@ type Options = {
  * Nickname: list_content_exports_users
  */
 export async function list(options: Options) {
-  return await client().fetchAs<ContentExport[]>(
+  const response = await client().fetchAs<ContentExport[]>(
     `/api/v1/users/{user_id}/content_exports`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -26,11 +26,12 @@ type Options =
  * Nickname: save_enabled_account_calendars
  */
 export async function save_enabled_account_calendars(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/calendar_events/save_enabled_account_calendars`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

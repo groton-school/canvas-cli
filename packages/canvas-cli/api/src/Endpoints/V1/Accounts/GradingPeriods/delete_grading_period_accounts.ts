@@ -27,11 +27,12 @@ type Options = {
  * Nickname: delete_grading_period_accounts
  */
 export async function delete_grading_period_accounts(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/grading_periods/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

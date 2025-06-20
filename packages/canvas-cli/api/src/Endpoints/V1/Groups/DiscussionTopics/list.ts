@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { DiscussionTopic } from '../../../../Resources/DiscussionTopics.js';
 
@@ -71,11 +71,12 @@ type Options = {
  * Nickname: list_discussion_topics_groups
  */
 export async function list(options: Options) {
-  return await client().fetchAs<DiscussionTopic[]>(
+  const response = await client().fetchAs<DiscussionTopic[]>(
     `/api/v1/groups/{group_id}/discussion_topics`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

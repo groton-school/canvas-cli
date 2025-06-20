@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { CommunicationChannel } from '../../../../Resources/CommunicationChannels.js';
 
@@ -29,11 +29,12 @@ type Options = {
  * Nickname: list_user_communication_channels
  */
 export async function list(options: Options) {
-  return await client().fetchAs<CommunicationChannel[]>(
+  const response = await client().fetchAs<CommunicationChannel[]>(
     `/api/v1/users/{user_id}/communication_channels`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Integer } from '../../../../Overrides.js';
 import { Admin } from '../../../../Resources/Admins.js';
@@ -38,11 +38,12 @@ type Options = {
  * Nickname: list_account_admins
  */
 export async function list(options: Options) {
-  return await client().fetchAs<Admin[]>(
+  const response = await client().fetchAs<Admin[]>(
     `/api/v1/accounts/{account_id}/admins`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -58,11 +58,12 @@ type Options = {
  * Nickname: update_course_pace
  */
 export async function update(options: Options) {
-  return await client().fetchAs<CoursePace>(
+  const response = await client().fetchAs<CoursePace>(
     `/api/v1/courses/{course_id}/course_pacing/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

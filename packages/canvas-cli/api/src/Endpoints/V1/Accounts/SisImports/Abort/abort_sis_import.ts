@@ -31,11 +31,12 @@ type Options = {
  * Nickname: abort_sis_import
  */
 export async function abort_sis_import(options: Options) {
-  return await client().fetchAs<SisImport>(
+  const response = await client().fetchAs<SisImport>(
     `/api/v1/accounts/{account_id}/sis_imports/{id}/abort`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

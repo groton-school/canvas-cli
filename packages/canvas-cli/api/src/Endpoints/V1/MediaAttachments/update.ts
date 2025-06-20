@@ -29,11 +29,12 @@ type Options = {
  * Nickname: update_media_object_media_attachments
  */
 export async function update(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/media_attachments/{attachment_id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

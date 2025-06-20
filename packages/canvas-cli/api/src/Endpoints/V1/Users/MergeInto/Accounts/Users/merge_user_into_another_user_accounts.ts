@@ -80,11 +80,12 @@ type Options = {
  * Nickname: merge_user_into_another_user_accounts
  */
 export async function merge_user_into_another_user_accounts(options: Options) {
-  return await client().fetchAs<User>(
+  const response = await client().fetchAs<User>(
     `/api/v1/users/{id}/merge_into/accounts/{destination_account_id}/users/{destination_user_id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

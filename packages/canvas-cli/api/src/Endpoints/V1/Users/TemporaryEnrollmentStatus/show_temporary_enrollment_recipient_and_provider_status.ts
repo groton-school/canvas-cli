@@ -38,11 +38,12 @@ type Options = {
 export async function show_temporary_enrollment_recipient_and_provider_status(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/users/{user_id}/temporary_enrollment_status`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

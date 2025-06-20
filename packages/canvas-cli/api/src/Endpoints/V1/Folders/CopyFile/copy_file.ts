@@ -44,11 +44,12 @@ type Options = {
  * Nickname: copy_file
  */
 export async function copy_file(options: Options) {
-  return await client().fetchAs<File>(
+  const response = await client().fetchAs<File>(
     `/api/v1/folders/{dest_folder_id}/copy_file`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

@@ -25,11 +25,12 @@ type Options = {
  * Nickname: get_terms_of_service
  */
 export async function get(options: Options) {
-  return await client().fetchAs<TermsOfService>(
+  const response = await client().fetchAs<TermsOfService>(
     `/api/v1/accounts/{account_id}/terms_of_service`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

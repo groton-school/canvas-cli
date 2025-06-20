@@ -37,11 +37,12 @@ type Options = {
  * Nickname: add_recipients
  */
 export async function add_recipients(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/conversations/{id}/add_recipients`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

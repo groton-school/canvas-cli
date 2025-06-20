@@ -37,11 +37,12 @@ type Options = {
  * Nickname: create_subgroup_global
  */
 export async function create(options: Options) {
-  return await client().fetchAs<OutcomeGroup>(
+  const response = await client().fetchAs<OutcomeGroup>(
     `/api/v1/global/outcome_groups/{id}/subgroups`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

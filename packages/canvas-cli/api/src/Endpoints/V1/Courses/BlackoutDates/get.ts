@@ -27,11 +27,12 @@ type Options = {
  * Nickname: get_single_blackout_date_courses
  */
 export async function get(options: Options) {
-  return await client().fetchAs<BlackoutDate>(
+  const response = await client().fetchAs<BlackoutDate>(
     `/api/v1/courses/{course_id}/blackout_dates/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

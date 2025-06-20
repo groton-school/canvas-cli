@@ -27,11 +27,12 @@ type Options = {
  * Nickname: show_content_export_groups
  */
 export async function show_content_export_groups(options: Options) {
-  return await client().fetchAs<ContentExport>(
+  const response = await client().fetchAs<ContentExport>(
     `/api/v1/groups/{group_id}/content_exports/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -26,8 +26,12 @@ type Options = {
  * Nickname: delete_user_login
  */
 export async function delete_user_login(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/users/{user_id}/logins/{id}`, {
-    method: 'DELETE',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/users/{user_id}/logins/{id}`,
+    {
+      method: 'DELETE',
+      ...options
+    }
+  );
+  return response;
 }

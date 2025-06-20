@@ -28,11 +28,12 @@ type Options = {
  * Nickname: get_status_of_rubric_import_accounts
  */
 export async function get(options: Options) {
-  return await client().fetchAs<RubricImport>(
+  const response = await client().fetchAs<RubricImport>(
     `/api/v1/accounts/{account_id}/rubrics/upload/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

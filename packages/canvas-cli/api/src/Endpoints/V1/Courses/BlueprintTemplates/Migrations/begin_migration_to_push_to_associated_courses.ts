@@ -57,11 +57,12 @@ type Options = {
 export async function begin_migration_to_push_to_associated_courses(
   options: Options
 ) {
-  return await client().fetchAs<BlueprintMigration>(
+  const response = await client().fetchAs<BlueprintMigration>(
     `/api/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

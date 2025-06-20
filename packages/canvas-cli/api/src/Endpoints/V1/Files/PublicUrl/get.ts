@@ -38,8 +38,12 @@ type Options = {
  * Nickname: get_public_inline_preview_url
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/files/{id}/public_url`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/files/{id}/public_url`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

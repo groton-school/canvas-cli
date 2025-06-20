@@ -39,11 +39,12 @@ type Options = {
  * Nickname: create_temporary_enrollment_pairing
  */
 export async function create(options: Options) {
-  return await client().fetchAs<TemporaryEnrollmentPairing>(
+  const response = await client().fetchAs<TemporaryEnrollmentPairing>(
     `/api/v1/accounts/{account_id}/temporary_enrollment_pairings`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

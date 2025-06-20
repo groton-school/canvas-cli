@@ -26,11 +26,12 @@ type Options = {
  * Nickname: edit_external_tool_accounts
  */
 export async function update(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/external_tools/{external_tool_id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

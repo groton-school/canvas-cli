@@ -33,8 +33,12 @@ type Options =
  * Nickname: list_counts_for_todo_items
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/users/self/todo_item_count`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/users/self/todo_item_count`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

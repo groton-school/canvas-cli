@@ -68,11 +68,12 @@ type Options = {
  * Nickname: update_create_page_groups
  */
 export async function update(options: Options) {
-  return await client().fetchAs<Page>(
+  const response = await client().fetchAs<Page>(
     `/api/v1/groups/{group_id}/pages/{url_or_id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

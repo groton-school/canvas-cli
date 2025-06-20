@@ -17,8 +17,12 @@ type Options =
  * Nickname: start_kaltura_session
  */
 export async function start_kaltura_session(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/services/kaltura_session`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/services/kaltura_session`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
+  return response;
 }

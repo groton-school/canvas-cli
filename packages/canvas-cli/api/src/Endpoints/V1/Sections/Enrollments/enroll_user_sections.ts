@@ -135,11 +135,12 @@ type Options = {
  * Nickname: enroll_user_sections
  */
 export async function enroll_user_sections(options: Options) {
-  return await client().fetchAs<Enrollment>(
+  const response = await client().fetchAs<Enrollment>(
     `/api/v1/sections/{section_id}/enrollments`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

@@ -26,11 +26,12 @@ type Options = {
  * Nickname: reject_course_invitation
  */
 export async function reject_course_invitation(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/enrollments/{id}/reject`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

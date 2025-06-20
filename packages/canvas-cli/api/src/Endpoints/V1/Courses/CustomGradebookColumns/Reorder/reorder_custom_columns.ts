@@ -37,11 +37,12 @@ type Options = {
  * Nickname: reorder_custom_columns
  */
 export async function reorder_custom_columns(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/custom_gradebook_columns/reorder`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

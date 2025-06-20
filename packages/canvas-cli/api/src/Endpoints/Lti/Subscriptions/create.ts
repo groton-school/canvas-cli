@@ -45,8 +45,9 @@ type Options =
  * Nickname: create_webhook_subscription
  */
 export async function create(options: Options) {
-  return await client().fetchAs<void>(`/api/lti/subscriptions`, {
+  const response = await client().fetchAs<void>(`/api/lti/subscriptions`, {
     method: 'POST',
     ...options
   });
+  return response;
 }

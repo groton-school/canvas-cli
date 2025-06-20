@@ -58,11 +58,12 @@ type Options = {
  * Nickname: update_lti_resource_link
  */
 export async function update(options: Options) {
-  return await client().fetchAs<LtiResourceLink>(
+  const response = await client().fetchAs<LtiResourceLink>(
     `/api/v1/courses/{course_id}/lti_resource_links/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

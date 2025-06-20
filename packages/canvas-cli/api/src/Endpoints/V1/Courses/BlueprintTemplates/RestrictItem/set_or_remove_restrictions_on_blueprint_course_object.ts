@@ -57,11 +57,12 @@ type Options = {
 export async function set_or_remove_restrictions_on_blueprint_course_object(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/blueprint_templates/{template_id}/restrict_item`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

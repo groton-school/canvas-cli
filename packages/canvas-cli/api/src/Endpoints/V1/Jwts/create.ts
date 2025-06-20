@@ -54,8 +54,9 @@ type Options =
  * Nickname: create_jwt
  */
 export async function create(options: Options) {
-  return await client().fetchAs<JWT>(`/api/v1/jwts`, {
+  const response = await client().fetchAs<JWT>(`/api/v1/jwts`, {
     method: 'POST',
     ...options
   });
+  return response;
 }

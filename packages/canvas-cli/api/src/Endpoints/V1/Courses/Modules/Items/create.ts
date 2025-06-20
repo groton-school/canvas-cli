@@ -95,11 +95,12 @@ type Options = {
  * Nickname: create_module_item
  */
 export async function create(options: Options) {
-  return await client().fetchAs<ModuleItem>(
+  const response = await client().fetchAs<ModuleItem>(
     `/api/v1/courses/{course_id}/modules/{module_id}/items`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

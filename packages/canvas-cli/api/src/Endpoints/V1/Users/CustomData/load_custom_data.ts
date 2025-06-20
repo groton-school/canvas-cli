@@ -45,8 +45,12 @@ type Options = {
  * Nickname: load_custom_data
  */
 export async function load_custom_data(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/users/{user_id}/custom_data`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/users/{user_id}/custom_data`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

@@ -29,11 +29,12 @@ type Options = {
  * Nickname: get_document_annotations_read_state_courses
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/document_annotations/read`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

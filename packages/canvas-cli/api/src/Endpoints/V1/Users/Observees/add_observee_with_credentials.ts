@@ -65,8 +65,12 @@ type Options = {
  * Nickname: add_observee_with_credentials
  */
 export async function add_observee_with_credentials(options: Options) {
-  return await client().fetchAs<User>(`/api/v1/users/{user_id}/observees`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<User>(
+    `/api/v1/users/{user_id}/observees`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
+  return response;
 }

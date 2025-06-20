@@ -29,11 +29,12 @@ type Options = {
  * Nickname: get_learning_object_s_date_information_files
  */
 export async function get(options: Options) {
-  return await client().fetchAs<LearningObjectDates>(
+  const response = await client().fetchAs<LearningObjectDates>(
     `/api/v1/courses/{course_id}/files/{attachment_id}/date_details`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

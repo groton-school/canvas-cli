@@ -31,8 +31,9 @@ type Options =
  * Nickname: list_all_courses
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/search/all_courses`, {
+  const response = await client().fetchAs<void>(`/api/v1/search/all_courses`, {
     method: 'GET',
     ...options
   });
+  return response;
 }

@@ -66,11 +66,12 @@ type Options = {
  * Nickname: list_planner_items_users
  */
 export async function list(options: Options) {
-  return await client().fetchAs<PlannerItem[]>(
+  const response = await client().fetchAs<PlannerItem[]>(
     `/api/v1/users/{user_id}/planner/items`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

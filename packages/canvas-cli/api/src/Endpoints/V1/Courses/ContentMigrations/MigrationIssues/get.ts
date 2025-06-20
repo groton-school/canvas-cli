@@ -29,11 +29,12 @@ type Options = {
  * Nickname: get_migration_issue_courses
  */
 export async function get(options: Options) {
-  return await client().fetchAs<MigrationIssue>(
+  const response = await client().fetchAs<MigrationIssue>(
     `/api/v1/courses/{course_id}/content_migrations/{content_migration_id}/migration_issues/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

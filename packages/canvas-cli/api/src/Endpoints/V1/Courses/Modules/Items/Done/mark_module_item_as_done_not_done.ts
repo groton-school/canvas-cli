@@ -29,11 +29,12 @@ type Options = {
  * Nickname: mark_module_item_as_done_not_done
  */
 export async function mark_module_item_as_done_not_done(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/modules/{module_id}/items/{id}/done`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

@@ -30,11 +30,12 @@ type Options = {
  * Nickname: mark_topic_as_read_courses
  */
 export async function mark_topic_as_read_courses(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/discussion_topics/{topic_id}/read`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

@@ -44,11 +44,12 @@ type Options = {
  * Nickname: create_content_share
  */
 export async function create(options: Options) {
-  return await client().fetchAs<ContentShare>(
+  const response = await client().fetchAs<ContentShare>(
     `/api/v1/users/{user_id}/content_shares`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

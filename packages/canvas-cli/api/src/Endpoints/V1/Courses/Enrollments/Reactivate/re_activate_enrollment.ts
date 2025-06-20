@@ -27,11 +27,12 @@ type Options = {
  * Nickname: re_activate_enrollment
  */
 export async function re_activate_enrollment(options: Options) {
-  return await client().fetchAs<Enrollment>(
+  const response = await client().fetchAs<Enrollment>(
     `/api/v1/courses/{course_id}/enrollments/{id}/reactivate`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

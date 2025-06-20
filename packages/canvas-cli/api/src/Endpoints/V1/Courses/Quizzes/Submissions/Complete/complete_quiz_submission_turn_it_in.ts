@@ -59,11 +59,12 @@ type Options = {
  * Nickname: complete_quiz_submission_turn_it_in
  */
 export async function complete_quiz_submission_turn_it_in(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/complete`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

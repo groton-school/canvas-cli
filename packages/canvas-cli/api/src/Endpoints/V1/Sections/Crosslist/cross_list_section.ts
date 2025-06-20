@@ -40,11 +40,12 @@ type Options = {
  * Nickname: cross_list_section
  */
 export async function cross_list_section(options: Options) {
-  return await client().fetchAs<Section>(
+  const response = await client().fetchAs<Section>(
     `/api/v1/sections/{id}/crosslist/{new_course_id}`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

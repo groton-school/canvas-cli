@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { MediaObject } from '../../../Resources/MediaObjects.js';
 
@@ -43,8 +43,12 @@ type Options =
  * Nickname: list_media_objects_media_attachments
  */
 export async function list(options: Options) {
-  return await client().fetchAs<MediaObject[]>(`/api/v1/media_attachments`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<MediaObject[]>(
+    `/api/v1/media_attachments`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

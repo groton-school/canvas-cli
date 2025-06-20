@@ -80,11 +80,12 @@ type Options = {
 export async function retrieve_assignments_enabled_for_grade_export_to_sis_accounts(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/sis/accounts/{account_id}/assignments`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

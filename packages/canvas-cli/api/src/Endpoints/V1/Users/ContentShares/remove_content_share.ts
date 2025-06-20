@@ -27,11 +27,12 @@ type Options = {
  * Nickname: remove_content_share
  */
 export async function remove_content_share(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/users/{user_id}/content_shares/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

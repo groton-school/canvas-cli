@@ -215,11 +215,12 @@ type Options = {
  * Nickname: create_content_migration_courses
  */
 export async function create(options: Options) {
-  return await client().fetchAs<ContentMigration>(
+  const response = await client().fetchAs<ContentMigration>(
     `/api/v1/courses/{course_id}/content_migrations`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

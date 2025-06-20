@@ -79,11 +79,12 @@ type Options = {
  * Nickname: create_developer_key
  */
 export async function create(options: Options) {
-  return await client().fetchAs<DeveloperKey>(
+  const response = await client().fetchAs<DeveloperKey>(
     `/api/v1/accounts/{account_id}/developer_keys`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

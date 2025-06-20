@@ -27,11 +27,12 @@ type Options = {
  * Nickname: remove_tool_from_rce_favorites
  */
 export async function remove_tool_from_rce_favorites(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/external_tools/rce_favorites/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

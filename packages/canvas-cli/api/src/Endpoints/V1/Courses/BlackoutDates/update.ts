@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { BlackoutDateTheresultwhichshouldmatchtheinputwithmaybesomedifferentIDs } from '../../../../Overrides.js';
 
@@ -41,10 +41,11 @@ type Options = {
  * Nickname: update_list_of_blackout_dates
  */
 export async function update(options: Options) {
-  return await client().fetchAs<
+  const response = await client().fetchAs<
     BlackoutDateTheresultwhichshouldmatchtheinputwithmaybesomedifferentIDs[]
   >(`/api/v1/courses/{course_id}/blackout_dates`, {
     method: 'PUT',
     ...options
   });
+  return response;
 }

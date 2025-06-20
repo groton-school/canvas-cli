@@ -28,8 +28,12 @@ type Options = {
  * Nickname: reset_link_verifier
  */
 export async function reset_link_verifier(options: Options) {
-  return await client().fetchAs<File>(`/api/v1/files/{id}/reset_verifier`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<File>(
+    `/api/v1/files/{id}/reset_verifier`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
+  return response;
 }

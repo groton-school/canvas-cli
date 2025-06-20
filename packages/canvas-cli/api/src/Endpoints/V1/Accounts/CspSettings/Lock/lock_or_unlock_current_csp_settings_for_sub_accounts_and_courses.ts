@@ -39,11 +39,12 @@ type Options = {
 export async function lock_or_unlock_current_csp_settings_for_sub_accounts_and_courses(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/csp_settings/lock`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

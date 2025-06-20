@@ -41,8 +41,9 @@ type Options = {
  * Nickname: delete_file
  */
 export async function delete_file(options: Options) {
-  return await client().fetchAs<File>(`/api/v1/files/{id}`, {
+  const response = await client().fetchAs<File>(`/api/v1/files/{id}`, {
     method: 'DELETE',
     ...options
   });
+  return response;
 }

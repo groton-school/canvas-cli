@@ -10,10 +10,10 @@ export type createFormParameters = {
   /** Name of the group category */
   name: string;
   /**
-   * Can only be set by users with the Differentiated Tag Add permission
+   * Can only be set by users with the Differentiation Tag - Add permission
    *
    * If set to true, groups in this category will be only be visible to users
-   * with the Differentiated Tag Manage permission.
+   * with the Differentiation Tag - Manage permission.
    */
   non_collaborative: boolean;
   /**
@@ -75,11 +75,12 @@ type Options = {
  * Nickname: create_group_category_courses
  */
 export async function create(options: Options) {
-  return await client().fetchAs<GroupCategory>(
+  const response = await client().fetchAs<GroupCategory>(
     `/api/v1/courses/{course_id}/group_categories`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

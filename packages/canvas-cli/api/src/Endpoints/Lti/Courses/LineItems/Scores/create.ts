@@ -1,5 +1,5 @@
 import { JSONObject } from '@battis/typescript-tricks';
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { resultUrlStringTheurltotheresultthatwascreated } from '../../../../../Overrides.js';
 
@@ -156,10 +156,11 @@ type Options = {
  * Nickname: create_score
  */
 export async function create(options: Options) {
-  return await client().fetchAs<
+  const response = await client().fetchAs<
     resultUrlStringTheurltotheresultthatwascreated[]
   >(`/api/lti/courses/{course_id}/line_items/{line_item_id}/scores`, {
     method: 'POST',
     ...options
   });
+  return response;
 }

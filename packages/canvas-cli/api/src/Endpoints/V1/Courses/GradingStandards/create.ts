@@ -58,11 +58,12 @@ type Options = {
  * Nickname: create_new_grading_standard_courses
  */
 export async function create(options: Options) {
-  return await client().fetchAs<GradingStandard>(
+  const response = await client().fetchAs<GradingStandard>(
     `/api/v1/courses/{course_id}/grading_standards`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

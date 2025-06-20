@@ -43,8 +43,9 @@ type Options = {
  * Nickname: get_section_information_sections
  */
 export async function get(options: Options) {
-  return await client().fetchAs<Section>(`/api/v1/sections/{id}`, {
+  const response = await client().fetchAs<Section>(`/api/v1/sections/{id}`, {
     method: 'GET',
     ...options
   });
+  return response;
 }

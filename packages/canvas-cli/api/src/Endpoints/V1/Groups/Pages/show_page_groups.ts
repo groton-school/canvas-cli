@@ -27,11 +27,12 @@ type Options = {
  * Nickname: show_page_groups
  */
 export async function show_page_groups(options: Options) {
-  return await client().fetchAs<Page>(
+  const response = await client().fetchAs<Page>(
     `/api/v1/groups/{group_id}/pages/{url_or_id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

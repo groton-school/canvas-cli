@@ -29,11 +29,12 @@ type Options =
  * Nickname: update_public_jwk
  */
 export async function update(options: Options) {
-  return await client().fetchAs<DeveloperKey>(
+  const response = await client().fetchAs<DeveloperKey>(
     `/api/lti/developer_key/update_public_jwk`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

@@ -53,11 +53,12 @@ type Options = {
  * Nickname: create_question_group
  */
 export async function create(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/groups`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

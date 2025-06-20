@@ -26,11 +26,12 @@ type Options = {
  * Nickname: restore_deleted_eportfolio
  */
 export async function restore_deleted_eportfolio(options: Options) {
-  return await client().fetchAs<ePortfolio>(
+  const response = await client().fetchAs<ePortfolio>(
     `/api/v1/eportfolios/{eportfolio_id}/restore`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

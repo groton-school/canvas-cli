@@ -74,11 +74,12 @@ type Options = {
  * Nickname: import_outcomes_accounts
  */
 export async function import_outcomes_accounts(options: Options) {
-  return await client().fetchAs<OutcomeImport>(
+  const response = await client().fetchAs<OutcomeImport>(
     `/api/v1/accounts/{account_id}/outcome_imports`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

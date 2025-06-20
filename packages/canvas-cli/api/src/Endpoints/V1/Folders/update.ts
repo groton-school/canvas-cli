@@ -59,8 +59,9 @@ type Options = {
  * Nickname: update_folder
  */
 export async function update(options: Options) {
-  return await client().fetchAs<Folder>(`/api/v1/folders/{id}`, {
+  const response = await client().fetchAs<Folder>(`/api/v1/folders/{id}`, {
     method: 'PUT',
     ...options
   });
+  return response;
 }

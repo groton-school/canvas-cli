@@ -45,11 +45,12 @@ type Options = {
 export async function abort_generation_of_report_or_remove_previously_generated_one(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/reports/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

@@ -17,8 +17,12 @@ type Options =
  * Nickname: reset_course_favorites
  */
 export async function reset_course_favorites(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/users/self/favorites/courses`, {
-    method: 'DELETE',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/users/self/favorites/courses`,
+    {
+      method: 'DELETE',
+      ...options
+    }
+  );
+  return response;
 }

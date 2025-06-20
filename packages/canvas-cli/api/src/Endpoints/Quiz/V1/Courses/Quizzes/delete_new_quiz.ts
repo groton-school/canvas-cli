@@ -35,11 +35,12 @@ type Options = {
  * Nickname: delete_new_quiz
  */
 export async function delete_new_quiz(options: Options) {
-  return await client().fetchAs<NewQuiz>(
+  const response = await client().fetchAs<NewQuiz>(
     `/api/quiz/v1/courses/{course_id}/quizzes/{assignment_id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

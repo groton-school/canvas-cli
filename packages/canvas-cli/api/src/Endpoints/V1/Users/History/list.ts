@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { HistoryEntry } from '../../../../Resources/History.js';
 
@@ -33,11 +33,12 @@ type Options = {
  * Nickname: list_recent_history_for_user
  */
 export async function list(options: Options) {
-  return await client().fetchAs<HistoryEntry[]>(
+  const response = await client().fetchAs<HistoryEntry[]>(
     `/api/v1/users/{user_id}/history`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

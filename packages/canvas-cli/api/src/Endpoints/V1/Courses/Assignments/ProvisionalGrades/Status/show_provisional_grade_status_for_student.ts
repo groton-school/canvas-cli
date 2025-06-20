@@ -40,11 +40,12 @@ type Options = {
 export async function show_provisional_grade_status_for_student(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/status`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

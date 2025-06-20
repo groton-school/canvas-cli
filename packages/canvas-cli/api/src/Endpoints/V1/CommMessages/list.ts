@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { CommMessage } from '../../../Resources/CommMessages.js';
 
@@ -40,8 +40,12 @@ type Options =
  * Nickname: list_of_commmessages_for_user
  */
 export async function list(options: Options) {
-  return await client().fetchAs<CommMessage[]>(`/api/v1/comm_messages`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<CommMessage[]>(
+    `/api/v1/comm_messages`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

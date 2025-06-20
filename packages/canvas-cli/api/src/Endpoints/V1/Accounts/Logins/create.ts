@@ -90,8 +90,12 @@ type Options = {
  * Nickname: create_user_login
  */
 export async function create(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/accounts/{account_id}/logins`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/accounts/{account_id}/logins`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
+  return response;
 }

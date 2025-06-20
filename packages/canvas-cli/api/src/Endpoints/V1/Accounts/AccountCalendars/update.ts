@@ -32,11 +32,12 @@ type Options = {
  * Nickname: update_several_calendars
  */
 export async function update(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/account_calendars`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

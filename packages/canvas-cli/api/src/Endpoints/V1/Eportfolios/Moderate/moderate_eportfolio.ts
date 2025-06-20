@@ -33,11 +33,12 @@ type Options = {
  * Nickname: moderate_eportfolio
  */
 export async function moderate_eportfolio(options: Options) {
-  return await client().fetchAs<ePortfolio>(
+  const response = await client().fetchAs<ePortfolio>(
     `/api/v1/eportfolios/{eportfolio_id}/moderate`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

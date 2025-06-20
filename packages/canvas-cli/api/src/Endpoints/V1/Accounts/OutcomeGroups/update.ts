@@ -49,11 +49,12 @@ type Options = {
  * Nickname: update_outcome_group_accounts
  */
 export async function update(options: Options) {
-  return await client().fetchAs<OutcomeGroup>(
+  const response = await client().fetchAs<OutcomeGroup>(
     `/api/v1/accounts/{account_id}/outcome_groups/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

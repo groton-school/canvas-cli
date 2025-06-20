@@ -24,8 +24,12 @@ type Options = {
  * Nickname: list_poll_choices_in_poll
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/polls/{poll_id}/poll_choices`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/polls/{poll_id}/poll_choices`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

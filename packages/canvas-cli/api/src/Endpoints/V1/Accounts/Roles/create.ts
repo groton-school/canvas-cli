@@ -183,8 +183,12 @@ type Options = {
  * Nickname: create_new_role
  */
 export async function create(options: Options) {
-  return await client().fetchAs<Role>(`/api/v1/accounts/{account_id}/roles`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<Role>(
+    `/api/v1/accounts/{account_id}/roles`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
+  return response;
 }

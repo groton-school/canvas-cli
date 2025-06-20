@@ -26,8 +26,12 @@ type Options = {
  * Nickname: delete_access_token
  */
 export async function delete_access_token(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/users/{user_id}/tokens/{id}`, {
-    method: 'DELETE',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/users/{user_id}/tokens/{id}`,
+    {
+      method: 'DELETE',
+      ...options
+    }
+  );
+  return response;
 }

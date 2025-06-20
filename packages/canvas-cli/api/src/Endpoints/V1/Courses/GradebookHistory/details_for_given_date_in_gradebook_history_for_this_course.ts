@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Grader } from '../../../../Resources/GradebookHistory.js';
 
@@ -40,11 +40,12 @@ type Options = {
 export async function details_for_given_date_in_gradebook_history_for_this_course(
   options: Options
 ) {
-  return await client().fetchAs<Grader[]>(
+  const response = await client().fetchAs<Grader[]>(
     `/api/v1/courses/{course_id}/gradebook_history/{date}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

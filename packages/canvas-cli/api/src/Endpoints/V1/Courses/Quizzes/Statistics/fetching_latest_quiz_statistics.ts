@@ -37,11 +37,12 @@ type Options = {
  * Nickname: fetching_latest_quiz_statistics
  */
 export async function fetching_latest_quiz_statistics(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/statistics`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

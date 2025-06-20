@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { GradingStandard } from '../../../../Resources/GradingStandards.js';
 
@@ -29,11 +29,12 @@ type Options = {
  * Nickname: list_grading_standards_available_in_context_courses
  */
 export async function list(options: Options) {
-  return await client().fetchAs<GradingStandard[]>(
+  const response = await client().fetchAs<GradingStandard[]>(
     `/api/v1/courses/{course_id}/grading_standards`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

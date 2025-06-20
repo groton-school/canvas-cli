@@ -43,11 +43,12 @@ type Options = {
  * Nickname: bulk_update_assignment_dates
  */
 export async function bulk_update_assignment_dates(options: Options) {
-  return await client().fetchAs<Progress>(
+  const response = await client().fetchAs<Progress>(
     `/api/v1/courses/{course_id}/assignments/bulk_update`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

@@ -34,11 +34,12 @@ type Options = {
  * Nickname: get_outcome_import_status_accounts
  */
 export async function get(options: Options) {
-  return await client().fetchAs<OutcomeImport>(
+  const response = await client().fetchAs<OutcomeImport>(
     `/api/v1/accounts/{account_id}/outcome_imports/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

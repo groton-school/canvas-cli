@@ -49,11 +49,12 @@ type Options = {
  * Nickname: start_report
  */
 export async function start_report(options: Options) {
-  return await client().fetchAs<Report>(
+  const response = await client().fetchAs<Report>(
     `/api/v1/courses/{course_id}/reports/{report_type}`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

@@ -27,11 +27,12 @@ type Options = {
  * Nickname: query_progress
  */
 export async function query_progress(options: Options) {
-  return await client().fetchAs<Progress>(
+  const response = await client().fetchAs<Progress>(
     `/api/lti/courses/{course_id}/progress/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -42,11 +42,12 @@ type Options = {
 export async function retrieve_assignment_overridden_dates_for_classic_quizzes(
   options: Options
 ) {
-  return await client().fetchAs<QuizAssignmentOverrideSetContainer>(
+  const response = await client().fetchAs<QuizAssignmentOverrideSetContainer>(
     `/api/v1/courses/{course_id}/quizzes/assignment_overrides`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

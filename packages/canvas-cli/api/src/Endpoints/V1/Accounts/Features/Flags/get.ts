@@ -31,11 +31,12 @@ type Options = {
  * Nickname: get_feature_flag_accounts
  */
 export async function get(options: Options) {
-  return await client().fetchAs<FeatureFlag>(
+  const response = await client().fetchAs<FeatureFlag>(
     `/api/v1/accounts/{account_id}/features/flags/{feature}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

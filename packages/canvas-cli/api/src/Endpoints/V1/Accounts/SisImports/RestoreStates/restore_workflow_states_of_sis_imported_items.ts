@@ -56,11 +56,12 @@ type Options = {
 export async function restore_workflow_states_of_sis_imported_items(
   options: Options
 ) {
-  return await client().fetchAs<Progress>(
+  const response = await client().fetchAs<Progress>(
     `/api/v1/accounts/{account_id}/sis_imports/{id}/restore_states`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

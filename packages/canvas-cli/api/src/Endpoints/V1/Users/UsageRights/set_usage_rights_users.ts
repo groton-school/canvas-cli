@@ -54,11 +54,12 @@ type Options = {
  * Nickname: set_usage_rights_users
  */
 export async function set_usage_rights_users(options: Options) {
-  return await client().fetchAs<UsageRights>(
+  const response = await client().fetchAs<UsageRights>(
     `/api/v1/users/{user_id}/usage_rights`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

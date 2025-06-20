@@ -46,11 +46,12 @@ type Options = {
  * Nickname: create_quiz_submission_start_quiz_taking_session
  */
 export async function create(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/submissions`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

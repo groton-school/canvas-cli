@@ -58,11 +58,12 @@ type Options = {
  * Nickname: get_single_course_accounts
  */
 export async function get(options: Options) {
-  return await client().fetchAs<Course>(
+  const response = await client().fetchAs<Course>(
     `/api/v1/accounts/{account_id}/courses/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

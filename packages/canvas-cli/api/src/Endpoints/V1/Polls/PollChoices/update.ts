@@ -42,11 +42,12 @@ type Options = {
  * Nickname: update_single_poll_choice
  */
 export async function update(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/polls/{poll_id}/poll_choices/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

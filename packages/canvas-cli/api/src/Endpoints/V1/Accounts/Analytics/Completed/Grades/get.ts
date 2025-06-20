@@ -34,11 +34,12 @@ type Options = {
  * Nickname: get_department_level_grade_data_completed
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/analytics/completed/grades`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -29,11 +29,12 @@ type Options = {
  * Nickname: show_observer
  */
 export async function show_observer(options: Options) {
-  return await client().fetchAs<User>(
+  const response = await client().fetchAs<User>(
     `/api/v1/users/{user_id}/observers/{observer_id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

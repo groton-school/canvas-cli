@@ -47,11 +47,12 @@ type Options = {
  * Nickname: flagging_question
  */
 export async function flagging_question(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/quiz_submissions/{quiz_submission_id}/questions/{id}/flag`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

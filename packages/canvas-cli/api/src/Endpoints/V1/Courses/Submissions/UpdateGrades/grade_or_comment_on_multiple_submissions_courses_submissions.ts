@@ -76,11 +76,12 @@ type Options = {
 export async function grade_or_comment_on_multiple_submissions_courses_submissions(
   options: Options
 ) {
-  return await client().fetchAs<Progress>(
+  const response = await client().fetchAs<Progress>(
     `/api/v1/courses/{course_id}/submissions/update_grades`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

@@ -28,11 +28,12 @@ type Options = {
  * Nickname: show_account_auth_settings
  */
 export async function show_account_auth_settings(options: Options) {
-  return await client().fetchAs<SSOSettings>(
+  const response = await client().fetchAs<SSOSettings>(
     `/api/v1/accounts/{account_id}/sso_settings`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

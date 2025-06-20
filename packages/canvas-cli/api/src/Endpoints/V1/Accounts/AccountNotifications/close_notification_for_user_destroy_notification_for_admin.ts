@@ -43,11 +43,12 @@ type Options = {
 export async function close_notification_for_user_destroy_notification_for_admin(
   options: Options
 ) {
-  return await client().fetchAs<AccountNotification>(
+  const response = await client().fetchAs<AccountNotification>(
     `/api/v1/accounts/{account_id}/account_notifications/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

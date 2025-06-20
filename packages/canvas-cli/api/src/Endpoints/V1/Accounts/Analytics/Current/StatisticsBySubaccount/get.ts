@@ -27,11 +27,12 @@ type Options = {
  * Nickname: get_department_level_statistics_broken_down_by_subaccount_current
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/analytics/current/statistics_by_subaccount`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

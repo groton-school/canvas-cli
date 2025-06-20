@@ -25,11 +25,12 @@ type Options = {
  * Nickname: show_outcome_group_courses
  */
 export async function show_outcome_group_courses(options: Options) {
-  return await client().fetchAs<OutcomeGroup>(
+  const response = await client().fetchAs<OutcomeGroup>(
     `/api/v1/courses/{course_id}/outcome_groups/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

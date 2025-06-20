@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Migrator } from '../../../../../Resources/ContentMigrations.js';
 
@@ -28,11 +28,12 @@ type Options = {
  * Nickname: list_migration_systems_groups
  */
 export async function list(options: Options) {
-  return await client().fetchAs<Migrator[]>(
+  const response = await client().fetchAs<Migrator[]>(
     `/api/v1/groups/{group_id}/content_migrations/migrators`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

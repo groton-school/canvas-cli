@@ -202,8 +202,9 @@ type Options = {
  * Nickname: update_account
  */
 export async function update(options: Options) {
-  return await client().fetchAs<Account>(`/api/v1/accounts/{id}`, {
+  const response = await client().fetchAs<Account>(`/api/v1/accounts/{id}`, {
     method: 'PUT',
     ...options
   });
+  return response;
 }

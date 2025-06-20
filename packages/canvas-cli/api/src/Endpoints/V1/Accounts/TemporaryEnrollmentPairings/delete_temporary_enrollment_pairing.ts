@@ -27,11 +27,12 @@ type Options = {
  * Nickname: delete_temporary_enrollment_pairing
  */
 export async function delete_temporary_enrollment_pairing(options: Options) {
-  return await client().fetchAs<TemporaryEnrollmentPairing>(
+  const response = await client().fetchAs<TemporaryEnrollmentPairing>(
     `/api/v1/accounts/{account_id}/temporary_enrollment_pairings/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

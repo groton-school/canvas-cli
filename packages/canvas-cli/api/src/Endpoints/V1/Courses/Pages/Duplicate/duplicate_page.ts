@@ -27,11 +27,12 @@ type Options = {
  * Nickname: duplicate_page
  */
 export async function duplicate_page(options: Options) {
-  return await client().fetchAs<Page>(
+  const response = await client().fetchAs<Page>(
     `/api/v1/courses/{course_id}/pages/{url_or_id}/duplicate`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

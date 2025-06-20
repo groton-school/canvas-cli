@@ -27,11 +27,12 @@ type Options = {
  * Nickname: return_test_student_for_course
  */
 export async function return_test_student_for_course(options: Options) {
-  return await client().fetchAs<User>(
+  const response = await client().fetchAs<User>(
     `/api/v1/courses/{course_id}/student_view_student`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

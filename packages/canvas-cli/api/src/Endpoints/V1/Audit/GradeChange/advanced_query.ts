@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { GradeChangeEvent } from '../../../../Resources/GradeChangeLog.js';
 
@@ -66,11 +66,12 @@ type Options =
  * Nickname: advanced_query
  */
 export async function advanced_query(options: Options) {
-  return await client().fetchAs<GradeChangeEvent[]>(
+  const response = await client().fetchAs<GradeChangeEvent[]>(
     `/api/v1/audit/grade_change`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { PlannerOverride } from '../../../../Resources/Planner.js';
 
@@ -20,11 +20,12 @@ type Options =
  * Nickname: list_planner_overrides
  */
 export async function list(options: Options) {
-  return await client().fetchAs<PlannerOverride[]>(
+  const response = await client().fetchAs<PlannerOverride[]>(
     `/api/v1/planner/overrides`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

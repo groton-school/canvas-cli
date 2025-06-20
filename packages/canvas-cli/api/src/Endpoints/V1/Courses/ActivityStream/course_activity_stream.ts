@@ -27,11 +27,12 @@ type Options = {
  * Nickname: course_activity_stream
  */
 export async function course_activity_stream(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/activity_stream`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

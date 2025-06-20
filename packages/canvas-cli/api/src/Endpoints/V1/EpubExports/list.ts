@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { CourseEpubExport } from '../../../Resources/EPubExports.js';
 
@@ -21,8 +21,12 @@ type Options =
  * Nickname: list_courses_with_their_latest_epub_export
  */
 export async function list(options: Options) {
-  return await client().fetchAs<CourseEpubExport[]>(`/api/v1/epub_exports`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<CourseEpubExport[]>(
+    `/api/v1/epub_exports`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

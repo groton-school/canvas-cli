@@ -63,11 +63,12 @@ type Options = {
  * Nickname: export_content_courses
  */
 export async function export_content_courses(options: Options) {
-  return await client().fetchAs<ContentExport>(
+  const response = await client().fetchAs<ContentExport>(
     `/api/v1/courses/{course_id}/content_exports`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

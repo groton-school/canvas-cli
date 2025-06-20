@@ -42,11 +42,12 @@ type Options = {
  * Nickname: delete_course_pace
  */
 export async function delete_course_pace(options: Options) {
-  return await client().fetchAs<CoursePace>(
+  const response = await client().fetchAs<CoursePace>(
     `/api/v1/courses/{course_id}/course_pacing/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

@@ -32,8 +32,12 @@ type Options = {
  * Nickname: delete_appointment_group
  */
 export async function delete_appointment_group(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/appointment_groups/{id}`, {
-    method: 'DELETE',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/appointment_groups/{id}`,
+    {
+      method: 'DELETE',
+      ...options
+    }
+  );
+  return response;
 }

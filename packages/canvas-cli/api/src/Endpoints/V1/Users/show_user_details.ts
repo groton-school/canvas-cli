@@ -43,8 +43,9 @@ type Options = {
  * Nickname: show_user_details
  */
 export async function show_user_details(options: Options) {
-  return await client().fetchAs<User>(`/api/v1/users/{id}`, {
+  const response = await client().fetchAs<User>(`/api/v1/users/{id}`, {
     method: 'GET',
     ...options
   });
+  return response;
 }

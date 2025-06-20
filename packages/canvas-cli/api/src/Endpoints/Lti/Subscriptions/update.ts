@@ -24,8 +24,9 @@ type Options = {
  * Nickname: update_webhook_subscription
  */
 export async function update(options: Options) {
-  return await client().fetchAs<void>(`/api/lti/subscriptions/{id}`, {
+  const response = await client().fetchAs<void>(`/api/lti/subscriptions/{id}`, {
     method: 'PUT',
     ...options
   });
+  return response;
 }

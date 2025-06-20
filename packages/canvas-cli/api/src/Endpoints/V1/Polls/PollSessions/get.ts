@@ -26,11 +26,12 @@ type Options = {
  * Nickname: get_results_for_single_poll_session
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/polls/{poll_id}/poll_sessions/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

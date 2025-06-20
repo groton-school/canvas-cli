@@ -25,11 +25,12 @@ type Options = {
  * Nickname: list_enabled_features_accounts
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/features/enabled`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

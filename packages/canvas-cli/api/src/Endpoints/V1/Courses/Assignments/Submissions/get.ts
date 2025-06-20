@@ -35,11 +35,12 @@ type Options = {
  * Nickname: get_single_submission_courses
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

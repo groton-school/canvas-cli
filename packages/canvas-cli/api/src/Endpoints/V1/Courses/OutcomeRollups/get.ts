@@ -99,11 +99,12 @@ type Options = {
  * Nickname: get_outcome_result_rollups
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/outcome_rollups`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

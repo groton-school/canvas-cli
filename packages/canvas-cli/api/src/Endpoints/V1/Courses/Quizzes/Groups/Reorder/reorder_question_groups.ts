@@ -43,11 +43,12 @@ type Options = {
  * Nickname: reorder_question_groups
  */
 export async function reorder_question_groups(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/groups/{id}/reorder`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

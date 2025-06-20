@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { TemporaryEnrollmentPairing } from '../../../../Resources/TemporaryEnrollmentPairings.js';
 
@@ -28,11 +28,12 @@ type Options = {
  * Nickname: list_temporary_enrollment_pairings
  */
 export async function list(options: Options) {
-  return await client().fetchAs<TemporaryEnrollmentPairing[]>(
+  const response = await client().fetchAs<TemporaryEnrollmentPairing[]>(
     `/api/v1/accounts/{account_id}/temporary_enrollment_pairings`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

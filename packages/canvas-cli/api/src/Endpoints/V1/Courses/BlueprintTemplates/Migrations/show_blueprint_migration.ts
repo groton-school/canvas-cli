@@ -31,11 +31,12 @@ type Options = {
  * Nickname: show_blueprint_migration
  */
 export async function show_blueprint_migration(options: Options) {
-  return await client().fetchAs<BlueprintMigration>(
+  const response = await client().fetchAs<BlueprintMigration>(
     `/api/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

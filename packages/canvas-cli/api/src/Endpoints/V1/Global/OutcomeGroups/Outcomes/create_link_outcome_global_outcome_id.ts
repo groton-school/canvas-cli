@@ -102,11 +102,12 @@ type Options = {
  * Nickname: create_link_outcome_global_outcome_id
  */
 export async function create_link_outcome_global_outcome_id(options: Options) {
-  return await client().fetchAs<OutcomeLink>(
+  const response = await client().fetchAs<OutcomeLink>(
     `/api/v1/global/outcome_groups/{id}/outcomes/{outcome_id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

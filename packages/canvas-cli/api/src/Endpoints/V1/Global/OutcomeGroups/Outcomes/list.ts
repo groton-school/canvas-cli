@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
@@ -37,11 +37,12 @@ type Options = {
  * Nickname: list_linked_outcomes_global
  */
 export async function list(options: Options) {
-  return await client().fetchAs<OutcomeLink[]>(
+  const response = await client().fetchAs<OutcomeLink[]>(
     `/api/v1/global/outcome_groups/{id}/outcomes`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -24,8 +24,12 @@ type Options = {
  * Nickname: list_rubrics_accounts
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/accounts/{account_id}/rubrics`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/accounts/{account_id}/rubrics`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

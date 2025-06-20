@@ -24,11 +24,12 @@ type Options = {
  * Nickname: get_current_settings_for_account_or_course_accounts
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/csp_settings`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

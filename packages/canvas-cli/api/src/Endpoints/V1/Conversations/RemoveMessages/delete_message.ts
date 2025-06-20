@@ -33,11 +33,12 @@ type Options = {
  * Nickname: delete_message
  */
 export async function delete_message(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/conversations/{id}/remove_messages`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

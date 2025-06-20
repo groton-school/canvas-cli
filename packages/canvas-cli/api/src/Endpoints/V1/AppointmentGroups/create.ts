@@ -83,8 +83,9 @@ type Options =
  * Nickname: create_appointment_group
  */
 export async function create(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/appointment_groups`, {
+  const response = await client().fetchAs<void>(`/api/v1/appointment_groups`, {
     method: 'POST',
     ...options
   });
+  return response;
 }

@@ -1,5 +1,6 @@
+import { FileLocation, UploadResponse } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../../Client.js';
-import { UploadResponse } from '../../../../../../../FileUploads.js';
+import { File } from '../../../../../../../Resources/Files.js';
 
 export type uploadPathParameters = {
   /** ID */
@@ -87,7 +88,9 @@ type Options = {
       params: uploadFormParameters;
       strict: true;
     }
-);
+) & {
+    file: FileLocation;
+  };
 
 /**
  * Upload a file
@@ -103,12 +106,13 @@ type Options = {
  *
  * Nickname: upload_file
  */
-export async function upload(options: Options) {
-  return await client().fetchAs<UploadResponse>(
+export async function upload({ file, ...options }: Options) {
+  const response = await client().fetchAs<UploadResponse>(
     `/api/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/comments/files`,
     {
       method: 'POST',
       ...options
     }
   );
+  return await client().upload<File>({ response, file });
 }

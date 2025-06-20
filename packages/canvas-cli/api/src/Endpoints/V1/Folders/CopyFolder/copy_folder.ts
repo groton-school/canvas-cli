@@ -38,11 +38,12 @@ type Options = {
  * Nickname: copy_folder
  */
 export async function copy_folder(options: Options) {
-  return await client().fetchAs<Folder>(
+  const response = await client().fetchAs<Folder>(
     `/api/v1/folders/{dest_folder_id}/copy_folder`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

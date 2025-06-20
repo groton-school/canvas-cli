@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../../Client.js';
 import { SubmissionHistory } from '../../../../../../../Resources/GradebookHistory.js';
 
@@ -46,11 +46,12 @@ type Options = {
  * Nickname: lists_submissions
  */
 export async function lists_submissions(options: Options) {
-  return await client().fetchAs<SubmissionHistory[]>(
+  const response = await client().fetchAs<SubmissionHistory[]>(
     `/api/v1/courses/{course_id}/gradebook_history/{date}/graders/{grader_id}/assignments/{assignment_id}/submissions`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -38,8 +38,9 @@ type Options = {
  * Nickname: get_single_group
  */
 export async function get(options: Options) {
-  return await client().fetchAs<Group>(`/api/v1/groups/{group_id}`, {
+  const response = await client().fetchAs<Group>(`/api/v1/groups/{group_id}`, {
     method: 'GET',
     ...options
   });
+  return response;
 }

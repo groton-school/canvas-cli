@@ -40,11 +40,12 @@ type Options = {
  * Nickname: retrieve_captured_events
  */
 export async function retrieve_captured_events(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/events`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

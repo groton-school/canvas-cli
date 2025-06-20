@@ -38,11 +38,12 @@ type Options = {
  * Nickname: show_lti_resource_link
  */
 export async function show_lti_resource_link(options: Options) {
-  return await client().fetchAs<LtiResourceLink>(
+  const response = await client().fetchAs<LtiResourceLink>(
     `/api/v1/courses/{course_id}/lti_resource_links/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

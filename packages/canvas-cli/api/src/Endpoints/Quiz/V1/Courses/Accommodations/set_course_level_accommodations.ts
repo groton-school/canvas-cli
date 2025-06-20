@@ -66,11 +66,12 @@ type Options = {
  * Nickname: set_course_level_accommodations
  */
 export async function set_course_level_accommodations(options: Options) {
-  return await client().fetchAs<AccommodationResponse>(
+  const response = await client().fetchAs<AccommodationResponse>(
     `/api/quiz/v1/courses/{course_id}/accommodations`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

@@ -54,11 +54,12 @@ type Options = {
  * Nickname: import_category_groups
  */
 export async function import_category_groups(options: Options) {
-  return await client().fetchAs<Progress>(
+  const response = await client().fetchAs<Progress>(
     `/api/v1/group_categories/{group_category_id}/import`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

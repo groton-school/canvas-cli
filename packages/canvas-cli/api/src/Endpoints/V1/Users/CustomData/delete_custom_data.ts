@@ -98,8 +98,12 @@ type Options = {
  * Nickname: delete_custom_data
  */
 export async function delete_custom_data(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/users/{user_id}/custom_data`, {
-    method: 'DELETE',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/users/{user_id}/custom_data`,
+    {
+      method: 'DELETE',
+      ...options
+    }
+  );
+  return response;
 }

@@ -25,8 +25,12 @@ type Options = {
  * Nickname: show_front_page_groups
  */
 export async function show_front_page_groups(options: Options) {
-  return await client().fetchAs<Page>(`/api/v1/groups/{group_id}/front_page`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<Page>(
+    `/api/v1/groups/{group_id}/front_page`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

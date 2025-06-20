@@ -25,11 +25,12 @@ type Options = {
  * Nickname: new_blackout_date_accounts
  */
 export async function new_blackout_date_accounts(options: Options) {
-  return await client().fetchAs<BlackoutDate>(
+  const response = await client().fetchAs<BlackoutDate>(
     `/api/v1/accounts/{account_id}/blackout_dates/new`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

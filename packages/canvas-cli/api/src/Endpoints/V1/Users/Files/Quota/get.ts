@@ -24,8 +24,12 @@ type Options = {
  * Nickname: get_quota_information_users
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/users/{user_id}/files/quota`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/users/{user_id}/files/quota`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

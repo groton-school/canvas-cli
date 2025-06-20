@@ -22,8 +22,12 @@ type Options =
 export async function log_users_out_of_all_mobile_apps_mobile_sessions(
   options: Options
 ) {
-  return await client().fetchAs<void>(`/api/v1/users/mobile_sessions`, {
-    method: 'DELETE',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/users/mobile_sessions`,
+    {
+      method: 'DELETE',
+      ...options
+    }
+  );
+  return response;
 }

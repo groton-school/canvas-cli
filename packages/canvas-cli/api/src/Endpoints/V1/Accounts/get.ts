@@ -26,8 +26,9 @@ type Options = {
  * Nickname: get_single_account
  */
 export async function get(options: Options) {
-  return await client().fetchAs<Account>(`/api/v1/accounts/{id}`, {
+  const response = await client().fetchAs<Account>(`/api/v1/accounts/{id}`, {
     method: 'GET',
     ...options
   });
+  return response;
 }

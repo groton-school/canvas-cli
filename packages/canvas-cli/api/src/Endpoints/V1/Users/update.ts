@@ -106,8 +106,9 @@ type Options = {
  * Nickname: edit_user
  */
 export async function update(options: Options) {
-  return await client().fetchAs<User>(`/api/v1/users/{id}`, {
+  const response = await client().fetchAs<User>(`/api/v1/users/{id}`, {
     method: 'PUT',
     ...options
   });
+  return response;
 }

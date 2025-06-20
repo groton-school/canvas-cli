@@ -37,11 +37,12 @@ type Options = {
  * Nickname: show_revision_groups_revision_id
  */
 export async function show_revision_groups_revision_id(options: Options) {
-  return await client().fetchAs<PageRevision>(
+  const response = await client().fetchAs<PageRevision>(
     `/api/v1/groups/{group_id}/pages/{url_or_id}/revisions/{revision_id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

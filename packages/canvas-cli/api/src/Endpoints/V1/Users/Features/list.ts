@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Feature } from '../../../../Resources/FeatureFlags.js';
 
@@ -29,8 +29,12 @@ type Options = {
  * Nickname: list_features_users
  */
 export async function list(options: Options) {
-  return await client().fetchAs<Feature[]>(`/api/v1/users/{user_id}/features`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<Feature[]>(
+    `/api/v1/users/{user_id}/features`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

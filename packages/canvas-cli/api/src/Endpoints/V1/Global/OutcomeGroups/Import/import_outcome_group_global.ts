@@ -56,11 +56,12 @@ type Options = {
  * Nickname: import_outcome_group_global
  */
 export async function import_outcome_group_global(options: Options) {
-  return await client().fetchAs<OutcomeGroup>(
+  const response = await client().fetchAs<OutcomeGroup>(
     `/api/v1/global/outcome_groups/{id}/import`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

@@ -39,8 +39,9 @@ type Options =
  * Nickname: search_account_domains
  */
 export async function search_account_domains(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/accounts/search`, {
+  const response = await client().fetchAs<void>(`/api/v1/accounts/search`, {
     method: 'GET',
     ...options
   });
+  return response;
 }

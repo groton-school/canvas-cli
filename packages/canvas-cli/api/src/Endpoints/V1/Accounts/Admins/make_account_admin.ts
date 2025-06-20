@@ -50,8 +50,12 @@ type Options = {
  * Nickname: make_account_admin
  */
 export async function make_account_admin(options: Options) {
-  return await client().fetchAs<Admin>(`/api/v1/accounts/{account_id}/admins`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<Admin>(
+    `/api/v1/accounts/{account_id}/admins`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
+  return response;
 }

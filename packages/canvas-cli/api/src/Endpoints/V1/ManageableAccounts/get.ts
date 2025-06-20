@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { Account } from '../../../Resources/Accounts.js';
 
@@ -22,8 +22,12 @@ type Options =
  * Nickname: get_accounts_that_admins_can_manage
  */
 export async function get(options: Options) {
-  return await client().fetchAs<Account[]>(`/api/v1/manageable_accounts`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<Account[]>(
+    `/api/v1/manageable_accounts`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

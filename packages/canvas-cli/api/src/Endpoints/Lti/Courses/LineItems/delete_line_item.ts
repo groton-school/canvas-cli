@@ -27,11 +27,12 @@ type Options = {
  * Nickname: delete_line_item
  */
 export async function delete_line_item(options: Options) {
-  return await client().fetchAs<LineItem>(
+  const response = await client().fetchAs<LineItem>(
     `/api/lti/courses/{course_id}/line_items/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

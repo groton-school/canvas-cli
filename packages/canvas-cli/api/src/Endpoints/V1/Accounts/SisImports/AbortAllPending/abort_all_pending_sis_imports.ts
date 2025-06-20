@@ -24,11 +24,12 @@ type Options = {
  * Nickname: abort_all_pending_sis_imports
  */
 export async function abort_all_pending_sis_imports(options: Options) {
-  return await client().fetchAs<boolean>(
+  const response = await client().fetchAs<boolean>(
     `/api/v1/accounts/{account_id}/sis_imports/abort_all_pending`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

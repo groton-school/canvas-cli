@@ -73,8 +73,9 @@ type Options = {
  * Nickname: edit_group
  */
 export async function update(options: Options) {
-  return await client().fetchAs<Group>(`/api/v1/groups/{group_id}`, {
+  const response = await client().fetchAs<Group>(`/api/v1/groups/{group_id}`, {
     method: 'PUT',
     ...options
   });
+  return response;
 }

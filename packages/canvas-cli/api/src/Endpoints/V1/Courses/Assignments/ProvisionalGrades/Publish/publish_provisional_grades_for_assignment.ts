@@ -36,11 +36,12 @@ type Options = {
 export async function publish_provisional_grades_for_assignment(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/publish`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

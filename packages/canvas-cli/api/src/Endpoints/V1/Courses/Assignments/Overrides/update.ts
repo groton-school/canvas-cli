@@ -79,11 +79,12 @@ type Options = {
  * Nickname: update_assignment_override
  */
 export async function update(options: Options) {
-  return await client().fetchAs<AssignmentOverride>(
+  const response = await client().fetchAs<AssignmentOverride>(
     `/api/v1/courses/{course_id}/assignments/{assignment_id}/overrides/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

@@ -29,11 +29,12 @@ type Options = {
  * Nickname: get_course_copy_status
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/course_copy/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

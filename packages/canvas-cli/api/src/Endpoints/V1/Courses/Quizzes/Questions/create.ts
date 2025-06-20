@@ -74,11 +74,12 @@ type Options = {
  * Nickname: create_single_quiz_question
  */
 export async function create(options: Options) {
-  return await client().fetchAs<QuizQuestion>(
+  const response = await client().fetchAs<QuizQuestion>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/questions`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

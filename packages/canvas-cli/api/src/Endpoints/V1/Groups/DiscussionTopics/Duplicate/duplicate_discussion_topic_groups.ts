@@ -27,11 +27,12 @@ type Options = {
  * Nickname: duplicate_discussion_topic_groups
  */
 export async function duplicate_discussion_topic_groups(options: Options) {
-  return await client().fetchAs<DiscussionTopic>(
+  const response = await client().fetchAs<DiscussionTopic>(
     `/api/v1/groups/{group_id}/discussion_topics/{topic_id}/duplicate`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

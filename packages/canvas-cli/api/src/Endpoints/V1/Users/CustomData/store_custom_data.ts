@@ -148,8 +148,12 @@ type Options = {
  * Nickname: store_custom_data
  */
 export async function store_custom_data(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/users/{user_id}/custom_data`, {
-    method: 'PUT',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/users/{user_id}/custom_data`,
+    {
+      method: 'PUT',
+      ...options
+    }
+  );
+  return response;
 }

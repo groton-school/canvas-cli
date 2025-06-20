@@ -42,11 +42,12 @@ type Options = {
  * Nickname: list_lti_launch_definitions_courses
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/lti_apps/launch_definitions`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

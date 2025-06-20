@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { DeveloperKey } from '../../../../Resources/DeveloperKeys.js';
 
@@ -37,11 +37,12 @@ type Options = {
  * Nickname: list_developer_keys
  */
 export async function list(options: Options) {
-  return await client().fetchAs<DeveloperKey[]>(
+  const response = await client().fetchAs<DeveloperKey[]>(
     `/api/v1/accounts/{account_id}/developer_keys`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

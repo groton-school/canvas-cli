@@ -32,11 +32,12 @@ type Options = {
 export async function clear_unread_status_for_all_submissions_sections(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/sections/{section_id}/submissions/{user_id}/clear_unread`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

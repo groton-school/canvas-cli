@@ -124,11 +124,12 @@ type Options = {
  * Nickname: submit_assignment_courses
  */
 export async function submit_assignment_courses(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/assignments/{assignment_id}/submissions`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

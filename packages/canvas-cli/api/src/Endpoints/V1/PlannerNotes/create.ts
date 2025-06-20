@@ -58,8 +58,12 @@ type Options =
  * Nickname: create_planner_note
  */
 export async function create(options: Options) {
-  return await client().fetchAs<PlannerNote>(`/api/v1/planner_notes`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<PlannerNote>(
+    `/api/v1/planner_notes`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
+  return response;
 }

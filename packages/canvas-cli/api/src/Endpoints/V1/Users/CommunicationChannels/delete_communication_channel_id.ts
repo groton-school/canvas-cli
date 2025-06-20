@@ -27,11 +27,12 @@ type Options = {
  * Nickname: delete_communication_channel_id
  */
 export async function delete_communication_channel_id(options: Options) {
-  return await client().fetchAs<CommunicationChannel>(
+  const response = await client().fetchAs<CommunicationChannel>(
     `/api/v1/users/{user_id}/communication_channels/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

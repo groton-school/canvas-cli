@@ -28,8 +28,12 @@ type Options = {
  * Nickname: cancel_progress
  */
 export async function cancel_progress(options: Options) {
-  return await client().fetchAs<Progress>(`/api/v1/progress/{id}/cancel`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<Progress>(
+    `/api/v1/progress/{id}/cancel`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
+  return response;
 }

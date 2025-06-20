@@ -106,11 +106,12 @@ type Options = {
 export async function create_link_outcome_accounts_outcome_id(
   options: Options
 ) {
-  return await client().fetchAs<OutcomeLink>(
+  const response = await client().fetchAs<OutcomeLink>(
     `/api/v1/accounts/{account_id}/outcome_groups/{id}/outcomes/{outcome_id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

@@ -25,11 +25,12 @@ type Options = {
  * Nickname: remove_group_from_favorites
  */
 export async function remove_group_from_favorites(options: Options) {
-  return await client().fetchAs<Favorite>(
+  const response = await client().fetchAs<Favorite>(
     `/api/v1/users/self/favorites/groups/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

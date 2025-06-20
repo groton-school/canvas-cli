@@ -29,11 +29,12 @@ type Options = {
  * Nickname: get_blueprint_information
  */
 export async function get(options: Options) {
-  return await client().fetchAs<BlueprintTemplate>(
+  const response = await client().fetchAs<BlueprintTemplate>(
     `/api/v1/courses/{course_id}/blueprint_templates/{template_id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

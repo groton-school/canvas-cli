@@ -37,11 +37,12 @@ type Options = {
  * Nickname: delete_quiz_question
  */
 export async function delete_quiz_question(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/questions/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

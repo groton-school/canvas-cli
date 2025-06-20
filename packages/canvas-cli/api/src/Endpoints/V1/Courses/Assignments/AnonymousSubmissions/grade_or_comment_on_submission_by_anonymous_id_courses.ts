@@ -133,11 +133,12 @@ type Options = {
 export async function grade_or_comment_on_submission_by_anonymous_id_courses(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/assignments/{assignment_id}/anonymous_submissions/{anonymous_id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

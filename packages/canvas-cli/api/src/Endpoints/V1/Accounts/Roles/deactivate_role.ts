@@ -43,11 +43,12 @@ type Options = {
  * Nickname: deactivate_role
  */
 export async function deactivate_role(options: Options) {
-  return await client().fetchAs<Role>(
+  const response = await client().fetchAs<Role>(
     `/api/v1/accounts/{account_id}/roles/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

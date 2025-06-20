@@ -31,11 +31,12 @@ type Options = {
 export async function restore_deleted_authentication_provider(
   options: Options
 ) {
-  return await client().fetchAs<AuthenticationProvider>(
+  const response = await client().fetchAs<AuthenticationProvider>(
     `/api/v1/accounts/{account_id}/authentication_providers/{id}/restore`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

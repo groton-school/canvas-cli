@@ -59,11 +59,12 @@ type Options = {
  * Nickname: update_lti_registration
  */
 export async function update(options: Options) {
-  return await client().fetchAs<LtiRegistration>(
+  const response = await client().fetchAs<LtiRegistration>(
     `/api/v1/accounts/{account_id}/lti_registrations/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

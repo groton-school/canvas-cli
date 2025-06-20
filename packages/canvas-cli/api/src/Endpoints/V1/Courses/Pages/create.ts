@@ -59,8 +59,12 @@ type Options = {
  * Nickname: create_page_courses
  */
 export async function create(options: Options) {
-  return await client().fetchAs<Page>(`/api/v1/courses/{course_id}/pages`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<Page>(
+    `/api/v1/courses/{course_id}/pages`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
+  return response;
 }

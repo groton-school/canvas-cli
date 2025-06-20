@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Bookmark } from '../../../../../Resources/Bookmarks.js';
 
@@ -20,8 +20,12 @@ type Options =
  * Nickname: list_bookmarks
  */
 export async function list(options: Options) {
-  return await client().fetchAs<Bookmark[]>(`/api/v1/users/self/bookmarks`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<Bookmark[]>(
+    `/api/v1/users/self/bookmarks`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

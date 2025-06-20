@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -25,7 +25,11 @@ export type listSearchParameters = Partial<{
    * 'observer', or 'designer'.
    */
   enrollment_type: string;
-  /** The column to sort results by. */
+  /**
+   * The column to sort results by. For efficiency, use +id+ if you intend to
+   * retrieve many pages of results. In the future, other sort options may be
+   * rate-limited after 50 pages.
+   */
   sort: string;
   /** The order to sort the given column by. */
   order: string;
@@ -62,8 +66,12 @@ type Options = {
  * nickname: list_users_in_account
  */
 export async function list(options: Options) {
-  return await client().fetchAs<User[]>(`/api/v1/accounts/{account_id}/users`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<User[]>(
+    `/api/v1/accounts/{account_id}/users`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

@@ -215,11 +215,12 @@ type Options = {
  * Nickname: create_content_migration_groups
  */
 export async function create(options: Options) {
-  return await client().fetchAs<ContentMigration>(
+  const response = await client().fetchAs<ContentMigration>(
     `/api/v1/groups/{group_id}/content_migrations`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

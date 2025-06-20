@@ -135,11 +135,12 @@ type Options = {
  * Nickname: enroll_user_courses
  */
 export async function enroll_user_courses(options: Options) {
-  return await client().fetchAs<Enrollment>(
+  const response = await client().fetchAs<Enrollment>(
     `/api/v1/courses/{course_id}/enrollments`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

@@ -27,8 +27,9 @@ type Options = {
  * Nickname: delete_conversation
  */
 export async function delete_conversation(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/conversations/{id}`, {
+  const response = await client().fetchAs<void>(`/api/v1/conversations/{id}`, {
     method: 'DELETE',
     ...options
   });
+  return response;
 }

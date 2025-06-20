@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Folder } from '../../../../../Resources/Files.js';
 
@@ -33,11 +33,12 @@ type Options = {
  * Nickname: resolve_path_courses
  */
 export async function resolve_path_courses(options: Options) {
-  return await client().fetchAs<Folder[]>(
+  const response = await client().fetchAs<Folder[]>(
     `/api/v1/courses/{course_id}/folders/by_path`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

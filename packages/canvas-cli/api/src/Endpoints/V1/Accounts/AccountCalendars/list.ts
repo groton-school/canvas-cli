@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { AccountCalendar } from '../../../../Resources/AccountCalendars.js';
 
@@ -45,11 +45,12 @@ type Options = {
  * Nickname: list_all_account_calendars
  */
 export async function list(options: Options) {
-  return await client().fetchAs<AccountCalendar[]>(
+  const response = await client().fetchAs<AccountCalendar[]>(
     `/api/v1/accounts/{account_id}/account_calendars`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

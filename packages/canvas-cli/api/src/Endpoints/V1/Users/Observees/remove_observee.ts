@@ -38,11 +38,12 @@ type Options = {
  * Nickname: remove_observee
  */
 export async function remove_observee(options: Options) {
-  return await client().fetchAs<User>(
+  const response = await client().fetchAs<User>(
     `/api/v1/users/{user_id}/observees/{observee_id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

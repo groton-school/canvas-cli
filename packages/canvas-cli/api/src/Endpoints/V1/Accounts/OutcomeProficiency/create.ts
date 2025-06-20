@@ -55,11 +55,12 @@ type Options = {
  * Nickname: create_update_proficiency_ratings_accounts
  */
 export async function create(options: Options) {
-  return await client().fetchAs<Proficiency>(
+  const response = await client().fetchAs<Proficiency>(
     `/api/v1/accounts/{account_id}/outcome_proficiency`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

@@ -64,11 +64,12 @@ type Options = {
  * Nickname: create_lti_registration
  */
 export async function create(options: Options) {
-  return await client().fetchAs<LtiRegistration>(
+  const response = await client().fetchAs<LtiRegistration>(
     `/api/v1/accounts/{account_id}/lti_registrations`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

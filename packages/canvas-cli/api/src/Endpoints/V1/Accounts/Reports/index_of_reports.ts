@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
@@ -30,11 +30,12 @@ type Options = {
  * Nickname: index_of_reports
  */
 export async function index_of_reports(options: Options) {
-  return await client().fetchAs<Report[]>(
+  const response = await client().fetchAs<Report[]>(
     `/api/v1/accounts/{account_id}/reports/{report}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

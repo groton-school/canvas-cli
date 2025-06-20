@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { CustomColumn } from '../../../../Resources/CustomGradebookColumns.js';
 
@@ -34,11 +34,12 @@ type Options = {
  * Nickname: list_custom_gradebook_columns
  */
 export async function list(options: Options) {
-  return await client().fetchAs<CustomColumn[]>(
+  const response = await client().fetchAs<CustomColumn[]>(
     `/api/v1/courses/{course_id}/custom_gradebook_columns`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

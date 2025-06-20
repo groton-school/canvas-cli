@@ -75,11 +75,12 @@ type Options = {
 export async function set_extensions_for_student_quiz_submissions(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/extensions`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

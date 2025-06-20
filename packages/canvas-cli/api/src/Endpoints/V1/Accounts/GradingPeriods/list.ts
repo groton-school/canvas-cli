@@ -24,11 +24,12 @@ type Options = {
  * Nickname: list_grading_periods_accounts
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/grading_periods`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

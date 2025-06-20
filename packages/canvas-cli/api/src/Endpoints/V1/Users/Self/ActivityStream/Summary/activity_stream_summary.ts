@@ -26,11 +26,12 @@ type Options =
  * Nickname: activity_stream_summary
  */
 export async function activity_stream_summary(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/users/self/activity_stream/summary`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

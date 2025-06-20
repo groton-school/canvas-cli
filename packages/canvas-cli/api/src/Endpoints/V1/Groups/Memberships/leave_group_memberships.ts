@@ -28,11 +28,12 @@ type Options = {
  * Nickname: leave_group_memberships
  */
 export async function leave_group_memberships(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/groups/{group_id}/memberships/{membership_id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

@@ -49,11 +49,12 @@ type Options = {
  * Nickname: create_group_group_categories
  */
 export async function create(options: Options) {
-  return await client().fetchAs<Group>(
+  const response = await client().fetchAs<Group>(
     `/api/v1/group_categories/{group_category_id}/groups`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

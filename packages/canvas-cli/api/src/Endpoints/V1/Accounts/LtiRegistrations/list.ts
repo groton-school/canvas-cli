@@ -64,11 +64,12 @@ type Options = {
  * Nickname: list_lti_registrations_in_account
  */
 export async function list(options: Options) {
-  return await client().fetchAs<ListLtiRegistrationsResponse>(
+  const response = await client().fetchAs<ListLtiRegistrationsResponse>(
     `/api/v1/accounts/{account_id}/lti_registrations`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

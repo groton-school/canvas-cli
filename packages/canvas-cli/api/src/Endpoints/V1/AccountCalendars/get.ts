@@ -25,11 +25,12 @@ type Options = {
  * Nickname: get_single_account_calendar
  */
 export async function get(options: Options) {
-  return await client().fetchAs<AccountCalendar>(
+  const response = await client().fetchAs<AccountCalendar>(
     `/api/v1/account_calendars/{account_id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

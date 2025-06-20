@@ -47,8 +47,12 @@ type Options = {
  * Nickname: update_access_token
  */
 export async function update(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/users/{user_id}/tokens/{id}`, {
-    method: 'PUT',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/users/{user_id}/tokens/{id}`,
+    {
+      method: 'PUT',
+      ...options
+    }
+  );
+  return response;
 }

@@ -29,11 +29,12 @@ type Options = {
 export async function remove_tool_from_top_navigation_favorites(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/external_tools/top_nav_favorites/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

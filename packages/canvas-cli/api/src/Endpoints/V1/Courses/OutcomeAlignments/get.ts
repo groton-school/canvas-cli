@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { OutcomeAlignment } from '../../../../Resources/OutcomeResults.js';
 
@@ -41,11 +41,12 @@ type Options = {
  * get_aligned_assignments_for_outcome_in_course_for_particular_student
  */
 export async function get(options: Options) {
-  return await client().fetchAs<OutcomeAlignment[]>(
+  const response = await client().fetchAs<OutcomeAlignment[]>(
     `/api/v1/courses/{course_id}/outcome_alignments`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

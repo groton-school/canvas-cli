@@ -33,11 +33,12 @@ type Options = {
  * Nickname: get_current_quiz_submission_times
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/time`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

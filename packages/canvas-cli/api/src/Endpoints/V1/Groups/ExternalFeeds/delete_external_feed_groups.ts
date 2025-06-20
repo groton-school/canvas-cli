@@ -27,11 +27,12 @@ type Options = {
  * Nickname: delete_external_feed_groups
  */
 export async function delete_external_feed_groups(options: Options) {
-  return await client().fetchAs<ExternalFeed>(
+  const response = await client().fetchAs<ExternalFeed>(
     `/api/v1/groups/{group_id}/external_feeds/{external_feed_id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

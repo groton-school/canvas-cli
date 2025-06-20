@@ -27,11 +27,12 @@ type Options = {
  * Nickname: show_epub_export
  */
 export async function show_epub_export(options: Options) {
-  return await client().fetchAs<EpubExport>(
+  const response = await client().fetchAs<EpubExport>(
     `/api/v1/courses/{course_id}/epub_exports/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

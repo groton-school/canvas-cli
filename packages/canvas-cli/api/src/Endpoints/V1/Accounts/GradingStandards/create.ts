@@ -58,11 +58,12 @@ type Options = {
  * Nickname: create_new_grading_standard_accounts
  */
 export async function create(options: Options) {
-  return await client().fetchAs<GradingStandard>(
+  const response = await client().fetchAs<GradingStandard>(
     `/api/v1/accounts/{account_id}/grading_standards`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

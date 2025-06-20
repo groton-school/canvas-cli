@@ -42,11 +42,12 @@ type Options = {
  * Nickname: reserve_time_slot
  */
 export async function reserve_time_slot(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/calendar_events/{id}/reservations`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 import { QuizItem } from '../../../../../../Resources/NewQuizItems.js';
 
@@ -38,11 +38,12 @@ type Options = {
  * Nickname: list_quiz_items
  */
 export async function list(options: Options) {
-  return await client().fetchAs<QuizItem[]>(
+  const response = await client().fetchAs<QuizItem[]>(
     `/api/quiz/v1/courses/{course_id}/quizzes/{assignment_id}/items`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

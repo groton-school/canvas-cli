@@ -38,11 +38,12 @@ type Options = {
  * Nickname: add_last_attended_date
  */
 export async function add_last_attended_date(options: Options) {
-  return await client().fetchAs<Enrollment>(
+  const response = await client().fetchAs<Enrollment>(
     `/api/v1/courses/{course_id}/users/{user_id}/last_attended`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

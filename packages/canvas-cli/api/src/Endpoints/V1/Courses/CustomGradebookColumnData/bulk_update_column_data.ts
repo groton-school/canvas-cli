@@ -40,11 +40,12 @@ type Options = {
  * Nickname: bulk_update_column_data
  */
 export async function bulk_update_column_data(options: Options) {
-  return await client().fetchAs<Progress>(
+  const response = await client().fetchAs<Progress>(
     `/api/v1/courses/{course_id}/custom_gradebook_column_data`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

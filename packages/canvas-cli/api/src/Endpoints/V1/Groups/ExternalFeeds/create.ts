@@ -39,11 +39,12 @@ type Options = {
  * Nickname: create_external_feed_groups
  */
 export async function create(options: Options) {
-  return await client().fetchAs<ExternalFeed>(
+  const response = await client().fetchAs<ExternalFeed>(
     `/api/v1/groups/{group_id}/external_feeds`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

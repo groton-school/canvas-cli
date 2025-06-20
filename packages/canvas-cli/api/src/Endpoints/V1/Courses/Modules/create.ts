@@ -57,8 +57,12 @@ type Options = {
  * Nickname: create_module
  */
 export async function create(options: Options) {
-  return await client().fetchAs<Module>(`/api/v1/courses/{course_id}/modules`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<Module>(
+    `/api/v1/courses/{course_id}/modules`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
+  return response;
 }

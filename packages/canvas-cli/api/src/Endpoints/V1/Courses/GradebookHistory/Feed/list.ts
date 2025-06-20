@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { SubmissionVersion } from '../../../../../Resources/GradebookHistory.js';
 
@@ -60,11 +60,12 @@ type Options = {
  * Nickname: list_uncollated_submission_versions
  */
 export async function list(options: Options) {
-  return await client().fetchAs<SubmissionVersion[]>(
+  const response = await client().fetchAs<SubmissionVersion[]>(
     `/api/v1/courses/{course_id}/gradebook_history/feed`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

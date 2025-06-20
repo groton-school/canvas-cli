@@ -25,11 +25,12 @@ type Options = {
  * Nickname: get_help_links
  */
 export async function get(options: Options) {
-  return await client().fetchAs<HelpLinks>(
+  const response = await client().fetchAs<HelpLinks>(
     `/api/v1/accounts/{account_id}/help_links`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -15,11 +15,12 @@ type Options =
  * Nickname: get_manually_created_courses_sub_account_for_domain_root_account
  */
 export async function get(options: Options) {
-  return await client().fetchAs<Account>(
+  const response = await client().fetchAs<Account>(
     `/api/v1/manually_created_courses_account`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -24,11 +24,12 @@ type Options = {
  * Nickname: count_of_all_visible_account_calendars
  */
 export async function count_of_all_visible_account_calendars(options: Options) {
-  return await client().fetchAs<{ count: number }>(
+  const response = await client().fetchAs<{ count: number }>(
     `/api/v1/accounts/{account_id}/visible_calendars_count`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

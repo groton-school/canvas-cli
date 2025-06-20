@@ -135,11 +135,12 @@ type Options = {
  * Nickname: create_new_discussion_topic_courses
  */
 export async function create(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/discussion_topics`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

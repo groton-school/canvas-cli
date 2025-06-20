@@ -29,11 +29,12 @@ type Options = {
  * Nickname: show_result
  */
 export async function show_result(options: Options) {
-  return await client().fetchAs<Result>(
+  const response = await client().fetchAs<Result>(
     `/api/lti/courses/{course_id}/line_items/{line_item_id}/results/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

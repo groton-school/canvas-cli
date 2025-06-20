@@ -68,11 +68,12 @@ type Options = {
  * Nickname: update_group_category
  */
 export async function update(options: Options) {
-  return await client().fetchAs<GroupCategory>(
+  const response = await client().fetchAs<GroupCategory>(
     `/api/v1/group_categories/{group_category_id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

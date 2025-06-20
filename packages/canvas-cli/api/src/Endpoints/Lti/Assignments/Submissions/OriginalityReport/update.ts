@@ -75,11 +75,12 @@ type Options = {
  * Nickname: edit_originality_report_submissions
  */
 export async function update(options: Options) {
-  return await client().fetchAs<OriginalityReport>(
+  const response = await client().fetchAs<OriginalityReport>(
     `/api/lti/assignments/{assignment_id}/submissions/{submission_id}/originality_report/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

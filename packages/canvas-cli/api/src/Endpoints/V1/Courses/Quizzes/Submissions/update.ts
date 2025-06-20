@@ -63,11 +63,12 @@ type Options = {
  * Nickname: update_student_question_scores_and_comments
  */
 export async function update(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

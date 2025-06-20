@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { ChangeRecord } from '../../../../../Resources/BlueprintCourses.js';
 
@@ -32,11 +32,12 @@ type Options = {
  * Nickname: get_unsynced_changes
  */
 export async function get(options: Options) {
-  return await client().fetchAs<ChangeRecord[]>(
+  const response = await client().fetchAs<ChangeRecord[]>(
     `/api/v1/courses/{course_id}/blueprint_templates/{template_id}/unsynced_changes`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

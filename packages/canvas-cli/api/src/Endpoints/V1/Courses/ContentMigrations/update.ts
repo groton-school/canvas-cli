@@ -33,11 +33,12 @@ type Options = {
  * Nickname: update_content_migration_courses
  */
 export async function update(options: Options) {
-  return await client().fetchAs<ContentMigration>(
+  const response = await client().fetchAs<ContentMigration>(
     `/api/v1/courses/{course_id}/content_migrations/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

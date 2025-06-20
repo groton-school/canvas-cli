@@ -27,11 +27,12 @@ type Options = {
  * Nickname: get_content_migration_accounts
  */
 export async function get(options: Options) {
-  return await client().fetchAs<ContentMigration>(
+  const response = await client().fetchAs<ContentMigration>(
     `/api/v1/accounts/{account_id}/content_migrations/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

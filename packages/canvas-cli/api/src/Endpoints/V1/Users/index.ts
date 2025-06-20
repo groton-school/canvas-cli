@@ -16,6 +16,7 @@ export * as Enrollments from './Enrollments/index.js';
 export * as Eportfolios from './Eportfolios/index.js';
 export * as Features from './Features/index.js';
 export * as Files from './Files/index.js';
+export * as FilesUiVersionPreference from './FilesUiVersionPreference/index.js';
 export * as Folders from './Folders/index.js';
 export * as GradedSubmissions from './GradedSubmissions/index.js';
 export * as History from './History/index.js';

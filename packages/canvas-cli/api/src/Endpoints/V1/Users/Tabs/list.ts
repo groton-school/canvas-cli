@@ -36,8 +36,12 @@ type Options = {
  * Nickname: list_available_tabs_for_course_or_group_users
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/users/{user_id}/tabs`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/users/{user_id}/tabs`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

@@ -26,11 +26,12 @@ type Options = {
  * Nickname: get_single_group_category
  */
 export async function get(options: Options) {
-  return await client().fetchAs<GroupCategory>(
+  const response = await client().fetchAs<GroupCategory>(
     `/api/v1/group_categories/{group_category_id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

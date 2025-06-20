@@ -26,11 +26,12 @@ type Options = {
  * Nickname: un_share_brandconfig_theme
  */
 export async function un_share_brandconfig_theme(options: Options) {
-  return await client().fetchAs<SharedBrandConfig>(
+  const response = await client().fetchAs<SharedBrandConfig>(
     `/api/v1/shared_brand_configs/{id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

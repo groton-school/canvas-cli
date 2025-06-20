@@ -35,11 +35,12 @@ type Options = {
  * Nickname: get_asset_id_mapping
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/content_migrations/{id}/asset_id_mapping`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

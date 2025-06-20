@@ -41,11 +41,12 @@ type Options = {
  * Nickname: permissions
  */
 export async function permissions(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/permissions`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

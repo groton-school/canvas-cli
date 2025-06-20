@@ -64,11 +64,12 @@ type Options = {
  * Nickname: create_enrollment_term
  */
 export async function create(options: Options) {
-  return await client().fetchAs<EnrollmentTerm>(
+  const response = await client().fetchAs<EnrollmentTerm>(
     `/api/v1/accounts/{account_id}/terms`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

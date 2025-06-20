@@ -31,11 +31,12 @@ type Options = {
  * Nickname: remove_feature_flag_courses
  */
 export async function remove_feature_flag_courses(options: Options) {
-  return await client().fetchAs<FeatureFlag>(
+  const response = await client().fetchAs<FeatureFlag>(
     `/api/v1/courses/{course_id}/features/flags/{feature}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

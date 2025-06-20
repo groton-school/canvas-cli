@@ -26,8 +26,12 @@ type Options = {
  * Nickname: delete_developer_key
  */
 export async function delete_developer_key(options: Options) {
-  return await client().fetchAs<DeveloperKey>(`/api/v1/developer_keys/{id}`, {
-    method: 'DELETE',
-    ...options
-  });
+  const response = await client().fetchAs<DeveloperKey>(
+    `/api/v1/developer_keys/{id}`,
+    {
+      method: 'DELETE',
+      ...options
+    }
+  );
+  return response;
 }

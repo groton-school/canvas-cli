@@ -48,11 +48,12 @@ type Options = {
  * Nickname: show_module
  */
 export async function show_module(options: Options) {
-  return await client().fetchAs<Module>(
+  const response = await client().fetchAs<Module>(
     `/api/v1/courses/{course_id}/modules/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

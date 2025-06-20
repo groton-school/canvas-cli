@@ -196,11 +196,12 @@ type Options = {
  * Nickname: import_sis_data
  */
 export async function import_sis_data(options: Options) {
-  return await client().fetchAs<SisImport>(
+  const response = await client().fetchAs<SisImport>(
     `/api/v1/accounts/{account_id}/sis_imports`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

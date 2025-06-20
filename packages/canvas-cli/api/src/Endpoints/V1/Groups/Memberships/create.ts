@@ -63,11 +63,13 @@ type Options = {
  * Nickname: create_membership
  */
 export async function create(options: Options) {
-  return await client().fetchAs<GroupMembershiporaJSONresponsedetailingpartialfailuresifsomemembershipscouldnotbecreated>(
-    `/api/v1/groups/{group_id}/memberships`,
-    {
-      method: 'POST',
-      ...options
-    }
-  );
+  const response =
+    await client().fetchAs<GroupMembershiporaJSONresponsedetailingpartialfailuresifsomemembershipscouldnotbecreated>(
+      `/api/v1/groups/{group_id}/memberships`,
+      {
+        method: 'POST',
+        ...options
+      }
+    );
+  return response;
 }

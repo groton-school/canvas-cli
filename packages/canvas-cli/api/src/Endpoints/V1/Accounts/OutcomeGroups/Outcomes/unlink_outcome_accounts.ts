@@ -32,11 +32,12 @@ type Options = {
  * Nickname: unlink_outcome_accounts
  */
 export async function unlink_outcome_accounts(options: Options) {
-  return await client().fetchAs<OutcomeLink>(
+  const response = await client().fetchAs<OutcomeLink>(
     `/api/v1/accounts/{account_id}/outcome_groups/{id}/outcomes/{outcome_id}`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

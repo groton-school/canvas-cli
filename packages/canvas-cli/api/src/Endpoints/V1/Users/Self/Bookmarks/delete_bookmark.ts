@@ -24,8 +24,12 @@ type Options = {
  * Nickname: delete_bookmark
  */
 export async function delete_bookmark(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/users/self/bookmarks/{id}`, {
-    method: 'DELETE',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/users/self/bookmarks/{id}`,
+    {
+      method: 'DELETE',
+      ...options
+    }
+  );
+  return response;
 }

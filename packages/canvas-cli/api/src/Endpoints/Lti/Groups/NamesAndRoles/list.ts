@@ -52,11 +52,12 @@ type Options = {
  * Nickname: list_group_memberships
  */
 export async function list(options: Options) {
-  return await client().fetchAs<NamesAndRoleMemberships>(
+  const response = await client().fetchAs<NamesAndRoleMemberships>(
     `/api/lti/groups/{group_id}/names_and_roles`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -38,8 +38,12 @@ type Options = {
  * Nickname: get_single_appointment_group
  */
 export async function get(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/appointment_groups/{id}`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<void>(
+    `/api/v1/appointment_groups/{id}`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

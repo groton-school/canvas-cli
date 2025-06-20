@@ -59,8 +59,12 @@ type Options = {
  * Nickname: create_page_groups
  */
 export async function create(options: Options) {
-  return await client().fetchAs<Page>(`/api/v1/groups/{group_id}/pages`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<Page>(
+    `/api/v1/groups/{group_id}/pages`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
+  return response;
 }

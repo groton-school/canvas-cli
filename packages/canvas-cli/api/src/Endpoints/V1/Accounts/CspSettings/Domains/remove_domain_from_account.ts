@@ -31,11 +31,12 @@ type Options = {
  * Nickname: remove_domain_from_account
  */
 export async function remove_domain_from_account(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/csp_settings/domains`,
     {
       method: 'DELETE',
       ...options
     }
   );
+  return response;
 }

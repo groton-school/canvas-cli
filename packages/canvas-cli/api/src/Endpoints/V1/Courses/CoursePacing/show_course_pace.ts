@@ -42,11 +42,12 @@ type Options = {
  * Nickname: show_course_pace
  */
 export async function show_course_pace(options: Options) {
-  return await client().fetchAs<CoursePace>(
+  const response = await client().fetchAs<CoursePace>(
     `/api/v1/courses/{course_id}/course_pacing/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

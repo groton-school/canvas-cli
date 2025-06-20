@@ -26,11 +26,12 @@ type Options = {
  * Nickname: reset_course
  */
 export async function reset_course(options: Options) {
-  return await client().fetchAs<Course>(
+  const response = await client().fetchAs<Course>(
     `/api/v1/courses/{course_id}/reset_content`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

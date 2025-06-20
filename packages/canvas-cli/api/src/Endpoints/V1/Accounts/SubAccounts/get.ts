@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Account } from '../../../../Resources/Accounts.js';
 
@@ -51,11 +51,12 @@ type Options = {
  * Nickname: get_sub_accounts_of_account
  */
 export async function get(options: Options) {
-  return await client().fetchAs<Account[]>(
+  const response = await client().fetchAs<Account[]>(
     `/api/v1/accounts/{account_id}/sub_accounts`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -29,8 +29,12 @@ type Options = {
  * Nickname: get_all_users_in_group_lti
  */
 export async function get(options: Options) {
-  return await client().fetchAs<User[]>(`/api/lti/groups/{group_id}/users`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<User[]>(
+    `/api/lti/groups/{group_id}/users`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

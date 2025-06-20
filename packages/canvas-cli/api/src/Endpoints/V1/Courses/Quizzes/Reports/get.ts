@@ -41,11 +41,12 @@ type Options = {
  * Nickname: get_quiz_report
  */
 export async function get(options: Options) {
-  return await client().fetchAs<QuizReport>(
+  const response = await client().fetchAs<QuizReport>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/reports/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

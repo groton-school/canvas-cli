@@ -46,11 +46,12 @@ type Options = {
  * Nickname: select_mastery_path
  */
 export async function select_mastery_path(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/courses/{course_id}/modules/{module_id}/items/{id}/select_mastery_path`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

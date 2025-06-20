@@ -29,11 +29,12 @@ type Options = {
  * Nickname: add_group_to_favorites
  */
 export async function add_group_to_favorites(options: Options) {
-  return await client().fetchAs<Favorite>(
+  const response = await client().fetchAs<Favorite>(
     `/api/v1/users/self/favorites/groups/{id}`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

@@ -41,8 +41,9 @@ type Options =
  * Nickname: create_error_report
  */
 export async function create(options: Options) {
-  return await client().fetchAs<void>(`/api/v1/error_reports`, {
+  const response = await client().fetchAs<void>(`/api/v1/error_reports`, {
     method: 'POST',
     ...options
   });
+  return response;
 }

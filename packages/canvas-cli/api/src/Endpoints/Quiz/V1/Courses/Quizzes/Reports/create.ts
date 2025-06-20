@@ -43,11 +43,12 @@ type Options = {
  * Nickname: create_quiz_report
  */
 export async function create(options: Options) {
-  return await client().fetchAs<Progress>(
+  const response = await client().fetchAs<Progress>(
     `/api/quiz/v1/courses/{course_id}/quizzes/{assignment_id}/reports`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

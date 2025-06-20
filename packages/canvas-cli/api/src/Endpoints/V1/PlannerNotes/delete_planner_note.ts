@@ -25,8 +25,12 @@ type Options = {
  * Nickname: delete_planner_note
  */
 export async function delete_planner_note(options: Options) {
-  return await client().fetchAs<PlannerNote>(`/api/v1/planner_notes/{id}`, {
-    method: 'DELETE',
-    ...options
-  });
+  const response = await client().fetchAs<PlannerNote>(
+    `/api/v1/planner_notes/{id}`,
+    {
+      method: 'DELETE',
+      ...options
+    }
+  );
+  return response;
 }

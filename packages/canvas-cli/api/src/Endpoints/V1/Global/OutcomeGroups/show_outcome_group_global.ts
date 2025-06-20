@@ -23,11 +23,12 @@ type Options = {
  * Nickname: show_outcome_group_global
  */
 export async function show_outcome_group_global(options: Options) {
-  return await client().fetchAs<OutcomeGroup>(
+  const response = await client().fetchAs<OutcomeGroup>(
     `/api/v1/global/outcome_groups/{id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

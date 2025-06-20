@@ -51,8 +51,12 @@ type Options = {
  * Nickname: update_planner_note
  */
 export async function update(options: Options) {
-  return await client().fetchAs<PlannerNote>(`/api/v1/planner_notes/{id}`, {
-    method: 'PUT',
-    ...options
-  });
+  const response = await client().fetchAs<PlannerNote>(
+    `/api/v1/planner_notes/{id}`,
+    {
+      method: 'PUT',
+      ...options
+    }
+  );
+  return response;
 }

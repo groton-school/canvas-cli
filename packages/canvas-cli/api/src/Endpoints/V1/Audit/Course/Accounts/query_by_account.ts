@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { CourseEvent } from '../../../../../Resources/CourseAuditLog.js';
 
@@ -44,11 +44,12 @@ type Options = {
  * Nickname: query_by_account
  */
 export async function query_by_account(options: Options) {
-  return await client().fetchAs<CourseEvent[]>(
+  const response = await client().fetchAs<CourseEvent[]>(
     `/api/v1/audit/course/accounts/{account_id}`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

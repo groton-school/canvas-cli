@@ -23,8 +23,9 @@ type Options =
  * Nickname: list_all_webhook_subscription_for_tool_proxy
  */
 export async function list(options: Options) {
-  return await client().fetchAs<void>(`/api/lti/subscriptions`, {
+  const response = await client().fetchAs<void>(`/api/lti/subscriptions`, {
     method: 'GET',
     ...options
   });
+  return response;
 }

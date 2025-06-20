@@ -61,11 +61,12 @@ type Options = {
  * Nickname: edit_assignment_group
  */
 export async function update(options: Options) {
-  return await client().fetchAs<AssignmentGroup>(
+  const response = await client().fetchAs<AssignmentGroup>(
     `/api/v1/courses/{course_id}/assignment_groups/{assignment_group_id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

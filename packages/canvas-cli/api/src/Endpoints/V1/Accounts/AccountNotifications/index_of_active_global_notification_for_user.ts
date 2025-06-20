@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
@@ -51,11 +51,12 @@ type Options = {
 export async function index_of_active_global_notification_for_user(
   options: Options
 ) {
-  return await client().fetchAs<AccountNotification[]>(
+  const response = await client().fetchAs<AccountNotification[]>(
     `/api/v1/accounts/{account_id}/account_notifications`,
     {
       method: 'GET',
       ...options
     }
   );
+  return response;
 }

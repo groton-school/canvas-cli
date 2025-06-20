@@ -84,11 +84,12 @@ type Options = {
  * Nickname: edit_user_login
  */
 export async function update(options: Options) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/v1/accounts/{account_id}/logins/{id}`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }

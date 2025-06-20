@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client';
+import { Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type listPathParameters = {
@@ -72,7 +72,7 @@ type Options = {
  * Nickname: list_items_for_selective_import_users
  */
 export async function list(options: Options) {
-  return await client().fetchAs<
+  const response = await client().fetchAs<
     {
       type: string;
       property: string;
@@ -84,4 +84,5 @@ export async function list(options: Options) {
     method: 'GET',
     ...options
   });
+  return response;
 }

@@ -90,11 +90,12 @@ type Options = {
  * Nickname: create_originality_report
  */
 export async function create(options: Options) {
-  return await client().fetchAs<OriginalityReport>(
+  const response = await client().fetchAs<OriginalityReport>(
     `/api/lti/assignments/{assignment_id}/submissions/{submission_id}/originality_report`,
     {
       method: 'POST',
       ...options
     }
   );
+  return response;
 }

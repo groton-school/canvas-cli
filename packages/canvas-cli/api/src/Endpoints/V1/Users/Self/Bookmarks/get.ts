@@ -25,8 +25,12 @@ type Options = {
  * Nickname: get_bookmark
  */
 export async function get(options: Options) {
-  return await client().fetchAs<Bookmark>(`/api/v1/users/self/bookmarks/{id}`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<Bookmark>(
+    `/api/v1/users/self/bookmarks/{id}`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
+  return response;
 }

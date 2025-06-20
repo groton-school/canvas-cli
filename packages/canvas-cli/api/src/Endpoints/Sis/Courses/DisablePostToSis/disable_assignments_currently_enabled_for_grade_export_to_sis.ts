@@ -51,11 +51,12 @@ type Options = {
 export async function disable_assignments_currently_enabled_for_grade_export_to_sis(
   options: Options
 ) {
-  return await client().fetchAs<void>(
+  const response = await client().fetchAs<void>(
     `/api/sis/courses/{course_id}/disable_post_to_sis`,
     {
       method: 'PUT',
       ...options
     }
   );
+  return response;
 }
