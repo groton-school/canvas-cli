@@ -31,7 +31,7 @@ export function toTSTypeName(id: string): TSName {
 }
 
 export function toTSNamespace(filePath: PathString): TSName {
-  return path
+  let tsNamespace = path
     .basename(filePath, '.ts')
     .replace(/[^a-z0-9_]+/gi, '_')
     .split('_')
@@ -39,6 +39,10 @@ export function toTSNamespace(filePath: PathString): TSName {
       token.length ? token[0].toUpperCase() + token.slice(1) : ''
     )
     .join('');
+  if (tsNamespace === 'V1') {
+    tsNamespace = tsNamespace.toLowerCase();
+  }
+  return tsNamespace;
 }
 
 export function toTSType(property: Swagger.v1p2.DataType): TSType {
