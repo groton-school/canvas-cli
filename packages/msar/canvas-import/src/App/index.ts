@@ -5,7 +5,7 @@ import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import { Validators } from '@battis/qui-cli.validators';
 import { JSONObject } from '@battis/typescript-tricks';
-import * as Canvas from '@groton/canvas-cli.api';
+import { Canvas } from '@groton/canvas-cli.client.qui-cli';
 import { input } from '@inquirer/prompts';
 import { Output } from '@msar/output';
 import * as Imported from '@msar/types.import';

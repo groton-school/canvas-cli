@@ -1,4 +1,4 @@
-import * as Canvas from '@groton/canvas-cli.api';
+import { Canvas } from '@groton/canvas-cli.client.qui-cli';
 import * as Assignments from './Assignments.js';
 
 export type Model = {

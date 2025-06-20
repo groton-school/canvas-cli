@@ -1,7 +1,5 @@
 import '@battis/qui-cli.env';
-import * as Canvas from '@groton/canvas-cli.api';
-import { Course } from '@groton/canvas-cli.api/dist/Endpoints/V1/Audit/index.js';
-import * as Client from '@groton/canvas-cli.client';
+import { Canvas } from '@groton/canvas-cli.client.qui-cli';
 import * as Imported from '@msar/types.import';
 import { EventEmitter } from 'node:events';
 
