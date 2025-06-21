@@ -1,5 +1,5 @@
 {
   "path": ".",
   "tag-prefix": "swagger-renderer/",
-  "releaseCommitMessageFormat": "chore(canvas-cli.swagger-renderer): @groton/canvas-cli.swagger-renderer@{{currentTag}}"
+  "releaseCommitMessageFormat": "chore: release @groton/canvas-cli.swagger-renderer@{{currentTag}}"
 }

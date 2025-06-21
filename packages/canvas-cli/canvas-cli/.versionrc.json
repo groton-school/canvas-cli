@@ -1,5 +1,5 @@
 {
   "path": ".",
   "tag-prefix": "canvas-cli/",
-  "releaseCommitMessageFormat": "chore(canvas-cli): @groton/canvas-cli@{{currentTag}}"
+  "releaseCommitMessageFormat": "chore: release @groton/canvas-cli@{{currentTag}}"
 }

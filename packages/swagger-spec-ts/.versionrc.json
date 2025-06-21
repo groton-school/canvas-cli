@@ -1,5 +1,5 @@
 {
   "path": ".",
   "tag-prefix": "swagger-spec-ts/",
-  "releaseCommitMessageFormat": "chore(swagger-spec-ts): @groton/swagger-spec-ts@{{currentTag}}"
+  "releaseCommitMessageFormat": "chore: release @groton/swagger-spec-ts@{{currentTag}}"
 }

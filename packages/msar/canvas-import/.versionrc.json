@@ -1,5 +1,5 @@
 {
   "path": ".",
   "tag-prefix": "canvas-import/",
-  "releaseCommitMessageFormat": "chore(canvas-import): @msar/canvas-import@{{currentTag}}"
+  "releaseCommitMessageFormat": "chore: release @msar/canvas-import@{{currentTag}}"
 }

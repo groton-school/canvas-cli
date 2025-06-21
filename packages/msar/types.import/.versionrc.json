@@ -1,5 +1,5 @@
 {
   "path": ".",
   "tag-prefix": "types.import/",
-  "releaseCommitMessageFormat": "chore(types.import): @msar/types.import@{{currentTag}}"
+  "releaseCommitMessageFormat": "chore: release @msar/types.import@{{currentTag}}"
 }
