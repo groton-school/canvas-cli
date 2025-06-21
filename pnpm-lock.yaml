@@ -15,8 +15,8 @@ importers:
         specifier: ^1.6.2
         version: 1.6.2(@prettier/plugin-xml@3.4.1(prettier@3.5.3))(@trivago/prettier-plugin-sort-imports@5.2.2(prettier@3.5.3))(prettier-plugin-jsdoc@1.3.2(prettier@3.5.3))(prettier-plugin-organize-imports@4.1.0(prettier@3.5.3)(typescript@5.8.3))(prettier-plugin-packagejson@2.5.15(prettier@3.5.3))(prettier-plugin-sql@0.19.1(prettier@3.5.3))(prettier@3.5.3)
       '@battis/qui-cli.plugin':
-        specifier: ^2.3.2
-        version: 2.3.2
+        specifier: ^2.3.3
+        version: 2.3.3
       '@groton/canvas-cli':
         specifier: workspace:*
         version: link:packages/canvas-cli/canvas-cli
@@ -25,7 +25,7 @@ importers:
         version: 8.2.2(encoding@0.1.13)
       monorepo-package-paths:
         specifier: ^0.3.10
-        version: 0.3.10(76vkh5iljltswxsmdzyptmo3uy)
+        version: 0.3.10(gmcactsayyfujqjvw25v5a2zbu)
       npm-run-all:
         specifier: ^4.1.5
         version: 4.1.5
@@ -69,12 +69,27 @@ importers:
 
   packages/canvas-cli/canvas-cli:
     dependencies:
+      '@battis/qui-cli.colors':
+        specifier: ^2.0.2
+        version: 2.0.2(@battis/qui-cli.plugin@2.3.3)
+      '@battis/qui-cli.core':
+        specifier: ^2.1.1
+        version: 2.1.1(@battis/qui-cli.plugin@2.3.3)
+      '@battis/qui-cli.env':
+        specifier: ^2.1.0
+        version: 2.1.0(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
+      '@battis/qui-cli.log':
+        specifier: ^2.2.0
+        version: 2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
+      '@battis/qui-cli.plugin':
+        specifier: ^2.3.3
+        version: 2.3.3
       '@battis/qui-cli.root':
         specifier: ^2.0.3
-        version: 2.0.3(@battis/qui-cli.plugin@2.3.2)
+        version: 2.0.3(@battis/qui-cli.plugin@2.3.3)
       '@battis/qui-cli.structured':
         specifier: ^0.1.2
-        version: 0.1.2(@battis/qui-cli.plugin@2.3.2)
+        version: 0.1.2(@battis/qui-cli.plugin@2.3.3)
       '@groton/canvas-cli.client.qui-cli':
         specifier: workspace:*
         version: link:../client/qui-cli
@@ -97,21 +112,6 @@ importers:
         specifier: ^8.2.0
         version: 8.2.0
     devDependencies:
-      '@battis/qui-cli.colors':
-        specifier: ^2.0.2
-        version: 2.0.2(@battis/qui-cli.plugin@2.3.2)
-      '@battis/qui-cli.core':
-        specifier: ^2.1.1
-        version: 2.1.1(@battis/qui-cli.plugin@2.3.2)
-      '@battis/qui-cli.env':
-        specifier: ^2.0.5
-        version: 2.0.5(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
-      '@battis/qui-cli.log':
-        specifier: ^2.1.1
-        version: 2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
-      '@battis/qui-cli.plugin':
-        specifier: ^2.3.2
-        version: 2.3.2
       '@tsconfig/node20':
         specifier: ^20.1.6
         version: 20.1.6
@@ -156,10 +156,10 @@ importers:
     dependencies:
       '@battis/qui-cli.colors':
         specifier: ^2.0.2
-        version: 2.0.2(@battis/qui-cli.plugin@2.3.2)
+        version: 2.0.2(@battis/qui-cli.plugin@2.3.3)
       '@battis/qui-cli.log':
-        specifier: ^2.1.1
-        version: 2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
+        specifier: ^2.2.0
+        version: 2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
       '@groton/canvas-cli.client.base':
         specifier: workspace:*
         version: link:../base
@@ -209,16 +209,19 @@ importers:
         version: 0.2.3
       '@battis/qui-cli.colors':
         specifier: ^2.0.2
-        version: 2.0.2(@battis/qui-cli.plugin@2.3.2)
+        version: 2.0.2(@battis/qui-cli.plugin@2.3.3)
       '@battis/qui-cli.env':
-        specifier: ^2.0.5
-        version: 2.0.5(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
+        specifier: ^2.1.0
+        version: 2.1.0(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
+      '@battis/qui-cli.log':
+        specifier: ^2.2.0
+        version: 2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
       '@battis/qui-cli.plugin':
-        specifier: ^2.3.2
-        version: 2.3.2
+        specifier: ^2.3.3
+        version: 2.3.3
       '@battis/qui-cli.root':
         specifier: ^2.0.3
-        version: 2.0.3(@battis/qui-cli.plugin@2.3.2)
+        version: 2.0.3(@battis/qui-cli.plugin@2.3.3)
       '@oauth2-cli/canvas':
         specifier: workspace:*
         version: link:../../../oauth2-cli/canvas
@@ -242,22 +245,22 @@ importers:
     dependencies:
       '@battis/qui-cli.colors':
         specifier: ^2.0.2
-        version: 2.0.2(@battis/qui-cli.plugin@2.3.2)
+        version: 2.0.2(@battis/qui-cli.plugin@2.3.3)
       '@battis/qui-cli.core':
         specifier: ^2.1.1
-        version: 2.1.1(@battis/qui-cli.plugin@2.3.2)
+        version: 2.1.1(@battis/qui-cli.plugin@2.3.3)
       '@battis/qui-cli.log':
-        specifier: ^2.1.1
-        version: 2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
+        specifier: ^2.2.0
+        version: 2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
       '@battis/qui-cli.plugin':
-        specifier: ^2.3.2
-        version: 2.3.2
+        specifier: ^2.3.3
+        version: 2.3.3
       '@battis/qui-cli.root':
         specifier: ^2.0.3
-        version: 2.0.3(@battis/qui-cli.plugin@2.3.2)
+        version: 2.0.3(@battis/qui-cli.plugin@2.3.3)
       '@battis/qui-cli.structured':
         specifier: ^0.1.2
-        version: 0.1.2(@battis/qui-cli.plugin@2.3.2)
+        version: 0.1.2(@battis/qui-cli.plugin@2.3.3)
       handlebars:
         specifier: ^4.7.8
         version: 4.7.8
@@ -330,19 +333,19 @@ importers:
     dependencies:
       '@battis/qui-cli.colors':
         specifier: ^2.0.2
-        version: 2.0.2(@battis/qui-cli.plugin@2.3.2)
+        version: 2.0.2(@battis/qui-cli.plugin@2.3.3)
       '@battis/qui-cli.core':
         specifier: ^2.1.1
-        version: 2.1.1(@battis/qui-cli.plugin@2.3.2)
+        version: 2.1.1(@battis/qui-cli.plugin@2.3.3)
       '@battis/qui-cli.env':
-        specifier: ^2.0.5
-        version: 2.0.5(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
+        specifier: ^2.1.0
+        version: 2.1.0(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
       '@battis/qui-cli.log':
-        specifier: ^2.1.1
-        version: 2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
+        specifier: ^2.2.0
+        version: 2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
       '@battis/qui-cli.plugin':
-        specifier: ^2.3.2
-        version: 2.3.2
+        specifier: ^2.3.3
+        version: 2.3.3
       '@groton/canvas-cli.client.qui-cli':
         specifier: workspace:*
         version: link:../../canvas-cli/client/qui-cli
@@ -351,7 +354,7 @@ importers:
         version: 7.5.3(@types/node@24.0.3)
       '@msar/output':
         specifier: ^0.1.4
-        version: 0.1.4(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.log@2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2)))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))(@msar/debug@0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.log@2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2)))(@battis/qui-cli.plugin@2.3.2))(@msar/workflow@0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2))
+        version: 0.1.4(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.log@2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3)))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))(@msar/debug@0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.log@2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3)))(@battis/qui-cli.plugin@2.3.3))(@msar/workflow@0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3))
       '@msar/types.archive':
         specifier: ^0.1.5
         version: 0.1.5(@msar/types.snapshot@0.1.10(ejs@3.1.10))
@@ -391,10 +394,10 @@ importers:
         version: 0.2.3
       '@battis/qui-cli.root':
         specifier: ^2.0.3
-        version: 2.0.3(@battis/qui-cli.plugin@2.3.2)
+        version: 2.0.3(@battis/qui-cli.plugin@2.3.3)
       '@battis/qui-cli.validators':
         specifier: ^2.0.2
-        version: 2.0.2(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
+        version: 2.0.2(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
       '@battis/typescript-tricks':
         specifier: ^0.7.4
         version: 0.7.4
@@ -442,22 +445,22 @@ importers:
     dependencies:
       '@battis/qui-cli.colors':
         specifier: ^2.0.2
-        version: 2.0.2(@battis/qui-cli.plugin@2.3.2)
+        version: 2.0.2(@battis/qui-cli.plugin@2.3.3)
       '@battis/qui-cli.core':
         specifier: ^2.1.1
-        version: 2.1.1(@battis/qui-cli.plugin@2.3.2)
+        version: 2.1.1(@battis/qui-cli.plugin@2.3.3)
       '@battis/qui-cli.env':
-        specifier: ^2.0.5
-        version: 2.0.5(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
+        specifier: ^2.1.0
+        version: 2.1.0(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
       '@battis/qui-cli.log':
-        specifier: ^2.1.1
-        version: 2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
+        specifier: ^2.2.0
+        version: 2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
       '@battis/qui-cli.plugin':
-        specifier: ^2.3.2
-        version: 2.3.2
+        specifier: ^2.3.3
+        version: 2.3.3
       '@battis/qui-cli.root':
         specifier: ^2.0.3
-        version: 2.0.3(@battis/qui-cli.plugin@2.3.2)
+        version: 2.0.3(@battis/qui-cli.plugin@2.3.3)
       '@msar/types.import':
         specifier: workspace:*
         version: link:../types.import
@@ -666,21 +669,21 @@ packages:
     peerDependencies:
       '@battis/qui-cli.plugin': ^2.0
 
-  '@battis/qui-cli.env@2.0.5':
-    resolution: {integrity: sha512-XuSNZuLZwcNd2V8DBPWPeSb8c815nKZzZIu5UZtjwYcj3ywFERCxcZx/UaSBBBumdRHDkAkA5Qv0q/6vNokHZQ==}
+  '@battis/qui-cli.env@2.1.0':
+    resolution: {integrity: sha512-qNB1xthPUnuYueuZ8m4ARzhA/qooHZI/LrJDCFZe1vRd8Xmr9kTF8Ms0zM87btNCmz6Cq9y1zVR2xooAH0vDrg==}
     peerDependencies:
       '@battis/qui-cli.plugin': ^2.0
       '@battis/qui-cli.root': ^2.0
 
-  '@battis/qui-cli.log@2.1.1':
-    resolution: {integrity: sha512-/o2v8HAei62E/JSyFN7V/LtG/WnGoD4Ec7JjilVksIX1nXfCmm6eoxTR67PAmaMKVX4gBqx0oGkNJwE7bkE6zA==}
+  '@battis/qui-cli.log@2.2.0':
+    resolution: {integrity: sha512-vOKFIHphcNjHK54ex2KuuJGnuObVwEmpJoQuIFToGYGoDtI89TwbQV0VjevFCFrmJlktx+4OTRiwsYmXENYTbg==}
     peerDependencies:
       '@battis/qui-cli.colors': ^2.0
       '@battis/qui-cli.plugin': ^2.0
       '@battis/qui-cli.root': ^2.0
 
-  '@battis/qui-cli.plugin@2.3.2':
-    resolution: {integrity: sha512-9BZNU/GXGfvdoE+SLvNbwZUZOELiBgqLy/9NtOvhSX5FPBPqzn2DNdVDzEIPsvEgrLVYqIv0z7dDJFK0ngCEAA==}
+  '@battis/qui-cli.plugin@2.3.3':
+    resolution: {integrity: sha512-CZs1ztGu06FEWJLQf1oVDkq6L5mmBfVKwiex7BsAArbD1zlrF2Tc924Wga/kS9doUqt0voHuD6EwBcLgcFr6Ng==}
 
   '@battis/qui-cli.progress@2.0.1':
     resolution: {integrity: sha512-xW8WHF/CFuaJKQQnXP9Uc3ldNBOIV4KpUVvLlvgNSDACrf0UMQ+T4ylU8SsJKG5fnEJip0KLvxfE1+YjXZCcPA==}
@@ -3909,8 +3912,8 @@ packages:
     resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
     engines: {node: '>=12'}
 
-  openid-client@6.5.3:
-    resolution: {integrity: sha512-PII6MybD2VwZyWFlSwhQDflSsDt0PEX/o715shdXcORqaFze6/31RqztxjlJNursDABgwd41GnOqKcttYQRcUw==}
+  openid-client@6.6.1:
+    resolution: {integrity: sha512-GmqoICGMI3IyFFjhvXxad8of4QWk2D0tm4vdJkldGm9nw7J3p1f7LPLWgGeFuKuw8HjDVe8Dd8QLGBe0NFvSSg==}
 
   optionator@0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
@@ -5291,7 +5294,7 @@ snapshots:
   '@battis/oauth2-configure@0.1.2':
     dependencies:
       async-mutex: 0.5.0
-      openid-client: 6.5.3
+      openid-client: 6.6.1
 
   '@battis/prettier-config@1.6.2(@prettier/plugin-xml@3.4.1(prettier@3.5.3))(@trivago/prettier-plugin-sort-imports@5.2.2(prettier@3.5.3))(prettier-plugin-jsdoc@1.3.2(prettier@3.5.3))(prettier-plugin-organize-imports@4.1.0(prettier@3.5.3)(typescript@5.8.3))(prettier-plugin-packagejson@2.5.15(prettier@3.5.3))(prettier-plugin-sql@0.19.1(prettier@3.5.3))(prettier@3.5.3)':
     dependencies:
@@ -5303,83 +5306,83 @@ snapshots:
       prettier-plugin-packagejson: 2.5.15(prettier@3.5.3)
       prettier-plugin-sql: 0.19.1(prettier@3.5.3)
 
-  '@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2)':
+  '@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3)':
     dependencies:
-      '@battis/qui-cli.plugin': 2.3.2
+      '@battis/qui-cli.plugin': 2.3.3
       chalk: 5.4.1
 
-  '@battis/qui-cli.core@2.1.1(@battis/qui-cli.plugin@2.3.2)':
+  '@battis/qui-cli.core@2.1.1(@battis/qui-cli.plugin@2.3.3)':
     dependencies:
-      '@battis/qui-cli.plugin': 2.3.2
+      '@battis/qui-cli.plugin': 2.3.3
       jackspeak: 4.1.1
 
-  '@battis/qui-cli.env@2.0.5(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))':
+  '@battis/qui-cli.env@2.1.0(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))':
     dependencies:
-      '@battis/qui-cli.plugin': 2.3.2
-      '@battis/qui-cli.root': 2.0.3(@battis/qui-cli.plugin@2.3.2)
+      '@battis/qui-cli.plugin': 2.3.3
+      '@battis/qui-cli.root': 2.0.3(@battis/qui-cli.plugin@2.3.3)
       dotenv: 16.5.0
 
-  '@battis/qui-cli.log@2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))':
+  '@battis/qui-cli.log@2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))':
     dependencies:
-      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.2)
-      '@battis/qui-cli.plugin': 2.3.2
-      '@battis/qui-cli.root': 2.0.3(@battis/qui-cli.plugin@2.3.2)
+      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.3)
+      '@battis/qui-cli.plugin': 2.3.3
+      '@battis/qui-cli.root': 2.0.3(@battis/qui-cli.plugin@2.3.3)
       ora: 8.2.0
       strip-ansi: 7.1.0
       winston: 3.17.0
 
-  '@battis/qui-cli.plugin@2.3.2':
+  '@battis/qui-cli.plugin@2.3.3':
     dependencies:
       '@battis/import-package-json': 0.1.7
       jackspeak: 4.1.1
 
-  '@battis/qui-cli.progress@2.0.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)':
+  '@battis/qui-cli.progress@2.0.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)':
     dependencies:
-      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.2)
-      '@battis/qui-cli.plugin': 2.3.2
+      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.3)
+      '@battis/qui-cli.plugin': 2.3.3
       chalk: 4.1.2
       cli-progress: 3.12.0
 
-  '@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2)':
+  '@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3)':
     dependencies:
-      '@battis/qui-cli.plugin': 2.3.2
+      '@battis/qui-cli.plugin': 2.3.3
       app-root-path: 3.1.0
 
-  '@battis/qui-cli.shell@2.0.3(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.log@2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2)))(@battis/qui-cli.plugin@2.3.2)':
+  '@battis/qui-cli.shell@2.0.3(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.log@2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3)))(@battis/qui-cli.plugin@2.3.3)':
     dependencies:
-      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.2)
-      '@battis/qui-cli.log': 2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
-      '@battis/qui-cli.plugin': 2.3.2
+      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.3)
+      '@battis/qui-cli.log': 2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
+      '@battis/qui-cli.plugin': 2.3.3
       ora: 8.2.0
       shelljs: 0.8.5
 
-  '@battis/qui-cli.structured@0.1.2(@battis/qui-cli.plugin@2.3.2)':
+  '@battis/qui-cli.structured@0.1.2(@battis/qui-cli.plugin@2.3.3)':
     dependencies:
-      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.2)
-      '@battis/qui-cli.core': 2.1.1(@battis/qui-cli.plugin@2.3.2)
-      '@battis/qui-cli.plugin': 2.3.2
+      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.3)
+      '@battis/qui-cli.core': 2.1.1(@battis/qui-cli.plugin@2.3.3)
+      '@battis/qui-cli.plugin': 2.3.3
       jackspeak: 4.1.1
 
-  '@battis/qui-cli.validators@2.0.2(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))':
+  '@battis/qui-cli.validators@2.0.2(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))':
     dependencies:
-      '@battis/qui-cli.plugin': 2.3.2
-      '@battis/qui-cli.root': 2.0.3(@battis/qui-cli.plugin@2.3.2)
+      '@battis/qui-cli.plugin': 2.3.3
+      '@battis/qui-cli.root': 2.0.3(@battis/qui-cli.plugin@2.3.3)
       '@tahul/is-valid-domain': 1.0.5
       cron-validate: 1.5.2
       email-validator: 2.0.4
       is-valid-path: 0.1.1
 
-  '@battis/qui-cli@2.1.4(vmn5mj4pszswwv2esxm2hois3q)':
+  '@battis/qui-cli@2.1.4(u63dt6lmwlas65coifusa6clk4)':
     dependencies:
-      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.2)
-      '@battis/qui-cli.core': 2.1.1(@battis/qui-cli.plugin@2.3.2)
-      '@battis/qui-cli.env': 2.0.5(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
-      '@battis/qui-cli.log': 2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
-      '@battis/qui-cli.plugin': 2.3.2
-      '@battis/qui-cli.progress': 2.0.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)
-      '@battis/qui-cli.root': 2.0.3(@battis/qui-cli.plugin@2.3.2)
-      '@battis/qui-cli.shell': 2.0.3(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.log@2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2)))(@battis/qui-cli.plugin@2.3.2)
-      '@battis/qui-cli.validators': 2.0.2(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
+      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.3)
+      '@battis/qui-cli.core': 2.1.1(@battis/qui-cli.plugin@2.3.3)
+      '@battis/qui-cli.env': 2.1.0(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
+      '@battis/qui-cli.log': 2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
+      '@battis/qui-cli.plugin': 2.3.3
+      '@battis/qui-cli.progress': 2.0.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)
+      '@battis/qui-cli.root': 2.0.3(@battis/qui-cli.plugin@2.3.3)
+      '@battis/qui-cli.shell': 2.0.3(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.log@2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3)))(@battis/qui-cli.plugin@2.3.3)
+      '@battis/qui-cli.validators': 2.0.2(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
       '@inquirer/prompts': 7.5.3(@types/node@24.0.3)
 
   '@battis/typescript-tricks@0.7.4': {}
@@ -5844,20 +5847,20 @@ snapshots:
       - supports-color
       - typescript
 
-  '@msar/debug@0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.log@2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2)))(@battis/qui-cli.plugin@2.3.2)':
+  '@msar/debug@0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.log@2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3)))(@battis/qui-cli.plugin@2.3.3)':
     dependencies:
-      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.2)
-      '@battis/qui-cli.log': 2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
-      '@battis/qui-cli.plugin': 2.3.2
+      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.3)
+      '@battis/qui-cli.log': 2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
+      '@battis/qui-cli.plugin': 2.3.3
 
-  '@msar/output@0.1.4(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.log@2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2)))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))(@msar/debug@0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.log@2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2)))(@battis/qui-cli.plugin@2.3.2))(@msar/workflow@0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2))':
+  '@msar/output@0.1.4(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.log@2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3)))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))(@msar/debug@0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.log@2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3)))(@battis/qui-cli.plugin@2.3.3))(@msar/workflow@0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3))':
     dependencies:
-      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.2)
-      '@battis/qui-cli.log': 2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2))
-      '@battis/qui-cli.plugin': 2.3.2
-      '@battis/qui-cli.root': 2.0.3(@battis/qui-cli.plugin@2.3.2)
-      '@msar/debug': 0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.log@2.1.1(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.2)))(@battis/qui-cli.plugin@2.3.2)
-      '@msar/workflow': 0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)
+      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.3)
+      '@battis/qui-cli.log': 2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3))
+      '@battis/qui-cli.plugin': 2.3.3
+      '@battis/qui-cli.root': 2.0.3(@battis/qui-cli.plugin@2.3.3)
+      '@msar/debug': 0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.log@2.2.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)(@battis/qui-cli.root@2.0.3(@battis/qui-cli.plugin@2.3.3)))(@battis/qui-cli.plugin@2.3.3)
+      '@msar/workflow': 0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)
 
   '@msar/types.archive@0.1.5(@msar/types.snapshot@0.1.10(ejs@3.1.10))':
     dependencies:
@@ -5872,10 +5875,10 @@ snapshots:
       - ejs
       - supports-color
 
-  '@msar/workflow@0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.2))(@battis/qui-cli.plugin@2.3.2)':
+  '@msar/workflow@0.1.0(@battis/qui-cli.colors@2.0.2(@battis/qui-cli.plugin@2.3.3))(@battis/qui-cli.plugin@2.3.3)':
     dependencies:
-      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.2)
-      '@battis/qui-cli.plugin': 2.3.2
+      '@battis/qui-cli.colors': 2.0.2(@battis/qui-cli.plugin@2.3.3)
+      '@battis/qui-cli.plugin': 2.3.3
 
   '@napi-rs/wasm-runtime@0.2.4':
     dependencies:
@@ -8512,7 +8515,7 @@ snapshots:
 
   log-symbols@4.1.0:
     dependencies:
-      chalk: 4.1.0
+      chalk: 4.1.2
       is-unicode-supported: 0.1.0
 
   log-symbols@6.0.0:
@@ -8870,10 +8873,10 @@ snapshots:
 
   modify-values@1.0.1: {}
 
-  monorepo-package-paths@0.3.10(76vkh5iljltswxsmdzyptmo3uy):
+  monorepo-package-paths@0.3.10(gmcactsayyfujqjvw25v5a2zbu):
     dependencies:
       '@battis/import-package-json': 0.1.7
-      '@battis/qui-cli': 2.1.4(vmn5mj4pszswwv2esxm2hois3q)
+      '@battis/qui-cli': 2.1.4(u63dt6lmwlas65coifusa6clk4)
       '@inquirer/input': 4.1.12(@types/node@24.0.3)
       glob: 11.0.3
       ora: 8.2.0
@@ -9120,7 +9123,7 @@ snapshots:
       ejs: 3.1.10
       express: 4.21.2
       open: 10.1.2
-      openid-client: 6.5.3
+      openid-client: 6.6.1
     transitivePeerDependencies:
       - supports-color
 
@@ -9172,7 +9175,7 @@ snapshots:
       is-docker: 2.2.1
       is-wsl: 2.2.0
 
-  openid-client@6.5.3:
+  openid-client@6.6.1:
     dependencies:
       jose: 6.0.11
       oauth4webapi: 3.5.3

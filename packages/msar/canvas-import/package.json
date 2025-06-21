@@ -28,9 +28,9 @@
   "dependencies": {
     "@battis/qui-cli.colors": "^2.0.2",
     "@battis/qui-cli.core": "^2.1.1",
-    "@battis/qui-cli.env": "^2.0.5",
-    "@battis/qui-cli.log": "^2.1.1",
-    "@battis/qui-cli.plugin": "^2.3.2",
+    "@battis/qui-cli.env": "^2.1.0",
+    "@battis/qui-cli.log": "^2.2.0",
+    "@battis/qui-cli.plugin": "^2.3.3",
     "@groton/canvas-cli.client.qui-cli": "workspace:*",
     "@inquirer/prompts": "^7.5.3",
     "@msar/output": "^0.1.4",

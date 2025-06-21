@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@battis/qui-cli.colors": "^2.0.2",
-    "@battis/qui-cli.log": "^2.1.1",
+    "@battis/qui-cli.log": "^2.2.0",
     "@groton/canvas-cli.client.base": "workspace:*",
     "@groton/canvas-cli.utilities": "workspace:*",
     "@oauth2-cli/canvas": "workspace:*",

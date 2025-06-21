@@ -19,7 +19,7 @@
   "devDependencies": {
     "@battis/eslint-config": "^2.0.4",
     "@battis/prettier-config": "^1.6.2",
-    "@battis/qui-cli.plugin": "^2.3.2",
+    "@battis/qui-cli.plugin": "^2.3.3",
     "@groton/canvas-cli": "workspace:*",
     "lerna": "^8.2.2",
     "monorepo-package-paths": "^0.3.10",
