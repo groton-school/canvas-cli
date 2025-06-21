@@ -2,9 +2,9 @@
 
 Typed access to Canvas LMS API with embedded documentation
 
-[![npm version](https://badge.fury.io/js/@groton%2Fcanvas-cli.api.svg)](https://badge.fury.io/js/@groton%2Fcanvas-cli.api)
+[![npm version](https://badge.fury.io/js/@groton%2Fcanvas-cli.api.svg)](https://www.npmjs.com/package/@groton/canvas-cli.api)
 
-# Clients
+## Clients
 
 This started as a component of [@groton/canvas-cli](https://www.npmjs.com/package/@groton/canvas-cli), a command-line set of administrative scripts that I have banged together. However, access to the inline documentation and IntelliSense autocompletions in a few front-end applications evolved this package into an API-only package that depends on purpose-dependent client for use:
 
@@ -12,7 +12,7 @@ This started as a component of [@groton/canvas-cli](https://www.npmjs.com/packag
 - [@groton/canvas-cli.client.node-cli](https://www.npmjs.com/package/@groton/canvas-cli.client.node-cli) is a client for use in Node command-line apps, which takes advantage of the [@oauth2-cli/canvas](https://www.npmjs.com/package/@oauth2-cli/canvas) to handle authentication to a Canvas LMS instance from the command-line.
 - [@groton/canvas-cli.client.qui-cli](https://www.npmjs.com/package/@groton/canvas-cli.client.qui-clii) encapsulates the Node client in a [@battis/qui-cli.plugin](https://www.npmjs.com/package/@battis/qui-cli.plugin) for ease of use within that small ecosystme for rapidly developing Node command-line apps.
 
-# Install
+## Install
 
 Using the Node client.
 
@@ -20,7 +20,7 @@ Using the Node client.
 npm install @groton/canvas-cli.api @groton/canvas-cli.client.node-cli
 ```
 
-# Usage
+## Usage
 
 Again, using the Node client. See [@groton/canvas-cli](https://www.npmjs.com/package/@groton/canvas-cli) for a working example of using the `@battis/qui-cli` encapsulation.
 
@@ -42,15 +42,15 @@ Canvas.init(
 for (const user of await Canvas.v1.Accounts.Users.list({
   pathParams: { account_id: 1 }
 })) {
-  CLI.log.info(user.name);
+  console.log(user.name);
 }
 ```
 
-## Mapping Canvas LMS documentation to TypeScript API
+### Mapping Canvas LMS documentation to TypeScript API
 
 The automatically-generated documentation provided by the Canvas LMS API is automatically processed by [@groton/canvas-cli.swagger-renderer](https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/swagger-renderer) to generate TypeScript API.
 
-### Resources
+#### Resources
 
 Resources are organized as in the [Canvas LMS API documentation](https://developerdocs.instructure.com/services/canvas/), given that they are built from the same files. For example, a [CourseProgress](https://developerdocs.instructure.com/services/canvas/file.all_resources/courses#courseprogress) object is typed:
 
@@ -64,7 +64,7 @@ let progress: Canvas.Courses.CourseProgress;
 - Properties remain unchanged in `snake_case`.
 - All namespaces are capitalized, and properties are lower-case per TypeScript norms.
 
-### Endpoints
+#### Endpoints
 
 In general, the endpoints map to method calls that are predictably named. For example, [listing subgroups of outcome groups](https://developerdocs.instructure.com/services/canvas/file.all_resources/outcome_groups#method.outcome_groups_api.subgroups):
 
@@ -97,13 +97,13 @@ await Canvas.v1.Accounts.OutcomeGroups.Subgroups.list({
 - All methods support masquerading via the `as_user_id` parameter passed as either in `searchParams` or the body `params` (if available).
 - Methods that return paginated responses can adjust the pagination via `per_pages` and will return the complete list as a result of the method.
 
-## Caution regarding `===` comparisons
+### Caution regarding `===` comparisons
 
 Note that, in order to provide data integrity in JavaScript, per [Instructure's note](https://developerdocs.instructure.com/services/canvas#schema) about large numbers in that language, [I have introduced some type ambiguity into the model](https://github.com/groton-school/canvas-cli/commit/6fb8af754e7d0e540bb2ad783d8ed763ac71a908), which has ramifications for value tests:
 
 _Because numerical values may be represented as **either** strings or numbers, be very, very cautious about using `===` comparisons, which will fail when comparing a number to an equivalent string._
 
-# Known Issues
+## Known Issues
 
 This is under steady development, as it underpins my own administrative and user-facing Canvas LMS tools. [Known issues are documented in the GitHub repo.](https://github.com/groton-school/canvas-cli/labels/%40groton%2Fcanvas-cli)
 
