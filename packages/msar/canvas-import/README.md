@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/@msar%2Fcanvas-import.svg)](https://badge.fury.io/js/@msar%2Fcanvas-import)
 
+[Known Issues](https://github.com/groton-school/canvas-cli/issues?q=is%3Aissue%20state%3Aopen%20label%3A%40msar%2Fcanvas-import)
+
 ## Notes
 
 - Assignments --> Assignments
