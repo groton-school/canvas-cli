@@ -1,18 +1,15 @@
 import { URLString } from '@battis/descriptive-types';
 import { Colors } from '@battis/qui-cli.colors';
 import { Env } from '@battis/qui-cli.env';
+import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
-import { Root } from '@battis/qui-cli.root';
 import * as Canvas from '@groton/canvas-cli.api';
 import { Client } from '@groton/canvas-cli.client.node-cli';
 import path from 'node:path';
 
-export * from '@groton/canvas-cli.api/dist/Client.js';
+export { client } from '@groton/canvas-cli.api/dist/Client.js';
 export * from '@groton/canvas-cli.api/dist/Endpoints/index.js';
 export * from '@groton/canvas-cli.api/dist/Resources/index.js';
-
-// FIXME manually configuring Env should be unnecessary
-Env.configure({ root: Root.path() });
 
 export type Configuration = Plugin.Configuration & {
   instanceUrl?: URLString;
@@ -86,6 +83,7 @@ export function options(): Plugin.Options {
 }
 
 export function init({ values }: Plugin.ExpectedArguments<typeof options>) {
+  Env.configure();
   configure({
     instanceUrl: values.instanceUrl || process.env[env.instanceUrl],
     clientId: values.clientId || process.env[env.clientId],
@@ -102,4 +100,5 @@ export function init({ values }: Plugin.ExpectedArguments<typeof options>) {
       store: path.join(tokenStorage, new URL(instanceUrl!).host + '.json')
     })
   );
+  Log.info(`Canvas instance: ${Colors.url(Canvas.client().instance_url)}`);
 }
