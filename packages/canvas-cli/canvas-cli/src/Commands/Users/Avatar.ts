@@ -61,9 +61,8 @@ export async function run() {
 
   let spinner = ora(`Loading user list from Canvas`).start();
   const users = await Canvas.v1.Accounts.Users.list({
-    // FIXME pagination on array response endpoints
-    // @ts-expect-error 2353 -- per_page should be declared in api
-    pathParams: { account_id: '1', per_page: 100 }
+    pathParams: { account_id: '1' },
+    searchParams: { per_page: 100 }
   });
   spinner.succeed(`${users.length} Canvas users loaded`);
 
