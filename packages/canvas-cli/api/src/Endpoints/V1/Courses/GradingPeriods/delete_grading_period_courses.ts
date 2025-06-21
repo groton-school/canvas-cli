@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type delete_grading_period_coursesPathParameters = {
@@ -7,13 +8,17 @@ export type delete_grading_period_coursesPathParameters = {
   id: string;
 };
 
+export type delete_grading_period_coursesSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_grading_period_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_grading_period_coursesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_grading_period_coursesSearchParameters;
       strict: true;
     }
 );

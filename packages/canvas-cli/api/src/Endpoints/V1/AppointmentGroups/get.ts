@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
 export type getPathParameters = {
@@ -5,17 +6,18 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /**
-   * Array of additional information to include. See include[] argument of
-   * "List appointment groups" action.
-   *
-   * "child_events":: reservations of time slots time slots "appointments"::
-   * will always be returned "all_context_codes":: all context codes
-   * associated with this appointment group
-   */
-  include: string[];
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * Array of additional information to include. See include[] argument of
+     * "List appointment groups" action.
+     *
+     * "child_events":: reservations of time slots time slots "appointments"::
+     * will always be returned "all_context_codes":: all context codes
+     * associated with this appointment group
+     */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { ContentShare } from '../../../../Resources/ContentShares.js';
 
@@ -8,7 +9,9 @@ export type updatePathParameters = {
   id: string;
 };
 
-export type updateFormParameters = {
+export type updateSearchParameters = Masquerade;
+
+export type updateFormParameters = Masquerade & {
   /** Read state for the content share */
   read_state: string;
 };
@@ -17,10 +20,12 @@ type Options = {
   pathParams: updatePathParameters;
 } & (
   | {
+      searchParams?: Partial<updateSearchParameters>;
       params?: Partial<updateFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: updateSearchParameters;
       params: updateFormParameters;
       strict: true;
     }

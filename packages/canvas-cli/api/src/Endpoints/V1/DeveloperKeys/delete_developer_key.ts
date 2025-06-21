@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { DeveloperKey } from '../../../Resources/DeveloperKeys.js';
 
@@ -6,13 +7,17 @@ export type delete_developer_keyPathParameters = {
   id: string;
 };
 
+export type delete_developer_keySearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_developer_keyPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_developer_keySearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_developer_keySearchParameters;
       strict: true;
     }
 );

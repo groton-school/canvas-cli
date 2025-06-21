@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type permissionsPathParameters = {
@@ -5,14 +6,15 @@ export type permissionsPathParameters = {
   group_id: string;
 };
 
-export type permissionsSearchParameters = Partial<{
-  /**
-   * List of permissions to check against the authenticated user. Permission
-   * names are documented in the {api:RoleOverridesController#add_role Create
-   * a role} endpoint.
-   */
-  permissions: string[];
-}>;
+export type permissionsSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * List of permissions to check against the authenticated user. Permission
+     * names are documented in the {api:RoleOverridesController#add_role Create
+     * a role} endpoint.
+     */
+    permissions: string[];
+  }>;
 
 type Options = {
   pathParams: permissionsPathParameters;

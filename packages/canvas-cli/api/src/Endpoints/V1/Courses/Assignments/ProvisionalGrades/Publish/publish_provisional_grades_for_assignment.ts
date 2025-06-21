@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type publish_provisional_grades_for_assignmentPathParameters = {
@@ -7,13 +8,18 @@ export type publish_provisional_grades_for_assignmentPathParameters = {
   assignment_id: string;
 };
 
+export type publish_provisional_grades_for_assignmentSearchParameters =
+  Masquerade;
+
 type Options = {
   pathParams: publish_provisional_grades_for_assignmentPathParameters;
 } & (
   | {
+      searchParams?: Partial<publish_provisional_grades_for_assignmentSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: publish_provisional_grades_for_assignmentSearchParameters;
       strict: true;
     }
 );

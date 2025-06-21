@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { OutcomeAlignment } from '../../../../Resources/OutcomeResults.js';
 
@@ -11,15 +11,16 @@ export type getPathParameters = {
   course_id: number;
 };
 
-export type getSearchParameters = Partial<{
-  /**
-   * The id of the student
-   *
-   * Format: 'int64'
-   */
-  student_id: number;
-}> &
-  Paginated;
+export type getSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * The id of the student
+     *
+     * Format: 'int64'
+     */
+    student_id: number;
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -8,13 +9,17 @@ export type delete_user_from_root_accountPathParameters = {
   user_id: string;
 };
 
+export type delete_user_from_root_accountSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_user_from_root_accountPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_user_from_root_accountSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_user_from_root_accountSearchParameters;
       strict: true;
     }
 );

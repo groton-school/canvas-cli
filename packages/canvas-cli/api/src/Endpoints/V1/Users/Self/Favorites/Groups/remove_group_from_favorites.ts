@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 import { Favorite } from '../../../../../../Resources/Favorites.js';
 
@@ -6,13 +7,17 @@ export type remove_group_from_favoritesPathParameters = {
   id: string;
 };
 
+export type remove_group_from_favoritesSearchParameters = Masquerade;
+
 type Options = {
   pathParams: remove_group_from_favoritesPathParameters;
 } & (
   | {
+      searchParams?: Partial<remove_group_from_favoritesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: remove_group_from_favoritesSearchParameters;
       strict: true;
     }
 );

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { GroupMembershipProgress } from '../../../../Overrides.js';
 
@@ -6,7 +7,9 @@ export type assign_unassigned_membersPathParameters = {
   group_category_id: string;
 };
 
-export type assign_unassigned_membersFormParameters = {
+export type assign_unassigned_membersSearchParameters = Masquerade;
+
+export type assign_unassigned_membersFormParameters = Masquerade & {
   /**
    * The assigning is done asynchronously by default. If you would like to
    * override this and have the assigning done synchronously, set this value
@@ -19,10 +22,12 @@ type Options = {
   pathParams: assign_unassigned_membersPathParameters;
 } & (
   | {
+      searchParams?: Partial<assign_unassigned_membersSearchParameters>;
       params?: Partial<assign_unassigned_membersFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: assign_unassigned_membersSearchParameters;
       params: assign_unassigned_membersFormParameters;
       strict: true;
     }

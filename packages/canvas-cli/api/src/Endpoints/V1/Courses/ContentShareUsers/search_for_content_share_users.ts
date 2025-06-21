@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -7,14 +7,15 @@ export type search_for_content_share_usersPathParameters = {
   course_id: string;
 };
 
-export type search_for_content_share_usersSearchParameters = Partial<{
-  /**
-   * Term used to find users. Will search available share users with the
-   * search term in their name.
-   */
-  search_term: string;
-}> &
-  Paginated;
+export type search_for_content_share_usersSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * Term used to find users. Will search available share users with the
+     * search term in their name.
+     */
+    search_term: string;
+  }>;
 
 type Options = {
   pathParams: search_for_content_share_usersPathParameters;

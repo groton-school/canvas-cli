@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type show_provisional_grade_status_for_studentPathParameters = {
@@ -8,10 +9,11 @@ export type show_provisional_grade_status_for_studentPathParameters = {
 };
 
 export type show_provisional_grade_status_for_studentSearchParameters =
-  Partial<{
-    /** The id of the student to show the status for */
-    anonymous_id: string;
-  }>;
+  Masquerade &
+    Partial<{
+      /** The id of the student to show the status for */
+      anonymous_id: string;
+    }>;
 
 type Options = {
   pathParams: show_provisional_grade_status_for_studentPathParameters;

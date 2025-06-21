@@ -1,23 +1,25 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
-export type search_account_domainsSearchParameters = Partial<{
-  /** Campus name */
-  name: string;
-  /** No description */
-  domain: string;
-  /**
-   * No description
-   *
-   * Format: 'float'
-   */
-  latitude: number;
-  /**
-   * No description
-   *
-   * Format: 'float'
-   */
-  longitude: number;
-}>;
+export type search_account_domainsSearchParameters = Masquerade &
+  Partial<{
+    /** Campus name */
+    name: string;
+    /** No description */
+    domain: string;
+    /**
+     * No description
+     *
+     * Format: 'float'
+     */
+    latitude: number;
+    /**
+     * No description
+     *
+     * Format: 'float'
+     */
+    longitude: number;
+  }>;
 
 type Options =
   | {

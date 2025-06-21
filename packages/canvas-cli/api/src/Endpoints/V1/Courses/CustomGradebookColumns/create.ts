@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { CustomColumn } from '../../../../Resources/CustomGradebookColumns.js';
 
@@ -6,7 +7,9 @@ export type createPathParameters = {
   course_id: string;
 };
 
-export type createFormParameters = {
+export type createSearchParameters = Masquerade;
+
+export type createFormParameters = Masquerade & {
   /** No description */
   'column[title]': string;
   /**
@@ -30,10 +33,12 @@ type Options = {
   pathParams: createPathParameters;
 } & (
   | {
+      searchParams?: Partial<createSearchParameters>;
       params?: Partial<createFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: createSearchParameters;
       params: createFormParameters;
       strict: true;
     }

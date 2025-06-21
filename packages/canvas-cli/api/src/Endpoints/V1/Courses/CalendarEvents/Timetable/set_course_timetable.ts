@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type set_course_timetablePathParameters = {
@@ -5,7 +6,9 @@ export type set_course_timetablePathParameters = {
   course_id: string;
 };
 
-export type set_course_timetableFormParameters = {
+export type set_course_timetableSearchParameters = Masquerade;
+
+export type set_course_timetableFormParameters = Masquerade & {
   /**
    * An array of timetable objects for the course section specified by
    * course_section_id. If course_section_id is set to "all", events will be
@@ -29,10 +32,12 @@ type Options = {
   pathParams: set_course_timetablePathParameters;
 } & (
   | {
+      searchParams?: Partial<set_course_timetableSearchParameters>;
       params?: Partial<set_course_timetableFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: set_course_timetableSearchParameters;
       params: set_course_timetableFormParameters;
       strict: true;
     }

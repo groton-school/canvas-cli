@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type listPathParameters = {
@@ -7,13 +8,14 @@ export type listPathParameters = {
   topic_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * A list of entry ids to retrieve. Entries will be returned in id order,
-   * smallest id first.
-   */
-  ids: string[];
-}>;
+export type listSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * A list of entry ids to retrieve. Entries will be returned in id order,
+     * smallest id first.
+     */
+    ids: string[];
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

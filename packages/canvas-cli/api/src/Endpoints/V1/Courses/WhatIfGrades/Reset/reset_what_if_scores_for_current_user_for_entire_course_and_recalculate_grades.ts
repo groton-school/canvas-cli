@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { gradesGrades } from '../../../../../Overrides.js';
 
@@ -9,15 +9,17 @@ export type reset_what_if_scores_for_current_user_for_entire_course_and_recalcul
   };
 
 export type reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters =
-  Paginated;
+  Masquerade & Paginated;
 
 type Options = {
   pathParams: reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesPathParameters;
 } & (
   | {
+      searchParams?: Partial<reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters;
       strict: true;
     }
 );

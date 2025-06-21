@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { AccountCalendar } from '../../../../Resources/AccountCalendars.js';
 
@@ -7,20 +7,21 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * When included, searches all descendent accounts of provided account for
-   * the term. Returns matching results. Term must be at least 2 characters.
-   * Can be combined with a filter value.
-   */
-  search_term: string;
-  /**
-   * When included, only returns calendars that are either visible or hidden.
-   * Can be combined with a search term.
-   */
-  filter: string;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * When included, searches all descendent accounts of provided account for
+     * the term. Returns matching results. Term must be at least 2 characters.
+     * Can be combined with a filter value.
+     */
+    search_term: string;
+    /**
+     * When included, only returns calendars that are either visible or hidden.
+     * Can be combined with a search term.
+     */
+    filter: string;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

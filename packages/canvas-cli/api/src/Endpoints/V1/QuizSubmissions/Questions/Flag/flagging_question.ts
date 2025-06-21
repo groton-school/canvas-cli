@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type flagging_questionPathParameters = {
@@ -7,7 +8,9 @@ export type flagging_questionPathParameters = {
   id: string;
 };
 
-export type flagging_questionFormParameters = {
+export type flagging_questionSearchParameters = Masquerade;
+
+export type flagging_questionFormParameters = Masquerade & {
   /**
    * The attempt number of the quiz submission being taken. Note that this
    * must be the latest attempt index, as questions for earlier attempts can
@@ -29,10 +32,12 @@ type Options = {
   pathParams: flagging_questionPathParameters;
 } & (
   | {
+      searchParams?: Partial<flagging_questionSearchParameters>;
       params?: Partial<flagging_questionFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: flagging_questionSearchParameters;
       params: flagging_questionFormParameters;
       strict: true;
     }

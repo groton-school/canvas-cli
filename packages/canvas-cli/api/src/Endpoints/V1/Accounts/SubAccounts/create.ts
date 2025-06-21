@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Account } from '../../../../Resources/Accounts.js';
 
@@ -6,7 +7,9 @@ export type createPathParameters = {
   account_id: string;
 };
 
-export type createFormParameters = {
+export type createSearchParameters = Masquerade;
+
+export type createFormParameters = Masquerade & {
   /** The name of the new sub-account. */
   'account[name]': string;
   /** The account's identifier in the Student Information System. */
@@ -35,10 +38,12 @@ type Options = {
   pathParams: createPathParameters;
 } & (
   | {
+      searchParams?: Partial<createSearchParameters>;
       params?: Partial<createFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: createSearchParameters;
       params: createFormParameters;
       strict: true;
     }

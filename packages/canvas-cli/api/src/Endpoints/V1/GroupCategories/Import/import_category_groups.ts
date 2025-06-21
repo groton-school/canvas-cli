@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
@@ -6,7 +7,9 @@ export type import_category_groupsPathParameters = {
   group_category_id: string;
 };
 
-export type import_category_groupsFormParameters = {
+export type import_category_groupsSearchParameters = Masquerade;
+
+export type import_category_groupsFormParameters = Masquerade & {
   /**
    * There are two ways to post group category import data - either via a
    * multipart/form-data form-field-style attachment, or via a non-multipart
@@ -34,10 +37,12 @@ type Options = {
   pathParams: import_category_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<import_category_groupsSearchParameters>;
       params?: Partial<import_category_groupsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: import_category_groupsSearchParameters;
       params: import_category_groupsFormParameters;
       strict: true;
     }

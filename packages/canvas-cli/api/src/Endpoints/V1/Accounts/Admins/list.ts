@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Integer } from '../../../../Overrides.js';
 import { Admin } from '../../../../Resources/Admins.js';
@@ -8,14 +8,15 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * Scope the results to those with user IDs equal to any of the IDs
-   * specified here.
-   */
-  user_id: Integer[];
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * Scope the results to those with user IDs equal to any of the IDs
+     * specified here.
+     */
+    user_id: Integer[];
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

@@ -165,7 +165,6 @@ export async function run() {
               },
               params: {
                 'notification_preferences[frequency]': 'never',
-                // @ts-expect-error 2353 masquerade not yet implemented
                 as_user_id: user.id
               }
             }

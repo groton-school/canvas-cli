@@ -1,15 +1,16 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { account_calendarsAccountCalendartotal_resultsinteger } from '../../../Overrides.js';
 
-export type listSearchParameters = Partial<{
-  /**
-   * When included, searches available account calendars for the term. Returns
-   * matching results. Term must be at least 2 characters.
-   */
-  search_term: string;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * When included, searches available account calendars for the term. Returns
+     * matching results. Term must be at least 2 characters.
+     */
+    search_term: string;
+  }>;
 
 type Options =
   | {

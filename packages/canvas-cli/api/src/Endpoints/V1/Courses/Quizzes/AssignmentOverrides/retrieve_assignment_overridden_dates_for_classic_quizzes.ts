@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { QuizAssignmentOverrideSetContainer } from '../../../../../Resources/QuizAssignmentOverrides.js';
 
@@ -8,15 +9,16 @@ export type retrieve_assignment_overridden_dates_for_classic_quizzesPathParamete
   };
 
 export type retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters =
-  Partial<{
-    /**
-     * An array of quiz IDs. If omitted, overrides for all quizzes available to
-     * the operating user will be returned.
-     *
-     * Format: 'int64'
-     */
-    'quiz_assignment_overrides[quiz_ids]': number[];
-  }>;
+  Masquerade &
+    Partial<{
+      /**
+       * An array of quiz IDs. If omitted, overrides for all quizzes available to
+       * the operating user will be returned.
+       *
+       * Format: 'int64'
+       */
+      'quiz_assignment_overrides[quiz_ids]': number[];
+    }>;
 
 type Options = {
   pathParams: retrieve_assignment_overridden_dates_for_classic_quizzesPathParameters;

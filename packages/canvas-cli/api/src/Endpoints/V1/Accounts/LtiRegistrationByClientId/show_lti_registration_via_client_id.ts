@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
@@ -8,13 +9,17 @@ export type show_lti_registration_via_client_idPathParameters = {
   client_id: string;
 };
 
+export type show_lti_registration_via_client_idSearchParameters = Masquerade;
+
 type Options = {
   pathParams: show_lti_registration_via_client_idPathParameters;
 } & (
   | {
+      searchParams?: Partial<show_lti_registration_via_client_idSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: show_lti_registration_via_client_idSearchParameters;
       strict: true;
     }
 );

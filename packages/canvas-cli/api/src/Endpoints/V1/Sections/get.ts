@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { Section } from '../../../Resources/Sections.js';
 
@@ -6,21 +7,22 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /**
-   * - "students": Associations to include with the group. Note: this is only
-   *   available if you have permission to view users or grades in the course
-   * - "avatar_url": Include the avatar URLs for students returned.
-   * - "enrollments": If 'students' is also included, return the section
-   *   enrollment for each student
-   * - "total_students": Returns the total amount of active and invited students
-   *   for the course section
-   * - "passback_status": Include the grade passback status.
-   * - "permissions": Include whether section grants :manage_calendar permission
-   *   to the caller
-   */
-  include: string[];
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * - "students": Associations to include with the group. Note: this is only
+     *   available if you have permission to view users or grades in the course
+     * - "avatar_url": Include the avatar URLs for students returned.
+     * - "enrollments": If 'students' is also included, return the section
+     *   enrollment for each student
+     * - "total_students": Returns the total amount of active and invited students
+     *   for the course section
+     * - "passback_status": Include the grade passback status.
+     * - "permissions": Include whether section grants :manage_calendar permission
+     *   to the caller
+     */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

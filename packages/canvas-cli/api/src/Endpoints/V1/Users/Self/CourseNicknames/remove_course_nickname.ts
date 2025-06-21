@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { CourseNickname } from '../../../../../Resources/Users.js';
 
@@ -6,13 +7,17 @@ export type remove_course_nicknamePathParameters = {
   course_id: string;
 };
 
+export type remove_course_nicknameSearchParameters = Masquerade;
+
 type Options = {
   pathParams: remove_course_nicknamePathParameters;
 } & (
   | {
+      searchParams?: Partial<remove_course_nicknameSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: remove_course_nicknameSearchParameters;
       strict: true;
     }
 );

@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { ColumnDatum } from '../../../../../Resources/CustomGradebookColumns.js';
 
@@ -9,14 +9,15 @@ export type listPathParameters = {
   id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * If true, hidden columns will be included in the result. If false or
-   * absent, only visible columns will be returned.
-   */
-  include_hidden: boolean;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * If true, hidden columns will be included in the result. If false or
+     * absent, only visible columns will be returned.
+     */
+    include_hidden: boolean;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

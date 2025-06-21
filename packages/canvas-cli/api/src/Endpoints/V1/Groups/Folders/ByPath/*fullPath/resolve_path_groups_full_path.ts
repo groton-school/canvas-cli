@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 import { Folder } from '../../../../../../Resources/Files.js';
 
@@ -7,15 +7,18 @@ export type resolve_path_groups_full_pathPathParameters = {
   group_id: string;
 };
 
-export type resolve_path_groups_full_pathSearchParameters = Paginated;
+export type resolve_path_groups_full_pathSearchParameters = Masquerade &
+  Paginated;
 
 type Options = {
   pathParams: resolve_path_groups_full_pathPathParameters;
 } & (
   | {
+      searchParams?: Partial<resolve_path_groups_full_pathSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: resolve_path_groups_full_pathSearchParameters;
       strict: true;
     }
 );

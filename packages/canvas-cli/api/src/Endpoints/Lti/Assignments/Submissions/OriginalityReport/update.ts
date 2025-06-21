@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { OriginalityReport } from '../../../../../Resources/OriginalityReports.js';
 
@@ -10,7 +11,9 @@ export type updatePathParameters = {
   id: string;
 };
 
-export type updateFormParameters = {
+export type updateSearchParameters = Masquerade;
+
+export type updateFormParameters = Masquerade & {
   /**
    * A number between 0 and 100 representing the measure of the specified
    * file's originality.
@@ -57,10 +60,12 @@ type Options = {
   pathParams: updatePathParameters;
 } & (
   | {
+      searchParams?: Partial<updateSearchParameters>;
       params?: Partial<updateFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: updateSearchParameters;
       params: updateFormParameters;
       strict: true;
     }

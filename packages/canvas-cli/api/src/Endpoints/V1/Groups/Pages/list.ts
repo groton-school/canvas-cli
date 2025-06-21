@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
@@ -7,25 +7,26 @@ export type listPathParameters = {
   group_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /** Sort results by this field. */
-  sort: string;
-  /** The sorting order. Defaults to 'asc'. */
-  order: string;
-  /** The partial title of the pages to match and return. */
-  search_term: string;
-  /**
-   * If true, include only published paqes. If false, exclude published pages.
-   * If not present, do not filter on published status.
-   */
-  published: boolean;
-  /**
-   * - "enrollments": Optionally include the page body with each Page. If this
-   *   is a block_editor page, returns the block_editor_attributes.
-   */
-  include: string[];
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /** Sort results by this field. */
+    sort: string;
+    /** The sorting order. Defaults to 'asc'. */
+    order: string;
+    /** The partial title of the pages to match and return. */
+    search_term: string;
+    /**
+     * If true, include only published paqes. If false, exclude published pages.
+     * If not present, do not filter on published status.
+     */
+    published: boolean;
+    /**
+     * - "enrollments": Optionally include the page body with each Page. If this
+     *   is a block_editor page, returns the block_editor_attributes.
+     */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

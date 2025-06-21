@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
 
@@ -6,13 +7,17 @@ export type show_outcome_group_globalPathParameters = {
   id: string;
 };
 
+export type show_outcome_group_globalSearchParameters = Masquerade;
+
 type Options = {
   pathParams: show_outcome_group_globalPathParameters;
 } & (
   | {
+      searchParams?: Partial<show_outcome_group_globalSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: show_outcome_group_globalSearchParameters;
       strict: true;
     }
 );

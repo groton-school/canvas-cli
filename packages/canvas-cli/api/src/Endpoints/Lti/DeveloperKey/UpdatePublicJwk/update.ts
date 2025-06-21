@@ -1,8 +1,11 @@
 import { JSONObject } from '@battis/typescript-tricks';
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { DeveloperKey } from '../../../../Resources/DeveloperKeys.js';
 
-export type updateFormParameters = {
+export type updateSearchParameters = Masquerade;
+
+export type updateFormParameters = Masquerade & {
   /**
    * The new public jwk that will be set to the tools current public jwk.
    *
@@ -13,10 +16,12 @@ export type updateFormParameters = {
 
 type Options =
   | {
+      searchParams?: Partial<updateSearchParameters>;
       params?: Partial<updateFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: updateSearchParameters;
       params: updateFormParameters;
       strict: true;
     };

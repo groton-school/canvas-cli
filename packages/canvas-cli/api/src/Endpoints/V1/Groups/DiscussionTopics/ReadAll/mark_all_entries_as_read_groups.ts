@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type mark_all_entries_as_read_groupsPathParameters = {
@@ -7,7 +8,9 @@ export type mark_all_entries_as_read_groupsPathParameters = {
   topic_id: string;
 };
 
-export type mark_all_entries_as_read_groupsFormParameters = {
+export type mark_all_entries_as_read_groupsSearchParameters = Masquerade;
+
+export type mark_all_entries_as_read_groupsFormParameters = Masquerade & {
   /**
    * A boolean value to set all of the entries' forced_read_state. No change
    * is made if this argument is not specified.
@@ -19,10 +22,12 @@ type Options = {
   pathParams: mark_all_entries_as_read_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<mark_all_entries_as_read_groupsSearchParameters>;
       params?: Partial<mark_all_entries_as_read_groupsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: mark_all_entries_as_read_groupsSearchParameters;
       params: mark_all_entries_as_read_groupsFormParameters;
       strict: true;
     }

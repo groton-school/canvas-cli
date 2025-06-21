@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { AuthenticationProvider } from '../../../../Resources/AuthenticationProviders.js';
 
@@ -6,13 +7,17 @@ export type add_authentication_providerPathParameters = {
   account_id: string;
 };
 
+export type add_authentication_providerSearchParameters = Masquerade;
+
 type Options = {
   pathParams: add_authentication_providerPathParameters;
 } & (
   | {
+      searchParams?: Partial<add_authentication_providerSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: add_authentication_providerSearchParameters;
       strict: true;
     }
 );

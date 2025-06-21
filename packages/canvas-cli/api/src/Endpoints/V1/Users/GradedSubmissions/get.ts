@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Submission } from '../../../../Resources/Submissions.js';
 
@@ -7,15 +7,16 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /** Associations to include with the group */
-  include: string[];
-  /** Returns submissions for only currently active enrollments */
-  only_current_enrollments: boolean;
-  /** Returns submissions for only published assignments */
-  only_published_assignments: boolean;
-}> &
-  Paginated;
+export type getSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /** Associations to include with the group */
+    include: string[];
+    /** Returns submissions for only currently active enrollments */
+    only_current_enrollments: boolean;
+    /** Returns submissions for only published assignments */
+    only_published_assignments: boolean;
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

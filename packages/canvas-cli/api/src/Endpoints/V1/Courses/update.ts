@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { multipleBlueprintRestrictions } from '../../../Overrides.js';
 import { BlueprintRestriction } from '../../../Resources/BlueprintCourses.js';
@@ -7,7 +8,9 @@ export type updatePathParameters = {
   id: string;
 };
 
-export type updateFormParameters = {
+export type updateSearchParameters = Masquerade;
+
+export type updateFormParameters = Masquerade & {
   /**
    * The unique ID of the account to move the course to.
    *
@@ -283,10 +286,12 @@ type Options = {
   pathParams: updatePathParameters;
 } & (
   | {
+      searchParams?: Partial<updateSearchParameters>;
       params?: Partial<updateFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: updateSearchParameters;
       params: updateFormParameters;
       strict: true;
     }

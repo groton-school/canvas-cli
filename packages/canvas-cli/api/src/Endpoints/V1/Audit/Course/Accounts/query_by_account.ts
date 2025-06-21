@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { CourseEvent } from '../../../../../Resources/CourseAuditLog.js';
 
@@ -7,21 +7,22 @@ export type query_by_accountPathParameters = {
   account_id: string;
 };
 
-export type query_by_accountSearchParameters = Partial<{
-  /**
-   * The beginning of the time range from which you want events.
-   *
-   * Format: date-time
-   */
-  start_time: string;
-  /**
-   * The end of the time range from which you want events.
-   *
-   * Format: date-time
-   */
-  end_time: string;
-}> &
-  Paginated;
+export type query_by_accountSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * The beginning of the time range from which you want events.
+     *
+     * Format: date-time
+     */
+    start_time: string;
+    /**
+     * The end of the time range from which you want events.
+     *
+     * Format: date-time
+     */
+    end_time: string;
+  }>;
 
 type Options = {
   pathParams: query_by_accountPathParameters;

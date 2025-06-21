@@ -1,4 +1,5 @@
 import { JSONObject } from '@battis/typescript-tricks';
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { GroupCategoryandgroupsoperationresults } from '../../../../../Overrides.js';
 
@@ -7,7 +8,9 @@ export type bulk_manage_differentiation_tagsPathParameters = {
   course_id: string;
 };
 
-export type bulk_manage_differentiation_tagsFormParameters = {
+export type bulk_manage_differentiation_tagsSearchParameters = Masquerade;
+
+export type bulk_manage_differentiation_tagsFormParameters = Masquerade & {
   /**
    * A hash containing arrays of create/update/delete operations: { "create":
    * [ { "name": "New Group A" }, { "name": "New Group B" } ], "update": [ {
@@ -33,10 +36,12 @@ type Options = {
   pathParams: bulk_manage_differentiation_tagsPathParameters;
 } & (
   | {
+      searchParams?: Partial<bulk_manage_differentiation_tagsSearchParameters>;
       params?: Partial<bulk_manage_differentiation_tagsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: bulk_manage_differentiation_tagsSearchParameters;
       params: bulk_manage_differentiation_tagsFormParameters;
       strict: true;
     }

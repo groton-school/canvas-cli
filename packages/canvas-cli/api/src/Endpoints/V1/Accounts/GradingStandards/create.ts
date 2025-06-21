@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { GradingStandard } from '../../../../Resources/GradingStandards.js';
 
@@ -6,7 +7,9 @@ export type createPathParameters = {
   account_id: string;
 };
 
-export type createFormParameters = {
+export type createSearchParameters = Masquerade;
+
+export type createFormParameters = Masquerade & {
   /** The title for the Grading Standard. */
   title: string;
   /** Whether or not a grading scheme is points based. Defaults to false. */
@@ -41,10 +44,12 @@ type Options = {
   pathParams: createPathParameters;
 } & (
   | {
+      searchParams?: Partial<createSearchParameters>;
       params?: Partial<createFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: createSearchParameters;
       params: createFormParameters;
       strict: true;
     }

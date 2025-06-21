@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
@@ -10,13 +11,17 @@ export type unlink_outcome_accountsPathParameters = {
   outcome_id: string;
 };
 
+export type unlink_outcome_accountsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: unlink_outcome_accountsPathParameters;
 } & (
   | {
+      searchParams?: Partial<unlink_outcome_accountsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: unlink_outcome_accountsSearchParameters;
       strict: true;
     }
 );

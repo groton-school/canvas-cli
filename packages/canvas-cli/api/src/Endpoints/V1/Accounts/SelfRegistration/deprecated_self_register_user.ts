@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -6,7 +7,9 @@ export type deprecated_self_register_userPathParameters = {
   account_id: string;
 };
 
-export type deprecated_self_register_userFormParameters = {
+export type deprecated_self_register_userSearchParameters = Masquerade;
+
+export type deprecated_self_register_userFormParameters = Masquerade & {
   /** The full name of the user. This name will be used by teacher for grading. */
   'user[name]': string;
   /**
@@ -42,10 +45,12 @@ type Options = {
   pathParams: deprecated_self_register_userPathParameters;
 } & (
   | {
+      searchParams?: Partial<deprecated_self_register_userSearchParameters>;
       params?: Partial<deprecated_self_register_userFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: deprecated_self_register_userSearchParameters;
       params: deprecated_self_register_userFormParameters;
       strict: true;
     }

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { FeatureFlag } from '../../../../../Resources/FeatureFlags.js';
 
@@ -8,13 +9,17 @@ export type remove_feature_flag_usersPathParameters = {
   feature: string;
 };
 
+export type remove_feature_flag_usersSearchParameters = Masquerade;
+
 type Options = {
   pathParams: remove_feature_flag_usersPathParameters;
 } & (
   | {
+      searchParams?: Partial<remove_feature_flag_usersSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: remove_feature_flag_usersSearchParameters;
       strict: true;
     }
 );

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { RubricAssessment } from '../../../../../Resources/Rubrics.js';
 
@@ -10,13 +11,17 @@ export type delete_single_rubric_assessmentPathParameters = {
   id: string;
 };
 
+export type delete_single_rubric_assessmentSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_single_rubric_assessmentPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_single_rubric_assessmentSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_single_rubric_assessmentSearchParameters;
       strict: true;
     }
 );

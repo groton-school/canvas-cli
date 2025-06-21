@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { CustomColumn } from '../../../../Resources/CustomGradebookColumns.js';
 
@@ -8,13 +9,17 @@ export type delete_custom_gradebook_columnPathParameters = {
   id: string;
 };
 
+export type delete_custom_gradebook_columnSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_custom_gradebook_columnPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_custom_gradebook_columnSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_custom_gradebook_columnSearchParameters;
       strict: true;
     }
 );

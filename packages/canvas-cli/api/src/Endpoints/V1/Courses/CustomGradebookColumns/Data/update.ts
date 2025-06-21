@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { ColumnDatum } from '../../../../../Resources/CustomGradebookColumns.js';
 
@@ -10,7 +11,9 @@ export type updatePathParameters = {
   user_id: string;
 };
 
-export type updateFormParameters = {
+export type updateSearchParameters = Masquerade;
+
+export type updateFormParameters = Masquerade & {
   /** Column content. Setting this to blank will delete the datum object. */
   'column_data[content]': string;
 };
@@ -19,10 +22,12 @@ type Options = {
   pathParams: updatePathParameters;
 } & (
   | {
+      searchParams?: Partial<updateSearchParameters>;
       params?: Partial<updateFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: updateSearchParameters;
       params: updateFormParameters;
       strict: true;
     }

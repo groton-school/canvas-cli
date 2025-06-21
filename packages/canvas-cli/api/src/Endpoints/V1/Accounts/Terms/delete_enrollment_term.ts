@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { EnrollmentTerm } from '../../../../Resources/EnrollmentTerms.js';
 
@@ -8,13 +9,17 @@ export type delete_enrollment_termPathParameters = {
   id: string;
 };
 
+export type delete_enrollment_termSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_enrollment_termPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_enrollment_termSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_enrollment_termSearchParameters;
       strict: true;
     }
 );

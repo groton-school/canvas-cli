@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type terminate_all_user_sessionsPathParameters = {
@@ -5,13 +6,17 @@ export type terminate_all_user_sessionsPathParameters = {
   id: string;
 };
 
+export type terminate_all_user_sessionsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: terminate_all_user_sessionsPathParameters;
 } & (
   | {
+      searchParams?: Partial<terminate_all_user_sessionsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: terminate_all_user_sessionsSearchParameters;
       strict: true;
     }
 );

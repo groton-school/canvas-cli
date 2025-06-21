@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { SharedBrandConfig } from '../../../Resources/SharedBrandConfigs.js';
 
@@ -6,13 +7,17 @@ export type un_share_brandconfig_themePathParameters = {
   id: string;
 };
 
+export type un_share_brandconfig_themeSearchParameters = Masquerade;
+
 type Options = {
   pathParams: un_share_brandconfig_themePathParameters;
 } & (
   | {
+      searchParams?: Partial<un_share_brandconfig_themeSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: un_share_brandconfig_themeSearchParameters;
       strict: true;
     }
 );

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 import { PeerReview } from '../../../../../../Resources/PeerReviews.js';
 
@@ -10,14 +11,15 @@ export type delete_peer_review_coursesPathParameters = {
   submission_id: string;
 };
 
-export type delete_peer_review_coursesSearchParameters = Partial<{
-  /**
-   * User_id to delete as reviewer on this assignment
-   *
-   * Format: 'int64'
-   */
-  user_id: number;
-}>;
+export type delete_peer_review_coursesSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * User_id to delete as reviewer on this assignment
+     *
+     * Format: 'int64'
+     */
+    user_id: number;
+  }>;
 
 type Options = {
   pathParams: delete_peer_review_coursesPathParameters;

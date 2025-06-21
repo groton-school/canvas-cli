@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type open_poll_sessionPathParameters = {
@@ -7,13 +8,17 @@ export type open_poll_sessionPathParameters = {
   id: string;
 };
 
+export type open_poll_sessionSearchParameters = Masquerade;
+
 type Options = {
   pathParams: open_poll_sessionPathParameters;
 } & (
   | {
+      searchParams?: Partial<open_poll_sessionSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: open_poll_sessionSearchParameters;
       strict: true;
     }
 );

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Quiz } from '../../../../Resources/Quizzes.js';
 
@@ -6,7 +7,9 @@ export type createPathParameters = {
   course_id: string;
 };
 
-export type createFormParameters = {
+export type createSearchParameters = Masquerade;
+
+export type createFormParameters = Masquerade & {
   /** The quiz title. */
   'quiz[title]': string;
   /** A description of the quiz. */
@@ -148,10 +151,12 @@ type Options = {
   pathParams: createPathParameters;
 } & (
   | {
+      searchParams?: Partial<createSearchParameters>;
       params?: Partial<createFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: createSearchParameters;
       params: createFormParameters;
       strict: true;
     }

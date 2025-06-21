@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type remove_domain_from_accountPathParameters = {
@@ -5,10 +6,11 @@ export type remove_domain_from_accountPathParameters = {
   account_id: string;
 };
 
-export type remove_domain_from_accountSearchParameters = Partial<{
-  /** No description */
-  domain: string;
-}>;
+export type remove_domain_from_accountSearchParameters = Masquerade &
+  Partial<{
+    /** No description */
+    domain: string;
+  }>;
 
 type Options = {
   pathParams: remove_domain_from_accountPathParameters;

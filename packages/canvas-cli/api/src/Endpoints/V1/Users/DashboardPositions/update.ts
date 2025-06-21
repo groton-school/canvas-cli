@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type updatePathParameters = {
@@ -5,13 +6,17 @@ export type updatePathParameters = {
   id: string;
 };
 
+export type updateSearchParameters = Masquerade;
+
 type Options = {
   pathParams: updatePathParameters;
 } & (
   | {
+      searchParams?: Partial<updateSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: updateSearchParameters;
       strict: true;
     }
 );

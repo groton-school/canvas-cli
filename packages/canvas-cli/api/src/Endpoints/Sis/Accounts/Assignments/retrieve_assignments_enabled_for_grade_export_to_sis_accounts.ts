@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type retrieve_assignments_enabled_for_grade_export_to_sis_accountsPathParameters =
@@ -11,28 +12,29 @@ export type retrieve_assignments_enabled_for_grade_export_to_sis_accountsPathPar
   };
 
 export type retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters =
-  Partial<{
-    /**
-     * The ID of the course to query.
-     *
-     * Format: 'int64'
-     */
-    course_id: number;
-    /**
-     * When searching on an account,
-     *
-     * Format: date-time
-     */
-    starts_before: string;
-    /**
-     * When searching on an account,
-     *
-     * Format: date-time
-     */
-    ends_after: string;
-    /** Array of additional */
-    include: string;
-  }>;
+  Masquerade &
+    Partial<{
+      /**
+       * The ID of the course to query.
+       *
+       * Format: 'int64'
+       */
+      course_id: number;
+      /**
+       * When searching on an account,
+       *
+       * Format: date-time
+       */
+      starts_before: string;
+      /**
+       * When searching on an account,
+       *
+       * Format: date-time
+       */
+      ends_after: string;
+      /** Array of additional */
+      include: string;
+    }>;
 
 type Options = {
   pathParams: retrieve_assignments_enabled_for_grade_export_to_sis_accountsPathParameters;

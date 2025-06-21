@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
@@ -12,13 +13,17 @@ export type enrollment_by_idPathParameters = {
   id: number;
 };
 
+export type enrollment_by_idSearchParameters = Masquerade;
+
 type Options = {
   pathParams: enrollment_by_idPathParameters;
 } & (
   | {
+      searchParams?: Partial<enrollment_by_idSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: enrollment_by_idSearchParameters;
       strict: true;
     }
 );

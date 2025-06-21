@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { File } from '../../../../Resources/Files.js';
 
@@ -6,13 +7,17 @@ export type reset_link_verifierPathParameters = {
   id: string;
 };
 
+export type reset_link_verifierSearchParameters = Masquerade;
+
 type Options = {
   pathParams: reset_link_verifierPathParameters;
 } & (
   | {
+      searchParams?: Partial<reset_link_verifierSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: reset_link_verifierSearchParameters;
       strict: true;
     }
 );

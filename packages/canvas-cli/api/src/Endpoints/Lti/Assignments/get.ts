@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { LtiAssignment } from '../../../Resources/PlagiarismDetectionPlatformAssignments.js';
 
@@ -6,10 +7,11 @@ export type getPathParameters = {
   assignment_id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /** The id of the user. Can be a Canvas or LTI id for the user. */
-  user_id: string;
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /** The id of the user. Can be a Canvas or LTI id for the user. */
+    user_id: string;
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

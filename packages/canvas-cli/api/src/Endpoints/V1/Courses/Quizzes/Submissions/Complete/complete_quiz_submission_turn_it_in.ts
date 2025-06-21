@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type complete_quiz_submission_turn_it_inPathParameters = {
@@ -9,7 +10,9 @@ export type complete_quiz_submission_turn_it_inPathParameters = {
   id: string;
 };
 
-export type complete_quiz_submission_turn_it_inFormParameters = {
+export type complete_quiz_submission_turn_it_inSearchParameters = Masquerade;
+
+export type complete_quiz_submission_turn_it_inFormParameters = Masquerade & {
   /**
    * The attempt number of the quiz submission that should be completed. Note
    * that this must be the latest attempt index, as earlier attempts can not
@@ -31,10 +34,12 @@ type Options = {
   pathParams: complete_quiz_submission_turn_it_inPathParameters;
 } & (
   | {
+      searchParams?: Partial<complete_quiz_submission_turn_it_inSearchParameters>;
       params?: Partial<complete_quiz_submission_turn_it_inFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: complete_quiz_submission_turn_it_inSearchParameters;
       params: complete_quiz_submission_turn_it_inFormParameters;
       strict: true;
     }

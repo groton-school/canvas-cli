@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { PageRevision } from '../../../../../Resources/Pages.js';
 
@@ -10,10 +11,11 @@ export type show_revision_groups_revision_idPathParameters = {
   revision_id: string;
 };
 
-export type show_revision_groups_revision_idSearchParameters = Partial<{
-  /** If set, exclude page content from results */
-  summary: boolean;
-}>;
+export type show_revision_groups_revision_idSearchParameters = Masquerade &
+  Partial<{
+    /** If set, exclude page content from results */
+    summary: boolean;
+  }>;
 
 type Options = {
   pathParams: show_revision_groups_revision_idPathParameters;

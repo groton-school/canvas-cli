@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
 export type delete_group_categoryPathParameters = {
@@ -5,13 +6,17 @@ export type delete_group_categoryPathParameters = {
   group_category_id: string;
 };
 
+export type delete_group_categorySearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_group_categoryPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_group_categorySearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_group_categorySearchParameters;
       strict: true;
     }
 );

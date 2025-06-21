@@ -1,10 +1,15 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
+
+export type clear_course_nicknamesSearchParameters = Masquerade;
 
 type Options =
   | {
+      searchParams?: Partial<clear_course_nicknamesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: clear_course_nicknamesSearchParameters;
       strict: true;
     };
 

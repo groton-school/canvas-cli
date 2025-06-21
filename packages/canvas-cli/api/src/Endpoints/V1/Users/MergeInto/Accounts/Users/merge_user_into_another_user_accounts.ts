@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 import { User } from '../../../../../../Resources/Users.js';
 
@@ -10,13 +11,17 @@ export type merge_user_into_another_user_accountsPathParameters = {
   destination_user_id: string;
 };
 
+export type merge_user_into_another_user_accountsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: merge_user_into_another_user_accountsPathParameters;
 } & (
   | {
+      searchParams?: Partial<merge_user_into_another_user_accountsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: merge_user_into_another_user_accountsSearchParameters;
       strict: true;
     }
 );

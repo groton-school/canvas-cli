@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { GroupCategory } from '../../../../Resources/GroupCategories.js';
 
@@ -7,17 +7,18 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * Filter group categories by their collaboration state:
-   *
-   * - "all": Return both collaborative and non-collaborative group categories
-   * - "collaborative": Return only collaborative group categories (default)
-   * - "non_collaborative": Return only non-collaborative group categories
-   */
-  collaboration_state: string;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * Filter group categories by their collaboration state:
+     *
+     * - "all": Return both collaborative and non-collaborative group categories
+     * - "collaborative": Return only collaborative group categories (default)
+     * - "non_collaborative": Return only non-collaborative group categories
+     */
+    collaboration_state: string;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

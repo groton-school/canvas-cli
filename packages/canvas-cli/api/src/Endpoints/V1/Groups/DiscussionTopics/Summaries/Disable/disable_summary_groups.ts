@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type disable_summary_groupsPathParameters = {
@@ -7,13 +8,17 @@ export type disable_summary_groupsPathParameters = {
   topic_id: string;
 };
 
+export type disable_summary_groupsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: disable_summary_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<disable_summary_groupsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: disable_summary_groupsSearchParameters;
       strict: true;
     }
 );

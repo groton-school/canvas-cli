@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type select_mastery_pathPathParameters = {
@@ -9,7 +10,9 @@ export type select_mastery_pathPathParameters = {
   id: string;
 };
 
-export type select_mastery_pathFormParameters = {
+export type select_mastery_pathSearchParameters = Masquerade;
+
+export type select_mastery_pathFormParameters = Masquerade & {
   /**
    * Assignment set chosen, as specified in the mastery_paths portion of the
    * context module item response
@@ -26,10 +29,12 @@ type Options = {
   pathParams: select_mastery_pathPathParameters;
 } & (
   | {
+      searchParams?: Partial<select_mastery_pathSearchParameters>;
       params?: Partial<select_mastery_pathFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: select_mastery_pathSearchParameters;
       params: select_mastery_pathFormParameters;
       strict: true;
     }

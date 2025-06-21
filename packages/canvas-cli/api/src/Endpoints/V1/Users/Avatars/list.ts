@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Avatar } from '../../../../Resources/Users.js';
 
@@ -7,15 +7,17 @@ export type listPathParameters = {
   user_id: string;
 };
 
-export type listSearchParameters = Paginated;
+export type listSearchParameters = Masquerade & Paginated;
 
 type Options = {
   pathParams: listPathParameters;
 } & (
   | {
+      searchParams?: Partial<listSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: listSearchParameters;
       strict: true;
     }
 );

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -6,7 +7,9 @@ export type add_observee_with_credentialsPathParameters = {
   user_id: string;
 };
 
-export type add_observee_with_credentialsFormParameters = {
+export type add_observee_with_credentialsSearchParameters = Masquerade;
+
+export type add_observee_with_credentialsFormParameters = Masquerade & {
   /**
    * The login id for the user to observe. Required if access_token is
    * omitted.
@@ -42,10 +45,12 @@ type Options = {
   pathParams: add_observee_with_credentialsPathParameters;
 } & (
   | {
+      searchParams?: Partial<add_observee_with_credentialsSearchParameters>;
       params?: Partial<add_observee_with_credentialsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: add_observee_with_credentialsSearchParameters;
       params: add_observee_with_credentialsFormParameters;
       strict: true;
     }

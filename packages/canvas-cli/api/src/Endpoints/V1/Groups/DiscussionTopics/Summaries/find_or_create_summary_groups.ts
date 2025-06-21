@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type find_or_create_summary_groupsPathParameters = {
@@ -7,7 +8,9 @@ export type find_or_create_summary_groupsPathParameters = {
   topic_id: string;
 };
 
-export type find_or_create_summary_groupsFormParameters = {
+export type find_or_create_summary_groupsSearchParameters = Masquerade;
+
+export type find_or_create_summary_groupsFormParameters = Masquerade & {
   /** Areas or topics for the summary to focus on. */
   userInput: string;
 };
@@ -16,10 +19,12 @@ type Options = {
   pathParams: find_or_create_summary_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<find_or_create_summary_groupsSearchParameters>;
       params?: Partial<find_or_create_summary_groupsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: find_or_create_summary_groupsSearchParameters;
       params: find_or_create_summary_groupsFormParameters;
       strict: true;
     }

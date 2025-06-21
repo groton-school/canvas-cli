@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
 export type getPathParameters = {
@@ -5,34 +6,35 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /**
-   * (Obsolete) Submissions are no longer linked to conversations. This
-   * parameter is ignored.
-   */
-  interleave_submissions: boolean;
-  /**
-   * Used when generating "visible" in the API response. See the explanation
-   * under the {api:ConversationsController#index index API action}
-   */
-  scope: string;
-  /**
-   * Used when generating "visible" in the API response. See the explanation
-   * under the {api:ConversationsController#index index API action}
-   */
-  filter: string[];
-  /**
-   * Used when generating "visible" in the API response. See the explanation
-   * under the {api:ConversationsController#index index API action}
-   */
-  filter_mode: string;
-  /**
-   * Default true. If true, unread conversations will be automatically marked
-   * as read. This will default to false in a future API release, so clients
-   * should explicitly send true if that is the desired behavior.
-   */
-  auto_mark_as_read: boolean;
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * (Obsolete) Submissions are no longer linked to conversations. This
+     * parameter is ignored.
+     */
+    interleave_submissions: boolean;
+    /**
+     * Used when generating "visible" in the API response. See the explanation
+     * under the {api:ConversationsController#index index API action}
+     */
+    scope: string;
+    /**
+     * Used when generating "visible" in the API response. See the explanation
+     * under the {api:ConversationsController#index index API action}
+     */
+    filter: string[];
+    /**
+     * Used when generating "visible" in the API response. See the explanation
+     * under the {api:ConversationsController#index index API action}
+     */
+    filter_mode: string;
+    /**
+     * Default true. If true, unread conversations will be automatically marked
+     * as read. This will default to false in a future API release, so clients
+     * should explicitly send true if that is the desired behavior.
+     */
+    auto_mark_as_read: boolean;
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

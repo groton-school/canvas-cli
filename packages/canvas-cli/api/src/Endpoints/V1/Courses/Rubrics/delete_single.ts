@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Rubric } from '../../../../Resources/Rubrics.js';
 
@@ -8,13 +9,17 @@ export type delete_singlePathParameters = {
   id: string;
 };
 
+export type delete_singleSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_singlePathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_singleSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_singleSearchParameters;
       strict: true;
     }
 );

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
 export type delete_conclude_coursePathParameters = {
@@ -5,10 +6,11 @@ export type delete_conclude_coursePathParameters = {
   id: string;
 };
 
-export type delete_conclude_courseSearchParameters = Partial<{
-  /** The action to take on the course. */
-  event: string;
-}>;
+export type delete_conclude_courseSearchParameters = Masquerade &
+  Partial<{
+    /** The action to take on the course. */
+    event: string;
+  }>;
 
 type Options = {
   pathParams: delete_conclude_coursePathParameters;

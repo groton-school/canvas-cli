@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { PlannerNote } from '../../../Resources/Planner.js';
 
@@ -6,13 +7,17 @@ export type show_planner_notePathParameters = {
   id: string;
 };
 
+export type show_planner_noteSearchParameters = Masquerade;
+
 type Options = {
   pathParams: show_planner_notePathParameters;
 } & (
   | {
+      searchParams?: Partial<show_planner_noteSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: show_planner_noteSearchParameters;
       strict: true;
     }
 );

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { OutcomeImport } from '../../../../Resources/OutcomeImports.js';
 
@@ -6,7 +7,9 @@ export type import_outcomes_accountsPathParameters = {
   account_id: string;
 };
 
-export type import_outcomes_accountsFormParameters = {
+export type import_outcomes_accountsSearchParameters = Masquerade;
+
+export type import_outcomes_accountsFormParameters = Masquerade & {
   /**
    * Choose the data format for reading outcome data. With a standard Canvas
    * install, this option can only be 'instructure_csv', and if unprovided,
@@ -54,10 +57,12 @@ type Options = {
   pathParams: import_outcomes_accountsPathParameters;
 } & (
   | {
+      searchParams?: Partial<import_outcomes_accountsSearchParameters>;
       params?: Partial<import_outcomes_accountsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: import_outcomes_accountsSearchParameters;
       params: import_outcomes_accountsFormParameters;
       strict: true;
     }

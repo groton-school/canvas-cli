@@ -1,6 +1,9 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
-export type save_enabled_account_calendarsFormParameters = {
+export type save_enabled_account_calendarsSearchParameters = Masquerade;
+
+export type save_enabled_account_calendarsFormParameters = Masquerade & {
   /** Flag to mark account calendars feature as seen */
   mark_feature_as_seen: boolean;
   /** An array of account Ids to remember in the calendars list of the user */
@@ -9,10 +12,12 @@ export type save_enabled_account_calendarsFormParameters = {
 
 type Options =
   | {
+      searchParams?: Partial<save_enabled_account_calendarsSearchParameters>;
       params?: Partial<save_enabled_account_calendarsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: save_enabled_account_calendarsSearchParameters;
       params: save_enabled_account_calendarsFormParameters;
       strict: true;
     };

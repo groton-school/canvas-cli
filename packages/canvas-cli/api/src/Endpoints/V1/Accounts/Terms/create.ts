@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { EnrollmentTerm } from '../../../../Resources/EnrollmentTerms.js';
 
@@ -6,7 +7,9 @@ export type createPathParameters = {
   account_id: string;
 };
 
-export type createFormParameters = {
+export type createSearchParameters = Masquerade;
+
+export type createFormParameters = Masquerade & {
   /** The name of the term. */
   'enrollment_term[name]': string;
   /**
@@ -47,10 +50,12 @@ type Options = {
   pathParams: createPathParameters;
 } & (
   | {
+      searchParams?: Partial<createSearchParameters>;
       params?: Partial<createFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: createSearchParameters;
       params: createFormParameters;
       strict: true;
     }

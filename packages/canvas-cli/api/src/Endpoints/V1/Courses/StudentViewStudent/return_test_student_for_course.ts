@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -6,13 +7,17 @@ export type return_test_student_for_coursePathParameters = {
   course_id: string;
 };
 
+export type return_test_student_for_courseSearchParameters = Masquerade;
+
 type Options = {
   pathParams: return_test_student_for_coursePathParameters;
 } & (
   | {
+      searchParams?: Partial<return_test_student_for_courseSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: return_test_student_for_courseSearchParameters;
       strict: true;
     }
 );

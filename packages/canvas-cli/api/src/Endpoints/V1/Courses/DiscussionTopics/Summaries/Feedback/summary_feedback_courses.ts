@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type summary_feedback_coursesPathParameters = {
@@ -9,7 +10,9 @@ export type summary_feedback_coursesPathParameters = {
   summary_id: string;
 };
 
-export type summary_feedback_coursesFormParameters = {
+export type summary_feedback_coursesSearchParameters = Masquerade;
+
+export type summary_feedback_coursesFormParameters = Masquerade & {
   /**
    * Required The action to take on the summary. Possible values are:
    *
@@ -29,10 +32,12 @@ type Options = {
   pathParams: summary_feedback_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<summary_feedback_coursesSearchParameters>;
       params?: Partial<summary_feedback_coursesFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: summary_feedback_coursesSearchParameters;
       params: summary_feedback_coursesFormParameters;
       strict: true;
     }

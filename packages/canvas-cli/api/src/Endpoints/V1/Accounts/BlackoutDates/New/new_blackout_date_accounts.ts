@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { BlackoutDate } from '../../../../../Resources/BlackoutDates.js';
 
@@ -6,13 +7,17 @@ export type new_blackout_date_accountsPathParameters = {
   account_id: string;
 };
 
+export type new_blackout_date_accountsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: new_blackout_date_accountsPathParameters;
 } & (
   | {
+      searchParams?: Partial<new_blackout_date_accountsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: new_blackout_date_accountsSearchParameters;
       strict: true;
     }
 );

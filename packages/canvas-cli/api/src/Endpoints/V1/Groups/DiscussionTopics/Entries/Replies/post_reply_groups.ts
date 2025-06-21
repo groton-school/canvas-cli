@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type post_reply_groupsPathParameters = {
@@ -9,7 +10,9 @@ export type post_reply_groupsPathParameters = {
   entry_id: string;
 };
 
-export type post_reply_groupsFormParameters = {
+export type post_reply_groupsSearchParameters = Masquerade;
+
+export type post_reply_groupsFormParameters = Masquerade & {
   /** The body of the entry. */
   message: string;
   /**
@@ -23,10 +26,12 @@ type Options = {
   pathParams: post_reply_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<post_reply_groupsSearchParameters>;
       params?: Partial<post_reply_groupsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: post_reply_groupsSearchParameters;
       params: post_reply_groupsFormParameters;
       strict: true;
     }

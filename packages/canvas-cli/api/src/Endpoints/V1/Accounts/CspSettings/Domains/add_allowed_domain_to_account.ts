@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type add_allowed_domain_to_accountPathParameters = {
@@ -5,7 +6,9 @@ export type add_allowed_domain_to_accountPathParameters = {
   account_id: string;
 };
 
-export type add_allowed_domain_to_accountFormParameters = {
+export type add_allowed_domain_to_accountSearchParameters = Masquerade;
+
+export type add_allowed_domain_to_accountFormParameters = Masquerade & {
   /** No description */
   domain: string;
 };
@@ -14,10 +17,12 @@ type Options = {
   pathParams: add_allowed_domain_to_accountPathParameters;
 } & (
   | {
+      searchParams?: Partial<add_allowed_domain_to_accountSearchParameters>;
       params?: Partial<add_allowed_domain_to_accountFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: add_allowed_domain_to_accountSearchParameters;
       params: add_allowed_domain_to_accountFormParameters;
       strict: true;
     }

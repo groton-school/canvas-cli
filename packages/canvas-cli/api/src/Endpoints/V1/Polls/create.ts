@@ -1,6 +1,9 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
-export type createFormParameters = {
+export type createSearchParameters = Masquerade;
+
+export type createFormParameters = Masquerade & {
   /** The title of the poll. */
   'polls[question]': string[];
   /** A brief description or instructions for the poll. */
@@ -9,10 +12,12 @@ export type createFormParameters = {
 
 type Options =
   | {
+      searchParams?: Partial<createSearchParameters>;
       params?: Partial<createFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: createSearchParameters;
       params: createFormParameters;
       strict: true;
     };

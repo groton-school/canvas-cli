@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Rubric } from '../../../../Resources/Rubrics.js';
 
@@ -8,16 +9,17 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /** Related records to include in the response. */
-  include: string[];
-  /**
-   * Applicable only if assessments are being returned. If included, returns
-   * either all criteria data associated with the assessment, or just the
-   * comments. If not included, both data and comments are omitted.
-   */
-  style: string;
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /** Related records to include in the response. */
+    include: string[];
+    /**
+     * Applicable only if assessments are being returned. If included, returns
+     * either all criteria data associated with the assessment, or just the
+     * comments. If not included, both data and comments are omitted.
+     */
+    style: string;
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

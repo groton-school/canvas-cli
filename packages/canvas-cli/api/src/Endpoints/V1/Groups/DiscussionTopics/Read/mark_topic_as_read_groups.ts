@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type mark_topic_as_read_groupsPathParameters = {
@@ -7,13 +8,17 @@ export type mark_topic_as_read_groupsPathParameters = {
   topic_id: string;
 };
 
+export type mark_topic_as_read_groupsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: mark_topic_as_read_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<mark_topic_as_read_groupsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: mark_topic_as_read_groupsSearchParameters;
       strict: true;
     }
 );

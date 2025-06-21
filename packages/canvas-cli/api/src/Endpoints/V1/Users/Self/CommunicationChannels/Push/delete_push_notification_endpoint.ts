@@ -1,10 +1,15 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
+
+export type delete_push_notification_endpointSearchParameters = Masquerade;
 
 type Options =
   | {
+      searchParams?: Partial<delete_push_notification_endpointSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_push_notification_endpointSearchParameters;
       strict: true;
     };
 

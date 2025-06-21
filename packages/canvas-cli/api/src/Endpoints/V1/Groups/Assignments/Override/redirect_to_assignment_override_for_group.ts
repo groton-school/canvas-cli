@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type redirect_to_assignment_override_for_groupPathParameters = {
@@ -7,13 +8,18 @@ export type redirect_to_assignment_override_for_groupPathParameters = {
   assignment_id: string;
 };
 
+export type redirect_to_assignment_override_for_groupSearchParameters =
+  Masquerade;
+
 type Options = {
   pathParams: redirect_to_assignment_override_for_groupPathParameters;
 } & (
   | {
+      searchParams?: Partial<redirect_to_assignment_override_for_groupSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: redirect_to_assignment_override_for_groupSearchParameters;
       strict: true;
     }
 );

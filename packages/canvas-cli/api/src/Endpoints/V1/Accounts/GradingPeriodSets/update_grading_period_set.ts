@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type update_grading_period_setPathParameters = {
@@ -7,7 +8,9 @@ export type update_grading_period_setPathParameters = {
   id: string;
 };
 
-export type update_grading_period_setFormParameters = {
+export type update_grading_period_setSearchParameters = Masquerade;
+
+export type update_grading_period_setFormParameters = Masquerade & {
   /** A list of associated term ids for the grading period set */
   enrollment_term_ids: string[];
   /** The title of the grading period set */
@@ -28,10 +31,12 @@ type Options = {
   pathParams: update_grading_period_setPathParameters;
 } & (
   | {
+      searchParams?: Partial<update_grading_period_setSearchParameters>;
       params?: Partial<update_grading_period_setFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: update_grading_period_setSearchParameters;
       params: update_grading_period_setFormParameters;
       strict: true;
     }

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
@@ -6,7 +7,9 @@ export type bulk_update_column_dataPathParameters = {
   course_id: string;
 };
 
-export type bulk_update_column_dataFormParameters = {
+export type bulk_update_column_dataSearchParameters = Masquerade;
+
+export type bulk_update_column_dataFormParameters = Masquerade & {
   /**
    * Column content. Setting this to an empty string will delete the data
    * object.
@@ -18,10 +21,12 @@ type Options = {
   pathParams: bulk_update_column_dataPathParameters;
 } & (
   | {
+      searchParams?: Partial<bulk_update_column_dataSearchParameters>;
       params?: Partial<bulk_update_column_dataFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: bulk_update_column_dataSearchParameters;
       params: bulk_update_column_dataFormParameters;
       strict: true;
     }

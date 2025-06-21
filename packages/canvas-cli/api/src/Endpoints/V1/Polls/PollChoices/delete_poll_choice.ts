@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type delete_poll_choicePathParameters = {
@@ -7,13 +8,17 @@ export type delete_poll_choicePathParameters = {
   id: string;
 };
 
+export type delete_poll_choiceSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_poll_choicePathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_poll_choiceSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_poll_choiceSearchParameters;
       strict: true;
     }
 );

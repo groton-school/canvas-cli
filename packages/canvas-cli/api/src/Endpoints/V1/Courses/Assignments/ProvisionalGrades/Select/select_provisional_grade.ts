@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type select_provisional_gradePathParameters = {
@@ -9,13 +10,17 @@ export type select_provisional_gradePathParameters = {
   provisional_grade_id: string;
 };
 
+export type select_provisional_gradeSearchParameters = Masquerade;
+
 type Options = {
   pathParams: select_provisional_gradePathParameters;
 } & (
   | {
+      searchParams?: Partial<select_provisional_gradeSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: select_provisional_gradeSearchParameters;
       strict: true;
     }
 );

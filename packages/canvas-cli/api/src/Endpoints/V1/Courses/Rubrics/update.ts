@@ -1,4 +1,5 @@
 import { JSONObject } from '@battis/typescript-tricks';
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type updatePathParameters = {
@@ -12,7 +13,9 @@ export type updatePathParameters = {
   id: number;
 };
 
-export type updateFormParameters = {
+export type updateSearchParameters = Masquerade;
+
+export type updateFormParameters = Masquerade & {
   /**
    * The id of the rubric association object (not the course/assignment
    * itself, but the join table record id). It can be used in place of
@@ -65,10 +68,12 @@ type Options = {
   pathParams: updatePathParameters;
 } & (
   | {
+      searchParams?: Partial<updateSearchParameters>;
       params?: Partial<updateFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: updateSearchParameters;
       params: updateFormParameters;
       strict: true;
     }

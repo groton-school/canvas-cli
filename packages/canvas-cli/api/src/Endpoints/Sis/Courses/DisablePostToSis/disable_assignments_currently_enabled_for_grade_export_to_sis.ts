@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type disable_assignments_currently_enabled_for_grade_export_to_sisPathParameters =
@@ -10,8 +11,11 @@ export type disable_assignments_currently_enabled_for_grade_export_to_sisPathPar
     course_id: number;
   };
 
+export type disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters =
+  Masquerade;
+
 export type disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters =
-  {
+  Masquerade & {
     /**
      * The ID of the grading period.
      *
@@ -24,10 +28,12 @@ type Options = {
   pathParams: disable_assignments_currently_enabled_for_grade_export_to_sisPathParameters;
 } & (
   | {
+      searchParams?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters>;
       params?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters;
       params: disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters;
       strict: true;
     }

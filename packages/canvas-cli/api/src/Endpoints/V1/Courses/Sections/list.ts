@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Section } from '../../../../Resources/Sections.js';
 
@@ -7,27 +7,28 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * - "students": Associations to include with the group. Note: this is only
-   *   available if you have permission to view users or grades in the course
-   * - "avatar_url": Include the avatar URLs for students returned.
-   * - "enrollments": If 'students' is also included, return the section
-   *   enrollment for each student
-   * - "total_students": Returns the total amount of active and invited students
-   *   for the course section
-   * - "passback_status": Include the grade passback status.
-   * - "permissions": Include whether section grants :manage_calendar permission
-   *   to the caller
-   */
-  include: string[];
-  /**
-   * When included, searches course sections for the term. Returns only
-   * matching results. Term must be at least 2 characters.
-   */
-  search_term: string;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * - "students": Associations to include with the group. Note: this is only
+     *   available if you have permission to view users or grades in the course
+     * - "avatar_url": Include the avatar URLs for students returned.
+     * - "enrollments": If 'students' is also included, return the section
+     *   enrollment for each student
+     * - "total_students": Returns the total amount of active and invited students
+     *   for the course section
+     * - "passback_status": Include the grade passback status.
+     * - "permissions": Include whether section grants :manage_calendar permission
+     *   to the caller
+     */
+    include: string[];
+    /**
+     * When included, searches course sections for the term. Returns only
+     * matching results. Term must be at least 2 characters.
+     */
+    search_term: string;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

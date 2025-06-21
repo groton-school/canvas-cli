@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type submission_summary_coursesPathParameters = {
@@ -7,13 +8,14 @@ export type submission_summary_coursesPathParameters = {
   assignment_id: string;
 };
 
-export type submission_summary_coursesSearchParameters = Partial<{
-  /**
-   * If this argument is true, the response will take into account student
-   * groups.
-   */
-  grouped: boolean;
-}>;
+export type submission_summary_coursesSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * If this argument is true, the response will take into account student
+     * groups.
+     */
+    grouped: boolean;
+  }>;
 
 type Options = {
   pathParams: submission_summary_coursesPathParameters;

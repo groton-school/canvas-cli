@@ -1,14 +1,16 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 import { Group } from '../../../../../../Resources/Groups.js';
 
-export type listSearchParameters = Paginated;
+export type listSearchParameters = Masquerade & Paginated;
 
 type Options =
   | {
+      searchParams?: Partial<listSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: listSearchParameters;
       strict: true;
     };
 

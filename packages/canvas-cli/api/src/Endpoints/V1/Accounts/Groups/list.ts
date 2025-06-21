@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Group } from '../../../../Resources/Groups.js';
 
@@ -7,25 +7,26 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /** Will only include groups that the user belongs to if this is set */
-  only_own_groups: boolean;
-  /**
-   * - "tabs": Include the list of tabs configured for each group. See the
-   *   {api:TabsController#index List available tabs API} for more
-   *   information.
-   */
-  include: string[];
-  /**
-   * Filter groups by their collaboration state:
-   *
-   * - "all": Return both collaborative and non-collaborative groups
-   * - "collaborative": Return only collaborative groups (default)
-   * - "non_collaborative": Return only non-collaborative groups
-   */
-  collaboration_state: string;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /** Will only include groups that the user belongs to if this is set */
+    only_own_groups: boolean;
+    /**
+     * - "tabs": Include the list of tabs configured for each group. See the
+     *   {api:TabsController#index List available tabs API} for more
+     *   information.
+     */
+    include: string[];
+    /**
+     * Filter groups by their collaboration state:
+     *
+     * - "all": Return both collaborative and non-collaborative groups
+     * - "collaborative": Return only collaborative groups (default)
+     * - "non_collaborative": Return only non-collaborative groups
+     */
+    collaboration_state: string;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

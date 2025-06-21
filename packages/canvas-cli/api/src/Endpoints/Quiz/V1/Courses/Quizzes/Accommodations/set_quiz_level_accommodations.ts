@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 import { AccommodationResponse } from '../../../../../../Resources/NewQuizzesAccommodations.js';
 
@@ -12,7 +13,9 @@ export type set_quiz_level_accommodationsPathParameters = {
   assignment_id: number;
 };
 
-export type set_quiz_level_accommodationsFormParameters = {
+export type set_quiz_level_accommodationsSearchParameters = Masquerade;
+
+export type set_quiz_level_accommodationsFormParameters = Masquerade & {
   /**
    * The Canvas user ID of the student receiving accommodations.
    *
@@ -44,10 +47,12 @@ type Options = {
   pathParams: set_quiz_level_accommodationsPathParameters;
 } & (
   | {
+      searchParams?: Partial<set_quiz_level_accommodationsSearchParameters>;
       params?: Partial<set_quiz_level_accommodationsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: set_quiz_level_accommodationsSearchParameters;
       params: set_quiz_level_accommodationsFormParameters;
       strict: true;
     }

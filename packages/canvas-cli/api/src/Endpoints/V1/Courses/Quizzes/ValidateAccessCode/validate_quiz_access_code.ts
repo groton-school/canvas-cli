@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type validate_quiz_access_codePathParameters = {
@@ -7,7 +8,9 @@ export type validate_quiz_access_codePathParameters = {
   id: string;
 };
 
-export type validate_quiz_access_codeFormParameters = {
+export type validate_quiz_access_codeSearchParameters = Masquerade;
+
+export type validate_quiz_access_codeFormParameters = Masquerade & {
   /** The access code being validated */
   access_code: string;
 };
@@ -16,10 +19,12 @@ type Options = {
   pathParams: validate_quiz_access_codePathParameters;
 } & (
   | {
+      searchParams?: Partial<validate_quiz_access_codeSearchParameters>;
       params?: Partial<validate_quiz_access_codeFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: validate_quiz_access_codeSearchParameters;
       params: validate_quiz_access_codeFormParameters;
       strict: true;
     }

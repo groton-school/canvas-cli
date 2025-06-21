@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type getPathParameters = {
@@ -9,10 +10,11 @@ export type getPathParameters = {
   user_id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /** Associations to include with the group. */
-  include: string[];
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /** Associations to include with the group. */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type reserve_time_slot_participant_idPathParameters = {
@@ -11,7 +12,9 @@ export type reserve_time_slot_participant_idPathParameters = {
   participant_id: string;
 };
 
-export type reserve_time_slot_participant_idFormParameters = {
+export type reserve_time_slot_participant_idSearchParameters = Masquerade;
+
+export type reserve_time_slot_participant_idFormParameters = Masquerade & {
   /** Comments to associate with this reservation */
   comments: string;
   /**
@@ -25,10 +28,12 @@ type Options = {
   pathParams: reserve_time_slot_participant_idPathParameters;
 } & (
   | {
+      searchParams?: Partial<reserve_time_slot_participant_idSearchParameters>;
       params?: Partial<reserve_time_slot_participant_idFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: reserve_time_slot_participant_idSearchParameters;
       params: reserve_time_slot_participant_idFormParameters;
       strict: true;
     }

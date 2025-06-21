@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesPathParameters =
@@ -6,8 +7,11 @@ export type lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesPath
     account_id: string;
   };
 
+export type lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters =
+  Masquerade;
+
 export type lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters =
-  {
+  Masquerade & {
     /**
      * Whether sub-accounts and courses will be prevented from overriding
      * settings inherited from this account.
@@ -19,10 +23,12 @@ type Options = {
   pathParams: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters>;
       params?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters;
       params: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters;
       strict: true;
     }

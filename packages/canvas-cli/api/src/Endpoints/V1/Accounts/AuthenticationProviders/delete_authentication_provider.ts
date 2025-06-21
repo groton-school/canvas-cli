@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type delete_authentication_providerPathParameters = {
@@ -7,13 +8,17 @@ export type delete_authentication_providerPathParameters = {
   id: string;
 };
 
+export type delete_authentication_providerSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_authentication_providerPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_authentication_providerSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_authentication_providerSearchParameters;
       strict: true;
     }
 );

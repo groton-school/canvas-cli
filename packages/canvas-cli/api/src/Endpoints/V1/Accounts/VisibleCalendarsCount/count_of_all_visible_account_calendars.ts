@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type count_of_all_visible_account_calendarsPathParameters = {
@@ -5,13 +6,17 @@ export type count_of_all_visible_account_calendarsPathParameters = {
   account_id: string;
 };
 
+export type count_of_all_visible_account_calendarsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: count_of_all_visible_account_calendarsPathParameters;
 } & (
   | {
+      searchParams?: Partial<count_of_all_visible_account_calendarsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: count_of_all_visible_account_calendarsSearchParameters;
       strict: true;
     }
 );

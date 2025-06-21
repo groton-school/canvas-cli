@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
@@ -14,62 +15,67 @@ export type create_link_outcome_courses_outcome_idPathParameters = {
   outcome_id: number;
 };
 
-export type create_link_outcome_courses_outcome_idFormParameters = {
-  /**
-   * The ID of the old outcome group. Only used if outcome_id is present.
-   *
-   * Format: 'int64'
-   */
-  move_from: number;
-  /** The title of the new outcome. Required if outcome_id is absent. */
-  title: string;
-  /**
-   * A friendly name shown in reports for outcomes with cryptic titles, such
-   * as common core standards names.
-   */
-  display_name: string;
-  /** The description of the new outcome. */
-  description: string;
-  /** A custom GUID for the learning standard. */
-  vendor_guid: string;
-  /**
-   * The mastery threshold for the embedded rubric criterion.
-   *
-   * Format: 'int64'
-   */
-  mastery_points: number;
-  /** The description of a rating level for the embedded rubric criterion. */
-  'ratings[description]': string[];
-  /**
-   * The points corresponding to a rating level for the embedded rubric
-   * criterion.
-   *
-   * Format: 'int64'
-   */
-  'ratings[points]': number[];
-  /**
-   * The new calculation method. Defaults to "decaying_average" if the
-   * Outcomes New Decaying Average Calculation Method FF is ENABLED then
-   * Defaults to "weighted_average"
-   */
-  calculation_method: string;
-  /**
-   * The new calculation int. Only applies if the calculation_method is
-   * "weighted_average", "decaying_average" or "n_mastery". Defaults to 65
-   *
-   * Format: 'int64'
-   */
-  calculation_int: number;
-};
+export type create_link_outcome_courses_outcome_idSearchParameters = Masquerade;
+
+export type create_link_outcome_courses_outcome_idFormParameters =
+  Masquerade & {
+    /**
+     * The ID of the old outcome group. Only used if outcome_id is present.
+     *
+     * Format: 'int64'
+     */
+    move_from: number;
+    /** The title of the new outcome. Required if outcome_id is absent. */
+    title: string;
+    /**
+     * A friendly name shown in reports for outcomes with cryptic titles, such
+     * as common core standards names.
+     */
+    display_name: string;
+    /** The description of the new outcome. */
+    description: string;
+    /** A custom GUID for the learning standard. */
+    vendor_guid: string;
+    /**
+     * The mastery threshold for the embedded rubric criterion.
+     *
+     * Format: 'int64'
+     */
+    mastery_points: number;
+    /** The description of a rating level for the embedded rubric criterion. */
+    'ratings[description]': string[];
+    /**
+     * The points corresponding to a rating level for the embedded rubric
+     * criterion.
+     *
+     * Format: 'int64'
+     */
+    'ratings[points]': number[];
+    /**
+     * The new calculation method. Defaults to "decaying_average" if the
+     * Outcomes New Decaying Average Calculation Method FF is ENABLED then
+     * Defaults to "weighted_average"
+     */
+    calculation_method: string;
+    /**
+     * The new calculation int. Only applies if the calculation_method is
+     * "weighted_average", "decaying_average" or "n_mastery". Defaults to 65
+     *
+     * Format: 'int64'
+     */
+    calculation_int: number;
+  };
 
 type Options = {
   pathParams: create_link_outcome_courses_outcome_idPathParameters;
 } & (
   | {
+      searchParams?: Partial<create_link_outcome_courses_outcome_idSearchParameters>;
       params?: Partial<create_link_outcome_courses_outcome_idFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: create_link_outcome_courses_outcome_idSearchParameters;
       params: create_link_outcome_courses_outcome_idFormParameters;
       strict: true;
     }

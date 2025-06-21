@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { ModuleItem } from '../../../../../Resources/CoursePace.js';
 
@@ -10,13 +11,17 @@ export type delete_module_itemPathParameters = {
   id: string;
 };
 
+export type delete_module_itemSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_module_itemPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_module_itemSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_module_itemSearchParameters;
       strict: true;
     }
 );

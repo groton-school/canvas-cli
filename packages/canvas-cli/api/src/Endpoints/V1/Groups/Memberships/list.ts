@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { GroupMembership } from '../../../../Resources/Groups.js';
 
@@ -7,14 +7,15 @@ export type listPathParameters = {
   group_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * Only list memberships with the given workflow_states. By default it will
-   * return all memberships.
-   */
-  filter_states: string[];
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * Only list memberships with the given workflow_states. By default it will
+     * return all memberships.
+     */
+    filter_states: string[];
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

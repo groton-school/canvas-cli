@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 import { SubmissionComment } from '../../../../../../Resources/Submissions.js';
 
@@ -12,13 +13,17 @@ export type delete_submission_commentPathParameters = {
   id: string;
 };
 
+export type delete_submission_commentSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_submission_commentPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_submission_commentSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_submission_commentSearchParameters;
       strict: true;
     }
 );

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { ePortfolio } from '../../../Resources/EPortfolios.js';
 
@@ -6,13 +7,17 @@ export type delete_eportfolioPathParameters = {
   id: string;
 };
 
+export type delete_eportfolioSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_eportfolioPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_eportfolioSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_eportfolioSearchParameters;
       strict: true;
     }
 );

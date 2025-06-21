@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type remove_tool_from_top_navigation_favoritesPathParameters = {
@@ -7,13 +8,18 @@ export type remove_tool_from_top_navigation_favoritesPathParameters = {
   id: string;
 };
 
+export type remove_tool_from_top_navigation_favoritesSearchParameters =
+  Masquerade;
+
 type Options = {
   pathParams: remove_tool_from_top_navigation_favoritesPathParameters;
 } & (
   | {
+      searchParams?: Partial<remove_tool_from_top_navigation_favoritesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: remove_tool_from_top_navigation_favoritesSearchParameters;
       strict: true;
     }
 );

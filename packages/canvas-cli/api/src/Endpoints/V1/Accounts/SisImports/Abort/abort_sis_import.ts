@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { SisImport } from '../../../../../Resources/SisImports.js';
 
@@ -8,13 +9,17 @@ export type abort_sis_importPathParameters = {
   id: string;
 };
 
+export type abort_sis_importSearchParameters = Masquerade;
+
 type Options = {
   pathParams: abort_sis_importPathParameters;
 } & (
   | {
+      searchParams?: Partial<abort_sis_importSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: abort_sis_importSearchParameters;
       strict: true;
     }
 );

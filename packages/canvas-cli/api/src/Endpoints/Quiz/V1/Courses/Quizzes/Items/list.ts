@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 import { QuizItem } from '../../../../../../Resources/NewQuizItems.js';
 
@@ -17,15 +17,17 @@ export type listPathParameters = {
   assignment_id: number;
 };
 
-export type listSearchParameters = Paginated;
+export type listSearchParameters = Masquerade & Paginated;
 
 type Options = {
   pathParams: listPathParameters;
 } & (
   | {
+      searchParams?: Partial<listSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: listSearchParameters;
       strict: true;
     }
 );

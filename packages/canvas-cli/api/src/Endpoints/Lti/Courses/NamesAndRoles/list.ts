@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { NamesAndRoleMemberships } from '../../../../Resources/NamesAndRole.js';
 
@@ -6,28 +7,29 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * If specified only NamesAndRoleMemberships with access to the LTI link
-   * references by this `rlid` will be included. Also causes the member array
-   * to be included for each returned NamesAndRoleMembership. If the `role`
-   * parameter is also present, it will be 'and-ed' together with this
-   * parameter
-   */
-  rlid: string;
-  /**
-   * If specified only NamesAndRoleMemberships having this role in the given
-   * Course will be included. Value must be a fully-qualified LTI/LIS role
-   * URN. If the `rlid` parameter is also present, it will be 'and-ed'
-   * together with this parameter
-   */
-  role: string;
-  /**
-   * May be used to limit the number of NamesAndRoleMemberships returned in a
-   * page. Defaults to 50.
-   */
-  limit: string;
-}>;
+export type listSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * If specified only NamesAndRoleMemberships with access to the LTI link
+     * references by this `rlid` will be included. Also causes the member array
+     * to be included for each returned NamesAndRoleMembership. If the `role`
+     * parameter is also present, it will be 'and-ed' together with this
+     * parameter
+     */
+    rlid: string;
+    /**
+     * If specified only NamesAndRoleMemberships having this role in the given
+     * Course will be included. Value must be a fully-qualified LTI/LIS role
+     * URN. If the `rlid` parameter is also present, it will be 'and-ed'
+     * together with this parameter
+     */
+    role: string;
+    /**
+     * May be used to limit the number of NamesAndRoleMemberships returned in a
+     * page. Defaults to 50.
+     */
+    limit: string;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

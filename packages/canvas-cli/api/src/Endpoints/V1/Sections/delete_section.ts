@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { Section } from '../../../Resources/Sections.js';
 
@@ -6,13 +7,17 @@ export type delete_sectionPathParameters = {
   id: string;
 };
 
+export type delete_sectionSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_sectionPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_sectionSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_sectionSearchParameters;
       strict: true;
     }
 );

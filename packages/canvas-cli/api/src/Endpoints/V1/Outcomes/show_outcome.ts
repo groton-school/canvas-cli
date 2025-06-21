@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { Outcome } from '../../../Resources/Outcomes.js';
 
@@ -6,14 +7,15 @@ export type show_outcomePathParameters = {
   id: string;
 };
 
-export type show_outcomeSearchParameters = Partial<{
-  /**
-   * If defaults are requested, then color and mastery level defaults will be
-   * added to outcome ratings in the result. This will only take effect if the
-   * Account Level Mastery Scales FF is DISABLED
-   */
-  add_defaults: boolean;
-}>;
+export type show_outcomeSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * If defaults are requested, then color and mastery level defaults will be
+     * added to outcome ratings in the result. This will only take effect if the
+     * Account Level Mastery Scales FF is DISABLED
+     */
+    add_defaults: boolean;
+  }>;
 
 type Options = {
   pathParams: show_outcomePathParameters;

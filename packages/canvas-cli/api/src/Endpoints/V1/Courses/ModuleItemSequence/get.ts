@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { ModuleItemSequence } from '../../../../Resources/Modules.js';
 
@@ -6,21 +7,22 @@ export type getPathParameters = {
   course_id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /**
-   * The type of asset to find module sequence information for. Use the
-   * ModuleItem if it is known (e.g., the user navigated from a module item),
-   * since this will avoid ambiguity if the asset appears more than once in
-   * the module sequence.
-   */
-  asset_type: string;
-  /**
-   * The id of the asset (or the url in the case of a Page)
-   *
-   * Format: 'int64'
-   */
-  asset_id: number;
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * The type of asset to find module sequence information for. Use the
+     * ModuleItem if it is known (e.g., the user navigated from a module item),
+     * since this will avoid ambiguity if the asset appears more than once in
+     * the module sequence.
+     */
+    asset_type: string;
+    /**
+     * The id of the asset (or the url in the case of a Page)
+     *
+     * Format: 'int64'
+     */
+    asset_id: number;
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

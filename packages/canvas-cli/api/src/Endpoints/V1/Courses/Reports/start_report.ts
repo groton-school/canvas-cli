@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
@@ -12,7 +13,9 @@ export type start_reportPathParameters = {
   report_type: string;
 };
 
-export type start_reportFormParameters = {
+export type start_reportSearchParameters = Masquerade;
+
+export type start_reportFormParameters = Masquerade & {
   /**
    * The parameters will vary for each report. Note that the example
    * parameters provided below may not be valid for every report.
@@ -31,10 +34,12 @@ type Options = {
   pathParams: start_reportPathParameters;
 } & (
   | {
+      searchParams?: Partial<start_reportSearchParameters>;
       params?: Partial<start_reportFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: start_reportSearchParameters;
       params: start_reportFormParameters;
       strict: true;
     }

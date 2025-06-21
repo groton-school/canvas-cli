@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { DiscussionTopic } from '../../../../../Resources/DiscussionTopics.js';
 
@@ -8,13 +9,17 @@ export type duplicate_discussion_topic_coursesPathParameters = {
   topic_id: string;
 };
 
+export type duplicate_discussion_topic_coursesSearchParameters = Masquerade;
+
 type Options = {
   pathParams: duplicate_discussion_topic_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<duplicate_discussion_topic_coursesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: duplicate_discussion_topic_coursesSearchParameters;
       strict: true;
     }
 );

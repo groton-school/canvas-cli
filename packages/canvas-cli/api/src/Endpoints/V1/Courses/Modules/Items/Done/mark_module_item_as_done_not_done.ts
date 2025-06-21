@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type mark_module_item_as_done_not_donePathParameters = {
@@ -9,13 +10,17 @@ export type mark_module_item_as_done_not_donePathParameters = {
   id: string;
 };
 
+export type mark_module_item_as_done_not_doneSearchParameters = Masquerade;
+
 type Options = {
   pathParams: mark_module_item_as_done_not_donePathParameters;
 } & (
   | {
+      searchParams?: Partial<mark_module_item_as_done_not_doneSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: mark_module_item_as_done_not_doneSearchParameters;
       strict: true;
     }
 );

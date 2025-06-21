@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { File } from '../../../Resources/Files.js';
 
@@ -6,15 +7,16 @@ export type delete_filePathParameters = {
   id: string;
 };
 
-export type delete_fileSearchParameters = Partial<{
-  /**
-   * This action is irreversible. If replace is set to true the file contents
-   * will be replaced with a generic "file has been removed" file. This also
-   * destroys any previews that have been generated for the file. Must have
-   * manage files and become other users permissions
-   */
-  replace: boolean;
-}>;
+export type delete_fileSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * This action is irreversible. If replace is set to true the file contents
+     * will be replaced with a generic "file has been removed" file. This also
+     * destroys any previews that have been generated for the file. Must have
+     * manage files and become other users permissions
+     */
+    replace: boolean;
+  }>;
 
 type Options = {
   pathParams: delete_filePathParameters;

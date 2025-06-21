@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type getPathParameters = {
@@ -5,17 +6,18 @@ export type getPathParameters = {
   course_id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /**
-   * If async is true, then the course_assignments call can happen asynch-
-   * ronously and MAY return a response containing a progress_url key instead
-   * of an assignments array. If it does, then it is the caller's
-   * responsibility to poll the API again to see if the progress is complete.
-   * If the data is ready (possibly even on the first async call) then it will
-   * be passed back normally, as documented in the example response.
-   */
-  async: boolean;
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * If async is true, then the course_assignments call can happen asynch-
+     * ronously and MAY return a response containing a progress_url key instead
+     * of an assignments array. If it does, then it is the caller's
+     * responsibility to poll the API again to see if the progress is complete.
+     * If the data is ready (possibly even on the first async call) then it will
+     * be passed back normally, as documented in the example response.
+     */
+    async: boolean;
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { Group } from '../../../Resources/Groups.js';
 
@@ -6,15 +7,16 @@ export type getPathParameters = {
   group_id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /**
-   * - "permissions": Include permissions the current user has for the group.
-   * - "tabs": Include the list of tabs configured for each group. See the
-   *   {api:TabsController#index List available tabs API} for more
-   *   information.
-   */
-  include: string[];
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * - "permissions": Include permissions the current user has for the group.
+     * - "tabs": Include the list of tabs configured for each group. See the
+     *   {api:TabsController#index List available tabs API} for more
+     *   information.
+     */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

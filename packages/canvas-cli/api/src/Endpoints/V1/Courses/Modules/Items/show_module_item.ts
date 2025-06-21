@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { ModuleItem } from '../../../../../Resources/CoursePace.js';
 
@@ -10,17 +11,18 @@ export type show_module_itemPathParameters = {
   id: string;
 };
 
-export type show_module_itemSearchParameters = Partial<{
-  /**
-   * If included, will return additional details specific to the content
-   * associated with this item. Refer to the {api:Modules:Module%20Item Module
-   * Item specification} for more details. Includes standard lock information
-   * for each item.
-   */
-  include: string[];
-  /** Returns module completion information for the student with this id. */
-  student_id: string;
-}>;
+export type show_module_itemSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * If included, will return additional details specific to the content
+     * associated with this item. Refer to the {api:Modules:Module%20Item Module
+     * Item specification} for more details. Includes standard lock information
+     * for each item.
+     */
+    include: string[];
+    /** Returns module completion information for the student with this id. */
+    student_id: string;
+  }>;
 
 type Options = {
   pathParams: show_module_itemPathParameters;

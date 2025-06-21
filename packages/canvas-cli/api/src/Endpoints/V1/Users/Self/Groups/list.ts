@@ -1,18 +1,19 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Group } from '../../../../../Resources/Groups.js';
 
-export type listSearchParameters = Partial<{
-  /** Only include groups that are in this type of context. */
-  context_type: string;
-  /**
-   * - "tabs": Include the list of tabs configured for each group. See the
-   *   {api:TabsController#index List available tabs API} for more
-   *   information.
-   */
-  include: string[];
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /** Only include groups that are in this type of context. */
+    context_type: string;
+    /**
+     * - "tabs": Include the list of tabs configured for each group. See the
+     *   {api:TabsController#index List available tabs API} for more
+     *   information.
+     */
+    include: string[];
+  }>;
 
 type Options =
   | {

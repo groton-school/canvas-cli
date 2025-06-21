@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type subscribe_to_topic_groupsPathParameters = {
@@ -7,13 +8,17 @@ export type subscribe_to_topic_groupsPathParameters = {
   topic_id: string;
 };
 
+export type subscribe_to_topic_groupsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: subscribe_to_topic_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<subscribe_to_topic_groupsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: subscribe_to_topic_groupsSearchParameters;
       strict: true;
     }
 );

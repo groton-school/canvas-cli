@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Admin } from '../../../../Resources/Admins.js';
 
@@ -6,7 +7,9 @@ export type make_account_adminPathParameters = {
   account_id: string;
 };
 
-export type make_account_adminFormParameters = {
+export type make_account_adminSearchParameters = Masquerade;
+
+export type make_account_adminFormParameters = Masquerade & {
   /**
    * The id of the user to promote.
    *
@@ -33,10 +36,12 @@ type Options = {
   pathParams: make_account_adminPathParameters;
 } & (
   | {
+      searchParams?: Partial<make_account_adminSearchParameters>;
       params?: Partial<make_account_adminFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: make_account_adminSearchParameters;
       params: make_account_adminFormParameters;
       strict: true;
     }

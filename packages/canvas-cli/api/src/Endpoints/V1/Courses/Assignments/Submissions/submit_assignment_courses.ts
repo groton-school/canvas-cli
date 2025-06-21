@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type submit_assignment_coursesPathParameters = {
@@ -7,7 +8,9 @@ export type submit_assignment_coursesPathParameters = {
   assignment_id: string;
 };
 
-export type submit_assignment_coursesFormParameters = {
+export type submit_assignment_coursesSearchParameters = Masquerade;
+
+export type submit_assignment_coursesFormParameters = Masquerade & {
   /** Include a textual comment with the submission. */
   'comment[text_comment]': string;
   /**
@@ -96,10 +99,12 @@ type Options = {
   pathParams: submit_assignment_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<submit_assignment_coursesSearchParameters>;
       params?: Partial<submit_assignment_coursesFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: submit_assignment_coursesSearchParameters;
       params: submit_assignment_coursesFormParameters;
       strict: true;
     }

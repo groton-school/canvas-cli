@@ -1,16 +1,17 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { Conference } from '../../../Resources/Conferences.js';
 
-export type listSearchParameters = Partial<{
-  /**
-   * If set to "live", returns only conferences that are live (i.e., have
-   * started and not finished yet). If omitted, returns all conferences for
-   * this user's groups and courses.
-   */
-  state: string;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * If set to "live", returns only conferences that are live (i.e., have
+     * started and not finished yet). If omitted, returns all conferences for
+     * this user's groups and courses.
+     */
+    state: string;
+  }>;
 
 type Options =
   | {

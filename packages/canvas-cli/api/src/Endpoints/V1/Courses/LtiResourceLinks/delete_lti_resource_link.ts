@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
@@ -8,13 +9,17 @@ export type delete_lti_resource_linkPathParameters = {
   id: string;
 };
 
+export type delete_lti_resource_linkSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_lti_resource_linkPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_lti_resource_linkSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_lti_resource_linkSearchParameters;
       strict: true;
     }
 );

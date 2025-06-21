@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Role } from '../../../../Resources/Roles.js';
 
@@ -7,19 +7,20 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * Filter by role state. If this argument is omitted, only 'active' roles
-   * are returned.
-   */
-  state: string[];
-  /**
-   * If this argument is true, all roles inherited from parent accounts will
-   * be included.
-   */
-  show_inherited: boolean;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * Filter by role state. If this argument is omitted, only 'active' roles
+     * are returned.
+     */
+    state: string[];
+    /**
+     * If this argument is true, all roles inherited from parent accounts will
+     * be included.
+     */
+    show_inherited: boolean;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

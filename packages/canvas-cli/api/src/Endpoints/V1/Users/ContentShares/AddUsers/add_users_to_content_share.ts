@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { ContentShare } from '../../../../../Resources/ContentShares.js';
 
@@ -8,7 +9,9 @@ export type add_users_to_content_sharePathParameters = {
   id: string;
 };
 
-export type add_users_to_content_shareFormParameters = {
+export type add_users_to_content_shareSearchParameters = Masquerade;
+
+export type add_users_to_content_shareFormParameters = Masquerade & {
   /**
    * IDs of users to share the content with.
    *
@@ -21,10 +24,12 @@ type Options = {
   pathParams: add_users_to_content_sharePathParameters;
 } & (
   | {
+      searchParams?: Partial<add_users_to_content_shareSearchParameters>;
       params?: Partial<add_users_to_content_shareFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: add_users_to_content_shareSearchParameters;
       params: add_users_to_content_shareFormParameters;
       strict: true;
     }

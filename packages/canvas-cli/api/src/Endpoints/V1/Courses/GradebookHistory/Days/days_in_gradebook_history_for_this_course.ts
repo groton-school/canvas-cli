@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Day } from '../../../../../Resources/GradebookHistory.js';
 
@@ -12,15 +12,17 @@ export type days_in_gradebook_history_for_this_coursePathParameters = {
 };
 
 export type days_in_gradebook_history_for_this_courseSearchParameters =
-  Paginated;
+  Masquerade & Paginated;
 
 type Options = {
   pathParams: days_in_gradebook_history_for_this_coursePathParameters;
 } & (
   | {
+      searchParams?: Partial<days_in_gradebook_history_for_this_courseSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: days_in_gradebook_history_for_this_courseSearchParameters;
       strict: true;
     }
 );

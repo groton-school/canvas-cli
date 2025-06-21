@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Report } from '../../../../../Resources/AccountReports.js';
 
@@ -10,13 +11,17 @@ export type abort_reportPathParameters = {
   id: string;
 };
 
+export type abort_reportSearchParameters = Masquerade;
+
 type Options = {
   pathParams: abort_reportPathParameters;
 } & (
   | {
+      searchParams?: Partial<abort_reportSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: abort_reportSearchParameters;
       strict: true;
     }
 );

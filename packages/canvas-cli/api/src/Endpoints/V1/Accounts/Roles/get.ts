@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Role } from '../../../../Resources/Roles.js';
 
@@ -8,16 +9,17 @@ export type getPathParameters = {
   account_id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /**
-   * The unique identifier for the role
-   *
-   * Format: 'int64'
-   */
-  role_id: number;
-  /** The name for the role */
-  role: string;
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * The unique identifier for the role
+     *
+     * Format: 'int64'
+     */
+    role_id: number;
+    /** The name for the role */
+    role: string;
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

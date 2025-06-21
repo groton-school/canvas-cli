@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../../Client.js';
 
 export type mark_rubric_assessments_as_read_sections_rubric_assessmentsPathParameters =
@@ -10,13 +11,18 @@ export type mark_rubric_assessments_as_read_sections_rubric_assessmentsPathParam
     user_id: string;
   };
 
+export type mark_rubric_assessments_as_read_sections_rubric_assessmentsSearchParameters =
+  Masquerade;
+
 type Options = {
   pathParams: mark_rubric_assessments_as_read_sections_rubric_assessmentsPathParameters;
 } & (
   | {
+      searchParams?: Partial<mark_rubric_assessments_as_read_sections_rubric_assessmentsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: mark_rubric_assessments_as_read_sections_rubric_assessmentsSearchParameters;
       strict: true;
     }
 );

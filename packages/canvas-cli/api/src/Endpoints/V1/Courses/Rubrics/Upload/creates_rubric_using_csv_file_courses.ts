@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { RubricImport } from '../../../../../Overrides.js';
 
@@ -6,13 +7,17 @@ export type creates_rubric_using_csv_file_coursesPathParameters = {
   course_id: string;
 };
 
+export type creates_rubric_using_csv_file_coursesSearchParameters = Masquerade;
+
 type Options = {
   pathParams: creates_rubric_using_csv_file_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<creates_rubric_using_csv_file_coursesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: creates_rubric_using_csv_file_coursesSearchParameters;
       strict: true;
     }
 );

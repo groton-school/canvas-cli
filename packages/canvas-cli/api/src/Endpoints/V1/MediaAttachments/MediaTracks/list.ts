@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { MediaTrack } from '../../../../Resources/MediaObjects.js';
 
@@ -7,15 +7,16 @@ export type listPathParameters = {
   attachment_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * By default, index returns id, locale, kind, media_object_id, and user_id
-   * for each of the result MediaTracks. Use include[] to add additional
-   * fields. For example include[]=content
-   */
-  include: string[];
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * By default, index returns id, locale, kind, media_object_id, and user_id
+     * for each of the result MediaTracks. Use include[] to add additional
+     * fields. For example include[]=content
+     */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

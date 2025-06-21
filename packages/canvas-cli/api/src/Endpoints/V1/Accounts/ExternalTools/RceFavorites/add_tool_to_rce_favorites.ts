@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type add_tool_to_rce_favoritesPathParameters = {
@@ -7,13 +8,17 @@ export type add_tool_to_rce_favoritesPathParameters = {
   id: string;
 };
 
+export type add_tool_to_rce_favoritesSearchParameters = Masquerade;
+
 type Options = {
   pathParams: add_tool_to_rce_favoritesPathParameters;
 } & (
   | {
+      searchParams?: Partial<add_tool_to_rce_favoritesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: add_tool_to_rce_favoritesSearchParameters;
       strict: true;
     }
 );

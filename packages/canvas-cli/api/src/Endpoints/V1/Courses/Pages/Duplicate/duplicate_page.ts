@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Page } from '../../../../../Resources/Pages.js';
 
@@ -8,13 +9,17 @@ export type duplicate_pagePathParameters = {
   url_or_id: string;
 };
 
+export type duplicate_pageSearchParameters = Masquerade;
+
 type Options = {
   pathParams: duplicate_pagePathParameters;
 } & (
   | {
+      searchParams?: Partial<duplicate_pageSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: duplicate_pageSearchParameters;
       strict: true;
     }
 );

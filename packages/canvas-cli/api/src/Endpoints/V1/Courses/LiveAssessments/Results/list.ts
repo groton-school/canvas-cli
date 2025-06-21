@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type listPathParameters = {
@@ -7,14 +8,15 @@ export type listPathParameters = {
   assessment_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * If set, restrict results to those for this user
-   *
-   * Format: 'int64'
-   */
-  user_id: number;
-}>;
+export type listSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * If set, restrict results to those for this user
+     *
+     * Format: 'int64'
+     */
+    user_id: number;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

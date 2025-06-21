@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type mark_all_entries_as_read_coursesPathParameters = {
@@ -7,7 +8,9 @@ export type mark_all_entries_as_read_coursesPathParameters = {
   topic_id: string;
 };
 
-export type mark_all_entries_as_read_coursesFormParameters = {
+export type mark_all_entries_as_read_coursesSearchParameters = Masquerade;
+
+export type mark_all_entries_as_read_coursesFormParameters = Masquerade & {
   /**
    * A boolean value to set all of the entries' forced_read_state. No change
    * is made if this argument is not specified.
@@ -19,10 +22,12 @@ type Options = {
   pathParams: mark_all_entries_as_read_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<mark_all_entries_as_read_coursesSearchParameters>;
       params?: Partial<mark_all_entries_as_read_coursesFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: mark_all_entries_as_read_coursesSearchParameters;
       params: mark_all_entries_as_read_coursesFormParameters;
       strict: true;
     }

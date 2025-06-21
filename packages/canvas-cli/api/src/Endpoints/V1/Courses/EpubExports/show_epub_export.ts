@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { EpubExport } from '../../../../Resources/EPubExports.js';
 
@@ -8,13 +9,17 @@ export type show_epub_exportPathParameters = {
   id: string;
 };
 
+export type show_epub_exportSearchParameters = Masquerade;
+
 type Options = {
   pathParams: show_epub_exportPathParameters;
 } & (
   | {
+      searchParams?: Partial<show_epub_exportSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: show_epub_exportSearchParameters;
       strict: true;
     }
 );

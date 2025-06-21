@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { User } from '../../../../../Resources/Users.js';
 
@@ -9,9 +9,10 @@ export type select_students_for_moderationPathParameters = {
   assignment_id: string;
 };
 
-export type select_students_for_moderationSearchParameters = Paginated;
+export type select_students_for_moderationSearchParameters = Masquerade &
+  Paginated;
 
-export type select_students_for_moderationFormParameters = {
+export type select_students_for_moderationFormParameters = Masquerade & {
   /** User ids for students to select for moderation */
   student_ids: number[];
 };
@@ -20,10 +21,12 @@ type Options = {
   pathParams: select_students_for_moderationPathParameters;
 } & (
   | {
+      searchParams?: Partial<select_students_for_moderationSearchParameters>;
       params?: Partial<select_students_for_moderationFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: select_students_for_moderationSearchParameters;
       params: select_students_for_moderationFormParameters;
       strict: true;
     }

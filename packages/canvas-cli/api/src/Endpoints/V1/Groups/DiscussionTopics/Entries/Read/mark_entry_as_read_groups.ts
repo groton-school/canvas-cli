@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type mark_entry_as_read_groupsPathParameters = {
@@ -9,7 +10,9 @@ export type mark_entry_as_read_groupsPathParameters = {
   entry_id: string;
 };
 
-export type mark_entry_as_read_groupsFormParameters = {
+export type mark_entry_as_read_groupsSearchParameters = Masquerade;
+
+export type mark_entry_as_read_groupsFormParameters = Masquerade & {
   /**
    * A boolean value to set the entry's forced_read_state. No change is made
    * if this argument is not specified.
@@ -21,10 +24,12 @@ type Options = {
   pathParams: mark_entry_as_read_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<mark_entry_as_read_groupsSearchParameters>;
       params?: Partial<mark_entry_as_read_groupsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: mark_entry_as_read_groupsSearchParameters;
       params: mark_entry_as_read_groupsFormParameters;
       strict: true;
     }

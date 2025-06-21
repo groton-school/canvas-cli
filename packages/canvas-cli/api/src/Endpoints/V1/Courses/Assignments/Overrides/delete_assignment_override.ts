@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
@@ -10,13 +11,17 @@ export type delete_assignment_overridePathParameters = {
   id: string;
 };
 
+export type delete_assignment_overrideSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_assignment_overridePathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_assignment_overrideSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_assignment_overrideSearchParameters;
       strict: true;
     }
 );

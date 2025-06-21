@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Quiz } from '../../../../Resources/Quizzes.js';
 
@@ -7,11 +7,12 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /** The partial title of the quizzes to match and return. */
-  search_term: string;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /** The partial title of the quizzes to match and return. */
+    search_term: string;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

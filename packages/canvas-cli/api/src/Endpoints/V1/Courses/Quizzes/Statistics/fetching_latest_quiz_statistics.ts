@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type fetching_latest_quiz_statisticsPathParameters = {
@@ -7,10 +8,11 @@ export type fetching_latest_quiz_statisticsPathParameters = {
   quiz_id: string;
 };
 
-export type fetching_latest_quiz_statisticsSearchParameters = Partial<{
-  /** Whether the statistics report should include all submissions attempts. */
-  all_versions: boolean;
-}>;
+export type fetching_latest_quiz_statisticsSearchParameters = Masquerade &
+  Partial<{
+    /** Whether the statistics report should include all submissions attempts. */
+    all_versions: boolean;
+  }>;
 
 type Options = {
   pathParams: fetching_latest_quiz_statisticsPathParameters;

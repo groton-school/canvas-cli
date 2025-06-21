@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Module } from '../../../../../Resources/CoursePace.js';
 
@@ -8,13 +9,17 @@ export type re_lock_module_progressionsPathParameters = {
   id: string;
 };
 
+export type re_lock_module_progressionsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: re_lock_module_progressionsPathParameters;
 } & (
   | {
+      searchParams?: Partial<re_lock_module_progressionsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: re_lock_module_progressionsSearchParameters;
       strict: true;
     }
 );

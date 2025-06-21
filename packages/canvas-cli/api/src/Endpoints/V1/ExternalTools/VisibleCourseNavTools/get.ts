@@ -1,12 +1,14 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
-export type getSearchParameters = Partial<{
-  /**
-   * List of context_codes to retrieve visible course nav tools for (for
-   * example, +course_123+). Only courses are presently supported.
-   */
-  context_codes: string[];
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * List of context_codes to retrieve visible course nav tools for (for
+     * example, +course_123+). Only courses are presently supported.
+     */
+    context_codes: string[];
+  }>;
 
 type Options =
   | {

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type show_access_tokenPathParameters = {
@@ -7,13 +8,17 @@ export type show_access_tokenPathParameters = {
   id: string;
 };
 
+export type show_access_tokenSearchParameters = Masquerade;
+
 type Options = {
   pathParams: show_access_tokenPathParameters;
 } & (
   | {
+      searchParams?: Partial<show_access_tokenSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: show_access_tokenSearchParameters;
       strict: true;
     }
 );

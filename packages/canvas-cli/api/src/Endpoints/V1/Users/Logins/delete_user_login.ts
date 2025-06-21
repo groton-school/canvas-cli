@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type delete_user_loginPathParameters = {
@@ -7,13 +8,17 @@ export type delete_user_loginPathParameters = {
   id: string;
 };
 
+export type delete_user_loginSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_user_loginPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_user_loginSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_user_loginSearchParameters;
       strict: true;
     }
 );

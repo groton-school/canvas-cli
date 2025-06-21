@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { AuthenticationProvider } from '../../../../../Resources/AuthenticationProviders.js';
 
@@ -8,13 +9,18 @@ export type restore_deleted_authentication_providerPathParameters = {
   id: string;
 };
 
+export type restore_deleted_authentication_providerSearchParameters =
+  Masquerade;
+
 type Options = {
   pathParams: restore_deleted_authentication_providerPathParameters;
 } & (
   | {
+      searchParams?: Partial<restore_deleted_authentication_providerSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: restore_deleted_authentication_providerSearchParameters;
       strict: true;
     }
 );

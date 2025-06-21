@@ -1,12 +1,13 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { CalendarEvent } from '../../../../Resources/CalendarEvents.js';
 
-export type getSearchParameters = Partial<{
-  /** List of ids of appointment groups to search. */
-  appointment_group_ids: string[];
-}> &
-  Paginated;
+export type getSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /** List of ids of appointment groups to search. */
+    appointment_group_ids: string[];
+  }>;
 
 type Options =
   | {

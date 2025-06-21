@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type reorder_pinned_topics_groupsPathParameters = {
@@ -5,7 +6,9 @@ export type reorder_pinned_topics_groupsPathParameters = {
   group_id: string;
 };
 
-export type reorder_pinned_topics_groupsFormParameters = {
+export type reorder_pinned_topics_groupsSearchParameters = Masquerade;
+
+export type reorder_pinned_topics_groupsFormParameters = Masquerade & {
   /**
    * The ids of the pinned discussion topics in the desired order. (For
    * example, "order=104,102,103".)
@@ -19,10 +22,12 @@ type Options = {
   pathParams: reorder_pinned_topics_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<reorder_pinned_topics_groupsSearchParameters>;
       params?: Partial<reorder_pinned_topics_groupsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: reorder_pinned_topics_groupsSearchParameters;
       params: reorder_pinned_topics_groupsFormParameters;
       strict: true;
     }

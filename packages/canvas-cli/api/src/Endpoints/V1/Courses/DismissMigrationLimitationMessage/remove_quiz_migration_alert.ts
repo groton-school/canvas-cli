@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type remove_quiz_migration_alertPathParameters = {
@@ -5,13 +6,17 @@ export type remove_quiz_migration_alertPathParameters = {
   id: string;
 };
 
+export type remove_quiz_migration_alertSearchParameters = Masquerade;
+
 type Options = {
   pathParams: remove_quiz_migration_alertPathParameters;
 } & (
   | {
+      searchParams?: Partial<remove_quiz_migration_alertSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: remove_quiz_migration_alertSearchParameters;
       strict: true;
     }
 );

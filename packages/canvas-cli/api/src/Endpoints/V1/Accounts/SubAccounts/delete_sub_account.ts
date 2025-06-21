@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Account } from '../../../../Resources/Accounts.js';
 
@@ -8,13 +9,17 @@ export type delete_sub_accountPathParameters = {
   id: string;
 };
 
+export type delete_sub_accountSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_sub_accountPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_sub_accountSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_sub_accountSearchParameters;
       strict: true;
     }
 );

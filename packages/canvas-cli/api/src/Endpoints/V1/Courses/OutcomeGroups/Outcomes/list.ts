@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
@@ -9,14 +9,15 @@ export type listPathParameters = {
   id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * The detail level of the outcomes. Defaults to "abbrev". Specify "full"
-   * for more information.
-   */
-  outcome_style: string;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * The detail level of the outcomes. Defaults to "abbrev". Specify "full"
+     * for more information.
+     */
+    outcome_style: string;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

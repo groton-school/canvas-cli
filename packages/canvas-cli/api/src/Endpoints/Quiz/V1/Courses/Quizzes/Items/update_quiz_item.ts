@@ -1,4 +1,5 @@
 import { JSONObject } from '@battis/typescript-tricks';
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 import { QuizItem } from '../../../../../../Resources/NewQuizItems.js';
 
@@ -23,7 +24,9 @@ export type update_quiz_itemPathParameters = {
   item_id: number;
 };
 
-export type update_quiz_itemFormParameters = {
+export type update_quiz_itemSearchParameters = Masquerade;
+
+export type update_quiz_itemFormParameters = Masquerade & {
   /**
    * The position of the item within the quiz.
    *
@@ -96,10 +99,12 @@ type Options = {
   pathParams: update_quiz_itemPathParameters;
 } & (
   | {
+      searchParams?: Partial<update_quiz_itemSearchParameters>;
       params?: Partial<update_quiz_itemFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: update_quiz_itemSearchParameters;
       params: update_quiz_itemFormParameters;
       strict: true;
     }

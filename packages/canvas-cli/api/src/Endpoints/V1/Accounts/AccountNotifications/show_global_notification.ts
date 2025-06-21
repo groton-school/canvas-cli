@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
@@ -8,13 +9,17 @@ export type show_global_notificationPathParameters = {
   id: string;
 };
 
+export type show_global_notificationSearchParameters = Masquerade;
+
 type Options = {
   pathParams: show_global_notificationPathParameters;
 } & (
   | {
+      searchParams?: Partial<show_global_notificationSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: show_global_notificationSearchParameters;
       strict: true;
     }
 );

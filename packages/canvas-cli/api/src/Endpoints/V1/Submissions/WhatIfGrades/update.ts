@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { gradesGradessubmissionSubmission } from '../../../../Overrides.js';
 
@@ -7,9 +7,9 @@ export type updatePathParameters = {
   id: string;
 };
 
-export type updateSearchParameters = Paginated;
+export type updateSearchParameters = Masquerade & Paginated;
 
-export type updateFormParameters = {
+export type updateFormParameters = Masquerade & {
   /**
    * The score the student wants to test
    *
@@ -22,10 +22,12 @@ type Options = {
   pathParams: updatePathParameters;
 } & (
   | {
+      searchParams?: Partial<updateSearchParameters>;
       params?: Partial<updateFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: updateSearchParameters;
       params: updateFormParameters;
       strict: true;
     }

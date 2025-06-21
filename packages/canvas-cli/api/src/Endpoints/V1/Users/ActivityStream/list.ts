@@ -1,12 +1,14 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
-export type listSearchParameters = Partial<{
-  /**
-   * If true, will only return objects for courses the user is actively
-   * participating in
-   */
-  only_active_courses: boolean;
-}>;
+export type listSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * If true, will only return objects for courses the user is actively
+     * participating in
+     */
+    only_active_courses: boolean;
+  }>;
 
 type Options =
   | {

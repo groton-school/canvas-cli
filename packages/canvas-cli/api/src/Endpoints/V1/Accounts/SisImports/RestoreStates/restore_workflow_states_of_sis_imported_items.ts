@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Progress } from '../../../../../Resources/CoursePace.js';
 
@@ -8,29 +9,35 @@ export type restore_workflow_states_of_sis_imported_itemsPathParameters = {
   id: string;
 };
 
-export type restore_workflow_states_of_sis_imported_itemsFormParameters = {
-  /** If set, will only restore items that were deleted from batch_mode. */
-  batch_mode: boolean;
-  /**
-   * If set, will only restore items that were deleted. This will ignore any
-   * items that were created or modified.
-   */
-  undelete_only: boolean;
-  /**
-   * If set, will only restore enrollments that were concluded. This will
-   * ignore any items that were created or deleted.
-   */
-  unconclude_only: boolean;
-};
+export type restore_workflow_states_of_sis_imported_itemsSearchParameters =
+  Masquerade;
+
+export type restore_workflow_states_of_sis_imported_itemsFormParameters =
+  Masquerade & {
+    /** If set, will only restore items that were deleted from batch_mode. */
+    batch_mode: boolean;
+    /**
+     * If set, will only restore items that were deleted. This will ignore any
+     * items that were created or modified.
+     */
+    undelete_only: boolean;
+    /**
+     * If set, will only restore enrollments that were concluded. This will
+     * ignore any items that were created or deleted.
+     */
+    unconclude_only: boolean;
+  };
 
 type Options = {
   pathParams: restore_workflow_states_of_sis_imported_itemsPathParameters;
 } & (
   | {
+      searchParams?: Partial<restore_workflow_states_of_sis_imported_itemsSearchParameters>;
       params?: Partial<restore_workflow_states_of_sis_imported_itemsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: restore_workflow_states_of_sis_imported_itemsSearchParameters;
       params: restore_workflow_states_of_sis_imported_itemsFormParameters;
       strict: true;
     }

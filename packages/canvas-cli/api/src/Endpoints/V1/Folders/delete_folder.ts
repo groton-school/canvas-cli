@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
 export type delete_folderPathParameters = {
@@ -5,10 +6,11 @@ export type delete_folderPathParameters = {
   id: string;
 };
 
-export type delete_folderSearchParameters = Partial<{
-  /** Set to 'true' to allow deleting a non-empty folder */
-  force: boolean;
-}>;
+export type delete_folderSearchParameters = Masquerade &
+  Partial<{
+    /** Set to 'true' to allow deleting a non-empty folder */
+    force: boolean;
+  }>;
 
 type Options = {
   pathParams: delete_folderPathParameters;

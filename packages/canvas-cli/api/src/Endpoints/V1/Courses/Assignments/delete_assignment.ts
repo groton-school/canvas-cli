@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Assignment } from '../../../../Resources/Assignments.js';
 
@@ -8,13 +9,17 @@ export type delete_assignmentPathParameters = {
   id: string;
 };
 
+export type delete_assignmentSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_assignmentPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_assignmentSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_assignmentSearchParameters;
       strict: true;
     }
 );

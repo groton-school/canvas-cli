@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type getPathParameters = {
@@ -7,13 +8,17 @@ export type getPathParameters = {
   asset_string: string;
 };
 
+export type getSearchParameters = Masquerade;
+
 type Options = {
   pathParams: getPathParameters;
 } & (
   | {
+      searchParams?: Partial<getSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: getSearchParameters;
       strict: true;
     }
 );

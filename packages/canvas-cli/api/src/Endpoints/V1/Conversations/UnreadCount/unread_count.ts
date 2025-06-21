@@ -1,10 +1,15 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
+
+export type unread_countSearchParameters = Masquerade;
 
 type Options =
   | {
+      searchParams?: Partial<unread_countSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: unread_countSearchParameters;
       strict: true;
     };
 

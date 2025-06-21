@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { MediaObject } from '../../../../Resources/MediaObjects.js';
 
@@ -7,27 +7,28 @@ export type listPathParameters = {
   group_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * Field to sort on. Default is "title"
-   *
-   * Title:: sorts on user_entered_title if available, title if not.
-   *
-   * Created_at:: sorts on the object's creation time.
-   */
-  sort: string;
-  /** Sort direction. Default is "asc" */
-  order: string;
-  /**
-   * Array of data to exclude. By excluding "sources" and "tracks", the api
-   * will not need to query kaltura, which greatly speeds up its response.
-   *
-   * Sources:: Do not query kaltura for media_sources tracks:: Do not query
-   * kaltura for media_tracks
-   */
-  exclude: string[];
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * Field to sort on. Default is "title"
+     *
+     * Title:: sorts on user_entered_title if available, title if not.
+     *
+     * Created_at:: sorts on the object's creation time.
+     */
+    sort: string;
+    /** Sort direction. Default is "asc" */
+    order: string;
+    /**
+     * Array of data to exclude. By excluding "sources" and "tracks", the api
+     * will not need to query kaltura, which greatly speeds up its response.
+     *
+     * Sources:: Do not query kaltura for media_sources tracks:: Do not query
+     * kaltura for media_tracks
+     */
+    exclude: string[];
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

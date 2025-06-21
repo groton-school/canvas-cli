@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { ePortfolio } from '../../../../Resources/EPortfolios.js';
 
@@ -6,13 +7,17 @@ export type restore_deleted_eportfolioPathParameters = {
   eportfolio_id: string;
 };
 
+export type restore_deleted_eportfolioSearchParameters = Masquerade;
+
 type Options = {
   pathParams: restore_deleted_eportfolioPathParameters;
 } & (
   | {
+      searchParams?: Partial<restore_deleted_eportfolioSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: restore_deleted_eportfolioSearchParameters;
       strict: true;
     }
 );

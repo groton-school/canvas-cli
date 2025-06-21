@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type submit_captured_eventsPathParameters = {
@@ -9,7 +10,9 @@ export type submit_captured_eventsPathParameters = {
   id: string;
 };
 
-export type submit_captured_eventsFormParameters = {
+export type submit_captured_eventsSearchParameters = Masquerade;
+
+export type submit_captured_eventsFormParameters = Masquerade & {
   /** The submission events to be recorded */
   quiz_submission_events: string[];
 };
@@ -18,10 +21,12 @@ type Options = {
   pathParams: submit_captured_eventsPathParameters;
 } & (
   | {
+      searchParams?: Partial<submit_captured_eventsSearchParameters>;
       params?: Partial<submit_captured_eventsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: submit_captured_eventsSearchParameters;
       params: submit_captured_eventsFormParameters;
       strict: true;
     }

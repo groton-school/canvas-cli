@@ -1,5 +1,5 @@
 import { JSONObject } from '@battis/typescript-tricks';
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { resultUrlStringTheurltotheresultthatwascreated } from '../../../../../Overrides.js';
 
@@ -10,9 +10,9 @@ export type createPathParameters = {
   line_item_id: string;
 };
 
-export type createSearchParameters = Paginated;
+export type createSearchParameters = Masquerade & Paginated;
 
-export type createFormParameters = {
+export type createFormParameters = Masquerade & {
   /**
    * The lti_user_id or the Canvas user_id. Returns a 422 if user not found in
    * Canvas or is not a student.
@@ -118,10 +118,12 @@ type Options = {
   pathParams: createPathParameters;
 } & (
   | {
+      searchParams?: Partial<createSearchParameters>;
       params?: Partial<createFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: createSearchParameters;
       params: createFormParameters;
       strict: true;
     }

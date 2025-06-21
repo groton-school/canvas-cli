@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type export_groups_in_and_users_in_categoryPathParameters = {
@@ -5,13 +6,17 @@ export type export_groups_in_and_users_in_categoryPathParameters = {
   group_category_id: string;
 };
 
+export type export_groups_in_and_users_in_categorySearchParameters = Masquerade;
+
 type Options = {
   pathParams: export_groups_in_and_users_in_categoryPathParameters;
 } & (
   | {
+      searchParams?: Partial<export_groups_in_and_users_in_categorySearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: export_groups_in_and_users_in_categorySearchParameters;
       strict: true;
     }
 );

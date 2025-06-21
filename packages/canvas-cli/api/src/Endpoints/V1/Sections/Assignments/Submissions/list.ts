@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Submission } from '../../../../../Resources/Submissions.js';
 
@@ -9,16 +9,17 @@ export type listPathParameters = {
   assignment_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * Associations to include with the group. "group" will add group_id and
-   * group_name.
-   */
-  include: string[];
-  /** If this argument is true, the response will be grouped by student groups. */
-  grouped: boolean;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * Associations to include with the group. "group" will add group_id and
+     * group_name.
+     */
+    include: string[];
+    /** If this argument is true, the response will be grouped by student groups. */
+    grouped: boolean;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

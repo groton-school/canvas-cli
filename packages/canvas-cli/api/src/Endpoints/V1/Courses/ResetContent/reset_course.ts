@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Course } from '../../../../Resources/Courses.js';
 
@@ -6,13 +7,17 @@ export type reset_coursePathParameters = {
   course_id: string;
 };
 
+export type reset_courseSearchParameters = Masquerade;
+
 type Options = {
   pathParams: reset_coursePathParameters;
 } & (
   | {
+      searchParams?: Partial<reset_courseSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: reset_courseSearchParameters;
       strict: true;
     }
 );

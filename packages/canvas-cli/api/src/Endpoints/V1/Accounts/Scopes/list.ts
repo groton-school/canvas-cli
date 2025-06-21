@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Scope } from '../../../../Resources/ApiTokenScopes.js';
 
@@ -7,11 +7,12 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /** The attribute to group the scopes by. By default no grouping is done. */
-  group_by: string;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /** The attribute to group the scopes by. By default no grouping is done. */
+    group_by: string;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

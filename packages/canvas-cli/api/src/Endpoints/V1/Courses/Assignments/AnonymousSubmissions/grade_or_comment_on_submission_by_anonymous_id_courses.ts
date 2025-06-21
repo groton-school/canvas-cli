@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { RubricAssessment } from '../../../../../Resources/Rubrics.js';
 
@@ -11,8 +12,11 @@ export type grade_or_comment_on_submission_by_anonymous_id_coursesPathParameters
     anonymous_id: string;
   };
 
+export type grade_or_comment_on_submission_by_anonymous_id_coursesSearchParameters =
+  Masquerade;
+
 export type grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters =
-  {
+  Masquerade & {
     /** Add a textual comment to the submission. */
     'comment[text_comment]': string;
     /**
@@ -111,10 +115,12 @@ type Options = {
   pathParams: grade_or_comment_on_submission_by_anonymous_id_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<grade_or_comment_on_submission_by_anonymous_id_coursesSearchParameters>;
       params?: Partial<grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: grade_or_comment_on_submission_by_anonymous_id_coursesSearchParameters;
       params: grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters;
       strict: true;
     }

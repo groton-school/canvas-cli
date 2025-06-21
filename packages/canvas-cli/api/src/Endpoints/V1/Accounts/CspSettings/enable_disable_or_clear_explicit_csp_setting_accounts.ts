@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type enable_disable_or_clear_explicit_csp_setting_accountsPathParameters =
@@ -6,8 +7,11 @@ export type enable_disable_or_clear_explicit_csp_setting_accountsPathParameters 
     account_id: string;
   };
 
+export type enable_disable_or_clear_explicit_csp_setting_accountsSearchParameters =
+  Masquerade;
+
 export type enable_disable_or_clear_explicit_csp_setting_accountsFormParameters =
-  {
+  Masquerade & {
     /**
      * If set to "enabled" for an account, CSP will be enabled for all its
      * courses and sub-accounts (that have not explicitly enabled or disabled
@@ -24,10 +28,12 @@ type Options = {
   pathParams: enable_disable_or_clear_explicit_csp_setting_accountsPathParameters;
 } & (
   | {
+      searchParams?: Partial<enable_disable_or_clear_explicit_csp_setting_accountsSearchParameters>;
       params?: Partial<enable_disable_or_clear_explicit_csp_setting_accountsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: enable_disable_or_clear_explicit_csp_setting_accountsSearchParameters;
       params: enable_disable_or_clear_explicit_csp_setting_accountsFormParameters;
       strict: true;
     }

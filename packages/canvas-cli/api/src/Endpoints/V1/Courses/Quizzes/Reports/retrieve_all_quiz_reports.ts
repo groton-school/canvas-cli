@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { QuizReport } from '../../../../../Resources/QuizReports.js';
 
@@ -9,14 +9,15 @@ export type retrieve_all_quiz_reportsPathParameters = {
   quiz_id: string;
 };
 
-export type retrieve_all_quiz_reportsSearchParameters = Partial<{
-  /**
-   * Whether to retrieve reports that consider all the submissions or only the
-   * most recent. Defaults to false, ignored for item_analysis reports.
-   */
-  includes_all_versions: boolean;
-}> &
-  Paginated;
+export type retrieve_all_quiz_reportsSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * Whether to retrieve reports that consider all the submissions or only the
+     * most recent. Defaults to false, ignored for item_analysis reports.
+     */
+    includes_all_versions: boolean;
+  }>;
 
 type Options = {
   pathParams: retrieve_all_quiz_reportsPathParameters;

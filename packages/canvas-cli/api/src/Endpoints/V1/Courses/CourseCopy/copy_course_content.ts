@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type copy_course_contentPathParameters = {
@@ -5,7 +6,9 @@ export type copy_course_contentPathParameters = {
   course_id: string;
 };
 
-export type copy_course_contentFormParameters = {
+export type copy_course_contentSearchParameters = Masquerade;
+
+export type copy_course_contentFormParameters = Masquerade & {
   /** ID or SIS-ID of the course to copy the content from */
   source_course: string;
   /**
@@ -24,10 +27,12 @@ type Options = {
   pathParams: copy_course_contentPathParameters;
 } & (
   | {
+      searchParams?: Partial<copy_course_contentSearchParameters>;
       params?: Partial<copy_course_contentFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: copy_course_contentSearchParameters;
       params: copy_course_contentFormParameters;
       strict: true;
     }

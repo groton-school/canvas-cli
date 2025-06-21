@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Section } from '../../../../Resources/Sections.js';
 
@@ -8,7 +9,9 @@ export type cross_list_sectionPathParameters = {
   new_course_id: string;
 };
 
-export type cross_list_sectionFormParameters = {
+export type cross_list_sectionSearchParameters = Masquerade;
+
+export type cross_list_sectionFormParameters = Masquerade & {
   /**
    * Default is true. If false, any fields containing “sticky” changes will
    * not be updated. See SIS CSV Format documentation for information on which
@@ -21,10 +24,12 @@ type Options = {
   pathParams: cross_list_sectionPathParameters;
 } & (
   | {
+      searchParams?: Partial<cross_list_sectionSearchParameters>;
       params?: Partial<cross_list_sectionFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: cross_list_sectionSearchParameters;
       params: cross_list_sectionFormParameters;
       strict: true;
     }

@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
@@ -7,13 +7,14 @@ export type batch_retrieve_overrides_in_coursePathParameters = {
   course_id: string;
 };
 
-export type batch_retrieve_overrides_in_courseSearchParameters = Partial<{
-  /** Ids of overrides to retrieve */
-  'assignment_overrides[id]': string[];
-  /** Ids of assignments for each override */
-  'assignment_overrides[assignment_id]': string[];
-}> &
-  Paginated;
+export type batch_retrieve_overrides_in_courseSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /** Ids of overrides to retrieve */
+    'assignment_overrides[id]': string[];
+    /** Ids of assignments for each override */
+    'assignment_overrides[assignment_id]': string[];
+  }>;
 
 type Options = {
   pathParams: batch_retrieve_overrides_in_coursePathParameters;

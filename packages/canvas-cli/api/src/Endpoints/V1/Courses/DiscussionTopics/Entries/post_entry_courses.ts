@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type post_entry_coursesPathParameters = {
@@ -7,7 +8,9 @@ export type post_entry_coursesPathParameters = {
   topic_id: string;
 };
 
-export type post_entry_coursesFormParameters = {
+export type post_entry_coursesSearchParameters = Masquerade;
+
+export type post_entry_coursesFormParameters = Masquerade & {
   /** The body of the entry. */
   message: string;
   /**
@@ -21,10 +24,12 @@ type Options = {
   pathParams: post_entry_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<post_entry_coursesSearchParameters>;
       params?: Partial<post_entry_coursesFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: post_entry_coursesSearchParameters;
       params: post_entry_coursesFormParameters;
       strict: true;
     }

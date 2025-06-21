@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { ePortfolio } from '../../../../Resources/EPortfolios.js';
 
@@ -6,7 +7,9 @@ export type moderate_eportfolioPathParameters = {
   eportfolio_id: string;
 };
 
-export type moderate_eportfolioFormParameters = {
+export type moderate_eportfolioSearchParameters = Masquerade;
+
+export type moderate_eportfolioFormParameters = Masquerade & {
   /** The spam status for the ePortfolio */
   spam_status: string;
 };
@@ -15,10 +18,12 @@ type Options = {
   pathParams: moderate_eportfolioPathParameters;
 } & (
   | {
+      searchParams?: Partial<moderate_eportfolioSearchParameters>;
       params?: Partial<moderate_eportfolioFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: moderate_eportfolioSearchParameters;
       params: moderate_eportfolioFormParameters;
       strict: true;
     }

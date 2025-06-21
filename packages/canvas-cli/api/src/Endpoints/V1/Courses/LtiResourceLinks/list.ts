@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
@@ -7,20 +7,21 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * Include deleted resource links and links associated with deleted content
-   * in response. Default is false.
-   */
-  include_deleted: boolean;
-  /**
-   * The number of registrations to return per page. Defaults to 50.
-   *
-   * Format: 'int64'
-   */
-  per_page: number;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * Include deleted resource links and links associated with deleted content
+     * in response. Default is false.
+     */
+    include_deleted: boolean;
+    /**
+     * The number of registrations to return per page. Defaults to 50.
+     *
+     * Format: 'int64'
+     */
+    per_page: number;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

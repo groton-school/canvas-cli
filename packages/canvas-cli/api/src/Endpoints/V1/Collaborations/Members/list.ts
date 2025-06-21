@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Collaborator } from '../../../../Resources/Collaborations.js';
 
@@ -7,16 +7,17 @@ export type listPathParameters = {
   id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * - "collaborator_lti_id": Optional information to include with each member.
-   *   Represents an identifier to be used for the member in an LTI context.
-   * - "avatar_image_url": Optional information to include with each member. The
-   *   url for the avatar of a collaborator with type 'user'.
-   */
-  include: string[];
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * - "collaborator_lti_id": Optional information to include with each member.
+     *   Represents an identifier to be used for the member in an LTI context.
+     * - "avatar_image_url": Optional information to include with each member. The
+     *   url for the avatar of a collaborator with type 'user'.
+     */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

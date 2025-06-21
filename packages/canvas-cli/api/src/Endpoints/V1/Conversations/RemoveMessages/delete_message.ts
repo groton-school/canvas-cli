@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type delete_messagePathParameters = {
@@ -5,7 +6,9 @@ export type delete_messagePathParameters = {
   id: string;
 };
 
-export type delete_messageFormParameters = {
+export type delete_messageSearchParameters = Masquerade;
+
+export type delete_messageFormParameters = Masquerade & {
   /** Array of message ids to be deleted */
   remove: string[];
 };
@@ -14,10 +17,12 @@ type Options = {
   pathParams: delete_messagePathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_messageSearchParameters>;
       params?: Partial<delete_messageFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_messageSearchParameters;
       params: delete_messageFormParameters;
       strict: true;
     }

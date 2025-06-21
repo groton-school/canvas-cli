@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type mark_entry_as_unread_coursesPathParameters = {
@@ -9,13 +10,14 @@ export type mark_entry_as_unread_coursesPathParameters = {
   entry_id: string;
 };
 
-export type mark_entry_as_unread_coursesSearchParameters = Partial<{
-  /**
-   * A boolean value to set the entry's forced_read_state. No change is made
-   * if this argument is not specified.
-   */
-  forced_read_state: boolean;
-}>;
+export type mark_entry_as_unread_coursesSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * A boolean value to set the entry's forced_read_state. No change is made
+     * if this argument is not specified.
+     */
+    forced_read_state: boolean;
+  }>;
 
 type Options = {
   pathParams: mark_entry_as_unread_coursesPathParameters;

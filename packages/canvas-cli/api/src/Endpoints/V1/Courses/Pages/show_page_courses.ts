@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
@@ -8,13 +9,17 @@ export type show_page_coursesPathParameters = {
   url_or_id: string;
 };
 
+export type show_page_coursesSearchParameters = Masquerade;
+
 type Options = {
   pathParams: show_page_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<show_page_coursesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: show_page_coursesSearchParameters;
       strict: true;
     }
 );

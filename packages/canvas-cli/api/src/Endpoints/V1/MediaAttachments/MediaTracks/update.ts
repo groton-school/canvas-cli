@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { MediaTrack } from '../../../../Resources/MediaObjects.js';
 
@@ -7,9 +7,9 @@ export type updatePathParameters = {
   attachment_id: string;
 };
 
-export type updateSearchParameters = Paginated;
+export type updateSearchParameters = Masquerade & Paginated;
 
-export type updateFormParameters = {
+export type updateFormParameters = Masquerade & {
   /**
    * By default, an update returns id, locale, kind, media_object_id, and
    * user_id for each of the result MediaTracks. Use include[] to add
@@ -22,10 +22,12 @@ type Options = {
   pathParams: updatePathParameters;
 } & (
   | {
+      searchParams?: Partial<updateSearchParameters>;
       params?: Partial<updateFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: updateSearchParameters;
       params: updateFormParameters;
       strict: true;
     }

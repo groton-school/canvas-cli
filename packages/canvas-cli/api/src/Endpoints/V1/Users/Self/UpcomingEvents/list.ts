@@ -1,10 +1,15 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
+
+export type listSearchParameters = Masquerade;
 
 type Options =
   | {
+      searchParams?: Partial<listSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: listSearchParameters;
       strict: true;
     };
 

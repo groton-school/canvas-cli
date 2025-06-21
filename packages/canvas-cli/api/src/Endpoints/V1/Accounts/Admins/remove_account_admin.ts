@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Admin } from '../../../../Resources/Admins.js';
 
@@ -8,17 +9,18 @@ export type remove_account_adminPathParameters = {
   user_id: string;
 };
 
-export type remove_account_adminSearchParameters = Partial<{
-  /** [DEPRECATED] Account role to remove from the user. */
-  role: string;
-  /**
-   * The id of the role representing the user's admin relationship with the
-   * account.
-   *
-   * Format: 'int64'
-   */
-  role_id: number;
-}>;
+export type remove_account_adminSearchParameters = Masquerade &
+  Partial<{
+    /** [DEPRECATED] Account role to remove from the user. */
+    role: string;
+    /**
+     * The id of the role representing the user's admin relationship with the
+     * account.
+     *
+     * Format: 'int64'
+     */
+    role_id: number;
+  }>;
 
 type Options = {
   pathParams: remove_account_adminPathParameters;

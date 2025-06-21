@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { LtiRegistrationAccountBinding } from '../../../../../Overrides.js';
 
@@ -8,7 +9,9 @@ export type bind_lti_registration_to_accountPathParameters = {
   id: string;
 };
 
-export type bind_lti_registration_to_accountFormParameters = {
+export type bind_lti_registration_to_accountSearchParameters = Masquerade;
+
+export type bind_lti_registration_to_accountFormParameters = Masquerade & {
   /**
    * The desired state for this registration/account binding. "allow" is only
    * valid for Site Admin registrations.
@@ -20,10 +23,12 @@ type Options = {
   pathParams: bind_lti_registration_to_accountPathParameters;
 } & (
   | {
+      searchParams?: Partial<bind_lti_registration_to_accountSearchParameters>;
       params?: Partial<bind_lti_registration_to_accountFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: bind_lti_registration_to_accountSearchParameters;
       params: bind_lti_registration_to_accountFormParameters;
       strict: true;
     }

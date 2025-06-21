@@ -1,10 +1,15 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
+
+export type download_uuid_mapping_for_this_sandboxSearchParameters = Masquerade;
 
 type Options =
   | {
+      searchParams?: Partial<download_uuid_mapping_for_this_sandboxSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: download_uuid_mapping_for_this_sandboxSearchParameters;
       strict: true;
     };
 

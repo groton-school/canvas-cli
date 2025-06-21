@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Quiz } from '../../../../Resources/Quizzes.js';
 
@@ -8,13 +9,17 @@ export type delete_quizPathParameters = {
   id: string;
 };
 
+export type delete_quizSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_quizPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_quizSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_quizSearchParameters;
       strict: true;
     }
 );

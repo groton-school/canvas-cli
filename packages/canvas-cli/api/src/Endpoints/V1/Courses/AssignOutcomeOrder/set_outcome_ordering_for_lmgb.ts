@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type set_outcome_ordering_for_lmgbPathParameters = {
@@ -5,13 +6,17 @@ export type set_outcome_ordering_for_lmgbPathParameters = {
   course_id: string;
 };
 
+export type set_outcome_ordering_for_lmgbSearchParameters = Masquerade;
+
 type Options = {
   pathParams: set_outcome_ordering_for_lmgbPathParameters;
 } & (
   | {
+      searchParams?: Partial<set_outcome_ordering_for_lmgbSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: set_outcome_ordering_for_lmgbSearchParameters;
       strict: true;
     }
 );

@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { SubmissionVersion } from '../../../../../Resources/GradebookHistory.js';
 
@@ -11,30 +11,31 @@ export type listPathParameters = {
   course_id: number;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * The ID of the assignment for which you want to see submissions. If
-   * absent, versions of submissions from any assignment in the course are
-   * included.
-   *
-   * Format: 'int64'
-   */
-  assignment_id: number;
-  /**
-   * The ID of the user for which you want to see submissions. If absent,
-   * versions of submissions from any user in the course are included.
-   *
-   * Format: 'int64'
-   */
-  user_id: number;
-  /**
-   * Returns submission versions in ascending date order (oldest first). If
-   * absent, returns submission versions in descending date order (newest
-   * first).
-   */
-  ascending: boolean;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * The ID of the assignment for which you want to see submissions. If
+     * absent, versions of submissions from any assignment in the course are
+     * included.
+     *
+     * Format: 'int64'
+     */
+    assignment_id: number;
+    /**
+     * The ID of the user for which you want to see submissions. If absent,
+     * versions of submissions from any user in the course are included.
+     *
+     * Format: 'int64'
+     */
+    user_id: number;
+    /**
+     * Returns submission versions in ascending date order (oldest first). If
+     * absent, returns submission versions in descending date order (newest
+     * first).
+     */
+    ascending: boolean;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

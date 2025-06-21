@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type course_todo_itemsPathParameters = {
@@ -5,13 +6,17 @@ export type course_todo_itemsPathParameters = {
   course_id: string;
 };
 
+export type course_todo_itemsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: course_todo_itemsPathParameters;
 } & (
   | {
+      searchParams?: Partial<course_todo_itemsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: course_todo_itemsSearchParameters;
       strict: true;
     }
 );

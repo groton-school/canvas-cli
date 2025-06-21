@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
@@ -6,13 +7,17 @@ export type cancel_progressPathParameters = {
   id: string;
 };
 
+export type cancel_progressSearchParameters = Masquerade;
+
 type Options = {
   pathParams: cancel_progressPathParameters;
 } & (
   | {
+      searchParams?: Partial<cancel_progressSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: cancel_progressSearchParameters;
       strict: true;
     }
 );

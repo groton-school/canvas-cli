@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type hide_stream_itemPathParameters = {
@@ -5,13 +6,17 @@ export type hide_stream_itemPathParameters = {
   id: string;
 };
 
+export type hide_stream_itemSearchParameters = Masquerade;
+
 type Options = {
   pathParams: hide_stream_itemPathParameters;
 } & (
   | {
+      searchParams?: Partial<hide_stream_itemSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: hide_stream_itemSearchParameters;
       strict: true;
     }
 );

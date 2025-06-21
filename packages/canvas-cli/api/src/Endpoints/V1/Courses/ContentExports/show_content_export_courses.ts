@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { ContentExport } from '../../../../Resources/ContentExports.js';
 
@@ -8,13 +9,17 @@ export type show_content_export_coursesPathParameters = {
   id: string;
 };
 
+export type show_content_export_coursesSearchParameters = Masquerade;
+
 type Options = {
   pathParams: show_content_export_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<show_content_export_coursesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: show_content_export_coursesSearchParameters;
       strict: true;
     }
 );

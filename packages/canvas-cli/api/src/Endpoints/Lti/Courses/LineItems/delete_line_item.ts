@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
@@ -8,13 +9,17 @@ export type delete_line_itemPathParameters = {
   id: string;
 };
 
+export type delete_line_itemSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_line_itemPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_line_itemSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_line_itemSearchParameters;
       strict: true;
     }
 );

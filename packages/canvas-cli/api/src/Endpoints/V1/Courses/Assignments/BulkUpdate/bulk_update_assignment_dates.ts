@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Progress } from '../../../../../Resources/CoursePace.js';
 
@@ -6,13 +7,17 @@ export type bulk_update_assignment_datesPathParameters = {
   course_id: string;
 };
 
+export type bulk_update_assignment_datesSearchParameters = Masquerade;
+
 type Options = {
   pathParams: bulk_update_assignment_datesPathParameters;
 } & (
   | {
+      searchParams?: Partial<bulk_update_assignment_datesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: bulk_update_assignment_datesSearchParameters;
       strict: true;
     }
 );

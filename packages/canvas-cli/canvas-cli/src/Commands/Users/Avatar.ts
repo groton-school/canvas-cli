@@ -86,8 +86,6 @@ export async function run() {
       params: {
         name: 'avatar.jpg',
         parent_folder_path: 'profile pictures',
-        // FIXME masquerade parameters
-        // @ts-expect-error 2353 -- need masquerade parameters on all endpoints
         as_user_id: user.id.toString()
       },
       file: { filePath: path_to_avatar }

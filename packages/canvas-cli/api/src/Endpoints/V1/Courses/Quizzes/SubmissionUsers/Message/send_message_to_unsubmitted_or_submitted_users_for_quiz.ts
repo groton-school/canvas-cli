@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 import { QuizUserConversation } from '../../../../../../Overrides.js';
 
@@ -9,8 +10,11 @@ export type send_message_to_unsubmitted_or_submitted_users_for_quizPathParameter
     id: string;
   };
 
+export type send_message_to_unsubmitted_or_submitted_users_for_quizSearchParameters =
+  Masquerade;
+
 export type send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters =
-  {
+  Masquerade & {
     /** - Body and recipients to send the message to. */
     conversations: QuizUserConversation;
   };
@@ -19,10 +23,12 @@ type Options = {
   pathParams: send_message_to_unsubmitted_or_submitted_users_for_quizPathParameters;
 } & (
   | {
+      searchParams?: Partial<send_message_to_unsubmitted_or_submitted_users_for_quizSearchParameters>;
       params?: Partial<send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: send_message_to_unsubmitted_or_submitted_users_for_quizSearchParameters;
       params: send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters;
       strict: true;
     }

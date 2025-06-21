@@ -1,10 +1,15 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
+
+export type start_kaltura_sessionSearchParameters = Masquerade;
 
 type Options =
   | {
+      searchParams?: Partial<start_kaltura_sessionSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: start_kaltura_sessionSearchParameters;
       strict: true;
     };
 

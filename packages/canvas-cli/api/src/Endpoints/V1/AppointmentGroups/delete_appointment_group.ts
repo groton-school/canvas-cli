@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
 export type delete_appointment_groupPathParameters = {
@@ -5,10 +6,11 @@ export type delete_appointment_groupPathParameters = {
   id: string;
 };
 
-export type delete_appointment_groupSearchParameters = Partial<{
-  /** Reason for deleting/canceling the appointment group. */
-  cancel_reason: string;
-}>;
+export type delete_appointment_groupSearchParameters = Masquerade &
+  Partial<{
+    /** Reason for deleting/canceling the appointment group. */
+    cancel_reason: string;
+  }>;
 
 type Options = {
   pathParams: delete_appointment_groupPathParameters;

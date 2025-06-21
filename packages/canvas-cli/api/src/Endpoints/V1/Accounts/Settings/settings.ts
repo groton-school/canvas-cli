@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type settingsPathParameters = {
@@ -5,13 +6,17 @@ export type settingsPathParameters = {
   account_id: string;
 };
 
+export type settingsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: settingsPathParameters;
 } & (
   | {
+      searchParams?: Partial<settingsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: settingsSearchParameters;
       strict: true;
     }
 );

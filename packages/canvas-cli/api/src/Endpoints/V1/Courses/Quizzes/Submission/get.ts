@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type getPathParameters = {
@@ -7,10 +8,11 @@ export type getPathParameters = {
   quiz_id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /** Associations to include with the quiz submission. */
-  include: string[];
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /** Associations to include with the quiz submission. */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

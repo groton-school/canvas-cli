@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { BlockEditorTemplate } from '../../../../Resources/BlockEditorTemplate.js';
 
@@ -7,22 +7,23 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /** Sort results by this field. */
-  sort: string;
-  /** The sorting order. Defaults to 'asc'. */
-  order: string;
-  /**
-   * If true, include draft templates. If false or omitted only published
-   * templates will be returned.
-   */
-  drafts: boolean;
-  /** What type of templates should be returned. */
-  type: string[];
-  /** No description */
-  include: string[];
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /** Sort results by this field. */
+    sort: string;
+    /** The sorting order. Defaults to 'asc'. */
+    order: string;
+    /**
+     * If true, include draft templates. If false or omitted only published
+     * templates will be returned.
+     */
+    drafts: boolean;
+    /** What type of templates should be returned. */
+    type: string[];
+    /** No description */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

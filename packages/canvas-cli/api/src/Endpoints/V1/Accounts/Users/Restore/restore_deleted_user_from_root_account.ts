@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { User } from '../../../../../Resources/Users.js';
 
@@ -8,13 +9,17 @@ export type restore_deleted_user_from_root_accountPathParameters = {
   user_id: string;
 };
 
+export type restore_deleted_user_from_root_accountSearchParameters = Masquerade;
+
 type Options = {
   pathParams: restore_deleted_user_from_root_accountPathParameters;
 } & (
   | {
+      searchParams?: Partial<restore_deleted_user_from_root_accountSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: restore_deleted_user_from_root_accountSearchParameters;
       strict: true;
     }
 );

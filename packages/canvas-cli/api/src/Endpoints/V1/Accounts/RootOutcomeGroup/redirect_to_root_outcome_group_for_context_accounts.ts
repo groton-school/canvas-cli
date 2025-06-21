@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type redirect_to_root_outcome_group_for_context_accountsPathParameters =
@@ -6,13 +7,18 @@ export type redirect_to_root_outcome_group_for_context_accountsPathParameters =
     account_id: string;
   };
 
+export type redirect_to_root_outcome_group_for_context_accountsSearchParameters =
+  Masquerade;
+
 type Options = {
   pathParams: redirect_to_root_outcome_group_for_context_accountsPathParameters;
 } & (
   | {
+      searchParams?: Partial<redirect_to_root_outcome_group_for_context_accountsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: redirect_to_root_outcome_group_for_context_accountsSearchParameters;
       strict: true;
     }
 );

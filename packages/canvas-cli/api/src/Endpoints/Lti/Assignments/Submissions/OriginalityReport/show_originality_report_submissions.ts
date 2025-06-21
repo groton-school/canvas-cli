@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { OriginalityReport } from '../../../../../Resources/OriginalityReports.js';
 
@@ -10,13 +11,17 @@ export type show_originality_report_submissionsPathParameters = {
   id: string;
 };
 
+export type show_originality_report_submissionsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: show_originality_report_submissionsPathParameters;
 } & (
   | {
+      searchParams?: Partial<show_originality_report_submissionsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: show_originality_report_submissionsSearchParameters;
       strict: true;
     }
 );

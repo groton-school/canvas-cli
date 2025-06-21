@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type add_recipientsPathParameters = {
@@ -5,7 +6,9 @@ export type add_recipientsPathParameters = {
   id: string;
 };
 
-export type add_recipientsFormParameters = {
+export type add_recipientsSearchParameters = Masquerade;
+
+export type add_recipientsFormParameters = Masquerade & {
   /**
    * An array of recipient ids. These may be user ids or course/group ids
    * prefixed with "course_" or "group_" respectively, e.g.
@@ -18,10 +21,12 @@ type Options = {
   pathParams: add_recipientsPathParameters;
 } & (
   | {
+      searchParams?: Partial<add_recipientsSearchParameters>;
       params?: Partial<add_recipientsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: add_recipientsSearchParameters;
       params: add_recipientsFormParameters;
       strict: true;
     }

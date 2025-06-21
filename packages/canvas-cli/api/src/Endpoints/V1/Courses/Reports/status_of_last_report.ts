@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
@@ -8,13 +9,17 @@ export type status_of_last_reportPathParameters = {
   report_type: string;
 };
 
+export type status_of_last_reportSearchParameters = Masquerade;
+
 type Options = {
   pathParams: status_of_last_reportPathParameters;
 } & (
   | {
+      searchParams?: Partial<status_of_last_reportSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: status_of_last_reportSearchParameters;
       strict: true;
     }
 );

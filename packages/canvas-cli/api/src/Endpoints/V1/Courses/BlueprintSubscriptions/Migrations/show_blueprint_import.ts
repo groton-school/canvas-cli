@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { BlueprintMigration } from '../../../../../Resources/BlueprintCourses.js';
 
@@ -10,13 +11,17 @@ export type show_blueprint_importPathParameters = {
   id: string;
 };
 
+export type show_blueprint_importSearchParameters = Masquerade;
+
 type Options = {
   pathParams: show_blueprint_importPathParameters;
 } & (
   | {
+      searchParams?: Partial<show_blueprint_importSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: show_blueprint_importSearchParameters;
       strict: true;
     }
 );

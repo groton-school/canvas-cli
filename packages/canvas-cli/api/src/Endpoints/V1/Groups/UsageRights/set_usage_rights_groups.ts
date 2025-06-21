@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { UsageRights } from '../../../../Resources/Files.js';
 
@@ -6,7 +7,9 @@ export type set_usage_rights_groupsPathParameters = {
   group_id: string;
 };
 
-export type set_usage_rights_groupsFormParameters = {
+export type set_usage_rights_groupsSearchParameters = Masquerade;
+
+export type set_usage_rights_groupsFormParameters = Masquerade & {
   /** List of ids of files to set usage rights for. */
   file_ids: string[];
   /**
@@ -37,10 +40,12 @@ type Options = {
   pathParams: set_usage_rights_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<set_usage_rights_groupsSearchParameters>;
       params?: Partial<set_usage_rights_groupsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: set_usage_rights_groupsSearchParameters;
       params: set_usage_rights_groupsFormParameters;
       strict: true;
     }

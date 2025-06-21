@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { PageRevision } from '../../../../../Resources/Pages.js';
 
@@ -15,13 +16,17 @@ export type revert_to_revision_groupsPathParameters = {
   revision_id: number;
 };
 
+export type revert_to_revision_groupsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: revert_to_revision_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<revert_to_revision_groupsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: revert_to_revision_groupsSearchParameters;
       strict: true;
     }
 );

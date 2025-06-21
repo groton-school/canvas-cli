@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type reorder_custom_columnsPathParameters = {
@@ -5,7 +6,9 @@ export type reorder_custom_columnsPathParameters = {
   course_id: string;
 };
 
-export type reorder_custom_columnsFormParameters = {
+export type reorder_custom_columnsSearchParameters = Masquerade;
+
+export type reorder_custom_columnsFormParameters = Masquerade & {
   /**
    * No description
    *
@@ -18,10 +21,12 @@ type Options = {
   pathParams: reorder_custom_columnsPathParameters;
 } & (
   | {
+      searchParams?: Partial<reorder_custom_columnsSearchParameters>;
       params?: Partial<reorder_custom_columnsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: reorder_custom_columnsSearchParameters;
       params: reorder_custom_columnsFormParameters;
       strict: true;
     }

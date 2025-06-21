@@ -1,10 +1,16 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
+
+export type log_users_out_of_all_mobile_apps_mobile_sessionsSearchParameters =
+  Masquerade;
 
 type Options =
   | {
+      searchParams?: Partial<log_users_out_of_all_mobile_apps_mobile_sessionsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: log_users_out_of_all_mobile_apps_mobile_sessionsSearchParameters;
       strict: true;
     };
 

@@ -1,4 +1,5 @@
 import { JSONObject } from '@battis/typescript-tricks';
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { ContentExport } from '../../../../Resources/ContentExports.js';
 
@@ -7,7 +8,9 @@ export type export_content_groupsPathParameters = {
   group_id: string;
 };
 
-export type export_content_groupsFormParameters = {
+export type export_content_groupsSearchParameters = Masquerade;
+
+export type export_content_groupsFormParameters = Masquerade & {
   /**
    * "common_cartridge":: Export the contents of the course in the Common
    * Cartridge (.imscc) format "qti":: Export quizzes from a course in the QTI
@@ -38,10 +41,12 @@ type Options = {
   pathParams: export_content_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<export_content_groupsSearchParameters>;
       params?: Partial<export_content_groupsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: export_content_groupsSearchParameters;
       params: export_content_groupsFormParameters;
       strict: true;
     }

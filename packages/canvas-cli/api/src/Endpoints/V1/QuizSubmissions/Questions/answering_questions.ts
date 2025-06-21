@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { QuizSubmissionQuestion } from '../../../../Resources/QuizSubmissionQuestions.js';
 
@@ -7,9 +7,9 @@ export type answering_questionsPathParameters = {
   quiz_submission_id: string;
 };
 
-export type answering_questionsSearchParameters = Paginated;
+export type answering_questionsSearchParameters = Masquerade & Paginated;
 
-export type answering_questionsFormParameters = {
+export type answering_questionsFormParameters = Masquerade & {
   /**
    * The attempt number of the quiz submission being taken. Note that this
    * must be the latest attempt index, as questions for earlier attempts can
@@ -38,10 +38,12 @@ type Options = {
   pathParams: answering_questionsPathParameters;
 } & (
   | {
+      searchParams?: Partial<answering_questionsSearchParameters>;
       params?: Partial<answering_questionsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: answering_questionsSearchParameters;
       params: answering_questionsFormParameters;
       strict: true;
     }

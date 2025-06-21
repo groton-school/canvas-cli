@@ -1,10 +1,15 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
+
+export type mark_all_as_readSearchParameters = Masquerade;
 
 type Options =
   | {
+      searchParams?: Partial<mark_all_as_readSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: mark_all_as_readSearchParameters;
       strict: true;
     };
 

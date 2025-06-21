@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
 export type delete_conversationPathParameters = {
@@ -5,13 +6,17 @@ export type delete_conversationPathParameters = {
   id: string;
 };
 
+export type delete_conversationSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_conversationPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_conversationSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_conversationSearchParameters;
       strict: true;
     }
 );

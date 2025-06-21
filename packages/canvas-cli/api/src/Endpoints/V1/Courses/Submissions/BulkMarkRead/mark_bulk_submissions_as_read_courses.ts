@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type mark_bulk_submissions_as_read_coursesPathParameters = {
@@ -5,7 +6,9 @@ export type mark_bulk_submissions_as_read_coursesPathParameters = {
   course_id: string;
 };
 
-export type mark_bulk_submissions_as_read_coursesFormParameters = {
+export type mark_bulk_submissions_as_read_coursesSearchParameters = Masquerade;
+
+export type mark_bulk_submissions_as_read_coursesFormParameters = Masquerade & {
   /** No description */
   submissionIds: string[];
 };
@@ -14,10 +17,12 @@ type Options = {
   pathParams: mark_bulk_submissions_as_read_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<mark_bulk_submissions_as_read_coursesSearchParameters>;
       params?: Partial<mark_bulk_submissions_as_read_coursesFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: mark_bulk_submissions_as_read_coursesSearchParameters;
       params: mark_bulk_submissions_as_read_coursesFormParameters;
       strict: true;
     }

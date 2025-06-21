@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { File } from '../../../../../Resources/Files.js';
 
@@ -8,13 +9,17 @@ export type translate_file_referencePathParameters = {
   migration_id: string;
 };
 
+export type translate_file_referenceSearchParameters = Masquerade;
+
 type Options = {
   pathParams: translate_file_referencePathParameters;
 } & (
   | {
+      searchParams?: Partial<translate_file_referenceSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: translate_file_referenceSearchParameters;
       strict: true;
     }
 );

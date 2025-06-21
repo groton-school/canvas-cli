@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { User } from '../../../Resources/Users.js';
 
@@ -6,14 +7,15 @@ export type show_user_detailsPathParameters = {
   id: string;
 };
 
-export type show_user_detailsSearchParameters = Partial<{
-  /**
-   * Array of additional information to include on the user record. "locale",
-   * "avatar_url", "permissions", "email", and "effective_locale" will always
-   * be returned
-   */
-  include: string[];
-}>;
+export type show_user_detailsSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * Array of additional information to include on the user record. "locale",
+     * "avatar_url", "permissions", "email", and "effective_locale" will always
+     * be returned
+     */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: show_user_detailsPathParameters;

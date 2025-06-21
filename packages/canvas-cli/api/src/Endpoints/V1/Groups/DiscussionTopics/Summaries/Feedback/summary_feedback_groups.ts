@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type summary_feedback_groupsPathParameters = {
@@ -9,7 +10,9 @@ export type summary_feedback_groupsPathParameters = {
   summary_id: string;
 };
 
-export type summary_feedback_groupsFormParameters = {
+export type summary_feedback_groupsSearchParameters = Masquerade;
+
+export type summary_feedback_groupsFormParameters = Masquerade & {
   /**
    * Required The action to take on the summary. Possible values are:
    *
@@ -29,10 +32,12 @@ type Options = {
   pathParams: summary_feedback_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<summary_feedback_groupsSearchParameters>;
       params?: Partial<summary_feedback_groupsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: summary_feedback_groupsSearchParameters;
       params: summary_feedback_groupsFormParameters;
       strict: true;
     }

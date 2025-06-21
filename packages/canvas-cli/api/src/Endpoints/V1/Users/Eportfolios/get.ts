@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { ePortfolio } from '../../../../Resources/EPortfolios.js';
 
@@ -7,14 +7,15 @@ export type getPathParameters = {
   user_id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /**
-   * Deleted:: Include deleted ePortfolios. Only available to admins who can
-   * moderate_user_content.
-   */
-  include: string[];
-}> &
-  Paginated;
+export type getSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * Deleted:: Include deleted ePortfolios. Only available to admins who can
+     * moderate_user_content.
+     */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

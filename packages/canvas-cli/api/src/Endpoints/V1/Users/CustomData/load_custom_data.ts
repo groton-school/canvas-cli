@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type load_custom_dataPathParameters = {
@@ -5,14 +6,15 @@ export type load_custom_dataPathParameters = {
   user_id: string;
 };
 
-export type load_custom_dataSearchParameters = Partial<{
-  /**
-   * The namespace from which to retrieve the data. This should be something
-   * other Canvas API apps aren't likely to use, such as a reverse DNS for
-   * your organization.
-   */
-  ns: string;
-}>;
+export type load_custom_dataSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * The namespace from which to retrieve the data. This should be something
+     * other Canvas API apps aren't likely to use, such as a reverse DNS for
+     * your organization.
+     */
+    ns: string;
+  }>;
 
 type Options = {
   pathParams: load_custom_dataPathParameters;

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type bulk_select_provisional_gradesPathParameters = {
@@ -7,13 +8,17 @@ export type bulk_select_provisional_gradesPathParameters = {
   assignment_id: string;
 };
 
+export type bulk_select_provisional_gradesSearchParameters = Masquerade;
+
 type Options = {
   pathParams: bulk_select_provisional_gradesPathParameters;
 } & (
   | {
+      searchParams?: Partial<bulk_select_provisional_gradesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: bulk_select_provisional_gradesSearchParameters;
       strict: true;
     }
 );

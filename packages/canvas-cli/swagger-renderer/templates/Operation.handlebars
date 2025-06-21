@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 {{#tsImports}}
 import { {{type}} } from '{{{packagePath}}}{{{filePath}}}';
 {{/tsImports}}
@@ -17,8 +18,10 @@ export type {{tsName}}PathParameters = {
 }
 {{/if}}
 
-{{#if tsQueryParameters}}
-export type {{tsName}}SearchParameters = Partial<{
+
+export type {{tsName}}SearchParameters = Masquerade
+{{#if tsPaginated}} & Paginated{{/if}}
+{{#if tsQueryParameters}} & Partial<{
     {{#tsQueryParameters}}
     /**
      * {{description}}
@@ -29,14 +32,11 @@ export type {{tsName}}SearchParameters = Partial<{
      */
     {{{tsName}}}{{tsOptional}}: {{{tsType.type}}}
     {{/tsQueryParameters}}
-}>{{#if tsPaginated}} & Paginated{{/if}}
-{{/if}}
-{{#unless tsQueryParameters}}{{#if tsPaginated}}
-export type {{tsName}}SearchParameters = Paginated;
-{{/if}}{{/unless}}
+}>{{/if}}
+
 
 {{#if tsFormParameters}}
-export type {{tsName}}FormParameters = {
+export type {{tsName}}FormParameters = Masquerade & {
     {{#tsFormParameters}}
     /**
      * {{description}}
@@ -47,25 +47,20 @@ export type {{tsName}}FormParameters = {
      */
     {{{tsName}}}{{tsOptional}}: {{{tsType.type}}}
     {{/tsFormParameters}}
-}
-{{/if}}
+}{{/if}}
 
 {{!-- tsBodyParameters are not currently used in the Canvas API spec --}}
 
 type Options = {{#if tsPathParameters}}{
   pathParams: {{tsName}}PathParameters;
   } & {{/if}}({
-    {{#if tsQueryParameters}}
-      searchParams?: Partial<{{tsName}}SearchParameters>;
-    {{/if}}
-    {{#if tsFormParameters}}
+    searchParams?: Partial<{{tsName}}SearchParameters>;
+    {{#if tsFormParameters}}   
       params?: Partial<{{tsName}}FormParameters>;
     {{/if}}
     strict?: false;
   } | {
-    {{#if tsQueryParameters}}
-      searchParams: {{tsName}}SearchParameters;
-    {{/if}}
+    searchParams: {{tsName}}SearchParameters;
     {{#if tsFormParameters}}
       params: {{tsName}}FormParameters;
     {{/if}}

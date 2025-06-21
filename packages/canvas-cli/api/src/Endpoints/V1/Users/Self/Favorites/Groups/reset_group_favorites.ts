@@ -1,10 +1,15 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
+
+export type reset_group_favoritesSearchParameters = Masquerade;
 
 type Options =
   | {
+      searchParams?: Partial<reset_group_favoritesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: reset_group_favoritesSearchParameters;
       strict: true;
     };
 

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { CoursePace } from '../../../../Resources/CoursePace.js';
 
@@ -12,14 +13,15 @@ export type delete_course_pacePathParameters = {
   course_id: number;
 };
 
-export type delete_course_paceSearchParameters = Partial<{
-  /**
-   * The id of the course_pace
-   *
-   * Format: 'int64'
-   */
-  course_pace_id: number;
-}>;
+export type delete_course_paceSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * The id of the course_pace
+     *
+     * Format: 'int64'
+     */
+    course_pace_id: number;
+  }>;
 
 type Options = {
   pathParams: delete_course_pacePathParameters;

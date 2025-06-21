@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type clear_unread_status_for_all_submissions_sectionsPathParameters = {
@@ -7,13 +8,18 @@ export type clear_unread_status_for_all_submissions_sectionsPathParameters = {
   user_id: string;
 };
 
+export type clear_unread_status_for_all_submissions_sectionsSearchParameters =
+  Masquerade;
+
 type Options = {
   pathParams: clear_unread_status_for_all_submissions_sectionsPathParameters;
 } & (
   | {
+      searchParams?: Partial<clear_unread_status_for_all_submissions_sectionsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: clear_unread_status_for_all_submissions_sectionsSearchParameters;
       strict: true;
     }
 );

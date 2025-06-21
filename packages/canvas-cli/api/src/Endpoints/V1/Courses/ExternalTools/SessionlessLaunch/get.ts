@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type getPathParameters = {
@@ -5,30 +6,31 @@ export type getPathParameters = {
   course_id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /** The external id of the tool to launch. */
-  id: string;
-  /** The LTI launch url for the external tool. */
-  url: string;
-  /**
-   * The assignment id for an assignment launch. Required if launch_type is
-   * set to "assessment".
-   */
-  assignment_id: string;
-  /**
-   * The assignment id for a module item launch. Required if launch_type is
-   * set to "module_item".
-   */
-  module_item_id: string;
-  /**
-   * The type of launch to perform on the external tool. Placement names (eg.
-   * "course_navigation") can also be specified to use the custom launch url
-   * for that placement; if done, the tool id must be provided.
-   */
-  launch_type: string;
-  /** The identifier to lookup a resource link. */
-  resource_link_lookup_uuid: string;
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /** The external id of the tool to launch. */
+    id: string;
+    /** The LTI launch url for the external tool. */
+    url: string;
+    /**
+     * The assignment id for an assignment launch. Required if launch_type is
+     * set to "assessment".
+     */
+    assignment_id: string;
+    /**
+     * The assignment id for a module item launch. Required if launch_type is
+     * set to "module_item".
+     */
+    module_item_id: string;
+    /**
+     * The type of launch to perform on the external tool. Placement names (eg.
+     * "course_navigation") can also be specified to use the custom launch url
+     * for that placement; if done, the tool id must be provided.
+     */
+    launch_type: string;
+    /** The identifier to lookup a resource link. */
+    resource_link_lookup_uuid: string;
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

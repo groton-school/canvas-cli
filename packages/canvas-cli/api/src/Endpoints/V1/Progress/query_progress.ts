@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { Progress } from '../../../Resources/CoursePace.js';
 
@@ -6,13 +7,17 @@ export type query_progressPathParameters = {
   id: string;
 };
 
+export type query_progressSearchParameters = Masquerade;
+
 type Options = {
   pathParams: query_progressPathParameters;
 } & (
   | {
+      searchParams?: Partial<query_progressSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: query_progressSearchParameters;
       strict: true;
     }
 );

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Date } from '../../../../../Overrides.js';
 
@@ -6,7 +7,9 @@ export type batchUpdatePathParameters = {
   set_id: string;
 };
 
-export type batchUpdateFormParameters = {
+export type batchUpdateSearchParameters = Masquerade;
+
+export type batchUpdateFormParameters = Masquerade & {
   /**
    * The id of the grading period. If the id parameter does not exist, a new
    * grading period will be created.
@@ -48,10 +51,12 @@ type Options = {
   pathParams: batchUpdatePathParameters;
 } & (
   | {
+      searchParams?: Partial<batchUpdateSearchParameters>;
       params?: Partial<batchUpdateFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: batchUpdateSearchParameters;
       params: batchUpdateFormParameters;
       strict: true;
     }

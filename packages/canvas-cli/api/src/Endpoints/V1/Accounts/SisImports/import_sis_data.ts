@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { SisImport } from '../../../../Resources/SisImports.js';
 
@@ -6,7 +7,9 @@ export type import_sis_dataPathParameters = {
   account_id: string;
 };
 
-export type import_sis_dataFormParameters = {
+export type import_sis_dataSearchParameters = Masquerade;
+
+export type import_sis_dataFormParameters = Masquerade & {
   /**
    * Choose the data format for reading SIS data. With a standard Canvas
    * install, this option can only be 'instructure_csv', and if unprovided,
@@ -175,10 +178,12 @@ type Options = {
   pathParams: import_sis_dataPathParameters;
 } & (
   | {
+      searchParams?: Partial<import_sis_dataSearchParameters>;
       params?: Partial<import_sis_dataFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: import_sis_dataSearchParameters;
       params: import_sis_dataFormParameters;
       strict: true;
     }

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type listPathParameters = {
@@ -5,18 +6,19 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * The placements to return launch definitions for. If not provided, an
-   * empty list will be returned.
-   */
-  'placements[Array]': string;
-  /**
-   * If true, only return launch definitions that are visible to the current
-   * user. Defaults to true.
-   */
-  'only_visible[Boolean]': string;
-}>;
+export type listSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * The placements to return launch definitions for. If not provided, an
+     * empty list will be returned.
+     */
+    'placements[Array]': string;
+    /**
+     * If true, only return launch definitions that are visible to the current
+     * user. Defaults to true.
+     */
+    'only_visible[Boolean]': string;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

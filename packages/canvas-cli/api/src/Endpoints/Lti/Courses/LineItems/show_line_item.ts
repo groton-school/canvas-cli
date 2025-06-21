@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
@@ -8,15 +9,16 @@ export type show_line_itemPathParameters = {
   id: string;
 };
 
-export type show_line_itemSearchParameters = Partial<{
-  /**
-   * Array of additional information to include.
-   *
-   * "launch_url":: includes the launch URL for this line item using the
-   * "https://canvas.instructure.com/lti/launch_url" extension
-   */
-  include: string[];
-}>;
+export type show_line_itemSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * Array of additional information to include.
+     *
+     * "launch_url":: includes the launch URL for this line item using the
+     * "https://canvas.instructure.com/lti/launch_url" extension
+     */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: show_line_itemPathParameters;

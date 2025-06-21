@@ -1,23 +1,25 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
-export type listSearchParameters = Partial<{
-  /** Defaults to "reservable" */
-  scope: string;
-  /** Array of context codes used to limit returned results. */
-  context_codes: string[];
-  /** Defaults to false. If true, includes past appointment groups */
-  include_past_appointments: boolean;
-  /**
-   * Array of additional information to include.
-   *
-   * "appointments":: calendar event time slots for this appointment group
-   * "child_events":: reservations of those time slots "participant_count"::
-   * number of reservations "reserved_times":: the event id, start time and
-   * end time of reservations the current user has made) "all_context_codes"::
-   * all context codes associated with this appointment group
-   */
-  include: string[];
-}>;
+export type listSearchParameters = Masquerade &
+  Partial<{
+    /** Defaults to "reservable" */
+    scope: string;
+    /** Array of context codes used to limit returned results. */
+    context_codes: string[];
+    /** Defaults to false. If true, includes past appointment groups */
+    include_past_appointments: boolean;
+    /**
+     * Array of additional information to include.
+     *
+     * "appointments":: calendar event time slots for this appointment group
+     * "child_events":: reservations of those time slots "participant_count"::
+     * number of reservations "reserved_times":: the event id, start time and
+     * end time of reservations the current user has made) "all_context_codes"::
+     * all context codes associated with this appointment group
+     */
+    include: string[];
+  }>;
 
 type Options =
   | {

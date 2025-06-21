@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
@@ -12,7 +13,9 @@ export type create_link_outcome_global_outcome_idPathParameters = {
   outcome_id: number;
 };
 
-export type create_link_outcome_global_outcome_idFormParameters = {
+export type create_link_outcome_global_outcome_idSearchParameters = Masquerade;
+
+export type create_link_outcome_global_outcome_idFormParameters = Masquerade & {
   /**
    * The ID of the old outcome group. Only used if outcome_id is present.
    *
@@ -64,10 +67,12 @@ type Options = {
   pathParams: create_link_outcome_global_outcome_idPathParameters;
 } & (
   | {
+      searchParams?: Partial<create_link_outcome_global_outcome_idSearchParameters>;
       params?: Partial<create_link_outcome_global_outcome_idFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: create_link_outcome_global_outcome_idSearchParameters;
       params: create_link_outcome_global_outcome_idFormParameters;
       strict: true;
     }

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -8,14 +9,15 @@ export type remove_observeePathParameters = {
   observee_id: string;
 };
 
-export type remove_observeeSearchParameters = Partial<{
-  /**
-   * If specified, only removes the link for the given root account
-   *
-   * Format: 'int64'
-   */
-  root_account_id: number;
-}>;
+export type remove_observeeSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * If specified, only removes the link for the given root account
+     *
+     * Format: 'int64'
+     */
+    root_account_id: number;
+  }>;
 
 type Options = {
   pathParams: remove_observeePathParameters;

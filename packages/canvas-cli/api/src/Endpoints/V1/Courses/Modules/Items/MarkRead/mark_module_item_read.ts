@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type mark_module_item_readPathParameters = {
@@ -9,13 +10,17 @@ export type mark_module_item_readPathParameters = {
   id: string;
 };
 
+export type mark_module_item_readSearchParameters = Masquerade;
+
 type Options = {
   pathParams: mark_module_item_readPathParameters;
 } & (
   | {
+      searchParams?: Partial<mark_module_item_readSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: mark_module_item_readSearchParameters;
       strict: true;
     }
 );

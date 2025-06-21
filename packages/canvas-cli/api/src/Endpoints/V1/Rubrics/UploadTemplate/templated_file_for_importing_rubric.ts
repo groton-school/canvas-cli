@@ -1,10 +1,15 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
+
+export type templated_file_for_importing_rubricSearchParameters = Masquerade;
 
 type Options =
   | {
+      searchParams?: Partial<templated_file_for_importing_rubricSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: templated_file_for_importing_rubricSearchParameters;
       strict: true;
     };
 

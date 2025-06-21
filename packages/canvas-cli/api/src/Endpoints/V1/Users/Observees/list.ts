@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -7,11 +7,12 @@ export type listPathParameters = {
   user_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /** - "avatar_url": Optionally include avatar_url. */
-  include: string[];
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /** - "avatar_url": Optionally include avatar_url. */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Role } from '../../../../../Resources/Roles.js';
 
@@ -8,7 +9,9 @@ export type activate_rolePathParameters = {
   id: string;
 };
 
-export type activate_roleFormParameters = {
+export type activate_roleSearchParameters = Masquerade;
+
+export type activate_roleFormParameters = Masquerade & {
   /**
    * The unique identifier for the role
    *
@@ -27,10 +30,12 @@ type Options = {
   pathParams: activate_rolePathParameters;
 } & (
   | {
+      searchParams?: Partial<activate_roleSearchParameters>;
       params?: Partial<activate_roleFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: activate_roleSearchParameters;
       params: activate_roleFormParameters;
       strict: true;
     }

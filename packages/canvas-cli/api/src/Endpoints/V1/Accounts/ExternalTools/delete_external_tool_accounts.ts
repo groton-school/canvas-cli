@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type delete_external_tool_accountsPathParameters = {
@@ -7,13 +8,17 @@ export type delete_external_tool_accountsPathParameters = {
   external_tool_id: string;
 };
 
+export type delete_external_tool_accountsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_external_tool_accountsPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_external_tool_accountsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_external_tool_accountsSearchParameters;
       strict: true;
     }
 );

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Numeric } from '../../../../../Overrides.js';
 
@@ -8,10 +9,11 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /** No description */
-  answer: Numeric;
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /** No description */
+    answer: Numeric;
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

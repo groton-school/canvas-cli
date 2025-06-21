@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type remove_content_sharePathParameters = {
@@ -7,13 +8,17 @@ export type remove_content_sharePathParameters = {
   id: string;
 };
 
+export type remove_content_shareSearchParameters = Masquerade;
+
 type Options = {
   pathParams: remove_content_sharePathParameters;
 } & (
   | {
+      searchParams?: Partial<remove_content_shareSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: remove_content_shareSearchParameters;
       strict: true;
     }
 );

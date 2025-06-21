@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type find_last_summary_groupsPathParameters = {
@@ -7,13 +8,17 @@ export type find_last_summary_groupsPathParameters = {
   topic_id: string;
 };
 
+export type find_last_summary_groupsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: find_last_summary_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<find_last_summary_groupsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: find_last_summary_groupsSearchParameters;
       strict: true;
     }
 );

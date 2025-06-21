@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Assignment } from '../../../../Resources/Assignments.js';
 
@@ -8,25 +9,26 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /**
-   * Associations to include with the assignment. The "assignment_visibility"
-   * option requires that the Differentiated Assignments course feature be
-   * turned on. If "observed_users" is passed, submissions for observed users
-   * will also be included. For "score_statistics" to be included, the
-   * "submission" option must also be set.
-   */
-  include: string[];
-  /** Apply assignment overrides to the assignment, defaults to true. */
-  override_assignment_dates: boolean;
-  /**
-   * Split up "needs_grading_count" by sections into the
-   * "needs_grading_count_by_section" key, defaults to false
-   */
-  needs_grading_count_by_section: boolean;
-  /** All dates associated with the assignment, if applicable */
-  all_dates: boolean;
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * Associations to include with the assignment. The "assignment_visibility"
+     * option requires that the Differentiated Assignments course feature be
+     * turned on. If "observed_users" is passed, submissions for observed users
+     * will also be included. For "score_statistics" to be included, the
+     * "submission" option must also be set.
+     */
+    include: string[];
+    /** Apply assignment overrides to the assignment, defaults to true. */
+    override_assignment_dates: boolean;
+    /**
+     * Split up "needs_grading_count" by sections into the
+     * "needs_grading_count_by_section" key, defaults to false
+     */
+    needs_grading_count_by_section: boolean;
+    /** All dates associated with the assignment, if applicable */
+    all_dates: boolean;
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

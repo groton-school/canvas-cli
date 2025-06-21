@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { EnrollmentTermsList } from '../../../../Resources/EnrollmentTerms.js';
 
@@ -6,25 +7,26 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * If set, only returns terms that are in the given state. Defaults to
-   * 'active'.
-   */
-  workflow_state: string[];
-  /**
-   * Array of additional information to include.
-   *
-   * "overrides":: term start/end dates overridden for different enrollment
-   * types "course_count":: the number of courses in each term
-   */
-  include: string[];
-  /**
-   * If set, only returns terms that match the given search keyword. Search
-   * keyword is matched against term name.
-   */
-  term_name: string;
-}>;
+export type listSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * If set, only returns terms that are in the given state. Defaults to
+     * 'active'.
+     */
+    workflow_state: string[];
+    /**
+     * Array of additional information to include.
+     *
+     * "overrides":: term start/end dates overridden for different enrollment
+     * types "course_count":: the number of courses in each term
+     */
+    include: string[];
+    /**
+     * If set, only returns terms that match the given search keyword. Search
+     * keyword is matched against term name.
+     */
+    term_name: string;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

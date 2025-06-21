@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { DeveloperKey } from '../../../../Resources/DeveloperKeys.js';
 
@@ -7,14 +7,15 @@ export type listPathParameters = {
   account_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * Defaults to false. If true, lists keys inherited from Site Admin (and
-   * consortium parent account, if applicable).
-   */
-  inherited: boolean;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * Defaults to false. If true, lists keys inherited from Site Admin (and
+     * consortium parent account, if applicable).
+     */
+    inherited: boolean;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Account } from '../../../../Resources/Accounts.js';
 
@@ -7,28 +7,29 @@ export type getPathParameters = {
   account_id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /**
-   * If true, the entire account tree underneath this account will be returned
-   * (though still paginated). If false, only direct sub-accounts of this
-   * account will be returned. Defaults to false.
-   */
-  recursive: boolean;
-  /**
-   * Sorts the accounts by id or name. Only applies when recursive is false.
-   * Defaults to id.
-   */
-  order: string;
-  /**
-   * Array of additional information to include.
-   *
-   * "course_count":: returns the number of courses directly under each
-   * account "sub_account_count":: returns the number of sub-accounts directly
-   * under each account
-   */
-  include: string[];
-}> &
-  Paginated;
+export type getSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * If true, the entire account tree underneath this account will be returned
+     * (though still paginated). If false, only direct sub-accounts of this
+     * account will be returned. Defaults to false.
+     */
+    recursive: boolean;
+    /**
+     * Sorts the accounts by id or name. Only applies when recursive is false.
+     * Defaults to id.
+     */
+    order: string;
+    /**
+     * Array of additional information to include.
+     *
+     * "course_count":: returns the number of courses directly under each
+     * account "sub_account_count":: returns the number of sub-accounts directly
+     * under each account
+     */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

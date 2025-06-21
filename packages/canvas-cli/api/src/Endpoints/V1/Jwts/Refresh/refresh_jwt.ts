@@ -1,7 +1,10 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { JWT } from '../../../../Resources/JwTs.js';
 
-export type refresh_jwtFormParameters = {
+export type refresh_jwtSearchParameters = Masquerade;
+
+export type refresh_jwtFormParameters = Masquerade & {
   /**
    * An existing JWT token to be refreshed. The new token will have the same
    * context and workflows as the existing token.
@@ -11,10 +14,12 @@ export type refresh_jwtFormParameters = {
 
 type Options =
   | {
+      searchParams?: Partial<refresh_jwtSearchParameters>;
       params?: Partial<refresh_jwtFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: refresh_jwtSearchParameters;
       params: refresh_jwtFormParameters;
       strict: true;
     };

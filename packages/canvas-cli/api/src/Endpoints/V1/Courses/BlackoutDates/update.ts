@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { BlackoutDateTheresultwhichshouldmatchtheinputwithmaybesomedifferentIDs } from '../../../../Overrides.js';
 
@@ -7,9 +7,9 @@ export type updatePathParameters = {
   course_id: string;
 };
 
-export type updateSearchParameters = Paginated;
+export type updateSearchParameters = Masquerade & Paginated;
 
-export type updateFormParameters = {
+export type updateFormParameters = Masquerade & {
   /**
    * [blackout_date, ...] An object containing the array of BlackoutDates we
    * want to exist after this operation. For array entries, if it has an id it
@@ -23,10 +23,12 @@ type Options = {
   pathParams: updatePathParameters;
 } & (
   | {
+      searchParams?: Partial<updateSearchParameters>;
       params?: Partial<updateFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: updateSearchParameters;
       params: updateFormParameters;
       strict: true;
     }

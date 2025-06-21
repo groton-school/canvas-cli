@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type delete_entry_coursesPathParameters = {
@@ -9,13 +10,17 @@ export type delete_entry_coursesPathParameters = {
   id: string;
 };
 
+export type delete_entry_coursesSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_entry_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_entry_coursesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_entry_coursesSearchParameters;
       strict: true;
     }
 );

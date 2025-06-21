@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type getPathParameters = {
@@ -5,38 +6,39 @@ export type getPathParameters = {
   course_id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /**
-   * If specified, only the users whose ids are given will be included in the
-   * results. SIS ids can be used, prefixed by "sis_user_id:". It is an error
-   * to specify an id for a user who is not a student in the context.
-   *
-   * Format: 'int64'
-   */
-  user_ids: number[];
-  /**
-   * If specified, only the outcomes whose ids are given will be included in
-   * the results. it is an error to specify an id for an outcome which is not
-   * linked to the context.
-   *
-   * Format: 'int64'
-   */
-  outcome_ids: number[];
-  /**
-   * [String,
-   * "alignments"|"outcomes"|"outcomes.alignments"|"outcome_groups"|"outcome_links"|"outcome_paths"|"users"]
-   * Specify additional collections to be side loaded with the result.
-   * "alignments" includes only the alignments referenced by the returned
-   * results. "outcomes.alignments" includes all alignments referenced by
-   * outcomes in the context.
-   */
-  include: string[];
-  /**
-   * If true, results that are hidden from the learning mastery gradebook and
-   * student rollup scores will be included
-   */
-  include_hidden: boolean;
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * If specified, only the users whose ids are given will be included in the
+     * results. SIS ids can be used, prefixed by "sis_user_id:". It is an error
+     * to specify an id for a user who is not a student in the context.
+     *
+     * Format: 'int64'
+     */
+    user_ids: number[];
+    /**
+     * If specified, only the outcomes whose ids are given will be included in
+     * the results. it is an error to specify an id for an outcome which is not
+     * linked to the context.
+     *
+     * Format: 'int64'
+     */
+    outcome_ids: number[];
+    /**
+     * [String,
+     * "alignments"|"outcomes"|"outcomes.alignments"|"outcome_groups"|"outcome_links"|"outcome_paths"|"users"]
+     * Specify additional collections to be side loaded with the result.
+     * "alignments" includes only the alignments referenced by the returned
+     * results. "outcomes.alignments" includes all alignments referenced by
+     * outcomes in the context.
+     */
+    include: string[];
+    /**
+     * If true, results that are hidden from the learning mastery gradebook and
+     * student rollup scores will be included
+     */
+    include_hidden: boolean;
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

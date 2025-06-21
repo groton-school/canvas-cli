@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type query_by_loginPathParameters = {
@@ -5,21 +6,22 @@ export type query_by_loginPathParameters = {
   login_id: string;
 };
 
-export type query_by_loginSearchParameters = Partial<{
-  /**
-   * The beginning of the time range from which you want events. Events are
-   * stored for one year.
-   *
-   * Format: date-time
-   */
-  start_time: string;
-  /**
-   * The end of the time range from which you want events.
-   *
-   * Format: date-time
-   */
-  end_time: string;
-}>;
+export type query_by_loginSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * The beginning of the time range from which you want events. Events are
+     * stored for one year.
+     *
+     * Format: date-time
+     */
+    start_time: string;
+    /**
+     * The end of the time range from which you want events.
+     *
+     * Format: date-time
+     */
+    end_time: string;
+  }>;
 
 type Options = {
   pathParams: query_by_loginPathParameters;

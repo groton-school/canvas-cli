@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type delete_access_tokenPathParameters = {
@@ -7,13 +8,17 @@ export type delete_access_tokenPathParameters = {
   id: string;
 };
 
+export type delete_access_tokenSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_access_tokenPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_access_tokenSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_access_tokenSearchParameters;
       strict: true;
     }
 );

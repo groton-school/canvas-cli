@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type listPathParameters = {
@@ -5,15 +6,16 @@ export type listPathParameters = {
   course_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * - "course_subject_tabs": Optional flag to return the tabs associated with a
-   *   canvas_for_elementary subject course's home page instead of the typical
-   *   sidebar navigation. Only takes effect if this request is for a course
-   *   context in a canvas_for_elementary-enabled account or sub-account.
-   */
-  include: string[];
-}>;
+export type listSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * - "course_subject_tabs": Optional flag to return the tabs associated with a
+     *   canvas_for_elementary subject course's home page instead of the typical
+     *   sidebar navigation. Only takes effect if this request is for a course
+     *   context in a canvas_for_elementary-enabled account or sub-account.
+     */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

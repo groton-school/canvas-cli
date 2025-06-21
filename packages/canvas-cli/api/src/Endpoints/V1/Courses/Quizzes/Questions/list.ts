@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { QuizQuestion } from '../../../../../Resources/QuizQuestions.js';
 
@@ -9,25 +9,26 @@ export type listPathParameters = {
   quiz_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * If specified, the endpoint will return the questions that were presented
-   * for that submission. This is useful if the quiz has been modified after
-   * the submission was created and the latest quiz version's set of questions
-   * does not match the submission's. NOTE: you must specify
-   * quiz_submission_attempt as well if you specify this parameter.
-   *
-   * Format: 'int64'
-   */
-  quiz_submission_id: number;
-  /**
-   * The attempt of the submission you want the questions for.
-   *
-   * Format: 'int64'
-   */
-  quiz_submission_attempt: number;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * If specified, the endpoint will return the questions that were presented
+     * for that submission. This is useful if the quiz has been modified after
+     * the submission was created and the latest quiz version's set of questions
+     * does not match the submission's. NOTE: you must specify
+     * quiz_submission_attempt as well if you specify this parameter.
+     *
+     * Format: 'int64'
+     */
+    quiz_submission_id: number;
+    /**
+     * The attempt of the submission you want the questions for.
+     *
+     * Format: 'int64'
+     */
+    quiz_submission_attempt: number;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

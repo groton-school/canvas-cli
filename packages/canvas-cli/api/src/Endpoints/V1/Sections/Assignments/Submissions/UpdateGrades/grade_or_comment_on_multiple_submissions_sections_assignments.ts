@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 import { Progress } from '../../../../../../Resources/CoursePace.js';
 import { RubricAssessment } from '../../../../../../Resources/Rubrics.js';
@@ -10,8 +11,11 @@ export type grade_or_comment_on_multiple_submissions_sections_assignmentsPathPar
     assignment_id: string;
   };
 
+export type grade_or_comment_on_multiple_submissions_sections_assignmentsSearchParameters =
+  Masquerade;
+
 export type grade_or_comment_on_multiple_submissions_sections_assignmentsFormParameters =
-  {
+  Masquerade & {
     /**
      * See documentation for the posted_grade argument in the
      * {api:SubmissionsApiController#update Submissions Update} documentation
@@ -55,10 +59,12 @@ type Options = {
   pathParams: grade_or_comment_on_multiple_submissions_sections_assignmentsPathParameters;
 } & (
   | {
+      searchParams?: Partial<grade_or_comment_on_multiple_submissions_sections_assignmentsSearchParameters>;
       params?: Partial<grade_or_comment_on_multiple_submissions_sections_assignmentsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: grade_or_comment_on_multiple_submissions_sections_assignmentsSearchParameters;
       params: grade_or_comment_on_multiple_submissions_sections_assignmentsFormParameters;
       strict: true;
     }

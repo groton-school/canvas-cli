@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
@@ -8,13 +9,17 @@ export type delete_lti_registrationPathParameters = {
   id: string;
 };
 
+export type delete_lti_registrationSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_lti_registrationPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_lti_registrationSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_lti_registrationSearchParameters;
       strict: true;
     }
 );

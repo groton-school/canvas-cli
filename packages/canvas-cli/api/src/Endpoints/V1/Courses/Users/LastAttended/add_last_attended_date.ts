@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Enrollment } from '../../../../../Resources/Enrollments.js';
 
@@ -8,7 +9,9 @@ export type add_last_attended_datePathParameters = {
   user_id: string;
 };
 
-export type add_last_attended_dateFormParameters = {
+export type add_last_attended_dateSearchParameters = Masquerade;
+
+export type add_last_attended_dateFormParameters = Masquerade & {
   /**
    * The last attended date of a student enrollment in a course.
    *
@@ -21,10 +24,12 @@ type Options = {
   pathParams: add_last_attended_datePathParameters;
 } & (
   | {
+      searchParams?: Partial<add_last_attended_dateSearchParameters>;
       params?: Partial<add_last_attended_dateFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: add_last_attended_dateSearchParameters;
       params: add_last_attended_dateFormParameters;
       strict: true;
     }

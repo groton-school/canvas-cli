@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
@@ -6,7 +7,9 @@ export type enroll_user_sectionsPathParameters = {
   section_id: string;
 };
 
-export type enroll_user_sectionsFormParameters = {
+export type enroll_user_sectionsSearchParameters = Masquerade;
+
+export type enroll_user_sectionsFormParameters = Masquerade & {
   /**
    * The start time of the enrollment, in ISO8601 format. e.g.
    * 2012-04-18T23:08:51Z
@@ -118,10 +121,12 @@ type Options = {
   pathParams: enroll_user_sectionsPathParameters;
 } & (
   | {
+      searchParams?: Partial<enroll_user_sectionsSearchParameters>;
       params?: Partial<enroll_user_sectionsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: enroll_user_sectionsSearchParameters;
       params: enroll_user_sectionsFormParameters;
       strict: true;
     }

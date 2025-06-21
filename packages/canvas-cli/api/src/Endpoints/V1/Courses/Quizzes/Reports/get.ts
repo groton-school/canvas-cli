@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { QuizReport } from '../../../../../Resources/QuizReports.js';
 
@@ -10,15 +11,16 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /**
-   * Whether the output should include documents for the file and/or progress
-   * objects associated with this report. (Note: JSON-API only)
-   *
-   * String[]
-   */
-  include: string[];
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * Whether the output should include documents for the file and/or progress
+     * objects associated with this report. (Note: JSON-API only)
+     *
+     * String[]
+     */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

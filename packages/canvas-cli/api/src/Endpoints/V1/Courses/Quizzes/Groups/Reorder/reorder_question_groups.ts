@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type reorder_question_groupsPathParameters = {
@@ -9,7 +10,9 @@ export type reorder_question_groupsPathParameters = {
   id: string;
 };
 
-export type reorder_question_groupsFormParameters = {
+export type reorder_question_groupsSearchParameters = Masquerade;
+
+export type reorder_question_groupsFormParameters = Masquerade & {
   /**
    * The associated item's unique identifier
    *
@@ -24,10 +27,12 @@ type Options = {
   pathParams: reorder_question_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<reorder_question_groupsSearchParameters>;
       params?: Partial<reorder_question_groupsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: reorder_question_groupsSearchParameters;
       params: reorder_question_groupsFormParameters;
       strict: true;
     }

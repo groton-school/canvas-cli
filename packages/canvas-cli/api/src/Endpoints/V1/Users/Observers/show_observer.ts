@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -8,13 +9,17 @@ export type show_observerPathParameters = {
   observer_id: string;
 };
 
+export type show_observerSearchParameters = Masquerade;
+
 type Options = {
   pathParams: show_observerPathParameters;
 } & (
   | {
+      searchParams?: Partial<show_observerSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: show_observerSearchParameters;
       strict: true;
     }
 );

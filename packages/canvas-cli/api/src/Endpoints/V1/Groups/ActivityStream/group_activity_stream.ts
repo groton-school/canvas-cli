@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type group_activity_streamPathParameters = {
@@ -5,13 +6,17 @@ export type group_activity_streamPathParameters = {
   group_id: string;
 };
 
+export type group_activity_streamSearchParameters = Masquerade;
+
 type Options = {
   pathParams: group_activity_streamPathParameters;
 } & (
   | {
+      searchParams?: Partial<group_activity_streamSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: group_activity_streamSearchParameters;
       strict: true;
     }
 );

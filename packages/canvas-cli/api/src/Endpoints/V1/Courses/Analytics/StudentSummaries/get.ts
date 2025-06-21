@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type getPathParameters = {
@@ -5,12 +6,13 @@ export type getPathParameters = {
   course_id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /** The order results in which results are returned. Defaults to "name". */
-  sort_column: string;
-  /** If set, returns only the specified student. */
-  student_id: string;
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /** The order results in which results are returned. Defaults to "name". */
+    sort_column: string;
+    /** If set, returns only the specified student. */
+    student_id: string;
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { ExternalFeed } from '../../../../Resources/AnnouncementExternalFeeds.js';
 
@@ -8,13 +9,17 @@ export type delete_external_feed_groupsPathParameters = {
   external_feed_id: string;
 };
 
+export type delete_external_feed_groupsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_external_feed_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_external_feed_groupsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_external_feed_groupsSearchParameters;
       strict: true;
     }
 );

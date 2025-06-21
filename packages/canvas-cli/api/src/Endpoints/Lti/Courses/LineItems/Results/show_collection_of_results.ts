@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Result } from '../../../../../Resources/LiveAssessments.js';
 
@@ -8,13 +9,17 @@ export type show_collection_of_resultsPathParameters = {
   line_item_id: string;
 };
 
+export type show_collection_of_resultsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: show_collection_of_resultsPathParameters;
 } & (
   | {
+      searchParams?: Partial<show_collection_of_resultsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: show_collection_of_resultsSearchParameters;
       strict: true;
     }
 );

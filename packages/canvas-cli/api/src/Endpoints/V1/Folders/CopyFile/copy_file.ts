@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { File } from '../../../../Resources/Files.js';
 
@@ -6,7 +7,9 @@ export type copy_filePathParameters = {
   dest_folder_id: string;
 };
 
-export type copy_fileFormParameters = {
+export type copy_fileSearchParameters = Masquerade;
+
+export type copy_fileFormParameters = Masquerade & {
   /** The id of the source file */
   source_file_id: string;
   /**
@@ -24,10 +27,12 @@ type Options = {
   pathParams: copy_filePathParameters;
 } & (
   | {
+      searchParams?: Partial<copy_fileSearchParameters>;
       params?: Partial<copy_fileFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: copy_fileSearchParameters;
       params: copy_fileFormParameters;
       strict: true;
     }

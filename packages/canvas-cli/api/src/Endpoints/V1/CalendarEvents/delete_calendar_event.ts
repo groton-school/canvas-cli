@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
 export type delete_calendar_eventPathParameters = {
@@ -5,16 +6,17 @@ export type delete_calendar_eventPathParameters = {
   id: string;
 };
 
-export type delete_calendar_eventSearchParameters = Partial<{
-  /** Reason for deleting/canceling the event. */
-  cancel_reason: string;
-  /**
-   * Valid if the event whose ID is in the URL is part of a series. Delete
-   * just the event whose ID is in in the URL, all events in the series, or
-   * the given event and all those following.
-   */
-  which: string;
-}>;
+export type delete_calendar_eventSearchParameters = Masquerade &
+  Partial<{
+    /** Reason for deleting/canceling the event. */
+    cancel_reason: string;
+    /**
+     * Valid if the event whose ID is in the URL is part of a series. Delete
+     * just the event whose ID is in in the URL, all events in the series, or
+     * the given event and all those following.
+     */
+    which: string;
+  }>;
 
 type Options = {
   pathParams: delete_calendar_eventPathParameters;

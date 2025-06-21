@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
@@ -10,13 +11,17 @@ export type delete_reportPathParameters = {
   id: string;
 };
 
+export type delete_reportSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_reportPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_reportSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_reportSearchParameters;
       strict: true;
     }
 );

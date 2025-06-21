@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type mark_submission_as_read_coursesPathParameters = {
@@ -9,13 +10,17 @@ export type mark_submission_as_read_coursesPathParameters = {
   user_id: string;
 };
 
+export type mark_submission_as_read_coursesSearchParameters = Masquerade;
+
 type Options = {
   pathParams: mark_submission_as_read_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<mark_submission_as_read_coursesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: mark_submission_as_read_coursesSearchParameters;
       strict: true;
     }
 );

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
@@ -10,10 +11,11 @@ export type close_notification_for_user_destroy_notification_for_adminPathParame
   };
 
 export type close_notification_for_user_destroy_notification_for_adminSearchParameters =
-  Partial<{
-    /** Destroy the account notification. */
-    remove: boolean;
-  }>;
+  Masquerade &
+    Partial<{
+      /** Destroy the account notification. */
+      remove: boolean;
+    }>;
 
 type Options = {
   pathParams: close_notification_for_user_destroy_notification_for_adminPathParameters;

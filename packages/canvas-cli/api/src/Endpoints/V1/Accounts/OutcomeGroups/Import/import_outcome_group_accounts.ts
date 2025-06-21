@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { OutcomeGroup } from '../../../../../Resources/OutcomeGroups.js';
 
@@ -8,7 +9,9 @@ export type import_outcome_group_accountsPathParameters = {
   id: string;
 };
 
-export type import_outcome_group_accountsFormParameters = {
+export type import_outcome_group_accountsSearchParameters = Masquerade;
+
+export type import_outcome_group_accountsFormParameters = Masquerade & {
   /**
    * The ID of the source outcome group.
    *
@@ -30,10 +33,12 @@ type Options = {
   pathParams: import_outcome_group_accountsPathParameters;
 } & (
   | {
+      searchParams?: Partial<import_outcome_group_accountsSearchParameters>;
       params?: Partial<import_outcome_group_accountsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: import_outcome_group_accountsSearchParameters;
       params: import_outcome_group_accountsFormParameters;
       strict: true;
     }

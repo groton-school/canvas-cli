@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type disable_summary_coursesPathParameters = {
@@ -7,13 +8,17 @@ export type disable_summary_coursesPathParameters = {
   topic_id: string;
 };
 
+export type disable_summary_coursesSearchParameters = Masquerade;
+
 type Options = {
   pathParams: disable_summary_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<disable_summary_coursesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: disable_summary_coursesSearchParameters;
       strict: true;
     }
 );

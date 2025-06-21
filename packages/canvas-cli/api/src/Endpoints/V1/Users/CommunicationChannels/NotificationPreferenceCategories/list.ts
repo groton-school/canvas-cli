@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type listPathParameters = {
@@ -7,13 +8,17 @@ export type listPathParameters = {
   communication_channel_id: string;
 };
 
+export type listSearchParameters = Masquerade;
+
 type Options = {
   pathParams: listPathParameters;
 } & (
   | {
+      searchParams?: Partial<listSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: listSearchParameters;
       strict: true;
     }
 );

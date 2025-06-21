@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type listPathParameters = {
@@ -8,11 +8,12 @@ export type listPathParameters = {
   id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /** The type of content to enumerate. */
-  type: string;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /** The type of content to enumerate. */
+    type: string;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

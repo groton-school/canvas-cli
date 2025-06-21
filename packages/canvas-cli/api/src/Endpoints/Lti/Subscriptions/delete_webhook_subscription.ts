@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
 export type delete_webhook_subscriptionPathParameters = {
@@ -5,13 +6,17 @@ export type delete_webhook_subscriptionPathParameters = {
   id: string;
 };
 
+export type delete_webhook_subscriptionSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_webhook_subscriptionPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_webhook_subscriptionSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_webhook_subscriptionSearchParameters;
       strict: true;
     }
 );

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { AssignmentGroup } from '../../../../Resources/AssignmentGroups.js';
 
@@ -8,17 +9,18 @@ export type destroy_assignment_groupPathParameters = {
   assignment_group_id: string;
 };
 
-export type destroy_assignment_groupSearchParameters = Partial<{
-  /**
-   * The ID of an active Assignment Group to which the assignments that are
-   * currently assigned to the destroyed Assignment Group will be assigned.
-   * NOTE: If this argument is not provided, any assignments in this
-   * Assignment Group will be deleted.
-   *
-   * Format: 'int64'
-   */
-  move_assignments_to: number;
-}>;
+export type destroy_assignment_groupSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * The ID of an active Assignment Group to which the assignments that are
+     * currently assigned to the destroyed Assignment Group will be assigned.
+     * NOTE: If this argument is not provided, any assignments in this
+     * Assignment Group will be deleted.
+     *
+     * Format: 'int64'
+     */
+    move_assignments_to: number;
+  }>;
 
 type Options = {
   pathParams: destroy_assignment_groupPathParameters;

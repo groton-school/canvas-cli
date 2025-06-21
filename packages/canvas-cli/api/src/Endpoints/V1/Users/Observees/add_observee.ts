@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -8,7 +9,9 @@ export type add_observeePathParameters = {
   observee_id: string;
 };
 
-export type add_observeeFormParameters = {
+export type add_observeeSearchParameters = Masquerade;
+
+export type add_observeeFormParameters = Masquerade & {
   /**
    * The ID for the root account to associate with the observation link. If
    * not specified, a link will be created for each root account associated to
@@ -23,10 +26,12 @@ type Options = {
   pathParams: add_observeePathParameters;
 } & (
   | {
+      searchParams?: Partial<add_observeeSearchParameters>;
       params?: Partial<add_observeeFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: add_observeeSearchParameters;
       params: add_observeeFormParameters;
       strict: true;
     }

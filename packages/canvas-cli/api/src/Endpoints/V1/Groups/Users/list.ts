@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
@@ -7,21 +7,22 @@ export type listPathParameters = {
   group_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * The partial name or full ID of the users to match and return in the
-   * results list. Must be at least 3 characters.
-   */
-  search_term: string;
-  /** "avatar_url": Include users' avatar_urls. */
-  include: string[];
-  /**
-   * Whether to filter out inactive users from the results. Defaults to false
-   * unless explicitly provided.
-   */
-  exclude_inactive: boolean;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * The partial name or full ID of the users to match and return in the
+     * results list. Must be at least 3 characters.
+     */
+    search_term: string;
+    /** "avatar_url": Include users' avatar_urls. */
+    include: string[];
+    /**
+     * Whether to filter out inactive users from the results. Defaults to false
+     * unless explicitly provided.
+     */
+    exclude_inactive: boolean;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

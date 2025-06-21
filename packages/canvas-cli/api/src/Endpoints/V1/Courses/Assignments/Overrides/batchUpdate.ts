@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
@@ -7,9 +7,9 @@ export type batchUpdatePathParameters = {
   course_id: string;
 };
 
-export type batchUpdateSearchParameters = Paginated;
+export type batchUpdateSearchParameters = Masquerade & Paginated;
 
-export type batchUpdateFormParameters = {
+export type batchUpdateFormParameters = Masquerade & {
   /** Attributes for the updated overrides. */
   assignment_overrides: AssignmentOverride[];
 };
@@ -18,10 +18,12 @@ type Options = {
   pathParams: batchUpdatePathParameters;
 } & (
   | {
+      searchParams?: Partial<batchUpdateSearchParameters>;
       params?: Partial<batchUpdateFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: batchUpdateSearchParameters;
       params: batchUpdateFormParameters;
       strict: true;
     }

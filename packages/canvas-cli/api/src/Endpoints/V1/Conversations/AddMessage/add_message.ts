@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type add_messagePathParameters = {
@@ -5,7 +6,9 @@ export type add_messagePathParameters = {
   id: string;
 };
 
-export type add_messageFormParameters = {
+export type add_messageSearchParameters = Masquerade;
+
+export type add_messageFormParameters = Masquerade & {
   /** The message to be sent. */
   body: string;
   /**
@@ -30,10 +33,12 @@ type Options = {
   pathParams: add_messagePathParameters;
 } & (
   | {
+      searchParams?: Partial<add_messageSearchParameters>;
       params?: Partial<add_messageFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: add_messageSearchParameters;
       params: add_messageFormParameters;
       strict: true;
     }

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { SisImport } from '../../../../../Resources/SisImports.js';
 
@@ -6,13 +7,17 @@ export type getPathParameters = {
   account_id: string;
 };
 
+export type getSearchParameters = Masquerade;
+
 type Options = {
   pathParams: getPathParameters;
 } & (
   | {
+      searchParams?: Partial<getSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: getSearchParameters;
       strict: true;
     }
 );

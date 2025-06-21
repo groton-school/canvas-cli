@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { CommunicationChannel } from '../../../../Resources/CommunicationChannels.js';
 
@@ -10,13 +11,17 @@ export type delete_communication_channel_typePathParameters = {
   address: string;
 };
 
+export type delete_communication_channel_typeSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_communication_channel_typePathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_communication_channel_typeSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_communication_channel_typeSearchParameters;
       strict: true;
     }
 );

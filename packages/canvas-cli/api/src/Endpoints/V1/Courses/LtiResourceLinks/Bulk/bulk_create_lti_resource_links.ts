@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { Hash } from '../../../../../Overrides.js';
 import { LtiResourceLink } from '../../../../../Resources/LtiResourceLinks.js';
@@ -7,7 +8,9 @@ export type bulk_create_lti_resource_linksPathParameters = {
   course_id: string;
 };
 
-export type bulk_create_lti_resource_linksFormParameters = {
+export type bulk_create_lti_resource_linksSearchParameters = Masquerade;
+
+export type bulk_create_lti_resource_linksFormParameters = Masquerade & {
   /**
    * Body [Required, Array] The POST body should be a JSON array of objects
    * containing the parameters for each link to create.
@@ -25,10 +28,12 @@ type Options = {
   pathParams: bulk_create_lti_resource_linksPathParameters;
 } & (
   | {
+      searchParams?: Partial<bulk_create_lti_resource_linksSearchParameters>;
       params?: Partial<bulk_create_lti_resource_linksFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: bulk_create_lti_resource_linksSearchParameters;
       params: bulk_create_lti_resource_linksFormParameters;
       strict: true;
     }

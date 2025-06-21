@@ -1,4 +1,4 @@
-import { Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { PageView } from '../../../../Resources/Users.js';
 
@@ -7,21 +7,22 @@ export type listPathParameters = {
   user_id: string;
 };
 
-export type listSearchParameters = Partial<{
-  /**
-   * The beginning of the time range from which you want page views.
-   *
-   * Format: date-time
-   */
-  start_time: string;
-  /**
-   * The end of the time range from which you want page views.
-   *
-   * Format: date-time
-   */
-  end_time: string;
-}> &
-  Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * The beginning of the time range from which you want page views.
+     *
+     * Format: date-time
+     */
+    start_time: string;
+    /**
+     * The end of the time range from which you want page views.
+     *
+     * Format: date-time
+     */
+    end_time: string;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

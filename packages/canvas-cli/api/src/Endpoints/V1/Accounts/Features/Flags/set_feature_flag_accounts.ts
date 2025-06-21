@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { FeatureFlag } from '../../../../../Resources/FeatureFlags.js';
 
@@ -8,7 +9,9 @@ export type set_feature_flag_accountsPathParameters = {
   feature: string;
 };
 
-export type set_feature_flag_accountsFormParameters = {
+export type set_feature_flag_accountsSearchParameters = Masquerade;
+
+export type set_feature_flag_accountsFormParameters = Masquerade & {
   /**
    * "off":: The feature is not available for the course, user, or account and
    * sub-accounts. "allowed":: (valid only on accounts) The feature is off in
@@ -23,10 +26,12 @@ type Options = {
   pathParams: set_feature_flag_accountsPathParameters;
 } & (
   | {
+      searchParams?: Partial<set_feature_flag_accountsSearchParameters>;
       params?: Partial<set_feature_flag_accountsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: set_feature_flag_accountsSearchParameters;
       params: set_feature_flag_accountsFormParameters;
       strict: true;
     }

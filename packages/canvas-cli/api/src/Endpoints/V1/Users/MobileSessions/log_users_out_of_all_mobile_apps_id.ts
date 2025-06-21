@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type log_users_out_of_all_mobile_apps_idPathParameters = {
@@ -5,13 +6,17 @@ export type log_users_out_of_all_mobile_apps_idPathParameters = {
   id: string;
 };
 
+export type log_users_out_of_all_mobile_apps_idSearchParameters = Masquerade;
+
 type Options = {
   pathParams: log_users_out_of_all_mobile_apps_idPathParameters;
 } & (
   | {
+      searchParams?: Partial<log_users_out_of_all_mobile_apps_idSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: log_users_out_of_all_mobile_apps_idSearchParameters;
       strict: true;
     }
 );

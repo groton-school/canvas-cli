@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { JSON } from '../../../../Overrides.js';
 
@@ -6,7 +7,9 @@ export type store_custom_dataPathParameters = {
   user_id: string;
 };
 
-export type store_custom_dataFormParameters = {
+export type store_custom_dataSearchParameters = Masquerade;
+
+export type store_custom_dataFormParameters = Masquerade & {
   /**
    * The namespace under which to store the data. This should be something
    * other Canvas API apps aren't likely to use, such as a reverse DNS for
@@ -25,10 +28,12 @@ type Options = {
   pathParams: store_custom_dataPathParameters;
 } & (
   | {
+      searchParams?: Partial<store_custom_dataSearchParameters>;
       params?: Partial<store_custom_dataFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: store_custom_dataSearchParameters;
       params: store_custom_dataFormParameters;
       strict: true;
     }

@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type delete_question_groupPathParameters = {
@@ -9,13 +10,17 @@ export type delete_question_groupPathParameters = {
   id: string;
 };
 
+export type delete_question_groupSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_question_groupPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_question_groupSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_question_groupSearchParameters;
       strict: true;
     }
 );

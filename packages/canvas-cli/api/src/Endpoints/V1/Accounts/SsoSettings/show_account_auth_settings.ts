@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { SSOSettings } from '../../../../Resources/AuthenticationProviders.js';
 
@@ -6,13 +7,17 @@ export type show_account_auth_settingsPathParameters = {
   account_id: string;
 };
 
+export type show_account_auth_settingsSearchParameters = Masquerade;
+
 type Options = {
   pathParams: show_account_auth_settingsPathParameters;
 } & (
   | {
+      searchParams?: Partial<show_account_auth_settingsSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: show_account_auth_settingsSearchParameters;
       strict: true;
     }
 );

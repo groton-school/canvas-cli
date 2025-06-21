@@ -1,7 +1,10 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { Progress } from '../../../Resources/CoursePace.js';
 
-export type batchUpdateFormParameters = {
+export type batchUpdateSearchParameters = Masquerade;
+
+export type batchUpdateFormParameters = Masquerade & {
   /** List of conversations to update. Limited to 500 conversations. */
   conversation_ids: string[];
   /** The action to take on each conversation. */
@@ -10,10 +13,12 @@ export type batchUpdateFormParameters = {
 
 type Options =
   | {
+      searchParams?: Partial<batchUpdateSearchParameters>;
       params?: Partial<batchUpdateFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: batchUpdateSearchParameters;
       params: batchUpdateFormParameters;
       strict: true;
     };

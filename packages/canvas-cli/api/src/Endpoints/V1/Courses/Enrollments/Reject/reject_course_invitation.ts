@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type reject_course_invitationPathParameters = {
@@ -7,13 +8,17 @@ export type reject_course_invitationPathParameters = {
   id: string;
 };
 
+export type reject_course_invitationSearchParameters = Masquerade;
+
 type Options = {
   pathParams: reject_course_invitationPathParameters;
 } & (
   | {
+      searchParams?: Partial<reject_course_invitationSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: reject_course_invitationSearchParameters;
       strict: true;
     }
 );

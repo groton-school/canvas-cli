@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 import { Favorite } from '../../../../../../Resources/Favorites.js';
 
@@ -9,13 +10,17 @@ export type add_group_to_favoritesPathParameters = {
   id: string;
 };
 
+export type add_group_to_favoritesSearchParameters = Masquerade;
+
 type Options = {
   pathParams: add_group_to_favoritesPathParameters;
 } & (
   | {
+      searchParams?: Partial<add_group_to_favoritesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: add_group_to_favoritesSearchParameters;
       strict: true;
     }
 );

@@ -1,11 +1,16 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 import { InstAccessToken } from '../../../Resources/InstAccessTokens.js';
 
+export type createSearchParameters = Masquerade;
+
 type Options =
   | {
+      searchParams?: Partial<createSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: createSearchParameters;
       strict: true;
     };
 

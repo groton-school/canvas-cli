@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type getPathParameters = {
@@ -5,17 +6,18 @@ export type getPathParameters = {
   id: string;
 };
 
-export type getSearchParameters = Partial<{
-  /**
-   * The id of the submission the file is associated with. Provide this
-   * argument to gain access to a file that has been submitted to an
-   * assignment (Canvas will verify that the file belongs to the submission
-   * and the calling user has rights to view the submission).
-   *
-   * Format: 'int64'
-   */
-  submission_id: number;
-}>;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * The id of the submission the file is associated with. Provide this
+     * argument to gain access to a file that has been submitted to an
+     * assignment (Canvas will verify that the file belongs to the submission
+     * and the calling user has rights to view the submission).
+     *
+     * Format: 'int64'
+     */
+    submission_id: number;
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

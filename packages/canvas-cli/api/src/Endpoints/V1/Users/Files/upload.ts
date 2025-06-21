@@ -1,4 +1,8 @@
-import { FileLocation, UploadResponse } from '@groton/canvas-cli.client.base';
+import {
+  FileLocation,
+  Masquerade,
+  UploadResponse
+} from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { File } from '../../../../Resources/Files.js';
 
@@ -7,7 +11,9 @@ export type uploadPathParameters = {
   user_id: string;
 };
 
-export type uploadFormParameters = {
+export type uploadSearchParameters = Masquerade;
+
+export type uploadFormParameters = Masquerade & {
   /**
    * The filename of the file. Any UTF-8 name is allowed. Path components such
    * as `/` and `&#x60; will be treated as part of the filename, not a path to
@@ -77,10 +83,12 @@ type Options = {
   pathParams: uploadPathParameters;
 } & (
   | {
+      searchParams?: Partial<uploadSearchParameters>;
       params?: Partial<uploadFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: uploadSearchParameters;
       params: uploadFormParameters;
       strict: true;
     }

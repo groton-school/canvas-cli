@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { EpubExport } from '../../../../Resources/EPubExports.js';
 
@@ -6,13 +7,17 @@ export type createPathParameters = {
   course_id: string;
 };
 
+export type createSearchParameters = Masquerade;
+
 type Options = {
   pathParams: createPathParameters;
 } & (
   | {
+      searchParams?: Partial<createSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: createSearchParameters;
       strict: true;
     }
 );

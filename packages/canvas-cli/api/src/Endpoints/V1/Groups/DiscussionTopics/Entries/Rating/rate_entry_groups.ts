@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type rate_entry_groupsPathParameters = {
@@ -9,7 +10,9 @@ export type rate_entry_groupsPathParameters = {
   entry_id: string;
 };
 
-export type rate_entry_groupsFormParameters = {
+export type rate_entry_groupsSearchParameters = Masquerade;
+
+export type rate_entry_groupsFormParameters = Masquerade & {
   /**
    * A rating to set on this entry. Only 0 and 1 are accepted.
    *
@@ -22,10 +25,12 @@ type Options = {
   pathParams: rate_entry_groupsPathParameters;
 } & (
   | {
+      searchParams?: Partial<rate_entry_groupsSearchParameters>;
       params?: Partial<rate_entry_groupsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: rate_entry_groupsSearchParameters;
       params: rate_entry_groupsFormParameters;
       strict: true;
     }

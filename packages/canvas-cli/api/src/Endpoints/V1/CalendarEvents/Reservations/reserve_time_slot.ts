@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type reserve_time_slotPathParameters = {
@@ -5,7 +6,9 @@ export type reserve_time_slotPathParameters = {
   id: string;
 };
 
-export type reserve_time_slotFormParameters = {
+export type reserve_time_slotSearchParameters = Masquerade;
+
+export type reserve_time_slotFormParameters = Masquerade & {
   /**
    * User or group id for whom you are making the reservation (depends on the
    * participant type). Defaults to the current user (or user's candidate
@@ -25,10 +28,12 @@ type Options = {
   pathParams: reserve_time_slotPathParameters;
 } & (
   | {
+      searchParams?: Partial<reserve_time_slotSearchParameters>;
       params?: Partial<reserve_time_slotFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: reserve_time_slotSearchParameters;
       params: reserve_time_slotFormParameters;
       strict: true;
     }

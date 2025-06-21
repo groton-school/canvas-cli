@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { TemporaryEnrollmentPairing } from '../../../../../Resources/TemporaryEnrollmentPairings.js';
 
@@ -6,13 +7,17 @@ export type new_temporaryenrollmentpairingPathParameters = {
   account_id: string;
 };
 
+export type new_temporaryenrollmentpairingSearchParameters = Masquerade;
+
 type Options = {
   pathParams: new_temporaryenrollmentpairingPathParameters;
 } & (
   | {
+      searchParams?: Partial<new_temporaryenrollmentpairingSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: new_temporaryenrollmentpairingSearchParameters;
       strict: true;
     }
 );

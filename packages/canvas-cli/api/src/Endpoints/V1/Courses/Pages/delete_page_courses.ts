@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
@@ -8,13 +9,17 @@ export type delete_page_coursesPathParameters = {
   url_or_id: string;
 };
 
+export type delete_page_coursesSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_page_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_page_coursesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_page_coursesSearchParameters;
       strict: true;
     }
 );

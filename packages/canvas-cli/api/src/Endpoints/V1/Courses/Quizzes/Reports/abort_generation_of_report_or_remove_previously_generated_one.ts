@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type abort_generation_of_report_or_remove_previously_generated_onePathParameters =
@@ -10,13 +11,18 @@ export type abort_generation_of_report_or_remove_previously_generated_onePathPar
     id: string;
   };
 
+export type abort_generation_of_report_or_remove_previously_generated_oneSearchParameters =
+  Masquerade;
+
 type Options = {
   pathParams: abort_generation_of_report_or_remove_previously_generated_onePathParameters;
 } & (
   | {
+      searchParams?: Partial<abort_generation_of_report_or_remove_previously_generated_oneSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: abort_generation_of_report_or_remove_previously_generated_oneSearchParameters;
       strict: true;
     }
 );

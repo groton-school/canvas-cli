@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type delete_bookmarkPathParameters = {
@@ -5,13 +6,17 @@ export type delete_bookmarkPathParameters = {
   id: string;
 };
 
+export type delete_bookmarkSearchParameters = Masquerade;
+
 type Options = {
   pathParams: delete_bookmarkPathParameters;
 } & (
   | {
+      searchParams?: Partial<delete_bookmarkSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: delete_bookmarkSearchParameters;
       strict: true;
     }
 );

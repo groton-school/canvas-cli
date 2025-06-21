@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type patch_late_policyPathParameters = {
@@ -5,7 +6,9 @@ export type patch_late_policyPathParameters = {
   id: string;
 };
 
-export type patch_late_policyFormParameters = {
+export type patch_late_policySearchParameters = Masquerade;
+
+export type patch_late_policyFormParameters = Masquerade & {
   /** Whether to enable the missing submission deduction late policy. */
   'late_policy[missing_submission_deduction_enabled]': boolean;
   /** How many percentage points to deduct from a missing submission. */
@@ -26,10 +29,12 @@ type Options = {
   pathParams: patch_late_policyPathParameters;
 } & (
   | {
+      searchParams?: Partial<patch_late_policySearchParameters>;
       params?: Partial<patch_late_policyFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: patch_late_policySearchParameters;
       params: patch_late_policyFormParameters;
       strict: true;
     }

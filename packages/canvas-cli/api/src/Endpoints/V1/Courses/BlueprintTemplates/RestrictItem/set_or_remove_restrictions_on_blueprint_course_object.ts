@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { BlueprintRestriction } from '../../../../../Resources/BlueprintCourses.js';
 
@@ -9,8 +10,11 @@ export type set_or_remove_restrictions_on_blueprint_course_objectPathParameters 
     template_id: string;
   };
 
+export type set_or_remove_restrictions_on_blueprint_course_objectSearchParameters =
+  Masquerade;
+
 export type set_or_remove_restrictions_on_blueprint_course_objectFormParameters =
-  {
+  Masquerade & {
     /**
      * [String,
      * "assignment"|"attachment"|"discussion_topic"|"external_tool"|"lti-quiz"|"quiz"|"wiki_page"]
@@ -37,10 +41,12 @@ type Options = {
   pathParams: set_or_remove_restrictions_on_blueprint_course_objectPathParameters;
 } & (
   | {
+      searchParams?: Partial<set_or_remove_restrictions_on_blueprint_course_objectSearchParameters>;
       params?: Partial<set_or_remove_restrictions_on_blueprint_course_objectFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: set_or_remove_restrictions_on_blueprint_course_objectSearchParameters;
       params: set_or_remove_restrictions_on_blueprint_course_objectFormParameters;
       strict: true;
     }

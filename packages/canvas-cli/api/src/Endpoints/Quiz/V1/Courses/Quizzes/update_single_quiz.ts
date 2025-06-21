@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 import { NewQuiz } from '../../../../../Resources/NewQuizzes.js';
 
@@ -16,7 +17,9 @@ export type update_single_quizPathParameters = {
   assignment_id: number;
 };
 
-export type update_single_quizFormParameters = {
+export type update_single_quizSearchParameters = Masquerade;
+
+export type update_single_quizFormParameters = Masquerade & {
   /** The title of the quiz. */
   'quiz[title]': string;
   /**
@@ -206,10 +209,12 @@ type Options = {
   pathParams: update_single_quizPathParameters;
 } & (
   | {
+      searchParams?: Partial<update_single_quizSearchParameters>;
       params?: Partial<update_single_quizFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: update_single_quizSearchParameters;
       params: update_single_quizFormParameters;
       strict: true;
     }

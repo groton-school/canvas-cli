@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type mark_topic_as_unread_coursesPathParameters = {
@@ -7,13 +8,17 @@ export type mark_topic_as_unread_coursesPathParameters = {
   topic_id: string;
 };
 
+export type mark_topic_as_unread_coursesSearchParameters = Masquerade;
+
 type Options = {
   pathParams: mark_topic_as_unread_coursesPathParameters;
 } & (
   | {
+      searchParams?: Partial<mark_topic_as_unread_coursesSearchParameters>;
       strict?: false;
     }
   | {
+      searchParams: mark_topic_as_unread_coursesSearchParameters;
       strict: true;
     }
 );

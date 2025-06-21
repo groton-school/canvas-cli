@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type retrieve_captured_eventsPathParameters = {
@@ -9,15 +10,16 @@ export type retrieve_captured_eventsPathParameters = {
   id: string;
 };
 
-export type retrieve_captured_eventsSearchParameters = Partial<{
-  /**
-   * The specific submission attempt to look up the events for. If
-   * unspecified, the latest attempt will be used.
-   *
-   * Format: 'int64'
-   */
-  attempt: number;
-}>;
+export type retrieve_captured_eventsSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * The specific submission attempt to look up the events for. If
+     * unspecified, the latest attempt will be used.
+     *
+     * Format: 'int64'
+     */
+    attempt: number;
+  }>;
 
 type Options = {
   pathParams: retrieve_captured_eventsPathParameters;

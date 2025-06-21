@@ -1,3 +1,4 @@
+import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type set_extensions_for_student_assignment_submissionsPathParameters = {
@@ -7,30 +8,36 @@ export type set_extensions_for_student_assignment_submissionsPathParameters = {
   assignment_id: string;
 };
 
-export type set_extensions_for_student_assignment_submissionsFormParameters = {
-  /**
-   * The ID of the user we want to add assignment extensions for.
-   *
-   * Format: 'int64'
-   */
-  'assignment_extensions[user_id]': number[];
-  /**
-   * Number of times the student is allowed to re-take the assignment over the
-   * limit.
-   *
-   * Format: 'int64'
-   */
-  'assignment_extensions[extra_attempts]': number[];
-};
+export type set_extensions_for_student_assignment_submissionsSearchParameters =
+  Masquerade;
+
+export type set_extensions_for_student_assignment_submissionsFormParameters =
+  Masquerade & {
+    /**
+     * The ID of the user we want to add assignment extensions for.
+     *
+     * Format: 'int64'
+     */
+    'assignment_extensions[user_id]': number[];
+    /**
+     * Number of times the student is allowed to re-take the assignment over the
+     * limit.
+     *
+     * Format: 'int64'
+     */
+    'assignment_extensions[extra_attempts]': number[];
+  };
 
 type Options = {
   pathParams: set_extensions_for_student_assignment_submissionsPathParameters;
 } & (
   | {
+      searchParams?: Partial<set_extensions_for_student_assignment_submissionsSearchParameters>;
       params?: Partial<set_extensions_for_student_assignment_submissionsFormParameters>;
       strict?: false;
     }
   | {
+      searchParams: set_extensions_for_student_assignment_submissionsSearchParameters;
       params: set_extensions_for_student_assignment_submissionsFormParameters;
       strict: true;
     }
