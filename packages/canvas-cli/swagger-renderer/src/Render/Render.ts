@@ -42,7 +42,10 @@ export function configure(config: Configuration = {}) {
   templatePath = Plugin.hydrate(config.templatePath, templatePath);
   outputPath = Plugin.hydrate(config.outputPath, outputPath);
   modelDirName = Plugin.hydrate(config.modelDirName, modelDirName);
-  operationsDirName = Plugin.hydrate(config.endpointDirName, operationsDirName);
+  operationsDirName = Plugin.hydrate(
+    config.operationsDirName,
+    operationsDirName
+  );
   prettierConfigPath = Plugin.hydrate(
     config.prettierConfigPath,
     prettierConfigPath
