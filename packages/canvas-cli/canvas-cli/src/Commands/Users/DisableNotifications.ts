@@ -53,7 +53,7 @@ const availableCategories = [
 
 export type Configuration = Plugin.Configuration & {
   account_id?: string;
-  enrollment_types?: Canvas.v1.Accounts.Users.listSearchParameters['enrollment_type'][];
+  enrollment_types?: string[] | undefined;
   categories?: string[];
 };
 
