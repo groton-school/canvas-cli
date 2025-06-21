@@ -153,14 +153,14 @@ export async function run() {
     for (const user of users) {
       const spinner = ora().start(user.name);
       const channels = await Canvas.v1.Users.CommunicationChannels.list({
-        pathParams: { user_id: user.id.toString() }
+        pathParams: { user_id: user.id }
       });
       for (const channel of channels) {
         for (const category of categories) {
           (await Canvas.v1.Users.Self.CommunicationChannels.NotificationPreferenceCategories.update(
             {
               pathParams: {
-                communication_channel_id: channel.id.toString(),
+                communication_channel_id: channel.id,
                 category
               },
               params: {

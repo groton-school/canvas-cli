@@ -118,14 +118,14 @@ export async function run() {
     const block = blockFrom(course);
     if (block && block in colors) {
       for (const enrollment of await Canvas.v1.Courses.Enrollments.list({
-        pathParams: { course_id: course.id.toString() },
+        pathParams: { course_id: course.id },
         searchParams: { per_page }
       })) {
         const hexcode = colorOf(enrollment);
         if (hexcode) {
           await Canvas.v1.Users.Colors.update({
             pathParams: {
-              id: enrollment.user_id.toString(),
+              id: enrollment.user_id,
               asset_string: `course_${course.id}`
             },
             params: { hexcode }

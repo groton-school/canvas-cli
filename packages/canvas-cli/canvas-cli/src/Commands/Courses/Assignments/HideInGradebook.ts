@@ -50,7 +50,7 @@ export async function run() {
   })) {
     if (assignment.hide_in_gradebook != hide_in_gradebook) {
       await Canvas.v1.Courses.Assignments.update({
-        pathParams: { course_id, id: assignment.id.toString() },
+        pathParams: { course_id, id: assignment.id },
         params: {
           'assignment[hide_in_gradebook]': hide_in_gradebook
         }

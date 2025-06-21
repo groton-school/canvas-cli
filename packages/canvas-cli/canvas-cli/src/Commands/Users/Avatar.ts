@@ -69,8 +69,7 @@ export async function run() {
   for (const { user_id, sis_user_id, path_to_avatar } of data) {
     spinner = ora(`User ID ${Colors.value(user_id || sis_user_id)}`).start();
     const user = users.find(
-      (user) =>
-        user.id.toString() === user_id || user.sis_user_id === sis_user_id
+      (user) => user.id == user_id || user.sis_user_id === sis_user_id
     );
     if (!user) {
       spinner.fail(
@@ -81,16 +80,16 @@ export async function run() {
       spinner.text = user.name;
     }
     const file = await Canvas.v1.Users.Files.upload({
-      pathParams: { user_id: user.id.toString() },
+      pathParams: { user_id: user.id },
       params: {
         name: 'avatar.jpg',
         parent_folder_path: 'profile pictures',
-        as_user_id: user.id.toString()
+        as_user_id: user.id
       },
       file: { filePath: path_to_avatar }
     });
     const avatars = await Canvas.v1.Users.Avatars.list({
-      pathParams: { user_id: user.id.toString() }
+      pathParams: { user_id: user.id }
     });
     const token = avatars.find(
       // FIXME Avatars are sometimes Files
@@ -98,7 +97,7 @@ export async function run() {
     )?.token;
     if (token) {
       await Canvas.v1.Users.update({
-        pathParams: { id: user.id.toString() },
+        pathParams: { id: user.id },
         params: { 'user[avatar][token]': token }
       });
       spinner.succeed();
