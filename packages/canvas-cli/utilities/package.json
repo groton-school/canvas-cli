@@ -1,6 +1,7 @@
 {
   "name": "@groton/canvas-cli.utilities",
   "version": "0.1.1",
+  "description": "Utility functions to support @groton/canvas-cli.api and its clients",
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/utilities#readme",
   "repository": {
     "type": "git",
