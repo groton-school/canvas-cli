@@ -62,7 +62,7 @@ export function configure(config: Configuration = {}) {
         redirect_uri: process.env.CANVAS_REDIRECT_URI
       };
       if (process.env.CANVAS_TOKEN_STORE) {
-        // @ts-expect-error 2339 should really type CanvasConfig, but need to directly import @oauth2-cli/canvas for that
+        // @ts-expect-error 2339 TODO should really type CanvasConfig, but need to directly import @oauth2-cli/canvas for that
         canvasConfig.store = path.join(
           process.env.CANVAS_TOKEN_STORE,
           `${new URL(config.canvasInstanceUrl).hostname}.json`

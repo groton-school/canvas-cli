@@ -64,7 +64,7 @@ export class Client extends Canvas implements Base.Base {
       if (!init.headers) {
         init.headers = [];
       }
-      // @ts-expect-error 7053
+      // @ts-expect-error 7053 limitation of node-fetch typing
       init.headers['Content-Type'] = 'application/x-www-form-urlencoded';
     }
     if (searchParams) {

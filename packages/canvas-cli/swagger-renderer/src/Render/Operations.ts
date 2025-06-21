@@ -83,7 +83,7 @@ export function annotateOperations({
             });
           }
 
-          // @ts-expect-error 2322
+          // @ts-expect-error 2322 TODO $ref typing
           const annotatedOperation: AnnotatedOperation = {
             ...operation,
             specPath,
@@ -132,7 +132,7 @@ export function annotateOperations({
               annotatedOperation[paramType] = [];
             }
             if (Array.isArray(annotatedOperation[paramType])) {
-              // @ts-expect-error 2345
+              // @ts-expect-error 2345 TODO fix wonky annotation typing
               annotatedOperation[paramType].push(annotatedParameter);
             }
           }

@@ -74,7 +74,7 @@ export async function toCanvasArgs({
 }: ToCanvasArgsOptions): Promise<
   Partial<Canvas.v1.Courses.Assignments.createFormParameters>
 > {
-  // @ts-expect-error 2322 assignment is no longer a pure model, but we don't need to know that
+  // @ts-expect-error 2322 TODO assignment is no longer a pure model, but we don't need to know that
   assignment = await Files.uploadLocalFiles({ course, entry: assignment });
   const args: Partial<Canvas.v1.Courses.Assignments.createFormParameters> = {
     'assignment[name]': stripHtml(
