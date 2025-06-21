@@ -20,12 +20,6 @@ importers:
       '@groton/canvas-cli':
         specifier: workspace:*
         version: link:packages/canvas-cli/canvas-cli
-      '@msar/canvas-import':
-        specifier: workspace:*
-        version: link:packages/msar/canvas-import
-      '@msar/canvas-import-open':
-        specifier: workspace:*
-        version: link:packages/msar/canvas-import-open
       lerna:
         specifier: ^8.2.2
         version: 8.2.2(encoding@0.1.13)
@@ -8518,7 +8512,7 @@ snapshots:
 
   log-symbols@4.1.0:
     dependencies:
-      chalk: 4.1.2
+      chalk: 4.1.0
       is-unicode-supported: 0.1.0
 
   log-symbols@6.0.0:
