@@ -92,7 +92,7 @@ export function toTSType(property: Swagger.v1p2.DataType): TSType {
     }
   }
   if ('format' in property && property.format != null) {
-    tsType.description = `format: '${property.format}'`;
+    tsType.description = `${tsType.description || ''}\n\nformat: '${property.format}'`;
   }
   return tsType;
 }

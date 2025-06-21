@@ -135,6 +135,17 @@ export function annotateOperations({
               // @ts-expect-error 2345 TODO fix wonky annotation typing
               annotatedOperation[paramType].push(annotatedParameter);
             }
+
+            // force path params to accept numbers too
+            for (const param of annotatedOperation['tsPathParameters'] || []) {
+              if (
+                (param.name === 'id' || /_id$/.test(param.name)) &&
+                param.tsType.type === 'string'
+              ) {
+                param.tsType.description = `type: ${param.tsType.type}\n${param.tsType.description || ''}`;
+                param.tsType.type = `${param.tsType.type} | number`;
+              }
+            }
           }
 
           operations[annotatedOperation.tsFilePath] =
