@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.2.0](https://github.com/groton-school/canvas-cli/compare/api/0.1.3...api/0.2.0) (2025-06-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **canvas-cli.api:** externalize client management to client package
+
+### Features
+
+* **canvas-cli.api:** externalize client management to client package ([7a0f63d](https://github.com/groton-school/canvas-cli/commit/7a0f63da0cb86fb0c998c50d2c89bdb73359e87a))
+* support masquerading ([be4c8f9](https://github.com/groton-school/canvas-cli/commit/be4c8f9ceaf9d0e98ee6d56c16bae0f8463f7e36))
+* update endpoints and resources to 2025-06-19 spec ([c9b9a60](https://github.com/groton-school/canvas-cli/commit/c9b9a604304f0dd93e5fbe5bf4630c46a884eec2))
+
+
+### Bug Fixes
+
+* accept strings and numbers interchangeably ([6fb8af7](https://github.com/groton-school/canvas-cli/commit/6fb8af754e7d0e540bb2ad783d8ed763ac71a908)), closes [#51](https://github.com/groton-school/canvas-cli/issues/51)
+
 ## [0.1.3](https://github.com/groton-school/canvas-cli/compare/api/0.1.2...api/0.1.3) (2025-05-31)
 
 
