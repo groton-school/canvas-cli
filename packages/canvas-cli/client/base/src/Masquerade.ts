@@ -11,6 +11,8 @@ export type Masquerade = {
    *
    * To masquerade, add an as_user_id parameter to any request. It can be either
    * a Canvas user ID, or an SIS user ID
+   *
+   * @see https://developerdocs.instructure.com/services/canvas/basics/file.masquerading
    */
   as_user_id?: string | number;
 };

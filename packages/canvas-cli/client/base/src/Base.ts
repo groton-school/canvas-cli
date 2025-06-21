@@ -20,7 +20,29 @@ export type UploadParams = {
 };
 
 export interface Base {
+  /** Base instance URL for API requests */
   readonly instance_url: URLString;
+
+  /**
+   * For optimal compatibility, requests to the Canvas API should include the
+   * following headers:
+   *
+   * ```txt
+   *   Content-Type: application/x-www-form-urlencoded
+   *   Accept: application/json+canvas-string-ids
+   * ```
+   *
+   * @param endpoint Endpoint path, relative to `instance_url`
+   * @param init Request method and parameters
+   * @see https://developerdocs.instructure.com/services/canvas#schema
+   */
   fetchAs<T = JSONValue>(endpoint: string, init?: Init): Promise<T>;
+
+  /**
+   * Steps 2 and 3 of the file upload process
+   *
+   * @param params Opaque upload response and file location information
+   * @see https://developerdocs.instructure.com/services/canvas/basics/file.file_uploads
+   */
   upload<T = JSONValue>(params: UploadParams): Promise<T>;
 }
