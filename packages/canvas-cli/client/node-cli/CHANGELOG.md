@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## 0.1.2 (2025-06-21)
+
+
+### Bug Fixes
+
+* request string IDs from API ([05bd460](https://github.com/groton-school/canvas-cli/commit/05bd4607b2b2b1d05d88c961278972bf39b5be56)), closes [#51](https://github.com/groton-school/canvas-cli/issues/51)
+
 ## [0.1.1](https://github.com/groton-school/canvas-cli/compare/client/0.0.3...client/0.1.1) (2025-05-31)
 
 
