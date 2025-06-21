@@ -56,14 +56,17 @@ export function toTSType(property: Swagger.v1p2.DataType): TSType {
   if (!tsType) {
     tsType = { type: 'unknown' };
     switch (property.type) {
-      case 'void':
       case 'boolean':
       case 'number':
+        tsType.description = `type: ${property.type}`;
+        tsType.type = `${property.type} | string`;
+        break;
+      case 'void':
       case 'string':
         tsType.type = property.type;
         break;
       case 'integer':
-        tsType.type = 'number';
+        tsType.type = 'number | string';
         tsType.description = `type: ${property.type}`;
         break;
       case 'array':
