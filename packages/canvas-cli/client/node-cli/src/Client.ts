@@ -15,6 +15,11 @@ type RequestInitParams = RequestInit & {
 };
 type RequestInitMethod = Omit<RequestInitParams, 'method'>;
 
+const headers = {
+  'Content-Type': 'application/x-www-form-urlencoded',
+  Accept: 'application/json+canvas-string-ids'
+};
+
 export class Client extends Canvas implements Base.Base {
   private queue = new PQueue();
 
@@ -62,10 +67,9 @@ export class Client extends Canvas implements Base.Base {
     if (params) {
       init.body = stringify(params);
       if (!init.headers) {
-        init.headers = [];
+        init.headers = {};
       }
-      // @ts-expect-error 7053 limitation of node-fetch typing
-      init.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+      init.headers = { ...init.headers, ...headers };
     }
     if (searchParams) {
       nextEndpoint = `${nextEndpoint}${nextEndpoint.includes('?') ? '&' : '?'}${stringify(searchParams)}`;
