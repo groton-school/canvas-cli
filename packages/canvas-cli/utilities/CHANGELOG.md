@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.2](https://github.com/groton-school/canvas-cli/compare/utilities/0.1.1...utilities/0.1.2) (2025-06-21)
+
+
+### Bug Fixes
+
+* **canvas-cli.utilities:** encode _all_ string values and set Content-Type header as-needed ([65ead22](https://github.com/groton-school/canvas-cli/commit/65ead22cb7a2e30d5648fe72f82e83f4fd7bfbb6))
+
 ## [0.1.1](https://github.com/groton-school/canvas-cli/compare/utilities/0.1.0...utilities/0.1.1) (2025-05-10)
 
 
