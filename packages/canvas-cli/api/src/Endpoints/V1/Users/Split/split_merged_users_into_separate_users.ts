@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
 export type split_merged_users_into_separate_usersPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type split_merged_users_into_separate_usersSearchParameters =

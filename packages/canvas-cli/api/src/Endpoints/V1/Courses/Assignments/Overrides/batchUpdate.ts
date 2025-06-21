@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
 export type batchUpdatePathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type batchUpdateSearchParameters = Masquerade & Paginated;

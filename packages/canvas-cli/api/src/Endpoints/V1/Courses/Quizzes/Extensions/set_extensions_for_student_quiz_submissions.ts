@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type set_extensions_for_student_quiz_submissionsPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  quiz_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_id: string | number;
 };
 
 export type set_extensions_for_student_quiz_submissionsSearchParameters =
@@ -18,14 +26,14 @@ export type set_extensions_for_student_quiz_submissionsFormParameters =
      *
      * Format: 'int64'
      */
-    'quiz_extensions[user_id]': number[];
+    'quiz_extensions[user_id]': number | string[];
     /**
      * Number of times the student is allowed to re-take the quiz over the
      * multiple-attempt limit. This is limited to 1000 attempts or less.
      *
      * Format: 'int64'
      */
-    'quiz_extensions[extra_attempts]': number[];
+    'quiz_extensions[extra_attempts]': number | string[];
     /**
      * The number of extra minutes to allow for all attempts. This will add to
      * the existing time limit on the submission. This is limited to 10080
@@ -33,9 +41,9 @@ export type set_extensions_for_student_quiz_submissionsFormParameters =
      *
      * Format: 'int64'
      */
-    'quiz_extensions[extra_time]': number[];
+    'quiz_extensions[extra_time]': number | string[];
     /** Allow the student to take the quiz even if it's locked for everyone else. */
-    'quiz_extensions[manually_unlocked]': boolean[];
+    'quiz_extensions[manually_unlocked]': boolean | string[];
     /**
      * The number of minutes to extend the quiz from the current time. This is
      * mutually exclusive to extend_from_end_at. This is limited to 1440 minutes
@@ -43,7 +51,7 @@ export type set_extensions_for_student_quiz_submissionsFormParameters =
      *
      * Format: 'int64'
      */
-    'quiz_extensions[extend_from_now]': number[];
+    'quiz_extensions[extend_from_now]': number | string[];
     /**
      * The number of minutes to extend the quiz beyond the quiz's current ending
      * time. This is mutually exclusive to extend_from_now. This is limited to
@@ -51,7 +59,7 @@ export type set_extensions_for_student_quiz_submissionsFormParameters =
      *
      * Format: 'int64'
      */
-    'quiz_extensions[extend_from_end_at]': number[];
+    'quiz_extensions[extend_from_end_at]': number | string[];
   };
 
 type Options = {

@@ -2,21 +2,31 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type listPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
   Partial<{
     /** The partial name of the tools to match and return. */
     search_term: string;
-    /** If true, then only tools that are meant to be selectable are returned. */
-    selectable: boolean;
+    /**
+     * If true, then only tools that are meant to be selectable are returned.
+     *
+     * Type: boolean
+     */
+    selectable: boolean | string;
     /**
      * If true, then include tools installed in all accounts above the current
      * context
+     *
+     * Type: boolean
      */
-    include_parents: boolean;
+    include_parents: boolean | string;
     /** The placement type to filter by. */
     placement: string;
   }>;

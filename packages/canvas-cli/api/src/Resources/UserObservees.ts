@@ -3,9 +3,11 @@ export type PairingCode = {
   /**
    * The ID of the user.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  user_id: number;
+  user_id: number | string;
   /** The actual code to be sent to other APIs */
   code: string;
   /**

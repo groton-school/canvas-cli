@@ -4,14 +4,14 @@ export type LtiResourceLink = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The Canvas identifier for the context that the LTI Resource Link is
    * associated with.
    *
    * Type: integer
    */
-  context_id: number;
+  context_id: number | string;
   /** The type of the context that the LTI Resource Link is associated with. */
   context_type: string;
   /**
@@ -22,7 +22,7 @@ export type LtiResourceLink = {
    *
    * Type: integer
    */
-  context_external_tool_id: number;
+  context_external_tool_id: number | string;
   /** The type of Canvas content for the resource link. Included for convenience. */
   resource_type: string;
   /**
@@ -70,5 +70,5 @@ export type LtiResourceLink = {
    *
    * Type: integer
    */
-  associated_content_id: number;
+  associated_content_id: number | string;
 };

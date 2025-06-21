@@ -7,7 +7,7 @@ export type Appointment = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * Start time for the appointment
    *
@@ -28,7 +28,7 @@ export type AppointmentGroup = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The title of the appointment group */
   title: string;
   /**
@@ -54,7 +54,7 @@ export type AppointmentGroup = {
    *
    * Type: integer
    */
-  participant_count: number;
+  participant_count: number | string;
   /**
    * The start and end times of slots reserved by the current user as well as
    * the id of the calendar event for the reservation (see include[] argument)
@@ -63,8 +63,10 @@ export type AppointmentGroup = {
   /**
    * Boolean indicating whether observer users should be able to sign-up for an
    * appointment
+   *
+   * Type: boolean
    */
-  allow_observer_signup: boolean;
+  allow_observer_signup: boolean | string;
   /**
    * The context codes (i.e. courses) this appointment group belongs to. Only
    * people in these courses will be eligible to sign up.
@@ -74,7 +76,7 @@ export type AppointmentGroup = {
    * The sub-context codes (i.e. course sections and group categories) this
    * appointment group is restricted to
    */
-  sub_context_codes: number[];
+  sub_context_codes: number | string[];
   /**
    * Current state of the appointment group ('pending', 'active' or 'deleted').
    * 'pending' indicates that it has not been published yet and is invisible to
@@ -85,14 +87,16 @@ export type AppointmentGroup = {
    * Boolean indicating whether the current user needs to sign up for this
    * appointment group (i.e. it's reservable and the
    * min_appointments_per_participant limit has not been met by this user).
+   *
+   * Type: boolean
    */
-  requiring_action: boolean;
+  requiring_action: boolean | string;
   /**
    * Number of time slots in this appointment group
    *
    * Type: integer
    */
-  appointments_count: number;
+  appointments_count: number | string;
   /**
    * Calendar Events representing the time slots (see include[] argument) Refer
    * to the Calendar Events API for more information
@@ -108,21 +112,21 @@ export type AppointmentGroup = {
    *
    * Type: integer
    */
-  max_appointments_per_participant: number;
+  max_appointments_per_participant: number | string;
   /**
    * Minimum number of time slots a user must register for. If not set, users do
    * not need to sign up for any time slots
    *
    * Type: integer
    */
-  min_appointments_per_participant: number;
+  min_appointments_per_participant: number | string;
   /**
    * Maximum number of participants that may register for each time slot, or
    * null if no limit
    *
    * Type: integer
    */
-  participants_per_appointment: number;
+  participants_per_appointment: number | string;
   /**
    * 'private' means participants cannot see who has signed up for a particular
    * time slot, 'protected' means that they can

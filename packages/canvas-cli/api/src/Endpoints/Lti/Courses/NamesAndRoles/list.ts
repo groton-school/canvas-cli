@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { NamesAndRoleMemberships } from '../../../../Resources/NamesAndRole.js';
 
 export type listPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &

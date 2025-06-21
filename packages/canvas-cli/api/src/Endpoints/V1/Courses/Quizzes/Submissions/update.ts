@@ -3,12 +3,24 @@ import { client } from '../../../../../Client.js';
 import { Hash } from '../../../../../Overrides.js';
 
 export type updatePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  quiz_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -20,13 +32,13 @@ export type updateFormParameters = Masquerade & {
    *
    * Format: 'int64'
    */
-  'quiz_submissions[attempt]': number[];
+  'quiz_submissions[attempt]': number | string[];
   /**
    * Amount of positive or negative points to fudge the total score by.
    *
    * Format: 'float'
    */
-  'quiz_submissions[fudge_points]': number[];
+  'quiz_submissions[fudge_points]': number | string[];
   /**
    * A set of scores and comments for each question answered by the student.
    * The keys are the question IDs, and the values are hashes of `score` and

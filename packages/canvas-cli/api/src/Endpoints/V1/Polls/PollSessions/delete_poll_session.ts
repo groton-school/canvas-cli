@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type delete_poll_sessionPathParameters = {
-  /** ID */
-  poll_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  poll_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type delete_poll_sessionSearchParameters = Masquerade;

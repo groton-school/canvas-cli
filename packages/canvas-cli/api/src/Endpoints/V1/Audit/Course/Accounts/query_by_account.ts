@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { CourseEvent } from '../../../../../Resources/CourseAuditLog.js';
 
 export type query_by_accountPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type query_by_accountSearchParameters = Masquerade &

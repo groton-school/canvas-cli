@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { File } from '../../../../Resources/Files.js';
 
 export type listPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type listSearchParameters = Masquerade &

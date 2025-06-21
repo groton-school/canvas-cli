@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type submit_assignment_coursesPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assignment_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
 };
 
 export type submit_assignment_coursesSearchParameters = Masquerade;
@@ -17,8 +25,10 @@ export type submit_assignment_coursesFormParameters = Masquerade & {
    * Whether or not this comment should be sent to the entire group (defaults
    * to false). Ignored if this is not a group assignment or if no
    * text_comment is provided.
+   *
+   * Type: boolean
    */
-  'submission[group_comment]': boolean;
+  'submission[group_comment]': boolean | string;
   /**
    * The type of submission being made. The assignment submission_types must
    * include this submission type as an allowed option, or the submission will
@@ -59,7 +69,7 @@ export type submit_assignment_coursesFormParameters = Masquerade & {
    *
    * Format: 'int64'
    */
-  'submission[file_ids]': number[];
+  'submission[file_ids]': number | string[];
   /**
    * The media comment id to submit. Media comment ids can be submitted via
    * this API, however, note that there is not yet an API to generate or list
@@ -74,18 +84,22 @@ export type submit_assignment_coursesFormParameters = Masquerade & {
   /**
    * Submit on behalf of the given user. Requires grading permission.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'submission[user_id]': number;
+  'submission[user_id]': number | string;
   /**
    * The Attachment ID of the document being annotated. This should match the
    * annotatable_attachment_id on the assignment.
    *
    * Requires a submission_type of "student_annotation".
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'submission[annotatable_attachment_id]': number;
+  'submission[annotatable_attachment_id]': number | string;
   /**
    * Choose the time the submission is listed as submitted at. Requires
    * grading permission.

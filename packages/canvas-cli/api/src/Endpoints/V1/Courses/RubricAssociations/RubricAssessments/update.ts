@@ -6,21 +6,27 @@ export type updatePathParameters = {
   /**
    * The id of the rubric assessment
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  id: number;
+  id: number | string;
   /**
    * The id of the course
    *
-   * Format: 'int64'
-   */
-  course_id: number;
-  /**
-   * The id of the object with which this rubric assessment is associated
+   * Type: integer
    *
    * Format: 'int64'
    */
-  rubric_association_id: number;
+  course_id: number | string;
+  /**
+   * The id of the object with which this rubric assessment is associated
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  rubric_association_id: number | string;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -37,8 +43,12 @@ export type updateFormParameters = Masquerade & {
    * false.
    */
   final: string;
-  /** (optional) Defaults to false */
-  graded_anonymously: boolean;
+  /**
+   * (optional) Defaults to false
+   *
+   * Type: boolean
+   */
+  graded_anonymously: boolean | string;
   /**
    * A Hash of data to complement the rubric assessment: The user id that
    * refers to the person being assessed rubric_assessment[user_id] Assessment

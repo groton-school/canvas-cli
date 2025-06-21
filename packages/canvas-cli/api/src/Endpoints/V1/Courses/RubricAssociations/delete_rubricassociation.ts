@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { RubricAssociation } from '../../../../Resources/Rubrics.js';
 
 export type delete_rubricassociationPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type delete_rubricassociationSearchParameters = Masquerade;

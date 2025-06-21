@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  quiz_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -18,19 +26,19 @@ export type createFormParameters = Masquerade & {
    *
    * Format: 'int64'
    */
-  'quiz_groups[pick_count]': number[];
+  'quiz_groups[pick_count]': number | string[];
   /**
    * The number of points to assign to each question in the group.
    *
    * Format: 'int64'
    */
-  'quiz_groups[question_points]': number[];
+  'quiz_groups[question_points]': number | string[];
   /**
    * The id of the assessment question bank to pull questions from.
    *
    * Format: 'int64'
    */
-  'quiz_groups[assessment_question_bank_id]': number[];
+  'quiz_groups[assessment_question_bank_id]': number | string[];
 };
 
 type Options = {

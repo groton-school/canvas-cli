@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
 export type listPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -13,14 +17,18 @@ export type listSearchParameters = Masquerade &
     /**
      * Include deleted resource links and links associated with deleted content
      * in response. Default is false.
+     *
+     * Type: boolean
      */
-    include_deleted: boolean;
+    include_deleted: boolean | string;
     /**
      * The number of registrations to return per page. Defaults to 50.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    per_page: number;
+    per_page: number | string;
   }>;
 
 type Options = {

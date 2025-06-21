@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Section } from '../../../../Resources/Sections.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -37,13 +41,17 @@ export type createFormParameters = Masquerade & {
   /**
    * Set to true to restrict user enrollments to the start and end dates of
    * the section.
+   *
+   * Type: boolean
    */
-  'course_section[restrict_enrollments_to_section_dates]': boolean;
+  'course_section[restrict_enrollments_to_section_dates]': boolean | string;
   /**
    * When true, will first try to re-activate a deleted section with matching
    * sis_section_id if possible.
+   *
+   * Type: boolean
    */
-  enable_sis_reactivation: boolean;
+  enable_sis_reactivation: boolean | string;
 };
 
 type Options = {

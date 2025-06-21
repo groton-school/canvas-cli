@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Account } from '../../../../Resources/Accounts.js';
 
 export type createPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -17,21 +21,27 @@ export type createFormParameters = Masquerade & {
   /**
    * The default course storage quota to be used, if not otherwise specified.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'account[default_storage_quota_mb]': number;
+  'account[default_storage_quota_mb]': number | string;
   /**
    * The default user storage quota to be used, if not otherwise specified.
    *
-   * Format: 'int64'
-   */
-  'account[default_user_storage_quota_mb]': number;
-  /**
-   * The default group storage quota to be used, if not otherwise specified.
+   * Type: integer
    *
    * Format: 'int64'
    */
-  'account[default_group_storage_quota_mb]': number;
+  'account[default_user_storage_quota_mb]': number | string;
+  /**
+   * The default group storage quota to be used, if not otherwise specified.
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  'account[default_group_storage_quota_mb]': number | string;
 };
 
 type Options = {

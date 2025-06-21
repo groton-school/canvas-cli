@@ -3,8 +3,12 @@ import { client } from '../../../Client.js';
 import { File } from '../../../Resources/Files.js';
 
 export type delete_filePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type delete_fileSearchParameters = Masquerade &
@@ -14,8 +18,10 @@ export type delete_fileSearchParameters = Masquerade &
      * will be replaced with a generic "file has been removed" file. This also
      * destroys any previews that have been generated for the file. Must have
      * manage files and become other users permissions
+     *
+     * Type: boolean
      */
-    replace: boolean;
+    replace: boolean | string;
   }>;
 
 type Options = {

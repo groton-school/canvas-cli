@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
 export type updatePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -17,10 +21,16 @@ export type updateFormParameters = Masquerade & {
    * access to the latest messages, but the conversation won't be
    * automatically flagged as unread, nor will it jump to the top of the
    * inbox.
+   *
+   * Type: boolean
    */
-  'conversation[subscribed]': boolean;
-  /** Toggle the starred state of the current user's view of the conversation. */
-  'conversation[starred]': boolean;
+  'conversation[subscribed]': boolean | string;
+  /**
+   * Toggle the starred state of the current user's view of the conversation.
+   *
+   * Type: boolean
+   */
+  'conversation[starred]': boolean | string;
   /**
    * Used when generating "visible" in the API response. See the explanation
    * under the {api:ConversationsController#index index API action}

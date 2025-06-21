@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Course } from '../../../../Resources/Courses.js';
 
 export type createPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -48,32 +52,68 @@ export type createFormParameters = Masquerade & {
   /**
    * Set to true if course is public to both authenticated and unauthenticated
    * users.
+   *
+   * Type: boolean
    */
-  'course[is_public]': boolean;
-  /** Set to true if course is public only to authenticated users. */
-  'course[is_public_to_auth_users]': boolean;
-  /** Set to true to make the course syllabus public. */
-  'course[public_syllabus]': boolean;
-  /** Set to true to make the course syllabus public for authenticated users. */
-  'course[public_syllabus_to_auth]': boolean;
+  'course[is_public]': boolean | string;
+  /**
+   * Set to true if course is public only to authenticated users.
+   *
+   * Type: boolean
+   */
+  'course[is_public_to_auth_users]': boolean | string;
+  /**
+   * Set to true to make the course syllabus public.
+   *
+   * Type: boolean
+   */
+  'course[public_syllabus]': boolean | string;
+  /**
+   * Set to true to make the course syllabus public for authenticated users.
+   *
+   * Type: boolean
+   */
+  'course[public_syllabus_to_auth]': boolean | string;
   /** A publicly visible description of the course. */
   'course[public_description]': string;
-  /** If true, students will be able to modify the course wiki. */
-  'course[allow_student_wiki_edits]': boolean;
-  /** If true, course members will be able to comment on wiki pages. */
-  'course[allow_wiki_comments]': boolean;
-  /** If true, students can attach files to forum posts. */
-  'course[allow_student_forum_attachments]': boolean;
-  /** Set to true if the course is open enrollment. */
-  'course[open_enrollment]': boolean;
-  /** Set to true if the course is self enrollment. */
-  'course[self_enrollment]': boolean;
+  /**
+   * If true, students will be able to modify the course wiki.
+   *
+   * Type: boolean
+   */
+  'course[allow_student_wiki_edits]': boolean | string;
+  /**
+   * If true, course members will be able to comment on wiki pages.
+   *
+   * Type: boolean
+   */
+  'course[allow_wiki_comments]': boolean | string;
+  /**
+   * If true, students can attach files to forum posts.
+   *
+   * Type: boolean
+   */
+  'course[allow_student_forum_attachments]': boolean | string;
+  /**
+   * Set to true if the course is open enrollment.
+   *
+   * Type: boolean
+   */
+  'course[open_enrollment]': boolean | string;
+  /**
+   * Set to true if the course is self enrollment.
+   *
+   * Type: boolean
+   */
+  'course[self_enrollment]': boolean | string;
   /**
    * Set to true to restrict user enrollments to the start and end dates of
    * the course. This value must be set to true in order to specify a course
    * start date and/or end date.
+   *
+   * Type: boolean
    */
-  'course[restrict_enrollments_to_course_dates]': boolean;
+  'course[restrict_enrollments_to_course_dates]': boolean | string;
   /** The unique ID of the term to create to course in. */
   'course[term_id]': string;
   /** The unique SIS identifier. */
@@ -83,10 +123,16 @@ export type createFormParameters = Masquerade & {
   /**
    * If this option is set to true, the totals in student grades summary will
    * be hidden.
+   *
+   * Type: boolean
    */
-  'course[hide_final_grades]': boolean;
-  /** Set to true to weight final grade based on assignment groups percentages. */
-  'course[apply_assignment_group_weights]': boolean;
+  'course[hide_final_grades]': boolean | string;
+  /**
+   * Set to true to weight final grade based on assignment groups percentages.
+   *
+   * Type: boolean
+   */
+  'course[apply_assignment_group_weights]': boolean | string;
   /**
    * The time zone for the course. Allowed time zones are
    * {http://www.iana.org/time-zones IANA time zones} or friendlier
@@ -97,10 +143,16 @@ export type createFormParameters = Masquerade & {
   /**
    * If this option is set to true, the course will be available to students
    * immediately.
+   *
+   * Type: boolean
    */
-  offer: boolean;
-  /** Set to true to enroll the current user as the teacher. */
-  enroll_me: boolean;
+  offer: boolean | string;
+  /**
+   * Set to true to enroll the current user as the teacher.
+   *
+   * Type: boolean
+   */
+  enroll_me: boolean | string;
   /**
    * The type of page that users will see when they first visit the course
    * 'feed' Recent Activity Dashboard 'modules' Course Modules/Sections Page
@@ -115,9 +167,11 @@ export type createFormParameters = Masquerade & {
    * for this argument the current grading_standard will be un-set from this
    * course.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'course[grading_standard_id]': number;
+  'course[grading_standard_id]': number | string;
   /**
    * Optional. The grade_passback_setting for the course. Only 'nightly_sync',
    * 'disabled', and '' are allowed
@@ -132,13 +186,17 @@ export type createFormParameters = Masquerade & {
    * Default is false. When true, all grades in the course must be posted
    * manually, and will not be automatically posted. When false, all grades in
    * the course will be automatically posted.
+   *
+   * Type: boolean
    */
-  'course[post_manually]': boolean;
+  'course[post_manually]': boolean | string;
   /**
    * When true, will first try to re-activate a deleted course with matching
    * sis_course_id if possible.
+   *
+   * Type: boolean
    */
-  enable_sis_reactivation: boolean;
+  enable_sis_reactivation: boolean | string;
 };
 
 type Options = {

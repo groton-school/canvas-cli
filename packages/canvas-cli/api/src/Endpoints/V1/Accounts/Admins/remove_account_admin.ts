@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { Admin } from '../../../../Resources/Admins.js';
 
 export type remove_account_adminPathParameters = {
-  /** ID */
-  account_id: string;
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
 };
 
 export type remove_account_adminSearchParameters = Masquerade &
@@ -17,9 +25,11 @@ export type remove_account_adminSearchParameters = Masquerade &
      * The id of the role representing the user's admin relationship with the
      * account.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    role_id: number;
+    role_id: number | string;
   }>;
 
 type Options = {

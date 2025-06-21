@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type invite_others_to_groupPathParameters = {
-  /** ID */
-  group_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
 };
 
 export type invite_others_to_groupSearchParameters = Masquerade;

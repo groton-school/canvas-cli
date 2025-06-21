@@ -3,12 +3,24 @@ import { client } from '../../../../../../Client.js';
 import { PeerReview } from '../../../../../../Resources/PeerReviews.js';
 
 export type createPathParameters = {
-  /** ID */
-  section_id: string;
-  /** ID */
-  assignment_id: string;
-  /** ID */
-  submission_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  section_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  submission_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -17,9 +29,11 @@ export type createFormParameters = Masquerade & {
   /**
    * User_id to assign as reviewer on this assignment
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  user_id: number;
+  user_id: number | string;
 };
 
 type Options = {

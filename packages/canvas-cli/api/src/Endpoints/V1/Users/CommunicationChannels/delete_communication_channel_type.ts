@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { CommunicationChannel } from '../../../../Resources/CommunicationChannels.js';
 
 export type delete_communication_channel_typePathParameters = {
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
   /** ID */
   type: string;
   /** ID */

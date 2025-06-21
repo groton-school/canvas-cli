@@ -3,14 +3,20 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type updatePathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
   /**
    * The id of the rubric
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  id: number;
+  id: number | string;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -22,33 +28,49 @@ export type updateFormParameters = Masquerade & {
    * rubric_association[association_id] and
    * rubric_association[association_type] if desired.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  rubric_association_id: number;
+  rubric_association_id: number | string;
   /** The title of the rubric */
   'rubric[title]': string;
   /**
    * Whether or not you can write custom comments in the ratings field for a
    * rubric
+   *
+   * Type: boolean
    */
-  'rubric[free_form_criterion_comments]': boolean;
-  /** Whether or not to update the points possible */
-  'rubric[skip_updating_points_possible]': boolean;
+  'rubric[free_form_criterion_comments]': boolean | string;
+  /**
+   * Whether or not to update the points possible
+   *
+   * Type: boolean
+   */
+  'rubric[skip_updating_points_possible]': boolean | string;
   /**
    * The id of the object with which this rubric is associated
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'rubric_association[association_id]': number;
+  'rubric_association[association_id]': number | string;
   /** The type of object this rubric is associated with */
   'rubric_association[association_type]': string;
-  /** Whether or not the associated rubric is used for grade calculation */
-  'rubric_association[use_for_grading]': boolean;
+  /**
+   * Whether or not the associated rubric is used for grade calculation
+   *
+   * Type: boolean
+   */
+  'rubric_association[use_for_grading]': boolean | string;
   /**
    * Whether or not the score total is displayed within the rubric. This
    * option is only available if the rubric is not used for grading.
+   *
+   * Type: boolean
    */
-  'rubric_association[hide_score_total]': boolean;
+  'rubric_association[hide_score_total]': boolean | string;
   /**
    * Whether or not the association is for grading (and thus linked to an
    * assignment) or if it's to indicate the rubric should appear in its

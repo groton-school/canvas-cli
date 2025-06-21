@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { PlannerOverride } from '../../../../Resources/Planner.js';
 
 export type show_planner_overridePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type show_planner_overrideSearchParameters = Masquerade;

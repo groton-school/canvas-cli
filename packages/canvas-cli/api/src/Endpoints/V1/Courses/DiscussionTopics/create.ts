@@ -4,8 +4,12 @@ import { Assignment } from '../../../../Resources/Assignments.js';
 import { File } from '../../../../Resources/Files.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -25,16 +29,22 @@ export type createFormParameters = Masquerade & {
   /**
    * Whether this topic is published (true) or draft state (false). Only
    * teachers and TAs have the ability to create draft state topics.
+   *
+   * Type: boolean
    */
-  published: boolean;
+  published: boolean | string;
   /**
    * If a timestamp is given, the topic will not be published until that time.
    *
    * Format: date-time
    */
   delayed_post_at: string;
-  /** Whether or not users can rate entries in this topic. */
-  allow_rating: boolean;
+  /**
+   * Whether or not users can rate entries in this topic.
+   *
+   * Type: boolean
+   */
+  allow_rating: boolean | string;
   /**
    * If a timestamp is given, the topic will be scheduled to lock at the
    * provided timestamp. If the timestamp is in the past, the topic will be
@@ -43,18 +53,26 @@ export type createFormParameters = Masquerade & {
    * Format: date-time
    */
   lock_at: string;
-  /** If true, the topic will have an associated podcast feed. */
-  podcast_enabled: boolean;
+  /**
+   * If true, the topic will have an associated podcast feed.
+   *
+   * Type: boolean
+   */
+  podcast_enabled: boolean | string;
   /**
    * If true, the podcast will include posts from students as well. Implies
    * podcast_enabled.
+   *
+   * Type: boolean
    */
-  podcast_has_student_posts: boolean;
+  podcast_has_student_posts: boolean | string;
   /**
    * If true then a user may not respond to other replies until that user has
    * made an initial reply. Defaults to false.
+   *
+   * Type: boolean
    */
-  require_initial_post: boolean;
+  require_initial_post: boolean | string;
   /**
    * To create an assignment discussion, pass the assignment parameters as a
    * sub-object. See the {api:AssignmentsApiController#create Create an
@@ -68,10 +86,16 @@ export type createFormParameters = Masquerade & {
    * If true, this topic is an announcement. It will appear in the
    * announcement's section rather than the discussions section. This requires
    * announcment-posting permissions.
+   *
+   * Type: boolean
    */
-  is_announcement: boolean;
-  /** If true, this topic will be listed in the "Pinned Discussion" section */
-  pinned: boolean;
+  is_announcement: boolean | string;
+  /**
+   * If true, this topic will be listed in the "Pinned Discussion" section
+   *
+   * Type: boolean
+   */
+  pinned: boolean | string;
   /**
    * By default, discussions are sorted chronologically by creation date, you
    * can pass the id of another topic to have this one show up after the other
@@ -82,21 +106,43 @@ export type createFormParameters = Masquerade & {
    * If present, the topic will become a group discussion assigned to the
    * group.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  group_category_id: number;
-  /** If true, only graders will be allowed to rate entries. */
-  only_graders_can_rate: boolean;
+  group_category_id: number | string;
+  /**
+   * If true, only graders will be allowed to rate entries.
+   *
+   * Type: boolean
+   */
+  only_graders_can_rate: boolean | string;
   /** Default sort order of the discussion. Accepted values are "asc", "desc". */
   sort_order: string;
-  /** If true, users cannot choose their prefered sort order */
-  sort_order_locked: boolean;
-  /** If true, thread will be expanded by default */
-  expanded: boolean;
-  /** If true, users cannot choose their prefered thread expansion setting */
-  expanded_locked: boolean;
-  /** (DEPRECATED) If true, entries will be sorted by rating. */
-  sort_by_rating: boolean;
+  /**
+   * If true, users cannot choose their prefered sort order
+   *
+   * Type: boolean
+   */
+  sort_order_locked: boolean | string;
+  /**
+   * If true, thread will be expanded by default
+   *
+   * Type: boolean
+   */
+  expanded: boolean | string;
+  /**
+   * If true, users cannot choose their prefered thread expansion setting
+   *
+   * Type: boolean
+   */
+  expanded_locked: boolean | string;
+  /**
+   * (DEPRECATED) If true, entries will be sorted by rating.
+   *
+   * Type: boolean
+   */
+  sort_by_rating: boolean | string;
   /**
    * A multipart/form-data form-field-style attachment. Attachments larger
    * than 1 kilobyte are subject to quota restrictions.
@@ -113,8 +159,10 @@ export type createFormParameters = Masquerade & {
   /**
    * If is_announcement and lock_comment are true, ‘Allow Participants to
    * Comment’ setting is disabled.
+   *
+   * Type: boolean
    */
-  lock_comment: boolean;
+  lock_comment: boolean | string;
 };
 
 type Options = {

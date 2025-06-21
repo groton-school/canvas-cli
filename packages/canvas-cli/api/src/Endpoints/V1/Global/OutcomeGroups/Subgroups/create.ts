@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { OutcomeGroup } from '../../../../../Resources/OutcomeGroups.js';
 
 export type createPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type createSearchParameters = Masquerade;

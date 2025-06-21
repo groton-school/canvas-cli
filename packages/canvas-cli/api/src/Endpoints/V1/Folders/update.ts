@@ -3,8 +3,12 @@ import { client } from '../../../Client.js';
 import { Folder } from '../../../Resources/Files.js';
 
 export type updatePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -29,16 +33,26 @@ export type updateFormParameters = Masquerade & {
    * Format: date-time
    */
   unlock_at: string;
-  /** Flag the folder as locked */
-  locked: boolean;
-  /** Flag the folder as hidden */
-  hidden: boolean;
+  /**
+   * Flag the folder as locked
+   *
+   * Type: boolean
+   */
+  locked: boolean | string;
+  /**
+   * Flag the folder as hidden
+   *
+   * Type: boolean
+   */
+  hidden: boolean | string;
   /**
    * Set an explicit sort position for the folder
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  position: number;
+  position: number | string;
 };
 
 type Options = {

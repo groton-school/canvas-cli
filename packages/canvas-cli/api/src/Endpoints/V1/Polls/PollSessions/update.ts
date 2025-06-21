@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type updatePathParameters = {
-  /** ID */
-  poll_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  poll_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -16,15 +24,15 @@ export type updateFormParameters = Masquerade & {
    *
    * Format: 'int64'
    */
-  'poll_sessions[course_id]': number[];
+  'poll_sessions[course_id]': number | string[];
   /**
    * The id of the course section this session is associated with.
    *
    * Format: 'int64'
    */
-  'poll_sessions[course_section_id]': number[];
+  'poll_sessions[course_section_id]': number | string[];
   /** Whether or not results are viewable by students. */
-  'poll_sessions[has_public_results]': boolean[];
+  'poll_sessions[has_public_results]': boolean | string[];
 };
 
 type Options = {

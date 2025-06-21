@@ -4,8 +4,12 @@ import { multipleBlueprintRestrictions } from '../../../Overrides.js';
 import { BlueprintRestriction } from '../../../Resources/BlueprintCourses.js';
 
 export type updatePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -14,9 +18,11 @@ export type updateFormParameters = Masquerade & {
   /**
    * The unique ID of the account to move the course to.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'course[account_id]': number;
+  'course[account_id]': number | string;
   /**
    * The name of the course. If omitted, the course will be named "Unnamed
    * Course."
@@ -56,42 +62,78 @@ export type updateFormParameters = Masquerade & {
   /**
    * Set to true if course is public to both authenticated and unauthenticated
    * users.
+   *
+   * Type: boolean
    */
-  'course[is_public]': boolean;
-  /** Set to true if course is public only to authenticated users. */
-  'course[is_public_to_auth_users]': boolean;
-  /** Set to true to make the course syllabus public. */
-  'course[public_syllabus]': boolean;
+  'course[is_public]': boolean | string;
+  /**
+   * Set to true if course is public only to authenticated users.
+   *
+   * Type: boolean
+   */
+  'course[is_public_to_auth_users]': boolean | string;
+  /**
+   * Set to true to make the course syllabus public.
+   *
+   * Type: boolean
+   */
+  'course[public_syllabus]': boolean | string;
   /**
    * Set to true to make the course syllabus to public for authenticated
    * users.
+   *
+   * Type: boolean
    */
-  'course[public_syllabus_to_auth]': boolean;
+  'course[public_syllabus_to_auth]': boolean | string;
   /** A publicly visible description of the course. */
   'course[public_description]': string;
-  /** If true, students will be able to modify the course wiki. */
-  'course[allow_student_wiki_edits]': boolean;
-  /** If true, course members will be able to comment on wiki pages. */
-  'course[allow_wiki_comments]': boolean;
-  /** If true, students can attach files to forum posts. */
-  'course[allow_student_forum_attachments]': boolean;
-  /** Set to true if the course is open enrollment. */
-  'course[open_enrollment]': boolean;
-  /** Set to true if the course is self enrollment. */
-  'course[self_enrollment]': boolean;
+  /**
+   * If true, students will be able to modify the course wiki.
+   *
+   * Type: boolean
+   */
+  'course[allow_student_wiki_edits]': boolean | string;
+  /**
+   * If true, course members will be able to comment on wiki pages.
+   *
+   * Type: boolean
+   */
+  'course[allow_wiki_comments]': boolean | string;
+  /**
+   * If true, students can attach files to forum posts.
+   *
+   * Type: boolean
+   */
+  'course[allow_student_forum_attachments]': boolean | string;
+  /**
+   * Set to true if the course is open enrollment.
+   *
+   * Type: boolean
+   */
+  'course[open_enrollment]': boolean | string;
+  /**
+   * Set to true if the course is self enrollment.
+   *
+   * Type: boolean
+   */
+  'course[self_enrollment]': boolean | string;
   /**
    * Set to true to restrict user enrollments to the start and end dates of
    * the course. Setting this value to false will remove the course end date
    * (if it exists), as well as the course start date (if the course is
    * unpublished).
+   *
+   * Type: boolean
    */
-  'course[restrict_enrollments_to_course_dates]': boolean;
+  'course[restrict_enrollments_to_course_dates]': boolean | string;
   /**
    * The unique ID of the term to create to course in.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'course[term_id]': number;
+  'course[term_id]': number | string;
   /** The unique SIS identifier. */
   'course[sis_course_id]': string;
   /** The unique Integration identifier. */
@@ -99,8 +141,10 @@ export type updateFormParameters = Masquerade & {
   /**
    * If this option is set to true, the totals in student grades summary will
    * be hidden.
+   *
+   * Type: boolean
    */
-  'course[hide_final_grades]': boolean;
+  'course[hide_final_grades]': boolean | string;
   /**
    * The time zone for the course. Allowed time zones are
    * {http://www.iana.org/time-zones IANA time zones} or friendlier
@@ -108,20 +152,28 @@ export type updateFormParameters = Masquerade & {
    * Rails time zones}.
    */
   'course[time_zone]': string;
-  /** Set to true to weight final grade based on assignment groups percentages. */
-  'course[apply_assignment_group_weights]': boolean;
+  /**
+   * Set to true to weight final grade based on assignment groups percentages.
+   *
+   * Type: boolean
+   */
+  'course[apply_assignment_group_weights]': boolean | string;
   /**
    * Set the storage quota for the course, in megabytes. The caller must have
    * the "Manage storage quotas" account permission.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'course[storage_quota_mb]': number;
+  'course[storage_quota_mb]': number | string;
   /**
    * If this option is set to true, the course will be available to students
    * immediately.
+   *
+   * Type: boolean
    */
-  offer: boolean;
+  offer: boolean | string;
   /**
    * The action to take on each course. 'claim' makes a course no longer
    * visible to students. This action is also called "unpublish" on the web
@@ -152,16 +204,20 @@ export type updateFormParameters = Masquerade & {
    * Optional. Indicates whether the Course Summary (consisting of the
    * course's assignments and calendar events) is displayed on the syllabus
    * page. Defaults to +true+.
+   *
+   * Type: boolean
    */
-  'course[syllabus_course_summary]': boolean;
+  'course[syllabus_course_summary]': boolean | string;
   /**
    * The grading standard id to set for the course. If no value is provided
    * for this argument the current grading_standard will be un-set from this
    * course.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'course[grading_standard_id]': number;
+  'course[grading_standard_id]': number | string;
   /**
    * Optional. The grade_passback_setting for the course. Only 'nightly_sync'
    * and '' are allowed
@@ -178,9 +234,11 @@ export type updateFormParameters = Masquerade & {
    * setting if set. If you attempt to provide image_url and image_id in a
    * request it will fail.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'course[image_id]': number;
+  'course[image_id]': number | string;
   /**
    * This is a URL to an image to be used as the course image. This will clear
    * the course's image_id setting if set. If you attempt to provide image_url
@@ -190,15 +248,23 @@ export type updateFormParameters = Masquerade & {
   /**
    * If this option is set to true, the course image url and course image ID
    * are both set to nil
+   *
+   * Type: boolean
    */
-  'course[remove_image]': boolean;
+  'course[remove_image]': boolean | string;
   /**
    * If this option is set to true, the course banner image url and course
    * banner image ID are both set to nil
+   *
+   * Type: boolean
    */
-  'course[remove_banner_image]': boolean;
-  /** Sets the course as a blueprint course. */
-  'course[blueprint]': boolean;
+  'course[remove_banner_image]': boolean | string;
+  /**
+   * Sets the course as a blueprint course.
+   *
+   * Type: boolean
+   */
+  'course[blueprint]': boolean | string;
   /**
    * Sets a default set to apply to blueprint course objects when restricted,
    * unless _use_blueprint_restrictions_by_object_type_ is enabled. See the
@@ -209,8 +275,10 @@ export type updateFormParameters = Masquerade & {
   /**
    * When enabled, the _blueprint_restrictions_ parameter will be ignored in
    * favor of the _blueprint_restrictions_by_object_type_ parameter
+   *
+   * Type: boolean
    */
-  'course[use_blueprint_restrictions_by_object_type]': boolean;
+  'course[use_blueprint_restrictions_by_object_type]': boolean | string;
   /**
    * Allows setting multiple {api:Blueprint_Courses:BlueprintRestriction
    * Blueprint Restriction} to apply to blueprint course objects of the
@@ -223,8 +291,10 @@ export type updateFormParameters = Masquerade & {
   /**
    * Sets the course as a homeroom course. The setting takes effect only when
    * the course is associated with a Canvas for Elementary-enabled account.
+   *
+   * Type: boolean
    */
-  'course[homeroom_course]': boolean;
+  'course[homeroom_course]': boolean | string;
   /**
    * Syncs enrollments from the homeroom that is set in homeroom_course_id.
    * The setting only takes effect when the course is associated with a Canvas
@@ -242,8 +312,10 @@ export type updateFormParameters = Masquerade & {
   /**
    * Enable or disable the course as a template that can be selected by an
    * account
+   *
+   * Type: boolean
    */
-  'course[template]': boolean;
+  'course[template]': boolean | string;
   /**
    * Sets a color in hex code format to be associated with the course. The
    * setting takes effect only when the course is associated with a Canvas for
@@ -261,25 +333,33 @@ export type updateFormParameters = Masquerade & {
    * Enable or disable Course Pacing for the course. This setting only has an
    * effect when the Course Pacing feature flag is enabled for the
    * sub-account. Otherwise, Course Pacing are always disabled.
+   *
+   * Type: boolean
    */
-  'course[enable_course_paces]': boolean;
+  'course[enable_course_paces]': boolean | string;
   /**
    * Enable or disable individual learning paths for students based on
    * assessment
+   *
+   * Type: boolean
    */
-  'course[conditional_release]': boolean;
+  'course[conditional_release]': boolean | string;
   /**
    * When true, all grades in the course will be posted manually. When false,
    * all grades in the course will be automatically posted. Use with caution
    * as this setting will override any assignment level post policy.
+   *
+   * Type: boolean
    */
-  'course[post_manually]': boolean;
+  'course[post_manually]': boolean | string;
   /**
    * Default is true. If false, any fields containing “sticky” changes will
    * not be updated. See SIS CSV Format documentation for information on which
    * fields can have SIS stickiness
+   *
+   * Type: boolean
    */
-  override_sis_stickiness: boolean;
+  override_sis_stickiness: boolean | string;
 };
 
 type Options = {

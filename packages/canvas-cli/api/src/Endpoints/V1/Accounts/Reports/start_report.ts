@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
 export type start_reportPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
   /** ID */
   report: string;
 };
@@ -23,21 +27,27 @@ export type start_reportFormParameters = Masquerade & {
   /**
    * If true, no message will be sent to the user upon completion of the
    * report.
+   *
+   * Type: boolean
    */
-  'parameters[skip_message]': boolean;
+  'parameters[skip_message]': boolean | string;
   /**
    * The id of the course to report on. Note: this parameter has been listed
    * to serve as an example and may not be valid for every report.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'parameters[course_id]': number;
+  'parameters[course_id]': number | string;
   /**
    * If true, user data will be included. If false, user data will be omitted.
    * Note: this parameter has been listed to serve as an example and may not
    * be valid for every report.
+   *
+   * Type: boolean
    */
-  'parameters[users]': boolean;
+  'parameters[users]': boolean | string;
 };
 
 type Options = {

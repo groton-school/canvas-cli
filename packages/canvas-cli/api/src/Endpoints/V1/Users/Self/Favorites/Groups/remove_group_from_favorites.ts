@@ -3,8 +3,12 @@ import { client } from '../../../../../../Client.js';
 import { Favorite } from '../../../../../../Resources/Favorites.js';
 
 export type remove_group_from_favoritesPathParameters = {
-  /** The ID or SIS ID of the group to remove */
-  id: string;
+  /**
+   * The ID or SIS ID of the group to remove
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type remove_group_from_favoritesSearchParameters = Masquerade;

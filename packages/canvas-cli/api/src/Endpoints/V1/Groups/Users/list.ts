@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
 export type listPathParameters = {
-  /** ID */
-  group_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -20,8 +24,10 @@ export type listSearchParameters = Masquerade &
     /**
      * Whether to filter out inactive users from the results. Defaults to false
      * unless explicitly provided.
+     *
+     * Type: boolean
      */
-    exclude_inactive: boolean;
+    exclude_inactive: boolean | string;
   }>;
 
 type Options = {

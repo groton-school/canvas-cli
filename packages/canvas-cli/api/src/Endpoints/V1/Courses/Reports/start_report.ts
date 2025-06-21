@@ -6,9 +6,11 @@ export type start_reportPathParameters = {
   /**
    * The id of the course to report on.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  course_id: number;
+  course_id: number | string;
   /** The type of report to generate. */
   report_type: string;
 };
@@ -27,7 +29,7 @@ export type start_reportFormParameters = Masquerade & {
    *
    * Format: 'int64'
    */
-  'parameters[section_ids]': number[];
+  'parameters[section_ids]': number | string[];
 };
 
 type Options = {

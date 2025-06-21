@@ -3,8 +3,12 @@ import { client } from '../../../Client.js';
 import { Section } from '../../../Resources/Sections.js';
 
 export type delete_sectionPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type delete_sectionSearchParameters = Masquerade;

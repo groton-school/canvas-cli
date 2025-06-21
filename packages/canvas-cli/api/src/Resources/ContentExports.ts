@@ -6,7 +6,7 @@ export type ContentExport = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The date and time this export was requested
    *
@@ -27,7 +27,7 @@ export type ContentExport = {
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /** Current state of the content migration: created exporting exported failed */
   workflow_state: string;
 };

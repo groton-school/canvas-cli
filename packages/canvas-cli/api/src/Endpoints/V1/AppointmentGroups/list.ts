@@ -7,8 +7,12 @@ export type listSearchParameters = Masquerade &
     scope: string;
     /** Array of context codes used to limit returned results. */
     context_codes: string[];
-    /** Defaults to false. If true, includes past appointment groups */
-    include_past_appointments: boolean;
+    /**
+     * Defaults to false. If true, includes past appointment groups
+     *
+     * Type: boolean
+     */
+    include_past_appointments: boolean | string;
     /**
      * Array of additional information to include.
      *

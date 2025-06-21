@@ -17,17 +17,25 @@ export type CourseAccommodationRequest = {
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * Amount of extra time (in minutes) for quiz submission
    *
    * Type: integer
    */
-  extra_time: number;
-  /** Apply accommodations to ongoing quiz sessions */
-  apply_to_in_progress_quiz_sessions: boolean;
-  /** Removes one incorrect answer from multiple-choice questions with 4+ choices */
-  reduce_choices_enabled: boolean;
+  extra_time: number | string;
+  /**
+   * Apply accommodations to ongoing quiz sessions
+   *
+   * Type: boolean
+   */
+  apply_to_in_progress_quiz_sessions: boolean | string;
+  /**
+   * Removes one incorrect answer from multiple-choice questions with 4+ choices
+   *
+   * Type: boolean
+   */
+  reduce_choices_enabled: boolean | string;
 };
 
 /** Request format for setting quiz-level accommodations */
@@ -37,19 +45,23 @@ export type QuizAccommodationRequest = {
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * Amount of extra time (in minutes) for quiz submission
    *
    * Type: integer
    */
-  extra_time: number;
+  extra_time: number | string;
   /**
    * Number of additional attempts allowed beyond the quiz limit
    *
    * Type: integer
    */
-  extra_attempts: number;
-  /** Removes one incorrect answer from multiple-choice questions with 4+ choices */
-  reduce_choices_enabled: boolean;
+  extra_attempts: number | string;
+  /**
+   * Removes one incorrect answer from multiple-choice questions with 4+ choices
+   *
+   * Type: boolean
+   */
+  reduce_choices_enabled: boolean | string;
 };

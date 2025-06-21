@@ -22,15 +22,19 @@ export type createFormParameters = Masquerade & {
   /**
    * Forces a new message to be created, even if there is an existing private
    * conversation.
+   *
+   * Type: boolean
    */
-  force_new: boolean;
+  force_new: boolean | string;
   /**
    * Defaults to false. When false, individual private conversations will be
    * created with each recipient. If true, this will be a group conversation
    * (i.e. all recipients may see all messages and replies). Must be set true
    * if the number of recipients is over the set maximum (default is 100).
+   *
+   * Type: boolean
    */
-  group_conversation: boolean;
+  group_conversation: boolean | string;
   /**
    * An array of attachments ids. These must be files that have been
    * previously uploaded to the sender's "conversation attachments" folder.

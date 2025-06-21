@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { EpubExport } from '../../../../Resources/EPubExports.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;

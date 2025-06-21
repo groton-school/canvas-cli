@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { ExternalFeed } from '../../../../Resources/AnnouncementExternalFeeds.js';
 
 export type createPathParameters = {
-  /** ID */
-  group_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -15,8 +19,10 @@ export type createFormParameters = Masquerade & {
   /**
    * If given, only feed entries that contain this string in their title will
    * be imported
+   *
+   * Type: boolean
    */
-  header_match: boolean;
+  header_match: boolean | string;
   /** Defaults to "full" */
   verbosity: string;
 };

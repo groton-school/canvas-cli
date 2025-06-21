@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { BlackoutDate } from '../../../../../Resources/BlackoutDates.js';
 
 export type new_blackout_date_accountsPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type new_blackout_date_accountsSearchParameters = Masquerade;

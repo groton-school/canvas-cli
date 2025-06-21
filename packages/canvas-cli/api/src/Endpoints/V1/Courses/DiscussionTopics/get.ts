@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type getPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  topic_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  topic_id: string | number;
 };
 
 export type getSearchParameters = Masquerade &

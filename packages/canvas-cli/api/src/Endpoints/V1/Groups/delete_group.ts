@@ -3,8 +3,12 @@ import { client } from '../../../Client.js';
 import { Group } from '../../../Resources/Groups.js';
 
 export type delete_groupPathParameters = {
-  /** ID */
-  group_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
 };
 
 export type delete_groupSearchParameters = Masquerade;

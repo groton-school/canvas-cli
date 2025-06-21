@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
 export type import_category_groupsPathParameters = {
-  /** ID */
-  group_category_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_category_id: string | number;
 };
 
 export type import_category_groupsSearchParameters = Masquerade;

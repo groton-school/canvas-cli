@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { CustomColumn } from '../../../../Resources/CustomGradebookColumns.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -15,18 +19,30 @@ export type createFormParameters = Masquerade & {
   /**
    * The position of the column relative to other custom columns
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'column[position]': number;
-  /** Hidden columns are not displayed in the gradebook */
-  'column[hidden]': boolean;
+  'column[position]': number | string;
+  /**
+   * Hidden columns are not displayed in the gradebook
+   *
+   * Type: boolean
+   */
+  'column[hidden]': boolean | string;
   /**
    * Set this if the column is created by a teacher. The gradebook only
    * supports one teacher_notes column.
+   *
+   * Type: boolean
    */
-  'column[teacher_notes]': boolean;
-  /** Set this to prevent the column from being editable in the gradebook ui */
-  'column[read_only]': boolean;
+  'column[teacher_notes]': boolean | string;
+  /**
+   * Set this to prevent the column from being editable in the gradebook ui
+   *
+   * Type: boolean
+   */
+  'column[read_only]': boolean | string;
 };
 
 type Options = {

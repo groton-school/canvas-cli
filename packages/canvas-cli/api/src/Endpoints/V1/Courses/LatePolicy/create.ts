@@ -2,27 +2,55 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type createPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** Whether to enable the missing submission deduction late policy. */
-  'late_policy[missing_submission_deduction_enabled]': boolean;
-  /** How many percentage points to deduct from a missing submission. */
-  'late_policy[missing_submission_deduction]': number;
-  /** Whether to enable the late submission deduction late policy. */
-  'late_policy[late_submission_deduction_enabled]': boolean;
-  /** How many percentage points to deduct per the late submission interval. */
-  'late_policy[late_submission_deduction]': number;
+  /**
+   * Whether to enable the missing submission deduction late policy.
+   *
+   * Type: boolean
+   */
+  'late_policy[missing_submission_deduction_enabled]': boolean | string;
+  /**
+   * How many percentage points to deduct from a missing submission.
+   *
+   * Type: number
+   */
+  'late_policy[missing_submission_deduction]': number | string;
+  /**
+   * Whether to enable the late submission deduction late policy.
+   *
+   * Type: boolean
+   */
+  'late_policy[late_submission_deduction_enabled]': boolean | string;
+  /**
+   * How many percentage points to deduct per the late submission interval.
+   *
+   * Type: number
+   */
+  'late_policy[late_submission_deduction]': number | string;
   /** The interval for late policies. */
   'late_policy[late_submission_interval]': string;
-  /** Whether to enable the late submission minimum percent for a late policy. */
-  'late_policy[late_submission_minimum_percent_enabled]': boolean;
-  /** The minimum grade a submissions can have in percentage points. */
-  'late_policy[late_submission_minimum_percent]': number;
+  /**
+   * Whether to enable the late submission minimum percent for a late policy.
+   *
+   * Type: boolean
+   */
+  'late_policy[late_submission_minimum_percent_enabled]': boolean | string;
+  /**
+   * The minimum grade a submissions can have in percentage points.
+   *
+   * Type: number
+   */
+  'late_policy[late_submission_minimum_percent]': number | string;
 };
 
 type Options = {

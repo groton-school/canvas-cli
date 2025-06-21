@@ -3,8 +3,12 @@ export type Tab = {
   id: string;
   label: string;
   type: string;
-  /** Only included if true */
-  hidden: boolean;
+  /**
+   * Only included if true
+   *
+   * Type: boolean
+   */
+  hidden: boolean | string;
   /** Possible values are: public, members, admins, and none */
   visibility: string;
   /**
@@ -12,5 +16,5 @@ export type Tab = {
    *
    * Type: integer
    */
-  position: number;
+  position: number | string;
 };

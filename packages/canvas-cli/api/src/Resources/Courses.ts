@@ -4,7 +4,7 @@ import { GradingPeriod } from './GradingPeriods.js';
 
 export type Term = {
   /** Type: integer */
-  id: number;
+  id: number | string;
   name: string;
   /** Format: date-time */
   start_at: string;
@@ -18,13 +18,13 @@ export type CourseProgress = {
    *
    * Type: integer
    */
-  requirement_count: number;
+  requirement_count: number | string;
   /**
    * Total number of requirements the user has completed from all modules
    *
    * Type: integer
    */
-  requirement_completed_count: number;
+  requirement_completed_count: number | string;
   /**
    * Url to next module item that has an unmet requirement. null if the user has
    * completed the course or the current module does not require sequential
@@ -46,7 +46,7 @@ export type Course = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The SIS identifier for the course, if defined. This field is only included
    * if the user has permission to view SIS information.
@@ -65,7 +65,7 @@ export type Course = {
    *
    * Type: integer
    */
-  sis_import_id: number;
+  sis_import_id: number | string;
   /**
    * The full name of the course. If the requesting user has set a nickname for
    * the course, the nickname will be shown here.
@@ -91,19 +91,19 @@ export type Course = {
    *
    * Type: integer
    */
-  account_id: number;
+  account_id: number | string;
   /**
    * The root account associated with the course
    *
    * Type: integer
    */
-  root_account_id: number;
+  root_account_id: number | string;
   /**
    * The enrollment term associated with the course
    *
    * Type: integer
    */
-  enrollment_term_id: number;
+  enrollment_term_id: number | string;
   /** A list of grading periods associated with the course */
   grading_periods: GradingPeriod[];
   /**
@@ -111,7 +111,7 @@ export type Course = {
    *
    * Type: integer
    */
-  grading_standard_id: number;
+  grading_standard_id: number | string;
   /** The grade_passback_setting set on the course */
   grade_passback_setting: string;
   /**
@@ -144,7 +144,7 @@ export type Course = {
    *
    * Type: integer
    */
-  total_students: number;
+  total_students: number | string;
   /** Course calendar */
   calendar: CalendarLink;
   /**
@@ -162,7 +162,7 @@ export type Course = {
    *
    * Type: integer
    */
-  needs_grading_count: number;
+  needs_grading_count: number | string;
   /**
    * Optional: the enrollment term object for the course returned only if
    * include[]=term
@@ -173,8 +173,12 @@ export type Course = {
    * include[]=course_progress
    */
   course_progress: CourseProgress;
-  /** Weight final grade based on assignment group percentages */
-  apply_assignment_group_weights: boolean;
+  /**
+   * Weight final grade based on assignment group percentages
+   *
+   * Type: boolean
+   */
+  apply_assignment_group_weights: boolean | string;
   /**
    * Optional: the permissions the user has for the course. returned only for a
    * single course and include[]=permissions
@@ -182,36 +186,52 @@ export type Course = {
    * Object
    */
   permissions: JSONObject;
-  is_public: boolean;
-  is_public_to_auth_users: boolean;
-  public_syllabus: boolean;
-  public_syllabus_to_auth: boolean;
+  /** Type: boolean */
+  is_public: boolean | string;
+  /** Type: boolean */
+  is_public_to_auth_users: boolean | string;
+  /** Type: boolean */
+  public_syllabus: boolean | string;
+  /** Type: boolean */
+  public_syllabus_to_auth: boolean | string;
   /** Optional: the public description of the course */
   public_description: string;
   /** Type: integer */
-  storage_quota_mb: number;
-  storage_quota_used_mb: number;
-  hide_final_grades: boolean;
+  storage_quota_mb: number | string;
+  /** Type: number */
+  storage_quota_used_mb: number | string;
+  /** Type: boolean */
+  hide_final_grades: boolean | string;
   license: string;
-  allow_student_assignment_edits: boolean;
-  allow_wiki_comments: boolean;
-  allow_student_forum_attachments: boolean;
-  open_enrollment: boolean;
-  self_enrollment: boolean;
-  restrict_enrollments_to_course_dates: boolean;
+  /** Type: boolean */
+  allow_student_assignment_edits: boolean | string;
+  /** Type: boolean */
+  allow_wiki_comments: boolean | string;
+  /** Type: boolean */
+  allow_student_forum_attachments: boolean | string;
+  /** Type: boolean */
+  open_enrollment: boolean | string;
+  /** Type: boolean */
+  self_enrollment: boolean | string;
+  /** Type: boolean */
+  restrict_enrollments_to_course_dates: boolean | string;
   course_format: string;
   /**
    * Optional: this will be true if this user is currently prevented from
    * viewing the course because of date restriction settings
+   *
+   * Type: boolean
    */
-  access_restricted_by_date: boolean;
+  access_restricted_by_date: boolean | string;
   /** The course's IANA time zone name. */
   time_zone: string;
   /**
    * Optional: whether the course is set as a Blueprint Course (blueprint fields
    * require the Blueprint Courses feature)
+   *
+   * Type: boolean
    */
-  blueprint: boolean;
+  blueprint: boolean | string;
   /**
    * Optional: Set of restrictions applied to all locked course objects
    *
@@ -228,8 +248,10 @@ export type Course = {
   /**
    * Optional: whether the course is set as a template (requires the Course
    * Templates feature)
+   *
+   * Type: boolean
    */
-  template: boolean;
+  template: boolean | string;
 };
 
 export type CalendarLink = {

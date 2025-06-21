@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
 export type merge_user_into_another_user_destination_user_idPathParameters = {
-  /** ID */
-  id: string;
-  /** ID */
-  destination_user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  destination_user_id: string | number;
 };
 
 export type merge_user_into_another_user_destination_user_idSearchParameters =

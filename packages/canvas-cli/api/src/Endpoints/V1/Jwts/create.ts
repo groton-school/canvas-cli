@@ -19,9 +19,11 @@ export type createFormParameters = Masquerade & {
    * The id of the context to generate the JWT for, in case the workflow
    * requires it.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  context_id: number;
+  context_id: number | string;
   /**
    * The uuid of the context to generate the JWT for, in case the workflow
    * requires it. Note that context_id and context_uuid are mutually
@@ -32,8 +34,10 @@ export type createFormParameters = Masquerade & {
    * Defaults to true. If false, the JWT will be signed, but not encrypted,
    * for use in downstream services. The default encrypted behaviour can be
    * used to talk to Canvas itself.
+   *
+   * Type: boolean
    */
-  canvas_audience: boolean;
+  canvas_audience: boolean | string;
 };
 
 type Options =

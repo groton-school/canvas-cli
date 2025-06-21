@@ -8,7 +8,7 @@ export type TemporaryEnrollmentPairing = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The current status of the temporary enrollment pairing */
   workflow_state: string;
 };

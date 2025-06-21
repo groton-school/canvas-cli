@@ -9,7 +9,7 @@ export type LtiRegistration = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** Tool-provided registration name */
   name: string;
   /** Admin-configured friendly display name */
@@ -23,21 +23,29 @@ export type LtiRegistration = {
    *
    * Type: integer
    */
-  account_id: number;
-  /** Flag indicating if registration is internally-owned */
-  internal_service: boolean;
+  account_id: number | string;
+  /**
+   * Flag indicating if registration is internally-owned
+   *
+   * Type: boolean
+   */
+  internal_service: boolean | string;
   /**
    * Flag indicating if registration is owned by this account, or inherited from
    * Site Admin
+   *
+   * Type: boolean
    */
-  inherited: boolean;
+  inherited: boolean | string;
   /** LTI version of the registration, either 1.1 or 1.3 */
   lti_version: string;
   /**
    * Flag indicating if registration was created using LTI Dynamic Registration.
    * Only present if lti_version is 1.3
+   *
+   * Type: boolean
    */
-  dynamic_registration: boolean;
+  dynamic_registration: boolean | string;
   /** The state of the registration */
   workflow_state: string;
   /** Timestamp of the registration's creation */
@@ -59,7 +67,7 @@ export type LtiRegistration = {
    *
    * Type: integer
    */
-  root_account_id: number;
+  root_account_id: number | string;
   /** The binding for this registration and this account */
   account_binding: LtiRegistrationAccountBinding;
   /** The Canvas-style tool configuration for this registration */
@@ -184,23 +192,31 @@ export type LtiLaunchSettings = {
   /**
    * Default iframe height. Not valid for all placements. Overrides tool-level
    * launch_height.
+   *
+   * Type: number
    */
-  selection_height: number;
+  selection_height: number | string;
   /**
    * Default iframe width. Not valid for all placements. Overrides tool-level
    * launch_width.
+   *
+   * Type: number
    */
-  selection_width: number;
+  selection_width: number | string;
   /**
    * Default iframe height. Not valid for all placements. Overrides tool-level
    * launch_height.
+   *
+   * Type: number
    */
-  launch_height: number;
+  launch_height: number | string;
   /**
    * Default iframe width. Not valid for all placements. Overrides tool-level
    * launch_width.
+   *
+   * Type: number
    */
-  launch_width: number;
+  launch_width: number | string;
   /**
    * Default icon URL. Not valid for all placements. Overrides tool-level
    * icon_url.
@@ -238,13 +254,17 @@ export type LtiLaunchSettings = {
   /**
    * 1.1 specific. If true, the tool will send the SIS email in the
    * lis_person_contact_email_primary launch property
+   *
+   * Type: boolean
    */
-  prefer_sis_email: boolean;
+  prefer_sis_email: boolean | string;
   /**
    * 1.1 specific. If true, query parameters from the launch URL will not be
    * copied to the POST body.
+   *
+   * Type: boolean
    */
-  oauth_compliant: boolean;
+  oauth_compliant: boolean | string;
   /** An SVG to use instead of an icon_url. Only valid for global_navigation. */
   icon_svg_path_64: string;
   /**
@@ -260,16 +280,22 @@ export type LtiLaunchSettings = {
   /**
    * If true, the tool will be launched in the tray. Only used by the
    * editor_button placement.
+   *
+   * Type: boolean
    */
-  use_tray: boolean;
+  use_tray: boolean | string;
 };
 
 /** The tool's configuration for a specific placement */
 export type LtiPlacement = {
   /** The name of the placement. */
   placement: string;
-  /** If true, the tool will show in this placement. If false, it will not. */
-  enabled: boolean;
+  /**
+   * If true, the tool will show in this placement. If false, it will not.
+   *
+   * Type: boolean
+   */
+  enabled: boolean | string;
   /** Default message type for all placements */
   message_type: string;
   /** The text of the link to the tool (if applicable). */
@@ -290,23 +316,31 @@ export type LtiPlacement = {
   /**
    * Default iframe height. Not valid for all placements. Overrides tool-level
    * launch_height.
+   *
+   * Type: number
    */
-  selection_height: number;
+  selection_height: number | string;
   /**
    * Default iframe width. Not valid for all placements. Overrides tool-level
    * launch_width.
+   *
+   * Type: number
    */
-  selection_width: number;
+  selection_width: number | string;
   /**
    * Default iframe height. Not valid for all placements. Overrides tool-level
    * launch_height.
+   *
+   * Type: number
    */
-  launch_height: number;
+  launch_height: number | string;
   /**
    * Default iframe width. Not valid for all placements. Overrides tool-level
    * launch_width.
+   *
+   * Type: number
    */
-  launch_width: number;
+  launch_width: number | string;
   /**
    * Default icon URL. Not valid for all placements. Overrides tool-level
    * icon_url.
@@ -344,13 +378,17 @@ export type LtiPlacement = {
   /**
    * 1.1 specific. If true, the tool will send the SIS email in the
    * lis_person_contact_email_primary launch property
+   *
+   * Type: boolean
    */
-  prefer_sis_email: boolean;
+  prefer_sis_email: boolean | string;
   /**
    * (Only applies to 1.1) If true, Canvas will not copy launch URL query
    * parameters to the POST body.
+   *
+   * Type: boolean
    */
-  oauth_compliant: boolean;
+  oauth_compliant: boolean | string;
   /** An SVG to use instead of an icon_url. Only valid for global_navigation. */
   icon_svg_path_64: string;
   /**
@@ -366,8 +404,10 @@ export type LtiPlacement = {
   /**
    * If true, the tool will be launched in the tray. Only used by the
    * editor_button placement.
+   *
+   * Type: boolean
    */
-  use_tray: boolean;
+  use_tray: boolean | string;
 };
 
 /** Changes made by a Canvas admin to a tool's configuration. */
@@ -422,13 +462,17 @@ export type LtiPlacementOverlay = {
   /**
    * Default iframe height. Not valid for all placements. Overrides tool-level
    * launch_height.
+   *
+   * Type: number
    */
-  launch_height: number;
+  launch_height: number | string;
   /**
    * Default iframe width. Not valid for all placements. Overrides tool-level
    * launch_width.
+   *
+   * Type: number
    */
-  launch_width: number;
+  launch_width: number | string;
   /**
    * Default icon URL. Not valid for all placements. Overrides tool-level
    * icon_url.
@@ -448,7 +492,7 @@ export type ListLtiRegistrationsResponse = {
    *
    * Type: integer
    */
-  total: number;
+  total: number | string;
   /** The paginated list of LTI::Registrations */
   data: LtiRegistration[];
 };

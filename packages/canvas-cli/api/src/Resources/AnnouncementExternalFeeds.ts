@@ -4,7 +4,7 @@ export type ExternalFeed = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The title of the feed, pulled from the feed itself. If the feed hasn't yet
    * been pulled, a temporary name will be synthesized based on the URL

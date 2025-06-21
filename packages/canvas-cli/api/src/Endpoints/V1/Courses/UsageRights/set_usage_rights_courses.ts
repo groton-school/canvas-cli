@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { UsageRights } from '../../../../Resources/Files.js';
 
 export type set_usage_rights_coursesPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type set_usage_rights_coursesSearchParameters = Masquerade;
@@ -22,8 +26,10 @@ export type set_usage_rights_coursesFormParameters = Masquerade & {
    * Whether the file(s) or folder(s) should be published on save, provided
    * that usage rights have been specified (set to `true` to publish on
    * save).
+   *
+   * Type: boolean
    */
-  publish: boolean;
+  publish: boolean | string;
   /** The intellectual property justification for using the files in Canvas */
   'usage_rights[use_justification]': string;
   /** The legal copyright line for the files */

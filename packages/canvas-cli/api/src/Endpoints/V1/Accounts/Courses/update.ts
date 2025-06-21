@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
 export type updatePathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;

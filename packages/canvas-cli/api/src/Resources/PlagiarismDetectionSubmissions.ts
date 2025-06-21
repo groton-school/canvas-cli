@@ -1,19 +1,19 @@
 export type Submission = {
   lti_course_id: string;
   /** Type: integer */
-  course_id: number;
+  course_id: number | string;
   /**
    * The submission's assignment id
    *
    * Type: integer
    */
-  assignment_id: number;
+  assignment_id: number | string;
   /**
    * This is the submission attempt number.
    *
    * Type: integer
    */
-  attempt: number;
+  attempt: number | string;
   /**
    * The content of the submission, if it was submitted directly in a text
    * field.
@@ -37,7 +37,7 @@ export type Submission = {
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * UTC timestamp showing when the user agreed to the EULA (if given by the
    * tool provider)
@@ -51,11 +51,11 @@ export type Submission = {
 
 export type File = {
   /** Type: integer */
-  size: number;
+  size: number | string;
   'content-type': string;
   url: string;
   /** Type: integer */
-  id: number;
+  id: number | string;
   display_name: string;
   /** Format: date-time */
   created_at: string;

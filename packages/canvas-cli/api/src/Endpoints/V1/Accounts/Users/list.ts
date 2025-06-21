@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
 export type listPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -38,8 +42,10 @@ export type listSearchParameters = Masquerade &
     /**
      * When set to true and used with an account context, returns users who have
      * deleted pseudonyms for the context
+     *
+     * Type: boolean
      */
-    include_deleted_users: boolean;
+    include_deleted_users: boolean | string;
   }>;
 
 type Options = {

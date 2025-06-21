@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { ePortfolio } from '../../../../Resources/EPortfolios.js';
 
 export type moderate_eportfolioPathParameters = {
-  /** ID */
-  eportfolio_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  eportfolio_id: string | number;
 };
 
 export type moderate_eportfolioSearchParameters = Masquerade;

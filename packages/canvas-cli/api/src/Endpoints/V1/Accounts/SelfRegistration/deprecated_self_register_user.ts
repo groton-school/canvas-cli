@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
 export type deprecated_self_register_userPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type deprecated_self_register_userSearchParameters = Masquerade;
@@ -31,8 +35,12 @@ export type deprecated_self_register_userFormParameters = Masquerade & {
    * supports. This is in RFC-5646 format.
    */
   'user[locale]': string;
-  /** Whether the user accepts the terms of use. */
-  'user[terms_of_use]': boolean;
+  /**
+   * Whether the user accepts the terms of use.
+   *
+   * Type: boolean
+   */
+  'user[terms_of_use]': boolean | string;
   /** User's login ID. Must be a valid email address. */
   'pseudonym[unique_id]': string;
   /** The communication channel type, e.g. 'email' or 'sms'. */

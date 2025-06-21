@@ -12,9 +12,9 @@ export type MediaComment = {
 
 export type SubmissionComment = {
   /** Type: integer */
-  id: number;
+  id: number | string;
   /** Type: integer */
-  author_id: number;
+  author_id: number | string;
   author_name: string;
   /** Abbreviated user object UserDisplay (see users API). */
   author: string;
@@ -32,7 +32,7 @@ export type Submission = {
    *
    * Type: integer
    */
-  assignment_id: number;
+  assignment_id: number | string;
   /** The submission's assignment (see the assignments API) (optional) */
   assignment: Assignment;
   /** The submission's course (see the course API) (optional) */
@@ -42,7 +42,7 @@ export type Submission = {
    *
    * Type: integer
    */
-  attempt: number;
+  attempt: number | string;
   /**
    * The content of the submission, if it was submitted directly in a text
    * field.
@@ -56,14 +56,20 @@ export type Submission = {
   /**
    * A boolean flag which is false if the student has re-submitted since the
    * submission was last graded.
+   *
+   * Type: boolean
    */
-  grade_matches_current_submission: boolean;
+  grade_matches_current_submission: boolean | string;
   /** URL to the submission. This will require the user to log in. */
   html_url: string;
   /** URL to the submission preview. This will require the user to log in. */
   preview_url: string;
-  /** The raw score */
-  score: number;
+  /**
+   * The raw score
+   *
+   * Type: number
+   */
+  score: number | string;
   /** Associated comments for a submission (optional) */
   submission_comments: SubmissionComment[];
   /**
@@ -84,7 +90,7 @@ export type Submission = {
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * The id of the user who graded the submission. This will be null for
    * submissions that haven't been graded yet. It will be a positive number if a
@@ -96,13 +102,17 @@ export type Submission = {
    *
    * Type: integer
    */
-  grader_id: number;
+  grader_id: number | string;
   /** Format: date-time */
   graded_at: string;
   /** The submissions user (see user API) (optional) */
   user: User;
-  /** Whether the submission was made after the applicable due date */
-  late: boolean;
+  /**
+   * Whether the submission was made after the applicable due date
+   *
+   * Type: boolean
+   */
+  late: boolean | string;
   /**
    * Whether the assignment is visible to the user who submitted the assignment.
    * Submissions where `assignment_visible` is false no longer count towards the
@@ -110,15 +120,23 @@ export type Submission = {
    * student. `assignment_visible` becomes false for submissions that do not
    * have a grade and whose assignment is no longer assigned to the student's
    * section.
+   *
+   * Type: boolean
    */
-  assignment_visible: boolean;
+  assignment_visible: boolean | string;
   /**
    * Whether the assignment is excused. Excused assignments have no impact on a
    * user's grade.
+   *
+   * Type: boolean
    */
-  excused: boolean;
-  /** Whether the assignment is missing. */
-  missing: boolean;
+  excused: boolean | string;
+  /**
+   * Whether the assignment is missing.
+   *
+   * Type: boolean
+   */
+  missing: boolean | string;
   /**
    * The status of the submission in relation to the late policy. Can be late,
    * missing, extended, none, or null.
@@ -127,14 +145,24 @@ export type Submission = {
   /**
    * The amount of points automatically deducted from the score by the
    * missing/late policy for a late or missing assignment.
+   *
+   * Type: number
    */
-  points_deducted: number;
-  /** The amount of time, in seconds, that an submission is late by. */
-  seconds_late: number;
+  points_deducted: number | string;
+  /**
+   * The amount of time, in seconds, that an submission is late by.
+   *
+   * Type: number
+   */
+  seconds_late: number | string;
   /** The current state of the submission */
   workflow_state: string;
-  /** Extra submission attempts allowed for the given user and assignment. */
-  extra_attempts: number;
+  /**
+   * Extra submission attempts allowed for the given user and assignment.
+   *
+   * Type: number
+   */
+  extra_attempts: number | string;
   /**
    * A unique short ID identifying this submission without reference to the
    * owning user. Only included if the caller has administrator access for the
@@ -156,6 +184,8 @@ export type Submission = {
   /**
    * This indicates whether the submission has been reassigned by the
    * instructor.
+   *
+   * Type: boolean
    */
-  redo_request: boolean;
+  redo_request: boolean | string;
 };

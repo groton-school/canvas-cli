@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type updatePathParameters = {
-  /** ID */
-  user_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -21,8 +29,12 @@ export type updateFormParameters = Masquerade & {
   'token[expires_at]': string;
   /** The scopes to associate with the token. */
   'token[scopes]': string[];
-  /** Regenerate the actual token. */
-  'token[regenerate]': boolean;
+  /**
+   * Regenerate the actual token.
+   *
+   * Type: boolean
+   */
+  'token[regenerate]': boolean | string;
 };
 
 type Options = {

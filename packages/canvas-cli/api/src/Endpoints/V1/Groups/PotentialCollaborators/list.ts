@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
 export type listPathParameters = {
-  /** ID */
-  group_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
 };
 
 export type listSearchParameters = Masquerade & Paginated;

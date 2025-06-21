@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Course } from '../../../../Resources/Courses.js';
 
 export type reset_coursePathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type reset_courseSearchParameters = Masquerade;

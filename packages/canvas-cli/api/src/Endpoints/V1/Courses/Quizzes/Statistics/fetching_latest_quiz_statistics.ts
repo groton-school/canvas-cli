@@ -2,16 +2,28 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type fetching_latest_quiz_statisticsPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  quiz_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_id: string | number;
 };
 
 export type fetching_latest_quiz_statisticsSearchParameters = Masquerade &
   Partial<{
-    /** Whether the statistics report should include all submissions attempts. */
-    all_versions: boolean;
+    /**
+     * Whether the statistics report should include all submissions attempts.
+     *
+     * Type: boolean
+     */
+    all_versions: boolean | string;
   }>;
 
 type Options = {

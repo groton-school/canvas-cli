@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { CourseNickname } from '../../../../../Resources/Users.js';
 
 export type remove_course_nicknamePathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type remove_course_nicknameSearchParameters = Masquerade;

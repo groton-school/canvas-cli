@@ -8,28 +8,36 @@ export type advanced_querySearchParameters = Masquerade &
     /**
      * Restrict query to events in the specified course.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    course_id: number;
+    course_id: number | string;
     /**
      * Restrict query to the given assignment. If "override" is given, query the
      * course final grade override instead.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    assignment_id: number;
+    assignment_id: number | string;
     /**
      * User id of a student to search grading events for.
      *
-     * Format: 'int64'
-     */
-    student_id: number;
-    /**
-     * User id of a grader to search grading events for.
+     * Type: integer
      *
      * Format: 'int64'
      */
-    grader_id: number;
+    student_id: number | string;
+    /**
+     * User id of a grader to search grading events for.
+     *
+     * Type: integer
+     *
+     * Format: 'int64'
+     */
+    grader_id: number | string;
     /**
      * The beginning of the time range from which you want events.
      *

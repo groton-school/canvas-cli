@@ -3,9 +3,11 @@ export type SearchResult = {
   /**
    * The ID of the matching object.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  content_id: number;
+  content_id: number | string;
   /** The type of the matching object. */
   content_type: string;
   /** The title of the matching object. */
@@ -17,6 +19,8 @@ export type SearchResult = {
   /**
    * The distance between the search query and the result. Smaller numbers
    * indicate closer matches.
+   *
+   * Type: number
    */
-  distance: number;
+  distance: number | string;
 };

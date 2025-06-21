@@ -16,34 +16,34 @@ export type SisImportStatistic = {
    *
    * Type: integer
    */
-  created: number;
+  created: number | string;
   /**
    * This is the number of items that marked as completed. This only applies to
    * courses and enrollments.
    *
    * Type: integer
    */
-  concluded: number;
+  concluded: number | string;
   /**
    * This is the number of Enrollments that were marked as 'inactive'. This only
    * applies to enrollments.
    *
    * Type: integer
    */
-  deactivated: number;
+  deactivated: number | string;
   /**
    * This is the number of items that were set to an active state from a
    * completed, inactive, or deleted state.
    *
    * Type: integer
    */
-  restored: number;
+  restored: number | string;
   /**
    * This is the number of items that were deleted.
    *
    * Type: integer
    */
-  deleted: number;
+  deleted: number | string;
 };
 
 export type SisImportStatistics = {
@@ -58,7 +58,7 @@ export type SisImportStatistics = {
    *
    * Type: integer
    */
-  total_state_changes: number;
+  total_state_changes: number | string;
   /** This contains that statistics for accounts. */
   Account: SisImportStatistic;
   /** This contains that statistics for terms. */
@@ -99,41 +99,41 @@ export type SisImportStatistics = {
 
 export type SisImportCounts = {
   /** Type: integer */
-  accounts: number;
+  accounts: number | string;
   /** Type: integer */
-  terms: number;
+  terms: number | string;
   /** Type: integer */
-  abstract_courses: number;
+  abstract_courses: number | string;
   /** Type: integer */
-  courses: number;
+  courses: number | string;
   /** Type: integer */
-  sections: number;
+  sections: number | string;
   /** Type: integer */
-  xlists: number;
+  xlists: number | string;
   /** Type: integer */
-  users: number;
+  users: number | string;
   /** Type: integer */
-  enrollments: number;
+  enrollments: number | string;
   /** Type: integer */
-  groups: number;
+  groups: number | string;
   /** Type: integer */
-  group_memberships: number;
+  group_memberships: number | string;
   /** Type: integer */
-  grade_publishing_results: number;
+  grade_publishing_results: number | string;
   /**
    * The number of courses that were removed because they were not included in
    * the batch for batch_mode imports. Only included if courses were deleted
    *
    * Type: integer
    */
-  batch_courses_deleted: number;
+  batch_courses_deleted: number | string;
   /**
    * The number of sections that were removed because they were not included in
    * the batch for batch_mode imports. Only included if sections were deleted
    *
    * Type: integer
    */
-  batch_sections_deleted: number;
+  batch_sections_deleted: number | string;
   /**
    * The number of enrollments that were removed because they were not included
    * in the batch for batch_mode imports. Only included if enrollments were
@@ -141,11 +141,11 @@ export type SisImportCounts = {
    *
    * Type: integer
    */
-  batch_enrollments_deleted: number;
+  batch_enrollments_deleted: number | string;
   /** Type: integer */
-  error_count: number;
+  error_count: number | string;
   /** Type: integer */
-  warning_count: number;
+  warning_count: number | string;
 };
 
 export type SisImport = {
@@ -154,7 +154,7 @@ export type SisImport = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The date the SIS import was created.
    *
@@ -217,35 +217,65 @@ export type SisImport = {
   processing_warnings: string[][];
   /** An array of CSV_file/error_message pairs. */
   processing_errors: string[][];
-  /** Whether the import was run in batch mode. */
-  batch_mode: boolean;
+  /**
+   * Whether the import was run in batch mode.
+   *
+   * Type: boolean
+   */
+  batch_mode: boolean | string;
   /** The term the batch was limited to. */
   batch_mode_term_id: string;
   /**
    * Enables batch mode against all terms in term file. Requires
    * change_threshold to be set.
+   *
+   * Type: boolean
    */
-  multi_term_batch_mode: boolean;
-  /** When set the import will skip any deletes. */
-  skip_deletes: boolean;
-  /** Whether UI changes were overridden. */
-  override_sis_stickiness: boolean;
-  /** Whether stickiness was added to the batch changes. */
-  add_sis_stickiness: boolean;
-  /** Whether stickiness was cleared. */
-  clear_sis_stickiness: boolean;
-  /** Whether a diffing job failed because the threshold limit got exceeded. */
-  diffing_threshold_exceeded: boolean;
+  multi_term_batch_mode: boolean | string;
+  /**
+   * When set the import will skip any deletes.
+   *
+   * Type: boolean
+   */
+  skip_deletes: boolean | string;
+  /**
+   * Whether UI changes were overridden.
+   *
+   * Type: boolean
+   */
+  override_sis_stickiness: boolean | string;
+  /**
+   * Whether stickiness was added to the batch changes.
+   *
+   * Type: boolean
+   */
+  add_sis_stickiness: boolean | string;
+  /**
+   * Whether stickiness was cleared.
+   *
+   * Type: boolean
+   */
+  clear_sis_stickiness: boolean | string;
+  /**
+   * Whether a diffing job failed because the threshold limit got exceeded.
+   *
+   * Type: boolean
+   */
+  diffing_threshold_exceeded: boolean | string;
   /** The identifier of the data set that this SIS batch diffs against */
   diffing_data_set_identifier: string;
-  /** Whether diffing remaster data was enabled. */
-  diffing_remaster: boolean;
+  /**
+   * Whether diffing remaster data was enabled.
+   *
+   * Type: boolean
+   */
+  diffing_remaster: boolean | string;
   /**
    * The ID of the SIS Import that this import was diffed against
    *
    * Type: integer
    */
-  diffed_against_import_id: number;
+  diffed_against_import_id: number | string;
   /** An array of CSV files for processing */
   csv_attachments: File[][];
 };

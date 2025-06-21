@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type update_grading_period_setPathParameters = {
-  /** ID */
-  account_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type update_grading_period_setSearchParameters = Masquerade;
@@ -19,12 +27,14 @@ export type update_grading_period_setFormParameters = Masquerade & {
    * A boolean to determine whether the grading periods in the set are
    * weighted
    */
-  'grading_period_set[weighted]': boolean[];
+  'grading_period_set[weighted]': boolean | string[];
   /**
    * A boolean to determine whether the totals for all grading periods in the
    * set are displayed
    */
-  'grading_period_set[display_totals_for_all_grading_periods]': boolean[];
+  'grading_period_set[display_totals_for_all_grading_periods]':
+    | boolean
+    | string[];
 };
 
 type Options = {

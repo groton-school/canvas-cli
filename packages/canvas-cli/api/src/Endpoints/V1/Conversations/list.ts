@@ -28,16 +28,20 @@ export type listSearchParameters = Masquerade &
     /**
      * (Obsolete) Submissions are no longer linked to conversations. This
      * parameter is ignored.
+     *
+     * Type: boolean
      */
-    interleave_submissions: boolean;
+    interleave_submissions: boolean | string;
     /**
      * Default is false. If true, the top-level element of the response will be
      * an object rather than an array, and will have the keys "conversations"
      * which will contain the paged conversation data, and "conversation_ids"
      * which will contain the ids of all conversations under this scope/filter
      * in the same order.
+     *
+     * Type: boolean
      */
-    include_all_conversation_ids: boolean;
+    include_all_conversation_ids: boolean | string;
     /**
      * "participant_avatars":: Optionally include an "avatar_url" key for each
      * user participanting in the conversation

@@ -8,8 +8,10 @@ export type listSearchParameters = Masquerade &
     /**
      * When set, only return courses that are not configured as blueprint
      * courses.
+     *
+     * Type: boolean
      */
-    exclude_blueprint_courses: boolean;
+    exclude_blueprint_courses: boolean | string;
   }>;
 
 type Options =

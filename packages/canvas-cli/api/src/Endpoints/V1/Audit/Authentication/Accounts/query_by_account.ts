@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type query_by_accountPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type query_by_accountSearchParameters = Masquerade &

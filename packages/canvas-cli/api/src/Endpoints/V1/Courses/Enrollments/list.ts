@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
 export type listPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -54,17 +58,21 @@ export type listSearchParameters = Masquerade &
      * Return grades for the given grading_period. If this parameter is not
      * specified, the returned grades will be for the whole course.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    grading_period_id: number;
+    grading_period_id: number | string;
     /**
      * Returns only enrollments for the specified enrollment term. This
      * parameter only applies to the user enrollments path. May pass the ID from
      * the enrollment terms api or the SIS id prepended with 'sis_term_id:'.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    enrollment_term_id: number;
+    enrollment_term_id: number | string;
     /**
      * Returns only enrollments for the specified SIS account ID(s). Does not
      * look into sub_accounts. May pass in array or string.
@@ -92,7 +100,7 @@ export type listSearchParameters = Masquerade &
      * enrollments returned from the endpoint to enrollments that were created
      * from a sis_import with that sis_user_id
      */
-    created_for_sis_id: boolean[];
+    created_for_sis_id: boolean | string[];
   }>;
 
 type Options = {

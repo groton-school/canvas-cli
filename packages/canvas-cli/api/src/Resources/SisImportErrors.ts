@@ -4,7 +4,7 @@ export type SisImportError = {
    *
    * Type: integer
    */
-  sis_import_id: number;
+  sis_import_id: number | string;
   /** The file where the error message occurred. */
   file: string;
   /** The error message that from the record. */
@@ -17,5 +17,5 @@ export type SisImportError = {
    *
    * Type: integer
    */
-  row: number;
+  row: number | string;
 };

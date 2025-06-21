@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { DeveloperKey } from '../../../../Resources/DeveloperKeys.js';
 
 export type listPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -13,8 +17,10 @@ export type listSearchParameters = Masquerade &
     /**
      * Defaults to false. If true, lists keys inherited from Site Admin (and
      * consortium parent account, if applicable).
+     *
+     * Type: boolean
      */
-    inherited: boolean;
+    inherited: boolean | string;
   }>;
 
 type Options = {

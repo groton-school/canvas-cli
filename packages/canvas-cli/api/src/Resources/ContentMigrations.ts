@@ -4,7 +4,7 @@ export type MigrationIssue = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** API url to the content migration */
   content_migration_url: string;
   /** Description of the issue for the end-user */
@@ -42,7 +42,7 @@ export type ContentMigration = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The type of content migration */
   migration_type: string;
   /** The name of the content migration type */
@@ -61,7 +61,7 @@ export type ContentMigration = {
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * Current state of the content migration: pre_processing, pre_processed,
    * running, waiting_for_select, completed, failed
@@ -92,8 +92,12 @@ export type ContentMigration = {
 export type Migrator = {
   /** The value to pass to the create endpoint */
   type: string;
-  /** Whether this endpoint requires a file upload */
-  requires_file_upload: boolean;
+  /**
+   * Whether this endpoint requires a file upload
+   *
+   * Type: boolean
+   */
+  requires_file_upload: boolean | string;
   /** Description of the package type expected */
   name: string;
   /** A list of fields this system requires */

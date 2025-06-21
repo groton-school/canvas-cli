@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
 export type show_front_page_coursesPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type show_front_page_coursesSearchParameters = Masquerade;

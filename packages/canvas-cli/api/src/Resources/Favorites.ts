@@ -4,7 +4,7 @@ export type Favorite = {
    *
    * Type: integer
    */
-  context_id: number;
+  context_id: number | string;
   /**
    * The type of the object the Favorite refers to (currently, only 'Course' is
    * supported)

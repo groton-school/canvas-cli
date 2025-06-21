@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { SisImport } from '../../../../Resources/SisImports.js';
 
 export type import_sis_dataPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type import_sis_dataSearchParameters = Masquerade;
@@ -68,46 +72,60 @@ export type import_sis_dataFormParameters = Masquerade & {
    * previously imported via SIS that is not present in this latest import.
    * See the SIS CSV Format page for details. Batch mode cannot be used with
    * diffing.
+   *
+   * Type: boolean
    */
-  batch_mode: boolean;
+  batch_mode: boolean | string;
   /** Limit deletions to only this term. Required if batch mode is enabled. */
   batch_mode_term_id: string;
   /**
    * Runs batch mode against all terms in terms file. Requires
    * change_threshold.
+   *
+   * Type: boolean
    */
-  multi_term_batch_mode: boolean;
+  multi_term_batch_mode: boolean | string;
   /**
    * When set the import will skip any deletes. This does not account for
    * objects that are deleted during the batch mode cleanup process.
+   *
+   * Type: boolean
    */
-  skip_deletes: boolean;
+  skip_deletes: boolean | string;
   /**
    * Default is false. If true, any fields containing “sticky” or UI changes
    * will be overridden. See SIS CSV Format documentation for information on
    * which fields can have SIS stickiness
+   *
+   * Type: boolean
    */
-  override_sis_stickiness: boolean;
+  override_sis_stickiness: boolean | string;
   /**
    * This option, if present, will process all changes as if they were UI
    * changes. This means that "stickiness" will be added to changed fields.
    * This option is only processed if 'override_sis_stickiness' is also
    * provided.
+   *
+   * Type: boolean
    */
-  add_sis_stickiness: boolean;
+  add_sis_stickiness: boolean | string;
   /**
    * This option, if present, will clear "stickiness" from all fields touched
    * by this import. Requires that 'override_sis_stickiness' is also provided.
    * If 'add_sis_stickiness' is also provided, 'clear_sis_stickiness' will
    * overrule the behavior of 'add_sis_stickiness'
+   *
+   * Type: boolean
    */
-  clear_sis_stickiness: boolean;
+  clear_sis_stickiness: boolean | string;
   /**
    * This option, if present, will override the old (or non-existent)
    * non-matching SIS ID with the new SIS ID in the upload, if a pseudonym is
    * found from the login field and the SIS ID doesn't match.
+   *
+   * Type: boolean
    */
-  update_sis_id_if_login_claimed: boolean;
+  update_sis_id_if_login_claimed: boolean | string;
   /**
    * If set on a CSV import, Canvas will attempt to optimize the SIS import by
    * comparing this set of CSVs to the previous set that has the same data set
@@ -120,8 +138,10 @@ export type import_sis_dataFormParameters = Masquerade & {
    * If true, and diffing_data_set_identifier is sent, this SIS import will be
    * part of the data set, but diffing will not be performed. See the SIS CSV
    * Format documentation for details.
+   *
+   * Type: boolean
    */
-  diffing_remaster_data_set: boolean;
+  diffing_remaster_data_set: boolean | string;
   /**
    * If diffing_drop_status is passed, this SIS import will use this status
    * for enrollments that are not included in the sis_batch. Defaults to
@@ -162,16 +182,20 @@ export type import_sis_dataFormParameters = Masquerade & {
    * See the SIS CSV Format documentation for more details. Required for
    * multi_term_batch_mode.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  change_threshold: number;
+  change_threshold: number | string;
   /**
    * If set with diffing, diffing will not be performed if the number of rows
    * to be run in the fully calculated diff import exceeds the threshold.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  diff_row_count_threshold: number;
+  diff_row_count_threshold: number | string;
 };
 
 type Options = {

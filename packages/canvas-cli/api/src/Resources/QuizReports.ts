@@ -7,13 +7,13 @@ export type QuizReport = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The ID of the quiz
    *
    * Type: integer
    */
-  quiz_id: number;
+  quiz_id: number | string;
   /**
    * Which type of report this is possible values: 'student_analysis',
    * 'item_analysis'
@@ -24,18 +24,24 @@ export type QuizReport = {
   /**
    * Boolean indicating whether the report represents all submissions or only
    * the most recent ones for each student
+   *
+   * Type: boolean
    */
-  includes_all_versions: boolean;
+  includes_all_versions: boolean | string;
   /**
    * Boolean indicating whether the report is for an anonymous survey. if true,
    * no student names will be included in the csv
+   *
+   * Type: boolean
    */
-  anonymous: boolean;
+  anonymous: boolean | string;
   /**
    * Boolean indicating whether the report can be generated, which is true
    * unless the quiz is a survey one
+   *
+   * Type: boolean
    */
-  generatable: boolean;
+  generatable: boolean | string;
   /**
    * When the report was created
    *

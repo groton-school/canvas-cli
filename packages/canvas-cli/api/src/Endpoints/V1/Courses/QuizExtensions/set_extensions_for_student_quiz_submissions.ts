@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type set_extensions_for_student_quiz_submissionsPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type set_extensions_for_student_quiz_submissionsSearchParameters =
@@ -14,42 +18,56 @@ export type set_extensions_for_student_quiz_submissionsFormParameters =
     /**
      * The ID of the user we want to add quiz extensions for.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    user_id: number;
+    user_id: number | string;
     /**
      * Number of times the student is allowed to re-take the quiz over the
      * multiple-attempt limit. This is limited to 1000 attempts or less.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    extra_attempts: number;
+    extra_attempts: number | string;
     /**
      * The number of extra minutes to allow for all attempts. This will add to
      * the existing time limit on the submission. This is limited to 10080
      * minutes (1 week)
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    extra_time: number;
-    /** Allow the student to take the quiz even if it's locked for everyone else. */
-    manually_unlocked: boolean;
+    extra_time: number | string;
+    /**
+     * Allow the student to take the quiz even if it's locked for everyone else.
+     *
+     * Type: boolean
+     */
+    manually_unlocked: boolean | string;
     /**
      * The number of minutes to extend the quiz from the current time. This is
      * mutually exclusive to extend_from_end_at. This is limited to 1440 minutes
      * (24 hours)
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    extend_from_now: number;
+    extend_from_now: number | string;
     /**
      * The number of minutes to extend the quiz beyond the quiz's current ending
      * time. This is mutually exclusive to extend_from_now. This is limited to
      * 1440 minutes (24 hours)
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    extend_from_end_at: number;
+    extend_from_end_at: number | string;
   };
 
 type Options = {

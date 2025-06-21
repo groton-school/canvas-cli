@@ -8,7 +8,7 @@ export type DeveloperKey = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The display name */
   name: string;
   /**
@@ -25,8 +25,12 @@ export type DeveloperKey = {
   updated_at: string;
   /** The state of the key */
   workflow_state: string;
-  /** True if key represents an LTI 1.3 Registration. False for Canvas API keys */
-  is_lti_key: boolean;
+  /**
+   * True if key represents an LTI 1.3 Registration. False for Canvas API keys
+   *
+   * Type: boolean
+   */
+  is_lti_key: boolean | string;
   /** Contact email configured for key */
   email: string;
   /** URL for a small icon to display in key list */
@@ -40,8 +44,10 @@ export type DeveloperKey = {
   /**
    * True for all keys except Site Admin-level keys, which default to false.
    * Controls visibility in the Inherited tab.
+   *
+   * Type: boolean
    */
-  visible: boolean;
+  visible: boolean | string;
   /**
    * List of API endpoints key is allowed to access (API keys), or LTI 1.3
    * scopes (LTI keys)
@@ -59,7 +65,7 @@ export type DeveloperKey = {
    *
    * Type: integer
    */
-  access_token_count: number;
+  access_token_count: number | string;
   /**
    * (API keys only) The last time an access token for this key was used in an
    * API request
@@ -70,18 +76,24 @@ export type DeveloperKey = {
   /**
    * (API keys only) If true, key is only usable in non-production environments
    * (test, beta). Avoids problems with beta refresh.
+   *
+   * Type: boolean
    */
-  test_cluster_only: boolean;
+  test_cluster_only: boolean | string;
   /**
    * (API keys only) If true, allows `includes` parameters in API requests that
    * match the scopes of this key
+   *
+   * Type: boolean
    */
-  allow_includes: boolean;
+  allow_includes: boolean | string;
   /**
    * (API keys only) If true, then token requests with this key must include
    * scopes
+   *
+   * Type: boolean
    */
-  require_scopes: boolean;
+  require_scopes: boolean | string;
   /**
    * (API keys only) Used in OAuth2 client credentials flow to specify the
    * audience for the access token
@@ -113,8 +125,12 @@ export type DeveloperKey = {
    * Object
    */
   lti_registration: JSONObject;
-  /** (LTI keys only) Returns true if key was created via Dynamic Registration. */
-  is_lti_registration: boolean;
+  /**
+   * (LTI keys only) Returns true if key was created via Dynamic Registration.
+   *
+   * Type: boolean
+   */
+  is_lti_registration: boolean | string;
   /** Unused. */
   user_name: string;
   /** Unused. */

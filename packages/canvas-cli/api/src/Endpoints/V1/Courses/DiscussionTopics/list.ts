@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { DiscussionTopic } from '../../../../Resources/DiscussionTopics.js';
 
 export type listPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -35,8 +39,12 @@ export type listSearchParameters = Masquerade &
      * as comma separated string.
      */
     scope: string;
-    /** Return announcements instead of discussion topics. Defaults to false */
-    only_announcements: boolean;
+    /**
+     * Return announcements instead of discussion topics. Defaults to false
+     *
+     * Type: boolean
+     */
+    only_announcements: boolean | string;
     /**
      * The state of the discussion topic to return. Currently only supports
      * unread state.
@@ -47,8 +55,10 @@ export type listSearchParameters = Masquerade &
     /**
      * For students, exclude topics that are locked by module progression.
      * Defaults to false.
+     *
+     * Type: boolean
      */
-    exclude_context_module_locked_topics: boolean;
+    exclude_context_module_locked_topics: boolean | string;
   }>;
 
 type Options = {

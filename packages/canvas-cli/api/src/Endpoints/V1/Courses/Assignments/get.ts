@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { Assignment } from '../../../../Resources/Assignments.js';
 
 export type getPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
@@ -19,15 +27,25 @@ export type getSearchParameters = Masquerade &
      * "submission" option must also be set.
      */
     include: string[];
-    /** Apply assignment overrides to the assignment, defaults to true. */
-    override_assignment_dates: boolean;
+    /**
+     * Apply assignment overrides to the assignment, defaults to true.
+     *
+     * Type: boolean
+     */
+    override_assignment_dates: boolean | string;
     /**
      * Split up "needs_grading_count" by sections into the
      * "needs_grading_count_by_section" key, defaults to false
+     *
+     * Type: boolean
      */
-    needs_grading_count_by_section: boolean;
-    /** All dates associated with the assignment, if applicable */
-    all_dates: boolean;
+    needs_grading_count_by_section: boolean | string;
+    /**
+     * All dates associated with the assignment, if applicable
+     *
+     * Type: boolean
+     */
+    all_dates: boolean | string;
   }>;
 
 type Options = {

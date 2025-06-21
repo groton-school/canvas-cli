@@ -3,12 +3,24 @@ import { client } from '../../../../../Client.js';
 import { ModuleItem } from '../../../../../Resources/CoursePace.js';
 
 export type updatePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  module_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  module_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -19,22 +31,28 @@ export type updateFormParameters = Masquerade & {
   /**
    * The position of this item in the module (1-based)
    *
-   * Format: 'int64'
-   */
-  'module_item[position]': number;
-  /**
-   * 0-based indent level; module items may be indented to show a hierarchy
+   * Type: integer
    *
    * Format: 'int64'
    */
-  'module_item[indent]': number;
+  'module_item[position]': number | string;
+  /**
+   * 0-based indent level; module items may be indented to show a hierarchy
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  'module_item[indent]': number | string;
   /** External url that the item points to. Only applies to 'ExternalUrl' type. */
   'module_item[external_url]': string;
   /**
    * Whether the external tool opens in a new tab. Only applies to
    * 'ExternalTool' type.
+   *
+   * Type: boolean
    */
-  'module_item[new_tab]': boolean;
+  'module_item[new_tab]': boolean | string;
   /**
    * Completion requirement for this module item. "must_view": Applies to all
    * item types "must_contribute": Only applies to "Assignment", "Discussion",
@@ -47,11 +65,17 @@ export type updateFormParameters = Masquerade & {
    * Minimum score required to complete, Required for completion_requirement
    * type 'min_score'.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'module_item[completion_requirement][min_score]': number;
-  /** Whether the module item is published and visible to students. */
-  'module_item[published]': boolean;
+  'module_item[completion_requirement][min_score]': number | string;
+  /**
+   * Whether the module item is published and visible to students.
+   *
+   * Type: boolean
+   */
+  'module_item[published]': boolean | string;
   /**
    * Move this item to another module by specifying the target module id here.
    * The target module must be in the same course.

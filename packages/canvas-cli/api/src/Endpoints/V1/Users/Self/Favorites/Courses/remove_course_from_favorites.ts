@@ -3,8 +3,12 @@ import { client } from '../../../../../../Client.js';
 import { Favorite } from '../../../../../../Resources/Favorites.js';
 
 export type remove_course_from_favoritesPathParameters = {
-  /** The ID or SIS ID of the course to remove */
-  id: string;
+  /**
+   * The ID or SIS ID of the course to remove
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type remove_course_from_favoritesSearchParameters = Masquerade;

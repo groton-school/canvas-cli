@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 
 export type lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesPathParameters =
   {
-    /** ID */
-    account_id: string;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    account_id: string | number;
   };
 
 export type lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters =
@@ -15,8 +19,10 @@ export type lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesForm
     /**
      * Whether sub-accounts and courses will be prevented from overriding
      * settings inherited from this account.
+     *
+     * Type: boolean
      */
-    settings_locked: boolean;
+    settings_locked: boolean | string;
   };
 
 type Options = {

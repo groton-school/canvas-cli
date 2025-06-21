@@ -3,12 +3,24 @@ import { client } from '../../../../../Client.js';
 
 export type abort_generation_of_report_or_remove_previously_generated_onePathParameters =
   {
-    /** ID */
-    course_id: string;
-    /** ID */
-    quiz_id: string;
-    /** ID */
-    id: string;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    course_id: string | number;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    quiz_id: string | number;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    id: string | number;
   };
 
 export type abort_generation_of_report_or_remove_previously_generated_oneSearchParameters =

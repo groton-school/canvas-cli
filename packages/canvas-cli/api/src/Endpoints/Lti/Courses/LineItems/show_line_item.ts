@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
 export type show_line_itemPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type show_line_itemSearchParameters = Masquerade &

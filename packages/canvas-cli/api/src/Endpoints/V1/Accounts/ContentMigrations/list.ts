@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { ContentMigration } from '../../../../Resources/ContentMigrations.js';
 
 export type listPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type listSearchParameters = Masquerade & Paginated;

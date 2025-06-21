@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
 export type delete_group_categoryPathParameters = {
-  /** ID */
-  group_category_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_category_id: string | number;
 };
 
 export type delete_group_categorySearchParameters = Masquerade;

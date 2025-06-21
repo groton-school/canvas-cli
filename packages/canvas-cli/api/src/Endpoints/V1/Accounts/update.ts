@@ -4,8 +4,12 @@ import { client } from '../../../Client.js';
 import { Account } from '../../../Resources/Accounts.js';
 
 export type updatePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -28,30 +32,38 @@ export type updateFormParameters = Masquerade & {
   /**
    * The default course storage quota to be used, if not otherwise specified.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'account[default_storage_quota_mb]': number;
+  'account[default_storage_quota_mb]': number | string;
   /**
    * The default user storage quota to be used, if not otherwise specified.
    *
-   * Format: 'int64'
-   */
-  'account[default_user_storage_quota_mb]': number;
-  /**
-   * The default group storage quota to be used, if not otherwise specified.
+   * Type: integer
    *
    * Format: 'int64'
    */
-  'account[default_group_storage_quota_mb]': number;
+  'account[default_user_storage_quota_mb]': number | string;
+  /**
+   * The default group storage quota to be used, if not otherwise specified.
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  'account[default_group_storage_quota_mb]': number | string;
   /**
    * The ID of a course to be used as a template for all newly created
    * courses. Empty means to inherit the setting from parent account, 0 means
    * to not use a template even if a parent account has one set. The course
    * must be marked as a template.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'account[course_template_id]': number;
+  'account[course_template_id]': number | string;
   /**
    * The ID of a parent account to move the account to. The new parent account
    * must be in the same root account as the original. The hierarchy of
@@ -59,15 +71,29 @@ export type updateFormParameters = Masquerade & {
    * be an administrator in both the original parent account and the new
    * parent account.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'account[parent_account_id]': number;
-  /** Restrict students from viewing courses after end date */
-  'account[settings][restrict_student_past_view][value]': boolean;
-  /** Lock this setting for sub-accounts and courses */
-  'account[settings][restrict_student_past_view][locked]': boolean;
-  /** Restrict students from viewing courses before start date */
-  'account[settings][restrict_student_future_view][value]': boolean;
+  'account[parent_account_id]': number | string;
+  /**
+   * Restrict students from viewing courses after end date
+   *
+   * Type: boolean
+   */
+  'account[settings][restrict_student_past_view][value]': boolean | string;
+  /**
+   * Lock this setting for sub-accounts and courses
+   *
+   * Type: boolean
+   */
+  'account[settings][restrict_student_past_view][locked]': boolean | string;
+  /**
+   * Restrict students from viewing courses before start date
+   *
+   * Type: boolean
+   */
+  'account[settings][restrict_student_future_view][value]': boolean | string;
   /**
    * Determines whether this account has Microsoft Teams Sync enabled or not.
    *
@@ -76,8 +102,10 @@ export type updateFormParameters = Masquerade & {
    * if you are enabling Microsoft Teams sync, you must also specify a tenant,
    * login attribute, and a remote attribute. Specifying a suffix to use is
    * optional.
+   *
+   * Type: boolean
    */
-  'account[settings][microsoft_sync_enabled]': boolean;
+  'account[settings][microsoft_sync_enabled]': boolean | string;
   /**
    * The tenant this account should use when using Microsoft Teams Sync. This
    * should be an Azure Active Directory domain name.
@@ -101,30 +129,64 @@ export type updateFormParameters = Masquerade & {
    * "userPrincipalName".
    */
   'account[settings][microsoft_sync_remote_attribute]': string;
-  /** Lock this setting for sub-accounts and courses */
-  'account[settings][restrict_student_future_view][locked]': boolean;
-  /** Disable comments on announcements */
-  'account[settings][lock_all_announcements][value]': boolean;
-  /** Lock this setting for sub-accounts and courses */
-  'account[settings][lock_all_announcements][locked]': boolean;
+  /**
+   * Lock this setting for sub-accounts and courses
+   *
+   * Type: boolean
+   */
+  'account[settings][restrict_student_future_view][locked]': boolean | string;
+  /**
+   * Disable comments on announcements
+   *
+   * Type: boolean
+   */
+  'account[settings][lock_all_announcements][value]': boolean | string;
+  /**
+   * Lock this setting for sub-accounts and courses
+   *
+   * Type: boolean
+   */
+  'account[settings][lock_all_announcements][locked]': boolean | string;
   /**
    * Copyright and license information must be provided for files before they
    * are published.
+   *
+   * Type: boolean
    */
-  'account[settings][usage_rights_required][value]': boolean;
-  /** Lock this setting for sub-accounts and courses */
-  'account[settings][usage_rights_required][locked]': boolean;
-  /** Restrict students from viewing future enrollments in course list */
-  'account[settings][restrict_student_future_listing][value]': boolean;
-  /** Lock this setting for sub-accounts and courses */
-  'account[settings][restrict_student_future_listing][locked]': boolean;
+  'account[settings][usage_rights_required][value]': boolean | string;
+  /**
+   * Lock this setting for sub-accounts and courses
+   *
+   * Type: boolean
+   */
+  'account[settings][usage_rights_required][locked]': boolean | string;
+  /**
+   * Restrict students from viewing future enrollments in course list
+   *
+   * Type: boolean
+   */
+  'account[settings][restrict_student_future_listing][value]': boolean | string;
+  /**
+   * Lock this setting for sub-accounts and courses
+   *
+   * Type: boolean
+   */
+  'account[settings][restrict_student_future_listing][locked]':
+    | boolean
+    | string;
   /**
    * Enable or disable individual learning paths for students based on
    * assessment
+   *
+   * Type: boolean
    */
-  'account[settings][conditional_release][value]': boolean;
-  /** Lock this setting for sub-accounts and courses */
-  'account[settings][conditional_release][locked]': boolean;
+  'account[settings][conditional_release][value]': boolean | string;
+  /**
+   * Lock this setting for sub-accounts and courses
+   *
+   * Type: boolean
+   */
+  'account[settings][conditional_release][locked]': boolean | string;
   /**
    * Hash of optional password policy configuration parameters for a root
    * account
@@ -149,32 +211,58 @@ export type updateFormParameters = Masquerade & {
    * Hash
    */
   'account[settings][password_policy]': JSONObject;
-  /** Enable or disable Canvas for Elementary for this account */
-  'account[settings][enable_as_k5_account][value]': boolean;
+  /**
+   * Enable or disable Canvas for Elementary for this account
+   *
+   * Type: boolean
+   */
+  'account[settings][enable_as_k5_account][value]': boolean | string;
   /**
    * Whether or not the classic font is used on the dashboard. Only applies if
    * enable_as_k5_account is true.
+   *
+   * Type: boolean
    */
-  'account[settings][use_classic_font_in_k5][value]': boolean;
-  /** Enable or disable Canvas Career for this account */
-  'account[settings][horizon_account][value]': boolean;
+  'account[settings][use_classic_font_in_k5][value]': boolean | string;
+  /**
+   * Enable or disable Canvas Career for this account
+   *
+   * Type: boolean
+   */
+  'account[settings][horizon_account][value]': boolean | string;
   /**
    * Default is true. If false, any fields containing “sticky” changes will
    * not be updated. See SIS CSV Format documentation for information on which
    * fields can have SIS stickiness
+   *
+   * Type: boolean
    */
-  override_sis_stickiness: boolean;
-  /** [DEPRECATED] Restrict instructors from changing mastery scale */
-  'account[settings][lock_outcome_proficiency][value]': boolean;
-  /** [DEPRECATED] Lock this setting for sub-accounts and courses */
-  'account[lock_outcome_proficiency][locked]': boolean;
+  override_sis_stickiness: boolean | string;
+  /**
+   * [DEPRECATED] Restrict instructors from changing mastery scale
+   *
+   * Type: boolean
+   */
+  'account[settings][lock_outcome_proficiency][value]': boolean | string;
+  /**
+   * [DEPRECATED] Lock this setting for sub-accounts and courses
+   *
+   * Type: boolean
+   */
+  'account[lock_outcome_proficiency][locked]': boolean | string;
   /**
    * [DEPRECATED] Restrict instructors from changing proficiency calculation
    * method
+   *
+   * Type: boolean
    */
-  'account[settings][lock_proficiency_calculation][value]': boolean;
-  /** [DEPRECATED] Lock this setting for sub-accounts and courses */
-  'account[lock_proficiency_calculation][locked]': boolean;
+  'account[settings][lock_proficiency_calculation][value]': boolean | string;
+  /**
+   * [DEPRECATED] Lock this setting for sub-accounts and courses
+   *
+   * Type: boolean
+   */
+  'account[lock_proficiency_calculation][locked]': boolean | string;
   /**
    * Give this a set of keys and boolean values to enable or disable services
    * matching the keys

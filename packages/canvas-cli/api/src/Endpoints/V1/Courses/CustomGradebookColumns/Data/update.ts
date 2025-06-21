@@ -3,12 +3,24 @@ import { client } from '../../../../../Client.js';
 import { ColumnDatum } from '../../../../../Resources/CustomGradebookColumns.js';
 
 export type updatePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;

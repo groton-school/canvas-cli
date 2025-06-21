@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { Module } from '../../../../Resources/CoursePace.js';
 
 export type updatePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -23,11 +31,17 @@ export type updateFormParameters = Masquerade & {
   /**
    * The position of the module in the course (1-based)
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'module[position]': number;
-  /** Whether module items must be unlocked in order */
-  'module[require_sequential_progress]': boolean;
+  'module[position]': number | string;
+  /**
+   * Whether module items must be unlocked in order
+   *
+   * Type: boolean
+   */
+  'module[require_sequential_progress]': boolean | string;
   /**
    * IDs of Modules that must be completed before this one is unlocked
    * Prerequisite modules must precede this module (i.e. have a lower position
@@ -37,10 +51,16 @@ export type updateFormParameters = Masquerade & {
   /**
    * Whether to publish the student's final grade for the course upon
    * completion of this module.
+   *
+   * Type: boolean
    */
-  'module[publish_final_grade]': boolean;
-  /** Whether the module is published and visible to students */
-  'module[published]': boolean;
+  'module[publish_final_grade]': boolean | string;
+  /**
+   * Whether the module is published and visible to students
+   *
+   * Type: boolean
+   */
+  'module[published]': boolean | string;
 };
 
 type Options = {

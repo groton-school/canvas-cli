@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type reorder_pinned_topics_groupsPathParameters = {
-  /** ID */
-  group_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
 };
 
 export type reorder_pinned_topics_groupsSearchParameters = Masquerade;
@@ -15,7 +19,7 @@ export type reorder_pinned_topics_groupsFormParameters = Masquerade & {
    *
    * Format: 'int64'
    */
-  order: number[];
+  order: number | string[];
 };
 
 type Options = {

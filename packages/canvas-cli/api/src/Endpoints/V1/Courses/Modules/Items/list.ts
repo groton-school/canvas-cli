@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { ModuleItem } from '../../../../../Resources/CoursePace.js';
 
 export type listPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  module_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  module_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &

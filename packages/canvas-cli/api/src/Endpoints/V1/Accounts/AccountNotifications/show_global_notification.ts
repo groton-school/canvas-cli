@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
 export type show_global_notificationPathParameters = {
-  /** ID */
-  account_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type show_global_notificationSearchParameters = Masquerade;

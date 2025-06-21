@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
 export type getPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
@@ -11,8 +15,10 @@ export type getSearchParameters = Masquerade &
     /**
      * (Obsolete) Submissions are no longer linked to conversations. This
      * parameter is ignored.
+     *
+     * Type: boolean
      */
-    interleave_submissions: boolean;
+    interleave_submissions: boolean | string;
     /**
      * Used when generating "visible" in the API response. See the explanation
      * under the {api:ConversationsController#index index API action}
@@ -32,8 +38,10 @@ export type getSearchParameters = Masquerade &
      * Default true. If true, unread conversations will be automatically marked
      * as read. This will default to false in a future API release, so clients
      * should explicitly send true if that is the desired behavior.
+     *
+     * Type: boolean
      */
-    auto_mark_as_read: boolean;
+    auto_mark_as_read: boolean | string;
   }>;
 
 type Options = {

@@ -29,7 +29,7 @@ export type QuizAssignmentOverride = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The date after which any quiz submission is considered late.
    *
@@ -54,6 +54,8 @@ export type QuizAssignmentOverride = {
   /**
    * If this property is present, it means that dates in this structure are not
    * based on an assignment override, but are instead for all students.
+   *
+   * Type: boolean
    */
-  base: boolean;
+  base: boolean | string;
 };

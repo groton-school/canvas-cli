@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { Folder } from '../../../../../Resources/Files.js';
 
 export type updatePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -17,9 +21,11 @@ export type updateFormParameters = Masquerade & {
   /**
    * The position of the bookmark. Defaults to the bottom.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  position: number;
+  position: number | string;
   /** The data associated with the bookmark */
   data: string;
 };

@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { EnrollmentTerm } from '../../../../Resources/EnrollmentTerms.js';
 
 export type createPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;

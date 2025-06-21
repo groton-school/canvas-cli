@@ -3,26 +3,38 @@ import { client } from '../../../../Client.js';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
 export type index_of_active_global_notification_for_userPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type index_of_active_global_notification_for_userSearchParameters =
   Masquerade &
     Paginated &
     Partial<{
-      /** Include past and dismissed global announcements. */
-      include_past: boolean;
+      /**
+       * Include past and dismissed global announcements.
+       *
+       * Type: boolean
+       */
+      include_past: boolean | string;
       /**
        * Include all global announcements, regardless of user's role or
        * availability date. Only available to account admins.
+       *
+       * Type: boolean
        */
-      include_all: boolean;
+      include_all: boolean | string;
       /**
        * Include a flag for each notification indicating whether it has been read
        * by the user.
+       *
+       * Type: boolean
        */
-      show_is_closed: boolean;
+      show_is_closed: boolean | string;
     }>;
 
 type Options = {

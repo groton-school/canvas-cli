@@ -4,27 +4,51 @@ export type LatePolicy = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The unique identifier for the course
    *
    * Type: integer
    */
-  course_id: number;
-  /** Whether to enable missing submission deductions */
-  missing_submission_deduction_enabled: boolean;
-  /** Amount of percentage points to deduct */
-  missing_submission_deduction: number;
-  /** Whether to enable late submission deductions */
-  late_submission_deduction_enabled: boolean;
-  /** Amount of percentage points to deduct per late_submission_interval */
-  late_submission_deduction: number;
+  course_id: number | string;
+  /**
+   * Whether to enable missing submission deductions
+   *
+   * Type: boolean
+   */
+  missing_submission_deduction_enabled: boolean | string;
+  /**
+   * Amount of percentage points to deduct
+   *
+   * Type: number
+   */
+  missing_submission_deduction: number | string;
+  /**
+   * Whether to enable late submission deductions
+   *
+   * Type: boolean
+   */
+  late_submission_deduction_enabled: boolean | string;
+  /**
+   * Amount of percentage points to deduct per late_submission_interval
+   *
+   * Type: number
+   */
+  late_submission_deduction: number | string;
   /** Time interval for late submission deduction */
   late_submission_interval: string;
-  /** Whether to enable late submission minimum percent */
-  late_submission_minimum_percent_enabled: boolean;
-  /** The minimum score a submission can receive in percentage points */
-  late_submission_minimum_percent: number;
+  /**
+   * Whether to enable late submission minimum percent
+   *
+   * Type: boolean
+   */
+  late_submission_minimum_percent_enabled: boolean | string;
+  /**
+   * The minimum score a submission can receive in percentage points
+   *
+   * Type: number
+   */
+  late_submission_minimum_percent: number | string;
   /**
    * The time at which this late policy was originally created
    *

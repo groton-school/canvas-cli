@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Proficiency } from '../../../../Resources/ProficiencyRatings.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -18,21 +22,21 @@ export type createFormParameters = Masquerade & {
    *
    * Format: 'int64'
    */
-  'ratings[points]': number[];
+  'ratings[points]': number | string[];
   /**
    * Indicates the rating level where mastery is first achieved. Only one
    * rating in a proficiency should be marked for mastery.
    *
    * Format: 'int64'
    */
-  'ratings[mastery]': number[];
+  'ratings[mastery]': number | string[];
   /**
    * The color associated with the rating level. Should be a hex color code
    * like '00FFFF'.
    *
    * Format: 'int64'
    */
-  'ratings[color]': number[];
+  'ratings[color]': number | string[];
 };
 
 type Options = {

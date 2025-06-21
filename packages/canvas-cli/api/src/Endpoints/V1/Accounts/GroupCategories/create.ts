@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { GroupCategory } from '../../../../Resources/GroupCategories.js';
 
 export type createPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -17,8 +21,10 @@ export type createFormParameters = Masquerade & {
    *
    * If set to true, groups in this category will be only be visible to users
    * with the Differentiation Tag - Manage permission.
+   *
+   * Type: boolean
    */
-  non_collaborative: boolean;
+  non_collaborative: boolean | string;
   /**
    * Allow students to sign up for a group themselves (Course Only). valid
    * values are: "enabled":: allows students to self sign up for any group in
@@ -37,17 +43,21 @@ export type createFormParameters = Masquerade & {
    * Limit the maximum number of users in each group (Course Only). Requires
    * self signup.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  group_limit: number;
+  group_limit: number | string;
   /** The unique SIS identifier. */
   sis_group_category_id: string;
   /**
    * Create this number of groups (Course Only).
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  create_group_count: number;
+  create_group_count: number | string;
   /**
    * (Deprecated) Create this number of groups, and evenly distribute students
    * among them. not allowed with "enable_self_signup". because the group

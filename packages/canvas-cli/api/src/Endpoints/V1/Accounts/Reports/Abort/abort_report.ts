@@ -3,12 +3,20 @@ import { client } from '../../../../../Client.js';
 import { Report } from '../../../../../Resources/AccountReports.js';
 
 export type abort_reportPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
   /** ID */
   report: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type abort_reportSearchParameters = Masquerade;

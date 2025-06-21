@@ -6,15 +6,19 @@ export type delete_new_quizPathParameters = {
   /**
    * No description
    *
-   * Format: 'int64'
-   */
-  course_id: number;
-  /**
-   * The id of the assignment associated with the quiz.
+   * Type: integer
    *
    * Format: 'int64'
    */
-  assignment_id: number;
+  course_id: number | string;
+  /**
+   * The id of the assignment associated with the quiz.
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  assignment_id: number | string;
 };
 
 export type delete_new_quizSearchParameters = Masquerade;

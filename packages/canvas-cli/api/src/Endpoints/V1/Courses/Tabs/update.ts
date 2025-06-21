@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { Tab } from '../../../../Resources/Tabs.js';
 
 export type updatePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  tab_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  tab_id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -15,11 +23,17 @@ export type updateFormParameters = Masquerade & {
   /**
    * The new position of the tab, 1-based
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  position: number;
-  /** No description */
-  hidden: boolean;
+  position: number | string;
+  /**
+   * No description
+   *
+   * Type: boolean
+   */
+  hidden: boolean | string;
 };
 
 type Options = {

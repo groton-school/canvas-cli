@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Quiz } from '../../../../Resources/Quizzes.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -21,21 +25,27 @@ export type createFormParameters = Masquerade & {
    * assignment group in the course. Only valid if the quiz is graded, i.e. if
    * quiz_type is "assignment" or "graded_survey".
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'quiz[assignment_group_id]': number;
+  'quiz[assignment_group_id]': number | string;
   /**
    * Time limit to take this quiz, in minutes. Set to null for no time limit.
    * Defaults to null.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'quiz[time_limit]': number;
+  'quiz[time_limit]': number | string;
   /**
    * If true, quiz answers for multiple choice questions will be randomized
    * for each student. Defaults to false.
+   *
+   * Type: boolean
    */
-  'quiz[shuffle_answers]': boolean;
+  'quiz[shuffle_answers]': boolean | string;
   /**
    * Dictates whether or not quiz results are hidden from students. If null,
    * students can see their results after any attempt. If "always", students
@@ -47,14 +57,18 @@ export type createFormParameters = Masquerade & {
   /**
    * Only valid if hide_results=null If false, hides correct answers from
    * students when quiz results are viewed. Defaults to true.
+   *
+   * Type: boolean
    */
-  'quiz[show_correct_answers]': boolean;
+  'quiz[show_correct_answers]': boolean | string;
   /**
    * Only valid if show_correct_answers=true and allowed_attempts > 1 If true,
    * hides correct answers from students when quiz results are viewed until
    * they submit the last attempt for the quiz. Defaults to false.
+   *
+   * Type: boolean
    */
-  'quiz[show_correct_answers_last_attempt]': boolean;
+  'quiz[show_correct_answers_last_attempt]': boolean | string;
   /**
    * Only valid if show_correct_answers=true If set, the correct answers will
    * be visible by students only after this date, otherwise the correct
@@ -75,21 +89,29 @@ export type createFormParameters = Masquerade & {
    * Number of times a student is allowed to take a quiz. Set to -1 for
    * unlimited attempts. Defaults to 1.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'quiz[allowed_attempts]': number;
+  'quiz[allowed_attempts]': number | string;
   /**
    * Required and only valid if allowed_attempts > 1. Scoring policy for a
    * quiz that students can take multiple times. Defaults to "keep_highest".
    */
   'quiz[scoring_policy]': string;
-  /** If true, shows quiz to student one question at a time. Defaults to false. */
-  'quiz[one_question_at_a_time]': boolean;
+  /**
+   * If true, shows quiz to student one question at a time. Defaults to false.
+   *
+   * Type: boolean
+   */
+  'quiz[one_question_at_a_time]': boolean | string;
   /**
    * Only valid if one_question_at_a_time=true If true, questions are locked
    * after answering. Defaults to false.
+   *
+   * Type: boolean
    */
-  'quiz[cant_go_back]': boolean;
+  'quiz[cant_go_back]': boolean | string;
   /**
    * Restricts access to the quiz with a password. For no access code
    * restriction, set to null. Defaults to null.
@@ -132,19 +154,25 @@ export type createFormParameters = Masquerade & {
    * NOTE: If students have started taking the quiz, or there are any
    * submissions for the quiz, you may not unpublish a quiz and will recieve
    * an error.
+   *
+   * Type: boolean
    */
-  'quiz[published]': boolean;
+  'quiz[published]': boolean | string;
   /**
    * Whether students should be prevented from viewing their quiz results past
    * the first time (right after they turn the quiz in.) Only valid if
    * "hide_results" is not set to "always". Defaults to false.
+   *
+   * Type: boolean
    */
-  'quiz[one_time_results]': boolean;
+  'quiz[one_time_results]': boolean | string;
   /**
    * Whether this quiz is only visible to overrides (Only useful if
    * 'differentiated assignments' account setting is on) Defaults to false.
+   *
+   * Type: boolean
    */
-  'quiz[only_visible_to_overrides]': boolean;
+  'quiz[only_visible_to_overrides]': boolean | string;
 };
 
 type Options = {

@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { OutcomeGroup } from '../../../../../Resources/OutcomeGroups.js';
 
 export type import_outcome_group_globalPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type import_outcome_group_globalSearchParameters = Masquerade;
@@ -13,9 +17,11 @@ export type import_outcome_group_globalFormParameters = Masquerade & {
   /**
    * The ID of the source outcome group.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  source_outcome_group_id: number;
+  source_outcome_group_id: number | string;
   /**
    * If true, perform action asynchronously. In that case, this endpoint will
    * return a Progress object instead of an OutcomeGroup. Use the
@@ -23,8 +29,10 @@ export type import_outcome_group_globalFormParameters = Masquerade & {
    * the operation. The imported outcome group id and url will be returned in
    * the results of the Progress object as "outcome_group_id" and
    * "outcome_group_url"
+   *
+   * Type: boolean
    */
-  async: boolean;
+  async: boolean | string;
 };
 
 type Options = {

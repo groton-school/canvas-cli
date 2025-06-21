@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { ContentExport } from '../../../../Resources/ContentExports.js';
 
 export type show_content_export_groupsPathParameters = {
-  /** ID */
-  group_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type show_content_export_groupsSearchParameters = Masquerade;

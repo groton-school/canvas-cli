@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
 export type cancel_progressPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type cancel_progressSearchParameters = Masquerade;

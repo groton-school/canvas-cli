@@ -6,7 +6,7 @@ export type GroupCategory = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The display name of the group category. */
   name: string;
   /**
@@ -38,14 +38,14 @@ export type GroupCategory = {
    */
   context_type: string;
   /** Type: integer */
-  account_id: number;
+  account_id: number | string;
   /**
    * If self-signup is enabled, group_limit can be set to cap the number of
    * users in each group. If null, there is no limit.
    *
    * Type: integer
    */
-  group_limit: number;
+  group_limit: number | string;
   /**
    * The SIS identifier for the group category. This field is only included if
    * the user has permission to manage or view SIS information.
@@ -57,7 +57,7 @@ export type GroupCategory = {
    *
    * Type: integer
    */
-  sis_import_id: number;
+  sis_import_id: number | string;
   /**
    * If the group category has not yet finished a randomly student assignment
    * request, a progress object will be attached, which will contain information
@@ -69,6 +69,8 @@ export type GroupCategory = {
    * Indicates whether this group category is non-collaborative. A value of true
    * means these group categories rely on the manage_tags permissions and do not
    * have collaborative features
+   *
+   * Type: boolean
    */
-  non_collaborative: boolean;
+  non_collaborative: boolean | string;
 };

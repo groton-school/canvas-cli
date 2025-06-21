@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type show_provisional_grade_status_for_studentPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assignment_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
 };
 
 export type show_provisional_grade_status_for_studentSearchParameters =

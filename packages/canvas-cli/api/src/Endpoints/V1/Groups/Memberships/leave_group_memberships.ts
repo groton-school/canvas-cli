@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type leave_group_membershipsPathParameters = {
-  /** ID */
-  group_id: string;
-  /** ID */
-  membership_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  membership_id: string | number;
 };
 
 export type leave_group_membershipsSearchParameters = Masquerade;

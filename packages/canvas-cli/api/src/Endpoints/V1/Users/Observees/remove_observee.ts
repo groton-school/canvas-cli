@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
 export type remove_observeePathParameters = {
-  /** ID */
-  user_id: string;
-  /** ID */
-  observee_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  observee_id: string | number;
 };
 
 export type remove_observeeSearchParameters = Masquerade &
@@ -14,9 +22,11 @@ export type remove_observeeSearchParameters = Masquerade &
     /**
      * If specified, only removes the link for the given root account
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    root_account_id: number;
+    root_account_id: number | string;
   }>;
 
 type Options = {

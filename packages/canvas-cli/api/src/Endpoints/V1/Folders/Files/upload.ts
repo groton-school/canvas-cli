@@ -7,8 +7,12 @@ import { client } from '../../../../Client.js';
 import { File } from '../../../../Resources/Files.js';
 
 export type uploadPathParameters = {
-  /** ID */
-  folder_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  folder_id: string | number;
 };
 
 export type uploadSearchParameters = Masquerade;

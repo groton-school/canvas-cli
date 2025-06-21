@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { AssignmentGroup } from '../../../../Resources/AssignmentGroups.js';
 
 export type getPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assignment_group_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_group_id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
@@ -20,15 +28,21 @@ export type getSearchParameters = Masquerade &
      * be turned on.
      */
     include: string[];
-    /** Apply assignment overrides for each assignment, defaults to true. */
-    override_assignment_dates: boolean;
+    /**
+     * Apply assignment overrides for each assignment, defaults to true.
+     *
+     * Type: boolean
+     */
+    override_assignment_dates: boolean | string;
     /**
      * The id of the grading period in which assignment groups are being
      * requested (Requires grading periods to exist on the account)
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    grading_period_id: number;
+    grading_period_id: number | string;
   }>;
 
 type Options = {

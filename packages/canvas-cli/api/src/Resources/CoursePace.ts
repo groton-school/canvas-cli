@@ -6,27 +6,35 @@ export type CoursePace = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The ID of the course
    *
    * Type: integer
    */
-  course_id: number;
+  course_id: number | string;
   /**
    * The ID of the user for this course pace
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /** The state of the course pace */
   workflow_state: string;
-  /** Boolean value depending on exclude weekends setting */
-  exclude_weekends: boolean;
+  /**
+   * Boolean value depending on exclude weekends setting
+   *
+   * Type: boolean
+   */
+  exclude_weekends: boolean | string;
   /** Array of strings representing the days of the work week */
-  selected_days_to_skip: number[];
-  /** Set if the end date is set from course */
-  hard_end_dates: boolean;
+  selected_days_to_skip: number | string[];
+  /**
+   * Set if the end date is set from course
+   *
+   * Type: boolean
+   */
+  hard_end_dates: boolean | string;
   /**
    * Date when course pace is created
    *
@@ -56,7 +64,7 @@ export type CoursePace = {
    *
    * Type: integer
    */
-  root_account_id: number;
+  root_account_id: number | string;
   /**
    * Course start date
    *
@@ -75,7 +83,7 @@ export type Module = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The name of the module */
   name: string;
   /**
@@ -83,7 +91,7 @@ export type Module = {
    *
    * Type: integer
    */
-  position: number;
+  position: number | string;
   /** List of module items */
   items: ModuleItem[];
   /**
@@ -91,7 +99,7 @@ export type Module = {
    *
    * Type: integer
    */
-  context_id: number;
+  context_id: number | string;
   /** The given context for the course pace */
   context_type: string;
 };
@@ -102,35 +110,39 @@ export type ModuleItem = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The duration of the module item
    *
    * Type: integer
    */
-  duration: number;
+  duration: number | string;
   /**
    * The course pace id of the module item
    *
    * Type: integer
    */
-  course_pace_id: number;
+  course_pace_id: number | string;
   /**
    * The root account id of the module item
    *
    * Type: integer
    */
-  root_account_id: number;
+  root_account_id: number | string;
   /**
    * The module item id of the module item
    *
    * Type: integer
    */
-  module_item_id: number;
+  module_item_id: number | string;
   /** The title of the item assignment */
   assignment_title: string;
-  /** The points of the item */
-  points_possible: number;
+  /**
+   * The points of the item
+   *
+   * Type: number
+   */
+  points_possible: number | string;
   /** The link of the item assignment */
   assignment_link: string;
   /**
@@ -138,11 +150,15 @@ export type ModuleItem = {
    *
    * Type: integer
    */
-  position: number;
+  position: number | string;
   /** The module item type of the item assignment */
   module_item_type: string;
-  /** Published boolean value for course pace */
-  published: boolean;
+  /**
+   * Published boolean value for course pace
+   *
+   * Type: boolean
+   */
+  published: boolean | string;
 };
 
 export type Progress = {
@@ -151,20 +167,20 @@ export type Progress = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The context owning the job.
    *
    * Type: integer
    */
-  context_id: number;
+  context_id: number | string;
   context_type: string;
   /**
    * The id of the user who started the job
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /** The type of operation */
   tag: string;
   /**
@@ -172,7 +188,7 @@ export type Progress = {
    *
    * Type: integer
    */
-  completion: number;
+  completion: number | string;
   /** The state of the job one of 'queued', 'running', 'completed', 'failed' */
   workflow_state: string;
   /**

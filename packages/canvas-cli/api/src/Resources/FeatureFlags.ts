@@ -19,18 +19,24 @@ export type Feature = {
    * root accounts. Otherwise, root accounts inherit the global 'allowed'
    * setting, which allows sub-accounts and courses to turn features on with no
    * root account action.
+   *
+   * Type: boolean
    */
-  root_opt_in: boolean;
+  root_opt_in: boolean | string;
   /**
    * Whether the feature is a feature preview. If true, opting in includes
    * ongoing updates outside the regular release schedule.
+   *
+   * Type: boolean
    */
-  beta: boolean;
+  beta: boolean | string;
   /**
    * Whether the details of the feature are autoexpanded on page load vs. the
    * user clicking to expand.
+   *
+   * Type: boolean
    */
-  autoexpand: boolean;
+  autoexpand: boolean | string;
   /** A URL to the release notes describing the feature */
   release_notes_url: string;
 };
@@ -48,7 +54,7 @@ export type FeatureFlag = {
    *
    * Type: integer
    */
-  context_id: number;
+  context_id: number | string;
   /** The feature this flag controls */
   feature: string;
   /**
@@ -59,6 +65,8 @@ export type FeatureFlag = {
   /**
    * If set, this feature flag cannot be changed in the caller's context because
    * the flag is set 'off' or 'on' in a higher context
+   *
+   * Type: boolean
    */
-  locked: boolean;
+  locked: boolean | string;
 };

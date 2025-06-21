@@ -2,12 +2,24 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type reorder_question_groupsPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  quiz_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type reorder_question_groupsSearchParameters = Masquerade;
@@ -18,7 +30,7 @@ export type reorder_question_groupsFormParameters = Masquerade & {
    *
    * Format: 'int64'
    */
-  'order[id]': number[];
+  'order[id]': number | string[];
   /** The type of item is always 'question' for a group */
   'order[type]': string[];
 };

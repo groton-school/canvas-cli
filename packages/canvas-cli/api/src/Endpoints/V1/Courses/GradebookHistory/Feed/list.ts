@@ -6,9 +6,11 @@ export type listPathParameters = {
   /**
    * The id of the contextual course for this API call
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  course_id: number;
+  course_id: number | string;
 };
 
 export type listSearchParameters = Masquerade &
@@ -19,22 +21,28 @@ export type listSearchParameters = Masquerade &
      * absent, versions of submissions from any assignment in the course are
      * included.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    assignment_id: number;
+    assignment_id: number | string;
     /**
      * The ID of the user for which you want to see submissions. If absent,
      * versions of submissions from any user in the course are included.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    user_id: number;
+    user_id: number | string;
     /**
      * Returns submission versions in ascending date order (oldest first). If
      * absent, returns submission versions in descending date order (newest
      * first).
+     *
+     * Type: boolean
      */
-    ascending: boolean;
+    ascending: boolean | string;
   }>;
 
 type Options = {

@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
 export type show_lti_registration_via_client_idPathParameters = {
-  /** ID */
-  account_id: string;
-  /** ID */
-  client_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  client_id: string | number;
 };
 
 export type show_lti_registration_via_client_idSearchParameters = Masquerade;

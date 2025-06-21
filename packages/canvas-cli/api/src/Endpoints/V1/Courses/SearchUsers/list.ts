@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
 export type listPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -38,9 +42,11 @@ export type listSearchParameters = Masquerade &
      * with type 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment',
      * 'ObserverEnrollment', or 'DesignerEnrollment'.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    enrollment_role_id: number;
+    enrollment_role_id: number | string;
     /**
      * - "enrollments": Optionally include with each Course the user's current and
      *   invited enrollments. If the user is enrolled as a student, and the
@@ -75,7 +81,7 @@ export type listSearchParameters = Masquerade &
      *
      * Format: 'int64'
      */
-    user_ids: number[];
+    user_ids: number | string[];
     /**
      * When set, only return users where the enrollment workflow state is of one
      * of the given types. "active" and "invited" enrollments are returned by

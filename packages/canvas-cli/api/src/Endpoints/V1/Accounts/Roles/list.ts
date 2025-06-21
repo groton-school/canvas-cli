@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Role } from '../../../../Resources/Roles.js';
 
 export type listPathParameters = {
-  /** The id of the account to retrieve roles for. */
-  account_id: string;
+  /**
+   * The id of the account to retrieve roles for.
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -18,8 +22,10 @@ export type listSearchParameters = Masquerade &
     /**
      * If this argument is true, all roles inherited from parent accounts will
      * be included.
+     *
+     * Type: boolean
      */
-    show_inherited: boolean;
+    show_inherited: boolean | string;
   }>;
 
 type Options = {

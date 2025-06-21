@@ -4,10 +4,18 @@ import { client } from '../../../../Client.js';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
 export type updatePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -26,16 +34,22 @@ export type updateFormParameters = Masquerade & {
    * Hash
    */
   custom: JSONObject;
-  /** Update link even if it is deleted. Default is false. */
-  include_deleted: boolean;
+  /**
+   * Update link even if it is deleted. Default is false.
+   *
+   * Type: boolean
+   */
+  include_deleted: boolean | string;
   /**
    * The Canvas identifier for the LTI 1.3 External Tool that the LTI Resource
    * Link was originally installed from. <b>Caution!</b> The resource link url
    * must match the tool's domain or url.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  context_external_tool_id: number;
+  context_external_tool_id: number | string;
 };
 
 type Options = {

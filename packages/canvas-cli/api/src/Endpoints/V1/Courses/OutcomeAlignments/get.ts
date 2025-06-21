@@ -6,9 +6,11 @@ export type getPathParameters = {
   /**
    * The id of the course
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  course_id: number;
+  course_id: number | string;
 };
 
 export type getSearchParameters = Masquerade &
@@ -17,9 +19,11 @@ export type getSearchParameters = Masquerade &
     /**
      * The id of the student
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    student_id: number;
+    student_id: number | string;
   }>;
 
 type Options = {

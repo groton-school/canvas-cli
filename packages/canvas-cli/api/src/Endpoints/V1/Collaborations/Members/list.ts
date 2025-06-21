@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Collaborator } from '../../../../Resources/Collaborations.js';
 
 export type listPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type listSearchParameters = Masquerade &

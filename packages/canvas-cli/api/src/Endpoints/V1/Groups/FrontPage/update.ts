@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
 export type updatePathParameters = {
-  /** ID */
-  group_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -27,10 +31,18 @@ export type updateFormParameters = Masquerade & {
    * user.
    */
   'wiki_page[editing_roles]': string;
-  /** Whether participants should be notified when this page changes. */
-  'wiki_page[notify_of_update]': boolean;
-  /** Whether the page is published (true) or draft state (false). */
-  'wiki_page[published]': boolean;
+  /**
+   * Whether participants should be notified when this page changes.
+   *
+   * Type: boolean
+   */
+  'wiki_page[notify_of_update]': boolean | string;
+  /**
+   * Whether the page is published (true) or draft state (false).
+   *
+   * Type: boolean
+   */
+  'wiki_page[published]': boolean | string;
 };
 
 type Options = {

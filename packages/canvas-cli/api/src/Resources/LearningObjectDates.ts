@@ -6,7 +6,7 @@ export type LearningObjectDates = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The due date for the learning object. returns null if not present or
    * applicable. never applicable for ungraded discussions, pages, and files
@@ -40,14 +40,26 @@ export type LearningObjectDates = {
    * Format: date-time
    */
   unlock_at: string;
-  /** Whether the learning object is only visible to overrides */
-  only_visible_to_overrides: boolean;
-  /** Whether the learning object is graded (and thus has a due date) */
-  graded: boolean;
+  /**
+   * Whether the learning object is only visible to overrides
+   *
+   * Type: boolean
+   */
+  only_visible_to_overrides: boolean | string;
+  /**
+   * Whether the learning object is graded (and thus has a due date)
+   *
+   * Type: boolean
+   */
+  graded: boolean | string;
   /** [exclusive to blueprint child content only] list of lock types */
   blueprint_date_locks: string[];
-  /** Whether the learning object is visible to everyone */
-  visible_to_everyone: boolean;
+  /**
+   * Whether the learning object is visible to everyone
+   *
+   * Type: boolean
+   */
+  visible_to_everyone: boolean | string;
   /** Paginated list of AssignmentOverride objects */
   overrides: AssignmentOverride[];
   /**

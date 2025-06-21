@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
 
 export type updatePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -21,9 +29,11 @@ export type updateFormParameters = Masquerade & {
   /**
    * The id of the new parent outcome group.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  parent_outcome_group_id: number;
+  parent_outcome_group_id: number | string;
 };
 
 type Options = {

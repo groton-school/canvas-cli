@@ -3,8 +3,12 @@ import { client } from '../../../Client.js';
 import { GroupCategory } from '../../../Resources/GroupCategories.js';
 
 export type updatePathParameters = {
-  /** ID */
-  group_category_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_category_id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -30,17 +34,21 @@ export type updateFormParameters = Masquerade & {
    * Limit the maximum number of users in each group (Course Only). Requires
    * self signup.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  group_limit: number;
+  group_limit: number | string;
   /** The unique SIS identifier. */
   sis_group_category_id: string;
   /**
    * Create this number of groups (Course Only).
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  create_group_count: number;
+  create_group_count: number | string;
   /**
    * (Deprecated) Create this number of groups, and evenly distribute students
    * among them. not allowed with "enable_self_signup". because the group

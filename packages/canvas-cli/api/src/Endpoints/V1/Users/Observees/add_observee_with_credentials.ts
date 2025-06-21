@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
 export type add_observee_with_credentialsPathParameters = {
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
 };
 
 export type add_observee_with_credentialsSearchParameters = Masquerade;
@@ -36,9 +40,11 @@ export type add_observee_with_credentialsFormParameters = Masquerade & {
    * will be created for each root account associated to both the observer and
    * observee.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  root_account_id: number;
+  root_account_id: number | string;
 };
 
 type Options = {

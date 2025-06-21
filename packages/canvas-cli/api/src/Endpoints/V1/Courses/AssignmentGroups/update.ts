@@ -4,10 +4,18 @@ import { client } from '../../../../Client.js';
 import { AssignmentGroup } from '../../../../Resources/AssignmentGroups.js';
 
 export type updatePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assignment_group_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_group_id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -19,15 +27,19 @@ export type updateFormParameters = Masquerade & {
    * The position of this assignment group in relation to the other assignment
    * groups
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  position: number;
+  position: number | string;
   /**
    * The percent of the total grade that this assignment group represents
    *
+   * Type: number
+   *
    * Format: 'float'
    */
-  group_weight: number;
+  group_weight: number | string;
   /** The sis source id of the Assignment Group */
   sis_source_id: string;
   /**

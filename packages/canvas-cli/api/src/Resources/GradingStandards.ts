@@ -13,7 +13,7 @@ export type GradingSchemeEntry = {
    *
    * Type: integer
    */
-  value: number;
+  value: number | string;
   /**
    * The value that will be used to compare against a grade. For percentage
    * based grading schemes, this is a number from 0 - 100 representing a
@@ -22,7 +22,7 @@ export type GradingSchemeEntry = {
    *
    * Type: integer
    */
-  calculated_value: number;
+  calculated_value: number | string;
 };
 
 export type GradingStandard = {
@@ -33,7 +33,7 @@ export type GradingStandard = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The context this standard is associated with, either 'Account' or 'Course' */
   context_type: string;
   /**
@@ -41,15 +41,21 @@ export type GradingStandard = {
    *
    * Type: integer
    */
-  context_id: number;
-  /** Whether this is a points-based standard */
-  points_based: boolean;
+  context_id: number | string;
+  /**
+   * Whether this is a points-based standard
+   *
+   * Type: boolean
+   */
+  points_based: boolean | string;
   /**
    * The factor by which to scale a score. 1 for percentage based schemss and
    * the max value of points for points based schemes. This number cannot be
    * changed for percentage based schemes.
+   *
+   * Type: number
    */
-  scaling_factor: number;
+  scaling_factor: number | string;
   /**
    * A list of GradingSchemeEntry that make up the Grading Standard as an array
    * of values with the scheme name and value

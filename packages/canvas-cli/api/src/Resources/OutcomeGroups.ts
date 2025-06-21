@@ -6,7 +6,7 @@ export type OutcomeGroup = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The URL for fetching/updating the outcome group. should be treated as
    * opaque
@@ -23,7 +23,7 @@ export type OutcomeGroup = {
    *
    * Type: integer
    */
-  context_id: number;
+  context_id: number | string;
   context_type: string;
   /** Title of the outcome group */
   title: string;
@@ -46,8 +46,12 @@ export type OutcomeGroup = {
    * treated as opaque. omitted in the abbreviated form.
    */
   import_url: string;
-  /** Whether the current user can update the outcome group */
-  can_edit: boolean;
+  /**
+   * Whether the current user can update the outcome group
+   *
+   * Type: boolean
+   */
+  can_edit: boolean | string;
 };
 
 export type OutcomeLink = {
@@ -60,7 +64,7 @@ export type OutcomeLink = {
    *
    * Type: integer
    */
-  context_id: number;
+  context_id: number | string;
   context_type: string;
   /**
    * An abbreviated OutcomeGroup object representing the group containing the
@@ -77,11 +81,15 @@ export type OutcomeLink = {
    * this outcome link. In other words, this will be set to true if the context
    * is a course, and a student has been assessed with this outcome in that
    * course.
+   *
+   * Type: boolean
    */
-  assessed: boolean;
+  assessed: boolean | string;
   /**
    * Whether this outcome link is manageable and is not the last link to an
    * aligned outcome
+   *
+   * Type: boolean
    */
-  can_unlink: boolean;
+  can_unlink: boolean | string;
 };

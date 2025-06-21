@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { ePortfolio } from '../../../../Resources/EPortfolios.js';
 
 export type restore_deleted_eportfolioPathParameters = {
-  /** ID */
-  eportfolio_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  eportfolio_id: string | number;
 };
 
 export type restore_deleted_eportfolioSearchParameters = Masquerade;

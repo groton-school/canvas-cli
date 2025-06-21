@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { Folder } from '../../../../Resources/Files.js';
 
 export type getPathParameters = {
-  /** ID */
-  group_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type getSearchParameters = Masquerade;

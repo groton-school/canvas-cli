@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Course } from '../../../../Resources/Courses.js';
 
 export type listPathParameters = {
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -110,8 +114,12 @@ export type listSearchParameters = Masquerade &
      * given state. This will respect section/course/term date overrides.
      */
     enrollment_state: string;
-    /** If set, only return homeroom courses. */
-    homeroom: boolean;
+    /**
+     * If set, only return homeroom courses.
+     *
+     * Type: boolean
+     */
+    homeroom: boolean | string;
     /** If set, only include courses associated with this account */
     account_id: string;
   }>;

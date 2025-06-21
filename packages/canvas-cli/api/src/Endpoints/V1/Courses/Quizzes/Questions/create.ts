@@ -6,10 +6,18 @@ import {
 } from '../../../../../Resources/QuizQuestions.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  quiz_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -22,9 +30,11 @@ export type createFormParameters = Masquerade & {
   /**
    * The id of the quiz group to assign the question to.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'question[quiz_group_id]': number;
+  'question[quiz_group_id]': number | string;
   /**
    * The type of question. Multiple optional fields depend upon the type of
    * question to be used.
@@ -34,16 +44,20 @@ export type createFormParameters = Masquerade & {
    * The order in which the question will be displayed in the quiz in relation
    * to other questions.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'question[position]': number;
+  'question[position]': number | string;
   /**
    * The maximum amount of points received for answering this question
    * correctly.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'question[points_possible]': number;
+  'question[points_possible]': number | string;
   /** The comment to display if the student answers the question correctly. */
   'question[correct_comments]': string;
   /** The comment to display if the student answers incorrectly. */

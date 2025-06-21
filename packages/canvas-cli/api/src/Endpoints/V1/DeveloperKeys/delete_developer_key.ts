@@ -3,8 +3,12 @@ import { client } from '../../../Client.js';
 import { DeveloperKey } from '../../../Resources/DeveloperKeys.js';
 
 export type delete_developer_keyPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type delete_developer_keySearchParameters = Masquerade;

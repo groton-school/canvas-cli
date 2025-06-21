@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type set_extensions_for_student_assignment_submissionsPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assignment_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
 };
 
 export type set_extensions_for_student_assignment_submissionsSearchParameters =
@@ -18,14 +26,14 @@ export type set_extensions_for_student_assignment_submissionsFormParameters =
      *
      * Format: 'int64'
      */
-    'assignment_extensions[user_id]': number[];
+    'assignment_extensions[user_id]': number | string[];
     /**
      * Number of times the student is allowed to re-take the assignment over the
      * limit.
      *
      * Format: 'int64'
      */
-    'assignment_extensions[extra_attempts]': number[];
+    'assignment_extensions[extra_attempts]': number | string[];
   };
 
 type Options = {

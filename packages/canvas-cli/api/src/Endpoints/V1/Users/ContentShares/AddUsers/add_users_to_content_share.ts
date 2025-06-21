@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { ContentShare } from '../../../../../Resources/ContentShares.js';
 
 export type add_users_to_content_sharePathParameters = {
-  /** ID */
-  user_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type add_users_to_content_shareSearchParameters = Masquerade;

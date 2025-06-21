@@ -26,9 +26,11 @@ export type find_recipients_conversationsSearchParameters = Masquerade &
      * Search for a specific user id. This ignores the other above parameters,
      * and will never return more than one result.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    user_id: number;
+    user_id: number | string;
     /**
      * When searching by user_id, only users that could be normally messaged by
      * this user will be returned. This parameter allows you to specify a
@@ -36,9 +38,11 @@ export type find_recipients_conversationsSearchParameters = Masquerade &
      * current user and the searched user are in the conversation, the user will
      * be returned. This is used to start new side conversations.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    from_conversation_id: number;
+    from_conversation_id: number | string;
     /**
      * Array of permission strings to be checked for each matched context (e.g.
      * "send_messages"). This argument determines which permissions may be

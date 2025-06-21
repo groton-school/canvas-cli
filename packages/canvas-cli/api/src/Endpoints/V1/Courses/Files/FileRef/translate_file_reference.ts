@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { File } from '../../../../../Resources/Files.js';
 
 export type translate_file_referencePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  migration_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  migration_id: string | number;
 };
 
 export type translate_file_referenceSearchParameters = Masquerade;

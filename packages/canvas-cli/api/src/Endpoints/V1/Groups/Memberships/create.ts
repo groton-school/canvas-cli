@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { GroupMembershiporaJSONresponsedetailingpartialfailuresifsomemembershipscouldnotbecreated } from '../../../../Overrides.js';
 
 export type createPathParameters = {
-  /** ID */
-  group_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -17,15 +21,19 @@ export type createFormParameters = Masquerade & {
    *
    * Format: 'int64'
    */
-  members: number[];
-  /** - If true, add all enrolled students from the course. */
-  all_in_group_course: boolean;
+  members: number | string[];
+  /**
+   * - If true, add all enrolled students from the course.
+   *
+   * Type: boolean
+   */
+  all_in_group_course: boolean | string;
   /**
    * - An array of user IDs to exclude when using all_in_group_course.
    *
    * Format: 'int64'
    */
-  exclude_user_ids: number[];
+  exclude_user_ids: number | string[];
 };
 
 type Options = {

@@ -3,8 +3,12 @@ import { client } from '../../../Client.js';
 import { Outcome } from '../../../Resources/Outcomes.js';
 
 export type updatePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -24,9 +28,11 @@ export type updateFormParameters = Masquerade & {
   /**
    * The new mastery threshold for the embedded rubric criterion.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  mastery_points: number;
+  mastery_points: number | string;
   /** The description of a new rating level for the embedded rubric criterion. */
   'ratings[description]': string[];
   /**
@@ -35,7 +41,7 @@ export type updateFormParameters = Masquerade & {
    *
    * Format: 'int64'
    */
-  'ratings[points]': number[];
+  'ratings[points]': number | string[];
   /**
    * The new calculation method. If the Outcomes New Decaying Average
    * Calculation Method FF is ENABLED then "weighted_average" can be used and
@@ -47,15 +53,19 @@ export type updateFormParameters = Masquerade & {
    * The new calculation int. Only applies if the calculation_method is
    * "decaying_average" or "n_mastery"
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  calculation_int: number;
+  calculation_int: number | string;
   /**
    * If defaults are requested, then color and mastery level defaults will be
    * added to outcome ratings in the result. This will only take effect if the
    * Account Level Mastery Scales FF is DISABLED
+   *
+   * Type: boolean
    */
-  add_defaults: boolean;
+  add_defaults: boolean | string;
 };
 
 type Options = {

@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { PageRevision } from '../../../../../Resources/Pages.js';
 
 export type listPathParameters = {
-  /** ID */
-  group_id: string;
-  /** ID */
-  url_or_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  url_or_id: string | number;
 };
 
 export type listSearchParameters = Masquerade & Paginated;

@@ -3,8 +3,12 @@ import { client } from '../../../Client.js';
 import { PlannerNote } from '../../../Resources/Planner.js';
 
 export type delete_planner_notePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type delete_planner_noteSearchParameters = Masquerade;

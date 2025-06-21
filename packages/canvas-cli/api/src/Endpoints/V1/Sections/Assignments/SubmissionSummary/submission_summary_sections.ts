@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type submission_summary_sectionsPathParameters = {
-  /** ID */
-  section_id: string;
-  /** ID */
-  assignment_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  section_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
 };
 
 export type submission_summary_sectionsSearchParameters = Masquerade &
@@ -13,8 +21,10 @@ export type submission_summary_sectionsSearchParameters = Masquerade &
     /**
      * If this argument is true, the response will take into account student
      * groups.
+     *
+     * Type: boolean
      */
-    grouped: boolean;
+    grouped: boolean | string;
   }>;
 
 type Options = {

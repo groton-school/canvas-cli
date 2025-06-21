@@ -4,8 +4,12 @@ import { QuizAssignmentOverrideSetContainer } from '../../../../../Resources/Qui
 
 export type retrieve_assignment_overridden_dates_for_classic_quizzesPathParameters =
   {
-    /** ID */
-    course_id: string;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    course_id: string | number;
   };
 
 export type retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters =
@@ -17,7 +21,7 @@ export type retrieve_assignment_overridden_dates_for_classic_quizzesSearchParame
        *
        * Format: 'int64'
        */
-      'quiz_assignment_overrides[quiz_ids]': number[];
+      'quiz_assignment_overrides[quiz_ids]': number | string[];
     }>;
 
 type Options = {

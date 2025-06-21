@@ -8,7 +8,7 @@ export type Page = {
    *
    * Type: integer
    */
-  page_id: number;
+  page_id: number | string;
   /** The unique locator for the page */
   url: string;
   /** The title of the page */
@@ -28,8 +28,10 @@ export type Page = {
   /**
    * (DEPRECATED) whether this page is hidden from students (note: this is
    * always reflected as the inverse of the published value)
+   *
+   * Type: boolean
    */
-  hide_from_students: boolean;
+  hide_from_students: boolean | string;
   /**
    * Roles allowed to edit the page; comma-separated list comprising a
    * combination of 'teachers', 'students', 'members', and/or 'public' if not
@@ -46,18 +48,30 @@ export type Page = {
    * optionally included when listing pages)
    */
   body: string;
-  /** Whether the page is published (true) or draft state (false). */
-  published: boolean;
+  /**
+   * Whether the page is published (true) or draft state (false).
+   *
+   * Type: boolean
+   */
+  published: boolean | string;
   /**
    * Scheduled publication date for this page
    *
    * Format: date-time
    */
   publish_at: string;
-  /** Whether this page is the front page for the wiki */
-  front_page: boolean;
-  /** Whether or not this is locked for the user. */
-  locked_for_user: boolean;
+  /**
+   * Whether this page is the front page for the wiki
+   *
+   * Type: boolean
+   */
+  front_page: boolean | string;
+  /**
+   * Whether or not this is locked for the user.
+   *
+   * Type: boolean
+   */
+  locked_for_user: boolean | string;
   /**
    * (Optional) Information for the user about the lock. Present when
    * locked_for_user is true.
@@ -88,15 +102,19 @@ export type PageRevision = {
    *
    * Type: integer
    */
-  revision_id: number;
+  revision_id: number | string;
   /**
    * The time when this revision was saved
    *
    * Format: date-time
    */
   updated_at: string;
-  /** Whether this is the latest revision or not */
-  latest: boolean;
+  /**
+   * Whether this is the latest revision or not
+   *
+   * Type: boolean
+   */
+  latest: boolean | string;
   /**
    * The User who saved this revision, if applicable (this may not be present if
    * the page was imported from another system)

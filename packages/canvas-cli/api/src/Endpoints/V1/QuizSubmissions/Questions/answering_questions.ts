@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { QuizSubmissionQuestion } from '../../../../Resources/QuizSubmissionQuestions.js';
 
 export type answering_questionsPathParameters = {
-  /** ID */
-  quiz_submission_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_submission_id: string | number;
 };
 
 export type answering_questionsSearchParameters = Masquerade & Paginated;
@@ -15,9 +19,11 @@ export type answering_questionsFormParameters = Masquerade & {
    * must be the latest attempt index, as questions for earlier attempts can
    * not be modified.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  attempt: number;
+  attempt: number | string;
   /**
    * The unique validation token you received when the Quiz Submission was
    * created.

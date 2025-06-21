@@ -3,12 +3,24 @@ import { client } from '../../../../../../../Client.js';
 
 export type mark_rubric_assessments_as_read_courses_rubric_assessmentsPathParameters =
   {
-    /** ID */
-    course_id: string;
-    /** ID */
-    assignment_id: string;
-    /** ID */
-    user_id: string;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    course_id: string | number;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    assignment_id: string | number;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    user_id: string | number;
   };
 
 export type mark_rubric_assessments_as_read_courses_rubric_assessmentsSearchParameters =

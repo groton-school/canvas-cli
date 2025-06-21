@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  quiz_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -16,8 +24,10 @@ export type createFormParameters = Masquerade & {
   /**
    * Whether this should be a preview QuizSubmission and not count towards the
    * user's course record. Teachers only.
+   *
+   * Type: boolean
    */
-  preview: boolean;
+  preview: boolean | string;
 };
 
 type Options = {

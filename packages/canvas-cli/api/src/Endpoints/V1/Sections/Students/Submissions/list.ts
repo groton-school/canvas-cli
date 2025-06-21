@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type listPathParameters = {
-  /** ID */
-  section_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  section_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -24,14 +28,18 @@ export type listSearchParameters = Masquerade &
     /**
      * If this argument is present, the response will be grouped by student,
      * rather than a flat array of submissions.
+     *
+     * Type: boolean
      */
-    grouped: boolean;
+    grouped: boolean | string;
     /**
      * If this argument is set to true, the response will only include
      * submissions for assignments that have the post_to_sis flag set to true
      * and user enrollments that were added through sis.
+     *
+     * Type: boolean
      */
-    post_to_sis: boolean;
+    post_to_sis: boolean | string;
     /**
      * If this argument is set, the response will only include submissions that
      * were submitted after the specified date_time. This will exclude
@@ -55,9 +63,11 @@ export type listSearchParameters = Masquerade &
      * The id of the grading period in which submissions are being requested
      * (Requires grading periods to exist on the account)
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    grading_period_id: number;
+    grading_period_id: number | string;
     /** The current status of the submission */
     workflow_state: string;
     /**
@@ -70,8 +80,10 @@ export type listSearchParameters = Masquerade &
      * effective state of the student enrollments and use the workflow_state for
      * the enrollments. The argument is ignored unless enrollment_state argument
      * is also passed.
+     *
+     * Type: boolean
      */
-    state_based_on_date: boolean;
+    state_based_on_date: boolean | string;
     /**
      * The order submissions will be returned in. Defaults to "id". Doesn't
      * affect results for "grouped" mode.

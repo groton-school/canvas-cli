@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type listPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assessment_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assessment_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -13,9 +21,11 @@ export type listSearchParameters = Masquerade &
     /**
      * If set, restrict results to those for this user
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    user_id: number;
+    user_id: number | string;
   }>;
 
 type Options = {

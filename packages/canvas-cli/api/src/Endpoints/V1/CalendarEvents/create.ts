@@ -39,8 +39,10 @@ export type createFormParameters = Masquerade & {
   /**
    * When true event is considered to span the whole day and times are
    * ignored.
+   *
+   * Type: boolean
    */
-  'calendar_event[all_day]': boolean;
+  'calendar_event[all_day]': boolean | string;
   /**
    * Section-level start time(s) if this is a course event. X can be any
    * identifier, provided that it is consistent across the start_at, end_at
@@ -57,21 +59,29 @@ export type createFormParameters = Masquerade & {
   'calendar_event[child_event_data][X][end_at]': string;
   /** Context code(s) corresponding to the section-level start and end time(s). */
   'calendar_event[child_event_data][X][context_code]': string;
-  /** Number of times to copy/duplicate the event. Count cannot exceed 200. */
-  'calendar_event[duplicate][count]': number;
+  /**
+   * Number of times to copy/duplicate the event. Count cannot exceed 200.
+   *
+   * Type: number
+   */
+  'calendar_event[duplicate][count]': number | string;
   /**
    * Defaults to 1 if duplicate `count` is set. The interval between the
    * duplicated events.
+   *
+   * Type: number
    */
-  'calendar_event[duplicate][interval]': number;
+  'calendar_event[duplicate][interval]': number | string;
   /** Defaults to "weekly". The frequency at which to duplicate the event */
   'calendar_event[duplicate][frequency]': string;
   /**
    * Defaults to false. If set to `true`, an increasing counter number will be
    * appended to the event title when the event is duplicated. (e.g. Event 1,
    * Event 2, Event 3, etc)
+   *
+   * Type: boolean
    */
-  'calendar_event[duplicate][append_iterator]': boolean;
+  'calendar_event[duplicate][append_iterator]': boolean | string;
   /**
    * The recurrence rule to create a series of recurring events. Its value is
    * the
@@ -83,8 +93,10 @@ export type createFormParameters = Masquerade & {
   /**
    * If the blackout_date is true, this event represents a holiday or some
    * other special day that does not count in course pacing.
+   *
+   * Type: boolean
    */
-  'calendar_event[blackout_date]': boolean;
+  'calendar_event[blackout_date]': boolean | string;
 };
 
 type Options =

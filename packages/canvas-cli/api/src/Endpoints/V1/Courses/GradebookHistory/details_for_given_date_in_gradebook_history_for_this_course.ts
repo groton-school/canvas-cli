@@ -7,9 +7,11 @@ export type details_for_given_date_in_gradebook_history_for_this_coursePathParam
     /**
      * The id of the contextual course for this API call
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    course_id: number;
+    course_id: number | string;
     /** The date for which you would like to see detailed information */
     date: string;
   };

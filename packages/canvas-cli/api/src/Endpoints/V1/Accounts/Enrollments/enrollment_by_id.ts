@@ -3,14 +3,20 @@ import { client } from '../../../../Client.js';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
 export type enrollment_by_idPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
   /**
    * The ID of the enrollment object
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  id: number;
+  id: number | string;
 };
 
 export type enrollment_by_idSearchParameters = Masquerade;

@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { RubricImport } from '../../../../../Overrides.js';
 
 export type creates_rubric_using_csv_file_accountsPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type creates_rubric_using_csv_file_accountsSearchParameters = Masquerade;

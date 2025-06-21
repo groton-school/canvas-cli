@@ -4,7 +4,7 @@ export type SharedBrandConfig = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The id of the account it should be shared within. */
   account_id: string;
   /**

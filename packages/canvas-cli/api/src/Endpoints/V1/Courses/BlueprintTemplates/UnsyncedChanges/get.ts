@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { ChangeRecord } from '../../../../../Resources/BlueprintCourses.js';
 
 export type getPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  template_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  template_id: string | number;
 };
 
 export type getSearchParameters = Masquerade & Paginated;

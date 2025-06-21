@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type getPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
@@ -14,9 +18,11 @@ export type getSearchParameters = Masquerade &
      * assignment (Canvas will verify that the file belongs to the submission
      * and the calling user has rights to view the submission).
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    submission_id: number;
+    submission_id: number | string;
   }>;
 
 type Options = {

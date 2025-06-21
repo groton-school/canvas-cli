@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
 export type add_observeePathParameters = {
-  /** ID */
-  user_id: string;
-  /** ID */
-  observee_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  observee_id: string | number;
 };
 
 export type add_observeeSearchParameters = Masquerade;
@@ -17,9 +25,11 @@ export type add_observeeFormParameters = Masquerade & {
    * not specified, a link will be created for each root account associated to
    * both the observer and observee.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  root_account_id: number;
+  root_account_id: number | string;
 };
 
 type Options = {

@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type abort_all_pending_sis_importsPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type abort_all_pending_sis_importsSearchParameters = Masquerade;
@@ -29,7 +33,7 @@ type Options = {
  * Nickname: abort_all_pending_sis_imports
  */
 export async function abort_all_pending_sis_imports(options: Options) {
-  const response = await client().fetchAs<boolean>(
+  const response = await client().fetchAs<boolean | string>(
     `/api/v1/accounts/{account_id}/sis_imports/abort_all_pending`,
     {
       method: 'PUT',

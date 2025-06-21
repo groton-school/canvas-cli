@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
 export type show_page_groupsPathParameters = {
-  /** ID */
-  group_id: string;
-  /** ID */
-  url_or_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  url_or_id: string | number;
 };
 
 export type show_page_groupsSearchParameters = Masquerade;

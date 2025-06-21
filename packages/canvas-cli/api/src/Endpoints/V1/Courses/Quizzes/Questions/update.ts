@@ -6,20 +6,28 @@ import {
 } from '../../../../../Resources/QuizQuestions.js';
 
 export type updatePathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
   /**
    * The associated quiz's unique identifier.
    *
-   * Format: 'int64'
-   */
-  quiz_id: number;
-  /**
-   * The quiz question's unique identifier.
+   * Type: integer
    *
    * Format: 'int64'
    */
-  id: number;
+  quiz_id: number | string;
+  /**
+   * The quiz question's unique identifier.
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  id: number | string;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -32,9 +40,11 @@ export type updateFormParameters = Masquerade & {
   /**
    * The id of the quiz group to assign the question to.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'question[quiz_group_id]': number;
+  'question[quiz_group_id]': number | string;
   /**
    * The type of question. Multiple optional fields depend upon the type of
    * question to be used.
@@ -44,16 +54,20 @@ export type updateFormParameters = Masquerade & {
    * The order in which the question will be displayed in the quiz in relation
    * to other questions.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'question[position]': number;
+  'question[position]': number | string;
   /**
    * The maximum amount of points received for answering this question
    * correctly.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'question[points_possible]': number;
+  'question[points_possible]': number | string;
   /** The comment to display if the student answers the question correctly. */
   'question[correct_comments]': string;
   /** The comment to display if the student answers incorrectly. */

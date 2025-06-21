@@ -1,10 +1,22 @@
 export type Grade = {
-  /** The grade for the course */
-  grade: number;
-  /** The total points earned in the course */
-  total: number;
-  /** The total points possible for the course */
-  possible: number;
+  /**
+   * The grade for the course
+   *
+   * Type: number
+   */
+  grade: number | string;
+  /**
+   * The total points earned in the course
+   *
+   * Type: number
+   */
+  total: number | string;
+  /**
+   * The total points possible for the course
+   *
+   * Type: number
+   */
+  possible: number | string;
   /** The dropped grades for the course */
   dropped: unknown;
 };
@@ -15,21 +27,37 @@ export type AssignmentGroupGrade = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The global ID of the Assignment Group
    *
    * Type: integer
    */
-  global_id: number;
-  /** The score for the Assignment Group */
-  score: number;
-  /** The total points possible for the Assignment Group */
-  possible: number;
-  /** The weight for the Assignment Group */
-  weight: number;
-  /** The grade for the Assignment Group */
-  grade: number;
+  global_id: number | string;
+  /**
+   * The score for the Assignment Group
+   *
+   * Type: number
+   */
+  score: number | string;
+  /**
+   * The total points possible for the Assignment Group
+   *
+   * Type: number
+   */
+  possible: number | string;
+  /**
+   * The weight for the Assignment Group
+   *
+   * Type: number
+   */
+  weight: number | string;
+  /**
+   * The grade for the Assignment Group
+   *
+   * Type: number
+   */
+  grade: number | string;
   /** The dropped grades for the Assignment Group */
   dropped: unknown;
 };
@@ -51,7 +79,7 @@ export type Submission = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The score the student wants to test */
   student_entered_score: string;
 };

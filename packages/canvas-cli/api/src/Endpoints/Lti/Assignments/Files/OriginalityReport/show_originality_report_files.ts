@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { OriginalityReport } from '../../../../../Resources/OriginalityReports.js';
 
 export type show_originality_report_filesPathParameters = {
-  /** ID */
-  assignment_id: string;
-  /** ID */
-  file_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  file_id: string | number;
 };
 
 export type show_originality_report_filesSearchParameters = Masquerade;

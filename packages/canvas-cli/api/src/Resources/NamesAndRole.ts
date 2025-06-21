@@ -27,7 +27,7 @@ export type NamesAndRoleMessage = {
    *
    * Type: integer
    */
-  'https://www.instructure.com/canvas_user_id': number;
+  'https://www.instructure.com/canvas_user_id': number | string;
   /** The member's primary login username */
   'https://www.instructure.com/canvas_user_login_id': string;
   /**

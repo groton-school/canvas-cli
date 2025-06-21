@@ -4,8 +4,12 @@ import { client } from '../../../../Client.js';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -15,9 +19,11 @@ export type createFormParameters = Masquerade & {
    * The maximum score for the line item. Scores created for the Line Item may
    * exceed this value.
    *
+   * Type: number
+   *
    * Format: 'float'
    */
-  scoreMaximum: number;
+  scoreMaximum: number | string;
   /**
    * The label for the Line Item. If no resourceLinkId is specified this value
    * will also be used as the name of the placeholder assignment.

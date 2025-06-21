@@ -4,7 +4,7 @@ export type Section = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The name of the section. */
   name: string;
   /**
@@ -23,13 +23,13 @@ export type Section = {
    *
    * Type: integer
    */
-  sis_import_id: number;
+  sis_import_id: number | string;
   /**
    * The unique Canvas identifier for the course in which the section belongs
    *
    * Type: integer
    */
-  course_id: number;
+  course_id: number | string;
   /**
    * The unique SIS identifier for the course in which the section belongs. This
    * field is only included if the user has permission to view SIS information.
@@ -47,18 +47,22 @@ export type Section = {
    * Format: date-time
    */
   end_at: string;
-  /** Restrict user enrollments to the start and end dates of the section */
-  restrict_enrollments_to_section_dates: boolean;
+  /**
+   * Restrict user enrollments to the start and end dates of the section
+   *
+   * Type: boolean
+   */
+  restrict_enrollments_to_section_dates: boolean | string;
   /**
    * The unique identifier of the original course of a cross-listed section
    *
    * Type: integer
    */
-  nonxlist_course_id: number;
+  nonxlist_course_id: number | string;
   /**
    * Optional: the total number of active and invited students in the section
    *
    * Type: integer
    */
-  total_students: number;
+  total_students: number | string;
 };

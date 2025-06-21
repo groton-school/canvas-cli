@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
 export type batch_create_overrides_in_coursePathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type batch_create_overrides_in_courseSearchParameters = Masquerade &

@@ -6,7 +6,7 @@ export type Admin = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The account role assigned. This can be 'AccountAdmin' or a user-defined
    * role created by the Roles API.

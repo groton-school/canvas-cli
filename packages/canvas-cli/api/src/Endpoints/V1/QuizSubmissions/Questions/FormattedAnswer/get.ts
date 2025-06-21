@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { Numeric } from '../../../../../Overrides.js';
 
 export type getPathParameters = {
-  /** ID */
-  quiz_submission_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_submission_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type getSearchParameters = Masquerade &

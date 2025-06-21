@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { Assignment } from '../../../../../Resources/Assignments.js';
 
 export type listPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assignment_group_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_group_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -32,13 +40,19 @@ export type listSearchParameters = Masquerade &
     include: string[];
     /** The partial title of the assignments to match and return. */
     search_term: string;
-    /** Apply assignment overrides for each assignment, defaults to true. */
-    override_assignment_dates: boolean;
+    /**
+     * Apply assignment overrides for each assignment, defaults to true.
+     *
+     * Type: boolean
+     */
+    override_assignment_dates: boolean | string;
     /**
      * Split up "needs_grading_count" by sections into the
      * "needs_grading_count_by_section" key, defaults to false
+     *
+     * Type: boolean
      */
-    needs_grading_count_by_section: boolean;
+    needs_grading_count_by_section: boolean | string;
     /**
      * If included, only return certain assignments depending on due date and
      * submission status.
@@ -48,10 +62,18 @@ export type listSearchParameters = Masquerade &
     assignment_ids: string[];
     /** Determines the order of the assignments. Defaults to "position". */
     order_by: string;
-    /** Return only assignments that have post_to_sis set or not set. */
-    post_to_sis: boolean;
-    /** Return only New Quizzes assignments */
-    new_quizzes: boolean;
+    /**
+     * Return only assignments that have post_to_sis set or not set.
+     *
+     * Type: boolean
+     */
+    post_to_sis: boolean | string;
+    /**
+     * Return only New Quizzes assignments
+     *
+     * Type: boolean
+     */
+    new_quizzes: boolean | string;
   }>;
 
 type Options = {

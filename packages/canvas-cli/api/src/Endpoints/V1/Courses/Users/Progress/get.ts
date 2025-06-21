@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { CourseProgress } from '../../../../../Resources/Courses.js';
 
 export type getPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
 };
 
 export type getSearchParameters = Masquerade;

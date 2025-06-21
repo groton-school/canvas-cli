@@ -6,7 +6,7 @@ export type Report = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The url to the report download. */
   file_url: string;
   /**
@@ -41,7 +41,7 @@ export type Report = {
    *
    * Type: integer
    */
-  progress: number;
+  progress: number | string;
 };
 
 /** The parameters returned will vary for each report. */

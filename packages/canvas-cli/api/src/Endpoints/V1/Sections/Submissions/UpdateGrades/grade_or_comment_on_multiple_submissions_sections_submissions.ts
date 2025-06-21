@@ -5,8 +5,12 @@ import { RubricAssessment } from '../../../../../Resources/Rubrics.js';
 
 export type grade_or_comment_on_multiple_submissions_sections_submissionsPathParameters =
   {
-    /** ID */
-    section_id: string;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    section_id: string | number;
   };
 
 export type grade_or_comment_on_multiple_submissions_sections_submissionsSearchParameters =
@@ -22,8 +26,10 @@ export type grade_or_comment_on_multiple_submissions_sections_submissionsFormPar
     /**
      * See documentation for the excuse argument in the
      * {api:SubmissionsApiController#update Submissions Update} documentation
+     *
+     * Type: boolean
      */
-    'grade_data[<student_id>][excuse]': boolean;
+    'grade_data[<student_id>][excuse]': boolean | string;
     /**
      * See documentation for the rubric_assessment argument in the
      * {api:SubmissionsApiController#update Submissions Update} documentation
@@ -31,8 +37,12 @@ export type grade_or_comment_on_multiple_submissions_sections_submissionsFormPar
     'grade_data[<student_id>][rubric_assessment]': RubricAssessment;
     /** No description */
     'grade_data[<student_id>][text_comment]': string;
-    /** No description */
-    'grade_data[<student_id>][group_comment]': boolean;
+    /**
+     * No description
+     *
+     * Type: boolean
+     */
+    'grade_data[<student_id>][group_comment]': boolean | string;
     /** No description */
     'grade_data[<student_id>][media_comment_id]': string;
     /** No description */
@@ -43,14 +53,16 @@ export type grade_or_comment_on_multiple_submissions_sections_submissionsFormPar
      *
      * Format: 'int64'
      */
-    'grade_data[<student_id>][file_ids]': number[];
+    'grade_data[<student_id>][file_ids]': number | string[];
     /**
      * Specifies which assignment to grade. This argument is not necessary when
      * using the assignment-specific endpoints.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    'grade_data[<assignment_id>][<student_id>]': number;
+    'grade_data[<assignment_id>][<student_id>]': number | string;
   };
 
 type Options = {

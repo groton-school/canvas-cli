@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { SharedBrandConfig } from '../../../../Resources/SharedBrandConfigs.js';
 
 export type share_brandconfig_themePathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type share_brandconfig_themeSearchParameters = Masquerade;

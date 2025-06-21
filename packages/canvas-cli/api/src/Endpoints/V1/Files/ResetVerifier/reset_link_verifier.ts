@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { File } from '../../../../Resources/Files.js';
 
 export type reset_link_verifierPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type reset_link_verifierSearchParameters = Masquerade;

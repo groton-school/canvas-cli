@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
 export type listPathParameters = {
-  /** ID */
-  group_category_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_category_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -18,8 +22,10 @@ export type listSearchParameters = Masquerade &
     /**
      * Set this value to true if you wish only to search unassigned users in the
      * group category.
+     *
+     * Type: boolean
      */
-    unassigned: boolean;
+    unassigned: boolean | string;
   }>;
 
 type Options = {

@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { Result } from '../../../../../Resources/LiveAssessments.js';
 
 export type show_collection_of_resultsPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  line_item_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  line_item_id: string | number;
 };
 
 export type show_collection_of_resultsSearchParameters = Masquerade;

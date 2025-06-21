@@ -3,15 +3,23 @@ import { client } from '../../../../Client.js';
 import { Group } from '../../../../Resources/Groups.js';
 
 export type listPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
-    /** Will only include groups that the user belongs to if this is set */
-    only_own_groups: boolean;
+    /**
+     * Will only include groups that the user belongs to if this is set
+     *
+     * Type: boolean
+     */
+    only_own_groups: boolean | string;
     /**
      * - "tabs": Include the list of tabs configured for each group. See the
      *   {api:TabsController#index List available tabs API} for more

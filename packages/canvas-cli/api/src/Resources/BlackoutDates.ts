@@ -8,13 +8,13 @@ export type BlackoutDate = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The context owning the blackout date
    *
    * Type: integer
    */
-  context_id: number;
+  context_id: number | string;
   context_type: string;
   /**
    * The start date of the blackout date

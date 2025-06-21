@@ -6,20 +6,20 @@ export type Progress = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The context owning the job.
    *
    * Type: integer
    */
-  context_id: number;
+  context_id: number | string;
   context_type: string;
   /**
    * The id of the user who started the job
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /** The type of operation */
   tag: string;
   /**
@@ -27,7 +27,7 @@ export type Progress = {
    *
    * Type: integer
    */
-  completion: number;
+  completion: number | string;
   /** The state of the job one of 'queued', 'running', 'completed', 'failed' */
   workflow_state: string;
   /**

@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type validate_quiz_access_codePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type validate_quiz_access_codeSearchParameters = Masquerade;
@@ -39,7 +47,7 @@ type Options = {
  * Nickname: validate_quiz_access_code
  */
 export async function validate_quiz_access_code(options: Options) {
-  const response = await client().fetchAs<boolean>(
+  const response = await client().fetchAs<boolean | string>(
     `/api/v1/courses/{course_id}/quizzes/{id}/validate_access_code`,
     {
       method: 'POST',

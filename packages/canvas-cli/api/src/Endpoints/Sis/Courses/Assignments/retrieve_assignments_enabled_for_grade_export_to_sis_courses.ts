@@ -6,9 +6,11 @@ export type retrieve_assignments_enabled_for_grade_export_to_sis_coursesPathPara
     /**
      * The ID of the course to query.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    course_id: number;
+    course_id: number | string;
   };
 
 export type retrieve_assignments_enabled_for_grade_export_to_sis_coursesSearchParameters =
@@ -17,9 +19,11 @@ export type retrieve_assignments_enabled_for_grade_export_to_sis_coursesSearchPa
       /**
        * The ID of the account to query.
        *
+       * Type: integer
+       *
        * Format: 'int64'
        */
-      account_id: number;
+      account_id: number | string;
       /**
        * When searching on an account,
        *

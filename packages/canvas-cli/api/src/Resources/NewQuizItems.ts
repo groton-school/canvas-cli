@@ -17,16 +17,22 @@ export type QuizItem = {
    *
    * Type: integer
    */
-  position: number;
-  /** The number of points available to score on this item */
-  points_possible: number;
+  position: number | string;
+  /**
+   * The number of points available to score on this item
+   *
+   * Type: number
+   */
+  points_possible: number | string;
   /** The type of the item. One of 'Item', 'Stimulus', 'BankEntry', or 'Bank'. */
   entry_type: string;
   /**
    * Whether the current user can edit the item -- used internally, no need to
    * set
+   *
+   * Type: boolean
    */
-  entry_editable: boolean;
+  entry_editable: boolean | string;
   /**
    * The ID of the stimulus that this item is associated with. null if not
    * associated with any stimuli.
@@ -118,15 +124,23 @@ export type StimulusItem = {
   source_url: string;
   /** Where the stimulus appears relative to questions ('top' or 'left') */
   orientation: string;
-  /** If the stimulus is treated as a passage (text - no question block) */
-  passage: boolean;
+  /**
+   * If the stimulus is treated as a passage (text - no question block)
+   *
+   * Type: boolean
+   */
+  passage: boolean | string;
 };
 
 export type BankEntryItem = {
   /** The type of the item. Either 'Item' or 'Stimulus'. */
   entry_type: string;
-  /** Whether the banked item is archived */
-  archived: boolean;
+  /**
+   * Whether the banked item is archived
+   *
+   * Type: boolean
+   */
+  archived: boolean | string;
   /** The item (either a QuestionItem or StimulusItem, depending on entry_type) */
   entry: QuestionItemStimulusItem;
 };
@@ -134,20 +148,24 @@ export type BankEntryItem = {
 export type BankItem = {
   /** The title of the bank */
   title: string;
-  /** Whether the bank is archived */
-  archived: boolean;
+  /**
+   * Whether the bank is archived
+   *
+   * Type: boolean
+   */
+  archived: boolean | string;
   /**
    * The number of items in the bank, including stimuli
    *
    * Type: integer
    */
-  entry_count: number;
+  entry_count: number | string;
   /**
    * The number of items in the bank, excluding stimuli
    *
    * Type: integer
    */
-  item_entry_count: number;
+  item_entry_count: number | string;
 };
 
 export type ItemProperties = {
@@ -157,7 +175,7 @@ export type ItemProperties = {
    *
    * Type: integer
    */
-  sample_num: number;
+  sample_num: number | string;
 };
 
 export type QuestionFeedback = {

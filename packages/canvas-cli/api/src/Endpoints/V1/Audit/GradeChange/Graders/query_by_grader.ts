@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { GradeChangeEvent } from '../../../../../Resources/GradeChangeLog.js';
 
 export type query_by_graderPathParameters = {
-  /** ID */
-  grader_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  grader_id: string | number;
 };
 
 export type query_by_graderSearchParameters = Masquerade &

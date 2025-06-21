@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { AssignmentGroup } from '../../../../Resources/AssignmentGroups.js';
 
 export type listPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -32,23 +36,31 @@ export type listSearchParameters = Masquerade &
      * will be excluded from the assignment groups.
      */
     exclude_assignment_submission_types: string[];
-    /** Apply assignment overrides for each assignment, defaults to true. */
-    override_assignment_dates: boolean;
+    /**
+     * Apply assignment overrides for each assignment, defaults to true.
+     *
+     * Type: boolean
+     */
+    override_assignment_dates: boolean | string;
     /**
      * The id of the grading period in which assignment groups are being
      * requested (Requires grading periods to exist.)
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    grading_period_id: number;
+    grading_period_id: number | string;
     /**
      * If true, all assignments returned will apply to the current user in the
      * specified grading period. If assignments apply to other students in the
      * specified grading period, but not the current user, they will not be
      * returned. (Requires the grading_period_id argument and grading periods to
      * exist. In addition, the current user must be a student.)
+     *
+     * Type: boolean
      */
-    scope_assignments_to_student: boolean;
+    scope_assignments_to_student: boolean | string;
   }>;
 
 type Options = {

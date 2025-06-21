@@ -7,12 +7,24 @@ import { client } from '../../../../../../../Client.js';
 import { File } from '../../../../../../../Resources/Files.js';
 
 export type uploadPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assignment_id: string;
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
 };
 
 export type uploadSearchParameters = Masquerade;

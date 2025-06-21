@@ -3,14 +3,20 @@ import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
 export type create_link_outcome_global_outcome_idPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
   /**
    * The ID of the existing outcome to link.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  outcome_id: number;
+  outcome_id: number | string;
 };
 
 export type create_link_outcome_global_outcome_idSearchParameters = Masquerade;
@@ -19,9 +25,11 @@ export type create_link_outcome_global_outcome_idFormParameters = Masquerade & {
   /**
    * The ID of the old outcome group. Only used if outcome_id is present.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  move_from: number;
+  move_from: number | string;
   /** The title of the new outcome. Required if outcome_id is absent. */
   title: string;
   /**
@@ -36,9 +44,11 @@ export type create_link_outcome_global_outcome_idFormParameters = Masquerade & {
   /**
    * The mastery threshold for the embedded rubric criterion.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  mastery_points: number;
+  mastery_points: number | string;
   /** The description of a rating level for the embedded rubric criterion. */
   'ratings[description]': string[];
   /**
@@ -47,7 +57,7 @@ export type create_link_outcome_global_outcome_idFormParameters = Masquerade & {
    *
    * Format: 'int64'
    */
-  'ratings[points]': number[];
+  'ratings[points]': number | string[];
   /**
    * The new calculation method. Defaults to "decaying_average" if the
    * Outcomes New Decaying Average Calculation Method FF is ENABLED then
@@ -58,9 +68,11 @@ export type create_link_outcome_global_outcome_idFormParameters = Masquerade & {
    * The new calculation int. Only applies if the calculation_method is
    * "weighted_average", "decaying_average" or "n_mastery". Defaults to 65
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  calculation_int: number;
+  calculation_int: number | string;
 };
 
 type Options = {

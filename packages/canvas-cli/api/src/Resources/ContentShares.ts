@@ -8,7 +8,7 @@ export type ContentShare = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The name of the shared content */
   name: string;
   /**
@@ -33,7 +33,7 @@ export type ContentShare = {
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * The user who shared the content. This field is provided only to receivers;
    * it is not populated in the sender's list of sent content shares.

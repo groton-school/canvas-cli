@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { PairingCode } from '../../../../Resources/UserObservees.js';
 
 export type createPathParameters = {
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;

@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { MediaTrack } from '../../../../Resources/MediaObjects.js';
 
 export type listPathParameters = {
-  /** ID */
-  attachment_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  attachment_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &

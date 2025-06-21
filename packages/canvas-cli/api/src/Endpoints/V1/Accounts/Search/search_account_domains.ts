@@ -10,15 +10,19 @@ export type search_account_domainsSearchParameters = Masquerade &
     /**
      * No description
      *
-     * Format: 'float'
-     */
-    latitude: number;
-    /**
-     * No description
+     * Type: number
      *
      * Format: 'float'
      */
-    longitude: number;
+    latitude: number | string;
+    /**
+     * No description
+     *
+     * Type: number
+     *
+     * Format: 'float'
+     */
+    longitude: number | string;
   }>;
 
 type Options =

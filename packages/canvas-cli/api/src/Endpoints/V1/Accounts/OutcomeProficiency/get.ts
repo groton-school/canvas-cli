@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Proficiency } from '../../../../Resources/ProficiencyRatings.js';
 
 export type getPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type getSearchParameters = Masquerade;

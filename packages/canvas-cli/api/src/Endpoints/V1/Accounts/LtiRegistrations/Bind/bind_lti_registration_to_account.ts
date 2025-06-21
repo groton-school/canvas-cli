@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { LtiRegistrationAccountBinding } from '../../../../../Overrides.js';
 
 export type bind_lti_registration_to_accountPathParameters = {
-  /** ID */
-  account_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type bind_lti_registration_to_accountSearchParameters = Masquerade;

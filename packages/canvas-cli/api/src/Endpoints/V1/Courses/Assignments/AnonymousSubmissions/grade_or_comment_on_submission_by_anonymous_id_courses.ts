@@ -4,12 +4,24 @@ import { RubricAssessment } from '../../../../../Resources/Rubrics.js';
 
 export type grade_or_comment_on_submission_by_anonymous_id_coursesPathParameters =
   {
-    /** ID */
-    course_id: string;
-    /** ID */
-    assignment_id: string;
-    /** ID */
-    anonymous_id: string;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    course_id: string | number;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    assignment_id: string | number;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    anonymous_id: string | number;
   };
 
 export type grade_or_comment_on_submission_by_anonymous_id_coursesSearchParameters =
@@ -23,8 +35,10 @@ export type grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters
      * Whether or not this comment should be sent to the entire group (defaults
      * to false). Ignored if this is not a group assignment or if no
      * text_comment is provided.
+     *
+     * Type: boolean
      */
-    'comment[group_comment]': boolean;
+    'comment[group_comment]': boolean | string;
     /**
      * Add an audio/video comment to the submission. Media comments can be added
      * via this API, however, note that there is not yet an API to generate or
@@ -40,7 +54,7 @@ export type grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters
      *
      * Format: 'int64'
      */
-    'comment[file_ids]': number[];
+    'comment[file_ids]': number | string[];
     /** Whether this assignment is visible to the owner of the submission */
     'include[visibility]': string;
     /**
@@ -71,8 +85,12 @@ export type grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters
      * grade will only be accepted if the grade equals one of those two values.
      */
     'submission[posted_grade]': string;
-    /** Sets the "excused" status of an assignment. */
-    'submission[excuse]': boolean;
+    /**
+     * Sets the "excused" status of an assignment.
+     *
+     * Type: boolean
+     */
+    'submission[excuse]': boolean | string;
     /**
      * Sets the late policy status to either "late", "missing", "extended",
      * "none", or null. NB: "extended" values can only be set in the UI when the
@@ -82,9 +100,11 @@ export type grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters
     /**
      * Sets the seconds late if late policy status is "late"
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    'submission[seconds_late_override]': number;
+    'submission[seconds_late_override]': number | string;
     /**
      * Assign a rubric assessment to this assignment submission. The
      * sub-parameters here depend on the rubric for the assignment. The general

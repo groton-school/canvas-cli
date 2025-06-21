@@ -1,10 +1,22 @@
 export type MediaTrack = {
-  /** Format: 'int64' */
-  id: number;
-  /** Format: 'int64' */
-  user_id: number;
-  /** Format: 'int64' */
-  media_object_id: number;
+  /**
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  id: number | string;
+  /**
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  user_id: number | string;
+  /**
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  media_object_id: number | string;
   kind: string;
   locale: string;
   content: string;
@@ -14,7 +26,8 @@ export type MediaTrack = {
 };
 
 export type MediaObject = {
-  can_add_captions: boolean;
+  /** Type: boolean */
+  can_add_captions: boolean | string;
   user_entered_title: string;
   title: string;
   media_id: string;

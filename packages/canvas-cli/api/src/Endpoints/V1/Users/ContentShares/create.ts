@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { ContentShare } from '../../../../Resources/ContentShares.js';
 
 export type createPathParameters = {
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -21,9 +25,11 @@ export type createFormParameters = Masquerade & {
   /**
    * The id of the content that you are sharing
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  content_id: number;
+  content_id: number | string;
 };
 
 type Options = {

@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { Progress } from '../../../../../Resources/CoursePace.js';
 
 export type bulk_update_assignment_datesPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type bulk_update_assignment_datesSearchParameters = Masquerade;

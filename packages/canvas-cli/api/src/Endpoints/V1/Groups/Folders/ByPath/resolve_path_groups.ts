@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { Folder } from '../../../../../Resources/Files.js';
 
 export type resolve_path_groupsPathParameters = {
-  /** ID */
-  group_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
 };
 
 export type resolve_path_groupsSearchParameters = Masquerade & Paginated;

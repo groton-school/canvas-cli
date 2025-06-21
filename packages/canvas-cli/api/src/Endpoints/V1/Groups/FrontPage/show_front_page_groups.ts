@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
 export type show_front_page_groupsPathParameters = {
-  /** ID */
-  group_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
 };
 
 export type show_front_page_groupsSearchParameters = Masquerade;

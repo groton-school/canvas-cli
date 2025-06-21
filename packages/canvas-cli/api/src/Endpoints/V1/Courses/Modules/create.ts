@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Module } from '../../../../Resources/CoursePace.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -21,11 +25,17 @@ export type createFormParameters = Masquerade & {
   /**
    * The position of this module in the course (1-based)
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'module[position]': number;
-  /** Whether module items must be unlocked in order */
-  'module[require_sequential_progress]': boolean;
+  'module[position]': number | string;
+  /**
+   * Whether module items must be unlocked in order
+   *
+   * Type: boolean
+   */
+  'module[require_sequential_progress]': boolean | string;
   /**
    * IDs of Modules that must be completed before this one is unlocked.
    * Prerequisite modules must precede this module (i.e. have a lower position
@@ -35,8 +45,10 @@ export type createFormParameters = Masquerade & {
   /**
    * Whether to publish the student's final grade for the course upon
    * completion of this module.
+   *
+   * Type: boolean
    */
-  'module[publish_final_grade]': boolean;
+  'module[publish_final_grade]': boolean | string;
 };
 
 type Options = {

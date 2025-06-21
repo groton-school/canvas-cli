@@ -6,8 +6,10 @@ export type add_group_to_favoritesPathParameters = {
   /**
    * The ID or SIS ID of the group to add. The current user must be a member
    * of the group.
+   *
+   * Type: string
    */
-  id: string;
+  id: string | number;
 };
 
 export type add_group_to_favoritesSearchParameters = Masquerade;

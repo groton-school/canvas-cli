@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
 export type unlink_outcome_globalPathParameters = {
-  /** ID */
-  id: string;
-  /** ID */
-  outcome_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  outcome_id: string | number;
 };
 
 export type unlink_outcome_globalSearchParameters = Masquerade;

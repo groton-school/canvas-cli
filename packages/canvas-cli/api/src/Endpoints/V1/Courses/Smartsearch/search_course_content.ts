@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { SearchResult } from '../../../../Resources/SmartSearch.js';
 
 export type search_course_contentPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type search_course_contentSearchParameters = Masquerade &

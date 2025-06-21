@@ -3,14 +3,20 @@ import { client } from '../../../../../../Client.js';
 import { AccommodationResponse } from '../../../../../../Resources/NewQuizzesAccommodations.js';
 
 export type set_quiz_level_accommodationsPathParameters = {
-  /** The ID of the course where the quiz is located. */
-  course_id: string;
+  /**
+   * The ID of the course where the quiz is located.
+   *
+   * Type: string
+   */
+  course_id: string | number;
   /**
    * The ID of the assignment/quiz that needs accommodations.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  assignment_id: number;
+  assignment_id: number | string;
 };
 
 export type set_quiz_level_accommodationsSearchParameters = Masquerade;
@@ -19,28 +25,36 @@ export type set_quiz_level_accommodationsFormParameters = Masquerade & {
   /**
    * The Canvas user ID of the student receiving accommodations.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * Amount of extra time in <b>minutes</b> granted for quiz submission.
    * Allowed range: 0 to 10080 minutes (168 hours).
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  extra_time: number;
+  extra_time: number | string;
   /**
    * Number of times the student is allowed to re-take the quiz over the
    * multiple-attempt limit.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  extra_attempts: number;
+  extra_attempts: number | string;
   /**
    * If 'true', removes <b>one incorrect answer</b> from multiple-choice
    * questions with <b>4 or more options</b>.
+   *
+   * Type: boolean
    */
-  reduce_choices_enabled: boolean;
+  reduce_choices_enabled: boolean | string;
 };
 
 type Options = {

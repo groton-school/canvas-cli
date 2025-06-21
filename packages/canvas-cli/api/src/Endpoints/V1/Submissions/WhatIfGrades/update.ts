@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { gradesGradessubmissionSubmission } from '../../../../Overrides.js';
 
 export type updatePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade & Paginated;
@@ -13,9 +17,11 @@ export type updateFormParameters = Masquerade & {
   /**
    * The score the student wants to test
    *
+   * Type: number
+   *
    * Format: 'float'
    */
-  student_entered_score: number;
+  student_entered_score: number | string;
 };
 
 type Options = {

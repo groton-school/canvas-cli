@@ -7,7 +7,7 @@ export type CourseEpubExport = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The name for the course */
   name: string;
   /** EPub export API object */
@@ -20,7 +20,7 @@ export type EpubExport = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The date and time this export was requested
    *
@@ -39,7 +39,7 @@ export type EpubExport = {
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * Current state of the ePub export: created exporting exported generating
    * generated failed

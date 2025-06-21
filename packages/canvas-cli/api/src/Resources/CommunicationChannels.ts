@@ -4,7 +4,7 @@ export type CommunicationChannel = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The address, or path, of the communication channel. */
   address: string;
   /**
@@ -19,20 +19,20 @@ export type CommunicationChannel = {
    *
    * Type: integer
    */
-  position: number;
+  position: number | string;
   /**
    * The ID of the user that owns this communication channel.
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * The number of bounces the channel has experienced. This is reset if the
    * channel sends successfully.
    *
    * Type: integer
    */
-  bounce_count: number;
+  bounce_count: number | string;
   /**
    * The time the last bounce occurred.
    *

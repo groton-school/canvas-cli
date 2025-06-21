@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type getPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
@@ -15,7 +19,7 @@ export type getSearchParameters = Masquerade &
      *
      * Format: 'int64'
      */
-    user_ids: number[];
+    user_ids: number | string[];
     /**
      * If specified, only the outcomes whose ids are given will be included in
      * the results. it is an error to specify an id for an outcome which is not
@@ -23,7 +27,7 @@ export type getSearchParameters = Masquerade &
      *
      * Format: 'int64'
      */
-    outcome_ids: number[];
+    outcome_ids: number | string[];
     /**
      * [String,
      * "alignments"|"outcomes"|"outcomes.alignments"|"outcome_groups"|"outcome_links"|"outcome_paths"|"users"]
@@ -36,8 +40,10 @@ export type getSearchParameters = Masquerade &
     /**
      * If true, results that are hidden from the learning mastery gradebook and
      * student rollup scores will be included
+     *
+     * Type: boolean
      */
-    include_hidden: boolean;
+    include_hidden: boolean | string;
   }>;
 
 type Options = {

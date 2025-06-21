@@ -2,12 +2,24 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type complete_quiz_submission_turn_it_inPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  quiz_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type complete_quiz_submission_turn_it_inSearchParameters = Masquerade;
@@ -18,9 +30,11 @@ export type complete_quiz_submission_turn_it_inFormParameters = Masquerade & {
    * that this must be the latest attempt index, as earlier attempts can not
    * be modified.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  attempt: number;
+  attempt: number | string;
   /**
    * The unique validation token you received when this Quiz Submission was
    * created.

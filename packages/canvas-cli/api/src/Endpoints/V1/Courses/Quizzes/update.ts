@@ -3,17 +3,29 @@ import { client } from '../../../../Client.js';
 import { Quiz } from '../../../../Resources/Quizzes.js';
 
 export type updatePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** If true, notifies users that the quiz has changed. Defaults to true */
-  'quiz[notify_of_update]': boolean;
+  /**
+   * If true, notifies users that the quiz has changed. Defaults to true
+   *
+   * Type: boolean
+   */
+  'quiz[notify_of_update]': boolean | string;
 };
 
 type Options = {

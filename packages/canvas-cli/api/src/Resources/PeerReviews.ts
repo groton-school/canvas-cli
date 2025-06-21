@@ -4,13 +4,13 @@ export type PeerReview = {
    *
    * Type: integer
    */
-  assessor_id: number;
+  assessor_id: number | string;
   /**
    * The id for the asset associated with this Peer Review
    *
    * Type: integer
    */
-  asset_id: number;
+  asset_id: number | string;
   /** The type of the asset */
   asset_type: string;
   /**
@@ -18,13 +18,13 @@ export type PeerReview = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The user id for the owner of the asset
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /** The state of the Peer Review, either 'assigned' or 'completed' */
   workflow_state: string;
   /**

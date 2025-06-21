@@ -4,7 +4,7 @@ export type BlockEditorTemplate = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** Name of the template */
   name: string;
   /** Description of the template */

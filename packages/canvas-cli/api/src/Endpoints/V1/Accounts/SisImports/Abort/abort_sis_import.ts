@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { SisImport } from '../../../../../Resources/SisImports.js';
 
 export type abort_sis_importPathParameters = {
-  /** ID */
-  account_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type abort_sis_importSearchParameters = Masquerade;

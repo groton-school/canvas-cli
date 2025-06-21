@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { QuizReport } from '../../../../../Resources/QuizReports.js';
 
 export type retrieve_all_quiz_reportsPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  quiz_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_id: string | number;
 };
 
 export type retrieve_all_quiz_reportsSearchParameters = Masquerade &
@@ -15,8 +23,10 @@ export type retrieve_all_quiz_reportsSearchParameters = Masquerade &
     /**
      * Whether to retrieve reports that consider all the submissions or only the
      * most recent. Defaults to false, ignored for item_analysis reports.
+     *
+     * Type: boolean
      */
-    includes_all_versions: boolean;
+    includes_all_versions: boolean | string;
   }>;
 
 type Options = {

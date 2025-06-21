@@ -3,17 +3,27 @@ import { client } from '../../../../../Client.js';
 import { PageRevision } from '../../../../../Resources/Pages.js';
 
 export type revert_to_revision_coursesPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  url_or_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  url_or_id: string | number;
   /**
    * The revision to revert to (use the {api:WikiPagesApiController#revisions
    * List Revisions API} to see available revisions)
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  revision_id: number;
+  revision_id: number | string;
 };
 
 export type revert_to_revision_coursesSearchParameters = Masquerade;

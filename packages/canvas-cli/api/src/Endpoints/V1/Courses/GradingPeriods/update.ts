@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { Date } from '../../../../Overrides.js';
 
 export type updatePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -23,7 +31,7 @@ export type updateFormParameters = Masquerade & {
    *
    * Format: 'float'
    */
-  'grading_periods[weight]': number[];
+  'grading_periods[weight]': number | string[];
 };
 
 type Options = {

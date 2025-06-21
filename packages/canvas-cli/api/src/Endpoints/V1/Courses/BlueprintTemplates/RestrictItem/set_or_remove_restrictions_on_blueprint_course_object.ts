@@ -4,10 +4,18 @@ import { BlueprintRestriction } from '../../../../../Resources/BlueprintCourses.
 
 export type set_or_remove_restrictions_on_blueprint_course_objectPathParameters =
   {
-    /** ID */
-    course_id: string;
-    /** ID */
-    template_id: string;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    course_id: string | number;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    template_id: string | number;
   };
 
 export type set_or_remove_restrictions_on_blueprint_course_objectSearchParameters =
@@ -24,11 +32,17 @@ export type set_or_remove_restrictions_on_blueprint_course_objectFormParameters 
     /**
      * The ID of the object.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    content_id: number;
-    /** Whether to apply restrictions. */
-    restricted: boolean;
+    content_id: number | string;
+    /**
+     * Whether to apply restrictions.
+     *
+     * Type: boolean
+     */
+    restricted: boolean | string;
     /**
      * (Optional) If the object is restricted, this specifies a set of
      * restrictions. If not specified, the course-level restrictions will be

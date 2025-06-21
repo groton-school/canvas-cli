@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type updatePathParameters = {
-  /** ID */
-  communication_channel_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  communication_channel_id: string | number;
   /**
    * The name of the category. Must be parameterized (e.g. The category
    * "Course Content" should be "course_content")

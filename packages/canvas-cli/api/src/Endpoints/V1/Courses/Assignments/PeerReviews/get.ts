@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { PeerReview } from '../../../../../Resources/PeerReviews.js';
 
 export type getPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assignment_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
 };
 
 export type getSearchParameters = Masquerade &

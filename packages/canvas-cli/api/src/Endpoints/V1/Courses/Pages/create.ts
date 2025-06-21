@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -24,12 +28,24 @@ export type createFormParameters = Masquerade & {
    * user.
    */
   'wiki_page[editing_roles]': string;
-  /** Whether participants should be notified when this page changes. */
-  'wiki_page[notify_of_update]': boolean;
-  /** Whether the page is published (true) or draft state (false). */
-  'wiki_page[published]': boolean;
-  /** Set an unhidden page as the front page (if true) */
-  'wiki_page[front_page]': boolean;
+  /**
+   * Whether participants should be notified when this page changes.
+   *
+   * Type: boolean
+   */
+  'wiki_page[notify_of_update]': boolean | string;
+  /**
+   * Whether the page is published (true) or draft state (false).
+   *
+   * Type: boolean
+   */
+  'wiki_page[published]': boolean | string;
+  /**
+   * Set an unhidden page as the front page (if true)
+   *
+   * Type: boolean
+   */
+  'wiki_page[front_page]': boolean | string;
   /**
    * Schedule a future date/time to publish the page. This will have no effect
    * unless the "Scheduled Page Publication" feature is enabled in the

@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { Course } from '../../../../Resources/Courses.js';
 
 export type getPathParameters = {
-  /** ID */
-  account_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
@@ -32,9 +40,11 @@ export type getSearchParameters = Masquerade &
      * more teachers than this, instead of giving the teacher enrollments, the
      * count of teachers will be given under a _teacher_count_ key.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    teacher_limit: number;
+    teacher_limit: number | string;
   }>;
 
 type Options = {

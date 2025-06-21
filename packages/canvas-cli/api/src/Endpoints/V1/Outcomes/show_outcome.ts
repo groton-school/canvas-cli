@@ -3,8 +3,12 @@ import { client } from '../../../Client.js';
 import { Outcome } from '../../../Resources/Outcomes.js';
 
 export type show_outcomePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type show_outcomeSearchParameters = Masquerade &
@@ -13,8 +17,10 @@ export type show_outcomeSearchParameters = Masquerade &
      * If defaults are requested, then color and mastery level defaults will be
      * added to outcome ratings in the result. This will only take effect if the
      * Account Level Mastery Scales FF is DISABLED
+     *
+     * Type: boolean
      */
-    add_defaults: boolean;
+    add_defaults: boolean | string;
   }>;
 
 type Options = {

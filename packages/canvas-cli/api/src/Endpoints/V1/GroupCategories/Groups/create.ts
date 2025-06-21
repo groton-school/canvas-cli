@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Group } from '../../../../Resources/Groups.js';
 
 export type createPathParameters = {
-  /** ID */
-  group_category_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_category_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -14,8 +18,12 @@ export type createFormParameters = Masquerade & {
   name: string;
   /** A description of the group */
   description: string;
-  /** Whether the group is public (applies only to community groups) */
-  is_public: boolean;
+  /**
+   * Whether the group is public (applies only to community groups)
+   *
+   * Type: boolean
+   */
+  is_public: boolean | string;
   /** No description */
   join_level: string;
   /**
@@ -23,9 +31,11 @@ export type createFormParameters = Masquerade & {
    * ignored if the caller does not have the manage_storage_quotas
    * permission.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  storage_quota_mb: number;
+  storage_quota_mb: number | string;
   /** The sis ID of the group. Must have manage_sis permission to set. */
   sis_group_id: string;
 };

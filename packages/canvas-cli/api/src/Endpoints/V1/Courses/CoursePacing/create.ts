@@ -6,9 +6,11 @@ export type createPathParameters = {
   /**
    * The id of the course
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  course_id: number;
+  course_id: number | string;
 };
 
 export type createSearchParameters = Masquerade;
@@ -30,12 +32,20 @@ export type createFormParameters = Masquerade & {
   start_date: string;
   /** Start date context (course, section, hupothetical) */
   start_date_context: string;
-  /** Course pace dates excludes weekends if true */
-  exclude_weekends: boolean;
+  /**
+   * Course pace dates excludes weekends if true
+   *
+   * Type: boolean
+   */
+  exclude_weekends: boolean | string;
   /** [Array<String>] Course pace dates excludes weekends if true */
   selected_days_to_skip: string;
-  /** Course pace uess hard end dates if true */
-  hard_end_dates: boolean;
+  /**
+   * Course pace uess hard end dates if true
+   *
+   * Type: boolean
+   */
+  hard_end_dates: boolean | string;
   /** The state of the course pace */
   workflow_state: string;
   /** Module Items attributes */
@@ -43,9 +53,11 @@ export type createFormParameters = Masquerade & {
   /**
    * Pace Context ID
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  context_id: number;
+  context_id: number | string;
   /** Pace Context Type (Course, Section, User) */
   context_type: string;
 };

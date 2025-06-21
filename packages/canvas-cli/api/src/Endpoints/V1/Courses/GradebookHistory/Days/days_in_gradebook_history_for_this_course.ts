@@ -6,9 +6,11 @@ export type days_in_gradebook_history_for_this_coursePathParameters = {
   /**
    * The id of the contextual course for this API call
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  course_id: number;
+  course_id: number | string;
 };
 
 export type days_in_gradebook_history_for_this_courseSearchParameters =

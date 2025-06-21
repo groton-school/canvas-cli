@@ -2,8 +2,12 @@
 export type Result = {
   /** A unique identifier for this result */
   id: string;
-  /** Whether the user passed or not */
-  passed: boolean;
+  /**
+   * Whether the user passed or not
+   *
+   * Type: boolean
+   */
+  passed: boolean | string;
   /**
    * When this result was recorded
    *

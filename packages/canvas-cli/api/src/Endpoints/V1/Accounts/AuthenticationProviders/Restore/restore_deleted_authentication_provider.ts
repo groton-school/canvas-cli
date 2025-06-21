@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { AuthenticationProvider } from '../../../../../Resources/AuthenticationProviders.js';
 
 export type restore_deleted_authentication_providerPathParameters = {
-  /** ID */
-  account_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type restore_deleted_authentication_providerSearchParameters =

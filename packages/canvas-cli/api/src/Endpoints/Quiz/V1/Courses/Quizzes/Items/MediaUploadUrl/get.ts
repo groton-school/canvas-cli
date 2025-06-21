@@ -5,15 +5,19 @@ export type getPathParameters = {
   /**
    * No description
    *
-   * Format: 'int64'
-   */
-  course_id: number;
-  /**
-   * No description
+   * Type: integer
    *
    * Format: 'int64'
    */
-  assignment_id: number;
+  course_id: number | string;
+  /**
+   * No description
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  assignment_id: number | string;
 };
 
 export type getSearchParameters = Masquerade;

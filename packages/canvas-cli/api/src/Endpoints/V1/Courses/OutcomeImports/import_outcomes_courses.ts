@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { OutcomeImport } from '../../../../Resources/OutcomeImports.js';
 
 export type import_outcomes_coursesPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type import_outcomes_coursesSearchParameters = Masquerade;

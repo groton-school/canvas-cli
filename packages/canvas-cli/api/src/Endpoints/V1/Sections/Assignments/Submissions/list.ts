@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { Submission } from '../../../../../Resources/Submissions.js';
 
 export type listPathParameters = {
-  /** ID */
-  section_id: string;
-  /** ID */
-  assignment_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  section_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -17,8 +25,12 @@ export type listSearchParameters = Masquerade &
      * group_name.
      */
     include: string[];
-    /** If this argument is true, the response will be grouped by student groups. */
-    grouped: boolean;
+    /**
+     * If this argument is true, the response will be grouped by student groups.
+     *
+     * Type: boolean
+     */
+    grouped: boolean | string;
   }>;
 
 type Options = {

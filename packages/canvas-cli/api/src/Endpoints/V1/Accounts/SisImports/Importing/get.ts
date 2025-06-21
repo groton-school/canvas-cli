@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { SisImport } from '../../../../../Resources/SisImports.js';
 
 export type getPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type getSearchParameters = Masquerade;

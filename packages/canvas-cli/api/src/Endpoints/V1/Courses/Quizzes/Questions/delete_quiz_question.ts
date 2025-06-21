@@ -2,20 +2,28 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type delete_quiz_questionPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
   /**
    * The associated quiz's unique identifier
    *
-   * Format: 'int64'
-   */
-  quiz_id: number;
-  /**
-   * The quiz question's unique identifier
+   * Type: integer
    *
    * Format: 'int64'
    */
-  id: number;
+  quiz_id: number | string;
+  /**
+   * The quiz question's unique identifier
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  id: number | string;
 };
 
 export type delete_quiz_questionSearchParameters = Masquerade;

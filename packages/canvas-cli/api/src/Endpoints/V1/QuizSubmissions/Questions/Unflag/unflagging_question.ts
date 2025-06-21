@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type unflagging_questionPathParameters = {
-  /** ID */
-  quiz_submission_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_submission_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type unflagging_questionSearchParameters = Masquerade;
@@ -16,9 +24,11 @@ export type unflagging_questionFormParameters = Masquerade & {
    * must be the latest attempt index, as questions for earlier attempts can
    * not be modified.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  attempt: number;
+  attempt: number | string;
   /**
    * The unique validation token you received when the Quiz Submission was
    * created.

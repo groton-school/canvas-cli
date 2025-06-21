@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { ModuleItem } from '../../../../../Resources/CoursePace.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  module_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  module_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -24,15 +32,19 @@ export type createFormParameters = Masquerade & {
   /**
    * The position of this item in the module (1-based).
    *
-   * Format: 'int64'
-   */
-  'module_item[position]': number;
-  /**
-   * 0-based indent level; module items may be indented to show a hierarchy
+   * Type: integer
    *
    * Format: 'int64'
    */
-  'module_item[indent]': number;
+  'module_item[position]': number | string;
+  /**
+   * 0-based indent level; module items may be indented to show a hierarchy
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  'module_item[indent]': number | string;
   /**
    * Suffix for the linked wiki page (e.g. 'front-page'). Required for 'Page'
    * type.
@@ -46,8 +58,10 @@ export type createFormParameters = Masquerade & {
   /**
    * Whether the external tool opens in a new tab. Only applies to
    * 'ExternalTool' type.
+   *
+   * Type: boolean
    */
-  'module_item[new_tab]': boolean;
+  'module_item[new_tab]': boolean | string;
   /**
    * Completion requirement for this module item. "must_view": Applies to all
    * item types "must_contribute": Only applies to "Assignment", "Discussion",
@@ -60,21 +74,27 @@ export type createFormParameters = Masquerade & {
    * Minimum score required to complete. Required for completion_requirement
    * type 'min_score'.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'module_item[completion_requirement][min_score]': number;
+  'module_item[completion_requirement][min_score]': number | string;
   /**
    * Width of the ExternalTool on launch
    *
-   * Format: 'int64'
-   */
-  'module_item[iframe][width]': number;
-  /**
-   * Height of the ExternalTool on launch
+   * Type: integer
    *
    * Format: 'int64'
    */
-  'module_item[iframe][height]': number;
+  'module_item[iframe][width]': number | string;
+  /**
+   * Height of the ExternalTool on launch
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  'module_item[iframe][height]': number | string;
 };
 
 type Options = {

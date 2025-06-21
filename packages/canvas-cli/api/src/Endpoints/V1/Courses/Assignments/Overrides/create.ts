@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assignment_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -19,7 +27,7 @@ export type createFormParameters = Masquerade & {
    *
    * Format: 'int64'
    */
-  'assignment_override[student_ids]': number[];
+  'assignment_override[student_ids]': number | string[];
   /**
    * The title of the adhoc assignment override. Required if student_ids is
    * present, ignored otherwise (the title is set to the name of the targetted
@@ -38,17 +46,21 @@ export type createFormParameters = Masquerade & {
    *
    * See {Appendix: Group assignments} for more info.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'assignment_override[group_id]': number;
+  'assignment_override[group_id]': number | string;
   /**
    * The ID of the override's target section. If present, must identify an
    * active section of the assignment's course not already targetted by a
    * different override.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'assignment_override[course_section_id]': number;
+  'assignment_override[course_section_id]': number | string;
   /**
    * The day/time the overridden assignment is due. Accepts times in ISO 8601
    * format, e.g. 2014-10-21T18:48:00Z. If absent, this override will not

@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { ColumnDatum } from '../../../../../Resources/CustomGradebookColumns.js';
 
 export type listPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -15,8 +23,10 @@ export type listSearchParameters = Masquerade &
     /**
      * If true, hidden columns will be included in the result. If false or
      * absent, only visible columns will be returned.
+     *
+     * Type: boolean
      */
-    include_hidden: boolean;
+    include_hidden: boolean | string;
   }>;
 
 type Options = {

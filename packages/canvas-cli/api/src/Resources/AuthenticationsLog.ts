@@ -12,19 +12,19 @@ export type AuthenticationEvent = {
    *
    * Type: integer
    */
-  pseudonym_id: number;
+  pseudonym_id: number | string;
   /**
    * ID of the account associated with the event. will match the account_id in
    * the associated pseudonym.
    *
    * Type: integer
    */
-  account_id: number;
+  account_id: number | string;
   /**
    * ID of the user associated with the event will match the user_id in the
    * associated pseudonym.
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
 };

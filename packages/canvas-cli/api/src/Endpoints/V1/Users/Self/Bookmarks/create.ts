@@ -12,9 +12,11 @@ export type createFormParameters = Masquerade & {
   /**
    * The position of the bookmark. Defaults to the bottom.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  position: number;
+  position: number | string;
   /** The data associated with the bookmark */
   data: string;
 };

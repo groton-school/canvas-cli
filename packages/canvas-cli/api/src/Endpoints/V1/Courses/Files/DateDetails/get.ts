@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { LearningObjectDates } from '../../../../../Resources/LearningObjectDates.js';
 
 export type getPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  attachment_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  attachment_id: string | number;
 };
 
 export type getSearchParameters = Masquerade;

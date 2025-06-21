@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { User } from '../../../../../Resources/Users.js';
 
 export type select_students_for_moderationPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assignment_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
 };
 
 export type select_students_for_moderationSearchParameters = Masquerade &
@@ -14,7 +22,7 @@ export type select_students_for_moderationSearchParameters = Masquerade &
 
 export type select_students_for_moderationFormParameters = Masquerade & {
   /** User ids for students to select for moderation */
-  student_ids: number[];
+  student_ids: number | string[];
 };
 
 type Options = {

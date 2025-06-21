@@ -6,15 +6,15 @@ export type GradingRules = {
    *
    * Type: integer
    */
-  drop_lowest: number;
+  drop_lowest: number | string;
   /**
    * Number of highest scores to be dropped for each user.
    *
    * Type: integer
    */
-  drop_highest: number;
+  drop_highest: number | string;
   /** Assignment IDs that should never be dropped. */
-  never_drop: number[];
+  never_drop: number | string[];
 };
 
 export type AssignmentGroup = {
@@ -23,7 +23,7 @@ export type AssignmentGroup = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The name of the Assignment Group */
   name: string;
   /**
@@ -31,13 +31,13 @@ export type AssignmentGroup = {
    *
    * Type: integer
    */
-  position: number;
+  position: number | string;
   /**
    * The weight of the Assignment Group
    *
    * Type: integer
    */
-  group_weight: number;
+  group_weight: number | string;
   /** The sis source id of the Assignment Group */
   sis_source_id: string;
   /**
@@ -50,7 +50,7 @@ export type AssignmentGroup = {
    * The assignments in this Assignment Group (see the Assignment API for a
    * detailed list of fields)
    */
-  assignments: number[];
+  assignments: number | string[];
   /** The grading rules that this Assignment Group has */
   rules: GradingRules;
 };

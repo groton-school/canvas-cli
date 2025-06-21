@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
 export type delete_user_from_root_accountPathParameters = {
-  /** ID */
-  account_id: string;
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
 };
 
 export type delete_user_from_root_accountSearchParameters = Masquerade;

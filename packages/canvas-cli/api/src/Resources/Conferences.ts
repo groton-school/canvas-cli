@@ -2,7 +2,7 @@ import { JSONObject } from '@battis/typescript-tricks';
 
 export type ConferenceRecording = {
   /** Type: integer */
-  duration_minutes: number;
+  duration_minutes: number | string;
   title: string;
   /** Format: date-time */
   updated_at: string;
@@ -17,7 +17,7 @@ export type Conference = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The type of conference */
   conference_type: string;
   /** The 3rd party's ID for the conference */
@@ -29,7 +29,7 @@ export type Conference = {
    *
    * Type: integer
    */
-  duration: number;
+  duration: number | string;
   /**
    * The date that the conference ended at, null if it hasn't ended
    *
@@ -45,15 +45,23 @@ export type Conference = {
   /** The title of the conference */
   title: string;
   /** Array of user ids that are participants in the conference */
-  users: number[];
+  users: number | string[];
   /** Array of user ids that are invitees in the conference */
-  invitees: number[];
+  invitees: number | string[];
   /** Array of user ids that are attendees in the conference */
-  attendees: number[];
-  /** True if the conference type has advanced settings. */
-  has_advanced_settings: boolean;
-  /** If true the conference is long running and has no expected end time */
-  long_running: boolean;
+  attendees: number | string[];
+  /**
+   * True if the conference type has advanced settings.
+   *
+   * Type: boolean
+   */
+  has_advanced_settings: boolean | string;
+  /**
+   * If true the conference is long running and has no expected end time
+   *
+   * Type: boolean
+   */
+  long_running: boolean | string;
   /**
    * A collection of settings specific to the conference type
    *
@@ -76,5 +84,5 @@ export type Conference = {
    *
    * Type: integer
    */
-  context_id: number;
+  context_id: number | string;
 };

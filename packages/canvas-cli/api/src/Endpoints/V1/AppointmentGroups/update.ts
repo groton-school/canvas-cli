@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
 export type updatePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -34,28 +38,36 @@ export type updateFormParameters = Masquerade & {
    * Indicates whether this appointment group should be published (i.e. made
    * available for signup). Once published, an appointment group cannot be
    * unpublished. Defaults to false.
+   *
+   * Type: boolean
    */
-  'appointment_group[publish]': boolean;
+  'appointment_group[publish]': boolean | string;
   /**
    * Maximum number of participants that may register for each time slot.
    * Defaults to null (no limit).
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'appointment_group[participants_per_appointment]': number;
+  'appointment_group[participants_per_appointment]': number | string;
   /**
    * Minimum number of time slots a user must register for. If not set, users
    * do not need to sign up for any time slots.
    *
-   * Format: 'int64'
-   */
-  'appointment_group[min_appointments_per_participant]': number;
-  /**
-   * Maximum number of time slots a user may register for.
+   * Type: integer
    *
    * Format: 'int64'
    */
-  'appointment_group[max_appointments_per_participant]': number;
+  'appointment_group[min_appointments_per_participant]': number | string;
+  /**
+   * Maximum number of time slots a user may register for.
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  'appointment_group[max_appointments_per_participant]': number | string;
   /**
    * Nested array of start time/end time pairs indicating time slots for this
    * appointment group. Refer to the example request.
@@ -67,8 +79,12 @@ export type updateFormParameters = Masquerade & {
    * to "private".
    */
   'appointment_group[participant_visibility]': string;
-  /** Whether observer users can sign-up for an appointment. */
-  'appointment_group[allow_observer_signup]': boolean;
+  /**
+   * Whether observer users can sign-up for an appointment.
+   *
+   * Type: boolean
+   */
+  'appointment_group[allow_observer_signup]': boolean | string;
 };
 
 type Options = {

@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type createPathParameters = {
-  /** ID */
-  poll_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  poll_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -12,14 +16,14 @@ export type createFormParameters = Masquerade & {
   /** The descriptive text of the poll choice. */
   'poll_choices[text]': string[];
   /** Whether this poll choice is considered correct or not. Defaults to false. */
-  'poll_choices[is_correct]': boolean[];
+  'poll_choices[is_correct]': boolean | string[];
   /**
    * The order this poll choice should be returned in the context it's sibling
    * poll choices.
    *
    * Format: 'int64'
    */
-  'poll_choices[position]': number[];
+  'poll_choices[position]': number | string[];
 };
 
 type Options = {

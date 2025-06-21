@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { GroupCategory } from '../../../../Resources/GroupCategories.js';
 
 export type listPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &

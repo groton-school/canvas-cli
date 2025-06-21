@@ -4,17 +4,29 @@ import { AccountNotification } from '../../../../Resources/AccountNotifications.
 
 export type close_notification_for_user_destroy_notification_for_adminPathParameters =
   {
-    /** ID */
-    account_id: string;
-    /** ID */
-    id: string;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    account_id: string | number;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    id: string | number;
   };
 
 export type close_notification_for_user_destroy_notification_for_adminSearchParameters =
   Masquerade &
     Partial<{
-      /** Destroy the account notification. */
-      remove: boolean;
+      /**
+       * Destroy the account notification.
+       *
+       * Type: boolean
+       */
+      remove: boolean | string;
     }>;
 
 type Options = {

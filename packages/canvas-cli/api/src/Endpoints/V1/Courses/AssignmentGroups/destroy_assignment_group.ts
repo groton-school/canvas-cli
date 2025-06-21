@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { AssignmentGroup } from '../../../../Resources/AssignmentGroups.js';
 
 export type destroy_assignment_groupPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assignment_group_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_group_id: string | number;
 };
 
 export type destroy_assignment_groupSearchParameters = Masquerade &
@@ -17,9 +25,11 @@ export type destroy_assignment_groupSearchParameters = Masquerade &
      * NOTE: If this argument is not provided, any assignments in this
      * Assignment Group will be deleted.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    move_assignments_to: number;
+    move_assignments_to: number | string;
   }>;
 
 type Options = {

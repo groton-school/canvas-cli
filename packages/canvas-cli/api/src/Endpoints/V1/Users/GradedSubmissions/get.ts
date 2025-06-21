@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Submission } from '../../../../Resources/Submissions.js';
 
 export type getPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
@@ -12,10 +16,18 @@ export type getSearchParameters = Masquerade &
   Partial<{
     /** Associations to include with the group */
     include: string[];
-    /** Returns submissions for only currently active enrollments */
-    only_current_enrollments: boolean;
-    /** Returns submissions for only published assignments */
-    only_published_assignments: boolean;
+    /**
+     * Returns submissions for only currently active enrollments
+     *
+     * Type: boolean
+     */
+    only_current_enrollments: boolean | string;
+    /**
+     * Returns submissions for only published assignments
+     *
+     * Type: boolean
+     */
+    only_published_assignments: boolean | string;
   }>;
 
 type Options = {

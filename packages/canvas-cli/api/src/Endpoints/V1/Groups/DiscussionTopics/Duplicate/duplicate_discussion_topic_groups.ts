@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { DiscussionTopic } from '../../../../../Resources/DiscussionTopics.js';
 
 export type duplicate_discussion_topic_groupsPathParameters = {
-  /** ID */
-  group_id: string;
-  /** ID */
-  topic_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  topic_id: string | number;
 };
 
 export type duplicate_discussion_topic_groupsSearchParameters = Masquerade;

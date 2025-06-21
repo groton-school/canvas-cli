@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { ExternalFeed } from '../../../../Resources/AnnouncementExternalFeeds.js';
 
 export type delete_external_feed_coursesPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  external_feed_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  external_feed_id: string | number;
 };
 
 export type delete_external_feed_coursesSearchParameters = Masquerade;

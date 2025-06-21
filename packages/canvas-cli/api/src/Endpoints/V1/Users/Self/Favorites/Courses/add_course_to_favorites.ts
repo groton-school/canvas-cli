@@ -6,8 +6,10 @@ export type add_course_to_favoritesPathParameters = {
   /**
    * The ID or SIS ID of the course to add. The current user must be
    * registered in the course.
+   *
+   * Type: string
    */
-  id: string;
+  id: string | number;
 };
 
 export type add_course_to_favoritesSearchParameters = Masquerade;

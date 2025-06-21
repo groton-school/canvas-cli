@@ -6,21 +6,27 @@ export type delete_quiz_itemPathParameters = {
   /**
    * No description
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  course_id: number;
+  course_id: number | string;
   /**
    * The id of the assignment associated with the quiz.
    *
-   * Format: 'int64'
-   */
-  assignment_id: number;
-  /**
-   * The id of the item associated with the quiz.
+   * Type: integer
    *
    * Format: 'int64'
    */
-  item_id: number;
+  assignment_id: number | string;
+  /**
+   * The id of the item associated with the quiz.
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  item_id: number | string;
 };
 
 export type delete_quiz_itemSearchParameters = Masquerade;

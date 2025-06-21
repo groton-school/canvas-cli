@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { GroupMembershipProgress } from '../../../../Overrides.js';
 
 export type assign_unassigned_membersPathParameters = {
-  /** ID */
-  group_category_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_category_id: string | number;
 };
 
 export type assign_unassigned_membersSearchParameters = Masquerade;
@@ -14,8 +18,10 @@ export type assign_unassigned_membersFormParameters = Masquerade & {
    * The assigning is done asynchronously by default. If you would like to
    * override this and have the assigning done synchronously, set this value
    * to true.
+   *
+   * Type: boolean
    */
-  sync: boolean;
+  sync: boolean | string;
 };
 
 type Options = {

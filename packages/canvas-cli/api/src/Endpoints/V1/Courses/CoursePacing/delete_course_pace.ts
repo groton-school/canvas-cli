@@ -3,14 +3,20 @@ import { client } from '../../../../Client.js';
 import { CoursePace } from '../../../../Resources/CoursePace.js';
 
 export type delete_course_pacePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
   /**
    * The id of the course
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  course_id: number;
+  course_id: number | string;
 };
 
 export type delete_course_paceSearchParameters = Masquerade &
@@ -18,9 +24,11 @@ export type delete_course_paceSearchParameters = Masquerade &
     /**
      * The id of the course_pace
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    course_pace_id: number;
+    course_pace_id: number | string;
   }>;
 
 type Options = {

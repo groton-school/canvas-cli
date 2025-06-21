@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
 
 export type delete_outcome_group_accountsPathParameters = {
-  /** ID */
-  account_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type delete_outcome_group_accountsSearchParameters = Masquerade;

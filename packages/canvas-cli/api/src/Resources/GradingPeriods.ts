@@ -4,7 +4,7 @@ export type GradingPeriod = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The title for the grading period. */
   title: string;
   /**
@@ -32,7 +32,11 @@ export type GradingPeriod = {
    *
    * Type: integer
    */
-  weight: number;
-  /** If true, the grading period's close_date has passed. */
-  is_closed: boolean;
+  weight: number | string;
+  /**
+   * If true, the grading period's close_date has passed.
+   *
+   * Type: boolean
+   */
+  is_closed: boolean | string;
 };

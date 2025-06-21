@@ -6,9 +6,11 @@ export type listPathParameters = {
   /**
    * No description
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  course_id: number;
+  course_id: number | string;
 };
 
 export type listSearchParameters = Masquerade & Paginated;

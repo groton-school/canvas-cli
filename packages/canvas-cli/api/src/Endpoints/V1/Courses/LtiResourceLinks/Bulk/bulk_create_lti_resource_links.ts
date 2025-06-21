@@ -4,8 +4,12 @@ import { Hash } from '../../../../../Overrides.js';
 import { LtiResourceLink } from '../../../../../Resources/LtiResourceLinks.js';
 
 export type bulk_create_lti_resource_linksPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type bulk_create_lti_resource_linksSearchParameters = Masquerade;

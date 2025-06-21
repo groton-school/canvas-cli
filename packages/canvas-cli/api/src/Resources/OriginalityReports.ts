@@ -17,22 +17,26 @@ export type OriginalityReport = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The id of the file receiving the originality score
    *
    * Type: integer
    */
-  file_id: number;
-  /** A number between 0 and 100 representing the originality score */
-  originality_score: number;
+  file_id: number | string;
+  /**
+   * A number between 0 and 100 representing the originality score
+   *
+   * Type: number
+   */
+  originality_score: number | string;
   /**
    * The ID of the file within Canvas containing the originality report document
    * (if provided)
    *
    * Type: integer
    */
-  originality_report_file_id: number;
+  originality_report_file_id: number | string;
   /** A non-LTI launch URL where the originality score of the file may be found. */
   originality_report_url: string;
   /**
@@ -56,5 +60,5 @@ export type OriginalityReport = {
    *
    * Type: integer
    */
-  root_account_id: number;
+  root_account_id: number | string;
 };

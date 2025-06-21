@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
 export type enroll_user_coursesPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type enroll_user_coursesSearchParameters = Masquerade;
@@ -41,9 +45,11 @@ export type enroll_user_coursesFormParameters = Masquerade & {
   /**
    * Assigns a custom course-level role to the user.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'enrollment[role_id]': number;
+  'enrollment[role_id]': number | string;
   /**
    * If set to 'active,' student will be immediately enrolled in the course.
    * Otherwise they will be required to accept a course invitation. Default is
@@ -59,9 +65,11 @@ export type enroll_user_coursesFormParameters = Masquerade & {
    * section-specific URL is used, this argument is redundant and will be
    * ignored.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'enrollment[course_section_id]': number;
+  'enrollment[course_section_id]': number | string;
   /**
    * If set, the enrollment will only allow the user to see and interact with
    * users enrolled in the section given by course_section_id. For teachers
@@ -69,13 +77,17 @@ export type enroll_user_coursesFormParameters = Masquerade & {
    * not see any users (including teachers and TAs) not enrolled in their
    * sections. Users may have other enrollments that grant privileges to
    * multiple sections in the same course.
+   *
+   * Type: boolean
    */
-  'enrollment[limit_privileges_to_course_section]': boolean;
+  'enrollment[limit_privileges_to_course_section]': boolean | string;
   /**
    * If true, a notification will be sent to the enrolled user. Notifications
    * are not sent by default.
+   *
+   * Type: boolean
    */
-  'enrollment[notify]': boolean;
+  'enrollment[notify]': boolean | string;
   /**
    * If the current user is not allowed to manage enrollments in this course,
    * but the course allows self-enrollment, the user can self- enroll as a
@@ -87,17 +99,21 @@ export type enroll_user_coursesFormParameters = Masquerade & {
   /**
    * If true, marks the enrollment as a self-enrollment, which gives students
    * the ability to drop the course if desired. Defaults to false.
+   *
+   * Type: boolean
    */
-  'enrollment[self_enrolled]': boolean;
+  'enrollment[self_enrolled]': boolean | string;
   /**
    * For an observer enrollment, the ID of a student to observe. This is a
    * one-off operation; to automatically observe all a student's enrollments
    * (for example, as a parent), please use the
    * {api:UserObserveesController#create User Observees API}.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'enrollment[associated_user_id]': number;
+  'enrollment[associated_user_id]': number | string;
   /**
    * Required if the user is being enrolled from another trusted account. The
    * unique identifier for the user (sis_user_id) must also be accompanied by

@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { Page } from '../../../../../Resources/Pages.js';
 
 export type duplicate_pagePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  url_or_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  url_or_id: string | number;
 };
 
 export type duplicate_pageSearchParameters = Masquerade;

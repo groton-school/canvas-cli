@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { QuizReport } from '../../../../../Resources/QuizReports.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  quiz_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -17,8 +25,10 @@ export type createFormParameters = Masquerade & {
   /**
    * Whether the report should consider all submissions or only the most
    * recent. Defaults to false, ignored for item_analysis.
+   *
+   * Type: boolean
    */
-  'quiz_report[includes_all_versions]': boolean;
+  'quiz_report[includes_all_versions]': boolean | string;
   /**
    * Whether the output should include documents for the file and/or progress
    * objects associated with this report. (Note: JSON-API only)

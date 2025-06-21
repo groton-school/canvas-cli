@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { Section } from '../../../../Resources/Sections.js';
 
 export type cross_list_sectionPathParameters = {
-  /** ID */
-  id: string;
-  /** ID */
-  new_course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  new_course_id: string | number;
 };
 
 export type cross_list_sectionSearchParameters = Masquerade;
@@ -16,8 +24,10 @@ export type cross_list_sectionFormParameters = Masquerade & {
    * Default is true. If false, any fields containing “sticky” changes will
    * not be updated. See SIS CSV Format documentation for information on which
    * fields can have SIS stickiness
+   *
+   * Type: boolean
    */
-  override_sis_stickiness: boolean;
+  override_sis_stickiness: boolean | string;
 };
 
 type Options = {

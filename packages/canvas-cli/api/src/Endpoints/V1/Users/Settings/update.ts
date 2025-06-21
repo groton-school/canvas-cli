@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type updatePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade &
@@ -11,29 +15,49 @@ export type updateSearchParameters = Masquerade &
     /**
      * If true, require user to manually mark discussion posts as read (don't
      * auto-mark as read).
+     *
+     * Type: boolean
      */
-    manual_mark_as_read: boolean;
-    /** If true, hide the badge for new release notes. */
-    release_notes_badge_disabled: boolean;
-    /** If true, the user's page loads with the global navigation collapsed */
-    collapse_global_nav: boolean;
+    manual_mark_as_read: boolean | string;
+    /**
+     * If true, hide the badge for new release notes.
+     *
+     * Type: boolean
+     */
+    release_notes_badge_disabled: boolean | string;
+    /**
+     * If true, the user's page loads with the global navigation collapsed
+     *
+     * Type: boolean
+     */
+    collapse_global_nav: boolean | string;
     /**
      * If true, the user's course pages will load with the course navigation
      * collapsed.
+     *
+     * Type: boolean
      */
-    collapse_course_nav: boolean;
+    collapse_course_nav: boolean | string;
     /**
      * If true, images on course cards will be presented without being tinted to
      * match the course color.
+     *
+     * Type: boolean
      */
-    hide_dashcard_color_overlays: boolean;
-    /** If true, suggestions within the comment library will be shown. */
-    comment_library_suggestions_enabled: boolean;
+    hide_dashcard_color_overlays: boolean | string;
+    /**
+     * If true, suggestions within the comment library will be shown.
+     *
+     * Type: boolean
+     */
+    comment_library_suggestions_enabled: boolean | string;
     /**
      * If true, will display the user's preferred class Canvas dashboard view
      * instead of the canvas for elementary view.
+     *
+     * Type: boolean
      */
-    elementary_dashboard_disabled: boolean;
+    elementary_dashboard_disabled: boolean | string;
   }>;
 
 type Options = {

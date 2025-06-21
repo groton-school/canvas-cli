@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../Client.js';
 
 export type updatePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -45,8 +49,10 @@ export type updateFormParameters = Masquerade & {
   /**
    * When true event is considered to span the whole day and times are
    * ignored.
+   *
+   * Type: boolean
    */
-  'calendar_event[all_day]': boolean;
+  'calendar_event[all_day]': boolean | string;
   /**
    * Section-level start time(s) if this is a course event. X can be any
    * identifier, provided that it is consistent across the start_at, end_at
@@ -80,8 +86,10 @@ export type updateFormParameters = Masquerade & {
   /**
    * If the blackout_date is true, this event represents a holiday or some
    * other special day that does not count in course pacing.
+   *
+   * Type: boolean
    */
-  'calendar_event[blackout_date]': boolean;
+  'calendar_event[blackout_date]': boolean | string;
 };
 
 type Options = {

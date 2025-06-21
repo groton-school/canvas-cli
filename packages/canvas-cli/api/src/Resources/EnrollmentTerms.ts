@@ -6,7 +6,7 @@ export type EnrollmentTerm = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The SIS id of the term. Only included if the user has permission to view
    * SIS information.
@@ -18,7 +18,7 @@ export type EnrollmentTerm = {
    *
    * Type: integer
    */
-  sis_import_id: number;
+  sis_import_id: number | string;
   /** The name of the term. */
   name: string;
   /**
@@ -46,7 +46,7 @@ export type EnrollmentTerm = {
    *
    * Type: integer
    */
-  course_count: number;
+  course_count: number | string;
 };
 
 export type EnrollmentTermsList = {

@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { EpubExport } from '../../../../Resources/EPubExports.js';
 
 export type show_epub_exportPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type show_epub_exportSearchParameters = Masquerade;

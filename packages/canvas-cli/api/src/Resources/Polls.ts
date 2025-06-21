@@ -6,7 +6,7 @@ export type Poll = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The question/title of the poll. */
   question: string;
   /** A short description of the poll. */
@@ -22,7 +22,7 @@ export type Poll = {
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * An aggregate of the results of all associated poll sessions, with the poll
    * choice id as the key, and the aggregated submission count as the value.

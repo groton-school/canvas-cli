@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { Module } from '../../../../../Resources/CoursePace.js';
 
 export type re_lock_module_progressionsPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type re_lock_module_progressionsSearchParameters = Masquerade;

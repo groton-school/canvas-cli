@@ -3,18 +3,34 @@ import { client } from '../../../../../Client.js';
 import { PageRevision } from '../../../../../Resources/Pages.js';
 
 export type show_revision_courses_revision_idPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  url_or_id: string;
-  /** ID */
-  revision_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  url_or_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  revision_id: string | number;
 };
 
 export type show_revision_courses_revision_idSearchParameters = Masquerade &
   Partial<{
-    /** If set, exclude page content from results */
-    summary: boolean;
+    /**
+     * If set, exclude page content from results
+     *
+     * Type: boolean
+     */
+    summary: boolean | string;
   }>;
 
 type Options = {

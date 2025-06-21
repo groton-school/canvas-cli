@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Admin } from '../../../../Resources/Admins.js';
 
 export type make_account_adminPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type make_account_adminSearchParameters = Masquerade;
@@ -13,9 +17,11 @@ export type make_account_adminFormParameters = Masquerade & {
   /**
    * The id of the user to promote.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * [DEPRECATED] The user's admin relationship with the account will be
    * created with the given role. Defaults to 'AccountAdmin'.
@@ -25,11 +31,17 @@ export type make_account_adminFormParameters = Masquerade & {
    * The user's admin relationship with the account will be created with the
    * given role. Defaults to the built-in role for 'AccountAdmin'.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  role_id: number;
-  /** Send a notification email to the new admin if true. Default is true. */
-  send_confirmation: boolean;
+  role_id: number | string;
+  /**
+   * Send a notification email to the new admin if true. Default is true.
+   *
+   * Type: boolean
+   */
+  send_confirmation: boolean | string;
 };
 
 type Options = {

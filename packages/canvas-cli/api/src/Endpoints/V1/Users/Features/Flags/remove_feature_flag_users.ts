@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { FeatureFlag } from '../../../../../Resources/FeatureFlags.js';
 
 export type remove_feature_flag_usersPathParameters = {
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
   /** ID */
   feature: string;
 };

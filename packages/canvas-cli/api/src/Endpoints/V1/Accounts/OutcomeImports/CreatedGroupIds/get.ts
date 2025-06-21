@@ -2,10 +2,18 @@ import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type getPathParameters = {
-  /** ID */
-  account_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type getSearchParameters = Masquerade & Paginated;

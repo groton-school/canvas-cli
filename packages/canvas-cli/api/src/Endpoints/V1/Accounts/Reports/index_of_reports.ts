@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
 export type index_of_reportsPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
   /** ID */
   report: string;
 };

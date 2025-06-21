@@ -4,7 +4,7 @@ export type Account = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The display name of the account */
   name: string;
   /** The UUID of the account */
@@ -14,33 +14,33 @@ export type Account = {
    *
    * Type: integer
    */
-  parent_account_id: number;
+  parent_account_id: number | string;
   /**
    * The ID of the root account, or null if this is the root account
    *
    * Type: integer
    */
-  root_account_id: number;
+  root_account_id: number | string;
   /**
    * The storage quota for the account in megabytes, if not otherwise specified
    *
    * Type: integer
    */
-  default_storage_quota_mb: number;
+  default_storage_quota_mb: number | string;
   /**
    * The storage quota for a user in the account in megabytes, if not otherwise
    * specified
    *
    * Type: integer
    */
-  default_user_storage_quota_mb: number;
+  default_user_storage_quota_mb: number | string;
   /**
    * The storage quota for a group in the account in megabytes, if not otherwise
    * specified
    *
    * Type: integer
    */
-  default_group_storage_quota_mb: number;
+  default_group_storage_quota_mb: number | string;
   /**
    * The default time zone of the account. Allowed time zones are
    * {http://www.iana.org/time-zones IANA time zones} or friendlier
@@ -64,20 +64,20 @@ export type Account = {
    *
    * Type: integer
    */
-  sis_import_id: number;
+  sis_import_id: number | string;
   /**
    * The number of courses directly under the account (available via include)
    *
    * Type: integer
    */
-  course_count: number;
+  course_count: number | string;
   /**
    * The number of sub-accounts directly under the account (available via
    * include)
    *
    * Type: integer
    */
-  sub_account_count: number;
+  sub_account_count: number | string;
   /** The account's identifier that is sent as context_id in LTI launches. */
   lti_guid: string;
   /** The state of the account. Can be 'active' or 'deleted'. */
@@ -90,17 +90,21 @@ export type TermsOfService = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The given type for the Terms of Service */
   terms_type: string;
-  /** Boolean dictating if the user must accept Terms of Service */
-  passive: boolean;
+  /**
+   * Boolean dictating if the user must accept Terms of Service
+   *
+   * Type: boolean
+   */
+  passive: boolean | string;
   /**
    * The id of the root account that owns the Terms of Service
    *
    * Type: integer
    */
-  account_id: number;
+  account_id: number | string;
   /** Content of the Terms of Service */
   content: string;
   /** The type of self registration allowed */

@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { GroupMembership } from '../../../../Resources/Groups.js';
 
 export type updatePathParameters = {
-  /** ID */
-  group_id: string;
-  /** ID */
-  membership_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  membership_id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;

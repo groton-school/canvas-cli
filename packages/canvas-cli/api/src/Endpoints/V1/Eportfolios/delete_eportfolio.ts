@@ -3,8 +3,12 @@ import { client } from '../../../Client.js';
 import { ePortfolio } from '../../../Resources/EPortfolios.js';
 
 export type delete_eportfolioPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type delete_eportfolioSearchParameters = Masquerade;

@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { NotificationPreference } from '../../../../../Resources/NotificationPreferences.js';
 
 export type listPathParameters = {
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
   /** ID */
   type: string;
   /** ID */

@@ -3,15 +3,23 @@ import { client } from '../../../../Client.js';
 import { SisImportError } from '../../../../Resources/SisImportErrors.js';
 
 export type getPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
   Paginated &
   Partial<{
-    /** If set, only shows errors on a sis import that would cause a failure. */
-    failure: boolean;
+    /**
+     * If set, only shows errors on a sis import that would cause a failure.
+     *
+     * Type: boolean
+     */
+    failure: boolean | string;
   }>;
 
 type Options = {

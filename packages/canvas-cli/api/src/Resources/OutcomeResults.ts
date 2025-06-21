@@ -7,13 +7,13 @@ export type OutcomeResult = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The student's score
    *
    * Type: integer
    */
-  score: number;
+  score: number | string;
   /**
    * The datetime the resulting OutcomeResult was submitted at, or absent that,
    * when it was assessed.
@@ -30,8 +30,10 @@ export type OutcomeResult = {
   /**
    * Score's percent of maximum points possible for outcome, scaled to reflect
    * any custom mastery levels that differ from the learning outcome
+   *
+   * Type: number
    */
-  percent: number;
+  percent: number | string;
 };
 
 export type OutcomeRollupScoreLinks = {
@@ -40,7 +42,7 @@ export type OutcomeRollupScoreLinks = {
    *
    * Type: integer
    */
-  outcome: number;
+  outcome: number | string;
 };
 
 export type OutcomeRollupScore = {
@@ -51,13 +53,13 @@ export type OutcomeRollupScore = {
    *
    * Type: integer
    */
-  score: number;
+  score: number | string;
   /**
    * The number of alignment scores included in this rollup.
    *
    * Type: integer
    */
-  count: number;
+  count: number | string;
   links: OutcomeRollupScoreLinks;
 };
 
@@ -69,19 +71,19 @@ export type OutcomeRollupLinks = {
    *
    * Type: integer
    */
-  course: number;
+  course: number | string;
   /**
    * (Optional) The id of the user that this rollup applies to
    *
    * Type: integer
    */
-  user: number;
+  user: number | string;
   /**
    * (Optional) The id of the section the user is in
    *
    * Type: integer
    */
-  section: number;
+  section: number | string;
 };
 
 export type OutcomeRollup = {
@@ -109,7 +111,7 @@ export type OutcomePath = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** An array of OutcomePathPart objects */
   parts: OutcomePathPart;
 };

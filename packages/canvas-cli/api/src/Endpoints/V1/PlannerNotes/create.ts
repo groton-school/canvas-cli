@@ -20,9 +20,11 @@ export type createFormParameters = Masquerade & {
    * The ID of the course to associate with the planner note. The caller must
    * be able to view the course in order to associate it with a planner note.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  course_id: number;
+  course_id: number | string;
   /**
    * The type of a learning object to link to this planner note. Must be used
    * in conjunction wtih linked_object_id and course_id. Valid
@@ -38,9 +40,11 @@ export type createFormParameters = Masquerade & {
    * title. Only one planner note may be linked to a specific learning
    * object.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  linked_object_id: number;
+  linked_object_id: number | string;
 };
 
 type Options =

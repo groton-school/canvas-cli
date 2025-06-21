@@ -2,12 +2,24 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type mark_entry_as_read_coursesPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  topic_id: string;
-  /** ID */
-  entry_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  topic_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  entry_id: string | number;
 };
 
 export type mark_entry_as_read_coursesSearchParameters = Masquerade;
@@ -16,8 +28,10 @@ export type mark_entry_as_read_coursesFormParameters = Masquerade & {
   /**
    * A boolean value to set the entry's forced_read_state. No change is made
    * if this argument is not specified.
+   *
+   * Type: boolean
    */
-  forced_read_state: boolean;
+  forced_read_state: boolean | string;
 };
 
 type Options = {

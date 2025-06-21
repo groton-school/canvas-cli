@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { File } from '../../../../Resources/Files.js';
 
 export type getPathParameters = {
-  /** ID */
-  user_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
@@ -41,9 +49,11 @@ export type getSearchParameters = Masquerade &
      * "replacement chain." The "replacement_chain_context_type" parameter must
      * also be included.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    replacement_chain_context_id: number;
+    replacement_chain_context_id: number | string;
   }>;
 
 type Options = {

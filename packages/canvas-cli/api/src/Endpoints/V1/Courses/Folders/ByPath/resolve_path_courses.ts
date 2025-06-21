@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { Folder } from '../../../../../Resources/Files.js';
 
 export type resolve_path_coursesPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type resolve_path_coursesSearchParameters = Masquerade & Paginated;

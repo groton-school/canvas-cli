@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { QuizQuestion } from '../../../../../Resources/QuizQuestions.js';
 
 export type listPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  quiz_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -19,15 +27,19 @@ export type listSearchParameters = Masquerade &
      * does not match the submission's. NOTE: you must specify
      * quiz_submission_attempt as well if you specify this parameter.
      *
-     * Format: 'int64'
-     */
-    quiz_submission_id: number;
-    /**
-     * The attempt of the submission you want the questions for.
+     * Type: integer
      *
      * Format: 'int64'
      */
-    quiz_submission_attempt: number;
+    quiz_submission_id: number | string;
+    /**
+     * The attempt of the submission you want the questions for.
+     *
+     * Type: integer
+     *
+     * Format: 'int64'
+     */
+    quiz_submission_attempt: number | string;
   }>;
 
 type Options = {

@@ -8,7 +8,7 @@ export type AuthenticationProvider = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** Valid for SAML providers. */
   log_out_url: string;
   /** Valid for SAML and CAS providers. */
@@ -26,7 +26,7 @@ export type AuthenticationProvider = {
    *
    * Type: integer
    */
-  auth_over_tls: number;
+  auth_over_tls: number | string;
   /** Valid for LDAP and CAS providers. */
   auth_base: string;
   /** Valid for LDAP providers. */
@@ -36,13 +36,13 @@ export type AuthenticationProvider = {
    *
    * Type: integer
    */
-  auth_port: number;
+  auth_port: number | string;
   /**
    * Valid for all providers.
    *
    * Type: integer
    */
-  position: number;
+  position: number | string;
   /** Valid for SAML providers. */
   idp_entity_id: string;
   /** Valid for SAML providers. */
@@ -52,14 +52,18 @@ export type AuthenticationProvider = {
   /**
    * Just In Time provisioning. Valid for all providers except Canvas (which has
    * the similar in concept self_registration setting).
+   *
+   * Type: boolean
    */
-  jit_provisioning: boolean;
+  jit_provisioning: boolean | string;
   federated_attributes: FederatedAttributesConfig;
   /**
    * If multi-factor authentication is required when logging in with this
    * authentication provider. The account must not have MFA disabled.
+   *
+   * Type: boolean
    */
-  mfa_required: boolean;
+  mfa_required: boolean | string;
 };
 
 /**
@@ -139,11 +143,15 @@ export type FederatedAttributeConfig = {
   /**
    * If the attribute should be applied only when provisioning a new user,
    * rather than all logins
+   *
+   * Type: boolean
    */
-  provisioning_only: boolean;
+  provisioning_only: boolean | string;
   /**
    * (only for email) If the email address is trusted and should be
    * automatically confirmed
+   *
+   * Type: boolean
    */
-  autoconfirm: boolean;
+  autoconfirm: boolean | string;
 };

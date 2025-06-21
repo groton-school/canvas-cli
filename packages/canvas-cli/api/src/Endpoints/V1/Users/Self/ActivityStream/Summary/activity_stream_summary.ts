@@ -6,8 +6,10 @@ export type activity_stream_summarySearchParameters = Masquerade &
     /**
      * If true, will only return objects for courses the user is actively
      * participating in
+     *
+     * Type: boolean
      */
-    only_active_courses: boolean;
+    only_active_courses: boolean | string;
   }>;
 
 type Options =

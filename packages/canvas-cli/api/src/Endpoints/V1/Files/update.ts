@@ -3,8 +3,12 @@ import { client } from '../../../Client.js';
 import { File } from '../../../Resources/Files.js';
 
 export type updatePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -39,10 +43,18 @@ export type updateFormParameters = Masquerade & {
    * Format: date-time
    */
   unlock_at: string;
-  /** Flag the file as locked */
-  locked: boolean;
-  /** Flag the file as hidden */
-  hidden: boolean;
+  /**
+   * Flag the file as locked
+   *
+   * Type: boolean
+   */
+  locked: boolean | string;
+  /**
+   * Flag the file as hidden
+   *
+   * Type: boolean
+   */
+  hidden: boolean | string;
   /** Configure which roles can access this file */
   visibility_level: string;
 };

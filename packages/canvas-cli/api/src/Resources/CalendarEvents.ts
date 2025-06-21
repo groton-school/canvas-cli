@@ -7,7 +7,7 @@ export type CalendarEvent = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The title of the calendar event */
   title: string;
   /**
@@ -56,8 +56,10 @@ export type CalendarEvent = {
   /**
    * Whether this event should be displayed on the calendar. Only true for
    * course-level events with section-level child events.
+   *
+   * Type: boolean
    */
-  hidden: boolean;
+  hidden: boolean | string;
   /**
    * Normally null. If this is a reservation (see the Appointment Groups API),
    * the id will indicate the time slot it is for. If this is a section-level
@@ -65,20 +67,20 @@ export type CalendarEvent = {
    *
    * Type: integer
    */
-  parent_event_id: number;
+  parent_event_id: number | string;
   /**
    * The number of child_events. See child_events (and parent_event_id)
    *
    * Type: integer
    */
-  child_events_count: number;
+  child_events_count: number | string;
   /**
    * Included by default, but may be excluded (see include[] option). If this is
    * a time slot (see the Appointment Groups API) this will be a list of any
    * reservations. If this is a course-level event, this will be a list of
    * section-level events (if any)
    */
-  child_events: number[];
+  child_events: number | string[];
   /** URL for this calendar event (to update, delete, etc.) */
   url: string;
   /** URL for a user to view this event */
@@ -89,8 +91,12 @@ export type CalendarEvent = {
    * Format: date-time
    */
   all_day_date: string;
-  /** Boolean indicating whether this is an all-day event (midnight to midnight) */
-  all_day: boolean;
+  /**
+   * Boolean indicating whether this is an all-day event (midnight to midnight)
+   *
+   * Type: boolean
+   */
+  all_day: boolean | string;
   /**
    * When the calendar event was created
    *
@@ -110,21 +116,25 @@ export type CalendarEvent = {
    *
    * Type: integer
    */
-  appointment_group_id: number;
+  appointment_group_id: number | string;
   /** The API URL of the appointment group */
   appointment_group_url: string;
   /**
    * If the event is a reservation, this a boolean indicating whether it is the
    * current user's reservation, or someone else's
+   *
+   * Type: boolean
    */
-  own_reservation: boolean;
+  own_reservation: boolean | string;
   /** If the event is a time slot, the API URL for reserving it */
   reserve_url: string;
   /**
    * If the event is a time slot, a boolean indicating whether the user has
    * already made a reservation for it
+   *
+   * Type: boolean
    */
-  reserved: boolean;
+  reserved: boolean | string;
   /** The type of participant to sign up for a slot: 'User' or 'Group' */
   participant_type: string;
   /**
@@ -132,14 +142,14 @@ export type CalendarEvent = {
    *
    * Type: integer
    */
-  participants_per_appointment: number;
+  participants_per_appointment: number | string;
   /**
    * If the event is a time slot and it has a participant limit, an integer
    * indicating how many slots are available
    *
    * Type: integer
    */
-  available_slots: number;
+  available_slots: number | string;
   /**
    * If the event is a user-level reservation, this will contain the user
    * participant JSON (refer to the Users API).
@@ -150,8 +160,12 @@ export type CalendarEvent = {
    * participant JSON (refer to the Groups API).
    */
   group: string;
-  /** Boolean indicating whether this has important dates. */
-  important_dates: boolean;
+  /**
+   * Boolean indicating whether this has important dates.
+   *
+   * Type: boolean
+   */
+  important_dates: boolean | string;
   /** Identifies the recurring event series this event may belong to. */
   series_uuid: uuid;
   /**
@@ -159,12 +173,20 @@ export type CalendarEvent = {
    * repeat.
    */
   rrule: string;
-  /** Boolean indicating if is the first event in the series of recurring events. */
-  series_head: boolean;
+  /**
+   * Boolean indicating if is the first event in the series of recurring events.
+   *
+   * Type: boolean
+   */
+  series_head: boolean | string;
   /** A natural language expression of how events occur in the series. */
   series_natural_language: string;
-  /** Boolean indicating whether this has blackout date. */
-  blackout_date: boolean;
+  /**
+   * Boolean indicating whether this has blackout date.
+   *
+   * Type: boolean
+   */
+  blackout_date: boolean | string;
 };
 
 export type AssignmentEvent = {
@@ -206,8 +228,10 @@ export type AssignmentEvent = {
   /**
    * Boolean indicating whether this is an all-day event (e.g. assignment due at
    * midnight)
+   *
+   * Type: boolean
    */
-  all_day: boolean;
+  all_day: boolean | string;
   /**
    * When the assignment was created
    *
@@ -228,15 +252,23 @@ export type AssignmentEvent = {
    * or sections this assignment-due event applies to.
    */
   assignment_overrides: AssignmentOverride;
-  /** Boolean indicating whether this has important dates. */
-  important_dates: boolean;
+  /**
+   * Boolean indicating whether this has important dates.
+   *
+   * Type: boolean
+   */
+  important_dates: boolean | string;
   /**
    * An iCalendar RRULE for defining how events in a recurring event series
    * repeat.
    */
   rrule: string;
-  /** Trueif this is the first event in the series of recurring events. */
-  series_head: boolean;
+  /**
+   * Trueif this is the first event in the series of recurring events.
+   *
+   * Type: boolean
+   */
+  series_head: boolean | string;
   /** A natural language expression of how events occur in the series. */
   series_natural_language: string;
 };

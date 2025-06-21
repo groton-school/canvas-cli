@@ -3,8 +3,12 @@ import { client } from '../../../../../../Client.js';
 import { Folder } from '../../../../../../Resources/Files.js';
 
 export type resolve_path_users_full_pathPathParameters = {
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
 };
 
 export type resolve_path_users_full_pathSearchParameters = Masquerade &

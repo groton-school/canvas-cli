@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Course } from '../../../../Resources/Courses.js';
 
 export type listPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -14,8 +18,10 @@ export type listSearchParameters = Masquerade &
      * If true, include only courses with at least one enrollment. If false,
      * include only courses with no enrollments. If not present, do not filter
      * on course enrollment status.
+     *
+     * Type: boolean
      */
-    with_enrollments: boolean;
+    with_enrollments: boolean | string;
     /**
      * If set, only return courses that have at least one user enrolled in in
      * the course with one of the specified enrollment types.
@@ -24,49 +30,61 @@ export type listSearchParameters = Masquerade &
     /**
      * If true, include only published courses. If false, exclude published
      * courses. If not present, do not filter on published status.
+     *
+     * Type: boolean
      */
-    published: boolean;
+    published: boolean | string;
     /**
      * If true, include only completed courses (these may be in state
      * 'completed', or their enrollment term may have ended). If false, exclude
      * completed courses. If not present, do not filter on completed status.
+     *
+     * Type: boolean
      */
-    completed: boolean;
+    completed: boolean | string;
     /**
      * If true, include only blueprint courses. If false, exclude them. If not
      * present, do not filter on this basis.
+     *
+     * Type: boolean
      */
-    blueprint: boolean;
+    blueprint: boolean | string;
     /**
      * If true, include only courses that inherit content from a blueprint
      * course. If false, exclude them. If not present, do not filter on this
      * basis.
+     *
+     * Type: boolean
      */
-    blueprint_associated: boolean;
+    blueprint_associated: boolean | string;
     /**
      * If true, include only public courses. If false, exclude them. If not
      * present, do not filter on this basis.
+     *
+     * Type: boolean
      */
-    public: boolean;
+    public: boolean | string;
     /**
      * List of User IDs of teachers; if supplied, include only courses taught by
      * one of the referenced users.
      *
      * Format: 'int64'
      */
-    by_teachers: number[];
+    by_teachers: number | string[];
     /**
      * List of Account IDs; if supplied, include only courses associated with
      * one of the referenced subaccounts.
      *
      * Format: 'int64'
      */
-    by_subaccounts: number[];
+    by_subaccounts: number | string[];
     /**
      * If present, only return courses that have at least one enrollment.
      * Equivalent to 'with_enrollments=true'; retained for compatibility.
+     *
+     * Type: boolean
      */
-    hide_enrollmentless_courses: boolean;
+    hide_enrollmentless_courses: boolean | string;
     /**
      * If set, only return courses that are in the given state(s). By default,
      * all states but "deleted" are returned.
@@ -75,9 +93,11 @@ export type listSearchParameters = Masquerade &
     /**
      * If set, only includes courses from the specified term.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    enrollment_term_id: number;
+    enrollment_term_id: number | string;
     /**
      * The partial course name, code, or full ID to match and return in the
      * results list. Must be at least 3 characters.
@@ -118,8 +138,12 @@ export type listSearchParameters = Masquerade &
      * Format: date
      */
     ends_after: string;
-    /** If set, only return homeroom courses. */
-    homeroom: boolean;
+    /**
+     * If set, only return homeroom courses.
+     *
+     * Type: boolean
+     */
+    homeroom: boolean | string;
   }>;
 
 type Options = {

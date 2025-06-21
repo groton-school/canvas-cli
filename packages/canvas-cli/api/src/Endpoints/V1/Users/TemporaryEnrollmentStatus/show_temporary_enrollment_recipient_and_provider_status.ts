@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 
 export type show_temporary_enrollment_recipient_and_provider_statusPathParameters =
   {
-    /** ID */
-    user_id: string;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    user_id: string | number;
   };
 
 export type show_temporary_enrollment_recipient_and_provider_statusSearchParameters =

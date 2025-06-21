@@ -3,8 +3,12 @@ import { client } from '../../../Client.js';
 import { LtiAssignment } from '../../../Resources/PlagiarismDetectionPlatformAssignments.js';
 
 export type getPathParameters = {
-  /** ID */
-  assignment_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
 };
 
 export type getSearchParameters = Masquerade &

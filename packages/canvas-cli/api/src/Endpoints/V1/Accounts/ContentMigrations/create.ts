@@ -4,8 +4,12 @@ import { client } from '../../../../Client.js';
 import { ContentMigration } from '../../../../Resources/ContentMigrations.js';
 
 export type createPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -48,15 +52,19 @@ export type createFormParameters = Masquerade & {
   /**
    * Whether to overwrite quizzes with the same identifiers between content
    * packages.
+   *
+   * Type: boolean
    */
-  'settings[overwrite_quizzes]': boolean;
+  'settings[overwrite_quizzes]': boolean | string;
   /**
    * The existing question bank ID to import questions into if not specified
    * in the content package.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'settings[question_bank_id]': number;
+  'settings[question_bank_id]': number | string;
   /**
    * The question bank to import questions into if not specified in the
    * content package, if both bank id and name are set, id will take
@@ -67,9 +75,11 @@ export type createFormParameters = Masquerade & {
    * The id of a module in the target course. This will add all imported items
    * (that can be added to a module) to the given module.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'settings[insert_into_module_id]': number;
+  'settings[insert_into_module_id]': number | string;
   /**
    * If provided (and +insert_into_module_id+ is supplied), only add objects
    * of the specified type to the module.
@@ -80,16 +90,20 @@ export type createFormParameters = Masquerade & {
    * +insert_into_module_id+ is supplied). If this parameter is omitted, items
    * will be added to the end of the module.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'settings[insert_into_module_position]': number;
+  'settings[insert_into_module_position]': number | string;
   /**
    * The id of an assignment group in the target course. If provided, all
    * imported assignments will be moved to the given assignment group.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'settings[move_to_assignment_group_id]': number;
+  'settings[move_to_assignment_group_id]': number | string;
   /**
    * Set of importers to skip, even if otherwise selected by migration
    * settings.
@@ -102,10 +116,16 @@ export type createFormParameters = Masquerade & {
    * locked items from the source course or package. The destination course
    * must not be associated with an existing blueprint course and cannot have
    * any student or observer enrollments.
+   *
+   * Type: boolean
    */
-  'settings[import_blueprint_settings]': boolean;
-  /** Whether to shift dates in the copied course */
-  'date_shift_options[shift_dates]': boolean;
+  'settings[import_blueprint_settings]': boolean | string;
+  /**
+   * Whether to shift dates in the copied course
+   *
+   * Type: boolean
+   */
+  'date_shift_options[shift_dates]': boolean | string;
   /**
    * The original start date of the source content/course
    *
@@ -134,14 +154,18 @@ export type createFormParameters = Masquerade & {
    * Move anything scheduled for day 'X' to the specified day. (0-Sunday,
    * 1-Monday, 2-Tuesday, 3-Wednesday, 4-Thursday, 5-Friday, 6-Saturday)
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'date_shift_options[day_substitutions][X]': number;
+  'date_shift_options[day_substitutions][X]': number | string;
   /**
    * Whether to remove dates in the copied course. Cannot be used in
    * conjunction with _shift_dates_.
+   *
+   * Type: boolean
    */
-  'date_shift_options[remove_dates]': boolean;
+  'date_shift_options[remove_dates]': boolean | string;
   /**
    * If set, perform a selective import instead of importing all content. The
    * migration will identify the contents of the package and then stop in the
@@ -151,8 +175,10 @@ export type createFormParameters = Masquerade & {
    * for the desired content. Then call the
    * {api:ContentMigrationsController#update Update endpoint} and provide
    * these copy parameters to start the import.
+   *
+   * Type: boolean
    */
-  selective_import: boolean;
+  selective_import: boolean | string;
   /**
    * For +course_copy_importer+ migrations, this parameter allows you to
    * select the objects to copy without using the +selective_import+ argument

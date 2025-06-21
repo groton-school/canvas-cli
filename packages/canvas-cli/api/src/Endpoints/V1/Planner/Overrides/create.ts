@@ -10,13 +10,23 @@ export type createFormParameters = Masquerade & {
   /**
    * ID of the item that you are overriding in the planner
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  plannable_id: number;
-  /** If this is true, the item will show in the planner as completed */
-  marked_complete: boolean;
-  /** If this is true, the item will not show in the opportunities list */
-  dismissed: boolean;
+  plannable_id: number | string;
+  /**
+   * If this is true, the item will show in the planner as completed
+   *
+   * Type: boolean
+   */
+  marked_complete: boolean | string;
+  /**
+   * If this is true, the item will not show in the opportunities list
+   *
+   * Type: boolean
+   */
+  dismissed: boolean | string;
 };
 
 type Options =

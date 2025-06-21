@@ -4,10 +4,18 @@ import { client } from '../../../../../Client.js';
 import { resultUrlStringTheurltotheresultthatwascreated } from '../../../../../Overrides.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  line_item_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  line_item_id: string | number;
 };
 
 export type createSearchParameters = Masquerade & Paginated;
@@ -41,13 +49,17 @@ export type createFormParameters = Masquerade & {
   /**
    * The Current score received in the tool for this line item and user,
    * scaled to the scoreMaximum
+   *
+   * Type: number
    */
-  scoreGiven: number;
+  scoreGiven: number | string;
   /**
    * Maximum possible score for this result; it must be present if scoreGiven
    * is present. Returns 422 if not present when scoreGiven is present.
+   *
+   * Type: number
    */
-  scoreMaximum: number;
+  scoreMaximum: number | string;
   /** Comment visible to the student about this score. */
   comment: string;
   /**
@@ -71,18 +83,30 @@ export type createFormParameters = Masquerade & {
   /**
    * (EXTENSION field) flag to indicate that this is a new submission.
    * Defaults to true unless submission_type is none.
+   *
+   * Type: boolean
    */
-  'https://canvas.instructure.com/lti/submission[new_submission]': boolean;
+  'https://canvas.instructure.com/lti/submission[new_submission]':
+    | boolean
+    | string;
   /**
    * (EXTENSION field) flag to prevent a request from clearing an existing
    * grade for a submission. Defaults to false.
+   *
+   * Type: boolean
    */
-  'https://canvas.instructure.com/lti/submission[preserve_score]': boolean;
+  'https://canvas.instructure.com/lti/submission[preserve_score]':
+    | boolean
+    | string;
   /**
    * (EXTENSION field) flag to prevent a request from overwriting an existing
    * grade for a submission. Defaults to false.
+   *
+   * Type: boolean
    */
-  'https://canvas.instructure.com/lti/submission[prioritize_non_tool_grade]': boolean;
+  'https://canvas.instructure.com/lti/submission[prioritize_non_tool_grade]':
+    | boolean
+    | string;
   /**
    * (EXTENSION field) permissible values are: none, basic_lti_launch,
    * online_text_entry, external_tool, online_upload, or online_url. Defaults

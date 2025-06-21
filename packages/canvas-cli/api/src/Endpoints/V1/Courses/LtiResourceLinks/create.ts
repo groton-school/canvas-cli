@@ -4,8 +4,12 @@ import { client } from '../../../../Client.js';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;

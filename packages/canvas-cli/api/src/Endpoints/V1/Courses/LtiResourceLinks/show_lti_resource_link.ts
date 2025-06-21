@@ -3,16 +3,28 @@ import { client } from '../../../../Client.js';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
 export type show_lti_resource_linkPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type show_lti_resource_linkSearchParameters = Masquerade &
   Partial<{
-    /** Include deleted resource links in search. Default is false. */
-    include_deleted: boolean;
+    /**
+     * Include deleted resource links in search. Default is false.
+     *
+     * Type: boolean
+     */
+    include_deleted: boolean | string;
   }>;
 
 type Options = {

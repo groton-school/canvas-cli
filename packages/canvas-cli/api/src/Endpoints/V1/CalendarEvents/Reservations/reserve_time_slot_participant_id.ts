@@ -2,14 +2,20 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type reserve_time_slot_participant_idPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
   /**
    * User or group id for whom you are making the reservation (depends on the
    * participant type). Defaults to the current user (or user's candidate
    * group).
+   *
+   * Type: string
    */
-  participant_id: string;
+  participant_id: string | number;
 };
 
 export type reserve_time_slot_participant_idSearchParameters = Masquerade;
@@ -20,8 +26,10 @@ export type reserve_time_slot_participant_idFormParameters = Masquerade & {
   /**
    * Defaults to false. If true, cancel any previous reservation(s) for this
    * participant and appointment group.
+   *
+   * Type: boolean
    */
-  cancel_existing: boolean;
+  cancel_existing: boolean | string;
 };
 
 type Options = {

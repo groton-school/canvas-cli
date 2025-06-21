@@ -2,21 +2,27 @@ export type QuizQuestion = {
   /**
    * The ID of the quiz question.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  id: number;
+  id: number | string;
   /**
    * The ID of the Quiz the question belongs to.
    *
-   * Format: 'int64'
-   */
-  quiz_id: number;
-  /**
-   * The order in which the question will be retrieved and displayed.
+   * Type: integer
    *
    * Format: 'int64'
    */
-  position: number;
+  quiz_id: number | string;
+  /**
+   * The order in which the question will be retrieved and displayed.
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  position: number | string;
   /** The name of the question. */
   question_name: string;
   /** The type of the question. */
@@ -27,9 +33,11 @@ export type QuizQuestion = {
    * The maximum amount of points possible received for getting this question
    * correct.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  points_possible: number;
+  points_possible: number | string;
   /** The comments to display if the student answers the question correctly. */
   correct_comments: string;
   /** The comments to display if the student answers incorrectly. */
@@ -45,18 +53,22 @@ export type Answer = {
    * The unique identifier for the answer. Do not supply if this answer is part
    * of a new question
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  id: number;
+  id: number | string;
   /** The text of the answer. */
   answer_text: string;
   /**
    * An integer to determine correctness of the answer. Incorrect answers should
    * be 0, correct answers should be 100.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  answer_weight: number;
+  answer_weight: number | string;
   /** Specific contextual comments for a particular answer. */
   answer_comments: string;
   /** Used in missing word questions. The text to follow the missing word */
@@ -86,48 +98,62 @@ export type Answer = {
    * Used in numerical questions of type 'exact_answer'. The value the answer
    * should equal.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  exact: number;
+  exact: number | string;
   /**
    * Used in numerical questions of type 'exact_answer'. The margin of error
    * allowed for the student's answer.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  margin: number;
+  margin: number | string;
   /**
    * Used in numerical questions of type 'precision_answer'. The value the
    * answer should equal.
    *
+   * Type: number
+   *
    * Format: 'float64'
    */
-  approximate: number;
+  approximate: number | string;
   /**
    * Used in numerical questions of type 'precision_answer'. The numerical
    * precision that will be used when comparing the student's answer.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  precision: number;
+  precision: number | string;
   /**
    * Used in numerical questions of type 'range_answer'. The start of the
    * allowed range (inclusive).
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  start: number;
+  start: number | string;
   /**
    * Used in numerical questions of type 'range_answer'. The end of the allowed
    * range (inclusive).
    *
-   * Format: 'int64'
-   */
-  end: number;
-  /**
-   * Used in fill in multiple blank and multiple dropdowns questions.
+   * Type: integer
    *
    * Format: 'int64'
    */
-  blank_id: number;
+  end: number | string;
+  /**
+   * Used in fill in multiple blank and multiple dropdowns questions.
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  blank_id: number | string;
 };

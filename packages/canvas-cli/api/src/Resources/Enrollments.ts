@@ -33,7 +33,7 @@ export type Grade = {
    *
    * Type: integer
    */
-  current_points: number;
+  current_points: number | string;
   /**
    * The user's current grade in the class including muted/unposted assignments.
    * Only included if user has permissions to view this grade, typically
@@ -66,7 +66,7 @@ export type Grade = {
    *
    * Type: integer
    */
-  unposted_current_points: number;
+  unposted_current_points: number | string;
 };
 
 export type Enrollment = {
@@ -75,13 +75,13 @@ export type Enrollment = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The unique id of the course.
    *
    * Type: integer
    */
-  course_id: number;
+  course_id: number | string;
   /**
    * The SIS Course ID in which the enrollment is associated. Only displayed if
    * present. This field is only included if the user has permission to view SIS
@@ -98,7 +98,7 @@ export type Enrollment = {
    *
    * Type: integer
    */
-  course_section_id: number;
+  course_section_id: number | string;
   /**
    * The Section Integration ID in which the enrollment is associated. This
    * field is only included if the user has permission to view SIS information.
@@ -124,21 +124,25 @@ export type Enrollment = {
   sis_user_id: string;
   /** The state of the user's enrollment in the course. */
   enrollment_state: string;
-  /** User can only access his or her own course section. */
-  limit_privileges_to_course_section: boolean;
+  /**
+   * User can only access his or her own course section.
+   *
+   * Type: boolean
+   */
+  limit_privileges_to_course_section: boolean | string;
   /**
    * The unique identifier for the SIS import. This field is only included if
    * the user has permission to manage SIS information.
    *
    * Type: integer
    */
-  sis_import_id: number;
+  sis_import_id: number | string;
   /**
    * The unique id of the user's account.
    *
    * Type: integer
    */
-  root_account_id: number;
+  root_account_id: number | string;
   /**
    * The enrollment type. One of 'StudentEnrollment', 'TeacherEnrollment',
    * 'TaEnrollment', 'DesignerEnrollment', 'ObserverEnrollment'.
@@ -149,14 +153,14 @@ export type Enrollment = {
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * The unique id of the associated user. Will be null unless type is
    * ObserverEnrollment.
    *
    * Type: integer
    */
-  associated_user_id: number;
+  associated_user_id: number | string;
   /**
    * The enrollment role, for course-level permissions. This field will match
    * `type` if the enrollment role has not been customized.
@@ -167,7 +171,7 @@ export type Enrollment = {
    *
    * Type: integer
    */
-  role_id: number;
+  role_id: number | string;
   /**
    * The created time of the enrollment, in ISO8601 format.
    *
@@ -210,7 +214,7 @@ export type Enrollment = {
    *
    * Type: integer
    */
-  total_activity_time: number;
+  total_activity_time: number | string;
   /** The URL to the Canvas web UI page for this course enrollment. */
   html_url: string;
   /**
@@ -222,8 +226,12 @@ export type Enrollment = {
   user: User;
   /** The user's override grade for the course. */
   override_grade: string;
-  /** The user's override score for the course. */
-  override_score: number;
+  /**
+   * The user's override score for the course.
+   *
+   * Type: number
+   */
+  override_score: number | string;
   /**
    * The user's current grade in the class including muted/unposted assignments.
    * Only included if user has permissions to view this grade, typically
@@ -252,14 +260,18 @@ export type Enrollment = {
    * Optional: Indicates whether the course the enrollment belongs to has
    * grading periods set up. (applies only to student enrollments, and only
    * available in course endpoints)
+   *
+   * Type: boolean
    */
-  has_grading_periods: boolean;
+  has_grading_periods: boolean | string;
   /**
    * Optional: Indicates whether the course the enrollment belongs to has the
    * Display Totals for 'All Grading Periods' feature enabled. (applies only to
    * student enrollments, and only available in course endpoints)
+   *
+   * Type: boolean
    */
-  totals_for_all_grading_periods_option: boolean;
+  totals_for_all_grading_periods_option: boolean | string;
   /**
    * Optional: The name of the currently active grading period, if one exists.
    * If the course the enrollment belongs to does not have grading periods, or
@@ -276,11 +288,15 @@ export type Enrollment = {
    *
    * Type: integer
    */
-  current_grading_period_id: number;
+  current_grading_period_id: number | string;
   /** The user's override grade for the current grading period. */
   current_period_override_grade: string;
-  /** The user's override score for the current grading period. */
-  current_period_override_score: number;
+  /**
+   * The user's override score for the current grading period.
+   *
+   * Type: number
+   */
+  current_period_override_score: number | string;
   /**
    * Optional: The student's score in the course for the current grading period,
    * including muted/unposted assignments. Only included if user has permission
@@ -288,8 +304,10 @@ export type Enrollment = {
    * enrollment belongs to does not have grading periods, or if no currently
    * active grading period exists, the value will be null. (applies only to
    * student enrollments, and only available in course endpoints)
+   *
+   * Type: number
    */
-  current_period_unposted_current_score: number;
+  current_period_unposted_current_score: number | string;
   /**
    * Optional: The student's score in the course for the current grading period,
    * including muted/unposted assignments and including ungraded assignments
@@ -298,8 +316,10 @@ export type Enrollment = {
    * to does not have grading periods, or if no currently active grading period
    * exists, the value will be null. (applies only to student enrollments, and
    * only available in course endpoints)
+   *
+   * Type: number
    */
-  current_period_unposted_final_score: number;
+  current_period_unposted_final_score: number | string;
   /**
    * Optional: The letter grade equivalent of
    * current_period_unposted_current_score, if available. Only included if user

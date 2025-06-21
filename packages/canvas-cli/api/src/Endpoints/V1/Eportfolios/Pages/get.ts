@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { ePortfolioPage } from '../../../../Resources/EPortfolios.js';
 
 export type getPathParameters = {
-  /** ID */
-  eportfolio_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  eportfolio_id: string | number;
 };
 
 export type getSearchParameters = Masquerade & Paginated;

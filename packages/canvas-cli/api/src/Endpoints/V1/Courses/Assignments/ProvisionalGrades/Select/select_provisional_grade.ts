@@ -2,12 +2,24 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type select_provisional_gradePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assignment_id: string;
-  /** ID */
-  provisional_grade_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  provisional_grade_id: string | number;
 };
 
 export type select_provisional_gradeSearchParameters = Masquerade;

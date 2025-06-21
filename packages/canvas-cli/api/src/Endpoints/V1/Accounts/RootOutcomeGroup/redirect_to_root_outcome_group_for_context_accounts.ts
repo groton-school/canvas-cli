@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 
 export type redirect_to_root_outcome_group_for_context_accountsPathParameters =
   {
-    /** ID */
-    account_id: string;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    account_id: string | number;
   };
 
 export type redirect_to_root_outcome_group_for_context_accountsSearchParameters =

@@ -4,17 +4,21 @@ export type ePortfolio = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The user ID to which the ePortfolio belongs
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /** The name of the ePortfolio */
   name: string;
-  /** Whether or not the ePortfolio is visible without authentication */
-  public: boolean;
+  /**
+   * Whether or not the ePortfolio is visible without authentication
+   *
+   * Type: boolean
+   */
+  public: boolean | string;
   /**
    * The creation timestamp for the ePortfolio
    *
@@ -49,19 +53,19 @@ export type ePortfolioPage = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The ePortfolio ID to which the entry belongs
    *
    * Type: integer
    */
-  eportfolio_id: number;
+  eportfolio_id: number | string;
   /**
    * The positional order of the entry in the list
    *
    * Type: integer
    */
-  position: number;
+  position: number | string;
   /** The name of the ePortfolio */
   name: string;
   /** The user entered content of the entry */

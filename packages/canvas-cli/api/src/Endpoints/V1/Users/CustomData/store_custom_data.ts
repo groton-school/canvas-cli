@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { JSON } from '../../../../Overrides.js';
 
 export type store_custom_dataPathParameters = {
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
 };
 
 export type store_custom_dataSearchParameters = Masquerade;

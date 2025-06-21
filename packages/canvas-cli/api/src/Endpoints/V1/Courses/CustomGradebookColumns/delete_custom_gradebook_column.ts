@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { CustomColumn } from '../../../../Resources/CustomGradebookColumns.js';
 
 export type delete_custom_gradebook_columnPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type delete_custom_gradebook_columnSearchParameters = Masquerade;

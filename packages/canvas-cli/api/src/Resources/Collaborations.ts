@@ -4,7 +4,7 @@ export type Collaboration = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** A name for the type of collaboration */
   collaboration_type: string;
   /** The collaboration document identifier for the collaboration provider */
@@ -14,13 +14,13 @@ export type Collaboration = {
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * The canvas id of the course or group to which the collaboration belongs
    *
    * Type: integer
    */
-  context_id: number;
+  context_id: number | string;
   /** The canvas type of the course or group to which the collaboration belongs */
   context_type: string;
   /** The LTI launch url to view collaboration. */
@@ -53,7 +53,7 @@ export type Collaborator = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The type of collaborator (e.g. 'user' or 'group'). */
   type: string;
   /** The name of the collaborator. */

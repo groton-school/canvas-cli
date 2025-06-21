@@ -9,10 +9,18 @@ export type listSearchParameters = Masquerade &
      * matching all terms will be returned.
      */
     search: string;
-    /** Only return courses with public content. Defaults to false. */
-    public_only: boolean;
-    /** Only return courses that allow self enrollment. Defaults to false. */
-    open_enrollment_only: boolean;
+    /**
+     * Only return courses with public content. Defaults to false.
+     *
+     * Type: boolean
+     */
+    public_only: boolean | string;
+    /**
+     * Only return courses that allow self enrollment. Defaults to false.
+     *
+     * Type: boolean
+     */
+    open_enrollment_only: boolean | string;
   }>;
 
 type Options =

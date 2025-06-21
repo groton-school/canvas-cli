@@ -3,8 +3,12 @@ import { client } from '../../../Client.js';
 import { PlannerNote } from '../../../Resources/Planner.js';
 
 export type updatePathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -28,9 +32,11 @@ export type updateFormParameters = Masquerade & {
    * that if the planner note is linked to a learning object, its course_id
    * cannot be changed.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  course_id: number;
+  course_id: number | string;
 };
 
 type Options = {

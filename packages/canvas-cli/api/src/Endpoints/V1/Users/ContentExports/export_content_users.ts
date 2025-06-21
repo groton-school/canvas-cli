@@ -4,8 +4,12 @@ import { client } from '../../../../Client.js';
 import { ContentExport } from '../../../../Resources/ContentExports.js';
 
 export type export_content_usersPathParameters = {
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
 };
 
 export type export_content_usersSearchParameters = Masquerade;
@@ -17,8 +21,12 @@ export type export_content_usersFormParameters = Masquerade & {
    * format "zip":: Export files from a course, group, or user in a zip file
    */
   export_type: string;
-  /** Don't send the notifications about the export to the user. Default: false */
-  skip_notifications: boolean;
+  /**
+   * Don't send the notifications about the export to the user. Default: false
+   *
+   * Type: boolean
+   */
+  skip_notifications: boolean | string;
   /**
    * The select parameter allows exporting specific data. The keys are object
    * types like 'files', 'folders', 'pages', etc. The value for each key is a

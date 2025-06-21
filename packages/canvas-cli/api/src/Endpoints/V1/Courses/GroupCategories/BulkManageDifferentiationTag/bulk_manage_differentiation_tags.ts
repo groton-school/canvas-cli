@@ -4,8 +4,12 @@ import { client } from '../../../../../Client.js';
 import { GroupCategoryandgroupsoperationresults } from '../../../../../Overrides.js';
 
 export type bulk_manage_differentiation_tagsPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type bulk_manage_differentiation_tagsSearchParameters = Masquerade;

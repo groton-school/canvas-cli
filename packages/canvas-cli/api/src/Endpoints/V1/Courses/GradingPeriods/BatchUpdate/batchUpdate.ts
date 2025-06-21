@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { Date } from '../../../../../Overrides.js';
 
 export type batchUpdatePathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type batchUpdateSearchParameters = Masquerade;
@@ -46,7 +50,7 @@ export type batchUpdateFormParameters = Masquerade & {
    *
    * Format: 'float'
    */
-  'grading_periods[weight]': number[];
+  'grading_periods[weight]': number | string[];
 };
 
 type Options = {

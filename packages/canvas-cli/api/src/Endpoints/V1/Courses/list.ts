@@ -27,9 +27,11 @@ export type listSearchParameters = Masquerade &
      * type of 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment',
      * 'ObserverEnrollment', or 'DesignerEnrollment'.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    enrollment_role_id: number;
+    enrollment_role_id: number | string;
     /**
      * When set, only return courses where the user has an enrollment with the
      * given state. This will respect section/course/term date overrides.
@@ -38,8 +40,10 @@ export type listSearchParameters = Masquerade &
     /**
      * When set, only return courses that are not configured as blueprint
      * courses.
+     *
+     * Type: boolean
      */
-    exclude_blueprint_courses: boolean;
+    exclude_blueprint_courses: boolean | string;
     /**
      * - "needs_grading_count": Optional information to include with each Course.
      *   When needs_grading_count is given, and the current user has grading

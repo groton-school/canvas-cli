@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { FeatureFlag } from '../../../../../Resources/FeatureFlags.js';
 
 export type set_feature_flag_accountsPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
   /** ID */
   feature: string;
 };

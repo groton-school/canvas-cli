@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { SSOSettings } from '../../../../Resources/AuthenticationProviders.js';
 
 export type show_account_auth_settingsPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type show_account_auth_settingsSearchParameters = Masquerade;

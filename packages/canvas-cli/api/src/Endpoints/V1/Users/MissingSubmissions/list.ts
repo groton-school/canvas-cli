@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Assignment } from '../../../../Resources/Assignments.js';
 
 export type listPathParameters = {
-  /** The student's ID */
-  user_id: string;
+  /**
+   * The student's ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &

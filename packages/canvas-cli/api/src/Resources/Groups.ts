@@ -7,7 +7,7 @@ export type Group = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The display name of the group. */
   name: string;
   /** A description of the group. This is plain text. */
@@ -16,10 +16,16 @@ export type Group = {
    * Whether or not the group is public. Currently only community groups can be
    * made public. Also, once a group has been set to public, it cannot be
    * changed back to private.
+   *
+   * Type: boolean
    */
-  is_public: boolean;
-  /** Whether or not the current user is following this group. */
-  followed_by_user: boolean;
+  is_public: boolean | string;
+  /**
+   * Whether or not the current user is following this group.
+   *
+   * Type: boolean
+   */
+  followed_by_user: boolean | string;
   /**
    * How people are allowed to join the group. For all groups except for
    * community groups, the user must share the group's parent course or account.
@@ -40,7 +46,7 @@ export type Group = {
    *
    * Type: integer
    */
-  members_count: number;
+  members_count: number | string;
   /** The url of the group's avatar */
   avatar_url: string;
   /**
@@ -53,7 +59,7 @@ export type Group = {
   /** The course or account name that the group belongs to. */
   context_name: string;
   /** Type: integer */
-  course_id: number;
+  course_id: number | string;
   /**
    * Certain types of groups have special role designations. Currently, these
    * include: 'communities', 'student_organized', and 'imported'. Regular
@@ -65,7 +71,7 @@ export type Group = {
    *
    * Type: integer
    */
-  group_category_id: number;
+  group_category_id: number | string;
   /**
    * The SIS ID of the group. Only included if the user has permission to view
    * SIS information.
@@ -77,13 +83,13 @@ export type Group = {
    *
    * Type: integer
    */
-  sis_import_id: number;
+  sis_import_id: number | string;
   /**
    * The storage quota for the group, in megabytes
    *
    * Type: integer
    */
-  storage_quota_mb: number;
+  storage_quota_mb: number | string;
   /**
    * Optional: the permissions the user has for the group. returned only for a
    * single group and include[]=permissions
@@ -104,8 +110,10 @@ export type Group = {
    * Indicates whether this group category is non-collaborative. A value of true
    * means these group categories rely on the manage_tags permissions and do not
    * have collaborative features
+   *
+   * Type: boolean
    */
-  non_collaborative: boolean;
+  non_collaborative: boolean | string;
 };
 
 export type GroupMembership = {
@@ -114,19 +122,19 @@ export type GroupMembership = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The id of the group object to which the membership belongs
    *
    * Type: integer
    */
-  group_id: number;
+  group_id: number | string;
   /**
    * The id of the user object to which the membership belongs
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * The current state of the membership. Current possible values are
    * 'accepted', 'invited', and 'requested'
@@ -135,19 +143,23 @@ export type GroupMembership = {
   /**
    * Whether or not the user is a moderator of the group (the must also be an
    * active member of the group to moderate)
+   *
+   * Type: boolean
    */
-  moderator: boolean;
+  moderator: boolean | string;
   /**
    * Optional: whether or not the record was just created on a create call
    * (POST), i.e. was the user just added to the group, or was the user already
    * a member
+   *
+   * Type: boolean
    */
-  just_created: boolean;
+  just_created: boolean | string;
   /**
    * The id of the SIS import if created through SIS. Only included if the user
    * has permission to manage SIS information.
    *
    * Type: integer
    */
-  sis_import_id: number;
+  sis_import_id: number | string;
 };

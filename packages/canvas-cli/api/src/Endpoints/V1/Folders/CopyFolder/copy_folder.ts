@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Folder } from '../../../../Resources/Files.js';
 
 export type copy_folderPathParameters = {
-  /** ID */
-  dest_folder_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  dest_folder_id: string | number;
 };
 
 export type copy_folderSearchParameters = Masquerade;

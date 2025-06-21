@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
 export type listPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -19,8 +23,10 @@ export type listSearchParameters = Masquerade &
     /**
      * If true, include only published paqes. If false, exclude published pages.
      * If not present, do not filter on published status.
+     *
+     * Type: boolean
      */
-    published: boolean;
+    published: boolean | string;
     /**
      * - "enrollments": Optionally include the page body with each Page. If this
      *   is a block_editor page, returns the block_editor_attributes.

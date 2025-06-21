@@ -9,9 +9,11 @@ export type UserDisplay = {
   /**
    * The ID of the user.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  id: number;
+  id: number | string;
   /**
    * A short name the user has selected, for use in conversations or other less
    * formal places through the site.
@@ -48,9 +50,11 @@ export type User = {
   /**
    * The ID of the user.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  id: number;
+  id: number | string;
   /** The name of the user. */
   name: string;
   /**
@@ -76,9 +80,11 @@ export type User = {
    * The id of the SIS import. This field is only included if the user came from
    * a SIS import and has permissions to manage SIS information.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  sis_import_id: number;
+  sis_import_id: number | string;
   /**
    * The integration_id associated with the user. This field is only included if
    * the user came from a SIS import and has permissions to view SIS
@@ -144,7 +150,7 @@ export type Profile = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** Sample User */
   name: string;
   /** Sample User */
@@ -178,14 +184,18 @@ export type Profile = {
   /**
    * Optional: Whether or not the user is a K5 user. This field is nil if the
    * user settings are not for the user making the request.
+   *
+   * Type: boolean
    */
-  k5_user: boolean;
+  k5_user: boolean | string;
   /**
    * Optional: Whether or not the user should see the classic font on the
    * dashboard. Only applies if k5_user is true. This field is nil if the user
    * settings are not for the user making the request.
+   *
+   * Type: boolean
    */
-  use_classic_font_in_k5: boolean;
+  use_classic_font_in_k5: boolean | string;
 };
 
 /** Possible avatar for a user. */
@@ -212,7 +222,7 @@ export type Avatar = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** ['attachment' type only] the content-type of the attachment. */
   'content-type': string;
   /** ['attachment' type only] the filename of the attachment */
@@ -222,7 +232,7 @@ export type Avatar = {
    *
    * Type: integer
    */
-  size: number;
+  size: number | string;
 };
 
 /** The record of a user page view access in Canvas */
@@ -248,12 +258,22 @@ export type PageView = {
   controller: string;
   /** The rails action that handled the request */
   action: string;
-  /** This field is deprecated, and will always be false */
-  contributed: boolean;
-  /** An approximation of how long the user spent on the page, in seconds */
-  interaction_seconds: number;
+  /**
+   * This field is deprecated, and will always be false
+   *
+   * Type: boolean
+   */
+  contributed: boolean | string;
+  /**
+   * An approximation of how long the user spent on the page, in seconds
+   *
+   * Type: number
+   */
+  interaction_seconds: number | string;
   /**
    * When the request was made
+   *
+   * Format: date-time
    *
    * Format: 'iso8601'
    */
@@ -261,14 +281,24 @@ export type PageView = {
   /**
    * A flag indicating whether the request was user-initiated, or automatic
    * (such as an AJAX call)
+   *
+   * Type: boolean
    */
-  user_request: boolean;
-  /** How long the response took to render, in seconds */
-  render_time: number;
+  user_request: boolean | string;
+  /**
+   * How long the response took to render, in seconds
+   *
+   * Type: number
+   */
+  render_time: number | string;
   /** The user-agent of the browser or program that made the request */
   user_agent: string;
-  /** True if the request counted as participating, such as submitting homework */
-  participated: boolean;
+  /**
+   * True if the request counted as participating, such as submitting homework
+   *
+   * Type: boolean
+   */
+  participated: boolean | string;
   /** The HTTP method such as GET or POST */
   http_method: string;
   /** The origin IP address of the request */
@@ -282,35 +312,45 @@ export type PageViewLinks = {
   /**
    * The ID of the user for this page view
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  user: number;
+  user: number | string;
   /**
    * The ID of the context for the request (course id if context_type is Course,
    * etc)
    *
-   * Format: 'int64'
-   */
-  context: number;
-  /**
-   * The ID of the asset for the request, if any
+   * Type: integer
    *
    * Format: 'int64'
    */
-  asset: number;
+  context: number | string;
+  /**
+   * The ID of the asset for the request, if any
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  asset: number | string;
   /**
    * The ID of the actual user who made this request, if the request was made by
    * a user who was masquerading
    *
-   * Format: 'int64'
-   */
-  real_user: number;
-  /**
-   * The ID of the account context for this page view
+   * Type: integer
    *
    * Format: 'int64'
    */
-  account: number;
+  real_user: number | string;
+  /**
+   * The ID of the account context for this page view
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  account: number | string;
 };
 
 export type CourseNickname = {
@@ -319,7 +359,7 @@ export type CourseNickname = {
    *
    * Type: integer
    */
-  course_id: number;
+  course_id: number | string;
   /** The actual name of the course */
   name: string;
   /** The calling user's nickname for the course */

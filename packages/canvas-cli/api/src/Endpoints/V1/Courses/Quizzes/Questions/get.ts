@@ -3,16 +3,26 @@ import { client } from '../../../../../Client.js';
 import { QuizQuestion } from '../../../../../Resources/QuizQuestions.js';
 
 export type getPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  quiz_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_id: string | number;
   /**
    * The quiz question unique identifier.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  id: number;
+  id: number | string;
 };
 
 export type getSearchParameters = Masquerade;

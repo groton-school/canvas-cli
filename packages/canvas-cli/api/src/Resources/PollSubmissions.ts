@@ -4,19 +4,19 @@ export type PollSubmission = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The unique identifier of the poll choice chosen for this submission.
    *
    * Type: integer
    */
-  poll_choice_id: number;
+  poll_choice_id: number | string;
   /**
    * The unique identifier of the user who submitted this poll submission.
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * The date and time the poll submission was submitted.
    *

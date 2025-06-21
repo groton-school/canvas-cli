@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { Enrollment } from '../../../../../Resources/Enrollments.js';
 
 export type re_activate_enrollmentPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type re_activate_enrollmentSearchParameters = Masquerade;

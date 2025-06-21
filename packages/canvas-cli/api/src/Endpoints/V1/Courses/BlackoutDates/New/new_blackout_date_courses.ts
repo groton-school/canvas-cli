@@ -3,8 +3,12 @@ import { client } from '../../../../../Client.js';
 import { BlackoutDate } from '../../../../../Resources/BlackoutDates.js';
 
 export type new_blackout_date_coursesPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type new_blackout_date_coursesSearchParameters = Masquerade;

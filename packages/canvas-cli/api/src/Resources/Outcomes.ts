@@ -6,7 +6,7 @@ export type Outcome = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The URL for fetching/updating the outcome. should be treated as opaque */
   url: string;
   /**
@@ -14,7 +14,7 @@ export type Outcome = {
    *
    * Type: integer
    */
-  context_id: number;
+  context_id: number | string;
   context_type: string;
   /** Title of the outcome */
   title: string;
@@ -30,14 +30,14 @@ export type Outcome = {
    *
    * Type: integer
    */
-  points_possible: number;
+  points_possible: number | string;
   /**
    * Points necessary to demonstrate mastery outcomes. included only if the
    * outcome embeds a rubric criterion. omitted in the abbreviated form.
    *
    * Type: integer
    */
-  mastery_points: number;
+  mastery_points: number | string;
   /** The method used to calculate a students score */
   calculation_method: string;
   /**
@@ -46,23 +46,37 @@ export type Outcome = {
    *
    * Type: integer
    */
-  calculation_int: number;
+  calculation_int: number | string;
   /**
    * Possible ratings for this outcome. included only if the outcome embeds a
    * rubric criterion. omitted in the abbreviated form.
    */
   ratings: RubricRating[];
-  /** Whether the current user can update the outcome */
-  can_edit: boolean;
-  /** Whether the outcome can be unlinked */
-  can_unlink: boolean;
-  /** Whether this outcome has been used to assess a student */
-  assessed: boolean;
+  /**
+   * Whether the current user can update the outcome
+   *
+   * Type: boolean
+   */
+  can_edit: boolean | string;
+  /**
+   * Whether the outcome can be unlinked
+   *
+   * Type: boolean
+   */
+  can_unlink: boolean | string;
+  /**
+   * Whether this outcome has been used to assess a student
+   *
+   * Type: boolean
+   */
+  assessed: boolean | string;
   /**
    * Whether updates to this outcome will propagate to unassessed rubrics that
    * have imported it
+   *
+   * Type: boolean
    */
-  has_updateable_rubrics: boolean;
+  has_updateable_rubrics: boolean | string;
 };
 
 export type OutcomeAlignment = {
@@ -71,19 +85,19 @@ export type OutcomeAlignment = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The id of the aligned assignment (null for live assessments).
    *
    * Type: integer
    */
-  assignment_id: number;
+  assignment_id: number | string;
   /**
    * The id of the aligned live assessment (null for assignments).
    *
    * Type: integer
    */
-  assessment_id: number;
+  assessment_id: number | string;
   /**
    * A string representing the different submission types of an aligned
    * assignment.

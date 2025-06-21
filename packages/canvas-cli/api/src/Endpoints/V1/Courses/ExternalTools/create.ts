@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type createPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -50,12 +54,18 @@ export type createFormParameters = Masquerade & {
    * Favorites}) Whether this tool should appear in a preferred location in
    * the RCE. This only applies to tools in root account contexts that have an
    * editor button placement.
+   *
+   * Type: boolean
    */
-  is_rce_favorite: boolean;
+  is_rce_favorite: boolean | string;
   /** The url of the external tool for account navigation */
   'account_navigation[url]': string;
-  /** Set this to enable this feature */
-  'account_navigation[enabled]': boolean;
+  /**
+   * Set this to enable this feature
+   *
+   * Type: boolean
+   */
+  'account_navigation[enabled]': boolean | string;
   /** The text that will show on the left-tab in the account navigation */
   'account_navigation[text]': string;
   /** The width of the dialog the tool is launched in */
@@ -70,8 +80,12 @@ export type createFormParameters = Masquerade & {
   'account_navigation[display_type]': string;
   /** The url of the external tool for user navigation */
   'user_navigation[url]': string;
-  /** Set this to enable this feature */
-  'user_navigation[enabled]': boolean;
+  /**
+   * Set this to enable this feature
+   *
+   * Type: boolean
+   */
+  'user_navigation[enabled]': boolean | string;
   /** The text that will show on the left-tab in the user navigation */
   'user_navigation[text]': string;
   /**
@@ -82,14 +96,22 @@ export type createFormParameters = Masquerade & {
   'user_navigation[visibility]': string;
   /** The url of the external tool for right-side course home navigation menu */
   'course_home_sub_navigation[url]': string;
-  /** Set this to enable this feature */
-  'course_home_sub_navigation[enabled]': boolean;
+  /**
+   * Set this to enable this feature
+   *
+   * Type: boolean
+   */
+  'course_home_sub_navigation[enabled]': boolean | string;
   /** The text that will show on the right-side course home navigation menu */
   'course_home_sub_navigation[text]': string;
   /** The url of the icon to show in the right-side course home navigation menu */
   'course_home_sub_navigation[icon_url]': string;
-  /** Set this to enable this feature */
-  'course_navigation[enabled]': boolean;
+  /**
+   * Set this to enable this feature
+   *
+   * Type: boolean
+   */
+  'course_navigation[enabled]': boolean | string;
   /** The text that will show on the left-tab in the course navigation */
   'course_navigation[text]': string;
   /**
@@ -122,8 +144,12 @@ export type createFormParameters = Masquerade & {
   'course_navigation[display_type]': string;
   /** The url of the external tool */
   'editor_button[url]': string;
-  /** Set this to enable this feature */
-  'editor_button[enabled]': boolean;
+  /**
+   * Set this to enable this feature
+   *
+   * Type: boolean
+   */
+  'editor_button[enabled]': boolean | string;
   /** The url of the icon to show in the WYSIWYG editor */
   'editor_button[icon_url]': string;
   /** The width of the dialog the tool is launched in */
@@ -137,8 +163,12 @@ export type createFormParameters = Masquerade & {
   'editor_button[message_type]': string;
   /** The url of the external tool */
   'homework_submission[url]': string;
-  /** Set this to enable this feature */
-  'homework_submission[enabled]': boolean;
+  /**
+   * Set this to enable this feature
+   *
+   * Type: boolean
+   */
+  'homework_submission[enabled]': boolean | string;
   /** The text that will show on the homework submission tab */
   'homework_submission[text]': string;
   /**
@@ -148,8 +178,12 @@ export type createFormParameters = Masquerade & {
   'homework_submission[message_type]': string;
   /** The url of the external tool */
   'link_selection[url]': string;
-  /** Set this to enable this feature */
-  'link_selection[enabled]': boolean;
+  /**
+   * Set this to enable this feature
+   *
+   * Type: boolean
+   */
+  'link_selection[enabled]': boolean | string;
   /** The text that will show for the link selection text */
   'link_selection[text]': string;
   /**
@@ -159,8 +193,12 @@ export type createFormParameters = Masquerade & {
   'link_selection[message_type]': string;
   /** The url of the external tool */
   'migration_selection[url]': string;
-  /** Set this to enable this feature */
-  'migration_selection[enabled]': boolean;
+  /**
+   * Set this to enable this feature
+   *
+   * Type: boolean
+   */
+  'migration_selection[enabled]': boolean | string;
   /**
    * Set this to ContentItemSelectionRequest to tell the tool to use
    * content-item; otherwise, omit
@@ -168,8 +206,12 @@ export type createFormParameters = Masquerade & {
   'migration_selection[message_type]': string;
   /** The url of the external tool */
   'tool_configuration[url]': string;
-  /** Set this to enable this feature */
-  'tool_configuration[enabled]': boolean;
+  /**
+   * Set this to enable this feature
+   *
+   * Type: boolean
+   */
+  'tool_configuration[enabled]': boolean | string;
   /**
    * Set this to ContentItemSelectionRequest to tell the tool to use
    * content-item; otherwise, omit
@@ -178,16 +220,20 @@ export type createFormParameters = Masquerade & {
   /**
    * Set this to default the lis_person_contact_email_primary to prefer
    * provisioned sis_email; otherwise, omit
+   *
+   * Type: boolean
    */
-  'tool_configuration[prefer_sis_email]': boolean;
+  'tool_configuration[prefer_sis_email]': boolean | string;
   /** The url of the external tool */
   'resource_selection[url]': string;
   /**
    * Set this to enable this feature. If set to false, not_selectable must
    * also be set to true in order to hide this tool from the selection UI in
    * modules and assignments.
+   *
+   * Type: boolean
    */
-  'resource_selection[enabled]': boolean;
+  'resource_selection[enabled]': boolean | string;
   /** The url of the icon to show in the module external tool list */
   'resource_selection[icon_url]': string;
   /** The width of the dialog the tool is launched in */
@@ -217,13 +263,17 @@ export type createFormParameters = Masquerade & {
    * Default: false. If set to true, and if resource_selection is set to
    * false, the tool won't show up in the external tool selection UI in
    * modules and assignments
+   *
+   * Type: boolean
    */
-  not_selectable: boolean;
+  not_selectable: boolean | string;
   /**
    * Default: false, if set to true LTI query params will not be copied to the
    * post body.
+   *
+   * Type: boolean
    */
-  oauth_compliant: boolean;
+  oauth_compliant: boolean | string;
   /** The unique identifier for the tool in LearnPlatform */
   unified_tool_id: string;
 };

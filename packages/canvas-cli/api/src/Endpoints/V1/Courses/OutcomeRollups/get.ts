@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
 
 export type getPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
@@ -27,7 +31,7 @@ export type getSearchParameters = Masquerade &
      *
      * Format: 'int64'
      */
-    user_ids: number[];
+    user_ids: number | string[];
     /**
      * If specified, only the outcomes whose ids are given will be included in
      * the results. it is an error to specify an id for an outcome which is not
@@ -35,7 +39,7 @@ export type getSearchParameters = Masquerade &
      *
      * Format: 'int64'
      */
-    outcome_ids: number[];
+    outcome_ids: number | string[];
     /**
      * [String,
      * "courses"|"outcomes"|"outcomes.alignments"|"outcome_groups"|"outcome_links"|"outcome_paths"|"users"]
@@ -58,9 +62,11 @@ export type getSearchParameters = Masquerade &
      * If outcome sorting requested, then this determines which outcome to use
      * for rollup score sorting.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    sort_outcome_id: number;
+    sort_outcome_id: number | string;
     /**
      * If sorting requested, then this allows changing the default sort order of
      * ascending to descending.
@@ -70,14 +76,18 @@ export type getSearchParameters = Masquerade &
      * If defaults are requested, then color and mastery level defaults will be
      * added to outcome ratings in the rollup. This will only take effect if the
      * Account Level Mastery Scales FF is DISABLED
+     *
+     * Type: boolean
      */
-    add_defaults: boolean;
+    add_defaults: boolean | string;
     /**
      * If contributing scores are requested, then each individual outcome score
      * will also include all graded artifacts that contributed to the outcome
      * score
+     *
+     * Type: boolean
      */
-    contributing_scores: boolean;
+    contributing_scores: boolean | string;
   }>;
 
 type Options = {

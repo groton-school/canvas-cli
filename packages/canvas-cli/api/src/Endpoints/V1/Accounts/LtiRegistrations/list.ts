@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { ListLtiRegistrationsResponse } from '../../../../Resources/LtiRegistrations.js';
 
 export type listPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -12,15 +16,19 @@ export type listSearchParameters = Masquerade &
     /**
      * The number of registrations to return per page. Defaults to 15.
      *
-     * Format: 'int64'
-     */
-    per_page: number;
-    /**
-     * The page number to return. Defaults to 1.
+     * Type: integer
      *
      * Format: 'int64'
      */
-    page: number;
+    per_page: number | string;
+    /**
+     * The page number to return. Defaults to 1.
+     *
+     * Type: integer
+     *
+     * Format: 'int64'
+     */
+    page: number | string;
     /**
      * The field to sort by. Choices are: name, nickname, lti_version,
      * installed, installed_by, updated_by, updated, and on. Defaults to

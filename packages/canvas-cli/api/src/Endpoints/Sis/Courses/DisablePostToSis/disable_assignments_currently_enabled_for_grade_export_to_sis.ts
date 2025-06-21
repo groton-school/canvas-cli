@@ -6,9 +6,11 @@ export type disable_assignments_currently_enabled_for_grade_export_to_sisPathPar
     /**
      * The ID of the course.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    course_id: number;
+    course_id: number | string;
   };
 
 export type disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters =
@@ -19,9 +21,11 @@ export type disable_assignments_currently_enabled_for_grade_export_to_sisFormPar
     /**
      * The ID of the grading period.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    grading_period_id: number;
+    grading_period_id: number | string;
   };
 
 type Options = {

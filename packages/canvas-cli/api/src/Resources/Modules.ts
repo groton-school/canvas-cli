@@ -7,7 +7,7 @@ export type Module = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The state of the module: 'active', 'deleted' */
   workflow_state: string;
   /**
@@ -15,7 +15,7 @@ export type Module = {
    *
    * Type: integer
    */
-  position: number;
+  position: number | string;
   /** The name of this module */
   name: string;
   /**
@@ -24,21 +24,25 @@ export type Module = {
    * Format: date-time
    */
   unlock_at: string;
-  /** Whether module items must be unlocked in order */
-  require_sequential_progress: boolean;
+  /**
+   * Whether module items must be unlocked in order
+   *
+   * Type: boolean
+   */
+  require_sequential_progress: boolean | string;
   /**
    * Whether module requires all required items or one required item to be
    * considered complete (one of 'all' or 'one')
    */
   requirement_type: string;
   /** IDs of Modules that must be completed before this one is unlocked */
-  prerequisite_module_ids: number[];
+  prerequisite_module_ids: number | string[];
   /**
    * The number of items in the module
    *
    * Type: integer
    */
-  items_count: number;
+  items_count: number | string;
   /** The API URL to retrive this module's items */
   items_url: string;
   /**
@@ -64,13 +68,17 @@ export type Module = {
   /**
    * If the student's final grade for the course should be published to the SIS
    * upon completion of this module
+   *
+   * Type: boolean
    */
-  publish_final_grade: boolean;
+  publish_final_grade: boolean | string;
   /**
    * (Optional) Whether this module is published. This field is present only if
    * the caller has permission to view unpublished modules.
+   *
+   * Type: boolean
    */
-  published: boolean;
+  published: boolean | string;
 };
 
 export type CompletionRequirement = {
@@ -84,32 +92,35 @@ export type CompletionRequirement = {
    *
    * Type: integer
    */
-  min_score: number;
+  min_score: number | string;
   /**
    * Minimum percentage required to complete (only present when type ==
    * 'min_percentage')
    *
    * Type: integer
    */
-  min_percentage: number;
+  min_percentage: number | string;
   /**
    * Whether the calling user has met this requirement (Optional; present only
    * if the caller is a student or if the optional parameter 'student_id' is
    * included)
+   *
+   * Type: boolean
    */
-  completed: boolean;
+  completed: boolean | string;
 };
 
 export type ContentDetails = {
   /** Type: integer */
-  points_possible: number;
+  points_possible: number | string;
   /** Format: date-time */
   due_at: string;
   /** Format: date-time */
   unlock_at: string;
   /** Format: date-time */
   lock_at: string;
-  locked_for_user: boolean;
+  /** Type: boolean */
+  locked_for_user: boolean | string;
   lock_explanation: string;
   lock_info: LockInfo;
 };
@@ -120,19 +131,19 @@ export type ModuleItem = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The id of the Module this item appears in
    *
    * Type: integer
    */
-  module_id: number;
+  module_id: number | string;
   /**
    * The position of this item in the module (1-based)
    *
    * Type: integer
    */
-  position: number;
+  position: number | string;
   /** The title of this item */
   title: string;
   /**
@@ -140,7 +151,7 @@ export type ModuleItem = {
    *
    * Type: integer
    */
-  indent: number;
+  indent: number | string;
   /**
    * The type of object referred to one of 'File', 'Page', 'Discussion',
    * 'Assignment', 'Quiz', 'SubHeader', 'ExternalUrl', 'ExternalTool'
@@ -152,7 +163,7 @@ export type ModuleItem = {
    *
    * Type: integer
    */
-  content_id: number;
+  content_id: number | string;
   /** Link to the item in Canvas */
   html_url: string;
   /** (Optional) link to the Canvas API object, if applicable */
@@ -164,8 +175,12 @@ export type ModuleItem = {
    * item points to
    */
   external_url: string;
-  /** (only for 'ExternalTool' type) whether the external tool opens in a new tab */
-  new_tab: boolean;
+  /**
+   * (only for 'ExternalTool' type) whether the external tool opens in a new tab
+   *
+   * Type: boolean
+   */
+  new_tab: boolean | string;
   /** Completion requirement for this module item */
   completion_requirement: CompletionRequirement;
   /**
@@ -176,8 +191,10 @@ export type ModuleItem = {
   /**
    * (Optional) Whether this module item is published. This field is present
    * only if the caller has permission to view unpublished items.
+   *
+   * Type: boolean
    */
-  published: boolean;
+  published: boolean | string;
 };
 
 export type ModuleItemSequenceNode = {
@@ -211,13 +228,13 @@ export type ModuleAssignmentOverride = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The ID of the module the override applies to
    *
    * Type: integer
    */
-  context_module_id: number;
+  context_module_id: number | string;
   /** The title of the override */
   title: string;
   /**
@@ -238,7 +255,7 @@ export type OverrideTarget = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The name of the user or section that the override is targeting */
   name: string;
 };

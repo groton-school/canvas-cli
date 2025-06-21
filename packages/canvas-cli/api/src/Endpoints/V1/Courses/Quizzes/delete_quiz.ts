@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { Quiz } from '../../../../Resources/Quizzes.js';
 
 export type delete_quizPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type delete_quizSearchParameters = Masquerade;

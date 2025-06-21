@@ -4,15 +4,19 @@ export type BlueprintTemplate = {
   /**
    * The ID of the template.
    *
-   * Format: 'int64'
-   */
-  id: number;
-  /**
-   * The ID of the Course the template belongs to.
+   * Type: integer
    *
    * Format: 'int64'
    */
-  course_id: number;
+  id: number | string;
+  /**
+   * The ID of the Course the template belongs to.
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  course_id: number | string;
   /**
    * Time when the last export was completed
    *
@@ -24,7 +28,7 @@ export type BlueprintTemplate = {
    *
    * Type: integer
    */
-  associated_course_count: number;
+  associated_course_count: number | string;
   /** Details of the latest migration */
   latest_migration: BlueprintMigration;
 };
@@ -33,29 +37,37 @@ export type BlueprintMigration = {
   /**
    * The ID of the migration.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  id: number;
+  id: number | string;
   /**
    * The ID of the template the migration belongs to. Only present when querying
    * a blueprint course.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  template_id: number;
+  template_id: number | string;
   /**
    * The ID of the associated course's blueprint subscription. Only present when
    * querying a course associated with a blueprint.
    *
-   * Format: 'int64'
-   */
-  subscription_id: number;
-  /**
-   * The ID of the user who queued the migration.
+   * Type: integer
    *
    * Format: 'int64'
    */
-  user_id: number;
+  subscription_id: number | string;
+  /**
+   * The ID of the user who queued the migration.
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  user_id: number | string;
   /**
    * Current state of the content migration: queued, exporting, imports_queued,
    * completed, exports_failed, imports_failed
@@ -91,14 +103,30 @@ export type BlueprintMigration = {
 
 /** A set of restrictions on editing for copied objects in associated courses */
 export type BlueprintRestriction = {
-  /** Restriction on main content (e.g. title, description). */
-  content: boolean;
-  /** Restriction on points possible for assignments and graded learning objects */
-  points: boolean;
-  /** Restriction on due dates for assignments and graded learning objects */
-  due_dates: boolean;
-  /** Restriction on availability dates for an object */
-  availability_dates: boolean;
+  /**
+   * Restriction on main content (e.g. title, description).
+   *
+   * Type: boolean
+   */
+  content: boolean | string;
+  /**
+   * Restriction on points possible for assignments and graded learning objects
+   *
+   * Type: boolean
+   */
+  points: boolean | string;
+  /**
+   * Restriction on due dates for assignments and graded learning objects
+   *
+   * Type: boolean
+   */
+  due_dates: boolean | string;
+  /**
+   * Restriction on availability dates for an object
+   *
+   * Type: boolean
+   */
+  availability_dates: boolean | string;
 };
 
 /**
@@ -109,9 +137,11 @@ export type ChangeRecord = {
   /**
    * The ID of the learning object that was changed in the blueprint course.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  asset_id: number;
+  asset_id: number | string;
   /**
    * The type of the learning object that was changed in the blueprint course.
    * One of 'assignment', 'attachment', 'discussion_topic', 'external_tool',
@@ -125,8 +155,12 @@ export type ChangeRecord = {
   change_type: string;
   /** The URL of the changed object */
   html_url: string;
-  /** Whether the object is locked in the blueprint */
-  locked: boolean;
+  /**
+   * Whether the object is locked in the blueprint
+   *
+   * Type: boolean
+   */
+  locked: boolean | string;
   /**
    * A list of ExceptionRecords for linked courses that did not receive this
    * update.
@@ -142,9 +176,11 @@ export type ExceptionRecord = {
   /**
    * The ID of the associated course
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  course_id: number;
+  course_id: number | string;
   /**
    * A list of change classes in the associated course's copy of the item that
    * prevented a blueprint change from being applied. One or more of ['content',
@@ -158,15 +194,19 @@ export type BlueprintSubscription = {
   /**
    * The ID of the blueprint course subscription
    *
-   * Format: 'int64'
-   */
-  id: number;
-  /**
-   * The ID of the blueprint template the associated course is subscribed to
+   * Type: integer
    *
    * Format: 'int64'
    */
-  template_id: number;
+  id: number | string;
+  /**
+   * The ID of the blueprint template the associated course is subscribed to
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  template_id: number | string;
   /**
    * The blueprint course subscribed to
    *

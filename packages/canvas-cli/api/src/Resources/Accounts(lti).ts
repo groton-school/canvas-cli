@@ -4,7 +4,7 @@ export type Account = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The display name of the account */
   name: string;
   /** The UUID of the account */
@@ -14,13 +14,13 @@ export type Account = {
    *
    * Type: integer
    */
-  parent_account_id: number;
+  parent_account_id: number | string;
   /**
    * The ID of the root account, or null if this is the root account
    *
    * Type: integer
    */
-  root_account_id: number;
+  root_account_id: number | string;
   /** The state of the account. Can be 'active' or 'deleted'. */
   workflow_state: string;
 };

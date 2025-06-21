@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { DeveloperKeyAccountBinding } from '../../../../../Resources/DeveloperKeyAccountBindings.js';
 
 export type createPathParameters = {
-  /** ID */
-  account_id: string;
-  /** ID */
-  developer_key_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  developer_key_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;

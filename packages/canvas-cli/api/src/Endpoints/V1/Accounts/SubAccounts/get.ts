@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Account } from '../../../../Resources/Accounts.js';
 
 export type getPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
@@ -14,8 +18,10 @@ export type getSearchParameters = Masquerade &
      * If true, the entire account tree underneath this account will be returned
      * (though still paginated). If false, only direct sub-accounts of this
      * account will be returned. Defaults to false.
+     *
+     * Type: boolean
      */
-    recursive: boolean;
+    recursive: boolean | string;
     /**
      * Sorts the accounts by id or name. Only applies when recursive is false.
      * Defaults to id.

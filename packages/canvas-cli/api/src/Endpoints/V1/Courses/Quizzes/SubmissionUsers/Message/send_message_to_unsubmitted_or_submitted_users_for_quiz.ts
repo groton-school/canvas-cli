@@ -4,10 +4,18 @@ import { QuizUserConversation } from '../../../../../../Overrides.js';
 
 export type send_message_to_unsubmitted_or_submitted_users_for_quizPathParameters =
   {
-    /** ID */
-    course_id: string;
-    /** ID */
-    id: string;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    course_id: string | number;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    id: string | number;
   };
 
 export type send_message_to_unsubmitted_or_submitted_users_for_quizSearchParameters =

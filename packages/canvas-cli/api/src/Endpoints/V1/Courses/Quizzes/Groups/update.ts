@@ -2,12 +2,24 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type updatePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  quiz_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -20,13 +32,13 @@ export type updateFormParameters = Masquerade & {
    *
    * Format: 'int64'
    */
-  'quiz_groups[pick_count]': number[];
+  'quiz_groups[pick_count]': number | string[];
   /**
    * The number of points to assign to each question in the group.
    *
    * Format: 'int64'
    */
-  'quiz_groups[question_points]': number[];
+  'quiz_groups[question_points]': number | string[];
 };
 
 type Options = {

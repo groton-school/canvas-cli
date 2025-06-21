@@ -3,12 +3,24 @@ import { client } from '../../../../../Client.js';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
 export type updatePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assignment_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -22,7 +34,7 @@ export type updateFormParameters = Masquerade & {
    *
    * Format: 'int64'
    */
-  'assignment_override[student_ids]': number[];
+  'assignment_override[student_ids]': number | string[];
   /**
    * The title of an adhoc assignment override. Ignored unless the override
    * being updated is adhoc.

@@ -4,7 +4,7 @@ export type CommMessage = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The date and time this message was created
    *

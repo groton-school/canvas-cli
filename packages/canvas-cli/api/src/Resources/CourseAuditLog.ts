@@ -4,13 +4,13 @@ export type CourseEventLink = {
    *
    * Type: integer
    */
-  course: number;
+  course: number | string;
   /**
    * ID of the user for the event (who made the change).
    *
    * Type: integer
    */
-  user: number;
+  user: number | string;
   /** ID of the page view during the event if it exists. */
   page_view: string;
   /**
@@ -19,20 +19,20 @@ export type CourseEventLink = {
    *
    * Type: integer
    */
-  copied_from: number;
+  copied_from: number | string;
   /**
    * ID of the course that this course was copied to. This is only included if
    * the event_type is copied_to.
    *
    * Type: integer
    */
-  copied_to: number;
+  copied_to: number | string;
   /**
    * ID of the SIS batch that triggered the event.
    *
    * Type: integer
    */
-  sis_batch: number;
+  sis_batch: number | string;
 };
 
 export type CourseEvent = {
@@ -75,7 +75,7 @@ export type CreatedEventData = {
   name: string[];
   start_at: string[];
   conclude_at: string[];
-  is_public: boolean[];
+  is_public: boolean | string[];
   /** The type of action that triggered the creation of the course. */
   created_source: string;
 };
@@ -90,5 +90,5 @@ export type UpdatedEventData = {
   name: string[];
   start_at: string[];
   conclude_at: string[];
-  is_public: boolean[];
+  is_public: boolean | string[];
 };

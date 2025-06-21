@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { Progress } from '../../../../../Resources/CoursePace.js';
 
 export type restore_workflow_states_of_sis_imported_itemsPathParameters = {
-  /** ID */
-  account_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type restore_workflow_states_of_sis_imported_itemsSearchParameters =
@@ -14,18 +22,26 @@ export type restore_workflow_states_of_sis_imported_itemsSearchParameters =
 
 export type restore_workflow_states_of_sis_imported_itemsFormParameters =
   Masquerade & {
-    /** If set, will only restore items that were deleted from batch_mode. */
-    batch_mode: boolean;
+    /**
+     * If set, will only restore items that were deleted from batch_mode.
+     *
+     * Type: boolean
+     */
+    batch_mode: boolean | string;
     /**
      * If set, will only restore items that were deleted. This will ignore any
      * items that were created or modified.
+     *
+     * Type: boolean
      */
-    undelete_only: boolean;
+    undelete_only: boolean | string;
     /**
      * If set, will only restore enrollments that were concluded. This will
      * ignore any items that were created or deleted.
+     *
+     * Type: boolean
      */
-    unconclude_only: boolean;
+    unconclude_only: boolean | string;
   };
 
 type Options = {

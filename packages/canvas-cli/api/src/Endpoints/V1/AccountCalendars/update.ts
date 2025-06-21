@@ -3,8 +3,12 @@ import { client } from '../../../Client.js';
 import { AccountCalendar } from '../../../Resources/AccountCalendars.js';
 
 export type updatePathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -14,13 +18,17 @@ export type updateFormParameters = Masquerade & {
    * Allow administrators with `manage_account_calendar_events` permission to
    * create events on this calendar, and allow users to view this calendar and
    * its events.
+   *
+   * Type: boolean
    */
-  visible: boolean;
+  visible: boolean | string;
   /**
    * When true, users will automatically see events from this account in their
    * calendar, even if they haven't manually added that calendar.
+   *
+   * Type: boolean
    */
-  auto_subscribe: boolean;
+  auto_subscribe: boolean | string;
 };
 
 type Options = {

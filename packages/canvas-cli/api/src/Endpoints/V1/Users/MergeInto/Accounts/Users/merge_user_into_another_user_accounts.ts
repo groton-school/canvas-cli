@@ -3,12 +3,24 @@ import { client } from '../../../../../../Client.js';
 import { User } from '../../../../../../Resources/Users.js';
 
 export type merge_user_into_another_user_accountsPathParameters = {
-  /** ID */
-  id: string;
-  /** ID */
-  destination_account_id: string;
-  /** ID */
-  destination_user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  destination_account_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  destination_user_id: string | number;
 };
 
 export type merge_user_into_another_user_accountsSearchParameters = Masquerade;

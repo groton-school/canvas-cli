@@ -1,8 +1,12 @@
 export type LineItem = {
   /** The fully qualified URL for showing, updating, and deleting the Line Item */
   id: string;
-  /** The maximum score of the Line Item */
-  scoreMaximum: number;
+  /**
+   * The maximum score of the Line Item
+   *
+   * Type: number
+   */
+  scoreMaximum: number | string;
   /** The label of the Line Item. */
   label: string;
   /** Tag used to qualify a line Item beyond its ids */

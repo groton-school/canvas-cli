@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { OriginalityReport } from '../../../../../Resources/OriginalityReports.js';
 
 export type createPathParameters = {
-  /** ID */
-  assignment_id: string;
-  /** ID */
-  submission_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  submission_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -16,25 +24,31 @@ export type createFormParameters = Masquerade & {
    * The id of the file being given an originality score. Required if creating
    * a report associated with a file.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'originality_report[file_id]': number;
+  'originality_report[file_id]': number | string;
   /**
    * A number between 0 and 100 representing the measure of the specified
    * file's originality.
    *
+   * Type: number
+   *
    * Format: 'float'
    */
-  'originality_report[originality_score]': number;
+  'originality_report[originality_score]': number | string;
   /** The URL where the originality report for the specified file may be found. */
   'originality_report[originality_report_url]': string;
   /**
    * The ID of the file within Canvas that contains the originality report for
    * the submitted file provided in the request URL.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'originality_report[originality_report_file_id]': number;
+  'originality_report[originality_report_file_id]': number | string;
   /**
    * The resource type code of the resource handler Canvas should use for the
    * LTI launch for viewing originality reports. If set Canvas will launch to
@@ -67,9 +81,11 @@ export type createFormParameters = Masquerade & {
    * the report will be created (or updated, if it exists) for the first
    * submission attempt with no associated file.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'originality_report[attempt]': number;
+  'originality_report[attempt]': number | string;
 };
 
 type Options = {

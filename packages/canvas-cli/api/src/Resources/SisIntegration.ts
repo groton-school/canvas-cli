@@ -7,13 +7,13 @@ export type SisAssignment = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The unique identifier for the course.
    *
    * Type: integer
    */
-  course_id: number;
+  course_id: number | string;
   /** The name of the assignment */
   name: string;
   /**
@@ -47,7 +47,7 @@ export type SisAssignment = {
    *
    * Type: integer
    */
-  points_possible: number;
+  points_possible: number | string;
   /**
    * The types of submissions allowed for this assignment list containing one or
    * more of the following: 'discussion_topic', 'online_quiz', 'on_paper',
@@ -59,8 +59,12 @@ export type SisAssignment = {
   integration_id: string;
   /** (optional, Third Party integration data for assignment) */
   integration_data: string;
-  /** If false, the assignment will be omitted from the student's final grade */
-  include_in_final_grade: boolean;
+  /**
+   * If false, the assignment will be omitted from the student's final grade
+   *
+   * Type: boolean
+   */
+  include_in_final_grade: boolean | string;
   /**
    * Includes attributes of a assignment_group for convenience. For more details
    * see Assignments API.
@@ -88,7 +92,7 @@ export type AssignmentGroupAttributes = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The name of the Assignment Group */
   name: string;
   /**
@@ -96,7 +100,7 @@ export type AssignmentGroupAttributes = {
    *
    * Type: integer
    */
-  group_weight: number;
+  group_weight: number | string;
   /** The sis source id of the Assignment Group */
   sis_source_id: string;
   /**
@@ -114,7 +118,7 @@ export type SectionAttributes = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The name of the section. */
   name: string;
   /** The sis id of the section. */
@@ -145,7 +149,7 @@ export type CourseAttributes = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The name of the origin course. */
   name: string;
   /** The sis id of the origin_course. */
@@ -193,7 +197,7 @@ export type UserAssignmentOverrideAttributes = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The title of the assignment override. */
   title: string;
   /**
@@ -228,7 +232,7 @@ export type StudentAttributes = {
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /**
    * The SIS ID associated with the user. This field is only included if the
    * user came from a SIS import and has permissions to view SIS information.

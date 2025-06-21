@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { BlockEditorTemplate } from '../../../../Resources/BlockEditorTemplate.js';
 
 export type listPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -17,8 +21,10 @@ export type listSearchParameters = Masquerade &
     /**
      * If true, include draft templates. If false or omitted only published
      * templates will be returned.
+     *
+     * Type: boolean
      */
-    drafts: boolean;
+    drafts: boolean | string;
     /** What type of templates should be returned. */
     type: string[];
     /** No description */

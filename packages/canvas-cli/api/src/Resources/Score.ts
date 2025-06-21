@@ -6,13 +6,17 @@ export type Score = {
   /**
    * The Current score received in the tool for this line item and user, scaled
    * to the scoreMaximum
+   *
+   * Type: number
    */
-  scoreGiven: number;
+  scoreGiven: number | string;
   /**
    * Maximum possible score for this result; it must be present if scoreGiven is
    * present.
+   *
+   * Type: number
    */
-  scoreMaximum: number;
+  scoreMaximum: number | string;
   /** Comment visible to the student about this score. */
   comment: string;
   /**

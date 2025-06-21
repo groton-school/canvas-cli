@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
 export type status_of_last_reportPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
   /** ID */
   report_type: string;
 };

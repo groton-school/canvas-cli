@@ -2,12 +2,24 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type retrieve_captured_eventsPathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  quiz_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  quiz_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type retrieve_captured_eventsSearchParameters = Masquerade &
@@ -16,9 +28,11 @@ export type retrieve_captured_eventsSearchParameters = Masquerade &
      * The specific submission attempt to look up the events for. If
      * unspecified, the latest attempt will be used.
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    attempt: number;
+    attempt: number | string;
   }>;
 
 type Options = {

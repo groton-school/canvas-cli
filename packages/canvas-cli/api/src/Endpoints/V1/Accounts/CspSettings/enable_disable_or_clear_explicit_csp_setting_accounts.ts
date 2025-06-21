@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 
 export type enable_disable_or_clear_explicit_csp_setting_accountsPathParameters =
   {
-    /** ID */
-    account_id: string;
+    /**
+     * ID
+     *
+     * Type: string
+     */
+    account_id: string | number;
   };
 
 export type enable_disable_or_clear_explicit_csp_setting_accountsSearchParameters =

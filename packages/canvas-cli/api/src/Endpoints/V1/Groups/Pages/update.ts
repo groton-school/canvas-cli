@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { Page } from '../../../../Resources/Pages.js';
 
 export type updatePathParameters = {
-  /** ID */
-  group_id: string;
-  /** ID */
-  url_or_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  url_or_id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -29,10 +37,18 @@ export type updateFormParameters = Masquerade & {
    * user.
    */
   'wiki_page[editing_roles]': string;
-  /** Whether participants should be notified when this page changes. */
-  'wiki_page[notify_of_update]': boolean;
-  /** Whether the page is published (true) or draft state (false). */
-  'wiki_page[published]': boolean;
+  /**
+   * Whether participants should be notified when this page changes.
+   *
+   * Type: boolean
+   */
+  'wiki_page[notify_of_update]': boolean | string;
+  /**
+   * Whether the page is published (true) or draft state (false).
+   *
+   * Type: boolean
+   */
+  'wiki_page[published]': boolean | string;
   /**
    * Schedule a future date/time to publish the page. This will have no effect
    * unless the "Scheduled Page Publication" feature is enabled in the
@@ -42,8 +58,12 @@ export type updateFormParameters = Masquerade & {
    * Format: date-time
    */
   'wiki_page[publish_at]': string;
-  /** Set an unhidden page as the front page (if true) */
-  'wiki_page[front_page]': boolean;
+  /**
+   * Set an unhidden page as the front page (if true)
+   *
+   * Type: boolean
+   */
+  'wiki_page[front_page]': boolean | string;
 };
 
 type Options = {

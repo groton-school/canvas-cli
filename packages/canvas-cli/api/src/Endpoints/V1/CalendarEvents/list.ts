@@ -27,14 +27,18 @@ export type listSearchParameters = Masquerade &
     /**
      * Defaults to false (dated events only). If true, only return undated
      * events and ignore start_date and end_date.
+     *
+     * Type: boolean
      */
-    undated: boolean;
+    undated: boolean | string;
     /**
      * Defaults to false (uses start_date, end_date, and undated criteria). If
      * true, all events are returned, ignoring start_date, end_date, and undated
      * criteria.
+     *
+     * Type: boolean
      */
-    all_events: boolean;
+    all_events: boolean | string;
     /**
      * List of context codes of courses, groups, users, or accounts whose events
      * you want to see. If not specified, defaults to the current user (i.e
@@ -57,13 +61,17 @@ export type listSearchParameters = Masquerade &
     /**
      * Defaults to false. If true, only events with important dates set to true
      * will be returned.
+     *
+     * Type: boolean
      */
-    important_dates: boolean;
+    important_dates: boolean | string;
     /**
      * Defaults to false. If true, only events with blackout date set to true
      * will be returned.
+     *
+     * Type: boolean
      */
-    blackout_date: boolean;
+    blackout_date: boolean | string;
   }>;
 
 type Options =

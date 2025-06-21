@@ -3,8 +3,12 @@ import { client } from '../../../Client.js';
 import { User } from '../../../Resources/Users.js';
 
 export type show_user_detailsPathParameters = {
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type show_user_detailsSearchParameters = Masquerade &

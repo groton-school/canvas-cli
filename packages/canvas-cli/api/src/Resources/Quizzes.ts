@@ -6,7 +6,7 @@ export type Quiz = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The title of the quiz */
   title: string;
   /** The HTTP/HTTPS URL to the quiz */
@@ -34,15 +34,19 @@ export type Quiz = {
    *
    * Type: integer
    */
-  assignment_group_id: number;
+  assignment_group_id: number | string;
   /**
    * Quiz time limit in minutes
    *
    * Type: integer
    */
-  time_limit: number;
-  /** Shuffle answers for students? */
-  shuffle_answers: boolean;
+  time_limit: number | string;
+  /**
+   * Shuffle answers for students?
+   *
+   * Type: boolean
+   */
+  shuffle_answers: boolean | string;
   /**
    * Let students see their quiz responses? possible values: null, 'always',
    * 'until_after_last_attempt'
@@ -51,14 +55,18 @@ export type Quiz = {
   /**
    * Show which answers were correct when results are shown? only valid if
    * hide_results=null
+   *
+   * Type: boolean
    */
-  show_correct_answers: boolean;
+  show_correct_answers: boolean | string;
   /**
    * Restrict the show_correct_answers option above to apply only to the last
    * submitted attempt of a quiz that allows multiple attempts. only valid if
    * show_correct_answers=true and allowed_attempts > 1
+   *
+   * Type: boolean
    */
-  show_correct_answers_last_attempt: boolean;
+  show_correct_answers_last_attempt: boolean | string;
   /**
    * When should the correct answers be visible by students? only valid if
    * show_correct_answers=true
@@ -76,8 +84,10 @@ export type Quiz = {
   /**
    * Prevent the students from seeing their results more than once (right after
    * they submit the quiz)
+   *
+   * Type: boolean
    */
-  one_time_results: boolean;
+  one_time_results: boolean | string;
   /**
    * Which quiz score to keep (only if allowed_attempts != 1) possible values:
    * 'keep_highest', 'keep_latest'
@@ -88,23 +98,31 @@ export type Quiz = {
    *
    * Type: integer
    */
-  allowed_attempts: number;
-  /** Show one question at a time? */
-  one_question_at_a_time: boolean;
+  allowed_attempts: number | string;
+  /**
+   * Show one question at a time?
+   *
+   * Type: boolean
+   */
+  one_question_at_a_time: boolean | string;
   /**
    * The number of questions in the quiz
    *
    * Type: integer
    */
-  question_count: number;
+  question_count: number | string;
   /**
    * The total point value given to the quiz
    *
    * Type: integer
    */
-  points_possible: number;
-  /** Lock questions after answering? only valid if one_question_at_a_time=true */
-  cant_go_back: boolean;
+  points_possible: number | string;
+  /**
+   * Lock questions after answering? only valid if one_question_at_a_time=true
+   *
+   * Type: boolean
+   */
+  cant_go_back: boolean | string;
   /** Access code to restrict quiz access */
   access_code: string;
   /** IP address or range that quiz access is limited to */
@@ -127,15 +145,25 @@ export type Quiz = {
    * Format: date-time
    */
   unlock_at: string;
-  /** Whether the quiz has a published or unpublished draft state. */
-  published: boolean;
+  /**
+   * Whether the quiz has a published or unpublished draft state.
+   *
+   * Type: boolean
+   */
+  published: boolean | string;
   /**
    * Whether the assignment's 'published' state can be changed to false. Will be
    * false if there are student submissions for the quiz.
+   *
+   * Type: boolean
    */
-  unpublishable: boolean;
-  /** Whether or not this is locked for the user. */
-  locked_for_user: boolean;
+  unpublishable: boolean | string;
+  /**
+   * Whether or not this is locked for the user.
+   *
+   * Type: boolean
+   */
+  locked_for_user: boolean | string;
   /**
    * (Optional) Information for the user about the lock. Present when
    * locked_for_user is true.
@@ -162,30 +190,60 @@ export type Quiz = {
    *
    * Type: integer
    */
-  version_number: number;
+  version_number: number | string;
   /** List of question types in the quiz */
   question_types: string[];
   /**
    * Whether survey submissions will be kept anonymous (only applicable to
    * 'graded_survey', 'survey' quiz types)
+   *
+   * Type: boolean
    */
-  anonymous_submissions: boolean;
+  anonymous_submissions: boolean | string;
 };
 
 /** Permissions the user has for the quiz */
 export type QuizPermissions = {
-  /** Whether the user can view the quiz */
-  read: boolean;
-  /** Whether the user may submit a submission for the quiz */
-  submit: boolean;
-  /** Whether the user may create a new quiz */
-  create: boolean;
-  /** Whether the user may edit, update, or delete the quiz */
-  manage: boolean;
-  /** Whether the user may view quiz statistics for this quiz */
-  read_statistics: boolean;
-  /** Whether the user may review grades for all quiz submissions for this quiz */
-  review_grades: boolean;
-  /** Whether the user may update the quiz */
-  update: boolean;
+  /**
+   * Whether the user can view the quiz
+   *
+   * Type: boolean
+   */
+  read: boolean | string;
+  /**
+   * Whether the user may submit a submission for the quiz
+   *
+   * Type: boolean
+   */
+  submit: boolean | string;
+  /**
+   * Whether the user may create a new quiz
+   *
+   * Type: boolean
+   */
+  create: boolean | string;
+  /**
+   * Whether the user may edit, update, or delete the quiz
+   *
+   * Type: boolean
+   */
+  manage: boolean | string;
+  /**
+   * Whether the user may view quiz statistics for this quiz
+   *
+   * Type: boolean
+   */
+  read_statistics: boolean | string;
+  /**
+   * Whether the user may review grades for all quiz submissions for this quiz
+   *
+   * Type: boolean
+   */
+  review_grades: boolean | string;
+  /**
+   * Whether the user may update the quiz
+   *
+   * Type: boolean
+   */
+  update: boolean | string;
 };

@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { ModuleItemSequence } from '../../../../Resources/Modules.js';
 
 export type getPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
@@ -19,9 +23,11 @@ export type getSearchParameters = Masquerade &
     /**
      * The id of the asset (or the url in the case of a Page)
      *
+     * Type: integer
+     *
      * Format: 'int64'
      */
-    asset_id: number;
+    asset_id: number | string;
   }>;
 
 type Options = {

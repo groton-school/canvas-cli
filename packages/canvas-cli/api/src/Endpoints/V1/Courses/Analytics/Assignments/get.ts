@@ -2,8 +2,12 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type getPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
@@ -15,8 +19,10 @@ export type getSearchParameters = Masquerade &
      * responsibility to poll the API again to see if the progress is complete.
      * If the data is ready (possibly even on the first async call) then it will
      * be passed back normally, as documented in the example response.
+     *
+     * Type: boolean
      */
-    async: boolean;
+    async: boolean | string;
   }>;
 
 type Options = {

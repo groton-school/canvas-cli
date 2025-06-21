@@ -6,23 +6,29 @@ export type lists_submissionsPathParameters = {
   /**
    * The id of the contextual course for this API call
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  course_id: number;
+  course_id: number | string;
   /** The date for which you would like to see submissions */
   date: string;
   /**
    * The ID of the grader for which you want to see submissions
    *
-   * Format: 'int64'
-   */
-  grader_id: number;
-  /**
-   * The ID of the assignment for which you want to see submissions
+   * Type: integer
    *
    * Format: 'int64'
    */
-  assignment_id: number;
+  grader_id: number | string;
+  /**
+   * The ID of the assignment for which you want to see submissions
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  assignment_id: number | string;
 };
 
 export type lists_submissionsSearchParameters = Masquerade & Paginated;

@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { CommunicationChannel } from '../../../../Resources/CommunicationChannels.js';
 
 export type createPathParameters = {
-  /** ID */
-  user_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -32,8 +36,10 @@ export type createFormParameters = Masquerade & {
    * the channel is automatically validated and no confirmation email or SMS
    * is sent. Otherwise, the user must respond to a confirmation message to
    * confirm the channel.
+   *
+   * Type: boolean
    */
-  skip_confirmation: boolean;
+  skip_confirmation: boolean | string;
 };
 
 type Options = {

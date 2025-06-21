@@ -4,8 +4,12 @@ import { Integer } from '../../../../Overrides.js';
 import { Admin } from '../../../../Resources/Admins.js';
 
 export type listPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &

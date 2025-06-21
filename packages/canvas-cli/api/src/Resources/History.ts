@@ -22,9 +22,11 @@ export type HistoryEntry = {
   /**
    * The id of the context, if applicable
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  context_id: number;
+  context_id: number | string;
   /** The name of the context */
   context_name: string;
   /** The URL of the item */
@@ -32,13 +34,17 @@ export type HistoryEntry = {
   /**
    * When the page was visited
    *
+   * Format: date-time
+   *
    * Format: 'iso8601'
    */
   visited_at: string;
   /**
    * The estimated time spent on the page in seconds
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  interaction_seconds: number;
+  interaction_seconds: number | string;
 };

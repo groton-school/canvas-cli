@@ -7,21 +7,27 @@ export type update_quiz_itemPathParameters = {
   /**
    * No description
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  course_id: number;
+  course_id: number | string;
   /**
    * The id of the assignment associated with the quiz.
    *
-   * Format: 'int64'
-   */
-  assignment_id: number;
-  /**
-   * The id of the item associated with the quiz.
+   * Type: integer
    *
    * Format: 'int64'
    */
-  item_id: number;
+  assignment_id: number | string;
+  /**
+   * The id of the item associated with the quiz.
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  item_id: number | string;
 };
 
 export type update_quiz_itemSearchParameters = Masquerade;
@@ -30,15 +36,19 @@ export type update_quiz_itemFormParameters = Masquerade & {
   /**
    * The position of the item within the quiz.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  'item[position]': number;
+  'item[position]': number | string;
   /**
    * The number of points available to score on this item. Must be positive.
    *
+   * Type: number
+   *
    * Format: 'float'
    */
-  'item[points_possible]': number;
+  'item[points_possible]': number | string;
   /** The type of the item. */
   'item[entry_type]': string;
   /** The question title. */

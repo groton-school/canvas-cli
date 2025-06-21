@@ -4,8 +4,12 @@ import { client } from '../../../../Client.js';
 export type save_enabled_account_calendarsSearchParameters = Masquerade;
 
 export type save_enabled_account_calendarsFormParameters = Masquerade & {
-  /** Flag to mark account calendars feature as seen */
-  mark_feature_as_seen: boolean;
+  /**
+   * Flag to mark account calendars feature as seen
+   *
+   * Type: boolean
+   */
+  mark_feature_as_seen: boolean | string;
   /** An array of account Ids to remember in the calendars list of the user */
   enabled_account_calendars: string[];
 };

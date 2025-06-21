@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { CommunicationChannel } from '../../../../Resources/CommunicationChannels.js';
 
 export type delete_communication_channel_idPathParameters = {
-  /** ID */
-  user_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type delete_communication_channel_idSearchParameters = Masquerade;

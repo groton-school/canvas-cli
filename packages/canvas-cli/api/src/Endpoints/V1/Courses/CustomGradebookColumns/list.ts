@@ -3,15 +3,23 @@ import { client } from '../../../../Client.js';
 import { CustomColumn } from '../../../../Resources/CustomGradebookColumns.js';
 
 export type listPathParameters = {
-  /** ID */
-  course_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
-    /** Include hidden parameters (defaults to false) */
-    include_hidden: boolean;
+    /**
+     * Include hidden parameters (defaults to false)
+     *
+     * Type: boolean
+     */
+    include_hidden: boolean | string;
   }>;
 
 type Options = {

@@ -2,12 +2,24 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type summary_feedback_groupsPathParameters = {
-  /** ID */
-  group_id: string;
-  /** ID */
-  topic_id: string;
-  /** ID */
-  summary_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  group_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  topic_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  summary_id: string | number;
 };
 
 export type summary_feedback_groupsSearchParameters = Masquerade;

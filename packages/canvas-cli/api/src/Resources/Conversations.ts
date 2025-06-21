@@ -2,9 +2,11 @@ export type Conversation = {
   /**
    * The unique identifier for the conversation.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  id: number;
+  id: number | string;
   /** The subject of the conversation. */
   subject: string;
   /** The current state of the conversation (read, unread or archived). */
@@ -22,13 +24,25 @@ export type Conversation = {
    *
    * Type: integer
    */
-  message_count: number;
-  /** Whether the current user is subscribed to the conversation. */
-  subscribed: boolean;
-  /** Whether the conversation is private. */
-  private: boolean;
-  /** Whether the conversation is starred. */
-  starred: boolean;
+  message_count: number | string;
+  /**
+   * Whether the current user is subscribed to the conversation.
+   *
+   * Type: boolean
+   */
+  subscribed: boolean | string;
+  /**
+   * Whether the conversation is private.
+   *
+   * Type: boolean
+   */
+  private: boolean | string;
+  /**
+   * Whether the conversation is starred.
+   *
+   * Type: boolean
+   */
+  starred: boolean | string;
   /**
    * Additional conversation flags (last_author, attachments, media_objects).
    * Each listed property means the flag is set to true (i.e. the current user
@@ -41,7 +55,7 @@ export type Conversation = {
    * participation level, then alphabetical. Excludes current user, unless this
    * is a monologue.
    */
-  audience: number[];
+  audience: number | string[];
   /**
    * Most relevant shared contexts (courses and groups) between current user and
    * other participants. If there is only one participant, it will also include
@@ -61,8 +75,10 @@ export type Conversation = {
    * primarily useful in create/update responses so that you can know if the
    * record should be displayed in the UI. The default scope is assumed, unless
    * a scope or filter is passed to the create/update API call.
+   *
+   * Type: boolean
    */
-  visible: boolean;
+  visible: boolean | string;
   /** Name of the course or group in which the conversation is occurring. */
   context_name: string;
 };
@@ -71,9 +87,11 @@ export type ConversationParticipant = {
   /**
    * The user ID for the participant.
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  id: number;
+  id: number | string;
   /**
    * A short name the user has selected, for use in conversations or other less
    * formal places through the site.

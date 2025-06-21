@@ -44,14 +44,18 @@ export type listSearchParameters = Masquerade &
      * to requesting users that have permission to view unpublished items.
      * Defaults to false for users with access to view unpublished items,
      * otherwise true and unmodifiable.
+     *
+     * Type: boolean
      */
-    active_only: boolean;
+    active_only: boolean | string;
     /**
      * Only return the latest announcement for each associated context. The
      * response will include at most one announcement for each specified context
      * in the context_codes[] parameter. Defaults to false.
+     *
+     * Type: boolean
      */
-    latest_only: boolean;
+    latest_only: boolean | string;
     /**
      * Optional list of resources to include with the response. May include a
      * string of the name of the resource. Possible values are: "sections",

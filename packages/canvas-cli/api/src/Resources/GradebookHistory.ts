@@ -4,7 +4,7 @@ export type Grader = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The name of the user who graded the contained submissions */
   name: string;
   /**
@@ -15,7 +15,7 @@ export type Grader = {
    * of an assignment to make another API call to find all submissions for a
    * grader/assignment combination on a given date.
    */
-  assignments: number[];
+  assignments: number | string[];
 };
 
 export type Day = {
@@ -32,7 +32,7 @@ export type Day = {
    *
    * Type: integer
    */
-  graders: number;
+  graders: number | string;
 };
 
 /**
@@ -46,7 +46,7 @@ export type SubmissionVersion = {
    *
    * Type: integer
    */
-  assignment_id: number;
+  assignment_id: number | string;
   /** The name of the assignment this submission is for */
   assignment_name: string;
   /** The body text of the submission */
@@ -64,8 +64,10 @@ export type SubmissionVersion = {
   /**
    * Boolean indicating whether the grade is equal to the current submission
    * grade
+   *
+   * Type: boolean
    */
-  grade_matches_current_submission: boolean;
+  grade_matches_current_submission: boolean | string;
   /**
    * Time stamp for the grading of this version of the submission
    *
@@ -79,13 +81,13 @@ export type SubmissionVersion = {
    *
    * Type: integer
    */
-  grader_id: number;
+  grader_id: number | string;
   /**
    * The id of the submission of which this is a version
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /** The updated grade provided in this version of the submission */
   new_grade: string;
   /**
@@ -116,7 +118,7 @@ export type SubmissionVersion = {
    *
    * Type: integer
    */
-  score: number;
+  score: number | string;
   /** The name of the student who created this submission */
   user_name: string;
   /** The type of submission */
@@ -128,7 +130,7 @@ export type SubmissionVersion = {
    *
    * Type: integer
    */
-  user_id: number;
+  user_id: number | string;
   /** The state of the submission at this version */
   workflow_state: string;
 };
@@ -139,7 +141,7 @@ export type SubmissionHistory = {
    *
    * Type: integer
    */
-  submission_id: number;
+  submission_id: number | string;
   /** An array of all the versions of this submission */
   versions: SubmissionVersion[];
 };

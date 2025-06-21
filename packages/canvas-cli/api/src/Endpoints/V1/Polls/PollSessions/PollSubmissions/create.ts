@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type createPathParameters = {
-  /** ID */
-  poll_id: string;
-  /** ID */
-  poll_session_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  poll_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  poll_session_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -16,7 +24,7 @@ export type createFormParameters = Masquerade & {
    *
    * Format: 'int64'
    */
-  'poll_submissions[poll_choice_id]': number[];
+  'poll_submissions[poll_choice_id]': number | string[];
 };
 
 type Options = {

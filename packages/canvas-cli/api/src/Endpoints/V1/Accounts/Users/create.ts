@@ -3,8 +3,12 @@ import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
 export type createPathParameters = {
-  /** ID */
-  account_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
 };
 
 export type createSearchParameters = Masquerade;
@@ -41,8 +45,10 @@ export type createFormParameters = Masquerade & {
    *
    * If this is true, it will mark the user as having accepted the terms of
    * use.
+   *
+   * Type: boolean
    */
-  'user[terms_of_use]': boolean;
+  'user[terms_of_use]': boolean | string;
   /**
    * Automatically mark the user as registered.
    *
@@ -52,8 +58,10 @@ export type createFormParameters = Masquerade & {
    *
    * The users communication channel confirmation can be skipped by setting
    * <tt>"communication_channel[skip_confirmation]"</tt> to true as well.
+   *
+   * Type: boolean
    */
-  'user[skip_registration]': boolean;
+  'user[skip_registration]': boolean | string;
   /**
    * User's login ID. If this is a self-registration, it must be a valid email
    * address.
@@ -75,16 +83,20 @@ export type createFormParameters = Masquerade & {
   /**
    * Send user notification of account creation if true. Automatically set to
    * true during self-registration.
+   *
+   * Type: boolean
    */
-  'pseudonym[send_confirmation]': boolean;
+  'pseudonym[send_confirmation]': boolean | string;
   /**
    * Send user a self-registration style email if true. Setting it means the
    * users will get a notification asking them to "complete the registration
    * process" by clicking it, setting a password, and letting them in. Will
    * only be executed on if the user does not need admin approval. Defaults to
    * false unless explicitly provided.
+   *
+   * Type: boolean
    */
-  'pseudonym[force_self_registration]': boolean;
+  'pseudonym[force_self_registration]': boolean | string;
   /**
    * The authentication provider this login is associated with. Logins
    * associated with a specific provider can only be used with that provider.
@@ -102,8 +114,10 @@ export type createFormParameters = Masquerade & {
   /**
    * Only valid for account admins. If true, returns the new user account
    * confirmation URL in the response.
+   *
+   * Type: boolean
    */
-  'communication_channel[confirmation_url]': boolean;
+  'communication_channel[confirmation_url]': boolean | string;
   /**
    * Only valid for site admins and account admins making requests; If true,
    * the channel is automatically validated and no confirmation email or SMS
@@ -113,8 +127,10 @@ export type createFormParameters = Masquerade & {
    * If this is true, it is recommended to set
    * <tt>"pseudonym[send_confirmation]"</tt> to true as well. Otherwise, the
    * user will not receive any messages about their account creation.
+   *
+   * Type: boolean
    */
-  'communication_channel[skip_confirmation]': boolean;
+  'communication_channel[skip_confirmation]': boolean | string;
   /**
    * If true, validations are performed on the newly created user (and their
    * associated pseudonym) even if the request is made by a privileged user
@@ -124,15 +140,19 @@ export type createFormParameters = Masquerade & {
    * case, certain validations such as 'require_acceptance_of_terms' and
    * 'require_presence_of_name' are not enforced. Use this parameter to return
    * helpful json errors while building users with an admin request.
+   *
+   * Type: boolean
    */
-  force_validations: boolean;
+  force_validations: boolean | string;
   /**
    * When true, will first try to re-activate a deleted user with matching
    * sis_user_id if possible. This is commonly done with
    * user[skip_registration] and communication_channel[skip_confirmation] so
    * that the default communication_channel is also restored.
+   *
+   * Type: boolean
    */
-  enable_sis_reactivation: boolean;
+  enable_sis_reactivation: boolean | string;
   /**
    * If you're setting the password for the newly created user, you can
    * provide this param with a valid URL pointing into this Canvas

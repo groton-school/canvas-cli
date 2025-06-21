@@ -12,14 +12,14 @@ export type OutcomeImport = {
    *
    * Type: integer
    */
-  id: number;
+  id: number | string;
   /**
    * The unique identifier for the group into which the outcomes will be
    * imported to, or NULL.
    *
    * Type: integer
    */
-  learning_outcome_group_id: number;
+  learning_outcome_group_id: number | string;
   /**
    * The date the outcome import was created.
    *

@@ -3,10 +3,18 @@ import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
 
 export type show_observerPathParameters = {
-  /** ID */
-  user_id: string;
-  /** ID */
-  observer_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  user_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  observer_id: string | number;
 };
 
 export type show_observerSearchParameters = Masquerade;

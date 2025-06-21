@@ -3,10 +3,18 @@ import { client } from '../../../../../Client.js';
 import { Role } from '../../../../../Resources/Roles.js';
 
 export type activate_rolePathParameters = {
-  /** ID */
-  account_id: string;
-  /** ID */
-  id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  account_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  id: string | number;
 };
 
 export type activate_roleSearchParameters = Masquerade;
@@ -15,9 +23,11 @@ export type activate_roleFormParameters = Masquerade & {
   /**
    * The unique identifier for the role
    *
+   * Type: integer
+   *
    * Format: 'int64'
    */
-  role_id: number;
+  role_id: number | string;
   /**
    * The name for the role
    *

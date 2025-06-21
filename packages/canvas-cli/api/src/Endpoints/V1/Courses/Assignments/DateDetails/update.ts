@@ -2,10 +2,18 @@ import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../../Client.js';
 
 export type updatePathParameters = {
-  /** ID */
-  course_id: string;
-  /** ID */
-  assignment_id: string;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  course_id: string | number;
+  /**
+   * ID
+   *
+   * Type: string
+   */
+  assignment_id: string | number;
 };
 
 export type updateSearchParameters = Masquerade;
@@ -35,8 +43,10 @@ export type updateFormParameters = Masquerade & {
   /**
    * Whether the learning object is only assigned to students who are targeted
    * by an override.
+   *
+   * Type: boolean
    */
-  only_visible_to_overrides: boolean;
+  only_visible_to_overrides: boolean | string;
   /**
    * List of overrides to apply to the learning object. Overrides that already
    * exist should include an ID and will be updated if needed. New overrides
