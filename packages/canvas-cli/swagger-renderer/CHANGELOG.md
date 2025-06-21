@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.3](https://github.com/groton-school/canvas-cli/compare/swagger-renderer/0.0.2...swagger-renderer/0.0.3) (2025-06-21)
+
+
+### Features
+
+* **canvas-cli.swagger-renderer:** force `V1` to `v1` ([611c7b0](https://github.com/groton-school/canvas-cli/commit/611c7b0a292b5fb4a261ae3f7c61229d95bfc6ad))
+* **canvas-cli.swagger-renderer:** simplify upload logic ([1fbab3f](https://github.com/groton-school/canvas-cli/commit/1fbab3f4d2a27db825cf0fffbc86049dfbd53d12))
+* support masquerading ([be4c8f9](https://github.com/groton-school/canvas-cli/commit/be4c8f9ceaf9d0e98ee6d56c16bae0f8463f7e36))
+
+
+### Bug Fixes
+
+* accept numbers or strings interchangeably in Models ([8d1f9e5](https://github.com/groton-school/canvas-cli/commit/8d1f9e560cb418b30dee26e74553121f1d8150f4)), closes [#51](https://github.com/groton-school/canvas-cli/issues/51)
+* **canvas-cli.swagger-renderer:** make import conflict error useful ([3dc6d9d](https://github.com/groton-school/canvas-cli/commit/3dc6d9d03f3bbab64f94bf27faae440bc932669e))
+
 ## [0.0.2](https://github.com/groton-school/canvas-cli/compare/swagger-renderer/0.0.1...swagger-renderer/0.0.2) (2025-05-10)
 
 
