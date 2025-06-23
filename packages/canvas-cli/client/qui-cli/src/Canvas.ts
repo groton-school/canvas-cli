@@ -26,8 +26,7 @@ export type Configuration = Plugin.Configuration & {
   };
 };
 
-export const name = '@groton/canvas-cli.client.qui-cli';
-export const src = import.meta.dirname;
+export const name = 'canvas';
 
 let instanceUrl: URLString | undefined = undefined;
 let clientId: string | undefined = undefined;
