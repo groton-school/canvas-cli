@@ -70,6 +70,7 @@ let categories = [
   'grading',
   'discussion',
   'late_grading',
+  'submission_comment',
   'summaries',
   'discussionentry',
   'all_submissions'
