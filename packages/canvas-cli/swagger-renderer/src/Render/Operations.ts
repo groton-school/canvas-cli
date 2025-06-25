@@ -142,7 +142,7 @@ export function annotateOperations({
                 (param.name === 'id' || /_id$/.test(param.name)) &&
                 param.tsType.type === 'string'
               ) {
-                param.tsType.description = `type: ${param.tsType.type}\n${param.tsType.description || ''}`;
+                param.tsType.description = `type: ${param.tsType.type} ${param.tsType.description || ''}`;
                 param.tsType.type = `${param.tsType.type} | number`;
               }
             }

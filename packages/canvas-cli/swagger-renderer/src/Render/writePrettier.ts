@@ -13,16 +13,18 @@ export async function writePrettier(filepath: PathString, content: string) {
     fs.mkdirSync(dir, { recursive: true });
   }
   try {
+    fs.writeFileSync(filepath, content);
     fs.writeFileSync(
       filepath,
       await prettier.format(content, {
         filepath,
+        parser: 'typescript',
         ...(await prettier.resolveConfig(filepath))
       })
     );
   } catch (error) {
     Log.error(
-      `Error making ${Colors.url(filepath)} prettier: ${(error as Error).message}`
+      `Error making ${Colors.url(filepath)} prettier: ${(error as Error).message}`, {prettierConfig: await prettier.resolveConfig(filepath)}
     );
     fs.writeFileSync(filepath, content);
   }
