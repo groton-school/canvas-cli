@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.2](https://github.com/groton-school/canvas-cli/compare/canvas-cli/0.0.1...canvas-cli/0.0.2) (2025-06-27)
+
+
+### Features
+
+* also disable submission_comment notifications by default ([568caae](https://github.com/groton-school/canvas-cli/commit/568caae81585b82660f4d4fca84d0796fe94e4b8))
+
+
+### Bug Fixes
+
+* redesigned bin to be npm-friendly ([0e9955a](https://github.com/groton-school/canvas-cli/commit/0e9955acc85c8a9687054f65c2c69100af78c167))
+
 ## 0.0.1 (2025-06-21)
 
 
