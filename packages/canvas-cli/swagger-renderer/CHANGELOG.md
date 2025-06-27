@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.4](https://github.com/groton-school/canvas-cli/compare/swagger-renderer/0.0.3...swagger-renderer/0.0.4) (2025-06-27)
+
+
+### Bug Fixes
+
+* honor --operationsDirName ([18d9410](https://github.com/groton-school/canvas-cli/commit/18d9410aca312829504e6e6715e71ea82ce1bfec))
+* redesigned bin to be npm-friendly ([0e9955a](https://github.com/groton-school/canvas-cli/commit/0e9955acc85c8a9687054f65c2c69100af78c167))
+* resolve @prettier/plugin-xml regression that was breaking formatting ([cdb7b0e](https://github.com/groton-school/canvas-cli/commit/cdb7b0e99b670d67b25cc3ffe681c6c774146800))
+
 ## [0.0.3](https://github.com/groton-school/canvas-cli/compare/swagger-renderer/0.0.2...swagger-renderer/0.0.3) (2025-06-21)
 
 
