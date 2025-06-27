@@ -15,8 +15,8 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "bin": {
-    "swagger-renderer": "./dist/index.js"
+  "directories": {
+    "bin": "./bin"
   },
   "scripts": {
     "clean": "del ./dist",

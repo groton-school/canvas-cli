@@ -14,8 +14,8 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "bin": {
-    "canvas": "./dist/index.js"
+  "directories": {
+    "bin": "./bin"
   },
   "scripts": {
     "build": "run-s build:*",
