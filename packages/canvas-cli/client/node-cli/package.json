@@ -23,7 +23,7 @@
     "release": "commit-and-tag-version"
   },
   "dependencies": {
-    "@battis/qui-cli.colors": "^2.0.4",
+    "@battis/qui-cli.colors": "^2.1.0",
     "@battis/qui-cli.log": "^2.2.2",
     "@groton/canvas-cli.client.base": "workspace:*",
     "@groton/canvas-cli.utilities": "workspace:*",

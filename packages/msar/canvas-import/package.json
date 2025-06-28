@@ -26,11 +26,11 @@
     "release": "commit-and-tag-version"
   },
   "dependencies": {
-    "@battis/qui-cli.colors": "^2.0.4",
-    "@battis/qui-cli.core": "^2.2.1",
+    "@battis/qui-cli.colors": "^2.1.0",
+    "@battis/qui-cli.core": "^3.0.0",
     "@battis/qui-cli.env": "^2.1.2",
     "@battis/qui-cli.log": "^2.2.2",
-    "@battis/qui-cli.plugin": "^2.4.1",
+    "@battis/qui-cli.plugin": "^2.4.2",
     "@groton/canvas-cli.client.qui-cli": "workspace:*",
     "@inquirer/prompts": "^7.5.3",
     "@msar/output": "^0.1.4",
