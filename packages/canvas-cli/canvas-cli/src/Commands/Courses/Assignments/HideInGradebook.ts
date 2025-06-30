@@ -2,15 +2,13 @@ import { Colors } from '@battis/qui-cli.colors';
 import '@battis/qui-cli.env';
 import * as Plugin from '@battis/qui-cli.plugin';
 import { Canvas } from '@groton/canvas-cli.client.qui-cli';
-import path from 'node:path';
 
 export type Configuration = {
   courseId?: string;
   hideInGradebook?: boolean;
 };
 
-export const name = '@groton/canvas-assignments-cli';
-export const src = path.resolve(import.meta.dirname, '../../..');
+export const name = 'hide-in-gradebook';
 
 let course_id: string | undefined = undefined;
 let hide_in_gradebook = false;

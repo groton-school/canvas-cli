@@ -21,8 +21,7 @@ export type Configuration = Plugin.Configuration & {
 
 Core.configure({ core: { requirePositionals: true } });
 
-export const name = 'Users/Avatar';
-export const src = path.resolve(import.meta.dirname, '../..');
+export const name = 'avatar';
 
 let csvPath: string | undefined = undefined;
 

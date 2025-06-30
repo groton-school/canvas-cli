@@ -2,7 +2,6 @@ import { Colors } from '@battis/qui-cli.colors';
 import * as Plugin from '@battis/qui-cli.plugin';
 import { Canvas } from '@groton/canvas-cli.client.qui-cli';
 import * as GrotonColors from '@groton/colors';
-import path from 'node:path';
 import ora from 'ora';
 
 export type Configuration = Plugin.Configuration & {
@@ -11,8 +10,7 @@ export type Configuration = Plugin.Configuration & {
   overwrite?: boolean;
 };
 
-export const name = 'Users/CourseColors';
-export const src = path.resolve(import.meta.dirname, '../..');
+export const name = 'course-colors';
 
 let account_id: string | undefined = undefined;
 let term_id: number | undefined = undefined;

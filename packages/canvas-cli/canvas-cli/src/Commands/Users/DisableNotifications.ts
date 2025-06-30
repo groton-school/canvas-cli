@@ -3,7 +3,6 @@ import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import { Canvas } from '@groton/canvas-cli.client.qui-cli';
 import { kebabCase, snakeCase } from 'change-case';
-import path from 'node:path';
 import ora from 'ora';
 
 const availableEnrollmentTypes = [
@@ -58,7 +57,6 @@ export type Configuration = Plugin.Configuration & {
 };
 
 export const name = import.meta.filename;
-export const src = path.resolve(import.meta.dirname, '../..');
 
 let account_id: string | undefined = undefined;
 let enrollment_types = ['observer'];
