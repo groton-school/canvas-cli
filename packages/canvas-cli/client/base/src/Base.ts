@@ -3,7 +3,7 @@ import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import { UploadResponse } from './UploadResponse.js';
 
 export type Init = {
-  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+  method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
   pathParams?: JSONObject;
   searchParams?: JSONObject;
   params?: JSONObject;
