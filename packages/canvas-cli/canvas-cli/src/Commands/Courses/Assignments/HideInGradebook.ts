@@ -1,7 +1,9 @@
 import { Colors } from '@battis/qui-cli.colors';
 import '@battis/qui-cli.env';
+import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import { Canvas } from '@groton/canvas-cli.client.qui-cli';
+import ora from 'ora';
 
 export type Configuration = {
   courseId?: string;
@@ -42,17 +44,30 @@ export async function run() {
   if (!course_id) {
     throw new Error(`${Colors.value('course_id')} must be defined`);
   }
-  for (const assignment of await Canvas.v1.Courses.Assignments.list({
-    pathParams: { course_id },
-    searchParams: { per_page: 100 }
-  })) {
-    if (assignment.hide_in_gradebook != hide_in_gradebook) {
-      await Canvas.v1.Courses.Assignments.update({
-        pathParams: { course_id, id: assignment.id },
-        params: {
-          'assignment[hide_in_gradebook]': hide_in_gradebook
+  try {
+    for (const assignment of await Canvas.v1.Courses.Assignments.list({
+      pathParams: { course_id },
+      searchParams: { per_page: 100 }
+    })) {
+      if (assignment.hide_in_gradebook != hide_in_gradebook) {
+        const spinner = ora().start(
+          `${assignment.name} due ${assignment.due_at}`
+        );
+        try {
+          await Canvas.v1.Courses.Assignments.update({
+            pathParams: { course_id, id: assignment.id },
+            params: {
+              'assignment[hide_in_gradebook]': hide_in_gradebook
+            }
+          });
+        } catch (error) {
+          spinner.fail(
+            Colors.error(`${spinner.text}: ${(error as Error).message}`)
+          );
         }
-      });
+      }
     }
+  } catch (error) {
+    Log.error(Colors.error((error as Error).message));
   }
 }

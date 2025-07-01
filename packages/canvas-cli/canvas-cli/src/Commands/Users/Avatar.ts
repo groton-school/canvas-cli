@@ -1,6 +1,7 @@
 import { Colors } from '@battis/qui-cli.colors';
 import { Core } from '@battis/qui-cli.core';
 import '@battis/qui-cli.env';
+import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import { Root } from '@battis/qui-cli.root';
 import { Canvas } from '@groton/canvas-cli.client.qui-cli';
@@ -50,58 +51,65 @@ export async function run() {
   if (!csvPath) {
     throw new Error(`${Colors.value('arg0')} CSV path must be defined`);
   }
-
-  const data: Data = parse(
-    fs.readFileSync(path.resolve(Root.path(), csvPath)),
-    {
-      columns: true
-    }
-  );
-
-  let spinner = ora(`Loading user list from Canvas`).start();
-  const users = await Canvas.v1.Accounts.Users.list({
-    pathParams: { account_id: '1' },
-    searchParams: { per_page: 100 }
-  });
-  spinner.succeed(`${users.length} Canvas users loaded`);
-
-  for (const { user_id, sis_user_id, path_to_avatar } of data) {
-    spinner = ora(`User ID ${Colors.value(user_id || sis_user_id)}`).start();
-    const user = users.find(
-      (user) => user.id == user_id || user.sis_user_id === sis_user_id
+  try {
+    const data: Data = parse(
+      fs.readFileSync(path.resolve(Root.path(), csvPath)),
+      {
+        columns: true
+      }
     );
-    if (!user) {
-      spinner.fail(
-        `No Canvas user found for user ID ${Colors.value(sis_user_id)}`
+
+    let spinner = ora(`Loading user list from Canvas`).start();
+    const users = await Canvas.v1.Accounts.Users.list({
+      pathParams: { account_id: '1' },
+      searchParams: { per_page: 100 }
+    });
+    spinner.succeed(`${users.length} Canvas users loaded`);
+
+    for (const { user_id, sis_user_id, path_to_avatar } of data) {
+      spinner = ora(`User ID ${Colors.value(user_id || sis_user_id)}`).start();
+      const user = users.find(
+        (user) => user.id == user_id || user.sis_user_id === sis_user_id
       );
-      continue;
-    } else {
-      spinner.text = user.name;
+      if (!user) {
+        spinner.fail(
+          `No Canvas user found for user ID ${Colors.value(sis_user_id)}`
+        );
+        continue;
+      } else {
+        spinner.text = user.name;
+      }
+      try {
+        const file = await Canvas.v1.Users.Files.upload({
+          pathParams: { user_id: user.id },
+          params: {
+            name: 'avatar.jpg',
+            parent_folder_path: 'profile pictures',
+            as_user_id: user.id
+          },
+          file: { filePath: path_to_avatar }
+        });
+        const avatars = await Canvas.v1.Users.Avatars.list({
+          pathParams: { user_id: user.id }
+        });
+        const token = avatars.find(
+          // FIXME Avatars are sometimes Files
+          (avatar) => 'uuid' in avatar && avatar.uuid === file.uuid
+        )?.token;
+        if (token) {
+          await Canvas.v1.Users.update({
+            pathParams: { id: user.id },
+            params: { 'user[avatar][token]': token }
+          });
+          spinner.succeed();
+        } else {
+          spinner.fail();
+        }
+      } catch (error) {
+        Log.error(Colors.error((error as Error).message));
+      }
     }
-    const file = await Canvas.v1.Users.Files.upload({
-      pathParams: { user_id: user.id },
-      params: {
-        name: 'avatar.jpg',
-        parent_folder_path: 'profile pictures',
-        as_user_id: user.id
-      },
-      file: { filePath: path_to_avatar }
-    });
-    const avatars = await Canvas.v1.Users.Avatars.list({
-      pathParams: { user_id: user.id }
-    });
-    const token = avatars.find(
-      // FIXME Avatars are sometimes Files
-      (avatar) => 'uuid' in avatar && avatar.uuid === file.uuid
-    )?.token;
-    if (token) {
-      await Canvas.v1.Users.update({
-        pathParams: { id: user.id },
-        params: { 'user[avatar][token]': token }
-      });
-      spinner.succeed();
-    } else {
-      spinner.fail();
-    }
+  } catch (error) {
+    Log.error(Colors.error((error as Error).message));
   }
 }

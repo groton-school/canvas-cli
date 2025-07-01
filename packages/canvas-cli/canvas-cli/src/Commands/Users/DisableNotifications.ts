@@ -145,32 +145,40 @@ export async function run() {
     Log.info(
       `Disable ${categories.map((c) => Colors.value(c)).join(', ')} notifications for ${Colors.command(enrollment_type)} users:`
     );
-    const users = await Canvas.v1.Accounts.Users.list({
-      pathParams: { account_id },
-      searchParams: { enrollment_type }
-    });
-    for (const user of users) {
-      const spinner = ora().start(user.name);
-      const channels = await Canvas.v1.Users.CommunicationChannels.list({
-        pathParams: { user_id: user.id }
+    try {
+      const users = await Canvas.v1.Accounts.Users.list({
+        pathParams: { account_id },
+        searchParams: { enrollment_type }
       });
-      for (const channel of channels) {
-        for (const category of categories) {
-          (await Canvas.v1.Users.Self.CommunicationChannels.NotificationPreferenceCategories.update(
-            {
-              pathParams: {
-                communication_channel_id: channel.id,
-                category
-              },
-              params: {
-                'notification_preferences[frequency]': 'never',
-                as_user_id: user.id
-              }
+      for (const user of users) {
+        const spinner = ora().start(user.name);
+        try {
+          const channels = await Canvas.v1.Users.CommunicationChannels.list({
+            pathParams: { user_id: user.id }
+          });
+          for (const channel of channels) {
+            for (const category of categories) {
+              (await Canvas.v1.Users.Self.CommunicationChannels.NotificationPreferenceCategories.update(
+                {
+                  pathParams: {
+                    communication_channel_id: channel.id,
+                    category
+                  },
+                  params: {
+                    'notification_preferences[frequency]': 'never',
+                    as_user_id: user.id
+                  }
+                }
+              )) as unknown as object;
             }
-          )) as unknown as object;
+          }
+          spinner.succeed();
+        } catch (error) {
+          spinner.fail(Colors.error((error as Error).message));
         }
       }
-      spinner.succeed();
+    } catch (error) {
+      Log.error(Colors.error((error as Error).message));
     }
   }
 }
