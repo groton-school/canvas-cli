@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.2](https://github.com/groton-school/canvas-cli/compare/client/base/0.1.1...client/base/0.1.2) (2025-07-01)
+
+
+### Features
+
+* add fetchAllPages() to Base client ([b37699d](https://github.com/groton-school/canvas-cli/commit/b37699d50a5f6c8173fe51fac5dd0686aa229546))
+
 ## [0.1.1](https://github.com/groton-school/canvas-cli/compare/client/base/0.1.0...client/base/0.1.1) (2025-06-30)
 
 
