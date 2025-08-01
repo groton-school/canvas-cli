@@ -19,7 +19,7 @@ importers:
         version: 2.4.2
       '@groton/canvas-cli':
         specifier: workspace:*
-        version: link:packages/canvas-cli/canvas-cli
+        version: link:packages/cli/canvas-cli
       lerna:
         specifier: ^8.2.2
         version: 8.2.2(encoding@0.1.13)
@@ -30,11 +30,11 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
 
-  packages/canvas-cli/api:
+  packages/api/canvas-api:
     dependencies:
       '@groton/canvas-cli.client.base':
         specifier: workspace:*
-        version: link:../client/base
+        version: link:../../cli/client/base
       '@groton/canvas-cli.utilities':
         specifier: workspace:*
         version: link:../utilities
@@ -67,7 +67,119 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
 
-  packages/canvas-cli/canvas-cli:
+  packages/api/swagger-renderer:
+    dependencies:
+      '@battis/qui-cli.colors':
+        specifier: ^2.1.0
+        version: 2.1.0(@battis/qui-cli.plugin@2.4.2)
+      '@battis/qui-cli.core':
+        specifier: ^3.0.0
+        version: 3.0.0(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)
+      '@battis/qui-cli.log':
+        specifier: ^2.2.2
+        version: 2.2.2(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2))
+      '@battis/qui-cli.plugin':
+        specifier: ^2.4.2
+        version: 2.4.2
+      '@battis/qui-cli.root':
+        specifier: ^2.0.5
+        version: 2.0.5(@battis/qui-cli.plugin@2.4.2)
+      '@battis/qui-cli.structured':
+        specifier: ^0.1.4
+        version: 0.1.4(@battis/qui-cli.plugin@2.4.2)
+      handlebars:
+        specifier: ^4.7.8
+        version: 4.7.8
+      node-fetch:
+        specifier: ^3.3.2
+        version: 3.3.2
+      ora:
+        specifier: ^8.2.0
+        version: 8.2.0
+      p-queue:
+        specifier: ^8.1.0
+        version: 8.1.0
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-jsdoc:
+        specifier: ^1.3.2
+        version: 1.3.2(prettier@3.5.3)
+      prettier-plugin-organize-imports:
+        specifier: ^4.1.0
+        version: 4.1.0(prettier@3.5.3)(typescript@5.8.3)
+    devDependencies:
+      '@battis/descriptive-types':
+        specifier: ^0.2.3
+        version: 0.2.3
+      '@battis/typescript-tricks':
+        specifier: ^0.7.4
+        version: 0.7.4
+      '@groton/swagger-spec-ts':
+        specifier: workspace:*
+        version: link:../swagger-spec-ts
+      '@tsconfig/node20':
+        specifier: ^20.1.6
+        version: 20.1.6
+      commit-and-tag-version:
+        specifier: ^12.5.1
+        version: 12.5.1
+      del-cli:
+        specifier: ^6.0.0
+        version: 6.0.0
+      npm-run-all:
+        specifier: ^4.1.5
+        version: 4.1.5
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+
+  packages/api/swagger-spec-ts:
+    devDependencies:
+      '@battis/descriptive-types':
+        specifier: ^0.2.3
+        version: 0.2.3
+      '@battis/typescript-tricks':
+        specifier: ^0.7.4
+        version: 0.7.4
+      '@tsconfig/node20':
+        specifier: ^20.1.6
+        version: 20.1.6
+      commit-and-tag-version:
+        specifier: ^12.5.1
+        version: 12.5.1
+      del-cli:
+        specifier: ^6.0.0
+        version: 6.0.0
+      npm-run-all:
+        specifier: ^4.1.5
+        version: 4.1.5
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+
+  packages/api/utilities:
+    devDependencies:
+      '@battis/typescript-tricks':
+        specifier: ^0.7.4
+        version: 0.7.4
+      '@tsconfig/node20':
+        specifier: ^20.1.6
+        version: 20.1.6
+      commit-and-tag-version:
+        specifier: ^12.5.1
+        version: 12.5.1
+      del-cli:
+        specifier: ^6.0.0
+        version: 6.0.0
+      npm-run-all:
+        specifier: ^4.1.5
+        version: 4.1.5
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+
+  packages/cli/canvas-cli:
     dependencies:
       '@battis/qui-cli.colors':
         specifier: ^2.1.0
@@ -128,11 +240,11 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
 
-  packages/canvas-cli/client/base:
+  packages/cli/client/base:
     dependencies:
       '@groton/canvas-cli.utilities':
         specifier: workspace:*
-        version: link:../../utilities
+        version: link:../../../api/utilities
     devDependencies:
       '@battis/descriptive-types':
         specifier: ^0.2.3
@@ -159,7 +271,7 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
 
-  packages/canvas-cli/client/node-cli:
+  packages/cli/client/node-cli:
     dependencies:
       '@battis/qui-cli.colors':
         specifier: ^2.1.0
@@ -172,7 +284,7 @@ importers:
         version: link:../base
       '@groton/canvas-cli.utilities':
         specifier: workspace:*
-        version: link:../../utilities
+        version: link:../../../api/utilities
       '@oauth2-cli/canvas':
         specifier: workspace:*
         version: link:../../../oauth2-cli/canvas
@@ -202,11 +314,11 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
 
-  packages/canvas-cli/client/qui-cli:
+  packages/cli/client/qui-cli:
     dependencies:
       '@groton/canvas-cli.api':
         specifier: workspace:*
-        version: link:../../api
+        version: link:../../../api/canvas-api
       '@groton/canvas-cli.client.node-cli':
         specifier: workspace:*
         version: link:../node-cli
@@ -248,94 +360,6 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
 
-  packages/canvas-cli/swagger-renderer:
-    dependencies:
-      '@battis/qui-cli.colors':
-        specifier: ^2.1.0
-        version: 2.1.0(@battis/qui-cli.plugin@2.4.2)
-      '@battis/qui-cli.core':
-        specifier: ^3.0.0
-        version: 3.0.0(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)
-      '@battis/qui-cli.log':
-        specifier: ^2.2.2
-        version: 2.2.2(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2))
-      '@battis/qui-cli.plugin':
-        specifier: ^2.4.2
-        version: 2.4.2
-      '@battis/qui-cli.root':
-        specifier: ^2.0.5
-        version: 2.0.5(@battis/qui-cli.plugin@2.4.2)
-      '@battis/qui-cli.structured':
-        specifier: ^0.1.4
-        version: 0.1.4(@battis/qui-cli.plugin@2.4.2)
-      handlebars:
-        specifier: ^4.7.8
-        version: 4.7.8
-      node-fetch:
-        specifier: ^3.3.2
-        version: 3.3.2
-      ora:
-        specifier: ^8.2.0
-        version: 8.2.0
-      p-queue:
-        specifier: ^8.1.0
-        version: 8.1.0
-      prettier:
-        specifier: 3.5.3
-        version: 3.5.3
-      prettier-plugin-jsdoc:
-        specifier: ^1.3.2
-        version: 1.3.2(prettier@3.5.3)
-      prettier-plugin-organize-imports:
-        specifier: ^4.1.0
-        version: 4.1.0(prettier@3.5.3)(typescript@5.8.3)
-    devDependencies:
-      '@battis/descriptive-types':
-        specifier: ^0.2.3
-        version: 0.2.3
-      '@battis/typescript-tricks':
-        specifier: ^0.7.4
-        version: 0.7.4
-      '@groton/swagger-spec-ts':
-        specifier: workspace:*
-        version: link:../../swagger-spec-ts
-      '@tsconfig/node20':
-        specifier: ^20.1.6
-        version: 20.1.6
-      commit-and-tag-version:
-        specifier: ^12.5.1
-        version: 12.5.1
-      del-cli:
-        specifier: ^6.0.0
-        version: 6.0.0
-      npm-run-all:
-        specifier: ^4.1.5
-        version: 4.1.5
-      typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
-
-  packages/canvas-cli/utilities:
-    devDependencies:
-      '@battis/typescript-tricks':
-        specifier: ^0.7.4
-        version: 0.7.4
-      '@tsconfig/node20':
-        specifier: ^20.1.6
-        version: 20.1.6
-      commit-and-tag-version:
-        specifier: ^12.5.1
-        version: 12.5.1
-      del-cli:
-        specifier: ^6.0.0
-        version: 6.0.0
-      npm-run-all:
-        specifier: ^4.1.5
-        version: 4.1.5
-      typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
-
   packages/msar/canvas-import:
     dependencies:
       '@battis/qui-cli.colors':
@@ -355,7 +379,7 @@ importers:
         version: 2.4.2
       '@groton/canvas-cli.client.qui-cli':
         specifier: workspace:*
-        version: link:../../canvas-cli/client/qui-cli
+        version: link:../../cli/client/qui-cli
       '@inquirer/prompts':
         specifier: ^7.5.3
         version: 7.5.3(@types/node@24.0.6)
@@ -555,30 +579,6 @@ importers:
         specifier: ^0.2.0
         version: 0.2.0(ejs@3.1.10)
     devDependencies:
-      '@tsconfig/node20':
-        specifier: ^20.1.6
-        version: 20.1.6
-      commit-and-tag-version:
-        specifier: ^12.5.1
-        version: 12.5.1
-      del-cli:
-        specifier: ^6.0.0
-        version: 6.0.0
-      npm-run-all:
-        specifier: ^4.1.5
-        version: 4.1.5
-      typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
-
-  packages/swagger-spec-ts:
-    devDependencies:
-      '@battis/descriptive-types':
-        specifier: ^0.2.3
-        version: 0.2.3
-      '@battis/typescript-tricks':
-        specifier: ^0.7.4
-        version: 0.7.4
       '@tsconfig/node20':
         specifier: ^20.1.6
         version: 20.1.6

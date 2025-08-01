@@ -2,11 +2,11 @@
   "name": "@groton/canvas-cli.client.qui-cli",
   "version": "0.0.2",
   "description": "Node command-line interface client for @groton/canvas-cli.api as a @battis/qui-cli.plugin",
-  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/client/qui-cli#readme",
+  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/cli/client/qui-cli#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/groton-school/canvas-cli.git",
-    "directory": "packages/canvas-cli/client/qui-cli"
+    "directory": "packages/cli/client/qui-cli"
   },
   "author": {
     "name": "Seth Battis",

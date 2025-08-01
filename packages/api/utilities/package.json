@@ -1,12 +1,12 @@
 {
-  "name": "@groton/swagger-spec-ts",
-  "version": "0.1.0",
-  "description": "Translation of Swagger specification to TypeScript objects",
-  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/swagger-spec-ts#readme",
+  "name": "@groton/canvas-cli.utilities",
+  "version": "0.1.2",
+  "description": "Utility functions to support @groton/canvas-cli.api and its clients",
+  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/api/utilities#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/groton-school/canvas-cli.git",
-    "directory": "packages/swagger-spec-ts"
+    "directory": "packages/api/utilities"
   },
   "author": {
     "name": "Seth Battis",
@@ -23,7 +23,6 @@
     "release": "commit-and-tag-version"
   },
   "devDependencies": {
-    "@battis/descriptive-types": "^0.2.3",
     "@battis/typescript-tricks": "^0.7.4",
     "@tsconfig/node20": "^20.1.6",
     "commit-and-tag-version": "^12.5.1",
