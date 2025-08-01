@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.0](https://github.com/groton-school/canvas-cli/compare/utilities/0.1.2...utilities/0.3.0) (2025-08-01)
+
+### Deprecation
+
+This package has been deprecated in favor of the more straight-forwardly-named [@groton/canvas-api.utilities](https://www.npmjs.com/package/@groton/canvas-api.utilities). Version numbering is continues between packages (@groton/canvas-cli.utilities@0.3.0 is deprecated, while @groton/canvas-api.utilities@0.3.0 is the initial release of that package).
+
 ## [0.1.2](https://github.com/groton-school/canvas-cli/compare/utilities/0.1.1...utilities/0.1.2) (2025-06-21)
 
 ### Bug Fixes
