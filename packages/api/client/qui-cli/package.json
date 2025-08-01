@@ -1,6 +1,6 @@
 {
   "name": "@groton/canvas-api.client.qui-cli",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Node command-line interface client for @groton/canvas-api as a @battis/qui-cli.plugin",
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/api/client/qui-cli#readme",
   "repository": {

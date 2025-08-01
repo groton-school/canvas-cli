@@ -1,6 +1,6 @@
 {
   "name": "@groton/canvas-cli.client.qui-cli",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/shims/canvas-cli.client.qui-cli#readme",
   "repository": {
     "type": "git",
