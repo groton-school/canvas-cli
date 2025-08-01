@@ -2,10 +2,10 @@ packages:
   - packages/*
   - '!packages/api'
   - packages/api/*
+  - '!packages/api/client'
+  - packages/api/client/*
   - '!packages/cli'
   - packages/cli/*
-  - '!packages/cli/client'
-  - packages/cli/client/*
   - '!packages/msar'
   - packages/msar/*
   - '!packages/oauth2-cli'
