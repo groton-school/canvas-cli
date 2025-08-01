@@ -1,5 +1,5 @@
 import '@battis/qui-cli.env';
-import { Canvas } from '@groton/canvas-cli.client.qui-cli';
+import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import * as Imported from '@msar/types.import';
 import { EventEmitter } from 'node:events';
 

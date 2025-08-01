@@ -1,4 +1,4 @@
-import { Masquerade } from '@groton/canvas-cli.client.base';
+import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
 export type templated_file_for_importing_rubricSearchParameters = Masquerade;

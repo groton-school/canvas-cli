@@ -1,5 +1,5 @@
 import { JSONObject } from '@battis/typescript-tricks';
-import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 import { resultUrlStringTheurltotheresultthatwascreated } from '../../../../../Overrides.js';
 

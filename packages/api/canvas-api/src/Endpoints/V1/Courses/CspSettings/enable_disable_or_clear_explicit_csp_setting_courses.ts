@@ -1,4 +1,4 @@
-import { Masquerade } from '@groton/canvas-cli.client.base';
+import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
 export type enable_disable_or_clear_explicit_csp_setting_coursesPathParameters =

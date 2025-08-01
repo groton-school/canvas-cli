@@ -1,4 +1,4 @@
-import { Masquerade } from '@groton/canvas-cli.client.base';
+import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
 export type show_temporary_enrollment_recipient_and_provider_statusPathParameters =

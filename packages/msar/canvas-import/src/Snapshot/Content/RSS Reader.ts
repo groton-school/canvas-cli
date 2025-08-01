@@ -1,6 +1,6 @@
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
-import { Canvas } from '@groton/canvas-cli.client.qui-cli';
+import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import * as Imported from '@msar/types.import';
 import { Preferences } from '../../App/index.js';
 

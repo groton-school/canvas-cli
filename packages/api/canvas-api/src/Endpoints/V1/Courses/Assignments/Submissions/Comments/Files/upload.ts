@@ -2,7 +2,7 @@ import {
   FileLocation,
   Masquerade,
   UploadResponse
-} from '@groton/canvas-cli.client.base';
+} from '@groton/canvas-api.client.base';
 import { client } from '../../../../../../../Client.js';
 import { File } from '../../../../../../../Resources/Files.js';
 

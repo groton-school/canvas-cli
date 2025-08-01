@@ -3,13 +3,13 @@ import { Colors } from '@battis/qui-cli.colors';
 import { Env } from '@battis/qui-cli.env';
 import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
-import * as Canvas from '@groton/canvas-cli.api';
-import { Client } from '@groton/canvas-cli.client.node-cli';
+import * as Canvas from '@groton/canvas-api';
+import { Client } from '@groton/canvas-api.client.node-cli';
 import path from 'node:path';
 
-export { client } from '@groton/canvas-cli.api/dist/Client.js';
-export * from '@groton/canvas-cli.api/dist/Endpoints/index.js';
-export * from '@groton/canvas-cli.api/dist/Resources/index.js';
+export { client } from '@groton/canvas-api/dist/Client.js';
+export * from '@groton/canvas-api/dist/Endpoints/index.js';
+export * from '@groton/canvas-api/dist/Resources/index.js';
 
 export type Configuration = Plugin.Configuration & {
   instanceUrl?: URLString;

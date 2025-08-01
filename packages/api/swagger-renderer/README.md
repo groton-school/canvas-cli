@@ -1,13 +1,13 @@
-# @groton/canvas-cli.swagger-renderer
+# @groton/canvas-api.swagger-renderer
 
 Render Canvas LMS Swagger 1.0 API documentation as TypeScript client
 
-[![npm version](https://badge.fury.io/js/@groton%2Fcanvas-cli.swagger-renderer.svg)](https://www.npmjs.com/package/@groton/canvas-cli.swagger-renderer)
+[![npm version](https://badge.fury.io/js/@groton%2Fcanvas-api.swagger-renderer.svg)](https://www.npmjs.com/package/@groton/canvas-api.swagger-renderer)
 
 ## Install
 
 ```sh
-npm install @groton/canvas-cli.swagger-renderer
+npm install @groton/canvas-api.swagger-renderer
 ```
 
 ## Usage
@@ -30,7 +30,7 @@ Render downloaded spec (from `./spec/` and to `./src/Resources/` and `./src/Endp
 swagger-renderer render
 ```
 
-See [@groton/canvas-cli.api's scripts](https://github.com/groton-school/canvas-cli/blob/main/packages/canvas-cli/api/package.json) for an example use.
+See [@groton/canvas-api's scripts](https://github.com/groton-school/canvas-cli/blob/main/packages/api/canvas-api/package.json) for an example use.
 
 ## Annotation
 
@@ -40,11 +40,11 @@ See [@groton/canvas-cli.api's scripts](https://github.com/groton-school/canvas-c
 swagger-renderer render --map
 ```
 
-The annotation types are defined in [./src/Render/Annotation.ts](https://github.com/groton-school/canvas-cli/blob/main/packages/canvas-cli/swagger-renderer/src/Render/Annotation.ts) and [./src/Render/TSAnnotation.ts](https://github.com/groton-school/canvas-cli/blob/main/packages/canvas-cli/swagger-renderer/src/Render/TSAnnotation.ts). These annotation types are useful to understand when defining overrides.
+The annotation types are defined in [./src/Render/Annotation.ts](https://github.com/groton-school/canvas-cli/blob/main/packages/api/swagger-renderer/src/Render/Annotation.ts) and [./src/Render/TSAnnotation.ts](https://github.com/groton-school/canvas-cli/blob/main/packages/api/swagger-renderer/src/Render/TSAnnotation.ts). These annotation types are useful to understand when defining overrides.
 
 ## Overrides
 
-Due to eccentricities in the documentation of the Canvas LMS API, it is desireable to override the automated specification in a number of respects. See [@groton/canvas-cli.api's known issues](https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/api#known-issues) for discussion of a real-world example.
+Due to eccentricities in the documentation of the Canvas LMS API, it is desireable to override the automated specification in a number of respects. See [@groton/canvas-api's known issues](https://github.com/groton-school/canvas-cli/tree/main/packages/api/canvas-api#known-issues) for discussion of a real-world example.
 
 Overrides for `swagger-renderer` are defined in a JSON file. The object has three main properties.
 
@@ -95,7 +95,7 @@ The `tsTypes` property is a hash of type values provided in the Swagger specific
 
 ### `operations`
 
-The `operations` property is a hash of Swagger specification operation nicknames and [`Partial<AnnotatedOperation>`](https://github.com/groton-school/canvas-cli/blob/main/packages/canvas-cli/swagger-renderer/src/Render/Annotation.ts) definitions to supplement or replace missing or deficient documentation.
+The `operations` property is a hash of Swagger specification operation nicknames and [`Partial<AnnotatedOperation>`](https://github.com/groton-school/canvas-cli/blob/main/packages/api/swagger-renderer/src/Render/Annotation.ts) definitions to supplement or replace missing or deficient documentation.
 
 ```json
 {

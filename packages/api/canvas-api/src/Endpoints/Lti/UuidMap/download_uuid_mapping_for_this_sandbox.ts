@@ -1,4 +1,4 @@
-import { Masquerade } from '@groton/canvas-cli.client.base';
+import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../Client.js';
 
 export type download_uuid_mapping_for_this_sandboxSearchParameters = Masquerade;

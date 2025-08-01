@@ -1,4 +1,4 @@
-import { Masquerade } from '@groton/canvas-cli.client.base';
+import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 
 export type lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesPathParameters =

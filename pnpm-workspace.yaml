@@ -1,12 +1,15 @@
 packages:
-  - 'packages/*'
+  - packages/*
   - '!packages/api'
-  - 'packages/api/*'
+  - packages/api/*
   - '!packages/cli'
-  - 'packages/cli/*'
+  - packages/cli/*
   - '!packages/cli/client'
-  - 'packages/cli/client/*'
+  - packages/cli/client/*
   - '!packages/msar'
-  - 'packages/msar/*'
+  - packages/msar/*
   - '!packages/oauth2-cli'
-  - 'packages/oauth2-cli/*'
+  - packages/oauth2-cli/*
+
+onlyBuiltDependencies:
+  - nx

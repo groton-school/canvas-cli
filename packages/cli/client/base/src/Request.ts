@@ -1,5 +1,5 @@
 import { JSONObject } from '@battis/typescript-tricks';
-import { stringify } from '@groton/canvas-cli.utilities';
+import { stringify } from '@groton/canvas-api.utilities';
 import { FetchFunction, FetchInit } from './Fetch.js';
 
 type EndpointParameters = {

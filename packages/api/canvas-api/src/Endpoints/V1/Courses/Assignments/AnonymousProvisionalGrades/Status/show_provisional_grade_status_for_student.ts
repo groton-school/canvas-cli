@@ -1,4 +1,4 @@
-import { Masquerade } from '@groton/canvas-cli.client.base';
+import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../../Client.js';
 
 export type show_provisional_grade_status_for_studentPathParameters = {

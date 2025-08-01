@@ -1,20 +1,20 @@
-# @groton/canvas-cli.utilities
+# @groton/canvas-api.utilities
 
-Utility functions to support @groton/canvas-cli.api and its clients
+Utility functions to support @groton/canvas-api and its clients
 
-[![npm version](https://badge.fury.io/js/@groton%2Fcanvas-cli.utilities.svg)](https://www.npmjs.com/package/@groton/canvas-cli.utilities)
+[![npm version](https://badge.fury.io/js/@groton%2Fcanvas-api.utilities.svg)](https://www.npmjs.com/package/@groton/canvas-api.utilities)
 
 ## Install
 
 ```sh
-npm install @groton/canvas-cli.utilities
+npm install @groton/canvas-api.utilities
 ```
 
 ## Usage
 
 ```ts
-import * as Canvas from '@groton/canvas-cli.api';
-import * as Utilities from '@groton/canvas-cli.utilities';
+import * as Canvas from '@groton/canvas-api';
+import * as Utilities from '@groton/canvas-api.utilities';
 
 // ...
 // Canvas API initialization, etc.

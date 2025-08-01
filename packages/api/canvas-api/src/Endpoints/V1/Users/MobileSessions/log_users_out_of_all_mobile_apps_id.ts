@@ -1,4 +1,4 @@
-import { Masquerade } from '@groton/canvas-cli.client.base';
+import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
 export type log_users_out_of_all_mobile_apps_idPathParameters = {

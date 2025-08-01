@@ -1,19 +1,19 @@
-# @groton/canvas-cli.client.qui-cli
+# @groton/canvas-api.client.qui-cli
 
-Node command-line interface client for @groton/canvas-cli.api as a @battis/qui-cli.plugin
+Node command-line interface client for @groton/canvas-api as a @battis/qui-cli.plugin
 
-[![npm version](https://badge.fury.io/js/@groton%2Fcanvas-cli.client.qui-cli.svg)](https://www.npmjs.com/package/@groton/canvas-cli.client.qui-cli)
+[![npm version](https://badge.fury.io/js/@groton%2Fcanvas-api.client.qui-cli.svg)](https://www.npmjs.com/package/@groton/canvas-api.client.qui-cli)
 
 ## Install
 
 ```sh
-npm install @groton/canvas-cli.client.qui-cli @battis/qui-cli
+npm install @groton/canvas-api.client.qui-cli @battis/qui-cli
 ```
 
 ## Usage
 
 ```ts
-import { Canvas } from '@groton/canvas-cli.client.qui-cli';
+import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import CLI from '@battis/qui-cli';
 
 // initialize client from command-line args or enviroment

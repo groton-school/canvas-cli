@@ -2,7 +2,7 @@ import { DateTimeString, PathString } from '@battis/descriptive-types';
 import { Colors } from '@battis/qui-cli.colors';
 import { Log } from '@battis/qui-cli.log';
 import { ArrayElement, JSONValue } from '@battis/typescript-tricks';
-import { Canvas } from '@groton/canvas-cli.client.qui-cli';
+import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import * as Archive from '@msar/types.archive';
 import * as Imported from '@msar/types.import';
 import crypto from 'node:crypto';

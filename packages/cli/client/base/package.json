@@ -1,7 +1,7 @@
 {
-  "name": "@groton/canvas-cli.client.base",
+  "name": "@groton/canvas-api.client.base",
   "version": "0.1.2",
-  "description": "Interfaces and types to implement a @groton/canvas-cli.api client",
+  "description": "Interfaces and types to implement a @groton/canvas-api client",
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/cli/client/base#readme",
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
     "release": "commit-and-tag-version"
   },
   "dependencies": {
-    "@groton/canvas-cli.utilities": "workspace:*"
+    "@groton/canvas-api.utilities": "workspace:*"
   },
   "devDependencies": {
     "@battis/descriptive-types": "^0.2.3",

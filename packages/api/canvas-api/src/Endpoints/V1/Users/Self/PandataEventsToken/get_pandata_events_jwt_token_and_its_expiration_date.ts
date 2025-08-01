@@ -1,4 +1,4 @@
-import { Masquerade } from '@groton/canvas-cli.client.base';
+import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 
 export type get_pandata_events_jwt_token_and_its_expiration_dateSearchParameters =

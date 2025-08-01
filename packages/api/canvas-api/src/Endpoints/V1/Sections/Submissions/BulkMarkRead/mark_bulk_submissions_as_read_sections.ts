@@ -1,4 +1,4 @@
-import { Masquerade } from '@groton/canvas-cli.client.base';
+import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 
 export type mark_bulk_submissions_as_read_sectionsPathParameters = {

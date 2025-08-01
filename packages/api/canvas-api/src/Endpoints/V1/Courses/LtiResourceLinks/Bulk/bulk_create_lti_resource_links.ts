@@ -1,4 +1,4 @@
-import { Masquerade } from '@groton/canvas-cli.client.base';
+import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 import { Hash } from '../../../../../Overrides.js';
 import { LtiResourceLink } from '../../../../../Resources/LtiResourceLinks.js';

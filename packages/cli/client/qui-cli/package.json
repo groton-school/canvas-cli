@@ -1,7 +1,7 @@
 {
-  "name": "@groton/canvas-cli.client.qui-cli",
+  "name": "@groton/canvas-api.client.qui-cli",
   "version": "0.0.2",
-  "description": "Node command-line interface client for @groton/canvas-cli.api as a @battis/qui-cli.plugin",
+  "description": "Node command-line interface client for @groton/canvas-api as a @battis/qui-cli.plugin",
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/cli/client/qui-cli#readme",
   "repository": {
     "type": "git",
@@ -23,8 +23,8 @@
     "release": "commit-and-tag-version"
   },
   "dependencies": {
-    "@groton/canvas-cli.api": "workspace:*",
-    "@groton/canvas-cli.client.node-cli": "workspace:*"
+    "@groton/canvas-api": "workspace:*",
+    "@groton/canvas-api.client.node-cli": "workspace:*"
   },
   "devDependencies": {
     "@battis/descriptive-types": "^0.2.3",

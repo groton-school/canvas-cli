@@ -31,7 +31,7 @@
     "@battis/qui-cli.env": "^2.1.2",
     "@battis/qui-cli.log": "^2.2.2",
     "@battis/qui-cli.plugin": "^2.4.2",
-    "@groton/canvas-cli.client.qui-cli": "workspace:*",
+    "@groton/canvas-api.client.qui-cli": "workspace:*",
     "@inquirer/prompts": "^7.8.0",
     "@msar/output": "^0.1.4",
     "@msar/types.archive": "^0.1.5",

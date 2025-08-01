@@ -1,4 +1,4 @@
-import { Masquerade } from '@groton/canvas-cli.client.base';
+import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 
 export type set_extensions_for_student_assignment_submissionsPathParameters = {

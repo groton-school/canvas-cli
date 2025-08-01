@@ -1,4 +1,4 @@
-import { Masquerade } from '@groton/canvas-cli.client.base';
+import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../../../Client.js';
 
 export type mark_rubric_assessments_as_read_courses_rubric_assessmentsPathParameters =

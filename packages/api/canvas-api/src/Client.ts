@@ -1,4 +1,4 @@
-import * as Client from "@groton/canvas-cli.client.base";
+import * as Client from "@groton/canvas-api.client.base";
 
 let _client: Client.Base | undefined = undefined;
 

@@ -1,23 +1,23 @@
-# @groton/canvas-cli.api
+# @groton/canvas-api
 
 Typed access to Canvas LMS API with embedded documentation
 
-[![npm version](https://badge.fury.io/js/@groton%2Fcanvas-cli.api.svg)](https://www.npmjs.com/package/@groton/canvas-cli.api)
+[![npm version](https://badge.fury.io/js/@groton%2Fcanvas-api.svg)](https://www.npmjs.com/package/@groton/canvas-api)
 
 ## Clients
 
 This started as a component of [@groton/canvas-cli](https://www.npmjs.com/package/@groton/canvas-cli), a command-line set of administrative scripts that I have banged together. However, access to the inline documentation and IntelliSense autocompletions in a few front-end applications evolved this package into an API-only package that depends on purpose-dependent client for use:
 
-- [@groton/canvas-cli.client.base](https://www.npmjs.com/package/@groton/canvas-cli.client.base) provides interfaces and types to be used by any implementing classes.
-- [@groton/canvas-cli.client.node-cli](https://www.npmjs.com/package/@groton/canvas-cli.client.node-cli) is a client for use in Node command-line apps, which takes advantage of the [@oauth2-cli/canvas](https://www.npmjs.com/package/@oauth2-cli/canvas) to handle authentication to a Canvas LMS instance from the command-line.
-- [@groton/canvas-cli.client.qui-cli](https://www.npmjs.com/package/@groton/canvas-cli.client.qui-clii) encapsulates the Node client in a [@battis/qui-cli.plugin](https://www.npmjs.com/package/@battis/qui-cli.plugin) for ease of use within that small ecosystme for rapidly developing Node command-line apps.
+- [@groton/canvas-api.client.base](https://www.npmjs.com/package/@groton/canvas-api.client.base) provides interfaces and types to be used by any implementing classes.
+- [@groton/canvas-api.client.node-cli](https://www.npmjs.com/package/@groton/canvas-api.client.node-cli) is a client for use in Node command-line apps, which takes advantage of the [@oauth2-cli/canvas](https://www.npmjs.com/package/@oauth2-cli/canvas) to handle authentication to a Canvas LMS instance from the command-line.
+- [@groton/canvas-api.client.qui-cli](https://www.npmjs.com/package/@groton/canvas-api.client.qui-clii) encapsulates the Node client in a [@battis/qui-cli.plugin](https://www.npmjs.com/package/@battis/qui-cli.plugin) for ease of use within that small ecosystme for rapidly developing Node command-line apps.
 
 ## Install
 
 Using the Node client.
 
 ```sh
-npm install @groton/canvas-cli.api @groton/canvas-cli.client.node-cli
+npm install @groton/canvas-api @groton/canvas-api.client.node-cli
 ```
 
 ## Usage
@@ -25,8 +25,8 @@ npm install @groton/canvas-cli.api @groton/canvas-cli.client.node-cli
 Again, using the Node client. See [@groton/canvas-cli](https://www.npmjs.com/package/@groton/canvas-cli) for a working example of using the `@battis/qui-cli` encapsulation.
 
 ```ts
-import * as Canvas from '@groton/canvas-cli.api';
-import { Client } from '@groton/canvas-cli.client.node-cli';
+import * as Canvas from '@groton/canvas-api';
+import { Client } from '@groton/canvas-api.client.node-cli';
 
 // initialize the client from environment variables
 Canvas.init(
@@ -48,7 +48,7 @@ for (const user of await Canvas.v1.Accounts.Users.list({
 
 ### Mapping Canvas LMS documentation to TypeScript API
 
-The automatically-generated documentation provided by the Canvas LMS API is automatically processed by [@groton/canvas-cli.swagger-renderer](https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/swagger-renderer) to generate TypeScript API.
+The automatically-generated documentation provided by the Canvas LMS API is automatically processed by [@groton/canvas-api.swagger-renderer](https://github.com/groton-school/canvas-cli/tree/main/packages/api/swagger-renderer) to generate TypeScript API.
 
 #### Resources
 
@@ -109,4 +109,4 @@ This is under steady development, as it underpins my own administrative and user
 
 Be aware that, due to eccentricities in the documentation of the Canvas LMS API, a number of the typing decisions have been manually overriden to provide empirically more accurate type definitions. This work is on-going and incomplete (and should end up in a pull request to the LMS repo).
 
-[`overrides.json`](https://github.com/groton-school/canvas-cli/blob/main/packages/canvas-cli/api/overrides.json) documents these eccentricities, is supported by [`src/Overrides.ts`]() and is processed by [@groton/canvas-cli.swagger-renderer](https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/swagger-renderer) to generate the contents of [`src/Resources/`](https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/api/src/Resources) and [`src/Endpoints/`](https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli/api/src/Endpoints).
+[`overrides.json`](https://github.com/groton-school/canvas-cli/blob/main/packages/api/canvas-api/overrides.json) documents these eccentricities, is supported by [`src/Overrides.ts`]() and is processed by [@groton/canvas-api.swagger-renderer](https://github.com/groton-school/canvas-cli/tree/main/packages/api/swagger-renderer) to generate the contents of [`src/Resources/`](https://github.com/groton-school/canvas-cli/tree/main/packages/api/canvas-api/src/Resources) and [`src/Endpoints/`](https://github.com/groton-school/canvas-cli/tree/main/packages/api/canvas-api/src/Endpoints).

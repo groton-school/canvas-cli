@@ -1,4 +1,4 @@
-import { Masquerade, Paginated } from '@groton/canvas-cli.client.base';
+import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import { Integer } from '../../../../Overrides.js';
 import { Admin } from '../../../../Resources/Admins.js';

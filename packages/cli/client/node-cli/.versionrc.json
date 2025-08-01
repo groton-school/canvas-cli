@@ -1,5 +1,5 @@
 {
   "path": ".",
   "tag-prefix": "client/node-cli/",
-  "releaseCommitMessageFormat": "chore: release @groton/canvas-cli.clent.node-cli@{{currentTag}}"
+  "releaseCommitMessageFormat": "chore: release @groton/canvas-api.clent.node-cli@{{currentTag}}"
 }

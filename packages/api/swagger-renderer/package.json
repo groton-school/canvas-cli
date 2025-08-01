@@ -1,5 +1,5 @@
 {
-  "name": "@groton/canvas-cli.swagger-renderer",
+  "name": "@groton/canvas-api.swagger-renderer",
   "version": "0.0.4",
   "description": "Render Canvas LMS Swagger 1.0 API documentation as TypeScript client",
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/api/swagger-renderer#readme",

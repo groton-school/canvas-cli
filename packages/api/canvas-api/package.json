@@ -1,5 +1,5 @@
 {
-  "name": "@groton/canvas-cli.api",
+  "name": "@groton/canvas-api",
   "version": "0.2.0",
   "description": "Typed access to Canvas LMS API with embedded documentation",
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/api/canvas-api#readme",
@@ -29,15 +29,15 @@
     "release": "commit-and-tag-version"
   },
   "dependencies": {
-    "@groton/canvas-cli.client.base": "workspace:*",
-    "@groton/canvas-cli.utilities": "workspace:*",
+    "@groton/canvas-api.client.base": "workspace:*",
+    "@groton/canvas-api.utilities": "workspace:*",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "@battis/descriptive-types": "^0.2.3",
     "@battis/prettier-config": "^1.6.4",
     "@battis/typescript-tricks": "^0.7.4",
-    "@groton/canvas-cli.swagger-renderer": "workspace:*",
+    "@groton/canvas-api.swagger-renderer": "workspace:*",
     "@prettier/plugin-xml": "^3.4.2",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@tsconfig/node20": "^20.1.6",

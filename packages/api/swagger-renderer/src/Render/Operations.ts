@@ -72,14 +72,14 @@ export function annotateOperations({
             tsPaginated = true;
             tsImports.push({
               type: 'Paginated',
-              packagePath: '@groton/canvas-cli.client.base'
+              packagePath: '@groton/canvas-api.client.base'
             });
           }
           const tsUpload = tsName === 'upload';
           if (tsUpload) {
             tsImports.push({
               type: 'FileLocation',
-              packagePath: '@groton/canvas-cli.client.base'
+              packagePath: '@groton/canvas-api.client.base'
             });
           }
 

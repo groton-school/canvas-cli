@@ -1,5 +1,5 @@
 import { JSONObject } from '@battis/typescript-tricks';
-import { isError } from '@groton/canvas-cli.utilities';
+import { isError } from '@groton/canvas-api.utilities';
 import { Base } from './Base.js';
 import { FetchEndpoint, FetchFunction, FetchInit } from './Fetch.js';
 import { constructInit, flattenEndpoint } from './Request.js';

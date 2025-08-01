@@ -4,7 +4,7 @@ import '@battis/qui-cli.env';
 import { Log } from '@battis/qui-cli.log';
 import * as Plugin from '@battis/qui-cli.plugin';
 import { Root } from '@battis/qui-cli.root';
-import { Canvas } from '@groton/canvas-cli.client.qui-cli';
+import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import { parse } from 'csv-parse/sync';
 import fs from 'node:fs';
 import path from 'node:path';

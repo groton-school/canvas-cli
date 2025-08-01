@@ -1,22 +1,22 @@
-# @groton/canvas-cli.client.node-cli
+# @groton/canvas-api.client.node-cli
 
-Node command-line interface client for @groton/canvas-cli.api
+Node command-line interface client for @groton/canvas-api
 
-[![npm version](https://badge.fury.io/js/@groton%2Fcanvas-cli.client.node-cli.svg)](https://www.npmjs.com/package/@groton/canvas-cli.client.node-cli)
+[![npm version](https://badge.fury.io/js/@groton%2Fcanvas-api.client.node-cli.svg)](https://www.npmjs.com/package/@groton/canvas-api.client.node-cli)
 
-See [@groton/canvas-cli.client.qui-cli](https://www.npmjs.com/package/@groton/canvas-cli.client.qui-cli) for a somewhat more robust and easily reusable encapsulation of this client.
+See [@groton/canvas-api.client.qui-cli](https://www.npmjs.com/package/@groton/canvas-api.client.qui-cli) for a somewhat more robust and easily reusable encapsulation of this client.
 
 ## Install
 
 ```sh
-npm install @groton/canvas-cli.api @groton/canvas-cli.client.node-cli
+npm install @groton/canvas-api @groton/canvas-api.client.node-cli
 ```
 
 ## Usage
 
 ```ts
-import * as Canvas from '@groton/canvas-cli.api';
-import { Client } from '@groton/canvas-cli.client.node-cli';
+import * as Canvas from '@groton/canvas-api';
+import { Client } from '@groton/canvas-api.client.node-cli';
 
 // initialize the client from environment variables
 Canvas.init(
