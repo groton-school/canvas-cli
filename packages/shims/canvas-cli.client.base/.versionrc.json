@@ -1,0 +1,5 @@
+{
+  "path": ".",
+  "tag-prefix": "client/base/",
+  "releaseCommitMessageFormat": "chore: release @groton/canvas-api.base-client.base@{{currentTag}}"
+}

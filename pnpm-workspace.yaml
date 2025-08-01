@@ -10,6 +10,7 @@ packages:
   - packages/msar/*
   - '!packages/oauth2-cli'
   - packages/oauth2-cli/*
+  - packages/shims/*
 
 onlyBuiltDependencies:
   - nx
