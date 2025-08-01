@@ -27,12 +27,12 @@
   },
   "dependencies": {
     "@battis/qui-cli.colors": "^2.1.0",
-    "@battis/qui-cli.core": "^3.0.0",
+    "@battis/qui-cli.core": "^3.1.0",
     "@battis/qui-cli.env": "^2.1.2",
     "@battis/qui-cli.log": "^2.2.2",
     "@battis/qui-cli.plugin": "^2.4.2",
     "@groton/canvas-cli.client.qui-cli": "workspace:*",
-    "@inquirer/prompts": "^7.5.3",
+    "@inquirer/prompts": "^7.8.0",
     "@msar/output": "^0.1.4",
     "@msar/types.archive": "^0.1.5",
     "@msar/types.import": "workspace:*",
@@ -41,10 +41,10 @@
     "csv-parse": "^5.6.0",
     "ejs": "^3.1.10",
     "node-fetch": "^3.3.2",
-    "open": "^10.1.2",
+    "open": "^10.2.0",
     "ora": "^8.2.0",
     "probe-image-size": "^7.2.3",
-    "string-strip-html": "^13.4.12"
+    "string-strip-html": "^13.4.13"
   },
   "devDependencies": {
     "@battis/descriptive-types": "^0.2.3",
@@ -57,7 +57,7 @@
     "@tsconfig/node20": "^20.1.6",
     "@types/ejs": "^3.1.5",
     "@types/probe-image-size": "^7.2.5",
-    "commit-and-tag-version": "^12.5.1",
+    "commit-and-tag-version": "^12.5.2",
     "copyfiles": "^2.4.1",
     "datadirect": "^0.4.6",
     "del-cli": "^6.0.0",
