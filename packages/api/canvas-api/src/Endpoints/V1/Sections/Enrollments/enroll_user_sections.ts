@@ -32,7 +32,7 @@ export type enroll_user_sectionsFormParameters = Masquerade & {
   'enrollment[user_id]': string;
   /**
    * Enroll the user as a student, teacher, TA, observer, or designer. If no
-   * value is given, the type will be inferred by enrollment[role] if
+   * value is given, the type will be inferred by +enrollment[role]+ if
    * supplied, otherwise 'StudentEnrollment' will be used.
    */
   'enrollment[type]': string;

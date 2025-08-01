@@ -35,8 +35,8 @@ export type submit_assignment_sectionsFormParameters = Masquerade & {
    * be rejected with a 400 error.
    *
    * The submission_type given determines which of the following parameters is
-   * used. For instance, to submit a URL, submission [submission_type] must be
-   * set to "online_url", otherwise the submission [url] parameter will be
+   * used. For instance, to submit a URL, +submission[submission_type]+ must
+   * be set to "online_url", otherwise the +submission[url]+ parameter will be
    * ignored.
    *
    * "basic_lti_launch" requires the assignment submission_type "online" or

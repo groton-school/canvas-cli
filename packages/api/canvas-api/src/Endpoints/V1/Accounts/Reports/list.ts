@@ -10,7 +10,16 @@ export type listPathParameters = {
   account_id: string | number;
 };
 
-export type listSearchParameters = Masquerade;
+export type listSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * Array of additional information to include.
+     *
+     * "description_html":: an HTML description of the report, with example
+     * output "parameters_html":: an HTML form for the report parameters
+     */
+    include: string[];
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

@@ -1,5 +1,6 @@
 import { Masquerade } from '@groton/canvas-cli.client.base';
 import { client } from '../../../../Client.js';
+import { Hash } from '../../../../Overrides.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
 export type start_reportPathParameters = {
@@ -23,7 +24,7 @@ export type start_reportFormParameters = Masquerade & {
    * A few example parameters have been provided below. Note that the example
    * parameters provided below may not be valid for every report.
    */
-  parameters: string;
+  parameters: Hash[];
   /**
    * If true, no message will be sent to the user upon completion of the
    * report.

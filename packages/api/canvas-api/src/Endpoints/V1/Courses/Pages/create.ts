@@ -50,7 +50,7 @@ export type createFormParameters = Masquerade & {
    * Schedule a future date/time to publish the page. This will have no effect
    * unless the "Scheduled Page Publication" feature is enabled in the
    * account. If a future date is supplied, the page will be unpublished and
-   * wiki_page[published] will be ignored.
+   * +wiki_page[published]+ will be ignored.
    *
    * Format: date-time
    */

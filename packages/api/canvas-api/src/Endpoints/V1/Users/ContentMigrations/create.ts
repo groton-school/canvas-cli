@@ -25,13 +25,13 @@ export type createFormParameters = Masquerade & {
   migration_type: string;
   /**
    * Required if uploading a file. This is the first step in uploading a file
-   * to the content migration. See the {file:file_uploads.html File Upload
-   * Documentation} for details on the file upload workflow.
+   * to the content migration. See the {file:file.file_uploads.html File
+   * Upload Documentation} for details on the file upload workflow.
    */
   'pre_attachment[name]': string;
   /**
-   * Other file upload properties, See {file:file_uploads.html File Upload
-   * Documentation}
+   * Other file upload properties, See {file:file.file_uploads.html File
+   * Upload Documentation}
    */
   'pre_attachment[*]': string;
   /** A URL to download the file from. Must not require authentication. */
@@ -213,9 +213,9 @@ type Options = {
  *
  * Create a content migration. If the migration requires a file to be uploaded
  * the actual processing of the file will start once the file upload process is
- * completed. File uploading works as described in the {file:file_uploads.html
- * File Upload Documentation} except that the values are set on a
- * _pre_attachment_ sub-hash.
+ * completed. File uploading works as described in the
+ * {file:file.file_uploads.html File Upload Documentation} except that the
+ * values are set on a _pre_attachment_ sub-hash.
  *
  * For migrations that don't require a file to be uploaded, like course copy,
  * the processing will begin as soon as the migration is created.
@@ -235,7 +235,7 @@ type Options = {
  * For file uploading:
  *
  * 1. POST to create with file info in _pre_attachment_
- * 2. Do {file:file_uploads.html file upload processing} using the data in the
+ * 2. Do {file:file.file_uploads.html file upload processing} using the data in the
  *    _pre_attachment_ data
  * 3. {api:ContentMigrationsController#show GET} the ContentMigration
  * 4. Use the {api:ProgressController#show Progress} specified in _progress_url_ to

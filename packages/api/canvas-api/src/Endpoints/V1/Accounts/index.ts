@@ -7,6 +7,7 @@ export * as Admins from './Admins/index.js';
 export * as Analytics from './Analytics/index.js';
 export * as AuthenticationProviders from './AuthenticationProviders/index.js';
 export * as BlackoutDates from './BlackoutDates/index.js';
+export * as BulkEnrollment from './BulkEnrollment/index.js';
 export * as ContentMigrations from './ContentMigrations/index.js';
 export * as Courses from './Courses/index.js';
 export * as CspSettings from './CspSettings/index.js';

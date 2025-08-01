@@ -118,7 +118,7 @@ type Options = {
  * Upload a file to a submission.
  *
  * This API endpoint is the first step in uploading a file to a submission as a
- * student. See the {file:file_uploads.html File Upload Documentation} for
+ * student. See the {file:file.file_uploads.html File Upload Documentation} for
  * details on the file upload workflow.
  *
  * The final step of the file upload workflow will return the attachment data,

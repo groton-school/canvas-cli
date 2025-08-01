@@ -110,3 +110,5 @@ export type PlannerItem = {
   context_name: string;
   context_image: URLString;
 };
+export type experienceStringThenewlysetexperience = string
+export type roleStringThenewlysetrole = string

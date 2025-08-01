@@ -496,3 +496,49 @@ export type ListLtiRegistrationsResponse = {
   /** The paginated list of LTI::Registrations */
   data: LtiRegistration[];
 };
+
+/** The response for the Search Accounts and Courses API endpoint */
+export type ContextSearchResponse = {
+  /** Accounts that match the search query. Limited to 100. */
+  accounts: SearchableAccount[];
+  /** Courses that match the search query. Limited to 100. */
+  courses: SearchableCourse[];
+};
+
+/** A minimal representation of an Account for Canvas Apps search purposes */
+export type SearchableAccount = {
+  /** The Canvas DB ID */
+  id: string;
+  /** The account name */
+  name: string;
+  /**
+   * The SIS ID of the account, if any. Only present if user can read or manage
+   * SIS.
+   */
+  sis_id: string;
+  /**
+   * Names of the accounts in this account's hierarchy, excluding the root and
+   * this account.
+   */
+  display_path: string[];
+};
+
+/** A minimal representation of a Course for Canvas Apps search purposes */
+export type SearchableCourse = {
+  /** The Canvas DB ID */
+  id: string;
+  /** The course name */
+  name: string;
+  /**
+   * The SIS ID of the course, if any. Only present if user can read or manage
+   * SIS.
+   */
+  sis_id: string;
+  /**
+   * Names of the accounts in this course's account hierarchy, excluding the
+   * root.
+   */
+  display_path: string[];
+  /** The course code */
+  course_code: string;
+};

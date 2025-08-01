@@ -28,6 +28,11 @@ export type listSearchParameters = Masquerade &
      */
     enrollment_type: string[];
     /**
+     * If set, only return courses that have at least one user enrolled in in
+     * the course with one of the specified enrollment workflow states.
+     */
+    enrollment_workflow_state: string[];
+    /**
      * If true, include only published courses. If false, exclude published
      * courses. If not present, do not filter on published status.
      *

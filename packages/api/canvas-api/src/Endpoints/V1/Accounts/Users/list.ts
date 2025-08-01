@@ -46,6 +46,13 @@ export type listSearchParameters = Masquerade &
      * Type: boolean
      */
     include_deleted_users: boolean | string;
+    /**
+     * When set, only return users with the specified UUIDs. UUIDs after the
+     * first 100 are ignored.
+     *
+     * Array
+     */
+    uuids: string[];
   }>;
 
 type Options = {

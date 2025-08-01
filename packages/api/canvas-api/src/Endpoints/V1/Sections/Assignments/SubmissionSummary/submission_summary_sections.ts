@@ -25,6 +25,13 @@ export type submission_summary_sectionsSearchParameters = Masquerade &
      * Type: boolean
      */
     grouped: boolean | string;
+    /**
+     * If this argument is true, the response will include deactivated students
+     * in the summary (defaults to false).
+     *
+     * Type: boolean
+     */
+    include_deactivated: boolean | string;
   }>;
 
 type Options = {

@@ -48,9 +48,9 @@ export type createFormParameters = Masquerade & {
    */
   'custom_fields[field_name]': string;
   /**
-   * (Deprecated in favor of {api:ExternalToolsController#add_rce_favorite Add
-   * tool to RCE Favorites} and
-   * {api:ExternalToolsController#remove_rce_favorite Remove tool from RCE
+   * (Deprecated in favor of {api:ExternalToolsController#mark_rce_favorite
+   * Mark tool to RCE Favorites} and
+   * {api:ExternalToolsController#unmark_rce_favorite Unmark tool from RCE
    * Favorites}) Whether this tool should appear in a preferred location in
    * the RCE. This only applies to tools in root account contexts that have an
    * editor button placement.

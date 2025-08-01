@@ -20,6 +20,17 @@ export type listSearchParameters = Masquerade &
      * specified here.
      */
     user_id: Integer[];
+    /**
+     * The partial name or full ID of the admins to match and return in the
+     * results list. Must be at least 2 characters.
+     */
+    search_term: string;
+    /**
+     * When set to true, returns admins who have been deleted
+     *
+     * Type: boolean
+     */
+    include_deleted: boolean | string;
   }>;
 
 type Options = {

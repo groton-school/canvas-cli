@@ -59,9 +59,10 @@ export type createFormParameters = Masquerade & {
    * temporary_enrollments_edit -- Temporary Enrollments - edit
    * temporary_enrollments_delete -- Temporary Enrollments - delete
    * manage_user_logins -- Users - manage login details manage_user_observers
-   * -- Users - manage observers moderate_user_content -- Users - moderate
-   * content read_course_content -- Course Content - view read_course_list --
-   * Courses - view list view_course_changes -- Courses - view change logs
+   * -- Users - manage observers manage_users_in_bulk -- Bulk actions - People
+   * page moderate_user_content -- Users - moderate content
+   * read_course_content -- Course Content - view read_course_list -- Courses
+   * - view list view_course_changes -- Courses - view change logs
    * view_feature_flags -- Feature Options - view view_grade_changes -- Grades
    * - view change logs view_notifications -- Notifications - view
    * view_quiz_answer_audits -- Quizzes - view submission log view_statistics

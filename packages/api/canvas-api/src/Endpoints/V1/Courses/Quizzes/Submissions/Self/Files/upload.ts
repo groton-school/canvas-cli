@@ -112,8 +112,8 @@ type Options = {
  * Associate a new quiz submission file
  *
  * This API endpoint is the first step in uploading a quiz submission file. See
- * the {file:file_uploads.html File Upload Documentation} for details on the
- * file upload workflow as these parameters are interpreted as per the
+ * the {file:file.file_uploads.html File Upload Documentation} for details on
+ * the file upload workflow as these parameters are interpreted as per the
  * documentation there.
  *
  * Nickname: upload_file

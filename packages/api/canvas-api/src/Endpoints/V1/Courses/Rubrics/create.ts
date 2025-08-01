@@ -25,8 +25,8 @@ export type createFormParameters = Masquerade & {
   /**
    * The id of the rubric association object (not the course/assignment
    * itself, but the join table record id). It can be used in place of
-   * rubric_association[association_id] and
-   * rubric_association[association_type] if desired.
+   * +rubric_association[association_id]+ and
+   * +rubric_association[association_type]+ if desired.
    *
    * Type: integer
    *
@@ -106,11 +106,6 @@ type Options = {
  *
  * This may eventually be deprecated in favor of a more standardized return
  * value, but that is not currently planned.
- *
- * TODO: document once feature is public: rubric[criteria_via_llm] [Boolean]
- * When true, rubric[criteria] will be ignored (does not need to be included at
- * all). Instead, rubric criteria will be automatically generated from a large
- * language model (llm).
  *
  * Nickname: create_single_rubric
  */

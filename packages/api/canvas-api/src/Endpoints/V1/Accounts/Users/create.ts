@@ -147,8 +147,8 @@ export type createFormParameters = Masquerade & {
   /**
    * When true, will first try to re-activate a deleted user with matching
    * sis_user_id if possible. This is commonly done with
-   * user[skip_registration] and communication_channel[skip_confirmation] so
-   * that the default communication_channel is also restored.
+   * +user[skip_registration]+ and +communication_channel[skip_confirmation]+
+   * so that the default communication_channel is also restored.
    *
    * Type: boolean
    */

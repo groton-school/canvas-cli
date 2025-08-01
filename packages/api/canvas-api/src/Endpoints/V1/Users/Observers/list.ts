@@ -32,9 +32,9 @@ type Options = {
 );
 
 /**
- * List observers
+ * List linked observers
  *
- * A paginated list of the observers of a given user.
+ * A paginated list of observers linked to a given user.
  *
  * Note:* all users are allowed to list their own observers. Administrators can
  * list other users' observers.
@@ -44,7 +44,7 @@ type Options = {
  * observer and observee are linked on. The observer will only be able to
  * observe in courses associated with these root accounts.
  *
- * Nickname: list_observers
+ * Nickname: list_linked_observers
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<User[]>(

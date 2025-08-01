@@ -32,9 +32,12 @@ type Options = {
 );
 
 /**
- * List observees
+ * List linked observees
  *
- * A paginated list of the users that the given user is observing.
+ * A paginated list of users that the given user is observing. This endpoint
+ * returns users linked to the observer at the account level (such that the
+ * observer is automatically enrolled in observees' courses); it doesn't return
+ * one-off observer enrollments from individual courses.
  *
  * Note:* all users are allowed to list their own observees. Administrators can
  * list other users' observees.
@@ -44,7 +47,7 @@ type Options = {
  * observer and observee are linked on. The observer will only be able to
  * observe in courses associated with these root accounts.
  *
- * Nickname: list_observees
+ * Nickname: list_linked_observees
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<User[]>(

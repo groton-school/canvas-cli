@@ -110,10 +110,11 @@ export type import_sis_dataFormParameters = Masquerade & {
    */
   add_sis_stickiness: boolean | string;
   /**
-   * This option, if present, will clear "stickiness" from all fields touched
-   * by this import. Requires that 'override_sis_stickiness' is also provided.
-   * If 'add_sis_stickiness' is also provided, 'clear_sis_stickiness' will
-   * overrule the behavior of 'add_sis_stickiness'
+   * This option, if present, will clear "stickiness" from all fields
+   * processed by this import. Requires that 'override_sis_stickiness' is also
+   * provided. If 'add_sis_stickiness' is also provided,
+   * 'clear_sis_stickiness' will overrule the behavior of
+   * 'add_sis_stickiness'
    *
    * Type: boolean
    */

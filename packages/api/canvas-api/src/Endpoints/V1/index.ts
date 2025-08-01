@@ -5,6 +5,7 @@ export * as AppointmentGroups from './AppointmentGroups/index.js';
 export * as Audit from './Audit/index.js';
 export * as BrandVariables from './BrandVariables/index.js';
 export * as CalendarEvents from './CalendarEvents/index.js';
+export * as Career from './Career/index.js';
 export * as Collaborations from './Collaborations/index.js';
 export * as CommMessages from './CommMessages/index.js';
 export * as Conferences from './Conferences/index.js';

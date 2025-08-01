@@ -25,8 +25,8 @@ export type updateFormParameters = Masquerade & {
   /**
    * The id of the rubric association object (not the course/assignment
    * itself, but the join table record id). It can be used in place of
-   * rubric_association[association_id] and
-   * rubric_association[association_type] if desired.
+   * +rubric_association[association_id]+ and
+   * +rubric_association[association_type]+ if desired.
    *
    * Type: integer
    *

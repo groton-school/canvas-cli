@@ -36,6 +36,13 @@ export type Report = {
    * Format: date-time
    */
   ended_at: string;
+  /**
+   * The time (in seconds) the report has been waiting to run, has been running
+   * so far, or took to run to completion, depending on its current state.
+   *
+   * Type: number
+   */
+  run_time: number | string;
   /** The report parameters */
   parameters: ReportParameters;
   /**

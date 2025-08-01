@@ -67,8 +67,8 @@ type Options = {
  *
  * Create a new LTI Registration, as well as an associated Tool Configuration,
  * Developer Key, and Registration Account binding. To install/create using
- * Dynamic Registration, please use the <a
- * href="/doc/api/registration.html">Dynamic Registration API.</a>
+ * Dynamic Registration, please use the {file:file.registration.html Dynamic
+ * Registration API}.
  *
  * Nickname: create_lti_registration
  */

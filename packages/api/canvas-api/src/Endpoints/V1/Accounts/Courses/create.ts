@@ -154,6 +154,14 @@ export type createFormParameters = Masquerade & {
    */
   enroll_me: boolean | string;
   /**
+   * If this option is set to true, the template of the account will not be
+   * applied to this course It means copy_from_course_template will not be
+   * executed. This option is thought for a course copy.
+   *
+   * Type: boolean
+   */
+  skip_course_template: boolean | string;
+  /**
    * The type of page that users will see when they first visit the course
    * 'feed' Recent Activity Dashboard 'modules' Course Modules/Sections Page
    * 'assignments' Course Assignments List 'syllabus' Course Syllabus Page
