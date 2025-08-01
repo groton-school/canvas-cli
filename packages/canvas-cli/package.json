@@ -1,11 +1,11 @@
 {
   "name": "@groton/canvas-cli",
   "version": "0.0.3",
-  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/cli/canvas-cli#readme",
+  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/canvas-cli#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/groton-school/canvas-cli.git",
-    "directory": "packages/cli/canvas-cli"
+    "directory": "packages/canvas-cli"
   },
   "author": {
     "name": "Seth Battis",
