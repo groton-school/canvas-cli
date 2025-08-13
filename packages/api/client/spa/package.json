@@ -23,8 +23,8 @@
     "release": "commit-and-tag-version"
   },
   "dependencies": {
+    "@groton/canvas-api": "workspace:*",
     "@groton/canvas-api.client.base": "workspace:*",
-    "@groton/canvas-api.utilities": "workspace:*",
     "p-queue": "^8.1.0",
     "path-browserify": "^1.0.1",
     "universal-cookie": "^8.0.1"
@@ -32,6 +32,7 @@
   "devDependencies": {
     "@battis/oauth2-configure": "^0.1.2",
     "@battis/typescript-tricks": "^0.7.4",
+    "@battis/webpack": "^2.0.6",
     "@tsconfig/recommended": "^1.0.10",
     "@types/path-browserify": "^1.0.3",
     "commit-and-tag-version": "^12.5.2",
