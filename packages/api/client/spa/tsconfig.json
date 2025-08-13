@@ -2,7 +2,9 @@
   "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "declaration": true
+    "declaration": true,
+    "module": "nodenext",
+    "moduleResolution": "nodenext"
   },
   "include": ["./src"]
 }
