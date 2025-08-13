@@ -1,1 +1,1 @@
-export * from '././course_activity_stream_summary.js';
+export * from './course_activity_stream_summary.js';

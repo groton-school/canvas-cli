@@ -1,1 +1,1 @@
-export * from '././search_account_domains.js';
+export * from './search_account_domains.js';

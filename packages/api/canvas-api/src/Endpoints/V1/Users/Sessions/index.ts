@@ -1,1 +1,1 @@
-export * from '././terminate_all_user_sessions.js';
+export * from './terminate_all_user_sessions.js';

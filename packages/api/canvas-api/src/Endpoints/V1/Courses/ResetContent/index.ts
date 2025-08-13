@@ -1,1 +1,1 @@
-export * from '././reset_course.js';
+export * from './reset_course.js';

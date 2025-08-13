@@ -1,1 +1,1 @@
-export * from '././abort_report.js';
+export * from './abort_report.js';

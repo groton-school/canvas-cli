@@ -1,1 +1,1 @@
-export * from '././enrollment_by_id.js';
+export * from './enrollment_by_id.js';

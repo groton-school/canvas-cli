@@ -1,1 +1,1 @@
-export * from '././query_by_assignment.js';
+export * from './query_by_assignment.js';

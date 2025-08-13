@@ -1,1 +1,1 @@
-export * from '././lists_submissions.js';
+export * from './lists_submissions.js';

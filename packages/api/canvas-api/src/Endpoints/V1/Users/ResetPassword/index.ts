@@ -1,1 +1,1 @@
-export * from '././kickoff_password_recovery_flow.js';
+export * from './kickoff_password_recovery_flow.js';

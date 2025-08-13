@@ -1,1 +1,1 @@
-export * from '././flagging_question.js';
+export * from './flagging_question.js';

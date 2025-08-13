@@ -1,1 +1,1 @@
-export * from '././search_for_accounts_and_courses.js';
+export * from './search_for_accounts_and_courses.js';

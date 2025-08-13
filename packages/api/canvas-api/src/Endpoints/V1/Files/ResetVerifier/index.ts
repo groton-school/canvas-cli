@@ -1,1 +1,1 @@
-export * from '././reset_link_verifier.js';
+export * from './reset_link_verifier.js';

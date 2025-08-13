@@ -1,1 +1,1 @@
-export * from '././translate_file_reference.js';
+export * from './translate_file_reference.js';

@@ -1,2 +1,2 @@
-export * from '././show_outcome.js';
-export * from '././update.js';
+export * from './show_outcome.js';
+export * from './update.js';

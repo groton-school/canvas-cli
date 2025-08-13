@@ -1,3 +1,3 @@
-export * from '././create.js';
-export * from '././list.js';
+export * from './create.js';
 export * as DeveloperKeyAccountBindings from './DeveloperKeyAccountBindings/index.js';
+export * from './list.js';

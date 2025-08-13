@@ -1,1 +1,1 @@
-export * from '././switch_experience.js';
+export * from './switch_experience.js';

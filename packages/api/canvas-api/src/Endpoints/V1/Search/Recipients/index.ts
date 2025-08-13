@@ -1,1 +1,1 @@
-export * from '././find_recipients_search.js';
+export * from './find_recipients_search.js';

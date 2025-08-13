@@ -1,1 +1,1 @@
-export * from '././add_last_attended_date.js';
+export * from './add_last_attended_date.js';

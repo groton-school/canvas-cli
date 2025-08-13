@@ -1,1 +1,1 @@
-export * from '././activate_role.js';
+export * from './activate_role.js';

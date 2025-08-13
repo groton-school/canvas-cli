@@ -1,2 +1,2 @@
-export * from '././list.js';
-export * from '././post_reply_groups.js';
+export * from './list.js';
+export * from './post_reply_groups.js';

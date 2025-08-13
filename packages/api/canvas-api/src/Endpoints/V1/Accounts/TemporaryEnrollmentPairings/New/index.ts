@@ -1,1 +1,1 @@
-export * from '././new_temporaryenrollmentpairing.js';
+export * from './new_temporaryenrollmentpairing.js';

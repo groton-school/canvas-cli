@@ -1,1 +1,1 @@
-export * from '././restore_deleted_eportfolio.js';
+export * from './restore_deleted_eportfolio.js';

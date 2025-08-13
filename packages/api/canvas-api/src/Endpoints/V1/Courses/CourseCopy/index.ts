@@ -1,2 +1,2 @@
-export * from '././copy_course_content.js';
-export * from '././get.js';
+export * from './copy_course_content.js';
+export * from './get.js';

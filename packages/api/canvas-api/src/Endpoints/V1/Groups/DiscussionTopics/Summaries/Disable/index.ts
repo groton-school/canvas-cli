@@ -1,1 +1,1 @@
-export * from '././disable_summary_groups.js';
+export * from './disable_summary_groups.js';

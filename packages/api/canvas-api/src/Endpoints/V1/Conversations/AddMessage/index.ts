@@ -1,1 +1,1 @@
-export * from '././add_message.js';
+export * from './add_message.js';

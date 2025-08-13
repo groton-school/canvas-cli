@@ -1,1 +1,1 @@
-export * from '././abort_sis_import.js';
+export * from './abort_sis_import.js';

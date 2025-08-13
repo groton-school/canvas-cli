@@ -1,1 +1,1 @@
-export * from '././reorder_quiz_items.js';
+export * from './reorder_quiz_items.js';

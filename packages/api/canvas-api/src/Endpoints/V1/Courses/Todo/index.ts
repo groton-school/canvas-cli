@@ -1,1 +1,1 @@
-export * from '././course_todo_items.js';
+export * from './course_todo_items.js';

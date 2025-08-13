@@ -1,1 +1,1 @@
-export * from '././summary_feedback_groups.js';
+export * from './summary_feedback_groups.js';

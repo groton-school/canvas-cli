@@ -1,1 +1,1 @@
-export * from '././import_category_groups.js';
+export * from './import_category_groups.js';

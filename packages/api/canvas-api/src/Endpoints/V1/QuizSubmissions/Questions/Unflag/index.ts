@@ -1,1 +1,1 @@
-export * from '././unflagging_question.js';
+export * from './unflagging_question.js';

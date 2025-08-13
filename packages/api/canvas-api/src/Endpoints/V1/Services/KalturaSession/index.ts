@@ -1,1 +1,1 @@
-export * from '././start_kaltura_session.js';
+export * from './start_kaltura_session.js';

@@ -1,1 +1,1 @@
-export * from '././new_blackout_date_courses.js';
+export * from './new_blackout_date_courses.js';

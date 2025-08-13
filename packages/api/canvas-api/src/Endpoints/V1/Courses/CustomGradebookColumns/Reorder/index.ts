@@ -1,1 +1,1 @@
-export * from '././reorder_custom_columns.js';
+export * from './reorder_custom_columns.js';

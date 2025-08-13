@@ -1,1 +1,1 @@
-export * from '././accept_course_invitation.js';
+export * from './accept_course_invitation.js';

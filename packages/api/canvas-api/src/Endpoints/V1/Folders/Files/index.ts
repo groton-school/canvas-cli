@@ -1,2 +1,2 @@
-export * from '././list.js';
-export * from '././upload.js';
+export * from './list.js';
+export * from './upload.js';

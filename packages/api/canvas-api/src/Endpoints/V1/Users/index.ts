@@ -1,5 +1,3 @@
-export * from '././show_user_details.js';
-export * from '././update.js';
 export * as ActivityStream from './ActivityStream/index.js';
 export * as Avatars from './Avatars/index.js';
 export * as CalendarEvents from './CalendarEvents/index.js';
@@ -34,9 +32,11 @@ export * as ResetPassword from './ResetPassword/index.js';
 export * as Self from './Self/index.js';
 export * as Sessions from './Sessions/index.js';
 export * as Settings from './Settings/index.js';
+export * from './show_user_details.js';
 export * as Split from './Split/index.js';
 export * as Tabs from './Tabs/index.js';
 export * as TemporaryEnrollmentStatus from './TemporaryEnrollmentStatus/index.js';
 export * as TextEditorPreference from './TextEditorPreference/index.js';
 export * as Tokens from './Tokens/index.js';
+export * from './update.js';
 export * as UsageRights from './UsageRights/index.js';

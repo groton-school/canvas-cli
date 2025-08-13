@@ -1,2 +1,2 @@
-export * from '././list.js';
-export * from '././show_observer.js';
+export * from './list.js';
+export * from './show_observer.js';

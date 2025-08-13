@@ -1,1 +1,1 @@
-export * from '././duplicate_page.js';
+export * from './duplicate_page.js';

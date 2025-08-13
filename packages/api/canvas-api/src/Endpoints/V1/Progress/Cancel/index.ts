@@ -1,1 +1,1 @@
-export * from '././cancel_progress.js';
+export * from './cancel_progress.js';

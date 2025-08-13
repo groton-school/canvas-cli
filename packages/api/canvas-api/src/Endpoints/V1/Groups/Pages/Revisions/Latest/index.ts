@@ -1,1 +1,1 @@
-export * from '././show_revision_groups_latest.js';
+export * from './show_revision_groups_latest.js';

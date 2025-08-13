@@ -1,1 +1,1 @@
-export * from '././close_opened_poll_session.js';
+export * from './close_opened_poll_session.js';

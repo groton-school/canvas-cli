@@ -1,1 +1,1 @@
-export * from '././add_users_to_content_share.js';
+export * from './add_users_to_content_share.js';

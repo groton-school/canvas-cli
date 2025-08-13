@@ -1,1 +1,1 @@
-export * from '././bulk_manage_differentiation_tags.js';
+export * from './bulk_manage_differentiation_tags.js';

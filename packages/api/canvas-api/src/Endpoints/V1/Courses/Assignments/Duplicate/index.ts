@@ -1,1 +1,1 @@
-export * from '././duplicate_assignment.js';
+export * from './duplicate_assignment.js';

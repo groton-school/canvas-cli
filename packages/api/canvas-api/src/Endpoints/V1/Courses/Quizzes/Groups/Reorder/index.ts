@@ -1,1 +1,1 @@
-export * from '././reorder_question_groups.js';
+export * from './reorder_question_groups.js';

@@ -1,1 +1,1 @@
-export * from '././import_outcome_group_accounts.js';
+export * from './import_outcome_group_accounts.js';

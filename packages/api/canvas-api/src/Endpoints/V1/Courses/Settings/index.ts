@@ -1,2 +1,2 @@
-export * from '././get.js';
-export * from '././update.js';
+export * from './get.js';
+export * from './update.js';

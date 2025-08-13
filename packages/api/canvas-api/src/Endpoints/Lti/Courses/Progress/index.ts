@@ -1,1 +1,1 @@
-export * from '././query_progress.js';
+export * from './query_progress.js';

@@ -1,1 +1,1 @@
-export * from '././add_recipients.js';
+export * from './add_recipients.js';

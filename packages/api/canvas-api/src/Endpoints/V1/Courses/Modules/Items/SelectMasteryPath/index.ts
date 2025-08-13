@@ -1,1 +1,1 @@
-export * from '././select_mastery_path.js';
+export * from './select_mastery_path.js';

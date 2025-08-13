@@ -1,1 +1,1 @@
-export * from '././rate_entry_groups.js';
+export * from './rate_entry_groups.js';

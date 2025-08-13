@@ -1,1 +1,1 @@
-export * from '././assign_unassigned_members.js';
+export * from './assign_unassigned_members.js';

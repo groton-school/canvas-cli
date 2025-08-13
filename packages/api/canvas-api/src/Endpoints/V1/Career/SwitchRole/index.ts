@@ -1,1 +1,1 @@
-export * from '././switch_role.js';
+export * from './switch_role.js';

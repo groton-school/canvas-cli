@@ -1,1 +1,1 @@
-export * from '././preview_processed_html.js';
+export * from './preview_processed_html.js';
