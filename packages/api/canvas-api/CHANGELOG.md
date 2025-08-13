@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.1](https://github.com/groton-school/canvas-cli/compare/api/0.3.0...api/0.3.1) (2025-08-13)
+
+
+### Bug Fixes
+
+* use updated swagger-renderer for cleaner relative paths ([b2eded2](https://github.com/groton-school/canvas-cli/commit/b2eded21170633d7914376deda3312a17248e7b9))
+
 ## [0.3.0](https://github.com/groton-school/canvas-cli/compare/api/0.2.0...api/0.3.0) (2025-08-01)
 
 ### ⚠ BREAKING CHANGES
