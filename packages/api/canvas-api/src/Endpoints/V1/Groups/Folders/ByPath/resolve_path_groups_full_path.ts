@@ -1,28 +1,30 @@
 import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
-import { client } from '../../../../../../Client.js';
-import { Folder } from '../../../../../../Resources/Files.js';
+import { client } from '../../../../../Client.js';
+import { Folder } from '../../../../../Resources/Files.js';
 
-export type resolve_path_courses_full_pathPathParameters = {
+export type resolve_path_groups_full_pathPathParameters = {
   /**
    * ID
    *
    * Type: string
    */
-  course_id: string | number;
+  group_id: string | number;
+  /** Full path to folder */
+  full_path: string;
 };
 
-export type resolve_path_courses_full_pathSearchParameters = Masquerade &
+export type resolve_path_groups_full_pathSearchParameters = Masquerade &
   Paginated;
 
 type Options = {
-  pathParams: resolve_path_courses_full_pathPathParameters;
+  pathParams: resolve_path_groups_full_pathPathParameters;
 } & (
   | {
-      searchParams?: Partial<resolve_path_courses_full_pathSearchParameters>;
+      searchParams?: Partial<resolve_path_groups_full_pathSearchParameters>;
       strict?: false;
     }
   | {
-      searchParams: resolve_path_courses_full_pathSearchParameters;
+      searchParams: resolve_path_groups_full_pathSearchParameters;
       strict: true;
     }
 );
@@ -37,11 +39,11 @@ type Options = {
  * context's root folder alone is returned. Otherwise, if no folder exists with
  * the given full path, a Not Found error is returned.
  *
- * Nickname: resolve_path_courses_full_path
+ * Nickname: resolve_path_groups_full_path
  */
-export async function resolve_path_courses_full_path(options: Options) {
+export async function resolve_path_groups_full_path(options: Options) {
   const response = await client().fetchAs<Folder[]>(
-    `/api/v1/courses/{course_id}/folders/by_path/*full_path`,
+    `/api/v1/groups/{group_id}/folders/by_path/{full_path}`,
     {
       method: 'GET',
       ...options
