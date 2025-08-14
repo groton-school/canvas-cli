@@ -1,9 +1,8 @@
-import * as Configuration from '@battis/oauth2-configure';
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
+import * as Canvas from '@groton/canvas-api';
 import * as Base from '@groton/canvas-api.client.base';
 import PQueue from 'p-queue';
 import path from 'path-browserify';
-import Cookies from 'universal-cookie';
 
 type RequestInitParams = RequestInit & {
   pathParams?: JSONObject;
@@ -11,64 +10,24 @@ type RequestInitParams = RequestInit & {
   params?: JSONObject;
 };
 
-export type Options = Configuration.Options & {
+export type Options = {
   scope?: string;
   headers?: Record<string, string>;
   parameters?: Record<string, string>;
   instance_url: string;
-  cookie: string;
-  oauth_root: string;
 };
-
-type AccessToken = {
-  token_type: 'Bearer';
-  user: {
-    id: number;
-    name: string;
-    global_id: string;
-    effective_locale: string;
-    fake_student: boolean;
-  };
-  canvas_region: string;
-  access_token: string;
-  refresh_token: string;
-  expires: number;
-};
-
-const cookies = new Cookies();
 
 export class Client implements Base.Base {
   private queue = new PQueue();
   public readonly instance_url: string;
-  private cookie: string;
-  private oauth_root: string;
 
-  public constructor(options: Options) {
+  public constructor(options: Options = { instance_url: '/canvas/proxy' }) {
     this.instance_url = options.instance_url;
-    this.cookie = options.cookie;
-    this.oauth_root = options.oauth_root;
-  }
-
-  private async getToken() {
-    let token = cookies.get(this.cookie) as AccessToken | undefined;
-    if (token) {
-      if (token.expires > Date.now()) {
-        return token;
-      } else {
-        await fetch(path.join(this.oauth_root, 'refresh'));
-        token = cookies.get(this.cookie) as AccessToken | undefined;
-        if (token) {
-          return token;
-        }
-      }
-    }
-    window.location.href = `${this.oauth_root}/authorize`;
-    return undefined;
   }
 
   public async fetch(endpoint: URL | RequestInfo, init?: RequestInit) {
     if (!(endpoint instanceof Request)) {
-      endpoint = new URL(endpoint, this.instance_url);
+      endpoint = path.join(this.instance_url, endpoint.toString());
     }
     const result = await this.queue.add(
       (async () => {
@@ -76,6 +35,9 @@ export class Client implements Base.Base {
       }).bind(this)
     );
     if (result) {
+      if (result.status === 401) {
+        this.authorize();
+      }
       return result;
     } else {
       throw new Error(`No result from fetch`);
@@ -93,12 +55,35 @@ export class Client implements Base.Base {
       searchParams,
       params,
       init,
-      accessToken: async () => (await this.getToken())?.access_token,
       fetch: this.fetch.bind(this)
     });
   }
 
   public async upload<T = JSONValue>(params: Base.UploadParams): Promise<T> {
     throw new Error('not implemented');
+  }
+
+  public authorize() {
+    window.location.href = path.resolve(
+      this.instance_url,
+      '../login/authorize'
+    );
+  }
+
+  public async deauthorize(redirect: string = '/') {
+    await fetch(path.resolve(this.instance_url, '../login/deauthorize'));
+    window.location.href = redirect;
+  }
+
+  public async getOwner() {
+    const response = await fetch(path.resolve(this.instance_url, '../owner'));
+    if (response.ok) {
+      return (await response.json()) as Canvas.Users.Profile;
+    }
+    return undefined;
+  }
+
+  public async isAuthorized() {
+    return !!(await this.getOwner());
   }
 }

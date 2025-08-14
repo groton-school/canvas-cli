@@ -1,5 +1,0 @@
-{
-  "path": ".",
-  "tag-prefix": "client/spa/",
-  "releaseCommitMessageFormat": "chore: release @groton/canvas-api.clent.spa@{{currentTag}}"
-}

@@ -1,12 +1,12 @@
 {
-  "name": "@groton/canvas-api.client.spa",
+  "name": "@groton/canvas-api.client.web",
   "version": "0.0.0",
-  "description": "Single Page (web) App client for @groton/canvas-api",
-  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/api/client/spa#readme",
+  "description": "Web client for @groton/canvas-api that works with PHP package groton-school/slim-canvas-api-proxy",
+  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/api/client/web#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/groton-school/canvas-cli.git",
-    "directory": "packages/api/client/spa"
+    "directory": "packages/api/client/web"
   },
   "author": {
     "name": "Seth Battis",
@@ -26,8 +26,7 @@
     "@groton/canvas-api": "workspace:*",
     "@groton/canvas-api.client.base": "workspace:*",
     "p-queue": "^8.1.0",
-    "path-browserify": "^1.0.1",
-    "universal-cookie": "^8.0.1"
+    "path-browserify": "^1.0.1"
   },
   "devDependencies": {
     "@battis/oauth2-configure": "^0.1.2",
