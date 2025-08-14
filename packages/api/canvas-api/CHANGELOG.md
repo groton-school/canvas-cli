@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.2](https://github.com/groton-school/canvas-cli/compare/api/0.3.1...api/0.3.2) (2025-08-14)
+
+
+### Bug Fixes
+
+* manually edited spec to make `*full_path` a path parameter ([8d21bde](https://github.com/groton-school/canvas-cli/commit/8d21bde17928492ee7c37cf222d1fc1ce5fe21f9))
+
 ## [0.3.1](https://github.com/groton-school/canvas-cli/compare/api/0.3.0...api/0.3.1) (2025-08-13)
 
 
