@@ -1,7 +1,7 @@
 import * as API from '@groton/canvas-api';
 import { Client, Options } from './Client.js';
 
-export * from './Client';
+export * from './Client.js';
 
 function client() {
   return API.client() as Client;
