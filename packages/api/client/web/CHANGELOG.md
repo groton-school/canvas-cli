@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.3](https://github.com/groton-school/canvas-cli/compare/client/web/0.0.2...client/web/0.0.3) (2025-08-30)
+
+
+### Bug Fixes
+
+* remove default export ([1e9c4ee](https://github.com/groton-school/canvas-cli/commit/1e9c4ee0479b1c192591e5b6b8d523c69c630c35))
+
 ## [0.0.2](https://github.com/groton-school/canvas-cli/compare/client/web/0.0.1...client/web/0.0.2) (2025-08-30)
 
 
