@@ -59,6 +59,7 @@ export class Client implements Base.Base {
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public async upload<T = JSONValue>(params: Base.UploadParams): Promise<T> {
     throw new Error('not implemented');
   }
