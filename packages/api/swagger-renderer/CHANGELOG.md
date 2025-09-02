@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.2](https://github.com/groton-school/canvas-cli/compare/swagger-renderer/0.1.1...swagger-renderer/0.1.2) (2025-09-02)
+
+
+### Bug Fixes
+
+* apply Operations overrides twice ([2507f95](https://github.com/groton-school/canvas-cli/commit/2507f95740d20524288a5b8c69d9bc7589a3cf98))
+
 ## [0.1.1](https://github.com/groton-school/canvas-cli/compare/swagger-renderer/0.1.0...swagger-renderer/0.1.1) (2025-08-13)
 
 
