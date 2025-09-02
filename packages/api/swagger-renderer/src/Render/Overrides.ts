@@ -100,6 +100,7 @@ export function operation(operation: AnnotatedOperation) {
         .join(', ')}`
     );
     const result = merge(operation, _overrides.operations[operation.nickname]);
+    Log.debug(result);
     for (const paramType of [
       'tsPathParameters',
       'tsQueryParameters',

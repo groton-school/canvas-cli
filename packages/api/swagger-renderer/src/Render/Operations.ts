@@ -84,7 +84,7 @@ export function annotateOperations({
           }
 
           // @ts-expect-error 2322 TODO $ref typing
-          const annotatedOperation: AnnotatedOperation = {
+          const annotatedOperation: AnnotatedOperation = Overrides.operation({
             ...operation,
             specPath,
             tsImports,
@@ -95,11 +95,11 @@ export function annotateOperations({
             tsName,
             tsUpload,
             tsPaginated
-          };
+          });
           annotatedOperation.tsFilePath = path.join(
             outputPath,
             toOperationPath(endpoint.path, annotatedOperation),
-            tsName + '.ts'
+            annotatedOperation.tsName + '.ts'
           );
           for (const parameter of operation.parameters) {
             const annotatedParameter: AnnotatedParameter = {
