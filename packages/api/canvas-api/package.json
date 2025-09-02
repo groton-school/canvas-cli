@@ -1,6 +1,6 @@
 {
   "name": "@groton/canvas-api",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Typed access to Canvas LMS API with embedded documentation",
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/api/canvas-api#readme",
   "repository": {

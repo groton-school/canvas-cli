@@ -2,26 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
-## [0.3.3](https://github.com/groton-school/canvas-cli/compare/api/0.3.2...api/0.3.3) (2025-09-02)
+## [0.3.4](https://github.com/groton-school/canvas-cli/compare/api/0.3.3...api/0.3.4) (2025-09-02)
 
+Actually compiled dist
+
+## [0.3.3](https://github.com/groton-school/canvas-cli/compare/api/0.3.2...api/0.3.3) (2025-09-02)
 
 ### Bug Fixes
 
-* get_custom_colors now recognized as list() ([f5512ed](https://github.com/groton-school/canvas-cli/commit/f5512ed819958500b1bba28e05f9e3f6f972a78c))
+- get_custom_colors now recognized as list() ([f5512ed](https://github.com/groton-school/canvas-cli/commit/f5512ed819958500b1bba28e05f9e3f6f972a78c))
 
 ## [0.3.2](https://github.com/groton-school/canvas-cli/compare/api/0.3.1...api/0.3.2) (2025-08-14)
 
-
 ### Bug Fixes
 
-* manually edited spec to make `*full_path` a path parameter ([8d21bde](https://github.com/groton-school/canvas-cli/commit/8d21bde17928492ee7c37cf222d1fc1ce5fe21f9))
+- manually edited spec to make `*full_path` a path parameter ([8d21bde](https://github.com/groton-school/canvas-cli/commit/8d21bde17928492ee7c37cf222d1fc1ce5fe21f9))
 
 ## [0.3.1](https://github.com/groton-school/canvas-cli/compare/api/0.3.0...api/0.3.1) (2025-08-13)
 
-
 ### Bug Fixes
 
-* use updated swagger-renderer for cleaner relative paths ([b2eded2](https://github.com/groton-school/canvas-cli/commit/b2eded21170633d7914376deda3312a17248e7b9))
+- use updated swagger-renderer for cleaner relative paths ([b2eded2](https://github.com/groton-school/canvas-cli/commit/b2eded21170633d7914376deda3312a17248e7b9))
 
 ## [0.3.0](https://github.com/groton-school/canvas-cli/compare/api/0.2.0...api/0.3.0) (2025-08-01)
 
