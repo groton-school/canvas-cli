@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.3](https://github.com/groton-school/canvas-cli/compare/api/0.3.2...api/0.3.3) (2025-09-02)
+
+
+### Bug Fixes
+
+* get_custom_colors now recognized as list() ([f5512ed](https://github.com/groton-school/canvas-cli/commit/f5512ed819958500b1bba28e05f9e3f6f972a78c))
+
 ## [0.3.2](https://github.com/groton-school/canvas-cli/compare/api/0.3.1...api/0.3.2) (2025-08-14)
 
 
