@@ -31,15 +31,6 @@ export type uploadFormParameters = Masquerade & {
    */
   name: string;
   /**
-   * How to handle duplicate filenames. If `overwrite`, then this file upload
-   * will overwrite any other file in the folder with the same name. If
-   * `rename`, then this file will be renamed if another file in the folder
-   * exists with the given name. If no parameter is given, the default is
-   * `overwrite`. This doesn't apply to file uploads in a context that doesn't
-   * have folders.
-   */
-  on_duplicate?: 'overwrite' | 'rename';
-  /**
    * The size of the file, in bytes. This field is recommended, as it will let
    * you find out if there's a quota issue before uploading the raw file.
    *
@@ -82,6 +73,15 @@ export type uploadFormParameters = Masquerade & {
    * @deprecated Use parent_folder_path instead.
    */
   folder?: string;
+  /**
+   * How to handle duplicate filenames. If `overwrite`, then this file upload
+   * will overwrite any other file in the folder with the same name. If
+   * `rename`, then this file will be renamed if another file in the folder
+   * exists with the given name. If no parameter is given, the default is
+   * `overwrite`. This doesn't apply to file uploads in a context that doesn't
+   * have folders.
+   */
+  on_duplicate?: 'overwrite' | 'rename';
   /**
    * An array of additional information to include in the upload success
    * response. See Files API for more information.

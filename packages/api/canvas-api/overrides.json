@@ -55,11 +55,12 @@
       "filePath": "Overrides.ts"
     },
     {
-      "type":"experienceStringThenewlysetexperience",
+      "type": "experienceStringThenewlysetexperience",
       "filePath": "Overrides.ts"
-    },{
-      "type":"roleStringThenewlysetrole",
-      "filePath":"Overrides.ts"
+    },
+    {
+      "type": "roleStringThenewlysetrole",
+      "filePath": "Overrides.ts"
     }
   ],
   "tsTypes": {
@@ -121,6 +122,9 @@
     "Deprecated": { "type": "string", "description": "@deprecated" }
   },
   "operations": {
+    "get_custom_colors": {
+      "tsName": "list"
+    },
     "upload_file": {
       "tsImports": [
         {

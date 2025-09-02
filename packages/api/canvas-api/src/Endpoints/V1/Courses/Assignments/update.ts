@@ -23,17 +23,6 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** The assignment name. */
-  'assignment[name]': string;
-  /**
-   * The position of this assignment in the group when displaying assignment
-   * lists.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
-  'assignment[position]': number | string;
   /**
    * Only applies if the assignment doesn't have student submissions.
    *
@@ -62,6 +51,17 @@ export type updateFormParameters = Masquerade & {
     | 'media_recording'
     | 'student_annotation'
   )[];
+  /** The assignment name. */
+  'assignment[name]': string;
+  /**
+   * The position of this assignment in the group when displaying assignment
+   * lists.
+   *
+   * Type: integer
+   *
+   * Format: 'int64'
+   */
+  'assignment[position]': number | string;
   /**
    * Allowed extensions if submission_types includes "online_upload"
    *
