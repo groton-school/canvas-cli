@@ -34,7 +34,7 @@
     "@battis/qui-cli.structured": "^0.1.5",
     "@groton/canvas-api.client.qui-cli": "workspace:*",
     "@groton/colors": "^0.1.2",
-    "@inquirer/prompts": "^7.8.0",
+    "@inquirer/prompts": "^7.8.4",
     "@oauth2-cli/canvas": "workspace:*",
     "change-case": "^5.4.4",
     "csv-parse": "^5.6.0",
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.6",
-    "commit-and-tag-version": "^12.5.2",
+    "commit-and-tag-version": "^12.6.0",
     "del-cli": "^6.0.0",
     "npm-run-all": "^4.1.5",
     "typescript": "~5.8.3"
