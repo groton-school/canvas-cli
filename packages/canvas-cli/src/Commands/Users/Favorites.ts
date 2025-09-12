@@ -92,8 +92,9 @@ export async function run() {
       const i = unique.findIndex((c) => c.id === course.id);
       if (i < 0) {
         unique.push(course);
-      }
-      if (course.enrollments[0].type !== 'observer') {
+      } else if (
+        course.enrollments.find((enrollment) => enrollment.type !== 'observer')
+      ) {
         unique[i] = course;
       }
       return unique;
@@ -103,7 +104,9 @@ export async function run() {
     const favorited: Canvas.Courses.Course[] = [];
     for (const course of courses) {
       if (
-        course.enrollments[0].type !== 'observer' &&
+        course.enrollments.find(
+          (enrollment) => enrollment.type !== 'observer'
+        ) &&
         new Date(course.term.end_at) > now
       ) {
         await Canvas.v1.Users.Self.Favorites.Courses.add_course_to_favorites({
