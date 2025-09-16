@@ -64,15 +64,15 @@ export async function run() {
     throw new Error(`termId must be defined`);
   }
 
-  const colors = Object.keys(GrotonColors)
-    .filter((key) => key.length === 2)
-    .reduce(
-      (colors, key) => {
-        colors[key] = GrotonColors[key as keyof typeof GrotonColors];
-        return colors;
-      },
-      {} as Record<string, string>
-    );
+  const colors = {
+    RD: GrotonColors.RedOnWhiteHex,
+    OR: GrotonColors.OrangeOnWhiteHex,
+    YL: GrotonColors.YellowOnWhiteHex,
+    GR: GrotonColors.GreenOnWhiteHex,
+    LB: GrotonColors.LightBlueOnWhiteHex,
+    DB: GrotonColors.DarkBlueOnWhiteHex,
+    PR: GrotonColors.PurpleOnWhiteHex
+  };
 
   const colorCache: Record<
     Canvas.Enrollments.Enrollment['sis_section_id'],
@@ -104,7 +104,8 @@ export async function run() {
         if (!(course.sis_course_id in colorCache)) {
           const block = blockFrom(course);
           if (block && block in colors) {
-            colorCache[course.sis_course_id] = colors[block];
+            colorCache[course.sis_course_id] =
+              colors[block as keyof typeof colors];
           }
         }
         return colorCache[course.sis_course_id];
