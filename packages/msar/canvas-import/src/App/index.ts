@@ -42,7 +42,6 @@ export const src = path.dirname(import.meta.dirname);
 
 export function configure(config: Configuration = {}) {
   Preferences.setDuplicates(config.duplicates);
-  Preferences.setIgnoreErrors(config.ignoreErrors);
   Preferences.setAssignments(config.assignments);
   Preferences.setBulletinBoard(config.bulletinBoard);
   Preferences.setTopics(config.topics);
@@ -56,10 +55,6 @@ export function configure(config: Configuration = {}) {
 export function options(): Plugin.Options {
   return {
     flag: {
-      ignoreErrors: {
-        description: `Ignore data errors where possible (default ${Colors.value(Preferences.ignoreErrors())}, ${Colors.value('--no-ignoreErrors')} to halt on errors)`,
-        default: Preferences.ignoreErrors()
-      },
       assignments: {
         description: `Create assignments (default ${Colors.value(Preferences.assignments())}, ${Colors.value('--no-assignments')} to skip)`,
         default: Preferences.assignments()

@@ -1,15 +1,10 @@
 import { hydrate } from '@battis/qui-cli.plugin';
+import { Workflow } from '@msar/workflow';
 
 export const WORKSPACE_TERM = 'groton-canvas-import-workspace';
 
-let _ignoreErrors = true;
-
-export function setIgnoreErrors(value?: boolean) {
-  _ignoreErrors = hydrate(value, _ignoreErrors);
-}
-
 export function ignoreErrors() {
-  return _ignoreErrors;
+  return Workflow.ignoreErrors();
 }
 
 let _assignments = true;

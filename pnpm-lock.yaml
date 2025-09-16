@@ -20,6 +20,9 @@ importers:
       '@groton/canvas-cli':
         specifier: workspace:*
         version: link:packages/canvas-cli
+      '@msar/canvas-import':
+        specifier: workspace:*
+        version: link:packages/msar/canvas-import
       lerna:
         specifier: ^8.2.4
         version: 8.2.4(@types/node@24.5.0)(encoding@0.1.13)
@@ -425,7 +428,7 @@ importers:
         version: 7.8.6(@types/node@24.5.0)
       '@msar/output':
         specifier: ^0.1.4
-        version: 0.1.4(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.log@2.2.2(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2)))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2))(@msar/debug@0.1.0(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.log@2.2.2(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2)))(@battis/qui-cli.plugin@2.4.2))(@msar/workflow@0.1.0(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2))
+        version: 0.1.4(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.log@2.2.2(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2)))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2))(@msar/debug@0.1.0(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.log@2.2.2(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2)))(@battis/qui-cli.plugin@2.4.2))(@msar/workflow@0.2.0(@qui-cli/colors@3.0.1(@qui-cli/plugin@3.0.0))(@qui-cli/plugin@3.0.0))
       '@msar/types.archive':
         specifier: ^0.1.5
         version: 0.1.5(@msar/types.snapshot@0.1.10(ejs@3.1.10))
@@ -435,6 +438,9 @@ importers:
       '@msar/types.snapshot':
         specifier: ^0.1.10
         version: 0.1.10(ejs@3.1.10)
+      '@msar/workflow':
+        specifier: ^0.2.0
+        version: 0.2.0(@qui-cli/colors@3.0.1(@qui-cli/plugin@3.0.0))(@qui-cli/plugin@3.0.0)
       '@oauth2-cli/sky-api':
         specifier: ^0.2.2
         version: 0.2.2(ejs@3.1.10)
@@ -1513,8 +1519,8 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@jsonjoy.com/json-pack@1.12.0':
-    resolution: {integrity: sha512-qPwWjCmcwtDiY9MZ4hz3YY4UYkVleWq5rXt+EEx4Jtl22byaLlfBEn8vXze43P2/30DkwzQvdA56EB3TH7t3Pg==}
+  '@jsonjoy.com/json-pack@1.14.0':
+    resolution: {integrity: sha512-LpWbYgVnKzphN5S6uss4M25jJ/9+m6q6UJoeN6zTkK4xAGhKsiBRPVeF7OYMWonn5repMQbE5vieRXcMUrKDKw==}
     engines: {node: '>=10.0'}
     peerDependencies:
       tslib: '2'
@@ -1563,11 +1569,11 @@ packages:
   '@msar/types.snapshot@0.1.10':
     resolution: {integrity: sha512-a7YwFF8CdhWCozyrZm9rBb4aTt/LfolMWnMLFQBbMjDRl6DNzcjvbT2rvWpzouDFaeLuTRs/LkWkvld0nJLz+w==}
 
-  '@msar/workflow@0.1.0':
-    resolution: {integrity: sha512-878mV1/3Km4yEJPIWvOSeWfqkxTbINPwNf2SwJWiAHg5908HoiZYmVGS+HX+a2ud6fb/unpiPRWmJLCom2g7xw==}
+  '@msar/workflow@0.2.0':
+    resolution: {integrity: sha512-S8Qq8F6OwHA5mB7NESTnKkcoTnxZhzX4N0Fg9zLuucCzGtvHAqwGeKQnzQcAy/0otjXFMVcecmrUS8/uCYA2ug==}
     peerDependencies:
-      '@battis/qui-cli.colors': ^2.0
-      '@battis/qui-cli.plugin': ^2.2
+      '@qui-cli/colors': 3.x
+      '@qui-cli/plugin': 3.x
 
   '@napi-rs/wasm-runtime@0.2.4':
     resolution: {integrity: sha512-9zESzOO5aDByvhIAsOy9TbpZ0Ur2AJbUI7UT73kcUTS2mxAMHOBaa1st/jAymNoCtvrit99kkzT1FZuXVcgfIQ==}
@@ -1887,6 +1893,14 @@ packages:
     resolution: {integrity: sha512-/UyNlHfkuLXG6Ed85KB0WBF283xn2yavR+UtRibBRUcvEJId2DSLdGXwJ/cDa1X++SWDPzq3+GSFniHjkNy7yg==}
     peerDependencies:
       prettier: ^3.0.0
+
+  '@qui-cli/colors@3.0.1':
+    resolution: {integrity: sha512-Lx4fYxwjK7IfX7qoEOk5KonLNtSJk6bMFqn6HS/4hd/wvPyrG3cRvFh+3IU2c0zSM9c6rIgPcDubjh4WW//g7w==}
+    peerDependencies:
+      '@qui-cli/plugin': 3.x
+
+  '@qui-cli/plugin@3.0.0':
+    resolution: {integrity: sha512-gA12MZG/K8qNFYcLfA4GP+4m/q3yo4rSPGGoEKozDGOfMce4DxYWrOhcwHOdBVNXnBxZYsJ7UGaDvAWHTcq7UQ==}
 
   '@sec-ant/readable-stream@0.4.1':
     resolution: {integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==}
@@ -4576,8 +4590,8 @@ packages:
     resolution: {integrity: sha512-5KoIu2Ngpyek75jXodFvnafB6DJgr3u8uuK0LEZJjrU19DrMD3EVERaR8sjz8CCGgpZvxPl9SuE1GMVPFHx1mw==}
     engines: {node: '>= 0.4'}
 
-  is-network-error@1.1.0:
-    resolution: {integrity: sha512-tUdRRAnhT+OtCZR/LxZelH/C7QtjtFrTu5tXCA8pl55eTUElUHT+GPYV8MBMBvea/j+NxQqVt3LbWMRir7Gx9g==}
+  is-network-error@1.2.0:
+    resolution: {integrity: sha512-32jdpRpJo8SeL7zOuBJbMLz/VTw9mDpTvcKzzR8DkXWsJbbE60gdiX8YOd0UAV6b8Skt+CMytzfgVVIRFidn0Q==}
     engines: {node: '>=16'}
 
   is-number-object@1.1.1:
@@ -5101,8 +5115,8 @@ packages:
     resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
     engines: {node: '>= 0.6'}
 
-  memfs@4.39.0:
-    resolution: {integrity: sha512-tFRr2IkSXl2B6IAJsxjHIMTOsfLt9W+8+t2uNxCeQcz4tFqgQR8DYk8hlLH2HsucTctLuoHq3U0G08atyBE3yw==}
+  memfs@4.40.0:
+    resolution: {integrity: sha512-+FHTak8yQpr3XlGesh1j1LXbz0dYr6t0P6sl41M7mpv81o/Ty/lVKLi3djVGnHWpf/Lr/WRoRz4uwNyr+dCuzA==}
     engines: {node: '>= 4.0.0'}
 
   memorystream@0.3.1:
@@ -8706,7 +8720,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@jsonjoy.com/json-pack@1.12.0(tslib@2.8.1)':
+  '@jsonjoy.com/json-pack@1.14.0(tslib@2.8.1)':
     dependencies:
       '@jsonjoy.com/base64': 1.1.2(tslib@2.8.1)
       '@jsonjoy.com/buffers': 1.0.0(tslib@2.8.1)
@@ -8819,14 +8833,14 @@ snapshots:
       '@battis/qui-cli.log': 2.2.2(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2))
       '@battis/qui-cli.plugin': 2.4.2
 
-  '@msar/output@0.1.4(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.log@2.2.2(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2)))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2))(@msar/debug@0.1.0(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.log@2.2.2(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2)))(@battis/qui-cli.plugin@2.4.2))(@msar/workflow@0.1.0(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2))':
+  '@msar/output@0.1.4(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.log@2.2.2(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2)))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2))(@msar/debug@0.1.0(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.log@2.2.2(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2)))(@battis/qui-cli.plugin@2.4.2))(@msar/workflow@0.2.0(@qui-cli/colors@3.0.1(@qui-cli/plugin@3.0.0))(@qui-cli/plugin@3.0.0))':
     dependencies:
       '@battis/qui-cli.colors': 2.1.0(@battis/qui-cli.plugin@2.4.2)
       '@battis/qui-cli.log': 2.2.2(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2))
       '@battis/qui-cli.plugin': 2.4.2
       '@battis/qui-cli.root': 2.0.5(@battis/qui-cli.plugin@2.4.2)
       '@msar/debug': 0.1.0(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.log@2.2.2(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)(@battis/qui-cli.root@2.0.5(@battis/qui-cli.plugin@2.4.2)))(@battis/qui-cli.plugin@2.4.2)
-      '@msar/workflow': 0.1.0(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)
+      '@msar/workflow': 0.2.0(@qui-cli/colors@3.0.1(@qui-cli/plugin@3.0.0))(@qui-cli/plugin@3.0.0)
 
   '@msar/types.archive@0.1.5(@msar/types.snapshot@0.1.10(ejs@3.1.10))':
     dependencies:
@@ -8841,10 +8855,10 @@ snapshots:
       - ejs
       - supports-color
 
-  '@msar/workflow@0.1.0(@battis/qui-cli.colors@2.1.0(@battis/qui-cli.plugin@2.4.2))(@battis/qui-cli.plugin@2.4.2)':
+  '@msar/workflow@0.2.0(@qui-cli/colors@3.0.1(@qui-cli/plugin@3.0.0))(@qui-cli/plugin@3.0.0)':
     dependencies:
-      '@battis/qui-cli.colors': 2.1.0(@battis/qui-cli.plugin@2.4.2)
-      '@battis/qui-cli.plugin': 2.4.2
+      '@qui-cli/colors': 3.0.1(@qui-cli/plugin@3.0.0)
+      '@qui-cli/plugin': 3.0.0
 
   '@napi-rs/wasm-runtime@0.2.4':
     dependencies:
@@ -9220,6 +9234,15 @@ snapshots:
     dependencies:
       '@xml-tools/parser': 1.0.11
       prettier: 3.5.3
+
+  '@qui-cli/colors@3.0.1(@qui-cli/plugin@3.0.0)':
+    dependencies:
+      '@qui-cli/plugin': 3.0.0
+      chalk: 5.6.2
+
+  '@qui-cli/plugin@3.0.0':
+    dependencies:
+      jackspeak: 4.1.1
 
   '@sec-ant/readable-stream@0.4.1': {}
 
@@ -12253,7 +12276,7 @@ snapshots:
 
   is-negative-zero@2.0.3: {}
 
-  is-network-error@1.1.0: {}
+  is-network-error@1.2.0: {}
 
   is-number-object@1.1.1:
     dependencies:
@@ -12857,9 +12880,9 @@ snapshots:
 
   media-typer@0.3.0: {}
 
-  memfs@4.39.0:
+  memfs@4.40.0:
     dependencies:
-      '@jsonjoy.com/json-pack': 1.12.0(tslib@2.8.1)
+      '@jsonjoy.com/json-pack': 1.14.0(tslib@2.8.1)
       '@jsonjoy.com/util': 1.9.0(tslib@2.8.1)
       glob-to-regex.js: 1.0.1(tslib@2.8.1)
       thingies: 2.5.0(tslib@2.8.1)
@@ -13656,7 +13679,7 @@ snapshots:
   p-retry@6.2.1:
     dependencies:
       '@types/retry': 0.12.2
-      is-network-error: 1.1.0
+      is-network-error: 1.2.0
       retry: 0.13.1
 
   p-timeout@1.2.1:
@@ -15568,7 +15591,7 @@ snapshots:
   webpack-dev-middleware@7.4.3(webpack@5.101.1):
     dependencies:
       colorette: 2.0.20
-      memfs: 4.39.0
+      memfs: 4.40.0
       mime-types: 3.0.1
       on-finished: 2.4.1
       range-parser: 1.2.1
