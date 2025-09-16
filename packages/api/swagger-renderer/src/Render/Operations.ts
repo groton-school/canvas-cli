@@ -83,7 +83,8 @@ export function annotateOperations({
             });
           }
 
-          // @ts-expect-error 2322 TODO $ref typing
+          // TODO $ref typing
+          // @ts-expect-error 2322
           const annotatedOperation: AnnotatedOperation = Overrides.operation({
             ...operation,
             specPath,
@@ -132,7 +133,8 @@ export function annotateOperations({
               annotatedOperation[paramType] = [];
             }
             if (Array.isArray(annotatedOperation[paramType])) {
-              // @ts-expect-error 2345 TODO fix wonky annotation typing
+              // TODO fix wonky annotation typing
+              // @ts-expect-error 2345
               annotatedOperation[paramType].push(annotatedParameter);
             }
 

@@ -108,7 +108,8 @@ export function operation(operation: AnnotatedOperation) {
       'tsBodyParameters'
     ]) {
       if (paramType in result) {
-        // @ts-expect-error 7053 TODO paramType typing
+        // TODO paramType typing
+        // @ts-expect-error 7053
         result[paramType] = result[paramType].reduce((params, param) => {
           const i = params.findIndex(
             (p: AnnotatedParameter) => p.tsName === param.tsName
@@ -149,7 +150,8 @@ function merge<T>(a: T, b: Partial<T>): T {
             ] as (keyof typeof a & keyof typeof b)[])
           )
         ]) {
-          // @ts-expect-error 2322 TODO setting previously unset property
+          // TODO setting previously unset property
+          // @ts-expect-error 2322
           result[key] = merge(a[key], b[key]);
         }
         return result;
