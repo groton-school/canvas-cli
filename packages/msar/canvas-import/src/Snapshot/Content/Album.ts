@@ -91,7 +91,7 @@ export async function convertToPages({ course, item, parent }: Options) {
       });
       if (result) {
         album.canvas = {
-          id: result.page_id,
+          id: result.page_id.toString(),
           url: result.url,
           args: params,
           created_at: result.created_at

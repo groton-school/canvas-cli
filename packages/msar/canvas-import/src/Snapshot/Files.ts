@@ -33,14 +33,14 @@ type ToCanvasArgsOptions = {
 
 const AWAITING = true;
 const cache: Record<
-  number,
+  string,
   Record<string, Canvas.Files.File | typeof AWAITING>
 > = {};
 const ready = new EventEmitter();
 ready.setMaxListeners(1000);
 
 async function getCached(
-  course_id: number,
+  course_id: string,
   localPath: string,
   uploader: () => Promise<Canvas.Files.File>
 ): Promise<Canvas.Files.File> {
@@ -258,22 +258,24 @@ export async function uploadLocalFiles({
       }
       if (!uploaded) {
         const file = await getCached(
-          course.id,
+          course.id.toString(),
           entry.localPath,
           async () =>
-            await Canvas.upload({
+            await Canvas.v1.Courses.Files.upload({
               pathParams: { course_id: course.id.toString() },
-              localFilePath: path.join(
-                path.dirname(IndexFile.path()),
-                entry.localPath.replace(/^\//, '')
-              ),
+              file: {
+                filePath: path.join(
+                  path.dirname(IndexFile.path()),
+                  entry.localPath.replace(/^\//, '')
+                )
+              },
               params
             })
         );
         (entry as Imported.Annotation).canvas = {
           args: params,
-          id: file.id,
-          course_id: course.id,
+          id: file.id.toString(),
+          course_id: course.id.toString(),
           display_name: file.display_name,
           url: file.url,
           created_at: file.created_at,

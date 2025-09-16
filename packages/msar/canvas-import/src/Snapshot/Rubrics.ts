@@ -1,18 +1,24 @@
 import '@battis/qui-cli.env';
+import { JSONObject } from '@battis/typescript-tricks';
 import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import * as Imported from '@msar/types.import';
 import { EventEmitter } from 'node:events';
 
-type CacheItem = Awaited<
+// FIXME Canvas.v1.Courses.Rubrics.create _does_ return a rubric!
+/*type CacheItem = Awaited<
   ReturnType<typeof Canvas.v1.Courses.Rubrics.create>
-> & {
+>*/
+type CacheItem = {
+  rubric: Canvas.Rubrics.Rubric;
+  rubric_association: Canvas.Rubrics.RubricAssociation;
+} & {
   args?:
     | Canvas.v1.Courses.Rubrics.createFormParameters
     | Canvas.v1.Courses.RubricAssociations.createFormParameters;
 };
 
 const AWAITING = true;
-const cache: Record<number, Record<number, CacheItem | typeof AWAITING>> = {};
+const cache: Record<string, Record<number, CacheItem | typeof AWAITING>> = {};
 const ready = new EventEmitter();
 ready.setMaxListeners(1000);
 
@@ -22,31 +28,31 @@ function toCanvasArgs(
 ): Canvas.v1.Courses.Rubrics.createFormParameters {
   return {
     'rubric[title]': rubric.Name,
+    // TODO check documentation for errors
+    // @ts-expect-error 2353
     'rubric[hide_points]': false,
     'rubric[free_form_criterion_comments]': false,
-    ...Client.Utilities.flatten(
-      rubric.Skills.sort((a, b) => a.SortOrder - b.SortOrder).map(
-        (skill): Canvas.Rubrics.CreateRubricCriterionParameters => ({
-          description: skill.Name,
-          long_description: '',
-          criterion_use_range: false,
-          points: skill.Levels.reduce(
-            (points, level) => Math.max(points, parseInt(level.Value)),
-            0
-          ),
-          ratings: skill.Levels.sort((a, b) => a.SortOrder - b.SortOrder).map(
-            (level): Canvas.Rubrics.CreateRubricRatingParameters => ({
-              description: level.Name,
-              long_description: level.Description,
-              points: parseInt(level.Value)
-            })
-          )
-        })
-      ),
-      'rubric[criteria]',
-      undefined,
-      true
-    ),
+    'rubric[criteria]': rubric.Skills.sort((a, b) => a.SortOrder - b.SortOrder)
+      .map((skill) => ({
+        description: skill.Name,
+        long_description: '',
+        criterion_use_range: false,
+        points: skill.Levels.reduce(
+          (points, level) => Math.max(points, parseInt(level.Value)),
+          0
+        ),
+        ratings: skill.Levels.sort((a, b) => a.SortOrder - b.SortOrder).map(
+          (level) => ({
+            description: level.Name,
+            long_description: level.Description,
+            points: parseInt(level.Value)
+          })
+        )
+      }))
+      .reduce((hash: Record<number, JSONObject>, criterion, i) => {
+        hash[i] = criterion;
+        return hash;
+      }, {}),
     'rubric_association[association_id]': assignment.id,
     'rubric_association[association_type]': 'Assignment',
     'rubric_association[purpose]': 'grading',
@@ -58,8 +64,8 @@ function toCanvasArgs(
 }
 
 export async function getCached(
-  course_id: number,
-  assignment: Canvas.Resources.Assignment,
+  course_id: string,
+  assignment: Canvas.Assignments.Assignment,
   blackbaudId: number,
   rubric: NonNullable<Imported.Assignments.Item['Rubric']>
 ): Promise<CacheItem> {
@@ -79,6 +85,8 @@ export async function getCached(
     cache[course_id][blackbaudId] = AWAITING;
     const args = toCanvasArgs(assignment, rubric);
     cache[course_id][blackbaudId] = {
+      // TODO documentation is wrong, create returns a Rubric object
+      // @ts-expect-error 2698
       ...(await Canvas.v1.Courses.Rubrics.create({
         pathParams: { course_id },
         params: args

@@ -20,7 +20,7 @@ export async function handleDuplicateCourse({ course, section }: Options) {
       | Canvas.Courses.Course
       | undefined
   > = {
-    update: async () => {
+    update: async (): Promise<Canvas.Courses.Course> => {
       if (!section.SectionInfo?.canvas) {
         throw new Error(
           `Missing Canvas import information, cannot update ${Colors.value(section.SectionInfo?.GroupName)}`
@@ -30,9 +30,13 @@ export async function handleDuplicateCourse({ course, section }: Options) {
       params['course[term_id]'] = `sis_term_id:${Preferences.WORKSPACE_TERM}`;
       delete params['course[sis_course_id]'];
       delete params.enable_sis_reactivation;
-      return await Canvas.v1.Courses.update({
+      await Canvas.v1.Courses.update({
         pathParams: { id: course.id.toString() },
         params: params as Partial<Canvas.v1.Courses.updateFormParameters>
+      });
+      // TODO `update_course` likely _does_ return a course and documentation is wrong
+      return await Canvas.v1.Courses.get({
+        pathParams: { id: course.id.toString() }
       });
     },
     reset: async () => {
@@ -41,7 +45,7 @@ export async function handleDuplicateCourse({ course, section }: Options) {
       });
       if (section.SectionInfo) {
         section.SectionInfo.canvas = {
-          id: course.id,
+          id: course.id.toString(),
           instance_url: Canvas.client().instance_url,
           args: {},
           created_at: course.created_at

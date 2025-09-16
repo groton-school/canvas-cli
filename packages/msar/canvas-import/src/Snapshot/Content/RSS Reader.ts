@@ -48,7 +48,7 @@ export async function convertToExternalFeed({ course, item }: Options) {
     });
     if (feed) {
       item.Content.canvas = {
-        id: feed.id,
+        id: feed.id.toString(),
         args: params,
         created_at: feed.created_at
       };

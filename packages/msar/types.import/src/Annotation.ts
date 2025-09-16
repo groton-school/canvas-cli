@@ -4,9 +4,9 @@ import * as Archive from '@msar/types.archive';
 import probe from 'probe-image-size';
 
 export type CanvasData = {
-  id?: number;
+  id?: string;
   blackbaud_id?: number;
-  course_id?: number;
+  course_id?: string;
   args: JSONObject;
   created_at?: DateTimeString;
   modified_at?: DateTimeString;

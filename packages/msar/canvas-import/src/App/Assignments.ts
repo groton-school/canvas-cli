@@ -56,7 +56,7 @@ export async function importAssignments({ course, section }: Options) {
         params
       });
       section.assignment_groups.push({
-        id: group.id,
+        id: group.id.toString(),
         blackbaud_id: assignmentType.type_id,
         args: params as JSONObject
       });
@@ -85,7 +85,8 @@ export async function importAssignments({ course, section }: Options) {
             course_id: course.id.toString(),
             id: assignments[order].canvas!.id!.toString()
           },
-          params
+          params:
+            params as Partial<Canvas.v1.Courses.Assignments.updateFormParameters>
         });
       } else {
         Log.info(
@@ -100,20 +101,21 @@ export async function importAssignments({ course, section }: Options) {
     }
     if (assignment) {
       if (assignments[order].Rubric && assignments[order].RubricId) {
-        const rubric = await Snapshot.Rubrics.getCached(
-          course.id,
+        const cached = await Snapshot.Rubrics.getCached(
+          course.id.toString(),
           assignment,
           assignments[order].RubricId,
           assignments[order].Rubric!
         );
-        if (rubric) {
-          let params = rubric.args;
+        if (cached) {
+          let params =
+            cached.args as Partial<Canvas.v1.Courses.RubricAssociations.createFormParameters>;
           if (
-            rubric.rubric_association.association_id !== assignment.id &&
-            rubric.rubric_association.association_type !== 'Assignment'
+            cached.rubric_association.association_id !== assignment.id &&
+            cached.rubric_association.association_type !== 'Assignment'
           ) {
             params = {
-              'rubric_association[rubric_id]': rubric.rubric.id,
+              'rubric_association[rubric_id]': cached.rubric.id,
               'rubric_association[association_type]': 'Assignment',
               'rubric_association[association_id]': assignment.id,
               'rubric_association[hide_points]': false,
@@ -122,17 +124,17 @@ export async function importAssignments({ course, section }: Options) {
               'rubric_association[use_for_grading]': true,
               'rubric_association[purpose]': 'grading'
             } as Partial<Canvas.v1.Courses.RubricAssociations.createFormParameters>;
-            rubric.rubric_association =
+            cached.rubric_association =
               await Canvas.v1.Courses.RubricAssociations.create({
                 pathParams: { course_id: course.id.toString() },
                 params
               });
           }
           assignments[order].Rubric!.canvas = {
-            id: rubric.rubric.id,
-            course_id: course.id,
-            rubric_association_id: rubric.rubric_association.id,
-            rubric_association_type: rubric.rubric_association.association_type,
+            id: cached.rubric.id.toString(),
+            course_id: course.id.toString(),
+            rubric_association_id: cached.rubric_association.id,
+            rubric_association_type: cached.rubric_association.association_type,
             args: params!
           };
         }
@@ -141,7 +143,7 @@ export async function importAssignments({ course, section }: Options) {
         (a) => a.id == assignments[order].id
       );
       section.Assignments![i!].canvas = {
-        id: assignment.id,
+        id: assignment.id.toString(),
         args: params,
         created_at: assignment.created_at
       };

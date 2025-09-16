@@ -26,7 +26,6 @@ await Core.configure({ core: { requirePositionals: true } });
 
 export type Configuration = Plugin.Configuration & {
   blackbaudInstanceId?: string;
-  canvasInstanceUrl?: string;
   termsPath?: string;
   departmentAccountMapPath?: string;
   coursesWithDepartmentsPath?: string;
@@ -48,29 +47,6 @@ export function configure(config: Configuration = {}) {
   Preferences.setBulletinBoard(config.bulletinBoard);
   Preferences.setTopics(config.topics);
   Snapshot.setPath(config.snapshotPath);
-  if (config.canvasInstanceUrl) {
-    if (
-      process.env.CANVAS_CLIENT_ID &&
-      process.env.CANVAS_CLIENT_SECRET &&
-      process.env.CANVAS_REDIRECT_URI
-    ) {
-      Log.info(`Using Canvas instance ${Colors.url(config.canvasInstanceUrl)}`);
-      const canvasConfig = {
-        instance_url: config.canvasInstanceUrl,
-        client_id: process.env.CANVAS_CLIENT_ID,
-        client_secret: process.env.CANVAS_CLIENT_SECRET,
-        redirect_uri: process.env.CANVAS_REDIRECT_URI
-      };
-      if (process.env.CANVAS_TOKEN_STORE) {
-        // @ts-expect-error 2339 TODO should really type CanvasConfig, but need to directly import @oauth2-cli/canvas for that
-        canvasConfig.store = path.join(
-          process.env.CANVAS_TOKEN_STORE,
-          `${new URL(config.canvasInstanceUrl).hostname}.json`
-        );
-      }
-      Canvas.init(canvasConfig);
-    }
-  }
   OneRoster.setInstanceId(config.blackbaudInstanceId);
   OneRoster.setTermsPath(config.termsPath);
   OneRoster.setDepartmentAccountMapPath(config.departmentAccountMapPath);
@@ -101,9 +77,6 @@ export function options(): Plugin.Options {
       blackbaudInstanceId: {
         description: `MySchoolApp instance identifier`
       },
-      canvasInstanceUrl: {
-        description: `Canvas instance URL`
-      },
       termsPath: {
         description: `Path to All Terms CSV file`
       },
@@ -115,8 +88,9 @@ export function options(): Plugin.Options {
       },
       duplicates: {
         description: `Specify a duplicate course handling option (One of ${['update', 'reset', 'skip'].map((t) => Colors.quotedValue(`"${t}"`)).join(', ')})`,
-        validate: (value?) =>
-          value && (value == 'update' || value == 'reset' || value == 'skip')
+        validate: (value: unknown): boolean =>
+          value !== undefined &&
+          (value == 'update' || value == 'reset' || value == 'skip')
       }
     }
   };
@@ -248,7 +222,7 @@ export async function run() {
       // TODO consolidate in importCourse
       if (section.SectionInfo) {
         section.SectionInfo.canvas = {
-          id: course.id,
+          id: course.id.toString(),
           instance_url: Canvas.client().instance_url,
           args: Snapshot.Section.toCanvasArgs(section),
           created_at: course.created_at

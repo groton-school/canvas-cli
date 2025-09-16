@@ -32,7 +32,7 @@ export async function importBulletinBoard({ course, section }: Options) {
         });
         if (frontPage) {
           section.front_page = {
-            id: frontPage.page_id,
+            id: frontPage.page_id.toString(),
             args: params,
             created_at: frontPage.created_at
           };
@@ -49,7 +49,7 @@ export async function importBulletinBoard({ course, section }: Options) {
       });
       if (frontPage) {
         section.front_page = {
-          id: frontPage.page_id,
+          id: frontPage.page_id.toString(),
           args: params,
           created_at: frontPage.created_at
         };
@@ -90,7 +90,7 @@ export async function importTopics({ course, section }: Options) {
         }
         if (canvasTopic) {
           topic.canvas = {
-            id: canvasTopic.page_id,
+            id: canvasTopic.page_id.toString(),
             blackbaud_id: topic.TopicId,
             args: params,
             created_at: canvasTopic.created_at
