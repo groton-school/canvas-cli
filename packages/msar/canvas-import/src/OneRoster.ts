@@ -96,7 +96,7 @@ export function sis_course_id(snapshot: Imported.Data) {
   if (!snapshot.SectionInfo) {
     throw new Error('Missing SectionInfo');
   }
-  return `crs-${instance()}-${snapshot.SectionInfo?.Id}`;
+  return `cls-${instance()}-${snapshot.SectionInfo?.Id}`;
 }
 
 export function sis_term_id(snapshot: Imported.Data) {
@@ -113,7 +113,7 @@ export function sis_term_id(snapshot: Imported.Data) {
   })?.term_id;
 }
 
-/** sis_user_id for (head) teacher */
+/** Sis_user_id for (head) teacher */
 export function sis_user_id(snapshot: Imported.Data) {
   if (!snapshot.SectionInfo) {
     throw new Error('Missing SectionInfo');
