@@ -80,15 +80,26 @@ export async function fetchAllPages<
         result = page;
       }
     } else {
+      let body = await response.text();
+      try {
+        body = JSON.parse(body);
+      } catch (_) {
+        // ignore failure to parse
+      }
       const details = {
-        url: response.url,
-        request_headers: result ? undefined : init?.headers,
-        body: result ? undefined : init?.body,
-        status: response.status,
-        statusText: response.statusText,
-        response_headers: response.headers,
-        response: response.text(),
-        result
+        request: {
+          url: response.url,
+          method: init?.method,
+          headers: result ? undefined : init?.headers,
+          body: result ? undefined : init?.body
+        },
+        response: {
+          status: response.status,
+          statusText: response.statusText,
+          headers: response.headers,
+          body
+        },
+        previous_accumulated_pages: result
       };
       throw new Error(JSON.stringify(details, null, 2));
     }
