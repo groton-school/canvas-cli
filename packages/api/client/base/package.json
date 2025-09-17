@@ -1,6 +1,6 @@
 {
   "name": "@groton/canvas-api.client.base",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Interfaces and types to implement a @groton/canvas-api client",
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/api/client/base#readme",
   "repository": {
