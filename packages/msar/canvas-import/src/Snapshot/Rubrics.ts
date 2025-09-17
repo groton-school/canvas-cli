@@ -22,6 +22,15 @@ const cache: Record<string, Record<number, CacheItem | typeof AWAITING>> = {};
 const ready = new EventEmitter();
 ready.setMaxListeners(1000);
 
+function indexedHash(
+  hash: Record<number, JSONObject>,
+  item: JSONObject,
+  i: number
+) {
+  hash[i] = item;
+  return hash;
+}
+
 function toCanvasArgs(
   assignment: Canvas.Assignments.Assignment,
   rubric: NonNullable<Imported.Assignments.Item['Rubric']>
@@ -41,18 +50,15 @@ function toCanvasArgs(
           (points, level) => Math.max(points, parseInt(level.Value)),
           0
         ),
-        ratings: skill.Levels.sort((a, b) => a.SortOrder - b.SortOrder).map(
-          (level) => ({
+        ratings: skill.Levels.sort((a, b) => a.SortOrder - b.SortOrder)
+          .map((level) => ({
             description: level.Name,
             long_description: level.Description,
             points: parseInt(level.Value)
-          })
-        )
+          }))
+          .reduce(indexedHash, {})
       }))
-      .reduce((hash: Record<number, JSONObject>, criterion, i) => {
-        hash[i] = criterion;
-        return hash;
-      }, {}),
+      .reduce(indexedHash, {}),
     'rubric_association[association_id]': assignment.id,
     'rubric_association[association_type]': 'Assignment',
     'rubric_association[purpose]': 'grading',

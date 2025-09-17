@@ -192,11 +192,14 @@ export async function run() {
       });
     }
 
-    let course: Canvas.Courses.Course | undefined = await Canvas.v1.Courses.get(
-      {
+    let course: Canvas.Courses.Course | undefined = undefined;
+    try {
+      course = await Canvas.v1.Courses.get({
         pathParams: { id: `sis_course_id:${OneRoster.sis_course_id(section)}` }
-      }
-    );
+      });
+    } catch (e) {
+      Log.debug(e as object);
+    }
     if (course) {
       course = await handleDuplicateCourse({ course, section });
     } else {
