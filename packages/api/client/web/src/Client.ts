@@ -3,6 +3,8 @@ import * as Canvas from '@groton/canvas-api';
 import * as Base from '@groton/canvas-api.client.base';
 import PQueue from 'p-queue';
 import path from 'path-browserify';
+import { AuthorizationEvent } from './AuthorizationEvent';
+import { RequestPageEvent } from './RequestPageEvent';
 
 type RequestInitParams = RequestInit & {
   pathParams?: JSONObject;
@@ -17,30 +19,10 @@ export type Options = {
   instance_url: string;
 };
 
+export const RequestStarted = 'canvas-req-started';
+export const RequestComplete = 'canvas-req-complete';
+
 export class Client implements Base.Base {
-  public static readonly RequestStarted = 'canvas-req-started';
-  public static readonly RequestPageReceived = 'canvas-req-page-received';
-  public static readonly RequestComplete = 'canvas-req-complete';
-  public static readonly AuthorizationRequired = 'canvas-auth-req';
-
-  public static AuthorizationEvent = class extends Event {
-    public constructor(
-      public readonly authorize_url: string,
-      eventInitDict?: EventInit
-    ) {
-      super(Client.AuthorizationRequired, eventInitDict);
-    }
-  };
-
-  public static RequestPageEvent = class<T> extends Event {
-    public constructor(
-      public readonly page: T,
-      eventInitDict?: EventInit
-    ) {
-      super(Client.RequestPageReceived, eventInitDict);
-    }
-  };
-
   private queue = new PQueue();
   public readonly instance_url: string;
 
@@ -71,7 +53,7 @@ export class Client implements Base.Base {
     endpoint: string,
     { pathParams, searchParams, params, ...init }: RequestInitParams = {}
   ): Promise<T> {
-    document.dispatchEvent(new Event(Client.RequestStarted));
+    document.dispatchEvent(new Event(RequestStarted));
     const result = await Base.fetchAllPages<T>({
       instance_url: this.instance_url,
       endpoint,
@@ -81,10 +63,10 @@ export class Client implements Base.Base {
       init,
       fetch: this.fetch.bind(this),
       pageCallback: (page) => {
-        document.dispatchEvent(new Client.RequestPageEvent(page));
+        document.dispatchEvent(new RequestPageEvent(page));
       }
     });
-    document.dispatchEvent(new Event(Client.RequestComplete));
+    document.dispatchEvent(new Event(RequestComplete));
     return result;
   }
 
@@ -95,7 +77,7 @@ export class Client implements Base.Base {
 
   public authorize() {
     document.dispatchEvent(
-      new Client.AuthorizationEvent(
+      new AuthorizationEvent(
         path.resolve(this.instance_url, '../login/authorize')
       )
     );
