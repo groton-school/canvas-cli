@@ -21,6 +21,16 @@ export class Client implements Base.Base {
   public static readonly RequestStarted = 'canvas-req-started';
   public static readonly RequestPageReceived = 'canvas-req-page-received';
   public static readonly RequestComplete = 'canvas-req-complete';
+  public static readonly AuthorizationRequired = 'canvas-auth-req';
+
+  public AuthorizationEvent = class extends Event {
+    public constructor(
+      public readonly authorize_url: string,
+      eventInitDict?: EventInit
+    ) {
+      super(Client.AuthorizationRequired, eventInitDict);
+    }
+  };
 
   public RequestPageEvent = class<T> extends Event {
     public constructor(
@@ -84,9 +94,10 @@ export class Client implements Base.Base {
   }
 
   public authorize() {
-    window.location.href = path.resolve(
-      this.instance_url,
-      '../login/authorize'
+    document.dispatchEvent(
+      new this.AuthorizationEvent(
+        path.resolve(this.instance_url, '../login/authorize')
+      )
     );
   }
 
