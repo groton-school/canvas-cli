@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.3](https://github.com/groton-school/canvas-cli/compare/client/web/0.1.2...client/web/0.1.3) (2025-09-26)
+
+
+### Bug Fixes
+
+* restructure AuthorizationEvent, RequestPageEvent and event names ([2571236](https://github.com/groton-school/canvas-cli/commit/2571236821a906f333768c3f18a910e7507afc38))
+
 ## [0.1.2](https://github.com/groton-school/canvas-cli/compare/client/web/0.1.1...client/web/0.1.2) (2025-09-26)
 
 
