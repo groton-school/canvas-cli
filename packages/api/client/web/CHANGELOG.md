@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.0](https://github.com/groton-school/canvas-cli/compare/client/web/0.0.5...client/web/0.1.0) (2025-09-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* listen for AuthorizationEvent to notify users of permission request
+
+### Features
+
+* listen for AuthorizationEvent to notify users of permission request ([eda670d](https://github.com/groton-school/canvas-cli/commit/eda670d09c31df9d1c57ec0ae4d47c0057e31c56))
+
 ## [0.0.5](https://github.com/groton-school/canvas-cli/compare/client/web/0.0.4...client/web/0.0.5) (2025-09-26)
 
 
