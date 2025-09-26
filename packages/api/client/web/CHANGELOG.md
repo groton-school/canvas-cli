@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.4](https://github.com/groton-school/canvas-cli/compare/client/web/0.1.3...client/web/0.1.4) (2025-09-26)
+
+
+### Bug Fixes
+
+* file extensions on local event imports ([063093b](https://github.com/groton-school/canvas-cli/commit/063093b95ef713c6879daebcca580e1f1a39015e))
+
 ## [0.1.3](https://github.com/groton-school/canvas-cli/compare/client/web/0.1.2...client/web/0.1.3) (2025-09-26)
 
 
