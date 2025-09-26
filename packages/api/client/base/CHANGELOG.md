@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.2.2](https://github.com/groton-school/canvas-cli/compare/client/base/0.2.1...client/base/0.2.2) (2025-09-26)
+
+
+### Features
+
+* per-page callback function for intermediate processing ([0dc67bd](https://github.com/groton-school/canvas-cli/commit/0dc67bd36736c673a76d77052c4befb6b74f9026))
+
 ## [0.2.1](https://github.com/groton-school/canvas-cli/compare/client/base/0.2.0...client/base/0.2.1) (2025-09-17)
 
 
