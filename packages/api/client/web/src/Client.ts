@@ -18,6 +18,19 @@ export type Options = {
 };
 
 export class Client implements Base.Base {
+  public static readonly RequestStarted = 'canvas-req-started';
+  public static readonly RequestPageReceived = 'canvas-req-page-received';
+  public static readonly RequestComplete = 'canvas-req-complete';
+
+  public RequestPageEvent = class<T> extends Event {
+    public constructor(
+      public readonly page: T,
+      eventInitDict?: EventInit
+    ) {
+      super(Client.RequestPageReceived, eventInitDict);
+    }
+  };
+
   private queue = new PQueue();
   public readonly instance_url: string;
 
@@ -48,15 +61,21 @@ export class Client implements Base.Base {
     endpoint: string,
     { pathParams, searchParams, params, ...init }: RequestInitParams = {}
   ): Promise<T> {
-    return await Base.fetchAllPages<T>({
+    document.dispatchEvent(new Event(Client.RequestStarted));
+    const result = await Base.fetchAllPages<T>({
       instance_url: this.instance_url,
       endpoint,
       pathParams,
       searchParams,
       params,
       init,
-      fetch: this.fetch.bind(this)
+      fetch: this.fetch.bind(this),
+      pageCallback: (page) => {
+        document.dispatchEvent(new this.RequestPageEvent(page));
+      }
     });
+    document.dispatchEvent(new Event(Client.RequestComplete));
+    return result;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
