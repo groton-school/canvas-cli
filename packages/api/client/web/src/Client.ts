@@ -3,8 +3,8 @@ import * as Canvas from '@groton/canvas-api';
 import * as Base from '@groton/canvas-api.client.base';
 import PQueue from 'p-queue';
 import path from 'path-browserify';
-import { AuthorizationEvent } from './AuthorizationEvent';
-import { RequestPageEvent } from './RequestPageEvent';
+import { AuthorizationEvent } from './AuthorizationEvent.js';
+import { RequestPageEvent } from './RequestPageEvent.js';
 
 type RequestInitParams = RequestInit & {
   pathParams?: JSONObject;
