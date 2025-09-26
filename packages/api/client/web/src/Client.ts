@@ -23,7 +23,7 @@ export class Client implements Base.Base {
   public static readonly RequestComplete = 'canvas-req-complete';
   public static readonly AuthorizationRequired = 'canvas-auth-req';
 
-  public AuthorizationEvent = class extends Event {
+  public static AuthorizationEvent = class extends Event {
     public constructor(
       public readonly authorize_url: string,
       eventInitDict?: EventInit
@@ -32,7 +32,7 @@ export class Client implements Base.Base {
     }
   };
 
-  public RequestPageEvent = class<T> extends Event {
+  public static RequestPageEvent = class<T> extends Event {
     public constructor(
       public readonly page: T,
       eventInitDict?: EventInit
@@ -81,7 +81,7 @@ export class Client implements Base.Base {
       init,
       fetch: this.fetch.bind(this),
       pageCallback: (page) => {
-        document.dispatchEvent(new this.RequestPageEvent(page));
+        document.dispatchEvent(new Client.RequestPageEvent(page));
       }
     });
     document.dispatchEvent(new Event(Client.RequestComplete));
@@ -95,7 +95,7 @@ export class Client implements Base.Base {
 
   public authorize() {
     document.dispatchEvent(
-      new this.AuthorizationEvent(
+      new Client.AuthorizationEvent(
         path.resolve(this.instance_url, '../login/authorize')
       )
     );
