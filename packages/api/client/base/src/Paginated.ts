@@ -16,21 +16,25 @@ export type Paginated = {
   per_page?: number;
 };
 
-type AllPagesOptions<F extends FetchFunction = FetchFunction> = {
+type AllPagesOptions<
+  ReturnType,
+  FetchFunctionImplementation extends FetchFunction = FetchFunction
+> = {
   instance_url: Base['instance_url'];
-  endpoint: FetchEndpoint<F>;
+  endpoint: FetchEndpoint<FetchFunctionImplementation>;
   pathParams?: JSONObject;
   searchParams?: JSONObject;
   params?: JSONObject;
   accessToken?: () => string | undefined | Promise<string | undefined>;
-  init?: FetchInit<F>;
-  fetch: FetchFunction;
+  init?: FetchInit<FetchFunctionImplementation>;
+  fetch: FetchFunctionImplementation;
+  pageCallback?: (page: ReturnType) => void;
 };
 
 /** Fetch all pages of paginated results at once */
 export async function fetchAllPages<
-  T,
-  F extends FetchFunction = FetchFunction
+  ReturnType,
+  FetchFunctionImplementation extends FetchFunction = FetchFunction
 >({
   endpoint,
   pathParams,
@@ -38,17 +42,18 @@ export async function fetchAllPages<
   params,
   accessToken,
   init,
-  fetch
-}: AllPagesOptions<F>) {
+  fetch,
+  pageCallback
+}: AllPagesOptions<ReturnType, FetchFunctionImplementation>) {
   let nextEndpoint: string | undefined = flattenEndpoint(endpoint.toString(), {
     pathParams,
     searchParams
   });
-  init = constructInit<F>(init, {
+  init = constructInit<FetchFunctionImplementation>(init, {
     params,
     access_token: accessToken ? await accessToken() : undefined
   });
-  let result: T | undefined = undefined;
+  let result: ReturnType | undefined = undefined;
   do {
     const response = await fetch(
       nextEndpoint,
@@ -60,13 +65,16 @@ export async function fetchAllPages<
         : init
     );
     if (response.ok) {
-      const page = (await response.json()) as T;
+      const page = (await response.json()) as ReturnType;
       if (isError(page)) {
         throw new Error(
           `Error: ${JSON.stringify({ endpoint, init, response, error: page })}`
         );
       }
       if (Array.isArray(page)) {
+        if (pageCallback) {
+          pageCallback(page);
+        }
         if (!result) {
           result = page;
         } else {
