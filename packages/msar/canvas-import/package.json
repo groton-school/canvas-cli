@@ -41,7 +41,6 @@
     "@oauth2-cli/sky-api": "^0.2.2",
     "csv-parse": "^5.6.0",
     "ejs": "^3.1.10",
-    "node-fetch": "^3.3.2",
     "open": "^10.2.0",
     "ora": "^8.2.0",
     "probe-image-size": "^7.2.3",

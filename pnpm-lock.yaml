@@ -41,9 +41,6 @@ importers:
       '@groton/canvas-api.utilities':
         specifier: workspace:*
         version: link:../utilities
-      node-fetch:
-        specifier: ^3.3.2
-        version: 3.3.2
     devDependencies:
       '@battis/descriptive-types':
         specifier: ^0.2.3
@@ -450,9 +447,6 @@ importers:
       ejs:
         specifier: ^3.1.10
         version: 3.1.10
-      node-fetch:
-        specifier: ^3.3.2
-        version: 3.3.2
       open:
         specifier: ^10.2.0
         version: 10.2.0
@@ -544,9 +538,6 @@ importers:
       ejs:
         specifier: ^3.1.10
         version: 3.1.10
-      node-fetch:
-        specifier: ^3.3.2
-        version: 3.3.2
       open:
         specifier: ^10.2.0
         version: 10.2.0

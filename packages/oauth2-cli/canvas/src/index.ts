@@ -1,7 +1,8 @@
-// TODO replace node-fetch dependency with native fetch when bumping to node@>=21
-import fetch, { RequestInfo, RequestInit } from 'node-fetch';
 import path from 'node:path';
 import * as OAuth2 from 'oauth2-cli';
+
+// TODO replace node-fetch dependency with native fetch when bumping to node@>=21
+import fetch, { RequestInfo, RequestInit } from 'node-fetch';
 
 export type Credentials = Omit<
   OAuth2.Credentials,

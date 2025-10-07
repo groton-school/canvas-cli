@@ -30,8 +30,7 @@
   },
   "dependencies": {
     "@groton/canvas-api.client.base": "workspace:*",
-    "@groton/canvas-api.utilities": "workspace:*",
-    "node-fetch": "^3.3.2"
+    "@groton/canvas-api.utilities": "workspace:*"
   },
   "devDependencies": {
     "@battis/descriptive-types": "^0.2.3",
