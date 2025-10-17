@@ -25,13 +25,13 @@
     "release": "commit-and-tag-version"
   },
   "dependencies": {
-    "@battis/qui-cli.colors": "^2.1.0",
-    "@battis/qui-cli.core": "^3.1.0",
-    "@battis/qui-cli.env": "^2.1.2",
-    "@battis/qui-cli.log": "^2.2.2",
-    "@battis/qui-cli.plugin": "^2.4.2",
-    "@battis/qui-cli.root": "^2.0.5",
     "@msar/types.import": "workspace:*",
+    "@qui-cli/colors": "^3.0.1",
+    "@qui-cli/core": "^4.0.1",
+    "@qui-cli/env": "^4.0.1",
+    "@qui-cli/log": "^3.0.1",
+    "@qui-cli/plugin": "^3.0.0",
+    "@qui-cli/root": "^3.0.1",
     "ejs": "^3.1.10",
     "open": "^10.2.0"
   },

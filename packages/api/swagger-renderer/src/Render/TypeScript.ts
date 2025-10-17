@@ -1,7 +1,7 @@
 import { PathString } from '@battis/descriptive-types';
-import { Colors } from '@battis/qui-cli.colors';
-import { Log } from '@battis/qui-cli.log';
 import * as Swagger from '@groton/swagger-spec-ts';
+import { Colors } from '@qui-cli/colors';
+import { Log } from '@qui-cli/log';
 import path from 'node:path';
 import { AnnotatedModel } from './Annotation.js';
 import * as Overrides from './Overrides.js';

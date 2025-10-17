@@ -1,7 +1,7 @@
-import { Log } from '@battis/qui-cli.log';
 import { ArrayElement } from '@battis/typescript-tricks';
 import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import * as Imported from '@msar/types.import';
+import { Log } from '@qui-cli/log';
 import { stripHtml } from 'string-strip-html';
 import { Preferences } from '../App/index.js';
 import * as Templates from '../Templates/index.js';

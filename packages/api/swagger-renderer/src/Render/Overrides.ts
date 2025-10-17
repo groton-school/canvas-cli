@@ -1,6 +1,6 @@
 import { PathString } from '@battis/descriptive-types';
-import { Colors } from '@battis/qui-cli.colors';
-import { Log } from '@battis/qui-cli.log';
+import { Colors } from '@qui-cli/colors';
+import { Log } from '@qui-cli/log';
 import path from 'node:path';
 import { AnnotatedOperation, AnnotatedParameter } from './Annotation.js';
 import { TSName, TSReference, TSType } from './TSAnnotation.js';

@@ -1,9 +1,9 @@
-import { Colors } from '@battis/qui-cli.colors';
-import '@battis/qui-cli.env';
-import { Log } from '@battis/qui-cli.log';
 import { JSONObject } from '@battis/typescript-tricks';
 import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import * as Imported from '@msar/types.import';
+import { Colors } from '@qui-cli/colors';
+import '@qui-cli/env';
+import { Log } from '@qui-cli/log';
 import * as Snapshot from '../Snapshot/index.js';
 import * as Preferences from './Preferences.js';
 

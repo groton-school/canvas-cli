@@ -1,10 +1,10 @@
 import { DateTimeString, PathString } from '@battis/descriptive-types';
-import { Colors } from '@battis/qui-cli.colors';
-import { Log } from '@battis/qui-cli.log';
 import { ArrayElement, JSONValue } from '@battis/typescript-tricks';
 import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import * as Archive from '@msar/types.archive';
 import * as Imported from '@msar/types.import';
+import { Colors } from '@qui-cli/colors';
+import { Log } from '@qui-cli/log';
 import crypto from 'node:crypto';
 import { EventEmitter } from 'node:events';
 import fs from 'node:fs';

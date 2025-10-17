@@ -1,7 +1,7 @@
-import '@battis/qui-cli.env';
 import { JSONObject } from '@battis/typescript-tricks';
 import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import * as Imported from '@msar/types.import';
+import '@qui-cli/env';
 import { EventEmitter } from 'node:events';
 
 // FIXME Canvas.v1.Courses.Rubrics.create _does_ return a rubric!

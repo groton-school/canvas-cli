@@ -1,9 +1,9 @@
 import { PathString, URLString } from '@battis/descriptive-types';
-import { Colors } from '@battis/qui-cli.colors';
-import { Log } from '@battis/qui-cli.log';
-import * as Plugin from '@battis/qui-cli.plugin';
-import { Root } from '@battis/qui-cli.root';
 import * as Swagger from '@groton/swagger-spec-ts';
+import { Colors } from '@qui-cli/colors';
+import { Log } from '@qui-cli/log';
+import * as Plugin from '@qui-cli/plugin';
+import { Root } from '@qui-cli/root';
 import fetch from 'node-fetch';
 import fs from 'node:fs';
 import path from 'node:path';

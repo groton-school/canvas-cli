@@ -1,4 +1,4 @@
-import { hydrate } from '@battis/qui-cli.plugin';
+import { hydrate } from '@qui-cli/plugin';
 
 let _path: string | undefined = undefined;
 

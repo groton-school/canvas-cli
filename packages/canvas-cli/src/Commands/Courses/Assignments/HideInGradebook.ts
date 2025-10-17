@@ -1,8 +1,8 @@
-import { Colors } from '@battis/qui-cli.colors';
-import '@battis/qui-cli.env';
-import { Log } from '@battis/qui-cli.log';
-import * as Plugin from '@battis/qui-cli.plugin';
 import { Canvas } from '@groton/canvas-api.client.qui-cli';
+import { Colors } from '@qui-cli/colors';
+import '@qui-cli/env';
+import { Log } from '@qui-cli/log';
+import * as Plugin from '@qui-cli/plugin';
 import ora from 'ora';
 
 export type Configuration = {

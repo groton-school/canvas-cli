@@ -1,5 +1,5 @@
-import { hydrate } from '@battis/qui-cli.plugin';
 import { Workflow } from '@msar/workflow';
+import { hydrate } from '@qui-cli/plugin';
 
 export const WORKSPACE_TERM = 'groton-canvas-import-workspace';
 

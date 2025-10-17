@@ -1,7 +1,7 @@
 import { PathString } from '@battis/descriptive-types';
-import { Colors } from '@battis/qui-cli.colors';
-import { Log } from '@battis/qui-cli.log';
-import { Root } from '@battis/qui-cli.root';
+import { Colors } from '@qui-cli/colors';
+import { Log } from '@qui-cli/log';
+import { Root } from '@qui-cli/root';
 import fs from 'node:fs';
 import path from 'node:path';
 import * as prettier from 'prettier';
@@ -24,7 +24,8 @@ export async function writePrettier(filepath: PathString, content: string) {
     );
   } catch (error) {
     Log.error(
-      `Error making ${Colors.url(filepath)} prettier: ${(error as Error).message}`, {prettierConfig: await prettier.resolveConfig(filepath)}
+      `Error making ${Colors.url(filepath)} prettier: ${(error as Error).message}`,
+      { prettierConfig: await prettier.resolveConfig(filepath) }
     );
     fs.writeFileSync(filepath, content);
   }

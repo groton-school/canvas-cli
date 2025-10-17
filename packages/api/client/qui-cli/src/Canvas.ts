@@ -1,10 +1,10 @@
 import { URLString } from '@battis/descriptive-types';
-import { Colors } from '@battis/qui-cli.colors';
-import { Env } from '@battis/qui-cli.env';
-import { Log } from '@battis/qui-cli.log';
-import * as Plugin from '@battis/qui-cli.plugin';
 import * as Canvas from '@groton/canvas-api';
 import { Client } from '@groton/canvas-api.client.node-cli';
+import { Colors } from '@qui-cli/colors';
+import { Env } from '@qui-cli/env';
+import { Log } from '@qui-cli/log';
+import * as Plugin from '@qui-cli/plugin';
 import path from 'node:path';
 
 export { client } from '@groton/canvas-api/dist/Client.js';

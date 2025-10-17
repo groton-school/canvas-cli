@@ -23,11 +23,11 @@
     "release": "commit-and-tag-version"
   },
   "dependencies": {
-    "@battis/qui-cli.colors": "^2.1.0",
-    "@battis/qui-cli.log": "^2.2.2",
     "@groton/canvas-api.client.base": "workspace:*",
     "@groton/canvas-api.utilities": "workspace:*",
     "@oauth2-cli/canvas": "workspace:*",
+    "@qui-cli/colors": "^3.0.1",
+    "@qui-cli/log": "^3.0.1",
     "node-fetch": "^3.3.2",
     "p-queue": "^8.1.1"
   },

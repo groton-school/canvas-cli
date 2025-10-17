@@ -1,10 +1,10 @@
-import { Colors } from '@battis/qui-cli.colors';
-import { Core } from '@battis/qui-cli.core';
-import '@battis/qui-cli.env';
-import { Log } from '@battis/qui-cli.log';
-import * as Plugin from '@battis/qui-cli.plugin';
-import { Root } from '@battis/qui-cli.root';
 import * as Imported from '@msar/types.import';
+import { Colors } from '@qui-cli/colors';
+import { Core } from '@qui-cli/core';
+import '@qui-cli/env';
+import { Log } from '@qui-cli/log';
+import * as Plugin from '@qui-cli/plugin';
+import { Root } from '@qui-cli/root';
 import fs from 'node:fs';
 import path from 'node:path';
 import open from 'open';
