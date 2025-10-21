@@ -1,6 +1,6 @@
 {
   "name": "@groton/canvas-api.client.node-cli",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Node command-line interface client for @groton/canvas-api",
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/api/client/node-cli#readme",
   "repository": {

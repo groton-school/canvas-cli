@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.2.2](https://github.com/groton-school/canvas-cli/compare/client/node-cli/0.2.1...client/node-cli/0.2.2) (2025-10-21)
+
+
+### Bug Fixes
+
+* deprecated unnecessary client methods ([5a4e1cc](https://github.com/groton-school/canvas-cli/commit/5a4e1cc6aceae3eb972688cb5bde5593eb350fef))
+
 ## [0.2.1](https://github.com/groton-school/canvas-cli/compare/client/node-cli/0.2.0...client/node-cli/0.2.1) (2025-09-02)
 
 ### Bug Fixes
