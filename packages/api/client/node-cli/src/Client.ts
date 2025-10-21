@@ -87,6 +87,10 @@ export class Client extends Canvas implements Base.Base {
     }
   }
 
+  /**
+   * @deprecated Since 0.2.1 -- not necessary given the structure of
+   *   @groton/canvas-api
+   */
   public async get<T = JSONValue>(
     endpoint: URL | RequestInfo,
     init?: RequestInitMethod
@@ -94,6 +98,10 @@ export class Client extends Canvas implements Base.Base {
     return this.fetchAs<T>(endpoint, { ...init, method: 'GET' });
   }
 
+  /**
+   * @deprecated Since 0.2.1 -- not necessary given the structure of
+   *   @groton/canvas-api
+   */
   public async post<T = JSONValue>(
     endpoint: URL | RequestInfo,
     init?: RequestInitMethod
@@ -101,6 +109,10 @@ export class Client extends Canvas implements Base.Base {
     return this.fetchAs<T>(endpoint, { ...init, method: 'POST' });
   }
 
+  /**
+   * @deprecated Since 0.2.1 -- not necessary given the structure of
+   *   @groton/canvas-api
+   */
   public async put<T = JSONValue>(
     endpoint: URL | RequestInfo,
     init?: RequestInitMethod
@@ -108,6 +120,10 @@ export class Client extends Canvas implements Base.Base {
     return this.fetchAs<T>(endpoint, { ...init, method: 'PUT' });
   }
 
+  /**
+   * @deprecated Since 0.2.1 -- not necessary given the structure of
+   *   @groton/canvas-api
+   */
   public async delete<T = JSONValue>(
     endpoint: URL | RequestInfo,
     init?: RequestInitMethod
