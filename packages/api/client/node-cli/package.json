@@ -5,7 +5,7 @@
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/api/client/node-cli#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/groton-school/canvas-cli.git",
+    "url": "git+https://github.com/groton-school/canvas-cli.git",
     "directory": "packages/api/client/node-cli"
   },
   "author": {
