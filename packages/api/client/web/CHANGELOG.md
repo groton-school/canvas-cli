@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.2.3](https://github.com/groton-school/canvas-cli/compare/client/web/0.2.2...client/web/0.2.3) (2025-10-23)
+
+
+### Features
+
+* settable requestId ([23c35c7](https://github.com/groton-school/canvas-cli/commit/23c35c75b835aa8b627105aea718720bb7caf20c))
+
 ## [0.2.2](https://github.com/groton-school/canvas-cli/compare/client/web/0.2.1...client/web/0.2.2) (2025-10-23)
 
 
