@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.2.0](https://github.com/groton-school/canvas-cli/compare/client/web/0.1.4...client/web/0.2.0) (2025-10-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* add requestId (and result) to dispatched events
+
+### Features
+
+* add requestId (and result) to dispatched events ([9a73122](https://github.com/groton-school/canvas-cli/commit/9a73122b92eed39af5ea5b30f41abf212cee60d8))
+
 ## [0.1.4](https://github.com/groton-school/canvas-cli/compare/client/web/0.1.3...client/web/0.1.4) (2025-09-26)
 
 
