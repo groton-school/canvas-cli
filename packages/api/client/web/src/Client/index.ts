@@ -3,8 +3,12 @@ import * as Canvas from '@groton/canvas-api';
 import * as Base from '@groton/canvas-api.client.base';
 import PQueue from 'p-queue';
 import path from 'path-browserify';
-import { AuthorizationEvent } from './AuthorizationEvent.js';
-import { RequestPageEvent } from './RequestPageEvent.js';
+import {
+  AuthorizationEvent,
+  RequestCompleteEvent,
+  RequestPageEvent,
+  RequestStartedEvent
+} from './Events';
 
 type RequestInitParams = RequestInit & {
   pathParams?: JSONObject;
@@ -19,8 +23,7 @@ export type Options = {
   instance_url: string;
 };
 
-export const RequestStarted = 'canvas-req-started';
-export const RequestComplete = 'canvas-req-complete';
+export * as Events from './Events/index.js';
 
 export class Client implements Base.Base {
   private queue = new PQueue();
@@ -53,7 +56,9 @@ export class Client implements Base.Base {
     endpoint: string,
     { pathParams, searchParams, params, ...init }: RequestInitParams = {}
   ): Promise<T> {
-    document.dispatchEvent(new Event(RequestStarted));
+    const start = new RequestStartedEvent();
+    const { requestId } = start;
+    document.dispatchEvent(start);
     const result = await Base.fetchAllPages<T>({
       instance_url: this.instance_url,
       endpoint,
@@ -63,10 +68,10 @@ export class Client implements Base.Base {
       init,
       fetch: this.fetch.bind(this),
       pageCallback: (page) => {
-        document.dispatchEvent(new RequestPageEvent(page));
+        document.dispatchEvent(new RequestPageEvent(page, { requestId }));
       }
     });
-    document.dispatchEvent(new Event(RequestComplete));
+    document.dispatchEvent(new RequestCompleteEvent<T>({ requestId, result }));
     return result;
   }
 

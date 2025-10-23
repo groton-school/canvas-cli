@@ -1,5 +1,5 @@
 import * as API from '@groton/canvas-api';
-import { Client, Options } from './Client.js';
+import { Client, Options } from './Client/index.js';
 
 export * from '@groton/canvas-api/dist/Endpoints/index.js';
 export * from '@groton/canvas-api/dist/Resources/index.js';
