@@ -14,6 +14,7 @@ type RequestInitParams = RequestInit & {
   pathParams?: JSONObject;
   searchParams?: JSONObject;
   params?: JSONObject;
+  requestId?: string;
 };
 
 export type Options = {
@@ -52,10 +53,16 @@ export class Client implements Base.Base {
 
   public async fetchAs<T = JSONValue>(
     endpoint: string,
-    { pathParams, searchParams, params, ...init }: RequestInitParams = {}
+    {
+      pathParams,
+      searchParams,
+      params,
+      requestId,
+      ...init
+    }: RequestInitParams = {}
   ): Promise<T> {
-    const start = new RequestStartedEvent();
-    const { requestId } = start;
+    const start = new RequestStartedEvent({ requestId });
+    requestId = start.requestId;
     document.dispatchEvent(start);
     const result = await Base.fetchAllPages<T>({
       instance_url: this.instance_url,
