@@ -8,7 +8,7 @@ import {
   RequestCompleteEvent,
   RequestPageEvent,
   RequestStartedEvent
-} from './Events';
+} from './Events/index.js';
 
 type RequestInitParams = RequestInit & {
   pathParams?: JSONObject;
@@ -22,8 +22,6 @@ export type Options = {
   parameters?: Record<string, string>;
   instance_url: string;
 };
-
-export * as Events from './Events/index.js';
 
 export class Client implements Base.Base {
   private queue = new PQueue();
