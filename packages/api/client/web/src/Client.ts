@@ -33,7 +33,6 @@ export class Client implements Base.Base {
   }
 
   public async fetch(endpoint: URL | RequestInfo, init?: RequestInit) {
-    console.log(`Preparing proxy request to ${endpoint}`);
     if (!(endpoint instanceof Request)) {
       try {
         const url = new URL(endpoint);
@@ -50,7 +49,6 @@ export class Client implements Base.Base {
         // ignore error (not a URL)
       }
       endpoint = path.join(this.instance_url, endpoint.toString());
-      console.log(`Sending proxy request to ${endpoint}`);
     }
     const result = await this.queue.add(
       (async () => {
