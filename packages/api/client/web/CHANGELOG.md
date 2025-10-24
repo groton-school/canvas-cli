@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.2.5](https://github.com/groton-school/canvas-cli/compare/client/web/0.2.4...client/web/0.2.5) (2025-10-24)
+
+
+### Bug Fixes
+
+* further work to address pagination/hostname proxy issues ([82f9f10](https://github.com/groton-school/canvas-cli/commit/82f9f1089979b4831dd45df0982711394a31c45b))
+
 ## [0.2.4](https://github.com/groton-school/canvas-cli/compare/client/web/0.2.3...client/web/0.2.4) (2025-10-24)
 
 
