@@ -34,6 +34,20 @@ export class Client implements Base.Base {
 
   public async fetch(endpoint: URL | RequestInfo, init?: RequestInit) {
     if (!(endpoint instanceof Request)) {
+      try {
+        const url = new URL(endpoint);
+        endpoint = endpoint
+          .toString()
+          .replace(
+            new RegExp(
+              `^${url.protocol}//${url.hostname}${url.port ? `:${url.port}` : ''}`
+            ),
+            ''
+          );
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (_) {
+        // ignore error (not a URL)
+      }
       endpoint = path.join(this.instance_url, endpoint.toString());
     }
     const result = await this.queue.add(
