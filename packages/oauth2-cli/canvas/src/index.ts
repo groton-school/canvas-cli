@@ -1,8 +1,6 @@
 import path from 'node:path';
 import * as OAuth2 from 'oauth2-cli';
 
-// TODO replace node-fetch dependency with native fetch when bumping to node@>=21
-import fetch, { RequestInfo, RequestInit } from 'node-fetch';
 
 export type Credentials = Omit<
   OAuth2.Credentials,
@@ -31,7 +29,7 @@ export class Canvas {
     });
   }
 
-  public async fetch(endpoint: URL | RequestInfo, init?: RequestInit) {
+  public async fetch(endpoint: URL | string | Request, init?: RequestInit) {
     await this.getToken();
     if (!this.token) {
       throw new Error('No access token');
