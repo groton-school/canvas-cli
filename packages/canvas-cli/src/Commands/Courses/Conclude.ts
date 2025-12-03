@@ -24,7 +24,7 @@ export function configure(config: Configuratuon = {}) {
 export function options(): Plugin.Options {
   return {
     opt: {
-      account: {
+      accountId: {
         description: `Canvas Account ID in which courses should be concluded (required)`,
         default: account_id
       },
