@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@battis/eslint-config": "^2.0.6",
-    "@battis/prettier-config": "^1.7.0",
+    "@battis/prettier-config": "^1.7.1",
     "@groton/canvas-cli": "workspace:*",
     "@msar/canvas-import": "workspace:*",
     "lerna": "^8.2.4",
