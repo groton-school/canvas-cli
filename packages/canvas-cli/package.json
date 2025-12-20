@@ -35,7 +35,7 @@
     "@qui-cli/log": "^3.0.1",
     "@qui-cli/plugin": "^3.0.0",
     "@qui-cli/root": "^3.0.1",
-    "@qui-cli/structured": "^1.0.1",
+    "@qui-cli/structured": "^2.0.1",
     "change-case": "^5.4.4",
     "csv-parse": "^5.6.0",
     "ora": "^8.2.0"
