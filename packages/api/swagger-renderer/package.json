@@ -41,7 +41,7 @@
     "prettier-plugin-organize-imports": "^4.3.0"
   },
   "devDependencies": {
-    "@battis/descriptive-types": "^0.2.4",
+    "@battis/descriptive-types": "^0.2.6",
     "@battis/typescript-tricks": "^0.7.4",
     "@groton/swagger-spec-ts": "workspace:*",
     "@tsconfig/node20": "^20.1.6",
