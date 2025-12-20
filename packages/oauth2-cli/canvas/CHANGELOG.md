@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.4.0](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/0.3.2...oauth2-cli/0.4.0) (2025-12-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* use native Fetch API
+
+### Features
+
+* send User-Agent header with requests ([da085f3](https://github.com/groton-school/canvas-cli/commit/da085f311caefafb9b5d1b18f66624115670db33))
+* use native Fetch API ([6f86830](https://github.com/groton-school/canvas-cli/commit/6f86830449302d12bb5f16d81741cf3a534e9b9e))
+
 ## [0.3.2](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/0.3.1...oauth2-cli/0.3.2) (2025-05-31)
 
 ## [0.3.1](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/0.2.1...oauth2-cli/0.3.1) (2025-05-31)
