@@ -32,7 +32,7 @@
     "@msar/types.archive": "^0.1.5",
     "@msar/types.import": "workspace:*",
     "@msar/types.snapshot": "^0.1.10",
-    "@msar/workflow": "^0.2.0",
+    "@msar/workflow": "^0.2.3",
     "@oauth2-cli/sky-api": "^0.2.2",
     "@qui-cli/colors": "^3.0.1",
     "@qui-cli/core": "^4.0.1",
