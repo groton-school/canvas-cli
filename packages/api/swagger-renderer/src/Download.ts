@@ -1,6 +1,8 @@
 import { PathString, URLString } from '@battis/descriptive-types';
 import * as Swagger from '@groton/swagger-spec-ts';
 import { Colors } from '@qui-cli/colors';
+import '@qui-cli/env-1password';
+import { Env } from '@qui-cli/env-1password';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import { Root } from '@qui-cli/root';
@@ -20,7 +22,7 @@ type Configuration = Plugin.Configuration & {
 export const name = 'download';
 export const src = import.meta.dirname;
 
-let instanceUrl = 'https://canvas.instructure.com';
+let instanceUrl: string | undefined = undefined;
 let specPath = './spec';
 
 export function configure(config: Configuration = {}) {
@@ -30,24 +32,35 @@ export function configure(config: Configuration = {}) {
 
 export function options(): Plugin.Options {
   return {
+    man: [{ level: 1, text: 'Download Options' }],
     opt: {
       instanceUrl: {
-        description: `URL of the Canvas instance from which to download the Swagger API spec (default: ${Colors.url(instanceUrl)})`,
+        description: `URL of the Canvas instance from which to download the Swagger API spec, using the environment variable ${Colors.varName('INSTANCE_URL')} if present`,
         default: instanceUrl
       },
       specPath: {
-        description: `Path to store the downloaded spec files (default: ${Colors.url(specPath)})`,
+        description: `Path to store the downloaded spec files (default: ${Colors.path(specPath)})`,
         default: specPath
       }
     }
   };
 }
 
-export function init(args: Plugin.ExpectedArguments<typeof options>) {
-  configure(args.values);
+export async function init({
+  values
+}: Plugin.ExpectedArguments<typeof options>) {
+  configure({
+    instanceUrl:
+      (await Env.get({ key: 'INSTANCE_URL' })) ||
+      'https://canvas.instructure.com',
+    ...values
+  });
 }
 
 export async function run() {
+  if (!instanceUrl) {
+    throw new Error('An instance URL must be provided.');
+  }
   const spinner = ora(`Downloading Swagger API definition`).start();
   const queue = new PQueue({ interval: 1000 });
   instanceUrl = path.join(instanceUrl, 'doc/api');
@@ -59,6 +72,9 @@ export async function run() {
   const result: PathString[] = [];
   do {
     await queue.add(async () => {
+      if (!instanceUrl) {
+        throw new Error('An instance URL must be provided.');
+      }
       const url = new URL(instanceUrl + paths.pop());
       spinner.text = Colors.url(url);
       const response = await fetch(url);
