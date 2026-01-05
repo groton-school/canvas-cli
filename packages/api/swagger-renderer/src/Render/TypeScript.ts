@@ -54,7 +54,12 @@ export function toTSType(property: Swagger.v1p2.DataType): TSType {
   }
   let tsType = Overrides.tsType(property.type);
   if (!tsType) {
-    tsType = { type: 'unknown' };
+    tsType = {
+      type: 'JSONValue',
+      tsReferences: [
+        { type: 'JSONValue', packagePath: '@battis/typescript-tricks' }
+      ]
+    };
     switch (property.type) {
       case 'boolean':
       case 'number':
