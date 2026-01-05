@@ -58,6 +58,17 @@ export function annotateOperations({
           const tsImports: TSReference[] = [{ ...clientReference }];
           const tsName = toTSMethodName(operation);
           let tsType = toTSType(operation);
+          if (tsType.type === 'void') {
+            tsType = {
+              type: 'JSONValue',
+              tsReferences: [
+                {
+                  type: 'JSONValue',
+                  packagePath: '@battis/typescript-tricks'
+                }
+              ]
+            };
+          }
           if (tsType.type === 'unknown' && operation.type) {
             tsType = {
               type: operation.type,
