@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../Client.js';
 
@@ -31,9 +32,12 @@ type Options = {
  * Nickname: show_single_webhook_subscription
  */
 export async function show_single_webhook_subscription(options: Options) {
-  const response = await client().fetchAs<void>(`/api/lti/subscriptions/{id}`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<JSONValue>(
+    `/api/lti/subscriptions/{id}`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
   return response;
 }

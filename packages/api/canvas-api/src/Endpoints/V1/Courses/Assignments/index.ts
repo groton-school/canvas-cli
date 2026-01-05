@@ -1,3 +1,4 @@
+export * as Allocate from './Allocate/index.js';
 export * as AnonymousProvisionalGrades from './AnonymousProvisionalGrades/index.js';
 export * as AnonymousSubmissions from './AnonymousSubmissions/index.js';
 export * as BulkUpdate from './BulkUpdate/index.js';

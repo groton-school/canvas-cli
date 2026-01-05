@@ -1,6 +1,7 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
-import { client } from '../../../../../Client.js';
-import { Folder } from '../../../../../Resources/Files.js';
+import { client } from '../../../../../../Client.js';
+import { Folder } from '../../../../../../Resources/Files.js';
 
 export type resolve_path_groups_full_pathPathParameters = {
   /**
@@ -9,8 +10,6 @@ export type resolve_path_groups_full_pathPathParameters = {
    * Type: string
    */
   group_id: string | number;
-  /** Full path to folder */
-  full_path: string;
 };
 
 export type resolve_path_groups_full_pathSearchParameters = Masquerade &
@@ -43,7 +42,7 @@ type Options = {
  */
 export async function resolve_path_groups_full_path(options: Options) {
   const response = await client().fetchAs<Folder[]>(
-    `/api/v1/groups/{group_id}/folders/by_path/{full_path}`,
+    `/api/v1/groups/{group_id}/folders/by_path/*full_path`,
     {
       method: 'GET',
       ...options

@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 
@@ -46,7 +47,7 @@ type Options = {
  * Nickname: reorder_custom_columns
  */
 export async function reorder_custom_columns(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/courses/{course_id}/custom_gradebook_columns/reorder`,
     {
       method: 'POST',

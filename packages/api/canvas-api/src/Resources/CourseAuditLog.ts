@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type CourseEventLink = {
   /**
    * ID of the course for the event.

@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { uuid } from '../Overrides.js';
 import { Assignment, AssignmentOverride } from './Assignments.js';
 

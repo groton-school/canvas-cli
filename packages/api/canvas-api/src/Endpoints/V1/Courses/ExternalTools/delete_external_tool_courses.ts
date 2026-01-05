@@ -1,5 +1,7 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
+import { ContextExternalTool } from '../../../../Resources/ExternalTools.js';
 
 export type delete_external_tool_coursesPathParameters = {
   /**
@@ -39,7 +41,7 @@ type Options = {
  * Nickname: delete_external_tool_courses
  */
 export async function delete_external_tool_courses(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<ContextExternalTool>(
     `/api/v1/courses/{course_id}/external_tools/{external_tool_id}`,
     {
       method: 'DELETE',

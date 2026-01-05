@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import { Progress } from '../../../../Resources/CoursePace.js';
@@ -28,6 +29,11 @@ export type enroll_multiple_users_to_one_or_more_coursesFormParameters =
      * Format: 'int64'
      */
     course_ids: number | string[];
+    /**
+     * Enroll each user as a student, teacher, TA, observer, or designer. If no
+     * value is given, the type will be 'StudentEnrollment'.
+     */
+    enrollment_type: string;
   };
 
 type Options = {
@@ -47,6 +53,8 @@ type Options = {
 
 /**
  * Enroll multiple users to one or more courses
+ *
+ * Enrolls multiple users in one or more courses in a single operation.
  *
  * Nickname: enroll_multiple_users_to_one_or_more_courses
  */

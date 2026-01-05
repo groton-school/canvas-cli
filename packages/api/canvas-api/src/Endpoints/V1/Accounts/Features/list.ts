@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import { Feature } from '../../../../Resources/FeatureFlags.js';
@@ -11,7 +12,17 @@ export type listPathParameters = {
   account_id: string | number;
 };
 
-export type listSearchParameters = Masquerade & Paginated;
+export type listSearchParameters = Masquerade &
+  Paginated &
+  Partial<{
+    /**
+     * When true, feature flags that are enabled in a higher context and cannot
+     * be overridden will be omitted.
+     *
+     * Type: boolean
+     */
+    hide_inherited_enabled: boolean | string;
+  }>;
 
 type Options = {
   pathParams: listPathParameters;

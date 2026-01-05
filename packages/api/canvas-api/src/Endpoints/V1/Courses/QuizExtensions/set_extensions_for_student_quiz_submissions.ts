@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
@@ -98,7 +99,7 @@ type Options = {
 export async function set_extensions_for_student_quiz_submissions(
   options: Options
 ) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/courses/{course_id}/quiz_extensions`,
     {
       method: 'POST',

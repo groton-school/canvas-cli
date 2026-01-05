@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 
@@ -63,7 +64,7 @@ type Options = {
 export async function abort_generation_of_report_or_remove_previously_generated_one(
   options: Options
 ) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/reports/{id}`,
     {
       method: 'DELETE',

@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 import { gradesGrades } from '../../../../../Overrides.js';
@@ -31,6 +32,8 @@ type Options = {
 /**
  * Reset the what-if scores for the current user for an entire course and
  * recalculate grades
+ *
+ * Resets all what-if scores for a student in a course and recalculates grades.
  *
  * Nickname:
  * reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_grades

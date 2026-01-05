@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 
@@ -39,7 +40,7 @@ type Options = {
  * Nickname: reject_course_invitation
  */
 export async function reject_course_invitation(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/courses/{course_id}/enrollments/{id}/reject`,
     {
       method: 'POST',

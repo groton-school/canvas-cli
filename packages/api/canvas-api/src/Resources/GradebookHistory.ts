@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type Grader = {
   /**
    * The user_id of the user who graded the contained submissions

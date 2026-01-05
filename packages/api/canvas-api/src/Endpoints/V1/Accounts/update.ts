@@ -1,4 +1,4 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../Client.js';
 import { Account } from '../../../Resources/Accounts.js';
@@ -187,6 +187,18 @@ export type updateFormParameters = Masquerade & {
    * Type: boolean
    */
   'account[settings][conditional_release][locked]': boolean | string;
+  /**
+   * Enable or disable course pacing
+   *
+   * Type: boolean
+   */
+  'account[settings][enable_course_paces][value]': boolean | string;
+  /**
+   * Lock this setting for sub-accounts and courses
+   *
+   * Type: boolean
+   */
+  'account[settings][enable_course_paces][locked]': boolean | string;
   /**
    * Hash of optional password policy configuration parameters for a root
    * account

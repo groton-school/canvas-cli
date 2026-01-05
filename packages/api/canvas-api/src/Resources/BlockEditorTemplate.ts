@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type BlockEditorTemplate = {
   /**
    * The ID of the page

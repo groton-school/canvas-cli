@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 import { Numeric } from '../../../../../Overrides.js';
@@ -45,7 +46,7 @@ type Options = {
  * Nickname: get_formatted_student_numerical_answer
  */
 export async function get(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/quiz_submissions/{quiz_submission_id}/questions/{id}/formatted_answer`,
     {
       method: 'GET',

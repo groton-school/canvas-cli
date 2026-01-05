@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type Favorite = {
   /**
    * The ID of the object the Favorite refers to

@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Assignment } from './Assignments.js';
 import { Course } from './Courses.js';
 import { User } from './Users.js';

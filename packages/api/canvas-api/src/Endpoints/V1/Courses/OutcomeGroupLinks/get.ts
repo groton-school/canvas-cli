@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import { OutcomeLink } from '../../../../Resources/OutcomeGroups.js';
@@ -41,6 +42,8 @@ type Options = {
 
 /**
  * Get all outcome links for context
+ *
+ * Returns a list of all outcome links in the specified context.
  *
  * Nickname: get_all_outcome_links_for_context_courses
  */

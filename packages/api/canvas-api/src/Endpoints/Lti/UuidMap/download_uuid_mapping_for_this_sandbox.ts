@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../Client.js';
 
@@ -24,7 +25,7 @@ type Options =
  * Nickname: download_uuid_mapping_for_this_sandbox
  */
 export async function download_uuid_mapping_for_this_sandbox(options: Options) {
-  const response = await client().fetchAs<void>(`/api/lti/uuid_map`, {
+  const response = await client().fetchAs<JSONValue>(`/api/lti/uuid_map`, {
     method: 'GET',
     ...options
   });

@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type Grade = {
   /**
    * The grade for the course
@@ -18,7 +20,7 @@ export type Grade = {
    */
   possible: number | string;
   /** The dropped grades for the course */
-  dropped: unknown;
+  dropped: JSONValue;
 };
 
 export type AssignmentGroupGrade = {
@@ -59,7 +61,7 @@ export type AssignmentGroupGrade = {
    */
   grade: number | string;
   /** The dropped grades for the Assignment Group */
-  dropped: unknown;
+  dropped: JSONValue;
 };
 
 export type GradeGroup = {

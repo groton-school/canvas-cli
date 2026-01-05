@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
@@ -41,9 +42,12 @@ type Options =
  * Nickname: list_all_courses
  */
 export async function list(options: Options) {
-  const response = await client().fetchAs<void>(`/api/v1/search/all_courses`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<JSONValue>(
+    `/api/v1/search/all_courses`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
   return response;
 }

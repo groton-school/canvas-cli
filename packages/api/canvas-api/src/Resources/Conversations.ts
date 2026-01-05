@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type Conversation = {
   /**
    * The unique identifier for the conversation.
@@ -104,4 +106,6 @@ export type ConversationParticipant = {
    * user's avatar.
    */
   avatar_url: string;
+  /** The Canvas UUID for the participant. */
+  uuid: string;
 };

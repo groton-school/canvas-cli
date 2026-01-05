@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 import { RubricAssessment } from '../../../../../Resources/Rubrics.js';
@@ -61,8 +62,20 @@ export type grade_or_comment_on_submission_coursesFormParameters =
      * Format: 'int64'
      */
     'comment[file_ids]': number | string[];
-    /** Whether this assignment is visible to the owner of the submission */
-    'include[visibility]': string;
+    /**
+     * Associations to include with the submission. "submission_comments" is
+     * always included by default.
+     *
+     * - "submission_comments": Comments on the submission (always included)
+     * - "visibility": Whether the assignment is visible to the owner of the
+     *   submission
+     * - "sub_assignment_submissions": Sub-assignment submissions for discussion
+     *   checkpoints
+     * - "provisional_grades": Provisional grades (only available for moderated
+     *   assignments)
+     * - "group": Group information (id and name) for group assignments
+     */
+    include: string[];
     /**
      * Treat posted_grade as points if the value matches a grading scheme value
      *
@@ -171,7 +184,7 @@ type Options = {
  * Nickname: grade_or_comment_on_submission_courses
  */
 export async function grade_or_comment_on_submission_courses(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}`,
     {
       method: 'PUT',

@@ -1,5 +1,7 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
+import { ContextExternalTool } from '../../../../Resources/ExternalTools.js';
 
 export type createPathParameters = {
   /**
@@ -58,205 +60,29 @@ export type createFormParameters = Masquerade & {
    * Type: boolean
    */
   is_rce_favorite: boolean | string;
-  /** The url of the external tool for account navigation */
-  'account_navigation[url]': string;
   /**
-   * Set this to enable this feature
+   * Set the <placement_configuration_key> value for a specific placement.
    *
-   * Type: boolean
+   * Variable
    */
-  'account_navigation[enabled]': boolean | string;
-  /** The text that will show on the left-tab in the account navigation */
-  'account_navigation[text]': string;
-  /** The width of the dialog the tool is launched in */
-  'account_navigation[selection_width]': string;
-  /** The height of the dialog the tool is launched in */
-  'account_navigation[selection_height]': string;
+  '<placement_name>[<placement_configuration_key>]': JSONValue;
   /**
-   * The layout type to use when launching the tool. Must be "full_width",
-   * "full_width_in_context", "full_width_with_nav", "in_nav_context",
-   * "borderless", or "default"
-   */
-  'account_navigation[display_type]': string;
-  /** The url of the external tool for user navigation */
-  'user_navigation[url]': string;
-  /**
-   * Set this to enable this feature
-   *
-   * Type: boolean
-   */
-  'user_navigation[enabled]': boolean | string;
-  /** The text that will show on the left-tab in the user navigation */
-  'user_navigation[text]': string;
-  /**
-   * Who will see the navigation tab. "admins" for admins, "public" or
-   * "members" for everyone. Setting this to `null` will remove this
-   * configuration and use the default behavior, which is "public".
-   */
-  'user_navigation[visibility]': string;
-  /** The url of the external tool for right-side course home navigation menu */
-  'course_home_sub_navigation[url]': string;
-  /**
-   * Set this to enable this feature
-   *
-   * Type: boolean
-   */
-  'course_home_sub_navigation[enabled]': boolean | string;
-  /** The text that will show on the right-side course home navigation menu */
-  'course_home_sub_navigation[text]': string;
-  /** The url of the icon to show in the right-side course home navigation menu */
-  'course_home_sub_navigation[icon_url]': string;
-  /**
-   * Set this to enable this feature
-   *
-   * Type: boolean
-   */
-  'course_navigation[enabled]': boolean | string;
-  /** The text that will show on the left-tab in the course navigation */
-  'course_navigation[text]': string;
-  /**
-   * Who will see the navigation tab. "admins" for course admins, "members"
-   * for students, "public" for everyone. Setting this to `null` will remove
-   * this configuration and use the default behavior, which is "public".
-   */
-  'course_navigation[visibility]': string;
-  /**
-   * Determines how the navigation tab will be opened. "_blank" Launches the
-   * external tool in a new window or tab. "_self" (Default) Launches the
-   * external tool in an iframe inside of Canvas.
-   */
-  'course_navigation[windowTarget]': string;
-  /**
-   * If set to "disabled" the tool will not appear in the course navigation
-   * until a teacher explicitly enables it.
-   *
-   * If set to "enabled" the tool will appear in the course navigation without
-   * requiring a teacher to explicitly enable it.
-   *
-   * Defaults to "enabled"
-   */
-  'course_navigation[default]': string;
-  /**
-   * The layout type to use when launching the tool. Must be "full_width",
-   * "full_width_in_context", "full_width_with_nav", "in_nav_context",
-   * "borderless", or "default"
-   */
-  'course_navigation[display_type]': string;
-  /** The url of the external tool */
-  'editor_button[url]': string;
-  /**
-   * Set this to enable this feature
-   *
-   * Type: boolean
-   */
-  'editor_button[enabled]': boolean | string;
-  /** The url of the icon to show in the WYSIWYG editor */
-  'editor_button[icon_url]': string;
-  /** The width of the dialog the tool is launched in */
-  'editor_button[selection_width]': string;
-  /** The height of the dialog the tool is launched in */
-  'editor_button[selection_height]': string;
-  /**
-   * Set this to ContentItemSelectionRequest to tell the tool to use
-   * content-item; otherwise, omit
-   */
-  'editor_button[message_type]': string;
-  /** The url of the external tool */
-  'homework_submission[url]': string;
-  /**
-   * Set this to enable this feature
-   *
-   * Type: boolean
-   */
-  'homework_submission[enabled]': boolean | string;
-  /** The text that will show on the homework submission tab */
-  'homework_submission[text]': string;
-  /**
-   * Set this to ContentItemSelectionRequest to tell the tool to use
-   * content-item; otherwise, omit
-   */
-  'homework_submission[message_type]': string;
-  /** The url of the external tool */
-  'link_selection[url]': string;
-  /**
-   * Set this to enable this feature
-   *
-   * Type: boolean
-   */
-  'link_selection[enabled]': boolean | string;
-  /** The text that will show for the link selection text */
-  'link_selection[text]': string;
-  /**
-   * Set this to ContentItemSelectionRequest to tell the tool to use
-   * content-item; otherwise, omit
-   */
-  'link_selection[message_type]': string;
-  /** The url of the external tool */
-  'migration_selection[url]': string;
-  /**
-   * Set this to enable this feature
-   *
-   * Type: boolean
-   */
-  'migration_selection[enabled]': boolean | string;
-  /**
-   * Set this to ContentItemSelectionRequest to tell the tool to use
-   * content-item; otherwise, omit
-   */
-  'migration_selection[message_type]': string;
-  /** The url of the external tool */
-  'tool_configuration[url]': string;
-  /**
-   * Set this to enable this feature
-   *
-   * Type: boolean
-   */
-  'tool_configuration[enabled]': boolean | string;
-  /**
-   * Set this to ContentItemSelectionRequest to tell the tool to use
-   * content-item; otherwise, omit
-   */
-  'tool_configuration[message_type]': string;
-  /**
-   * Set this to default the lis_person_contact_email_primary to prefer
-   * provisioned sis_email; otherwise, omit
-   *
-   * Type: boolean
-   */
-  'tool_configuration[prefer_sis_email]': boolean | string;
-  /** The url of the external tool */
-  'resource_selection[url]': string;
-  /**
-   * Set this to enable this feature. If set to false, not_selectable must
-   * also be set to true in order to hide this tool from the selection UI in
-   * modules and assignments.
-   *
-   * Type: boolean
-   */
-  'resource_selection[enabled]': boolean | string;
-  /** The url of the icon to show in the module external tool list */
-  'resource_selection[icon_url]': string;
-  /** The width of the dialog the tool is launched in */
-  'resource_selection[selection_width]': string;
-  /** The height of the dialog the tool is launched in */
-  'resource_selection[selection_height]': string;
-  /**
-   * Configuration can be passed in as CC xml instead of using query
-   * parameters. If this value is "by_url" or "by_xml" then an xml
+   * Configuration can be passed in as Common Cartridge XML instead of using
+   * query parameters. If this value is "by_url" or "by_xml" then an XML
    * configuration will be expected in either the "config_xml" or "config_url"
    * parameter. Note that the name parameter overrides the tool name provided
-   * in the xml
+   * in the XML.
    */
   config_type: string;
   /**
-   * XML tool configuration, as specified in the CC xml specification. This is
-   * required if "config_type" is set to "by_xml"
+   * XML tool configuration, as specified in the Common Cartridge XML
+   * specification. This is required if "config_type" is set to "by_xml"
    */
   config_xml: string;
   /**
    * URL where the server can retrieve an XML tool configuration, as specified
-   * in the CC xml specification. This is required if "config_type" is set to
-   * "by_url"
+   * in the Common Cartridge XML specification. This is required if
+   * "config_type" is set to "by_url"
    */
   config_url: string;
   /**
@@ -301,10 +127,14 @@ type Options = {
  * supplied canvas will attempt to create a context external tool using the LTI
  * 1.3 standard.
  *
+ * See the <a href="file.lti_dev_key_config.html#placements-params">Placements
+ * Documentation</a> for more information on what placements are available, the
+ * possible fields, and their accepted values.
+ *
  * Nickname: create_external_tool_courses
  */
 export async function create(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<ContextExternalTool>(
     `/api/v1/courses/{course_id}/external_tools`,
     {
       method: 'POST',

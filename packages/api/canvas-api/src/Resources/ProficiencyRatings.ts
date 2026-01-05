@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type ProficiencyRating = {
   /** The description of the rating */
   description: string;
@@ -22,5 +24,5 @@ export type Proficiency = {
    * An array of proficiency ratings. See the ProficiencyRating specification
    * above.
    */
-  ratings: unknown;
+  ratings: JSONValue;
 };

@@ -1,9 +1,9 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { LockInfo } from './Assignments.js';
 
 export type File = {
   /** Type: integer */
   id: number | string;
-  uuid: string;
   /** Type: integer */
   folder_id: number | string;
   display_name: string;

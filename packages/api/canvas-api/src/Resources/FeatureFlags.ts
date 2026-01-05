@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type Feature = {
   /** The symbolic name of the feature, used in FeatureFlags */
   feature: string;
@@ -30,6 +32,12 @@ export type Feature = {
    * Type: boolean
    */
   beta: boolean | string;
+  /**
+   * Indicates the feature is part of the Early Access Program.
+   *
+   * Type: boolean
+   */
+  early_access_program: boolean | string;
   /**
    * Whether the details of the feature are autoexpanded on page load vs. the
    * user clicking to expand.

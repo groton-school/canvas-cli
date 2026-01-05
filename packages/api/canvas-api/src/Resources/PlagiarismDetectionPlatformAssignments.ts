@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 /** A Canvas assignment */
 export type LtiAssignment = {
   /** Type: integer */

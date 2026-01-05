@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { AssignmentDate, LockInfo } from './Assignments.js';
 
 export type Quiz = {

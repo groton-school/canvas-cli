@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type LineItem = {
   /** The fully qualified URL for showing, updating, and deleting the Line Item */
   id: string;

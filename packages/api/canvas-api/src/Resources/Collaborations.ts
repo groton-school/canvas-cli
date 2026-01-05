@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type Collaboration = {
   /**
    * The unique identifier for the collaboration

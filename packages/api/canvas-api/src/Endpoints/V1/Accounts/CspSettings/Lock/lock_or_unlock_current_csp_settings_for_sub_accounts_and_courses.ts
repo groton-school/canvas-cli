@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 
@@ -51,7 +52,7 @@ type Options = {
 export async function lock_or_unlock_current_csp_settings_for_sub_accounts_and_courses(
   options: Options
 ) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/accounts/{account_id}/csp_settings/lock`,
     {
       method: 'PUT',

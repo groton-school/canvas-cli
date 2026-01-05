@@ -1,6 +1,6 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
 import { client } from '../../../Client.js';
-import { array } from '../../../Overrides.js';
 import { DiscussionTopic } from '../../../Resources/DiscussionTopics.js';
 
 export type listSearchParameters = Masquerade &
@@ -68,7 +68,7 @@ export type listSearchParameters = Masquerade &
      * root level the total number of users in the topic's context (group or
      * course) that the topic applies to.
      */
-    include: array;
+    include: JSONValue;
   }>;
 
 type Options =

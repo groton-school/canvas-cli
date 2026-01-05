@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
@@ -74,9 +75,12 @@ type Options =
  * Nickname: find_recipients_search
  */
 export async function find_recipients_search(options: Options) {
-  const response = await client().fetchAs<void>(`/api/v1/search/recipients`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<JSONValue>(
+    `/api/v1/search/recipients`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
   return response;
 }

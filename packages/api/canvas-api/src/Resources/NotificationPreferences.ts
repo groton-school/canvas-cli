@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type NotificationPreference = {
   href: string;
   /** The notification this preference belongs to */

@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
@@ -34,6 +35,8 @@ type Options = {
 
 /**
  * Show an outcome group
+ *
+ * Returns detailed information about a specific outcome group.
  *
  * Nickname: show_outcome_group_accounts
  */

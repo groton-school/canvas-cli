@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 /** Reference to an object that matches a smart search */
 export type SearchResult = {
   /**

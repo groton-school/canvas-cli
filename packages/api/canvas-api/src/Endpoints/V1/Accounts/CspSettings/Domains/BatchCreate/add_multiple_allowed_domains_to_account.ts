@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../../Client.js';
 
@@ -49,7 +50,7 @@ type Options = {
 export async function add_multiple_allowed_domains_to_account(
   options: Options
 ) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/accounts/{account_id}/csp_settings/domains/batch_create`,
     {
       method: 'POST',

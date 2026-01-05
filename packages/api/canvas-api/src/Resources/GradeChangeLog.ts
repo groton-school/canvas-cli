@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type GradeChangeEventLinks = {
   /**
    * ID of the assignment associated with the event

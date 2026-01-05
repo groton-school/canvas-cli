@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { File } from './Files.js';
 
 export type ContentExport = {

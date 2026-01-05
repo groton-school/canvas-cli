@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 
@@ -43,7 +44,7 @@ type Options = {
  * Nickname: mark_bulk_submissions_as_read_courses
  */
 export async function mark_bulk_submissions_as_read_courses(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/courses/{course_id}/submissions/bulk_mark_read`,
     {
       method: 'PUT',

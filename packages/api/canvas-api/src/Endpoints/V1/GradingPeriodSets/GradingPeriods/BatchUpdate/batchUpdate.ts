@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 import { Date } from '../../../../../Overrides.js';
@@ -74,7 +75,7 @@ type Options = {
  * Nickname: batch_update_grading_periods_grading_period_sets
  */
 export async function batchUpdate(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/grading_period_sets/{set_id}/grading_periods/batch_update`,
     {
       method: 'PATCH',

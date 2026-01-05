@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type GradingPeriodSets = {
   /** The title of the grading period set. */
   title: string;

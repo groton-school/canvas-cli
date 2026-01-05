@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
@@ -44,6 +45,11 @@ export type updateFormParameters = Masquerade & {
    * valid for Site Admin registrations.
    */
   workflow_state: string;
+  /**
+   * A comment explaining why this change was made. Cannot exceed 2000
+   * characters.
+   */
+  comment: string;
 };
 
 type Options = {

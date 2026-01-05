@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 
@@ -51,7 +52,7 @@ type Options = {
  * Nickname: fetching_latest_quiz_statistics
  */
 export async function fetching_latest_quiz_statistics(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/statistics`,
     {
       method: 'GET',

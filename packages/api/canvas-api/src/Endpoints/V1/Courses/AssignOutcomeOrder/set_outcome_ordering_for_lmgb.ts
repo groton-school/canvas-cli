@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
@@ -33,7 +34,7 @@ type Options = {
  * Nickname: set_outcome_ordering_for_lmgb
  */
 export async function set_outcome_ordering_for_lmgb(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/courses/{course_id}/assign_outcome_order`,
     {
       method: 'POST',

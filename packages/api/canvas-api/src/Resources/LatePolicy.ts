@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type LatePolicy = {
   /**
    * The unique identifier for the late policy

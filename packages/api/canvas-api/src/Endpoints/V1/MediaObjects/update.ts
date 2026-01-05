@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../Client.js';
 
@@ -35,10 +36,12 @@ type Options = {
 /**
  * Update Media Object
  *
+ * Updates the title of a media object.
+ *
  * Nickname: update_media_object_media_objects
  */
 export async function update(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/media_objects/{media_object_id}`,
     {
       method: 'PUT',

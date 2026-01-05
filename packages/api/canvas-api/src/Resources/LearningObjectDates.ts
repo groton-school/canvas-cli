@@ -1,3 +1,4 @@
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import { AssignmentOverride } from './Assignments.js';
 
 export type LearningObjectDates = {
@@ -69,4 +70,12 @@ export type LearningObjectDates = {
   checkpoints: LearningObjectDates[];
   /** The tag identifying the type of checkpoint (only present for checkpoints) */
   tag: string;
+  /**
+   * Peer review sub assignment details, only present when
+   * include_peer_review=true is specified, assignment has peer reviews enabled,
+   * and peer_review_grading feature flag is enabled
+   *
+   * Object
+   */
+  peer_review_sub_assignment: JSONObject;
 };

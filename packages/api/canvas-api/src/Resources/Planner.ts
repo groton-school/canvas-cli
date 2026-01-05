@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 /** A planner note */
 export type PlannerNote = {
   /**

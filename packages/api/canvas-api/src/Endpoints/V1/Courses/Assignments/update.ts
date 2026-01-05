@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import {
@@ -317,11 +318,63 @@ export type updateFormParameters = Masquerade & {
    */
   'assignment[annotatable_attachment_id]': number | string;
   /**
+   * Document processors for this assignment. New document processors can only
+   * be added via the interactive LTI Deep Linking flow (in a browser), not
+   * via API token or JWT authentication. Deletion of document processors
+   * (passing an empty array) is allowed via API.
+   */
+  'assignment[asset_processors]': string[];
+  /**
    * If true, updated_at will be set even if no changes were made.
    *
    * Type: boolean
    */
   'assignment[force_updated_at]': boolean | string;
+  /**
+   * The maximum points possible for peer reviews.
+   *
+   * Type: number
+   *
+   * Format: 'float'
+   */
+  'assignment[peer_review][points_possible]': number | string;
+  /**
+   * The strategy used for grading peer reviews. Defaults to "points" if this
+   * field is omitted.
+   */
+  'assignment[peer_review][grading_type]': string;
+  /**
+   * The day/time the peer reviews are due. Must be between the lock dates if
+   * there are lock dates. Accepts times in ISO 8601 format, e.g.
+   * 2025-08-20T12:10:00Z.
+   *
+   * Format: date-time
+   */
+  'assignment[peer_review][due_at]': string;
+  /**
+   * The day/time the peer reviews are locked after. Must be after the due
+   * date if there is a due date. Accepts times in ISO 8601 format, e.g.
+   * 2025-08-25T12:10:00Z.
+   *
+   * Format: date-time
+   */
+  'assignment[peer_review][lock_at]': string;
+  /**
+   * The day/time the peer reviews are unlocked. Must be before the due date
+   * if there is a due date. Accepts times in ISO 8601 format, e.g.
+   * 2025-08-15T12:10:00Z.
+   *
+   * Format: date-time
+   */
+  'assignment[peer_review][unlock_at]': string;
+  /**
+   * List of overrides for the peer reviews. When updating overrides:
+   *
+   * - Include "id" to update an existing override
+   * - Omit "id" to create a new override
+   * - Omit an override from the list to delete it
+   */
+  'assignment[peer_review][peer_review_overrides]': AssignmentOverride[];
 };
 
 type Options = {

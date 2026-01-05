@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
@@ -41,7 +42,7 @@ type Options = {
  * Nickname: leave_group_users
  */
 export async function leave_group_users(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/groups/{group_id}/users/{user_id}`,
     {
       method: 'DELETE',

@@ -1,7 +1,6 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
-import { array } from '../../../../Overrides.js';
 import { DeveloperKey } from '../../../../Resources/DeveloperKeys.js';
 
 export type createPathParameters = {
@@ -40,7 +39,7 @@ export type createFormParameters = Masquerade & {
   /** Deprecated in favor of redirect_uris. Do not use. */
   'developer_key[redirect_uri]': string;
   /** List of URLs used during OAuth2 flow to validate given redirect URI. */
-  'developer_key[redirect_uris]': array;
+  'developer_key[redirect_uris]': JSONValue;
   /** User-specified code representing the vendor that uses the key. */
   'developer_key[vendor_code]': string;
   /**
@@ -62,7 +61,7 @@ export type createFormParameters = Masquerade & {
    */
   'developer_key[client_credentials_audience]': string;
   /** List of API endpoints key is allowed to access. */
-  'developer_key[scopes]': array;
+  'developer_key[scopes]': JSONValue;
   /**
    * If true, then token requests with this key must include scopes.
    *

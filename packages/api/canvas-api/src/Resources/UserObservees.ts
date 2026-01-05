@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 /** A code used for linking a user to a student to observe them. */
 export type PairingCode = {
   /**

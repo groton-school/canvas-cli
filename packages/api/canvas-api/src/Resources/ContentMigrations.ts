@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type MigrationIssue = {
   /**
    * The unique identifier for the issue

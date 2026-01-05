@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type SharedBrandConfig = {
   /**
    * The shared_brand_config identifier.

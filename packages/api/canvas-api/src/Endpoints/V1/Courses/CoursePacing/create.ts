@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import { CoursePace } from '../../../../Resources/CoursePace.js';
@@ -79,6 +80,8 @@ type Options = {
 
 /**
  * Create a Course pace
+ *
+ * Creates a new course pace with specified parameters.
  *
  * Nickname: create_course_pace
  */

@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
@@ -10,7 +11,15 @@ export type log_users_out_of_all_mobile_apps_idPathParameters = {
   id: string | number;
 };
 
-export type log_users_out_of_all_mobile_apps_idSearchParameters = Masquerade;
+export type log_users_out_of_all_mobile_apps_idSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * If true, will not expire mobile sessions for account administrators.
+     *
+     * Type: boolean
+     */
+    skip_admins: boolean | string;
+  }>;
 
 type Options = {
   pathParams: log_users_out_of_all_mobile_apps_idPathParameters;
@@ -32,12 +41,13 @@ type Options = {
  *
  * The route that takes a user id will expire mobile sessions for that user. The
  * route that doesn't take a user id will expire mobile sessions for _all_ users
- * in the institution.
+ * in the institution (except for account administrators if +skip_admins+ is
+ * given).
  *
  * Nickname: log_users_out_of_all_mobile_apps_id
  */
 export async function log_users_out_of_all_mobile_apps_id(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/users/{id}/mobile_sessions`,
     {
       method: 'DELETE',

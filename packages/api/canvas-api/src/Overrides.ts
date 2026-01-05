@@ -3,17 +3,17 @@ import {
   NumericString,
   PathString,
   URLString,
-  UUIDString,
-} from "@battis/descriptive-types";
-import { JSONArray, JSONObject, JSONValue } from "@battis/typescript-tricks";
-import { AccountCalendar } from "./Resources/AccountCalendars.js";
-import { BlackoutDate } from "./Resources/BlackoutDates.js";
-import { GroupCategory } from "./Resources/GroupCategories.js";
-import { GroupMembership } from "./Resources/Groups.js";
-import { BankItem, StimulusItem } from "./Resources/NewQuizItems.js";
-import { PlannerOverride } from "./Resources/Planner.js";
-import { Rubric } from "./Resources/Rubrics.js";
-import { Grade, Grades, Submission } from "./Resources/WhatIfGrades.js";
+  UUIDString
+} from '@battis/descriptive-types';
+import { JSONArray, JSONObject, JSONValue } from '@battis/typescript-tricks';
+import { AccountCalendar } from './Resources/AccountCalendars.js';
+import { BlackoutDate } from './Resources/BlackoutDates.js';
+import { GroupCategory } from './Resources/GroupCategories.js';
+import { GroupMembership } from './Resources/Groups.js';
+import { BankItem, StimulusItem } from './Resources/NewQuizItems.js';
+import { PlannerOverride } from './Resources/Planner.js';
+import { Rubric } from './Resources/Rubrics.js';
+import { Grade, Grades, Submission } from './Resources/WhatIfGrades.js';
 
 export type resultUrlStringTheurltotheresultthatwascreated = URLString;
 export type Integer = number;
@@ -40,12 +40,12 @@ export type account_calendarsAccountCalendartotal_resultsinteger = {
   total_results: number;
 };
 export type LtiRegistrationAccountBinding = {
-  type: "Lti::RegistrationAccountBinding";
+  type: 'Lti::RegistrationAccountBinding';
 };
 export type array = string[];
 export type multipleBlueprintRestrictions = Record<
-  "assignment" | "attachment" | "discussion_topic" | "quiz" | "wiki_page",
-  Record<"content" | "points" | "due_dates" | "availability_dates", boolean>
+  'assignment' | 'attachment' | 'discussion_topic' | 'quiz' | 'wiki_page',
+  Record<'content' | 'points' | 'due_dates' | 'availability_dates', boolean>
 >;
 export type BlackoutDateTheresultwhichshouldmatchtheinputwithmaybesomedifferentIDs =
   BlackoutDate[];
@@ -53,7 +53,7 @@ export type QuizUserConversation = {
   /** Message body of the conversation to be created */
   body: string;
   /** Who to send the message to. May be either 'submitted' or 'unsubmitted' */
-  recipients: "submitted" | "unsubmitted";
+  recipients: 'submitted' | 'unsubmitted';
   /** Subject of the new Conversation created */
   subject: string;
 };
@@ -66,12 +66,12 @@ export type GroupMembershipProgress =
   | {
       completion: boolean;
       context_id: number;
-      context_type: "GroupCategory";
-      created_at: DateTimeString<"ISO">;
+      context_type: 'GroupCategory';
+      created_at: DateTimeString<'ISO'>;
       id: number;
       message: string | null;
-      tag: "assign_unassigned_members";
-      updated_at: DateTimeString<"ISO">;
+      tag: 'assign_unassigned_members';
+      updated_at: DateTimeString<'ISO'>;
       user_id: number | null;
       workflow_state: string;
       url: URLString;
@@ -89,26 +89,38 @@ export type PlannerItem = {
     submitted: boolean;
     excused: boolean;
     graded: boolean;
-    posted_at: DateTimeString<"ISO">;
+    posted_at: DateTimeString<'ISO'>;
     late: boolean;
     missing: boolean;
     needs_grading: boolean;
     has_feedback: boolean;
     redo_request: boolean;
   };
-  plannable_date: DateTimeString<"ISO">;
+  plannable_date: DateTimeString<'ISO'>;
   plannable: {
     id: number;
     title: string;
-    created_at: DateTimeString<"ISO">;
-    updated_at: DateTimeString<"ISO">;
+    created_at: DateTimeString<'ISO'>;
+    updated_at: DateTimeString<'ISO'>;
     points_possible?: number;
-    due_at: DateTimeString<"ISO">;
-    read_state?: "unread" | "read";
+    due_at: DateTimeString<'ISO'>;
+    read_state?: 'unread' | 'read';
   };
   html_url: PathString;
   context_name: string;
   context_image: URLString;
 };
-export type experienceStringThenewlysetexperience = string
-export type roleStringThenewlysetrole = string
+export type experienceStringThenewlysetexperience = string;
+export type roleStringThenewlysetrole = string;
+export type LtiRegistrationHistoryEntry = JSONValue;
+export type LtiConfigurationOverlay = JSONValue;
+export type ObjectHashwithconversation_idandinitialmessagesarray = JSONValue;
+export type ObjectSuccessmessage = string;
+export type ObjectHashwithidandmessagesarrayoremptyobjectifnoactiveconversation =
+  JSONValue;
+export type ObjectHashwithidandupdatedmessagesarray = JSONValue;
+export type HashAmappingofuserIDstoarraysoftaggroupIDsExample35579345 =
+  JSONValue;
+export type JSONForsingledeletionoktrueForbulkdeletionjsonmessageBulkdeletecompleteddeleted_user_ids123456unauthorized_user_ids789 =
+  JSONValue;
+export type QueryResultsResponse = JSONValue;

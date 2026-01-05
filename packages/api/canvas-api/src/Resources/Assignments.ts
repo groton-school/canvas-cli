@@ -1,4 +1,4 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import { DiscussionTopic } from './DiscussionTopics.js';
 import { Submission } from './Submissions.js';
 

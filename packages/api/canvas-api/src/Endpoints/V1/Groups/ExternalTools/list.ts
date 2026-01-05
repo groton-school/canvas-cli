@@ -1,5 +1,7 @@
-import { Masquerade } from '@groton/canvas-api.client.base';
+import { JSONValue } from '@battis/typescript-tricks';
+import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
+import { ContextExternalTool } from '../../../../Resources/ExternalTools.js';
 
 export type listPathParameters = {
   /**
@@ -11,6 +13,7 @@ export type listPathParameters = {
 };
 
 export type listSearchParameters = Masquerade &
+  Paginated &
   Partial<{
     /** The partial name of the tools to match and return. */
     search_term: string;
@@ -27,7 +30,13 @@ export type listSearchParameters = Masquerade &
      * Type: boolean
      */
     include_parents: boolean | string;
-    /** The placement type to filter by. */
+    /**
+     * The placement type to filter by.
+     *
+     * Return all tools at the current context as well as all tools from the
+     * parent, and filter the tools list to only those with a placement of
+     * 'editor_button'
+     */
     placement: string;
   }>;
 
@@ -54,7 +63,7 @@ type Options = {
  * Nickname: list_external_tools_groups
  */
 export async function list(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<ContextExternalTool[]>(
     `/api/v1/groups/{group_id}/external_tools`,
     {
       method: 'GET',

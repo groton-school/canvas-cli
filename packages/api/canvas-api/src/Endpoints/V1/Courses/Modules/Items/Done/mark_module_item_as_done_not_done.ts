@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../../Client.js';
 
@@ -46,7 +47,7 @@ type Options = {
  * Nickname: mark_module_item_as_done_not_done
  */
 export async function mark_module_item_as_done_not_done(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/courses/{course_id}/modules/{module_id}/items/{id}/done`,
     {
       method: 'PUT',

@@ -1,4 +1,4 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 
 export type CoursePace = {
   /**
@@ -72,7 +72,7 @@ export type CoursePace = {
    */
   start_date: string;
   /** List of modules and items for this course pace */
-  modules: unknown;
+  modules: JSONValue;
   /** Progress of pace publishing */
   progress: Progress;
 };

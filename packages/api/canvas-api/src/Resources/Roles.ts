@@ -1,4 +1,4 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import { Account } from './Accounts.js';
 
 export type RolePermissions = {
@@ -92,10 +92,40 @@ export type Role = {
    */
   last_updated_at: string;
   /**
-   * A dictionary of permissions keyed by name (see permissions input parameter
-   * in the 'Create a role' API).
+   * A dictionary of permissions keyed by name (see 'List assignable
+   * permissions' API).
    *
    * Object
    */
   permissions: JSONObject;
+};
+
+/** A permission that can be granted to a role */
+export type Permission = {
+  /** The API identifier for the permission */
+  key: string;
+  /** The human-readable label for the permission */
+  label: string;
+  /**
+   * The group this permission belongs to, if it is part of a granular
+   * permission group
+   */
+  group: string;
+  /** The human-readable label for the group this permission belongs to */
+  group_label: string;
+  /** The base role types this permission can be enabled for */
+  available_to: string[];
+  /** The base role types this permission is enabled for by default */
+  true_for: string[];
+};
+
+/**
+ * Information about a permission, including its purpose and considerations for
+ * use.
+ */
+export type PermissionHelpText = {
+  /** Detailed explanations about what the permission does. */
+  details: JSONObject[];
+  /** A list of considerations or warnings about using the permission. */
+  considerations: JSONObject[];
 };
