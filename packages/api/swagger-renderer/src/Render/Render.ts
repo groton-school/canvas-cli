@@ -6,7 +6,6 @@ import { Root } from '@qui-cli/root';
 import fs from 'node:fs';
 import path from 'node:path';
 import ora from 'ora';
-import * as Download from '../Download.js';
 import * as Models from './Models.js';
 import * as Operations from './Operations.js';
 import * as Overrides from './Overrides.js';
@@ -99,8 +98,8 @@ export async function run(results?: Plugin.AccumulatedResults) {
   const spinner = ora(`Looking for specs`).start();
   let specPaths: PathString[] | undefined = undefined;
   specPath = path.resolve(Root.path(), specPath);
-  if (results && results[Download.name]) {
-    specPaths = results[Download.name];
+  if (results && results['download']) {
+    specPaths = results['download'];
     spinner.text = `Using specs provided by download`;
   } else if (fs.lstatSync(specPath).isDirectory()) {
     specPaths = fs
