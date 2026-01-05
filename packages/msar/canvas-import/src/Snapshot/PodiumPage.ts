@@ -1,6 +1,6 @@
 import { JSONValue } from '@battis/typescript-tricks';
-import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import * as Imported from '@msar/types.import';
+import { Canvas } from '@oauth2-cli/canvas';
 import * as Templates from '../Templates/index.js';
 import * as Content from './Content/index.js';
 import * as Files from './Files.js';

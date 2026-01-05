@@ -1,6 +1,6 @@
 import { ArrayElement } from '@battis/typescript-tricks';
-import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import * as Imported from '@msar/types.import';
+import { Canvas } from '@oauth2-cli/canvas';
 import { Log } from '@qui-cli/log';
 import { stripHtml } from 'string-strip-html';
 import { Preferences } from '../App/index.js';

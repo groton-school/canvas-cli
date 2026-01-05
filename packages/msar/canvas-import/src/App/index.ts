@@ -1,8 +1,8 @@
 import { JSONObject } from '@battis/typescript-tricks';
-import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import { input } from '@inquirer/prompts';
 import { Output } from '@msar/output';
 import * as Imported from '@msar/types.import';
+import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import { Core } from '@qui-cli/core';
 import '@qui-cli/env';

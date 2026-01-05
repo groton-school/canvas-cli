@@ -1,4 +1,4 @@
-import { Canvas } from '@groton/canvas-api.client.qui-cli';
+import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import { Core } from '@qui-cli/core';
 import '@qui-cli/env';
@@ -94,6 +94,7 @@ export async function run() {
         });
         const token = avatars.find(
           // FIXME Avatars are sometimes Files
+          // @ts-expect-error 2339 bad spec from Instructure
           (avatar) => 'uuid' in avatar && avatar.uuid === file.uuid
         )?.token;
         if (token) {

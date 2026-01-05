@@ -1,6 +1,6 @@
 import { JSONObject } from '@battis/typescript-tricks';
-import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import * as Imported from '@msar/types.import';
+import { Canvas } from '@oauth2-cli/canvas';
 import '@qui-cli/env';
 import { EventEmitter } from 'node:events';
 

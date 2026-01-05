@@ -1,5 +1,5 @@
-import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import * as Imported from '@msar/types.import';
+import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import '@qui-cli/env';
 import { Log } from '@qui-cli/log';

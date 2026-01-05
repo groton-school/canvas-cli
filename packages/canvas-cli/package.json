@@ -25,7 +25,6 @@
     "release": "commit-and-tag-version"
   },
   "dependencies": {
-    "@groton/canvas-api.client.qui-cli": "workspace:*",
     "@groton/colors": "^0.2.0",
     "@inquirer/prompts": "^7.10.1",
     "@oauth2-cli/canvas": "workspace:*",

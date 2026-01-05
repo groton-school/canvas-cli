@@ -26,13 +26,13 @@
     "release": "commit-and-tag-version"
   },
   "dependencies": {
-    "@groton/canvas-api.client.qui-cli": "workspace:*",
     "@inquirer/prompts": "^7.10.1",
     "@msar/output": "^0.1.8",
     "@msar/types.archive": "^0.1.5",
     "@msar/types.import": "workspace:*",
     "@msar/types.snapshot": "^0.1.10",
     "@msar/workflow": "^0.2.4",
+    "@oauth2-cli/canvas": "workspace:*",
     "@oauth2-cli/sky-api": "^0.2.2",
     "@qui-cli/colors": "^3.2.1",
     "@qui-cli/core": "^5.0.2",
