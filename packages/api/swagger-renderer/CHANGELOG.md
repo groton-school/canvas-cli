@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.3](https://github.com/groton-school/canvas-cli/compare/swagger-renderer/0.1.2...swagger-renderer/0.1.3) (2026-01-05)
+
+
+### Features
+
+* handle types that are represented as an array of possible types ([7de3d69](https://github.com/groton-school/canvas-cli/commit/7de3d6968e65b2f6506ab635d21bfc6718d831b9))
+* look for INSTANCE_URL in environment with 1Password support ([37b2372](https://github.com/groton-school/canvas-cli/commit/37b23724d4ba926d1fd933bb07680e080cec605a))
+* update Node target to active v24 ([5ecece1](https://github.com/groton-school/canvas-cli/commit/5ecece144945861343f008c0d9043ac631b08c34))
+
+
+### Bug Fixes
+
+* ignore references that have neither a package nor a file path ([25b33b1](https://github.com/groton-school/canvas-cli/commit/25b33b1698b2431334451dd7dfcfdb62a9dd4067))
+* remove unnecessary interdependency between Render and Download ([faae357](https://github.com/groton-school/canvas-cli/commit/faae357c72c97ff882520f79c6346957a691730e))
+* treat (frequently incorrect) `void` return type as returning an unknown JSON value ([dc43fc0](https://github.com/groton-school/canvas-cli/commit/dc43fc029666722aaa5920f23b429d901c4a91cf))
+* treat `unknown` as specifically an unknown _JSON vallue_ ([0ff1575](https://github.com/groton-school/canvas-cli/commit/0ff15755ccfafcbf1f0762de61dfb637204ef7ff))
+
 ## [0.1.2](https://github.com/groton-school/canvas-cli/compare/swagger-renderer/0.1.1...swagger-renderer/0.1.2) (2025-09-02)
 
 
