@@ -9,5 +9,12 @@ packages:
   - '!packages/oauth2-cli'
   - packages/oauth2-cli/*
 
+ignoredBuiltDependencies:
+  - '@parcel/watcher'
+
 onlyBuiltDependencies:
+  - gifsicle
+  - jpegtran-bin
   - nx
+  - optipng-bin
+  - sharp
