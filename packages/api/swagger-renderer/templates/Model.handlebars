@@ -1,5 +1,10 @@
 {{#tsImports}}
-import { {{type}} } from '{{{packagePath}}}{{{filePath}}}';
+{{#if packagePath}}
+import { {{type}} } from '{{{packagePath}}}';
+{{/if}}
+{{#if filePath}}
+import { {{type}} } from '{{{filePath}}}';
+{{/if}}
 {{/tsImports}}
 
 {{#models}}
