@@ -42,7 +42,7 @@
     "csv-parse": "^5.6.0",
     "ejs": "^3.1.10",
     "open": "^10.2.0",
-    "ora": "^8.2.0",
+    "ora": "^9.0.0",
     "probe-image-size": "^7.2.3",
     "string-strip-html": "^13.5.0"
   },

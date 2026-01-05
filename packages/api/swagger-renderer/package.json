@@ -36,7 +36,7 @@
     "@qui-cli/structured": "^2.0.4",
     "handlebars": "^4.7.8",
     "node-fetch": "^3.3.2",
-    "ora": "^8.2.0",
+    "ora": "^9.0.0",
     "p-queue": "^8.1.1",
     "prettier": "3.5.3",
     "prettier-plugin-jsdoc": "^1.8.0",
