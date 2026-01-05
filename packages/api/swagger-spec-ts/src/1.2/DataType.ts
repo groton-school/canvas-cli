@@ -10,7 +10,7 @@ export type RefType = {
 };
 
 export function isRefType(obj: DataType): obj is RefType {
-  return '$ref' in obj;
+  return typeof obj === 'object' && '$ref' in obj;
 }
 
 export type VoidType = {
