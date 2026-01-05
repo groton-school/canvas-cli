@@ -259,8 +259,8 @@ importers:
   packages/canvas-cli:
     dependencies:
       '@groton/colors':
-        specifier: ^0.2.0
-        version: 0.2.0
+        specifier: ^0.4.2
+        version: 0.4.2
       '@inquirer/prompts':
         specifier: ^7.10.1
         version: 7.10.1(@types/node@25.0.3)
@@ -1120,8 +1120,8 @@ packages:
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@groton/colors@0.2.0':
-    resolution: {integrity: sha512-twKVnkSmEnvHHUPeQnw78e1aTU6tlJ//AJtjfT5fSzSZsHV1ma+mwvVqUF5eiQDPzznBHjVSAMGSuTDEp+V+fg==}
+  '@groton/colors@0.4.2':
+    resolution: {integrity: sha512-lr4C14jQcY9f9Nd/4YHui4bIT69wlZJYkXkrYS7axUPus7Fo6WBfIrmVfoHwIAXNvP4XX6QALaG1+ZqeK/V8wQ==}
 
   '@gwhitney/detect-indent@7.0.1':
     resolution: {integrity: sha512-7bQW+gkKa2kKZPeJf6+c6gFK9ARxQfn+FKy9ScTBppyKRWH2KzsmweXUoklqeEiHiNVWaeP5csIdsNq6w7QhzA==}
@@ -7762,8 +7762,8 @@ packages:
     resolution: {integrity: sha512-FdNA4RyH1L43TlvGG8qOMIfcEczwA5ij+zLXUy3Z83CjxhLvcV7/Q/8pk22wnCgYw7PJhtK+7lhO+qqyT4NdvQ==}
     engines: {node: '>=16.14'}
 
-  ws@8.18.3:
-    resolution: {integrity: sha512-PEIGCY5tSlUt50cqyMXfCzX+oOPqN0vuGqWzbcJ2xvnkzkq46oOpz7dQaTDBdfICb4N14+GARUDw2XV2N4tvzg==}
+  ws@8.19.0:
+    resolution: {integrity: sha512-blAT2mjOEIi0ZzruJfIhb3nps74PRWTCz1IjglWEEpQl5XS/UNama6u2/rjFkDDouqr4L67ry+1aGIALViWjDg==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -8486,7 +8486,7 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
-  '@groton/colors@0.2.0': {}
+  '@groton/colors@0.4.2': {}
 
   '@gwhitney/detect-indent@7.0.1': {}
 
@@ -15956,7 +15956,7 @@ snapshots:
       sockjs: 0.3.24
       spdy: 4.0.2
       webpack-dev-middleware: 7.4.5(webpack@5.101.1)
-      ws: 8.18.3
+      ws: 8.19.0
     optionalDependencies:
       webpack: 5.101.1(webpack-cli@6.0.1)
       webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.101.1)
@@ -16161,7 +16161,7 @@ snapshots:
       js-yaml: 4.1.1
       write-file-atomic: 5.0.1
 
-  ws@8.18.3: {}
+  ws@8.19.0: {}
 
   wsl-utils@0.1.0:
     dependencies:
