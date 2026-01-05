@@ -23,9 +23,9 @@
     "release": "commit-and-tag-version"
   },
   "devDependencies": {
-    "@battis/typescript-tricks": "^0.7.4",
+    "@battis/typescript-tricks": "^0.7.6",
     "@tsconfig/node24": "^24.0.3",
-    "commit-and-tag-version": "^12.6.0",
+    "commit-and-tag-version": "^12.6.1",
     "del-cli": "^6.0.0",
     "npm-run-all": "^4.1.5",
     "typescript": "~5.8.3"
