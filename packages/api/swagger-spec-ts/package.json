@@ -1,6 +1,6 @@
 {
   "name": "@groton/swagger-spec-ts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Translation of Swagger specification to TypeScript objects",
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/api/swagger-spec-ts#readme",
   "repository": {
