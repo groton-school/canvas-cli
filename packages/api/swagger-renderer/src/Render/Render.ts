@@ -55,35 +55,36 @@ export function configure(config: Configuration = {}) {
 
 export function options(): Plugin.Options {
   return {
+    man: [{ level: 1, text: 'Rendering Options' }],
     flag: {
       map: {
-        description: `Output the annotated code map (default: ${Colors.value(map)})`,
+        description: `Output the annotated code map`,
         default: map
       }
     },
     opt: {
       specPath: {
-        description: `Path to Swagger spec file or directory (default: ${Colors.url(specPath)})`,
+        description: `Path to Swagger spec file or directory`,
         default: specPath
       },
       overridePath: {
-        description: `Path to TypeScript types override JSON file (default: ${Colors.url(overridePath)})`,
+        description: `Path to TypeScript types override JSON file`,
         default: overridePath
       },
       templatePath: {
-        description: `Path to Handlebars template directory (default: ${Colors.url(templatePath)})`,
+        description: `Path to Handlebars template directory`,
         default: templatePath
       },
       outputPath: {
-        description: `Path to output directory (default: ${Colors.url(outputPath)})`,
+        description: `Path to output directory`,
         default: outputPath
       },
       modelDirName: {
-        description: `Name of resource definitions directory (default: ${Colors.quotedValue(`"${modelDirName}"`)})`,
+        description: `Name of resource definitions directory`,
         default: modelDirName
       },
       operationsDirName: {
-        description: `Name of endpoint definitions directory (default: ${Colors.quotedValue(`"${operationsDirName}"`)})`,
+        description: `Name of endpoint definitions directory`,
         default: operationsDirName
       }
     }

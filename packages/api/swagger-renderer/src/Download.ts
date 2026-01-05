@@ -35,11 +35,14 @@ export function options(): Plugin.Options {
     man: [{ level: 1, text: 'Download Options' }],
     opt: {
       instanceUrl: {
-        description: `URL of the Canvas instance from which to download the Swagger API spec, using the environment variable ${Colors.varName('INSTANCE_URL')} if present`,
+        description:
+          `URL of the Canvas instance from which to download the ` +
+          `Swagger API spec, using the environment variable ` +
+          `${Colors.varName('INSTANCE_URL')} if present`,
         default: instanceUrl
       },
       specPath: {
-        description: `Path to store the downloaded spec files (default: ${Colors.path(specPath)})`,
+        description: `Path to store the downloaded spec files`,
         default: specPath
       }
     }
