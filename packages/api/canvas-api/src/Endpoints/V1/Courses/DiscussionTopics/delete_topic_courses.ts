@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
@@ -40,7 +41,7 @@ type Options = {
  * Nickname: delete_topic_courses
  */
 export async function delete_topic_courses(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/courses/{course_id}/discussion_topics/{topic_id}`,
     {
       method: 'DELETE',

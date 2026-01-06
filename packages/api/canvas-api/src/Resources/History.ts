@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 /** Information about a recently visited item or page in Canvas */
 export type HistoryEntry = {
   /** The asset string for the item viewed */

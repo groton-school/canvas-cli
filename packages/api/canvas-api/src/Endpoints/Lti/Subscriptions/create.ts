@@ -1,4 +1,4 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../Client.js';
 
@@ -50,7 +50,7 @@ type Options =
  * Nickname: create_webhook_subscription
  */
 export async function create(options: Options) {
-  const response = await client().fetchAs<void>(`/api/lti/subscriptions`, {
+  const response = await client().fetchAs<JSONValue>(`/api/lti/subscriptions`, {
     method: 'POST',
     ...options
   });

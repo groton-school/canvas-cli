@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type AssignmentExtension = {
   /**
    * The ID of the Assignment the extension belongs to.

@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../Client.js';
 
@@ -42,7 +43,7 @@ type Options = {
  * Nickname: delete_folder
  */
 export async function delete_folder(options: Options) {
-  const response = await client().fetchAs<void>(`/api/v1/folders/{id}`, {
+  const response = await client().fetchAs<JSONValue>(`/api/v1/folders/{id}`, {
     method: 'DELETE',
     ...options
   });

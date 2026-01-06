@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type Result = {
   /** The fully qualified URL for showing the Result */
   id: string;

@@ -1,4 +1,4 @@
-import { Canvas } from '@groton/canvas-api.client.qui-cli';
+import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import * as Plugin from '@qui-cli/plugin';
 import ora from 'ora';

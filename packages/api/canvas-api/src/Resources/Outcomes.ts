@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { RubricRating } from './Rubrics.js';
 
 export type Outcome = {

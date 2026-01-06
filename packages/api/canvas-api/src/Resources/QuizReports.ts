@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Progress } from './CoursePace.js';
 import { File } from './Files.js';
 

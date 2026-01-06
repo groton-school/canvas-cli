@@ -6,18 +6,18 @@ Typed access to Canvas LMS API with embedded documentation
 
 ## Clients
 
-This started as a component of [@groton/canvas-cli](https://www.npmjs.com/package/@groton/canvas-cli), a command-line set of administrative scripts that I have banged together. However, access to the inline documentation and IntelliSense autocompletions in a few front-end applications evolved this package into an API-only package that depends on purpose-dependent client for use:
+This started as a component of [@groton/canvas-cli](https://www.npmjs.com/package/@groton/canvas-cli), a command-line set of administrative scripts that I have banged together. However, access to the inline documentation and IntelliSense autocompletions in a few front-end applications evolved this package into an API-only package that depends on purpose-dependent clients for use:
 
-- [@groton/canvas-api.client.base](https://www.npmjs.com/package/@groton/canvas-api.client.base) provides interfaces and types to be used by any implementing classes.
-- [@groton/canvas-api.client.node-cli](https://www.npmjs.com/package/@groton/canvas-api.client.node-cli) is a client for use in Node command-line apps, which takes advantage of the [@oauth2-cli/canvas](https://www.npmjs.com/package/@oauth2-cli/canvas) to handle authentication to a Canvas LMS instance from the command-line.
-- [@groton/canvas-api.client.qui-cli](https://www.npmjs.com/package/@groton/canvas-api.client.qui-clii) encapsulates the Node client in a [@battis/qui-cli.plugin](https://www.npmjs.com/package/@battis/qui-cli.plugin) for ease of use within that small ecosystme for rapidly developing Node command-line apps.
+- [@groton/canvas-api.client.base](https://www.npmjs.com/package/@groton/canvas-api.client.base) provides interfaces and types to be used by any implementing packages.
+- [@oauth2-cli/canvas](https://www.npmjs.com/package/@oauth2-cli/canvas) is a client for use in Node command-line apps, which takes advantage of the [oauth2-cli](https://www.npmjs.com/package/oauth2-cli) to handle authentication to a Canvas LMS instance from the command-line, provides an easy-to-work-with `Canvas` object to call the API endpoints through, and can be used as a [@qui-cli/plugin](https://npmjs.com/package/@qui-cli/plugin) when building a CLI tool.
+- [@groton/canvas-api.client.web](https://www.npmjs.com/package/@groton/canvas-api.client.web) pairs with [groton-school/slim-canvas-api-proxy](https://packagist.org/packages/groton-school/slim-canvas-api-proxy) to support making browser-based calls to the Canvas LMS API (for example, as part of [an LTI tool](https://github.com/groton-school/planner-lti)).
 
 ## Install
 
 Using the Node client.
 
 ```sh
-npm install @groton/canvas-api @groton/canvas-api.client.node-cli
+npm install @groton/canvas-api @oauth2-cli/canvas
 ```
 
 ## Usage
@@ -26,17 +26,6 @@ Again, using the Node client. See [@groton/canvas-cli](https://www.npmjs.com/pac
 
 ```ts
 import * as Canvas from '@groton/canvas-api';
-import { Client } from '@groton/canvas-api.client.node-cli';
-
-// initialize the client from environment variables
-Canvas.init(
-  new Client({
-    instance_url: process.env.INSTANCE_URL,
-    client_id: process.env.CLIENT_ID,
-    client_secret: process.env.CLIENT_SECRET,
-    redirect_uri: process.env.REDIRECT_URI
-  })
-);
 
 // pull a paginated list of typed users from the API
 for (const user of await Canvas.v1.Accounts.Users.list({

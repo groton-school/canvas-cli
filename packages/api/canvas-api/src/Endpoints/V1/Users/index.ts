@@ -40,3 +40,4 @@ export * as TextEditorPreference from './TextEditorPreference/index.js';
 export * as Tokens from './Tokens/index.js';
 export * from './update.js';
 export * as UsageRights from './UsageRights/index.js';
+export * as UserGeneratedTokens from './UserGeneratedTokens/index.js';

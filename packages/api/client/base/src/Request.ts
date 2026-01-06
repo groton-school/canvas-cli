@@ -1,6 +1,5 @@
 import { JSONObject } from '@battis/typescript-tricks';
 import { stringify } from '@groton/canvas-api.utilities';
-import { FetchFunction, FetchInit } from './Fetch.js';
 
 type EndpointParameters = {
   pathParams?: JSONObject;
@@ -41,8 +40,8 @@ export function flattenEndpoint(
   return endpoint;
 }
 
-export function constructInit<F extends FetchFunction>(
-  init: FetchInit<F> = {},
+export function constructInit(
+  init: RequestInit = {},
   { params, access_token }: RequestParameters = {}
 ) {
   if (params) {

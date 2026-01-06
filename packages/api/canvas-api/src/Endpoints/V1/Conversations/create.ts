@@ -1,16 +1,11 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../Client.js';
 
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /**
-   * An array of recipient ids. These may be user ids or course/group ids
-   * prefixed with "course_" or "group_" respectively, e.g.
-   * recipients[]=1&recipients[]=2&recipients[]=course_3. If the course/group
-   * has over 100 enrollments, 'bulk_message' and 'group_conversation' must be
-   * set to true.
-   */
+  /** An array of recipient ids. These may be user ids */
   recipients: string[];
   /**
    * The subject of the conversation. This is ignored when reusing a
@@ -76,6 +71,11 @@ export type createFormParameters = Masquerade & {
    * format as courses or groups in the recipients argument.
    */
   context_code: string;
+  /**
+   * "uuid":: Optionally include an "uuid" key for each user participating in
+   * the conversation
+   */
+  include: string[];
 };
 
 type Options =
@@ -96,10 +96,16 @@ type Options =
  * Create a new conversation with one or more recipients. If there is already an
  * existing private conversation with the given recipients, it will be reused.
  *
+ * (either numeric IDs or UUIDs prefixed with "uuid:"), or course/group ids
+ * prefixed with "course_" or "group_" respectively, e.g.
+ * recipients[]=1&recipients[]=uuid:W9GQIcdoDTqwX8mxIunDQQVL6WZTaGmpa5xovmCBx&recipients[]=course_3.
+ * If the course/group has over 100 enrollments, 'bulk_message' and
+ * 'group_conversation' must be set to true.
+ *
  * Nickname: create_conversation
  */
 export async function create(options: Options) {
-  const response = await client().fetchAs<void>(`/api/v1/conversations`, {
+  const response = await client().fetchAs<JSONValue>(`/api/v1/conversations`, {
     method: 'POST',
     ...options
   });

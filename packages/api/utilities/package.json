@@ -1,6 +1,6 @@
 {
   "name": "@groton/canvas-api.utilities",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Utility functions to support @groton/canvas-api and its clients",
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/api/utilities#readme",
   "repository": {
@@ -23,9 +23,9 @@
     "release": "commit-and-tag-version"
   },
   "devDependencies": {
-    "@battis/typescript-tricks": "^0.7.4",
-    "@tsconfig/node20": "^20.1.6",
-    "commit-and-tag-version": "^12.6.0",
+    "@battis/typescript-tricks": "^0.7.6",
+    "@tsconfig/node24": "^24.0.3",
+    "commit-and-tag-version": "^12.6.1",
     "del-cli": "^6.0.0",
     "npm-run-all": "^4.1.5",
     "typescript": "~5.8.3"

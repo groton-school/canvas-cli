@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type GradingSchemeEntry = {
   /**
    * The name for an entry value within a GradingStandard that describes the

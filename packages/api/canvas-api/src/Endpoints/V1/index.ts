@@ -14,6 +14,7 @@ export * as CourseAccounts from './CourseAccounts/index.js';
 export * as CourseCreationAccounts from './CourseCreationAccounts/index.js';
 export * as Courses from './Courses/index.js';
 export * as DeveloperKeys from './DeveloperKeys/index.js';
+export * as EnqueueOutcomeRollupCalculation from './EnqueueOutcomeRollupCalculation/index.js';
 export * as Eportfolios from './Eportfolios/index.js';
 export * as EpubExports from './EpubExports/index.js';
 export * as ErrorReports from './ErrorReports/index.js';
@@ -32,6 +33,7 @@ export * as ManuallyCreatedCoursesAccount from './ManuallyCreatedCoursesAccount/
 export * as MediaAttachments from './MediaAttachments/index.js';
 export * as MediaObjects from './MediaObjects/index.js';
 export * as Outcomes from './Outcomes/index.js';
+export * as Permissions from './Permissions/index.js';
 export * as Planner from './Planner/index.js';
 export * as PlannerNotes from './PlannerNotes/index.js';
 export * as Polls from './Polls/index.js';

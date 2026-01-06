@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
@@ -21,9 +22,12 @@ type Options =
  * Nickname: get_kaltura_config
  */
 export async function get(options: Options) {
-  const response = await client().fetchAs<void>(`/api/v1/services/kaltura`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<JSONValue>(
+    `/api/v1/services/kaltura`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
   return response;
 }

@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
@@ -58,6 +59,14 @@ export type updateSearchParameters = Masquerade &
      * Type: boolean
      */
     elementary_dashboard_disabled: boolean | string;
+    /**
+     * If true, enables the widget dashboard for the user. Only applies when the
+     * widget_dashboard feature is enabled at the account level. Defaults to
+     * true when the feature becomes available.
+     *
+     * Type: boolean
+     */
+    widget_dashboard_user_preference: boolean | string;
   }>;
 
 type Options = {
@@ -81,9 +90,12 @@ type Options = {
  * Nickname: update_user_settings
  */
 export async function update(options: Options) {
-  const response = await client().fetchAs<void>(`/api/v1/users/{id}/settings`, {
-    method: 'GET',
-    ...options
-  });
+  const response = await client().fetchAs<JSONValue>(
+    `/api/v1/users/{id}/settings`,
+    {
+      method: 'GET',
+      ...options
+    }
+  );
   return response;
 }

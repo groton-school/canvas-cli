@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 import { UsedLocations } from '../../../../../Overrides.js';
@@ -33,11 +34,11 @@ type Options = {
 );
 
 /**
- * Get the courses and assignments for
+ * Get the courses and assignments for a rubric
  *
- * Returns the rubric with the given id.
+ * Returns the courses and assignments where a rubric is being used
  *
- * Nickname: get_courses_and_assignments_for_accounts
+ * Nickname: get_courses_and_assignments_for_rubric_accounts
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<UsedLocations>(

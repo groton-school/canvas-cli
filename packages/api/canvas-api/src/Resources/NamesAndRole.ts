@@ -1,4 +1,4 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 
 /** An abbreviated representation of an LTI Context */
 export type NamesAndRoleContext = {

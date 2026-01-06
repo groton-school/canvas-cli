@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
@@ -39,7 +40,7 @@ type Options = {
  * Nickname: get_results_for_single_poll_session
  */
 export async function get(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/polls/{poll_id}/poll_sessions/{id}`,
     {
       method: 'GET',

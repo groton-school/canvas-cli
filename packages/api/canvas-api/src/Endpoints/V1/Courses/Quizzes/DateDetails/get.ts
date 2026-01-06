@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 import { LearningObjectDates } from '../../../../../Resources/LearningObjectDates.js';
@@ -17,7 +18,17 @@ export type getPathParameters = {
   quiz_id: string | number;
 };
 
-export type getSearchParameters = Masquerade;
+export type getSearchParameters = Masquerade &
+  Partial<{
+    /**
+     * If true, includes peer review sub assignment information and overrides in
+     * the response. Requires the peer_review_grading feature flag to be
+     * enabled.
+     *
+     * Type: boolean
+     */
+    include_peer_review: boolean | string;
+  }>;
 
 type Options = {
   pathParams: getPathParameters;

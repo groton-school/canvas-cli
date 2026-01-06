@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 
@@ -40,7 +41,7 @@ type Options = {
  * Nickname: list_of_preference_categories
  */
 export async function list(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/users/{user_id}/communication_channels/{communication_channel_id}/notification_preference_categories`,
     {
       method: 'GET',

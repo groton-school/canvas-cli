@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../Client.js';
 
@@ -100,9 +101,12 @@ type Options =
  * Nickname: create_appointment_group
  */
 export async function create(options: Options) {
-  const response = await client().fetchAs<void>(`/api/v1/appointment_groups`, {
-    method: 'POST',
-    ...options
-  });
+  const response = await client().fetchAs<JSONValue>(
+    `/api/v1/appointment_groups`,
+    {
+      method: 'POST',
+      ...options
+    }
+  );
   return response;
 }

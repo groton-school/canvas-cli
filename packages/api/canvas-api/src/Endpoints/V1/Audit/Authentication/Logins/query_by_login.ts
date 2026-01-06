@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 
@@ -48,7 +49,7 @@ type Options = {
  * Nickname: query_by_login
  */
 export async function query_by_login(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/audit/authentication/logins/{login_id}`,
     {
       method: 'GET',

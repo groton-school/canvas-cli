@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type Account = {
   /**
    * The ID of the Account object

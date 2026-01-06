@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Outcome } from './Outcomes.js';
 
 export type OutcomeGroup = {

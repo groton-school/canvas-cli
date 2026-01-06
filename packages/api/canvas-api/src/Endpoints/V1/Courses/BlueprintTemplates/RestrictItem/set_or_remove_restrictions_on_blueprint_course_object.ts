@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 import { BlueprintRestriction } from '../../../../../Resources/BlueprintCourses.js';
@@ -77,7 +78,7 @@ type Options = {
 export async function set_or_remove_restrictions_on_blueprint_course_object(
   options: Options
 ) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/courses/{course_id}/blueprint_templates/{template_id}/restrict_item`,
     {
       method: 'PUT',

@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
@@ -35,7 +36,7 @@ type Options =
  * Nickname: save_enabled_account_calendars
  */
 export async function save_enabled_account_calendars(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/calendar_events/save_enabled_account_calendars`,
     {
       method: 'POST',

@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { CalendarEvent } from './CalendarEvents.js';
 
 /** Date and time for an appointment */

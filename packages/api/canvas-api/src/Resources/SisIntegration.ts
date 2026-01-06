@@ -1,4 +1,4 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 
 /** Assignments that have post_to_sis enabled with other objects for convenience */
 export type SisAssignment = {

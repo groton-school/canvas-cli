@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
@@ -44,7 +45,7 @@ type Options = {
 export async function show_temporary_enrollment_recipient_and_provider_status(
   options: Options
 ) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/users/{user_id}/temporary_enrollment_status`,
     {
       method: 'GET',

@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../../../Client.js';
 
@@ -54,7 +55,7 @@ type Options = {
 export async function mark_rubric_assessments_as_read_sections_rubric_comments(
   options: Options
 ) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/rubric_comments/read`,
     {
       method: 'PUT',

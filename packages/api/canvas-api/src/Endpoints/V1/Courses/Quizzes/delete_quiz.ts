@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import { Quiz } from '../../../../Resources/Quizzes.js';
@@ -34,6 +35,8 @@ type Options = {
 
 /**
  * Delete a quiz
+ *
+ * Deletes a quiz and returns the deleted quiz object.
  *
  * Nickname: delete_quiz
  */

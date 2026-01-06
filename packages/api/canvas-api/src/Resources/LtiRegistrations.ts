@@ -1,4 +1,4 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import { LtiRegistrationAccountBinding } from '../Overrides.js';
 import { User } from './Users.js';
 
@@ -383,8 +383,8 @@ export type LtiPlacement = {
    */
   prefer_sis_email: boolean | string;
   /**
-   * (Only applies to 1.1) If true, Canvas will not copy launch URL query
-   * parameters to the POST body.
+   * 1.1 specific. If true, query parameters from the launch URL will not be
+   * copied to the POST body.
    *
    * Type: boolean
    */
@@ -446,6 +446,46 @@ export type LtiOverlay = {
    * Object
    */
   placements: JSONObject;
+};
+
+/** A single version of a tool's configuration overlay */
+export type LtiOverlayVersion = {
+  /**
+   * The Canvas id of the root account
+   *
+   * Type: integer
+   */
+  root_account_id: number | string;
+  /** Timestamp of the version's creation */
+  created_at: string;
+  /** Timestamp of the version's last update */
+  updated_at: string;
+  /**
+   * Whether or not this change was caused by a reset of the tool's
+   * configuration
+   *
+   * Type: boolean
+   */
+  caused_by_reset: boolean | string;
+  /**
+   * The user that created this version. If a string, this registration was
+   * created by Instructure.
+   */
+  created_by: User;
+  /** A list of changes made in this version compared to the previous version */
+  diff: JSONObject[][];
+  /**
+   * The id of the overlay this version is for
+   *
+   * Type: integer
+   */
+  lti_overlay_id: number | string;
+  /**
+   * The id of the account this version is for
+   *
+   * Type: integer
+   */
+  account_id: number | string;
 };
 
 /**

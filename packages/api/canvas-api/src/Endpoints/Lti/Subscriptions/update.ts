@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../Client.js';
 
@@ -33,9 +34,12 @@ type Options = {
  * Nickname: update_webhook_subscription
  */
 export async function update(options: Options) {
-  const response = await client().fetchAs<void>(`/api/lti/subscriptions/{id}`, {
-    method: 'PUT',
-    ...options
-  });
+  const response = await client().fetchAs<JSONValue>(
+    `/api/lti/subscriptions/{id}`,
+    {
+      method: 'PUT',
+      ...options
+    }
+  );
   return response;
 }

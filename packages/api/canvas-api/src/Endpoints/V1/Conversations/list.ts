@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
 import { client } from '../../../Client.js';
 import { Conversation } from '../../../Resources/Conversations.js';
@@ -14,9 +15,7 @@ export type listSearchParameters = Masquerade &
     scope: string;
     /**
      * When set, only return conversations for the specified courses, groups or
-     * users. The id should be prefixed with its type, e.g. "user_123" or
-     * "course_456". Can be an array (by setting "filter[]") or single value (by
-     * setting "filter")
+     * users. The id should be prefixed with its type, e.g. "user_123",
      */
     filter: string[];
     /**
@@ -44,7 +43,8 @@ export type listSearchParameters = Masquerade &
     include_all_conversation_ids: boolean | string;
     /**
      * "participant_avatars":: Optionally include an "avatar_url" key for each
-     * user participanting in the conversation
+     * user participating in the conversation "uuid":: Optionally include an
+     * "uuid" key for each user participating in the conversation
      */
     include: string[];
   }>;
@@ -64,6 +64,10 @@ type Options =
  *
  * Returns the paginated list of conversations for the current user, most recent
  * ones first.
+ *
+ * "uuid:W9GQIcdoDTqwX8mxIunDQQVL6WZTaGmpa5xovmCB", or "course_456". For users,
+ * you can use either their numeric ID or UUID prefixed with "uuid:". Can be an
+ * array (by setting "filter[]") or single value (by setting "filter")
  *
  * Nickname: list_conversations
  */

@@ -1,5 +1,5 @@
-import { Canvas } from '@groton/canvas-api.client.qui-cli';
 import * as Imported from '@msar/types.import';
+import { Canvas } from '@oauth2-cli/canvas';
 import * as OneRoster from '../OneRoster.js';
 
 export function toCanvasArgs(

@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type ePortfolio = {
   /**
    * The database ID of the ePortfolio

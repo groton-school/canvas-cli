@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type Section = {
   /**
    * The unique identifier for the section.

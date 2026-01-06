@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.2.1](https://github.com/groton-school/canvas-cli/compare/utilities/0.2.0...utilities/0.2.1) (2026-01-05)
+
+
+### Features
+
+* update Node target to active v24 ([5ecece1](https://github.com/groton-school/canvas-cli/commit/5ecece144945861343f008c0d9043ac631b08c34))
+
 ## [0.2.0](https://github.com/groton-school/canvas-cli/compare/utilities/0.1.2...utilities/0.2.0) (2025-08-01)
 
 ### ⚠ BREAKING CHANGES

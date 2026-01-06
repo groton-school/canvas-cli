@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type QuizExtension = {
   /**
    * The ID of the Quiz the quiz extension belongs to.

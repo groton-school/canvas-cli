@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type QuizSubmission = {
   /**
    * The ID of the quiz submission.

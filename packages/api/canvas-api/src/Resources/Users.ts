@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { CalendarLink } from './Courses.js';
 import { Enrollment } from './Enrollments.js';
 
@@ -351,6 +352,61 @@ export type PageViewLinks = {
    * Format: 'int64'
    */
   account: number | string;
+};
+
+/**
+ * Error response structure returned by the API when validation or processing
+ * failures occur
+ */
+export type AsyncApiErrorResponse = {
+  /** Array of error messages describing what went wrong with the request */
+  errors: string[];
+};
+
+/** Response returned when successfully initiating a page views query */
+export type AsyncQueryResponse = {
+  /**
+   * URL endpoint to poll for query status updates
+   *
+   * Format: 'uri'
+   */
+  poll_url: string;
+};
+
+/** Response containing the current status of a page views query */
+export type AsyncQueryStatusResponse = {
+  /**
+   * The UUID of the query being polled
+   *
+   * Format: 'uuid'
+   */
+  query_id: string;
+  /** Current processing status of the query */
+  status: string;
+  /** The format that results will be returned in */
+  format: string;
+  /**
+   * URL to retrieve query results. Only present when status is 'finished'
+   *
+   * Format: 'uri'
+   */
+  results_url: string;
+};
+
+/** File download response containing page views query results */
+export type AsyncQueryResultsResponse = {
+  /**
+   * The query results data in the requested format (CSV or JSON)
+   *
+   * Format: 'binary'
+   */
+  content: string;
+  /** Suggested filename for the downloaded results */
+  filename: string;
+  /** MIME type of the response content */
+  content_type: string;
+  /** Content encoding if the response is compressed */
+  content_encoding: string;
 };
 
 export type CourseNickname = {

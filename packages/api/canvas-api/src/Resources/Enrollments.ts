@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { User } from './Users.js';
 
 export type Grade = {

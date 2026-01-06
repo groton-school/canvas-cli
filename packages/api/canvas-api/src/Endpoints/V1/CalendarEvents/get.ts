@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../Client.js';
 import { CalendarEvent } from '../../../Resources/CalendarEvents.js';
@@ -28,6 +29,8 @@ type Options = {
 
 /**
  * Get a single calendar event or assignment
+ *
+ * Returns detailed information about a specific calendar event or assignment.
  *
  * Nickname: get_single_calendar_event_or_assignment
  */

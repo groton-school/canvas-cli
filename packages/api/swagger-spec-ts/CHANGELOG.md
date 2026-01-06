@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.1](https://github.com/groton-school/canvas-cli/compare/swagger-spec-ts/0.1.0...swagger-spec-ts/0.1.1) (2026-01-05)
+
+
+### Features
+
+* update Node target to active v24 ([5ecece1](https://github.com/groton-school/canvas-cli/commit/5ecece144945861343f008c0d9043ac631b08c34))
+
+
+### Bug Fixes
+
+* more cautious test for ref type ([c97888b](https://github.com/groton-school/canvas-cli/commit/c97888bace45ebf4b54ffd2a4fc6427da23629d0))
+
 ## 0.1.0 (2025-04-18)
 
 

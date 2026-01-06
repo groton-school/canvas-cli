@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 import { DateTime } from '../../../../../Overrides.js';
@@ -67,7 +68,7 @@ type Options = {
  * Nickname: create_or_update_events_directly_for_course_timetable
  */
 export async function create(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/courses/{course_id}/calendar_events/timetable_events`,
     {
       method: 'POST',

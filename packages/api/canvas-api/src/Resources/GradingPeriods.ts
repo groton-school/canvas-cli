@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type GradingPeriod = {
   /**
    * The unique identifier for the grading period.

@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type ExperienceSummary = {
   /**
    * The current active experience. One of: 'academic', 'career_learner',

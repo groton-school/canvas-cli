@@ -1,4 +1,4 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import { LineItem } from '../../../../Resources/LineItems.js';

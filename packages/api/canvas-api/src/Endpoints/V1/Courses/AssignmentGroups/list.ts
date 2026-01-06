@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import { AssignmentGroup } from '../../../../Resources/AssignmentGroups.js';
@@ -22,7 +23,9 @@ export type listSearchParameters = Masquerade &
      * "assignment_visibility" option additionally requires that the
      * Differentiated Assignments course feature be turned on. If
      * "observed_users" is passed along with "assignments" and "submission",
-     * submissions for observed users will also be included as an array.
+     * submissions for observed users will also be included as an array. The
+     * "peer_review" option requires that the Peer Review Grading course feature
+     * be turned on and that "assignments" is included.
      */
     include: string[];
     /**

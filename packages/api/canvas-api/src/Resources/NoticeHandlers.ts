@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 /** Set of notice handlers (one per notice type) for an LTI tool deployment. */
 export type NoticeCatalog = {
   /** The LTI tool's client ID (global developer key ID) */

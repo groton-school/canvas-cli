@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 import { Hash } from '../../../../../Overrides.js';
@@ -80,7 +81,7 @@ type Options = {
  * Nickname: update_student_question_scores_and_comments
  */
 export async function update(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}`,
     {
       method: 'PUT',

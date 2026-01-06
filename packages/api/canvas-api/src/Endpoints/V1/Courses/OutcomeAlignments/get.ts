@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import { OutcomeAlignment } from '../../../../Resources/OutcomeResults.js';
@@ -41,6 +42,9 @@ type Options = {
 
 /**
  * Get aligned assignments for an outcome in a course for a particular student
+ *
+ * Returns all assignments aligned to a specific outcome for a student in a
+ * course.
  *
  * Nickname:
  * get_aligned_assignments_for_outcome_in_course_for_particular_student

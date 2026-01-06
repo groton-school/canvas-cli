@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.0](https://github.com/groton-school/canvas-cli/compare/client/base/0.2.2...client/base/0.3.0) (2026-01-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove node-fetch dependency
+
+### Features
+
+* remove node-fetch dependency ([15685aa](https://github.com/groton-school/canvas-cli/commit/15685aa117d9a7ecce1802f47b25754f962adc87))
+* update Node target to active v24 ([5ecece1](https://github.com/groton-school/canvas-cli/commit/5ecece144945861343f008c0d9043ac631b08c34))
+
 ## [0.2.2](https://github.com/groton-school/canvas-cli/compare/client/base/0.2.1...client/base/0.2.2) (2025-09-26)
 
 

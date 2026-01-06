@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type QuizGroup = {
   /**
    * The ID of the question group.

@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 /** A collection of information around a specific notification of a problem */
 export type ErrorReport = {
   /** The users problem summary, like an email subject line */

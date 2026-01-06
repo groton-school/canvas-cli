@@ -5,7 +5,13 @@ import { Log } from '@qui-cli/log';
 import path from 'node:path';
 import { AnnotatedModel } from './Annotation.js';
 import * as Overrides from './Overrides.js';
-import { TSDeprecation, TSExport, TSName, TSType } from './TSAnnotation.js';
+import {
+  TSDeprecation,
+  TSExport,
+  TSName,
+  TSReference,
+  TSType
+} from './TSAnnotation.js';
 
 export function toTSDeprecation(obj: object): TSDeprecation {
   if ('deprecated' in obj && obj.deprecated) {
@@ -45,6 +51,25 @@ export function toTSNamespace(filePath: PathString): TSName {
   return tsNamespace;
 }
 
+function toTSTypeUnion(...tsTypes: TSType[]) {
+  return {
+    type: tsTypes.map((tsType) => tsType.type).join(' | '),
+    tsReferences: tsTypes.reduce(
+      (tsReferences: TSReference[] | undefined, tsType) => {
+        if (tsType.tsReferences) {
+          if (tsReferences) {
+            return tsReferences.concat(tsType.tsReferences);
+          } else {
+            return tsType.tsReferences;
+          }
+        }
+        return tsReferences;
+      },
+      undefined
+    )
+  };
+}
+
 export function toTSType(property: Swagger.v1p2.DataType): TSType {
   if (Swagger.v1p2.isRefType(property)) {
     return {
@@ -54,7 +79,12 @@ export function toTSType(property: Swagger.v1p2.DataType): TSType {
   }
   let tsType = Overrides.tsType(property.type);
   if (!tsType) {
-    tsType = { type: 'unknown' };
+    tsType = {
+      type: 'JSONValue',
+      tsReferences: [
+        { type: 'JSONValue', packagePath: '@battis/typescript-tricks' }
+      ]
+    };
     switch (property.type) {
       case 'boolean':
       case 'number':
@@ -62,6 +92,7 @@ export function toTSType(property: Swagger.v1p2.DataType): TSType {
         tsType.type = `${property.type} | string`;
         break;
       case 'void':
+      case 'null':
       case 'string':
         tsType.type = property.type;
         break;
@@ -85,10 +116,16 @@ export function toTSType(property: Swagger.v1p2.DataType): TSType {
         }
         break;
       default:
-        Log.debug(
-          `Interpretting ${Colors.value('type')}: ${Colors.quotedValue(`"${property.type}"`)} as  ${Colors.value('RefType')}`
-        );
-        return toTSType({ $ref: property.type });
+        if (Array.isArray(property.type)) {
+          return toTSTypeUnion(
+            ...property.type.map((type) => toTSType({ type }))
+          );
+        } else {
+          Log.debug(
+            `Interpretting ${Colors.value('type')}: ${Colors.quotedValue(`"${property.type}"`)} as  ${Colors.value('RefType')}`
+          );
+          return toTSType({ $ref: property.type });
+        }
     }
   }
   if ('format' in property && property.format != null) {

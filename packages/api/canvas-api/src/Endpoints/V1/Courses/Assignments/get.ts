@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import { Assignment } from '../../../../Resources/Assignments.js';
@@ -24,7 +25,8 @@ export type getSearchParameters = Masquerade &
      * option requires that the Differentiated Assignments course feature be
      * turned on. If "observed_users" is passed, submissions for observed users
      * will also be included. For "score_statistics" to be included, the
-     * "submission" option must also be set.
+     * "submission" option must also be set. The "peer_review" option requires
+     * that the Peer Review Grading course feature be turned on.
      */
     include: string[];
     /**

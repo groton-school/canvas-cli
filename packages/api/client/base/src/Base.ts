@@ -36,7 +36,10 @@ export interface Base {
    * @param init Request method and parameters
    * @see https://developerdocs.instructure.com/services/canvas#schema
    */
-  fetchAs<T = JSONValue>(endpoint: string, init?: Init): Promise<T>;
+  fetchAs<T extends JSONValue = JSONValue>(
+    endpoint: string,
+    init?: Init
+  ): Promise<T>;
 
   /**
    * Steps 2 and 3 of the file upload process
@@ -44,5 +47,5 @@ export interface Base {
    * @param params Opaque upload response and file location information
    * @see https://developerdocs.instructure.com/services/canvas/basics/file.file_uploads
    */
-  upload<T = JSONValue>(params: UploadParams): Promise<T>;
+  upload<T extends JSONValue = JSONValue>(params: UploadParams): Promise<T>;
 }

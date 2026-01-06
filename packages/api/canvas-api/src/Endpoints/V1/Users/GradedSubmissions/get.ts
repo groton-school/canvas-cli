@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import { Submission } from '../../../../Resources/Submissions.js';
@@ -45,6 +46,8 @@ type Options = {
 
 /**
  * Get a users most recently graded submissions
+ *
+ * Returns a list of the user's most recently graded submissions.
  *
  * Nickname: get_users_most_recently_graded_submissions
  */

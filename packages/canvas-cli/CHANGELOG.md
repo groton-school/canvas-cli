@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.5](https://github.com/groton-school/canvas-cli/compare/canvas-cli/0.0.4...canvas-cli/0.0.5) (2026-01-05)
+
+
+### Features
+
+* conclude available courses in ended terms ([36b1aa5](https://github.com/groton-school/canvas-cli/commit/36b1aa5ea1d40276fdcf7623afc7739d37be0508))
+* reset user favorites to only current/future courses where they are not observers ([37179a2](https://github.com/groton-school/canvas-cli/commit/37179a23b2d40d9c1f6d07865d95d4973cd132b2))
+* update Node target to active v24 ([5ecece1](https://github.com/groton-school/canvas-cli/commit/5ecece144945861343f008c0d9043ac631b08c34))
+* use standard colors on white variant for readability ([f87bafd](https://github.com/groton-school/canvas-cli/commit/f87bafdaefb3a825582f42e36a6b0f954a1e0b68))
+
+
+### Bug Fixes
+
+* if multiple enrollments, need to check for any that are not observer ([81a3cb7](https://github.com/groton-school/canvas-cli/commit/81a3cb7c625765af192155fd057cd594fe09210d))
+* update to use @oauth2-cli/canvas client ([6280f84](https://github.com/groton-school/canvas-cli/commit/6280f84ada72e08a5bf8838b10df06362ce1ef4b))
+
 ## [0.0.4](https://github.com/groton-school/canvas-cli/compare/canvas-cli/0.0.3...canvas-cli/0.0.4) (2025-08-01)
 
 Update internal dependencies

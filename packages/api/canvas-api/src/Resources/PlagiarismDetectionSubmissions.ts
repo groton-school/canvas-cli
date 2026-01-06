@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type Submission = {
   lti_course_id: string;
   /** Type: integer */

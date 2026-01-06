@@ -6,7 +6,6 @@ import { Root } from '@qui-cli/root';
 import fs from 'node:fs';
 import path from 'node:path';
 import ora from 'ora';
-import * as Download from '../Download.js';
 import * as Models from './Models.js';
 import * as Operations from './Operations.js';
 import * as Overrides from './Overrides.js';
@@ -55,35 +54,36 @@ export function configure(config: Configuration = {}) {
 
 export function options(): Plugin.Options {
   return {
+    man: [{ level: 1, text: 'Rendering Options' }],
     flag: {
       map: {
-        description: `Output the annotated code map (default: ${Colors.value(map)})`,
+        description: `Output the annotated code map`,
         default: map
       }
     },
     opt: {
       specPath: {
-        description: `Path to Swagger spec file or directory (default: ${Colors.url(specPath)})`,
+        description: `Path to Swagger spec file or directory`,
         default: specPath
       },
       overridePath: {
-        description: `Path to TypeScript types override JSON file (default: ${Colors.url(overridePath)})`,
+        description: `Path to TypeScript types override JSON file`,
         default: overridePath
       },
       templatePath: {
-        description: `Path to Handlebars template directory (default: ${Colors.url(templatePath)})`,
+        description: `Path to Handlebars template directory`,
         default: templatePath
       },
       outputPath: {
-        description: `Path to output directory (default: ${Colors.url(outputPath)})`,
+        description: `Path to output directory`,
         default: outputPath
       },
       modelDirName: {
-        description: `Name of resource definitions directory (default: ${Colors.quotedValue(`"${modelDirName}"`)})`,
+        description: `Name of resource definitions directory`,
         default: modelDirName
       },
       operationsDirName: {
-        description: `Name of endpoint definitions directory (default: ${Colors.quotedValue(`"${operationsDirName}"`)})`,
+        description: `Name of endpoint definitions directory`,
         default: operationsDirName
       }
     }
@@ -98,8 +98,8 @@ export async function run(results?: Plugin.AccumulatedResults) {
   const spinner = ora(`Looking for specs`).start();
   let specPaths: PathString[] | undefined = undefined;
   specPath = path.resolve(Root.path(), specPath);
-  if (results && results[Download.name]) {
-    specPaths = results[Download.name];
+  if (results && results['download']) {
+    specPaths = results['download'];
     spinner.text = `Using specs provided by download`;
   } else if (fs.lstatSync(specPath).isDirectory()) {
     specPaths = fs

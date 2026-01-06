@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type AuthenticationProvider = {
   /** Valid for SAML providers. */
   identifier_format: string;

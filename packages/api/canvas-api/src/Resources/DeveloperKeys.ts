@@ -1,4 +1,4 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import { LtiToolConfiguration } from './LtiRegistrations.js';
 
 /** A Canvas API key (or LTI 1.3 registration) */
@@ -135,4 +135,6 @@ export type DeveloperKey = {
   user_name: string;
   /** Unused. */
   user_id: string;
+  /** Correlates an API key to a product configuration. */
+  unified_tool_id: string;
 };

@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type PollChoice = {
   /**
    * The unique identifier for the poll choice.

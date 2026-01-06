@@ -15,16 +15,17 @@
     "build:compile": "lerna run build",
     "release": "run-s release:*",
     "release:build": "run-s build",
-    "release:publish": "pnpm publish -r --otp $(op item get npm --otp) --access public"
+    "release:login": "npm login",
+    "release:publish": "pnpm publish -r --access public"
   },
   "devDependencies": {
-    "@battis/eslint-config": "^2.0.6",
-    "@battis/prettier-config": "^1.7.0",
+    "@battis/eslint-config": "^2.0.8",
+    "@battis/prettier-config": "^1.7.3",
     "@groton/canvas-cli": "workspace:*",
     "@msar/canvas-import": "workspace:*",
     "lerna": "^8.2.4",
-    "monorepo-package-paths": "^0.4.0",
+    "monorepo-package-paths": "^0.4.3",
     "npm-run-all": "^4.1.5"
   },
-  "packageManager": "pnpm@10.18.3+sha512.bbd16e6d7286fd7e01f6b3c0b3c932cda2965c06a908328f74663f10a9aea51f1129eea615134bf992831b009eabe167ecb7008b597f40ff9bc75946aadfb08d"
+  "packageManager": "pnpm@10.27.0+sha512.72d699da16b1179c14ba9e64dc71c9a40988cbdc65c264cb0e489db7de917f20dcf4d64d8723625f2969ba52d4b7e2a1170682d9ac2a5dcaeaab732b7e16f04a"
 }

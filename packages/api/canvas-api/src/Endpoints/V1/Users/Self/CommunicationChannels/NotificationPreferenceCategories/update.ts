@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../../Client.js';
 
@@ -46,7 +47,7 @@ type Options = {
  * Nickname: update_preferences_by_category
  */
 export async function update(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/users/self/communication_channels/{communication_channel_id}/notification_preference_categories/{category}`,
     {
       method: 'PUT',

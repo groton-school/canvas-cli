@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 
@@ -38,7 +39,7 @@ type Options = {
  * Nickname: get_visible_course_navigation_tools_for_single_course
  */
 export async function get(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/courses/{course_id}/external_tools/visible_course_nav_tools`,
     {
       method: 'GET',

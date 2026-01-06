@@ -1,4 +1,4 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import { Enrollment } from './Enrollments.js';
 import { GradingPeriod } from './GradingPeriods.js';
 

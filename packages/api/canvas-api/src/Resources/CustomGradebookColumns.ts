@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type CustomColumn = {
   /**
    * The ID of the custom gradebook column

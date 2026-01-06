@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import { User } from '../../../../Resources/Users.js';
@@ -47,6 +48,12 @@ export type listSearchParameters = Masquerade &
      * Format: 'int64'
      */
     enrollment_role_id: number | string;
+    /**
+     * When set, only return users who are enrolled in the given section(s).
+     *
+     * Format: 'int64'
+     */
+    section_ids: number | string[];
     /**
      * - "enrollments": Optionally include with each Course the user's current and
      *   invited enrollments. If the user is enrolled as a student, and the

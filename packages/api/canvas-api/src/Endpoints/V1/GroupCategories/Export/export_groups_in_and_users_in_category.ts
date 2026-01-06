@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
@@ -33,7 +34,7 @@ type Options = {
  * Nickname: export_groups_in_and_users_in_category
  */
 export async function export_groups_in_and_users_in_category(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/group_categories/{group_category_id}/export`,
     {
       method: 'GET',

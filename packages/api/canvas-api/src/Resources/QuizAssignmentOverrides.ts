@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 /** Set of assignment-overridden dates for a quiz. */
 export type QuizAssignmentOverrideSet = {
   /** ID of the quiz those dates are for. */

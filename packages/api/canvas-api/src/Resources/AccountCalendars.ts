@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type AccountCalendar = {
   /**
    * The ID of the account associated with this calendar

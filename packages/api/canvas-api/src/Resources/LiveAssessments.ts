@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 /** A pass/fail results for a student */
 export type Result = {
   /** A unique identifier for this result */

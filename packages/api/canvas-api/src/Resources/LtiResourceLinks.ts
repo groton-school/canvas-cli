@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type LtiResourceLink = {
   /**
    * The Canvas identifier for the LTI Resource Link.

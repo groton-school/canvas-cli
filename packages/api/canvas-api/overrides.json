@@ -61,6 +61,33 @@
     {
       "type": "roleStringThenewlysetrole",
       "filePath": "Overrides.ts"
+    },
+    { "type": "LtiRegistrationHistoryEntry", "filePath": "Overrides.ts" },
+    { "type": "LtiConfigurationOverlay", "filePath": "Overrides.ts" },
+    {
+      "type": "ObjectHashwithconversation_idandinitialmessagesarray",
+      "filePath": "Overrides.ts"
+    },
+    { "type": "ObjectSuccessmessage", "filePath": "Overrides.ts" },
+    {
+      "type": "ObjectHashwithidandmessagesarrayoremptyobjectifnoactiveconversation",
+      "filePath": "Overrides.ts"
+    },
+    {
+      "type": "ObjectHashwithidandupdatedmessagesarray",
+      "filePath": "Overrides.ts"
+    },
+    {
+      "type": "HashAmappingofuserIDstoarraysoftaggroupIDsExample35579345",
+      "filePath": "Overrides.ts"
+    },
+    {
+      "type": "JSONForsingledeletionoktrueForbulkdeletionjsonmessageBulkdeletecompleteddeleted_user_ids123456unauthorized_user_ids789",
+      "filePath": "Overrides.ts"
+    },
+    {
+      "type": "QueryResultsResponse",
+      "filePath": "Overrides.ts"
     }
   ],
   "tsTypes": {
@@ -119,7 +146,25 @@
     },
     "array of outcome ids": { "type": "string[]" },
     "a CSV file in the format that can be imported": { "type": "string" },
-    "Deprecated": { "type": "string", "description": "@deprecated" }
+    "Deprecated": { "type": "string", "description": "@deprecated" },
+    "variable": {
+      "type": "JSONValue",
+      "tsReferences": [
+        {
+          "type": "JSONValue",
+          "packagePath": "@battis/typescript-tricks"
+        }
+      ]
+    },
+    "RollupJob": {
+      "type": "JSONValue",
+      "tsReferences": [
+        {
+          "type": "JSONValue",
+          "packagePath": "@battis/typescript-tricks"
+        }
+      ]
+    }
   },
   "operations": {
     "get_custom_colors": {

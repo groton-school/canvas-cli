@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 /**
  * Blackout dates are used to prevent scheduling assignments on a given date in
  * course pacing.

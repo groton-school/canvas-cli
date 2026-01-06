@@ -1,4 +1,4 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
@@ -100,7 +100,7 @@ type Options = {
  *
  * Returns the rubric with the given id.
  *
- * Unfortuantely this endpoint does not return a standard Rubric object, instead
+ * Unfortunately this endpoint does not return a standard Rubric object, instead
  * it returns a hash that looks like { 'rubric': Rubric, 'rubric_association':
  * RubricAssociation }
  *
@@ -110,7 +110,7 @@ type Options = {
  * Nickname: create_single_rubric
  */
 export async function create(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/courses/{course_id}/rubrics`,
     {
       method: 'POST',

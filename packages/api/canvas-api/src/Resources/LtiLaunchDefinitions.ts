@@ -1,4 +1,4 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 
 /** A bare-bones representation of an LTI tool used by Canvas to launch the tool */
 export type LtiLaunchDefinition = {

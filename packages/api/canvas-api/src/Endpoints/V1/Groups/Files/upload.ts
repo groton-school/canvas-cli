@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import {
   FileLocation,
   Masquerade,
@@ -106,8 +107,8 @@ type Options = {
  * Upload a file to the group.
  *
  * This API endpoint is the first step in uploading a file to a group. See the
- * {file:file.file_uploads.html File Upload Documentation} for details on the
- * file upload workflow.
+ * {file:file_uploads.html File Upload Documentation} for details on the file
+ * upload workflow.
  *
  * Only those with the "Manage Files" permission on a group can upload files to
  * the group. By default, this is anybody participating in the group, or any

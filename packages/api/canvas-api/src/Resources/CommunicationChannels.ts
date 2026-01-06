@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type CommunicationChannel = {
   /**
    * The ID of the communication channel.

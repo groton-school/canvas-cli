@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type PeerReview = {
   /**
    * The assessors user id

@@ -1,4 +1,4 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 
 /** An event passed from the Quiz Submission take page */
 export type QuizSubmissionEvent = {

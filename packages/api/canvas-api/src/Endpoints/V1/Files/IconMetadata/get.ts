@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 
@@ -33,7 +34,7 @@ type Options = {
  * Nickname: get_icon_metadata
  */
 export async function get(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/files/{id}/icon_metadata`,
     {
       method: 'GET',

@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 /**
  * A pairing unique to that enrollment period given to a recipient of that
  * temporary enrollment.

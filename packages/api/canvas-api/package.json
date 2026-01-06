@@ -1,6 +1,6 @@
 {
   "name": "@groton/canvas-api",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Typed access to Canvas LMS API with embedded documentation",
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/api/canvas-api#readme",
   "repository": {
@@ -21,8 +21,9 @@
     "clean:compilation": "del ./dist",
     "spec": "run-s spec:*",
     "spec:clean": "del ./spec",
-    "spec:download": "source .env; swagger-renderer download --instanceUrl \"$INSTANCE_URL\"",
+    "spec:download": "swagger-renderer download",
     "build": "run-s build:*",
+    "build:spec": "node -e \"if(!require('fs').existsSync('./spec')){process.exit(1)}\" || run-s spec",
     "build:clean": "run-s clean",
     "build:render": "swagger-renderer render --overridePath ./overrides.json --modelDirName Resources --operationsDirName Endpoints --map --logFilePath ./var/render.log",
     "build:compile": "tsc",
@@ -33,11 +34,11 @@
     "@groton/canvas-api.utilities": "workspace:*"
   },
   "devDependencies": {
-    "@battis/descriptive-types": "^0.2.4",
-    "@battis/typescript-tricks": "^0.7.4",
+    "@battis/descriptive-types": "^0.2.6",
+    "@battis/typescript-tricks": "^0.7.6",
     "@groton/canvas-api.swagger-renderer": "workspace:*",
-    "@tsconfig/node20": "^20.1.6",
-    "commit-and-tag-version": "^12.6.0",
+    "@tsconfig/node24": "^24.0.3",
+    "commit-and-tag-version": "^12.6.1",
     "del-cli": "^6.0.0",
     "npm-run-all": "^4.1.5",
     "typescript": "~5.8.3"

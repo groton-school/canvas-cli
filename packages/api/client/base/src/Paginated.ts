@@ -1,7 +1,6 @@
 import { JSONObject } from '@battis/typescript-tricks';
 import { isError } from '@groton/canvas-api.utilities';
 import { Base } from './Base.js';
-import { FetchEndpoint, FetchFunction, FetchInit } from './Fetch.js';
 import { constructInit, flattenEndpoint } from './Request.js';
 
 export type Paginated = {
@@ -16,26 +15,23 @@ export type Paginated = {
   per_page?: number;
 };
 
-type AllPagesOptions<
-  ReturnType,
-  FetchFunctionImplementation extends FetchFunction = FetchFunction
-> = {
+type AllPagesOptions<ReturnType> = {
   instance_url: Base['instance_url'];
-  endpoint: FetchEndpoint<FetchFunctionImplementation>;
+  endpoint: string | URL | Request;
   pathParams?: JSONObject;
   searchParams?: JSONObject;
   params?: JSONObject;
   accessToken?: () => string | undefined | Promise<string | undefined>;
-  init?: FetchInit<FetchFunctionImplementation>;
-  fetch: FetchFunctionImplementation;
+  init?: RequestInit;
+  fetch: (
+    endpoint: string | URL | Request,
+    init?: RequestInit
+  ) => Promise<Response>;
   pageCallback?: (page: ReturnType) => void;
 };
 
 /** Fetch all pages of paginated results at once */
-export async function fetchAllPages<
-  ReturnType,
-  FetchFunctionImplementation extends FetchFunction = FetchFunction
->({
+export async function fetchAllPages<ReturnType>({
   endpoint,
   pathParams,
   searchParams,
@@ -44,12 +40,12 @@ export async function fetchAllPages<
   init,
   fetch,
   pageCallback
-}: AllPagesOptions<ReturnType, FetchFunctionImplementation>) {
+}: AllPagesOptions<ReturnType>) {
   let nextEndpoint: string | undefined = flattenEndpoint(endpoint.toString(), {
     pathParams,
     searchParams
   });
-  init = constructInit<FetchFunctionImplementation>(init, {
+  init = constructInit(init, {
     params,
     access_token: accessToken ? await accessToken() : undefined
   });
@@ -57,7 +53,6 @@ export async function fetchAllPages<
   do {
     const response = await fetch(
       nextEndpoint,
-      // @ts-expect-error 2345 fix Fetch.ts typing
       result
         ? constructInit(init, {
             access_token: accessToken ? await accessToken() : undefined

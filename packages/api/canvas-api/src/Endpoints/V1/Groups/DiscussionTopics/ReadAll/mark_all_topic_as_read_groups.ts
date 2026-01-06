@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../../Client.js';
 
@@ -37,7 +38,7 @@ type Options = {
  * Nickname: mark_all_topic_as_read_groups
  */
 export async function mark_all_topic_as_read_groups(options: Options) {
-  const response = await client().fetchAs<void>(
+  const response = await client().fetchAs<JSONValue>(
     `/api/v1/groups/{group_id}/discussion_topics/read_all`,
     {
       method: 'PUT',

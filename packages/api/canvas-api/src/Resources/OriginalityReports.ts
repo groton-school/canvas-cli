@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type ToolSetting = {
   /**
    * The resource type code of the resource handler to use to display

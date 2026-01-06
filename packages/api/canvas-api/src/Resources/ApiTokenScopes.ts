@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type Scope = {
   /** The resource the scope is associated with */
   resource: string;

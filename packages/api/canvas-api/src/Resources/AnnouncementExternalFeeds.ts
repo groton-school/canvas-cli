@@ -1,3 +1,5 @@
+import { JSONValue } from '@battis/typescript-tricks';
+
 export type ExternalFeed = {
   /**
    * The ID of the feed

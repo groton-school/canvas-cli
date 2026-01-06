@@ -1,3 +1,4 @@
+import { JSONValue } from '@battis/typescript-tricks';
 import { Masquerade } from '@groton/canvas-api.client.base';
 import { client } from '../../../../Client.js';
 import { Role } from '../../../../Resources/Roles.js';
@@ -33,7 +34,9 @@ export type updateFormParameters = Masquerade & {
   'permissions[<X>][explicit]': boolean | string;
   /**
    * These arguments are described in the documentation for the
-   * {api:RoleOverridesController#add_role add_role method}.
+   * {api:RoleOverridesController#add_role add_role method}. The list of
+   * available permissions can be found on the {file:file.permissions.html
+   * Permissions list page}.
    *
    * Type: boolean
    */

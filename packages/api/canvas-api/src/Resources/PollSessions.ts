@@ -1,4 +1,4 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import { PollSubmission } from './PollSubmissions.js';
 
 export type PollSession = {
