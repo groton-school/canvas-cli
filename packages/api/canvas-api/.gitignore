@@ -1,2 +1,4 @@
 /spec/
 /src/map.json
+/var/*
+!/var/README.md

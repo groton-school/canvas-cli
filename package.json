@@ -15,8 +15,8 @@
     "build:compile": "lerna run build",
     "release": "run-s release:*",
     "release:build": "run-s build",
-    "release:login": "npm login",
-    "release:publish": "pnpm publish -r --access public"
+    "release:login": "pnpm login",
+    "release:publish": "pnpm publish -r --access public --filter '^@msar/canvas-import-open'"
   },
   "devDependencies": {
     "@battis/eslint-config": "^2.0.8",
