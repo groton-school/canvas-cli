@@ -15,7 +15,7 @@
     "build:compile": "lerna run build",
     "release": "run-s release:*",
     "release:build": "run-s build",
-    "release:login": "npm login",
+    "release:login": "pnpm login",
     "release:publish": "pnpm publish -r --access public"
   },
   "devDependencies": {
