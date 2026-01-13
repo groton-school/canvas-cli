@@ -1,5 +1,11 @@
 import { PathString } from '@battis/descriptive-types';
 import * as Swagger from '@groton/swagger-spec-ts';
+import {
+  ApiDeclaration,
+  ApiObject
+} from '@groton/swagger-spec-ts/dist/1.2/ApiDeclaration.js';
+import { OperationObject } from '@groton/swagger-spec-ts/dist/1.2/OperationObject.js';
+import { ParameterObject } from '@groton/swagger-spec-ts/dist/1.2/ParameterObject.js';
 import Handlebars from 'handlebars';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -102,12 +108,19 @@ export function annotateOperations({
             tsImports,
             tsType,
             tsEndpoint: decodeURIComponent(
-              new URL(spec.basePath + endpoint.path).pathname
+              new URL(spec.basePath + endpoint.path).pathname.replace(
+                /\/\*([^/]+\/?)/,
+                '/{$1}'
+              )
             ),
             tsName,
             tsUpload,
             tsPaginated
           });
+          const wildcardParam = identifyWildcardParam(endpoint.path);
+          if (wildcardParam) {
+            annotatedOperation.parameters.push(wildcardParam);
+          }
           annotatedOperation.tsFilePath = path.join(
             outputPath,
             toOperationPath(endpoint.path, annotatedOperation),
@@ -219,7 +232,10 @@ function toOperationPath(
   return operation.parameters
     .reduce((tsFilePath, parameter) => {
       if (parameter.paramType === 'path') {
-        return tsFilePath.replace(new RegExp(`{${parameter.name}}/?`), '');
+        return tsFilePath.replace(
+          new RegExp(`{${parameter.name}}/?|\\*${parameter.name}/?`),
+          ''
+        );
       }
       return tsFilePath;
     }, endpointPath)
@@ -233,6 +249,22 @@ function toOperationPath(
         : undefined
     )
     .join('/');
+}
+
+function identifyWildcardParam(
+  endpointPath: string
+): ParameterObject | undefined {
+  const [, name] = endpointPath.match(/\/\*([^/]+)\/?/) || [];
+  if (name) {
+    return {
+      paramType: 'path',
+      name,
+      description: `Identified by @groton/canvas-api.swagger-renderer from the endpoint path: ${endpointPath}`,
+      type: 'string',
+      required: true
+    };
+  }
+  return undefined;
 }
 
 function toTSMethodName(operation: Swagger.v1p2.OperationObject): TSName {
