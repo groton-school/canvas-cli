@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.6](https://github.com/groton-school/canvas-cli/compare/api/0.3.5...api/0.3.6) (2026-01-13)
+
+
+### Bug Fixes
+
+* convert *full_path wildcard to regular path param ([f0f8b20](https://github.com/groton-school/canvas-cli/commit/f0f8b2079e0d35a5250994777c109d1b344a0be9))
+
 ## [0.3.5](https://github.com/groton-school/canvas-cli/compare/api/0.3.4...api/0.3.5) (2026-01-05)
 
 
