@@ -2,7 +2,7 @@ import { select } from '@inquirer/prompts';
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
-import '@qui-cli/env';
+import '@qui-cli/env-1password';
 import open from 'open';
 import * as Snapshot from '../Snapshot/index.js';
 import * as Preferences from './Preferences.js';

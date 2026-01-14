@@ -1,6 +1,5 @@
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
-import '@qui-cli/env';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import ora from 'ora';
@@ -24,7 +23,7 @@ export function options(): Plugin.Options {
   return {
     flag: {
       hideInGradebook: {
-        description: `Enable/disable temporary hiding of assignment grade in gradebook (default ${Colors.value(hide_in_gradebook)})`,
+        description: `Enable/disable temporary hiding of assignment grade in gradebook`,
         default: hide_in_gradebook
       }
     },

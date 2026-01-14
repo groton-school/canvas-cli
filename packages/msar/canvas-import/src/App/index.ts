@@ -5,7 +5,7 @@ import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import { Core } from '@qui-cli/core';
-import '@qui-cli/env';
+import '@qui-cli/env-1password';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import { Validators } from '@qui-cli/validators';
@@ -56,15 +56,15 @@ export function options(): Plugin.Options {
   return {
     flag: {
       assignments: {
-        description: `Create assignments (default ${Colors.value(Preferences.assignments())}, ${Colors.value('--no-assignments')} to skip)`,
+        description: `Create assignments`,
         default: Preferences.assignments()
       },
       bulletinBoard: {
-        description: `Create bulletin board (default ${Colors.value(Preferences.bulletinBoard())}, ${Colors.value('--no-bulletinBoard')} to skip)`,
+        description: `Create bulletin board`,
         default: Preferences.bulletinBoard()
       },
       topics: {
-        description: `Create topics (default ${Colors.value(Preferences.topics())}, ${Colors.value('--no-topics')} to skip)`,
+        description: `Create topics`,
         default: Preferences.topics()
       }
     },

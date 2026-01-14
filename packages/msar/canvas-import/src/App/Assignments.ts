@@ -2,7 +2,7 @@ import { JSONObject } from '@battis/typescript-tricks';
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
-import '@qui-cli/env';
+import '@qui-cli/env-1password';
 import { Log } from '@qui-cli/log';
 import * as Snapshot from '../Snapshot/index.js';
 import * as Preferences from './Preferences.js';

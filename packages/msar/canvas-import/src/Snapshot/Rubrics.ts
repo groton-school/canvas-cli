@@ -1,7 +1,7 @@
 import { JSONObject } from '@battis/typescript-tricks';
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
-import '@qui-cli/env';
+import '@qui-cli/env-1password';
 import { EventEmitter } from 'node:events';
 
 // FIXME Canvas.v1.Courses.Rubrics.create _does_ return a rubric!

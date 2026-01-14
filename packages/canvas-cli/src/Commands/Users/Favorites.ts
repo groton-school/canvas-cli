@@ -39,12 +39,12 @@ export function options(): Plugin.Options {
     },
     flag: {
       all: {
-        description: `Reset favorites for all users enrolled in currently active courses (default: ${Colors.value(all)}, ${Colors.value('--accountId')} MUST be set)`
+        description: `Reset favorites for all users enrolled in currently active courses, ${Colors.optionArg('--accountId')} MUST be set`
       }
     },
     opt: {
       accountId: {
-        description: `Account ID in which to reset favorites of all users (ignored unless ${Colors.value('--all')} is set)`
+        description: `Account ID in which to reset favorites of all users (ignored unless ${Colors.flagArg('--all')} is set)`
       }
     }
   };

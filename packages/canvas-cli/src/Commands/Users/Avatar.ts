@@ -1,7 +1,6 @@
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import { Core } from '@qui-cli/core';
-import '@qui-cli/env';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import { Root } from '@qui-cli/root';
@@ -34,7 +33,7 @@ export function options(): Plugin.Options {
   return {
     man: [
       {
-        text: `${Colors.value('arg0')} must be the path to a CSV file containing the columns ${Colors.quotedValue(`"user_id"`)} and/or ${Colors.quotedValue(`"sis_user_id"`)} and ${Colors.quotedValue(`"path_to_avatar"`)}.`
+        text: `${Colors.positionalArg('arg0')} must be the path to a CSV file containing the columns ${Colors.quotedValue(`"user_id"`)} and/or ${Colors.quotedValue(`"sis_user_id"`)} and ${Colors.quotedValue(`"path_to_avatar"`)}.`
       }
     ]
   };
