@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.4.2](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/0.4.1...oauth2-cli/0.4.2) (2026-01-14)
+
+
+### Features
+
+* compile against Node.js v24 ([2e944b3](https://github.com/groton-school/canvas-cli/commit/2e944b367a8ed5afee3eadea52d4ac7802530e06))
+* export Canvas as ESM module ([1d30590](https://github.com/groton-school/canvas-cli/commit/1d305904de5ccb5930c6ab8061396e4dbb67a6b8))
+
 ## [0.4.1](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/0.4.0...oauth2-cli/0.4.1) (2026-01-05)
 
 
