@@ -16,7 +16,7 @@
     "release": "run-s release:*",
     "release:build": "run-s build",
     "release:login": "pnpm login",
-    "release:publish": "pnpm publish -r --access public --filter '^@msar/canvas-import-open'"
+    "release:publish": "pnpm publish -r --access public"
   },
   "devDependencies": {
     "@battis/eslint-config": "^2.0.8",

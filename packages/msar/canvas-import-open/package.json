@@ -1,6 +1,7 @@
 {
   "name": "@msar/canvas-import-open",
   "version": "0.0.0",
+  "private": true,
   "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/msar/canvas-import-open#readme",
   "repository": {
     "type": "git",
