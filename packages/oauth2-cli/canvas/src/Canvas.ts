@@ -31,6 +31,11 @@ export class Canvas extends OAuth2.OAuth2 implements Base.Base {
       man: {
         heading: 'Canvas options'
       },
+      opt: {
+        clientId: 'canvasClientId',
+        clientSecret: 'canvasClientSecret',
+        redirectUri: 'canvasRedirectUri'
+      },
       url: {
         clientId:
           'https://developerdocs.instructure.com/services/canvas/oauth2/file.oauth#oauth2-flow-0'
@@ -38,7 +43,9 @@ export class Canvas extends OAuth2.OAuth2 implements Base.Base {
       env: {
         clientId: 'CANVAS_CLIENT_ID',
         clientSecret: 'CANVAS_CLIENT_SECRET',
-        redirectUri: 'CANVAS_REDIRECT_URI'
+        redirectUri: 'CANVAS_REDIRECT_URI',
+        tokenPath: 'CANVAS_TOKEN_PATH',
+        accessToken: 'CANVAS_ACCESS_TOKEN'
       },
       suppress: {
         authorizationEndpoint: true,
@@ -90,7 +97,7 @@ export class Canvas extends OAuth2.OAuth2 implements Base.Base {
   public options() {
     const options = super.options();
     if (options.opt) {
-      options.opt.instanceUrl = {
+      options.opt.canvasInstanceUrl = {
         description: `URL of the Canvas LMS instance to work with. Defaults to environment variable ${Colors.varName('CANVAS_INSTANCE_URL')}, if present.`,
         hint: Colors.quotedValue(`"https://example.instructure.com`),
         default: this.conf.instance_url
@@ -102,7 +109,9 @@ export class Canvas extends OAuth2.OAuth2 implements Base.Base {
   public async init(args: Plugin.ExpectedArguments<typeof this.options>) {
     await super.init(args);
     const {
-      instanceUrl: instance_url = await Env.get({ key: 'CANVAS_INSTANCE_URL' }),
+      canvasInstanceUrl: instance_url = await Env.get({
+        key: 'CANVAS_INSTANCE_URL'
+      }),
       ...rest
     } = args.values;
     this.configure({ instance_url, ...rest });
