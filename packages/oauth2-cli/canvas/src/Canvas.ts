@@ -31,7 +31,7 @@ export class Canvas extends OAuth2.OAuth2 implements Base.Base {
       man: {
         heading: 'Canvas options'
       },
-      urls: {
+      url: {
         clientId:
           'https://developerdocs.instructure.com/services/canvas/oauth2/file.oauth#oauth2-flow-0'
       },
