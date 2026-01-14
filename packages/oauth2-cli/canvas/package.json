@@ -32,10 +32,12 @@
     "@groton/canvas-api": "workspace:*",
     "@groton/canvas-api.client.base": "workspace:*",
     "@groton/canvas-api.utilities": "workspace:*",
-    "@oauth2-cli/qui-cli": "^0.4.2"
+    "@oauth2-cli/qui-cli": "^0.5.0",
+    "@qui-cli/colors": "^3.2.1"
   },
   "devDependencies": {
     "@battis/typescript-tricks": "^0.7.6",
+    "@qui-cli/env-1password": "^1.2.6",
     "@qui-cli/plugin": "^4.0.0",
     "@tsconfig/node24": "^24.0.3",
     "@types/node": "^24.10.8",
