@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.6](https://github.com/groton-school/canvas-cli/compare/canvas-cli/0.0.5...canvas-cli/0.0.6) (2026-01-15)
+
+
+### Features
+
+* support 1Password integration ([245bae5](https://github.com/groton-school/canvas-cli/commit/245bae5db4026fb6437c6f52080c5bbddbb2fee6))
+
+
+### Bug Fixes
+
+* `courses conclude` now uses consistent `accountId` arg ([08bb5f2](https://github.com/groton-school/canvas-cli/commit/08bb5f236ac759c68831187fd93dc3ea13c5f6fd))
+
 ## [0.0.5](https://github.com/groton-school/canvas-cli/compare/canvas-cli/0.0.4...canvas-cli/0.0.5) (2026-01-05)
 
 
