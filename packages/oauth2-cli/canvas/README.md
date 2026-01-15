@@ -7,14 +7,16 @@ Acquire Instructure Canvas access tokens via OAuth 2.0 within CLI tools
 ## Install
 
 ```sh
-npm i @oauth2-cli/canvas
+npm i @oauth2-cli/canvas @qui-cli/core
 ```
 
 ## Usage
 
 ```ts
 import { Canvas } from '@oauth2-cli/canvas';
+import { Core } from '@qui-cli/core';
 
+await Core.run();
 console.log(
   await Canvas.v1.Users.Profile.get({ pathParams: { user_id: 'self' } })
 );
