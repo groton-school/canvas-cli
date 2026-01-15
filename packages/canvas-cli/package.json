@@ -25,7 +25,7 @@
     "version": "commit-and-tag-version"
   },
   "dependencies": {
-    "@groton/colors": "^0.2.0",
+    "@groton/colors": "^0.4.2",
     "@inquirer/prompts": "^7.10.1",
     "@oauth2-cli/canvas": "workspace:*",
     "@qui-cli/colors": "^3.2.2",
