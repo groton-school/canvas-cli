@@ -32,6 +32,7 @@ type AllPagesOptions<ReturnType> = {
 
 /** Fetch all pages of paginated results at once */
 export async function fetchAllPages<ReturnType>({
+  instance_url,
   endpoint,
   pathParams,
   searchParams,
@@ -52,7 +53,7 @@ export async function fetchAllPages<ReturnType>({
   let result: ReturnType | undefined = undefined;
   do {
     const response = await fetch(
-      nextEndpoint,
+      new URL(nextEndpoint, instance_url),
       result
         ? constructInit(init, {
             access_token: accessToken ? await accessToken() : undefined
