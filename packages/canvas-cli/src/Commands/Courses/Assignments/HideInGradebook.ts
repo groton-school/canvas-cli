@@ -67,6 +67,6 @@ export async function run() {
       }
     }
   } catch (error) {
-    Log.error(Colors.error((error as Error).message));
+    Log.error({ error });
   }
 }

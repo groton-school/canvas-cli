@@ -1,5 +1,6 @@
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
+import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import ora from 'ora';
 
@@ -56,87 +57,92 @@ export function init({ values }: Plugin.ExpectedArguments<typeof options>) {
 
 export async function run() {
   const now = new Date();
-
-  // build list of affected users
-  let spinner = ora('Collecting user information').start();
-  let users: Canvas.Users.User[] = [];
-  if (all) {
-    if (!accountId) {
-      spinner.fail(
-        `${Colors.value('--accountId')} must be set in order to reset all users`
-      );
-      throw new Error();
-    }
-    users = await Canvas.v1.Accounts.Users.list({
-      pathParams: { account_id: accountId }
-    });
-  } else {
-    for (const id of user) {
-      users.push(
-        await Canvas.v1.Users.show_user_details({ pathParams: { id } })
-      );
-    }
-  }
-  spinner.succeed(`${users.length} users`);
-
-  for (const user of users) {
-    spinner = ora(user.name).start();
-
-    // build per-user list of distinct courses (including non-observer enrollment where there are duplicates)
-    const courses = (
-      await Canvas.v1.Users.Courses.list({
-        pathParams: { user_id: user.id },
-        searchParams: { include: ['term'] }
-      })
-    ).reduce((unique, course) => {
-      const i = unique.findIndex((c) => c.id === course.id);
-      if (i < 0) {
-        unique.push(course);
-      } else if (
-        course.enrollments.find((enrollment) => enrollment.type !== 'observer')
-      ) {
-        unique[i] = course;
-      }
-      return unique;
-    }, [] as Canvas.Courses.Course[]);
-
-    // favorite all current non-observer enrollments
-    const favorited: Canvas.Courses.Course[] = [];
-    for (const course of courses) {
-      if (
-        course.enrollments.find(
-          (enrollment) => enrollment.type !== 'observer'
-        ) &&
-        new Date(course.term.end_at) > now
-      ) {
-        await Canvas.v1.Users.Self.Favorites.Courses.add_course_to_favorites({
-          pathParams: { id: course.id },
-          searchParams: { as_user_id: user.id }
-        });
-        favorited.push(course);
-        spinner.text = `${user.name} enrolled as ${course.enrollments[0].type} in ${course.name} (${course.term.name}), added to favorites.`;
-      }
-    }
-
-    const favorites = await Canvas.v1.Users.Self.Favorites.Courses.list({
-      searchParams: { as_user_id: user.id }
-    });
-
-    // remove all non-favorited courses from favorites
-    for (const favorite of favorites) {
-      if (!favorited.find((course) => course.id === favorite.id)) {
-        await Canvas.v1.Users.Self.Favorites.Courses.remove_course_from_favorites(
-          {
-            pathParams: { id: favorite.id },
-            searchParams: { as_user_id: user.id }
-          }
+  try {
+    // build list of affected users
+    let spinner = ora('Collecting user information').start();
+    let users: Canvas.Users.User[] = [];
+    if (all) {
+      if (!accountId) {
+        spinner.fail(
+          `${Colors.value('--accountId')} must be set in order to reset all users`
         );
-        spinner.text = `${user.name}'s enrollment in ${favorite.name} removed from favorites`;
+        throw new Error();
+      }
+      users = await Canvas.v1.Accounts.Users.list({
+        pathParams: { account_id: accountId }
+      });
+    } else {
+      for (const id of user) {
+        users.push(
+          await Canvas.v1.Users.show_user_details({ pathParams: { id } })
+        );
       }
     }
+    spinner.succeed(`${users.length} users`);
 
-    spinner.succeed(
-      `${user.name} (${favorited.length}/${courses.length} favorites)`
-    );
+    for (const user of users) {
+      spinner = ora(user.name).start();
+
+      // build per-user list of distinct courses (including non-observer enrollment where there are duplicates)
+      const courses = (
+        await Canvas.v1.Users.Courses.list({
+          pathParams: { user_id: user.id },
+          searchParams: { include: ['term'] }
+        })
+      ).reduce((unique, course) => {
+        const i = unique.findIndex((c) => c.id === course.id);
+        if (i < 0) {
+          unique.push(course);
+        } else if (
+          course.enrollments.find(
+            (enrollment) => enrollment.type !== 'observer'
+          )
+        ) {
+          unique[i] = course;
+        }
+        return unique;
+      }, [] as Canvas.Courses.Course[]);
+
+      // favorite all current non-observer enrollments
+      const favorited: Canvas.Courses.Course[] = [];
+      for (const course of courses) {
+        if (
+          course.enrollments.find(
+            (enrollment) => enrollment.type !== 'observer'
+          ) &&
+          new Date(course.term.end_at) > now
+        ) {
+          await Canvas.v1.Users.Self.Favorites.Courses.add_course_to_favorites({
+            pathParams: { id: course.id },
+            searchParams: { as_user_id: user.id }
+          });
+          favorited.push(course);
+          spinner.text = `${user.name} enrolled as ${course.enrollments[0].type} in ${course.name} (${course.term.name}), added to favorites.`;
+        }
+      }
+
+      const favorites = await Canvas.v1.Users.Self.Favorites.Courses.list({
+        searchParams: { as_user_id: user.id }
+      });
+
+      // remove all non-favorited courses from favorites
+      for (const favorite of favorites) {
+        if (!favorited.find((course) => course.id === favorite.id)) {
+          await Canvas.v1.Users.Self.Favorites.Courses.remove_course_from_favorites(
+            {
+              pathParams: { id: favorite.id },
+              searchParams: { as_user_id: user.id }
+            }
+          );
+          spinner.text = `${user.name}'s enrollment in ${favorite.name} removed from favorites`;
+        }
+      }
+
+      spinner.succeed(
+        `${user.name} (${favorited.length}/${courses.length} favorites)`
+      );
+    }
+  } catch (error) {
+    Log.error({ error });
   }
 }

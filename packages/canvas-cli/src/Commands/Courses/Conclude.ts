@@ -52,51 +52,55 @@ export async function run() {
 
   const now = new Date();
   const terms: Canvas.EnrollmentTerms.EnrollmentTerm[] = [];
-  if (all) {
-    terms.push(
-      ...(
-        await Canvas.v1.Accounts.Terms.list({ pathParams: { account_id: 1 } })
-      ).enrollment_terms.filter((term) => new Date(term.end_at) < now)
-    );
-  } else if (term) {
-    terms.push(
-      await Canvas.v1.Accounts.Terms.retrieve_enrollment_term({
-        pathParams: { account_id: 1, id: term }
-      })
-    );
-  } else {
-    throw new Error(
-      `${Colors.value('--term')} or ${Colors.value('--all')} must be defined`
-    );
-  }
-
-  for (const term of terms) {
-    const termSpinner = ora(
-      `Processing available courses in term ${Colors.value(term.name)}`
-    ).start();
-    const courses = await Canvas.v1.Accounts.Courses.list({
-      pathParams: { account_id },
-      searchParams: { enrollment_term_id: term.id, state: ['available'] }
-    });
-    for (const course of courses) {
-      const courseSpinner = ora(
-        `Concluding ${Colors.value(course.name)}`
-      ).start();
-      const result = await Canvas.v1.Courses.delete_conclude_course({
-        pathParams: { id: course.id },
-        searchParams: { event: 'conclude' }
-      });
-      // TODO @groton/canvas-api needs to override this incorrect void result
-      // @ts-expect-error 2339
-      if (result.conclude) {
-        courseSpinner.succeed(`${Colors.value(course.name)} concluded`);
-      } else {
-        courseSpinner.fail(`Unable to conclude ${Colors.value(course.name)}`);
-        Log.error(JSON.stringify(result));
-      }
+  try {
+    if (all) {
+      terms.push(
+        ...(
+          await Canvas.v1.Accounts.Terms.list({ pathParams: { account_id: 1 } })
+        ).enrollment_terms.filter((term) => new Date(term.end_at) < now)
+      );
+    } else if (term) {
+      terms.push(
+        await Canvas.v1.Accounts.Terms.retrieve_enrollment_term({
+          pathParams: { account_id: 1, id: term }
+        })
+      );
+    } else {
+      throw new Error(
+        `${Colors.value('--term')} or ${Colors.value('--all')} must be defined`
+      );
     }
-    termSpinner.succeed(
-      `All available courses in term ${Colors.value(term.name)} concluded`
-    );
+
+    for (const term of terms) {
+      const termSpinner = ora(
+        `Processing available courses in term ${Colors.value(term.name)}`
+      ).start();
+      const courses = await Canvas.v1.Accounts.Courses.list({
+        pathParams: { account_id },
+        searchParams: { enrollment_term_id: term.id, state: ['available'] }
+      });
+      for (const course of courses) {
+        const courseSpinner = ora(
+          `Concluding ${Colors.value(course.name)}`
+        ).start();
+        const result = await Canvas.v1.Courses.delete_conclude_course({
+          pathParams: { id: course.id },
+          searchParams: { event: 'conclude' }
+        });
+        // TODO @groton/canvas-api needs to override this incorrect void result
+        // @ts-expect-error 2339
+        if (result.conclude) {
+          courseSpinner.succeed(`${Colors.value(course.name)} concluded`);
+        } else {
+          courseSpinner.fail(`Unable to conclude ${Colors.value(course.name)}`);
+          Log.error(JSON.stringify(result));
+        }
+      }
+      termSpinner.succeed(
+        `All available courses in term ${Colors.value(term.name)} concluded`
+      );
+    }
+  } catch (error) {
+    Log.error({ error });
   }
 }
