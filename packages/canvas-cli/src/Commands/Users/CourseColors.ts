@@ -65,13 +65,13 @@ export async function run() {
   }
 
   const colors = {
-    RD: GrotonColors.RedOnWhiteHex,
-    OR: GrotonColors.OrangeOnWhiteHex,
-    YL: GrotonColors.YellowOnWhiteHex,
-    GR: GrotonColors.GreenOnWhiteHex,
-    LB: GrotonColors.LightBlueOnWhiteHex,
-    DB: GrotonColors.DarkBlueOnWhiteHex,
-    PR: GrotonColors.PurpleOnWhiteHex
+    RD: GrotonColors.RedOnWhite,
+    OR: GrotonColors.OrangeOnWhite,
+    YL: GrotonColors.YellowOnWhite,
+    GR: GrotonColors.GreenOnWhite,
+    LB: GrotonColors.LightBlueOnWhite,
+    DB: GrotonColors.DarkBlueOnWhite,
+    PR: GrotonColors.PurpleOnWhite
   };
 
   const colorCache: Record<
