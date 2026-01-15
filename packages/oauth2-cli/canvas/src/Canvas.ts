@@ -76,11 +76,11 @@ export class Canvas extends OAuth2.OAuth2 implements Base.Base {
     // Canvas authorization and token endpoints are relative to the instance URL
     if (instance_url) {
       this.conf.instance_url = instance_url;
-      proposal.authorization_endpoint = path.join(
+      proposal.authorizationEndpoint = path.join(
         instance_url,
         '/login/oauth2/auth'
       );
-      proposal.token_endpoint = path.join(instance_url, '/login/oauth2/token');
+      proposal.tokenEndpoint = path.join(instance_url, '/login/oauth2/token');
     }
 
     // User-Agent header is required
@@ -99,6 +99,7 @@ export class Canvas extends OAuth2.OAuth2 implements Base.Base {
     if (options.opt) {
       options.opt.canvasInstanceUrl = {
         description: `URL of the Canvas LMS instance to work with. Defaults to environment variable ${Colors.varName('CANVAS_INSTANCE_URL')}, if present.`,
+        short: 'i',
         hint: Colors.quotedValue(`"https://example.instructure.com`),
         default: this.conf.instance_url
       };
