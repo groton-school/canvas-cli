@@ -27,7 +27,7 @@
     "build:clean": "run-s clean",
     "build:render": "swagger-renderer render --overridePath ./overrides.json --modelDirName Resources --operationsDirName Endpoints --map --logFilePath ./var/render.log",
     "build:compile": "tsc",
-    "release": "commit-and-tag-version"
+    "version": "commit-and-tag-version"
   },
   "dependencies": {
     "@groton/canvas-api.client.base": "workspace:*",
