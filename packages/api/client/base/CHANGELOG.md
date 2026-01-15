@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.1](https://github.com/groton-school/canvas-cli/compare/client/base/0.3.0...client/base/0.3.1) (2026-01-15)
+
+
+### Features
+
+* compile against Node.js v24 ([2e944b3](https://github.com/groton-school/canvas-cli/commit/2e944b367a8ed5afee3eadea52d4ac7802530e06))
+
+
+### Bug Fixes
+
+* consistently use instance URL to complete endpoint URL ([3c4ef5d](https://github.com/groton-school/canvas-cli/commit/3c4ef5db464dea729a760f06c1d4edd1dba1b13e))
+
 ## [0.3.0](https://github.com/groton-school/canvas-cli/compare/client/base/0.2.2...client/base/0.3.0) (2026-01-05)
 
 
