@@ -177,8 +177,10 @@ export async function run() {
           spinner.fail(Colors.error((error as Error).message));
         }
       }
-    } catch (error) {
-      Log.error({ error });
+    } catch (e) {
+      const error = e as Error;
+      Log.error(Colors.error(error.message));
+      Log.debug(error.stack || 'No stack trace available');
     }
   }
 }
