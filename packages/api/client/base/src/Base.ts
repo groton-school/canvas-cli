@@ -32,6 +32,9 @@ export interface Base {
    *   Accept: application/json+canvas-string-ids
    * ```
    *
+   * This method is best implemented by passing its arguments, a token-fetching
+   * method, and the instance URL to {@link fetchAllPages}.
+   *
    * @param endpoint Endpoint path, relative to `instance_url`
    * @param init Request method and parameters
    * @see https://developerdocs.instructure.com/services/canvas#schema
