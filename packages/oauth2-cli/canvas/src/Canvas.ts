@@ -1,30 +1,26 @@
-import { JSONValue } from '@battis/typescript-tricks';
-import * as Base from '@groton/canvas-api.client.base';
-import { isError } from '@groton/canvas-api.utilities';
+import { init } from '@groton/canvas-api';
 import * as OAuth2 from '@oauth2-cli/qui-cli/dist/OAuth2.js';
 import { Colors } from '@qui-cli/colors';
 import { Env } from '@qui-cli/env-1password';
 import * as Plugin from '@qui-cli/plugin';
-import fs from 'node:fs';
 import path from 'node:path';
+import { Client } from './Client.js';
 
-export type Credentials = Omit<
-  OAuth2.Credentials,
-  'authorization_endpoint' | 'token_endpoint'
-> & {
-  instance_url: string;
-  user_agent?: string;
-};
+export {
+  EnvironmentStorage,
+  FileStorage,
+  TokenStorage
+} from '@oauth2-cli/qui-cli/dist/OAuth2.js';
+export * from './Client.js';
 
 type CanvasConfiguration = {
-  headers?: OAuth2.Configuration['headers'];
   instance_url?: string;
   user_agent?: string;
 };
 
 export type Configuration = OAuth2.ConfigurationProposal & CanvasConfiguration;
 
-export class Canvas extends OAuth2.OAuth2 implements Base.Base {
+export class CanvasPlugin extends OAuth2.OAuth2Plugin<Client> {
   public constructor(name = '@oauth2-cli/canvas') {
     super(name);
     this.configure({
@@ -67,10 +63,23 @@ export class Canvas extends OAuth2.OAuth2 implements Base.Base {
     throw new Error('instance_url property undefined');
   }
 
+  protected instantiateClient(credentials: OAuth2.Credentials) {
+    if (!this.conf.instance_url) {
+      throw new Error('Instance URL has not been defined.');
+    }
+    if (!this.conf.user_agent) {
+      throw new Error('User agent has not been defined.');
+    }
+    return new Client({
+      instance_url: this.conf.instance_url,
+      user_agent: this.conf.user_agent,
+      ...credentials
+    });
+  }
+
   public configure({
     instance_url,
     user_agent,
-    headers,
     ...proposal
   }: Configuration = {}): void {
     // Canvas authorization and token endpoints are relative to the instance URL
@@ -81,17 +90,11 @@ export class Canvas extends OAuth2.OAuth2 implements Base.Base {
         '/login/oauth2/auth'
       );
       proposal.tokenEndpoint = path.join(instance_url, '/login/oauth2/token');
-    }
-
-    // User-Agent header is required
-    this.conf.user_agent = user_agent || this.conf.user_agent;
-    if (this.conf.user_agent) {
-      if (!headers) {
-        headers = {};
+      if (user_agent) {
+        this.conf.user_agent = user_agent;
       }
-      headers['User-Agent'] = this.conf.user_agent;
     }
-    super.configure({ ...proposal, headers });
+    super.configure(proposal);
   }
 
   public options() {
@@ -116,46 +119,6 @@ export class Canvas extends OAuth2.OAuth2 implements Base.Base {
       ...rest
     } = args.values;
     this.configure({ instance_url, ...rest });
-  }
-
-  public fetchAs = this.fetchJSON.bind(this);
-
-  public async upload<T extends JSONValue = JSONValue>({
-    response,
-    file
-  }: Base.UploadParams): Promise<T> {
-    const body = new FormData();
-    for (const key in response.upload_params) {
-      body.append(key, response.upload_params[key]);
-    }
-    if (file.filePath) {
-      body.append('file', await fs.openAsBlob(file.filePath));
-    } else if (file.url) {
-      // FIXME implement URL upload too!
-    }
-    const confirm = await fetch(response.upload_url, {
-      method: 'POST',
-      body
-    });
-    let result: T;
-    switch (confirm.status) {
-      case 301:
-      case 201:
-        if (confirm.headers.has('location')) {
-          result = await this.fetchJSON<T>(confirm.headers.get('location')!);
-          if (!isError(result)) {
-            return result;
-          }
-        }
-      // eslint-disable-next-line no-fallthrough
-      default:
-        throw new Error(
-          `Error uploading file: ${{
-            file,
-            confirm,
-            error: await confirm.json()
-          }}`
-        );
-    }
+    init(this.getClient());
   }
 }

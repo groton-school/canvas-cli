@@ -1,12 +1,10 @@
-import { init as apiInit } from '@groton/canvas-api';
-import { Canvas } from './Canvas.js';
+import { CanvasPlugin } from './Canvas.js';
 
-const client = new Canvas();
-apiInit(client);
+export * from './Canvas.js';
 
-export const name = client.name;
-export const configure = client.configure.bind(client);
-export const options = client.options.bind(client);
-export const init = client.init.bind(client);
+const canvas = new CanvasPlugin();
 
-export * from '@groton/canvas-api';
+export const name = canvas.name;
+export const configure = canvas.configure.bind(canvas);
+export const options = canvas.options.bind(canvas);
+export const init = canvas.init.bind(canvas);
