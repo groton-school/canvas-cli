@@ -79,6 +79,11 @@ export async function run() {
     Canvas.v1.Users.Colors.updateFormParameters['hexcode']
   > = {};
 
+  // TODO /users/{id}/colors list return type
+  type CustomColors = { custom_colors: Record<string, string> };
+
+  const userCache: Record<Canvas.Users.User['id'], CustomColors> = {};
+
   function blockFrom(course?: Canvas.Courses.Course) {
     let block: string | undefined = undefined;
     const blockMatches =
@@ -117,6 +122,7 @@ export async function run() {
       const spinner = ora(course.name).start();
       let applied = 0;
       const block = blockFrom(course);
+      const asset_string = `course_${course.id}`;
       try {
         if (block && block in colors) {
           const enrollments = await Canvas.v1.Courses.Enrollments.list({
@@ -126,14 +132,25 @@ export async function run() {
           for (const enrollment of enrollments) {
             const hexcode = colorOf(enrollment);
             if (hexcode) {
-              await Canvas.v1.Users.Colors.update({
-                pathParams: {
-                  id: enrollment.user_id,
-                  asset_string: `course_${course.id}`
-                },
-                params: { hexcode }
-              });
-              applied++;
+              if (!(enrollment.user_id in userCache)) {
+                userCache[enrollment.user_id] =
+                  (await Canvas.v1.Users.Colors.list({
+                    pathParams: { id: enrollment.user_id }
+                  })) as CustomColors;
+              }
+              if (
+                hexcode !==
+                userCache[enrollment.user_id].custom_colors[asset_string]
+              ) {
+                await Canvas.v1.Users.Colors.update({
+                  pathParams: {
+                    id: enrollment.user_id,
+                    asset_string
+                  },
+                  params: { hexcode }
+                });
+                applied++;
+              }
             }
           }
 
