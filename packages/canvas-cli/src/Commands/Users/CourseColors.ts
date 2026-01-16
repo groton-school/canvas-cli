@@ -119,10 +119,11 @@ export async function run() {
       const block = blockFrom(course);
       try {
         if (block && block in colors) {
-          for (const enrollment of await Canvas.v1.Courses.Enrollments.list({
+          const enrollments = await Canvas.v1.Courses.Enrollments.list({
             pathParams: { course_id: course.id },
             searchParams: { per_page }
-          })) {
+          });
+          for (const enrollment of enrollments) {
             const hexcode = colorOf(enrollment);
             if (hexcode) {
               await Canvas.v1.Users.Colors.update({
@@ -136,13 +137,13 @@ export async function run() {
             }
           }
 
-          if (applied > 0) {
-            spinner.succeed(
-              `${applied} users updated in ${course.name} ${Colors.url(`${Canvas.client().instance_url}/courses/${course.id}`)}`
-            );
-          }
+          spinner.succeed(
+            `${applied}/${enrollments.length} users required updates in ${course.name} ${Colors.url(`${Canvas.client().instance_url}/courses/${course.id}`)}`
+          );
         } else {
-          spinner.fail(course.name);
+          spinner.warn(
+            `${course.name} does appear to not meet in a color block`
+          );
         }
       } catch (error) {
         spinner.fail(Colors.error((error as Error).message));
