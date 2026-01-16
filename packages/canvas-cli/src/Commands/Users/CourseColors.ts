@@ -159,7 +159,7 @@ export async function run() {
           );
         } else {
           spinner.warn(
-            `${course.name} does appear to not meet in a color block`
+            `${course.name} does not appear to not meet in a color block`
           );
         }
       } catch (error) {
