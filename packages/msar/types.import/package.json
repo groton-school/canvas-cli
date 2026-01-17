@@ -29,7 +29,7 @@
     "@battis/descriptive-types": "^0.2.6",
     "@battis/typescript-tricks": "^0.7.6",
     "@msar/types.snapshot": "^0.1.10",
-    "@tsconfig/node24": "^24.0.3",
+    "@tsconfig/node24": "^24.0.4",
     "@types/probe-image-size": "^7.2.5",
     "commit-and-tag-version": "^12.6.1",
     "del-cli": "^7.0.0",
