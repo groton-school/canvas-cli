@@ -67,8 +67,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       typescript:
-        specifier: ~5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   packages/api/client/base:
     dependencies:
@@ -98,8 +98,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       typescript:
-        specifier: ~5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   packages/api/client/web:
     dependencies:
@@ -121,7 +121,7 @@ importers:
         version: 0.7.6
       '@battis/webpack':
         specifier: ^2.1.0
-        version: 2.1.0(a1bb80d5f948943b6023239851ab9a18)
+        version: 2.1.0(902cccd8aeb3d27a658b1be39a735aa1)
       '@tsconfig/recommended':
         specifier: ^1.0.13
         version: 1.0.13
@@ -138,8 +138,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       typescript:
-        specifier: ~5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   packages/api/swagger-renderer:
     dependencies:
@@ -187,7 +187,7 @@ importers:
         version: 1.8.0(prettier@3.5.3)
       prettier-plugin-organize-imports:
         specifier: ^4.3.0
-        version: 4.3.0(prettier@3.5.3)(typescript@5.8.3)
+        version: 4.3.0(prettier@3.5.3)(typescript@5.9.3)
     devDependencies:
       '@battis/descriptive-types':
         specifier: ^0.2.6
@@ -214,8 +214,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       typescript:
-        specifier: ~5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   packages/api/swagger-spec-ts:
     devDependencies:
@@ -238,8 +238,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       typescript:
-        specifier: ~5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   packages/api/utilities:
     devDependencies:
@@ -259,8 +259,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       typescript:
-        specifier: ~5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   packages/canvas-cli:
     dependencies:
@@ -317,8 +317,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       typescript:
-        specifier: ~5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   packages/msar/canvas-import:
     dependencies:
@@ -420,8 +420,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       typescript:
-        specifier: ~5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   packages/msar/canvas-import-open:
     dependencies:
@@ -466,8 +466,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       typescript:
-        specifier: ~5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   packages/msar/types.import:
     dependencies:
@@ -506,8 +506,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       typescript:
-        specifier: 5.7.3
-        version: 5.7.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   packages/oauth2-cli/canvas:
     dependencies:
@@ -558,8 +558,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       typescript:
-        specifier: ~5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
 packages:
 
@@ -7300,16 +7300,6 @@ packages:
       eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <6.0.0'
 
-  typescript@5.7.3:
-    resolution: {integrity: sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
-  typescript@5.8.3:
-    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
@@ -7836,7 +7826,7 @@ snapshots:
 
   '@battis/typescript-tricks@0.7.6': {}
 
-  '@battis/webpack@2.1.0(a1bb80d5f948943b6023239851ab9a18)':
+  '@battis/webpack@2.1.0(902cccd8aeb3d27a658b1be39a735aa1)':
     dependencies:
       '@tsconfig/recommended': 1.0.13
       app-root-path: 3.1.0
@@ -7856,15 +7846,15 @@ snapshots:
       imagemin-svgo: 11.0.1
       mini-css-extract-plugin: 2.9.4(webpack@5.101.1)
       postcss: 8.5.6
-      postcss-loader: 8.1.1(postcss@8.5.6)(typescript@5.8.3)(webpack@5.101.1)
+      postcss-loader: 8.1.1(postcss@8.5.6)(typescript@5.9.3)(webpack@5.101.1)
       postcss-preset-env: 10.2.4(postcss@8.5.6)
       raw-loader: 4.0.2(webpack@5.101.1)
       sass: 1.90.0
       sass-loader: 16.0.5(sass@1.90.0)(webpack@5.101.1)
       style-loader: 4.0.0(webpack@5.101.1)
       terser-webpack-plugin: 5.3.14(webpack@5.101.1)
-      ts-loader: 9.5.2(typescript@5.8.3)(webpack@5.101.1)
-      typescript: 5.8.3
+      ts-loader: 9.5.2(typescript@5.9.3)(webpack@5.101.1)
+      typescript: 5.9.3
       url-loader: 4.1.1(file-loader@6.2.0(webpack@5.101.1))(webpack@5.101.1)
       webpack: 5.101.1(webpack-cli@6.0.1)
       webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.101.1)
@@ -10370,15 +10360,6 @@ snapshots:
       yargs: 16.2.0
 
   core-util-is@1.0.3: {}
-
-  cosmiconfig@9.0.0(typescript@5.8.3):
-    dependencies:
-      env-paths: 2.2.1
-      import-fresh: 3.3.1
-      js-yaml: 4.1.0
-      parse-json: 5.2.0
-    optionalDependencies:
-      typescript: 5.8.3
 
   cosmiconfig@9.0.0(typescript@5.9.3):
     dependencies:
@@ -14009,9 +13990,9 @@ snapshots:
       '@csstools/utilities': 2.0.0(postcss@8.5.6)
       postcss: 8.5.6
 
-  postcss-loader@8.1.1(postcss@8.5.6)(typescript@5.8.3)(webpack@5.101.1):
+  postcss-loader@8.1.1(postcss@8.5.6)(typescript@5.9.3)(webpack@5.101.1):
     dependencies:
-      cosmiconfig: 9.0.0(typescript@5.8.3)
+      cosmiconfig: 9.0.0(typescript@5.9.3)
       jiti: 1.21.7
       postcss: 8.5.6
       semver: 7.7.3
@@ -14305,11 +14286,6 @@ snapshots:
       prettier: 3.5.3
     transitivePeerDependencies:
       - supports-color
-
-  prettier-plugin-organize-imports@4.3.0(prettier@3.5.3)(typescript@5.8.3):
-    dependencies:
-      prettier: 3.5.3
-      typescript: 5.8.3
 
   prettier-plugin-organize-imports@4.3.0(prettier@3.5.3)(typescript@5.9.3):
     dependencies:
@@ -15360,14 +15336,14 @@ snapshots:
     dependencies:
       typescript: 5.9.3
 
-  ts-loader@9.5.2(typescript@5.8.3)(webpack@5.101.1):
+  ts-loader@9.5.2(typescript@5.9.3)(webpack@5.101.1):
     dependencies:
       chalk: 4.1.2
       enhanced-resolve: 5.18.4
       micromatch: 4.0.8
       semver: 7.7.3
       source-map: 0.7.6
-      typescript: 5.8.3
+      typescript: 5.9.3
       webpack: 5.101.1(webpack-cli@6.0.1)
 
   tsconfig-paths@4.2.0:
@@ -15466,10 +15442,6 @@ snapshots:
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
-
-  typescript@5.7.3: {}
-
-  typescript@5.8.3: {}
 
   typescript@5.9.3: {}
 
