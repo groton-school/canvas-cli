@@ -30,6 +30,7 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Client> {
       opt: {
         clientId: 'canvasClientId',
         clientSecret: 'canvasClientSecret',
+        scope: 'canvasScope',
         redirectUri: 'canvasRedirectUri'
       },
       url: {
@@ -39,6 +40,7 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Client> {
       env: {
         clientId: 'CANVAS_CLIENT_ID',
         clientSecret: 'CANVAS_CLIENT_SECRET',
+        scope: 'CANVAS_SCOPE',
         redirectUri: 'CANVAS_REDIRECT_URI',
         tokenPath: 'CANVAS_TOKEN_PATH',
         accessToken: 'CANVAS_ACCESS_TOKEN'
