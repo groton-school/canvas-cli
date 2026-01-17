@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.4.4](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/0.4.3...oauth2-cli/0.4.4) (2026-01-17)
+
+
+### Features
+
+* add scope support ([f5bb9f5](https://github.com/groton-school/canvas-cli/commit/f5bb9f57cffac92350c9007179fe5d7a8b374c72))
+
 ## [0.4.3](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/0.4.2...oauth2-cli/0.4.3) (2026-01-15)
 
 
