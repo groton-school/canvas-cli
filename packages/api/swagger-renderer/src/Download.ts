@@ -1,7 +1,7 @@
 import { PathString, URLString } from '@battis/descriptive-types';
 import * as Swagger from '@groton/swagger-spec-ts';
 import { Colors } from '@qui-cli/colors';
-import { Env } from '@qui-cli/env-1password';
+import { Env } from '@qui-cli/env';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import { Root } from '@qui-cli/root';

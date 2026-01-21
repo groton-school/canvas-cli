@@ -5,7 +5,7 @@ import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import { Core } from '@qui-cli/core';
-import '@qui-cli/env-1password';
+import { Env } from '@qui-cli/env';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import { Validators } from '@qui-cli/validators';
@@ -13,7 +13,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import ora from 'ora';
 import * as OneRoster from '../OneRoster.js';
-import * as SkyAPI from '../SkyAPI/index.js';
 import * as Snapshot from '../Snapshot/index.js';
 import { importAssignments } from './Assignments.js';
 import { handleDuplicateCourse } from './Courses.js';
@@ -91,33 +90,22 @@ export function options(): Plugin.Options {
   };
 }
 
-export function init(args: Plugin.ExpectedArguments<typeof options>) {
+export async function init(args: Plugin.ExpectedArguments<typeof options>) {
   const {
     positionals: [snapshotPath],
     values: {
-      blackbaudInstanceId = process.env.BLACKBAUD_INSTANCE_ID,
-      canvasInstanceUrl = process.env.CANVAS_INSTANCE_URL,
-      termsPath = process.env.TERMS_CSV,
-      departmentAccountMapPath = process.env.DEPARTMENT_ACCOUNT_MAP_CSV,
-      coursesWithDepartmentsPath = process.env.COURSES_WITH_DEPARTMENTS_CSV,
+      blackbaudInstanceId = await Env.get({ key: 'BLACKBAUD_INSTANCE_ID' }),
+      canvasInstanceUrl = await Env.get({ key: 'CANVAS_INSTANCE_URL' }),
+      termsPath = await Env.get({ key: 'TERMS_CSV' }),
+      departmentAccountMapPath = await Env.get({
+        key: 'DEPARTMENT_ACCOUNT_MAP_CSV'
+      }),
+      coursesWithDepartmentsPath = await Env.get({
+        key: 'COURSES_WITH_DEPARTMENTS_CSV'
+      }),
       ...values
     }
   } = args;
-  if (
-    process.env.SKY_CLIENT_ID &&
-    process.env.SKY_CLIENT_SECRET &&
-    process.env.SKY_SUBSCRIPTION_KEY &&
-    process.env.SKY_REDIRECT_URI &&
-    process.env.SKY_TOKEN_STORE
-  ) {
-    SkyAPI.init({
-      client_id: process.env.SKY_CLIENT_ID,
-      client_secret: process.env.SKY_CLIENT_SECRET,
-      subscription_key: process.env.SKY_SUBSCRIPTION_KEY,
-      redirect_uri: process.env.SKY_REDIRECT_URI,
-      store: process.env.SKY_TOKEN_STORE
-    });
-  }
   configure({
     blackbaudInstanceId,
     canvasInstanceUrl,
@@ -183,7 +171,7 @@ export async function run() {
         canvasInstanceUrl:
           section.SectionInfo.canvas.instance_url ||
           Canvas.client().instance_url ||
-          process.env.CANVAS_INSTANCE_URL ||
+          (await Env.get({ key: 'CANVAS_INSTANCE_URL' })) ||
           (await input({
             message: `What is the hostname for your Canvas instance?`,
             validate: (value) => !!Validators.isHostname({})(value),
