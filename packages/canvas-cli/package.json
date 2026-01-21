@@ -25,19 +25,20 @@
     "version": "commit-and-tag-version"
   },
   "dependencies": {
+    "@1password/sdk": "^0.3.1",
     "@groton/colors": "^0.4.2",
     "@inquirer/prompts": "^7.10.1",
     "@oauth2-cli/canvas": "workspace:*",
-    "@qui-cli/colors": "^3.2.2",
-    "@qui-cli/core": "^5.0.2",
+    "@qui-cli/colors": "^3.2.3",
+    "@qui-cli/core": "^5.0.3",
     "@qui-cli/env": "^5.1.1",
-    "@qui-cli/log": "^4.0.2",
-    "@qui-cli/plugin": "^4.0.0",
-    "@qui-cli/root": "^3.0.6",
-    "@qui-cli/structured": "^2.0.4",
+    "@qui-cli/log": "^4.0.3",
+    "@qui-cli/plugin": "^4.1.0",
+    "@qui-cli/root": "^3.1.0",
+    "@qui-cli/structured": "^2.0.5",
     "change-case": "^5.4.4",
     "csv-parse": "^5.6.0",
-    "ora": "^9.0.0"
+    "ora": "^9.1.0"
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.4",

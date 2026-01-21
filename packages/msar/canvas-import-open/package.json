@@ -26,13 +26,14 @@
     "version": "commit-and-tag-version"
   },
   "dependencies": {
+    "@1password/sdk": "^0.3.1",
     "@msar/types.import": "workspace:*",
-    "@qui-cli/colors": "^3.2.2",
-    "@qui-cli/core": "^5.0.2",
+    "@qui-cli/colors": "^3.2.3",
+    "@qui-cli/core": "^5.0.3",
     "@qui-cli/env": "^5.1.1",
-    "@qui-cli/log": "^4.0.2",
-    "@qui-cli/plugin": "^4.0.0",
-    "@qui-cli/root": "^3.0.6",
+    "@qui-cli/log": "^4.0.3",
+    "@qui-cli/plugin": "^4.1.0",
+    "@qui-cli/root": "^3.1.0",
     "ejs": "^3.1.10",
     "open": "^10.2.0"
   },
