@@ -43,7 +43,10 @@ export type listSearchParameters = Masquerade &
      * observed user in all the courses specified by context_codes[].
      */
     observed_user_id: string;
-    /** Only return items that have new or unread activity */
+    /**
+     * Only return items that are not completed (excludes items with
+     * planner_override.marked_complete = true or submitted assignments)
+     */
     filter: string;
   }>;
 

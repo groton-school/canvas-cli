@@ -124,3 +124,5 @@ export type HashAmappingofuserIDstoarraysoftaggroupIDsExample35579345 =
 export type JSONForsingledeletionoktrueForbulkdeletionjsonmessageBulkdeletecompleteddeleted_user_ids123456unauthorized_user_ids789 =
   JSONValue;
 export type QueryResultsResponse = JSONValue;
+export type LtiRegistrationUpdateRequest = JSONValue;
+export type enabledboolean = JSONValue;

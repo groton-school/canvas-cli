@@ -73,7 +73,7 @@ export type LearningObjectDates = {
   /**
    * Peer review sub assignment details, only present when
    * include_peer_review=true is specified, assignment has peer reviews enabled,
-   * and peer_review_grading feature flag is enabled
+   * and peer_review_allocation_and_grading feature flag is enabled
    *
    * Object
    */

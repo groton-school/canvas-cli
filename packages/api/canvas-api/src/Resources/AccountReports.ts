@@ -1,5 +1,6 @@
 import { JSONValue } from '@battis/typescript-tricks';
 import { File } from './Files.js';
+import { User } from './Users.js';
 
 export type Report = {
   /**
@@ -59,6 +60,8 @@ export type Report = {
    * Type: integer
    */
   current_line: number | string;
+  /** The user that initiated the account report. See the Users API for details. */
+  user: User;
 };
 
 /** The parameters returned will vary for each report. */

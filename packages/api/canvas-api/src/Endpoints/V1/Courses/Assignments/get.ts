@@ -26,7 +26,7 @@ export type getSearchParameters = Masquerade &
      * turned on. If "observed_users" is passed, submissions for observed users
      * will also be included. For "score_statistics" to be included, the
      * "submission" option must also be set. The "peer_review" option requires
-     * that the Peer Review Grading course feature be turned on.
+     * that the Peer Review Allocation and Grading course feature be turned on.
      */
     include: string[];
     /**

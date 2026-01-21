@@ -1,5 +1,4 @@
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
-import { LtiRegistrationAccountBinding } from '../Overrides.js';
 import { User } from './Users.js';
 
 /** A registration of an LTI tool in Canvas */
@@ -72,6 +71,47 @@ export type LtiRegistration = {
   account_binding: LtiRegistrationAccountBinding;
   /** The Canvas-style tool configuration for this registration */
   configuration: LtiToolConfiguration;
+};
+
+/**
+ * A binding between an LTI registration and an account, defining the
+ * registration's availability in that account
+ */
+export type LtiRegistrationAccountBinding = {
+  /**
+   * The Canvas ID of the Lti::RegistrationAccountBinding object
+   *
+   * Type: integer
+   */
+  id: number | string;
+  /**
+   * The Canvas id of the account
+   *
+   * Type: integer
+   */
+  account_id: number | string;
+  /**
+   * The Canvas id of the root account
+   *
+   * Type: integer
+   */
+  root_account_id: number | string;
+  /**
+   * The Canvas id of the Lti::Registration
+   *
+   * Type: integer
+   */
+  registration_id: number | string;
+  /** The state of the binding (on, off, allow, deleted) */
+  workflow_state: string;
+  /** Timestamp of the binding's creation */
+  created_at: string;
+  /** Timestamp of the binding's last update */
+  updated_at: string;
+  /** The user that created this binding */
+  created_by: User;
+  /** The user that last updated this binding */
+  updated_by: User;
 };
 
 /** A legacy configuration format for LTI 1.3 tools. */

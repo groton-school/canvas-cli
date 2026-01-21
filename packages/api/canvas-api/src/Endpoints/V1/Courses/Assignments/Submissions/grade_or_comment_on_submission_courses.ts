@@ -71,6 +71,8 @@ export type grade_or_comment_on_submission_coursesFormParameters =
      *   submission
      * - "sub_assignment_submissions": Sub-assignment submissions for discussion
      *   checkpoints
+     * - "peer_review_submissions": Peer review submission data when peer review
+     *   allocation and grading is enabled
      * - "provisional_grades": Provisional grades (only available for moderated
      *   assignments)
      * - "group": Group information (id and name) for group assignments
@@ -132,6 +134,17 @@ export type grade_or_comment_on_submission_coursesFormParameters =
      * Format: 'int64'
      */
     'submission[seconds_late_override]': number | string;
+    /**
+     * When true, updates the peer review sub assignment submission instead of
+     * the parent assignment submission. The parent assignment must have peer
+     * reviews enabled, the peer_review_allocation_and_grading feature flag must
+     * be enabled for the course, and the assignment must have an associated
+     * peer review sub assignment. If any of these conditions are not met, the
+     * API will return a 422 error.
+     *
+     * Type: boolean
+     */
+    'submission[peer_review]': boolean | string;
     /**
      * Assign a rubric assessment to this assignment submission. The
      * sub-parameters here depend on the rubric for the assignment. The general

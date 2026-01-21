@@ -49,7 +49,8 @@ export type getSearchParameters = Masquerade &
     include: string[];
     /**
      * Specify additional values to exclude. "missing_user_rollups" excludes
-     * rollups for users without results.
+     * rollups for users without results. "missing_outcome_results" excludes
+     * outcomes without results.
      */
     exclude: string[];
     /**

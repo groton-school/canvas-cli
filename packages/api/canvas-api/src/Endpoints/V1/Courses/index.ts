@@ -58,6 +58,7 @@ export * as OutcomeImports from './OutcomeImports/index.js';
 export * as OutcomeProficiency from './OutcomeProficiency/index.js';
 export * as OutcomeResults from './OutcomeResults/index.js';
 export * as OutcomeRollups from './OutcomeRollups/index.js';
+export * as Outcomes from './Outcomes/index.js';
 export * as Pages from './Pages/index.js';
 export * as Permissions from './Permissions/index.js';
 export * as PotentialCollaborators from './PotentialCollaborators/index.js';

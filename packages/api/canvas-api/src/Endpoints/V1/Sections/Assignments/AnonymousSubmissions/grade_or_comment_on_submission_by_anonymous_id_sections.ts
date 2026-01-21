@@ -65,6 +65,8 @@ export type grade_or_comment_on_submission_by_anonymous_id_sectionsFormParameter
      *   submission
      * - "sub_assignment_submissions": Sub-assignment submissions for discussion
      *   checkpoints
+     * - "peer_review_submissions": Peer review submission data when peer review
+     *   allocation and grading is enabled
      * - "provisional_grades": Provisional grades (only available for moderated
      *   assignments)
      * - "group": Group information (id and name) for group assignments
