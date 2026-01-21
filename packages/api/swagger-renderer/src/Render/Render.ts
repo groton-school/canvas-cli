@@ -98,8 +98,8 @@ export async function run(results?: Plugin.AccumulatedResults) {
   const spinner = ora(`Looking for specs`).start();
   let specPaths: PathString[] | undefined = undefined;
   specPath = path.resolve(Root.path(), specPath);
-  if (results && results['download']) {
-    specPaths = results['download'];
+  if (results && results['download'] && Array.isArray(results.download)) {
+    specPaths = results.download;
     spinner.text = `Using specs provided by download`;
   } else if (fs.lstatSync(specPath).isDirectory()) {
     specPaths = fs
