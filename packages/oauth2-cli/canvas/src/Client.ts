@@ -11,8 +11,6 @@ import * as OAuth2 from '@oauth2-cli/qui-cli/dist/OAuth2.js';
 import { Log } from '@qui-cli/log';
 import fs from 'node:fs';
 
-export * from '@groton/canvas-api';
-
 export type Credentials = OAuth2.Credentials & {
   instance_url: URLString;
   user_agent: string;

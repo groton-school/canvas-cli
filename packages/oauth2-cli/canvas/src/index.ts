@@ -1,6 +1,8 @@
 import { register } from '@qui-cli/plugin';
-import * as Canvas from './Module.js';
+import { CanvasPlugin } from './CanvasPlugin.js';
 
-export { Canvas };
+export * as Canvas from './Canvas.js';
 
-await register(Canvas);
+const canvas = new CanvasPlugin();
+
+await register(canvas);
