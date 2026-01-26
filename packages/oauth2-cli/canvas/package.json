@@ -50,9 +50,15 @@
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
+    "@1password/sdk": "0.3.x",
     "@qui-cli/env": ">=5.1",
     "@qui-cli/log": ">=3",
     "@qui-cli/plugin": ">=3"
+  },
+  "peerDependenciesMeta": {
+    "@1password/sdk": {
+      "optional": true
+    }
   },
   "engines": {
     "node": ">=21"
