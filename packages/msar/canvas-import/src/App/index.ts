@@ -18,6 +18,7 @@ import { importAssignments } from './Assignments.js';
 import { handleDuplicateCourse } from './Courses.js';
 import { importBulletinBoard, importTopics } from './Pages.js';
 import * as Preferences from './Preferences.js';
+import * as Workspace from './Workspace.js';
 
 export * as Preferences from './Preferences.js';
 
@@ -118,29 +119,6 @@ export async function init(args: Plugin.ExpectedArguments<typeof options>) {
   });
 }
 
-let _workspaceTerm: Canvas.EnrollmentTerms.EnrollmentTerm | undefined =
-  undefined;
-async function workspaceTerm() {
-  if (!_workspaceTerm) {
-    _workspaceTerm = await Canvas.v1.Accounts.Terms.retrieve_enrollment_term({
-      pathParams: {
-        account_id: '1',
-        id: `sis_term_id:${Preferences.WORKSPACE_TERM}`
-      }
-    });
-    if (!_workspaceTerm) {
-      _workspaceTerm = await Canvas.v1.Accounts.Terms.create({
-        pathParams: { account_id: '1' },
-        params: {
-          'enrollment_term[sis_term_id]': Preferences.WORKSPACE_TERM,
-          'enrollment_term[name]': 'Import Workspace'
-        }
-      });
-    }
-  }
-  return _workspaceTerm;
-}
-
 export async function run() {
   const spinner = ora(`Loading ${Colors.url(Snapshot.path())}`).start();
   let snapshots: Imported.Multiple.Data = [];
@@ -192,12 +170,13 @@ export async function run() {
     if (course) {
       course = await handleDuplicateCourse({ course, section });
     } else {
-      await workspaceTerm();
       course = await Canvas.v1.Accounts.Courses.create({
-        pathParams: { account_id: OneRoster.account_id(section).toString() },
+        pathParams: {
+          account_id: (await OneRoster.account_id(section)).toString()
+        },
         params: {
           ...Snapshot.Section.toCanvasArgs(section),
-          'course[term_id]': `sis_term_id:${Preferences.WORKSPACE_TERM}`
+          'course[term_id]': (await Workspace.getTermId()).toString()
         }
       });
     }

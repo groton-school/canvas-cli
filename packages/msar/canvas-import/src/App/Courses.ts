@@ -5,6 +5,7 @@ import { Colors } from '@qui-cli/colors';
 import open from 'open';
 import * as Snapshot from '../Snapshot/index.js';
 import * as Preferences from './Preferences.js';
+import * as Workspace from './Workspace.js';
 
 type Options = {
   course: Canvas.Courses.Course;
@@ -26,7 +27,7 @@ export async function handleDuplicateCourse({ course, section }: Options) {
         );
       }
       const params = Snapshot.Section.toCanvasArgs(section);
-      params['course[term_id]'] = `sis_term_id:${Preferences.WORKSPACE_TERM}`;
+      params['course[term_id]'] = (await Workspace.getTermId()).toString();
       delete params['course[sis_course_id]'];
       delete params.enable_sis_reactivation;
       await Canvas.v1.Courses.update({

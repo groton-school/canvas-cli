@@ -1,12 +1,11 @@
 import { PathString } from '@battis/descriptive-types';
 import * as Imported from '@msar/types.import';
-import { Colors } from '@qui-cli/colors';
-import { Log } from '@qui-cli/log';
 import { hydrate } from '@qui-cli/plugin';
 import { Root } from '@qui-cli/root';
 import { parse } from 'csv-parse/sync';
 import fs from 'node:fs';
 import path from 'node:path';
+import * as Workspace from './App/Workspace.js';
 
 let _instance: string | number;
 export function setInstanceId(value?: string | number) {
@@ -121,7 +120,7 @@ export function sis_user_id(snapshot: Imported.Data) {
   return `usr-${instance()}-${snapshot.SectionInfo.TeacherId}`;
 }
 
-export function account_id(snapshot: Imported.Data) {
+export async function account_id(snapshot: Imported.Data) {
   if (!snapshot.SectionInfo) {
     throw new Error('Missing SectionInfo');
   }
@@ -129,13 +128,11 @@ export function account_id(snapshot: Imported.Data) {
   const departmentId = coursesWithDepartments().find(
     (offering) => offering['Course ID'] == snapshot.SectionInfo!.OfferingId
   )?.['Department Id'];
-  const account_id = departmentAccountMap().find(
+  let account_id: number | string | undefined = departmentAccountMap().find(
     (department) => department['Department Id'] == departmentId
   )?.['Canvas Account ID'];
   if (!account_id) {
-    throw new Error(
-      `Could not map ${Colors.value('account_id')} for section: ${Log.syntaxColor({ SectionInfo: snapshot.SectionInfo })}`
-    );
+    account_id = await Workspace.getAccountId();
   }
   return account_id;
 }
