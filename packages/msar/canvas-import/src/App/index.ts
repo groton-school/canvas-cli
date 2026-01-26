@@ -195,14 +195,20 @@ export async function run() {
         };
       }
       // TODO cache enrollments for updating
-      await Canvas.v1.Courses.Enrollments.enroll_user_courses({
-        pathParams: { course_id: course.id.toString() },
-        params: {
-          'enrollment[user_id]': `sis_user_id:${OneRoster.sis_user_id(section)}`,
-          'enrollment[type]': 'TeacherEnrollment',
-          'enrollment[enrollment_state]': 'active'
-        }
-      });
+      if (section.SectionInfo?.TeacherId === null) {
+        Log.warning(
+          `${Colors.value(course.name)} (SIS ID ${Colors.value(course.sis_course_id)}) has no teacher`
+        );
+      } else {
+        await Canvas.v1.Courses.Enrollments.enroll_user_courses({
+          pathParams: { course_id: course.id.toString() },
+          params: {
+            'enrollment[user_id]': `sis_user_id:${OneRoster.sis_user_id(section)}`,
+            'enrollment[type]': 'TeacherEnrollment',
+            'enrollment[enrollment_state]': 'active'
+          }
+        });
+      }
 
       if (Preferences.assignments()) {
         await importAssignments({ course, section });
