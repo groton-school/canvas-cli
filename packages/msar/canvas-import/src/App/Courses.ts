@@ -71,7 +71,7 @@ export async function handleDuplicateCourse({ course, section }: Options) {
     },
     skip: () => undefined
   };
-  const choice = (Preferences.duplicates() ||
+  let choice: string = (Preferences.duplicates() ||
     (await select({
       message: `A course named ${Colors.value(course.name)} with sis_course_id ${Colors.value(course.sis_course_id)} already exists in Canvas.`,
       choices: [
@@ -81,22 +81,39 @@ export async function handleDuplicateCourse({ course, section }: Options) {
             'Import snapshot data into the course, potentially creating duplicate content if previous Canvas import data was not exported to the index JSON file'
         },
         {
+          value: 'update all',
+          description:
+            'For this and all subsequent courses that already exist in Canvas, import snapshot data into the course, potentially creating duplicate content if previous Canvas import data was not exported to the index JSON file'
+        },
+        {
           value: 'reset',
           description:
             'Reset the course content, erasing all existing content, and replace it with the snapshot'
         },
         {
-          value: 'browse',
+          value: 'reset all',
           description:
-            'Open the current course in a browser and then make a decision about what to do'
+            'For this and all subsequent courses that already exist in Canvas, reset the course content, erasing all existing content, and replace it with the snapshot'
         },
         {
           value: 'skip',
           description: 'Skip processing the snaphot import for this course'
+        },
+        {
+          value: 'skip all',
+          description:
+            'For this and all subsequent courses that already exist in Canvas, skip processing the snaphot import for this course'
+        },
+        {
+          value: 'browse',
+          description:
+            'Open the current course in a browser and then make a decision about what to do'
         }
       ]
     }))) as keyof typeof next;
-  // FIXME track duplicates choice per-section or document that first choice applies to all
-  Preferences.setDuplicates(choice);
-  return await next[choice]();
+  if (choice.endsWith(' all')) {
+    choice = choice.replace(/ all$/, '');
+    Preferences.setDuplicates(choice as Preferences.DuplicateHandling);
+  }
+  return await next[choice as Preferences.DuplicateHandling]();
 }
