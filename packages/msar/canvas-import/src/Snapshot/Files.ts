@@ -9,7 +9,6 @@ import crypto from 'node:crypto';
 import { EventEmitter } from 'node:events';
 import fs from 'node:fs';
 import path from 'node:path';
-import ora from 'ora';
 import probe from 'probe-image-size';
 import { Preferences } from '../App/index.js';
 import * as IndexFile from './IndexFile.js';
@@ -107,9 +106,6 @@ export function calculateHashes(entry: JSONValue): JSONValue {
           `Reusing previously calculated hash for ${Colors.url(entry.localPath)}`
         );
       } else {
-        const spinner = ora(
-          `Calculating hash for ${Colors.url(entry.localPath)}`
-        ).start();
         const filePath = path.join(
           path.dirname(IndexFile.path()),
           entry.localPath
@@ -126,9 +122,7 @@ export function calculateHashes(entry: JSONValue): JSONValue {
           };
           const message = `Hashed ${Colors.url(entry.localPath)} to ${Colors.value(entry.sha1_file_hash)}`;
           Log.debug(message);
-          spinner.succeed(message);
         } else {
-          spinner.fail();
           throw new Error(
             `Failed to calculate hash for ${Colors.url(entry.localPath)}`
           );
