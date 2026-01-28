@@ -1,4 +1,5 @@
 import { URLString } from '@battis/descriptive-types';
+import { importLocal } from '@battis/import-package-json';
 import { JSONValue } from '@battis/typescript-tricks';
 import {
   Base,
@@ -10,10 +11,11 @@ import { isError } from '@groton/canvas-api.utilities';
 import * as OAuth2 from '@oauth2-cli/qui-cli/dist/OAuth2.js';
 import { Log } from '@qui-cli/log';
 import fs from 'node:fs';
+import os from 'node:os';
 
 export type Credentials = OAuth2.Credentials & {
   instance_url: URLString;
-  user_agent: string;
+  user_agent?: string;
 };
 
 export class Client extends OAuth2.Client implements Base {
@@ -22,12 +24,19 @@ export class Client extends OAuth2.Client implements Base {
 
   public constructor({
     instance_url,
-    user_agent = '@oauth2-cli/canvas (Node.js)',
+    user_agent,
     ...credentials
   }: Credentials) {
     super(credentials);
     this.instance_url = instance_url;
-    this.user_agent = user_agent;
+    if (user_agent) {
+      this.user_agent = user_agent;
+    } else {
+      this.user_agent = `@oauth2-cli/canvas Node.js/${process.versions.node} ${os.platform()}/${os.version()}`;
+      importLocal('../package.json').then((pkg) => {
+        this.user_agent = `@oauth2-cli/canvas/${pkg.version} Node.js/${process.versions.node} ${os.platform()}/${os.version()}`;
+      });
+    }
   }
 
   public async fetchAs<T extends JSONValue = JSONValue>(

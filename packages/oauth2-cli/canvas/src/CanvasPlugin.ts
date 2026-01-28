@@ -47,9 +47,7 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Client> {
     });
   }
 
-  private conf: CanvasConfiguration = {
-    user_agent: '@oauth2-cli/canvas (Node.js)'
-  };
+  private conf: CanvasConfiguration = {};
 
   public get instance_url() {
     if (this.conf.instance_url) {
@@ -61,9 +59,6 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Client> {
   protected instantiateClient(credentials: OAuth2.Credentials) {
     if (!this.conf.instance_url) {
       throw new Error('Instance URL has not been defined.');
-    }
-    if (!this.conf.user_agent) {
-      throw new Error('User agent has not been defined.');
     }
     return new Client({
       instance_url: this.conf.instance_url,

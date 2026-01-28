@@ -29,6 +29,7 @@
     "version": "commit-and-tag-version"
   },
   "dependencies": {
+    "@battis/import-package-json": "^0.1.7",
     "@groton/canvas-api": "workspace:*",
     "@groton/canvas-api.client.base": "workspace:*",
     "@groton/canvas-api.utilities": "workspace:*",
