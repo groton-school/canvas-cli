@@ -122,6 +122,7 @@ export async function init(args: Plugin.ExpectedArguments<typeof options>) {
 export async function run() {
   const spinner = ora(`Loading ${Colors.url(Snapshot.path())}`).start();
   let snapshots: Imported.Multiple.Data = [];
+  const users: Record<Canvas.Users.User['sis_user_id'], Canvas.Users.User> = {};
   try {
     const file = JSON.parse(fs.readFileSync(Snapshot.path()).toString());
     if (Array.isArray(file)) {
@@ -200,6 +201,26 @@ export async function run() {
           `${Colors.value(course.name)} (SIS ID ${Colors.value(course.sis_course_id)}) has no teacher`
         );
       } else {
+        const sis_user_id = OneRoster.sis_user_id(section);
+        if (!users[sis_user_id]) {
+          try {
+            const user = await Canvas.v1.Users.show_user_details({
+              pathParams: { id: `sis_user_id:${sis_user_id}` }
+            });
+            users[sis_user_id] = user;
+          } catch (_) {
+            users[sis_user_id] = await Canvas.v1.Accounts.Users.create({
+              pathParams: { account_id: 1 },
+              params: {
+                'user[name]': section.SectionInfo?.Teacher,
+                'pseudonym[sis_user_id]': sis_user_id,
+                'pseudonym[unique_id]': sis_user_id,
+                enable_sis_reactivation: true,
+                'pseudonym[send_confirmation]': false
+              }
+            });
+          }
+        }
         await Canvas.v1.Courses.Enrollments.enroll_user_courses({
           pathParams: { course_id: course.id.toString() },
           params: {
@@ -229,7 +250,6 @@ export async function run() {
             'course[term_id]': `sis_term_id:${OneRoster.sis_term_id(section)}`
           }
         });
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (_) {
         Log.warning(
           `Course ${Colors.value(course.name)} could not be moved out of the Import Workspace term.`
