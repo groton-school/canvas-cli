@@ -2,8 +2,8 @@ import { JSONObject } from '@battis/typescript-tricks';
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
-import { Log } from '@qui-cli/log';
 import * as Snapshot from '../Snapshot/index.js';
+import { log } from './Courses.js';
 import * as Preferences from './Preferences.js';
 
 type Options = {
@@ -42,7 +42,8 @@ export async function importAssignments({ course, section }: Options) {
             section.assignment_groups[prev].args = params as JSONObject;
           }
         } else {
-          Log.info(
+          log(
+            course,
             `Assignment group ${Colors.value(params.name)} is up-to-date`
           );
         }
@@ -59,6 +60,7 @@ export async function importAssignments({ course, section }: Options) {
         blackbaud_id: assignmentType.type_id,
         args: params as JSONObject
       });
+      log(course, `Created assignment group ${Colors.value(group.name)}`);
     }
   }
 
@@ -88,7 +90,8 @@ export async function importAssignments({ course, section }: Options) {
             params as Partial<Canvas.v1.Courses.Assignments.updateFormParameters>
         });
       } else {
-        Log.info(
+        log(
+          course,
           `Assignment ${Colors.value(params['assignment[name]'])} is up-to-date`
         );
       }
@@ -97,6 +100,7 @@ export async function importAssignments({ course, section }: Options) {
         pathParams: { course_id: course.id.toString() },
         params
       });
+      log(course, `Created assignment ${Colors.value(assignment.name)}`);
     }
     if (assignment) {
       if (assignments[order].Rubric && assignments[order].RubricId) {
@@ -128,6 +132,10 @@ export async function importAssignments({ course, section }: Options) {
                 pathParams: { course_id: course.id.toString() },
                 params
               });
+            log(
+              course,
+              `Associated rubric ${Colors.value(cached.rubric.title)} with assignment ${Colors.value(assignment.name)}`
+            );
           }
           assignments[order].Rubric!.canvas = {
             id: cached.rubric.id.toString(),

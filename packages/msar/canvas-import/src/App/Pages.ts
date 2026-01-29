@@ -1,8 +1,8 @@
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
-import { Log } from '@qui-cli/log';
 import * as Snapshot from '../Snapshot/index.js';
+import { log } from './Courses.js';
 import * as Preferences from './Preferences.js';
 
 type Options = {
@@ -37,7 +37,8 @@ export async function importBulletinBoard({ course, section }: Options) {
           };
         }
       } else {
-        Log.info(
+        log(
+          course,
           `Page ${Colors.value(params['wiki_page[title]'])} is up-to-date`
         );
       }
@@ -52,6 +53,7 @@ export async function importBulletinBoard({ course, section }: Options) {
           args: params,
           created_at: frontPage.created_at
         };
+        log(course, `Created bulletin board page as front page`);
       }
     }
   }
@@ -79,13 +81,14 @@ export async function importTopics({ course, section }: Options) {
               params
             });
           } else {
-            Log.info(`Page ${Colors.value(topic.Name)} is up-to-date`);
+            log(course, `Page ${Colors.value(topic.Name)} is up-to-date`);
           }
         } else {
           canvasTopic = await Canvas.v1.Courses.Pages.create({
             pathParams: { course_id: course.id.toString() },
             params
           });
+          log(course, `Created page ${Colors.value(topic.Name)}`);
         }
         if (canvasTopic) {
           topic.canvas = {

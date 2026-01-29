@@ -10,6 +10,7 @@ import { EventEmitter } from 'node:events';
 import fs from 'node:fs';
 import path from 'node:path';
 import probe from 'probe-image-size';
+import { log } from '../App/Courses.js';
 import { Preferences } from '../App/index.js';
 import * as IndexFile from './IndexFile.js';
 
@@ -245,7 +246,7 @@ export async function uploadLocalFiles({
           Imported.isEqual(params, entry.canvas.args) &&
           entry.canvas.course_id === course.id
         ) {
-          Log.info(`File ${Colors.url(entry.localPath)} is up-to-date`);
+          log(course, `File ${Colors.path(entry.localPath)} is up-to-date`);
           uploaded = true;
         }
       }
@@ -253,8 +254,8 @@ export async function uploadLocalFiles({
         const file = await getCached(
           course.id.toString(),
           entry.localPath,
-          async () =>
-            await Canvas.v1.Courses.Files.upload({
+          async () => {
+            const file = await Canvas.v1.Courses.Files.upload({
               pathParams: { course_id: course.id.toString() },
               file: {
                 filePath: path.join(
@@ -263,7 +264,13 @@ export async function uploadLocalFiles({
                 )
               },
               params
-            })
+            });
+            log(
+              course,
+              `Uploaded file ${Colors.path(entry.localPath)} as ${Colors.value(file.display_name)}`
+            );
+            return file;
+          }
         );
         (entry as Imported.Annotation).canvas = {
           args: params,

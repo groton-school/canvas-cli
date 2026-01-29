@@ -15,7 +15,7 @@ import ora from 'ora';
 import * as OneRoster from '../OneRoster.js';
 import * as Snapshot from '../Snapshot/index.js';
 import { importAssignments } from './Assignments.js';
-import { handleDuplicateCourse } from './Courses.js';
+import { handleDuplicateCourse, log } from './Courses.js';
 import { importBulletinBoard, importTopics } from './Pages.js';
 import * as Preferences from './Preferences.js';
 import * as Workspace from './Workspace.js';
@@ -193,6 +193,7 @@ export async function run() {
           'course[term_id]': (await Workspace.getTermId()).toString()
         }
       });
+      log(course, 'Course created');
     }
     if (course) {
       section = Snapshot.Files.calculateHashes(
@@ -210,9 +211,7 @@ export async function run() {
       }
       // TODO cache enrollments for updating
       if (section.SectionInfo?.TeacherId === null) {
-        Log.warning(
-          `  ${Colors.value(course.name)} (SIS ID ${Colors.value(course.sis_course_id)}) has no teacher`
-        );
+        log(course, `No teacher in snapshot`, 'warning');
       } else {
         const sis_user_id = OneRoster.sis_user_id(section);
         if (!users[sis_user_id]) {
@@ -236,8 +235,9 @@ export async function run() {
               pathParams: { id: users[sis_user_id].id },
               params: { 'user[event]': 'suspend' }
             });
-            Log.info(
-              `  Added ${Colors.value(users[sis_user_id].name)} as a suspended user`
+            log(
+              course,
+              `Added ${Colors.value(users[sis_user_id].name)} as a suspended user`
             );
           }
         }
@@ -249,8 +249,9 @@ export async function run() {
             'enrollment[enrollment_state]': 'active'
           }
         });
-        Log.info(
-          `  Enrolled ${Colors.value(users[sis_user_id].name)} as teacher`
+        log(
+          course,
+          `Enrolled ${Colors.value(users[sis_user_id].name)} as teacher`
         );
       }
 
@@ -274,8 +275,10 @@ export async function run() {
           }
         });
       } catch (_) {
-        Log.warning(
-          `Course ${Colors.value(course.name)} could not be moved out of the Import Workspace term.`
+        log(
+          course,
+          `Could not be moved out of the ${Colors.path('Import Workspace')} term`,
+          'warning'
         );
       }
       if (Preferences.bulletinBoard()) {

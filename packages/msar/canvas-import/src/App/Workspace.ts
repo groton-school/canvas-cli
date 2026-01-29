@@ -1,4 +1,5 @@
 import { Canvas } from '@oauth2-cli/canvas';
+import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 
 const SIS_ID = '@msar/canvas-import-workspace';
@@ -39,6 +40,9 @@ export async function getTermId(): Promise<
       }
     });
     term_id = term.id;
+    Log.info(
+      `Created Canvas term ${Colors.value('Import Workspace')} (ID ${Colors.value(term_id)})`
+    );
   }
 
   return term_id;
@@ -67,6 +71,9 @@ export async function getAccountId(): Promise<Canvas.Accounts.Account['id']> {
       }
     });
     account_id = account.id;
+    Log.info(
+      `Created Canvas sub-account ${Colors.value('Import Workspace')} (ID ${Colors.value(account_id)})`
+    );
   }
   return account_id;
 }

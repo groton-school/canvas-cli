@@ -2,6 +2,7 @@ import { confirm, select } from '@inquirer/prompts';
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
+import { Log } from '@qui-cli/log';
 import open from 'open';
 import * as Snapshot from '../Snapshot/index.js';
 import * as Preferences from './Preferences.js';
@@ -34,6 +35,7 @@ export async function handleDuplicateCourse({ course, section }: Options) {
         pathParams: { id: course.id.toString() },
         params: params as Partial<Canvas.v1.Courses.updateFormParameters>
       });
+      log(course, 'Updating existing course');
       // TODO `update_course` likely _does_ return a course and documentation is wrong
       return await Canvas.v1.Courses.get({
         pathParams: { id: course.id.toString() }
@@ -51,6 +53,7 @@ export async function handleDuplicateCourse({ course, section }: Options) {
           created_at: course.created_at
         };
       }
+      log(course, 'Resetting existing course');
       return await next.update();
     },
     browse: async () => {
@@ -69,7 +72,10 @@ export async function handleDuplicateCourse({ course, section }: Options) {
       Preferences.setDuplicates(choice);
       return await next[choice]();
     },
-    skip: () => undefined
+    skip: () => {
+      log(course, 'Skipping');
+      return undefined;
+    }
   };
   const choice = (Preferences.duplicates() ||
     (await select({
@@ -108,4 +114,20 @@ export async function handleDuplicateCourse({ course, section }: Options) {
     }
   }
   return await next[choice as Preferences.DuplicateHandling]();
+}
+
+let prevCourseId: Canvas.Courses.Course['id'] | undefined = undefined;
+
+export function log(
+  course: Canvas.Courses.Course,
+  message: string,
+  level: 'debug' | 'info' | 'warning' | 'error' | 'fatal' = 'info',
+  ...meta: unknown[]
+) {
+  Log[level](
+    `${prevCourseId !== course.id ? `${Colors.value(course.name)} / ${Colors.value(course.sis_course_id)}\n` : ''}    ${message}`,
+    course,
+    ...meta
+  );
+  prevCourseId = course.id;
 }
