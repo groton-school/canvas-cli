@@ -46,3 +46,13 @@ export function setDuplicates(value?: DuplicateHandling) {
 export function duplicates() {
   return _duplicates;
 }
+
+let _skipTeacherless = true;
+
+export function setSkipTeacherless(value?: boolean) {
+  _skipTeacherless = hydrate(value, _skipTeacherless);
+}
+
+export function skipTeacherless() {
+  return _skipTeacherless;
+}
