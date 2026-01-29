@@ -2,6 +2,7 @@ import { init } from '@groton/canvas-api';
 import * as OAuth2 from '@oauth2-cli/qui-cli/dist/OAuth2.js';
 import { Colors } from '@qui-cli/colors';
 import { Env } from '@qui-cli/env';
+import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import path from 'node:path';
 import { Client } from './Client.js';
@@ -110,5 +111,9 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Client> {
     } = args.values;
     this.configure({ instance_url, ...rest });
     init(this.getClient());
+  }
+
+  public run() {
+    Log.info(`Connecting to ${Colors.url(this.instance_url)}`);
   }
 }
