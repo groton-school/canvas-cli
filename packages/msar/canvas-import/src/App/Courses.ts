@@ -21,11 +21,28 @@ export async function handleDuplicateCourse({ course, section }: Options) {
       | Canvas.Courses.Course
       | undefined
   > = {
-    update: async (): Promise<Canvas.Courses.Course> => {
+    update: async () => {
       if (!section.SectionInfo?.canvas) {
-        throw new Error(
-          `Missing Canvas import information, cannot update ${Colors.value(section.SectionInfo?.GroupName)}`
-        );
+        const choice = (await select({
+          message: `Missing Canvas import information for ${Colors.value(section.SectionInfo?.GroupName)}`,
+          choices: [
+            {
+              value: 'reset',
+              description:
+                'Reset the course content, erasing all existing content, and replace it with the snapshot'
+            },
+            {
+              value: 'skip',
+              description: 'Skip processing the snaphot import for this course'
+            },
+            {
+              value: 'browse',
+              description:
+                'Open the current course in a browser and then make a decision about what to do'
+            }
+          ]
+        })) as keyof typeof next;
+        return await next[choice]();
       }
       const params = Snapshot.Section.toCanvasArgs(section);
       params['course[term_id]'] = (await Workspace.getTermId()).toString();
