@@ -139,7 +139,9 @@ export async function run() {
     if (!Array.isArray(snapshots)) {
       throw new Error(`Error loading data`);
     }
-    Output.configure({ outputPath: Snapshot.path() });
+    Output.configure({
+      outputPath: Plugin.hydrate(Output.outputPath(), Snapshot.path())
+    });
     spinner.succeed(
       `Loaded ${snapshots.length} section snapshot${snapshots.length > 1 ? 's' : ''}`
     );
@@ -298,7 +300,10 @@ export async function run() {
         }
       }
       Output.writeJSON(
-        Output.filePathFromOutputPath(Output.outputPath(), 'index.json'),
+        Output.filePathFromOutputPath(
+          Output.outputPath(),
+          'canvas-import.json'
+        ),
         snapshots,
         { overwrite: true, silent: true }
       );
@@ -309,7 +314,7 @@ export async function run() {
     }
   }
   Output.writeJSON(
-    Output.filePathFromOutputPath(Output.outputPath(), 'index.json'),
+    Output.filePathFromOutputPath(Output.outputPath(), 'canvas-import.json'),
     snapshots,
     { overwrite: true }
   );
