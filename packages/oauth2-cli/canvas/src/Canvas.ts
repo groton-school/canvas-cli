@@ -1,3 +1,5 @@
+import { CanvasPlugin } from './CanvasPlugin.js';
+
 export * from '@groton/canvas-api';
 export {
   EnvironmentStorage,
@@ -6,3 +8,5 @@ export {
 } from '@oauth2-cli/qui-cli/dist/OAuth2.js';
 export * from './CanvasPlugin.js';
 export * from './Client.js';
+
+export const plugin = new CanvasPlugin();
