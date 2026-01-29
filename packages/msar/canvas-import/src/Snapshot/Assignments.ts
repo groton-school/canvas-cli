@@ -61,7 +61,7 @@ export async function hydrate(snapshot: Imported.Data) {
 
 type ToCanvasArgsOptions = {
   course: Canvas.Courses.Course;
-  assignmentGroup: Canvas.AssignmentGroups.AssignmentGroup;
+  assignmentGroup?: Canvas.AssignmentGroups.AssignmentGroup;
   assignment: Model;
   order: number;
 };
@@ -87,9 +87,11 @@ export async function toCanvasArgs({
       { assignment }
     ),
     'assignment[published]': assignment.PublishInd,
-    'assignment[assignment_group_id]': assignmentGroup.id,
     'assignment[submission_types]': []
   };
+  if (assignmentGroup) {
+    args['assignment[assignment_group_id]'] = assignmentGroup.id;
+  }
   if (assignment.OnPaperSubmission) {
     args['assignment[submission_types]']?.push('on_paper');
   }

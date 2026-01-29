@@ -67,11 +67,9 @@ export async function importAssignments({ course, section }: Options) {
   for (let order = 0; order < assignments.length; order++) {
     const params = await Snapshot.Assignments.toCanvasArgs({
       course,
-      assignmentGroup: {
-        id: section.assignment_groups.find(
-          (g) => g.blackbaud_id == assignments[order].type_id
-        )!.id!
-      } as Canvas.AssignmentGroups.AssignmentGroup,
+      assignmentGroup: section.assignment_groups.find(
+        (g) => g.blackbaud_id == assignments[order].type_id
+      ) as Canvas.AssignmentGroups.AssignmentGroup | undefined,
       assignment: assignments[order],
       order
     });
