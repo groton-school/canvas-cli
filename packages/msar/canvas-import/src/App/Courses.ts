@@ -97,7 +97,7 @@ export async function handleDuplicateCourse({ course, section }: Options) {
       ]
     }))) as keyof typeof next;
 
-  if (choice !== 'browse') {
+  if (choice !== 'browse' && !Preferences.duplicates()) {
     if (
       await confirm({
         message: `Would you like to also ${Colors.value(choice)} all similar courses that have assignments and/or pages?`,
