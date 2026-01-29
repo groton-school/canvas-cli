@@ -44,7 +44,6 @@ export class Client implements Base.Base {
             ),
             ''
           );
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (_) {
         // ignore error (not a URL)
       }
@@ -94,8 +93,7 @@ export class Client implements Base.Base {
     return result;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public async upload<T = JSONValue>(params: Base.UploadParams): Promise<T> {
+  public async upload<T = JSONValue>(_: Base.UploadParams): Promise<T> {
     throw new Error('not implemented');
   }
 

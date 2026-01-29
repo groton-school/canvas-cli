@@ -87,7 +87,6 @@ export async function fetchAllPages<ReturnType>({
       let body = await response.text();
       try {
         body = JSON.parse(body);
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (_) {
         // ignore failure to parse
       }

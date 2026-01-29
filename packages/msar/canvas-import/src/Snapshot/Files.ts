@@ -233,7 +233,6 @@ export async function uploadLocalFiles({
             fs.createReadStream(localPath)
           );
         }
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (_) {
         // ignore non-image probe errors
       }
