@@ -8,6 +8,7 @@ import { Core } from '@qui-cli/core';
 import { Env } from '@qui-cli/env';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
+import { Root } from '@qui-cli/root';
 import { Validators } from '@qui-cli/validators';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -140,7 +141,12 @@ export async function run() {
       throw new Error(`Error loading data`);
     }
     Output.configure({
-      outputPath: Plugin.hydrate(Output.outputPath(), Snapshot.path())
+      outputPath: Output.filePathFromOutputPath(
+        Output.outputPath() !== Root.path()
+          ? Output.outputPath()
+          : path.dirname(Snapshot.path()),
+        'canvas-import.json'
+      )
     });
     spinner.succeed(
       `Loaded ${snapshots.length} section snapshot${snapshots.length > 1 ? 's' : ''}`
@@ -299,23 +305,15 @@ export async function run() {
           });
         }
       }
-      Output.writeJSON(
-        Output.filePathFromOutputPath(
-          Output.outputPath(),
-          'canvas-import.json'
-        ),
-        snapshots,
-        { overwrite: true, silent: true }
-      );
+      Output.writeJSON(Output.outputPath(), snapshots, {
+        overwrite: true,
+        silent: true
+      });
     } else {
       Log.info(
         `Skipping teacherless section ${Colors.value(section.SectionInfo?.GroupName)}`
       );
     }
   }
-  Output.writeJSON(
-    Output.filePathFromOutputPath(Output.outputPath(), 'canvas-import.json'),
-    snapshots,
-    { overwrite: true }
-  );
+  Output.writeJSON(Output.outputPath(), snapshots, { overwrite: true });
 }
