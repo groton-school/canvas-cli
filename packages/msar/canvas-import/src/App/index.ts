@@ -288,7 +288,12 @@ export async function run() {
     Output.writeJSON(
       Output.filePathFromOutputPath(Output.outputPath(), 'index.json'),
       snapshots,
-      { overwrite: true }
+      { overwrite: true, silent: true }
     );
   }
+  Output.writeJSON(
+    Output.filePathFromOutputPath(Output.outputPath(), 'index.json'),
+    snapshots,
+    { overwrite: true }
+  );
 }
