@@ -126,3 +126,5 @@ export type JSONForsingledeletionoktrueForbulkdeletionjsonmessageBulkdeletecompl
 export type QueryResultsResponse = JSONValue;
 export type LtiRegistrationUpdateRequest = JSONValue;
 export type enabledboolean = JSONValue;
+export type AiConversation = JSONValue;
+export type ObjectHashwithconversationdetailsincludingmessages = JSONValue;

@@ -35,7 +35,7 @@ export type listSearchParameters = Masquerade &
      */
     observed_user_id: string;
     /**
-     * Only return items that are not completed (excludes items with
+     * Only return items that are completed (includes items with
      * planner_override.marked_complete = true or submitted assignments)
      */
     filter: string;

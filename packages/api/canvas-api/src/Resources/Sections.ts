@@ -1,4 +1,5 @@
 import { JSONValue } from '@battis/typescript-tricks';
+import { User } from './Users.js';
 
 export type Section = {
   /**
@@ -67,4 +68,13 @@ export type Section = {
    * Type: integer
    */
   total_students: number | string;
+  /**
+   * Optional: A list of students that are included in the section. Returned
+   * only if include[]=students. WARNING: this collection's size is capped (if
+   * there are an extremely large number of users in the section (thousands) not
+   * all of them will be returned). If you need to capture all the users in a
+   * section with certainty or experiencing slow response consider using the
+   * paginated /api/v1/sections/<section_id>/users endpoint.
+   */
+  students: User[];
 };

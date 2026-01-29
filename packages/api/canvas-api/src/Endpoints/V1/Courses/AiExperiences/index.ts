@@ -1,3 +1,4 @@
+export * as AiConversations from './AiConversations/index.js';
 export * as Conversations from './Conversations/index.js';
 export * from './create.js';
 export * from './delete_ai_experience.js';

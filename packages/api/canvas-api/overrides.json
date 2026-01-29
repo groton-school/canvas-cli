@@ -90,7 +90,12 @@
       "filePath": "Overrides.ts"
     },
     { "type": "LtiRegistrationUpdateRequest", "filePath": "Overrides.ts" },
-    { "type": "enabledboolean", "filePath": "Overrides.ts" }
+    { "type": "enabledboolean", "filePath": "Overrides.ts" },
+    { "type": "AiConversation", "filePath": "Overrides.ts" },
+    {
+      "type": "ObjectHashwithconversationdetailsincludingmessages",
+      "filePath": "Overrides.ts"
+    }
   ],
   "tsTypes": {
     "Positive Integer": { "type": "number" },

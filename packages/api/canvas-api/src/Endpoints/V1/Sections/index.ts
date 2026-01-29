@@ -6,3 +6,4 @@ export * from './get.js';
 export * as Students from './Students/index.js';
 export * as Submissions from './Submissions/index.js';
 export * from './update.js';
+export * as Users from './Users/index.js';

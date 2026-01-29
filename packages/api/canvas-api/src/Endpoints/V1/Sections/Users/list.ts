@@ -9,7 +9,7 @@ export type listPathParameters = {
    *
    * Type: string
    */
-  group_id: string | number;
+  id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
@@ -29,6 +29,11 @@ export type listSearchParameters = Masquerade &
      * Type: boolean
      */
     exclude_inactive: boolean | string;
+    /**
+     * When set, only return users with the specified enrollment type for the
+     * given section.
+     */
+    enrollment_type: string;
   }>;
 
 type Options = {
@@ -45,15 +50,15 @@ type Options = {
 );
 
 /**
- * List group's users
+ * List section's users
  *
- * Returns a paginated list of users in the group.
+ * Returns a paginated list of users in the section.
  *
- * Nickname: list_group_s_users
+ * Nickname: list_section_s_users
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<User[]>(
-    `/api/v1/groups/{group_id}/users`,
+    `/api/v1/sections/{id}/users`,
     {
       method: 'GET',
       ...options

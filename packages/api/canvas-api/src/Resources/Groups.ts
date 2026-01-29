@@ -102,8 +102,8 @@ export type Group = {
    * include[]=users. WARNING: this collection's size is capped (if there are an
    * extremely large number of users in the group (thousands) not all of them
    * will be returned). If you need to capture all the users in a group with
-   * certainty consider using the paginated
-   * /api/v1/groups/<group_id>/memberships endpoint.
+   * certainty or experiencing slow response consider using the paginated
+   * /api/v1/groups/<group_id>/users endpoint.
    */
   users: User[];
   /**

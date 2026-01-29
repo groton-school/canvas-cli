@@ -83,7 +83,10 @@ export type getSearchParameters = Masquerade &
      */
     add_defaults: boolean | string;
     /**
-     * If contributing scores are requested, then each individual outcome score
+     * **DEPRECATED**: This parameter is deprecated. Use the separate GET
+     * /api/v1/courses/:course_id/outcomes/:outcome_id/contributing_scores
+     * endpoint instead to fetch contributing scores for a specific outcome. If
+     * contributing scores are requested, then each individual outcome score
      * will also include all graded artifacts that contributed to the outcome
      * score
      *

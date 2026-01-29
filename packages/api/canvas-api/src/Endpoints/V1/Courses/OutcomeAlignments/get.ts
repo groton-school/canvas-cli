@@ -18,13 +18,26 @@ export type getSearchParameters = Masquerade &
   Paginated &
   Partial<{
     /**
-     * The id of the student
+     * The id of the student. Returns alignments filtered by student
+     * submissions. Can be combined with assignment_id to filter to a specific
+     * assignment.
      *
      * Type: integer
      *
      * Format: 'int64'
      */
     student_id: number | string;
+    /**
+     * The id of the assignment. When provided without student_id, returns all
+     * outcome alignments for the assignment (requires manage_grades or
+     * view_all_grades permission). When provided with student_id, filters to
+     * that student's submission.
+     *
+     * Type: integer
+     *
+     * Format: 'int64'
+     */
+    assignment_id: number | string;
   }>;
 
 type Options = {
@@ -41,13 +54,11 @@ type Options = {
 );
 
 /**
- * Get aligned assignments for an outcome in a course for a particular student
+ * Get outcome alignments for a student or assignment
  *
- * Returns all assignments aligned to a specific outcome for a student in a
- * course.
+ * Returns outcome alignments for a student or assignment in a course.
  *
- * Nickname:
- * get_aligned_assignments_for_outcome_in_course_for_particular_student
+ * Nickname: get_outcome_alignments_for_student_or_assignment
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<OutcomeAlignment[]>(
