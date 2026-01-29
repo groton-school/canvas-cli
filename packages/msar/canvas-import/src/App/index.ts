@@ -303,7 +303,19 @@ export async function run() {
             pathParams: { id: course.id.toString() },
             params: { 'course[default_view]': 'wiki' }
           });
+          log(course, `Set front page to bulletin board page`);
         }
+
+        log(
+          course,
+          Colors.url(
+            path.join(
+              Canvas.plugin.instance_url,
+              'courses',
+              course.id.toString()
+            )
+          )
+        );
       }
       Output.writeJSON(Output.outputPath(), snapshots, {
         overwrite: true,

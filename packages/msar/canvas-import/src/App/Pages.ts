@@ -53,7 +53,7 @@ export async function importBulletinBoard({ course, section }: Options) {
           args: params,
           created_at: frontPage.created_at
         };
-        log(course, `Created bulletin board page as front page`);
+        log(course, `Created bulletin board page`);
       }
     }
   }
