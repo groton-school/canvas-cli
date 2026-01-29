@@ -1,1 +1,13 @@
-<iframe style="width: 320px; height: 14.25rem; display: inline-block;" title="Audio player for <%= content.FilenameUrl.filename %>" data-media-type="audio" src="/media_attachments_iframe/<%= content.FilenameUrl.canvas.id %>?type=audio&amp;embedded=true" loading="lazy"></iframe>
+<% if (content.FilenameUrl.canvas) { %>
+<iframe
+  style="width: 320px; height: 14.25rem; display: inline-block"
+  title="Audio player for <%= content.FilenameUrl.filename %>"
+  data-media-type="audio"
+  src="/media_attachments_iframe/<%= content.FilenameUrl.canvas.id %>?type=audio&amp;embedded=true"
+  loading="lazy"
+></iframe>
+<% } else { %>
+<h3>Missing Audio</h3>
+<div>The audio file was not accessible on Blackbaud's servers.</div>
+<pre lang="json"><%= JSON.stringify(content, null, 2) %></pre>
+<% } %>
