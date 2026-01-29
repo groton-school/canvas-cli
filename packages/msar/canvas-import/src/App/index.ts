@@ -285,10 +285,10 @@ export async function run() {
         });
       }
     }
+    Output.writeJSON(
+      Output.filePathFromOutputPath(Output.outputPath(), 'index.json'),
+      snapshots,
+      { overwrite: true }
+    );
   }
-  Output.writeJSON(
-    Output.filePathFromOutputPath(Output.outputPath(), 'index.json'),
-    snapshots,
-    { overwrite: true }
-  );
 }
