@@ -219,6 +219,13 @@ export async function run() {
                 'pseudonym[send_confirmation]': false
               }
             });
+            await Canvas.v1.Users.update({
+              pathParams: { id: users[sis_user_id].id },
+              params: { 'user[event]': 'suspend' }
+            });
+            Log.info(
+              `Added ${Colors.value(users[sis_user_id].name)} as a suspended user`
+            );
           }
         }
         await Canvas.v1.Courses.Enrollments.enroll_user_courses({
