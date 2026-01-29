@@ -1,4 +1,4 @@
-import { select } from '@inquirer/prompts';
+import { confirm, select } from '@inquirer/prompts';
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
@@ -71,9 +71,9 @@ export async function handleDuplicateCourse({ course, section }: Options) {
     },
     skip: () => undefined
   };
-  let choice: string = (Preferences.duplicates() ||
+  const choice = (Preferences.duplicates() ||
     (await select({
-      message: `A course named ${Colors.value(course.name)} with sis_course_id ${Colors.value(course.sis_course_id)} already exists in Canvas.`,
+      message: `A course named ${Colors.value(course.name)} with sis_course_id ${Colors.value(course.sis_course_id)} already exists in Canvas and has assignments and/or pages.`,
       choices: [
         {
           value: 'update',
@@ -81,28 +81,13 @@ export async function handleDuplicateCourse({ course, section }: Options) {
             'Import snapshot data into the course, potentially creating duplicate content if previous Canvas import data was not exported to the index JSON file'
         },
         {
-          value: 'update all',
-          description:
-            'For this and all subsequent courses that already exist in Canvas, import snapshot data into the course, potentially creating duplicate content if previous Canvas import data was not exported to the index JSON file'
-        },
-        {
           value: 'reset',
           description:
             'Reset the course content, erasing all existing content, and replace it with the snapshot'
         },
         {
-          value: 'reset all',
-          description:
-            'For this and all subsequent courses that already exist in Canvas, reset the course content, erasing all existing content, and replace it with the snapshot'
-        },
-        {
           value: 'skip',
           description: 'Skip processing the snaphot import for this course'
-        },
-        {
-          value: 'skip all',
-          description:
-            'For this and all subsequent courses that already exist in Canvas, skip processing the snaphot import for this course'
         },
         {
           value: 'browse',
@@ -111,9 +96,16 @@ export async function handleDuplicateCourse({ course, section }: Options) {
         }
       ]
     }))) as keyof typeof next;
-  if (choice.endsWith(' all')) {
-    choice = choice.replace(/ all$/, '');
-    Preferences.setDuplicates(choice as Preferences.DuplicateHandling);
+
+  if (choice !== 'browse') {
+    if (
+      await confirm({
+        message: `Would you like to also ${Colors.value(choice)} all similar courses that have assignments and/or pages?`,
+        default: false
+      })
+    ) {
+      Preferences.setDuplicates(choice as Preferences.DuplicateHandling);
+    }
   }
   return await next[choice as Preferences.DuplicateHandling]();
 }

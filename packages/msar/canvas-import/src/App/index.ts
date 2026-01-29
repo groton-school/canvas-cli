@@ -169,7 +169,20 @@ export async function run() {
       Log.debug(e as object);
     }
     if (course) {
-      course = await handleDuplicateCourse({ course, section });
+      if (
+        (
+          await Canvas.v1.Courses.Assignments.list({
+            pathParams: { course_id: course.id }
+          })
+        ).length > 0 ||
+        (
+          await Canvas.v1.Courses.Pages.list({
+            pathParams: { course_id: course.id }
+          })
+        ).length > 0
+      ) {
+        course = await handleDuplicateCourse({ course, section });
+      }
     } else {
       course = await Canvas.v1.Accounts.Courses.create({
         pathParams: {
@@ -198,7 +211,7 @@ export async function run() {
       // TODO cache enrollments for updating
       if (section.SectionInfo?.TeacherId === null) {
         Log.warning(
-          `${Colors.value(course.name)} (SIS ID ${Colors.value(course.sis_course_id)}) has no teacher`
+          `  ${Colors.value(course.name)} (SIS ID ${Colors.value(course.sis_course_id)}) has no teacher`
         );
       } else {
         const sis_user_id = OneRoster.sis_user_id(section);
@@ -224,18 +237,21 @@ export async function run() {
               params: { 'user[event]': 'suspend' }
             });
             Log.info(
-              `Added ${Colors.value(users[sis_user_id].name)} as a suspended user`
+              `  Added ${Colors.value(users[sis_user_id].name)} as a suspended user`
             );
           }
         }
         await Canvas.v1.Courses.Enrollments.enroll_user_courses({
           pathParams: { course_id: course.id.toString() },
           params: {
-            'enrollment[user_id]': `sis_user_id:${OneRoster.sis_user_id(section)}`,
+            'enrollment[user_id]': `sis_user_id:${sis_user_id}`,
             'enrollment[type]': 'TeacherEnrollment',
             'enrollment[enrollment_state]': 'active'
           }
         });
+        Log.info(
+          `  Enrolled ${Colors.value(users[sis_user_id].name)} as teacher`
+        );
       }
 
       if (Preferences.assignments()) {
