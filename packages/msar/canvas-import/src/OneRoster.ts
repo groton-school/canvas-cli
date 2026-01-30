@@ -112,6 +112,12 @@ export function sis_term_id(snapshot: Imported.Data) {
   })?.term_id;
 }
 
+export function termName(sis_term_id: string) {
+  return terms().find((term) => term.term_id == sis_term_id)?.[
+    'Term Description'
+  ];
+}
+
 /** Sis_user_id for (head) teacher */
 export function sis_user_id(snapshot: Imported.Data) {
   if (!snapshot.SectionInfo) {

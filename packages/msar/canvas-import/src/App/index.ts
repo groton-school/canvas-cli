@@ -284,14 +284,19 @@ export async function run() {
           await importTopics({ course, section });
         }
 
-        try {
+        const sis_term_id = OneRoster.sis_term_id(section);
+        if (sis_term_id) {
           await Canvas.v1.Courses.update({
             pathParams: { id: course.id.toString() },
             params: {
-              'course[term_id]': `sis_term_id:${OneRoster.sis_term_id(section)}`
+              'course[term_id]': `sis_term_id:${sis_term_id}`
             }
           });
-        } catch (_) {
+          log(
+            course,
+            `Moved to term ${Colors.value(OneRoster.termName(sis_term_id))}`
+          );
+        } else {
           log(
             course,
             `Could not be moved out of the ${Colors.path('Import Workspace')} term`,
