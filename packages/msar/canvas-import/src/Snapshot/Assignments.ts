@@ -77,7 +77,7 @@ export async function toCanvasArgs({
   assignment = await Files.uploadLocalFiles({ course, entry: assignment });
   const args: Partial<Canvas.v1.Courses.Assignments.createFormParameters> = {
     'assignment[name]': stripHtml(
-      assignment.ShortDescription.split('<br/>').pop()!
+      assignment.ShortDescription.split('<br/>').pop() || ''
     ).result,
     'assignment[position]': order,
     'assignment[due_at]': new Date(assignment.DueDate).toISOString(),

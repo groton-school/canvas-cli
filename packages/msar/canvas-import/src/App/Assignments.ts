@@ -94,11 +94,19 @@ export async function importAssignments({ course, section }: Options) {
         );
       }
     } else {
-      assignment = await Canvas.v1.Courses.Assignments.create({
-        pathParams: { course_id: course.id.toString() },
-        params
-      });
-      log(course, `Created assignment ${Colors.value(assignment.name)}`);
+      if (params['assignment[name]'] !== '') {
+        assignment = await Canvas.v1.Courses.Assignments.create({
+          pathParams: { course_id: course.id.toString() },
+          params
+        });
+        log(course, `Created assignment ${Colors.value(assignment.name)}`);
+      } else {
+        log(
+          course,
+          `Could not create nameless assignment ID ${Colors.value(assignments[order].assignment_id)}`,
+          'warning'
+        );
+      }
     }
     if (assignment) {
       if (assignments[order].Rubric && assignments[order].RubricId) {
