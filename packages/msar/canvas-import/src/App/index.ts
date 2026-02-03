@@ -198,6 +198,7 @@ export async function run() {
             })
           ).length > 0
         ) {
+          log(course, 'Already exists in Canvas.');
           course = await handleDuplicateCourse({ course, section });
         }
       } else {
@@ -206,13 +207,19 @@ export async function run() {
             account_id: (await OneRoster.account_id(section)).toString()
           },
           params: {
-            ...Snapshot.Section.toCanvasArgs(section),
-            'course[term_id]': (await Workspace.getTermId()).toString()
+            ...Snapshot.Section.toCanvasArgs(section)
           }
         });
         log(course, 'Course created');
       }
       if (course) {
+        await Canvas.v1.Courses.update({
+          pathParams: { id: course.id },
+          params: {
+            'course[term_id]': (await Workspace.getTermId()).toString()
+          }
+        });
+        log(course, `Temporarily moved to workspace term`);
         section = Snapshot.Files.calculateHashes(
           section as JSONObject
         ) as Imported.Multiple.Item;
