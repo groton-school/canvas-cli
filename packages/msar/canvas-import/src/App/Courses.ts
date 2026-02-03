@@ -91,7 +91,6 @@ export async function handleDuplicateCourse({ course, section }: Options) {
           (key) => key != 'open in browser to examine'
         )
       })) as keyof typeof next;
-      Preferences.setDuplicates(choice);
       return await next[choice]();
     },
     skip: () => {
