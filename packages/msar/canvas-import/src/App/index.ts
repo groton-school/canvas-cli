@@ -207,7 +207,8 @@ export async function run() {
             account_id: (await OneRoster.account_id(section)).toString()
           },
           params: {
-            ...Snapshot.Section.toCanvasArgs(section)
+            ...Snapshot.Section.toCanvasArgs(section),
+            'course[term_id]': (await Workspace.getTermId()).toString()
           }
         });
         log(course, 'Course created');
