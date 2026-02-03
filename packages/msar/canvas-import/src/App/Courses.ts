@@ -13,6 +13,18 @@ type Options = {
   section: Imported.Data;
 };
 
+const descriptions: Record<Preferences.DuplicateHandling, string> = {
+  overwrite:
+    'Overwrite the existing course data with the snapshot, potentially creating duplicate items',
+  update:
+    'Import snapshot data into the course referencing existing snapshot information where possible, avoiding creating duplicate items',
+  reset:
+    'Reset the course content, erasing all existing content, and replace it with the snapshot',
+  skip: 'Skip processing the snaphot import for this course',
+  browse:
+    'Open the current course in a browser and then make a decision about what to do'
+};
+
 export async function handleDuplicateCourse({ course, section }: Options) {
   const next: Record<
     Preferences.DuplicateHandling,
@@ -21,25 +33,18 @@ export async function handleDuplicateCourse({ course, section }: Options) {
       | Canvas.Courses.Course
       | undefined
   > = {
+    overwrite: async () => {
+      return course;
+    },
     update: async () => {
       if (!section.SectionInfo?.canvas) {
         const choice = (await select({
           message: `Missing Canvas import information for ${Colors.value(section.SectionInfo?.GroupName)}`,
           choices: [
-            {
-              value: 'reset',
-              description:
-                'Reset the course content, erasing all existing content, and replace it with the snapshot'
-            },
-            {
-              value: 'skip',
-              description: 'Skip processing the snaphot import for this course'
-            },
-            {
-              value: 'browse',
-              description:
-                'Open the current course in a browser and then make a decision about what to do'
-            }
+            { value: 'overwrite', description: descriptions.overwrite },
+            { value: 'reset', description: descriptions.reset },
+            { value: 'skip', description: descriptions.skip },
+            { value: 'browse', description: descriptions.browse }
           ]
         })) as keyof typeof next;
         return await next[choice]();
@@ -98,25 +103,11 @@ export async function handleDuplicateCourse({ course, section }: Options) {
     (await select({
       message: `A course named ${Colors.value(course.name)} with sis_course_id ${Colors.value(course.sis_course_id)} already exists in Canvas and has assignments and/or pages.`,
       choices: [
-        {
-          value: 'update',
-          description:
-            'Import snapshot data into the course, potentially creating duplicate content if previous Canvas import data was not exported to the index JSON file'
-        },
-        {
-          value: 'reset',
-          description:
-            'Reset the course content, erasing all existing content, and replace it with the snapshot'
-        },
-        {
-          value: 'skip',
-          description: 'Skip processing the snaphot import for this course'
-        },
-        {
-          value: 'browse',
-          description:
-            'Open the current course in a browser and then make a decision about what to do'
-        }
+        { value: 'overwrite', description: descriptions.overwrite },
+        { value: 'update', description: descriptions.update },
+        { value: 'reset', description: descriptions.reset },
+        { value: 'skip', description: descriptions.skip },
+        { value: 'browse', description: descriptions.browse }
       ]
     }))) as keyof typeof next;
 

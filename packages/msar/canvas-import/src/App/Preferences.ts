@@ -35,7 +35,12 @@ export function topics() {
   return _topics;
 }
 
-export type DuplicateHandling = 'update' | 'reset' | 'skip' | 'browse';
+export type DuplicateHandling =
+  | 'overwrite'
+  | 'update'
+  | 'reset'
+  | 'skip'
+  | 'browse';
 
 let _duplicates: DuplicateHandling | undefined = undefined;
 
