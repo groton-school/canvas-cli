@@ -22,6 +22,7 @@
     "build": "run-s build:*",
     "build:clean": "run-s clean",
     "build:compile": "tsc",
+    "build:readme": "./scripts/canvas-import",
     "build:assets": "copyfiles -u 1 \"./src/**/*.ejs\" ./dist",
     "version": "commit-and-tag-version"
   },
@@ -50,6 +51,7 @@
   "devDependencies": {
     "@battis/descriptive-types": "^0.2.6",
     "@battis/typescript-tricks": "^0.7.6",
+    "@qui-cli/markdown": "^1.1.2",
     "@qui-cli/root": "^3.1.0",
     "@qui-cli/validators": "^3.0.4",
     "@tsconfig/node24": "^24.0.4",

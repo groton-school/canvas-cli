@@ -5,7 +5,7 @@ import { Output } from '@msar/output';
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
-import { Core } from '@qui-cli/core';
+import { Core, Positionals } from '@qui-cli/core';
 import { Env } from '@qui-cli/env';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
@@ -59,6 +59,12 @@ export function configure(config: Configuration = {}) {
 }
 
 export function options(): Plugin.Options {
+  Positionals.require({
+    snapshotPath: {
+      description: `Path to a snapshot index JSON file`
+    }
+  });
+  Positionals.allowOnlyNamedArgs();
   return {
     man: [{ level: 1, text: 'Import options' }],
     flag: {
@@ -81,25 +87,65 @@ export function options(): Plugin.Options {
     },
     opt: {
       blackbaudInstanceId: {
-        description: `MySchoolApp instance identifier`
+        description:
+          `MySchoolApp instance identifier, may be inferred by OneRoster ` +
+          `${Colors.varName('sourcedId')} values, where the first numeric ` +
+          `component is the instance identifier (e.g. ` +
+          `${Colors.value('cls-123-12345678')} identifies the instance ID as ` +
+          `${Colors.value('123')}).`,
+        hint: Colors.value('###')
       },
       termsPath: {
-        description: `Path to All Terms CSV file`
+        description:
+          `Path to All Terms CSV file, must contain at least ` +
+          `${Colors.varName('Term ID')}, ${Colors.varName('Length')}, ` +
+          `${Colors.varName('term_id')}, ${Colors.varName('name')} columns, ` +
+          `where ${Colors.value('Term ID')} and ${Colors.varName('Length')} ` +
+          `are Blackbaud term/duration IDs and Length is a duration (number ` +
+          `of terms) and ${Colors.varName('term_id')} and ` +
+          `${Colors.varName('name')} are as defined in the ` +
+          `${Colors.url('https://developerdocs.instructure.com/services/canvas/sis/file.sis_csv#terms.csv')}.`,
+        hint: Colors.quotedValue(`"path/to/terms.csv"`)
       },
       departmentAccountMapPath: {
-        description: `Path to Department Account Map CSV file`
+        description:
+          `Path to Department Account Map CSV file, must contain at least ` +
+          `${Colors.varName('Department Id')} and ` +
+          `${Colors.varName(`Canvas Account ID`)} columns which refer to a ` +
+          `Blackbaud academic department ID value and a Canvas sub-account ID ` +
+          `respectively.`,
+        hint: Colors.quotedValue(`"path/to/dept-acct-map.csv"`)
       },
       coursesWithDepartmentsPath: {
-        description: `Path to Courses with Departments CSV file`
+        description:
+          `Path to Courses with Departments CSV file, must contain at least ` +
+          `${Colors.varName('Course ID')} and ` +
+          `${Colors.varName('Department ID')}, referring to Blackbaud course ` +
+          `and academic department ID values.`,
+        hint: Colors.quotedValue(`"path/to/courses-dept.csv"`)
       },
       sisIdMapPath: {
-        description: `Optional path to SIS ID Map CSV file`
+        description:
+          `Optional path to SIS ID Map CSV file, must contain at least ` +
+          `${Colors.varName('AssociationId')} column and optionally either or ` +
+          `both ${Colors.varName('prefix')} and ` +
+          `${Colors.varName('SIS Account ID')} columns. Used for generating ` +
+          `custom SIS course IDs and assigning courses to sub-account by ` +
+          `department. The default prefix is ${Colors.value('cls')} and the ` +
+          `departments are mapped at ` +
+          `${Colors.optionArg('--departmentAccountMapPath')}. ` +
+          `${Colors.varName('AccountId')} values are interpreted here: ` +
+          `${Colors.url('https://github.com/groton-school/msar/blob/7bf001d100b25e5c9c5d23cf765f85cfb5d3c6a4/packages/datadirect/src/api/datadirect/SectionInfoView/Response.ts#L8-L21')}`,
+        hint: Colors.quotedValue(`"path/to/sis-id-map.csv"`)
       },
       duplicates: {
-        description: `Specify a duplicate course handling option (One of ${['update', 'reset', 'skip'].map((t) => Colors.quotedValue(`"${t}"`)).join(', ')})`,
+        description: `Specify a duplicate course handling option`,
+        hint: ['overwrite', 'update', 'reset', 'skip'].join('|'),
         validate: (value: unknown): boolean =>
           value !== undefined &&
-          (value == 'update' || value == 'reset' || value == 'skip')
+          value !== null &&
+          typeof value === 'string' &&
+          ['overwrite', 'update', 'reset', 'skip'].includes(value)
       }
     }
   };

@@ -395,6 +395,9 @@ importers:
       '@battis/typescript-tricks':
         specifier: ^0.7.6
         version: 0.7.6
+      '@qui-cli/markdown':
+        specifier: ^1.1.2
+        version: 1.1.2(@qui-cli/core@6.0.0(@qui-cli/plugin@4.1.0))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))
       '@qui-cli/root':
         specifier: ^3.1.0
         version: 3.1.0(@qui-cli/plugin@4.1.0)
@@ -1983,6 +1986,13 @@ packages:
   '@qui-cli/log@4.0.3':
     resolution: {integrity: sha512-SliV8/8uf3A8yS+eJjIP0Ry+pr9bU/slXr3zKnR8Rx9IL/eFj8GyCrrlimi95qBtND07uBj43YicjbOcC2vLug==}
     peerDependencies:
+      '@qui-cli/plugin': '>=3'
+      '@qui-cli/root': '>=3'
+
+  '@qui-cli/markdown@1.1.2':
+    resolution: {integrity: sha512-sEOPfy7l8l2x0d1TRnAlqvOB2XQMG+4jcJEXQ3x77gWLGjdwdaJs7oEppOi9NabNYVBR448yrGDZLtmfSKiyqg==}
+    peerDependencies:
+      '@qui-cli/core': '>=4'
       '@qui-cli/plugin': '>=3'
       '@qui-cli/root': '>=3'
 
@@ -5680,8 +5690,8 @@ packages:
     peerDependencies:
       ejs: '*'
 
-  oauth4webapi@3.8.3:
-    resolution: {integrity: sha512-pQ5BsX3QRTgnt5HxgHwgunIRaDXBdkT23tf8dfzmtTIL2LTpdmxgbpbBm0VgFWAIDlezQvQCTgnVIUmHupXHxw==}
+  oauth4webapi@3.8.4:
+    resolution: {integrity: sha512-EKlVEgav8zH31IXxvhCqjEgQws6S9QmnmJyLXmeV5REf59g7VmqRVa5l/rhGWtUqGm2rLVTNwukn9hla5kJ2WQ==}
 
   object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
@@ -5736,8 +5746,8 @@ packages:
     resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
     engines: {node: '>=12'}
 
-  openid-client@6.8.1:
-    resolution: {integrity: sha512-VoYT6enBo6Vj2j3Q5Ec0AezS+9YGzQo1f5Xc42lreMGlfP4ljiXPKVDvCADh+XHCV/bqPu/wWSiCVXbJKvrODw==}
+  openid-client@6.8.2:
+    resolution: {integrity: sha512-uOvTCndr4udZsKihJ68H9bUICrriHdUVJ6Az+4Ns6cW55rwM5h0bjVIzDz2SxgOI84LKjFyjOFvERLzdTUROGA==}
 
   optionator@0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
@@ -7991,12 +8001,12 @@ snapshots:
   '@battis/oauth2-configure@0.1.3':
     dependencies:
       async-mutex: 0.5.0
-      openid-client: 6.8.1
+      openid-client: 6.8.2
 
   '@battis/oauth2-configure@0.1.4':
     dependencies:
       async-mutex: 0.5.0
-      openid-client: 6.8.1
+      openid-client: 6.8.2
 
   '@battis/prettier-config@1.7.3(@prettier/plugin-xml@3.4.2(prettier@3.5.3))(@trivago/prettier-plugin-sort-imports@5.2.2(prettier@3.5.3))(prettier-plugin-ejs@1.0.3(prettier@3.5.3))(prettier-plugin-jsdoc@1.8.0(prettier@3.5.3))(prettier-plugin-organize-imports@4.3.0(prettier@3.5.3)(typescript@5.9.3))(prettier-plugin-packagejson@2.5.22(prettier@3.5.3))(prettier@3.5.3)':
     dependencies:
@@ -9221,7 +9231,7 @@ snapshots:
       '@qui-cli/plugin': 4.1.0
       '@qui-cli/root': 3.1.0(@qui-cli/plugin@4.1.0)
       oauth2-cli: 0.5.1(ejs@3.1.10)
-      openid-client: 6.8.1
+      openid-client: 6.8.2
     transitivePeerDependencies:
       - ejs
       - supports-color
@@ -9538,6 +9548,14 @@ snapshots:
       ora: 8.2.0
       strip-ansi: 7.1.2
       winston: 3.19.0
+
+  '@qui-cli/markdown@1.1.2(@qui-cli/core@6.0.0(@qui-cli/plugin@4.1.0))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))':
+    dependencies:
+      '@qui-cli/colors': 3.2.3
+      '@qui-cli/core': 6.0.0(@qui-cli/plugin@4.1.0)
+      '@qui-cli/plugin': 4.1.0
+      '@qui-cli/root': 3.1.0(@qui-cli/plugin@4.1.0)
+      strip-ansi: 7.1.2
 
   '@qui-cli/plugin@4.1.0':
     dependencies:
@@ -13056,7 +13074,7 @@ snapshots:
 
   log-symbols@4.1.0:
     dependencies:
-      chalk: 4.1.0
+      chalk: 4.1.2
       is-unicode-supported: 0.1.0
 
   log-symbols@6.0.0:
@@ -13901,7 +13919,7 @@ snapshots:
       ejs: 3.1.10
       express: 4.22.1
       open: 10.2.0
-      openid-client: 6.8.1
+      openid-client: 6.8.2
     transitivePeerDependencies:
       - supports-color
 
@@ -13912,11 +13930,11 @@ snapshots:
       ejs: 3.1.10
       express: 5.2.1
       open: 11.0.0
-      openid-client: 6.8.1
+      openid-client: 6.8.2
     transitivePeerDependencies:
       - supports-color
 
-  oauth4webapi@3.8.3: {}
+  oauth4webapi@3.8.4: {}
 
   object-assign@4.1.1: {}
 
@@ -13979,10 +13997,10 @@ snapshots:
       is-docker: 2.2.1
       is-wsl: 2.2.0
 
-  openid-client@6.8.1:
+  openid-client@6.8.2:
     dependencies:
       jose: 6.1.3
-      oauth4webapi: 3.8.3
+      oauth4webapi: 3.8.4
 
   optionator@0.9.4:
     dependencies:
