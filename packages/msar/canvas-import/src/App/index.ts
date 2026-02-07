@@ -59,12 +59,12 @@ export function configure(config: Configuration = {}) {
 }
 
 export function options(): Plugin.Options {
+  Positionals.configure({ min: 0, max: 0 });
   Positionals.require({
     snapshotPath: {
       description: `Path to a snapshot index JSON file`
     }
   });
-  Positionals.allowOnlyNamedArgs();
   return {
     man: [{ level: 1, text: 'Import options' }],
     flag: {
@@ -152,8 +152,8 @@ export function options(): Plugin.Options {
 }
 
 export async function init(args: Plugin.ExpectedArguments<typeof options>) {
+  const snapshotPath = Positionals.get('snapshotPath');
   const {
-    positionals: [snapshotPath],
     values: {
       blackbaudInstanceId = await Env.get({ key: 'BLACKBAUD_INSTANCE_ID' }),
       canvasInstanceUrl = await Env.get({ key: 'CANVAS_INSTANCE_URL' }),
