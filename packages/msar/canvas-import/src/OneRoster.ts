@@ -1,5 +1,8 @@
 import { PathString } from '@battis/descriptive-types';
 import * as Imported from '@msar/types.import';
+import { Canvas } from '@oauth2-cli/canvas';
+import { Colors } from '@qui-cli/colors';
+import { Log } from '@qui-cli/log';
 import { hydrate } from '@qui-cli/plugin';
 import { Root } from '@qui-cli/root';
 import { parse } from 'csv-parse/sync';
@@ -26,7 +29,7 @@ type CoursesWithDepartmentsRecord = {
 
 type SisIdMapRecord = {
   AssociationId: number;
-  prefix?: string;
+  Prefix?: string;
   'SIS Account ID'?: string;
 };
 
@@ -36,26 +39,39 @@ export function instance() {
 }
 export function setInstanceId(value?: string | number) {
   _instance = hydrate(value, _instance);
+  Log.debug(`Blackbaud instance ${Colors.value(_instance)}`);
 }
 
 let _termsPath: PathString | undefined = undefined;
 export function setTermsPath(value?: PathString) {
   _termsPath = hydrate(value, _termsPath);
+  Log.debug(
+    `Referring to terms list at ${Colors.path(_termsPath || 'undefined')}`
+  );
 }
 
 let _departmentAccountMapPath: PathString | undefined = undefined;
 export function setDepartmentAccountMapPath(value?: PathString) {
   _departmentAccountMapPath = hydrate(value, _departmentAccountMapPath);
+  Log.debug(
+    `Referring to department-account map at ${Colors.path(_departmentAccountMapPath || 'undefined')}`
+  );
 }
 
 let _coursesWithDepartmentsPath: PathString | undefined = undefined;
 export function setCoursesWithDepartmentsPath(value?: PathString) {
   _coursesWithDepartmentsPath = hydrate(value, _coursesWithDepartmentsPath);
+  Log.debug(
+    `Referring to courses with departments at ${Colors.path(_coursesWithDepartmentsPath || 'undefined')}`
+  );
 }
 
 let _sisIdMapPath: PathString | undefined = undefined;
 export function setSisIdMapPath(value?: PathString) {
   _sisIdMapPath = hydrate(value, _sisIdMapPath);
+  Log.debug(
+    `Referring to SIS ID map at ${Colors.path(_sisIdMapPath || 'undefined')}`
+  );
 }
 
 let _terms: TermImportRecord[] | undefined = undefined;
@@ -115,18 +131,23 @@ function sisIdMap() {
   return _sisIdMap;
 }
 
+const accounts: Record<
+  Canvas.Accounts.Account['sis_account_id'],
+  Canvas.Accounts.Account
+> = {};
+
 export function sis_course_id(snapshot: Imported.Data) {
   if (!snapshot.SectionInfo) {
     throw new Error('Missing SectionInfo');
   }
-  const prefix = sisIdMap().reduce((prefix, map) => {
+  const prefix = sisIdMap().reduce((pfx, map) => {
     if (
-      snapshot.SectionInfo?.AssociationId === map.AssociationId &&
-      map.prefix
+      snapshot.SectionInfo?.AssociationId == map.AssociationId &&
+      map.Prefix
     ) {
-      return map.prefix;
+      return map.Prefix;
     }
-    return prefix;
+    return pfx;
   }, 'cls');
   return `${prefix}-${instance()}-${snapshot.SectionInfo?.Id}`;
 }
@@ -168,10 +189,10 @@ export async function account_id(snapshot: Imported.Data) {
     (department) => department['Department Id'] == departmentId
   )?.['Canvas Account ID'];
   if (!account_id) {
-    account_id = sisIdMap().reduce(
+    const sis_account_id = sisIdMap().reduce(
       (sis_account_id: string | undefined, map) => {
         if (
-          snapshot.SectionInfo?.AssociationId === map.AssociationId &&
+          snapshot.SectionInfo?.AssociationId == map.AssociationId &&
           map['SIS Account ID']
         ) {
           return map['SIS Account ID'];
@@ -180,11 +201,36 @@ export async function account_id(snapshot: Imported.Data) {
       },
       undefined
     );
+    if (sis_account_id) {
+      if (!(sis_account_id in accounts)) {
+        accounts[sis_account_id] = await Canvas.v1.Accounts.get({
+          pathParams: { id: `sis_account_id:${sis_account_id}` }
+        });
+      }
+      account_id = accounts[sis_account_id].id;
+    }
   }
   if (!account_id) {
     account_id = await Workspace.getAccountId();
   }
   return account_id;
+}
+
+export async function accountName(id: string) {
+  let account = Object.values(accounts).reduce(
+    (result: Canvas.Accounts.Account | undefined, a) =>
+      a.id == id ? a : result,
+    undefined
+  );
+  if (!account) {
+    try {
+      account = await Canvas.v1.Accounts.get({ pathParams: { id } });
+      accounts[account.sis_account_id] = account;
+    } catch (error) {
+      Log.debug({ error });
+    }
+  }
+  return account?.name || 'unknown';
 }
 
 export function name(snapshot: Imported.Data) {

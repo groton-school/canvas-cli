@@ -256,16 +256,18 @@ export async function run() {
           course = await handleDuplicateCourse({ course, section });
         }
       } else {
+        const account_id = (await OneRoster.account_id(section)).toString();
         course = await Canvas.v1.Accounts.Courses.create({
-          pathParams: {
-            account_id: (await OneRoster.account_id(section)).toString()
-          },
+          pathParams: { account_id },
           params: {
             ...Snapshot.Section.toCanvasArgs(section),
             'course[term_id]': (await Workspace.getTermId()).toString()
           }
         });
-        log(course, 'Course created');
+        log(
+          course,
+          `Course created in sub-account ${Colors.value(await OneRoster.accountName(account_id))}`
+        );
       }
       if (course) {
         await Canvas.v1.Courses.update({
