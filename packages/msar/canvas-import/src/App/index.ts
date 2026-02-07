@@ -1,3 +1,4 @@
+import { PathString } from '@battis/descriptive-types';
 import { JSONObject } from '@battis/typescript-tricks';
 import { input } from '@inquirer/prompts';
 import { Output } from '@msar/output';
@@ -27,10 +28,11 @@ await Core.configure({ core: { requirePositionals: true } });
 
 export type Configuration = Plugin.Configuration & {
   blackbaudInstanceId?: string;
-  termsPath?: string;
-  departmentAccountMapPath?: string;
-  coursesWithDepartmentsPath?: string;
-  snapshotPath?: string;
+  termsPath?: PathString;
+  departmentAccountMapPath?: PathString;
+  coursesWithDepartmentsPath?: PathString;
+  sisIdMapPath?: PathString;
+  snapshotPath?: PathString;
   duplicates?: Preferences.DuplicateHandling;
   ignoreErrors?: boolean;
   assignments?: boolean;
@@ -53,6 +55,7 @@ export function configure(config: Configuration = {}) {
   OneRoster.setTermsPath(config.termsPath);
   OneRoster.setDepartmentAccountMapPath(config.departmentAccountMapPath);
   OneRoster.setCoursesWithDepartmentsPath(config.coursesWithDepartmentsPath);
+  OneRoster.setSisIdMapPath(config.sisIdMapPath);
 }
 
 export function options(): Plugin.Options {
@@ -89,6 +92,9 @@ export function options(): Plugin.Options {
       coursesWithDepartmentsPath: {
         description: `Path to Courses with Departments CSV file`
       },
+      sisIdMapPath: {
+        description: `Optional path to SIS ID Map CSV file`
+      },
       duplicates: {
         description: `Specify a duplicate course handling option (One of ${['update', 'reset', 'skip'].map((t) => Colors.quotedValue(`"${t}"`)).join(', ')})`,
         validate: (value: unknown): boolean =>
@@ -112,6 +118,7 @@ export async function init(args: Plugin.ExpectedArguments<typeof options>) {
       coursesWithDepartmentsPath = await Env.get({
         key: 'COURSES_WITH_DEPARTMENTS_CSV'
       }),
+      sisIdMapPath = await Env.get({ key: 'SIS_ID_MAP_CSV' }),
       ...values
     }
   } = args;
@@ -121,6 +128,7 @@ export async function init(args: Plugin.ExpectedArguments<typeof options>) {
     termsPath,
     departmentAccountMapPath,
     coursesWithDepartmentsPath,
+    sisIdMapPath,
     snapshotPath,
     ...values
   });
