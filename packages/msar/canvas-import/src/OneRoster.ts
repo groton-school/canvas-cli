@@ -16,7 +16,6 @@ type TermImportRecord = {
 
 type DepartmentAccountMapRecord = {
   'Department Id': number;
-  Department: string;
   'Canvas Account ID': number;
 };
 
