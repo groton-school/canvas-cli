@@ -1,4 +1,4 @@
-import { DateString, PathString } from '@battis/descriptive-types';
+import { PathString } from '@battis/descriptive-types';
 import * as Imported from '@msar/types.import';
 import { hydrate } from '@qui-cli/plugin';
 import { Root } from '@qui-cli/root';
@@ -12,9 +12,6 @@ type TermImportRecord = {
   Length: number;
   term_id: string;
   name: string;
-  status: string;
-  start_date?: DateString;
-  end_date?: DateString;
 };
 
 type DepartmentAccountMapRecord = {
