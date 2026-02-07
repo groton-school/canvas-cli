@@ -38,7 +38,7 @@
     "@qui-cli/structured": "^2.0.5",
     "change-case": "^5.4.4",
     "csv-parse": "^5.6.0",
-    "ora": "^9.1.0"
+    "ora": "^9.3.0"
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.4",
