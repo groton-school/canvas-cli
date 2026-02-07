@@ -195,11 +195,13 @@ export async function run() {
       throw new Error(`Error loading data`);
     }
     Output.configure({
-      outputPath: Output.filePathFromOutputPath(
-        Output.outputPath() !== Root.path()
-          ? Output.outputPath()
-          : path.dirname(Snapshot.path()),
-        'canvas-import.json'
+      outputPath: await Output.avoidOverwrite(
+        Output.filePathFromOutputPath(
+          Output.outputPath() !== Root.path()
+            ? Output.outputPath()
+            : path.dirname(Snapshot.path()),
+          'canvas-import.json'
+        )
       )
     });
     spinner.succeed(
