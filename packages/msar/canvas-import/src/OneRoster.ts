@@ -1,4 +1,4 @@
-import { PathString } from '@battis/descriptive-types';
+import { DateString, PathString } from '@battis/descriptive-types';
 import * as Imported from '@msar/types.import';
 import { hydrate } from '@qui-cli/plugin';
 import { Root } from '@qui-cli/root';
@@ -9,10 +9,12 @@ import * as Workspace from './App/Workspace.js';
 
 type TermImportRecord = {
   'Term ID': number;
-  'School Year': string;
-  'Term Description': string;
   Length: number;
   term_id: string;
+  name: string;
+  status: string;
+  start_date?: DateString;
+  end_date?: DateString;
 };
 
 type DepartmentAccountMapRecord = {
@@ -140,17 +142,14 @@ export function sis_term_id(snapshot: Imported.Data) {
 
   return terms().find((term) => {
     return (
-      term['School Year'] == snapshot.SectionInfo!.SchoolYear &&
-      term['Term Description'] == snapshot.SectionInfo!.Duration &&
+      term['Term ID'] == snapshot.SectionInfo!.DurationId &&
       term.Length == snapshot.SectionInfo!.Length
     );
   })?.term_id;
 }
 
 export function termName(sis_term_id: string) {
-  return terms().find((term) => term.term_id == sis_term_id)?.[
-    'Term Description'
-  ];
+  return terms().find((term) => term.term_id == sis_term_id)?.name;
 }
 
 /** Sis_user_id for (head) teacher */
