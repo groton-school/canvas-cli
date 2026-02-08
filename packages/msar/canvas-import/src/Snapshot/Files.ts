@@ -88,10 +88,10 @@ type HashEntry = { hash: string; filename?: string };
 
 const hashes: Record<PathString, HashEntry> = {};
 
-export function calculateHashes(entry: JSONValue): JSONValue {
+export async function calculateHashes(entry: JSONValue): Promise<JSONValue> {
   if (entry && typeof entry === 'object') {
     if (Array.isArray(entry)) {
-      return entry.map(calculateHashes);
+      return await Promise.all(entry.map(calculateHashes));
     } else if (Imported.willBeAnnotated(entry)) {
       if (entry.sha1_file_hash && typeof entry.sha1_file_hash === 'string') {
         hashes[entry.localPath] = {
@@ -111,11 +111,17 @@ export function calculateHashes(entry: JSONValue): JSONValue {
           path.dirname(IndexFile.path()),
           entry.localPath
         );
+
         const hash = crypto.createHash('sha1').setEncoding('hex');
-        const contents = fs.readFileSync(filePath).toString();
-        hash.write(contents);
-        hash.end();
-        entry.sha1_file_hash = hash.read();
+        const fstream = fs.createReadStream(filePath);
+        entry.sha1_file_hash = await new Promise<string>((resolve) => {
+          fstream.on('end', () => {
+            hash.end();
+            resolve(hash.read());
+          });
+          fstream.pipe(hash);
+        });
+
         if (entry.sha1_file_hash) {
           hashes[entry.localPath] = {
             hash: entry.sha1_file_hash,
@@ -131,7 +137,7 @@ export function calculateHashes(entry: JSONValue): JSONValue {
       }
     } else {
       for (const prop of Object.getOwnPropertyNames(entry)) {
-        entry[prop] = calculateHashes(entry[prop]);
+        entry[prop] = await calculateHashes(entry[prop]);
       }
     }
   }
