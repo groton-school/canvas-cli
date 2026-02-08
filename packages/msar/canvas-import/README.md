@@ -20,7 +20,7 @@
 ## Usage:
 
 ```bash
-  canvas-import -h --o=<outputPath> --i=<"https://example.instructure.com> --ignoreErrors --logRequests --commands --silent --logging --pretty --assignments --bulletinBoard --topics --skipTeacherless --logFilePath=<logFilePath> --stdoutLevel=<all|trace|debug|info|warning|error|fatal|off> --fileLevel=<all|trace|debug|info|warning|error|fatal|off> --opAccount=<example.1password.com> --opItem=<1Password unique identifier> --opToken=<token value> --canvasClientId=<canvasClientId> --canvasClientSecret=<canvasClientSecret> --canvasScope=<canvasScope> --canvasRedirectUri=<"https://localhost:3000/redirect"> --blackbaudInstanceId=<###> --termsPath=<"path/to/terms.csv"> --departmentAccountMapPath=<"path/to/dept-acct-map.csv"> --coursesWithDepartmentsPath=<"path/to/courses-dept.csv"> --sisIdMapPath=<"path/to/sis-id-map.csv"> --duplicates=<overwrite|update|reset|skip> snapshotPath
+  canvas-import -h --o=<outputPath> --i=<"https://example.instructure.com> --ignoreErrors --logRequests --commands --silent --logging --pretty --assignments --bulletinBoard --topics --skipTeacherless --logFilePath=<logFilePath> --stdoutLevel=<all|trace|debug|info|warning|error|fatal|off> --fileLevel=<all|trace|debug|info|warning|error|fatal|off> --opAccount=<example.1password.com> --opItem=<1Password unique identifier> --opToken=<token value> --canvasClientId=<canvasClientId> --canvasClientSecret=<canvasClientSecret> --canvasScope=<canvasScope> --canvasRedirectUri=<"https://localhost:3000/redirect"> --blackbaudInstanceId=<###> --termsPath=<"path/to/terms.csv"> --departmentAccountMapPath=<"path/to/dept-acct-map.csv"> --coursesWithDepartmentsPath=<"path/to/courses-dept.csv"> --sisIdMapPath=<"path/to/sis-id-map.csv"> --duplicates=<overwrite|update|reset|skip> --skipTo=<skipTo> snapshotPath
 ```
 
 ## Arguments
@@ -154,3 +154,7 @@ Optional path to SIS ID Map CSV file, must contain at least AssociationId column
 #### `--duplicates=<overwrite|update|reset|skip>`
 
 Specify a duplicate course handling option
+
+#### `--skipTo=<n>`
+
+Skip forward to a specific Group ID in the snapshot index

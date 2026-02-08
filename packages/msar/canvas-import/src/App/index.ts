@@ -39,11 +39,12 @@ export type Configuration = Plugin.Configuration & {
   bulletinBoard?: boolean;
   topics?: boolean;
   skipTeacherless?: boolean;
+  skipTo?: number;
 };
 
 export const name = 'canvas-import';
-export const src = path.dirname(import.meta.dirname);
 
+let skipTo: number | undefined = undefined;
 export function configure(config: Configuration = {}) {
   Preferences.setDuplicates(config.duplicates);
   Preferences.setAssignments(config.assignments);
@@ -56,6 +57,7 @@ export function configure(config: Configuration = {}) {
   OneRoster.setDepartmentAccountMapPath(config.departmentAccountMapPath);
   OneRoster.setCoursesWithDepartmentsPath(config.coursesWithDepartmentsPath);
   OneRoster.setSisIdMapPath(config.sisIdMapPath);
+  skipTo = Plugin.hydrate(config.skipTo, skipTo);
 }
 
 export function options(): Plugin.Options {
@@ -147,6 +149,12 @@ export function options(): Plugin.Options {
           typeof value === 'string' &&
           ['overwrite', 'update', 'reset', 'skip'].includes(value)
       }
+    },
+    num: {
+      skipTo: {
+        description: `Skip forward to a specific Group ID in the snapshot index`,
+        default: skipTo
+      }
     }
   };
 }
@@ -209,6 +217,15 @@ export async function run() {
     );
   } catch (error) {
     spinner.fail(Colors.error((error as Error).message));
+  }
+
+  let skipped: typeof snapshots = [];
+  if (skipTo !== undefined) {
+    const i = snapshots.findIndex((snapshot) => snapshot.GroupId === skipTo);
+    if (i >= 0) {
+      skipped = snapshots.slice(0, i);
+      snapshots = snapshots.slice(i);
+    }
   }
 
   // TODO write partial updates to index or tmp piecemeal
@@ -398,5 +415,7 @@ export async function run() {
       );
     }
   }
-  Output.writeJSON(Output.outputPath(), snapshots, { overwrite: true });
+  Output.writeJSON(Output.outputPath(), [...skipped, ...snapshots], {
+    overwrite: true
+  });
 }
