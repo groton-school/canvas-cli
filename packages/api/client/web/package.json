@@ -25,7 +25,7 @@
   "dependencies": {
     "@groton/canvas-api": "workspace:*",
     "@groton/canvas-api.client.base": "workspace:*",
-    "p-queue": "^8.1.1",
+    "p-queue": "^9.1.0",
     "path-browserify": "^1.0.1"
   },
   "devDependencies": {
