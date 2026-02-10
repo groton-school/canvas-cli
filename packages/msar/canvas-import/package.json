@@ -42,7 +42,7 @@
     "@qui-cli/log": "^4.0.3",
     "@qui-cli/plugin": "^4.1.0",
     "csv-parse": "^5.6.0",
-    "ejs": "^3.1.10",
+    "ejs": "^4.0.1",
     "open": "^10.2.0",
     "ora": "^9.3.0",
     "probe-image-size": "^7.2.3",
