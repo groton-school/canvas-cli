@@ -35,7 +35,7 @@
     "@qui-cli/plugin": "^4.1.0",
     "@qui-cli/root": "^3.1.0",
     "ejs": "^3.1.10",
-    "open": "^10.2.0"
+    "open": "^11.0.0"
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.4",
