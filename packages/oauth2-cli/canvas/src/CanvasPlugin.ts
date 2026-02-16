@@ -44,7 +44,8 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Client> {
       suppress: {
         authorization_endpoint: true,
         token_endpoint: true
-      }
+      },
+      storage: new OAuth2.Token.EnvironmentStorage('CANVAS_REFRESH_TOKEN')
     });
   }
 

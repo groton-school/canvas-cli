@@ -38,7 +38,8 @@ export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin {
       suppress: {
         authorization_endpoint: true,
         token_endpoint: true
-      }
+      },
+      storage: new OAuth2.Token.EnvironmentStorage('STUDIO_REFRESH_TOKEN')
     });
   }
 
