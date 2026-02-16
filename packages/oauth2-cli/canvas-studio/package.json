@@ -1,0 +1,64 @@
+{
+  "name": "@oauth2-cli/canvas-studio",
+  "version": "0.0.0",
+  "keywords": [
+    "instructure",
+    "canvas",
+    "studio",
+    "media",
+    "api",
+    "oauth",
+    "cli"
+  ],
+  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/oauth2-cli/canvas-studio#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groton-school/canvas-cli.git",
+    "directory": "packages/oauth2-cli/canvas-studio"
+  },
+  "author": {
+    "name": "Seth Battis",
+    "email": "sbattis@groton.org"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "clean": "del ./dist",
+    "build": "run-s build:*",
+    "build:clean": "run-s clean",
+    "build:compile": "tsc",
+    "version": "commit-and-tag-version"
+  },
+  "dependencies": {
+    "@battis/import-package-json": "^0.1.7",
+    "@oauth2-cli/qui-cli": "^0.6.4",
+    "@qui-cli/colors": "^3.2.3",
+    "requestish": "^0.1.1"
+  },
+  "devDependencies": {
+    "@1password/sdk": "^0.3.1",
+    "@battis/descriptive-types": "^0.2.6",
+    "@qui-cli/log": "^4.0.3",
+    "@qui-cli/plugin": "^4.1.0",
+    "@tsconfig/node24": "^24.0.4",
+    "@types/node": "^24.10.13",
+    "commit-and-tag-version": "^12.6.1",
+    "del-cli": "^7.0.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "@1password/sdk": "0.3.x",
+    "@qui-cli/log": ">=3",
+    "@qui-cli/plugin": ">=3"
+  },
+  "peerDependenciesMeta": {
+    "@1password/sdk": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=21"
+  }
+}
