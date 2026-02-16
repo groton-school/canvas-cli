@@ -1,4 +1,3 @@
-import { URLString } from '@battis/descriptive-types';
 import { JSONValue } from '@battis/typescript-tricks';
 import {
   Base,
@@ -8,30 +7,40 @@ import {
 } from '@groton/canvas-api.client.base';
 import { isError } from '@groton/canvas-api.utilities';
 import * as OAuth2 from '@oauth2-cli/qui-cli/dist/OAuth2.js';
+import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 import fs from 'node:fs';
 import * as requestish from 'requestish';
 
+type Credentials = OAuth2.Credentials.Combined & { issuer: requestish.URL.ish };
+
 type Options = OAuth2.ClientOptions & {
-  credentials: OAuth2.Credentials.Combined & { issuer: requestish.URL.ish };
+  credentials: Credentials;
 };
 
 export class Client extends OAuth2.Client implements Base {
-  public readonly instance_url: URLString;
+  public get instance_url() {
+    if (!this.credentials.issuer) {
+      throw new Error(
+        `The Canvas client requires an ${Colors.varName('issuer')} URL.`
+      );
+    }
+    return requestish.URL.toString(this.credentials.issuer);
+  }
 
   public constructor(options: Options) {
     super(options);
-    this.instance_url = requestish.URL.toString(options.credentials.issuer);
   }
 
   public async fetchAs<T extends JSONValue = JSONValue>(
     endpoint: string,
-    init: Init = {}
+    { method, ...params }: Init = {}
   ): Promise<T> {
     return fetchAllPages<T>({
       endpoint,
       instance_url: this.instance_url,
-      init,
+      ...params,
+      init: { method },
       accessToken: async () => (await this.getToken())?.access_token,
       fetch: async (...request) => {
         Log.debug({ request });

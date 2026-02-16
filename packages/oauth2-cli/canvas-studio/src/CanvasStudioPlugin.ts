@@ -14,7 +14,7 @@ export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin {
         heading: 'Canvas Studio options',
         text: [
           `Once authorized, the app will store the Canvas Studio refresh ` +
-            `token for reuse in then local environment as ` +
+            `token for reuse in the local environment as ` +
             `${Colors.varName('STUDIO_REFRESH_TOKEN')}.`
         ]
       },

@@ -69,7 +69,9 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Client> {
     }
     const { issuer, ...rest } = credentials;
     if (!issuer) {
-      throw new Error(`You must define an Issuer for a Canvas Client`);
+      throw new Error(
+        `The Canvas client requires an ${Colors.varName('issuer')} URL.`
+      );
     }
     const client = new Client({
       ...options,
@@ -89,6 +91,6 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Client> {
   }
 
   public run() {
-    Log.info(`Connecting to ${Colors.url(this.instance_url)}`);
+    Log.info(`Connecting to ${Colors.url(this.client.instance_url)}`);
   }
 }

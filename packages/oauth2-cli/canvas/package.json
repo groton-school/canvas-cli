@@ -33,7 +33,7 @@
     "@groton/canvas-api": "workspace:*",
     "@groton/canvas-api.client.base": "workspace:*",
     "@groton/canvas-api.utilities": "workspace:*",
-    "@oauth2-cli/qui-cli": "^0.6.4",
+    "@oauth2-cli/qui-cli": "^0.6.5",
     "@qui-cli/colors": "^3.2.3",
     "requestish": "^0.1.1"
   },
