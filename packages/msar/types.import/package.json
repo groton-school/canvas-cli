@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@battis/descriptive-types": "^0.2.6",
-    "@battis/typescript-tricks": "^0.7.6",
+    "@battis/typescript-tricks": "^0.7.7",
     "@msar/types.snapshot": "^0.1.10",
     "@tsconfig/node24": "^24.0.4",
     "@types/probe-image-size": "^7.2.5",

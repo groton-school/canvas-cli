@@ -23,7 +23,7 @@
     "version": "commit-and-tag-version"
   },
   "devDependencies": {
-    "@battis/typescript-tricks": "^0.7.6",
+    "@battis/typescript-tricks": "^0.7.7",
     "@tsconfig/node24": "^24.0.4",
     "commit-and-tag-version": "^12.6.1",
     "del-cli": "^7.0.0",
