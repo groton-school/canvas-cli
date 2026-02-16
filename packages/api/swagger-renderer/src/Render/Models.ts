@@ -65,7 +65,7 @@ function annotateJSONFile({
   outputPath
 }: AnnotateOptions): Annotation {
   const spec = JSON.parse(
-    fs.readFileSync(specPath).toString()
+    fs.readFileSync(specPath, 'utf8')
   ) as Swagger.v1p2.ApiDeclaration;
   return {
     spec: { [specPath]: [spec] },
@@ -144,7 +144,7 @@ async function outputModels({
   models
 }: OutputOptions) {
   const template = Handlebars.compile(
-    fs.readFileSync(path.join(templatePath, 'Model.handlebars')).toString()
+    fs.readFileSync(path.join(templatePath, 'Model.handlebars'), 'utf8')
   );
   fs.mkdirSync(outputPath, { recursive: true });
   for (const filePath in models) {
@@ -183,7 +183,7 @@ async function outputModelIndex({
   models
 }: OutputOptions) {
   const template = Handlebars.compile(
-    fs.readFileSync(path.join(templatePath, 'ModelIndex.handlebars')).toString()
+    fs.readFileSync(path.join(templatePath, 'ModelIndex.handlebars'), 'utf8')
   );
   await writePrettier(
     path.join(outputPath, 'index.ts'),

@@ -128,9 +128,7 @@ export async function run(results?: Plugin.AccumulatedResults) {
   Overrides.setOutputPath(outputPath);
   if (overridePath) {
     overridePath = path.resolve(Root.path(), overridePath);
-    Overrides.setOverrides(
-      JSON.parse(fs.readFileSync(overridePath).toString())
-    );
+    Overrides.setOverrides(JSON.parse(fs.readFileSync(overridePath, 'utf8')));
     spinner.succeed(`Overrides loaded from ${Colors.url(overridePath)}`);
   } else {
     spinner.info(`No overrides`);

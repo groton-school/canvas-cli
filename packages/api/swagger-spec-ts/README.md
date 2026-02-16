@@ -17,7 +17,9 @@ npm install swagger-spec-ts
 
 ```ts
 import * as SwaggerSpec from 'swagger-pec-ts';
-import fs from 'node:fs'
+import fs from 'node:fs';
 
-const spec = JSON.parse(fs.readFileSync('path/to/spec.json').toString()) as SwaggerSpec.v1p2.ApiDeclaration;
+const spec = JSON.parse(
+  fs.readFileSync('path/to/spec.json', 'utf8')
+) as SwaggerSpec.v1p2.ApiDeclaration;
 ```

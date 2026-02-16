@@ -49,7 +49,7 @@ export function run() {
     throw new Error(`Snapshot path ${Colors.value('arg0')} is not defined`);
   }
   const snapshots = JSON.parse(
-    fs.readFileSync(path.resolve(Root.path(), snapshotPath)).toString()
+    fs.readFileSync(path.resolve(Root.path(), snapshotPath), 'utf8')
   ) as Imported.Multiple.Data;
   for (const snapshot of snapshots) {
     if (snapshot.SectionInfo?.canvas?.id) {

@@ -1,10 +1,5 @@
 import { PathString } from '@battis/descriptive-types';
 import * as Swagger from '@groton/swagger-spec-ts';
-import {
-  ApiDeclaration,
-  ApiObject
-} from '@groton/swagger-spec-ts/dist/1.2/ApiDeclaration.js';
-import { OperationObject } from '@groton/swagger-spec-ts/dist/1.2/OperationObject.js';
 import { ParameterObject } from '@groton/swagger-spec-ts/dist/1.2/ParameterObject.js';
 import Handlebars from 'handlebars';
 import fs from 'node:fs';
