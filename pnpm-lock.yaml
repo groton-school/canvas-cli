@@ -352,12 +352,9 @@ importers:
       '@oauth2-cli/canvas':
         specifier: workspace:*
         version: link:../../oauth2-cli/canvas
-      '@oauth2-cli/canvas-studio':
-        specifier: workspace:*
-        version: link:../../oauth2-cli/canvas-studio
       '@oauth2-cli/sky-api':
-        specifier: ^0.2.2
-        version: 0.2.2(ejs@3.1.10)
+        specifier: ^0.4.2
+        version: 0.4.2(@qui-cli/env-1password@1.2.10(@1password/sdk@0.3.1)(@battis/import-package-json@0.1.7)(@qui-cli/env@5.1.1(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.3)(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(@qui-cli/shell@3.1.2(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/shell@3.1.2(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(ejs@3.1.10)
       '@qui-cli/colors':
         specifier: ^3.2.3
         version: 3.2.3
@@ -695,6 +692,9 @@ packages:
 
   '@battis/oauth2-configure@0.1.3':
     resolution: {integrity: sha512-ErIl5Yc645K2RCis9M1prW/n9wVM52Iy0X5u+IQbF0slnvlXXTFcRUH603AtELaHNiNBFayNNVCM/ODwHkhMhA==}
+
+  '@battis/oauth2-configure@0.1.4':
+    resolution: {integrity: sha512-wdrxkEbrDwfKrX/osnuuOsDXVcXeSzOVTDZM29Mo/I/PHRdKdp4wIGeDP9nA51dZ3MD+d67GaVe9bqsF8ny3Cw==}
 
   '@battis/prettier-config@1.7.3':
     resolution: {integrity: sha512-rkYTPfUgxpTRK1qDYCEmqr7ptq5rsIVbmdxfMV2aNAcKcH1c89842oeYxm8aeN0SDJ+EExEWtP8T9xDIx5p2iw==}
@@ -1773,6 +1773,14 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@oauth2-cli/qui-cli@0.5.11':
+    resolution: {integrity: sha512-EByc/nZvheXh/MQbRZUXmV2V5d+QmIiHh90sypvUg+A61Wos3idcSK3kaGdjU3I2uAI2smRSeZ2xKpUCqiyfog==}
+    peerDependencies:
+      '@qui-cli/env-1password': '>=1'
+      '@qui-cli/log': '>=3'
+      '@qui-cli/plugin': '>=3'
+      '@qui-cli/root': '>=3'
+
   '@oauth2-cli/qui-cli@0.6.5':
     resolution: {integrity: sha512-+/B12v8LsHgIGRbzkqlTBPvs2i4xm08a+4nDcCaftq46lEEqAnvmWvKv6pO88q7F5OemX9c2rFMv6/hk5Xy9FQ==}
     peerDependencies:
@@ -1782,6 +1790,11 @@ packages:
 
   '@oauth2-cli/sky-api@0.2.2':
     resolution: {integrity: sha512-I5nt5CXXx9HYhFuRefnnlrzJHv1ZdXKl/0NQlqrB3sCJHlZHQqrKZSw1JGbU1OALAJl44s8SvaGZWhq9Uw3GHw==}
+
+  '@oauth2-cli/sky-api@0.4.2':
+    resolution: {integrity: sha512-6mT5A6TEp/galD5M+d+RXOD0XQjqEQlxhp+aq79oKyRapmT1Gs/mA/ZEB4I+nS0981a4wA/2pRXpI4wQIqsRNA==}
+    peerDependencies:
+      '@qui-cli/plugin': '>=3'
 
   '@octokit/auth-token@4.0.0':
     resolution: {integrity: sha512-tY/msAuJo6ARbK6SPIxZrPBms3xPbfwBrulZe0Wtr/DIY9lje2HeV1uoebShn6mx7SjCHif6EjMvoREj+gZ+SA==}
@@ -5737,6 +5750,16 @@ packages:
     peerDependencies:
       ejs: '*'
 
+  oauth2-cli@0.2.3:
+    resolution: {integrity: sha512-1p996eHNkh+K4ZLXDgKWMB+GXSIekLKB2cUFeHdQ42NAUkU5KFKhEnfVAywumOr+iGHJijsjc+SVAz4by5EHGg==}
+    peerDependencies:
+      ejs: '*'
+
+  oauth2-cli@0.5.1:
+    resolution: {integrity: sha512-D+m88e12tprPB1hNV3nAKcgfqlLCEwBBHWEOz5Yl7zRC8c9MLAUKwMfWREMr+gkcsOyW/ZAWbS2CwojM5bYOSg==}
+    peerDependencies:
+      ejs: '*'
+
   oauth2-cli@0.7.2:
     resolution: {integrity: sha512-HM7YsDk9yKDEPR/hjntLGwqZJqy16WLVUYQdXLgHuKqsniIXyWTSNjAnellH1synmCU3ilFAsa6yM7qyxeRkAw==}
     peerDependencies:
@@ -8062,6 +8085,11 @@ snapshots:
       async-mutex: 0.5.0
       openid-client: 6.8.2
 
+  '@battis/oauth2-configure@0.1.4':
+    dependencies:
+      async-mutex: 0.5.0
+      openid-client: 6.8.2
+
   '@battis/prettier-config@1.7.3(@prettier/plugin-xml@3.4.2(prettier@3.5.3))(@trivago/prettier-plugin-sort-imports@5.2.2(prettier@3.5.3))(prettier-plugin-ejs@1.0.3(prettier@3.5.3))(prettier-plugin-jsdoc@1.8.0(prettier@3.5.3))(prettier-plugin-organize-imports@4.3.0(prettier@3.5.3)(typescript@5.9.3))(prettier-plugin-packagejson@2.5.22(prettier@3.5.3))(prettier@3.5.3)':
     dependencies:
       '@prettier/plugin-xml': 3.4.2(prettier@3.5.3)
@@ -8795,7 +8823,7 @@ snapshots:
 
   '@jest/pattern@30.0.1':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
       jest-regex-util: 30.0.1
 
   '@jest/schemas@29.6.3':
@@ -8812,7 +8840,7 @@ snapshots:
       '@jest/schemas': 30.0.5
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
       '@types/yargs': 17.0.35
       chalk: 4.1.2
 
@@ -9271,6 +9299,19 @@ snapshots:
   '@nx/nx-win32-x64-msvc@20.8.4':
     optional: true
 
+  '@oauth2-cli/qui-cli@0.5.11(@qui-cli/env-1password@1.2.10(@1password/sdk@0.3.1)(@battis/import-package-json@0.1.7)(@qui-cli/env@5.1.1(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.3)(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(@qui-cli/shell@3.1.2(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/shell@3.1.2(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(ejs@3.1.10)':
+    dependencies:
+      '@qui-cli/colors': 3.2.3
+      '@qui-cli/env-1password': 1.2.10(@1password/sdk@0.3.1)(@battis/import-package-json@0.1.7)(@qui-cli/env@5.1.1(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.3)(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(@qui-cli/shell@3.1.2(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/shell@3.1.2(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0))
+      '@qui-cli/log': 4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))
+      '@qui-cli/plugin': 4.1.0
+      '@qui-cli/root': 3.1.0(@qui-cli/plugin@4.1.0)
+      oauth2-cli: 0.5.1(ejs@3.1.10)
+      openid-client: 6.8.2
+    transitivePeerDependencies:
+      - ejs
+      - supports-color
+
   '@oauth2-cli/qui-cli@0.6.5(@qui-cli/env-1password@1.2.10(@1password/sdk@0.3.1)(@battis/import-package-json@0.1.7)(@qui-cli/env@5.1.1(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.3)(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(@qui-cli/shell@3.1.2(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/shell@3.1.2(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(ejs@3.1.10)':
     dependencies:
       '@qui-cli/colors': 3.2.3
@@ -9288,6 +9329,19 @@ snapshots:
       node-fetch: 3.3.2
       oauth2-cli: 0.2.1(ejs@3.1.10)
     transitivePeerDependencies:
+      - ejs
+      - supports-color
+
+  '@oauth2-cli/sky-api@0.4.2(@qui-cli/env-1password@1.2.10(@1password/sdk@0.3.1)(@battis/import-package-json@0.1.7)(@qui-cli/env@5.1.1(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.3)(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(@qui-cli/shell@3.1.2(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/shell@3.1.2(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(ejs@3.1.10)':
+    dependencies:
+      '@oauth2-cli/qui-cli': 0.5.11(@qui-cli/env-1password@1.2.10(@1password/sdk@0.3.1)(@battis/import-package-json@0.1.7)(@qui-cli/env@5.1.1(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.3)(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(@qui-cli/shell@3.1.2(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/shell@3.1.2(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(ejs@3.1.10)
+      '@qui-cli/plugin': 4.1.0
+      node-fetch: 3.3.2
+      oauth2-cli: 0.2.3(ejs@3.1.10)
+    transitivePeerDependencies:
+      - '@qui-cli/env-1password'
+      - '@qui-cli/log'
+      - '@qui-cli/root'
       - ejs
       - supports-color
 
@@ -9728,20 +9782,20 @@ snapshots:
   '@types/body-parser@1.19.6':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
 
   '@types/bonjour@3.5.13':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
 
   '@types/connect-history-api-fallback@1.5.4':
     dependencies:
       '@types/express-serve-static-core': 4.19.8
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
 
   '@types/debug@4.1.12':
     dependencies:
@@ -9763,7 +9817,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.8':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
       '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 1.2.1
@@ -9781,7 +9835,7 @@ snapshots:
 
   '@types/http-proxy@1.17.17':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 
@@ -9797,7 +9851,7 @@ snapshots:
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
 
   '@types/lodash-es@4.17.12':
     dependencies:
@@ -9844,18 +9898,18 @@ snapshots:
 
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
 
   '@types/retry@0.12.2': {}
 
   '@types/send@0.17.6':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
 
   '@types/send@1.2.1':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
 
   '@types/serve-index@1.9.4':
     dependencies:
@@ -9864,12 +9918,12 @@ snapshots:
   '@types/serve-static@1.15.10':
     dependencies:
       '@types/http-errors': 2.0.5
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
       '@types/send': 0.17.6
 
   '@types/sockjs@0.3.36':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
 
   '@types/triple-beam@1.3.5': {}
 
@@ -9877,7 +9931,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
 
   '@types/yargs-parser@21.0.3': {}
 
@@ -12854,7 +12908,7 @@ snapshots:
   jest-util@30.2.0:
     dependencies:
       '@jest/types': 30.2.0
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
       chalk: 4.1.2
       ci-info: 4.4.0
       graceful-fs: 4.2.11
@@ -12862,13 +12916,13 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
   jest-worker@30.2.0:
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 24.10.13
       '@ungap/structured-clone': 1.3.0
       jest-util: 30.2.0
       merge-stream: 2.0.0
@@ -13978,6 +14032,28 @@ snapshots:
       ejs: 3.1.10
       express: 4.22.1
       open: 10.2.0
+      openid-client: 6.8.2
+    transitivePeerDependencies:
+      - supports-color
+
+  oauth2-cli@0.2.3(ejs@3.1.10):
+    dependencies:
+      '@battis/oauth2-configure': 0.1.3
+      async-mutex: 0.5.0
+      ejs: 3.1.10
+      express: 5.2.1
+      open: 11.0.0
+      openid-client: 6.8.2
+    transitivePeerDependencies:
+      - supports-color
+
+  oauth2-cli@0.5.1(ejs@3.1.10):
+    dependencies:
+      '@battis/oauth2-configure': 0.1.4
+      async-mutex: 0.5.0
+      ejs: 3.1.10
+      express: 5.2.1
+      open: 11.0.0
       openid-client: 6.8.2
     transitivePeerDependencies:
       - supports-color
