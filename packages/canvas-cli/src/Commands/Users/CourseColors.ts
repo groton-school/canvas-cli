@@ -155,7 +155,7 @@ export async function run() {
           }
 
           spinner.succeed(
-            `${applied}/${enrollments.length} users required updates in ${course.name} ${Colors.url(`${Canvas.client().instance_url}/courses/${course.id}`)}`
+            `${applied}/${enrollments.length} users required updates in ${course.name} ${Colors.url(`${Canvas.plugin.client.instance_url}/courses/${course.id}`)}`
           );
         } else {
           spinner.warn(
