@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@battis/import-package-json": "^0.1.7",
-    "@oauth2-cli/qui-cli": "^0.6.5",
+    "@oauth2-cli/qui-cli": "^0.7.2",
     "@qui-cli/colors": "^3.2.3",
     "requestish": "^0.1.1"
   },
