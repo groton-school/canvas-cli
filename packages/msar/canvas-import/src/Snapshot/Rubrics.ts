@@ -1,6 +1,8 @@
-import { JSONObject } from '@battis/typescript-tricks';
+import { 
+  JSONObject } from '@battis/typescript-tricks';
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
+import { api } from 'datadirect';
 import { EventEmitter } from 'node:events';
 
 // FIXME Canvas.v1.Courses.Rubrics.create _does_ return a rubric!
@@ -40,8 +42,13 @@ function toCanvasArgs(
     // @ts-expect-error 2353
     'rubric[hide_points]': false,
     'rubric[free_form_criterion_comments]': false,
-    'rubric[criteria]': rubric.Skills.sort((a, b) => a.SortOrder - b.SortOrder)
-      .map((skill) => ({
+    'rubric[criteria]': rubric.Skills.sort(
+      (
+        a: api.Rubric.AssignmentRubric.Skill,
+        b: api.Rubric.AssignmentRubric.Skill
+      ) => a.SortOrder - b.SortOrder
+    )
+      .map((skill: api.Rubric.AssignmentRubric.Skill) => ({
         description: skill.Name,
         long_description: '',
         criterion_use_range: false,
