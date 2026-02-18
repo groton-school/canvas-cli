@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.5.0](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/canvas/0.4.4...oauth2-cli/canvas/0.5.0) (2026-02-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* update to @oauth2-cli/qui-cli@0.6.x
+* update to @oauth2-cli/qui-cli@0.6.0 with gcrtl support
+
+### Features
+
+* export plugin instance as Canvas.plugin ([a15b0c7](https://github.com/groton-school/canvas-cli/commit/a15b0c715580f50fea28107938df06d7717da043))
+* log instance URL ([7fa4107](https://github.com/groton-school/canvas-cli/commit/7fa41071175cad07874cb452065830f2284387ab))
+* switch from soon-to-be-deprecated env-1password to env+@1password/sdk ([5c46e4e](https://github.com/groton-school/canvas-cli/commit/5c46e4e63e34667234ee4b0cd1dc15fe9db09204))
+* update to @oauth2-cli/qui-cli@0.6.0 with gcrtl support ([e5febe6](https://github.com/groton-school/canvas-cli/commit/e5febe6d4acd754b895c695f2ff0549623cf4ee3))
+* update to @oauth2-cli/qui-cli@0.6.x ([8d6fe24](https://github.com/groton-school/canvas-cli/commit/8d6fe247da0f5ef9d62baa6ec063bb40a484dcb6))
+
+
+### Bug Fixes
+
+* send version and platform information with User-Agent header ([07ef0c8](https://github.com/groton-school/canvas-cli/commit/07ef0c8617b3fbbcdfdc774a28b39335d7c9f7d3))
+* update to @qui-cli/env@5.1 with optional [@1password-sdk](https://github.com/1password-sdk) integration ([12c4b96](https://github.com/groton-school/canvas-cli/commit/12c4b9673dee783a13a4e65936f01f1128696d2e))
+* use @oauth2-cli/qui-cli's `Unregistered` namespace ([9653002](https://github.com/groton-school/canvas-cli/commit/9653002f75baf31260992f1cd1250276ad3c055a))
+
 ## [0.4.4](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/0.4.3...oauth2-cli/0.4.4) (2026-01-17)
 
 
