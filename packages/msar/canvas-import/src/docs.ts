@@ -9,9 +9,10 @@ await register(App);
 
 Markdown.configure({
   outputPath: path.join(import.meta.dirname, '../README.md'),
-  pre: fs
-    .readFileSync(path.join(import.meta.dirname, '../docs/pre.md'))
-    .toString(),
+  pre: fs.readFileSync(
+    path.join(import.meta.dirname, '../docs/pre.md'),
+    'utf8'
+  ),
   headingLevelAdjustment: 2,
   overwrite: true
 });

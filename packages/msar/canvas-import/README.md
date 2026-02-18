@@ -20,7 +20,7 @@
 ## Usage:
 
 ```bash
-  canvas-import -h --o=<outputPath> --i=<"https://example.instructure.com> --ignoreErrors --logRequests --commands --silent --logging --pretty --assignments --bulletinBoard --topics --skipTeacherless --logFilePath=<logFilePath> --stdoutLevel=<all|trace|debug|info|warning|error|fatal|off> --fileLevel=<all|trace|debug|info|warning|error|fatal|off> --opAccount=<example.1password.com> --opItem=<1Password unique identifier> --opToken=<token value> --canvasClientId=<canvasClientId> --canvasClientSecret=<canvasClientSecret> --canvasScope=<canvasScope> --canvasRedirectUri=<"https://localhost:3000/redirect"> --blackbaudInstanceId=<###> --termsPath=<"path/to/terms.csv"> --departmentAccountMapPath=<"path/to/dept-acct-map.csv"> --coursesWithDepartmentsPath=<"path/to/courses-dept.csv"> --sisIdMapPath=<"path/to/sis-id-map.csv"> --duplicates=<overwrite|update|reset|skip> --skipTo=<skipTo> snapshotPath
+  canvas-import -h --o=<outputPath> --ignoreErrors --logRequests --commands --silent --logging --pretty --assignments --bulletinBoard --topics --skipTeacherless --logFilePath=<logFilePath> --stdoutLevel=<all|trace|debug|info|warning|error|fatal|off> --fileLevel=<all|trace|debug|info|warning|error|fatal|off> --opAccount=<example.1password.com> --opItem=<1Password unique identifier> --opToken=<token value> --blackbaudInstanceId=<###> --termsPath=<"path/to/terms.csv"> --departmentAccountMapPath=<"path/to/dept-acct-map.csv"> --coursesWithDepartmentsPath=<"path/to/courses-dept.csv"> --sisIdMapPath=<"path/to/sis-id-map.csv"> --duplicates=<overwrite|update|reset|skip> --skipTo=<skipTo> snapshotPath
 ```
 
 ## Arguments
@@ -93,25 +93,27 @@ Pretty print output to file (if --outputPath option is used)
 
 ### Canvas options
 
-#### `--canvasClientId=<canvasClientId>`
+The OpenID issuer URL is set from the environment variable CANVAS_ISSUER, if present. The CANVAS_ISSUER is also used as a base URL for any relative URL in API requests, unless BASE_URL is defined. (e.g. "https://example.instructure.com")
 
-OAuth 2.0 client ID. Defaults to environment variable CANVAS_CLIENT_ID, if present. See https://developerdocs.instructure.com/services/canvas/oauth2/file.oauth#oauth2-flow-0 for more information.
+The OAuth 2.0 client_id is set from the environment variable CANVAS_CLIENT_ID, if present. See https://developerdocs.instructure.com/services/canvas/oauth2/file.oauth#oauth2-flow-0 for more information.
 
-#### `--canvasClientSecret=<canvasClientSecret>`
+The OAuth 2.0 client_secret is set from the environment variable CANVAS_CLIENT_SECRET, if present.
 
-OAuth 2.0 client secret. Defaults to environment variable CANVAS_CLIENT_SECRET, if present.
+The OAuth 2.0 redirect_uri, which must at least redirect to localhost, is set from the environment variable CANVAS_REDIRECT_URI, if present. (e.g. "http://localhost:3000/redirect")
 
-#### `--canvasScope=<canvasScope>`
+Once authorized, the app will store the Canvas refresh token for reuse in the local environment as CANVAS_REFRESH_TOKEN.
 
-OAuth 2.0 scope. Defaults to environment variable CANVAS_SCOPE, if present.
+### Canvas Studio options
 
-#### `--canvasRedirectUri=<"https://localhost:3000/redirect">`
+The OpenID issuer URL is set from the environment variable STUDIO_ISSUER, if present. The STUDIO_ISSUER is also used as a base URL for any relative URL in API requests, unless BASE_URL is defined. (e.g. "https://example.instructuremedia.com")
 
-OAuth 2.0 redirect URI, must be to host localhost. Defaults to environment variable CANVAS_REDIRECT_URI, if present.
+The OAuth 2.0 client_id is set from the environment variable STUDIO_CLIENT_ID, if present.
 
-#### `-i<"https://example.instructure.com> --canvasInstanceUrl=<"https://example.instructure.com>`
+The OAuth 2.0 client_secret is set from the environment variable STUDIO_CLIENT_SECRET, if present.
 
-URL of the Canvas LMS instance to work with. Defaults to environment variable CANVAS_INSTANCE_URL, if present.
+The OAuth 2.0 redirect_uri, which must at least redirect to localhost, is set from the environment variable STUDIO_REDIRECT_URI, if present. (e.g. "http://localhost:3000/redirect")
+
+Once authorized, the app will store the Canvas Studio refresh token for reuse in the local environment as STUDIO_REFRESH_TOKEN.
 
 ### Import options
 
@@ -133,23 +135,23 @@ Include sections that have no teachers (likely community groups) (Default: true,
 
 #### `--blackbaudInstanceId=<###>`
 
-MySchoolApp instance identifier, may be inferred by OneRoster sourcedId values, where the first numeric component is the instance identifier (e.g. cls-123-12345678 identifies the instance ID as 123).
+MySchoolApp instance identifier, may be inferred by OneRoster sourcedId values, where the first numeric component is the instance identifier (e.g. cls-123-12345678 identifies the instance ID as 123). Defaults to environment variable BLACKBAUD_INSTANCE_ID, if present.
 
 #### `--termsPath=<"path/to/terms.csv">`
 
-Path to All Terms CSV file, must contain at least Term ID, Length, term_id, name columns, where Term ID and Length are Blackbaud term/duration IDs and Length is a duration (number of terms) and term_id and name are as defined in the https://developerdocs.instructure.com/services/canvas/sis/file.sis_csv#terms.csv.
+Path to All Terms CSV file, must contain at least Term ID, Length, term_id, name columns, where Term ID and Length are Blackbaud term/duration IDs and Length is a duration (number of terms) and term_id and name are as defined in the https://developerdocs.instructure.com/services/canvas/sis/file.sis_csv#terms.csv. Defaults to environment variable TERMS_CSV, if present.
 
 #### `--departmentAccountMapPath=<"path/to/dept-acct-map.csv">`
 
-Path to Department Account Map CSV file, must contain at least Department Id and Canvas Account ID columns which refer to a Blackbaud academic department ID value and a Canvas sub-account ID respectively.
+Path to Department Account Map CSV file, must contain at least Department Id and Canvas Account ID columns which refer to a Blackbaud academic department ID value and a Canvas sub-account ID respectively. Defaults to environment variable DEPARTMENT_ACCOUNT_MAP_CSV, if present.
 
 #### `--coursesWithDepartmentsPath=<"path/to/courses-dept.csv">`
 
-Path to Courses with Departments CSV file, must contain at least Course ID and Department ID, referring to Blackbaud course and academic department ID values.
+Path to Courses with Departments CSV file, must contain at least Course ID and Department ID, referring to Blackbaud course and academic department ID values. Defaults to environment variable COURSES_WITH_DEPARTMENTS_CSV, if present.
 
 #### `--sisIdMapPath=<"path/to/sis-id-map.csv">`
 
-Optional path to SIS ID Map CSV file, must contain at least AssociationId column and optionally either or both prefix and SIS Account ID columns. Used for generating custom SIS course IDs and assigning courses to sub-account by department. The default prefix is cls and the departments are mapped at --departmentAccountMapPath. AccountId values are interpreted here: https://github.com/groton-school/msar/blob/7bf001d100b25e5c9c5d23cf765f85cfb5d3c6a4/packages/datadirect/src/api/datadirect/SectionInfoView/Response.ts#L8-L21
+Optional path to SIS ID Map CSV file, must contain at least AssociationId column and optionally either or both prefix and SIS Account ID columns. Used for generating custom SIS course IDs and assigning courses to sub-account by department. The default prefix is cls and the departments are mapped at --departmentAccountMapPath. AccountId values are interpreted here: https://github.com/groton-school/msar/blob/7bf001d100b25e5c9c5d23cf765f85cfb5d3c6a4/packages/datadirect/src/api/datadirect/SectionInfoView/Response.ts#L8-L21. Defaults to environment variable SIS_ID_MAP_CSV, if present.
 
 #### `--duplicates=<overwrite|update|reset|skip>`
 

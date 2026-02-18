@@ -94,7 +94,8 @@ export function options(): Plugin.Options {
           `${Colors.varName('sourcedId')} values, where the first numeric ` +
           `component is the instance identifier (e.g. ` +
           `${Colors.value('cls-123-12345678')} identifies the instance ID as ` +
-          `${Colors.value('123')}).`,
+          `${Colors.value('123')}). Defaults to environment variable ` +
+          `${Colors.varName('BLACKBAUD_INSTANCE_ID')}, if present.`,
         hint: Colors.value('###')
       },
       termsPath: {
@@ -106,7 +107,9 @@ export function options(): Plugin.Options {
           `are Blackbaud term/duration IDs and Length is a duration (number ` +
           `of terms) and ${Colors.varName('term_id')} and ` +
           `${Colors.varName('name')} are as defined in the ` +
-          `${Colors.url('https://developerdocs.instructure.com/services/canvas/sis/file.sis_csv#terms.csv')}.`,
+          `${Colors.url('https://developerdocs.instructure.com/services/canvas/sis/file.sis_csv#terms.csv')}. ` +
+          `Defaults to environment variable ${Colors.varName('TERMS_CSV')}, ` +
+          `if present.`,
         hint: Colors.quotedValue(`"path/to/terms.csv"`)
       },
       departmentAccountMapPath: {
@@ -115,7 +118,8 @@ export function options(): Plugin.Options {
           `${Colors.varName('Department Id')} and ` +
           `${Colors.varName(`Canvas Account ID`)} columns which refer to a ` +
           `Blackbaud academic department ID value and a Canvas sub-account ID ` +
-          `respectively.`,
+          `respectively. Defaults to environment variable ` +
+          `${Colors.varName('DEPARTMENT_ACCOUNT_MAP_CSV')}, if present.`,
         hint: Colors.quotedValue(`"path/to/dept-acct-map.csv"`)
       },
       coursesWithDepartmentsPath: {
@@ -123,7 +127,8 @@ export function options(): Plugin.Options {
           `Path to Courses with Departments CSV file, must contain at least ` +
           `${Colors.varName('Course ID')} and ` +
           `${Colors.varName('Department ID')}, referring to Blackbaud course ` +
-          `and academic department ID values.`,
+          `and academic department ID values. Defaults to environment variable ` +
+          `${Colors.varName('COURSES_WITH_DEPARTMENTS_CSV')}, if present.`,
         hint: Colors.quotedValue(`"path/to/courses-dept.csv"`)
       },
       sisIdMapPath: {
@@ -137,7 +142,9 @@ export function options(): Plugin.Options {
           `departments are mapped at ` +
           `${Colors.optionArg('--departmentAccountMapPath')}. ` +
           `${Colors.varName('AccountId')} values are interpreted here: ` +
-          `${Colors.url('https://github.com/groton-school/msar/blob/7bf001d100b25e5c9c5d23cf765f85cfb5d3c6a4/packages/datadirect/src/api/datadirect/SectionInfoView/Response.ts#L8-L21')}`,
+          `${Colors.url('https://github.com/groton-school/msar/blob/7bf001d100b25e5c9c5d23cf765f85cfb5d3c6a4/packages/datadirect/src/api/datadirect/SectionInfoView/Response.ts#L8-L21')}. ` +
+          `Defaults to environment variable ${Colors.varName('SIS_ID_MAP_CSV')}, ` +
+          `if present.`,
         hint: Colors.quotedValue(`"path/to/sis-id-map.csv"`)
       },
       duplicates: {
@@ -193,7 +200,7 @@ export async function run() {
   let snapshots: Imported.Multiple.Data = [];
   const users: Record<Canvas.Users.User['sis_user_id'], Canvas.Users.User> = {};
   try {
-    const file = JSON.parse(fs.readFileSync(Snapshot.path()).toString());
+    const file = JSON.parse(fs.readFileSync(Snapshot.path(), 'utf8'));
     if (Array.isArray(file)) {
       snapshots = file;
     } else {
@@ -236,10 +243,10 @@ export async function run() {
         typeof section.SectionInfo.canvas.instance_url === 'string'
       ) {
         configure({
-          canvasInstanceUrl:
+          canvasIssuer:
             section.SectionInfo.canvas.instance_url ||
             Canvas.client().instance_url ||
-            (await Env.get({ key: 'CANVAS_INSTANCE_URL' })) ||
+            (await Env.get({ key: 'CANVAS_ISSUER' })) ||
             (await input({
               message: `What is the hostname for your Canvas instance?`,
               validate: (value) => !!Validators.isHostname({})(value),
@@ -310,18 +317,19 @@ export async function run() {
           };
         }
         // TODO cache enrollments for updating
+        let user: Canvas.Users.User | undefined = undefined;
         if (section.SectionInfo?.TeacherId === null) {
           log(course, `No teacher in snapshot`, 'warning');
         } else {
           const sis_user_id = OneRoster.sis_user_id(section);
-          if (!users[sis_user_id]) {
+          user = users[sis_user_id];
+          if (!user) {
             try {
-              const user = await Canvas.v1.Users.show_user_details({
+              user = await Canvas.v1.Users.show_user_details({
                 pathParams: { id: `sis_user_id:${sis_user_id}` }
               });
-              users[sis_user_id] = user;
             } catch (_) {
-              users[sis_user_id] = await Canvas.v1.Accounts.Users.create({
+              user = await Canvas.v1.Accounts.Users.create({
                 pathParams: { account_id: 1 },
                 params: {
                   'user[name]': section.SectionInfo?.Teacher,
@@ -340,6 +348,7 @@ export async function run() {
                 `Added ${Colors.value(users[sis_user_id].name)} as a suspended user`
               );
             }
+            users[sis_user_id] = user;
           }
           await Canvas.v1.Courses.Enrollments.enroll_user_courses({
             pathParams: { course_id: course.id.toString() },
@@ -349,14 +358,11 @@ export async function run() {
               'enrollment[enrollment_state]': 'active'
             }
           });
-          log(
-            course,
-            `Enrolled ${Colors.value(users[sis_user_id].name)} as teacher`
-          );
+          log(course, `Enrolled ${Colors.value(user.name)} as teacher`);
         }
 
         if (Preferences.assignments()) {
-          await importAssignments({ course, section });
+          await importAssignments({ user, course, section });
         }
 
         if (Preferences.bulletinBoard()) {
@@ -398,7 +404,7 @@ export async function run() {
           course,
           Colors.url(
             path.join(
-              Canvas.plugin.instance_url,
+              Canvas.client().instance_url,
               'courses',
               course.id.toString()
             )
