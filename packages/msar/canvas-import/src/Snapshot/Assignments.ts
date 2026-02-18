@@ -60,6 +60,7 @@ export async function hydrate(snapshot: Imported.Data) {
 }
 
 type ToCanvasArgsOptions = {
+  user?: Canvas.Users.User;
   course: Canvas.Courses.Course;
   assignmentGroup?: Canvas.AssignmentGroups.AssignmentGroup;
   assignment: Model;
@@ -67,6 +68,7 @@ type ToCanvasArgsOptions = {
 };
 
 export async function toCanvasArgs({
+  user,
   course,
   assignmentGroup,
   assignment,
@@ -74,7 +76,11 @@ export async function toCanvasArgs({
 }: ToCanvasArgsOptions) {
   // TODO assignment is no longer a pure model, but we don't need to know that
   // @ts-expect-error 2322
-  assignment = await Files.uploadLocalFiles({ course, entry: assignment });
+  assignment = await Files.uploadLocalFiles({
+    user,
+    course,
+    entry: assignment
+  });
   const args: Partial<Canvas.v1.Courses.Assignments.createFormParameters> = {
     'assignment[name]': stripHtml(
       assignment.ShortDescription.split('<br/>').pop() || ''

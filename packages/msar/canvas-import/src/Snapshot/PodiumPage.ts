@@ -6,6 +6,7 @@ import * as Content from './Content/index.js';
 import * as Files from './Files.js';
 
 type ToCanvasArgsOptions = {
+  user?: Canvas.Users.User;
   course: Canvas.Courses.Course;
   section: Imported.Data;
   title: string;
@@ -17,6 +18,7 @@ type ToCanvasArgsOptions = {
 };
 
 export async function toCanvasArgs({
+  user,
   course,
   section,
   title,
@@ -31,6 +33,7 @@ export async function toCanvasArgs({
     // TODO upload only referenced files
     let item: Imported.BulletinBoard.Item | Imported.Topics.Item | undefined =
       (await Files.uploadLocalFiles({
+        user,
         course,
         entry: body[i] as JSONValue
       })) as Imported.Topics.Item | Imported.BulletinBoard.Item;

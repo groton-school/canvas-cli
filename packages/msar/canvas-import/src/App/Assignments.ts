@@ -7,11 +7,12 @@ import { log } from './Courses.js';
 import * as Preferences from './Preferences.js';
 
 type Options = {
+  user?: Canvas.Users.User;
   course: Canvas.Courses.Course;
   section: Imported.Data;
 };
 
-export async function importAssignments({ course, section }: Options) {
+export async function importAssignments({ user, course, section }: Options) {
   const assignments = await Snapshot.Assignments.hydrate(section);
   section.assignment_groups =
     (Preferences.duplicates() === 'update' ? section.assignment_groups : []) ||
@@ -66,6 +67,7 @@ export async function importAssignments({ course, section }: Options) {
 
   for (let order = 0; order < assignments.length; order++) {
     const params = await Snapshot.Assignments.toCanvasArgs({
+      user,
       course,
       assignmentGroup: section.assignment_groups.find(
         (g) => g.blackbaud_id == assignments[order].type_id

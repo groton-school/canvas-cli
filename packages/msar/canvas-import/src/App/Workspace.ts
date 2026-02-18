@@ -2,10 +2,12 @@ import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 
-const SIS_ID = '@msar/canvas-import-workspace';
+/** Common SIS ID for workspace account, term, and user */
+const SIS_ID = '@msar/canvas-import';
 
 let term_id: number | string | undefined = undefined;
 let account_id: number | string | undefined = undefined;
+let user_id: number | string | undefined = undefined;
 
 export async function getTermId(): Promise<
   Canvas.EnrollmentTerms.EnrollmentTerm['id']
@@ -76,4 +78,31 @@ export async function getAccountId(): Promise<Canvas.Accounts.Account['id']> {
     );
   }
   return account_id;
+}
+
+export async function getUserId(): Promise<Canvas.Users.User['id']> {
+  if (!user_id) {
+    let user: Canvas.Users.User | undefined = undefined;
+    try {
+      user = await Canvas.v1.Users.show_user_details({
+        pathParams: { id: `sis_user_id:${encodeURIComponent(SIS_ID)}` }
+      });
+      user_id = user.id;
+    } catch (error) {
+      if (Error.isError(error) && error.message === '404') {
+        user = await Canvas.v1.Accounts.Users.create({
+          pathParams: { account_id: await getAccountId() },
+          params: {
+            'user[name]': '@msar/canvas-import',
+            'pseudonym[unique_id]': SIS_ID,
+            'pseudonym[sis_user_id]': SIS_ID
+          }
+        });
+        user_id = user.id;
+      } else {
+        throw error;
+      }
+    }
+  }
+  return user_id;
 }

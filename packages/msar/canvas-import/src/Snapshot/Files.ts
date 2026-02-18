@@ -3,6 +3,7 @@ import { ArrayElement, JSONValue } from '@battis/typescript-tricks';
 import * as Archive from '@msar/types.archive';
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
+import { CanvasStudio } from '@oauth2-cli/canvas-studio';
 import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 import crypto from 'node:crypto';
@@ -12,6 +13,7 @@ import path from 'node:path';
 import probe from 'probe-image-size';
 import { log } from '../App/Courses.js';
 import { Preferences } from '../App/index.js';
+import * as Workspace from '../App/Workspace.js';
 import * as IndexFile from './IndexFile.js';
 
 export type Annotated = {
@@ -185,6 +187,7 @@ function selectPrimaryFile(
 }
 
 type UploadLocalFilesOptions = {
+  user?: Canvas.Users.User;
   course: Canvas.Courses.Course;
   entry: JSONValue;
   name?: string;
@@ -198,6 +201,7 @@ type UploadLocalFilesOptions = {
  *   see https://groton.instructure.com/courses/936/assignments/4087
  */
 export async function uploadLocalFiles({
+  user,
   course,
   entry,
   name
@@ -261,21 +265,34 @@ export async function uploadLocalFiles({
           course.id.toString(),
           entry.localPath,
           async () => {
-            const file = await Canvas.v1.Courses.Files.upload({
-              pathParams: { course_id: course.id.toString() },
-              file: {
-                filePath: path.join(
-                  path.dirname(IndexFile.path()),
-                  entry.localPath.replace(/^\//, '')
-                )
-              },
-              params
-            });
-            log(
-              course,
-              `Uploaded file ${Colors.path(entry.localPath)} as ${Colors.value(file.display_name)}`
-            );
-            return file;
+            if (path.extname(entry.localPath) === '.mp4') {
+              try {
+                const studioUser = await CanvasStudio.plugin.requestJSON(
+                  `/api/public/v1/users/${user?.id || (await Workspace.getUserId())}`
+                );
+                console.log(studioUser);
+                throw new Error('game over');
+              } catch (error) {
+                console.log(error);
+                throw error;
+              }
+            } else {
+              const file = await Canvas.v1.Courses.Files.upload({
+                pathParams: { course_id: course.id.toString() },
+                file: {
+                  filePath: path.join(
+                    path.dirname(IndexFile.path()),
+                    entry.localPath.replace(/^\//, '')
+                  )
+                },
+                params
+              });
+              log(
+                course,
+                `Uploaded file ${Colors.path(entry.localPath)} as ${Colors.value(file.display_name)}`
+              );
+              return file;
+            }
           }
         );
         (entry as Imported.Annotation).canvas = {
@@ -296,12 +313,13 @@ export async function uploadLocalFiles({
   if (Array.isArray(entry)) {
     result = [];
     for (const elt of entry) {
-      result.push(await uploadLocalFiles({ course, entry: elt }));
+      result.push(await uploadLocalFiles({ user, course, entry: elt }));
     }
   } else {
     result = {};
     for (const key in entry) {
       result[key] = await uploadLocalFiles({
+        user,
         course,
         entry: entry[key],
         name:
