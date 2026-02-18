@@ -1,4 +1,4 @@
-import * as OAuth2 from '@oauth2-cli/qui-cli/dist/OAuth2.js';
+import * as OAuth2 from '@oauth2-cli/qui-cli/dist/Unregistered.js';
 import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 import fs from 'node:fs';
@@ -18,13 +18,6 @@ export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin {
             `${Colors.varName('STUDIO_REFRESH_TOKEN')}.`
         ]
       },
-      opt: {
-        issuer: 'studioIssuer',
-        client_id: 'studioClientId',
-        client_secret: 'studioClientSecret',
-        scope: 'studioScope',
-        redirect_uri: 'studioRedirectUri'
-      },
       hint: {
         issuer: Colors.quotedValue('"https://example.instructuremedia.com"')
       },
@@ -37,7 +30,8 @@ export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin {
       },
       suppress: {
         authorization_endpoint: true,
-        token_endpoint: true
+        token_endpoint: true,
+        base_url: true
       },
       storage: new OAuth2.Token.EnvironmentStorage('STUDIO_REFRESH_TOKEN')
     });
@@ -69,9 +63,9 @@ export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin {
     return new OAuth2.Client({
       ...options,
       credentials: {
+        ...credentials,
         authorization_endpoint: `${requestish.URL.toString(issuer)}/api/public/oauth/authorize`,
-        token_endpoint: `${requestish.URL.toString(issuer)}/api/public/oauth/token`,
-        ...credentials
+        token_endpoint: `${requestish.URL.toString(issuer)}/api/public/oauth/token`
       },
       inject: {
         ...inject,

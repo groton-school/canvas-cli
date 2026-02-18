@@ -6,19 +6,15 @@ import {
   UploadParams
 } from '@groton/canvas-api.client.base';
 import { isError } from '@groton/canvas-api.utilities';
-import * as OAuth2 from '@oauth2-cli/qui-cli/dist/OAuth2.js';
+import * as OAuth2 from '@oauth2-cli/qui-cli/dist/Unregistered.js';
 import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 import fs from 'node:fs';
 import * as requestish from 'requestish';
 
-type Credentials = OAuth2.Credentials.Combined & { issuer: requestish.URL.ish };
+export type Credentials = OAuth2.Credentials & { issuer: requestish.URL.ish };
 
-type Options = OAuth2.ClientOptions & {
-  credentials: Credentials;
-};
-
-export class Client extends OAuth2.Client implements Base {
+export class Client extends OAuth2.Client<Credentials> implements Base {
   public get instance_url() {
     if (!this.credentials.issuer) {
       throw new Error(
@@ -28,7 +24,7 @@ export class Client extends OAuth2.Client implements Base {
     return requestish.URL.toString(this.credentials.issuer);
   }
 
-  public constructor(options: Options) {
+  public constructor(options: OAuth2.ClientOptions<Credentials>) {
     super(options);
   }
 

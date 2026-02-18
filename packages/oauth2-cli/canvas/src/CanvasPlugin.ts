@@ -1,14 +1,14 @@
 import { init } from '@groton/canvas-api';
-import * as OAuth2 from '@oauth2-cli/qui-cli/dist/OAuth2.js';
+import * as OAuth2 from '@oauth2-cli/qui-cli/dist/Unregistered.js';
 import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import * as requestish from 'requestish';
-import { Client } from './Client.js';
+import { Client, Credentials } from './Client.js';
 
-export class CanvasPlugin extends OAuth2.OAuth2Plugin<Client> {
+export class CanvasPlugin extends OAuth2.OAuth2Plugin<Credentials, Client> {
   public constructor(name = '@oauth2-cli/canvas') {
     super(name);
     this.configure({
@@ -19,13 +19,6 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Client> {
             `token for reuse in the local environment as ` +
             `${Colors.varName('CANVAS_REFRESH_TOKEN')}.`
         ]
-      },
-      opt: {
-        issuer: 'canvasIssuer',
-        client_id: 'canvasClientId',
-        client_secret: 'canvasClientSecret',
-        scope: 'canvasScope',
-        redirect_uri: 'canvasRedirectUri'
       },
       url: {
         client_id:
@@ -43,7 +36,8 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Client> {
       },
       suppress: {
         authorization_endpoint: true,
-        token_endpoint: true
+        token_endpoint: true,
+        base_url: true
       },
       storage: new OAuth2.Token.EnvironmentStorage('CANVAS_REFRESH_TOKEN')
     });
@@ -53,26 +47,17 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Client> {
     credentials,
     inject,
     ...options
-  }: OAuth2.ClientOptions) {
-    const headers = requestish.Headers.from(inject?.headers);
-    if (!headers.has('user-agent')) {
-      const pkg = JSON.parse(
-        fs.readFileSync(
-          path.resolve(import.meta.dirname, '../package.json'),
-          'utf8'
-        )
-      );
-      headers.set(
-        'User-Agent',
-        `@oauth2-cli/canvas/${pkg.version} Node.js/${process.versions.node} ${os.platform()}`
-      );
-    }
+  }: OAuth2.ClientOptions<Credentials>) {
+    const pkg = JSON.parse(
+      fs.readFileSync(
+        path.resolve(import.meta.dirname, '../package.json'),
+        'utf8'
+      )
+    );
+    const headers = requestish.Headers.merge(inject?.headers, {
+      'User-Agent': `@oauth2-cli/canvas/${pkg.version} Node.js/${process.versions.node} ${os.platform()}`
+    });
     const { issuer, ...rest } = credentials;
-    if (!issuer) {
-      throw new Error(
-        `The Canvas client requires an ${Colors.varName('issuer')} URL.`
-      );
-    }
     const client = new Client({
       ...options,
       credentials: {
