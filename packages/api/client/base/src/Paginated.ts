@@ -63,9 +63,9 @@ export async function fetchAllPages<ReturnType>({
     if (response.ok) {
       const page = (await response.json()) as ReturnType;
       if (isError(page)) {
-        throw new Error(
-          `Error: ${JSON.stringify({ endpoint, init, response, error: page })}`
-        );
+        throw new Error('Error', {
+          cause: { endpoint, init, response, error: page }
+        });
       }
       if (Array.isArray(page)) {
         if (pageCallback) {
@@ -90,7 +90,7 @@ export async function fetchAllPages<ReturnType>({
       } catch (_) {
         // ignore failure to parse
       }
-      const details = {
+      const cause = {
         request: {
           url: response.url,
           method: init?.method,
@@ -105,7 +105,9 @@ export async function fetchAllPages<ReturnType>({
         },
         previous_accumulated_pages: result
       };
-      throw new Error(JSON.stringify(details, null, 2));
+      throw new Error(response.status.toString(), {
+        cause
+      });
     }
   } while (Array.isArray(result) && nextEndpoint);
 
