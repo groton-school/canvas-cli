@@ -1,5 +1,0 @@
-{
-  "path": ".",
-  "tag-prefix": "canvas-import-open/",
-  "releaseCommitMessageFormat": "chore: release @msar/canvas-import-open@{{currentTag}}"
-}
