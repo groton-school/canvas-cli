@@ -12,13 +12,22 @@ export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin {
       man: {
         heading: 'Canvas Studio options',
         text: [
+          `Canvas Studio does not permit localhost ` +
+            `${Colors.keyword('redirect_uri')} registration. ` +
+            `${Colors.command('gcrtl')} ` +
+            `(${Colors.url('https://github.com/battis/oauth2-cli/tree/main/packages/gcrtl#readme')}) ` +
+            `or similar forwarding strategies are necessary for CLI ` +
+            `authorization.`,
           `Once authorized, the app will store the Canvas Studio refresh ` +
             `token for reuse in the local environment as ` +
             `${Colors.varName('STUDIO_REFRESH_TOKEN')}.`
         ]
       },
       hint: {
-        issuer: Colors.quotedValue('"https://example.instructuremedia.com"')
+        issuer: Colors.quotedValue('"https://example.instructuremedia.com"'),
+        redirect_uri: Colors.quotedValue(
+          '"https://gcrtl.run.app/http/localhost:3000/redirect"'
+        )
       },
       env: {
         issuer: 'STUDIO_ISSUER',
