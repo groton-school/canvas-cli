@@ -1,7 +1,6 @@
 import { init } from '@groton/canvas-api';
-import * as OAuth2 from '@oauth2-cli/qui-cli/dist/Unregistered.js';
+import * as OAuth2 from '@oauth2-cli/qui-cli/extendable/index.js';
 import { Colors } from '@qui-cli/colors';
-import { Log } from '@qui-cli/log';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -9,7 +8,7 @@ import * as requestish from 'requestish';
 import { Client, Credentials } from './Client.js';
 
 export class CanvasPlugin extends OAuth2.OAuth2Plugin<Credentials, Client> {
-  public constructor(name = '@oauth2-cli/canvas') {
+  public constructor(name = 'Canvas') {
     super(name);
     this.configure({
       man: {
@@ -47,7 +46,7 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Credentials, Client> {
     credentials,
     inject,
     ...options
-  }: OAuth2.ClientOptions<Credentials>) {
+  }: OAuth2.Options<Credentials>) {
     const pkg = JSON.parse(
       fs.readFileSync(
         path.resolve(import.meta.dirname, '../package.json'),
@@ -73,9 +72,5 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Credentials, Client> {
     });
     init(client);
     return client;
-  }
-
-  public run() {
-    Log.info(`Connecting to ${Colors.url(this.client.instance_url)}`);
   }
 }

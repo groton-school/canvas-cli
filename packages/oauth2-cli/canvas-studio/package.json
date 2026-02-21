@@ -32,14 +32,13 @@
   },
   "dependencies": {
     "@battis/import-package-json": "^0.1.7",
-    "@oauth2-cli/qui-cli": "^0.7.2",
+    "@oauth2-cli/qui-cli": "^1.0.1",
     "@qui-cli/colors": "^3.2.3",
-    "requestish": "^0.1.1"
+    "requestish": "^0.1.3"
   },
   "devDependencies": {
     "@1password/sdk": "^0.3.1",
     "@battis/descriptive-types": "^0.2.6",
-    "@qui-cli/log": "^4.0.3",
     "@qui-cli/plugin": "^4.1.0",
     "@tsconfig/node24": "^24.0.4",
     "@types/node": "^24.10.13",
@@ -49,14 +48,7 @@
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "@1password/sdk": "0.3.x",
-    "@qui-cli/log": ">=3",
     "@qui-cli/plugin": ">=3"
-  },
-  "peerDependenciesMeta": {
-    "@1password/sdk": {
-      "optional": true
-    }
   },
   "engines": {
     "node": ">=21"

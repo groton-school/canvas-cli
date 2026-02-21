@@ -1,13 +1,12 @@
-import * as OAuth2 from '@oauth2-cli/qui-cli/dist/Unregistered.js';
+import * as OAuth2 from '@oauth2-cli/qui-cli/extendable/index.js';
 import { Colors } from '@qui-cli/colors';
-import { Log } from '@qui-cli/log';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import * as requestish from 'requestish';
 
 export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin {
-  public constructor(name = '@oauth2-cli/canvas-studio') {
+  public constructor(name = 'Canvas Studio') {
     super(name);
     this.configure({
       man: {
@@ -41,7 +40,7 @@ export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin {
     credentials,
     inject,
     ...options
-  }: OAuth2.ClientOptions) {
+  }: OAuth2.Options) {
     const headers = requestish.Headers.from(inject?.headers);
     if (!headers.has('user-agent')) {
       const pkg = JSON.parse(
@@ -72,9 +71,5 @@ export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin {
         headers
       }
     });
-  }
-
-  public run() {
-    Log.info(`Connecting to ${Colors.url(this.instance_url)}`);
   }
 }

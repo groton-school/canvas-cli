@@ -6,7 +6,7 @@ import {
   UploadParams
 } from '@groton/canvas-api.client.base';
 import { isError } from '@groton/canvas-api.utilities';
-import * as OAuth2 from '@oauth2-cli/qui-cli/dist/Unregistered.js';
+import * as OAuth2 from '@oauth2-cli/qui-cli/extendable/index.js';
 import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 import fs from 'node:fs';
@@ -24,7 +24,7 @@ export class Client extends OAuth2.Client<Credentials> implements Base {
     return requestish.URL.toString(this.credentials.issuer);
   }
 
-  public constructor(options: OAuth2.ClientOptions<Credentials>) {
+  public constructor(options: OAuth2.Options<Credentials>) {
     super(options);
   }
 
