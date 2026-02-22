@@ -27,7 +27,7 @@
   "dependencies": {
     "@1password/sdk": "^0.3.1",
     "@groton/colors": "^0.4.2",
-    "@inquirer/prompts": "^7.10.1",
+    "@inquirer/prompts": "^8.2.1",
     "@oauth2-cli/canvas": "workspace:*",
     "@qui-cli/colors": "^3.2.3",
     "@qui-cli/core": "^6.0.3",
