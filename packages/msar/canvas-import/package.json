@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@1password/sdk": "^0.3.1",
-    "@inquirer/prompts": "^7.10.1",
+    "@inquirer/prompts": "^8.2.1",
     "@msar/output": "^0.1.8",
     "@msar/types.archive": "^0.2.0",
     "@msar/types.import": "workspace:*",
