@@ -70,7 +70,10 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Credentials, Client> {
         headers
       }
     });
-    init(client);
     return client;
+  }
+
+  public run() {
+    init(this.client);
   }
 }
