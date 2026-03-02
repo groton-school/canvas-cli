@@ -25,6 +25,7 @@ export function configure(config: Configuration = {}) {
 
 export function options(): Plugin.Options {
   return {
+    man: [{ level: 1, text: 'Course colors options' }],
     flag: {
       overwrite: {
         description: 'Whether or not to overwrite existing colors',
@@ -74,11 +75,6 @@ export async function run() {
     PR: GrotonColors.PurpleOnWhite
   };
 
-  const colorCache: Record<
-    Canvas.Enrollments.Enrollment['sis_section_id'],
-    Canvas.v1.Users.Colors.updateFormParameters['hexcode']
-  > = {};
-
   // TODO /users/{id}/colors list return type
   type CustomColors = { custom_colors: Record<string, string> };
 
@@ -94,79 +90,67 @@ export async function run() {
     return block;
   }
 
-  try {
-    const per_page = 100;
-    const courses = await await Canvas.v1.Accounts.Courses.list({
-      pathParams: { account_id },
-      searchParams: { enrollment_term_id: term_id, per_page }
-    });
+  const per_page = 100;
+  const courses = await Canvas.v1.Accounts.Courses.list({
+    pathParams: { account_id },
+    searchParams: { enrollment_term_id: term_id, per_page }
+  });
 
-    function colorOf(enrollment: Canvas.Enrollments.Enrollment) {
-      const course = courses.find(
-        (course) => course.sis_course_id === enrollment.sis_section_id
-      );
-      if (course) {
-        if (!(course.sis_course_id in colorCache)) {
-          const block = blockFrom(course);
-          if (block && block in colors) {
-            colorCache[course.sis_course_id] =
-              colors[block as keyof typeof colors];
+  for (const course of courses) {
+    const spinner = ora(course.name).start();
+    let applied = 0;
+    let overwritten = 0;
+    const block = blockFrom(course);
+    const asset_string = `course_${course.id}`;
+    const hexcode =
+      block && block in colors
+        ? colors[block as keyof typeof colors]
+        : undefined;
+    Log.debug({ course: course.name, block, asset_string, hexcode });
+    try {
+      if (hexcode) {
+        const enrollments = await Canvas.v1.Courses.Enrollments.list({
+          pathParams: { course_id: course.id },
+          searchParams: { per_page }
+        });
+        for (const enrollment of enrollments) {
+          if (!(enrollment.user_id in userCache)) {
+            userCache[enrollment.user_id] = (await Canvas.v1.Users.Colors.list({
+              pathParams: { id: enrollment.user_id }
+            })) as CustomColors;
+          }
+          if (
+            (!userCache[enrollment.user_id].custom_colors[asset_string] ||
+              overwrite) &&
+            hexcode !==
+              userCache[enrollment.user_id].custom_colors[asset_string]
+          ) {
+            await Canvas.v1.Users.Colors.update({
+              pathParams: {
+                id: enrollment.user_id,
+                asset_string
+              },
+              params: { hexcode }
+            });
+            applied++;
+            overwritten += userCache[enrollment.user_id].custom_colors[
+              asset_string
+            ]
+              ? 1
+              : 0;
           }
         }
-        return colorCache[course.sis_course_id];
-      }
-      return undefined;
-    }
 
-    for (const course of courses) {
-      const spinner = ora(course.name).start();
-      let applied = 0;
-      const block = blockFrom(course);
-      const asset_string = `course_${course.id}`;
-      try {
-        if (block && block in colors) {
-          const enrollments = await Canvas.v1.Courses.Enrollments.list({
-            pathParams: { course_id: course.id },
-            searchParams: { per_page }
-          });
-          for (const enrollment of enrollments) {
-            const hexcode = colorOf(enrollment);
-            if (hexcode) {
-              if (!(enrollment.user_id in userCache)) {
-                userCache[enrollment.user_id] =
-                  (await Canvas.v1.Users.Colors.list({
-                    pathParams: { id: enrollment.user_id }
-                  })) as CustomColors;
-              }
-              if (
-                hexcode !==
-                userCache[enrollment.user_id].custom_colors[asset_string]
-              ) {
-                await Canvas.v1.Users.Colors.update({
-                  pathParams: {
-                    id: enrollment.user_id,
-                    asset_string
-                  },
-                  params: { hexcode }
-                });
-                applied++;
-              }
-            }
-          }
-
-          spinner.succeed(
-            `${applied}/${enrollments.length} users required updates in ${course.name} ${Colors.url(`${Canvas.client().instance_url}/courses/${course.id}`)}`
-          );
-        } else {
-          spinner.warn(
-            `${course.name} does not appear to not meet in a color block`
-          );
-        }
-      } catch (error) {
-        spinner.fail(Colors.error((error as Error).message));
+        spinner.succeed(
+          `Updated ${applied}/${enrollments.length} users ${overwrite ? `(overwriting ${overwritten}) ` : ''}in ${course.name}\n  ${Colors.url(`${Canvas.client().instance_url}/courses/${course.id}`)}`
+        );
+      } else {
+        spinner.warn(
+          `${course.name} does not appear to not meet in a color block`
+        );
       }
+    } catch (error) {
+      spinner.fail(Colors.error((error as Error).message));
     }
-  } catch (error) {
-    Log.error({ error });
   }
 }
