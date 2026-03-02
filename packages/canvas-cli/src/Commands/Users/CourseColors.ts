@@ -113,37 +113,37 @@ export async function run() {
           pathParams: { course_id: course.id },
           searchParams: { per_page }
         });
-        for (const enrollment of enrollments) {
-          if (!(enrollment.user_id in userCache)) {
-            userCache[enrollment.user_id] = (await Canvas.v1.Users.Colors.list({
-              pathParams: { id: enrollment.user_id }
-            })) as CustomColors;
+        for (let i = 0; i < enrollments.length; i++) {
+          if (!(enrollments[i].user_id in userCache)) {
+            userCache[enrollments[i].user_id] =
+              (await Canvas.v1.Users.Colors.list({
+                pathParams: { id: enrollments[i].user_id }
+              })) as CustomColors;
           }
           if (
-            (!userCache[enrollment.user_id].custom_colors[asset_string] ||
+            (!userCache[enrollments[i].user_id].custom_colors[asset_string] ||
               overwrite) &&
             hexcode !==
-              userCache[enrollment.user_id].custom_colors[asset_string]
+              userCache[enrollments[i].user_id].custom_colors[asset_string]
           ) {
             await Canvas.v1.Users.Colors.update({
               pathParams: {
-                id: enrollment.user_id,
+                id: enrollments[i].user_id,
                 asset_string
               },
               params: { hexcode }
             });
             applied++;
-            overwritten += userCache[enrollment.user_id].custom_colors[
+            overwritten += userCache[enrollments[i].user_id].custom_colors[
               asset_string
             ]
               ? 1
               : 0;
           }
+          spinner.text = `${course.name}: Updated ${applied}/${i + 1} users ${overwrite && overwritten > 0 ? `(overwriting ${overwritten}) ` : ''}`;
         }
 
-        spinner.succeed(
-          `Updated ${applied}/${enrollments.length} users ${overwrite ? `(overwriting ${overwritten}) ` : ''}in ${course.name}\n  ${Colors.url(`${Canvas.client().instance_url}/courses/${course.id}`)}`
-        );
+        spinner.succeed();
       } else {
         spinner.warn(
           `${course.name} does not appear to not meet in a color block`
