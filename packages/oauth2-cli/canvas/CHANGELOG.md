@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.6.0](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/canvas/0.5.0...oauth2-cli/canvas/0.6.0) (2026-03-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* update to @oauth2-cli/qui-cli@1.x
+
+### Features
+
+* show authorized Canvas instance on start ([873d84a](https://github.com/groton-school/canvas-cli/commit/873d84a02c6257af2639d4cda0bb411b2083dffe))
+
+
+### Bug Fixes
+
+* await instantiation of client before initialize it ([3bb136b](https://github.com/groton-school/canvas-cli/commit/3bb136be00092bf5d4308b5678f5fb0988e0c95e))
+* update to @oauth2-cli/qui-cli@1.x ([828cca7](https://github.com/groton-school/canvas-cli/commit/828cca786941a364e65003208bc31803d1ac8de9))
+
 ## [0.5.0](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/canvas/0.4.4...oauth2-cli/canvas/0.5.0) (2026-02-18)
 
 
