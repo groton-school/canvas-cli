@@ -5,7 +5,7 @@ import { Output } from '@msar/output';
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
-import { Core, Positionals } from '@qui-cli/core';
+import { Positionals } from '@qui-cli/core';
 import { Env } from '@qui-cli/env';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
@@ -23,8 +23,6 @@ import * as Preferences from './Preferences.js';
 import * as Workspace from './Workspace.js';
 
 export * as Preferences from './Preferences.js';
-
-await Core.configure({ core: { requirePositionals: true } });
 
 export type Configuration = Plugin.Configuration & {
   blackbaudInstanceId?: string;
@@ -61,7 +59,7 @@ export function configure(config: Configuration = {}) {
 }
 
 export function options(): Plugin.Options {
-  Positionals.configure({ min: 0, max: 0 });
+  Positionals.allowOnlyNamedArgs();
   Positionals.require({
     snapshotPath: {
       description: `Path to a snapshot index JSON file`
