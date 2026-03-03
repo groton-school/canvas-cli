@@ -374,8 +374,8 @@ importers:
         specifier: ^5.6.0
         version: 5.6.0
       ejs:
-        specifier: ^3.1.10
-        version: 3.1.10
+        specifier: ^4.0.1
+        version: 4.0.1
       open:
         specifier: ^10.2.0
         version: 10.2.0
@@ -466,8 +466,8 @@ importers:
         specifier: ^7.0.0
         version: 7.0.0
       ejs:
-        specifier: ^3.1.10
-        version: 3.1.10
+        specifier: ^4.0.1
+        version: 4.0.1
       npm-run-all:
         specifier: ^4.1.5
         version: 4.1.5
@@ -491,7 +491,7 @@ importers:
         version: link:../../api/utilities
       '@oauth2-cli/qui-cli':
         specifier: ^1.0.3
-        version: 1.0.3(@qui-cli/env@5.1.1(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.3)(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(@qui-cli/shell@3.1.3(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(ejs@3.1.10)
+        version: 1.0.3(@qui-cli/env@5.1.1(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.3)(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(@qui-cli/shell@3.1.3(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(ejs@4.0.1)
       '@qui-cli/colors':
         specifier: ^3.2.3
         version: 3.2.3
@@ -543,7 +543,7 @@ importers:
         version: 0.1.7
       '@oauth2-cli/qui-cli':
         specifier: ^1.0.3
-        version: 1.0.3(@qui-cli/env@5.1.1(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.3)(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(@qui-cli/shell@3.1.3(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(ejs@3.1.10)
+        version: 1.0.3(@qui-cli/env@5.1.1(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.3)(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(@qui-cli/shell@3.1.3(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(ejs@4.0.1)
       '@qui-cli/colors':
         specifier: ^3.2.3
         version: 3.2.3
@@ -3582,6 +3582,11 @@ packages:
   ejs@3.1.10:
     resolution: {integrity: sha512-UeJmFfOrAQS8OJWPZ4qtgHyWExa088/MtK5UEyoJGFH67cDEXkZSviOiKRCZ4Xij0zxI3JECgYs3oKx+AizQBA==}
     engines: {node: '>=0.10.0'}
+    hasBin: true
+
+  ejs@4.0.1:
+    resolution: {integrity: sha512-krvQtxc0btwSm/nvnt1UpnaFDFVJpJ0fdckmALpCgShsr/iGYHTnJiUliZTgmzq/UxTX33TtOQVKaNigMQp/6Q==}
+    engines: {node: '>=0.12.18'}
     hasBin: true
 
   electron-to-chromium@1.5.302:
@@ -8750,7 +8755,7 @@ snapshots:
 
   '@jest/pattern@30.0.1':
     dependencies:
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
       jest-regex-util: 30.0.1
 
   '@jest/schemas@29.6.3':
@@ -8767,7 +8772,7 @@ snapshots:
       '@jest/schemas': 30.0.5
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
       '@types/yargs': 17.0.35
       chalk: 4.1.2
 
@@ -9222,13 +9227,13 @@ snapshots:
   '@nx/nx-win32-x64-msvc@20.8.4':
     optional: true
 
-  '@oauth2-cli/qui-cli@1.0.3(@qui-cli/env@5.1.1(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.3)(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(@qui-cli/shell@3.1.3(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(ejs@3.1.10)':
+  '@oauth2-cli/qui-cli@1.0.3(@qui-cli/env@5.1.1(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.3)(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(@qui-cli/shell@3.1.3(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)))(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(ejs@4.0.1)':
     dependencies:
       '@qui-cli/colors': 3.2.3
       '@qui-cli/env': 5.1.1(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.3)(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))(@qui-cli/shell@3.1.3(@qui-cli/log@4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0)))(@qui-cli/plugin@4.1.0))
       '@qui-cli/log': 4.0.3(@qui-cli/plugin@4.1.0)(@qui-cli/root@3.1.0(@qui-cli/plugin@4.1.0))
       '@qui-cli/plugin': 4.1.0
-      oauth2-cli: 1.0.2(ejs@3.1.10)
+      oauth2-cli: 1.0.2(ejs@4.0.1)
       requestish: 0.1.3
     transitivePeerDependencies:
       - ejs
@@ -9673,20 +9678,20 @@ snapshots:
   '@types/body-parser@1.19.6':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
 
   '@types/bonjour@3.5.13':
     dependencies:
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
 
   '@types/connect-history-api-fallback@1.5.4':
     dependencies:
       '@types/express-serve-static-core': 4.19.8
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
 
   '@types/debug@4.1.12':
     dependencies:
@@ -9708,7 +9713,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.8':
     dependencies:
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
       '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 1.2.1
@@ -9726,7 +9731,7 @@ snapshots:
 
   '@types/http-proxy@1.17.17':
     dependencies:
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 
@@ -9742,7 +9747,7 @@ snapshots:
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
 
   '@types/lodash-es@4.17.12':
     dependencies:
@@ -9789,18 +9794,18 @@ snapshots:
 
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
 
   '@types/retry@0.12.2': {}
 
   '@types/send@0.17.6':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
 
   '@types/send@1.2.1':
     dependencies:
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
 
   '@types/serve-index@1.9.4':
     dependencies:
@@ -9809,12 +9814,12 @@ snapshots:
   '@types/serve-static@1.15.10':
     dependencies:
       '@types/http-errors': 2.0.5
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
       '@types/send': 0.17.6
 
   '@types/sockjs@0.3.36':
     dependencies:
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
 
   '@types/triple-beam@1.3.5': {}
 
@@ -9822,7 +9827,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
 
   '@types/yargs-parser@21.0.3': {}
 
@@ -11324,6 +11329,10 @@ snapshots:
     dependencies:
       jake: 10.9.4
 
+  ejs@4.0.1:
+    dependencies:
+      jake: 10.9.4
+
   electron-to-chromium@1.5.302: {}
 
   email-validator@2.0.4: {}
@@ -12808,7 +12817,7 @@ snapshots:
   jest-util@30.2.0:
     dependencies:
       '@jest/types': 30.2.0
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
       chalk: 4.1.2
       ci-info: 4.4.0
       graceful-fs: 4.2.11
@@ -12816,13 +12825,13 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
   jest-worker@30.2.0:
     dependencies:
-      '@types/node': 25.3.3
+      '@types/node': 24.11.0
       '@ungap/structured-clone': 1.3.0
       jest-util: 30.2.0
       merge-stream: 2.0.0
@@ -13925,11 +13934,11 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  oauth2-cli@1.0.2(ejs@3.1.10):
+  oauth2-cli@1.0.2(ejs@4.0.1):
     dependencies:
       '@qui-cli/colors': 3.2.3
       async-mutex: 0.5.0
-      ejs: 3.1.10
+      ejs: 4.0.1
       express: 5.2.1
       gcrtl: 0.1.7
       oauth4webapi: 3.8.5
