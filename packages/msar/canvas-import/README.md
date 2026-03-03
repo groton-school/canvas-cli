@@ -83,31 +83,31 @@ Skip forward to a specific Group ID in the snapshot index
 
 ### Canvas Studio options
 
-The OpenID *issuer* URL is set from the environment variable `STUDIO_ISSUER`, if present. The `STUDIO_ISSUER` is also used as a base URL for any relative URL in API requests, unless `BASE_URL` is defined. (e.g. `"https://example.instructuremedia.com"`)
+The OpenID **issuer** URL is set from the environment variable `STUDIO_ISSUER`, if present. The `STUDIO_ISSUER` is also used as a base URL for any relative URL in API requests, unless `BASE_URL` is defined. (e.g. `"https://example.instructuremedia.com"`)
 
-The OAuth 2.0 *client_id* is set from the environment variable `STUDIO_CLIENT_ID`, if present.
+The OAuth 2.0 **client_id** is set from the environment variable `STUDIO_CLIENT_ID`, if present.
 
-The OAuth 2.0 *client_secret* is set from the environment variable `STUDIO_CLIENT_SECRET`, if present.
+The OAuth 2.0 **client_secret** is set from the environment variable `STUDIO_CLIENT_SECRET`, if present.
 
-The OAuth 2.0 *scope* is set from the environment variable `STUDIO_SCOPE`, if present.
+The OAuth 2.0 **scope** is set from the environment variable `STUDIO_SCOPE`, if present.
 
-The OAuth 2.0 *redirect_uri*, which must at least redirect to `localhost`, is set from the environment variable `STUDIO_REDIRECT_URI`, if present. (e.g. `"https://gcrtl.run.app/http/localhost:3000/redirect"`)
+The OAuth 2.0 **redirect_uri**, which must at least redirect to `localhost`, is set from the environment variable `STUDIO_REDIRECT_URI`, if present. (e.g. `"https://gcrtl.run.app/http/localhost:3000/redirect"`)
 
-Canvas Studio does not permit localhost *redirect_uri* registration. `gcrtl` (`https://github.com/battis/oauth2-cli/tree/main/packages/gcrtl#readme`) or similar forwarding strategies are necessary for CLI authorization.
+Canvas Studio does not permit localhost **redirect_uri** registration. `gcrtl` (`https://github.com/battis/oauth2-cli/tree/main/packages/gcrtl#readme`) or similar forwarding strategies are necessary for CLI authorization.
 
 Once authorized, the app will store the Canvas Studio refresh token for reuse in the local environment as `STUDIO_REFRESH_TOKEN`.
 
 ### Canvas options
 
-The OpenID *issuer* URL is set from the environment variable `CANVAS_ISSUER`, if present. The `CANVAS_ISSUER` is also used as a base URL for any relative URL in API requests, unless `BASE_URL` is defined. (e.g. `"https://example.instructure.com"`)
+The OpenID **issuer** URL is set from the environment variable `CANVAS_ISSUER`, if present. The `CANVAS_ISSUER` is also used as a base URL for any relative URL in API requests, unless `BASE_URL` is defined. (e.g. `"https://example.instructure.com"`)
 
-The OAuth 2.0 *client_id* is set from the environment variable `CANVAS_CLIENT_ID`, if present. See `https://developerdocs.instructure.com/services/canvas/oauth2/file.oauth#oauth2-flow-0` for more information.
+The OAuth 2.0 **client_id** is set from the environment variable `CANVAS_CLIENT_ID`, if present. See `https://developerdocs.instructure.com/services/canvas/oauth2/file.oauth#oauth2-flow-0` for more information.
 
-The OAuth 2.0 *client_secret* is set from the environment variable `CANVAS_CLIENT_SECRET`, if present.
+The OAuth 2.0 **client_secret** is set from the environment variable `CANVAS_CLIENT_SECRET`, if present.
 
-The OAuth 2.0 *scope* is set from the environment variable `CANVAS_SCOPE`, if present.
+The OAuth 2.0 **scope** is set from the environment variable `CANVAS_SCOPE`, if present.
 
-The OAuth 2.0 *redirect_uri*, which must at least redirect to `localhost`, is set from the environment variable `CANVAS_REDIRECT_URI`, if present. (e.g. `"http://localhost:3000/redirect"`)
+The OAuth 2.0 **redirect_uri**, which must at least redirect to `localhost`, is set from the environment variable `CANVAS_REDIRECT_URI`, if present. (e.g. `"http://localhost:3000/redirect"`)
 
 Once authorized, the app will store the Canvas refresh token for reuse in the local environment as `CANVAS_REFRESH_TOKEN`.
 
