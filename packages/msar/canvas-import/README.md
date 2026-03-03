@@ -20,7 +20,7 @@
 ## Usage:
 
 ```bash
-  canvas-import -h --o=<outputPath> --assignments --bulletinBoard --topics --skipTeacherless --pretty --commands --silent --logging --ignoreErrors --logRequests --blackbaudInstanceId=<`###`> --termsPath=<`"path/to/terms.csv"`> --departmentAccountMapPath=<`"path/to/dept-acct-map.csv"`> --coursesWithDepartmentsPath=<`"path/to/courses-dept.csv"`> --sisIdMapPath=<`"path/to/sis-id-map.csv"`> --duplicates=<overwrite|update|reset|skip> --skipTo=<skipTo> --opAccount=<example.1password.com> --opItem=<1Password unique identifier> --opToken=<token value> --logFilePath=<logFilePath> --stdoutLevel=<all|trace|debug|info|warning|error|fatal|off> --fileLevel=<all|trace|debug|info|warning|error|fatal|off> `snapshotPath`
+  canvas-import -h --o=<outputPath> --assignments --bulletinBoard --topics --skipTeacherless --pretty --commands --silent --logging --ignoreErrors --logRequests --blackbaudInstanceId=<`###`> --termsPath=<`"path/to/terms.csv"`> --departmentAccountMapPath=<`"path/to/dept-acct-map.csv"`> --coursesWithDepartmentsPath=<`"path/to/courses-dept.csv"`> --sisIdMapPath=<`"path/to/sis-id-map.csv"`> --duplicates=<overwrite|update|reset|skip> --prefix=<`"cls"`> --skipTo=<skipTo> --opAccount=<example.1password.com> --opItem=<1Password unique identifier> --opToken=<token value> --logFilePath=<logFilePath> --stdoutLevel=<all|trace|debug|info|warning|error|fatal|off> --fileLevel=<all|trace|debug|info|warning|error|fatal|off> `snapshotPath`
 ```
 
 ## Arguments
@@ -76,6 +76,10 @@ Optional path to SIS ID Map CSV file, must contain at least `AssociationId` colu
 #### `--duplicates=<overwrite|update|reset|skip>`
 
 Specify a duplicate course handling option
+
+#### `--prefix=<`"cls"`>`
+
+SIS course ID prefixes to include in import -- normally all courses would be included. Can be set multiple times
 
 #### `--skipTo=<n>`
 

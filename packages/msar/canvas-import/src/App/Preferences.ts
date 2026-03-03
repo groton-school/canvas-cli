@@ -61,3 +61,13 @@ export function setSkipTeacherless(value?: boolean) {
 export function skipTeacherless() {
   return _skipTeacherless;
 }
+
+let _prefixes: string[] | undefined = undefined;
+
+export function setPrefixes(value?: string[]) {
+  _prefixes = hydrate(value, _prefixes);
+}
+
+export function prefixes() {
+  return _prefixes;
+}
