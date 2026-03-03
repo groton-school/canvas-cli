@@ -86,8 +86,8 @@ importers:
         specifier: ^24.0.4
         version: 24.0.4
       '@types/node':
-        specifier: ^24.11.0
-        version: 24.11.0
+        specifier: ^25.3.3
+        version: 25.3.3
       commit-and-tag-version:
         specifier: ^12.6.1
         version: 12.6.1
@@ -205,8 +205,8 @@ importers:
         specifier: ^24.0.4
         version: 24.0.4
       '@types/node':
-        specifier: ^24.11.0
-        version: 24.11.0
+        specifier: ^25.3.3
+        version: 25.3.3
       commit-and-tag-version:
         specifier: ^12.6.1
         version: 12.6.1
@@ -521,8 +521,8 @@ importers:
         specifier: ^24.0.4
         version: 24.0.4
       '@types/node':
-        specifier: ^24.11.0
-        version: 24.11.0
+        specifier: ^25.3.3
+        version: 25.3.3
       commit-and-tag-version:
         specifier: ^12.6.1
         version: 12.6.1
@@ -564,8 +564,8 @@ importers:
         specifier: ^24.0.4
         version: 24.0.4
       '@types/node':
-        specifier: ^24.11.0
-        version: 24.11.0
+        specifier: ^25.3.3
+        version: 25.3.3
       commit-and-tag-version:
         specifier: ^12.6.1
         version: 12.6.1
@@ -2183,9 +2183,6 @@ packages:
 
   '@types/needle@3.3.0':
     resolution: {integrity: sha512-UFIuc1gdyzAqeVUYpSL+cliw2MmU/ZUhVZKE7Zo4wPbgc8hbljeKSnn6ls6iG8r5jpegPXLUIhJ+Wb2kLVs8cg==}
-
-  '@types/node@24.11.0':
-    resolution: {integrity: sha512-fPxQqz4VTgPI/IQ+lj9r0h+fDR66bzoeMGHp8ASee+32OSGIkeASsoZuJixsQoVef1QJbeubcPBxKk22QVoWdw==}
 
   '@types/node@25.3.3':
     resolution: {integrity: sha512-DpzbrH7wIcBaJibpKo9nnSQL0MTRdnWttGyE5haGwK86xgMOkFLp7vEyfQPGLOJh5wNYiJ3V9PmUMDhV9u8kkQ==}
@@ -7566,9 +7563,6 @@ packages:
   unbzip2-stream@1.4.3:
     resolution: {integrity: sha512-mlExGW4w71ebDJviH16lQLtZS32VKqsSfk80GCfUlwT/4/hNRFsoscrF/c++9xinkMzECL1uL9DDwXqFWkruPg==}
 
-  undici-types@7.16.0:
-    resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
-
   undici-types@7.18.2:
     resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
 
@@ -9765,10 +9759,6 @@ snapshots:
   '@types/needle@3.3.0':
     dependencies:
       '@types/node': 25.3.3
-
-  '@types/node@24.11.0':
-    dependencies:
-      undici-types: 7.16.0
 
   '@types/node@25.3.3':
     dependencies:
@@ -15986,8 +15976,6 @@ snapshots:
     dependencies:
       buffer: 5.7.1
       through: 2.3.8
-
-  undici-types@7.16.0: {}
 
   undici-types@7.18.2: {}
 
