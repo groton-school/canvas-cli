@@ -4,6 +4,7 @@ import { Colors } from '@qui-cli/colors';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import ora from 'ora';
 import * as requestish from 'requestish';
 import { Client, Credentials } from './Client.js';
 
@@ -73,7 +74,17 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Credentials, Client> {
     return client;
   }
 
-  public run() {
+  public async run() {
+    const spinner = ora(`Authorizing Canvas access`).start();
+    if (!(await this.client.isAuthorized())) {
+      spinner.stop();
+      await this.client.authorize();
+    }
     init(this.client);
+    if (spinner.isSpinning) {
+      spinner.succeed(
+        `Canvas authorization complete for ${Colors.url(this.client.instance_url)}`
+      );
+    }
   }
 }
