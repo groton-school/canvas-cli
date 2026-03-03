@@ -62,8 +62,14 @@ export class CanvasPlugin extends OAuth2.OAuth2Plugin<Credentials, Client> {
       ...options,
       credentials: {
         issuer,
-        authorization_endpoint: `${requestish.URL.toString(issuer)}/login/oauth2/auth`,
-        token_endpoint: `${requestish.URL.toString(issuer)}/login/oauth2/token`,
+        authorization_endpoint: path.join(
+          requestish.URL.toString(issuer),
+          'login/oauth2/auth'
+        ),
+        token_endpoint: path.join(
+          requestish.URL.toString(issuer),
+          'login/oauth2/token'
+        ),
         ...rest
       },
       inject: {
