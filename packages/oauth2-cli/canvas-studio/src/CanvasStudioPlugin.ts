@@ -5,7 +5,9 @@ import os from 'node:os';
 import path from 'node:path';
 import * as requestish from 'requestish';
 
-export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin {
+export type Credentials = OAuth2.Credentials & { issuer: requestish.URL.ish };
+
+export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin<Credentials> {
   public constructor(name = 'Canvas Studio') {
     super(name);
     this.configure({
@@ -49,7 +51,7 @@ export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin {
     credentials,
     inject,
     ...options
-  }: OAuth2.Options) {
+  }: OAuth2.Options<Credentials>) {
     const headers = requestish.Headers.from(inject?.headers);
     if (!headers.has('user-agent')) {
       const pkg = JSON.parse(
