@@ -1,4 +1,10 @@
-import { DateTimeString, PathString } from '@battis/descriptive-types';
+import {
+  DateString,
+  DateTimeString,
+  EmailString,
+  PathString,
+  URLString
+} from '@battis/descriptive-types';
 import { ArrayElement, JSONValue } from '@battis/typescript-tricks';
 import * as Archive from '@msar/types.archive';
 import * as Imported from '@msar/types.import';
@@ -9,6 +15,7 @@ import { Log } from '@qui-cli/log';
 import crypto from 'node:crypto';
 import { EventEmitter } from 'node:events';
 import fs from 'node:fs';
+import https from 'node:https';
 import path from 'node:path';
 import probe from 'probe-image-size';
 import { log } from '../App/Courses.js';
@@ -36,7 +43,7 @@ type ToCanvasArgsOptions = {
 const AWAITING = true;
 const cache: Record<
   string,
-  Record<string, Canvas.Files.File | typeof AWAITING>
+  Record<string, Canvas.Files.File | Media | typeof AWAITING>
 > = {};
 const ready = new EventEmitter();
 ready.setMaxListeners(1000);
@@ -44,8 +51,8 @@ ready.setMaxListeners(1000);
 async function getCached(
   course_id: string,
   localPath: string,
-  uploader: () => Promise<Canvas.Files.File>
-): Promise<Canvas.Files.File> {
+  uploader: () => Promise<Canvas.Files.File | Media>
+): Promise<Canvas.Files.File | Media> {
   if (!(course_id in cache)) {
     cache[course_id] = {};
   }
@@ -186,6 +193,58 @@ function selectPrimaryFile(
   }
 }
 
+type StudioUser = {
+  id: number;
+  full_name: string;
+  display_name: string;
+  email: EmailString;
+  role_names?: (
+    | 'Admin'
+    | 'Teacher'
+    | 'Student'
+    | 'Observer'
+    | 'Subaccount admin'
+  )[];
+};
+
+type Media = {
+  id: number;
+  title: string;
+  description: string;
+  duration: number;
+  created_at: DateTimeString<'ISO'>;
+  last_viewed: DateString;
+  last_viewed_by_student: DateString;
+  thumbnail_url: URLString;
+  transcoding_status: string;
+  owner: StudioUser;
+  size: number;
+  source: string;
+  embed_id: string;
+  lti_launch_id: string;
+  archived_at: DateTimeString<'ISO'>;
+};
+
+const studioUsers: Record<Canvas.Users.User['id'], StudioUser> = {};
+const studioCourses: Canvas.Courses.Course['id'][] = [];
+
+async function getStudioUser(user?: Canvas.Users.User) {
+  if (!user) {
+    user = await Workspace.getUser();
+  }
+  if (!(user.id in studioUsers)) {
+    let studioUser: StudioUser | undefined = undefined;
+    while (!studioUser) {
+      const response = (await CanvasStudio.plugin.requestJSON(
+        `/api/public/v1/users/search?email=${encodeURIComponent(user.email)}`
+      )) as { users: StudioUser[] };
+      studioUser = response.users.shift();
+    }
+    studioUsers[user.id] = studioUser;
+  }
+  return studioUsers[user.id];
+}
+
 type UploadLocalFilesOptions = {
   user?: Canvas.Users.User;
   course: Canvas.Courses.Course;
@@ -266,16 +325,54 @@ export async function uploadLocalFiles({
           entry.localPath,
           async () => {
             if (path.extname(entry.localPath) === '.mp4') {
-              try {
-                const studioUser = await CanvasStudio.plugin.requestJSON(
-                  `/api/public/v1/users/${user?.id || (await Workspace.getUserId())}`
+              const owner = await getStudioUser(
+                user || (await Workspace.getUser())
+              );
+              const { upload } = (await CanvasStudio.plugin.client.requestJSON(
+                `/api/public/v1/media/uploads`,
+                'POST',
+                { user_id: '3' /* FIXME owner.id*/ }
+              )) as { upload: { id: number; url: string } };
+              const filePath = path.join(
+                path.dirname(IndexFile.path()),
+                entry.localPath.replace(/^\//, '')
+              );
+              await new Promise((resolve, reject) => {
+                fs.createReadStream(filePath).pipe(
+                  https
+                    .request(upload.url, {
+                      method: 'PUT',
+                      headers: {
+                        'content-type': 'video/mp4',
+                        'content-length': fs.statSync(filePath).size
+                      }
+                    })
+                    .on('information', Log.debug)
+                    .on('response', (res) =>
+                      Log.debug(
+                        `Canvas studio upload response:\n${Log.syntaxColor({
+                          statusCode: res.statusCode,
+                          statusMessage: res.statusMessage,
+                          headers: res.headers
+                        })}`
+                      )
+                    )
+                    .on('error', reject)
+                    .on('close', resolve)
                 );
-                console.log(studioUser);
-                throw new Error('game over');
-              } catch (error) {
-                console.log(error);
-                throw error;
-              }
+              });
+              const { media } = (await CanvasStudio.plugin.client.requestJSON(
+                `/api/public/v1/media/uploads/${upload.id}/complete`,
+                'POST',
+                {
+                  title: entry.filename,
+                  description:
+                    'ShortDescription' in entry
+                      ? (entry.ShortDescription as string)
+                      : ''
+                }
+              )) as { media: Media };
+              return media;
             } else {
               const file = await Canvas.v1.Courses.Files.upload({
                 pathParams: { course_id: course.id.toString() },
@@ -299,10 +396,42 @@ export async function uploadLocalFiles({
           args: params,
           id: file.id.toString(),
           course_id: course.id.toString(),
-          display_name: file.display_name,
-          url: file.url,
+          display_name: 'display_name' in file ? file.display_name : file.title,
+          url:
+            'url' in file
+              ? file.url
+              : (
+                  (await CanvasStudio.plugin.client.requestJSON(
+                    `/api/public/v1/media/${file.id}/create_embed`,
+                    'POST',
+                    {
+                      course_id: await new Promise((resolve, reject) => {
+                        if (!(course.id in studioCourses)) {
+                          CanvasStudio.plugin.client
+                            .requestJSON(`/api/public/v1/courses/${course.id}`)
+                            .catch(async () => {
+                              try {
+                                await Workspace.enableStudioForCourse(course);
+                                resolve(`${course.id}`);
+                              } catch (cause) {
+                                reject(
+                                  new Error(
+                                    `Could not enable Canvas Studio access from ${course.name}`,
+                                    { cause }
+                                  )
+                                );
+                              }
+                            })
+                            .then(() => resolve(`${course.id}`));
+                        }
+                      }),
+                      embed_type: 'embed',
+                      downloadable: 'true'
+                    }
+                  )) as { embed_url: URLString }
+                ).embed_url,
           created_at: file.created_at,
-          modified_at: file.modified_at
+          modified_at: 'modified_at' in file ? file.modified_at : undefined
         };
       }
     }

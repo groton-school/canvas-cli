@@ -4,6 +4,7 @@ import { input } from '@inquirer/prompts';
 import { Output } from '@msar/output';
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
+import { CanvasStudio } from '@oauth2-cli/canvas-studio';
 import { Colors } from '@qui-cli/colors';
 import { Positionals } from '@qui-cli/core';
 import { Env } from '@qui-cli/env';
@@ -202,6 +203,12 @@ export async function init(args: Plugin.ExpectedArguments<typeof options>) {
 }
 
 export async function run() {
+  if (!(await Canvas.plugin.client.isAuthorized())) {
+    await Canvas.plugin.client.authorize();
+  }
+  if (!(await CanvasStudio.plugin.client.isAuthorized())) {
+    await CanvasStudio.plugin.client.authorize();
+  }
   const spinner = ora(`Loading ${Colors.url(Snapshot.path())}`).start();
   let snapshots: Imported.Multiple.Data = [];
   const users: Record<Canvas.Users.User['sis_user_id'], Canvas.Users.User> = {};
