@@ -3,6 +3,7 @@ import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
+import path from 'node:path';
 import ora from 'ora';
 
 export type Configuration = Plugin.Configuration & {
@@ -50,6 +51,9 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
   const {
     values: { accountId: account_id, termId: term_id, ...values }
   } = args;
+  Canvas.plugin.configure({
+    reason: path.basename(import.meta.filename, '.js')
+  });
   configure({
     account_id,
     term_id: term_id as unknown as number,

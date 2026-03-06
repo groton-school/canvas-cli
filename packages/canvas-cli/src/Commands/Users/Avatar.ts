@@ -43,6 +43,9 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
   const {
     positionals: [csvPath]
   } = args;
+  Canvas.plugin.configure({
+    reason: path.basename(import.meta.filename, '.js')
+  });
   configure({ csvPath, ...args.values });
 }
 

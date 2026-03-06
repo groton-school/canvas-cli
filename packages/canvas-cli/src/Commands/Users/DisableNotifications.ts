@@ -3,6 +3,7 @@ import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import { kebabCase, snakeCase } from 'change-case';
+import path from 'node:path';
 import ora from 'ora';
 
 const availableEnrollmentTypes = [
@@ -119,6 +120,9 @@ export function options(): Plugin.Options {
 export function init({
   values: { accountId, enrollmentType, ...others }
 }: Plugin.ExpectedArguments<typeof options>) {
+  Canvas.plugin.configure({
+    reason: path.basename(import.meta.filename, '.js')
+  });
   configure({
     account_id: accountId,
     enrollment_types: enrollmentType,
