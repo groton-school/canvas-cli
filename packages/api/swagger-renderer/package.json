@@ -38,7 +38,7 @@
     "handlebars": "^4.7.8",
     "node-fetch": "^3.3.2",
     "ora": "^9.3.0",
-    "p-queue": "^8.1.1",
+    "p-queue": "^9.1.0",
     "prettier": "3.5.3",
     "prettier-plugin-jsdoc": "^1.8.0",
     "prettier-plugin-organize-imports": "^4.3.0"
