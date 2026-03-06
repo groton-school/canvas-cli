@@ -190,6 +190,8 @@ export async function init(args: Plugin.ExpectedArguments<typeof options>) {
       ...values
     }
   } = args;
+  Canvas.plugin.configure({ reason: 'canvas-import' });
+  CanvasStudio.plugin.configure({ reason: 'canvas-import' });
   configure({
     blackbaudInstanceId,
     canvasInstanceUrl,
