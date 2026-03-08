@@ -1,10 +1,4 @@
-import {
-  DateString,
-  DateTimeString,
-  EmailString,
-  PathString,
-  URLString
-} from '@battis/descriptive-types';
+import { DateTimeString, PathString } from '@battis/descriptive-types';
 import { ArrayElement, JSONValue } from '@battis/typescript-tricks';
 import * as Archive from '@msar/types.archive';
 import * as Imported from '@msar/types.import';
@@ -15,7 +9,6 @@ import { Log } from '@qui-cli/log';
 import crypto from 'node:crypto';
 import { EventEmitter } from 'node:events';
 import fs from 'node:fs';
-import https from 'node:https';
 import path from 'node:path';
 import probe from 'probe-image-size';
 import { log } from '../App/Courses.js';
@@ -43,7 +36,7 @@ type ToCanvasArgsOptions = {
 const AWAITING = true;
 const cache: Record<
   string,
-  Record<string, Canvas.Files.File | Media | typeof AWAITING>
+  Record<string, Canvas.Files.File | CanvasStudio.Media.Media | typeof AWAITING>
 > = {};
 const ready = new EventEmitter();
 ready.setMaxListeners(1000);
@@ -51,8 +44,8 @@ ready.setMaxListeners(1000);
 async function getCached(
   course_id: string,
   localPath: string,
-  uploader: () => Promise<Canvas.Files.File | Media>
-): Promise<Canvas.Files.File | Media> {
+  uploader: () => Promise<Canvas.Files.File | CanvasStudio.Media.Media>
+): Promise<Canvas.Files.File | CanvasStudio.Media.Media> {
   if (!(course_id in cache)) {
     cache[course_id] = {};
   }
@@ -193,57 +186,7 @@ function selectPrimaryFile(
   }
 }
 
-type StudioUser = {
-  id: number;
-  full_name: string;
-  display_name: string;
-  email: EmailString;
-  role_names?: (
-    | 'Admin'
-    | 'Teacher'
-    | 'Student'
-    | 'Observer'
-    | 'Subaccount admin'
-  )[];
-};
-
-type Media = {
-  id: number;
-  title: string;
-  description: string;
-  duration: number;
-  created_at: DateTimeString<'ISO'>;
-  last_viewed: DateString;
-  last_viewed_by_student: DateString;
-  thumbnail_url: URLString;
-  transcoding_status: string;
-  owner: StudioUser;
-  size: number;
-  source: string;
-  embed_id: string;
-  lti_launch_id: string;
-  archived_at: DateTimeString<'ISO'>;
-};
-
-const studioUsers: Record<Canvas.Users.User['id'], StudioUser> = {};
 const studioCourses: Canvas.Courses.Course['id'][] = [];
-
-async function getStudioUser(user?: Canvas.Users.User) {
-  if (!user) {
-    user = await Workspace.getUser();
-  }
-  if (!(user.id in studioUsers)) {
-    let studioUser: StudioUser | undefined = undefined;
-    while (!studioUser) {
-      const response = (await CanvasStudio.plugin.requestJSON(
-        `/api/public/v1/users/search?email=${encodeURIComponent(user.email)}`
-      )) as { users: StudioUser[] };
-      studioUser = response.users.shift();
-    }
-    studioUsers[user.id] = studioUser;
-  }
-  return studioUsers[user.id];
-}
 
 type UploadLocalFilesOptions = {
   user?: Canvas.Users.User;
@@ -325,54 +268,24 @@ export async function uploadLocalFiles({
           entry.localPath,
           async () => {
             if (path.extname(entry.localPath) === '.mp4') {
-              const owner = await getStudioUser(
-                user || (await Workspace.getUser())
-              );
-              const { upload } = (await CanvasStudio.plugin.client.requestJSON(
-                `/api/public/v1/media/uploads`,
-                'POST',
-                { user_id: '3' /* FIXME owner.id*/ }
-              )) as { upload: { id: number; url: string } };
-              const filePath = path.join(
-                path.dirname(IndexFile.path()),
-                entry.localPath.replace(/^\//, '')
-              );
-              await new Promise((resolve, reject) => {
-                fs.createReadStream(filePath).pipe(
-                  https
-                    .request(upload.url, {
-                      method: 'PUT',
-                      headers: {
-                        'content-type': 'video/mp4',
-                        'content-length': fs.statSync(filePath).size
-                      }
-                    })
-                    .on('information', Log.debug)
-                    .on('response', (res) =>
-                      Log.debug(
-                        `Canvas studio upload response:\n${Log.syntaxColor({
-                          statusCode: res.statusCode,
-                          statusMessage: res.statusMessage,
-                          headers: res.headers
-                        })}`
-                      )
-                    )
-                    .on('error', reject)
-                    .on('close', resolve)
-                );
+              return await CanvasStudio.uploadLocalFile({
+                file_path: path.join(
+                  path.dirname(IndexFile.path()),
+                  entry.localPath.replace(/^\//, '')
+                ),
+                user_id: 3, // FIXME maybe shouldn't be hard coded
+                title:
+                  'ShortDescription' in entry &&
+                  entry.ShortDescription &&
+                  entry.ShortDescription.toString().length > 0
+                    ? entry.ShortDescription.toString()
+                    : entry.filename,
+                description:
+                  'Description' in entry
+                    ? entry.Description?.toString()
+                    : undefined,
+                auto_caption: true
               });
-              const { media } = (await CanvasStudio.plugin.client.requestJSON(
-                `/api/public/v1/media/uploads/${upload.id}/complete`,
-                'POST',
-                {
-                  title: entry.filename,
-                  description:
-                    'ShortDescription' in entry
-                      ? (entry.ShortDescription as string)
-                      : ''
-                }
-              )) as { media: Media };
-              return media;
             } else {
               const file = await Canvas.v1.Courses.Files.upload({
                 pathParams: { course_id: course.id.toString() },
@@ -401,18 +314,17 @@ export async function uploadLocalFiles({
             'url' in file
               ? file.url
               : (
-                  (await CanvasStudio.plugin.client.requestJSON(
-                    `/api/public/v1/media/${file.id}/create_embed`,
-                    'POST',
-                    {
+                  await CanvasStudio.v1.media.create_embed({
+                    path: { media_id: file.id },
+                    body: {
                       course_id: await new Promise((resolve, reject) => {
                         if (!(course.id in studioCourses)) {
-                          CanvasStudio.plugin.client
-                            .requestJSON(`/api/public/v1/courses/${course.id}`)
+                          CanvasStudio.v1.courses
+                            .get({ path: { course_id: course.id } })
                             .catch(async () => {
                               try {
                                 await Workspace.enableStudioForCourse(course);
-                                resolve(`${course.id}`);
+                                resolve(course.id);
                               } catch (cause) {
                                 reject(
                                   new Error(
@@ -422,13 +334,13 @@ export async function uploadLocalFiles({
                                 );
                               }
                             })
-                            .then(() => resolve(`${course.id}`));
+                            .then(() => resolve(course.id));
                         }
                       }),
                       embed_type: 'embed',
-                      downloadable: 'true'
+                      downloadable: true
                     }
-                  )) as { embed_url: URLString }
+                  })
                 ).embed_url,
           created_at: file.created_at,
           modified_at: 'modified_at' in file ? file.modified_at : undefined

@@ -3,9 +3,9 @@ import { Colors } from '@qui-cli/colors';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import * as requestish from 'requestish';
+import { Headers, URL } from 'requestish';
 
-export type Credentials = OAuth2.Credentials & { issuer: requestish.URL.ish };
+export type Credentials = OAuth2.Credentials & { issuer: URL.ish };
 
 export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin<Credentials> {
   public constructor(name = 'Canvas Studio') {
@@ -52,7 +52,7 @@ export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin<Credentials> {
     inject,
     ...options
   }: OAuth2.Options<Credentials>) {
-    const headers = requestish.Headers.from(inject?.headers);
+    const headers = Headers.from(inject?.headers);
     if (!headers.has('user-agent')) {
       const pkg = JSON.parse(
         fs.readFileSync(
@@ -70,12 +70,12 @@ export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin<Credentials> {
     if (!issuer) {
       throw new Error();
     }
-    return new OAuth2.Client({
+    return new OAuth2.Client<Credentials>({
       ...options,
       credentials: {
         ...credentials,
-        authorization_endpoint: `${requestish.URL.toString(issuer)}/api/public/oauth/authorize`,
-        token_endpoint: `${requestish.URL.toString(issuer)}/api/public/oauth/token`
+        authorization_endpoint: `${URL.toString(issuer)}/api/public/oauth/authorize`,
+        token_endpoint: `${URL.toString(issuer)}/api/public/oauth/token`
       },
       inject: {
         ...inject,
