@@ -29,21 +29,16 @@
     "version": "commit-and-tag-version"
   },
   "dependencies": {
-    "@battis/import-package-json": "^0.1.7",
     "@battis/descriptive-types": "^0.2.6",
     "@battis/typescript-tricks": "^0.8.0",
     "@groton/canvas-api": "workspace:*",
     "@groton/canvas-api.client.base": "workspace:*",
     "@groton/canvas-api.utilities": "workspace:*",
-    "@qui-cli/colors": "^3.2.3",
     "@oauth2-cli/qui-cli": "^1.2.10",
     "ora": "^9.3.0",
     "requestish": "^0.1.10"
   },
   "devDependencies": {
-    "@1password/sdk": "^0.3.1",
-    "@qui-cli/log": "^4.0.3",
-    "@qui-cli/plugin": "^4.1.0",
     "@tsconfig/node24": "^24.0.4",
     "@types/node": "^24.12.0",
     "commit-and-tag-version": "^12.6.1",
@@ -52,6 +47,7 @@
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
+    "@qui-cli/colors": ">=3",
     "@qui-cli/log": ">=3",
     "@qui-cli/plugin": ">=3"
   },
