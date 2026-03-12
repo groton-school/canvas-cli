@@ -1,5 +1,6 @@
-import { confirm, input } from '@inquirer/prompts';
+import { confirm, input, select } from '@inquirer/prompts';
 import { Canvas } from '@oauth2-cli/canvas';
+import { CanvasStudio } from '@oauth2-cli/canvas-studio';
 import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 import { Validators } from '@qui-cli/validators';
@@ -12,6 +13,7 @@ let term_id: number | string | undefined = undefined;
 let account_id: number | string | undefined = undefined;
 let user: Canvas.Users.User | undefined = undefined;
 let studio: Canvas.ExternalTools.ContextExternalTool | undefined = undefined;
+let studioUser: CanvasStudio.User.User | undefined = undefined;
 
 export async function getTermId(): Promise<
   Canvas.EnrollmentTerms.EnrollmentTerm['id']
@@ -112,6 +114,42 @@ export async function getUser(): Promise<Canvas.Users.User> {
     }
   }
   return user;
+}
+
+export async function getStudioUser() {
+  if (!studioUser) {
+    const result = await CanvasStudio.v1.users.search({
+      query: { email: (await getUser()).email }
+    });
+    if (result.users.length === 1) {
+      studioUser = result.users.shift();
+    } else if (result.users.length === 0) {
+      await enableStudioForUser(await getUser());
+      studioUser = (
+        await CanvasStudio.v1.users.search({
+          query: { email: (await getUser()).email }
+        })
+      ).users.shift();
+    } else {
+      studioUser = (
+        await CanvasStudio.v1.users.get({
+          path: {
+            user_id: await select({
+              message: 'Choose a user to own imported videos',
+              choices: result.users.map((u) => ({
+                name: u.display_name,
+                value: u.id
+              }))
+            })
+          }
+        })
+      ).user;
+    }
+  }
+  if (!studioUser) {
+    throw new Error('Canvas Studio owner user could not be found');
+  }
+  return studioUser;
 }
 
 async function getStudioInstance() {
