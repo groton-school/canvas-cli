@@ -283,8 +283,7 @@ export async function uploadLocalFiles({
                 description:
                   'Description' in entry
                     ? entry.Description?.toString()
-                    : undefined,
-                auto_caption: true
+                    : undefined
               });
             } else {
               const file = await Canvas.v1.Courses.Files.upload({
