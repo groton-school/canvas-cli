@@ -273,7 +273,7 @@ export async function uploadLocalFiles({
                   path.dirname(IndexFile.path()),
                   entry.localPath.replace(/^\//, '')
                 ),
-                user_id: 3, // FIXME maybe shouldn't be hard coded
+                user_id: (await Workspace.getStudioUser()).id,
                 title:
                   'ShortDescription' in entry &&
                   entry.ShortDescription &&
