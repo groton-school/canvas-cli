@@ -30,12 +30,12 @@
     "version": "commit-and-tag-version"
   },
   "dependencies": {
+    "@battis/descriptive-types": "^0.2.6",
+    "@battis/typescript-tricks": "^0.8.1",
     "@groton/canvas-api.client.base": "workspace:*",
     "@groton/canvas-api.utilities": "workspace:*"
   },
   "devDependencies": {
-    "@battis/descriptive-types": "^0.2.6",
-    "@battis/typescript-tricks": "^0.8.0",
     "@groton/canvas-api.swagger-renderer": "workspace:*",
     "@tsconfig/node24": "^24.0.4",
     "commit-and-tag-version": "^12.6.1",
