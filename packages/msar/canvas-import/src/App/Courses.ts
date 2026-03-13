@@ -28,7 +28,9 @@ const descriptions: Record<Preferences.DuplicateHandling, string> = {
 export async function handleDuplicateCourse({ course, section }: Options) {
   const next: Record<
     Preferences.DuplicateHandling,
-    () =>
+    (
+      independent?: boolean
+    ) =>
       | Promise<Canvas.Courses.Course | undefined>
       | Canvas.Courses.Course
       | undefined
@@ -36,7 +38,7 @@ export async function handleDuplicateCourse({ course, section }: Options) {
     overwrite: async () => {
       return course;
     },
-    update: async () => {
+    update: async (independent = true) => {
       if (!section.SectionInfo?.canvas) {
         const choice = (await select({
           message: `Missing Canvas import information for ${Colors.value(section.SectionInfo?.GroupName)}`,
@@ -57,7 +59,9 @@ export async function handleDuplicateCourse({ course, section }: Options) {
         pathParams: { id: course.id.toString() },
         params: params as Partial<Canvas.v1.Courses.updateFormParameters>
       });
-      log(course, 'Updating existing course');
+      if (independent) {
+        log(course, 'Updating existing course');
+      }
       // TODO `update_course` likely _does_ return a course and documentation is wrong
       return await Canvas.v1.Courses.get({
         pathParams: { id: course.id.toString() }
@@ -76,7 +80,7 @@ export async function handleDuplicateCourse({ course, section }: Options) {
         };
       }
       log(course, 'Resetting existing course');
-      return await next.update();
+      return await next.update(false);
     },
     browse: async () => {
       open(
