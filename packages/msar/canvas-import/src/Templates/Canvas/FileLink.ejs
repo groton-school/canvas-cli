@@ -1,18 +1,47 @@
-<a class="instructure_file_link inline_disabled" title="<%= file.display_name %>" href="<%= file.url %>" target="_blank" rel="noopener noreferrer">
-    <% if (/\.pdf$/i.test(file.display_name)) { %>
-        <i class="icon-pdf"></i>
-    <% } else if (/\.docx?$/i.test(file.display_name)) { %>
-        <i class="icon-ms-word"></i>
-    <% } else if (/\.xlsx?$/i.test(file.display_name)) { %>
-        <i class="icon-ms-excel"></i>
-    <% } else if (/\.pptx?$/i.test(file.display_name)) { %>
-        <i class="icon-ms-ppt"></i>
-    <% } else if (/\.(gif|jpe?g|png|tiff|svg|bmp)$/i.test(file.display_name)) { %>
-        <i class="icon-image"></i>
-    <% } else if (/\.(py|jar|java)$/i.test(file.display_name)) { %>
-        <i class="icon-code"></i>
-    <% } else { %>
-        <i class="icon-document"></i>
-    <% } %>
-    <%- locals.filename ? filename : file.display_name %>
+<% 
+const url = new URL(file.url);
+if (/\.instructuremedia\.com$/.test(url.hostname)) { %>
+<div style="text-decoration: none">
+  <iframe
+    class="lti-embed"
+    style="width: 800px; height: 880px"
+    title="video2483872491.mp4"
+    src="<%= instance_url %>/courses/<%= course_id %>/external_tools/retrieve?display=borderless&amp;url=<%= encodeURIComponent(file.url) %>"
+    width="800"
+    height="880"
+    loading="lazy"
+    allowfullscreen="allowfullscreen"
+    webkitallowfullscreen="webkitallowfullscreen"
+    mozallowfullscreen="mozallowfullscreen"
+    allow="geolocation *; microphone *; camera *; midi *; encrypted-media *; autoplay *; clipboard-write *; display-capture *"
+    data-studio-resizable="false"
+    data-studio-tray-enabled="false"
+    data-studio-convertible-to-link="true"
+  ></iframe>
+</div>
+<% } else { %>
+<a
+  class="instructure_file_link inline_disabled"
+  title="<%= file.display_name %>"
+  href="<%= file.url %>"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <% if (/\.pdf$/i.test(file.display_name)) { %>
+  <i class="icon-pdf"></i>
+  <% } else if (/\.docx?$/i.test(file.display_name)) { %>
+  <i class="icon-ms-word"></i>
+  <% } else if (/\.xlsx?$/i.test(file.display_name)) { %>
+  <i class="icon-ms-excel"></i>
+  <% } else if (/\.pptx?$/i.test(file.display_name)) { %>
+  <i class="icon-ms-ppt"></i>
+  <% } else if (/\.(gif|jpe?g|png|tiff|svg|bmp)$/i.test(file.display_name)) { %>
+  <i class="icon-image"></i>
+  <% } else if (/\.(py|jar|java)$/i.test(file.display_name)) { %>
+  <i class="icon-code"></i>
+  <% } else { %>
+  <i class="icon-document"></i>
+  <% } %>
+  <%- locals.filename ? filename : file.display_name %>
 </a>
+<% } %>

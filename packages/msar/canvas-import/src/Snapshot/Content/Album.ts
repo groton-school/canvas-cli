@@ -61,8 +61,9 @@ export async function convertToPages({ course, item, parent }: Options) {
     const params: Partial<Canvas.v1.Courses.Pages.createFormParameters> = {
       'wiki_page[title]': `${parent}: ${title}`,
       'wiki_page[body]': await Templates.render(Templates.Canvas.MediaPage, {
-        content: album.Content,
-        course_id: course.id
+        instance_url: Canvas.client().instance_url,
+        course_id: course.id,
+        content: album.Content
       }),
       'wiki_page[published]': true
     };

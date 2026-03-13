@@ -63,6 +63,7 @@ export async function toCanvasArgs({
   return {
     'wiki_page[title]': title && title.length > 0 ? title : 'Untitled',
     'wiki_page[body]': await Templates.render(Templates.Podium.Page, {
+      instance_url: Canvas.client().instance_url,
       course_id: course.id,
       page: body,
       layout

@@ -1,11 +1,15 @@
 <% if (content.Content.length > 0) { %>
 <div>
-    <h3><%= documentType %></h3>
-    <% content.Content.forEach(item => { %>
-    <% if (item.AttachmentQueryString) { %>
-        <div><small><%- include('../../Canvas/FileLink', {file: item.AttachmentQueryString.canvas, filename: item.ShortDescription}) %></small></div>
-    <% } %>
-        <div><%- item.Description %></div>
-    <% }); %>
+  <h3><%= documentType %></h3>
+  <% content.Content.forEach(item => { %>
+  <% if (item.AttachmentQueryString) { %>
+  <div>
+    <small
+      ><%- include('../../Canvas/FileLink', {instance_url, course_id, file: item.AttachmentQueryString.canvas, filename: item.ShortDescription}) %></small
+    >
+  </div>
+  <% } %>
+  <div><%- item.Description %></div>
+  <% }); %>
 </div>
 <% } %>

@@ -1,25 +1,32 @@
-<% if (assignment.ShortDescription.includes("<br/>")) { %>
-    <div><%- assignment.ShortDescription.split('<br/>').slice(1).join('<br/>') %></div>
+<% if (assignment.ShortDescription.includes("<br />")) { %>
+<div>
+  <%- assignment.ShortDescription.split('<br />').slice(1).join('<br />') %>
+</div>
 <%} %>
 <div><%- assignment.LongDescription %></div>
 
 <% if (assignment.LinkItems.length > 0) { %>
-    <h3>Links</h3>
-    <% for (const link of assignment.LinkItems) { %>
-        <div>
-            <a href="<%= link.UrlDisplay %>"><%- link.ShortDescription %></a>
-        </div>
-    <% } %>
+<h3>Links</h3>
+<% for (const link of assignment.LinkItems) { %>
+<div>
+  <a href="<%= link.UrlDisplay %>"><%- link.ShortDescription %></a>
+</div>
+<% } %>
 <% } %>
 
 <% if (assignment.DownloadItems.length > 0) { %>
-    <h3>Downloads</h3>
-    <% for (const download of assignment.DownloadItems) { %>
-        <div>
-            <div>
-                <%- include('../Canvas/FileLink', {file: download.DownloadUrl.canvas, filename: download.ShortDescription}) %>
-            </div>
-            <div style="text-decoration: none;"><%- download.ShortDescription %></div>
-        </div>
-    <% } %>
+<h3>Downloads</h3>
+<% for (const download of assignment.DownloadItems) { %>
+<div>
+  <div>
+    <%- include('../Canvas/FileLink', {instance_url, course_id, file: download.DownloadUrl.canvas, filename: download.ShortDescription},) %>
+  </div>
+  <% 
+    const url = new URL(download.DownloadUrl.canvas.url);
+    if (/\.instructuremedia\.com$/.test(url.hostname) == false) {
+  %>
+  <div style="text-decoration: none"><%- download.ShortDescription %></div>
+  <% } %>
+</div>
+<% } %>
 <%} %>

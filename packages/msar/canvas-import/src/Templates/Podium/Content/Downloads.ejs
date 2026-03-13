@@ -1,18 +1,23 @@
-<% if (content.Content.length > 0 || (content.FilePath && content.FilePath.canvas)) { %>
+<% if (content.Content.length > 0 || (content.FilePath &&
+content.FilePath.canvas)) { %>
 <div>
-    <% if (!content.FilePath || !content.FilePath.canvas) { %>
-    <h3>Downloads</h3>
-    <dl>
-        <% for (const item of content.Content) { %>
-            <dt><%- include('../../Canvas/FileLink', {file: item.DownloadUrl.canvas, filename: item.Description}) %></dt>
-            <dd><%- item.LongDescription %></dd>
-        <% } %>
-        </dl>
-    <% } else { %>
-    <dl>
-            <dt><%- include('../../Canvas/FileLink', {file: content.FilePath.canvas, filename: content.ShortDescription}) %></dt>
-            <dd><%- content.LongDescription %></dd>
-    </dl>
+  <% if (!content.FilePath || !content.FilePath.canvas) { %>
+  <h3>Downloads</h3>
+  <dl>
+    <% for (const item of content.Content) { %>
+    <dt>
+      <%- include('../../Canvas/FileLink', {instance_url, course_id, file: item.DownloadUrl.canvas, filename: item.Description}) %>
+    </dt>
+    <dd><%- item.LongDescription %></dd>
     <% } %>
+  </dl>
+  <% } else { %>
+  <dl>
+    <dt>
+      <%- include('../../Canvas/FileLink', {instance_url, course_id, file: content.FilePath.canvas, filename: content.ShortDescription}) %>
+    </dt>
+    <dd><%- content.LongDescription %></dd>
+  </dl>
+  <% } %>
 </div>
 <% } %>

@@ -1,4 +1,8 @@
-import { DateTimeString, PathString } from '@battis/descriptive-types';
+import {
+  DateTimeString,
+  HTMLString,
+  PathString
+} from '@battis/descriptive-types';
 import { ArrayElement, JSONValue } from '@battis/typescript-tricks';
 import * as Archive from '@msar/types.archive';
 import * as Imported from '@msar/types.import';
@@ -193,6 +197,7 @@ type UploadLocalFilesOptions = {
   course: Canvas.Courses.Course;
   entry: JSONValue;
   name?: string;
+  description?: HTMLString;
 };
 
 /*
@@ -206,7 +211,8 @@ export async function uploadLocalFiles({
   user,
   course,
   entry,
-  name
+  name,
+  description
 }: UploadLocalFilesOptions): Promise<JSONValue> {
   if (typeof entry !== 'object' || entry === null) {
     return entry;
@@ -274,16 +280,8 @@ export async function uploadLocalFiles({
                   entry.localPath.replace(/^\//, '')
                 ),
                 user_id: (await Workspace.getStudioUser()).id,
-                title:
-                  'ShortDescription' in entry &&
-                  entry.ShortDescription &&
-                  entry.ShortDescription.toString().length > 0
-                    ? entry.ShortDescription.toString()
-                    : entry.filename,
-                description:
-                  'Description' in entry
-                    ? entry.Description?.toString()
-                    : undefined
+                title: name || filename || entry.filename,
+                description
               });
             } else {
               const file = await Canvas.v1.Courses.Files.upload({
@@ -362,10 +360,21 @@ export async function uploadLocalFiles({
         user,
         course,
         entry: entry[key],
-        name:
-          typeof entry.FriendlyFileName === 'string'
-            ? entry.FriendlyFileName
-            : undefined
+        name: ['Title', 'ShortDescription', 'FriendlyFilename'].reduce(
+          (name: string | undefined, prop) =>
+            name || (typeof entry[prop] === 'string' ? entry[prop] : name),
+          undefined
+        ),
+        description: [
+          'LongDescription',
+          'Description',
+          'ShortDescription'
+        ].reduce(
+          (description: string | undefined, prop) =>
+            description ||
+            (typeof entry[prop] === 'string' ? entry[prop] : description),
+          undefined
+        )
       });
     }
   }

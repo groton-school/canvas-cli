@@ -90,7 +90,11 @@ export async function toCanvasArgs({
 
     'assignment[description]': await Templates.render(
       Templates.Podium.Assignment,
-      { assignment }
+      {
+        instance_url: Canvas.client().instance_url,
+        course_id: course.id,
+        assignment
+      }
     ),
     'assignment[published]': assignment.PublishInd,
     'assignment[submission_types]': []

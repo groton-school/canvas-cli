@@ -1,5 +1,26 @@
 <!-- TODO set video dimensions from poster image -->
-<% if (content.FilenameUrl.canvas) { %>
+<% if (content.FilenameUrl.canvas) {  
+  const url = new URL(content.FilenameUrl.canvas.url);
+  if (/\.instructuremedia\.com$/.test(url.hostname)) { %>
+<div style="text-decoration: none">
+  <iframe
+    class="lti-embed"
+    style="width: 800px; height: 880px"
+    title="video2483872491.mp4"
+    src="<%= instance_url %>/courses/<%= course_id %>/external_tools/retrieve?display=borderless&amp;url=<%= encodeURIComponent(url) %>"
+    width="800"
+    height="880"
+    loading="lazy"
+    allowfullscreen="allowfullscreen"
+    webkitallowfullscreen="webkitallowfullscreen"
+    mozallowfullscreen="mozallowfullscreen"
+    allow="geolocation *; microphone *; camera *; midi *; encrypted-media *; autoplay *; clipboard-write *; display-capture *"
+    data-studio-resizable="false"
+    data-studio-tray-enabled="false"
+    data-studio-convertible-to-link="true"
+  ></iframe>
+</div>
+<% } else { %>
 <iframe
   style="width: 338px; height: 225px; display: inline-block"
   title="Video player for <%= content.FilenameUrl.filename %>"
@@ -9,6 +30,7 @@
   allowfullscreen="allowfullscreen"
   allow="fullscreen"
 ></iframe>
+<% } %>
 <% } else { %>
 <h3>Missing Video</h3>
 <div>The video file was not accessible on Blackbaud's servers.</div>
