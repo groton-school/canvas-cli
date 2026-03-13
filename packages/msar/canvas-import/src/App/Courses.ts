@@ -136,9 +136,9 @@ export function log(
   ...meta: unknown[]
 ) {
   Log[level](
-    `${prevCourseId !== course.id ? `${Colors.value(course.name)} / ${Colors.value(course.sis_course_id)}\n` : ''}    ${message}`,
+    `${prevCourseId !== course.sis_course_id ? `${Colors.value(course.name)} / ${Colors.value(course.sis_course_id)}\n` : ''}    ${message}`,
     course,
     ...meta
   );
-  prevCourseId = course.id;
+  prevCourseId = course.sis_course_id;
 }
