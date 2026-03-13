@@ -274,12 +274,35 @@ export async function uploadLocalFiles({
           entry.localPath,
           async () => {
             if (path.extname(entry.localPath) === '.mp4') {
+              let owner: CanvasStudio.User.User | undefined = undefined;
+              if (!user && course) {
+                user = (
+                  await Canvas.v1.Courses.Enrollments.list({
+                    pathParams: { course_id: course.id },
+                    searchParams: { type: ['TeacherEnrollment'] }
+                  })
+                ).shift()?.user;
+              }
+              if (user) {
+                do {
+                  owner = (
+                    await CanvasStudio.v1.users.search({
+                      query: { email: user.email }
+                    })
+                  ).users.shift();
+                  if (!owner) {
+                    await Workspace.enableStudioForUser(user);
+                  }
+                } while (!owner);
+              } else {
+                owner = await Workspace.getStudioUser();
+              }
               return await CanvasStudio.uploadLocalFile({
                 file_path: path.join(
                   path.dirname(IndexFile.path()),
                   entry.localPath.replace(/^\//, '')
                 ),
-                user_id: (await Workspace.getStudioUser()).id,
+                user_id: owner.id,
                 title: name || filename || entry.filename,
                 description
               });

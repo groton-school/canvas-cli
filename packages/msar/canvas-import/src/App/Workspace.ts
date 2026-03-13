@@ -116,10 +116,10 @@ export async function getUser(): Promise<Canvas.Users.User> {
   return user;
 }
 
-export async function getStudioUser() {
+export async function getStudioUser(user?: Canvas.Users.User) {
   if (!studioUser) {
     const result = await CanvasStudio.v1.users.search({
-      query: { email: (await getUser()).email }
+      query: { email: (user || (await getUser())).email }
     });
     if (result.users.length === 1) {
       studioUser = result.users.shift();
