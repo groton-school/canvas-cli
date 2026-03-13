@@ -14,6 +14,7 @@ import crypto from 'node:crypto';
 import { EventEmitter } from 'node:events';
 import fs from 'node:fs';
 import path from 'node:path';
+import ora from 'ora';
 import probe from 'probe-image-size';
 import { log } from '../App/Courses.js';
 import { Preferences } from '../App/index.js';
@@ -297,6 +298,9 @@ export async function uploadLocalFiles({
               } else {
                 owner = await Workspace.getStudioUser();
               }
+              const spinner = ora(
+                `  Uploading video ${Colors.path(entry.localPath)} as ${Colors.value(name || filename || entry.filename)}`
+              ).start();
               const file = await CanvasStudio.uploadLocalFile({
                 file_path: path.join(
                   path.dirname(IndexFile.path()),
@@ -306,12 +310,14 @@ export async function uploadLocalFiles({
                 title: name || filename || entry.filename,
                 description
               });
-              log(
-                course,
-                `Uploaded video ${Colors.path(entry.localPath)} as ${Colors.value(file.title)}`
+              spinner.succeed(
+                `  Uploaded video ${Colors.path(entry.localPath)} as ${Colors.value(file.title)}`
               );
               return file;
             } else {
+              const spinner = ora(
+                `  Uploading file ${Colors.path(entry.localPath)} as ${Colors.value(params.name)}`
+              ).start();
               const file = await Canvas.v1.Courses.Files.upload({
                 pathParams: { course_id: course.id.toString() },
                 file: {
@@ -322,9 +328,8 @@ export async function uploadLocalFiles({
                 },
                 params
               });
-              log(
-                course,
-                `Uploaded file ${Colors.path(entry.localPath)} as ${Colors.value(file.display_name)}`
+              spinner.succeed(
+                `  Uploaded file ${Colors.path(entry.localPath)} as ${Colors.value(file.display_name)}`
               );
               return file;
             }

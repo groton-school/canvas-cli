@@ -42,8 +42,8 @@ importers:
         specifier: ^0.2.6
         version: 0.2.6
       '@battis/typescript-tricks':
-        specifier: ^0.8.1
-        version: 0.8.1
+        specifier: ^0.8.2
+        version: 0.8.2
       '@groton/canvas-api.client.base':
         specifier: workspace:*
         version: link:../client/base
@@ -80,8 +80,8 @@ importers:
         specifier: ^0.2.6
         version: 0.2.6
       '@battis/typescript-tricks':
-        specifier: ^0.8.1
-        version: 0.8.1
+        specifier: ^0.8.2
+        version: 0.8.2
       '@tsconfig/node24':
         specifier: ^24.0.4
         version: 24.0.4
@@ -117,8 +117,8 @@ importers:
         version: 1.0.1
     devDependencies:
       '@battis/typescript-tricks':
-        specifier: ^0.8.1
-        version: 0.8.1
+        specifier: ^0.8.2
+        version: 0.8.2
       '@battis/webpack':
         specifier: ^2.1.1
         version: 2.1.1(4204e0529f27247678209763ba47e139)
@@ -196,8 +196,8 @@ importers:
         specifier: ^0.2.6
         version: 0.2.6
       '@battis/typescript-tricks':
-        specifier: ^0.8.1
-        version: 0.8.1
+        specifier: ^0.8.2
+        version: 0.8.2
       '@groton/swagger-spec-ts':
         specifier: workspace:*
         version: link:../swagger-spec-ts
@@ -226,8 +226,8 @@ importers:
         specifier: ^0.2.6
         version: 0.2.6
       '@battis/typescript-tricks':
-        specifier: ^0.8.1
-        version: 0.8.1
+        specifier: ^0.8.2
+        version: 0.8.2
       '@tsconfig/node24':
         specifier: ^24.0.4
         version: 24.0.4
@@ -247,8 +247,8 @@ importers:
   packages/api/utilities:
     devDependencies:
       '@battis/typescript-tricks':
-        specifier: ^0.8.1
-        version: 0.8.1
+        specifier: ^0.8.2
+        version: 0.8.2
       '@tsconfig/node24':
         specifier: ^24.0.4
         version: 24.0.4
@@ -393,8 +393,8 @@ importers:
         specifier: ^0.2.6
         version: 0.2.6
       '@battis/typescript-tricks':
-        specifier: ^0.8.1
-        version: 0.8.1
+        specifier: ^0.8.2
+        version: 0.8.2
       '@qui-cli/markdown':
         specifier: ^1.2.2
         version: 1.2.2(@qui-cli/colors@3.2.4)(@qui-cli/core@6.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))
@@ -448,8 +448,8 @@ importers:
         specifier: ^0.2.6
         version: 0.2.6
       '@battis/typescript-tricks':
-        specifier: ^0.8.1
-        version: 0.8.1
+        specifier: ^0.8.2
+        version: 0.8.2
       '@msar/types.snapshot':
         specifier: ^0.2.1
         version: 0.2.1
@@ -481,8 +481,8 @@ importers:
         specifier: ^0.2.6
         version: 0.2.6
       '@battis/typescript-tricks':
-        specifier: ^0.8.1
-        version: 0.8.1
+        specifier: ^0.8.2
+        version: 0.8.2
       '@groton/canvas-api':
         specifier: workspace:*
         version: link:../../api/canvas-api
@@ -676,8 +676,8 @@ packages:
       '@battis/qui-cli.plugin': ^2.4
       '@battis/qui-cli.root': 2.x
 
-  '@battis/typescript-tricks@0.8.1':
-    resolution: {integrity: sha512-x6g0/PAOUp3kWYYgRr/Os6KBnTCJ5BwxbgUQlgdyiWLiOe0i9dWlGiW1thf34a76hsrc65OawWy83KE2d0kH5g==}
+  '@battis/typescript-tricks@0.8.2':
+    resolution: {integrity: sha512-0ATH6pX2LeIdwMm1+kTqT9ztVog+tm0RKSnFdfD7PbhalaOn7VIkMZGzInfJ48tKQQxYfF/413jZtcLCGhBPvQ==}
 
   '@battis/webpack@2.1.1':
     resolution: {integrity: sha512-EFNCFhjwe0dZiYxlb4RVZgFF3JRwjYPnuFJtjGA0Ed6omlyVBORR9aBYvI/a2lenus5/YPLQJL+PSkx7Bp717g==}
@@ -8077,7 +8077,7 @@ snapshots:
       email-validator: 2.0.4
       is-valid-path: 0.1.1
 
-  '@battis/typescript-tricks@0.8.1': {}
+  '@battis/typescript-tricks@0.8.2': {}
 
   '@battis/webpack@2.1.1(4204e0529f27247678209763ba47e139)':
     dependencies:
@@ -8771,7 +8771,7 @@ snapshots:
 
   '@jest/pattern@30.0.1':
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
       jest-regex-util: 30.0.1
 
   '@jest/schemas@29.6.3':
@@ -8788,7 +8788,7 @@ snapshots:
       '@jest/schemas': 30.0.5
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
       '@types/yargs': 17.0.35
       chalk: 4.1.2
 
@@ -9246,7 +9246,7 @@ snapshots:
   '@oauth2-cli/qui-cli@1.2.14(@qui-cli/colors@3.2.4)(@qui-cli/env@5.1.2(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))(@qui-cli/shell@3.1.4(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@types/ejs@3.1.5)(ejs@3.1.10)':
     dependencies:
       '@battis/descriptive-types': 0.2.6
-      '@battis/typescript-tricks': 0.8.1
+      '@battis/typescript-tricks': 0.8.2
       '@qui-cli/colors': 3.2.4
       '@qui-cli/env': 5.1.2(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))(@qui-cli/shell@3.1.4(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))
       '@qui-cli/log': 4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))
@@ -9695,20 +9695,20 @@ snapshots:
   '@types/body-parser@1.19.6':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
 
   '@types/bonjour@3.5.13':
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
 
   '@types/connect-history-api-fallback@1.5.4':
     dependencies:
       '@types/express-serve-static-core': 4.19.8
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
 
   '@types/debug@4.1.12':
     dependencies:
@@ -9730,7 +9730,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.8':
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
       '@types/qs': 6.15.0
       '@types/range-parser': 1.2.7
       '@types/send': 1.2.1
@@ -9748,7 +9748,7 @@ snapshots:
 
   '@types/http-proxy@1.17.17':
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 
@@ -9764,7 +9764,7 @@ snapshots:
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
 
   '@types/lodash-es@4.17.12':
     dependencies:
@@ -9811,18 +9811,18 @@ snapshots:
 
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
 
   '@types/retry@0.12.2': {}
 
   '@types/send@0.17.6':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
 
   '@types/send@1.2.1':
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
 
   '@types/serve-index@1.9.4':
     dependencies:
@@ -9831,12 +9831,12 @@ snapshots:
   '@types/serve-static@1.15.10':
     dependencies:
       '@types/http-errors': 2.0.5
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
       '@types/send': 0.17.6
 
   '@types/sockjs@0.3.36':
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
 
   '@types/triple-beam@1.3.5': {}
 
@@ -9844,7 +9844,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
 
   '@types/yargs-parser@21.0.3': {}
 
@@ -12824,7 +12824,7 @@ snapshots:
   jest-util@30.3.0:
     dependencies:
       '@jest/types': 30.3.0
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
       chalk: 4.1.2
       ci-info: 4.4.0
       graceful-fs: 4.2.11
@@ -12832,13 +12832,13 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
   jest-worker@30.3.0:
     dependencies:
-      '@types/node': 25.4.0
+      '@types/node': 24.12.0
       '@ungap/structured-clone': 1.3.0
       jest-util: 30.3.0
       merge-stream: 2.0.0
@@ -15076,7 +15076,7 @@ snapshots:
   requestish@0.1.12:
     dependencies:
       '@battis/descriptive-types': 0.2.6
-      '@battis/typescript-tricks': 0.8.1
+      '@battis/typescript-tricks': 0.8.2
 
   require-directory@2.1.1: {}
 
