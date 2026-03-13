@@ -14,7 +14,7 @@ import crypto from 'node:crypto';
 import { EventEmitter } from 'node:events';
 import fs from 'node:fs';
 import path from 'node:path';
-import ora from 'ora';
+import ora, { Ora } from 'ora';
 import probe from 'probe-image-size';
 import { log } from '../App/Courses.js';
 import { Preferences } from '../App/index.js';
@@ -315,22 +315,75 @@ export async function uploadLocalFiles({
               );
               return file;
             } else {
-              const spinner = ora(
-                `  Uploading file ${Colors.path(entry.localPath)} as ${Colors.value(params.name)}`
-              ).start();
-              const file = await Canvas.v1.Courses.Files.upload({
-                pathParams: { course_id: course.id.toString() },
-                file: {
-                  filePath: path.join(
-                    path.dirname(IndexFile.path()),
-                    entry.localPath.replace(/^\//, '')
-                  )
-                },
-                params
-              });
-              spinner.succeed(
-                `  Uploaded file ${Colors.path(entry.localPath)} as ${Colors.value(file.display_name)}`
-              );
+              let spinner: Ora | undefined = undefined;
+              let file: Canvas.Files.File | undefined = undefined;
+              let retries = 3;
+              do {
+                try {
+                  spinner = ora(
+                    `  Uploading file ${Colors.path(entry.localPath)} as ${Colors.value(params.name)}`
+                  ).start();
+                  file = await Canvas.v1.Courses.Files.upload({
+                    pathParams: { course_id: course.id.toString() },
+                    file: {
+                      filePath: path.join(
+                        path.dirname(IndexFile.path()),
+                        entry.localPath.replace(/^\//, '')
+                      )
+                    },
+                    params
+                  });
+                } catch (error) {
+                  spinner?.fail(
+                    `  File upload of ${Colors.path(entry.localPath)} failed`
+                  );
+
+                  if (
+                    Error.isError(error) &&
+                    error.cause &&
+                    typeof error.cause === 'object' &&
+                    'response' in error.cause &&
+                    error.cause.response &&
+                    typeof error.cause.response === 'object' &&
+                    'status' in error.cause.response &&
+                    error.cause.response.status === 400 &&
+                    'body' in error.cause.response &&
+                    error.cause.response.body &&
+                    typeof error.cause.response.body === 'object' &&
+                    'message' in error.cause.response.body &&
+                    error.cause.response.body.message ===
+                      'file size exceeds quota'
+                  ) {
+                    course.storage_quota_mb =
+                      parseInt(`${course.storage_quota_mb}`) * 2;
+                    await Canvas.v1.Courses.update({
+                      pathParams: { id: course.id },
+                      params: {
+                        'course[storage_quota_mb]': course.storage_quota_mb
+                      }
+                    });
+                    log(
+                      course,
+                      `Doubled course storage quota to ${course.storage_quota_mb}MB`
+                    );
+                    retries--;
+                  } else {
+                    throw new Error('File upload failed', { cause: error });
+                  }
+                }
+              } while (!file && retries > 0);
+              if (file) {
+                spinner?.succeed(
+                  `  Uploaded file ${Colors.path(entry.localPath)} as ${Colors.value(file.display_name)}`
+                );
+              } else {
+                spinner?.fail(
+                  `  File upload of ${Colors.path(entry.localPath)} failed`
+                );
+                throw new Error('File upload failed', {
+                  cause: { retries: 3 }
+                });
+              }
               return file;
             }
           }
