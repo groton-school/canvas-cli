@@ -18,6 +18,7 @@
 <h3>Downloads</h3>
 <% for (const download of assignment.DownloadItems) { %>
 <div>
+  <% if (download.DownloadUrl.canvas) { %>
   <div>
     <%- include('../Canvas/FileLink', {instance_url, course_id, file: download.DownloadUrl.canvas, filename: download.ShortDescription},) %>
   </div>
@@ -27,6 +28,14 @@
   %>
   <div style="text-decoration: none"><%- download.ShortDescription %></div>
   <% } %>
+  <% } else if (download.DownloadUrl.error) { %>
+  <p class="code">Error: <%= download.DownloadUrl.error %></p>
+  <% } else { %>
+  <p class="code">
+    Error: No Canvas upload associated with this link (<%=
+    download.DownloadUrl.original %>)
+  </p>
+  <% }%>
 </div>
 <% } %>
 <%} %>

@@ -1,6 +1,8 @@
-<% 
-const url = new URL(file.url);
-if (/\.instructuremedia\.com$/.test(url.hostname)) { %>
+<% if (file.error) { %>
+<span class="code"><%= file.error %></span>
+<% } else { 
+const url = new URL(file.url); if
+(/\.instructuremedia\.com$/.test(url.hostname)) { %>
 <div style="text-decoration: none">
   <iframe
     class="lti-embed"
@@ -44,4 +46,5 @@ if (/\.instructuremedia\.com$/.test(url.hostname)) { %>
   <% } %>
   <%- locals.filename ? filename : file.display_name %>
 </a>
+<% } %>
 <% } %>

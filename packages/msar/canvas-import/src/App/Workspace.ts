@@ -5,6 +5,7 @@ import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 import { Validators } from '@qui-cli/validators';
 import open from 'open';
+import ora from 'ora';
 
 /** Common SIS ID for workspace account, term, and user */
 const SIS_ID = '@msar/canvas-import';
@@ -206,10 +207,20 @@ export async function enableStudioForUser(user: Canvas.Users.User) {
 
 export async function enableStudioForCourse(course: Canvas.Courses.Course) {
   const url = await getStudioCourseNavUrl(course);
+  /*
   Log.info(
     `Open ${Colors.url(url)} to enable Canvas Studio access from ${course.name}`
   );
+  */
+  const spinner = ora(
+    `Open ${Colors.url(url)} to enable Canvas Studio access from ${course.name}`
+  ).start();
   open(url);
+  await new Promise((resolve) => {
+    setTimeout(resolve, 15000);
+  });
+  spinner.succeed();
+  /*
   while (
     !(await confirm({
       message: `Confirm that you have visited Canvas Studio from ${course.name}`
@@ -217,4 +228,5 @@ export async function enableStudioForCourse(course: Canvas.Courses.Course) {
   ) {
     // ...
   }
+    */
 }

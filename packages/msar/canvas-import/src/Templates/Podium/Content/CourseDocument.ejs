@@ -1,14 +1,24 @@
 <% if (content.Content.length > 0) { %>
+<!-- prettier-ignore -->
 <div>
   <h3><%= documentType %></h3>
-  <% content.Content.forEach(item => { %>
-  <% if (item.AttachmentQueryString) { %>
-  <div>
-    <small
-      ><%- include('../../Canvas/FileLink', {instance_url, course_id, file: item.AttachmentQueryString.canvas, filename: item.ShortDescription}) %></small
-    >
-  </div>
-  <% } %>
+  <% content.Content.forEach(item => { 
+    if (item.AttachmentQueryString) { %>
+      <div>
+        <% if (item.AttachmentQueryString.canvas) { %>
+          <small
+            ><%- include('../../Canvas/FileLink', {instance_url, course_id, file: item.AttachmentQueryString.canvas, filename: item.ShortDescription}) %></small
+          >
+        <% } else if (item.AttachmentQueryString.error) { %>
+          <p class="code">Error: <%= item.AttachmentQueryString.error %></p>
+        <% } else { %>
+          <p class="code">
+          Error: No Canvas upload associated with this link (<%=
+          item.AttachmentQueryString.original %>)
+        </p>
+        <% }%>
+      </div>
+    <% } %>
   <div><%- item.Description %></div>
   <% }); %>
 </div>

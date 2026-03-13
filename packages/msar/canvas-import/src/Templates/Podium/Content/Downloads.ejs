@@ -6,7 +6,16 @@ content.FilePath.canvas)) { %>
   <dl>
     <% for (const item of content.Content) { %>
     <dt>
+      <% if (item.DownloadUrl.canvas) { %>
       <%- include('../../Canvas/FileLink', {instance_url, course_id, file: item.DownloadUrl.canvas, filename: item.Description}) %>
+      <% } else if (item.DownloadUrl.error) { %>
+      <p class="code">Error: <%= item.DownloadUrl.error %></p>
+      <% } else { %>
+      <p class="code">
+        Error: No Canvas upload associated with this link (<%=
+        item.DownloadUrl.original %>)
+      </p>
+      <% }%>
     </dt>
     <dd><%- item.LongDescription %></dd>
     <% } %>
@@ -14,7 +23,16 @@ content.FilePath.canvas)) { %>
   <% } else { %>
   <dl>
     <dt>
+      <% if (content.FilePath.canvas) { %>
       <%- include('../../Canvas/FileLink', {instance_url, course_id, file: content.FilePath.canvas, filename: content.ShortDescription}) %>
+      <% } else if (content.FilePath.error) { %>
+      <p class="code">Error: <%= content.FilePath.error %></p>
+      <% } else { %>
+      <p class="code">
+        Error: No Canvas upload associated with this link (<%=
+        content.FilePath.original %>)
+      </p>
+      <% }%>
     </dt>
     <dd><%- content.LongDescription %></dd>
   </dl>
