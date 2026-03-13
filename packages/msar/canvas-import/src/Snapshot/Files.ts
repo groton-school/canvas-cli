@@ -297,7 +297,7 @@ export async function uploadLocalFiles({
               } else {
                 owner = await Workspace.getStudioUser();
               }
-              return await CanvasStudio.uploadLocalFile({
+              const file = await CanvasStudio.uploadLocalFile({
                 file_path: path.join(
                   path.dirname(IndexFile.path()),
                   entry.localPath.replace(/^\//, '')
@@ -306,6 +306,11 @@ export async function uploadLocalFiles({
                 title: name || filename || entry.filename,
                 description
               });
+              log(
+                course,
+                `Uploaded video ${Colors.path(entry.localPath)} as ${Colors.value(file.title)}`
+              );
+              return file;
             } else {
               const file = await Canvas.v1.Courses.Files.upload({
                 pathParams: { course_id: course.id.toString() },
