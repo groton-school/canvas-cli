@@ -20,7 +20,7 @@
 ## Usage:
 
 ```bash
-  canvas-import -h --o=<outputPath> --assignments --bulletinBoard --topics --skipTeacherless --pretty --commands --silent --logging --ignoreErrors --logRequests --blackbaudInstanceId=<`###`> --termsPath=<`"path/to/terms.csv"`> --departmentAccountMapPath=<`"path/to/dept-acct-map.csv"`> --coursesWithDepartmentsPath=<`"path/to/courses-dept.csv"`> --sisIdMapPath=<`"path/to/sis-id-map.csv"`> --duplicates=<overwrite|update|reset|skip> --prefix=<`"cls"`> --skipTo=<skipTo> --opAccount=<example.1password.com> --opItem=<1Password unique identifier> --opToken=<token value> --logFilePath=<logFilePath> --stdoutLevel=<all|trace|debug|info|warning|error|fatal|off> --fileLevel=<all|trace|debug|info|warning|error|fatal|off> `snapshotPath`
+  canvas-import -h --o=<outputPath> --assignments --bulletinBoard --topics --skipTeacherless --pretty --commands --silent --logging --ignoreErrors --logRequests --blackbaudInstanceId=<`###`> --termsPath=<`"path/to/terms.csv"`> --departmentAccountMapPath=<`"path/to/dept-acct-map.csv"`> --coursesWithDepartmentsPath=<`"path/to/courses-dept.csv"`> --sisIdMapPath=<`"path/to/sis-id-map.csv"`> --canvasStudioIndex=<canvasStudioIndex> --duplicates=<overwrite|update|reset|skip> --prefix=<`"cls"`> --skipTo=<skipTo> --opAccount=<example.1password.com> --opItem=<1Password unique identifier> --opToken=<token value> --logFilePath=<logFilePath> --stdoutLevel=<all|trace|debug|info|warning|error|fatal|off> --fileLevel=<all|trace|debug|info|warning|error|fatal|off> `snapshotPath`
 ```
 
 ## Arguments
@@ -72,6 +72,10 @@ Path to Courses with Departments CSV file, must contain at least `Course ID` and
 #### `--sisIdMapPath=<`"path/to/sis-id-map.csv"`>`
 
 Optional path to SIS ID Map CSV file, must contain at least `AssociationId` column and optionally either or both `prefix` and `SIS Account ID` columns. Used for generating custom SIS course IDs and assigning courses to sub-account by department. The default prefix is `cls` and the departments are mapped at `--departmentAccountMapPath`. `AccountId` values are interpreted here: `https://github.com/groton-school/msar/blob/7bf001d100b25e5c9c5d23cf765f85cfb5d3c6a4/packages/datadirect/src/api/datadirect/SectionInfoView/Response.ts#L8-L21`. Defaults to environment variable `SIS_ID_MAP_CSV`, if present.
+
+#### `--canvasStudioIndex=<canvasStudioIndex>`
+
+Path to a JSON index hashing SHA1 file hashes of videos to Canvas Studio media IDs (Default: `"canvas-studio.json"`)
 
 #### `--duplicates=<overwrite|update|reset|skip>`
 

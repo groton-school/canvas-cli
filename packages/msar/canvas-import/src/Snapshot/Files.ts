@@ -263,7 +263,10 @@ export async function uploadLocalFiles({
       ) {
         if (
           Imported.isEqual(params, entry.canvas.args) &&
-          entry.canvas.course_id === course.id
+          entry.canvas.course_id === course.id &&
+          (path.extname(entry.localPath) !== '.mp4' ||
+            entry.canvas.id ==
+              Workspace.inCanvasStudioIndex(entry.sha1_file_hash))
         ) {
           log(course, `File ${Colors.path(entry.localPath)} is up-to-date`);
           uploaded = true;
@@ -298,6 +301,26 @@ export async function uploadLocalFiles({
               } else {
                 owner = await Workspace.getStudioUser();
               }
+              const media_id = Workspace.inCanvasStudioIndex(
+                entry.sha1_file_hash
+              );
+              if (media_id) {
+                try {
+                  const { media } = await CanvasStudio.v1.media.get({
+                    path: { media_id }
+                  });
+                  log(
+                    course,
+                    `Video ${Colors.path(entry.localPath)} identified as existing video ${Colors.value(media.title)}`
+                  );
+                  return media;
+                } catch {
+                  log(
+                    course,
+                    `Video ${Colors.path(entry.localPath)} identical to Canvas Studio media ID ${Colors.value(media_id)}, but it could not be reused`
+                  );
+                }
+              }
               const spinner = ora(
                 `  Uploading video ${Colors.path(entry.localPath)} as ${Colors.value(name || filename || entry.filename)}`
               ).start();
@@ -310,6 +333,9 @@ export async function uploadLocalFiles({
                 title: name || filename || entry.filename,
                 description
               });
+              if (entry.sha1_file_hash) {
+                Workspace.addToCanvasStudioIndex(entry.sha1_file_hash, file.id);
+              }
               spinner.succeed(
                 `  Uploaded video ${Colors.path(entry.localPath)} as ${Colors.value(file.title)}`
               );

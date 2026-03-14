@@ -71,3 +71,13 @@ export function setPrefixes(value?: string[]) {
 export function prefixes() {
   return _prefixes;
 }
+
+let _canvasStudioIndex: string = 'canvas-studio.json';
+
+export function setCanvasStudioIndex(value?: string) {
+  _canvasStudioIndex = hydrate(value, _canvasStudioIndex);
+}
+
+export function canvasStudioIndex() {
+  return _canvasStudioIndex;
+}

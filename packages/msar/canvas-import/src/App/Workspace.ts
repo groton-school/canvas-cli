@@ -4,8 +4,10 @@ import { CanvasStudio } from '@oauth2-cli/canvas-studio';
 import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 import { Validators } from '@qui-cli/validators';
+import fs from 'node:fs';
 import open from 'open';
 import ora from 'ora';
+import { Preferences } from './index.js';
 
 /** Common SIS ID for workspace account, term, and user */
 const SIS_ID = '@msar/canvas-import';
@@ -229,4 +231,40 @@ export async function enableStudioForCourse(course: Canvas.Courses.Course) {
     // ...
   }
     */
+}
+
+let _canvasStudioIndex: Record<string, number> | undefined = undefined;
+
+function canvasStudioIndex() {
+  if (!_canvasStudioIndex) {
+    if (fs.existsSync(Preferences.canvasStudioIndex())) {
+      _canvasStudioIndex = JSON.parse(
+        fs.readFileSync(Preferences.canvasStudioIndex(), 'utf8')
+      );
+    }
+  }
+  if (!_canvasStudioIndex) {
+    throw new Error(
+      `Could not find Canvas Studio JSON index at ${Colors.path(Preferences.canvasStudioIndex())}`
+    );
+  }
+  return _canvasStudioIndex;
+}
+
+export function inCanvasStudioIndex(sha1_file_hash?: string) {
+  if (sha1_file_hash && sha1_file_hash in canvasStudioIndex()) {
+    return canvasStudioIndex()[sha1_file_hash];
+  }
+}
+
+export function addToCanvasStudioIndex(sha1_file_hash: string, id: number) {
+  canvasStudioIndex()[sha1_file_hash] = id;
+  fs.writeFileSync(
+    Preferences.canvasStudioIndex(),
+    JSON.stringify(canvasStudioIndex())
+  );
+}
+
+export function canvasStudioIndexSize() {
+  return Object.getOwnPropertyNames(canvasStudioIndex()).length;
 }

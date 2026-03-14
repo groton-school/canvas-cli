@@ -32,6 +32,7 @@ export type Configuration = Plugin.Configuration & {
   coursesWithDepartmentsPath?: PathString;
   sisIdMapPath?: PathString;
   snapshotPath?: PathString;
+  canvasStudioIndex?: PathString;
   duplicates?: Preferences.DuplicateHandling;
   ignoreErrors?: boolean;
   assignments?: boolean;
@@ -52,6 +53,7 @@ export function configure(config: Configuration = {}) {
   Preferences.setTopics(config.topics);
   Preferences.setSkipTeacherless(config.skipTeacherless);
   Preferences.setPrefixes(config.prefix);
+  Preferences.setCanvasStudioIndex(config.canvasStudioIndex);
   Snapshot.setPath(config.snapshotPath);
   OneRoster.setInstanceId(config.blackbaudInstanceId);
   OneRoster.setTermsPath(config.termsPath);
@@ -148,6 +150,10 @@ export function options(): Plugin.Options {
           `if present.`,
         hint: Colors.quotedValue(`"path/to/sis-id-map.csv"`)
       },
+      canvasStudioIndex: {
+        description: `Path to a JSON index hashing SHA1 file hashes of videos to Canvas Studio media IDs`,
+        default: Preferences.canvasStudioIndex()
+      },
       duplicates: {
         description: `Specify a duplicate course handling option`,
         hint: ['overwrite', 'update', 'reset', 'skip'].join('|'),
@@ -211,6 +217,10 @@ export async function run() {
   if (!(await CanvasStudio.plugin.client.isAuthorized())) {
     await CanvasStudio.plugin.client.authorize();
   }
+  Log.info(
+    `${Workspace.canvasStudioIndexSize()} videos already indexed on Canvas Studio`
+  );
+
   const spinner = ora(`Loading ${Colors.url(Snapshot.path())}`).start();
   let snapshots: Imported.Multiple.Data = [];
   const users: Record<Canvas.Users.User['sis_user_id'], Canvas.Users.User> = {};
