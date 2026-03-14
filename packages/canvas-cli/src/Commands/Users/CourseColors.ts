@@ -1,8 +1,8 @@
-import * as GrotonColors from '@groton/colors';
+import * as Colors from '@groton/colors';
 import { Canvas } from '@oauth2-cli/canvas';
-import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
+import chalk from 'chalk';
 import path from 'node:path';
 import ora from 'ora';
 
@@ -69,16 +69,6 @@ export async function run() {
     throw new Error(`termId must be defined`);
   }
 
-  const colors = {
-    RD: GrotonColors.RedOnWhite,
-    OR: GrotonColors.OrangeOnWhite,
-    YL: GrotonColors.YellowOnWhite,
-    GR: GrotonColors.GreenOnWhite,
-    LB: GrotonColors.LightBlueOnWhite,
-    DB: GrotonColors.DarkBlueOnWhite,
-    PR: GrotonColors.PurpleOnWhite
-  };
-
   // TODO /users/{id}/colors list return type
   type CustomColors = { custom_colors: Record<string, string> };
 
@@ -101,14 +91,15 @@ export async function run() {
   });
 
   for (const course of courses) {
-    const spinner = ora(course.name).start();
+    const spinner = ora(`□ ${course.name}`).start();
     let applied = 0;
     let overwritten = 0;
     const block = blockFrom(course);
     const asset_string = `course_${course.id}`;
     const hexcode =
-      block && block in colors
-        ? colors[block as keyof typeof colors]
+      block && `${block}OnWhite` in Colors
+        ? // @ts-expect-error 2538
+          Colors[`${block}OnWhite`]
         : undefined;
     Log.debug({ course: course.name, block, asset_string, hexcode });
     try {
@@ -144,17 +135,25 @@ export async function run() {
               ? 1
               : 0;
           }
-          spinner.text = `${course.name}: Updated ${applied}/${i + 1} users ${overwrite && overwritten > 0 ? `(overwriting ${overwritten}) ` : ''}`;
+          spinner.text =
+            // @ts-expect-error 2538
+            `${chalk.hex(Colors[block])('■')} ${chalk.hex(Colors[`${block}OnBlack`])(course.name)}\n    Updated ` +
+            `${applied}/${enrollments.length}` +
+            ` users ${
+              overwrite && overwritten > 0
+                ? `(overwriting ${overwritten}) `
+                : ''
+            }`;
         }
 
         spinner.succeed();
       } else {
         spinner.warn(
-          `${course.name} does not appear to not meet in a color block`
+          `${chalk.hex(Colors.NoColor)('□')} ${chalk.hex(Colors.NoColorOnBlack)(course.name)} does not appear to not meet in a color block`
         );
       }
     } catch (error) {
-      spinner.fail(Colors.error((error as Error).message));
+      spinner.fail(chalk.red((error as Error).message));
     }
   }
 }

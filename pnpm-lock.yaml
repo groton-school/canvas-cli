@@ -300,6 +300,9 @@ importers:
       '@qui-cli/structured':
         specifier: ^2.0.6
         version: 2.0.6(@qui-cli/colors@3.2.4)(@qui-cli/core@6.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))
+      chalk:
+        specifier: ^5.6.2
+        version: 5.6.2
       change-case:
         specifier: ^5.4.4
         version: 5.4.4
@@ -12842,7 +12845,7 @@ snapshots:
 
   jest-diff@29.7.0:
     dependencies:
-      chalk: 4.1.0
+      chalk: 4.1.2
       diff-sequences: 29.6.3
       jest-get-type: 29.6.3
       pretty-format: 29.7.0
@@ -13926,7 +13929,7 @@ snapshots:
       '@yarnpkg/parsers': 3.0.2
       '@zkochan/js-yaml': 0.0.7
       axios: 1.13.6
-      chalk: 4.1.0
+      chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
       cliui: 8.0.1
@@ -14071,7 +14074,7 @@ snapshots:
   ora@5.3.0:
     dependencies:
       bl: 4.1.0
-      chalk: 4.1.0
+      chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
       is-interactive: 1.0.0

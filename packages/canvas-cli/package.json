@@ -36,6 +36,7 @@
     "@qui-cli/plugin": "^4.1.1",
     "@qui-cli/root": "^3.1.1",
     "@qui-cli/structured": "^2.0.6",
+    "chalk": "^5.6.2",
     "change-case": "^5.4.4",
     "csv-parse": "^5.6.0",
     "ora": "^9.3.0"
