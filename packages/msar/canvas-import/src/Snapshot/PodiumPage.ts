@@ -134,7 +134,7 @@ async function exportDataURIsToFiles(
 }
 
 async function scaleImageTo(filePath: string, maxWidth = 800, maxHeight = 600) {
-  const dimensions = await probe(filePath);
+  const dimensions = await probe(fs.createReadStream(filePath));
   const scale =
     dimensions.width > dimensions.height
       ? dimensions.width > maxWidth
