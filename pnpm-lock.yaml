@@ -550,6 +550,9 @@ importers:
       '@qui-cli/plugin':
         specifier: '>=3'
         version: 4.1.1(@qui-cli/colors@3.2.4)
+      ora:
+        specifier: ^9.3.0
+        version: 9.3.0
       requestish:
         specifier: ^0.1.12
         version: 0.1.12

@@ -1,8 +1,10 @@
 import * as OAuth2 from '@oauth2-cli/qui-cli/extendable/index.js';
 import { Colors } from '@qui-cli/colors';
+import { Log } from '@qui-cli/log';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import ora from 'ora';
 import { Headers, URL } from 'requestish';
 
 export type Credentials = OAuth2.Credentials & { issuer: URL.ish };
@@ -82,5 +84,22 @@ export class CanvasStudioPlugin extends OAuth2.OAuth2Plugin<Credentials> {
         headers
       }
     });
+  }
+
+  public async run() {
+    const spinner = ora(`Authorizing Canvas Studio access`).start();
+    if (!(await this.client.isAuthorized())) {
+      spinner.stop();
+      await this.client.authorize();
+    }
+    if (spinner.isSpinning) {
+      spinner.succeed(
+        `Canvas Studio authorization complete for ${Colors.url(this.client.credentials.issuer)}`
+      );
+    } else {
+      Log.info(
+        `Canvas Studio authorization complete for ${Colors.url(this.client.credentials.issuer)}`
+      );
+    }
   }
 }

@@ -33,6 +33,7 @@
   "dependencies": {
     "@battis/descriptive-types": "^0.2.6",
     "@oauth2-cli/qui-cli": "^1.2.14",
+    "ora": "^9.3.0",
     "requestish": "^0.1.12"
   },
   "devDependencies": {
