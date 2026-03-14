@@ -432,7 +432,7 @@ export async function run() {
             )
           );
         }
-        Output.writeJSON(Output.outputPath(), snapshots, {
+        Output.writeJSON(Output.outputPath(), [...skipped, ...snapshots], {
           overwrite: true,
           silent: true
         });
