@@ -5,11 +5,11 @@ import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import { getUri } from 'get-uri';
-import { imageSizeFromFile } from 'image-size/fromFile';
 import fs from 'node:fs';
 import path from 'node:path';
 import { finished } from 'node:stream/promises';
 import ora from 'ora';
+import probe from 'probe-image-size';
 import * as Templates from '../Templates/index.js';
 import * as Content from './Content/index.js';
 import * as Files from './Files.js';
@@ -134,7 +134,7 @@ async function exportDataURIsToFiles(
 }
 
 async function scaleImageTo(filePath: string, maxWidth = 800, maxHeight = 600) {
-  const dimensions = await imageSizeFromFile(filePath);
+  const dimensions = await probe(filePath);
   const scale =
     dimensions.width > dimensions.height
       ? dimensions.width > maxWidth

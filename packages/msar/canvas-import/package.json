@@ -46,7 +46,6 @@
     "csv-parse": "^5.6.0",
     "ejs": "^3.1.10",
     "get-uri": "^7.0.0",
-    "image-size": "^2.0.2",
     "open": "^10.2.0",
     "ora": "^9.3.0",
     "probe-image-size": "^7.2.3",
