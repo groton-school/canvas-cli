@@ -5,6 +5,7 @@ import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import { getUri } from 'get-uri';
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { finished } from 'node:stream/promises';
@@ -93,37 +94,51 @@ async function exportDataURIsToFiles(
   for (const { ext, uri } of html
     .matchAll(/<img\s+[^>]*src="(data:image\/([^;]+);[^"]+)"/gm)
     .map((match) => ({ ext: match[2], uri: match[1] }))) {
-    const spinner = ora(`  Uploading data URI`).start();
-    const stream = await getUri(uri);
-    // TODO it would be nice to hash these data URIs for possible reuse
-    const filePath = await Output.avoidOverwrite(
-      path.join(
-        path.dirname(Output.outputPath()),
-        'data-uris/courses',
-        course.sis_course_id,
-        `image.${ext}`
-      )
+    const spinner = ora(`  Identified data URI`).start();
+    const name =
+      crypto.createHash('sha1').update(uri).digest('hex') + `.${ext}`;
+    const filePath = path.join(
+      path.dirname(Output.outputPath()),
+      'data-uris/courses',
+      course.sis_course_id,
+      name
     );
-    fs.mkdirSync(path.dirname(filePath), { recursive: true });
-    const name = path.basename(filePath);
     const localPath = filePath.replace(/.*\/(data-uris\/courses\/.*)$/, '$1');
-
-    spinner.text = `  Writing data URI to ${Colors.path(localPath)}`;
-    await finished(stream.pipe(fs.createWriteStream(filePath)));
-    const dimensions = await scaleImageTo(filePath);
-
-    spinner.text = `  Uploading ${Colors.path(localPath)} to ${Colors.value(`Imported Files/data-uri/${name}}`)}`;
-    const file = await Canvas.v1.Courses.Files.upload({
-      pathParams: { course_id: course.id },
-      file: { filePath },
-      params: {
-        parent_folder_path: 'Imported Files/data-uri',
-        name,
-        size: fs.statSync(filePath).size,
-        on_duplicate: 'overwrite'
+    let file: Canvas.Files.File | undefined = undefined;
+    if (fs.existsSync(filePath)) {
+      spinner.text = `  Data URI exists at ${Colors.path(localPath)}`;
+      file = (
+        await Canvas.v1.Courses.Files.list({
+          pathParams: { course_id: course.id },
+          searchParams: { search_term: name }
+        })
+      ).shift();
+      if (!file) {
+        throw new Error('Expected file to have been previously uploaded', {
+          cause: { course, localPath }
+        });
       }
-    });
+    } else {
+      const stream = await getUri(uri);
+      // TODO it would be nice to hash these data URIs for possible reuse
+      fs.mkdirSync(path.dirname(filePath), { recursive: true });
+      spinner.text = `  Writing data URI to ${Colors.path(localPath)}`;
+      await finished(stream.pipe(fs.createWriteStream(filePath)));
+      spinner.text = `  Uploading ${Colors.path(localPath)} to ${Colors.value(`Imported Files/data-uri/${name}}`)}`;
+      file = await Canvas.v1.Courses.Files.upload({
+        pathParams: { course_id: course.id },
+        file: { filePath },
+        params: {
+          parent_folder_path: 'Imported Files/data-uri',
+          name,
+          size: fs.statSync(filePath).size,
+          on_duplicate: 'overwrite'
+        }
+      });
+    }
+
     spinner.text = `  Replacing data URI in text with reference to uploaded ${Colors.value(name)}`;
+    const dimensions = await scaleImageTo(filePath);
     html = html.replaceAll(
       `src="${uri}"`,
       `id="${file.id}" src="/courses/${course.id}/files/${file.id}/preview" width="${dimensions.width}" height="${dimensions.height}"`
