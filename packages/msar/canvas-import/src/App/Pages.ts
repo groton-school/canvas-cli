@@ -61,6 +61,12 @@ export async function importBulletinBoard({ course, section }: Options) {
 
 export async function importTopics({ course, section }: Options) {
   if (section.Topics) {
+    let topicsModule = (
+      await Canvas.v1.Courses.Modules.list({
+        pathParams: { course_id: course.id },
+        searchParams: { include: ['items'] }
+      })
+    ).find((m) => m.name === 'Topics');
     for (const topic of section.Topics) {
       if (topic.Content) {
         const params = await Snapshot.PodiumPage.toCanvasArgs({
@@ -91,12 +97,34 @@ export async function importTopics({ course, section }: Options) {
           log(course, `Created page ${Colors.value(topic.Name)}`);
         }
         if (canvasTopic) {
+          if (!topicsModule) {
+            topicsModule = await Canvas.v1.Courses.Modules.create({
+              pathParams: { course_id: course.id },
+              params: { 'module[name]': 'Topics' }
+            });
+          }
           topic.canvas = {
             id: canvasTopic.page_id.toString(),
             blackbaud_id: topic.TopicId,
             args: params,
             created_at: canvasTopic.created_at
           };
+          const item = topicsModule.items?.find(
+            (i) =>
+              i.module_item_type === 'Page' &&
+              'page_url' in i &&
+              i.page_url === canvasTopic.url
+          );
+          if (!item) {
+            await Canvas.v1.Courses.Modules.Items.create({
+              pathParams: { course_id: course.id, module_id: topicsModule.id },
+              params: {
+                'module_item[title]': canvasTopic.title,
+                'module_item[type]': 'Page',
+                'module_item[page_url]': canvasTopic.url
+              }
+            });
+          }
         }
       }
     }
