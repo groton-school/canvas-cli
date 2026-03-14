@@ -1,7 +1,7 @@
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
-import { Log } from '@qui-cli/log';
+import { log } from '../../App/Courses.js';
 import { Preferences } from '../../App/index.js';
 import * as Templates from '../../Templates/index.js';
 
@@ -81,7 +81,7 @@ export async function convertToPages({ course, item, parent }: Options) {
           album.canvas.args = params;
         }
       } else {
-        Log.info(`Album page ${Colors.value(title)} is up-to-date`);
+        log(course, `Album page ${Colors.value(title)} is up-to-date`);
       }
       processed = true;
     }
