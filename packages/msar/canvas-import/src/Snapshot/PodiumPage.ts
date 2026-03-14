@@ -1,3 +1,4 @@
+import { HTMLString } from '@battis/descriptive-types';
 import { JSONValue } from '@battis/typescript-tricks';
 import { Output } from '@msar/output';
 import * as Imported from '@msar/types.import';
@@ -68,14 +69,28 @@ export async function toCanvasArgs({
       body[i] = item;
     }
   }
-  let pageBody = await Templates.render(Templates.Podium.Page, {
-    instance_url: Canvas.client().instance_url,
-    course_id: course.id,
-    page: body,
-    layout
-  });
 
-  for (const { ext, uri } of pageBody
+  return {
+    'wiki_page[title]': title && title.length > 0 ? title : 'Untitled',
+    'wiki_page[body]': await exportDataURIsToFiles(
+      await Templates.render(Templates.Podium.Page, {
+        instance_url: Canvas.client().instance_url,
+        course_id: course.id,
+        page: body,
+        layout
+      }),
+      course
+    ),
+    'wiki_page[published]': true,
+    'wiki_page[front_page]': front_page
+  };
+}
+
+async function exportDataURIsToFiles(
+  html: HTMLString,
+  course: Canvas.Courses.Course
+) {
+  for (const { ext, uri } of html
     .matchAll(/<img\s+[^>]*src="(data:image\/([^;]+);[^"]+)"/gm)
     .map((match) => ({ ext: match[2], uri: match[1] }))) {
     const spinner = ora(`  Uploading data URI`).start();
@@ -95,20 +110,8 @@ export async function toCanvasArgs({
 
     spinner.text = `  Writing data URI to ${Colors.path(localPath)}`;
     await finished(stream.pipe(fs.createWriteStream(filePath)));
+    const dimensions = await scaleImageTo(filePath);
 
-    const dimensions = await imageSizeFromFile(filePath);
-    const scale =
-      dimensions.width > dimensions.height
-        ? dimensions.width > 800
-          ? 800 / dimensions.width
-          : 1
-        : dimensions.height > 600
-          ? 600 / dimensions.width
-          : 1;
-    if (scale != 1) {
-      dimensions.width *= scale;
-      dimensions.height *= scale;
-    }
     spinner.text = `  Uploading ${Colors.path(localPath)} to ${Colors.value(`Imported Files/data-uri/${name}}`)}`;
     const file = await Canvas.v1.Courses.Files.upload({
       pathParams: { course_id: course.id },
@@ -121,17 +124,28 @@ export async function toCanvasArgs({
       }
     });
     spinner.text = `  Replacing data URI in text with reference to uploaded ${Colors.value(name)}`;
-    pageBody = pageBody.replaceAll(
+    html = html.replaceAll(
       `src="${uri}"`,
       `id="${file.id}" src="/courses/${course.id}/files/${file.id}/preview" width="${dimensions.width}" height="${dimensions.height}"`
     );
     spinner.succeed(`  Data URI replaced with ${Colors.value(name)}`);
   }
+  return html;
+}
 
-  return {
-    'wiki_page[title]': title && title.length > 0 ? title : 'Untitled',
-    'wiki_page[body]': pageBody,
-    'wiki_page[published]': true,
-    'wiki_page[front_page]': front_page
-  };
+async function scaleImageTo(filePath: string, maxWidth = 800, maxHeight = 600) {
+  const dimensions = await imageSizeFromFile(filePath);
+  const scale =
+    dimensions.width > dimensions.height
+      ? dimensions.width > maxWidth
+        ? maxWidth / dimensions.width
+        : 1
+      : dimensions.height > maxHeight
+        ? maxHeight / dimensions.width
+        : 1;
+  if (scale != 1) {
+    dimensions.width *= scale;
+    dimensions.height *= scale;
+  }
+  return dimensions;
 }
