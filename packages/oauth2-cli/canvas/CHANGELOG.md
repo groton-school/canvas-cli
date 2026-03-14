@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.6.1](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/canvas/0.6.0...oauth2-cli/canvas/0.6.1) (2026-03-14)
+
+
+### Bug Fixes
+
+* improve identification of authorized issuer ([2200718](https://github.com/groton-school/canvas-cli/commit/2200718c5dcd62af64ae028afc3bd6ccbb3bdb0e))
+
 ## [0.6.0](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/canvas/0.5.0...oauth2-cli/canvas/0.6.0) (2026-03-03)
 
 
