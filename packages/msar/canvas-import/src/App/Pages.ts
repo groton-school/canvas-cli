@@ -65,12 +65,20 @@ export async function importBulletinBoard({ course, section }: Options) {
 
 export async function importTopics({ course, section }: Options) {
   if (section.Topics) {
-    let topicsModule = (
+    // @ts-expect-error 2352 typing is wrong
+    let topicsModule: Canvas.Modules.Module = (
       await Canvas.v1.Courses.Modules.list({
         pathParams: { course_id: course.id },
         searchParams: { include: ['items'] }
       })
-    ).find((m) => m.name === 'Topics');
+    ).find((m) => m.name === 'Topics') as Canvas.Modules.Module;
+    if (topicsModule && !topicsModule.published) {
+      await Canvas.v1.Courses.Modules.update({
+        pathParams: { course_id: course.id, id: topicsModule.id },
+        params: { 'module[published]': true }
+      });
+      log(course, `Published ${Colors.value('Topics')} module`);
+    }
     for (const topic of section.Topics) {
       if (topic.Content) {
         const params = await Snapshot.PodiumPage.toCanvasArgs({
@@ -109,11 +117,19 @@ export async function importTopics({ course, section }: Options) {
         }
         if (canvasTopic) {
           if (!topicsModule) {
+            // @ts-expect-error 2740 typing is wrong
             topicsModule = await Canvas.v1.Courses.Modules.create({
               pathParams: { course_id: course.id },
               params: { 'module[name]': 'Topics' }
             });
-            log(course, `Created ${Colors.value('Topics')} module`);
+            await Canvas.v1.Courses.Modules.update({
+              pathParams: { course_id: course.id, id: topicsModule.id },
+              params: { 'module[published]': true }
+            });
+            log(
+              course,
+              `Created and published ${Colors.value('Topics')} module`
+            );
           }
           topic.canvas = {
             id: canvasTopic.page_id.toString(),
@@ -123,6 +139,7 @@ export async function importTopics({ course, section }: Options) {
           };
           const item = topicsModule.items?.find(
             (i) =>
+              // @ts-expect-error 2339 it's there
               i.module_item_type === 'Page' &&
               'page_url' in i &&
               i.page_url === canvasTopic.url
