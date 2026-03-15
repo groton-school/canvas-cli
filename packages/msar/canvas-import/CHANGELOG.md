@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.2](https://github.com/groton-school/canvas-cli/compare/canvas-import/0.1.1...canvas-import/0.1.2) (2026-03-15)
+
+
+### Features
+
+* collect topic pages in a Topics module ([a0a27bb](https://github.com/groton-school/canvas-cli/commit/a0a27bbd0815db6fef31c556f7d4ba6059625bc7))
+* embed Canvas Studio videos in pages and assignments ([2cb0888](https://github.com/groton-school/canvas-cli/commit/2cb088878906f9f4507bc7f43b49bba29d73dd7c))
+* expand storage quota for courses with too many files ([68a96fe](https://github.com/groton-school/canvas-cli/commit/68a96fec0bb668f471c8770ebf5f1f73244433fa))
+* filter by SIS course ID prefix (e.g. `cls`) ([3e1262f](https://github.com/groton-school/canvas-cli/commit/3e1262f96f77e38c2ac315aa9192fa03fbb2276b))
+* maintain external index of SHA1 hashes of videos uploaded to Canvas Studio ([9b8c609](https://github.com/groton-school/canvas-cli/commit/9b8c609fe07adf721c252a1b7e85c145ad0f78cc))
+* reduce size of pages by externalizing data URIs to image file ([bdaffdf](https://github.com/groton-school/canvas-cli/commit/bdaffdf5c401f1943cb963b3d13924c28d092244))
+* skipTo specific GroupId ([95cf048](https://github.com/groton-school/canvas-cli/commit/95cf04807315065f6245c7baec5b31aa59d6f2ac))
+* upload videos to Canvas Studio as teacher, if possible ([552ba91](https://github.com/groton-school/canvas-cli/commit/552ba91109bfe1865d2457e676344537af379d28))
+* upload videos to Canvas Studio, rather than as file attachments ([1605e5e](https://github.com/groton-school/canvas-cli/commit/1605e5ea3fa82403b703b872f77ce99fdf99a381))
+
+
+### Bug Fixes
+
+* do not set `auto_caption` ([45b8c45](https://github.com/groton-school/canvas-cli/commit/45b8c4555f5d5f527b3d760f64f8230a6eebfada))
+* fully converted to Core.Positionals ([09e1e14](https://github.com/groton-school/canvas-cli/commit/09e1e14175cb22ece9d56292311ec320c24aec32))
+* handle @msar/archive errors more gracefully when rendering Canvas pages ([b9e918b](https://github.com/groton-school/canvas-cli/commit/b9e918b3f193dd2df5114fad90afe4aa922cba55))
+* improve update log clarity ([7676c45](https://github.com/groton-school/canvas-cli/commit/7676c45c9fee316b36165bff76883aff1c979ce4))
+* include skipped sections in intermediate writes ([4e180ca](https://github.com/groton-school/canvas-cli/commit/4e180ca5bbcd3ff9576e98beea8e40e8caaea9e6))
+* more consistent course-level logging ([b577a41](https://github.com/groton-school/canvas-cli/commit/b577a416b2fddff7e6bc3831d451c4986a55c01f))
+* more durable data URI filenaming as hashes ([7471b4f](https://github.com/groton-school/canvas-cli/commit/7471b4fd2ef8601bd859624481a58f7bcddc2ca9))
+* remove another redundant logging error around resetting courses ([146f100](https://github.com/groton-school/canvas-cli/commit/146f1002ce52f7ed92832a6f4795f11ea394e5b6))
+* remove redundant logging on reset ([0233a26](https://github.com/groton-school/canvas-cli/commit/0233a26dae0ccf34e23b7ecfc67907740c314677))
+* render unknown content as comments invisibly ([bb3b8c6](https://github.com/groton-school/canvas-cli/commit/bb3b8c695ea88b8669e7ce8853f01730a46d292e))
+* stream files to calculate hashes (safer for large files) ([f36ecfe](https://github.com/groton-school/canvas-cli/commit/f36ecfe77775f3fdb2340a54f41c4f2c3d88eaf8))
+* tolerate seemingly untitled Podium pages (how?) ([1935850](https://github.com/groton-school/canvas-cli/commit/19358509940837b1b3b0cd764876397167270cb2))
+* track course/workspace user while uploading files ([c743ebe](https://github.com/groton-school/canvas-cli/commit/c743ebe2437bf506146fea1bf0d1cb8b9cafc8aa))
+* use upload spinners as a reassuring sign of life ([69ebf71](https://github.com/groton-school/canvas-cli/commit/69ebf71685936888f11e38a0ec67185a0017453e))
+
 ## 0.1.1 (2026-02-08)
 
 
