@@ -115,6 +115,16 @@ export async function uploadLocalFiles({
                   return file;
                 }
               }
+              if ('id' in entry.canvas && 'url' in entry.canvas) {
+                const file = await getExistingVideo(
+                  parseInt(entry.canvas.id!),
+                  entry,
+                  course
+                );
+                if (file) {
+                  return file;
+                }
+              }
               return await uploadVideo(
                 entry,
                 name,
