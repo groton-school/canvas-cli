@@ -49,27 +49,40 @@ export async function calculate(entry: JSONValue): Promise<JSONValue> {
           entry.localPath
         );
 
-        const hash = crypto.createHash('sha1').setEncoding('hex');
-        const fstream = fs.createReadStream(filePath);
-        entry.sha1_file_hash = await new Promise<string>((resolve) => {
-          fstream.on('end', () => {
-            hash.end();
-            resolve(hash.read());
+        if (fs.existsSync(filePath)) {
+          const hash = crypto.createHash('sha1').setEncoding('hex');
+          const fstream = fs.createReadStream(filePath);
+          entry.sha1_file_hash = await new Promise<string>((resolve) => {
+            fstream.on('end', () => {
+              hash.end();
+              resolve(hash.read());
+            });
+            fstream.pipe(hash);
           });
-          fstream.pipe(hash);
-        });
 
-        if (entry.sha1_file_hash) {
-          hashes[entry.localPath] = {
-            hash: entry.sha1_file_hash,
-            filename: entry.filename
-          };
-          const message = `Hashed ${Colors.url(entry.localPath)} to ${Colors.value(entry.sha1_file_hash)}`;
-          Log.debug(message);
+          if (entry.sha1_file_hash) {
+            hashes[entry.localPath] = {
+              hash: entry.sha1_file_hash,
+              filename: entry.filename
+            };
+            const message = `Hashed ${Colors.url(entry.localPath)} to ${Colors.value(entry.sha1_file_hash)}`;
+            Log.debug(message);
+          } else {
+            throw new Error(
+              `Failed to calculate hash for ${Colors.url(entry.localPath)}`
+            );
+          }
         } else {
-          throw new Error(
-            `Failed to calculate hash for ${Colors.url(entry.localPath)}`
-          );
+          if (/\.g(doc|sheet|slides|form)$/.test(entry.localPath)) {
+            entry.error = `${path.extname(entry.localPath)} are web shortcuts that cannot up uploaded`;
+            // @ts-expect-error 2790
+            delete entry.localPath;
+          } else {
+            throw new Error(
+              `File ${Colors.path(entry.localPath)} cannot be found`,
+              { cause: { entry } }
+            );
+          }
         }
       }
     } else {
