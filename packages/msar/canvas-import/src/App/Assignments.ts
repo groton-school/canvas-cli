@@ -42,6 +42,10 @@ export async function importAssignments({ user, course, section }: Options) {
           if (result) {
             section.assignment_groups[prev].args = params as JSONObject;
           }
+          log(
+            course,
+            `Assignment group ${Colors.value(params.name)} has been updated`
+          );
         } else {
           log(
             course,
@@ -89,6 +93,10 @@ export async function importAssignments({ user, course, section }: Options) {
           params:
             params as Partial<Canvas.v1.Courses.Assignments.updateFormParameters>
         });
+        log(
+          course,
+          `Assignment ${Colors.value(params['assignment[name]'])} has been updated`
+        );
       } else {
         log(
           course,

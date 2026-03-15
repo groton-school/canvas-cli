@@ -36,6 +36,10 @@ export async function importBulletinBoard({ course, section }: Options) {
             created_at: frontPage.created_at
           };
         }
+        log(
+          course,
+          `Page ${Colors.value(params['wiki_page[title]'])} has been updated`
+        );
       } else {
         log(
           course,
@@ -86,8 +90,15 @@ export async function importTopics({ course, section }: Options) {
               },
               params
             });
+            log(
+              course,
+              `Page ${Colors.value(params['wiki_page[title]'])} has been updated`
+            );
           } else {
-            log(course, `Page ${Colors.value(topic.Name)} is up-to-date`);
+            log(
+              course,
+              `Page ${Colors.value(params['wiki_page[title]'])} is up-to-date`
+            );
           }
         } else {
           canvasTopic = await Canvas.v1.Courses.Pages.create({
@@ -102,6 +113,7 @@ export async function importTopics({ course, section }: Options) {
               pathParams: { course_id: course.id },
               params: { 'module[name]': 'Topics' }
             });
+            log(course, `Created ${Colors.value('Topics')} module`);
           }
           topic.canvas = {
             id: canvasTopic.page_id.toString(),
@@ -115,7 +127,12 @@ export async function importTopics({ course, section }: Options) {
               'page_url' in i &&
               i.page_url === canvasTopic.url
           );
-          if (!item) {
+          if (item) {
+            log(
+              course,
+              `Page ${Colors.value(canvasTopic.title)} is up-to-date in ${Colors.value('Topics')} module`
+            );
+          } else {
             await Canvas.v1.Courses.Modules.Items.create({
               pathParams: { course_id: course.id, module_id: topicsModule.id },
               params: {
@@ -124,6 +141,10 @@ export async function importTopics({ course, section }: Options) {
                 'module_item[page_url]': canvasTopic.url
               }
             });
+            log(
+              course,
+              `Page ${Colors.value(canvasTopic.title)} added to ${Colors.value('Topics')} module`
+            );
           }
         }
       }
