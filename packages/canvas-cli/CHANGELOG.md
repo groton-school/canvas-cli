@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.7](https://github.com/groton-school/canvas-cli/compare/canvas-cli/0.0.6...canvas-cli/0.0.7) (2026-03-15)
+
+
+### Features
+
+* fancied up output ([a691a69](https://github.com/groton-school/canvas-cli/commit/a691a69f58980bd96bf1a70a0d0b9b0ae902c825))
+* more fun display while assigning course colors ([1517455](https://github.com/groton-school/canvas-cli/commit/1517455bec7affba0dcc2e3e2ca076105a200b8b))
+* switch from soon-to-be-deprecated env-1password to env+@1password/sdk ([5c46e4e](https://github.com/groton-school/canvas-cli/commit/5c46e4e63e34667234ee4b0cd1dc15fe9db09204))
+
+
+### Bug Fixes
+
+* courseColors no longer spins indefinitely when making zero updates ([6ed575f](https://github.com/groton-school/canvas-cli/commit/6ed575f1ffabd6bcd77da4f3be7e3e3f2229daa8))
+* overwrite logic now overwrites upon request ([d81c5d4](https://github.com/groton-school/canvas-cli/commit/d81c5d4cf3033d42305fa04a84504b1d458ed92b))
+* reduce number of API calls to update course colors ([ce393c0](https://github.com/groton-school/canvas-cli/commit/ce393c09688c9201d2c18058170f802590d094ee))
+
 ## [0.0.6](https://github.com/groton-school/canvas-cli/compare/canvas-cli/0.0.5...canvas-cli/0.0.6) (2026-01-15)
 
 
