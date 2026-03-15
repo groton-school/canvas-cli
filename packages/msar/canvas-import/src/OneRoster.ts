@@ -8,7 +8,7 @@ import { Root } from '@qui-cli/root';
 import { parse } from 'csv-parse/sync';
 import fs from 'node:fs';
 import path from 'node:path';
-import * as Workspace from './App/Workspace.js';
+import * as Workspace from './App/Workspace/index.js';
 
 type TermImportRecord = {
   'Term ID': number;

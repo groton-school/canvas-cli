@@ -21,7 +21,7 @@ import { importAssignments } from './Assignments.js';
 import { handleDuplicateCourse, log } from './Courses.js';
 import { importBulletinBoard, importTopics } from './Pages.js';
 import * as Preferences from './Preferences.js';
-import * as Workspace from './Workspace.js';
+import * as Workspace from './Workspace/index.js';
 
 export * as Preferences from './Preferences.js';
 
@@ -218,7 +218,7 @@ export async function run() {
     await CanvasStudio.plugin.client.authorize();
   }
   Log.info(
-    `${Workspace.canvasStudioIndexSize()} videos already indexed on Canvas Studio`
+    `${Workspace.CanvasStudio.Hashes.length()} videos already indexed on Canvas Studio`
   );
 
   const spinner = ora(`Loading ${Colors.url(Snapshot.path())}`).start();

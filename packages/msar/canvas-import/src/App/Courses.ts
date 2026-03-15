@@ -6,7 +6,7 @@ import { Log } from '@qui-cli/log';
 import open from 'open';
 import * as Snapshot from '../Snapshot/index.js';
 import * as Preferences from './Preferences.js';
-import * as Workspace from './Workspace.js';
+import * as Workspace from './Workspace/index.js';
 
 type Options = {
   course: Canvas.Courses.Course;

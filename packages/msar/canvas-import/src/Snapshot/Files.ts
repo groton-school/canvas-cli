@@ -18,7 +18,7 @@ import ora, { Ora } from 'ora';
 import probe from 'probe-image-size';
 import { log } from '../App/Courses.js';
 import { Preferences } from '../App/index.js';
-import * as Workspace from '../App/Workspace.js';
+import * as Workspace from '../App/Workspace/index.js';
 import * as IndexFile from './IndexFile.js';
 
 export type Annotated = {
@@ -266,7 +266,7 @@ export async function uploadLocalFiles({
           entry.canvas.course_id === course.id &&
           (path.extname(entry.localPath) !== '.mp4' ||
             entry.canvas.id ==
-              Workspace.inCanvasStudioIndex(entry.sha1_file_hash))
+              Workspace.CanvasStudio.Hashes.get(entry.sha1_file_hash))
         ) {
           log(course, `File ${Colors.path(entry.localPath)} is up-to-date`);
           uploaded = true;
@@ -295,13 +295,13 @@ export async function uploadLocalFiles({
                     })
                   ).users.shift();
                   if (!owner) {
-                    await Workspace.enableStudioForUser(user);
+                    await Workspace.CanvasStudio.User.enable(user);
                   }
                 } while (!owner);
               } else {
-                owner = await Workspace.getStudioUser();
+                owner = await Workspace.CanvasStudio.User.get();
               }
-              const media_id = Workspace.inCanvasStudioIndex(
+              const media_id = Workspace.CanvasStudio.Hashes.get(
                 entry.sha1_file_hash
               );
               if (media_id) {
@@ -334,7 +334,10 @@ export async function uploadLocalFiles({
                 description
               });
               if (entry.sha1_file_hash) {
-                Workspace.addToCanvasStudioIndex(entry.sha1_file_hash, file.id);
+                Workspace.CanvasStudio.Hashes.set(
+                  entry.sha1_file_hash,
+                  file.id
+                );
               }
               spinner.succeed(
                 `  Uploaded video ${Colors.path(entry.localPath)} as ${Colors.value(file.title)}`
@@ -432,7 +435,9 @@ export async function uploadLocalFiles({
                             .get({ path: { course_id: course.id } })
                             .catch(async () => {
                               try {
-                                await Workspace.enableStudioForCourse(course);
+                                await Workspace.CanvasStudio.Course.enable(
+                                  course
+                                );
                                 resolve(course.id);
                               } catch (cause) {
                                 reject(
