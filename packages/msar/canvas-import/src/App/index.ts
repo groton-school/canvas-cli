@@ -334,9 +334,11 @@ export async function run() {
             }
           });
           log(course, `Temporarily moved to workspace term`);
+          const spinner = ora('  Calculating file hashes').start();
           section = (await Snapshot.Files.Hashes.calculate(
             section as JSONObject
           )) as Imported.Multiple.Item;
+          spinner.succeed('  Calculated file hashes');
 
           // TODO consolidate in importCourse
           if (section.SectionInfo) {

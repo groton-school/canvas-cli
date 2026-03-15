@@ -1,4 +1,4 @@
-import { HTMLString } from '@battis/descriptive-types';
+import { HTMLString, PathString } from '@battis/descriptive-types';
 import { JSONValue } from '@battis/typescript-tricks';
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
@@ -90,7 +90,7 @@ export async function uploadLocalFiles({
         if (
           Imported.isEqual(params, entry.canvas.args) &&
           entry.canvas.course_id === course.id &&
-          (path.extname(entry.localPath) !== '.mp4' ||
+          (!isMovie(entry.localPath) ||
             entry.canvas.id ==
               Workspace.CanvasStudio.Hashes.get(entry.sha1_file_hash))
         ) {
@@ -103,7 +103,7 @@ export async function uploadLocalFiles({
           course.id.toString(),
           entry.localPath,
           async () => {
-            if (path.extname(entry.localPath) === '.mp4') {
+            if (isMovie(entry.localPath)) {
               let owner: CanvasStudio.User.User | undefined;
               ({ owner, user } = await identifyOwner(user, course));
               const media_id = Workspace.CanvasStudio.Hashes.get(
@@ -183,6 +183,22 @@ export async function uploadLocalFiles({
     }
   }
   return result;
+}
+
+function isMovie(filePath: PathString) {
+  return [
+    '.flv',
+    '.asf',
+    '.qt',
+    '.mov',
+    '.mpg',
+    '.mpeg',
+    '.avi',
+    '.m4v',
+    '.wmv',
+    '.mp4',
+    '.3gp'
+  ].includes(path.extname(filePath).toLowerCase());
 }
 
 async function getExistingVideo(
