@@ -160,7 +160,7 @@ export async function importTopics({ course, section }: Options) {
             });
             log(
               course,
-              `Page ${Colors.value(canvasTopic.title)} added to ${Colors.value('Topics')} module`
+              `Added page ${Colors.value(canvasTopic.title)} to ${Colors.value('Topics')} module`
             );
           }
         }
