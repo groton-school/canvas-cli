@@ -334,7 +334,7 @@ export async function run() {
             }
           });
           log(course, `Temporarily moved to workspace term`);
-          section = (await Snapshot.Files.calculateHashes(
+          section = (await Snapshot.Files.Hashes.calculate(
             section as JSONObject
           )) as Imported.Multiple.Item;
 

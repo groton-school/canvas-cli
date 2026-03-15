@@ -5,7 +5,7 @@ import { Log } from '@qui-cli/log';
 import { stripHtml } from 'string-strip-html';
 import { Preferences } from '../App/index.js';
 import * as Templates from '../Templates/index.js';
-import * as Files from './Files.js';
+import * as Files from './Files/index.js';
 
 type SnapshotModel = ArrayElement<NonNullable<Imported.Data['Assignments']>>;
 

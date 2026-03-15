@@ -13,7 +13,7 @@ import ora from 'ora';
 import probe from 'probe-image-size';
 import * as Templates from '../Templates/index.js';
 import * as Content from './Content/index.js';
-import * as Files from './Files.js';
+import * as Files from './Files/index.js';
 
 type ToCanvasArgsOptions = {
   user?: Canvas.Users.User;
