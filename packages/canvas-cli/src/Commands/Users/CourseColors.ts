@@ -4,7 +4,7 @@ import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import chalk from 'chalk';
 import path from 'node:path';
-import ora from 'ora';
+import ora, { Ora } from 'ora';
 
 export type Configuration = Plugin.Configuration & {
   account_id?: string;
@@ -74,14 +74,125 @@ export async function run() {
 
   const userCache: Record<Canvas.Users.User['id'], CustomColors> = {};
 
-  function blockFrom(course?: Canvas.Courses.Course) {
-    let block: string | undefined = undefined;
-    const blockMatches =
-      course && /\(([A-Z]{1,2})[^)]*\)$/.exec(course.course_code);
-    if (blockMatches && blockMatches.length >= 2) {
-      block = blockMatches[1];
+  function blockFrom(
+    section: Canvas.Sections.Section,
+    course: Canvas.Courses.Course
+  ) {
+    for (const source of [section.name, course.name, course.course_code]) {
+      const blockMatches = course && /\(([A-Z]{1,2})[^)]*\)$/.exec(source);
+      if (blockMatches && blockMatches.length >= 2) {
+        return blockMatches[1];
+      }
     }
-    return block;
+    return undefined;
+  }
+
+  type SpinnerOptions = {
+    course?: Canvas.Courses.Course;
+    sections?: number;
+    section?: Canvas.Sections.Section;
+    enrollments?: Canvas.Enrollments.Enrollment[];
+    hexcode?: string | false;
+    applied?: number;
+    overwritten?: number;
+    error?: Error;
+  };
+
+  let currentCourseId: string | number | undefined = undefined;
+  let currentSectionId: string | number | undefined = undefined;
+  let spinner: Ora | undefined = undefined;
+
+  function log({
+    course,
+    section,
+    sections,
+    enrollments,
+    hexcode,
+    applied,
+    overwritten,
+    error
+  }: SpinnerOptions = {}) {
+    function complete() {
+      if (spinner) {
+        if (/⛶/.test(spinner.text)) {
+          spinner.info();
+        }
+        if (/⛝/.test(spinner.text)) {
+          spinner.warn();
+        } else {
+          spinner.succeed();
+        }
+      }
+    }
+
+    if (course) {
+      if (course.id !== currentCourseId) {
+        complete();
+        spinner = ora(`□ ${course.name}`).start();
+        currentCourseId = course.id;
+      }
+      if (spinner) {
+        if (error) {
+          spinner.fail();
+          Log.error(error.message);
+        } else {
+          if (sections !== undefined) {
+            if (sections === 0) {
+              spinner.text = `${chalk.hex(Colors.NoColorOnBlack)(
+                spinner.text.replace('□', '⛶')
+              )} has no sections~`;
+            }
+            if (section) {
+              if (section.id !== currentSectionId) {
+                if (sections > 1) {
+                  if (spinner.text === `□ ${course.name}`) {
+                    spinner.stop();
+                    Log.info(`□ ${course.name}`);
+                  } else {
+                    complete();
+                  }
+                  spinner = ora(`  □ ${section.name}`).start();
+                }
+                currentSectionId = section.id;
+              }
+              if (spinner) {
+                let text = spinner.text;
+                if (hexcode != undefined && /□ .+$/.test(text)) {
+                  if (hexcode === false) {
+                    text = `${chalk.hex(Colors.NoColor)(text.replace('□', '⛝'))}`;
+                  } else {
+                    text = chalk.hex(hexcode)(text.replace('□', '■'));
+                  }
+                }
+                if (enrollments && applied !== undefined) {
+                  if (/updated \d+\/\d+ users/.test(text)) {
+                    text.replace(
+                      /updated \d+\/\d+/,
+                      `updated ${applied}/${enrollments.length}`
+                    );
+                  } else {
+                    text = `${text} updated ${applied}/${enrollments.length} users`;
+                  }
+                }
+                if (overwritten !== undefined && overwritten > 0) {
+                  if (/\(overwriting \d+\)/.test(text)) {
+                    text = text.replace(
+                      /\(overwriting \d+\)/,
+                      `(overwriting ${overwritten})`
+                    );
+                  } else {
+                    text = `${text} (overwriting ${overwritten})`;
+                  }
+                }
+                spinner.text = text;
+              }
+            }
+          }
+        }
+      }
+    } else {
+      complete();
+    }
   }
 
   const per_page = 100;
@@ -91,69 +202,91 @@ export async function run() {
   });
 
   for (const course of courses) {
-    const spinner = ora(`□ ${course.name}`).start();
-    let applied = 0;
-    let overwritten = 0;
-    const block = blockFrom(course);
-    const asset_string = `course_${course.id}`;
-    const hexcode =
-      block && `${block}OnWhite` in Colors
-        ? // @ts-expect-error 2538
-          Colors[`${block}OnWhite`]
-        : undefined;
-    Log.debug({ course: course.name, block, asset_string, hexcode });
-    try {
-      if (hexcode) {
-        const enrollments = await Canvas.v1.Courses.Enrollments.list({
-          pathParams: { course_id: course.id },
-          searchParams: { per_page }
-        });
-        for (let i = 0; i < enrollments.length; i++) {
-          if (!(enrollments[i].user_id in userCache)) {
-            userCache[enrollments[i].user_id] =
-              (await Canvas.v1.Users.Colors.list({
-                pathParams: { id: enrollments[i].user_id }
-              })) as CustomColors;
-          }
-          if (
-            (!userCache[enrollments[i].user_id].custom_colors[asset_string] ||
-              overwrite) &&
-            hexcode !==
-              userCache[enrollments[i].user_id].custom_colors[asset_string]
-          ) {
-            await Canvas.v1.Users.Colors.update({
-              pathParams: {
-                id: enrollments[i].user_id,
-                asset_string
-              },
-              params: { hexcode }
-            });
-            applied++;
-            overwritten += userCache[enrollments[i].user_id].custom_colors[
-              asset_string
-            ]
-              ? 1
-              : 0;
-          }
-          spinner.text =
-            // @ts-expect-error 2538
-            `${chalk.hex(Colors[block])('■')} ${chalk.hex(Colors[`${block}OnBlack`])(course.name)}\n    Updated ` +
-            `${applied}/${enrollments.length}` +
-            ` users ${
-              overwrite && overwritten > 0
-                ? `(overwriting ${overwritten}) `
-                : ''
-            }`;
-        }
+    log({ course });
+    const sections = await Canvas.v1.Courses.Sections.list({
+      pathParams: { course_id: course.id },
+      searchParams: { include: ['enrollments'] }
+    });
+    log({ course, sections: sections.length });
+    for (const section of sections) {
+      log({ course, sections: sections.length, section });
+      const block = blockFrom(section, course);
+      const asset_string = `course_${course.id}`;
 
-        spinner.succeed();
-      } else {
-        spinner.warn(
-          `${chalk.hex(Colors.NoColor)('□')} ${chalk.hex(Colors.NoColorOnBlack)(course.name)} does not appear to not meet in a color block`
-        );
+      const hexcode =
+        block && `${block}OnWhite` in Colors
+          ? // @ts-expect-error 2538
+            Colors[`${block}OnWhite`]
+          : undefined;
+      try {
+        if (hexcode) {
+          log({ course, sections: sections.length, section, hexcode });
+          const enrollments = await Canvas.v1.Sections.Enrollments.list({
+            pathParams: { section_id: section.id }
+          });
+          let applied = 0;
+          let overwritten = 0;
+          log({
+            course,
+            sections: sections.length,
+            section,
+            enrollments,
+            // @ts-expect-error 7053
+            hexcode: Colors[`${block}OnBlack`],
+            applied,
+            overwritten
+          });
+          for (let i = 0; i < enrollments.length; i++) {
+            if (!(enrollments[i].user_id in userCache)) {
+              userCache[enrollments[i].user_id] =
+                (await Canvas.v1.Users.Colors.list({
+                  pathParams: { id: enrollments[i].user_id }
+                })) as CustomColors;
+            }
+            if (
+              (!userCache[enrollments[i].user_id].custom_colors[asset_string] ||
+                overwrite) &&
+              hexcode !==
+                userCache[enrollments[i].user_id].custom_colors[asset_string]
+            ) {
+              await Canvas.v1.Users.Colors.update({
+                pathParams: {
+                  id: enrollments[i].user_id,
+                  asset_string
+                },
+                params: { hexcode }
+              });
+              applied++;
+              overwritten += userCache[enrollments[i].user_id].custom_colors[
+                asset_string
+              ]
+                ? 1
+                : 0;
+              userCache[enrollments[i].user_id].custom_colors[asset_string] =
+                hexcode;
+            }
+            log({
+              course,
+              sections: sections.length,
+              section,
+              enrollments,
+              // @ts-expect-error 7053
+              hexcode: Colors[`${block}OnBlack`],
+              applied,
+              overwritten
+            });
+          }
+        } else {
+          log({ course, sections: sections.length, section, hexcode: false });
+        }
+      } catch (error) {
+        if (Error.isError(error)) {
+          log({ course, sections: sections.length, section, error });
+        } else {
+          throw new Error('Unknown error', { cause: error });
+        }
       }
-    } catch (error) {
-      spinner.fail(chalk.red((error as Error).message));
     }
   }
+  log();
 }
