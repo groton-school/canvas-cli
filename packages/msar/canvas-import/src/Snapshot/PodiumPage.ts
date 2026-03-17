@@ -114,11 +114,10 @@ async function exportDataURIsToFiles(
         })
       ).shift();
       if (!file) {
-        throw new Error('Expected file to have been previously uploaded', {
-          cause: { course, localPath }
-        });
+        spinner.text = `  Data URI at ${Colors.path(localPath)} not yet uploaded`;
       }
-    } else {
+    }
+    if (!file) {
       const stream = await getUri(uri);
       // TODO it would be nice to hash these data URIs for possible reuse
       fs.mkdirSync(path.dirname(filePath), { recursive: true });
