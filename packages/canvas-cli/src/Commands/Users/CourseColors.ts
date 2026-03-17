@@ -91,7 +91,7 @@ export async function run() {
     course?: Canvas.Courses.Course;
     sections?: number;
     section?: Canvas.Sections.Section;
-    enrollments?: Canvas.Enrollments.Enrollment[];
+    checked?: number;
     hexcode?: string | false;
     applied?: number;
     overwritten?: number;
@@ -106,7 +106,7 @@ export async function run() {
     course,
     section,
     sections,
-    enrollments,
+    checked,
     hexcode,
     applied,
     overwritten,
@@ -163,14 +163,14 @@ export async function run() {
                     text = chalk.hex(hexcode)(text.replace('□', '■'));
                   }
                 }
-                if (enrollments && applied !== undefined) {
+                if (checked !== undefined && applied !== undefined) {
                   if (/updated \d+\/\d+ users/.test(text)) {
-                    text.replace(
+                    text = text.replace(
                       /updated \d+\/\d+/,
-                      `updated ${applied}/${enrollments.length}`
+                      `updated ${applied}/${checked}`
                     );
                   } else {
-                    text = `${text} updated ${applied}/${enrollments.length} users`;
+                    text = `${text} updated ${applied}/${checked} users`;
                   }
                 }
                 if (overwritten !== undefined && overwritten > 0) {
@@ -229,9 +229,9 @@ export async function run() {
             course,
             sections: sections.length,
             section,
-            enrollments,
             // @ts-expect-error 7053
             hexcode: Colors[`${block}OnBlack`],
+            checked: enrollments.length,
             applied,
             overwritten
           });
@@ -268,9 +268,9 @@ export async function run() {
               course,
               sections: sections.length,
               section,
-              enrollments,
               // @ts-expect-error 7053
               hexcode: Colors[`${block}OnBlack`],
+              checked: enrollments.length,
               applied,
               overwritten
             });
