@@ -32,14 +32,14 @@
   },
   "dependencies": {
     "@battis/descriptive-types": "^0.2.6",
-    "@oauth2-cli/qui-cli": "^1.2.14",
+    "@oauth2-cli/qui-cli": "^1.2.15",
     "ora": "^9.3.0",
     "requestish": "^0.1.12"
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.4",
     "@types/node": "^24.12.0",
-    "commit-and-tag-version": "^12.6.1",
+    "commit-and-tag-version": "^12.7.0",
     "del-cli": "^7.0.0",
     "npm-run-all": "^4.1.5",
     "typescript": "^5.9.3"
