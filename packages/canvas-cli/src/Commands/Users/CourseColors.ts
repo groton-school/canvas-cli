@@ -116,8 +116,7 @@ export async function run() {
       if (spinner) {
         if (/⛶/.test(spinner.text)) {
           spinner.info();
-        }
-        if (/⛝/.test(spinner.text)) {
+        } else if (/⛝/.test(spinner.text)) {
           spinner.warn();
         } else {
           spinner.succeed();
