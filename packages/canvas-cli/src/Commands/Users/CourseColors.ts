@@ -140,7 +140,7 @@ export async function run() {
             if (sections === 0) {
               spinner.text = `${chalk.hex(Colors.NoColorOnBlack)(
                 spinner.text.replace('□', '⛶')
-              )} has no sections~`;
+              )} has no sections`;
             }
             if (section) {
               if (section.id !== currentSectionId) {
