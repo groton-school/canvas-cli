@@ -322,7 +322,8 @@ async function uploadFile(
         );
         retries--;
       } else {
-        throw new Error('File upload failed', { cause: error });
+        Log.syntaxColor({ error });
+        throw error;
       }
     }
   } while (!file && retries > 0);
