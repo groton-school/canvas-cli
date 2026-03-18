@@ -38,11 +38,12 @@ export class Client extends OAuth2.Client<Credentials> implements Base {
       ...params,
       init: { method },
       accessToken: async () => (await this.getToken())?.access_token,
-      fetch: async (...request) => {
-        Log.debug({ request });
-        const response = await fetch(...request);
-        Log.debug({ ok: response.ok, status: response.status });
-        return response;
+      fetch: (endpoint, init) => {
+        // @ts-expect-error 2345
+        return this.fetch(endpoint, {
+          ...init,
+          headers: { ...init?.headers, Authorization: undefined }
+        });
       }
     });
   }
@@ -64,6 +65,15 @@ export class Client extends OAuth2.Client<Credentials> implements Base {
       method: 'POST',
       body
     });
+    Log.debug({
+      confirm: {
+        ok: confirm.ok,
+        status: confirm.status,
+        statusText: confirm.statusText,
+        headers: Object.fromEntries(confirm.headers.entries()),
+        body: await confirm.text()
+      }
+    });
     let result: T;
     switch (confirm.status) {
       case 301:
@@ -76,13 +86,14 @@ export class Client extends OAuth2.Client<Credentials> implements Base {
         }
       // eslint-disable-next-line no-fallthrough
       default:
-        throw new Error(
-          `Error uploading file: ${{
+        throw new Error(`Error uploading file`, {
+          cause: {
             file,
+            ...response,
             confirm,
             error: await confirm.json()
-          }}`
-        );
+          }
+        });
     }
   }
 }
