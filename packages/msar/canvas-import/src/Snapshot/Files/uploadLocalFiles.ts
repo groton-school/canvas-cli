@@ -266,16 +266,22 @@ async function identifyOwner(
     ).shift()?.user;
   }
   if (user) {
-    do {
-      owner = (
-        await CanvasStudio.v1.users.search({
-          query: { email: user.email }
-        })
-      ).users.shift();
-      if (!owner) {
-        await Workspace.CanvasStudio.User.enable(user);
-      }
-    } while (!owner);
+    try {
+      do {
+        owner = (
+          await CanvasStudio.v1.users.search({
+            query: { email: user.login_id }
+          })
+        ).users.shift();
+        if (!owner) {
+          await Workspace.CanvasStudio.User.enable(user);
+        }
+      } while (!owner);
+    } catch (error) {
+      throw new Error('Canvas Studio lookup for user failed', {
+        cause: { user, error }
+      });
+    }
   } else {
     owner = await Workspace.CanvasStudio.User.get();
   }
