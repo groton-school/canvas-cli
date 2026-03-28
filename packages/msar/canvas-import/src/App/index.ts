@@ -347,6 +347,10 @@ export async function run() {
               section as JSONObject
             )) as Imported.Multiple.Item;
             spinner.succeed('  Calculated file hashes');
+            Output.writeJSON(Output.outputPath(), [...skipped, ...snapshots], {
+              overwrite: true,
+              silent: true
+            });
 
             // TODO consolidate in importCourse
             if (section.SectionInfo) {
