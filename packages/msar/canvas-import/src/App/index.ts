@@ -457,9 +457,15 @@ export async function run() {
                 log(course, error.message, 'error');
                 errors.push({
                   course,
-                  error
+                  snapshot: section,
+                  error: {
+                    name: error.name,
+                    message: error.message,
+                    cause: error.cause,
+                    stack: error.stack
+                  }
                 });
-                Output.writeJSON(errorFilePath, errors);
+                Output.writeJSON(errorFilePath, errors, { overwrite: true });
               }
             } else {
               throw error;
