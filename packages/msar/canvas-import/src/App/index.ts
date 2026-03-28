@@ -260,6 +260,13 @@ export async function run() {
     }
   }
 
+  const errors = [];
+  const errorFilePath = path.join(
+    path.dirname(Output.outputPath()),
+    path.basename(Output.outputPath(), path.extname(Output.outputPath())) +
+      '-errors.json'
+  );
+
   // TODO write partial updates to index or tmp piecemeal
   for (let section of snapshots) {
     if (!Preferences.skipTeacherless() || section.SectionInfo?.TeacherId) {
@@ -327,127 +334,142 @@ export async function run() {
           );
         }
         if (course) {
-          await Canvas.v1.Courses.update({
-            pathParams: { id: course.id },
-            params: {
-              'course[term_id]': (await Workspace.getTermId()).toString()
-            }
-          });
-          log(course, `Temporarily moved to workspace term`);
-          const spinner = ora('  Calculating file hashes').start();
-          section = (await Snapshot.Files.Hashes.calculate(
-            section as JSONObject
-          )) as Imported.Multiple.Item;
-          spinner.succeed('  Calculated file hashes');
-
-          // TODO consolidate in importCourse
-          if (section.SectionInfo) {
-            section.SectionInfo.canvas = {
-              id: course.id.toString(),
-              instance_url: Canvas.client().instance_url,
-              args: Snapshot.Section.toCanvasArgs(section),
-              created_at: course.created_at
-            };
-          }
-          // TODO cache enrollments for updating
-          let user: Canvas.Users.User | undefined = undefined;
-          if (section.SectionInfo?.TeacherId === null) {
-            log(course, `No teacher in snapshot`, 'warning');
-          } else {
-            const sis_user_id = OneRoster.sis_user_id(section);
-            user = users[sis_user_id];
-            if (!user) {
-              try {
-                user = await Canvas.v1.Users.show_user_details({
-                  pathParams: { id: `sis_user_id:${sis_user_id}` }
-                });
-              } catch (_) {
-                user = await Canvas.v1.Accounts.Users.create({
-                  pathParams: { account_id: 1 },
-                  params: {
-                    'user[name]': section.SectionInfo?.Teacher,
-                    'pseudonym[sis_user_id]': sis_user_id,
-                    'pseudonym[unique_id]': sis_user_id,
-                    enable_sis_reactivation: true,
-                    'pseudonym[send_confirmation]': false
-                  }
-                });
-                await Canvas.v1.Users.update({
-                  pathParams: { id: users[sis_user_id].id },
-                  params: { 'user[event]': 'suspend' }
-                });
-                log(
-                  course,
-                  `Added ${Colors.value(users[sis_user_id].name)} as a suspended user`
-                );
-              }
-              users[sis_user_id] = user;
-            }
-            await Canvas.v1.Courses.Enrollments.enroll_user_courses({
-              pathParams: { course_id: course.id.toString() },
-              params: {
-                'enrollment[user_id]': `sis_user_id:${sis_user_id}`,
-                'enrollment[type]': 'TeacherEnrollment',
-                'enrollment[enrollment_state]': 'active'
-              }
-            });
-            log(course, `Enrolled ${Colors.value(user.name)} as teacher`);
-          }
-
-          if (Preferences.assignments()) {
-            await importAssignments({ user, course, section });
-          }
-
-          if (Preferences.bulletinBoard()) {
-            await importBulletinBoard({ course, section });
-          }
-
-          if (Preferences.topics() && section.Topics) {
-            await importTopics({ course, section });
-          }
-
-          const sis_term_id = OneRoster.sis_term_id(section);
-          if (sis_term_id) {
+          try {
             await Canvas.v1.Courses.update({
-              pathParams: { id: course.id.toString() },
+              pathParams: { id: course.id },
               params: {
-                'course[term_id]': `sis_term_id:${sis_term_id}`
+                'course[term_id]': (await Workspace.getTermId()).toString()
               }
             });
+            log(course, `Temporarily moved to workspace term`);
+            const spinner = ora('  Calculating file hashes').start();
+            section = (await Snapshot.Files.Hashes.calculate(
+              section as JSONObject
+            )) as Imported.Multiple.Item;
+            spinner.succeed('  Calculated file hashes');
+
+            // TODO consolidate in importCourse
+            if (section.SectionInfo) {
+              section.SectionInfo.canvas = {
+                id: course.id.toString(),
+                instance_url: Canvas.client().instance_url,
+                args: Snapshot.Section.toCanvasArgs(section),
+                created_at: course.created_at
+              };
+            }
+            // TODO cache enrollments for updating
+            let user: Canvas.Users.User | undefined = undefined;
+            if (section.SectionInfo?.TeacherId === null) {
+              log(course, `No teacher in snapshot`, 'warning');
+            } else {
+              const sis_user_id = OneRoster.sis_user_id(section);
+              user = users[sis_user_id];
+              if (!user) {
+                try {
+                  user = await Canvas.v1.Users.show_user_details({
+                    pathParams: { id: `sis_user_id:${sis_user_id}` }
+                  });
+                } catch (_) {
+                  user = await Canvas.v1.Accounts.Users.create({
+                    pathParams: { account_id: 1 },
+                    params: {
+                      'user[name]': section.SectionInfo?.Teacher,
+                      'pseudonym[sis_user_id]': sis_user_id,
+                      'pseudonym[unique_id]': sis_user_id,
+                      enable_sis_reactivation: true,
+                      'pseudonym[send_confirmation]': false
+                    }
+                  });
+                  await Canvas.v1.Users.update({
+                    pathParams: { id: users[sis_user_id].id },
+                    params: { 'user[event]': 'suspend' }
+                  });
+                  log(
+                    course,
+                    `Added ${Colors.value(users[sis_user_id].name)} as a suspended user`
+                  );
+                }
+                users[sis_user_id] = user;
+              }
+              await Canvas.v1.Courses.Enrollments.enroll_user_courses({
+                pathParams: { course_id: course.id.toString() },
+                params: {
+                  'enrollment[user_id]': `sis_user_id:${sis_user_id}`,
+                  'enrollment[type]': 'TeacherEnrollment',
+                  'enrollment[enrollment_state]': 'active'
+                }
+              });
+              log(course, `Enrolled ${Colors.value(user.name)} as teacher`);
+            }
+
+            if (Preferences.assignments()) {
+              await importAssignments({ user, course, section });
+            }
+
+            if (Preferences.bulletinBoard()) {
+              await importBulletinBoard({ course, section });
+            }
+
+            if (Preferences.topics() && section.Topics) {
+              await importTopics({ course, section });
+            }
+
+            const sis_term_id = OneRoster.sis_term_id(section);
+            if (sis_term_id) {
+              await Canvas.v1.Courses.update({
+                pathParams: { id: course.id.toString() },
+                params: {
+                  'course[term_id]': `sis_term_id:${sis_term_id}`
+                }
+              });
+              log(
+                course,
+                `Moved to term ${Colors.value(OneRoster.termName(sis_term_id))}`
+              );
+            } else {
+              log(
+                course,
+                `Could not be moved out of the ${Colors.path('Import Workspace')} term`,
+                'warning'
+              );
+            }
+            if (Preferences.bulletinBoard()) {
+              await Canvas.v1.Courses.update({
+                pathParams: { id: course.id.toString() },
+                params: { 'course[default_view]': 'wiki' }
+              });
+              log(course, `Set front page to bulletin board page`);
+            }
+
             log(
               course,
-              `Moved to term ${Colors.value(OneRoster.termName(sis_term_id))}`
-            );
-          } else {
-            log(
-              course,
-              `Could not be moved out of the ${Colors.path('Import Workspace')} term`,
-              'warning'
-            );
-          }
-          if (Preferences.bulletinBoard()) {
-            await Canvas.v1.Courses.update({
-              pathParams: { id: course.id.toString() },
-              params: { 'course[default_view]': 'wiki' }
-            });
-            log(course, `Set front page to bulletin board page`);
-          }
-
-          log(
-            course,
-            Colors.url(
-              path.join(
-                Canvas.client().instance_url,
-                'courses',
-                course.id.toString()
+              Colors.url(
+                path.join(
+                  Canvas.client().instance_url,
+                  'courses',
+                  course.id.toString()
+                )
               )
-            )
-          );
+            );
+          } catch (error) {
+            if (Preferences.ignoreErrors()) {
+              if (Error.isError(error)) {
+                log(course, error.message, 'error');
+                errors.push({
+                  course,
+                  error
+                });
+                Output.writeJSON(errorFilePath, errors);
+              }
+            } else {
+              throw error;
+            }
+          }
+          Output.writeJSON(Output.outputPath(), [...skipped, ...snapshots], {
+            overwrite: true,
+            silent: true
+          });
         }
-        Output.writeJSON(Output.outputPath(), [...skipped, ...snapshots], {
-          overwrite: true,
-          silent: true
-        });
       } else {
         Log.info(
           `Skipping non-matching section ${Colors.value(section.SectionInfo?.GroupName)} (${sis_course_id})`
