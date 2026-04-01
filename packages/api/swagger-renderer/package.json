@@ -35,7 +35,7 @@
     "@qui-cli/root": "^3.1.1",
     "@qui-cli/shell": "^3.1.4",
     "@qui-cli/structured": "^2.0.6",
-    "handlebars": "^4.7.8",
+    "handlebars": "^4.7.9",
     "node-fetch": "^3.3.2",
     "ora": "^9.3.0",
     "p-queue": "^8.1.1",
