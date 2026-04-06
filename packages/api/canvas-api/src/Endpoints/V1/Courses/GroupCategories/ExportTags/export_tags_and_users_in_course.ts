@@ -1,6 +1,5 @@
+import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
-import { Masquerade } from '@groton/canvas-api.client.base';
-import { client } from '../../../../../Client.js';
 
 export type export_tags_and_users_in_coursePathParameters = {
   /**

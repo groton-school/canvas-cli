@@ -13,6 +13,11 @@
     "email": "sbattis@groton.org"
   },
   "type": "module",
+  "imports": {
+    "#client": "./dist/Client/index.js",
+    "#resources/*": "./dist/Resources/*",
+    "#endpoints/*": "./dist/Endpoints/*"
+  },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -32,12 +37,12 @@
   "dependencies": {
     "@battis/descriptive-types": "^0.2.6",
     "@battis/typescript-tricks": "^0.8.2",
-    "@groton/canvas-api.client.base": "workspace:*",
     "@groton/canvas-api.utilities": "workspace:*"
   },
   "devDependencies": {
     "@groton/canvas-api.swagger-renderer": "workspace:*",
     "@tsconfig/node24": "^24.0.4",
+    "@types/node": "^24.12.0",
     "commit-and-tag-version": "^12.7.1",
     "del-cli": "^7.0.0",
     "npm-run-all": "^4.1.5",

@@ -1,6 +1,5 @@
+import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
-import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
-import { client } from '../../../../../Client.js';
 import { QuizReport } from '../../../../../Resources/QuizReports.js';
 
 export type retrieve_all_quiz_reportsPathParameters = {

@@ -1,6 +1,5 @@
+import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
-import { Masquerade } from '@groton/canvas-api.client.base';
-import { client } from '../../../../../Client.js';
 
 export type find_or_create_summary_groupsPathParameters = {
   /**

@@ -1,6 +1,5 @@
+import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
-import { Masquerade } from '@groton/canvas-api.client.base';
-import { client } from '../../../../../Client.js';
 import { LtiRegistrationAccountBinding } from '../../../../../Overrides.js';
 
 export type bind_lti_registration_to_accountPathParameters = {

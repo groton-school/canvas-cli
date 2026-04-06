@@ -1,6 +1,5 @@
+import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
-import { Masquerade } from '@groton/canvas-api.client.base';
-import { client } from '../../../../Client.js';
 
 export type retrieve_assignments_enabled_for_grade_export_to_sis_coursesPathParameters =
   {

@@ -44,9 +44,6 @@ importers:
       '@battis/typescript-tricks':
         specifier: ^0.8.2
         version: 0.8.2
-      '@groton/canvas-api.client.base':
-        specifier: workspace:*
-        version: link:../client/base
       '@groton/canvas-api.utilities':
         specifier: workspace:*
         version: link:../utilities
@@ -57,6 +54,9 @@ importers:
       '@tsconfig/node24':
         specifier: ^24.0.4
         version: 24.0.4
+      '@types/node':
+        specifier: ^24.12.0
+        version: 24.12.0
       commit-and-tag-version:
         specifier: ^12.7.1
         version: 12.7.1
@@ -106,9 +106,6 @@ importers:
       '@groton/canvas-api':
         specifier: workspace:*
         version: link:../../canvas-api
-      '@groton/canvas-api.client.base':
-        specifier: workspace:*
-        version: link:../base
       p-queue:
         specifier: ^8.1.1
         version: 8.1.1
@@ -492,9 +489,6 @@ importers:
       '@groton/canvas-api':
         specifier: workspace:*
         version: link:../../api/canvas-api
-      '@groton/canvas-api.client.base':
-        specifier: workspace:*
-        version: link:../../api/client/base
       '@groton/canvas-api.utilities':
         specifier: workspace:*
         version: link:../../api/utilities
@@ -9656,7 +9650,7 @@ snapshots:
 
   '@types/needle@3.3.0':
     dependencies:
-      '@types/node': 25.5.0
+      '@types/node': 24.12.0
 
   '@types/node@24.12.0':
     dependencies:
@@ -9665,6 +9659,7 @@ snapshots:
   '@types/node@25.5.0':
     dependencies:
       undici-types: 7.18.2
+    optional: true
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -9673,7 +9668,7 @@ snapshots:
   '@types/probe-image-size@7.2.5':
     dependencies:
       '@types/needle': 3.3.0
-      '@types/node': 25.5.0
+      '@types/node': 24.12.0
 
   '@types/qs@6.15.0': {}
 
@@ -15786,7 +15781,8 @@ snapshots:
 
   undici-types@7.16.0: {}
 
-  undici-types@7.18.2: {}
+  undici-types@7.18.2:
+    optional: true
 
   unicorn-magic@0.3.0: {}
 

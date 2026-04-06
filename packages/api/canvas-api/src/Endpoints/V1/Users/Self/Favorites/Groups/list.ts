@@ -1,5 +1,4 @@
-import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
-import { client } from '../../../../../../Client.js';
+import { client, Masquerade, Paginated } from '#client';
 import { Group } from '../../../../../../Resources/Groups.js';
 
 export type listSearchParameters = Masquerade & Paginated;

@@ -1,10 +1,5 @@
+import { client, FileLocation, Masquerade, UploadResponse } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
-import {
-  FileLocation,
-  Masquerade,
-  UploadResponse
-} from '@groton/canvas-api.client.base';
-import { client } from '../../../../Client.js';
 import { File } from '../../../../Resources/Files.js';
 
 export type uploadPathParameters = {

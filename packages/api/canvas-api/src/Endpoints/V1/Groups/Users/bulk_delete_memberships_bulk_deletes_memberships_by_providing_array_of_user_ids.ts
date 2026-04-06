@@ -1,6 +1,5 @@
+import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
-import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
-import { client } from '../../../../Client.js';
 import { JSONForsingledeletionoktrueForbulkdeletionjsonmessageBulkdeletecompleteddeleted_user_ids123456unauthorized_user_ids789 } from '../../../../Overrides.js';
 
 export type bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsPathParameters =

@@ -181,7 +181,7 @@
       "tsImports": [
         {
           "type": "UploadResponse",
-          "packagePath": "@groton/canvas-api.client.base"
+          "packagePath": "#client"
         },
         {
           "type": "File",
@@ -193,7 +193,7 @@
         "tsReferences": [
           {
             "type": "UploadResponse",
-            "packagePath": "@groton/canvas-api.client.base"
+            "packagePath": "#client"
           }
         ]
       },
@@ -252,7 +252,7 @@
       "tsImports": [
         {
           "type": "UploadResponse",
-          "packagePath": "@groton/canvas-api.client.base"
+          "packagePath": "#client"
         },
         {
           "type": "File",
@@ -264,7 +264,7 @@
         "tsReferences": [
           {
             "type": "UploadResponse",
-            "packagePath": "@groton/canvas-api.client.base"
+            "packagePath": "#client"
           }
         ]
       },
@@ -323,7 +323,7 @@
       "tsImports": [
         {
           "type": "UploadResponse",
-          "packagePath": "@groton/canvas-api.client.base"
+          "packagePath": "#client"
         },
         {
           "type": "File",
@@ -335,7 +335,7 @@
         "tsReferences": [
           {
             "type": "UploadResponse",
-            "packagePath": "@groton/canvas-api.client.base"
+            "packagePath": "#client"
           }
         ]
       },

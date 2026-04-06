@@ -1,5 +1,4 @@
-import { Masquerade } from '@groton/canvas-api.client.base';
-import { client } from '../../../Client.js';
+import { client, Masquerade } from '#client';
 import { InstAccessToken } from '../../../Resources/InstAccessTokens.js';
 
 export type createSearchParameters = Masquerade;

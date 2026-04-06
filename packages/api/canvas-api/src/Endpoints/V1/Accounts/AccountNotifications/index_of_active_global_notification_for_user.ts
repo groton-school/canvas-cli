@@ -1,6 +1,5 @@
+import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
-import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
-import { client } from '../../../../Client.js';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
 export type index_of_active_global_notification_for_userPathParameters = {

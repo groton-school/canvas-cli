@@ -1,10 +1,5 @@
 import { JSONValue } from '@battis/typescript-tricks';
-import {
-  Base,
-  fetchAllPages,
-  Init,
-  UploadParams
-} from '@groton/canvas-api.client.base';
+import * as Canvas from '@groton/canvas-api';
 import { isError } from '@groton/canvas-api.utilities';
 import * as OAuth2 from '@oauth2-cli/qui-cli/extendable/index.js';
 import { Colors } from '@qui-cli/colors';
@@ -14,7 +9,10 @@ import * as requestish from 'requestish';
 
 export type Credentials = OAuth2.Credentials & { issuer: requestish.URL.ish };
 
-export class Client extends OAuth2.Client<Credentials> implements Base {
+export class Client
+  extends OAuth2.Client<Credentials>
+  implements Canvas.Client.Base
+{
   public get instance_url() {
     if (!this.credentials.issuer) {
       throw new Error(
@@ -30,9 +28,9 @@ export class Client extends OAuth2.Client<Credentials> implements Base {
 
   public async fetchAs<T extends JSONValue = JSONValue>(
     endpoint: string,
-    { method, ...params }: Init = {}
+    { method, ...params }: Canvas.Client.Init = {}
   ): Promise<T> {
-    return fetchAllPages<T>({
+    return Canvas.Client.fetchAllPages<T>({
       endpoint,
       instance_url: this.instance_url,
       ...params,
@@ -51,7 +49,7 @@ export class Client extends OAuth2.Client<Credentials> implements Base {
   public async upload<T extends JSONValue = JSONValue>({
     response,
     file
-  }: UploadParams): Promise<T> {
+  }: Canvas.Client.UploadParams): Promise<T> {
     const body = new FormData();
     for (const key in response.upload_params) {
       body.append(key, response.upload_params[key]);

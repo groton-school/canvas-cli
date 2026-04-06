@@ -1,3 +1,11 @@
+import { AccountCalendar } from '#resources/AccountCalendars.js';
+import { BlackoutDate } from '#resources/BlackoutDates.js';
+import { GroupCategory } from '#resources/GroupCategories.js';
+import { GroupMembership } from '#resources/Groups.js';
+import { BankItem, StimulusItem } from '#resources/NewQuizItems.js';
+import { PlannerOverride } from '#resources/Planner.js';
+import { Rubric } from '#resources/Rubrics.js';
+import { Grade, Grades, Submission } from '#resources/WhatIfGrades.js';
 import {
   DateTimeString,
   NumericString,
@@ -6,14 +14,6 @@ import {
   UUIDString
 } from '@battis/descriptive-types';
 import { JSONArray, JSONObject, JSONValue } from '@battis/typescript-tricks';
-import { AccountCalendar } from './Resources/AccountCalendars.js';
-import { BlackoutDate } from './Resources/BlackoutDates.js';
-import { GroupCategory } from './Resources/GroupCategories.js';
-import { GroupMembership } from './Resources/Groups.js';
-import { BankItem, StimulusItem } from './Resources/NewQuizItems.js';
-import { PlannerOverride } from './Resources/Planner.js';
-import { Rubric } from './Resources/Rubrics.js';
-import { Grade, Grades, Submission } from './Resources/WhatIfGrades.js';
 
 export type resultUrlStringTheurltotheresultthatwascreated = URLString;
 export type Integer = number;

@@ -1,6 +1,5 @@
+import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
-import { Masquerade } from '@groton/canvas-api.client.base';
-import { client } from '../../../../../Client.js';
 import { BlueprintRestriction } from '../../../../../Resources/BlueprintCourses.js';
 
 export type set_or_remove_restrictions_on_blueprint_course_objectPathParameters =

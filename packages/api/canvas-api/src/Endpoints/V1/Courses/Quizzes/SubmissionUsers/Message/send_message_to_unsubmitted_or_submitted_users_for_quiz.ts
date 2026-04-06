@@ -1,6 +1,5 @@
+import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
-import { Masquerade } from '@groton/canvas-api.client.base';
-import { client } from '../../../../../../Client.js';
 import { QuizUserConversation } from '../../../../../../Overrides.js';
 
 export type send_message_to_unsubmitted_or_submitted_users_for_quizPathParameters =

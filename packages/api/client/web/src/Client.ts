@@ -1,6 +1,5 @@
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-api';
-import * as Base from '@groton/canvas-api.client.base';
 import PQueue from 'p-queue';
 import path from 'path-browserify';
 import {
@@ -24,7 +23,7 @@ export type Options = {
   instance_url: string;
 };
 
-export class Client implements Base.Base {
+export class Client implements Canvas.Client.Base {
   private queue = new PQueue();
   public readonly instance_url: string;
 
@@ -77,7 +76,7 @@ export class Client implements Base.Base {
     const start = new RequestStartedEvent({ requestId });
     requestId = start.requestId;
     document.dispatchEvent(start);
-    const result = await Base.fetchAllPages<T>({
+    const result = await Canvas.Client.fetchAllPages<T>({
       instance_url: this.instance_url,
       endpoint,
       pathParams,
@@ -85,7 +84,8 @@ export class Client implements Base.Base {
       params,
       init,
       fetch: this.fetch.bind(this),
-      pageCallback: (page) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      pageCallback: (page: any) => {
         document.dispatchEvent(new RequestPageEvent(page, { requestId }));
       }
     });
@@ -93,7 +93,9 @@ export class Client implements Base.Base {
     return result;
   }
 
-  public async upload<T = JSONValue>(_: Base.UploadParams): Promise<T> {
+  public async upload<T = JSONValue>(
+    _: Canvas.Client.UploadParams
+  ): Promise<T> {
     throw new Error('not implemented');
   }
 

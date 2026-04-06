@@ -1,9 +1,11 @@
-import { PlannerItem as OverridePlannerItem } from "./Overrides.js";
-import * as RenderedPlanner from "./Resources/Planner.js";
+import { PlannerItem as OverridePlannerItem } from './Overrides.js';
+import * as RenderedPlanner from './Resources/Planner.js';
 
-export * from "./Client.js";
-export * from "./Endpoints/index.js";
-export * from "./Resources/index.js";
+export { client, init } from '#client';
+export * from './Endpoints/index.js';
+export * from './Resources/index.js';
+
+export * as Client from '#client';
 
 // inject undefined PlannerItem into Planner namespace
 /* eslint @typescript-eslint/no-namespace: 0 */

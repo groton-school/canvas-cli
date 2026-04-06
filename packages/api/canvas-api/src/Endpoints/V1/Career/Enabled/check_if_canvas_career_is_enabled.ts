@@ -1,5 +1,4 @@
-import { Masquerade } from '@groton/canvas-api.client.base';
-import { client } from '../../../../Client.js';
+import { client, Masquerade } from '#client';
 import { enabledboolean } from '../../../../Overrides.js';
 
 export type check_if_canvas_career_is_enabledSearchParameters = Masquerade;

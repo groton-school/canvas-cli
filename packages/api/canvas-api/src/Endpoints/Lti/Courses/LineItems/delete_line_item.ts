@@ -1,6 +1,5 @@
+import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
-import { Masquerade } from '@groton/canvas-api.client.base';
-import { client } from '../../../../Client.js';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
 export type delete_line_itemPathParameters = {

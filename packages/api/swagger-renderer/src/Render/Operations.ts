@@ -49,7 +49,7 @@ export function annotateOperations({
 }: AnnotateOptions): Annotation {
   const clientReference: TSReference = {
     type: 'client',
-    filePath: path.join(outputPath, '../Client.ts')
+    filePath: '#client'
   };
   const operations: Record<PathString, AnnotatedOperation> = {};
   for (const specPath in annotation.spec) {
@@ -84,14 +84,14 @@ export function annotateOperations({
             tsPaginated = true;
             tsImports.push({
               type: 'Paginated',
-              packagePath: '@groton/canvas-api.client.base'
+              packagePath: '#client'
             });
           }
           const tsUpload = tsName === 'upload';
           if (tsUpload) {
             tsImports.push({
               type: 'FileLocation',
-              packagePath: '@groton/canvas-api.client.base'
+              packagePath: '#client'
             });
           }
 

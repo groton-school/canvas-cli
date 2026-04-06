@@ -1,6 +1,5 @@
+import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
-import { Masquerade, Paginated } from '@groton/canvas-api.client.base';
-import { client } from '../../../../Client.js';
 import { HashAmappingofuserIDstoarraysoftaggroupIDsExample35579345 } from '../../../../Overrides.js';
 
 export type bulk_fetch_user_tags_for_multiple_users_in_coursePathParameters = {

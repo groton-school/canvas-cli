@@ -1,5 +1,4 @@
-import { Masquerade } from '@groton/canvas-api.client.base';
-import { client } from '../../../../Client.js';
+import { client, Masquerade } from '#client';
 import { ExperienceSummary } from '../../../../Resources/CanvasCareerExperiences.js';
 
 export type getSearchParameters = Masquerade;
