@@ -109,8 +109,8 @@ async function exportDataURIsToFiles(
       spinner.text = `  Data URI exists at ${Colors.path(localPath)}`;
       file = (
         await Canvas.v1.Courses.Files.list({
-          pathParams: { course_id: course.id },
-          searchParams: { search_term: name }
+          path: { course_id: course.id },
+          query: { search_term: name }
         })
       ).shift();
       if (!file) {
@@ -125,9 +125,9 @@ async function exportDataURIsToFiles(
       await finished(stream.pipe(fs.createWriteStream(filePath)));
       spinner.text = `  Uploading ${Colors.path(localPath)} to ${Colors.value(`Imported Files/data-uri/${name}}`)}`;
       file = await Canvas.v1.Courses.Files.upload({
-        pathParams: { course_id: course.id },
+        path: { course_id: course.id },
         file: { filePath },
-        params: {
+        body: {
           parent_folder_path: 'Imported Files/data-uri',
           name,
           size: fs.statSync(filePath).size,

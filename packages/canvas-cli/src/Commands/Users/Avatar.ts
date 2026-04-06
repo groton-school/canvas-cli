@@ -63,8 +63,8 @@ export async function run() {
 
     let spinner = ora(`Loading user list from Canvas`).start();
     const users = await Canvas.v1.Accounts.Users.list({
-      pathParams: { account_id: '1' },
-      searchParams: { per_page: 100 }
+      path: { account_id: '1' },
+      query: { per_page: 100 }
     });
     spinner.succeed(`${users.length} Canvas users loaded`);
 
@@ -83,8 +83,8 @@ export async function run() {
       }
       try {
         const file = await Canvas.v1.Users.Files.upload({
-          pathParams: { user_id: user.id },
-          params: {
+          path: { user_id: user.id },
+          body: {
             name: 'avatar.jpg',
             parent_folder_path: 'profile pictures',
             as_user_id: user.id
@@ -92,7 +92,7 @@ export async function run() {
           file: { filePath: path_to_avatar }
         });
         const avatars = await Canvas.v1.Users.Avatars.list({
-          pathParams: { user_id: user.id }
+          path: { user_id: user.id }
         });
         const token = avatars.find(
           // FIXME Avatars are sometimes Files
@@ -101,8 +101,8 @@ export async function run() {
         )?.token;
         if (token) {
           await Canvas.v1.Users.update({
-            pathParams: { id: user.id },
-            params: { 'user[avatar][token]': token }
+            path: { id: user.id },
+            body: { 'user[avatar][token]': token }
           });
           spinner.succeed();
         } else {

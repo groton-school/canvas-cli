@@ -196,15 +196,15 @@ export async function run() {
 
   const per_page = 100;
   const courses = await Canvas.v1.Accounts.Courses.list({
-    pathParams: { account_id },
-    searchParams: { enrollment_term_id: term_id, per_page }
+    path: { account_id },
+    query: { enrollment_term_id: term_id, per_page }
   });
 
   for (const course of courses) {
     log({ course });
     const sections = await Canvas.v1.Courses.Sections.list({
-      pathParams: { course_id: course.id },
-      searchParams: { include: ['enrollments'] }
+      path: { course_id: course.id },
+      query: { include: ['enrollments'] }
     });
     log({ course, sections: sections.length });
     for (const section of sections) {
@@ -221,7 +221,7 @@ export async function run() {
         if (hexcode) {
           log({ course, sections: sections.length, section, hexcode });
           const enrollments = await Canvas.v1.Sections.Enrollments.list({
-            pathParams: { section_id: section.id }
+            path: { section_id: section.id }
           });
           let applied = 0;
           let overwritten = 0;
@@ -239,7 +239,7 @@ export async function run() {
             if (!(enrollments[i].user_id in userCache)) {
               userCache[enrollments[i].user_id] =
                 (await Canvas.v1.Users.Colors.list({
-                  pathParams: { id: enrollments[i].user_id }
+                  path: { id: enrollments[i].user_id }
                 })) as CustomColors;
             }
             if (
@@ -249,11 +249,11 @@ export async function run() {
                 userCache[enrollments[i].user_id].custom_colors[asset_string]
             ) {
               await Canvas.v1.Users.Colors.update({
-                pathParams: {
+                path: {
                   id: enrollments[i].user_id,
                   asset_string
                 },
-                params: { hexcode }
+                body: { hexcode }
               });
               applied++;
               overwritten += userCache[enrollments[i].user_id].custom_colors[

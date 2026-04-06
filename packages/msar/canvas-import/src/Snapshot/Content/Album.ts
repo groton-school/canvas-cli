@@ -58,7 +58,7 @@ export async function convertToPages({ course, item, parent }: Options) {
       ('ShortDescription' in item && item.ShortDescription) ||
       ('AlbumDescription' in item && item.AlbumDescription) ||
       `${'ContentType' in item ? item.ContentType.Content : item.ObjectType.Name} Album`;
-    const params: Partial<Canvas.v1.Courses.Pages.createFormParameters> = {
+    const body: Partial<Canvas.v1.Courses.Pages.createFormParameters> = {
       'wiki_page[title]': `${parent}: ${title}`,
       'wiki_page[body]': await Templates.render(Templates.Canvas.MediaPage, {
         instance_url: Canvas.client().instance_url,
@@ -69,16 +69,16 @@ export async function convertToPages({ course, item, parent }: Options) {
     };
     let processed = false;
     if (album.canvas?.id && Preferences.duplicates() == 'update') {
-      if (!Imported.isEqual(params, album.canvas.args)) {
+      if (!Imported.isEqual(body, album.canvas.args)) {
         const result = await Canvas.v1.Courses.Pages.update({
-          pathParams: {
+          path: {
             course_id: course.id.toString(),
             url_or_id: album.canvas.id.toString()
           },
-          params
+          body
         });
         if (result) {
-          album.canvas.args = params;
+          album.canvas.args = body;
         }
       } else {
         log(course, `Album page ${Colors.value(title)} is up-to-date`);
@@ -87,14 +87,14 @@ export async function convertToPages({ course, item, parent }: Options) {
     }
     if (!processed) {
       const result = await Canvas.v1.Courses.Pages.create({
-        pathParams: { course_id: course.id.toString() },
-        params
+        path: { course_id: course.id.toString() },
+        body
       });
       if (result) {
         album.canvas = {
           id: result.page_id.toString(),
           url: result.url,
-          args: params,
+          args: body,
           created_at: result.created_at
         };
       }

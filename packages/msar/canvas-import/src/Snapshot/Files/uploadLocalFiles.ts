@@ -60,7 +60,7 @@ export async function uploadLocalFiles({
       }
       localPath = path.join(path.dirname(IndexFile.path()), entry.localPath);
       // FIXME redundant manual Files.Parameters definition
-      const params: Canvas.v1.Courses.Files.uploadFormParameters = {
+      const body: Canvas.v1.Courses.Files.uploadFormParameters = {
         parent_folder_path: path.join(
           'Imported Files',
           path.dirname(entry.localPath.replace(/^\//, ''))
@@ -84,7 +84,7 @@ export async function uploadLocalFiles({
         Preferences.duplicates() === 'update'
       ) {
         if (
-          Imported.isEqual(params, entry.canvas.args) &&
+          Imported.isEqual(body, entry.canvas.args) &&
           entry.canvas.course_id === course.id &&
           (!isMovie(entry.localPath) ||
             entry.canvas.id ==
@@ -133,12 +133,12 @@ export async function uploadLocalFiles({
                 description
               );
             } else {
-              return await uploadFile(entry, params, course);
+              return await uploadFile(entry, body, course);
             }
           }
         );
         (entry as Imported.Annotation).canvas = {
-          args: params,
+          args: body,
           id: file.id.toString(),
           course_id: course.id.toString(),
           display_name: 'display_name' in file ? file.display_name : file.title,
@@ -260,8 +260,8 @@ async function identifyOwner(
   if (!user && course) {
     user = (
       await Canvas.v1.Courses.Enrollments.list({
-        pathParams: { course_id: course.id },
-        searchParams: { type: ['TeacherEnrollment'] }
+        path: { course_id: course.id },
+        query: { type: ['TeacherEnrollment'] }
       })
     ).shift()?.user;
   }
@@ -290,7 +290,7 @@ async function identifyOwner(
 
 async function uploadFile(
   entry: Imported.Annotation,
-  params: Canvas.v1.Courses.Files.uploadFormParameters,
+  body: Canvas.v1.Courses.Files.uploadFormParameters,
   course: Canvas.Courses.Course,
   retries = 3
 ) {
@@ -299,17 +299,17 @@ async function uploadFile(
   do {
     try {
       spinner = ora(
-        `  Uploading file ${Colors.path(entry.localPath)} as ${Colors.value(params.name)}`
+        `  Uploading file ${Colors.path(entry.localPath)} as ${Colors.value(body.name)}`
       ).start();
       file = await Canvas.v1.Courses.Files.upload({
-        pathParams: { course_id: course.id.toString() },
+        path: { course_id: course.id.toString() },
         file: {
           filePath: path.join(
             path.dirname(IndexFile.path()),
             entry.localPath.replace(/^\//, '')
           )
         },
-        params
+        body
       });
     } catch (error) {
       spinner?.fail(`  File upload of ${Colors.path(entry.localPath)} failed`);
@@ -317,8 +317,8 @@ async function uploadFile(
       if (isStorageQuotaError(error)) {
         course.storage_quota_mb = parseInt(`${course.storage_quota_mb}`) * 2;
         await Canvas.v1.Courses.update({
-          pathParams: { id: course.id },
-          params: {
+          path: { id: course.id },
+          body: {
             'course[storage_quota_mb]': course.storage_quota_mb
           }
         });

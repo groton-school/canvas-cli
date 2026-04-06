@@ -151,24 +151,24 @@ export async function run() {
     );
     try {
       const users = await Canvas.v1.Accounts.Users.list({
-        pathParams: { account_id },
-        searchParams: { enrollment_type }
+        path: { account_id },
+        query: { enrollment_type }
       });
       for (const user of users) {
         const spinner = ora().start(user.name);
         try {
           const channels = await Canvas.v1.Users.CommunicationChannels.list({
-            pathParams: { user_id: user.id }
+            path: { user_id: user.id }
           });
           for (const channel of channels) {
             for (const category of categories) {
               (await Canvas.v1.Users.Self.CommunicationChannels.NotificationPreferenceCategories.update(
                 {
-                  pathParams: {
+                  path: {
                     communication_channel_id: channel.id,
                     category
                   },
-                  params: {
+                  body: {
                     'notification_preferences[frequency]': 'never',
                     as_user_id: user.id
                   }

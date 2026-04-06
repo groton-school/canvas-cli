@@ -73,13 +73,11 @@ export async function run() {
         throw new Error();
       }
       users = await Canvas.v1.Accounts.Users.list({
-        pathParams: { account_id: accountId }
+        path: { account_id: accountId }
       });
     } else {
       for (const id of user) {
-        users.push(
-          await Canvas.v1.Users.show_user_details({ pathParams: { id } })
-        );
+        users.push(await Canvas.v1.Users.show_user_details({ path: { id } }));
       }
     }
     spinner.succeed(`${users.length} users`);
@@ -90,8 +88,8 @@ export async function run() {
       // build per-user list of distinct courses (including non-observer enrollment where there are duplicates)
       const courses = (
         await Canvas.v1.Users.Courses.list({
-          pathParams: { user_id: user.id },
-          searchParams: { include: ['term'] }
+          path: { user_id: user.id },
+          query: { include: ['term'] }
         })
       ).reduce((unique, course) => {
         const i = unique.findIndex((c) => c.id === course.id);
@@ -117,8 +115,8 @@ export async function run() {
           new Date(course.term.end_at) > now
         ) {
           await Canvas.v1.Users.Self.Favorites.Courses.add_course_to_favorites({
-            pathParams: { id: course.id },
-            searchParams: { as_user_id: user.id }
+            path: { id: course.id },
+            query: { as_user_id: user.id }
           });
           favorited.push(course);
           spinner.text = `${user.name} enrolled as ${course.enrollments[0].type} in ${course.name} (${course.term.name}), added to favorites.`;
@@ -126,7 +124,7 @@ export async function run() {
       }
 
       const favorites = await Canvas.v1.Users.Self.Favorites.Courses.list({
-        searchParams: { as_user_id: user.id }
+        query: { as_user_id: user.id }
       });
 
       // remove all non-favorited courses from favorites
@@ -134,8 +132,8 @@ export async function run() {
         if (!favorited.find((course) => course.id === favorite.id)) {
           await Canvas.v1.Users.Self.Favorites.Courses.remove_course_from_favorites(
             {
-              pathParams: { id: favorite.id },
-              searchParams: { as_user_id: user.id }
+              path: { id: favorite.id },
+              query: { as_user_id: user.id }
             }
           );
           spinner.text = `${user.name}'s enrollment in ${favorite.name} removed from favorites`;

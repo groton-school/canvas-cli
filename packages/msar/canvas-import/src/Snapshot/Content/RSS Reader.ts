@@ -25,31 +25,30 @@ type Options = {
 };
 
 export async function convertToExternalFeed({ course, item }: Options) {
-  const params: Partial<Canvas.v1.Courses.ExternalFeeds.createFormParameters> =
-    {
-      url: item.Content.Url,
-      verbosity: 'truncate'
-    };
+  const body: Partial<Canvas.v1.Courses.ExternalFeeds.createFormParameters> = {
+    url: item.Content.Url,
+    verbosity: 'truncate'
+  };
   let processed = false;
   if (item.Content.canvas && Preferences.duplicates() === 'update') {
-    if (Imported.isEqual(params, item.Content.canvas?.args)) {
-      Log.info(`External feed ${Colors.url(params.url)} is up-to-date`);
+    if (Imported.isEqual(body, item.Content.canvas?.args)) {
+      Log.info(`External feed ${Colors.url(body.url)} is up-to-date`);
     } else {
       Log.warning(
-        `External feed ${Colors.url(params.url)} needs to be updated: ${Log.syntaxColor({ canvas: item.Content.canvas, params })}`
+        `External feed ${Colors.url(body.url)} needs to be updated: ${Log.syntaxColor({ canvas: item.Content.canvas, body })}`
       );
     }
     processed = true;
   }
   if (!processed) {
     const feed = await Canvas.v1.Courses.ExternalFeeds.create({
-      pathParams: { course_id: course.id.toString() },
-      params
+      path: { course_id: course.id.toString() },
+      body
     });
     if (feed) {
       item.Content.canvas = {
         id: feed.id.toString(),
-        args: params,
+        args: body,
         created_at: feed.created_at
       };
     }

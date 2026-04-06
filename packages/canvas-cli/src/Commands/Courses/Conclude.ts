@@ -60,13 +60,13 @@ export async function run() {
     if (all) {
       terms.push(
         ...(
-          await Canvas.v1.Accounts.Terms.list({ pathParams: { account_id: 1 } })
+          await Canvas.v1.Accounts.Terms.list({ path: { account_id: 1 } })
         ).enrollment_terms.filter((term) => new Date(term.end_at) < now)
       );
     } else if (term) {
       terms.push(
         await Canvas.v1.Accounts.Terms.retrieve_enrollment_term({
-          pathParams: { account_id: 1, id: term }
+          path: { account_id: 1, id: term }
         })
       );
     } else {
@@ -80,16 +80,16 @@ export async function run() {
         `Processing available courses in term ${Colors.value(term.name)}`
       ).start();
       const courses = await Canvas.v1.Accounts.Courses.list({
-        pathParams: { account_id },
-        searchParams: { enrollment_term_id: term.id, state: ['available'] }
+        path: { account_id },
+        query: { enrollment_term_id: term.id, state: ['available'] }
       });
       for (const course of courses) {
         const courseSpinner = ora(
           `Concluding ${Colors.value(course.name)}`
         ).start();
         const result = await Canvas.v1.Courses.delete_conclude_course({
-          pathParams: { id: course.id },
-          searchParams: { event: 'conclude' }
+          path: { id: course.id },
+          query: { event: 'conclude' }
         });
         // TODO @groton/canvas-api needs to override this incorrect void result
         // @ts-expect-error 2339

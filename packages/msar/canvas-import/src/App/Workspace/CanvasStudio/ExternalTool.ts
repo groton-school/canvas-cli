@@ -5,8 +5,8 @@ export async function get() {
   if (!studio) {
     studio = (
       await Canvas.v1.Accounts.ExternalTools.list({
-        pathParams: { account_id: 1 },
-        searchParams: { search_term: 'Canvas Studio' }
+        path: { account_id: 1 },
+        query: { search_term: 'Canvas Studio' }
       })
     ).shift();
   }

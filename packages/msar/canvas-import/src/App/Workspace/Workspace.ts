@@ -17,9 +17,9 @@ export async function getTermId(): Promise<
   if (!term_id) {
     const terms = (
       await Canvas.v1.Accounts.Terms.list({
-        pathParams: { account_id: 1 },
+        path: { account_id: 1 },
         // @ts-expect-error 2353 per_page does actually work here
-        searchParams: { per_page: 200 }
+        query: { per_page: 200 }
       })
     ).enrollment_terms;
     term_id = terms.reduce(
@@ -37,8 +37,8 @@ export async function getTermId(): Promise<
   }
   if (!term_id) {
     const term = await Canvas.v1.Accounts.Terms.create({
-      pathParams: { account_id: 1 },
-      params: {
+      path: { account_id: 1 },
+      body: {
         'enrollment_term[name]': 'Import Workspace',
         'enrollment_term[sis_term_id]': SIS_ID
       }
@@ -55,8 +55,8 @@ export async function getTermId(): Promise<
 export async function getAccountId(): Promise<Canvas.Accounts.Account['id']> {
   if (!account_id) {
     const accounts = await Canvas.v1.Accounts.SubAccounts.get({
-      pathParams: { account_id: 1 },
-      searchParams: { per_page: 200 }
+      path: { account_id: 1 },
+      query: { per_page: 200 }
     });
     Log.debug({ accounts });
     account_id = accounts.reduce((id: number | string | undefined, account) => {
@@ -68,8 +68,8 @@ export async function getAccountId(): Promise<Canvas.Accounts.Account['id']> {
   }
   if (!account_id) {
     const account = await Canvas.v1.Accounts.SubAccounts.create({
-      pathParams: { account_id: 1 },
-      params: {
+      path: { account_id: 1 },
+      body: {
         'account[name]': 'Import Workspace',
         'account[sis_account_id]': SIS_ID
       }
@@ -86,13 +86,13 @@ export async function getUser(): Promise<Canvas.Users.User> {
   if (!user) {
     try {
       user = await Canvas.v1.Users.show_user_details({
-        pathParams: { id: `sis_user_id:${encodeURIComponent(SIS_ID)}` }
+        path: { id: `sis_user_id:${encodeURIComponent(SIS_ID)}` }
       });
     } catch (error) {
       if (Error.isError(error) && error.message === '404') {
         user = await Canvas.v1.Accounts.Users.create({
-          pathParams: { account_id: await getAccountId() },
-          params: {
+          path: { account_id: await getAccountId() },
+          body: {
             'user[name]': '@msar/canvas-import',
             'pseudonym[unique_id]': await input({
               message:

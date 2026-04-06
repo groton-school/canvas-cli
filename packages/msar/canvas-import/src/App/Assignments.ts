@@ -32,7 +32,7 @@ export async function importAssignments({ user, course, section }: Options) {
           )
         ) {
           const result = await Canvas.v1.Courses.AssignmentGroups.update({
-            pathParams: {
+            path: {
               course_id: course.id.toString(),
               assignment_group_id:
                 section.assignment_groups[prev].id!.toString()
@@ -57,7 +57,7 @@ export async function importAssignments({ user, course, section }: Options) {
     }
     if (!processed) {
       const group = await Canvas.v1.Courses.AssignmentGroups.create({
-        pathParams: { course_id: course.id.toString() },
+        path: { course_id: course.id.toString() },
         params
       });
       section.assignment_groups.push({
@@ -86,12 +86,11 @@ export async function importAssignments({ user, course, section }: Options) {
     ) {
       if (!Imported.isEqual(params, assignments[order].canvas!.args)) {
         assignment = await Canvas.v1.Courses.Assignments.update({
-          pathParams: {
+          path: {
             course_id: course.id.toString(),
             id: assignments[order].canvas!.id!.toString()
           },
-          params:
-            params as Partial<Canvas.v1.Courses.Assignments.updateFormParameters>
+          body: params as Partial<Canvas.v1.Courses.Assignments.updateFormParameters>
         });
         log(
           course,
@@ -106,7 +105,7 @@ export async function importAssignments({ user, course, section }: Options) {
     } else {
       if (params['assignment[name]'] !== '') {
         assignment = await Canvas.v1.Courses.Assignments.create({
-          pathParams: { course_id: course.id.toString() },
+          path: { course_id: course.id.toString() },
           params
         });
         log(course, `Created assignment ${Colors.value(assignment.name)}`);
@@ -145,7 +144,7 @@ export async function importAssignments({ user, course, section }: Options) {
             } as Partial<Canvas.v1.Courses.RubricAssociations.createFormParameters>;
             cached.rubric_association =
               await Canvas.v1.Courses.RubricAssociations.create({
-                pathParams: { course_id: course.id.toString() },
+                path: { course_id: course.id.toString() },
                 params
               });
             log(

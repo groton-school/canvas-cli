@@ -56,20 +56,20 @@ export async function handleDuplicateCourse({ course, section }: Options) {
       delete params['course[sis_course_id]'];
       delete params.enable_sis_reactivation;
       await Canvas.v1.Courses.update({
-        pathParams: { id: course.id.toString() },
-        params: params as Partial<Canvas.v1.Courses.updateFormParameters>
+        path: { id: course.id.toString() },
+        body: params as Partial<Canvas.v1.Courses.updateFormParameters>
       });
       if (independent) {
         log(course, 'Updating existing course');
       }
       // TODO `update_course` likely _does_ return a course and documentation is wrong
       return await Canvas.v1.Courses.get({
-        pathParams: { id: course.id.toString() }
+        path: { id: course.id.toString() }
       });
     },
     reset: async () => {
       course = await Canvas.v1.Courses.ResetContent.reset_course({
-        pathParams: { course_id: course.id.toString() }
+        path: { course_id: course.id.toString() }
       });
       if (section.SectionInfo) {
         section.SectionInfo.canvas = {

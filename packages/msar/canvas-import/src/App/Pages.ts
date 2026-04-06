@@ -23,7 +23,7 @@ export async function importBulletinBoard({ course, section }: Options) {
     if (section.front_page?.id && Preferences.duplicates() === 'update') {
       if (!Imported.isEqual(params, section.front_page.args)) {
         const frontPage = await Canvas.v1.Courses.Pages.update({
-          pathParams: {
+          path: {
             course_id: course.id.toString(),
             url_or_id: section.front_page.id.toString()
           },
@@ -48,7 +48,7 @@ export async function importBulletinBoard({ course, section }: Options) {
       }
     } else {
       const frontPage = await Canvas.v1.Courses.Pages.create({
-        pathParams: { course_id: course.id.toString() },
+        path: { course_id: course.id.toString() },
         params
       });
       if (frontPage) {
@@ -68,14 +68,14 @@ export async function importTopics({ course, section }: Options) {
     // @ts-expect-error 2352 typing is wrong
     let topicsModule: Canvas.Modules.Module = (
       await Canvas.v1.Courses.Modules.list({
-        pathParams: { course_id: course.id },
-        searchParams: { include: ['items'] }
+        path: { course_id: course.id },
+        query: { include: ['items'] }
       })
     ).find((m) => m.name === 'Topics') as Canvas.Modules.Module;
     if (topicsModule && !topicsModule.published) {
       await Canvas.v1.Courses.Modules.update({
-        pathParams: { course_id: course.id, id: topicsModule.id },
-        params: { 'module[published]': true }
+        path: { course_id: course.id, id: topicsModule.id },
+        body: { 'module[published]': true }
       });
       log(course, `Published ${Colors.value('Topics')} module`);
     }
@@ -92,7 +92,7 @@ export async function importTopics({ course, section }: Options) {
         if (topic.canvas?.id && Preferences.duplicates() === 'update') {
           if (!Imported.isEqual(params, topic.canvas.args)) {
             canvasTopic = await Canvas.v1.Courses.Pages.update({
-              pathParams: {
+              path: {
                 course_id: course.id.toString(),
                 url_or_id: topic.canvas.id.toString()
               },
@@ -110,7 +110,7 @@ export async function importTopics({ course, section }: Options) {
           }
         } else {
           canvasTopic = await Canvas.v1.Courses.Pages.create({
-            pathParams: { course_id: course.id.toString() },
+            path: { course_id: course.id.toString() },
             params
           });
           log(course, `Created page ${Colors.value(topic.Name)}`);
@@ -119,12 +119,12 @@ export async function importTopics({ course, section }: Options) {
           if (!topicsModule) {
             // @ts-expect-error 2740 typing is wrong
             topicsModule = await Canvas.v1.Courses.Modules.create({
-              pathParams: { course_id: course.id },
-              params: { 'module[name]': 'Topics' }
+              path: { course_id: course.id },
+              body: { 'module[name]': 'Topics' }
             });
             await Canvas.v1.Courses.Modules.update({
-              pathParams: { course_id: course.id, id: topicsModule.id },
-              params: { 'module[published]': true }
+              path: { course_id: course.id, id: topicsModule.id },
+              body: { 'module[published]': true }
             });
             log(
               course,
@@ -151,8 +151,8 @@ export async function importTopics({ course, section }: Options) {
             );
           } else {
             await Canvas.v1.Courses.Modules.Items.create({
-              pathParams: { course_id: course.id, module_id: topicsModule.id },
-              params: {
+              path: { course_id: course.id, module_id: topicsModule.id },
+              body: {
                 'module_item[title]': canvasTopic.title,
                 'module_item[type]': 'Page',
                 'module_item[page_url]': canvasTopic.url

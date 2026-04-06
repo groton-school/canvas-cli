@@ -204,7 +204,7 @@ export async function account_id(snapshot: Imported.Data) {
     if (sis_account_id) {
       if (!(sis_account_id in accounts)) {
         accounts[sis_account_id] = await Canvas.v1.Accounts.get({
-          pathParams: { id: `sis_account_id:${sis_account_id}` }
+          path: { id: `sis_account_id:${sis_account_id}` }
         });
       }
       account_id = accounts[sis_account_id].id;
@@ -224,7 +224,7 @@ export async function accountName(id: string) {
   );
   if (!account) {
     try {
-      account = await Canvas.v1.Accounts.get({ pathParams: { id } });
+      account = await Canvas.v1.Accounts.get({ path: { id } });
       accounts[account.sis_account_id] = account;
     } catch (error) {
       Log.debug({ error });

@@ -296,7 +296,7 @@ export async function run() {
         let course: Canvas.Courses.Course | undefined = undefined;
         try {
           course = await Canvas.v1.Courses.get({
-            pathParams: {
+            path: {
               id: `sis_course_id:${sis_course_id}`
             }
           });
@@ -307,12 +307,12 @@ export async function run() {
           if (
             (
               await Canvas.v1.Courses.Assignments.list({
-                pathParams: { course_id: course.id }
+                path: { course_id: course.id }
               })
             ).length > 0 ||
             (
               await Canvas.v1.Courses.Pages.list({
-                pathParams: { course_id: course.id }
+                path: { course_id: course.id }
               })
             ).length > 0
           ) {
@@ -322,8 +322,8 @@ export async function run() {
         } else {
           const account_id = (await OneRoster.account_id(section)).toString();
           course = await Canvas.v1.Accounts.Courses.create({
-            pathParams: { account_id },
-            params: {
+            path: { account_id },
+            body: {
               ...Snapshot.Section.toCanvasArgs(section),
               'course[term_id]': (await Workspace.getTermId()).toString()
             }
@@ -336,8 +336,8 @@ export async function run() {
         if (course) {
           try {
             await Canvas.v1.Courses.update({
-              pathParams: { id: course.id },
-              params: {
+              path: { id: course.id },
+              body: {
                 'course[term_id]': (await Workspace.getTermId()).toString()
               }
             });
@@ -371,12 +371,12 @@ export async function run() {
               if (!user) {
                 try {
                   user = await Canvas.v1.Users.show_user_details({
-                    pathParams: { id: `sis_user_id:${sis_user_id}` }
+                    path: { id: `sis_user_id:${sis_user_id}` }
                   });
                 } catch (_) {
                   user = await Canvas.v1.Accounts.Users.create({
-                    pathParams: { account_id: 1 },
-                    params: {
+                    path: { account_id: 1 },
+                    body: {
                       'user[name]': section.SectionInfo?.Teacher,
                       'pseudonym[sis_user_id]': sis_user_id,
                       'pseudonym[unique_id]': sis_user_id,
@@ -385,8 +385,8 @@ export async function run() {
                     }
                   });
                   await Canvas.v1.Users.update({
-                    pathParams: { id: users[sis_user_id].id },
-                    params: { 'user[event]': 'suspend' }
+                    path: { id: users[sis_user_id].id },
+                    body: { 'user[event]': 'suspend' }
                   });
                   log(
                     course,
@@ -396,8 +396,8 @@ export async function run() {
                 users[sis_user_id] = user;
               }
               await Canvas.v1.Courses.Enrollments.enroll_user_courses({
-                pathParams: { course_id: course.id.toString() },
-                params: {
+                path: { course_id: course.id.toString() },
+                body: {
                   'enrollment[user_id]': `sis_user_id:${sis_user_id}`,
                   'enrollment[type]': 'TeacherEnrollment',
                   'enrollment[enrollment_state]': 'active'
@@ -421,8 +421,8 @@ export async function run() {
             const sis_term_id = OneRoster.sis_term_id(section);
             if (sis_term_id) {
               await Canvas.v1.Courses.update({
-                pathParams: { id: course.id.toString() },
-                params: {
+                path: { id: course.id.toString() },
+                body: {
                   'course[term_id]': `sis_term_id:${sis_term_id}`
                 }
               });
@@ -439,8 +439,8 @@ export async function run() {
             }
             if (Preferences.bulletinBoard()) {
               await Canvas.v1.Courses.update({
-                pathParams: { id: course.id.toString() },
-                params: { 'course[default_view]': 'wiki' }
+                path: { id: course.id.toString() },
+                body: { 'course[default_view]': 'wiki' }
               });
               log(course, `Set front page to bulletin board page`);
             }

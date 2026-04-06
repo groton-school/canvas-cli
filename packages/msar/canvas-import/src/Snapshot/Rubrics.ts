@@ -1,5 +1,4 @@
-import { 
-  JSONObject } from '@battis/typescript-tricks';
+import { JSONObject } from '@battis/typescript-tricks';
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { api } from 'datadirect';
@@ -100,8 +99,8 @@ export async function getCached(
       // TODO documentation is wrong, create returns a Rubric object
       // @ts-expect-error 2698
       ...(await Canvas.v1.Courses.Rubrics.create({
-        pathParams: { course_id },
-        params: args
+        path: { course_id },
+        body: args
       })),
       args
     };

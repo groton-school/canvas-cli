@@ -49,8 +49,8 @@ export async function run() {
   }
   try {
     for (const assignment of await Canvas.v1.Courses.Assignments.list({
-      pathParams: { course_id },
-      searchParams: { per_page: 100 }
+      path: { course_id },
+      query: { per_page: 100 }
     })) {
       if (assignment.hide_in_gradebook != hide_in_gradebook) {
         const spinner = ora().start(
@@ -58,8 +58,8 @@ export async function run() {
         );
         try {
           await Canvas.v1.Courses.Assignments.update({
-            pathParams: { course_id, id: assignment.id },
-            params: {
+            path: { course_id, id: assignment.id },
+            body: {
               'assignment[hide_in_gradebook]': hide_in_gradebook
             }
           });
