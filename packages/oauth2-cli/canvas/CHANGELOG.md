@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.6.2](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/canvas/0.6.1...oauth2-cli/canvas/0.6.2) (2026-04-06)
+
+
+### Bug Fixes
+
+* explicitly (rather than implictly) target Node LTS version ([7140d44](https://github.com/groton-school/canvas-cli/commit/7140d446a12ad17b381a2a7c5427482260067a34))
+* improve file upload logging ([2b60d1e](https://github.com/groton-school/canvas-cli/commit/2b60d1e2303e4f77fc1492d4e7525b822d1fe45a))
+
 ## [0.6.1](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/canvas/0.6.0...oauth2-cli/canvas/0.6.1) (2026-03-14)
 
 
