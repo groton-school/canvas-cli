@@ -2,11 +2,11 @@
   "name": "@groton/canvas-api.client.web",
   "version": "0.2.7",
   "description": "Web client for @groton/canvas-api that works with PHP package groton-school/slim-canvas-api-proxy",
-  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/api/client/web#readme",
+  "homepage": "https://github.com/groton-school/canvas-cli/tree/main/packages/web#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/groton-school/canvas-cli.git",
-    "directory": "packages/api/client/web"
+    "directory": "packages/web"
   },
   "author": {
     "name": "Seth Battis",

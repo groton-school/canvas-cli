@@ -70,74 +70,6 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
-  packages/api/client/base:
-    dependencies:
-      '@groton/canvas-api.utilities':
-        specifier: workspace:*
-        version: link:../../utilities
-    devDependencies:
-      '@battis/descriptive-types':
-        specifier: ^0.2.6
-        version: 0.2.6
-      '@battis/typescript-tricks':
-        specifier: ^0.8.2
-        version: 0.8.2
-      '@tsconfig/node24':
-        specifier: ^24.0.4
-        version: 24.0.4
-      '@types/node':
-        specifier: ^24.12.0
-        version: 24.12.0
-      commit-and-tag-version:
-        specifier: ^12.7.1
-        version: 12.7.1
-      del-cli:
-        specifier: ^7.0.0
-        version: 7.0.0
-      npm-run-all:
-        specifier: ^4.1.5
-        version: 4.1.5
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
-
-  packages/api/client/web:
-    dependencies:
-      '@groton/canvas-api':
-        specifier: workspace:*
-        version: link:../../canvas-api
-      p-queue:
-        specifier: ^8.1.1
-        version: 8.1.1
-      path-browserify:
-        specifier: ^1.0.1
-        version: 1.0.1
-    devDependencies:
-      '@battis/typescript-tricks':
-        specifier: ^0.8.2
-        version: 0.8.2
-      '@battis/webpack':
-        specifier: ^2.1.1
-        version: 2.1.1(d1bf6cbd6f8008ad98f74b3ddfc62b32)
-      '@tsconfig/recommended':
-        specifier: ^1.0.13
-        version: 1.0.13
-      '@types/path-browserify':
-        specifier: ^1.0.3
-        version: 1.0.3
-      commit-and-tag-version:
-        specifier: ^12.7.1
-        version: 12.7.1
-      del-cli:
-        specifier: ^7.0.0
-        version: 7.0.0
-      npm-run-all:
-        specifier: ^4.1.5
-        version: 4.1.5
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
-
   packages/api/swagger-renderer:
     dependencies:
       '@1password/sdk':
@@ -560,6 +492,43 @@ importers:
       '@types/node':
         specifier: ^24.12.0
         version: 24.12.0
+      commit-and-tag-version:
+        specifier: ^12.7.1
+        version: 12.7.1
+      del-cli:
+        specifier: ^7.0.0
+        version: 7.0.0
+      npm-run-all:
+        specifier: ^4.1.5
+        version: 4.1.5
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  packages/web:
+    dependencies:
+      '@groton/canvas-api':
+        specifier: workspace:*
+        version: link:../api/canvas-api
+      p-queue:
+        specifier: ^8.1.1
+        version: 8.1.1
+      path-browserify:
+        specifier: ^1.0.1
+        version: 1.0.1
+    devDependencies:
+      '@battis/typescript-tricks':
+        specifier: ^0.8.2
+        version: 0.8.2
+      '@battis/webpack':
+        specifier: ^2.1.1
+        version: 2.1.1(d1bf6cbd6f8008ad98f74b3ddfc62b32)
+      '@tsconfig/recommended':
+        specifier: ^1.0.13
+        version: 1.0.13
+      '@types/path-browserify':
+        specifier: ^1.0.3
+        version: 1.0.3
       commit-and-tag-version:
         specifier: ^12.7.1
         version: 12.7.1
