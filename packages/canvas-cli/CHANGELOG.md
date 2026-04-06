@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.8](https://github.com/groton-school/canvas-cli/compare/canvas-cli/0.0.7...canvas-cli/0.0.8) (2026-04-06)
+
+
+### Features
+
+* courseColors calculated using section name, course name, or course code, as available ([a2ce545](https://github.com/groton-school/canvas-cli/commit/a2ce5454ac045e918715df20d20f75909a397a04))
+
+
+### Bug Fixes
+
+* explicitly (rather than implictly) target Node LTS version ([7140d44](https://github.com/groton-school/canvas-cli/commit/7140d446a12ad17b381a2a7c5427482260067a34))
+* show live updates ([438a47e](https://github.com/groton-school/canvas-cli/commit/438a47e6f0150f755245fc32132e48715c26fceb))
+
 ## [0.0.7](https://github.com/groton-school/canvas-cli/compare/canvas-cli/0.0.6...canvas-cli/0.0.7) (2026-03-15)
 
 
