@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.3](https://github.com/groton-school/canvas-cli/compare/canvas-import/0.1.2...canvas-import/0.1.3) (2026-04-06)
+
+
+### Bug Fixes
+
+* add spinner to (lengthy) file hash calculations ([d256305](https://github.com/groton-school/canvas-cli/commit/d25630508efb54fdb49ae5799bfff9c31e9cc559))
+* additional index write after file hashes are calculated, to avoid _that_ wait repeating ([fa5b6d0](https://github.com/groton-school/canvas-cli/commit/fa5b6d0ce08fd5995607cddd63acbd9eb560ddd9))
+* catch "uploaded" Google Docs, Sheets, Slides, Forms ([843fe90](https://github.com/groton-school/canvas-cli/commit/843fe906c5bde81fb6add7e79078fbd70558937b))
+* explicitly (rather than implictly) target Node LTS version ([7140d44](https://github.com/groton-school/canvas-cli/commit/7140d446a12ad17b381a2a7c5427482260067a34))
+* if video exists and can't be replaced, don't reupload ([1707503](https://github.com/groton-school/canvas-cli/commit/17075039a7b4b20e6fe0e392d54a6b8662b02606))
+* more consistent log wording ([626a20a](https://github.com/groton-school/canvas-cli/commit/626a20aa926e4a316d854bdb93b94585e7a4a3ec))
+* on ignoreErrors, failed courses written to index up to error ([e76a308](https://github.com/groton-school/canvas-cli/commit/e76a308120f0494cc1eae2701284b37f6506c731))
+* publish Topics module ([3464c22](https://github.com/groton-school/canvas-cli/commit/3464c2203b947115b235f53eb88f504bdf4ed43b))
+* reduce number of layers of errors ([9f7ac0c](https://github.com/groton-school/canvas-cli/commit/9f7ac0c0652ce4df596725561a8aa94a56b606cf))
+* resilient to not-yet-uploaded data URIs from failed runs ([5010145](https://github.com/groton-school/canvas-cli/commit/5010145bd1aaca7b8f35336c5493bdd35fb331b4))
+* test for all video formats accepted by Canvas Studio ([a09dd8e](https://github.com/groton-school/canvas-cli/commit/a09dd8ea647c1c8d2c8cbddd7488b534ecaffcca))
+* use login_id rather than email to find users in Canvas Studio ([c3c1f0d](https://github.com/groton-school/canvas-cli/commit/c3c1f0d5d2b49008deaa7dfa8e73cb89546c4b9b))
+
 ## [0.1.2](https://github.com/groton-school/canvas-cli/compare/canvas-import/0.1.1...canvas-import/0.1.2) (2026-03-15)
 
 
