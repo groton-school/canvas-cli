@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.5](https://github.com/groton-school/canvas-cli/compare/swagger-renderer/0.1.4...swagger-renderer/0.1.5) (2026-04-06)
+
+
+### Features
+
+* compile against Node.js v24 ([2e944b3](https://github.com/groton-school/canvas-cli/commit/2e944b367a8ed5afee3eadea52d4ac7802530e06))
+* deprecate pathParams, searchParams, params in favor of path, query, body ([beceb0f](https://github.com/groton-school/canvas-cli/commit/beceb0f40a68cb22a2325c02b54d85e050643641))
+* support 1Password integration ([245bae5](https://github.com/groton-school/canvas-cli/commit/245bae5db4026fb6437c6f52080c5bbddbb2fee6))
+* switch from soon-to-be-deprecated env-1password to env+@1password/sdk ([5c46e4e](https://github.com/groton-school/canvas-cli/commit/5c46e4e63e34667234ee4b0cd1dc15fe9db09204))
+
+
+### Bug Fixes
+
+* explicitly (rather than implictly) target Node LTS version ([7140d44](https://github.com/groton-school/canvas-cli/commit/7140d446a12ad17b381a2a7c5427482260067a34))
+* tighter type-checking ([747ed95](https://github.com/groton-school/canvas-cli/commit/747ed956888fea629e52cc41a92d250f20650c98))
+
 ## [0.1.4](https://github.com/groton-school/canvas-cli/compare/swagger-renderer/0.1.3...swagger-renderer/0.1.4) (2026-01-13)
 
 
