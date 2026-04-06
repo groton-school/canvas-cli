@@ -40,12 +40,17 @@ type Options = (
         searchParams?: Partial<bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsSearchParameters;
+    | ((
+        | {
+            query: bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

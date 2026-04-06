@@ -41,12 +41,17 @@ type Options = (
         searchParams?: Partial<unlink_outcome_accountsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<unlink_outcome_accountsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: unlink_outcome_accountsSearchParameters;
+    | ((
+        | {
+            query: unlink_outcome_accountsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: unlink_outcome_accountsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -128,15 +128,26 @@ type Options = (
         params?: Partial<submit_assignment_coursesFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<submit_assignment_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: submit_assignment_coursesSearchParameters;
-        body?: Partial<submit_assignment_coursesFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: submit_assignment_coursesFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: submit_assignment_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: submit_assignment_coursesSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: submit_assignment_coursesFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: submit_assignment_coursesFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

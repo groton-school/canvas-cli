@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<delete_sub_accountSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_sub_accountSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_sub_accountSearchParameters;
+    | ((
+        | {
+            query: delete_sub_accountSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_sub_accountSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

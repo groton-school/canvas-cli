@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<duplicate_pageSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<duplicate_pageSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: duplicate_pageSearchParameters;
+    | ((
+        | {
+            query: duplicate_pageSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: duplicate_pageSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

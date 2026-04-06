@@ -45,12 +45,17 @@ type Options = (
         searchParams?: Partial<remove_observeeSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<remove_observeeSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: remove_observeeSearchParameters;
+    | ((
+        | {
+            query: remove_observeeSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: remove_observeeSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

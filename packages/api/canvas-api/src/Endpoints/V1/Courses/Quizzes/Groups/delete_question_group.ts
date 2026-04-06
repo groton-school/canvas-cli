@@ -40,12 +40,17 @@ type Options = (
         searchParams?: Partial<delete_question_groupSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_question_groupSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_question_groupSearchParameters;
+    | ((
+        | {
+            query: delete_question_groupSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_question_groupSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

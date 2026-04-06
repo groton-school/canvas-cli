@@ -51,12 +51,17 @@ type Options = (
         searchParams?: Partial<delete_peer_review_coursesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_peer_review_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_peer_review_coursesSearchParameters;
+    | ((
+        | {
+            query: delete_peer_review_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_peer_review_coursesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

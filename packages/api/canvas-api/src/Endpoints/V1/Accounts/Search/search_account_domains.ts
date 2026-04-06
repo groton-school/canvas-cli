@@ -32,12 +32,17 @@ type Options =
       searchParams?: Partial<search_account_domainsSearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<search_account_domainsSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: search_account_domainsSearchParameters;
+  | ((
+      | {
+          query: search_account_domainsSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: search_account_domainsSearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * Search account domains

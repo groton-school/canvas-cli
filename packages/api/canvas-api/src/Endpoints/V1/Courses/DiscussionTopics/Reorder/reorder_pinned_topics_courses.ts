@@ -41,15 +41,26 @@ type Options = (
         params?: Partial<reorder_pinned_topics_coursesFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<reorder_pinned_topics_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: reorder_pinned_topics_coursesSearchParameters;
-        body?: Partial<reorder_pinned_topics_coursesFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: reorder_pinned_topics_coursesFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: reorder_pinned_topics_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: reorder_pinned_topics_coursesSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: reorder_pinned_topics_coursesFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: reorder_pinned_topics_coursesFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

@@ -30,12 +30,17 @@ type Options = (
         searchParams?: Partial<split_merged_users_into_separate_usersSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<split_merged_users_into_separate_usersSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: split_merged_users_into_separate_usersSearchParameters;
+    | ((
+        | {
+            query: split_merged_users_into_separate_usersSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: split_merged_users_into_separate_usersSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

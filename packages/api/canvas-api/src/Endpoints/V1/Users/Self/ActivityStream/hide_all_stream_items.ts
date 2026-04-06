@@ -10,12 +10,17 @@ type Options =
       searchParams?: Partial<hide_all_stream_itemsSearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<hide_all_stream_itemsSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: hide_all_stream_itemsSearchParameters;
+  | ((
+      | {
+          query: hide_all_stream_itemsSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: hide_all_stream_itemsSearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * Hide all stream items

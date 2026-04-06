@@ -41,12 +41,17 @@ type Options = (
         searchParams?: Partial<delete_ai_conversationSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_ai_conversationSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_ai_conversationSearchParameters;
+    | ((
+        | {
+            query: delete_ai_conversationSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_ai_conversationSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

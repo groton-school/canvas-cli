@@ -40,15 +40,26 @@ type Options = (
         params?: Partial<bulk_update_column_dataFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<bulk_update_column_dataSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: bulk_update_column_dataSearchParameters;
-        body?: Partial<bulk_update_column_dataFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: bulk_update_column_dataFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: bulk_update_column_dataSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: bulk_update_column_dataSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: bulk_update_column_dataFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: bulk_update_column_dataFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

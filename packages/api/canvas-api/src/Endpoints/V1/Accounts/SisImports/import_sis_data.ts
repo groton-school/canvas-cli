@@ -218,15 +218,26 @@ type Options = (
         params?: Partial<import_sis_dataFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<import_sis_dataSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: import_sis_dataSearchParameters;
-        body?: Partial<import_sis_dataFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: import_sis_dataFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: import_sis_dataSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: import_sis_dataSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: import_sis_dataFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: import_sis_dataFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<remove_course_nicknameSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<remove_course_nicknameSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: remove_course_nicknameSearchParameters;
+    | ((
+        | {
+            query: remove_course_nicknameSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: remove_course_nicknameSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

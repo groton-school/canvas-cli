@@ -41,12 +41,17 @@ type Options = (
         searchParams?: Partial<show_originality_report_submissionsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_originality_report_submissionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_originality_report_submissionsSearchParameters;
+    | ((
+        | {
+            query: show_originality_report_submissionsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_originality_report_submissionsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

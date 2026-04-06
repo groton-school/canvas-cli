@@ -39,12 +39,17 @@ type Options = (
         searchParams?: Partial<delete_new_quizSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_new_quizSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_new_quizSearchParameters;
+    | ((
+        | {
+            query: delete_new_quizSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_new_quizSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

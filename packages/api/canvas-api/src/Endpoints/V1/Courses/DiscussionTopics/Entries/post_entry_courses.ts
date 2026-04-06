@@ -47,15 +47,26 @@ type Options = (
         params?: Partial<post_entry_coursesFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<post_entry_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: post_entry_coursesSearchParameters;
-        body?: Partial<post_entry_coursesFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: post_entry_coursesFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: post_entry_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: post_entry_coursesSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: post_entry_coursesFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: post_entry_coursesFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

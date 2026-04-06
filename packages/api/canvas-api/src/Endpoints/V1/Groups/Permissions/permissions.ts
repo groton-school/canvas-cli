@@ -37,12 +37,17 @@ type Options = (
         searchParams?: Partial<permissionsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<permissionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: permissionsSearchParameters;
+    | ((
+        | {
+            query: permissionsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: permissionsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

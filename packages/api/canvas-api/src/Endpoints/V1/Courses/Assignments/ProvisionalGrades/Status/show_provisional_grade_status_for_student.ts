@@ -45,12 +45,17 @@ type Options = (
         searchParams?: Partial<show_provisional_grade_status_for_studentSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_provisional_grade_status_for_studentSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_provisional_grade_status_for_studentSearchParameters;
+    | ((
+        | {
+            query: show_provisional_grade_status_for_studentSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_provisional_grade_status_for_studentSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

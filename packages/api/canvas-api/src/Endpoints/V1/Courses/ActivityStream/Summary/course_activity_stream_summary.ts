@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<course_activity_stream_summarySearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<course_activity_stream_summarySearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: course_activity_stream_summarySearchParameters;
+    | ((
+        | {
+            query: course_activity_stream_summarySearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: course_activity_stream_summarySearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

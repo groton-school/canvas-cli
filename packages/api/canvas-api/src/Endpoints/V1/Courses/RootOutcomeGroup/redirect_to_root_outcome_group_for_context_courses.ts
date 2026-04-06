@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<redirect_to_root_outcome_group_for_context_coursesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<redirect_to_root_outcome_group_for_context_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: redirect_to_root_outcome_group_for_context_coursesSearchParameters;
+    | ((
+        | {
+            query: redirect_to_root_outcome_group_for_context_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: redirect_to_root_outcome_group_for_context_coursesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

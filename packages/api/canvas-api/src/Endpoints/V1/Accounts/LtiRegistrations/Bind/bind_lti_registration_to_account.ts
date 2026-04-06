@@ -46,15 +46,26 @@ type Options = (
         params?: Partial<bind_lti_registration_to_accountFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<bind_lti_registration_to_accountSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: bind_lti_registration_to_accountSearchParameters;
-        body?: Partial<bind_lti_registration_to_accountFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: bind_lti_registration_to_accountFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: bind_lti_registration_to_accountSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: bind_lti_registration_to_accountSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: bind_lti_registration_to_accountFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: bind_lti_registration_to_accountFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

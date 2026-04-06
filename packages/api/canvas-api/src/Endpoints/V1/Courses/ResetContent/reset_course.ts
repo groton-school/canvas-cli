@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<reset_courseSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<reset_courseSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: reset_courseSearchParameters;
+    | ((
+        | {
+            query: reset_courseSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: reset_courseSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

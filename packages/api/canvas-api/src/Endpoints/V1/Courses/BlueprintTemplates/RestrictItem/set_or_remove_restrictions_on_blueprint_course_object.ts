@@ -70,15 +70,26 @@ type Options = (
         params?: Partial<set_or_remove_restrictions_on_blueprint_course_objectFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<set_or_remove_restrictions_on_blueprint_course_objectSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: set_or_remove_restrictions_on_blueprint_course_objectSearchParameters;
-        body?: Partial<set_or_remove_restrictions_on_blueprint_course_objectFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: set_or_remove_restrictions_on_blueprint_course_objectFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: set_or_remove_restrictions_on_blueprint_course_objectSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: set_or_remove_restrictions_on_blueprint_course_objectSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: set_or_remove_restrictions_on_blueprint_course_objectFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: set_or_remove_restrictions_on_blueprint_course_objectFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

@@ -47,12 +47,17 @@ type Options = (
         searchParams?: Partial<delete_submission_commentSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_submission_commentSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_submission_commentSearchParameters;
+    | ((
+        | {
+            query: delete_submission_commentSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_submission_commentSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

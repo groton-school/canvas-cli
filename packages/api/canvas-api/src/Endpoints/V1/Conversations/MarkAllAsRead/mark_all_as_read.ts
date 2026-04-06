@@ -10,12 +10,17 @@ type Options =
       searchParams?: Partial<mark_all_as_readSearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<mark_all_as_readSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: mark_all_as_readSearchParameters;
+  | ((
+      | {
+          query: mark_all_as_readSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: mark_all_as_readSearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * Mark all as read

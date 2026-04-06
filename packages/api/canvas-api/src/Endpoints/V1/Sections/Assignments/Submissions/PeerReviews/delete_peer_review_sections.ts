@@ -51,12 +51,17 @@ type Options = (
         searchParams?: Partial<delete_peer_review_sectionsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_peer_review_sectionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_peer_review_sectionsSearchParameters;
+    | ((
+        | {
+            query: delete_peer_review_sectionsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_peer_review_sectionsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

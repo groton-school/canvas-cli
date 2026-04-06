@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<count_of_all_visible_account_calendarsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<count_of_all_visible_account_calendarsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: count_of_all_visible_account_calendarsSearchParameters;
+    | ((
+        | {
+            query: count_of_all_visible_account_calendarsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: count_of_all_visible_account_calendarsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

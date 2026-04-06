@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<cancel_progressSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<cancel_progressSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: cancel_progressSearchParameters;
+    | ((
+        | {
+            query: cancel_progressSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: cancel_progressSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

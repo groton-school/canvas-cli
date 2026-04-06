@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<group_activity_stream_summarySearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<group_activity_stream_summarySearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: group_activity_stream_summarySearchParameters;
+    | ((
+        | {
+            query: group_activity_stream_summarySearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: group_activity_stream_summarySearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

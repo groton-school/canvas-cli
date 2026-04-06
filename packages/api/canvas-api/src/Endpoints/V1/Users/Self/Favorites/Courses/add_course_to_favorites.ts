@@ -30,12 +30,17 @@ type Options = (
         searchParams?: Partial<add_course_to_favoritesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<add_course_to_favoritesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: add_course_to_favoritesSearchParameters;
+    | ((
+        | {
+            query: add_course_to_favoritesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: add_course_to_favoritesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

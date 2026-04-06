@@ -37,12 +37,17 @@ type Options = (
         searchParams?: Partial<show_user_detailsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_user_detailsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_user_detailsSearchParameters;
+    | ((
+        | {
+            query: show_user_detailsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_user_detailsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

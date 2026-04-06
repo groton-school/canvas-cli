@@ -40,12 +40,17 @@ type Options = (
         searchParams?: Partial<mark_submission_as_read_coursesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<mark_submission_as_read_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: mark_submission_as_read_coursesSearchParameters;
+    | ((
+        | {
+            query: mark_submission_as_read_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: mark_submission_as_read_coursesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

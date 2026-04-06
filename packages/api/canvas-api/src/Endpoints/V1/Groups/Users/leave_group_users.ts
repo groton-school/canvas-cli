@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<leave_group_usersSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<leave_group_usersSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: leave_group_usersSearchParameters;
+    | ((
+        | {
+            query: leave_group_usersSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: leave_group_usersSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

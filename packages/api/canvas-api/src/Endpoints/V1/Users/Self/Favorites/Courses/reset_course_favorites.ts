@@ -10,12 +10,17 @@ type Options =
       searchParams?: Partial<reset_course_favoritesSearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<reset_course_favoritesSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: reset_course_favoritesSearchParameters;
+  | ((
+      | {
+          query: reset_course_favoritesSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: reset_course_favoritesSearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * Reset course favorites

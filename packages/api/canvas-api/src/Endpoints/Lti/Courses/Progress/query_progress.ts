@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<query_progressSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<query_progressSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: query_progressSearchParameters;
+    | ((
+        | {
+            query: query_progressSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: query_progressSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

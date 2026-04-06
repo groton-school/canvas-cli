@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<details_for_given_date_in_gradebook_history_for_this_courseSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<details_for_given_date_in_gradebook_history_for_this_courseSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: details_for_given_date_in_gradebook_history_for_this_courseSearchParameters;
+    | ((
+        | {
+            query: details_for_given_date_in_gradebook_history_for_this_courseSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: details_for_given_date_in_gradebook_history_for_this_courseSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

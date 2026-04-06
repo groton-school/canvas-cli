@@ -55,15 +55,26 @@ type Options = (
         params?: Partial<activate_roleFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<activate_roleSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: activate_roleSearchParameters;
-        body?: Partial<activate_roleFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: activate_roleFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: activate_roleSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: activate_roleSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: activate_roleFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: activate_roleFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<delete_eportfolioSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_eportfolioSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_eportfolioSearchParameters;
+    | ((
+        | {
+            query: delete_eportfolioSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_eportfolioSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -53,12 +53,17 @@ type Options = (
         searchParams?: Partial<index_of_active_global_notification_for_userSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<index_of_active_global_notification_for_userSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: index_of_active_global_notification_for_userSearchParameters;
+    | ((
+        | {
+            query: index_of_active_global_notification_for_userSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: index_of_active_global_notification_for_userSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

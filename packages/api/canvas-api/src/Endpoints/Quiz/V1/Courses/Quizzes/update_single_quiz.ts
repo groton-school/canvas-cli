@@ -296,15 +296,26 @@ type Options = (
         params?: Partial<update_single_quizFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<update_single_quizSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: update_single_quizSearchParameters;
-        body?: Partial<update_single_quizFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: update_single_quizFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: update_single_quizSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: update_single_quizSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: update_single_quizFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: update_single_quizFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

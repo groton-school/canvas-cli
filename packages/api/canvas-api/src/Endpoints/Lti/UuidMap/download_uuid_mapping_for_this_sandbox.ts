@@ -10,12 +10,17 @@ type Options =
       searchParams?: Partial<download_uuid_mapping_for_this_sandboxSearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<download_uuid_mapping_for_this_sandboxSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: download_uuid_mapping_for_this_sandboxSearchParameters;
+  | ((
+      | {
+          query: download_uuid_mapping_for_this_sandboxSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: download_uuid_mapping_for_this_sandboxSearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * Download UUID Mapping for this Sandbox

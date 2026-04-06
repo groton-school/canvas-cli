@@ -50,12 +50,17 @@ type Options = (
         searchParams?: Partial<submission_summary_sectionsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<submission_summary_sectionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: submission_summary_sectionsSearchParameters;
+    | ((
+        | {
+            query: submission_summary_sectionsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: submission_summary_sectionsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

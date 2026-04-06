@@ -32,12 +32,17 @@ type Options = (
         searchParams?: Partial<delete_appointment_groupSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_appointment_groupSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_appointment_groupSearchParameters;
+    | ((
+        | {
+            query: delete_appointment_groupSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_appointment_groupSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -42,12 +42,17 @@ type Options = (
         searchParams?: Partial<mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters;
+    | ((
+        | {
+            query: mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

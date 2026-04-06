@@ -72,15 +72,26 @@ type Options = (
         params?: Partial<batchUpdateFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<batchUpdateSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: batchUpdateSearchParameters;
-        body?: Partial<batchUpdateFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: batchUpdateFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: batchUpdateSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: batchUpdateSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: batchUpdateFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: batchUpdateFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

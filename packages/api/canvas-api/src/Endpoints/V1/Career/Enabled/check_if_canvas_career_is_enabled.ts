@@ -10,12 +10,17 @@ type Options =
       searchParams?: Partial<check_if_canvas_career_is_enabledSearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<check_if_canvas_career_is_enabledSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: check_if_canvas_career_is_enabledSearchParameters;
+  | ((
+      | {
+          query: check_if_canvas_career_is_enabledSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: check_if_canvas_career_is_enabledSearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * Check if Canvas Career is enabled

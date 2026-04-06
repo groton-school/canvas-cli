@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<remove_content_shareSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<remove_content_shareSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: remove_content_shareSearchParameters;
+    | ((
+        | {
+            query: remove_content_shareSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: remove_content_shareSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<export_tags_and_users_in_courseSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<export_tags_and_users_in_courseSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: export_tags_and_users_in_courseSearchParameters;
+    | ((
+        | {
+            query: export_tags_and_users_in_courseSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: export_tags_and_users_in_courseSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

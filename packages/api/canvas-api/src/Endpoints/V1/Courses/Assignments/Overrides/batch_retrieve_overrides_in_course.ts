@@ -36,12 +36,17 @@ type Options = (
         searchParams?: Partial<batch_retrieve_overrides_in_courseSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<batch_retrieve_overrides_in_courseSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: batch_retrieve_overrides_in_courseSearchParameters;
+    | ((
+        | {
+            query: batch_retrieve_overrides_in_courseSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: batch_retrieve_overrides_in_courseSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

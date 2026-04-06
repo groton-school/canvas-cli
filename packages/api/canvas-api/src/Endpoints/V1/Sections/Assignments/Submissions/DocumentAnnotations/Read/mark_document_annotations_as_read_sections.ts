@@ -41,12 +41,17 @@ type Options = (
         searchParams?: Partial<mark_document_annotations_as_read_sectionsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<mark_document_annotations_as_read_sectionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: mark_document_annotations_as_read_sectionsSearchParameters;
+    | ((
+        | {
+            query: mark_document_annotations_as_read_sectionsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: mark_document_annotations_as_read_sectionsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

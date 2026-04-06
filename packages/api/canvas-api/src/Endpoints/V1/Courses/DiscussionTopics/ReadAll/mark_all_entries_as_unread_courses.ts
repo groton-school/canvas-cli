@@ -43,12 +43,17 @@ type Options = (
         searchParams?: Partial<mark_all_entries_as_unread_coursesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<mark_all_entries_as_unread_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: mark_all_entries_as_unread_coursesSearchParameters;
+    | ((
+        | {
+            query: mark_all_entries_as_unread_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: mark_all_entries_as_unread_coursesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

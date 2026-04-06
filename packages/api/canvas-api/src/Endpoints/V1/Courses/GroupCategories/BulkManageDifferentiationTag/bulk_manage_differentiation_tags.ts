@@ -54,15 +54,26 @@ type Options = (
         params?: Partial<bulk_manage_differentiation_tagsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<bulk_manage_differentiation_tagsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: bulk_manage_differentiation_tagsSearchParameters;
-        body?: Partial<bulk_manage_differentiation_tagsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: bulk_manage_differentiation_tagsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: bulk_manage_differentiation_tagsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: bulk_manage_differentiation_tagsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: bulk_manage_differentiation_tagsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: bulk_manage_differentiation_tagsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

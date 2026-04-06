@@ -47,12 +47,17 @@ type Options = (
         searchParams?: Partial<deactivate_roleSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<deactivate_roleSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: deactivate_roleSearchParameters;
+    | ((
+        | {
+            query: deactivate_roleSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: deactivate_roleSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

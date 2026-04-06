@@ -37,15 +37,26 @@ type Options = (
         params?: Partial<moderate_eportfolioFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<moderate_eportfolioSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: moderate_eportfolioSearchParameters;
-        body?: Partial<moderate_eportfolioFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: moderate_eportfolioFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: moderate_eportfolioSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: moderate_eportfolioSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: moderate_eportfolioFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: moderate_eportfolioFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

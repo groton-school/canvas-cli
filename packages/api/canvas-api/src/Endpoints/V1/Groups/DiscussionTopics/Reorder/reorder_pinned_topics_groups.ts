@@ -41,15 +41,26 @@ type Options = (
         params?: Partial<reorder_pinned_topics_groupsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<reorder_pinned_topics_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: reorder_pinned_topics_groupsSearchParameters;
-        body?: Partial<reorder_pinned_topics_groupsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: reorder_pinned_topics_groupsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: reorder_pinned_topics_groupsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: reorder_pinned_topics_groupsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: reorder_pinned_topics_groupsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: reorder_pinned_topics_groupsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

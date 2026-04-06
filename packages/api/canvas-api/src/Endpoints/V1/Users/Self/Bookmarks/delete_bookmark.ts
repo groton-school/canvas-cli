@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<delete_bookmarkSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_bookmarkSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_bookmarkSearchParameters;
+    | ((
+        | {
+            query: delete_bookmarkSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_bookmarkSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

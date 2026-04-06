@@ -128,15 +128,26 @@ type Options = (
         params?: Partial<submit_assignment_sectionsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<submit_assignment_sectionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: submit_assignment_sectionsSearchParameters;
-        body?: Partial<submit_assignment_sectionsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: submit_assignment_sectionsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: submit_assignment_sectionsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: submit_assignment_sectionsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: submit_assignment_sectionsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: submit_assignment_sectionsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

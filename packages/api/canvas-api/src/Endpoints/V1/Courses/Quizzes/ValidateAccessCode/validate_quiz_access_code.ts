@@ -42,15 +42,26 @@ type Options = (
         params?: Partial<validate_quiz_access_codeFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<validate_quiz_access_codeSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: validate_quiz_access_codeSearchParameters;
-        body?: Partial<validate_quiz_access_codeFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: validate_quiz_access_codeFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: validate_quiz_access_codeSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: validate_quiz_access_codeSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: validate_quiz_access_codeFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: validate_quiz_access_codeFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

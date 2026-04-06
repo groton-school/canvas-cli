@@ -63,15 +63,26 @@ type Options = (
         params?: Partial<apply_lti_registration_update_requstFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<apply_lti_registration_update_requstSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: apply_lti_registration_update_requstSearchParameters;
-        body?: Partial<apply_lti_registration_update_requstFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: apply_lti_registration_update_requstFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: apply_lti_registration_update_requstSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: apply_lti_registration_update_requstSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: apply_lti_registration_update_requstFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: apply_lti_registration_update_requstFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

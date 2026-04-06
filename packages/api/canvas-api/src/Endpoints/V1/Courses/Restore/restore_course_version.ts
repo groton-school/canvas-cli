@@ -38,12 +38,17 @@ type Options = (
         searchParams?: Partial<restore_course_versionSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<restore_course_versionSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: restore_course_versionSearchParameters;
+    | ((
+        | {
+            query: restore_course_versionSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: restore_course_versionSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

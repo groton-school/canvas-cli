@@ -44,12 +44,17 @@ type Options = (
         searchParams?: Partial<query_by_studentSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<query_by_studentSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: query_by_studentSearchParameters;
+    | ((
+        | {
+            query: query_by_studentSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: query_by_studentSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

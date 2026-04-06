@@ -39,15 +39,26 @@ type Options = (
         params?: Partial<share_brandconfig_themeFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<share_brandconfig_themeSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: share_brandconfig_themeSearchParameters;
-        body?: Partial<share_brandconfig_themeFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: share_brandconfig_themeFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: share_brandconfig_themeSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: share_brandconfig_themeSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: share_brandconfig_themeFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: share_brandconfig_themeFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

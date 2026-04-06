@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<redirect_to_assignment_override_for_groupSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<redirect_to_assignment_override_for_groupSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: redirect_to_assignment_override_for_groupSearchParameters;
+    | ((
+        | {
+            query: redirect_to_assignment_override_for_groupSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: redirect_to_assignment_override_for_groupSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

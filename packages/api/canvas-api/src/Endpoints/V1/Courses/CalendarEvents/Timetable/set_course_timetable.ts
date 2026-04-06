@@ -51,15 +51,26 @@ type Options = (
         params?: Partial<set_course_timetableFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<set_course_timetableSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: set_course_timetableSearchParameters;
-        body?: Partial<set_course_timetableFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: set_course_timetableFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: set_course_timetableSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: set_course_timetableSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: set_course_timetableFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: set_course_timetableFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

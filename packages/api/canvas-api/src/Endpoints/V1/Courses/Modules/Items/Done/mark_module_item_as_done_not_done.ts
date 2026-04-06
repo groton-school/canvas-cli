@@ -40,12 +40,17 @@ type Options = (
         searchParams?: Partial<mark_module_item_as_done_not_doneSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<mark_module_item_as_done_not_doneSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: mark_module_item_as_done_not_doneSearchParameters;
+    | ((
+        | {
+            query: mark_module_item_as_done_not_doneSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: mark_module_item_as_done_not_doneSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

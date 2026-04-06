@@ -38,12 +38,17 @@ type Options = (
         searchParams?: Partial<delete_calendar_eventSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_calendar_eventSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_calendar_eventSearchParameters;
+    | ((
+        | {
+            query: delete_calendar_eventSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_calendar_eventSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

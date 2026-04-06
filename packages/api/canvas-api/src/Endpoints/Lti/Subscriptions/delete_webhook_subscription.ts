@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<delete_webhook_subscriptionSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_webhook_subscriptionSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_webhook_subscriptionSearchParameters;
+    | ((
+        | {
+            query: delete_webhook_subscriptionSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_webhook_subscriptionSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<resolve_path_groupsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<resolve_path_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: resolve_path_groupsSearchParameters;
+    | ((
+        | {
+            query: resolve_path_groupsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: resolve_path_groupsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

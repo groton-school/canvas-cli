@@ -19,12 +19,17 @@ type Options =
       searchParams?: Partial<activity_stream_summarySearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<activity_stream_summarySearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: activity_stream_summarySearchParameters;
+  | ((
+      | {
+          query: activity_stream_summarySearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: activity_stream_summarySearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * Activity stream summary

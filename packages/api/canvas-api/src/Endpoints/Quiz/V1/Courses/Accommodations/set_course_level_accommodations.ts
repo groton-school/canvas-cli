@@ -66,15 +66,26 @@ type Options = (
         params?: Partial<set_course_level_accommodationsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<set_course_level_accommodationsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: set_course_level_accommodationsSearchParameters;
-        body?: Partial<set_course_level_accommodationsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: set_course_level_accommodationsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: set_course_level_accommodationsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: set_course_level_accommodationsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: set_course_level_accommodationsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: set_course_level_accommodationsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

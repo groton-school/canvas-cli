@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<new_blackout_date_accountsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<new_blackout_date_accountsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: new_blackout_date_accountsSearchParameters;
+    | ((
+        | {
+            query: new_blackout_date_accountsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: new_blackout_date_accountsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

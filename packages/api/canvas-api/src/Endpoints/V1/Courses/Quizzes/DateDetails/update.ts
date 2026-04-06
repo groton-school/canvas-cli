@@ -78,15 +78,26 @@ type Options = (
         params?: Partial<updateFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<updateSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: updateSearchParameters;
-        body?: Partial<updateFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: updateFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: updateSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: updateSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: updateFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: updateFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

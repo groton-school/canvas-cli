@@ -37,12 +37,17 @@ type Options = (
         searchParams?: Partial<search_for_content_share_usersSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<search_for_content_share_usersSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: search_for_content_share_usersSearchParameters;
+    | ((
+        | {
+            query: search_for_content_share_usersSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: search_for_content_share_usersSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

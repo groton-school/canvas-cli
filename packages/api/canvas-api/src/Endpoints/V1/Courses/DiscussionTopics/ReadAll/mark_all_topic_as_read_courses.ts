@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<mark_all_topic_as_read_coursesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<mark_all_topic_as_read_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: mark_all_topic_as_read_coursesSearchParameters;
+    | ((
+        | {
+            query: mark_all_topic_as_read_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: mark_all_topic_as_read_coursesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -152,15 +152,26 @@ type Options = (
         params?: Partial<enroll_user_coursesFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<enroll_user_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: enroll_user_coursesSearchParameters;
-        body?: Partial<enroll_user_coursesFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: enroll_user_coursesFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: enroll_user_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: enroll_user_coursesSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: enroll_user_coursesFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: enroll_user_coursesFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

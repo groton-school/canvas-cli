@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<add_authentication_providerSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<add_authentication_providerSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: add_authentication_providerSearchParameters;
+    | ((
+        | {
+            query: add_authentication_providerSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: add_authentication_providerSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

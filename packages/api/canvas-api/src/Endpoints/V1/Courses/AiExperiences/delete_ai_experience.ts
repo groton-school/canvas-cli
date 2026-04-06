@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<delete_ai_experienceSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_ai_experienceSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_ai_experienceSearchParameters;
+    | ((
+        | {
+            query: delete_ai_experienceSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_ai_experienceSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

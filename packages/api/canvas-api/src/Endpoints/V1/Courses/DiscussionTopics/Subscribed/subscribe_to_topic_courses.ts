@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<subscribe_to_topic_coursesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<subscribe_to_topic_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: subscribe_to_topic_coursesSearchParameters;
+    | ((
+        | {
+            query: subscribe_to_topic_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: subscribe_to_topic_coursesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -41,12 +41,17 @@ type Options = (
         searchParams?: Partial<bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters;
+    | ((
+        | {
+            query: bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

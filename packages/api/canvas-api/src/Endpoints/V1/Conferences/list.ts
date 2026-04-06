@@ -20,12 +20,17 @@ type Options =
       searchParams?: Partial<listSearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<listSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: listSearchParameters;
+  | ((
+      | {
+          query: listSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: listSearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * List conferences for the current user

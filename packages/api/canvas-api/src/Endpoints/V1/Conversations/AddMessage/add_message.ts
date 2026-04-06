@@ -52,15 +52,26 @@ type Options = (
         params?: Partial<add_messageFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<add_messageSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: add_messageSearchParameters;
-        body?: Partial<add_messageFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: add_messageFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: add_messageSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: add_messageSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: add_messageFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: add_messageFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

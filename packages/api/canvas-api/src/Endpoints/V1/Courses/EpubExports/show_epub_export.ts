@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<show_epub_exportSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_epub_exportSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_epub_exportSearchParameters;
+    | ((
+        | {
+            query: show_epub_exportSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_epub_exportSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

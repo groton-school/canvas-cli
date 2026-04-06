@@ -9,12 +9,17 @@ type Options =
       searchParams?: Partial<delete_push_notification_endpointSearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<delete_push_notification_endpointSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: delete_push_notification_endpointSearchParameters;
+  | ((
+      | {
+          query: delete_push_notification_endpointSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: delete_push_notification_endpointSearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * Delete a push notification endpoint

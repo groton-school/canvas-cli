@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<delete_rubricassociationSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_rubricassociationSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_rubricassociationSearchParameters;
+    | ((
+        | {
+            query: delete_rubricassociationSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_rubricassociationSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

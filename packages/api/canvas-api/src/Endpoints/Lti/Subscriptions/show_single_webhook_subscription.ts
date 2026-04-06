@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<show_single_webhook_subscriptionSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_single_webhook_subscriptionSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_single_webhook_subscriptionSearchParameters;
+    | ((
+        | {
+            query: show_single_webhook_subscriptionSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_single_webhook_subscriptionSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

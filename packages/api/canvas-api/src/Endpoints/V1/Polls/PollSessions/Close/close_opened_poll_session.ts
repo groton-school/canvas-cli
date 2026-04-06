@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<close_opened_poll_sessionSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<close_opened_poll_sessionSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: close_opened_poll_sessionSearchParameters;
+    | ((
+        | {
+            query: close_opened_poll_sessionSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: close_opened_poll_sessionSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

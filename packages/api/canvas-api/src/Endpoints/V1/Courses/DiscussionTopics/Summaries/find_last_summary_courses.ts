@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<find_last_summary_coursesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<find_last_summary_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: find_last_summary_coursesSearchParameters;
+    | ((
+        | {
+            query: find_last_summary_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: find_last_summary_coursesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

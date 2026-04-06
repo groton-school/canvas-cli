@@ -63,15 +63,26 @@ type Options = (
         params?: Partial<export_content_coursesFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<export_content_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: export_content_coursesSearchParameters;
-        body?: Partial<export_content_coursesFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: export_content_coursesFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: export_content_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: export_content_coursesSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: export_content_coursesFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: export_content_coursesFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

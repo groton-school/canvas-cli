@@ -46,12 +46,17 @@ type Options = (
         searchParams?: Partial<search_course_contentSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<search_course_contentSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: search_course_contentSearchParameters;
+    | ((
+        | {
+            query: search_course_contentSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: search_course_contentSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<allocate_peer_reviewSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<allocate_peer_reviewSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: allocate_peer_reviewSearchParameters;
+    | ((
+        | {
+            query: allocate_peer_reviewSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: allocate_peer_reviewSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<reset_link_verifierSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<reset_link_verifierSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: reset_link_verifierSearchParameters;
+    | ((
+        | {
+            query: reset_link_verifierSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: reset_link_verifierSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

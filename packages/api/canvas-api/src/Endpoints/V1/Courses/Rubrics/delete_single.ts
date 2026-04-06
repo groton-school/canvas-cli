@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<delete_singleSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_singleSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_singleSearchParameters;
+    | ((
+        | {
+            query: delete_singleSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_singleSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

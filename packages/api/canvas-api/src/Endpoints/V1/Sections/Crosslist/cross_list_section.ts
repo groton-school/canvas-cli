@@ -49,15 +49,26 @@ type Options = (
         params?: Partial<cross_list_sectionFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<cross_list_sectionSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: cross_list_sectionSearchParameters;
-        body?: Partial<cross_list_sectionFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: cross_list_sectionFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: cross_list_sectionSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: cross_list_sectionSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: cross_list_sectionFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: cross_list_sectionFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

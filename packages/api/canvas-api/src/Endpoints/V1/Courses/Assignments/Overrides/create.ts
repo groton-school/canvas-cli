@@ -109,15 +109,26 @@ type Options = (
         params?: Partial<createFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<createSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: createSearchParameters;
-        body?: Partial<createFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: createFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: createSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: createSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: createFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: createFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

@@ -49,12 +49,17 @@ type Options = (
         searchParams?: Partial<mark_entry_as_unread_groupsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<mark_entry_as_unread_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: mark_entry_as_unread_groupsSearchParameters;
+    | ((
+        | {
+            query: mark_entry_as_unread_groupsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: mark_entry_as_unread_groupsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

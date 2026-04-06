@@ -44,12 +44,17 @@ type Options = (
         searchParams?: Partial<query_by_graderSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<query_by_graderSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: query_by_graderSearchParameters;
+    | ((
+        | {
+            query: query_by_graderSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: query_by_graderSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

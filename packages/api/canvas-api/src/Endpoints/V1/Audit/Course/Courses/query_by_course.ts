@@ -44,12 +44,17 @@ type Options = (
         searchParams?: Partial<query_by_courseSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<query_by_courseSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: query_by_courseSearchParameters;
+    | ((
+        | {
+            query: query_by_courseSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: query_by_courseSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

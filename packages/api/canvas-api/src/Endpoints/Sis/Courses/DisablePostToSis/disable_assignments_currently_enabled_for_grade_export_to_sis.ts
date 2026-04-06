@@ -47,15 +47,26 @@ type Options = (
         params?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters;
-        body?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

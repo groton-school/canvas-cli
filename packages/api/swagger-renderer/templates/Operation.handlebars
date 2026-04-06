@@ -64,15 +64,18 @@ type Options = {{#if tsPathParameters}}({
       params?: Partial<{{tsName}}FormParameters>;
     {{/if}}
     strict?: false;
-  } | {
-    query?: Partial<{{tsName}}SearchParameters>;
+  } | ({
+    query: {{tsName}}SearchParameters;
+  }|{
     /** @deprecated Use {Options.query} */
     searchParams: {{tsName}}SearchParameters;
-    {{#if tsFormParameters}}
-      body?: Partial<{{tsName}}FormParameters>;
+  }) 
+    {{#if tsFormParameters}} & ({
+      body: {{tsName}}FormParameters;
+  }|{
       /** @deprecated Use {@link Options.body} */
       params: {{tsName}}FormParameters;
-    {{/if}}
+     }){{/if}} & {
     strict: true;
   }){{#if tsUpload}} & {
     file: FileLocation

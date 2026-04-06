@@ -36,15 +36,26 @@ type Options = (
         params?: Partial<invite_others_to_groupFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<invite_others_to_groupSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: invite_others_to_groupSearchParameters;
-        body?: Partial<invite_others_to_groupFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: invite_others_to_groupFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: invite_others_to_groupSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: invite_others_to_groupSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: invite_others_to_groupFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: invite_others_to_groupFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

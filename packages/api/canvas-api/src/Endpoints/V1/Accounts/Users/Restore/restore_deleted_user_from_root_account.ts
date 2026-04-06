@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<restore_deleted_user_from_root_accountSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<restore_deleted_user_from_root_accountSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: restore_deleted_user_from_root_accountSearchParameters;
+    | ((
+        | {
+            query: restore_deleted_user_from_root_accountSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: restore_deleted_user_from_root_accountSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

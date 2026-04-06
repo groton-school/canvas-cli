@@ -45,12 +45,17 @@ type Options = (
         searchParams?: Partial<retrieve_all_quiz_reportsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<retrieve_all_quiz_reportsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: retrieve_all_quiz_reportsSearchParameters;
+    | ((
+        | {
+            query: retrieve_all_quiz_reportsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: retrieve_all_quiz_reportsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

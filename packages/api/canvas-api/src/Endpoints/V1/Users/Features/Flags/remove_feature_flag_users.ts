@@ -31,12 +31,17 @@ type Options = (
         searchParams?: Partial<remove_feature_flag_usersSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<remove_feature_flag_usersSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: remove_feature_flag_usersSearchParameters;
+    | ((
+        | {
+            query: remove_feature_flag_usersSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: remove_feature_flag_usersSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -42,15 +42,26 @@ type Options = (
         params?: Partial<batch_create_overrides_in_courseFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<batch_create_overrides_in_courseSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: batch_create_overrides_in_courseSearchParameters;
-        body?: Partial<batch_create_overrides_in_courseFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: batch_create_overrides_in_courseFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: batch_create_overrides_in_courseSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: batch_create_overrides_in_courseSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: batch_create_overrides_in_courseFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: batch_create_overrides_in_courseFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

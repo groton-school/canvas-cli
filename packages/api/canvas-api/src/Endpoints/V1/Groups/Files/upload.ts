@@ -98,15 +98,26 @@ type Options = (
         params?: Partial<uploadFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<uploadSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: uploadSearchParameters;
-        body?: Partial<uploadFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: uploadFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: uploadSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: uploadSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: uploadFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: uploadFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   ) & {
     file: FileLocation;
   };

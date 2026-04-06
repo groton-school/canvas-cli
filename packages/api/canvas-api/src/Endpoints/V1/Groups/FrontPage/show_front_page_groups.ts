@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<show_front_page_groupsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_front_page_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_front_page_groupsSearchParameters;
+    | ((
+        | {
+            query: show_front_page_groupsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_front_page_groupsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

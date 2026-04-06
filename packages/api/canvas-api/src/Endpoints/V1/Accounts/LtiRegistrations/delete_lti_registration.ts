@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<delete_lti_registrationSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_lti_registrationSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_lti_registrationSearchParameters;
+    | ((
+        | {
+            query: delete_lti_registrationSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_lti_registrationSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -37,15 +37,26 @@ type Options = (
         params?: Partial<mark_bulk_submissions_as_read_sectionsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<mark_bulk_submissions_as_read_sectionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: mark_bulk_submissions_as_read_sectionsSearchParameters;
-        body?: Partial<mark_bulk_submissions_as_read_sectionsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: mark_bulk_submissions_as_read_sectionsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: mark_bulk_submissions_as_read_sectionsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: mark_bulk_submissions_as_read_sectionsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: mark_bulk_submissions_as_read_sectionsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: mark_bulk_submissions_as_read_sectionsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

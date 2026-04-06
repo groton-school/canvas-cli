@@ -40,15 +40,26 @@ type Options = (
         params?: Partial<add_recipientsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<add_recipientsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: add_recipientsSearchParameters;
-        body?: Partial<add_recipientsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: add_recipientsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: add_recipientsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: add_recipientsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: add_recipientsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: add_recipientsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

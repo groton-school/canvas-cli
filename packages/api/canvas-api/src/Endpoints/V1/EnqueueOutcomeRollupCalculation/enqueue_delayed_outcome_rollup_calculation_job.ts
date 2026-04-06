@@ -25,15 +25,26 @@ type Options =
       params?: Partial<enqueue_delayed_outcome_rollup_calculation_jobFormParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<enqueue_delayed_outcome_rollup_calculation_jobSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: enqueue_delayed_outcome_rollup_calculation_jobSearchParameters;
-      body?: Partial<enqueue_delayed_outcome_rollup_calculation_jobFormParameters>;
-      /** @deprecated Use {@link Options.body} */
-      params: enqueue_delayed_outcome_rollup_calculation_jobFormParameters;
-      strict: true;
-    };
+  | ((
+      | {
+          query: enqueue_delayed_outcome_rollup_calculation_jobSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: enqueue_delayed_outcome_rollup_calculation_jobSearchParameters;
+        }
+    ) &
+      (
+        | {
+            body: enqueue_delayed_outcome_rollup_calculation_jobFormParameters;
+          }
+        | {
+            /** @deprecated Use {@link Options.body} */
+            params: enqueue_delayed_outcome_rollup_calculation_jobFormParameters;
+          }
+      ) & {
+        strict: true;
+      });
 
 /**
  * Enqueue a delayed Outcome Rollup Calculation Job

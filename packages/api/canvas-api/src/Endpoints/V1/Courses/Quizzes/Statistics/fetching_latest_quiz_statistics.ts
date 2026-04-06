@@ -42,12 +42,17 @@ type Options = (
         searchParams?: Partial<fetching_latest_quiz_statisticsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<fetching_latest_quiz_statisticsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: fetching_latest_quiz_statisticsSearchParameters;
+    | ((
+        | {
+            query: fetching_latest_quiz_statisticsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: fetching_latest_quiz_statisticsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

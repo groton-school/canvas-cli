@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<accept_course_invitationSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<accept_course_invitationSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: accept_course_invitationSearchParameters;
+    | ((
+        | {
+            query: accept_course_invitationSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: accept_course_invitationSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

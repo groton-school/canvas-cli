@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<un_share_brandconfig_themeSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<un_share_brandconfig_themeSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: un_share_brandconfig_themeSearchParameters;
+    | ((
+        | {
+            query: un_share_brandconfig_themeSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: un_share_brandconfig_themeSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<remove_group_from_favoritesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<remove_group_from_favoritesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: remove_group_from_favoritesSearchParameters;
+    | ((
+        | {
+            query: remove_group_from_favoritesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: remove_group_from_favoritesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

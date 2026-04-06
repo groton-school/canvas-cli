@@ -32,12 +32,17 @@ type Options = (
         searchParams?: Partial<delete_conclude_courseSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_conclude_courseSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_conclude_courseSearchParameters;
+    | ((
+        | {
+            query: delete_conclude_courseSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_conclude_courseSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

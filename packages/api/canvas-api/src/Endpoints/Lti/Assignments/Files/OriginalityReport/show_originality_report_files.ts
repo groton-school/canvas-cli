@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<show_originality_report_filesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_originality_report_filesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_originality_report_filesSearchParameters;
+    | ((
+        | {
+            query: show_originality_report_filesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_originality_report_filesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

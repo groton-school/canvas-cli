@@ -43,12 +43,17 @@ type Options = (
         searchParams?: Partial<query_by_loginSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<query_by_loginSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: query_by_loginSearchParameters;
+    | ((
+        | {
+            query: query_by_loginSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: query_by_loginSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<mark_topic_as_unread_groupsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<mark_topic_as_unread_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: mark_topic_as_unread_groupsSearchParameters;
+    | ((
+        | {
+            query: mark_topic_as_unread_groupsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: mark_topic_as_unread_groupsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

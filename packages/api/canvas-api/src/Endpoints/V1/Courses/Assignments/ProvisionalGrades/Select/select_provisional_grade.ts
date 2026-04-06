@@ -40,12 +40,17 @@ type Options = (
         searchParams?: Partial<select_provisional_gradeSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<select_provisional_gradeSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: select_provisional_gradeSearchParameters;
+    | ((
+        | {
+            query: select_provisional_gradeSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: select_provisional_gradeSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

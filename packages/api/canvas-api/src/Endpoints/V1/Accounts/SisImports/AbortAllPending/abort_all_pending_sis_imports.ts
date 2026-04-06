@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<abort_all_pending_sis_importsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<abort_all_pending_sis_importsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: abort_all_pending_sis_importsSearchParameters;
+    | ((
+        | {
+            query: abort_all_pending_sis_importsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: abort_all_pending_sis_importsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

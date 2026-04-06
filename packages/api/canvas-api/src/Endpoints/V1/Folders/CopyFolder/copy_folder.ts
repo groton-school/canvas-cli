@@ -37,15 +37,26 @@ type Options = (
         params?: Partial<copy_folderFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<copy_folderSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: copy_folderSearchParameters;
-        body?: Partial<copy_folderFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: copy_folderFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: copy_folderSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: copy_folderSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: copy_folderFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: copy_folderFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

@@ -47,15 +47,26 @@ type Options = (
         params?: Partial<enable_disable_or_clear_explicit_csp_setting_accountsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<enable_disable_or_clear_explicit_csp_setting_accountsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: enable_disable_or_clear_explicit_csp_setting_accountsSearchParameters;
-        body?: Partial<enable_disable_or_clear_explicit_csp_setting_accountsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: enable_disable_or_clear_explicit_csp_setting_accountsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: enable_disable_or_clear_explicit_csp_setting_accountsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: enable_disable_or_clear_explicit_csp_setting_accountsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: enable_disable_or_clear_explicit_csp_setting_accountsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: enable_disable_or_clear_explicit_csp_setting_accountsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

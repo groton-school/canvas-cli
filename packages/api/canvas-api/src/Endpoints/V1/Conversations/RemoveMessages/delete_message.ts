@@ -36,15 +36,26 @@ type Options = (
         params?: Partial<delete_messageFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_messageSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_messageSearchParameters;
-        body?: Partial<delete_messageFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: delete_messageFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: delete_messageSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_messageSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: delete_messageFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: delete_messageFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

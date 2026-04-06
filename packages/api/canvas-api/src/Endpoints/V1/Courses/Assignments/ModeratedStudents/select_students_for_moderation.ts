@@ -44,15 +44,26 @@ type Options = (
         params?: Partial<select_students_for_moderationFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<select_students_for_moderationSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: select_students_for_moderationSearchParameters;
-        body?: Partial<select_students_for_moderationFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: select_students_for_moderationFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: select_students_for_moderationSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: select_students_for_moderationSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: select_students_for_moderationFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: select_students_for_moderationFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

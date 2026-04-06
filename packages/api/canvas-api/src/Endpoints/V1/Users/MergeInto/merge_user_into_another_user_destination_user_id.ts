@@ -36,12 +36,17 @@ type Options = (
         searchParams?: Partial<merge_user_into_another_user_destination_user_idSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<merge_user_into_another_user_destination_user_idSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: merge_user_into_another_user_destination_user_idSearchParameters;
+    | ((
+        | {
+            query: merge_user_into_another_user_destination_user_idSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: merge_user_into_another_user_destination_user_idSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

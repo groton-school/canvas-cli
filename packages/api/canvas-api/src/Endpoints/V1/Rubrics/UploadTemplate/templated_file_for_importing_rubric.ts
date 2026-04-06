@@ -9,12 +9,17 @@ type Options =
       searchParams?: Partial<templated_file_for_importing_rubricSearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<templated_file_for_importing_rubricSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: templated_file_for_importing_rubricSearchParameters;
+  | ((
+      | {
+          query: templated_file_for_importing_rubricSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: templated_file_for_importing_rubricSearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * Templated file for importing a rubric

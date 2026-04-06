@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<mark_all_topic_as_read_groupsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<mark_all_topic_as_read_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: mark_all_topic_as_read_groupsSearchParameters;
+    | ((
+        | {
+            query: mark_all_topic_as_read_groupsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: mark_all_topic_as_read_groupsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

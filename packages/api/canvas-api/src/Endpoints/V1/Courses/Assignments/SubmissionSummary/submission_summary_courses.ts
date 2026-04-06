@@ -50,12 +50,17 @@ type Options = (
         searchParams?: Partial<submission_summary_coursesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<submission_summary_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: submission_summary_coursesSearchParameters;
+    | ((
+        | {
+            query: submission_summary_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: submission_summary_coursesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

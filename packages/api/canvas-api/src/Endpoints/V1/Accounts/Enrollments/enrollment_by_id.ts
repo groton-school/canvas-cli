@@ -37,12 +37,17 @@ type Options = (
         searchParams?: Partial<enrollment_by_idSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<enrollment_by_idSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: enrollment_by_idSearchParameters;
+    | ((
+        | {
+            query: enrollment_by_idSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: enrollment_by_idSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

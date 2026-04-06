@@ -42,12 +42,17 @@ type Options = (
         searchParams?: Partial<mark_rubric_assessments_as_read_courses_rubric_assessmentsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<mark_rubric_assessments_as_read_courses_rubric_assessmentsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: mark_rubric_assessments_as_read_courses_rubric_assessmentsSearchParameters;
+    | ((
+        | {
+            query: mark_rubric_assessments_as_read_courses_rubric_assessmentsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: mark_rubric_assessments_as_read_courses_rubric_assessmentsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

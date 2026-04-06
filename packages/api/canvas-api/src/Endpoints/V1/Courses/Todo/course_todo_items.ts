@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<course_todo_itemsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<course_todo_itemsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: course_todo_itemsSearchParameters;
+    | ((
+        | {
+            query: course_todo_itemsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: course_todo_itemsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

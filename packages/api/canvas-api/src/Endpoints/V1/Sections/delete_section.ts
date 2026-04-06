@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<delete_sectionSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_sectionSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_sectionSearchParameters;
+    | ((
+        | {
+            query: delete_sectionSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_sectionSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

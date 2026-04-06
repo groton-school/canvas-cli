@@ -10,12 +10,17 @@ type Options =
       searchParams?: Partial<retrieve_permission_groupsSearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<retrieve_permission_groupsSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: retrieve_permission_groupsSearchParameters;
+  | ((
+      | {
+          query: retrieve_permission_groupsSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: retrieve_permission_groupsSearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * Retrieve permission groups

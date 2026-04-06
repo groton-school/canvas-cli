@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<remove_quiz_migration_alertSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<remove_quiz_migration_alertSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: remove_quiz_migration_alertSearchParameters;
+    | ((
+        | {
+            query: remove_quiz_migration_alertSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: remove_quiz_migration_alertSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

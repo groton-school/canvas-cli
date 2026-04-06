@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<delete_external_tool_accountsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_external_tool_accountsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_external_tool_accountsSearchParameters;
+    | ((
+        | {
+            query: delete_external_tool_accountsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_external_tool_accountsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

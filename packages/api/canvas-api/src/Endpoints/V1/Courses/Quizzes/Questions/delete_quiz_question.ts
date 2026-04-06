@@ -44,12 +44,17 @@ type Options = (
         searchParams?: Partial<delete_quiz_questionSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_quiz_questionSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_quiz_questionSearchParameters;
+    | ((
+        | {
+            query: delete_quiz_questionSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_quiz_questionSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -56,15 +56,26 @@ type Options = (
         params?: Partial<import_differentiation_tagsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<import_differentiation_tagsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: import_differentiation_tagsSearchParameters;
-        body?: Partial<import_differentiation_tagsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: import_differentiation_tagsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: import_differentiation_tagsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: import_differentiation_tagsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: import_differentiation_tagsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: import_differentiation_tagsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

@@ -36,15 +36,26 @@ type Options = (
         params?: Partial<add_allowed_domain_to_accountFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<add_allowed_domain_to_accountSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: add_allowed_domain_to_accountSearchParameters;
-        body?: Partial<add_allowed_domain_to_accountFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: add_allowed_domain_to_accountFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: add_allowed_domain_to_accountSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: add_allowed_domain_to_accountSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: add_allowed_domain_to_accountFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: add_allowed_domain_to_accountFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

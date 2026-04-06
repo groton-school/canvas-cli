@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<beta_poll_query_statusSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<beta_poll_query_statusSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: beta_poll_query_statusSearchParameters;
+    | ((
+        | {
+            query: beta_poll_query_statusSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: beta_poll_query_statusSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

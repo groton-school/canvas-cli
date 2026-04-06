@@ -75,15 +75,26 @@ type Options = (
         params?: Partial<begin_migration_to_push_to_associated_coursesFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<begin_migration_to_push_to_associated_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: begin_migration_to_push_to_associated_coursesSearchParameters;
-        body?: Partial<begin_migration_to_push_to_associated_coursesFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: begin_migration_to_push_to_associated_coursesFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: begin_migration_to_push_to_associated_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: begin_migration_to_push_to_associated_coursesSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: begin_migration_to_push_to_associated_coursesFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: begin_migration_to_push_to_associated_coursesFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

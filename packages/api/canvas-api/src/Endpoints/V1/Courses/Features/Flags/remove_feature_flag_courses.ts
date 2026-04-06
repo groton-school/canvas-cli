@@ -31,12 +31,17 @@ type Options = (
         searchParams?: Partial<remove_feature_flag_coursesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<remove_feature_flag_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: remove_feature_flag_coursesSearchParameters;
+    | ((
+        | {
+            query: remove_feature_flag_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: remove_feature_flag_coursesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

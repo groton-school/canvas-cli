@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<subscribe_to_topic_groupsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<subscribe_to_topic_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: subscribe_to_topic_groupsSearchParameters;
+    | ((
+        | {
+            query: subscribe_to_topic_groupsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: subscribe_to_topic_groupsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

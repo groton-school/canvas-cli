@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<delete_external_tool_coursesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_external_tool_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_external_tool_coursesSearchParameters;
+    | ((
+        | {
+            query: delete_external_tool_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_external_tool_coursesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

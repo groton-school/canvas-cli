@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<delete_user_loginSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_user_loginSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_user_loginSearchParameters;
+    | ((
+        | {
+            query: delete_user_loginSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_user_loginSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

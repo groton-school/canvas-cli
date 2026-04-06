@@ -32,12 +32,17 @@ type Options = (
         searchParams?: Partial<remove_domain_from_accountSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<remove_domain_from_accountSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: remove_domain_from_accountSearchParameters;
+    | ((
+        | {
+            query: remove_domain_from_accountSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: remove_domain_from_accountSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

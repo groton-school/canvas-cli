@@ -40,15 +40,26 @@ type Options = (
         params?: Partial<reorder_custom_columnsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<reorder_custom_columnsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: reorder_custom_columnsSearchParameters;
-        body?: Partial<reorder_custom_columnsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: reorder_custom_columnsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: reorder_custom_columnsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: reorder_custom_columnsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: reorder_custom_columnsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: reorder_custom_columnsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

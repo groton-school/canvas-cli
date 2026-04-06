@@ -90,15 +90,26 @@ type Options = (
         params?: Partial<grade_or_comment_on_multiple_submissions_courses_assignmentsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<grade_or_comment_on_multiple_submissions_courses_assignmentsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: grade_or_comment_on_multiple_submissions_courses_assignmentsSearchParameters;
-        body?: Partial<grade_or_comment_on_multiple_submissions_courses_assignmentsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: grade_or_comment_on_multiple_submissions_courses_assignmentsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: grade_or_comment_on_multiple_submissions_courses_assignmentsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: grade_or_comment_on_multiple_submissions_courses_assignmentsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: grade_or_comment_on_multiple_submissions_courses_assignmentsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: grade_or_comment_on_multiple_submissions_courses_assignmentsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

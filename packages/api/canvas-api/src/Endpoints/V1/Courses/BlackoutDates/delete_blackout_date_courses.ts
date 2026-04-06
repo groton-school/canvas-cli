@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<delete_blackout_date_coursesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_blackout_date_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_blackout_date_coursesSearchParameters;
+    | ((
+        | {
+            query: delete_blackout_date_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_blackout_date_coursesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

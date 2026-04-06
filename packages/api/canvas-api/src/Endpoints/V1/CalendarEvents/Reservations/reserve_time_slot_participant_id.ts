@@ -51,15 +51,26 @@ type Options = (
         params?: Partial<reserve_time_slot_participant_idFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<reserve_time_slot_participant_idSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: reserve_time_slot_participant_idSearchParameters;
-        body?: Partial<reserve_time_slot_participant_idFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: reserve_time_slot_participant_idFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: reserve_time_slot_participant_idSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: reserve_time_slot_participant_idSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: reserve_time_slot_participant_idFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: reserve_time_slot_participant_idFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

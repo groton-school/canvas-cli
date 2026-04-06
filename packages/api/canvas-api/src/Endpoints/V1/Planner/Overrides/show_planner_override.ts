@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<show_planner_overrideSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_planner_overrideSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_planner_overrideSearchParameters;
+    | ((
+        | {
+            query: show_planner_overrideSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_planner_overrideSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

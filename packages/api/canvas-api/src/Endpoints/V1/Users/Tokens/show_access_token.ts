@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<show_access_tokenSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_access_tokenSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_access_tokenSearchParameters;
+    | ((
+        | {
+            query: show_access_tokenSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_access_tokenSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

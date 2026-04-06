@@ -41,12 +41,17 @@ type Options = (
         searchParams?: Partial<delete_assignment_overrideSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_assignment_overrideSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_assignment_overrideSearchParameters;
+    | ((
+        | {
+            query: delete_assignment_overrideSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_assignment_overrideSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

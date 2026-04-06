@@ -43,12 +43,17 @@ type Options = (
         searchParams?: Partial<show_revision_courses_latestSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_revision_courses_latestSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_revision_courses_latestSearchParameters;
+    | ((
+        | {
+            query: show_revision_courses_latestSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_revision_courses_latestSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

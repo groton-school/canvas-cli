@@ -42,15 +42,26 @@ type Options = (
         params?: Partial<find_or_create_summary_groupsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<find_or_create_summary_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: find_or_create_summary_groupsSearchParameters;
-        body?: Partial<find_or_create_summary_groupsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: find_or_create_summary_groupsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: find_or_create_summary_groupsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: find_or_create_summary_groupsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: find_or_create_summary_groupsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: find_or_create_summary_groupsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

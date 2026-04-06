@@ -55,15 +55,26 @@ type Options = (
         params?: Partial<set_extensions_for_student_assignment_submissionsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<set_extensions_for_student_assignment_submissionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: set_extensions_for_student_assignment_submissionsSearchParameters;
-        body?: Partial<set_extensions_for_student_assignment_submissionsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: set_extensions_for_student_assignment_submissionsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: set_extensions_for_student_assignment_submissionsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: set_extensions_for_student_assignment_submissionsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: set_extensions_for_student_assignment_submissionsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: set_extensions_for_student_assignment_submissionsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

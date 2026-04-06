@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<resolve_path_groups_full_pathSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<resolve_path_groups_full_pathSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: resolve_path_groups_full_pathSearchParameters;
+    | ((
+        | {
+            query: resolve_path_groups_full_pathSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: resolve_path_groups_full_pathSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

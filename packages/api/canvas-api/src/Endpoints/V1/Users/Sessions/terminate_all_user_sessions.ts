@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<terminate_all_user_sessionsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<terminate_all_user_sessionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: terminate_all_user_sessionsSearchParameters;
+    | ((
+        | {
+            query: terminate_all_user_sessionsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: terminate_all_user_sessionsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

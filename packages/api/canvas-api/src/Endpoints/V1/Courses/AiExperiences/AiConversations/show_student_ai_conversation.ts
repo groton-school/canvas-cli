@@ -41,12 +41,17 @@ type Options = (
         searchParams?: Partial<show_student_ai_conversationSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_student_ai_conversationSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_student_ai_conversationSearchParameters;
+    | ((
+        | {
+            query: show_student_ai_conversationSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_student_ai_conversationSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

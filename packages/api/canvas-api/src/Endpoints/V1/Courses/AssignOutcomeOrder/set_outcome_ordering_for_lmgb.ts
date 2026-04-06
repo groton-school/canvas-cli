@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<set_outcome_ordering_for_lmgbSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<set_outcome_ordering_for_lmgbSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: set_outcome_ordering_for_lmgbSearchParameters;
+    | ((
+        | {
+            query: set_outcome_ordering_for_lmgbSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: set_outcome_ordering_for_lmgbSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

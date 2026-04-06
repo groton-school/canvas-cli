@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<delete_grading_standard_accountsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_grading_standard_accountsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_grading_standard_accountsSearchParameters;
+    | ((
+        | {
+            query: delete_grading_standard_accountsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_grading_standard_accountsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

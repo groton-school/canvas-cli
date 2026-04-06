@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<creates_rubric_using_csv_file_coursesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<creates_rubric_using_csv_file_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: creates_rubric_using_csv_file_coursesSearchParameters;
+    | ((
+        | {
+            query: creates_rubric_using_csv_file_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: creates_rubric_using_csv_file_coursesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

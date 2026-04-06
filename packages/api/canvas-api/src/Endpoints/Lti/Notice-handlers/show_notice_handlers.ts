@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<show_notice_handlersSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_notice_handlersSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_notice_handlersSearchParameters;
+    | ((
+        | {
+            query: show_notice_handlersSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_notice_handlersSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

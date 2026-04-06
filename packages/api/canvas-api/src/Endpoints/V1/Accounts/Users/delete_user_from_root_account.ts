@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<delete_user_from_root_accountSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_user_from_root_accountSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_user_from_root_accountSearchParameters;
+    | ((
+        | {
+            query: delete_user_from_root_accountSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_user_from_root_accountSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

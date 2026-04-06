@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<retrieve_enrollment_termSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<retrieve_enrollment_termSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: retrieve_enrollment_termSearchParameters;
+    | ((
+        | {
+            query: retrieve_enrollment_termSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: retrieve_enrollment_termSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

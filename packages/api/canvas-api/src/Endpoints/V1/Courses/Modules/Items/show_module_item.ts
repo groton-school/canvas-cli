@@ -52,12 +52,17 @@ type Options = (
         searchParams?: Partial<show_module_itemSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_module_itemSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_module_itemSearchParameters;
+    | ((
+        | {
+            query: show_module_itemSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_module_itemSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

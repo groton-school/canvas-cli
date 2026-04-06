@@ -40,12 +40,17 @@ type Options = (
         searchParams?: Partial<retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters;
+    | ((
+        | {
+            query: retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

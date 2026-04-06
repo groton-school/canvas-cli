@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<delete_communication_channel_idSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_communication_channel_idSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_communication_channel_idSearchParameters;
+    | ((
+        | {
+            query: delete_communication_channel_idSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_communication_channel_idSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

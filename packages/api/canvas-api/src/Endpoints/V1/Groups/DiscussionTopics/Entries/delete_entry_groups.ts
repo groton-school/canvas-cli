@@ -40,12 +40,17 @@ type Options = (
         searchParams?: Partial<delete_entry_groupsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_entry_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_entry_groupsSearchParameters;
+    | ((
+        | {
+            query: delete_entry_groupsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_entry_groupsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

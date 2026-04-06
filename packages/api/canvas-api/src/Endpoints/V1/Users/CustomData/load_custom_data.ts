@@ -36,12 +36,17 @@ type Options = (
         searchParams?: Partial<load_custom_dataSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<load_custom_dataSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: load_custom_dataSearchParameters;
+    | ((
+        | {
+            query: load_custom_dataSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: load_custom_dataSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

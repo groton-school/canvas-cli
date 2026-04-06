@@ -46,15 +46,26 @@ type Options = (
         params?: Partial<copy_course_contentFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<copy_course_contentSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: copy_course_contentSearchParameters;
-        body?: Partial<copy_course_contentFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: copy_course_contentFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: copy_course_contentSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: copy_course_contentSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: copy_course_contentFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: copy_course_contentFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

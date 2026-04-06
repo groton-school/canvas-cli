@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<clear_unread_status_for_all_submissions_coursesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<clear_unread_status_for_all_submissions_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: clear_unread_status_for_all_submissions_coursesSearchParameters;
+    | ((
+        | {
+            query: clear_unread_status_for_all_submissions_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: clear_unread_status_for_all_submissions_coursesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

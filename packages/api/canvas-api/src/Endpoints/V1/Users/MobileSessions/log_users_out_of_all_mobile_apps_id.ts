@@ -36,12 +36,17 @@ type Options = (
         searchParams?: Partial<log_users_out_of_all_mobile_apps_idSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<log_users_out_of_all_mobile_apps_idSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: log_users_out_of_all_mobile_apps_idSearchParameters;
+    | ((
+        | {
+            query: log_users_out_of_all_mobile_apps_idSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: log_users_out_of_all_mobile_apps_idSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -40,12 +40,17 @@ type Options = (
         searchParams?: Partial<mark_module_item_readSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<mark_module_item_readSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: mark_module_item_readSearchParameters;
+    | ((
+        | {
+            query: mark_module_item_readSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: mark_module_item_readSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

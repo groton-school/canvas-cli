@@ -10,12 +10,17 @@ type Options =
       searchParams?: Partial<clear_course_nicknamesSearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<clear_course_nicknamesSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: clear_course_nicknamesSearchParameters;
+  | ((
+      | {
+          query: clear_course_nicknamesSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: clear_course_nicknamesSearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * Clear course nicknames

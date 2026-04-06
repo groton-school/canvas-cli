@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<show_account_auth_settingsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_account_auth_settingsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_account_auth_settingsSearchParameters;
+    | ((
+        | {
+            query: show_account_auth_settingsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_account_auth_settingsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

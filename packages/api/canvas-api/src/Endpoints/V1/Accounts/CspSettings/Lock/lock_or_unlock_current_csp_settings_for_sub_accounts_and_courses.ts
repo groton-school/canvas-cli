@@ -44,15 +44,26 @@ type Options = (
         params?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters;
-        body?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

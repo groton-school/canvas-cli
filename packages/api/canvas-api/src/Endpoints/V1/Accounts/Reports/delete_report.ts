@@ -37,12 +37,17 @@ type Options = (
         searchParams?: Partial<delete_reportSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_reportSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_reportSearchParameters;
+    | ((
+        | {
+            query: delete_reportSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_reportSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

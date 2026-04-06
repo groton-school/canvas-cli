@@ -54,15 +54,26 @@ type Options = (
         params?: Partial<enroll_multiple_users_to_one_or_more_coursesFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<enroll_multiple_users_to_one_or_more_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: enroll_multiple_users_to_one_or_more_coursesSearchParameters;
-        body?: Partial<enroll_multiple_users_to_one_or_more_coursesFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: enroll_multiple_users_to_one_or_more_coursesFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: enroll_multiple_users_to_one_or_more_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: enroll_multiple_users_to_one_or_more_coursesSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: enroll_multiple_users_to_one_or_more_coursesFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: enroll_multiple_users_to_one_or_more_coursesFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

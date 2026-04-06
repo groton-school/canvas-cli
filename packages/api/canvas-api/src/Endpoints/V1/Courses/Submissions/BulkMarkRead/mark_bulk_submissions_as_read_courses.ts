@@ -36,15 +36,26 @@ type Options = (
         params?: Partial<mark_bulk_submissions_as_read_coursesFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<mark_bulk_submissions_as_read_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: mark_bulk_submissions_as_read_coursesSearchParameters;
-        body?: Partial<mark_bulk_submissions_as_read_coursesFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: mark_bulk_submissions_as_read_coursesFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: mark_bulk_submissions_as_read_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: mark_bulk_submissions_as_read_coursesSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: mark_bulk_submissions_as_read_coursesFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: mark_bulk_submissions_as_read_coursesFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

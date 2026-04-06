@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<duplicate_discussion_topic_groupsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<duplicate_discussion_topic_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: duplicate_discussion_topic_groupsSearchParameters;
+    | ((
+        | {
+            query: duplicate_discussion_topic_groupsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: duplicate_discussion_topic_groupsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

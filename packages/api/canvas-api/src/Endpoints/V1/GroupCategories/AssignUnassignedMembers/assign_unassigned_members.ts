@@ -43,15 +43,26 @@ type Options = (
         params?: Partial<assign_unassigned_membersFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<assign_unassigned_membersSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: assign_unassigned_membersSearchParameters;
-        body?: Partial<assign_unassigned_membersFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: assign_unassigned_membersFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: assign_unassigned_membersSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: assign_unassigned_membersSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: assign_unassigned_membersFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: assign_unassigned_membersFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<delete_authentication_providerSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_authentication_providerSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_authentication_providerSearchParameters;
+    | ((
+        | {
+            query: delete_authentication_providerSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_authentication_providerSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

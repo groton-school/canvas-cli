@@ -56,15 +56,26 @@ type Options = (
         params?: Partial<select_mastery_pathFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<select_mastery_pathSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: select_mastery_pathSearchParameters;
-        body?: Partial<select_mastery_pathFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: select_mastery_pathFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: select_mastery_pathSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: select_mastery_pathSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: select_mastery_pathFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: select_mastery_pathFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

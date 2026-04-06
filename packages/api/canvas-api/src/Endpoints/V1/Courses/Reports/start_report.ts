@@ -53,15 +53,26 @@ type Options = (
         params?: Partial<start_reportFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<start_reportSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: start_reportSearchParameters;
-        body?: Partial<start_reportFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: start_reportFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: start_reportSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: start_reportSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: start_reportFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: start_reportFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

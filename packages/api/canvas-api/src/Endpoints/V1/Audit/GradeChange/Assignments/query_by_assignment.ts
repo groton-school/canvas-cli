@@ -44,12 +44,17 @@ type Options = (
         searchParams?: Partial<query_by_assignmentSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<query_by_assignmentSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: query_by_assignmentSearchParameters;
+    | ((
+        | {
+            query: query_by_assignmentSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: query_by_assignmentSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

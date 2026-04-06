@@ -31,12 +31,17 @@ type Options = (
         searchParams?: Partial<reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters;
+    | ((
+        | {
+            query: reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

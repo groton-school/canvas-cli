@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<delete_custom_gradebook_columnSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_custom_gradebook_columnSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_custom_gradebook_columnSearchParameters;
+    | ((
+        | {
+            query: delete_custom_gradebook_columnSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_custom_gradebook_columnSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

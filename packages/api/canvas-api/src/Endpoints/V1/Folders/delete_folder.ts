@@ -36,12 +36,17 @@ type Options = (
         searchParams?: Partial<delete_folderSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_folderSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_folderSearchParameters;
+    | ((
+        | {
+            query: delete_folderSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_folderSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

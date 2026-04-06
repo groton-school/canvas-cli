@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<delete_assignmentSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_assignmentSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_assignmentSearchParameters;
+    | ((
+        | {
+            query: delete_assignmentSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_assignmentSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

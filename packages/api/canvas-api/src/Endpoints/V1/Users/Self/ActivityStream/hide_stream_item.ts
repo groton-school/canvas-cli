@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<hide_stream_itemSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<hide_stream_itemSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: hide_stream_itemSearchParameters;
+    | ((
+        | {
+            query: hide_stream_itemSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: hide_stream_itemSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

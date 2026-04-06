@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<delete_conversationSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_conversationSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_conversationSearchParameters;
+    | ((
+        | {
+            query: delete_conversationSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_conversationSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

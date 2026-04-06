@@ -47,15 +47,26 @@ type Options = (
         params?: Partial<add_last_attended_dateFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<add_last_attended_dateSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: add_last_attended_dateSearchParameters;
-        body?: Partial<add_last_attended_dateFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: add_last_attended_dateFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: add_last_attended_dateSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: add_last_attended_dateSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: add_last_attended_dateFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: add_last_attended_dateFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

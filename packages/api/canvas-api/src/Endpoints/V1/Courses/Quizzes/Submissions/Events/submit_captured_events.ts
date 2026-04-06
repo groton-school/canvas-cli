@@ -48,15 +48,26 @@ type Options = (
         params?: Partial<submit_captured_eventsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<submit_captured_eventsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: submit_captured_eventsSearchParameters;
-        body?: Partial<submit_captured_eventsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: submit_captured_eventsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: submit_captured_eventsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: submit_captured_eventsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: submit_captured_eventsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: submit_captured_eventsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

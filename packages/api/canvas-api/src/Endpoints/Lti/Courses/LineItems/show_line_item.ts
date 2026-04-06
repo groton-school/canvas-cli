@@ -44,12 +44,17 @@ type Options = (
         searchParams?: Partial<show_line_itemSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_line_itemSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_line_itemSearchParameters;
+    | ((
+        | {
+            query: show_line_itemSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_line_itemSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

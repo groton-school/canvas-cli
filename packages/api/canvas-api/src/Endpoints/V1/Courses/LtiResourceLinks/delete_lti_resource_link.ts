@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<delete_lti_resource_linkSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_lti_resource_linkSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_lti_resource_linkSearchParameters;
+    | ((
+        | {
+            query: delete_lti_resource_linkSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_lti_resource_linkSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

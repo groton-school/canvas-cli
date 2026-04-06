@@ -84,15 +84,26 @@ type Options = (
         params?: Partial<grade_or_comment_on_multiple_submissions_sections_submissionsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<grade_or_comment_on_multiple_submissions_sections_submissionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: grade_or_comment_on_multiple_submissions_sections_submissionsSearchParameters;
-        body?: Partial<grade_or_comment_on_multiple_submissions_sections_submissionsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: grade_or_comment_on_multiple_submissions_sections_submissionsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: grade_or_comment_on_multiple_submissions_sections_submissionsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: grade_or_comment_on_multiple_submissions_sections_submissionsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: grade_or_comment_on_multiple_submissions_sections_submissionsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: grade_or_comment_on_multiple_submissions_sections_submissionsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

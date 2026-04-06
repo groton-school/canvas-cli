@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<bulk_select_provisional_gradesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<bulk_select_provisional_gradesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: bulk_select_provisional_gradesSearchParameters;
+    | ((
+        | {
+            query: bulk_select_provisional_gradesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: bulk_select_provisional_gradesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

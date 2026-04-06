@@ -29,12 +29,17 @@ type Options = (
         searchParams?: Partial<createSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<createSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: createSearchParameters;
+    | ((
+        | {
+            query: createSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: createSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

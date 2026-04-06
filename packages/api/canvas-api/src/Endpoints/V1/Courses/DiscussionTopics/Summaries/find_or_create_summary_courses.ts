@@ -42,15 +42,26 @@ type Options = (
         params?: Partial<find_or_create_summary_coursesFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<find_or_create_summary_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: find_or_create_summary_coursesSearchParameters;
-        body?: Partial<find_or_create_summary_coursesFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: find_or_create_summary_coursesFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: find_or_create_summary_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: find_or_create_summary_coursesSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: find_or_create_summary_coursesFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: find_or_create_summary_coursesFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

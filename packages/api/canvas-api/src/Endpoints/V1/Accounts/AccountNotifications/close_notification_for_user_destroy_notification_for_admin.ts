@@ -45,12 +45,17 @@ type Options = (
         searchParams?: Partial<close_notification_for_user_destroy_notification_for_adminSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<close_notification_for_user_destroy_notification_for_adminSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: close_notification_for_user_destroy_notification_for_adminSearchParameters;
+    | ((
+        | {
+            query: close_notification_for_user_destroy_notification_for_adminSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: close_notification_for_user_destroy_notification_for_adminSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

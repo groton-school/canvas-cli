@@ -41,12 +41,17 @@ type Options = (
         searchParams?: Partial<show_blueprint_importSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_blueprint_importSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_blueprint_importSearchParameters;
+    | ((
+        | {
+            query: show_blueprint_importSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_blueprint_importSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

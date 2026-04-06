@@ -28,12 +28,17 @@ type Options = (
         searchParams?: Partial<show_new_ai_experience_formSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_new_ai_experience_formSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_new_ai_experience_formSearchParameters;
+    | ((
+        | {
+            query: show_new_ai_experience_formSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_new_ai_experience_formSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

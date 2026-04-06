@@ -10,12 +10,17 @@ type Options =
       searchParams?: Partial<unread_countSearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<unread_countSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: unread_countSearchParameters;
+  | ((
+      | {
+          query: unread_countSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: unread_countSearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * Unread count

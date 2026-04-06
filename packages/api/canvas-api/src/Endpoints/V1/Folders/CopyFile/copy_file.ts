@@ -46,15 +46,26 @@ type Options = (
         params?: Partial<copy_fileFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<copy_fileSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: copy_fileSearchParameters;
-        body?: Partial<copy_fileFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: copy_fileFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: copy_fileSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: copy_fileSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: copy_fileFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: copy_fileFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

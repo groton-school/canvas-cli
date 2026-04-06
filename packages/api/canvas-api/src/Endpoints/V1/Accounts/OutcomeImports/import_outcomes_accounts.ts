@@ -76,15 +76,26 @@ type Options = (
         params?: Partial<import_outcomes_accountsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<import_outcomes_accountsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: import_outcomes_accountsSearchParameters;
-        body?: Partial<import_outcomes_accountsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: import_outcomes_accountsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: import_outcomes_accountsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: import_outcomes_accountsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: import_outcomes_accountsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: import_outcomes_accountsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

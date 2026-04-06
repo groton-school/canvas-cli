@@ -49,12 +49,17 @@ type Options = (
         searchParams?: Partial<lists_submissionsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<lists_submissionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: lists_submissionsSearchParameters;
+    | ((
+        | {
+            query: lists_submissionsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: lists_submissionsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

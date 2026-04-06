@@ -56,12 +56,17 @@ type Options = (
         searchParams?: Partial<retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters;
+    | ((
+        | {
+            query: retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

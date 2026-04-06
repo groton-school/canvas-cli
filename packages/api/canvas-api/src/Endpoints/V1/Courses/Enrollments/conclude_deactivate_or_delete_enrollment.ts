@@ -44,12 +44,17 @@ type Options = (
         searchParams?: Partial<conclude_deactivate_or_delete_enrollmentSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<conclude_deactivate_or_delete_enrollmentSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: conclude_deactivate_or_delete_enrollmentSearchParameters;
+    | ((
+        | {
+            query: conclude_deactivate_or_delete_enrollmentSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: conclude_deactivate_or_delete_enrollmentSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

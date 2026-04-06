@@ -10,12 +10,17 @@ type Options =
       searchParams?: Partial<start_kaltura_sessionSearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<start_kaltura_sessionSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: start_kaltura_sessionSearchParameters;
+  | ((
+      | {
+          query: start_kaltura_sessionSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: start_kaltura_sessionSearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * Start Kaltura session

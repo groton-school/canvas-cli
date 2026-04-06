@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<re_lock_module_progressionsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<re_lock_module_progressionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: re_lock_module_progressionsSearchParameters;
+    | ((
+        | {
+            query: re_lock_module_progressionsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: re_lock_module_progressionsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

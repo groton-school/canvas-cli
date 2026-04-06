@@ -41,12 +41,17 @@ type Options = (
         searchParams?: Partial<delete_single_rubric_assessmentSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_single_rubric_assessmentSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_single_rubric_assessmentSearchParameters;
+    | ((
+        | {
+            query: delete_single_rubric_assessmentSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_single_rubric_assessmentSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

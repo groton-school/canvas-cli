@@ -63,15 +63,26 @@ type Options = (
         params?: Partial<complete_quiz_submission_turn_it_inFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<complete_quiz_submission_turn_it_inSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: complete_quiz_submission_turn_it_inSearchParameters;
-        body?: Partial<complete_quiz_submission_turn_it_inFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: complete_quiz_submission_turn_it_inFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: complete_quiz_submission_turn_it_inSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: complete_quiz_submission_turn_it_inSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: complete_quiz_submission_turn_it_inFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: complete_quiz_submission_turn_it_inFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

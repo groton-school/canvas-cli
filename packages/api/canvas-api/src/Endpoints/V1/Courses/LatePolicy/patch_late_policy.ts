@@ -72,15 +72,26 @@ type Options = (
         params?: Partial<patch_late_policyFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<patch_late_policySearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: patch_late_policySearchParameters;
-        body?: Partial<patch_late_policyFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: patch_late_policyFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: patch_late_policySearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: patch_late_policySearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: patch_late_policyFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: patch_late_policyFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

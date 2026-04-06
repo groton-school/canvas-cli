@@ -53,15 +53,26 @@ type Options = (
         params?: Partial<post_reply_groupsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<post_reply_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: post_reply_groupsSearchParameters;
-        body?: Partial<post_reply_groupsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: post_reply_groupsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: post_reply_groupsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: post_reply_groupsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: post_reply_groupsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: post_reply_groupsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

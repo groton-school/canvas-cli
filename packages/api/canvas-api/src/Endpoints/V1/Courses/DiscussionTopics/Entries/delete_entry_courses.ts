@@ -40,12 +40,17 @@ type Options = (
         searchParams?: Partial<delete_entry_coursesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_entry_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_entry_coursesSearchParameters;
+    | ((
+        | {
+            query: delete_entry_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_entry_coursesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

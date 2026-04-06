@@ -41,12 +41,17 @@ type Options = (
         searchParams?: Partial<delete_module_itemSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_module_itemSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_module_itemSearchParameters;
+    | ((
+        | {
+            query: delete_module_itemSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_module_itemSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

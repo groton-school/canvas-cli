@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<unsubscribe_from_topic_groupsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<unsubscribe_from_topic_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: unsubscribe_from_topic_groupsSearchParameters;
+    | ((
+        | {
+            query: unsubscribe_from_topic_groupsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: unsubscribe_from_topic_groupsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

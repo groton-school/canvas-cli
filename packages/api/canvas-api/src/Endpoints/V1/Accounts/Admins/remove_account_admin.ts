@@ -48,12 +48,17 @@ type Options = (
         searchParams?: Partial<remove_account_adminSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<remove_account_adminSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: remove_account_adminSearchParameters;
+    | ((
+        | {
+            query: remove_account_adminSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: remove_account_adminSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -53,12 +53,17 @@ type Options = (
         searchParams?: Partial<show_moduleSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_moduleSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_moduleSearchParameters;
+    | ((
+        | {
+            query: show_moduleSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_moduleSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -59,12 +59,17 @@ type Options =
       searchParams?: Partial<find_recipients_conversationsSearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<find_recipients_conversationsSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: find_recipients_conversationsSearchParameters;
+  | ((
+      | {
+          query: find_recipients_conversationsSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: find_recipients_conversationsSearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * Find recipients

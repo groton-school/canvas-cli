@@ -41,12 +41,17 @@ type Options = (
         searchParams?: Partial<merge_user_into_another_user_accountsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<merge_user_into_another_user_accountsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: merge_user_into_another_user_accountsSearchParameters;
+    | ((
+        | {
+            query: merge_user_into_another_user_accountsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: merge_user_into_another_user_accountsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

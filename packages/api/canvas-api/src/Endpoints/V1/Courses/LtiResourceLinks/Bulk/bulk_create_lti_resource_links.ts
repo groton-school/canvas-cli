@@ -47,15 +47,26 @@ type Options = (
         params?: Partial<bulk_create_lti_resource_linksFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<bulk_create_lti_resource_linksSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: bulk_create_lti_resource_linksSearchParameters;
-        body?: Partial<bulk_create_lti_resource_linksFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: bulk_create_lti_resource_linksFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: bulk_create_lti_resource_linksSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: bulk_create_lti_resource_linksSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: bulk_create_lti_resource_linksFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: bulk_create_lti_resource_linksFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

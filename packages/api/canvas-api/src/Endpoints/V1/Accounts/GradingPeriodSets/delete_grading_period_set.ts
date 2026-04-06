@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<delete_grading_period_setSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_grading_period_setSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_grading_period_setSearchParameters;
+    | ((
+        | {
+            query: delete_grading_period_setSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_grading_period_setSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

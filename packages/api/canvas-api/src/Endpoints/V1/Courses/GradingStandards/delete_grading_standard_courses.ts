@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<delete_grading_standard_coursesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<delete_grading_standard_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: delete_grading_standard_coursesSearchParameters;
+    | ((
+        | {
+            query: delete_grading_standard_coursesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: delete_grading_standard_coursesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

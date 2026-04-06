@@ -51,15 +51,26 @@ type Options = (
         params?: Partial<add_observeeFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<add_observeeSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: add_observeeSearchParameters;
-        body?: Partial<add_observeeFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: add_observeeFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: add_observeeSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: add_observeeSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: add_observeeFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: add_observeeFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

@@ -57,15 +57,26 @@ type Options = (
         params?: Partial<flagging_questionFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<flagging_questionSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: flagging_questionSearchParameters;
-        body?: Partial<flagging_questionFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: flagging_questionFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: flagging_questionSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: flagging_questionSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: flagging_questionFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: flagging_questionFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

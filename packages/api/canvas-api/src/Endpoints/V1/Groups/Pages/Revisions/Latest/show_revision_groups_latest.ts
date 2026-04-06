@@ -43,12 +43,17 @@ type Options = (
         searchParams?: Partial<show_revision_groups_latestSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_revision_groups_latestSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_revision_groups_latestSearchParameters;
+    | ((
+        | {
+            query: show_revision_groups_latestSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_revision_groups_latestSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

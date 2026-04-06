@@ -49,15 +49,26 @@ type Options = (
         params?: Partial<post_message_to_conversationFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<post_message_to_conversationSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: post_message_to_conversationSearchParameters;
-        body?: Partial<post_message_to_conversationFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: post_message_to_conversationFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: post_message_to_conversationSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: post_message_to_conversationSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: post_message_to_conversationFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: post_message_to_conversationFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

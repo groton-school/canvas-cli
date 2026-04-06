@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<publish_provisional_grades_for_assignmentSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<publish_provisional_grades_for_assignmentSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: publish_provisional_grades_for_assignmentSearchParameters;
+    | ((
+        | {
+            query: publish_provisional_grades_for_assignmentSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: publish_provisional_grades_for_assignmentSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

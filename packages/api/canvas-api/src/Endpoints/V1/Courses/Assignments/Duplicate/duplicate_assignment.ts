@@ -49,15 +49,26 @@ type Options = (
         params?: Partial<duplicate_assignmentFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<duplicate_assignmentSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: duplicate_assignmentSearchParameters;
-        body?: Partial<duplicate_assignmentFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: duplicate_assignmentFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: duplicate_assignmentSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: duplicate_assignmentSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: duplicate_assignmentFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: duplicate_assignmentFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

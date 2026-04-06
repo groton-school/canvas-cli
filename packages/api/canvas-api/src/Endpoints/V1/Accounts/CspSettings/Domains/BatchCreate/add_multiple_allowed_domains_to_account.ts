@@ -42,15 +42,26 @@ type Options = (
         params?: Partial<add_multiple_allowed_domains_to_accountFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<add_multiple_allowed_domains_to_accountSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: add_multiple_allowed_domains_to_accountSearchParameters;
-        body?: Partial<add_multiple_allowed_domains_to_accountFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: add_multiple_allowed_domains_to_accountFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: add_multiple_allowed_domains_to_accountSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: add_multiple_allowed_domains_to_accountSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: add_multiple_allowed_domains_to_accountFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: add_multiple_allowed_domains_to_accountFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

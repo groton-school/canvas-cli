@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<show_content_export_groupsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_content_export_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_content_export_groupsSearchParameters;
+    | ((
+        | {
+            query: show_content_export_groupsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_content_export_groupsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

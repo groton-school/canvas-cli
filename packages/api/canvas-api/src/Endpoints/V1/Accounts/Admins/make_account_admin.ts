@@ -63,15 +63,26 @@ type Options = (
         params?: Partial<make_account_adminFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<make_account_adminSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: make_account_adminSearchParameters;
-        body?: Partial<make_account_adminFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: make_account_adminFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: make_account_adminSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: make_account_adminSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: make_account_adminFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: make_account_adminFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

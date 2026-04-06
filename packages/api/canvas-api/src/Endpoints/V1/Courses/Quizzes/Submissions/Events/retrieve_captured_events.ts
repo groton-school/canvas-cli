@@ -51,12 +51,17 @@ type Options = (
         searchParams?: Partial<retrieve_captured_eventsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<retrieve_captured_eventsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: retrieve_captured_eventsSearchParameters;
+    | ((
+        | {
+            query: retrieve_captured_eventsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: retrieve_captured_eventsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

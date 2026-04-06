@@ -48,15 +48,26 @@ type Options = (
         params?: Partial<reorder_quiz_itemsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<reorder_quiz_itemsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: reorder_quiz_itemsSearchParameters;
-        body?: Partial<reorder_quiz_itemsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: reorder_quiz_itemsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: reorder_quiz_itemsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: reorder_quiz_itemsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: reorder_quiz_itemsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: reorder_quiz_itemsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

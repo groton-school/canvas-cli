@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<find_last_summary_groupsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<find_last_summary_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: find_last_summary_groupsSearchParameters;
+    | ((
+        | {
+            query: find_last_summary_groupsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: find_last_summary_groupsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

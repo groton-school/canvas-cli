@@ -63,15 +63,26 @@ type Options = (
         params?: Partial<restore_workflow_states_of_sis_imported_itemsFormParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<restore_workflow_states_of_sis_imported_itemsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: restore_workflow_states_of_sis_imported_itemsSearchParameters;
-        body?: Partial<restore_workflow_states_of_sis_imported_itemsFormParameters>;
-        /** @deprecated Use {@link Options.body} */
-        params: restore_workflow_states_of_sis_imported_itemsFormParameters;
-        strict: true;
-      }
+    | ((
+        | {
+            query: restore_workflow_states_of_sis_imported_itemsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: restore_workflow_states_of_sis_imported_itemsSearchParameters;
+          }
+      ) &
+        (
+          | {
+              body: restore_workflow_states_of_sis_imported_itemsFormParameters;
+            }
+          | {
+              /** @deprecated Use {@link Options.body} */
+              params: restore_workflow_states_of_sis_imported_itemsFormParameters;
+            }
+        ) & {
+          strict: true;
+        })
   );
 
 /**

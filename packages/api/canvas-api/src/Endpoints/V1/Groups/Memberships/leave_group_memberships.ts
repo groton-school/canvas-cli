@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<leave_group_membershipsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<leave_group_membershipsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: leave_group_membershipsSearchParameters;
+    | ((
+        | {
+            query: leave_group_membershipsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: leave_group_membershipsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

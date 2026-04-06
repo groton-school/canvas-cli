@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<beta_get_query_resultsSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<beta_get_query_resultsSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: beta_get_query_resultsSearchParameters;
+    | ((
+        | {
+            query: beta_get_query_resultsSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: beta_get_query_resultsSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

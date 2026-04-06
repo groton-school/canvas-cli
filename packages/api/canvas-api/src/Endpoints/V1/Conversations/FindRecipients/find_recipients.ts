@@ -10,12 +10,17 @@ type Options =
       searchParams?: Partial<find_recipientsSearchParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<find_recipientsSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: find_recipientsSearchParameters;
+  | ((
+      | {
+          query: find_recipientsSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: find_recipientsSearchParameters;
+        }
+    ) & {
       strict: true;
-    };
+    });
 
 /**
  * Find recipients

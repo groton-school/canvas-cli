@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<translate_file_referenceSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<translate_file_referenceSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: translate_file_referenceSearchParameters;
+    | ((
+        | {
+            query: translate_file_referenceSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: translate_file_referenceSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

@@ -34,12 +34,17 @@ type Options = (
         searchParams?: Partial<add_tool_to_top_navigation_favoritesSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<add_tool_to_top_navigation_favoritesSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: add_tool_to_top_navigation_favoritesSearchParameters;
+    | ((
+        | {
+            query: add_tool_to_top_navigation_favoritesSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: add_tool_to_top_navigation_favoritesSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**

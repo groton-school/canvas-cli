@@ -22,15 +22,26 @@ type Options =
       params?: Partial<refresh_jwtFormParameters>;
       strict?: false;
     }
-  | {
-      query?: Partial<refresh_jwtSearchParameters>;
-      /** @deprecated Use {Options.query} */
-      searchParams: refresh_jwtSearchParameters;
-      body?: Partial<refresh_jwtFormParameters>;
-      /** @deprecated Use {@link Options.body} */
-      params: refresh_jwtFormParameters;
-      strict: true;
-    };
+  | ((
+      | {
+          query: refresh_jwtSearchParameters;
+        }
+      | {
+          /** @deprecated Use {Options.query} */
+          searchParams: refresh_jwtSearchParameters;
+        }
+    ) &
+      (
+        | {
+            body: refresh_jwtFormParameters;
+          }
+        | {
+            /** @deprecated Use {@link Options.body} */
+            params: refresh_jwtFormParameters;
+          }
+      ) & {
+        strict: true;
+      });
 
 /**
  * Refresh JWT

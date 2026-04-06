@@ -35,12 +35,17 @@ type Options = (
         searchParams?: Partial<show_global_notificationSearchParameters>;
         strict?: false;
       }
-    | {
-        query?: Partial<show_global_notificationSearchParameters>;
-        /** @deprecated Use {Options.query} */
-        searchParams: show_global_notificationSearchParameters;
+    | ((
+        | {
+            query: show_global_notificationSearchParameters;
+          }
+        | {
+            /** @deprecated Use {Options.query} */
+            searchParams: show_global_notificationSearchParameters;
+          }
+      ) & {
         strict: true;
-      }
+      })
   );
 
 /**
