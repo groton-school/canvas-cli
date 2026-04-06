@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.10](https://github.com/groton-school/canvas-cli/compare/api/0.3.9...api/0.3.10) (2026-04-06)
+
+
+### Bug Fixes
+
+* missing Intellisense link on searchParams deprecation inserted ([e3ff023](https://github.com/groton-school/canvas-cli/commit/e3ff0231d0c52c8bbd73263ffd41fabec468839f))
+* update README to match non-deprecated usage ([2988065](https://github.com/groton-school/canvas-cli/commit/298806550596944a295ec3823ef75bce31a277ad))
+
 ## [0.3.9](https://github.com/groton-school/canvas-cli/compare/api/0.3.8...api/0.3.9) (2026-04-06)
 
 
