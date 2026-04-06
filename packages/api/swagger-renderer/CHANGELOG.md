@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.7](https://github.com/groton-school/canvas-cli/compare/swagger-renderer/0.1.6...swagger-renderer/0.1.7) (2026-04-06)
+
+
+### Bug Fixes
+
+* missing Intellisense link on searchParams deprecation inserted ([e3ff023](https://github.com/groton-school/canvas-cli/commit/e3ff0231d0c52c8bbd73263ffd41fabec468839f))
+
 ## [0.1.6](https://github.com/groton-school/canvas-cli/compare/swagger-renderer/0.1.5...swagger-renderer/0.1.6) (2026-04-06)
 
 
