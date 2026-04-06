@@ -32,18 +32,29 @@ export type remove_account_adminSearchParameters = Masquerade &
     role_id: number | string;
   }>;
 
-type Options = {
-  pathParams: remove_account_adminPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<remove_account_adminSearchParameters>;
-      strict?: false;
+      path: remove_account_adminPathParameters;
     }
   | {
-      searchParams: remove_account_adminSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: remove_account_adminPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<remove_account_adminSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<remove_account_adminSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<remove_account_adminSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: remove_account_adminSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Remove account admin

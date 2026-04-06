@@ -29,18 +29,29 @@ export type remove_observeeSearchParameters = Masquerade &
     root_account_id: number | string;
   }>;
 
-type Options = {
-  pathParams: remove_observeePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<remove_observeeSearchParameters>;
-      strict?: false;
+      path: remove_observeePathParameters;
     }
   | {
-      searchParams: remove_observeeSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: remove_observeePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<remove_observeeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<remove_observeeSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<remove_observeeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: remove_observeeSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Remove an observee

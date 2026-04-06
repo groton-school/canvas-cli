@@ -27,18 +27,29 @@ export type show_lti_resource_linkSearchParameters = Masquerade &
     include_deleted: boolean | string;
   }>;
 
-type Options = {
-  pathParams: show_lti_resource_linkPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_lti_resource_linkSearchParameters>;
-      strict?: false;
+      path: show_lti_resource_linkPathParameters;
     }
   | {
-      searchParams: show_lti_resource_linkSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_lti_resource_linkPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_lti_resource_linkSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_lti_resource_linkSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_lti_resource_linkSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_lti_resource_linkSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show an LTI Resource Link

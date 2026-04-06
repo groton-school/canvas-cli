@@ -19,18 +19,29 @@ export type delete_assignmentPathParameters = {
 
 export type delete_assignmentSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_assignmentPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_assignmentSearchParameters>;
-      strict?: false;
+      path: delete_assignmentPathParameters;
     }
   | {
-      searchParams: delete_assignmentSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_assignmentPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_assignmentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_assignmentSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_assignmentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_assignmentSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an assignment

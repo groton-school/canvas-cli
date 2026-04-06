@@ -26,18 +26,29 @@ export type abort_generation_of_report_or_remove_previously_generated_onePathPar
 export type abort_generation_of_report_or_remove_previously_generated_oneSearchParameters =
   Masquerade;
 
-type Options = {
-  pathParams: abort_generation_of_report_or_remove_previously_generated_onePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<abort_generation_of_report_or_remove_previously_generated_oneSearchParameters>;
-      strict?: false;
+      path: abort_generation_of_report_or_remove_previously_generated_onePathParameters;
     }
   | {
-      searchParams: abort_generation_of_report_or_remove_previously_generated_oneSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: abort_generation_of_report_or_remove_previously_generated_onePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<abort_generation_of_report_or_remove_previously_generated_oneSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<abort_generation_of_report_or_remove_previously_generated_oneSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<abort_generation_of_report_or_remove_previously_generated_oneSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: abort_generation_of_report_or_remove_previously_generated_oneSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Abort the generation of a report, or remove a previously generated one

@@ -27,20 +27,35 @@ export type send_message_to_unsubmitted_or_submitted_users_for_quizFormParameter
     conversations: QuizUserConversation;
   };
 
-type Options = {
-  pathParams: send_message_to_unsubmitted_or_submitted_users_for_quizPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<send_message_to_unsubmitted_or_submitted_users_for_quizSearchParameters>;
-      params?: Partial<send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters>;
-      strict?: false;
+      path: send_message_to_unsubmitted_or_submitted_users_for_quizPathParameters;
     }
   | {
-      searchParams: send_message_to_unsubmitted_or_submitted_users_for_quizSearchParameters;
-      params: send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: send_message_to_unsubmitted_or_submitted_users_for_quizPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<send_message_to_unsubmitted_or_submitted_users_for_quizSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<send_message_to_unsubmitted_or_submitted_users_for_quizSearchParameters>;
+        body?: Partial<send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<send_message_to_unsubmitted_or_submitted_users_for_quizSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: send_message_to_unsubmitted_or_submitted_users_for_quizSearchParameters;
+        body?: Partial<send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Send a message to unsubmitted or submitted users for the quiz

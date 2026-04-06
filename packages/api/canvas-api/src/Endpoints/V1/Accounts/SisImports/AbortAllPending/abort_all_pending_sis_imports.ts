@@ -12,18 +12,29 @@ export type abort_all_pending_sis_importsPathParameters = {
 
 export type abort_all_pending_sis_importsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: abort_all_pending_sis_importsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<abort_all_pending_sis_importsSearchParameters>;
-      strict?: false;
+      path: abort_all_pending_sis_importsPathParameters;
     }
   | {
-      searchParams: abort_all_pending_sis_importsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: abort_all_pending_sis_importsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<abort_all_pending_sis_importsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<abort_all_pending_sis_importsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<abort_all_pending_sis_importsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: abort_all_pending_sis_importsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Abort all pending SIS imports

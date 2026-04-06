@@ -26,18 +26,29 @@ export type fetching_latest_quiz_statisticsSearchParameters = Masquerade &
     all_versions: boolean | string;
   }>;
 
-type Options = {
-  pathParams: fetching_latest_quiz_statisticsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<fetching_latest_quiz_statisticsSearchParameters>;
-      strict?: false;
+      path: fetching_latest_quiz_statisticsPathParameters;
     }
   | {
-      searchParams: fetching_latest_quiz_statisticsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: fetching_latest_quiz_statisticsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<fetching_latest_quiz_statisticsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<fetching_latest_quiz_statisticsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<fetching_latest_quiz_statisticsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: fetching_latest_quiz_statisticsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Fetching the latest quiz statistics

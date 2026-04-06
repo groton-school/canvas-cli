@@ -18,18 +18,29 @@ export type show_edit_ai_experience_formPathParameters = {
 
 export type show_edit_ai_experience_formSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_edit_ai_experience_formPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_edit_ai_experience_formSearchParameters>;
-      strict?: false;
+      path: show_edit_ai_experience_formPathParameters;
     }
   | {
-      searchParams: show_edit_ai_experience_formSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_edit_ai_experience_formPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_edit_ai_experience_formSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_edit_ai_experience_formSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_edit_ai_experience_formSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_edit_ai_experience_formSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show edit AI experience form

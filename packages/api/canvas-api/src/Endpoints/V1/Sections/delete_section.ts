@@ -13,18 +13,29 @@ export type delete_sectionPathParameters = {
 
 export type delete_sectionSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_sectionPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_sectionSearchParameters>;
-      strict?: false;
+      path: delete_sectionPathParameters;
     }
   | {
-      searchParams: delete_sectionSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_sectionPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_sectionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_sectionSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_sectionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_sectionSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a section

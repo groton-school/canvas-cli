@@ -21,18 +21,29 @@ export type abort_reportPathParameters = {
 
 export type abort_reportSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: abort_reportPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<abort_reportSearchParameters>;
-      strict?: false;
+      path: abort_reportPathParameters;
     }
   | {
-      searchParams: abort_reportSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: abort_reportPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<abort_reportSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<abort_reportSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<abort_reportSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: abort_reportSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Abort a Report

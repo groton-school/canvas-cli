@@ -44,20 +44,35 @@ export type make_account_adminFormParameters = Masquerade & {
   send_confirmation: boolean | string;
 };
 
-type Options = {
-  pathParams: make_account_adminPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<make_account_adminSearchParameters>;
-      params?: Partial<make_account_adminFormParameters>;
-      strict?: false;
+      path: make_account_adminPathParameters;
     }
   | {
-      searchParams: make_account_adminSearchParameters;
-      params: make_account_adminFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: make_account_adminPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<make_account_adminSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<make_account_adminSearchParameters>;
+        body?: Partial<make_account_adminFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<make_account_adminFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<make_account_adminSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: make_account_adminSearchParameters;
+        body?: Partial<make_account_adminFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: make_account_adminFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Make an account admin

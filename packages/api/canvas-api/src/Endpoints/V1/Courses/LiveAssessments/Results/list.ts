@@ -28,18 +28,29 @@ export type listSearchParameters = Masquerade &
     user_id: number | string;
   }>;
 
-type Options = {
-  pathParams: listPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<listSearchParameters>;
-      strict?: false;
+      path: listPathParameters;
     }
   | {
-      searchParams: listSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: listPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<listSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<listSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<listSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: listSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * List live assessment results

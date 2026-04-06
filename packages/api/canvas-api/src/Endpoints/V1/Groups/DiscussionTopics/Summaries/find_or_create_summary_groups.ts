@@ -23,20 +23,35 @@ export type find_or_create_summary_groupsFormParameters = Masquerade & {
   userInput: string;
 };
 
-type Options = {
-  pathParams: find_or_create_summary_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<find_or_create_summary_groupsSearchParameters>;
-      params?: Partial<find_or_create_summary_groupsFormParameters>;
-      strict?: false;
+      path: find_or_create_summary_groupsPathParameters;
     }
   | {
-      searchParams: find_or_create_summary_groupsSearchParameters;
-      params: find_or_create_summary_groupsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: find_or_create_summary_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<find_or_create_summary_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<find_or_create_summary_groupsSearchParameters>;
+        body?: Partial<find_or_create_summary_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<find_or_create_summary_groupsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<find_or_create_summary_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: find_or_create_summary_groupsSearchParameters;
+        body?: Partial<find_or_create_summary_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: find_or_create_summary_groupsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Find or Create Summary

@@ -18,18 +18,29 @@ export type delete_user_loginPathParameters = {
 
 export type delete_user_loginSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_user_loginPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_user_loginSearchParameters>;
-      strict?: false;
+      path: delete_user_loginPathParameters;
     }
   | {
-      searchParams: delete_user_loginSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_user_loginPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_user_loginSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_user_loginSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_user_loginSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_user_loginSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a user login

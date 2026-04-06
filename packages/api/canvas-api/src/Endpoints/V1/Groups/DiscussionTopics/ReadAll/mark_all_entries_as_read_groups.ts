@@ -28,20 +28,35 @@ export type mark_all_entries_as_read_groupsFormParameters = Masquerade & {
   forced_read_state: boolean | string;
 };
 
-type Options = {
-  pathParams: mark_all_entries_as_read_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<mark_all_entries_as_read_groupsSearchParameters>;
-      params?: Partial<mark_all_entries_as_read_groupsFormParameters>;
-      strict?: false;
+      path: mark_all_entries_as_read_groupsPathParameters;
     }
   | {
-      searchParams: mark_all_entries_as_read_groupsSearchParameters;
-      params: mark_all_entries_as_read_groupsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: mark_all_entries_as_read_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<mark_all_entries_as_read_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<mark_all_entries_as_read_groupsSearchParameters>;
+        body?: Partial<mark_all_entries_as_read_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<mark_all_entries_as_read_groupsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<mark_all_entries_as_read_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: mark_all_entries_as_read_groupsSearchParameters;
+        body?: Partial<mark_all_entries_as_read_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: mark_all_entries_as_read_groupsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Mark all entries as read

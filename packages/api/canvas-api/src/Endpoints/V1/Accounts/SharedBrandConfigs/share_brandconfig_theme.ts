@@ -20,20 +20,35 @@ export type share_brandconfig_themeFormParameters = Masquerade & {
   'shared_brand_config[brand_config_md5]': string;
 };
 
-type Options = {
-  pathParams: share_brandconfig_themePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<share_brandconfig_themeSearchParameters>;
-      params?: Partial<share_brandconfig_themeFormParameters>;
-      strict?: false;
+      path: share_brandconfig_themePathParameters;
     }
   | {
-      searchParams: share_brandconfig_themeSearchParameters;
-      params: share_brandconfig_themeFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: share_brandconfig_themePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<share_brandconfig_themeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<share_brandconfig_themeSearchParameters>;
+        body?: Partial<share_brandconfig_themeFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<share_brandconfig_themeFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<share_brandconfig_themeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: share_brandconfig_themeSearchParameters;
+        body?: Partial<share_brandconfig_themeFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: share_brandconfig_themeFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Share a BrandConfig (Theme)

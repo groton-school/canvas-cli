@@ -25,18 +25,29 @@ export type bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters =
       user_ids: number | string[];
     }>;
 
-type Options = {
-  pathParams: bulk_fetch_user_tags_for_multiple_users_in_coursePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters>;
-      strict?: false;
+      path: bulk_fetch_user_tags_for_multiple_users_in_coursePathParameters;
     }
   | {
-      searchParams: bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: bulk_fetch_user_tags_for_multiple_users_in_coursePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Bulk fetch user tags for multiple users in a course

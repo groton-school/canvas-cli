@@ -37,20 +37,35 @@ export type import_differentiation_tagsFormParameters = Masquerade & {
   attachment: string;
 };
 
-type Options = {
-  pathParams: import_differentiation_tagsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<import_differentiation_tagsSearchParameters>;
-      params?: Partial<import_differentiation_tagsFormParameters>;
-      strict?: false;
+      path: import_differentiation_tagsPathParameters;
     }
   | {
-      searchParams: import_differentiation_tagsSearchParameters;
-      params: import_differentiation_tagsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: import_differentiation_tagsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<import_differentiation_tagsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<import_differentiation_tagsSearchParameters>;
+        body?: Partial<import_differentiation_tagsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<import_differentiation_tagsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<import_differentiation_tagsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: import_differentiation_tagsSearchParameters;
+        body?: Partial<import_differentiation_tagsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: import_differentiation_tagsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Import differentiation tags

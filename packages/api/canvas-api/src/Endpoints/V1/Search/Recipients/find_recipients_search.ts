@@ -54,10 +54,14 @@ export type find_recipients_searchSearchParameters = Masquerade &
 
 type Options =
   | {
+      query?: Partial<find_recipients_searchSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<find_recipients_searchSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<find_recipients_searchSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: find_recipients_searchSearchParameters;
       strict: true;
     };

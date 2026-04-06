@@ -19,18 +19,29 @@ export type allocate_peer_reviewPathParameters = {
 
 export type allocate_peer_reviewSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: allocate_peer_reviewPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<allocate_peer_reviewSearchParameters>;
-      strict?: false;
+      path: allocate_peer_reviewPathParameters;
     }
   | {
-      searchParams: allocate_peer_reviewSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: allocate_peer_reviewPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<allocate_peer_reviewSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<allocate_peer_reviewSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<allocate_peer_reviewSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: allocate_peer_reviewSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Allocate Peer Review

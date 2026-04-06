@@ -19,18 +19,29 @@ export type delete_grading_standard_accountsPathParameters = {
 
 export type delete_grading_standard_accountsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_grading_standard_accountsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_grading_standard_accountsSearchParameters>;
-      strict?: false;
+      path: delete_grading_standard_accountsPathParameters;
     }
   | {
-      searchParams: delete_grading_standard_accountsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_grading_standard_accountsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_grading_standard_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_grading_standard_accountsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_grading_standard_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_grading_standard_accountsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a grading standard

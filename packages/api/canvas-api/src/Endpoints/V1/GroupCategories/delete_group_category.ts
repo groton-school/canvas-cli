@@ -12,18 +12,29 @@ export type delete_group_categoryPathParameters = {
 
 export type delete_group_categorySearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_group_categoryPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_group_categorySearchParameters>;
-      strict?: false;
+      path: delete_group_categoryPathParameters;
     }
   | {
-      searchParams: delete_group_categorySearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_group_categoryPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_group_categorySearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_group_categorySearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_group_categorySearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_group_categorySearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a Group Category

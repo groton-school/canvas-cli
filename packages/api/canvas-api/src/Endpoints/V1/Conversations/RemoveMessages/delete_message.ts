@@ -17,20 +17,35 @@ export type delete_messageFormParameters = Masquerade & {
   remove: string[];
 };
 
-type Options = {
-  pathParams: delete_messagePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_messageSearchParameters>;
-      params?: Partial<delete_messageFormParameters>;
-      strict?: false;
+      path: delete_messagePathParameters;
     }
   | {
-      searchParams: delete_messageSearchParameters;
-      params: delete_messageFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_messagePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_messageSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_messageSearchParameters>;
+        body?: Partial<delete_messageFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<delete_messageFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_messageSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_messageSearchParameters;
+        body?: Partial<delete_messageFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: delete_messageFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a message

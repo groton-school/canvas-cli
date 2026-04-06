@@ -18,18 +18,29 @@ export type subscribe_to_topic_groupsPathParameters = {
 
 export type subscribe_to_topic_groupsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: subscribe_to_topic_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<subscribe_to_topic_groupsSearchParameters>;
-      strict?: false;
+      path: subscribe_to_topic_groupsPathParameters;
     }
   | {
-      searchParams: subscribe_to_topic_groupsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: subscribe_to_topic_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<subscribe_to_topic_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<subscribe_to_topic_groupsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<subscribe_to_topic_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: subscribe_to_topic_groupsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Subscribe to a topic

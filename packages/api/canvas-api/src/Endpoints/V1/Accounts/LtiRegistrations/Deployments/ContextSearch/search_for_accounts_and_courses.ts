@@ -34,18 +34,29 @@ export type search_for_accounts_and_coursesSearchParameters = Masquerade &
     search_term: string;
   }>;
 
-type Options = {
-  pathParams: search_for_accounts_and_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<search_for_accounts_and_coursesSearchParameters>;
-      strict?: false;
+      path: search_for_accounts_and_coursesPathParameters;
     }
   | {
-      searchParams: search_for_accounts_and_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: search_for_accounts_and_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<search_for_accounts_and_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<search_for_accounts_and_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<search_for_accounts_and_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: search_for_accounts_and_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Search for Accounts and Courses

@@ -16,18 +16,29 @@ export type delete_conclude_courseSearchParameters = Masquerade &
     event: string;
   }>;
 
-type Options = {
-  pathParams: delete_conclude_coursePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_conclude_courseSearchParameters>;
-      strict?: false;
+      path: delete_conclude_coursePathParameters;
     }
   | {
-      searchParams: delete_conclude_courseSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_conclude_coursePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_conclude_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_conclude_courseSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_conclude_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_conclude_courseSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete/Conclude a course

@@ -31,18 +31,29 @@ export type delete_course_paceSearchParameters = Masquerade &
     course_pace_id: number | string;
   }>;
 
-type Options = {
-  pathParams: delete_course_pacePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_course_paceSearchParameters>;
-      strict?: false;
+      path: delete_course_pacePathParameters;
     }
   | {
-      searchParams: delete_course_paceSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_course_pacePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_course_paceSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_course_paceSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_course_paceSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_course_paceSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a Course pace

@@ -28,18 +28,29 @@ export type show_line_itemSearchParameters = Masquerade &
     include: string[];
   }>;
 
-type Options = {
-  pathParams: show_line_itemPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_line_itemSearchParameters>;
-      strict?: false;
+      path: show_line_itemPathParameters;
     }
   | {
-      searchParams: show_line_itemSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_line_itemPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_line_itemSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_line_itemSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_line_itemSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_line_itemSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show a Line Item

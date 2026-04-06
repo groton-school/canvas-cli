@@ -13,18 +13,29 @@ export type cancel_progressPathParameters = {
 
 export type cancel_progressSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: cancel_progressPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<cancel_progressSearchParameters>;
-      strict?: false;
+      path: cancel_progressPathParameters;
     }
   | {
-      searchParams: cancel_progressSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: cancel_progressPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<cancel_progressSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<cancel_progressSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<cancel_progressSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: cancel_progressSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Cancel progress

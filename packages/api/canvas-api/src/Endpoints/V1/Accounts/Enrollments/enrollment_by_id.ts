@@ -21,18 +21,29 @@ export type enrollment_by_idPathParameters = {
 
 export type enrollment_by_idSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: enrollment_by_idPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<enrollment_by_idSearchParameters>;
-      strict?: false;
+      path: enrollment_by_idPathParameters;
     }
   | {
-      searchParams: enrollment_by_idSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: enrollment_by_idPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<enrollment_by_idSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<enrollment_by_idSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<enrollment_by_idSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: enrollment_by_idSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Enrollment by ID

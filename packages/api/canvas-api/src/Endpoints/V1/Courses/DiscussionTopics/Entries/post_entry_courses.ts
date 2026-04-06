@@ -28,20 +28,35 @@ export type post_entry_coursesFormParameters = Masquerade & {
   attachment: string;
 };
 
-type Options = {
-  pathParams: post_entry_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<post_entry_coursesSearchParameters>;
-      params?: Partial<post_entry_coursesFormParameters>;
-      strict?: false;
+      path: post_entry_coursesPathParameters;
     }
   | {
-      searchParams: post_entry_coursesSearchParameters;
-      params: post_entry_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: post_entry_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<post_entry_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<post_entry_coursesSearchParameters>;
+        body?: Partial<post_entry_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<post_entry_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<post_entry_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: post_entry_coursesSearchParameters;
+        body?: Partial<post_entry_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: post_entry_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Post an entry

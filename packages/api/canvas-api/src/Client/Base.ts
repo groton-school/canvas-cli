@@ -4,8 +4,17 @@ import { UploadResponse } from './UploadResponse.js';
 
 export type Init = {
   method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+
+  path?: JSONObject;
+  /** @deprecated Use {@link Init.path} */
   pathParams?: JSONObject;
+
+  query?: JSONObject;
+  /** @deprecated Use {@link Init.query} */
   searchParams?: JSONObject;
+
+  body?: JSONObject;
+  /** @deprecated Use {@link Init.body} */
   params?: JSONObject;
 };
 

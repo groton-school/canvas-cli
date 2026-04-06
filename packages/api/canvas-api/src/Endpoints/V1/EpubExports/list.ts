@@ -5,10 +5,14 @@ export type listSearchParameters = Masquerade & Paginated;
 
 type Options =
   | {
+      query?: Partial<listSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<listSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<listSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: listSearchParameters;
       strict: true;
     };

@@ -20,18 +20,29 @@ export type restore_deleted_authentication_providerPathParameters = {
 export type restore_deleted_authentication_providerSearchParameters =
   Masquerade;
 
-type Options = {
-  pathParams: restore_deleted_authentication_providerPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<restore_deleted_authentication_providerSearchParameters>;
-      strict?: false;
+      path: restore_deleted_authentication_providerPathParameters;
     }
   | {
-      searchParams: restore_deleted_authentication_providerSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: restore_deleted_authentication_providerPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<restore_deleted_authentication_providerSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<restore_deleted_authentication_providerSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<restore_deleted_authentication_providerSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: restore_deleted_authentication_providerSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Restore a deleted authentication provider

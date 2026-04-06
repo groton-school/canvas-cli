@@ -104,20 +104,35 @@ export type update_quiz_itemFormParameters = Masquerade & {
   'item[entry][scoring_algorithm]': string;
 };
 
-type Options = {
-  pathParams: update_quiz_itemPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<update_quiz_itemSearchParameters>;
-      params?: Partial<update_quiz_itemFormParameters>;
-      strict?: false;
+      path: update_quiz_itemPathParameters;
     }
   | {
-      searchParams: update_quiz_itemSearchParameters;
-      params: update_quiz_itemFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: update_quiz_itemPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<update_quiz_itemSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<update_quiz_itemSearchParameters>;
+        body?: Partial<update_quiz_itemFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<update_quiz_itemFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<update_quiz_itemSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: update_quiz_itemSearchParameters;
+        body?: Partial<update_quiz_itemFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: update_quiz_itemFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Update a quiz item

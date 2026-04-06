@@ -17,20 +17,35 @@ export type preview_processed_htmlFormParameters = Masquerade & {
   html: string;
 };
 
-type Options = {
-  pathParams: preview_processed_htmlPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<preview_processed_htmlSearchParameters>;
-      params?: Partial<preview_processed_htmlFormParameters>;
-      strict?: false;
+      path: preview_processed_htmlPathParameters;
     }
   | {
-      searchParams: preview_processed_htmlSearchParameters;
-      params: preview_processed_htmlFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: preview_processed_htmlPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<preview_processed_htmlSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<preview_processed_htmlSearchParameters>;
+        body?: Partial<preview_processed_htmlFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<preview_processed_htmlFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<preview_processed_htmlSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: preview_processed_htmlSearchParameters;
+        body?: Partial<preview_processed_htmlFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: preview_processed_htmlFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Preview processed html

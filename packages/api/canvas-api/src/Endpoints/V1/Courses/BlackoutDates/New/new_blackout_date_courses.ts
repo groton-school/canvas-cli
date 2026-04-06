@@ -13,18 +13,29 @@ export type new_blackout_date_coursesPathParameters = {
 
 export type new_blackout_date_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: new_blackout_date_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<new_blackout_date_coursesSearchParameters>;
-      strict?: false;
+      path: new_blackout_date_coursesPathParameters;
     }
   | {
-      searchParams: new_blackout_date_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: new_blackout_date_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<new_blackout_date_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<new_blackout_date_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<new_blackout_date_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: new_blackout_date_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * New Blackout Date

@@ -17,20 +17,35 @@ export type add_allowed_domain_to_accountFormParameters = Masquerade & {
   domain: string;
 };
 
-type Options = {
-  pathParams: add_allowed_domain_to_accountPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<add_allowed_domain_to_accountSearchParameters>;
-      params?: Partial<add_allowed_domain_to_accountFormParameters>;
-      strict?: false;
+      path: add_allowed_domain_to_accountPathParameters;
     }
   | {
-      searchParams: add_allowed_domain_to_accountSearchParameters;
-      params: add_allowed_domain_to_accountFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: add_allowed_domain_to_accountPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<add_allowed_domain_to_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<add_allowed_domain_to_accountSearchParameters>;
+        body?: Partial<add_allowed_domain_to_accountFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<add_allowed_domain_to_accountFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<add_allowed_domain_to_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: add_allowed_domain_to_accountSearchParameters;
+        body?: Partial<add_allowed_domain_to_accountFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: add_allowed_domain_to_accountFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Add an allowed domain to account

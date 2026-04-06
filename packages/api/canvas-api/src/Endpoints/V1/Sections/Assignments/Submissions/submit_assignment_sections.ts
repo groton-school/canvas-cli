@@ -109,20 +109,35 @@ export type submit_assignment_sectionsFormParameters = Masquerade & {
   'submission[submitted_at]': string;
 };
 
-type Options = {
-  pathParams: submit_assignment_sectionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<submit_assignment_sectionsSearchParameters>;
-      params?: Partial<submit_assignment_sectionsFormParameters>;
-      strict?: false;
+      path: submit_assignment_sectionsPathParameters;
     }
   | {
-      searchParams: submit_assignment_sectionsSearchParameters;
-      params: submit_assignment_sectionsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: submit_assignment_sectionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<submit_assignment_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<submit_assignment_sectionsSearchParameters>;
+        body?: Partial<submit_assignment_sectionsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<submit_assignment_sectionsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<submit_assignment_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: submit_assignment_sectionsSearchParameters;
+        body?: Partial<submit_assignment_sectionsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: submit_assignment_sectionsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Submit an assignment

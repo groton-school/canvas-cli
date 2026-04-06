@@ -25,20 +25,35 @@ export type lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesForm
     settings_locked: boolean | string;
   };
 
-type Options = {
-  pathParams: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters>;
-      params?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters>;
-      strict?: false;
+      path: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesPathParameters;
     }
   | {
-      searchParams: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters;
-      params: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters>;
+        body?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters;
+        body?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Lock or unlock current CSP settings for sub-accounts and courses

@@ -18,20 +18,35 @@ export type set_course_nicknameFormParameters = Masquerade & {
   nickname: string;
 };
 
-type Options = {
-  pathParams: set_course_nicknamePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<set_course_nicknameSearchParameters>;
-      params?: Partial<set_course_nicknameFormParameters>;
-      strict?: false;
+      path: set_course_nicknamePathParameters;
     }
   | {
-      searchParams: set_course_nicknameSearchParameters;
-      params: set_course_nicknameFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: set_course_nicknamePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<set_course_nicknameSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<set_course_nicknameSearchParameters>;
+        body?: Partial<set_course_nicknameFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<set_course_nicknameFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<set_course_nicknameSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: set_course_nicknameSearchParameters;
+        body?: Partial<set_course_nicknameFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: set_course_nicknameFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Set course nickname

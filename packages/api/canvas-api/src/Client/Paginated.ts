@@ -18,8 +18,14 @@ export type Paginated = {
 type AllPagesOptions<ReturnType> = {
   instance_url: Base['instance_url'];
   endpoint: string | URL | Request;
+  path?: JSONObject;
+  /** @deprecated Use {@link AllPagesOptions.path} */
   pathParams?: JSONObject;
+  query?: JSONObject;
+  /** @deprecated Use {@link AllPagesOptions.query} */
   searchParams?: JSONObject;
+  body?: JSONObject;
+  /** @deprecated Use {@link AllPagesOptions.body} */
   params?: JSONObject;
   accessToken?: () => string | undefined | Promise<string | undefined>;
   init?: RequestInit;
@@ -34,20 +40,26 @@ type AllPagesOptions<ReturnType> = {
 export async function fetchAllPages<ReturnType>({
   instance_url,
   endpoint,
+  path,
   pathParams,
+  query,
   searchParams,
+  body,
   params,
   accessToken,
   init,
   fetch,
   pageCallback
 }: AllPagesOptions<ReturnType>) {
+  path = path || pathParams;
+  query = query || searchParams;
+  body = body || params;
   let nextEndpoint: string | undefined = flattenEndpoint(endpoint.toString(), {
-    pathParams,
-    searchParams
+    path,
+    query
   });
   init = constructInit(init, {
-    params,
+    body,
     access_token: accessToken ? await accessToken() : undefined
   });
   let result: ReturnType | undefined = undefined;

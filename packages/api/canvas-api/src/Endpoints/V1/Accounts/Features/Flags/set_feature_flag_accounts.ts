@@ -26,20 +26,35 @@ export type set_feature_flag_accountsFormParameters = Masquerade & {
   state: string;
 };
 
-type Options = {
-  pathParams: set_feature_flag_accountsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<set_feature_flag_accountsSearchParameters>;
-      params?: Partial<set_feature_flag_accountsFormParameters>;
-      strict?: false;
+      path: set_feature_flag_accountsPathParameters;
     }
   | {
-      searchParams: set_feature_flag_accountsSearchParameters;
-      params: set_feature_flag_accountsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: set_feature_flag_accountsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<set_feature_flag_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<set_feature_flag_accountsSearchParameters>;
+        body?: Partial<set_feature_flag_accountsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<set_feature_flag_accountsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<set_feature_flag_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: set_feature_flag_accountsSearchParameters;
+        body?: Partial<set_feature_flag_accountsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: set_feature_flag_accountsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Set feature flag

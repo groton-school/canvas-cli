@@ -20,18 +20,29 @@ export type batch_retrieve_overrides_in_courseSearchParameters = Masquerade &
     'assignment_overrides[assignment_id]': string[];
   }>;
 
-type Options = {
-  pathParams: batch_retrieve_overrides_in_coursePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<batch_retrieve_overrides_in_courseSearchParameters>;
-      strict?: false;
+      path: batch_retrieve_overrides_in_coursePathParameters;
     }
   | {
-      searchParams: batch_retrieve_overrides_in_courseSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: batch_retrieve_overrides_in_coursePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<batch_retrieve_overrides_in_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<batch_retrieve_overrides_in_courseSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<batch_retrieve_overrides_in_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: batch_retrieve_overrides_in_courseSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Batch retrieve overrides in a course

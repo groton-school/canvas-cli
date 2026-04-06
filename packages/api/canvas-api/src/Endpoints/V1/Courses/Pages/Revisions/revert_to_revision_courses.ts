@@ -28,18 +28,29 @@ export type revert_to_revision_coursesPathParameters = {
 
 export type revert_to_revision_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: revert_to_revision_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<revert_to_revision_coursesSearchParameters>;
-      strict?: false;
+      path: revert_to_revision_coursesPathParameters;
     }
   | {
-      searchParams: revert_to_revision_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: revert_to_revision_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<revert_to_revision_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<revert_to_revision_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<revert_to_revision_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: revert_to_revision_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Revert to revision

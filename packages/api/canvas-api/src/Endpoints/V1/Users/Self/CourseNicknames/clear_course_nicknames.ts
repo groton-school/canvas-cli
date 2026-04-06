@@ -5,10 +5,14 @@ export type clear_course_nicknamesSearchParameters = Masquerade;
 
 type Options =
   | {
+      query?: Partial<clear_course_nicknamesSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<clear_course_nicknamesSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<clear_course_nicknamesSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: clear_course_nicknamesSearchParameters;
       strict: true;
     };

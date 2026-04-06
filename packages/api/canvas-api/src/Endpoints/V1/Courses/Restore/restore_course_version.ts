@@ -22,18 +22,29 @@ export type restore_course_versionPathParameters = {
 
 export type restore_course_versionSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: restore_course_versionPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<restore_course_versionSearchParameters>;
-      strict?: false;
+      path: restore_course_versionPathParameters;
     }
   | {
-      searchParams: restore_course_versionSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: restore_course_versionPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<restore_course_versionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<restore_course_versionSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<restore_course_versionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: restore_course_versionSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Restore course version

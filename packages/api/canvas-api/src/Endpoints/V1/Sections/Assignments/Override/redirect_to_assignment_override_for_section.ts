@@ -19,18 +19,29 @@ export type redirect_to_assignment_override_for_sectionPathParameters = {
 export type redirect_to_assignment_override_for_sectionSearchParameters =
   Masquerade;
 
-type Options = {
-  pathParams: redirect_to_assignment_override_for_sectionPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<redirect_to_assignment_override_for_sectionSearchParameters>;
-      strict?: false;
+      path: redirect_to_assignment_override_for_sectionPathParameters;
     }
   | {
-      searchParams: redirect_to_assignment_override_for_sectionSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: redirect_to_assignment_override_for_sectionPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<redirect_to_assignment_override_for_sectionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<redirect_to_assignment_override_for_sectionSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<redirect_to_assignment_override_for_sectionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: redirect_to_assignment_override_for_sectionSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Redirect to the assignment override for a section

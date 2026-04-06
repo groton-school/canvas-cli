@@ -32,20 +32,35 @@ export type set_course_timetableFormParameters = Masquerade & {
   'timetables[course_section_id][location_name]': string[];
 };
 
-type Options = {
-  pathParams: set_course_timetablePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<set_course_timetableSearchParameters>;
-      params?: Partial<set_course_timetableFormParameters>;
-      strict?: false;
+      path: set_course_timetablePathParameters;
     }
   | {
-      searchParams: set_course_timetableSearchParameters;
-      params: set_course_timetableFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: set_course_timetablePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<set_course_timetableSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<set_course_timetableSearchParameters>;
+        body?: Partial<set_course_timetableFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<set_course_timetableFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<set_course_timetableSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: set_course_timetableSearchParameters;
+        body?: Partial<set_course_timetableFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: set_course_timetableFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Set a course timetable

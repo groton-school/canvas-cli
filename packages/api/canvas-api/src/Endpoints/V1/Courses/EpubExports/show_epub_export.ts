@@ -19,18 +19,29 @@ export type show_epub_exportPathParameters = {
 
 export type show_epub_exportSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_epub_exportPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_epub_exportSearchParameters>;
-      strict?: false;
+      path: show_epub_exportPathParameters;
     }
   | {
-      searchParams: show_epub_exportSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_epub_exportPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_epub_exportSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_epub_exportSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_epub_exportSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_epub_exportSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show ePub export

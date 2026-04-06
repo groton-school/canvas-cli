@@ -19,18 +19,29 @@ export type show_observerPathParameters = {
 
 export type show_observerSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_observerPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_observerSearchParameters>;
-      strict?: false;
+      path: show_observerPathParameters;
     }
   | {
-      searchParams: show_observerSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_observerPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_observerSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_observerSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_observerSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_observerSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show an observer

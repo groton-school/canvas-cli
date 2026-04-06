@@ -23,18 +23,29 @@ export type de_cross_list_sectionSearchParameters = Masquerade &
     override_sis_stickiness: boolean | string;
   }>;
 
-type Options = {
-  pathParams: de_cross_list_sectionPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<de_cross_list_sectionSearchParameters>;
-      strict?: false;
+      path: de_cross_list_sectionPathParameters;
     }
   | {
-      searchParams: de_cross_list_sectionSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: de_cross_list_sectionPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<de_cross_list_sectionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<de_cross_list_sectionSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<de_cross_list_sectionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: de_cross_list_sectionSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * De-cross-list a Section

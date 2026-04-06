@@ -18,18 +18,29 @@ export type unsubscribe_from_topic_groupsPathParameters = {
 
 export type unsubscribe_from_topic_groupsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: unsubscribe_from_topic_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<unsubscribe_from_topic_groupsSearchParameters>;
-      strict?: false;
+      path: unsubscribe_from_topic_groupsPathParameters;
     }
   | {
-      searchParams: unsubscribe_from_topic_groupsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: unsubscribe_from_topic_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<unsubscribe_from_topic_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<unsubscribe_from_topic_groupsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<unsubscribe_from_topic_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: unsubscribe_from_topic_groupsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Unsubscribe from a topic

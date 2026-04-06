@@ -12,18 +12,29 @@ export type terminate_all_user_sessionsPathParameters = {
 
 export type terminate_all_user_sessionsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: terminate_all_user_sessionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<terminate_all_user_sessionsSearchParameters>;
-      strict?: false;
+      path: terminate_all_user_sessionsPathParameters;
     }
   | {
-      searchParams: terminate_all_user_sessionsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: terminate_all_user_sessionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<terminate_all_user_sessionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<terminate_all_user_sessionsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<terminate_all_user_sessionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: terminate_all_user_sessionsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Terminate all user sessions

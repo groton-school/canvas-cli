@@ -19,18 +19,29 @@ export type re_activate_enrollmentPathParameters = {
 
 export type re_activate_enrollmentSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: re_activate_enrollmentPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<re_activate_enrollmentSearchParameters>;
-      strict?: false;
+      path: re_activate_enrollmentPathParameters;
     }
   | {
-      searchParams: re_activate_enrollmentSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: re_activate_enrollmentPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<re_activate_enrollmentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<re_activate_enrollmentSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<re_activate_enrollmentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: re_activate_enrollmentSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Re-activate an enrollment

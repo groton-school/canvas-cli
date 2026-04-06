@@ -15,12 +15,20 @@ export type updateFormParameters = Masquerade & {
 
 type Options =
   | {
+      query?: Partial<updateSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<updateSearchParameters>;
+      body?: Partial<updateFormParameters>;
+      /** @deprecated Use {@link Options.body} */
       params?: Partial<updateFormParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<updateSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: updateSearchParameters;
+      body?: Partial<updateFormParameters>;
+      /** @deprecated Use {@link Options.body} */
       params: updateFormParameters;
       strict: true;
     };

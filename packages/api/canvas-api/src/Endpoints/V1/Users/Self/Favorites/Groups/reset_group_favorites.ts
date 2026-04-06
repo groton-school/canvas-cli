@@ -5,10 +5,14 @@ export type reset_group_favoritesSearchParameters = Masquerade;
 
 type Options =
   | {
+      query?: Partial<reset_group_favoritesSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<reset_group_favoritesSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<reset_group_favoritesSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: reset_group_favoritesSearchParameters;
       strict: true;
     };

@@ -27,20 +27,35 @@ export type copy_course_contentFormParameters = Masquerade & {
   only: string[];
 };
 
-type Options = {
-  pathParams: copy_course_contentPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<copy_course_contentSearchParameters>;
-      params?: Partial<copy_course_contentFormParameters>;
-      strict?: false;
+      path: copy_course_contentPathParameters;
     }
   | {
-      searchParams: copy_course_contentSearchParameters;
-      params: copy_course_contentFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: copy_course_contentPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<copy_course_contentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<copy_course_contentSearchParameters>;
+        body?: Partial<copy_course_contentFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<copy_course_contentFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<copy_course_contentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: copy_course_contentSearchParameters;
+        body?: Partial<copy_course_contentFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: copy_course_contentFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Copy course content

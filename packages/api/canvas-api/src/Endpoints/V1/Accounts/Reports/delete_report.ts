@@ -21,18 +21,29 @@ export type delete_reportPathParameters = {
 
 export type delete_reportSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_reportPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_reportSearchParameters>;
-      strict?: false;
+      path: delete_reportPathParameters;
     }
   | {
-      searchParams: delete_reportSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_reportPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_reportSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_reportSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_reportSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_reportSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a Report

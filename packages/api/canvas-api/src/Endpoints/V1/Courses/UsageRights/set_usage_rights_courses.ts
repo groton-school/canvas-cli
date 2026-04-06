@@ -42,20 +42,35 @@ export type set_usage_rights_coursesFormParameters = Masquerade & {
   'usage_rights[license]': string;
 };
 
-type Options = {
-  pathParams: set_usage_rights_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<set_usage_rights_coursesSearchParameters>;
-      params?: Partial<set_usage_rights_coursesFormParameters>;
-      strict?: false;
+      path: set_usage_rights_coursesPathParameters;
     }
   | {
-      searchParams: set_usage_rights_coursesSearchParameters;
-      params: set_usage_rights_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: set_usage_rights_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<set_usage_rights_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<set_usage_rights_coursesSearchParameters>;
+        body?: Partial<set_usage_rights_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<set_usage_rights_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<set_usage_rights_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: set_usage_rights_coursesSearchParameters;
+        body?: Partial<set_usage_rights_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: set_usage_rights_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Set usage rights

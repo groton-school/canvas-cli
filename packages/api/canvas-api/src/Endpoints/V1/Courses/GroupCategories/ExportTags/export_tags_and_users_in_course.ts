@@ -12,18 +12,29 @@ export type export_tags_and_users_in_coursePathParameters = {
 
 export type export_tags_and_users_in_courseSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: export_tags_and_users_in_coursePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<export_tags_and_users_in_courseSearchParameters>;
-      strict?: false;
+      path: export_tags_and_users_in_coursePathParameters;
     }
   | {
-      searchParams: export_tags_and_users_in_courseSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: export_tags_and_users_in_coursePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<export_tags_and_users_in_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<export_tags_and_users_in_courseSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<export_tags_and_users_in_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: export_tags_and_users_in_courseSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Export tags and users in course

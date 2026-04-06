@@ -19,18 +19,29 @@ export type delete_singlePathParameters = {
 
 export type delete_singleSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_singlePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_singleSearchParameters>;
-      strict?: false;
+      path: delete_singlePathParameters;
     }
   | {
-      searchParams: delete_singleSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_singlePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_singleSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_singleSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_singleSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_singleSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a single

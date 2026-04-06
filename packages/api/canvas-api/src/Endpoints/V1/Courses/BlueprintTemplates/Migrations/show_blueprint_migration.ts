@@ -25,18 +25,29 @@ export type show_blueprint_migrationPathParameters = {
 
 export type show_blueprint_migrationSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_blueprint_migrationPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_blueprint_migrationSearchParameters>;
-      strict?: false;
+      path: show_blueprint_migrationPathParameters;
     }
   | {
-      searchParams: show_blueprint_migrationSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_blueprint_migrationPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_blueprint_migrationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_blueprint_migrationSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_blueprint_migrationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_blueprint_migrationSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show a blueprint migration

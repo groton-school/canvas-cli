@@ -57,20 +57,35 @@ export type import_outcomes_accountsFormParameters = Masquerade & {
   extension: string;
 };
 
-type Options = {
-  pathParams: import_outcomes_accountsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<import_outcomes_accountsSearchParameters>;
-      params?: Partial<import_outcomes_accountsFormParameters>;
-      strict?: false;
+      path: import_outcomes_accountsPathParameters;
     }
   | {
-      searchParams: import_outcomes_accountsSearchParameters;
-      params: import_outcomes_accountsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: import_outcomes_accountsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<import_outcomes_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<import_outcomes_accountsSearchParameters>;
+        body?: Partial<import_outcomes_accountsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<import_outcomes_accountsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<import_outcomes_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: import_outcomes_accountsSearchParameters;
+        body?: Partial<import_outcomes_accountsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: import_outcomes_accountsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Import Outcomes

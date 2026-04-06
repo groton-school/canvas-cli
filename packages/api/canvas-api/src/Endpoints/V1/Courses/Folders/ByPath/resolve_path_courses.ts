@@ -13,18 +13,29 @@ export type resolve_path_coursesPathParameters = {
 
 export type resolve_path_coursesSearchParameters = Masquerade & Paginated;
 
-type Options = {
-  pathParams: resolve_path_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<resolve_path_coursesSearchParameters>;
-      strict?: false;
+      path: resolve_path_coursesPathParameters;
     }
   | {
-      searchParams: resolve_path_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: resolve_path_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<resolve_path_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<resolve_path_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<resolve_path_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: resolve_path_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Resolve path

@@ -20,18 +20,29 @@ export type load_custom_dataSearchParameters = Masquerade &
     ns: string;
   }>;
 
-type Options = {
-  pathParams: load_custom_dataPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<load_custom_dataSearchParameters>;
-      strict?: false;
+      path: load_custom_dataPathParameters;
     }
   | {
-      searchParams: load_custom_dataSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: load_custom_dataPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<load_custom_dataSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<load_custom_dataSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<load_custom_dataSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: load_custom_dataSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Load custom data

@@ -19,18 +19,29 @@ export type show_originality_report_filesPathParameters = {
 
 export type show_originality_report_filesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_originality_report_filesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_originality_report_filesSearchParameters>;
-      strict?: false;
+      path: show_originality_report_filesPathParameters;
     }
   | {
-      searchParams: show_originality_report_filesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_originality_report_filesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_originality_report_filesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_originality_report_filesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_originality_report_filesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_originality_report_filesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show an Originality Report

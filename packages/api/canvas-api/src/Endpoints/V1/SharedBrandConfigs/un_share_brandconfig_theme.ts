@@ -13,18 +13,29 @@ export type un_share_brandconfig_themePathParameters = {
 
 export type un_share_brandconfig_themeSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: un_share_brandconfig_themePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<un_share_brandconfig_themeSearchParameters>;
-      strict?: false;
+      path: un_share_brandconfig_themePathParameters;
     }
   | {
-      searchParams: un_share_brandconfig_themeSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: un_share_brandconfig_themePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<un_share_brandconfig_themeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<un_share_brandconfig_themeSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<un_share_brandconfig_themeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: un_share_brandconfig_themeSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Un-share a BrandConfig (Theme)

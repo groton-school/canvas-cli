@@ -35,20 +35,35 @@ export type enroll_multiple_users_to_one_or_more_coursesFormParameters =
     enrollment_type: string;
   };
 
-type Options = {
-  pathParams: enroll_multiple_users_to_one_or_more_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<enroll_multiple_users_to_one_or_more_coursesSearchParameters>;
-      params?: Partial<enroll_multiple_users_to_one_or_more_coursesFormParameters>;
-      strict?: false;
+      path: enroll_multiple_users_to_one_or_more_coursesPathParameters;
     }
   | {
-      searchParams: enroll_multiple_users_to_one_or_more_coursesSearchParameters;
-      params: enroll_multiple_users_to_one_or_more_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: enroll_multiple_users_to_one_or_more_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<enroll_multiple_users_to_one_or_more_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<enroll_multiple_users_to_one_or_more_coursesSearchParameters>;
+        body?: Partial<enroll_multiple_users_to_one_or_more_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<enroll_multiple_users_to_one_or_more_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<enroll_multiple_users_to_one_or_more_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: enroll_multiple_users_to_one_or_more_coursesSearchParameters;
+        body?: Partial<enroll_multiple_users_to_one_or_more_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: enroll_multiple_users_to_one_or_more_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Enroll multiple users to one or more courses

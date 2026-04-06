@@ -109,20 +109,35 @@ export type submit_assignment_coursesFormParameters = Masquerade & {
   'submission[submitted_at]': string;
 };
 
-type Options = {
-  pathParams: submit_assignment_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<submit_assignment_coursesSearchParameters>;
-      params?: Partial<submit_assignment_coursesFormParameters>;
-      strict?: false;
+      path: submit_assignment_coursesPathParameters;
     }
   | {
-      searchParams: submit_assignment_coursesSearchParameters;
-      params: submit_assignment_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: submit_assignment_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<submit_assignment_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<submit_assignment_coursesSearchParameters>;
+        body?: Partial<submit_assignment_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<submit_assignment_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<submit_assignment_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: submit_assignment_coursesSearchParameters;
+        body?: Partial<submit_assignment_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: submit_assignment_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Submit an assignment

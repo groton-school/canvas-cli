@@ -19,18 +19,29 @@ export type publish_provisional_grades_for_assignmentPathParameters = {
 export type publish_provisional_grades_for_assignmentSearchParameters =
   Masquerade;
 
-type Options = {
-  pathParams: publish_provisional_grades_for_assignmentPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<publish_provisional_grades_for_assignmentSearchParameters>;
-      strict?: false;
+      path: publish_provisional_grades_for_assignmentPathParameters;
     }
   | {
-      searchParams: publish_provisional_grades_for_assignmentSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: publish_provisional_grades_for_assignmentPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<publish_provisional_grades_for_assignmentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<publish_provisional_grades_for_assignmentSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<publish_provisional_grades_for_assignmentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: publish_provisional_grades_for_assignmentSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Publish provisional grades for an assignment

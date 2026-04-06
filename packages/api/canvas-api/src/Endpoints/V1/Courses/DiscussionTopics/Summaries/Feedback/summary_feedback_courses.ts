@@ -40,20 +40,35 @@ export type summary_feedback_coursesFormParameters = Masquerade & {
   _action: string;
 };
 
-type Options = {
-  pathParams: summary_feedback_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<summary_feedback_coursesSearchParameters>;
-      params?: Partial<summary_feedback_coursesFormParameters>;
-      strict?: false;
+      path: summary_feedback_coursesPathParameters;
     }
   | {
-      searchParams: summary_feedback_coursesSearchParameters;
-      params: summary_feedback_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: summary_feedback_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<summary_feedback_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<summary_feedback_coursesSearchParameters>;
+        body?: Partial<summary_feedback_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<summary_feedback_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<summary_feedback_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: summary_feedback_coursesSearchParameters;
+        body?: Partial<summary_feedback_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: summary_feedback_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Summary Feedback

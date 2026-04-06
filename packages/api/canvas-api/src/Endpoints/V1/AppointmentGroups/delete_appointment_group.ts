@@ -16,18 +16,29 @@ export type delete_appointment_groupSearchParameters = Masquerade &
     cancel_reason: string;
   }>;
 
-type Options = {
-  pathParams: delete_appointment_groupPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_appointment_groupSearchParameters>;
-      strict?: false;
+      path: delete_appointment_groupPathParameters;
     }
   | {
-      searchParams: delete_appointment_groupSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_appointment_groupPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_appointment_groupSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_appointment_groupSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_appointment_groupSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_appointment_groupSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an appointment group

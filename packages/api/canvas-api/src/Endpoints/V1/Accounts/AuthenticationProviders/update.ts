@@ -19,18 +19,29 @@ export type updatePathParameters = {
 
 export type updateSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: updatePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<updateSearchParameters>;
-      strict?: false;
+      path: updatePathParameters;
     }
   | {
-      searchParams: updateSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: updatePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<updateSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<updateSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<updateSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: updateSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Update authentication provider

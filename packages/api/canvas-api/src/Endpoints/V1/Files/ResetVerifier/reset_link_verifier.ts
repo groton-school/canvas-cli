@@ -13,18 +13,29 @@ export type reset_link_verifierPathParameters = {
 
 export type reset_link_verifierSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: reset_link_verifierPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<reset_link_verifierSearchParameters>;
-      strict?: false;
+      path: reset_link_verifierPathParameters;
     }
   | {
-      searchParams: reset_link_verifierSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: reset_link_verifierPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<reset_link_verifierSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<reset_link_verifierSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<reset_link_verifierSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: reset_link_verifierSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Reset link verifier

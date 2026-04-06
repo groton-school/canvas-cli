@@ -28,18 +28,29 @@ export type query_by_assignmentSearchParameters = Masquerade &
     end_time: string;
   }>;
 
-type Options = {
-  pathParams: query_by_assignmentPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<query_by_assignmentSearchParameters>;
-      strict?: false;
+      path: query_by_assignmentPathParameters;
     }
   | {
-      searchParams: query_by_assignmentSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: query_by_assignmentPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<query_by_assignmentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<query_by_assignmentSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<query_by_assignmentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: query_by_assignmentSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Query by assignment

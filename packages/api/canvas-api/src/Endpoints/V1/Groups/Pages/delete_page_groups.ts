@@ -19,18 +19,29 @@ export type delete_page_groupsPathParameters = {
 
 export type delete_page_groupsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_page_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_page_groupsSearchParameters>;
-      strict?: false;
+      path: delete_page_groupsPathParameters;
     }
   | {
-      searchParams: delete_page_groupsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_page_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_page_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_page_groupsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_page_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_page_groupsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete page

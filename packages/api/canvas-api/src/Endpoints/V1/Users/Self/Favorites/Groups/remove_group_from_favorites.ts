@@ -13,18 +13,29 @@ export type remove_group_from_favoritesPathParameters = {
 
 export type remove_group_from_favoritesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: remove_group_from_favoritesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<remove_group_from_favoritesSearchParameters>;
-      strict?: false;
+      path: remove_group_from_favoritesPathParameters;
     }
   | {
-      searchParams: remove_group_from_favoritesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: remove_group_from_favoritesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<remove_group_from_favoritesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<remove_group_from_favoritesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<remove_group_from_favoritesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: remove_group_from_favoritesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Remove group from favorites

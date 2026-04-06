@@ -25,18 +25,29 @@ export type show_resultPathParameters = {
 
 export type show_resultSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_resultPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_resultSearchParameters>;
-      strict?: false;
+      path: show_resultPathParameters;
     }
   | {
-      searchParams: show_resultSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_resultPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_resultSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_resultSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_resultSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_resultSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show a Result

@@ -277,20 +277,35 @@ export type update_single_quizFormParameters = Masquerade & {
   'quiz[quiz_settings][session_time_limit_in_seconds]': number;
 };
 
-type Options = {
-  pathParams: update_single_quizPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<update_single_quizSearchParameters>;
-      params?: Partial<update_single_quizFormParameters>;
-      strict?: false;
+      path: update_single_quizPathParameters;
     }
   | {
-      searchParams: update_single_quizSearchParameters;
-      params: update_single_quizFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: update_single_quizPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<update_single_quizSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<update_single_quizSearchParameters>;
+        body?: Partial<update_single_quizFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<update_single_quizFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<update_single_quizSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: update_single_quizSearchParameters;
+        body?: Partial<update_single_quizFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: update_single_quizFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Update a single quiz

@@ -13,18 +13,29 @@ export type new_temporaryenrollmentpairingPathParameters = {
 
 export type new_temporaryenrollmentpairingSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: new_temporaryenrollmentpairingPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<new_temporaryenrollmentpairingSearchParameters>;
-      strict?: false;
+      path: new_temporaryenrollmentpairingPathParameters;
     }
   | {
-      searchParams: new_temporaryenrollmentpairingSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: new_temporaryenrollmentpairingPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<new_temporaryenrollmentpairingSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<new_temporaryenrollmentpairingSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<new_temporaryenrollmentpairingSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: new_temporaryenrollmentpairingSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * New TemporaryEnrollmentPairing

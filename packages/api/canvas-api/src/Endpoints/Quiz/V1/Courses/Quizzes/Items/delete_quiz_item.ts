@@ -31,18 +31,29 @@ export type delete_quiz_itemPathParameters = {
 
 export type delete_quiz_itemSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_quiz_itemPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_quiz_itemSearchParameters>;
-      strict?: false;
+      path: delete_quiz_itemPathParameters;
     }
   | {
-      searchParams: delete_quiz_itemSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_quiz_itemPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_quiz_itemSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_quiz_itemSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_quiz_itemSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_quiz_itemSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a quiz item

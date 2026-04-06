@@ -21,18 +21,29 @@ export type search_for_content_share_usersSearchParameters = Masquerade &
     search_term: string;
   }>;
 
-type Options = {
-  pathParams: search_for_content_share_usersPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<search_for_content_share_usersSearchParameters>;
-      strict?: false;
+      path: search_for_content_share_usersPathParameters;
     }
   | {
-      searchParams: search_for_content_share_usersSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: search_for_content_share_usersPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<search_for_content_share_usersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<search_for_content_share_usersSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<search_for_content_share_usersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: search_for_content_share_usersSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Search for content share users

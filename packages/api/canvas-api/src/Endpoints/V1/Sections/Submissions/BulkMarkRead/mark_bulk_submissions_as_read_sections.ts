@@ -18,20 +18,35 @@ export type mark_bulk_submissions_as_read_sectionsFormParameters =
     submissionIds: string[];
   };
 
-type Options = {
-  pathParams: mark_bulk_submissions_as_read_sectionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<mark_bulk_submissions_as_read_sectionsSearchParameters>;
-      params?: Partial<mark_bulk_submissions_as_read_sectionsFormParameters>;
-      strict?: false;
+      path: mark_bulk_submissions_as_read_sectionsPathParameters;
     }
   | {
-      searchParams: mark_bulk_submissions_as_read_sectionsSearchParameters;
-      params: mark_bulk_submissions_as_read_sectionsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: mark_bulk_submissions_as_read_sectionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<mark_bulk_submissions_as_read_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<mark_bulk_submissions_as_read_sectionsSearchParameters>;
+        body?: Partial<mark_bulk_submissions_as_read_sectionsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<mark_bulk_submissions_as_read_sectionsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<mark_bulk_submissions_as_read_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: mark_bulk_submissions_as_read_sectionsSearchParameters;
+        body?: Partial<mark_bulk_submissions_as_read_sectionsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: mark_bulk_submissions_as_read_sectionsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Mark bulk submissions as read

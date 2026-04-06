@@ -20,18 +20,29 @@ export type log_users_out_of_all_mobile_apps_idSearchParameters = Masquerade &
     skip_admins: boolean | string;
   }>;
 
-type Options = {
-  pathParams: log_users_out_of_all_mobile_apps_idPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<log_users_out_of_all_mobile_apps_idSearchParameters>;
-      strict?: false;
+      path: log_users_out_of_all_mobile_apps_idPathParameters;
     }
   | {
-      searchParams: log_users_out_of_all_mobile_apps_idSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: log_users_out_of_all_mobile_apps_idPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<log_users_out_of_all_mobile_apps_idSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<log_users_out_of_all_mobile_apps_idSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<log_users_out_of_all_mobile_apps_idSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: log_users_out_of_all_mobile_apps_idSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Log users out of all mobile apps

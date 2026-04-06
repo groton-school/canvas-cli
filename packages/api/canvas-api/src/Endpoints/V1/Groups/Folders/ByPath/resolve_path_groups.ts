@@ -13,18 +13,29 @@ export type resolve_path_groupsPathParameters = {
 
 export type resolve_path_groupsSearchParameters = Masquerade & Paginated;
 
-type Options = {
-  pathParams: resolve_path_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<resolve_path_groupsSearchParameters>;
-      strict?: false;
+      path: resolve_path_groupsPathParameters;
     }
   | {
-      searchParams: resolve_path_groupsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: resolve_path_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<resolve_path_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<resolve_path_groupsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<resolve_path_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: resolve_path_groupsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Resolve path

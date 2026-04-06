@@ -33,18 +33,29 @@ export type lists_submissionsPathParameters = {
 
 export type lists_submissionsSearchParameters = Masquerade & Paginated;
 
-type Options = {
-  pathParams: lists_submissionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<lists_submissionsSearchParameters>;
-      strict?: false;
+      path: lists_submissionsPathParameters;
     }
   | {
-      searchParams: lists_submissionsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: lists_submissionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<lists_submissionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<lists_submissionsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<lists_submissionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: lists_submissionsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Lists submissions

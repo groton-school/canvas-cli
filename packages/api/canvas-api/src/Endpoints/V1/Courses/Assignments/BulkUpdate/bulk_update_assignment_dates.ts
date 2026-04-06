@@ -13,18 +13,29 @@ export type bulk_update_assignment_datesPathParameters = {
 
 export type bulk_update_assignment_datesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: bulk_update_assignment_datesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<bulk_update_assignment_datesSearchParameters>;
-      strict?: false;
+      path: bulk_update_assignment_datesPathParameters;
     }
   | {
-      searchParams: bulk_update_assignment_datesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: bulk_update_assignment_datesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<bulk_update_assignment_datesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<bulk_update_assignment_datesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<bulk_update_assignment_datesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: bulk_update_assignment_datesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Bulk update assignment dates

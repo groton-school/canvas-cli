@@ -23,20 +23,35 @@ export type batch_create_overrides_in_courseFormParameters = Masquerade & {
   assignment_overrides: AssignmentOverride[];
 };
 
-type Options = {
-  pathParams: batch_create_overrides_in_coursePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<batch_create_overrides_in_courseSearchParameters>;
-      params?: Partial<batch_create_overrides_in_courseFormParameters>;
-      strict?: false;
+      path: batch_create_overrides_in_coursePathParameters;
     }
   | {
-      searchParams: batch_create_overrides_in_courseSearchParameters;
-      params: batch_create_overrides_in_courseFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: batch_create_overrides_in_coursePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<batch_create_overrides_in_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<batch_create_overrides_in_courseSearchParameters>;
+        body?: Partial<batch_create_overrides_in_courseFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<batch_create_overrides_in_courseFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<batch_create_overrides_in_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: batch_create_overrides_in_courseSearchParameters;
+        body?: Partial<batch_create_overrides_in_courseFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: batch_create_overrides_in_courseFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Batch create overrides in a course

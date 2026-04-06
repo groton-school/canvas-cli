@@ -19,18 +19,29 @@ export type unlink_outcome_globalPathParameters = {
 
 export type unlink_outcome_globalSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: unlink_outcome_globalPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<unlink_outcome_globalSearchParameters>;
-      strict?: false;
+      path: unlink_outcome_globalPathParameters;
     }
   | {
-      searchParams: unlink_outcome_globalSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: unlink_outcome_globalPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<unlink_outcome_globalSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<unlink_outcome_globalSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<unlink_outcome_globalSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: unlink_outcome_globalSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Unlink an outcome

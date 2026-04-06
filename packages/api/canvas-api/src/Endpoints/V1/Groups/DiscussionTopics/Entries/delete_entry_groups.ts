@@ -24,18 +24,29 @@ export type delete_entry_groupsPathParameters = {
 
 export type delete_entry_groupsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_entry_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_entry_groupsSearchParameters>;
-      strict?: false;
+      path: delete_entry_groupsPathParameters;
     }
   | {
-      searchParams: delete_entry_groupsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_entry_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_entry_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_entry_groupsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_entry_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_entry_groupsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an entry

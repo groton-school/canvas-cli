@@ -40,20 +40,35 @@ export type summary_feedback_groupsFormParameters = Masquerade & {
   _action: string;
 };
 
-type Options = {
-  pathParams: summary_feedback_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<summary_feedback_groupsSearchParameters>;
-      params?: Partial<summary_feedback_groupsFormParameters>;
-      strict?: false;
+      path: summary_feedback_groupsPathParameters;
     }
   | {
-      searchParams: summary_feedback_groupsSearchParameters;
-      params: summary_feedback_groupsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: summary_feedback_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<summary_feedback_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<summary_feedback_groupsSearchParameters>;
+        body?: Partial<summary_feedback_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<summary_feedback_groupsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<summary_feedback_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: summary_feedback_groupsSearchParameters;
+        body?: Partial<summary_feedback_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: summary_feedback_groupsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Summary Feedback

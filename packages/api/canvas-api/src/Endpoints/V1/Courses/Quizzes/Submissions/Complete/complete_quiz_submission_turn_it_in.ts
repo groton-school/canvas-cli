@@ -44,20 +44,35 @@ export type complete_quiz_submission_turn_it_inFormParameters = Masquerade & {
   access_code: string;
 };
 
-type Options = {
-  pathParams: complete_quiz_submission_turn_it_inPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<complete_quiz_submission_turn_it_inSearchParameters>;
-      params?: Partial<complete_quiz_submission_turn_it_inFormParameters>;
-      strict?: false;
+      path: complete_quiz_submission_turn_it_inPathParameters;
     }
   | {
-      searchParams: complete_quiz_submission_turn_it_inSearchParameters;
-      params: complete_quiz_submission_turn_it_inFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: complete_quiz_submission_turn_it_inPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<complete_quiz_submission_turn_it_inSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<complete_quiz_submission_turn_it_inSearchParameters>;
+        body?: Partial<complete_quiz_submission_turn_it_inFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<complete_quiz_submission_turn_it_inFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<complete_quiz_submission_turn_it_inSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: complete_quiz_submission_turn_it_inSearchParameters;
+        body?: Partial<complete_quiz_submission_turn_it_inFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: complete_quiz_submission_turn_it_inFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Complete the quiz submission (turn it in).

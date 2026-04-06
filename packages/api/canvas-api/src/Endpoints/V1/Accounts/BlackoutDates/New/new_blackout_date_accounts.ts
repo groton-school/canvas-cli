@@ -13,18 +13,29 @@ export type new_blackout_date_accountsPathParameters = {
 
 export type new_blackout_date_accountsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: new_blackout_date_accountsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<new_blackout_date_accountsSearchParameters>;
-      strict?: false;
+      path: new_blackout_date_accountsPathParameters;
     }
   | {
-      searchParams: new_blackout_date_accountsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: new_blackout_date_accountsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<new_blackout_date_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<new_blackout_date_accountsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<new_blackout_date_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: new_blackout_date_accountsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * New Blackout Date

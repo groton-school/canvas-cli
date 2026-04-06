@@ -19,18 +19,29 @@ export type remove_tool_from_top_navigation_favoritesPathParameters = {
 export type remove_tool_from_top_navigation_favoritesSearchParameters =
   Masquerade;
 
-type Options = {
-  pathParams: remove_tool_from_top_navigation_favoritesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<remove_tool_from_top_navigation_favoritesSearchParameters>;
-      strict?: false;
+      path: remove_tool_from_top_navigation_favoritesPathParameters;
     }
   | {
-      searchParams: remove_tool_from_top_navigation_favoritesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: remove_tool_from_top_navigation_favoritesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<remove_tool_from_top_navigation_favoritesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<remove_tool_from_top_navigation_favoritesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<remove_tool_from_top_navigation_favoritesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: remove_tool_from_top_navigation_favoritesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Remove tool from Top Navigation Favorites

@@ -19,18 +19,29 @@ export type show_content_export_groupsPathParameters = {
 
 export type show_content_export_groupsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_content_export_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_content_export_groupsSearchParameters>;
-      strict?: false;
+      path: show_content_export_groupsPathParameters;
     }
   | {
-      searchParams: show_content_export_groupsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_content_export_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_content_export_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_content_export_groupsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_content_export_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_content_export_groupsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show content export

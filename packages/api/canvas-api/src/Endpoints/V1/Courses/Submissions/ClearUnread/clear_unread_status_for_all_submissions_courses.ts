@@ -19,18 +19,29 @@ export type clear_unread_status_for_all_submissions_coursesPathParameters = {
 export type clear_unread_status_for_all_submissions_coursesSearchParameters =
   Masquerade;
 
-type Options = {
-  pathParams: clear_unread_status_for_all_submissions_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<clear_unread_status_for_all_submissions_coursesSearchParameters>;
-      strict?: false;
+      path: clear_unread_status_for_all_submissions_coursesPathParameters;
     }
   | {
-      searchParams: clear_unread_status_for_all_submissions_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: clear_unread_status_for_all_submissions_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<clear_unread_status_for_all_submissions_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<clear_unread_status_for_all_submissions_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<clear_unread_status_for_all_submissions_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: clear_unread_status_for_all_submissions_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Clear unread status for all submissions.

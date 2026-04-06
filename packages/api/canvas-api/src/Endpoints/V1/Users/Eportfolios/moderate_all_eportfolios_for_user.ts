@@ -17,20 +17,35 @@ export type moderate_all_eportfolios_for_userFormParameters = Masquerade & {
   spam_status: string;
 };
 
-type Options = {
-  pathParams: moderate_all_eportfolios_for_userPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<moderate_all_eportfolios_for_userSearchParameters>;
-      params?: Partial<moderate_all_eportfolios_for_userFormParameters>;
-      strict?: false;
+      path: moderate_all_eportfolios_for_userPathParameters;
     }
   | {
-      searchParams: moderate_all_eportfolios_for_userSearchParameters;
-      params: moderate_all_eportfolios_for_userFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: moderate_all_eportfolios_for_userPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<moderate_all_eportfolios_for_userSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<moderate_all_eportfolios_for_userSearchParameters>;
+        body?: Partial<moderate_all_eportfolios_for_userFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<moderate_all_eportfolios_for_userFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<moderate_all_eportfolios_for_userSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: moderate_all_eportfolios_for_userSearchParameters;
+        body?: Partial<moderate_all_eportfolios_for_userFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: moderate_all_eportfolios_for_userFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Moderate all ePortfolios for a User

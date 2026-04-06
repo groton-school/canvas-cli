@@ -19,18 +19,29 @@ export type translate_file_referencePathParameters = {
 
 export type translate_file_referenceSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: translate_file_referencePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<translate_file_referenceSearchParameters>;
-      strict?: false;
+      path: translate_file_referencePathParameters;
     }
   | {
-      searchParams: translate_file_referenceSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: translate_file_referencePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<translate_file_referenceSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<translate_file_referenceSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<translate_file_referenceSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: translate_file_referenceSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Translate file reference

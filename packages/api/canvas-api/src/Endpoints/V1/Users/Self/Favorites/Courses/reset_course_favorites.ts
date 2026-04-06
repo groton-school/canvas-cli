@@ -5,10 +5,14 @@ export type reset_course_favoritesSearchParameters = Masquerade;
 
 type Options =
   | {
+      query?: Partial<reset_course_favoritesSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<reset_course_favoritesSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<reset_course_favoritesSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: reset_course_favoritesSearchParameters;
       strict: true;
     };

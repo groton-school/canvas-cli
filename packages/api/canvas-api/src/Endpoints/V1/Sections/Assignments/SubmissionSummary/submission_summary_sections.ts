@@ -34,18 +34,29 @@ export type submission_summary_sectionsSearchParameters = Masquerade &
     include_deactivated: boolean | string;
   }>;
 
-type Options = {
-  pathParams: submission_summary_sectionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<submission_summary_sectionsSearchParameters>;
-      strict?: false;
+      path: submission_summary_sectionsPathParameters;
     }
   | {
-      searchParams: submission_summary_sectionsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: submission_summary_sectionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<submission_summary_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<submission_summary_sectionsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<submission_summary_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: submission_summary_sectionsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Submission Summary

@@ -20,18 +20,29 @@ export type delete_folderSearchParameters = Masquerade &
     force: boolean | string;
   }>;
 
-type Options = {
-  pathParams: delete_folderPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_folderSearchParameters>;
-      strict?: false;
+      path: delete_folderPathParameters;
     }
   | {
-      searchParams: delete_folderSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_folderPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_folderSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_folderSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_folderSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_folderSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete folder

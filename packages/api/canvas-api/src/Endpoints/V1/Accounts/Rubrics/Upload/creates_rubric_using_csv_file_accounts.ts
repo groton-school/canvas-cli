@@ -13,18 +13,29 @@ export type creates_rubric_using_csv_file_accountsPathParameters = {
 
 export type creates_rubric_using_csv_file_accountsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: creates_rubric_using_csv_file_accountsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<creates_rubric_using_csv_file_accountsSearchParameters>;
-      strict?: false;
+      path: creates_rubric_using_csv_file_accountsPathParameters;
     }
   | {
-      searchParams: creates_rubric_using_csv_file_accountsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: creates_rubric_using_csv_file_accountsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<creates_rubric_using_csv_file_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<creates_rubric_using_csv_file_accountsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<creates_rubric_using_csv_file_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: creates_rubric_using_csv_file_accountsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Creates a rubric using a CSV file

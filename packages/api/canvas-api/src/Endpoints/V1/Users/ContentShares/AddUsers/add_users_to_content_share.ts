@@ -28,20 +28,35 @@ export type add_users_to_content_shareFormParameters = Masquerade & {
   receiver_ids: string[];
 };
 
-type Options = {
-  pathParams: add_users_to_content_sharePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<add_users_to_content_shareSearchParameters>;
-      params?: Partial<add_users_to_content_shareFormParameters>;
-      strict?: false;
+      path: add_users_to_content_sharePathParameters;
     }
   | {
-      searchParams: add_users_to_content_shareSearchParameters;
-      params: add_users_to_content_shareFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: add_users_to_content_sharePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<add_users_to_content_shareSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<add_users_to_content_shareSearchParameters>;
+        body?: Partial<add_users_to_content_shareFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<add_users_to_content_shareFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<add_users_to_content_shareSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: add_users_to_content_shareSearchParameters;
+        body?: Partial<add_users_to_content_shareFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: add_users_to_content_shareFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Add users to content share

@@ -19,18 +19,29 @@ export type delete_outcome_group_accountsPathParameters = {
 
 export type delete_outcome_group_accountsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_outcome_group_accountsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_outcome_group_accountsSearchParameters>;
-      strict?: false;
+      path: delete_outcome_group_accountsPathParameters;
     }
   | {
-      searchParams: delete_outcome_group_accountsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_outcome_group_accountsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_outcome_group_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_outcome_group_accountsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_outcome_group_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_outcome_group_accountsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an outcome group

@@ -25,18 +25,29 @@ export type show_originality_report_submissionsPathParameters = {
 
 export type show_originality_report_submissionsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_originality_report_submissionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_originality_report_submissionsSearchParameters>;
-      strict?: false;
+      path: show_originality_report_submissionsPathParameters;
     }
   | {
-      searchParams: show_originality_report_submissionsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_originality_report_submissionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_originality_report_submissionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_originality_report_submissionsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_originality_report_submissionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_originality_report_submissionsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show an Originality Report

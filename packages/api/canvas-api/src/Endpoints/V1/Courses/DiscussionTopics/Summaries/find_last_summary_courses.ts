@@ -18,18 +18,29 @@ export type find_last_summary_coursesPathParameters = {
 
 export type find_last_summary_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: find_last_summary_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<find_last_summary_coursesSearchParameters>;
-      strict?: false;
+      path: find_last_summary_coursesPathParameters;
     }
   | {
-      searchParams: find_last_summary_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: find_last_summary_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<find_last_summary_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<find_last_summary_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<find_last_summary_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: find_last_summary_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Find Last Summary

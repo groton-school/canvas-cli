@@ -37,20 +37,35 @@ export type import_category_groupsFormParameters = Masquerade & {
   attachment: string;
 };
 
-type Options = {
-  pathParams: import_category_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<import_category_groupsSearchParameters>;
-      params?: Partial<import_category_groupsFormParameters>;
-      strict?: false;
+      path: import_category_groupsPathParameters;
     }
   | {
-      searchParams: import_category_groupsSearchParameters;
-      params: import_category_groupsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: import_category_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<import_category_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<import_category_groupsSearchParameters>;
+        body?: Partial<import_category_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<import_category_groupsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<import_category_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: import_category_groupsSearchParameters;
+        body?: Partial<import_category_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: import_category_groupsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Import category groups

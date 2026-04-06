@@ -133,20 +133,35 @@ export type enroll_user_coursesFormParameters = Masquerade & {
   root_account: string;
 };
 
-type Options = {
-  pathParams: enroll_user_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<enroll_user_coursesSearchParameters>;
-      params?: Partial<enroll_user_coursesFormParameters>;
-      strict?: false;
+      path: enroll_user_coursesPathParameters;
     }
   | {
-      searchParams: enroll_user_coursesSearchParameters;
-      params: enroll_user_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: enroll_user_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<enroll_user_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<enroll_user_coursesSearchParameters>;
+        body?: Partial<enroll_user_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<enroll_user_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<enroll_user_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: enroll_user_coursesSearchParameters;
+        body?: Partial<enroll_user_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: enroll_user_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Enroll a user

@@ -22,20 +22,35 @@ export type reorder_pinned_topics_groupsFormParameters = Masquerade & {
   order: number | string[];
 };
 
-type Options = {
-  pathParams: reorder_pinned_topics_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<reorder_pinned_topics_groupsSearchParameters>;
-      params?: Partial<reorder_pinned_topics_groupsFormParameters>;
-      strict?: false;
+      path: reorder_pinned_topics_groupsPathParameters;
     }
   | {
-      searchParams: reorder_pinned_topics_groupsSearchParameters;
-      params: reorder_pinned_topics_groupsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: reorder_pinned_topics_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<reorder_pinned_topics_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<reorder_pinned_topics_groupsSearchParameters>;
+        body?: Partial<reorder_pinned_topics_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<reorder_pinned_topics_groupsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<reorder_pinned_topics_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: reorder_pinned_topics_groupsSearchParameters;
+        body?: Partial<reorder_pinned_topics_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: reorder_pinned_topics_groupsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Reorder pinned topics

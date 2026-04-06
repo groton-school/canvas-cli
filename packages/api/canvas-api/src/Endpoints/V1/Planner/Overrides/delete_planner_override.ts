@@ -13,18 +13,29 @@ export type delete_planner_overridePathParameters = {
 
 export type delete_planner_overrideSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_planner_overridePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_planner_overrideSearchParameters>;
-      strict?: false;
+      path: delete_planner_overridePathParameters;
     }
   | {
-      searchParams: delete_planner_overrideSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_planner_overridePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_planner_overrideSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_planner_overrideSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_planner_overrideSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_planner_overrideSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a planner override

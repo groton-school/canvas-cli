@@ -18,18 +18,29 @@ export type leave_group_usersPathParameters = {
 
 export type leave_group_usersSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: leave_group_usersPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<leave_group_usersSearchParameters>;
-      strict?: false;
+      path: leave_group_usersPathParameters;
     }
   | {
-      searchParams: leave_group_usersSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: leave_group_usersPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<leave_group_usersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<leave_group_usersSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<leave_group_usersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: leave_group_usersSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Leave a group

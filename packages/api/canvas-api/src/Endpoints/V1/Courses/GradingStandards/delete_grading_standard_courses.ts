@@ -19,18 +19,29 @@ export type delete_grading_standard_coursesPathParameters = {
 
 export type delete_grading_standard_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_grading_standard_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_grading_standard_coursesSearchParameters>;
-      strict?: false;
+      path: delete_grading_standard_coursesPathParameters;
     }
   | {
-      searchParams: delete_grading_standard_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_grading_standard_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_grading_standard_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_grading_standard_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_grading_standard_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_grading_standard_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a grading standard

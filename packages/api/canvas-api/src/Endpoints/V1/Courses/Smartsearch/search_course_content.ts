@@ -30,18 +30,29 @@ export type search_course_contentSearchParameters = Masquerade &
     include: string[];
   }>;
 
-type Options = {
-  pathParams: search_course_contentPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<search_course_contentSearchParameters>;
-      strict?: false;
+      path: search_course_contentPathParameters;
     }
   | {
-      searchParams: search_course_contentSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: search_course_contentPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<search_course_contentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<search_course_contentSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<search_course_contentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: search_course_contentSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Search course content

@@ -34,20 +34,35 @@ export type start_reportFormParameters = Masquerade & {
   'parameters[section_ids]': number | string[];
 };
 
-type Options = {
-  pathParams: start_reportPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<start_reportSearchParameters>;
-      params?: Partial<start_reportFormParameters>;
-      strict?: false;
+      path: start_reportPathParameters;
     }
   | {
-      searchParams: start_reportSearchParameters;
-      params: start_reportFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: start_reportPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<start_reportSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<start_reportSearchParameters>;
+        body?: Partial<start_reportFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<start_reportFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<start_reportSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: start_reportSearchParameters;
+        body?: Partial<start_reportFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: start_reportFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Start a Report

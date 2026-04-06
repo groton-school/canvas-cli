@@ -13,18 +13,29 @@ export type add_authentication_providerPathParameters = {
 
 export type add_authentication_providerSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: add_authentication_providerPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<add_authentication_providerSearchParameters>;
-      strict?: false;
+      path: add_authentication_providerPathParameters;
     }
   | {
-      searchParams: add_authentication_providerSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: add_authentication_providerPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<add_authentication_providerSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<add_authentication_providerSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<add_authentication_providerSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: add_authentication_providerSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Add authentication provider

@@ -25,18 +25,29 @@ export type mark_document_annotations_as_read_sectionsPathParameters = {
 export type mark_document_annotations_as_read_sectionsSearchParameters =
   Masquerade;
 
-type Options = {
-  pathParams: mark_document_annotations_as_read_sectionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<mark_document_annotations_as_read_sectionsSearchParameters>;
-      strict?: false;
+      path: mark_document_annotations_as_read_sectionsPathParameters;
     }
   | {
-      searchParams: mark_document_annotations_as_read_sectionsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: mark_document_annotations_as_read_sectionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<mark_document_annotations_as_read_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<mark_document_annotations_as_read_sectionsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<mark_document_annotations_as_read_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: mark_document_annotations_as_read_sectionsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Mark document annotations as read

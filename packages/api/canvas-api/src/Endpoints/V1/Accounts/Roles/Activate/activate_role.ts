@@ -36,20 +36,35 @@ export type activate_roleFormParameters = Masquerade & {
   role: string;
 };
 
-type Options = {
-  pathParams: activate_rolePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<activate_roleSearchParameters>;
-      params?: Partial<activate_roleFormParameters>;
-      strict?: false;
+      path: activate_rolePathParameters;
     }
   | {
-      searchParams: activate_roleSearchParameters;
-      params: activate_roleFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: activate_rolePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<activate_roleSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<activate_roleSearchParameters>;
+        body?: Partial<activate_roleFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<activate_roleFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<activate_roleSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: activate_roleSearchParameters;
+        body?: Partial<activate_roleFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: activate_roleFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Activate a role

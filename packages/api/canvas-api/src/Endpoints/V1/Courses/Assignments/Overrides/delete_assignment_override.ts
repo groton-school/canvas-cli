@@ -25,18 +25,29 @@ export type delete_assignment_overridePathParameters = {
 
 export type delete_assignment_overrideSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_assignment_overridePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_assignment_overrideSearchParameters>;
-      strict?: false;
+      path: delete_assignment_overridePathParameters;
     }
   | {
-      searchParams: delete_assignment_overrideSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_assignment_overridePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_assignment_overrideSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_assignment_overrideSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_assignment_overrideSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_assignment_overrideSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an assignment override

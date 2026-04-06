@@ -45,18 +45,29 @@ export type getSearchParameters = Masquerade &
     grading_period_id: number | string;
   }>;
 
-type Options = {
-  pathParams: getPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<getSearchParameters>;
-      strict?: false;
+      path: getPathParameters;
     }
   | {
-      searchParams: getSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: getPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<getSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<getSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<getSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: getSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Get an Assignment Group

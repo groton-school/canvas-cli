@@ -82,20 +82,35 @@ export type create_link_outcome_courses_outcome_idFormParameters =
     calculation_int: number | string;
   };
 
-type Options = {
-  pathParams: create_link_outcome_courses_outcome_idPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<create_link_outcome_courses_outcome_idSearchParameters>;
-      params?: Partial<create_link_outcome_courses_outcome_idFormParameters>;
-      strict?: false;
+      path: create_link_outcome_courses_outcome_idPathParameters;
     }
   | {
-      searchParams: create_link_outcome_courses_outcome_idSearchParameters;
-      params: create_link_outcome_courses_outcome_idFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: create_link_outcome_courses_outcome_idPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<create_link_outcome_courses_outcome_idSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<create_link_outcome_courses_outcome_idSearchParameters>;
+        body?: Partial<create_link_outcome_courses_outcome_idFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<create_link_outcome_courses_outcome_idFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<create_link_outcome_courses_outcome_idSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: create_link_outcome_courses_outcome_idSearchParameters;
+        body?: Partial<create_link_outcome_courses_outcome_idFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: create_link_outcome_courses_outcome_idFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Create/link an outcome

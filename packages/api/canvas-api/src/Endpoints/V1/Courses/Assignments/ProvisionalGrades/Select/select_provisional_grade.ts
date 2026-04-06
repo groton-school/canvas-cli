@@ -24,18 +24,29 @@ export type select_provisional_gradePathParameters = {
 
 export type select_provisional_gradeSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: select_provisional_gradePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<select_provisional_gradeSearchParameters>;
-      strict?: false;
+      path: select_provisional_gradePathParameters;
     }
   | {
-      searchParams: select_provisional_gradeSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: select_provisional_gradePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<select_provisional_gradeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<select_provisional_gradeSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<select_provisional_gradeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: select_provisional_gradeSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Select provisional grade

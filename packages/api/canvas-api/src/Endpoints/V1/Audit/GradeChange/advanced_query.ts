@@ -54,10 +54,14 @@ export type advanced_querySearchParameters = Masquerade &
 
 type Options =
   | {
+      query?: Partial<advanced_querySearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<advanced_querySearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<advanced_querySearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: advanced_querySearchParameters;
       strict: true;
     };

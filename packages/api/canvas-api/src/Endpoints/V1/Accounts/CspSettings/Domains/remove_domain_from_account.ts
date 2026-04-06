@@ -16,18 +16,29 @@ export type remove_domain_from_accountSearchParameters = Masquerade &
     domain: string;
   }>;
 
-type Options = {
-  pathParams: remove_domain_from_accountPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<remove_domain_from_accountSearchParameters>;
-      strict?: false;
+      path: remove_domain_from_accountPathParameters;
     }
   | {
-      searchParams: remove_domain_from_accountSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: remove_domain_from_accountPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<remove_domain_from_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<remove_domain_from_accountSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<remove_domain_from_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: remove_domain_from_accountSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Remove a domain from account

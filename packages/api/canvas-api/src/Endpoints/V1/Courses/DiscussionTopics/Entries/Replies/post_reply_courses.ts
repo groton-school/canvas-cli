@@ -34,20 +34,35 @@ export type post_reply_coursesFormParameters = Masquerade & {
   attachment: string;
 };
 
-type Options = {
-  pathParams: post_reply_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<post_reply_coursesSearchParameters>;
-      params?: Partial<post_reply_coursesFormParameters>;
-      strict?: false;
+      path: post_reply_coursesPathParameters;
     }
   | {
-      searchParams: post_reply_coursesSearchParameters;
-      params: post_reply_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: post_reply_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<post_reply_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<post_reply_coursesSearchParameters>;
+        body?: Partial<post_reply_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<post_reply_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<post_reply_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: post_reply_coursesSearchParameters;
+        body?: Partial<post_reply_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: post_reply_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Post a reply

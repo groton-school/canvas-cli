@@ -19,18 +19,29 @@ export type show_collection_of_resultsPathParameters = {
 
 export type show_collection_of_resultsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_collection_of_resultsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_collection_of_resultsSearchParameters>;
-      strict?: false;
+      path: show_collection_of_resultsPathParameters;
     }
   | {
-      searchParams: show_collection_of_resultsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_collection_of_resultsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_collection_of_resultsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_collection_of_resultsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_collection_of_resultsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_collection_of_resultsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show a collection of Results

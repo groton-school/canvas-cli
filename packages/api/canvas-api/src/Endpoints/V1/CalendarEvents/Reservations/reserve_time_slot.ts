@@ -30,20 +30,35 @@ export type reserve_time_slotFormParameters = Masquerade & {
   cancel_existing: boolean | string;
 };
 
-type Options = {
-  pathParams: reserve_time_slotPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<reserve_time_slotSearchParameters>;
-      params?: Partial<reserve_time_slotFormParameters>;
-      strict?: false;
+      path: reserve_time_slotPathParameters;
     }
   | {
-      searchParams: reserve_time_slotSearchParameters;
-      params: reserve_time_slotFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: reserve_time_slotPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<reserve_time_slotSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<reserve_time_slotSearchParameters>;
+        body?: Partial<reserve_time_slotFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<reserve_time_slotFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<reserve_time_slotSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: reserve_time_slotSearchParameters;
+        body?: Partial<reserve_time_slotFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: reserve_time_slotFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Reserve a time slot

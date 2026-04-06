@@ -145,20 +145,35 @@ export type grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters
     rubric_assessment: RubricAssessment;
   };
 
-type Options = {
-  pathParams: grade_or_comment_on_submission_by_anonymous_id_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<grade_or_comment_on_submission_by_anonymous_id_coursesSearchParameters>;
-      params?: Partial<grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters>;
-      strict?: false;
+      path: grade_or_comment_on_submission_by_anonymous_id_coursesPathParameters;
     }
   | {
-      searchParams: grade_or_comment_on_submission_by_anonymous_id_coursesSearchParameters;
-      params: grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: grade_or_comment_on_submission_by_anonymous_id_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<grade_or_comment_on_submission_by_anonymous_id_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<grade_or_comment_on_submission_by_anonymous_id_coursesSearchParameters>;
+        body?: Partial<grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<grade_or_comment_on_submission_by_anonymous_id_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: grade_or_comment_on_submission_by_anonymous_id_coursesSearchParameters;
+        body?: Partial<grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: grade_or_comment_on_submission_by_anonymous_id_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Grade or comment on a submission by anonymous id

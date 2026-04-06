@@ -62,20 +62,35 @@ export type set_extensions_for_student_quiz_submissionsFormParameters =
     'quiz_extensions[extend_from_end_at]': number | string[];
   };
 
-type Options = {
-  pathParams: set_extensions_for_student_quiz_submissionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<set_extensions_for_student_quiz_submissionsSearchParameters>;
-      params?: Partial<set_extensions_for_student_quiz_submissionsFormParameters>;
-      strict?: false;
+      path: set_extensions_for_student_quiz_submissionsPathParameters;
     }
   | {
-      searchParams: set_extensions_for_student_quiz_submissionsSearchParameters;
-      params: set_extensions_for_student_quiz_submissionsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: set_extensions_for_student_quiz_submissionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<set_extensions_for_student_quiz_submissionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<set_extensions_for_student_quiz_submissionsSearchParameters>;
+        body?: Partial<set_extensions_for_student_quiz_submissionsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<set_extensions_for_student_quiz_submissionsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<set_extensions_for_student_quiz_submissionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: set_extensions_for_student_quiz_submissionsSearchParameters;
+        body?: Partial<set_extensions_for_student_quiz_submissionsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: set_extensions_for_student_quiz_submissionsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Set extensions for student quiz submissions

@@ -91,20 +91,35 @@ export type uploadFormParameters = Masquerade & {
   success_include?: string[];
 };
 
-type Options = {
-  pathParams: uploadPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<uploadSearchParameters>;
-      params?: Partial<uploadFormParameters>;
-      strict?: false;
+      path: uploadPathParameters;
     }
   | {
-      searchParams: uploadSearchParameters;
-      params: uploadFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: uploadPathParameters;
     }
-) & {
+) &
+  (
+    | {
+        query?: Partial<uploadSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<uploadSearchParameters>;
+        body?: Partial<uploadFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<uploadFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<uploadSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: uploadSearchParameters;
+        body?: Partial<uploadFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: uploadFormParameters;
+        strict: true;
+      }
+  ) & {
     file: FileLocation;
   };
 

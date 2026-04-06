@@ -25,18 +25,29 @@ export type show_conversationPathParameters = {
 
 export type show_conversationSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_conversationPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_conversationSearchParameters>;
-      strict?: false;
+      path: show_conversationPathParameters;
     }
   | {
-      searchParams: show_conversationSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_conversationPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_conversationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_conversationSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_conversationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_conversationSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show conversation

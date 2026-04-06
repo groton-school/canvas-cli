@@ -5,10 +5,14 @@ export type hide_all_stream_itemsSearchParameters = Masquerade;
 
 type Options =
   | {
+      query?: Partial<hide_all_stream_itemsSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<hide_all_stream_itemsSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<hide_all_stream_itemsSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: hide_all_stream_itemsSearchParameters;
       strict: true;
     };

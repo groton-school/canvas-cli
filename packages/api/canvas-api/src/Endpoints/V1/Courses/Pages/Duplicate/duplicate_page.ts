@@ -19,18 +19,29 @@ export type duplicate_pagePathParameters = {
 
 export type duplicate_pageSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: duplicate_pagePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<duplicate_pageSearchParameters>;
-      strict?: false;
+      path: duplicate_pagePathParameters;
     }
   | {
-      searchParams: duplicate_pageSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: duplicate_pagePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<duplicate_pageSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<duplicate_pageSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<duplicate_pageSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: duplicate_pageSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Duplicate page

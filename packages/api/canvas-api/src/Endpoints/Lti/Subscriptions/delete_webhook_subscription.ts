@@ -12,18 +12,29 @@ export type delete_webhook_subscriptionPathParameters = {
 
 export type delete_webhook_subscriptionSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_webhook_subscriptionPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_webhook_subscriptionSearchParameters>;
-      strict?: false;
+      path: delete_webhook_subscriptionPathParameters;
     }
   | {
-      searchParams: delete_webhook_subscriptionSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_webhook_subscriptionPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_webhook_subscriptionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_webhook_subscriptionSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_webhook_subscriptionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_webhook_subscriptionSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a Webhook Subscription

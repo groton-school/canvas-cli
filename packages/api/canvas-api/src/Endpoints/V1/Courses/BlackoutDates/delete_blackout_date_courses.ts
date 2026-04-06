@@ -19,18 +19,29 @@ export type delete_blackout_date_coursesPathParameters = {
 
 export type delete_blackout_date_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_blackout_date_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_blackout_date_coursesSearchParameters>;
-      strict?: false;
+      path: delete_blackout_date_coursesPathParameters;
     }
   | {
-      searchParams: delete_blackout_date_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_blackout_date_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_blackout_date_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_blackout_date_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_blackout_date_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_blackout_date_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete Blackout Date

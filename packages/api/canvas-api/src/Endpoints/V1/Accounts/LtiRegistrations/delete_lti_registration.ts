@@ -19,18 +19,29 @@ export type delete_lti_registrationPathParameters = {
 
 export type delete_lti_registrationSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_lti_registrationPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_lti_registrationSearchParameters>;
-      strict?: false;
+      path: delete_lti_registrationPathParameters;
     }
   | {
-      searchParams: delete_lti_registrationSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_lti_registrationPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_lti_registrationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_lti_registrationSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_lti_registrationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_lti_registrationSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an LTI Registration

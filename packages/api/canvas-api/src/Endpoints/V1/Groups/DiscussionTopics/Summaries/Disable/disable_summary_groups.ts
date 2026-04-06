@@ -18,18 +18,29 @@ export type disable_summary_groupsPathParameters = {
 
 export type disable_summary_groupsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: disable_summary_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<disable_summary_groupsSearchParameters>;
-      strict?: false;
+      path: disable_summary_groupsPathParameters;
     }
   | {
-      searchParams: disable_summary_groupsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: disable_summary_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<disable_summary_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<disable_summary_groupsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<disable_summary_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: disable_summary_groupsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Disable summary

@@ -32,20 +32,35 @@ export type reserve_time_slot_participant_idFormParameters = Masquerade & {
   cancel_existing: boolean | string;
 };
 
-type Options = {
-  pathParams: reserve_time_slot_participant_idPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<reserve_time_slot_participant_idSearchParameters>;
-      params?: Partial<reserve_time_slot_participant_idFormParameters>;
-      strict?: false;
+      path: reserve_time_slot_participant_idPathParameters;
     }
   | {
-      searchParams: reserve_time_slot_participant_idSearchParameters;
-      params: reserve_time_slot_participant_idFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: reserve_time_slot_participant_idPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<reserve_time_slot_participant_idSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<reserve_time_slot_participant_idSearchParameters>;
+        body?: Partial<reserve_time_slot_participant_idFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<reserve_time_slot_participant_idFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<reserve_time_slot_participant_idSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: reserve_time_slot_participant_idSearchParameters;
+        body?: Partial<reserve_time_slot_participant_idFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: reserve_time_slot_participant_idFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Reserve a time slot

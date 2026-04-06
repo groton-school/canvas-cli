@@ -4,10 +4,14 @@ export type templated_file_for_importing_rubricSearchParameters = Masquerade;
 
 type Options =
   | {
+      query?: Partial<templated_file_for_importing_rubricSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<templated_file_for_importing_rubricSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<templated_file_for_importing_rubricSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: templated_file_for_importing_rubricSearchParameters;
       strict: true;
     };

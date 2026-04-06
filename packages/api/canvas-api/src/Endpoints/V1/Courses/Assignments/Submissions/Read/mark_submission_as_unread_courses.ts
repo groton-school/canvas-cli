@@ -24,18 +24,29 @@ export type mark_submission_as_unread_coursesPathParameters = {
 
 export type mark_submission_as_unread_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: mark_submission_as_unread_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<mark_submission_as_unread_coursesSearchParameters>;
-      strict?: false;
+      path: mark_submission_as_unread_coursesPathParameters;
     }
   | {
-      searchParams: mark_submission_as_unread_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: mark_submission_as_unread_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<mark_submission_as_unread_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<mark_submission_as_unread_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<mark_submission_as_unread_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: mark_submission_as_unread_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Mark submission as unread

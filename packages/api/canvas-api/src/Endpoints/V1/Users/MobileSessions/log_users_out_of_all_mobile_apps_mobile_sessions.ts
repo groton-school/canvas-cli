@@ -14,10 +14,14 @@ export type log_users_out_of_all_mobile_apps_mobile_sessionsSearchParameters =
 
 type Options =
   | {
+      query?: Partial<log_users_out_of_all_mobile_apps_mobile_sessionsSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<log_users_out_of_all_mobile_apps_mobile_sessionsSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<log_users_out_of_all_mobile_apps_mobile_sessionsSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: log_users_out_of_all_mobile_apps_mobile_sessionsSearchParameters;
       strict: true;
     };

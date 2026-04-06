@@ -30,20 +30,35 @@ export type updateFormParameters = Masquerade & {
   parent_outcome_group_id: number | string;
 };
 
-type Options = {
-  pathParams: updatePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<updateSearchParameters>;
-      params?: Partial<updateFormParameters>;
-      strict?: false;
+      path: updatePathParameters;
     }
   | {
-      searchParams: updateSearchParameters;
-      params: updateFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: updatePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<updateSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<updateSearchParameters>;
+        body?: Partial<updateFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<updateFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<updateSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: updateSearchParameters;
+        body?: Partial<updateFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: updateFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Update an outcome group

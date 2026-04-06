@@ -6,10 +6,14 @@ export type redirect_to_root_outcome_group_for_context_globalSearchParameters =
 
 type Options =
   | {
+      query?: Partial<redirect_to_root_outcome_group_for_context_globalSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<redirect_to_root_outcome_group_for_context_globalSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<redirect_to_root_outcome_group_for_context_globalSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: redirect_to_root_outcome_group_for_context_globalSearchParameters;
       strict: true;
     };

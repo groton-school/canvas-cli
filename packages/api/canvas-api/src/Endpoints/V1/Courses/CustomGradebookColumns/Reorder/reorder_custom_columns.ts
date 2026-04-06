@@ -21,20 +21,35 @@ export type reorder_custom_columnsFormParameters = Masquerade & {
   order: number | string[];
 };
 
-type Options = {
-  pathParams: reorder_custom_columnsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<reorder_custom_columnsSearchParameters>;
-      params?: Partial<reorder_custom_columnsFormParameters>;
-      strict?: false;
+      path: reorder_custom_columnsPathParameters;
     }
   | {
-      searchParams: reorder_custom_columnsSearchParameters;
-      params: reorder_custom_columnsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: reorder_custom_columnsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<reorder_custom_columnsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<reorder_custom_columnsSearchParameters>;
+        body?: Partial<reorder_custom_columnsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<reorder_custom_columnsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<reorder_custom_columnsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: reorder_custom_columnsSearchParameters;
+        body?: Partial<reorder_custom_columnsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: reorder_custom_columnsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Reorder custom columns

@@ -44,20 +44,35 @@ export type export_content_usersFormParameters = Masquerade & {
   select: JSONObject;
 };
 
-type Options = {
-  pathParams: export_content_usersPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<export_content_usersSearchParameters>;
-      params?: Partial<export_content_usersFormParameters>;
-      strict?: false;
+      path: export_content_usersPathParameters;
     }
   | {
-      searchParams: export_content_usersSearchParameters;
-      params: export_content_usersFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: export_content_usersPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<export_content_usersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<export_content_usersSearchParameters>;
+        body?: Partial<export_content_usersFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<export_content_usersFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<export_content_usersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: export_content_usersSearchParameters;
+        body?: Partial<export_content_usersFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: export_content_usersFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Export content

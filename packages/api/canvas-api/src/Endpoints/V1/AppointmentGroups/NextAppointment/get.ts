@@ -11,10 +11,14 @@ export type getSearchParameters = Masquerade &
 
 type Options =
   | {
+      query?: Partial<getSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<getSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<getSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: getSearchParameters;
       strict: true;
     };

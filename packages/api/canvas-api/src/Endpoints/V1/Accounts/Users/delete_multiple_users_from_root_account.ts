@@ -14,18 +14,29 @@ export type delete_multiple_users_from_root_accountPathParameters = {
 export type delete_multiple_users_from_root_accountSearchParameters =
   Masquerade;
 
-type Options = {
-  pathParams: delete_multiple_users_from_root_accountPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_multiple_users_from_root_accountSearchParameters>;
-      strict?: false;
+      path: delete_multiple_users_from_root_accountPathParameters;
     }
   | {
-      searchParams: delete_multiple_users_from_root_accountSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_multiple_users_from_root_accountPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_multiple_users_from_root_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_multiple_users_from_root_accountSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_multiple_users_from_root_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_multiple_users_from_root_accountSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete multiple users from the root account

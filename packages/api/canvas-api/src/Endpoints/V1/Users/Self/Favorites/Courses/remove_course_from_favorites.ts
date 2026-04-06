@@ -13,18 +13,29 @@ export type remove_course_from_favoritesPathParameters = {
 
 export type remove_course_from_favoritesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: remove_course_from_favoritesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<remove_course_from_favoritesSearchParameters>;
-      strict?: false;
+      path: remove_course_from_favoritesPathParameters;
     }
   | {
-      searchParams: remove_course_from_favoritesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: remove_course_from_favoritesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<remove_course_from_favoritesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<remove_course_from_favoritesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<remove_course_from_favoritesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: remove_course_from_favoritesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Remove course from favorites

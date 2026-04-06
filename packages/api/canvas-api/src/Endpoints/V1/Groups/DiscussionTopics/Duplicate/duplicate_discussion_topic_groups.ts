@@ -19,18 +19,29 @@ export type duplicate_discussion_topic_groupsPathParameters = {
 
 export type duplicate_discussion_topic_groupsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: duplicate_discussion_topic_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<duplicate_discussion_topic_groupsSearchParameters>;
-      strict?: false;
+      path: duplicate_discussion_topic_groupsPathParameters;
     }
   | {
-      searchParams: duplicate_discussion_topic_groupsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: duplicate_discussion_topic_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<duplicate_discussion_topic_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<duplicate_discussion_topic_groupsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<duplicate_discussion_topic_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: duplicate_discussion_topic_groupsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Duplicate discussion topic

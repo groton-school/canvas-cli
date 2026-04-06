@@ -35,18 +35,29 @@ export type delete_peer_review_sectionsSearchParameters = Masquerade &
     user_id: number | string;
   }>;
 
-type Options = {
-  pathParams: delete_peer_review_sectionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_peer_review_sectionsSearchParameters>;
-      strict?: false;
+      path: delete_peer_review_sectionsPathParameters;
     }
   | {
-      searchParams: delete_peer_review_sectionsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_peer_review_sectionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_peer_review_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_peer_review_sectionsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_peer_review_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_peer_review_sectionsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete Peer Review

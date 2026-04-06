@@ -29,18 +29,29 @@ export type retrieve_all_quiz_reportsSearchParameters = Masquerade &
     includes_all_versions: boolean | string;
   }>;
 
-type Options = {
-  pathParams: retrieve_all_quiz_reportsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<retrieve_all_quiz_reportsSearchParameters>;
-      strict?: false;
+      path: retrieve_all_quiz_reportsPathParameters;
     }
   | {
-      searchParams: retrieve_all_quiz_reportsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: retrieve_all_quiz_reportsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<retrieve_all_quiz_reportsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<retrieve_all_quiz_reportsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<retrieve_all_quiz_reportsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: retrieve_all_quiz_reportsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Retrieve all quiz reports

@@ -13,18 +13,29 @@ export type delete_planner_notePathParameters = {
 
 export type delete_planner_noteSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_planner_notePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_planner_noteSearchParameters>;
-      strict?: false;
+      path: delete_planner_notePathParameters;
     }
   | {
-      searchParams: delete_planner_noteSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_planner_notePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_planner_noteSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_planner_noteSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_planner_noteSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_planner_noteSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a planner note

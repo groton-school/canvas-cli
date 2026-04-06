@@ -53,20 +53,35 @@ export type patch_late_policyFormParameters = Masquerade & {
   'late_policy[late_submission_minimum_percent]': number | string;
 };
 
-type Options = {
-  pathParams: patch_late_policyPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<patch_late_policySearchParameters>;
-      params?: Partial<patch_late_policyFormParameters>;
-      strict?: false;
+      path: patch_late_policyPathParameters;
     }
   | {
-      searchParams: patch_late_policySearchParameters;
-      params: patch_late_policyFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: patch_late_policyPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<patch_late_policySearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<patch_late_policySearchParameters>;
+        body?: Partial<patch_late_policyFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<patch_late_policyFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<patch_late_policySearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: patch_late_policySearchParameters;
+        body?: Partial<patch_late_policyFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: patch_late_policyFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Patch a late policy

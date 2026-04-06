@@ -18,18 +18,29 @@ export type mark_topic_as_read_coursesPathParameters = {
 
 export type mark_topic_as_read_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: mark_topic_as_read_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<mark_topic_as_read_coursesSearchParameters>;
-      strict?: false;
+      path: mark_topic_as_read_coursesPathParameters;
     }
   | {
-      searchParams: mark_topic_as_read_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: mark_topic_as_read_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<mark_topic_as_read_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<mark_topic_as_read_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<mark_topic_as_read_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: mark_topic_as_read_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Mark topic as read

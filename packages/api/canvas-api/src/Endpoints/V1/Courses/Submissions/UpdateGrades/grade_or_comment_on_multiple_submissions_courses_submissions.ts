@@ -65,20 +65,35 @@ export type grade_or_comment_on_multiple_submissions_courses_submissionsFormPara
     'grade_data[<assignment_id>][<student_id>]': number | string;
   };
 
-type Options = {
-  pathParams: grade_or_comment_on_multiple_submissions_courses_submissionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<grade_or_comment_on_multiple_submissions_courses_submissionsSearchParameters>;
-      params?: Partial<grade_or_comment_on_multiple_submissions_courses_submissionsFormParameters>;
-      strict?: false;
+      path: grade_or_comment_on_multiple_submissions_courses_submissionsPathParameters;
     }
   | {
-      searchParams: grade_or_comment_on_multiple_submissions_courses_submissionsSearchParameters;
-      params: grade_or_comment_on_multiple_submissions_courses_submissionsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: grade_or_comment_on_multiple_submissions_courses_submissionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<grade_or_comment_on_multiple_submissions_courses_submissionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<grade_or_comment_on_multiple_submissions_courses_submissionsSearchParameters>;
+        body?: Partial<grade_or_comment_on_multiple_submissions_courses_submissionsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<grade_or_comment_on_multiple_submissions_courses_submissionsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<grade_or_comment_on_multiple_submissions_courses_submissionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: grade_or_comment_on_multiple_submissions_courses_submissionsSearchParameters;
+        body?: Partial<grade_or_comment_on_multiple_submissions_courses_submissionsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: grade_or_comment_on_multiple_submissions_courses_submissionsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Grade or comment on multiple submissions

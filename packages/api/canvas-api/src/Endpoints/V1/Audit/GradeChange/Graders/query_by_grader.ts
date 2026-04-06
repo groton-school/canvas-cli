@@ -28,18 +28,29 @@ export type query_by_graderSearchParameters = Masquerade &
     end_time: string;
   }>;
 
-type Options = {
-  pathParams: query_by_graderPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<query_by_graderSearchParameters>;
-      strict?: false;
+      path: query_by_graderPathParameters;
     }
   | {
-      searchParams: query_by_graderSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: query_by_graderPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<query_by_graderSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<query_by_graderSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<query_by_graderSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: query_by_graderSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Query by grader

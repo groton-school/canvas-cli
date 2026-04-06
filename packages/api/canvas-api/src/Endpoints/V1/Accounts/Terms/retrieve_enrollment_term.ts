@@ -19,18 +19,29 @@ export type retrieve_enrollment_termPathParameters = {
 
 export type retrieve_enrollment_termSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: retrieve_enrollment_termPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<retrieve_enrollment_termSearchParameters>;
-      strict?: false;
+      path: retrieve_enrollment_termPathParameters;
     }
   | {
-      searchParams: retrieve_enrollment_termSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: retrieve_enrollment_termPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<retrieve_enrollment_termSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<retrieve_enrollment_termSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<retrieve_enrollment_termSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: retrieve_enrollment_termSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Retrieve enrollment term

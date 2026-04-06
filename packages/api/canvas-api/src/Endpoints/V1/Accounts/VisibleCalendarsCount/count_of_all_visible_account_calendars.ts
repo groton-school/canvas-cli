@@ -12,18 +12,29 @@ export type count_of_all_visible_account_calendarsPathParameters = {
 
 export type count_of_all_visible_account_calendarsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: count_of_all_visible_account_calendarsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<count_of_all_visible_account_calendarsSearchParameters>;
-      strict?: false;
+      path: count_of_all_visible_account_calendarsPathParameters;
     }
   | {
-      searchParams: count_of_all_visible_account_calendarsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: count_of_all_visible_account_calendarsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<count_of_all_visible_account_calendarsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<count_of_all_visible_account_calendarsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<count_of_all_visible_account_calendarsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: count_of_all_visible_account_calendarsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Count of all visible account calendars

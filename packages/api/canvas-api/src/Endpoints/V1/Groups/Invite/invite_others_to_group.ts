@@ -17,20 +17,35 @@ export type invite_others_to_groupFormParameters = Masquerade & {
   invitees: string[];
 };
 
-type Options = {
-  pathParams: invite_others_to_groupPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<invite_others_to_groupSearchParameters>;
-      params?: Partial<invite_others_to_groupFormParameters>;
-      strict?: false;
+      path: invite_others_to_groupPathParameters;
     }
   | {
-      searchParams: invite_others_to_groupSearchParameters;
-      params: invite_others_to_groupFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: invite_others_to_groupPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<invite_others_to_groupSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<invite_others_to_groupSearchParameters>;
+        body?: Partial<invite_others_to_groupFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<invite_others_to_groupFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<invite_others_to_groupSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: invite_others_to_groupSearchParameters;
+        body?: Partial<invite_others_to_groupFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: invite_others_to_groupFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Invite others to a group

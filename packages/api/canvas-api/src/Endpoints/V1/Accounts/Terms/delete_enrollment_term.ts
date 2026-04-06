@@ -19,18 +19,29 @@ export type delete_enrollment_termPathParameters = {
 
 export type delete_enrollment_termSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_enrollment_termPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_enrollment_termSearchParameters>;
-      strict?: false;
+      path: delete_enrollment_termPathParameters;
     }
   | {
-      searchParams: delete_enrollment_termSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_enrollment_termPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_enrollment_termSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_enrollment_termSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_enrollment_termSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_enrollment_termSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete enrollment term

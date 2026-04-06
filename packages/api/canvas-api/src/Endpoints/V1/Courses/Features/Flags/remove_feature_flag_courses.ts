@@ -15,18 +15,29 @@ export type remove_feature_flag_coursesPathParameters = {
 
 export type remove_feature_flag_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: remove_feature_flag_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<remove_feature_flag_coursesSearchParameters>;
-      strict?: false;
+      path: remove_feature_flag_coursesPathParameters;
     }
   | {
-      searchParams: remove_feature_flag_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: remove_feature_flag_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<remove_feature_flag_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<remove_feature_flag_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<remove_feature_flag_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: remove_feature_flag_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Remove feature flag

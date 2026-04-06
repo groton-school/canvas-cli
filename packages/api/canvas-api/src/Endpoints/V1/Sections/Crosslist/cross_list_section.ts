@@ -30,20 +30,35 @@ export type cross_list_sectionFormParameters = Masquerade & {
   override_sis_stickiness: boolean | string;
 };
 
-type Options = {
-  pathParams: cross_list_sectionPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<cross_list_sectionSearchParameters>;
-      params?: Partial<cross_list_sectionFormParameters>;
-      strict?: false;
+      path: cross_list_sectionPathParameters;
     }
   | {
-      searchParams: cross_list_sectionSearchParameters;
-      params: cross_list_sectionFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: cross_list_sectionPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<cross_list_sectionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<cross_list_sectionSearchParameters>;
+        body?: Partial<cross_list_sectionFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<cross_list_sectionFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<cross_list_sectionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: cross_list_sectionSearchParameters;
+        body?: Partial<cross_list_sectionFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: cross_list_sectionFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Cross-list a Section

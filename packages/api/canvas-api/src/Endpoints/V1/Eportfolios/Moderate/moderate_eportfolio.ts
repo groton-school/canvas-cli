@@ -18,20 +18,35 @@ export type moderate_eportfolioFormParameters = Masquerade & {
   spam_status: string;
 };
 
-type Options = {
-  pathParams: moderate_eportfolioPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<moderate_eportfolioSearchParameters>;
-      params?: Partial<moderate_eportfolioFormParameters>;
-      strict?: false;
+      path: moderate_eportfolioPathParameters;
     }
   | {
-      searchParams: moderate_eportfolioSearchParameters;
-      params: moderate_eportfolioFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: moderate_eportfolioPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<moderate_eportfolioSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<moderate_eportfolioSearchParameters>;
+        body?: Partial<moderate_eportfolioFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<moderate_eportfolioFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<moderate_eportfolioSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: moderate_eportfolioSearchParameters;
+        body?: Partial<moderate_eportfolioFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: moderate_eportfolioFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Moderate an ePortfolio

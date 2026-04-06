@@ -35,20 +35,35 @@ export type reorder_question_groupsFormParameters = Masquerade & {
   'order[type]': string[];
 };
 
-type Options = {
-  pathParams: reorder_question_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<reorder_question_groupsSearchParameters>;
-      params?: Partial<reorder_question_groupsFormParameters>;
-      strict?: false;
+      path: reorder_question_groupsPathParameters;
     }
   | {
-      searchParams: reorder_question_groupsSearchParameters;
-      params: reorder_question_groupsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: reorder_question_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<reorder_question_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<reorder_question_groupsSearchParameters>;
+        body?: Partial<reorder_question_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<reorder_question_groupsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<reorder_question_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: reorder_question_groupsSearchParameters;
+        body?: Partial<reorder_question_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: reorder_question_groupsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Reorder question groups

@@ -12,18 +12,29 @@ export type delete_bookmarkPathParameters = {
 
 export type delete_bookmarkSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_bookmarkPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_bookmarkSearchParameters>;
-      strict?: false;
+      path: delete_bookmarkPathParameters;
     }
   | {
-      searchParams: delete_bookmarkSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_bookmarkPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_bookmarkSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_bookmarkSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_bookmarkSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_bookmarkSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete bookmark

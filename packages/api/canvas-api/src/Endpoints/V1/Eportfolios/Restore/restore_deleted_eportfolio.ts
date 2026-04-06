@@ -13,18 +13,29 @@ export type restore_deleted_eportfolioPathParameters = {
 
 export type restore_deleted_eportfolioSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: restore_deleted_eportfolioPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<restore_deleted_eportfolioSearchParameters>;
-      strict?: false;
+      path: restore_deleted_eportfolioPathParameters;
     }
   | {
-      searchParams: restore_deleted_eportfolioSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: restore_deleted_eportfolioPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<restore_deleted_eportfolioSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<restore_deleted_eportfolioSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<restore_deleted_eportfolioSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: restore_deleted_eportfolioSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Restore a deleted ePortfolio

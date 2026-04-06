@@ -35,18 +35,29 @@ export type delete_peer_review_coursesSearchParameters = Masquerade &
     user_id: number | string;
   }>;
 
-type Options = {
-  pathParams: delete_peer_review_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_peer_review_coursesSearchParameters>;
-      strict?: false;
+      path: delete_peer_review_coursesPathParameters;
     }
   | {
-      searchParams: delete_peer_review_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_peer_review_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_peer_review_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_peer_review_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_peer_review_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_peer_review_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete Peer Review

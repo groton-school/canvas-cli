@@ -38,20 +38,35 @@ export type unflagging_questionFormParameters = Masquerade & {
   access_code: string;
 };
 
-type Options = {
-  pathParams: unflagging_questionPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<unflagging_questionSearchParameters>;
-      params?: Partial<unflagging_questionFormParameters>;
-      strict?: false;
+      path: unflagging_questionPathParameters;
     }
   | {
-      searchParams: unflagging_questionSearchParameters;
-      params: unflagging_questionFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: unflagging_questionPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<unflagging_questionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<unflagging_questionSearchParameters>;
+        body?: Partial<unflagging_questionFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<unflagging_questionFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<unflagging_questionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: unflagging_questionSearchParameters;
+        body?: Partial<unflagging_questionFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: unflagging_questionFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Unflagging a question.

@@ -23,20 +23,35 @@ export type add_multiple_allowed_domains_to_accountFormParameters =
     domains: string[];
   };
 
-type Options = {
-  pathParams: add_multiple_allowed_domains_to_accountPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<add_multiple_allowed_domains_to_accountSearchParameters>;
-      params?: Partial<add_multiple_allowed_domains_to_accountFormParameters>;
-      strict?: false;
+      path: add_multiple_allowed_domains_to_accountPathParameters;
     }
   | {
-      searchParams: add_multiple_allowed_domains_to_accountSearchParameters;
-      params: add_multiple_allowed_domains_to_accountFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: add_multiple_allowed_domains_to_accountPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<add_multiple_allowed_domains_to_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<add_multiple_allowed_domains_to_accountSearchParameters>;
+        body?: Partial<add_multiple_allowed_domains_to_accountFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<add_multiple_allowed_domains_to_accountFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<add_multiple_allowed_domains_to_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: add_multiple_allowed_domains_to_accountSearchParameters;
+        body?: Partial<add_multiple_allowed_domains_to_accountFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: add_multiple_allowed_domains_to_accountFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Add multiple allowed domains to an account

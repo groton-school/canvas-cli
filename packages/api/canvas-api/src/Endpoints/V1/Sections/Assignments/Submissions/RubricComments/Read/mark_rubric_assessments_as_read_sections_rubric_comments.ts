@@ -26,18 +26,29 @@ export type mark_rubric_assessments_as_read_sections_rubric_commentsPathParamete
 export type mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters =
   Masquerade;
 
-type Options = {
-  pathParams: mark_rubric_assessments_as_read_sections_rubric_commentsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters>;
-      strict?: false;
+      path: mark_rubric_assessments_as_read_sections_rubric_commentsPathParameters;
     }
   | {
-      searchParams: mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: mark_rubric_assessments_as_read_sections_rubric_commentsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Mark rubric assessments as read

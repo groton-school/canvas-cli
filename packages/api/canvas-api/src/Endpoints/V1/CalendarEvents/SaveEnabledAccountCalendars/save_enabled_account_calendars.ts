@@ -16,12 +16,20 @@ export type save_enabled_account_calendarsFormParameters = Masquerade & {
 
 type Options =
   | {
+      query?: Partial<save_enabled_account_calendarsSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<save_enabled_account_calendarsSearchParameters>;
+      body?: Partial<save_enabled_account_calendarsFormParameters>;
+      /** @deprecated Use {@link Options.body} */
       params?: Partial<save_enabled_account_calendarsFormParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<save_enabled_account_calendarsSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: save_enabled_account_calendarsSearchParameters;
+      body?: Partial<save_enabled_account_calendarsFormParameters>;
+      /** @deprecated Use {@link Options.body} */
       params: save_enabled_account_calendarsFormParameters;
       strict: true;
     };

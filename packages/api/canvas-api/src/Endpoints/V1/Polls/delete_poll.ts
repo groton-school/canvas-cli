@@ -12,18 +12,29 @@ export type delete_pollPathParameters = {
 
 export type delete_pollSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_pollPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_pollSearchParameters>;
-      strict?: false;
+      path: delete_pollPathParameters;
     }
   | {
-      searchParams: delete_pollSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_pollPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_pollSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_pollSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_pollSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_pollSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a poll

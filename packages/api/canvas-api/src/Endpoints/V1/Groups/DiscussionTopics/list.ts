@@ -61,18 +61,29 @@ export type listSearchParameters = Masquerade &
     exclude_context_module_locked_topics: boolean | string;
   }>;
 
-type Options = {
-  pathParams: listPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<listSearchParameters>;
-      strict?: false;
+      path: listPathParameters;
     }
   | {
-      searchParams: listSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: listPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<listSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<listSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<listSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: listSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * List discussion topics

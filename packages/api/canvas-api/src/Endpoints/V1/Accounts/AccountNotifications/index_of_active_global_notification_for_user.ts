@@ -37,18 +37,29 @@ export type index_of_active_global_notification_for_userSearchParameters =
       show_is_closed: boolean | string;
     }>;
 
-type Options = {
-  pathParams: index_of_active_global_notification_for_userPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<index_of_active_global_notification_for_userSearchParameters>;
-      strict?: false;
+      path: index_of_active_global_notification_for_userPathParameters;
     }
   | {
-      searchParams: index_of_active_global_notification_for_userSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: index_of_active_global_notification_for_userPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<index_of_active_global_notification_for_userSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<index_of_active_global_notification_for_userSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<index_of_active_global_notification_for_userSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: index_of_active_global_notification_for_userSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Index of active global notification for the user

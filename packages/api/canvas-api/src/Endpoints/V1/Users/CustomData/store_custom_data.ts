@@ -28,20 +28,35 @@ export type store_custom_dataFormParameters = Masquerade & {
   data: JSON;
 };
 
-type Options = {
-  pathParams: store_custom_dataPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<store_custom_dataSearchParameters>;
-      params?: Partial<store_custom_dataFormParameters>;
-      strict?: false;
+      path: store_custom_dataPathParameters;
     }
   | {
-      searchParams: store_custom_dataSearchParameters;
-      params: store_custom_dataFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: store_custom_dataPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<store_custom_dataSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<store_custom_dataSearchParameters>;
+        body?: Partial<store_custom_dataFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<store_custom_dataFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<store_custom_dataSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: store_custom_dataSearchParameters;
+        body?: Partial<store_custom_dataFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: store_custom_dataFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Store custom data

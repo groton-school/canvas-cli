@@ -28,20 +28,35 @@ export type disable_assignments_currently_enabled_for_grade_export_to_sisFormPar
     grading_period_id: number | string;
   };
 
-type Options = {
-  pathParams: disable_assignments_currently_enabled_for_grade_export_to_sisPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters>;
-      params?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters>;
-      strict?: false;
+      path: disable_assignments_currently_enabled_for_grade_export_to_sisPathParameters;
     }
   | {
-      searchParams: disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters;
-      params: disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: disable_assignments_currently_enabled_for_grade_export_to_sisPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters>;
+        body?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters;
+        body?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Disable assignments currently enabled for grade export to SIS

@@ -19,18 +19,29 @@ export type delete_external_tool_coursesPathParameters = {
 
 export type delete_external_tool_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_external_tool_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_external_tool_coursesSearchParameters>;
-      strict?: false;
+      path: delete_external_tool_coursesPathParameters;
     }
   | {
-      searchParams: delete_external_tool_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_external_tool_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_external_tool_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_external_tool_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_external_tool_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_external_tool_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an external tool

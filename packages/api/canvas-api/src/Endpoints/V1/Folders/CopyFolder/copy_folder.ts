@@ -18,20 +18,35 @@ export type copy_folderFormParameters = Masquerade & {
   source_folder_id: string;
 };
 
-type Options = {
-  pathParams: copy_folderPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<copy_folderSearchParameters>;
-      params?: Partial<copy_folderFormParameters>;
-      strict?: false;
+      path: copy_folderPathParameters;
     }
   | {
-      searchParams: copy_folderSearchParameters;
-      params: copy_folderFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: copy_folderPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<copy_folderSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<copy_folderSearchParameters>;
+        body?: Partial<copy_folderFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<copy_folderFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<copy_folderSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: copy_folderSearchParameters;
+        body?: Partial<copy_folderFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: copy_folderFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Copy a folder

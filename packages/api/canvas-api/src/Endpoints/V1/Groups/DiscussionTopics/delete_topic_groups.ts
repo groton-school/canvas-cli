@@ -18,18 +18,29 @@ export type delete_topic_groupsPathParameters = {
 
 export type delete_topic_groupsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_topic_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_topic_groupsSearchParameters>;
-      strict?: false;
+      path: delete_topic_groupsPathParameters;
     }
   | {
-      searchParams: delete_topic_groupsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_topic_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_topic_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_topic_groupsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_topic_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_topic_groupsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a topic

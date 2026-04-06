@@ -35,20 +35,35 @@ export type import_outcome_group_globalFormParameters = Masquerade & {
   async: boolean | string;
 };
 
-type Options = {
-  pathParams: import_outcome_group_globalPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<import_outcome_group_globalSearchParameters>;
-      params?: Partial<import_outcome_group_globalFormParameters>;
-      strict?: false;
+      path: import_outcome_group_globalPathParameters;
     }
   | {
-      searchParams: import_outcome_group_globalSearchParameters;
-      params: import_outcome_group_globalFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: import_outcome_group_globalPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<import_outcome_group_globalSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<import_outcome_group_globalSearchParameters>;
+        body?: Partial<import_outcome_group_globalFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<import_outcome_group_globalFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<import_outcome_group_globalSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: import_outcome_group_globalSearchParameters;
+        body?: Partial<import_outcome_group_globalFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: import_outcome_group_globalFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Import an outcome group

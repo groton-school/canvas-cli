@@ -19,18 +19,29 @@ export type clear_unread_status_for_all_submissions_sectionsPathParameters = {
 export type clear_unread_status_for_all_submissions_sectionsSearchParameters =
   Masquerade;
 
-type Options = {
-  pathParams: clear_unread_status_for_all_submissions_sectionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<clear_unread_status_for_all_submissions_sectionsSearchParameters>;
-      strict?: false;
+      path: clear_unread_status_for_all_submissions_sectionsPathParameters;
     }
   | {
-      searchParams: clear_unread_status_for_all_submissions_sectionsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: clear_unread_status_for_all_submissions_sectionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<clear_unread_status_for_all_submissions_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<clear_unread_status_for_all_submissions_sectionsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<clear_unread_status_for_all_submissions_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: clear_unread_status_for_all_submissions_sectionsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Clear unread status for all submissions.

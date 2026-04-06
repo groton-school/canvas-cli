@@ -18,20 +18,35 @@ export type batchUpdateFormParameters = Masquerade & {
   assignment_overrides: AssignmentOverride[];
 };
 
-type Options = {
-  pathParams: batchUpdatePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<batchUpdateSearchParameters>;
-      params?: Partial<batchUpdateFormParameters>;
-      strict?: false;
+      path: batchUpdatePathParameters;
     }
   | {
-      searchParams: batchUpdateSearchParameters;
-      params: batchUpdateFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: batchUpdatePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<batchUpdateSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<batchUpdateSearchParameters>;
+        body?: Partial<batchUpdateFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<batchUpdateFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<batchUpdateSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: batchUpdateSearchParameters;
+        body?: Partial<batchUpdateFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: batchUpdateFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Batch update overrides in a course

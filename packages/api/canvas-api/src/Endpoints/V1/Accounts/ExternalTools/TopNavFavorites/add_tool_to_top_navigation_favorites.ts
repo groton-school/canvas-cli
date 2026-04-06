@@ -18,18 +18,29 @@ export type add_tool_to_top_navigation_favoritesPathParameters = {
 
 export type add_tool_to_top_navigation_favoritesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: add_tool_to_top_navigation_favoritesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<add_tool_to_top_navigation_favoritesSearchParameters>;
-      strict?: false;
+      path: add_tool_to_top_navigation_favoritesPathParameters;
     }
   | {
-      searchParams: add_tool_to_top_navigation_favoritesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: add_tool_to_top_navigation_favoritesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<add_tool_to_top_navigation_favoritesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<add_tool_to_top_navigation_favoritesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<add_tool_to_top_navigation_favoritesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: add_tool_to_top_navigation_favoritesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Add tool to Top Navigation Favorites

@@ -25,18 +25,29 @@ export type delete_ai_conversationPathParameters = {
 
 export type delete_ai_conversationSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_ai_conversationPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_ai_conversationSearchParameters>;
-      strict?: false;
+      path: delete_ai_conversationPathParameters;
     }
   | {
-      searchParams: delete_ai_conversationSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_ai_conversationPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_ai_conversationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_ai_conversationSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_ai_conversationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_ai_conversationSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete AI conversation

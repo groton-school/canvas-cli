@@ -12,18 +12,29 @@ export type course_activity_streamPathParameters = {
 
 export type course_activity_streamSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: course_activity_streamPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<course_activity_streamSearchParameters>;
-      strict?: false;
+      path: course_activity_streamPathParameters;
     }
   | {
-      searchParams: course_activity_streamSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: course_activity_streamPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<course_activity_streamSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<course_activity_streamSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<course_activity_streamSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: course_activity_streamSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Course activity stream

@@ -18,18 +18,29 @@ export type remove_content_sharePathParameters = {
 
 export type remove_content_shareSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: remove_content_sharePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<remove_content_shareSearchParameters>;
-      strict?: false;
+      path: remove_content_sharePathParameters;
     }
   | {
-      searchParams: remove_content_shareSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: remove_content_sharePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<remove_content_shareSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<remove_content_shareSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<remove_content_shareSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: remove_content_shareSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Remove content share

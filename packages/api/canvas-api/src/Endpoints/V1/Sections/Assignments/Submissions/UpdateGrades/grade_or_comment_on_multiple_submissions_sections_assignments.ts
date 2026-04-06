@@ -71,20 +71,35 @@ export type grade_or_comment_on_multiple_submissions_sections_assignmentsFormPar
     'grade_data[<assignment_id>][<student_id>]': number | string;
   };
 
-type Options = {
-  pathParams: grade_or_comment_on_multiple_submissions_sections_assignmentsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<grade_or_comment_on_multiple_submissions_sections_assignmentsSearchParameters>;
-      params?: Partial<grade_or_comment_on_multiple_submissions_sections_assignmentsFormParameters>;
-      strict?: false;
+      path: grade_or_comment_on_multiple_submissions_sections_assignmentsPathParameters;
     }
   | {
-      searchParams: grade_or_comment_on_multiple_submissions_sections_assignmentsSearchParameters;
-      params: grade_or_comment_on_multiple_submissions_sections_assignmentsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: grade_or_comment_on_multiple_submissions_sections_assignmentsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<grade_or_comment_on_multiple_submissions_sections_assignmentsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<grade_or_comment_on_multiple_submissions_sections_assignmentsSearchParameters>;
+        body?: Partial<grade_or_comment_on_multiple_submissions_sections_assignmentsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<grade_or_comment_on_multiple_submissions_sections_assignmentsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<grade_or_comment_on_multiple_submissions_sections_assignmentsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: grade_or_comment_on_multiple_submissions_sections_assignmentsSearchParameters;
+        body?: Partial<grade_or_comment_on_multiple_submissions_sections_assignmentsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: grade_or_comment_on_multiple_submissions_sections_assignmentsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Grade or comment on multiple submissions

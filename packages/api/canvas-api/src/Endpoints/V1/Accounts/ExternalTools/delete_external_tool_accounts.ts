@@ -19,18 +19,29 @@ export type delete_external_tool_accountsPathParameters = {
 
 export type delete_external_tool_accountsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_external_tool_accountsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_external_tool_accountsSearchParameters>;
-      strict?: false;
+      path: delete_external_tool_accountsPathParameters;
     }
   | {
-      searchParams: delete_external_tool_accountsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_external_tool_accountsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_external_tool_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_external_tool_accountsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_external_tool_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_external_tool_accountsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an external tool

@@ -14,18 +14,29 @@ export type split_merged_users_into_separate_usersPathParameters = {
 export type split_merged_users_into_separate_usersSearchParameters =
   Masquerade & Paginated;
 
-type Options = {
-  pathParams: split_merged_users_into_separate_usersPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<split_merged_users_into_separate_usersSearchParameters>;
-      strict?: false;
+      path: split_merged_users_into_separate_usersPathParameters;
     }
   | {
-      searchParams: split_merged_users_into_separate_usersSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: split_merged_users_into_separate_usersPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<split_merged_users_into_separate_usersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<split_merged_users_into_separate_usersSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<split_merged_users_into_separate_usersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: split_merged_users_into_separate_usersSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Split merged users into separate users

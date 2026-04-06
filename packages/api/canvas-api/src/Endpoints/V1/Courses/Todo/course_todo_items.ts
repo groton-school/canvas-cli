@@ -12,18 +12,29 @@ export type course_todo_itemsPathParameters = {
 
 export type course_todo_itemsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: course_todo_itemsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<course_todo_itemsSearchParameters>;
-      strict?: false;
+      path: course_todo_itemsPathParameters;
     }
   | {
-      searchParams: course_todo_itemsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: course_todo_itemsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<course_todo_itemsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<course_todo_itemsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<course_todo_itemsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: course_todo_itemsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Course TODO items

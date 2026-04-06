@@ -13,18 +13,29 @@ export type query_progressPathParameters = {
 
 export type query_progressSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: query_progressPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<query_progressSearchParameters>;
-      strict?: false;
+      path: query_progressPathParameters;
     }
   | {
-      searchParams: query_progressSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: query_progressPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<query_progressSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<query_progressSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<query_progressSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: query_progressSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Query progress

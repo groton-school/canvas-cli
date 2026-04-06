@@ -18,18 +18,29 @@ export type createPathParameters = {
 
 export type createSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: createPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<createSearchParameters>;
-      strict?: false;
+      path: createPathParameters;
     }
   | {
-      searchParams: createSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: createPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<createSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<createSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<createSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: createSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Create live assessment results

@@ -21,18 +21,29 @@ export type show_temporary_enrollment_recipient_and_provider_statusSearchParamet
       account_id: string;
     }>;
 
-type Options = {
-  pathParams: show_temporary_enrollment_recipient_and_provider_statusPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_temporary_enrollment_recipient_and_provider_statusSearchParameters>;
-      strict?: false;
+      path: show_temporary_enrollment_recipient_and_provider_statusPathParameters;
     }
   | {
-      searchParams: show_temporary_enrollment_recipient_and_provider_statusSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_temporary_enrollment_recipient_and_provider_statusPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_temporary_enrollment_recipient_and_provider_statusSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_temporary_enrollment_recipient_and_provider_statusSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_temporary_enrollment_recipient_and_provider_statusSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_temporary_enrollment_recipient_and_provider_statusSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show Temporary Enrollment recipient and provider status

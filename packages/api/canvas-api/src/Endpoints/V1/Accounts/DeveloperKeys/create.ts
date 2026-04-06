@@ -76,20 +76,35 @@ export type createFormParameters = Masquerade & {
   'developer_key[allow_includes]': boolean | string;
 };
 
-type Options = {
-  pathParams: createPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<createSearchParameters>;
-      params?: Partial<createFormParameters>;
-      strict?: false;
+      path: createPathParameters;
     }
   | {
-      searchParams: createSearchParameters;
-      params: createFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: createPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<createSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<createSearchParameters>;
+        body?: Partial<createFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<createFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<createSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: createSearchParameters;
+        body?: Partial<createFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: createFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Create a Developer Key

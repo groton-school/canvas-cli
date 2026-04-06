@@ -38,20 +38,35 @@ export type flagging_questionFormParameters = Masquerade & {
   access_code: string;
 };
 
-type Options = {
-  pathParams: flagging_questionPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<flagging_questionSearchParameters>;
-      params?: Partial<flagging_questionFormParameters>;
-      strict?: false;
+      path: flagging_questionPathParameters;
     }
   | {
-      searchParams: flagging_questionSearchParameters;
-      params: flagging_questionFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: flagging_questionPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<flagging_questionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<flagging_questionSearchParameters>;
+        body?: Partial<flagging_questionFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<flagging_questionFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<flagging_questionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: flagging_questionSearchParameters;
+        body?: Partial<flagging_questionFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: flagging_questionFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Flagging a question.

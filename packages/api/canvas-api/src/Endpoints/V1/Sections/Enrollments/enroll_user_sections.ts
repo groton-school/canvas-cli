@@ -133,20 +133,35 @@ export type enroll_user_sectionsFormParameters = Masquerade & {
   root_account: string;
 };
 
-type Options = {
-  pathParams: enroll_user_sectionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<enroll_user_sectionsSearchParameters>;
-      params?: Partial<enroll_user_sectionsFormParameters>;
-      strict?: false;
+      path: enroll_user_sectionsPathParameters;
     }
   | {
-      searchParams: enroll_user_sectionsSearchParameters;
-      params: enroll_user_sectionsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: enroll_user_sectionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<enroll_user_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<enroll_user_sectionsSearchParameters>;
+        body?: Partial<enroll_user_sectionsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<enroll_user_sectionsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<enroll_user_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: enroll_user_sectionsSearchParameters;
+        body?: Partial<enroll_user_sectionsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: enroll_user_sectionsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Enroll a user

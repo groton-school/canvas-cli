@@ -19,18 +19,29 @@ export type resolve_path_groups_full_pathPathParameters = {
 export type resolve_path_groups_full_pathSearchParameters = Masquerade &
   Paginated;
 
-type Options = {
-  pathParams: resolve_path_groups_full_pathPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<resolve_path_groups_full_pathSearchParameters>;
-      strict?: false;
+      path: resolve_path_groups_full_pathPathParameters;
     }
   | {
-      searchParams: resolve_path_groups_full_pathSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: resolve_path_groups_full_pathPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<resolve_path_groups_full_pathSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<resolve_path_groups_full_pathSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<resolve_path_groups_full_pathSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: resolve_path_groups_full_pathSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Resolve path

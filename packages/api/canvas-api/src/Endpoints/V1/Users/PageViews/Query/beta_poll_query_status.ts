@@ -19,18 +19,29 @@ export type beta_poll_query_statusPathParameters = {
 
 export type beta_poll_query_statusSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: beta_poll_query_statusPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<beta_poll_query_statusSearchParameters>;
-      strict?: false;
+      path: beta_poll_query_statusPathParameters;
     }
   | {
-      searchParams: beta_poll_query_statusSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: beta_poll_query_statusPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<beta_poll_query_statusSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<beta_poll_query_statusSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<beta_poll_query_statusSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: beta_poll_query_statusSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * BETA - Poll query status

@@ -24,18 +24,29 @@ export type bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_
       user_ids: number | string[];
     }>;
 
-type Options = {
-  pathParams: bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsSearchParameters>;
-      strict?: false;
+      path: bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsPathParameters;
     }
   | {
-      searchParams: bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Bulk delete memberships Bulk deletes memberships by providing an array of

@@ -30,20 +30,35 @@ export type duplicate_assignmentFormParameters = Masquerade & {
   result_type: string;
 };
 
-type Options = {
-  pathParams: duplicate_assignmentPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<duplicate_assignmentSearchParameters>;
-      params?: Partial<duplicate_assignmentFormParameters>;
-      strict?: false;
+      path: duplicate_assignmentPathParameters;
     }
   | {
-      searchParams: duplicate_assignmentSearchParameters;
-      params: duplicate_assignmentFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: duplicate_assignmentPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<duplicate_assignmentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<duplicate_assignmentSearchParameters>;
+        body?: Partial<duplicate_assignmentFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<duplicate_assignmentFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<duplicate_assignmentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: duplicate_assignmentSearchParameters;
+        body?: Partial<duplicate_assignmentFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: duplicate_assignmentFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Duplicate assignment

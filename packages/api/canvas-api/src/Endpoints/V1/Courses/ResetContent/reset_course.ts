@@ -13,18 +13,29 @@ export type reset_coursePathParameters = {
 
 export type reset_courseSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: reset_coursePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<reset_courseSearchParameters>;
-      strict?: false;
+      path: reset_coursePathParameters;
     }
   | {
-      searchParams: reset_courseSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: reset_coursePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<reset_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<reset_courseSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<reset_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: reset_courseSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Reset a course

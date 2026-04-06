@@ -40,18 +40,29 @@ export type retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchP
       include: string;
     }>;
 
-type Options = {
-  pathParams: retrieve_assignments_enabled_for_grade_export_to_sis_accountsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters>;
-      strict?: false;
+      path: retrieve_assignments_enabled_for_grade_export_to_sis_accountsPathParameters;
     }
   | {
-      searchParams: retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: retrieve_assignments_enabled_for_grade_export_to_sis_accountsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: retrieve_assignments_enabled_for_grade_export_to_sis_accountsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Retrieve assignments enabled for grade export to SIS

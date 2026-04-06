@@ -23,20 +23,35 @@ export type validate_quiz_access_codeFormParameters = Masquerade & {
   access_code: string;
 };
 
-type Options = {
-  pathParams: validate_quiz_access_codePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<validate_quiz_access_codeSearchParameters>;
-      params?: Partial<validate_quiz_access_codeFormParameters>;
-      strict?: false;
+      path: validate_quiz_access_codePathParameters;
     }
   | {
-      searchParams: validate_quiz_access_codeSearchParameters;
-      params: validate_quiz_access_codeFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: validate_quiz_access_codePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<validate_quiz_access_codeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<validate_quiz_access_codeSearchParameters>;
+        body?: Partial<validate_quiz_access_codeFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<validate_quiz_access_codeFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<validate_quiz_access_codeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: validate_quiz_access_codeSearchParameters;
+        body?: Partial<validate_quiz_access_codeFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: validate_quiz_access_codeFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Validate quiz access code

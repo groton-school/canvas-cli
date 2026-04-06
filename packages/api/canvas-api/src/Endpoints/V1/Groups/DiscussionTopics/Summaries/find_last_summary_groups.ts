@@ -18,18 +18,29 @@ export type find_last_summary_groupsPathParameters = {
 
 export type find_last_summary_groupsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: find_last_summary_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<find_last_summary_groupsSearchParameters>;
-      strict?: false;
+      path: find_last_summary_groupsPathParameters;
     }
   | {
-      searchParams: find_last_summary_groupsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: find_last_summary_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<find_last_summary_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<find_last_summary_groupsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<find_last_summary_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: find_last_summary_groupsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Find Last Summary

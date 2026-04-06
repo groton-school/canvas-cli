@@ -19,18 +19,29 @@ export type show_content_export_coursesPathParameters = {
 
 export type show_content_export_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_content_export_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_content_export_coursesSearchParameters>;
-      strict?: false;
+      path: show_content_export_coursesPathParameters;
     }
   | {
-      searchParams: show_content_export_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_content_export_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_content_export_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_content_export_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_content_export_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_content_export_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show content export

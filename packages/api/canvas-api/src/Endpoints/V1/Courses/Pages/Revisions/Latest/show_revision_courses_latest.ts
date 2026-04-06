@@ -27,18 +27,29 @@ export type show_revision_courses_latestSearchParameters = Masquerade &
     summary: boolean | string;
   }>;
 
-type Options = {
-  pathParams: show_revision_courses_latestPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_revision_courses_latestSearchParameters>;
-      strict?: false;
+      path: show_revision_courses_latestPathParameters;
     }
   | {
-      searchParams: show_revision_courses_latestSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_revision_courses_latestPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_revision_courses_latestSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_revision_courses_latestSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_revision_courses_latestSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_revision_courses_latestSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show revision

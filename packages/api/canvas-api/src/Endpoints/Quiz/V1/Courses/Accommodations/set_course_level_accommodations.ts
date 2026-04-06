@@ -47,20 +47,35 @@ export type set_course_level_accommodationsFormParameters = Masquerade & {
   reduce_choices_enabled: boolean | string;
 };
 
-type Options = {
-  pathParams: set_course_level_accommodationsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<set_course_level_accommodationsSearchParameters>;
-      params?: Partial<set_course_level_accommodationsFormParameters>;
-      strict?: false;
+      path: set_course_level_accommodationsPathParameters;
     }
   | {
-      searchParams: set_course_level_accommodationsSearchParameters;
-      params: set_course_level_accommodationsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: set_course_level_accommodationsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<set_course_level_accommodationsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<set_course_level_accommodationsSearchParameters>;
+        body?: Partial<set_course_level_accommodationsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<set_course_level_accommodationsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<set_course_level_accommodationsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: set_course_level_accommodationsSearchParameters;
+        body?: Partial<set_course_level_accommodationsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: set_course_level_accommodationsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Set Course-Level Accommodations

@@ -28,20 +28,35 @@ export type enable_disable_or_clear_explicit_csp_setting_accountsFormParameters 
     status: string;
   };
 
-type Options = {
-  pathParams: enable_disable_or_clear_explicit_csp_setting_accountsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<enable_disable_or_clear_explicit_csp_setting_accountsSearchParameters>;
-      params?: Partial<enable_disable_or_clear_explicit_csp_setting_accountsFormParameters>;
-      strict?: false;
+      path: enable_disable_or_clear_explicit_csp_setting_accountsPathParameters;
     }
   | {
-      searchParams: enable_disable_or_clear_explicit_csp_setting_accountsSearchParameters;
-      params: enable_disable_or_clear_explicit_csp_setting_accountsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: enable_disable_or_clear_explicit_csp_setting_accountsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<enable_disable_or_clear_explicit_csp_setting_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<enable_disable_or_clear_explicit_csp_setting_accountsSearchParameters>;
+        body?: Partial<enable_disable_or_clear_explicit_csp_setting_accountsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<enable_disable_or_clear_explicit_csp_setting_accountsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<enable_disable_or_clear_explicit_csp_setting_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: enable_disable_or_clear_explicit_csp_setting_accountsSearchParameters;
+        body?: Partial<enable_disable_or_clear_explicit_csp_setting_accountsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: enable_disable_or_clear_explicit_csp_setting_accountsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Enable, disable, or clear explicit CSP setting

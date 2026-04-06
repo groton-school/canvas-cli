@@ -12,12 +12,20 @@ export type get_pandata_events_jwt_token_and_its_expiration_dateFormParameters =
 
 type Options =
   | {
+      query?: Partial<get_pandata_events_jwt_token_and_its_expiration_dateSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<get_pandata_events_jwt_token_and_its_expiration_dateSearchParameters>;
+      body?: Partial<get_pandata_events_jwt_token_and_its_expiration_dateFormParameters>;
+      /** @deprecated Use {@link Options.body} */
       params?: Partial<get_pandata_events_jwt_token_and_its_expiration_dateFormParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<get_pandata_events_jwt_token_and_its_expiration_dateSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: get_pandata_events_jwt_token_and_its_expiration_dateSearchParameters;
+      body?: Partial<get_pandata_events_jwt_token_and_its_expiration_dateFormParameters>;
+      /** @deprecated Use {@link Options.body} */
       params: get_pandata_events_jwt_token_and_its_expiration_dateFormParameters;
       strict: true;
     };

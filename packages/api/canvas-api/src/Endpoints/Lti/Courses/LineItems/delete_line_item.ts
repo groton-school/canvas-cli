@@ -19,18 +19,29 @@ export type delete_line_itemPathParameters = {
 
 export type delete_line_itemSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_line_itemPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_line_itemSearchParameters>;
-      strict?: false;
+      path: delete_line_itemPathParameters;
     }
   | {
-      searchParams: delete_line_itemSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_line_itemPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_line_itemSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_line_itemSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_line_itemSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_line_itemSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a Line Item

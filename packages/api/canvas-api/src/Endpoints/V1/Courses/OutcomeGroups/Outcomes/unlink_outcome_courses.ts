@@ -25,18 +25,29 @@ export type unlink_outcome_coursesPathParameters = {
 
 export type unlink_outcome_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: unlink_outcome_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<unlink_outcome_coursesSearchParameters>;
-      strict?: false;
+      path: unlink_outcome_coursesPathParameters;
     }
   | {
-      searchParams: unlink_outcome_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: unlink_outcome_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<unlink_outcome_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<unlink_outcome_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<unlink_outcome_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: unlink_outcome_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Unlink an outcome

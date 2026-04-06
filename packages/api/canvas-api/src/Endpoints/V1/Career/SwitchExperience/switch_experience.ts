@@ -11,12 +11,20 @@ export type switch_experienceFormParameters = Masquerade & {
 
 type Options =
   | {
+      query?: Partial<switch_experienceSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<switch_experienceSearchParameters>;
+      body?: Partial<switch_experienceFormParameters>;
+      /** @deprecated Use {@link Options.body} */
       params?: Partial<switch_experienceFormParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<switch_experienceSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: switch_experienceSearchParameters;
+      body?: Partial<switch_experienceFormParameters>;
+      /** @deprecated Use {@link Options.body} */
       params: switch_experienceFormParameters;
       strict: true;
     };

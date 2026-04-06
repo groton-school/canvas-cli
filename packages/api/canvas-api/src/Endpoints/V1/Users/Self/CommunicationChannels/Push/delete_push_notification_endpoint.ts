@@ -4,10 +4,14 @@ export type delete_push_notification_endpointSearchParameters = Masquerade;
 
 type Options =
   | {
+      query?: Partial<delete_push_notification_endpointSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<delete_push_notification_endpointSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<delete_push_notification_endpointSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: delete_push_notification_endpointSearchParameters;
       strict: true;
     };

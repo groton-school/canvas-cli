@@ -13,18 +13,29 @@ export type show_outcome_group_globalPathParameters = {
 
 export type show_outcome_group_globalSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_outcome_group_globalPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_outcome_group_globalSearchParameters>;
-      strict?: false;
+      path: show_outcome_group_globalPathParameters;
     }
   | {
-      searchParams: show_outcome_group_globalSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_outcome_group_globalPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_outcome_group_globalSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_outcome_group_globalSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_outcome_group_globalSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_outcome_group_globalSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show an outcome group

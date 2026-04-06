@@ -13,18 +13,29 @@ export type remove_course_nicknamePathParameters = {
 
 export type remove_course_nicknameSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: remove_course_nicknamePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<remove_course_nicknameSearchParameters>;
-      strict?: false;
+      path: remove_course_nicknamePathParameters;
     }
   | {
-      searchParams: remove_course_nicknameSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: remove_course_nicknamePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<remove_course_nicknameSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<remove_course_nicknameSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<remove_course_nicknameSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: remove_course_nicknameSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Remove course nickname

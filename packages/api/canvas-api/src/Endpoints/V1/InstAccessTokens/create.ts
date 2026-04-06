@@ -5,10 +5,14 @@ export type createSearchParameters = Masquerade;
 
 type Options =
   | {
+      query?: Partial<createSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<createSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<createSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: createSearchParameters;
       strict: true;
     };

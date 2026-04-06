@@ -5,10 +5,14 @@ export type kickoff_password_recovery_flowSearchParameters = Masquerade;
 
 type Options =
   | {
+      query?: Partial<kickoff_password_recovery_flowSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<kickoff_password_recovery_flowSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<kickoff_password_recovery_flowSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: kickoff_password_recovery_flowSearchParameters;
       strict: true;
     };

@@ -171,20 +171,35 @@ export type grade_or_comment_on_submission_sectionsFormParameters =
     rubric_assessment: RubricAssessment;
   };
 
-type Options = {
-  pathParams: grade_or_comment_on_submission_sectionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<grade_or_comment_on_submission_sectionsSearchParameters>;
-      params?: Partial<grade_or_comment_on_submission_sectionsFormParameters>;
-      strict?: false;
+      path: grade_or_comment_on_submission_sectionsPathParameters;
     }
   | {
-      searchParams: grade_or_comment_on_submission_sectionsSearchParameters;
-      params: grade_or_comment_on_submission_sectionsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: grade_or_comment_on_submission_sectionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<grade_or_comment_on_submission_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<grade_or_comment_on_submission_sectionsSearchParameters>;
+        body?: Partial<grade_or_comment_on_submission_sectionsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<grade_or_comment_on_submission_sectionsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<grade_or_comment_on_submission_sectionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: grade_or_comment_on_submission_sectionsSearchParameters;
+        body?: Partial<grade_or_comment_on_submission_sectionsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: grade_or_comment_on_submission_sectionsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Grade or comment on a submission

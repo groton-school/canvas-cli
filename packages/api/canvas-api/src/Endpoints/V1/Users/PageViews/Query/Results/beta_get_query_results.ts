@@ -19,18 +19,29 @@ export type beta_get_query_resultsPathParameters = {
 
 export type beta_get_query_resultsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: beta_get_query_resultsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<beta_get_query_resultsSearchParameters>;
-      strict?: false;
+      path: beta_get_query_resultsPathParameters;
     }
   | {
-      searchParams: beta_get_query_resultsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: beta_get_query_resultsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<beta_get_query_resultsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<beta_get_query_resultsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<beta_get_query_resultsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: beta_get_query_resultsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * BETA - Get query results

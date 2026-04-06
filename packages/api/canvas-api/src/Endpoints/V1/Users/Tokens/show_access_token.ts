@@ -18,18 +18,29 @@ export type show_access_tokenPathParameters = {
 
 export type show_access_tokenSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_access_tokenPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_access_tokenSearchParameters>;
-      strict?: false;
+      path: show_access_tokenPathParameters;
     }
   | {
-      searchParams: show_access_tokenSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_access_tokenPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_access_tokenSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_access_tokenSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_access_tokenSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_access_tokenSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show an access token

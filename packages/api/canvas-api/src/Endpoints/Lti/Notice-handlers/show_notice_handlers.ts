@@ -13,18 +13,29 @@ export type show_notice_handlersPathParameters = {
 
 export type show_notice_handlersSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_notice_handlersPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_notice_handlersSearchParameters>;
-      strict?: false;
+      path: show_notice_handlersPathParameters;
     }
   | {
-      searchParams: show_notice_handlersSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_notice_handlersPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_notice_handlersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_notice_handlersSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_notice_handlersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_notice_handlersSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show notice handlers

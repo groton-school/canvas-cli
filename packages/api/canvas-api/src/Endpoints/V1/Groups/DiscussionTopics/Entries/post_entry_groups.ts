@@ -28,20 +28,35 @@ export type post_entry_groupsFormParameters = Masquerade & {
   attachment: string;
 };
 
-type Options = {
-  pathParams: post_entry_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<post_entry_groupsSearchParameters>;
-      params?: Partial<post_entry_groupsFormParameters>;
-      strict?: false;
+      path: post_entry_groupsPathParameters;
     }
   | {
-      searchParams: post_entry_groupsSearchParameters;
-      params: post_entry_groupsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: post_entry_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<post_entry_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<post_entry_groupsSearchParameters>;
+        body?: Partial<post_entry_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<post_entry_groupsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<post_entry_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: post_entry_groupsSearchParameters;
+        body?: Partial<post_entry_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: post_entry_groupsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Post an entry

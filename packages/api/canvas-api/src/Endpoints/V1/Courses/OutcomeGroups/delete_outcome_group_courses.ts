@@ -19,18 +19,29 @@ export type delete_outcome_group_coursesPathParameters = {
 
 export type delete_outcome_group_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_outcome_group_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_outcome_group_coursesSearchParameters>;
-      strict?: false;
+      path: delete_outcome_group_coursesPathParameters;
     }
   | {
-      searchParams: delete_outcome_group_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_outcome_group_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_outcome_group_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_outcome_group_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_outcome_group_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_outcome_group_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an outcome group

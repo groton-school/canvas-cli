@@ -32,20 +32,35 @@ export type add_observeeFormParameters = Masquerade & {
   root_account_id: number | string;
 };
 
-type Options = {
-  pathParams: add_observeePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<add_observeeSearchParameters>;
-      params?: Partial<add_observeeFormParameters>;
-      strict?: false;
+      path: add_observeePathParameters;
     }
   | {
-      searchParams: add_observeeSearchParameters;
-      params: add_observeeFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: add_observeePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<add_observeeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<add_observeeSearchParameters>;
+        body?: Partial<add_observeeFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<add_observeeFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<add_observeeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: add_observeeSearchParameters;
+        body?: Partial<add_observeeFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: add_observeeFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Add an observee

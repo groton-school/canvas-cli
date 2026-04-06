@@ -18,18 +18,29 @@ export type delete_grading_period_setPathParameters = {
 
 export type delete_grading_period_setSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_grading_period_setPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_grading_period_setSearchParameters>;
-      strict?: false;
+      path: delete_grading_period_setPathParameters;
     }
   | {
-      searchParams: delete_grading_period_setSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_grading_period_setPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_grading_period_setSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_grading_period_setSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_grading_period_setSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_grading_period_setSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a grading period set

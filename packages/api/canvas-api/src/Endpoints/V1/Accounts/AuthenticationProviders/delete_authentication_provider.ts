@@ -18,18 +18,29 @@ export type delete_authentication_providerPathParameters = {
 
 export type delete_authentication_providerSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_authentication_providerPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_authentication_providerSearchParameters>;
-      strict?: false;
+      path: delete_authentication_providerPathParameters;
     }
   | {
-      searchParams: delete_authentication_providerSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_authentication_providerPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_authentication_providerSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_authentication_providerSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_authentication_providerSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_authentication_providerSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete authentication provider

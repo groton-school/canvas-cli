@@ -19,18 +19,29 @@ export type delete_user_from_root_accountPathParameters = {
 
 export type delete_user_from_root_accountSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_user_from_root_accountPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_user_from_root_accountSearchParameters>;
-      strict?: false;
+      path: delete_user_from_root_accountPathParameters;
     }
   | {
-      searchParams: delete_user_from_root_accountSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_user_from_root_accountPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_user_from_root_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_user_from_root_accountSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_user_from_root_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_user_from_root_accountSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a user from the root account

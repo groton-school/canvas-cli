@@ -19,18 +19,29 @@ export type delete_modulePathParameters = {
 
 export type delete_moduleSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_modulePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_moduleSearchParameters>;
-      strict?: false;
+      path: delete_modulePathParameters;
     }
   | {
-      searchParams: delete_moduleSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_modulePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_moduleSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_moduleSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_moduleSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_moduleSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete module

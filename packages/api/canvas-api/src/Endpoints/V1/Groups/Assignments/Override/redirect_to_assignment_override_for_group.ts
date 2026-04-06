@@ -19,18 +19,29 @@ export type redirect_to_assignment_override_for_groupPathParameters = {
 export type redirect_to_assignment_override_for_groupSearchParameters =
   Masquerade;
 
-type Options = {
-  pathParams: redirect_to_assignment_override_for_groupPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<redirect_to_assignment_override_for_groupSearchParameters>;
-      strict?: false;
+      path: redirect_to_assignment_override_for_groupPathParameters;
     }
   | {
-      searchParams: redirect_to_assignment_override_for_groupSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: redirect_to_assignment_override_for_groupPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<redirect_to_assignment_override_for_groupSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<redirect_to_assignment_override_for_groupSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<redirect_to_assignment_override_for_groupSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: redirect_to_assignment_override_for_groupSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Redirect to the assignment override for a group

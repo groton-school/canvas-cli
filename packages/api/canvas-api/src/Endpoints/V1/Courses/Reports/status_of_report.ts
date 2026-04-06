@@ -21,18 +21,29 @@ export type status_of_reportPathParameters = {
 
 export type status_of_reportSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: status_of_reportPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<status_of_reportSearchParameters>;
-      strict?: false;
+      path: status_of_reportPathParameters;
     }
   | {
-      searchParams: status_of_reportSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: status_of_reportPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<status_of_reportSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<status_of_reportSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<status_of_reportSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: status_of_reportSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Status of a Report

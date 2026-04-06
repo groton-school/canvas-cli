@@ -28,20 +28,35 @@ export type set_notice_handlerFormParameters = Masquerade & {
   max_batch_size: number | string;
 };
 
-type Options = {
-  pathParams: set_notice_handlerPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<set_notice_handlerSearchParameters>;
-      params?: Partial<set_notice_handlerFormParameters>;
-      strict?: false;
+      path: set_notice_handlerPathParameters;
     }
   | {
-      searchParams: set_notice_handlerSearchParameters;
-      params: set_notice_handlerFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: set_notice_handlerPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<set_notice_handlerSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<set_notice_handlerSearchParameters>;
+        body?: Partial<set_notice_handlerFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<set_notice_handlerFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<set_notice_handlerSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: set_notice_handlerSearchParameters;
+        body?: Partial<set_notice_handlerFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: set_notice_handlerFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Set notice handler

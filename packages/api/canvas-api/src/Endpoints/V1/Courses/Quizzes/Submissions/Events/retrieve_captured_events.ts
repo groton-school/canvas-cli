@@ -35,18 +35,29 @@ export type retrieve_captured_eventsSearchParameters = Masquerade &
     attempt: number | string;
   }>;
 
-type Options = {
-  pathParams: retrieve_captured_eventsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<retrieve_captured_eventsSearchParameters>;
-      strict?: false;
+      path: retrieve_captured_eventsPathParameters;
     }
   | {
-      searchParams: retrieve_captured_eventsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: retrieve_captured_eventsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<retrieve_captured_eventsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<retrieve_captured_eventsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<retrieve_captured_eventsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: retrieve_captured_eventsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Retrieve captured events

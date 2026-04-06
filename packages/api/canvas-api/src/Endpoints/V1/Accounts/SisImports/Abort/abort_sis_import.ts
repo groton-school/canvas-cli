@@ -19,18 +19,29 @@ export type abort_sis_importPathParameters = {
 
 export type abort_sis_importSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: abort_sis_importPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<abort_sis_importSearchParameters>;
-      strict?: false;
+      path: abort_sis_importPathParameters;
     }
   | {
-      searchParams: abort_sis_importSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: abort_sis_importPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<abort_sis_importSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<abort_sis_importSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<abort_sis_importSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: abort_sis_importSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Abort SIS import

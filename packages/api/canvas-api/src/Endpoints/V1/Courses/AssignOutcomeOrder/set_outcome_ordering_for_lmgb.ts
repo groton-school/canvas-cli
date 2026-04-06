@@ -12,18 +12,29 @@ export type set_outcome_ordering_for_lmgbPathParameters = {
 
 export type set_outcome_ordering_for_lmgbSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: set_outcome_ordering_for_lmgbPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<set_outcome_ordering_for_lmgbSearchParameters>;
-      strict?: false;
+      path: set_outcome_ordering_for_lmgbPathParameters;
     }
   | {
-      searchParams: set_outcome_ordering_for_lmgbSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: set_outcome_ordering_for_lmgbPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<set_outcome_ordering_for_lmgbSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<set_outcome_ordering_for_lmgbSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<set_outcome_ordering_for_lmgbSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: set_outcome_ordering_for_lmgbSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Set outcome ordering for LMGB

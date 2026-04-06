@@ -19,18 +19,29 @@ export type delete_blackout_date_accountsPathParameters = {
 
 export type delete_blackout_date_accountsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_blackout_date_accountsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_blackout_date_accountsSearchParameters>;
-      strict?: false;
+      path: delete_blackout_date_accountsPathParameters;
     }
   | {
-      searchParams: delete_blackout_date_accountsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_blackout_date_accountsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_blackout_date_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_blackout_date_accountsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_blackout_date_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_blackout_date_accountsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete Blackout Date

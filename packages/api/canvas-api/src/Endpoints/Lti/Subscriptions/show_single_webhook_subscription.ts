@@ -12,18 +12,29 @@ export type show_single_webhook_subscriptionPathParameters = {
 
 export type show_single_webhook_subscriptionSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_single_webhook_subscriptionPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_single_webhook_subscriptionSearchParameters>;
-      strict?: false;
+      path: show_single_webhook_subscriptionPathParameters;
     }
   | {
-      searchParams: show_single_webhook_subscriptionSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_single_webhook_subscriptionPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_single_webhook_subscriptionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_single_webhook_subscriptionSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_single_webhook_subscriptionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_single_webhook_subscriptionSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show a single Webhook Subscription

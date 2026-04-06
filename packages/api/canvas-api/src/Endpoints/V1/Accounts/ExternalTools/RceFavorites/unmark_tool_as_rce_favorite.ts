@@ -18,18 +18,29 @@ export type unmark_tool_as_rce_favoritePathParameters = {
 
 export type unmark_tool_as_rce_favoriteSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: unmark_tool_as_rce_favoritePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<unmark_tool_as_rce_favoriteSearchParameters>;
-      strict?: false;
+      path: unmark_tool_as_rce_favoritePathParameters;
     }
   | {
-      searchParams: unmark_tool_as_rce_favoriteSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: unmark_tool_as_rce_favoritePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<unmark_tool_as_rce_favoriteSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<unmark_tool_as_rce_favoriteSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<unmark_tool_as_rce_favoriteSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: unmark_tool_as_rce_favoriteSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Unmark tool as RCE Favorite

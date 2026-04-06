@@ -41,20 +41,35 @@ export type import_outcome_group_accountsFormParameters = Masquerade & {
   async: boolean | string;
 };
 
-type Options = {
-  pathParams: import_outcome_group_accountsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<import_outcome_group_accountsSearchParameters>;
-      params?: Partial<import_outcome_group_accountsFormParameters>;
-      strict?: false;
+      path: import_outcome_group_accountsPathParameters;
     }
   | {
-      searchParams: import_outcome_group_accountsSearchParameters;
-      params: import_outcome_group_accountsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: import_outcome_group_accountsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<import_outcome_group_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<import_outcome_group_accountsSearchParameters>;
+        body?: Partial<import_outcome_group_accountsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<import_outcome_group_accountsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<import_outcome_group_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: import_outcome_group_accountsSearchParameters;
+        body?: Partial<import_outcome_group_accountsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: import_outcome_group_accountsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Import an outcome group

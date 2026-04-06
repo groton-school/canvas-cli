@@ -31,18 +31,29 @@ export type delete_submission_commentPathParameters = {
 
 export type delete_submission_commentSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_submission_commentPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_submission_commentSearchParameters>;
-      strict?: false;
+      path: delete_submission_commentPathParameters;
     }
   | {
-      searchParams: delete_submission_commentSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_submission_commentPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_submission_commentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_submission_commentSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_submission_commentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_submission_commentSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a submission comment

@@ -31,20 +31,35 @@ export type beta_initiate_page_views_queryFormParameters = Masquerade & {
   results_format: string;
 };
 
-type Options = {
-  pathParams: beta_initiate_page_views_queryPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<beta_initiate_page_views_querySearchParameters>;
-      params?: Partial<beta_initiate_page_views_queryFormParameters>;
-      strict?: false;
+      path: beta_initiate_page_views_queryPathParameters;
     }
   | {
-      searchParams: beta_initiate_page_views_querySearchParameters;
-      params: beta_initiate_page_views_queryFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: beta_initiate_page_views_queryPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<beta_initiate_page_views_querySearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<beta_initiate_page_views_querySearchParameters>;
+        body?: Partial<beta_initiate_page_views_queryFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<beta_initiate_page_views_queryFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<beta_initiate_page_views_querySearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: beta_initiate_page_views_querySearchParameters;
+        body?: Partial<beta_initiate_page_views_queryFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: beta_initiate_page_views_queryFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * BETA - Initiate page views query

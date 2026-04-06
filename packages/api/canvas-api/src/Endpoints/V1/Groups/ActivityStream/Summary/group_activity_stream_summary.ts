@@ -12,18 +12,29 @@ export type group_activity_stream_summaryPathParameters = {
 
 export type group_activity_stream_summarySearchParameters = Masquerade;
 
-type Options = {
-  pathParams: group_activity_stream_summaryPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<group_activity_stream_summarySearchParameters>;
-      strict?: false;
+      path: group_activity_stream_summaryPathParameters;
     }
   | {
-      searchParams: group_activity_stream_summarySearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: group_activity_stream_summaryPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<group_activity_stream_summarySearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<group_activity_stream_summarySearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<group_activity_stream_summarySearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: group_activity_stream_summarySearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Group activity stream summary

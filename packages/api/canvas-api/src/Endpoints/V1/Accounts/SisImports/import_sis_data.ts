@@ -199,20 +199,35 @@ export type import_sis_dataFormParameters = Masquerade & {
   diff_row_count_threshold: number | string;
 };
 
-type Options = {
-  pathParams: import_sis_dataPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<import_sis_dataSearchParameters>;
-      params?: Partial<import_sis_dataFormParameters>;
-      strict?: false;
+      path: import_sis_dataPathParameters;
     }
   | {
-      searchParams: import_sis_dataSearchParameters;
-      params: import_sis_dataFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: import_sis_dataPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<import_sis_dataSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<import_sis_dataSearchParameters>;
+        body?: Partial<import_sis_dataFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<import_sis_dataFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<import_sis_dataSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: import_sis_dataSearchParameters;
+        body?: Partial<import_sis_dataFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: import_sis_dataFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Import SIS data

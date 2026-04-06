@@ -13,18 +13,29 @@ export type show_planner_notePathParameters = {
 
 export type show_planner_noteSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_planner_notePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_planner_noteSearchParameters>;
-      strict?: false;
+      path: show_planner_notePathParameters;
     }
   | {
-      searchParams: show_planner_noteSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_planner_notePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_planner_noteSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_planner_noteSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_planner_noteSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_planner_noteSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show a planner note

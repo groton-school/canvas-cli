@@ -25,18 +25,29 @@ export type delete_single_rubric_assessmentPathParameters = {
 
 export type delete_single_rubric_assessmentSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_single_rubric_assessmentPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_single_rubric_assessmentSearchParameters>;
-      strict?: false;
+      path: delete_single_rubric_assessmentPathParameters;
     }
   | {
-      searchParams: delete_single_rubric_assessmentSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_single_rubric_assessmentPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_single_rubric_assessmentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_single_rubric_assessmentSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_single_rubric_assessmentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_single_rubric_assessmentSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a single rubric assessment

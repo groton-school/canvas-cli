@@ -19,18 +19,29 @@ export type delete_sub_accountPathParameters = {
 
 export type delete_sub_accountSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_sub_accountPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_sub_accountSearchParameters>;
-      strict?: false;
+      path: delete_sub_accountPathParameters;
     }
   | {
-      searchParams: delete_sub_accountSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_sub_accountPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_sub_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_sub_accountSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_sub_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_sub_accountSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a sub-account

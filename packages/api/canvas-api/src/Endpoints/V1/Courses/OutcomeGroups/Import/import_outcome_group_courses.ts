@@ -41,20 +41,35 @@ export type import_outcome_group_coursesFormParameters = Masquerade & {
   async: boolean | string;
 };
 
-type Options = {
-  pathParams: import_outcome_group_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<import_outcome_group_coursesSearchParameters>;
-      params?: Partial<import_outcome_group_coursesFormParameters>;
-      strict?: false;
+      path: import_outcome_group_coursesPathParameters;
     }
   | {
-      searchParams: import_outcome_group_coursesSearchParameters;
-      params: import_outcome_group_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: import_outcome_group_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<import_outcome_group_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<import_outcome_group_coursesSearchParameters>;
+        body?: Partial<import_outcome_group_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<import_outcome_group_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<import_outcome_group_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: import_outcome_group_coursesSearchParameters;
+        body?: Partial<import_outcome_group_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: import_outcome_group_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Import an outcome group

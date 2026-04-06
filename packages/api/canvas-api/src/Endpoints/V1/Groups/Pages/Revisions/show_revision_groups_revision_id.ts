@@ -33,18 +33,29 @@ export type show_revision_groups_revision_idSearchParameters = Masquerade &
     summary: boolean | string;
   }>;
 
-type Options = {
-  pathParams: show_revision_groups_revision_idPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_revision_groups_revision_idSearchParameters>;
-      strict?: false;
+      path: show_revision_groups_revision_idPathParameters;
     }
   | {
-      searchParams: show_revision_groups_revision_idSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_revision_groups_revision_idPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_revision_groups_revision_idSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_revision_groups_revision_idSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_revision_groups_revision_idSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_revision_groups_revision_idSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show revision

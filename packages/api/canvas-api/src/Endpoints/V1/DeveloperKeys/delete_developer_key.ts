@@ -13,18 +13,29 @@ export type delete_developer_keyPathParameters = {
 
 export type delete_developer_keySearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_developer_keyPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_developer_keySearchParameters>;
-      strict?: false;
+      path: delete_developer_keyPathParameters;
     }
   | {
-      searchParams: delete_developer_keySearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_developer_keyPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_developer_keySearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_developer_keySearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_developer_keySearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_developer_keySearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a Developer Key

@@ -11,12 +11,20 @@ export type switch_roleFormParameters = Masquerade & {
 
 type Options =
   | {
+      query?: Partial<switch_roleSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<switch_roleSearchParameters>;
+      body?: Partial<switch_roleFormParameters>;
+      /** @deprecated Use {@link Options.body} */
       params?: Partial<switch_roleFormParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<switch_roleSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: switch_roleSearchParameters;
+      body?: Partial<switch_roleFormParameters>;
+      /** @deprecated Use {@link Options.body} */
       params: switch_roleFormParameters;
       strict: true;
     };

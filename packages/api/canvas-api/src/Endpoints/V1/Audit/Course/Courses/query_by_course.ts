@@ -28,18 +28,29 @@ export type query_by_courseSearchParameters = Masquerade &
     end_time: string;
   }>;
 
-type Options = {
-  pathParams: query_by_coursePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<query_by_courseSearchParameters>;
-      strict?: false;
+      path: query_by_coursePathParameters;
     }
   | {
-      searchParams: query_by_courseSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: query_by_coursePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<query_by_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<query_by_courseSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<query_by_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: query_by_courseSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Query by course.

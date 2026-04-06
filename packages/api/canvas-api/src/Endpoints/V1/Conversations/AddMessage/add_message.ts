@@ -33,20 +33,35 @@ export type add_messageFormParameters = Masquerade & {
   included_messages: string[];
 };
 
-type Options = {
-  pathParams: add_messagePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<add_messageSearchParameters>;
-      params?: Partial<add_messageFormParameters>;
-      strict?: false;
+      path: add_messagePathParameters;
     }
   | {
-      searchParams: add_messageSearchParameters;
-      params: add_messageFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: add_messagePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<add_messageSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<add_messageSearchParameters>;
+        body?: Partial<add_messageFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<add_messageFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<add_messageSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: add_messageSearchParameters;
+        body?: Partial<add_messageFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: add_messageFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Add a message

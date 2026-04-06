@@ -18,18 +18,29 @@ export type delete_grading_period_coursesPathParameters = {
 
 export type delete_grading_period_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_grading_period_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_grading_period_coursesSearchParameters>;
-      strict?: false;
+      path: delete_grading_period_coursesPathParameters;
     }
   | {
-      searchParams: delete_grading_period_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_grading_period_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_grading_period_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_grading_period_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_grading_period_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_grading_period_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a grading period

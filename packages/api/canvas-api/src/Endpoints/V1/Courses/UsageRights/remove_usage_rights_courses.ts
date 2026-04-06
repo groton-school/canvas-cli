@@ -21,18 +21,29 @@ export type remove_usage_rights_coursesSearchParameters = Masquerade &
     folder_ids: string[];
   }>;
 
-type Options = {
-  pathParams: remove_usage_rights_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<remove_usage_rights_coursesSearchParameters>;
-      strict?: false;
+      path: remove_usage_rights_coursesPathParameters;
     }
   | {
-      searchParams: remove_usage_rights_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: remove_usage_rights_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<remove_usage_rights_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<remove_usage_rights_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<remove_usage_rights_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: remove_usage_rights_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Remove usage rights

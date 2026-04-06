@@ -34,18 +34,29 @@ export type submission_summary_coursesSearchParameters = Masquerade &
     include_deactivated: boolean | string;
   }>;
 
-type Options = {
-  pathParams: submission_summary_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<submission_summary_coursesSearchParameters>;
-      strict?: false;
+      path: submission_summary_coursesPathParameters;
     }
   | {
-      searchParams: submission_summary_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: submission_summary_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<submission_summary_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<submission_summary_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<submission_summary_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: submission_summary_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Submission Summary

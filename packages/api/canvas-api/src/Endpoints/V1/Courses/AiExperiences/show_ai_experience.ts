@@ -19,18 +19,29 @@ export type show_ai_experiencePathParameters = {
 
 export type show_ai_experienceSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_ai_experiencePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_ai_experienceSearchParameters>;
-      strict?: false;
+      path: show_ai_experiencePathParameters;
     }
   | {
-      searchParams: show_ai_experienceSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_ai_experiencePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_ai_experienceSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_ai_experienceSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_ai_experienceSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_ai_experienceSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show an AI experience

@@ -26,18 +26,29 @@ export type mark_rubric_assessments_as_read_courses_rubric_assessmentsPathParame
 export type mark_rubric_assessments_as_read_courses_rubric_assessmentsSearchParameters =
   Masquerade;
 
-type Options = {
-  pathParams: mark_rubric_assessments_as_read_courses_rubric_assessmentsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<mark_rubric_assessments_as_read_courses_rubric_assessmentsSearchParameters>;
-      strict?: false;
+      path: mark_rubric_assessments_as_read_courses_rubric_assessmentsPathParameters;
     }
   | {
-      searchParams: mark_rubric_assessments_as_read_courses_rubric_assessmentsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: mark_rubric_assessments_as_read_courses_rubric_assessmentsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<mark_rubric_assessments_as_read_courses_rubric_assessmentsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<mark_rubric_assessments_as_read_courses_rubric_assessmentsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<mark_rubric_assessments_as_read_courses_rubric_assessmentsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: mark_rubric_assessments_as_read_courses_rubric_assessmentsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Mark rubric assessments as read

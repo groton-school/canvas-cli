@@ -21,18 +21,29 @@ export type show_user_detailsSearchParameters = Masquerade &
     include: string[];
   }>;
 
-type Options = {
-  pathParams: show_user_detailsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_user_detailsSearchParameters>;
-      strict?: false;
+      path: show_user_detailsPathParameters;
     }
   | {
-      searchParams: show_user_detailsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_user_detailsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_user_detailsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_user_detailsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_user_detailsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_user_detailsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show user details

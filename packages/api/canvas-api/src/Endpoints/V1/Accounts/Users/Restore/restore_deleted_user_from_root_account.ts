@@ -19,18 +19,29 @@ export type restore_deleted_user_from_root_accountPathParameters = {
 
 export type restore_deleted_user_from_root_accountSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: restore_deleted_user_from_root_accountPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<restore_deleted_user_from_root_accountSearchParameters>;
-      strict?: false;
+      path: restore_deleted_user_from_root_accountPathParameters;
     }
   | {
-      searchParams: restore_deleted_user_from_root_accountSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: restore_deleted_user_from_root_accountPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<restore_deleted_user_from_root_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<restore_deleted_user_from_root_accountSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<restore_deleted_user_from_root_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: restore_deleted_user_from_root_accountSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Restore a deleted user from a root account

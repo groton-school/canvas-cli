@@ -12,18 +12,29 @@ export type mark_all_topic_as_read_groupsPathParameters = {
 
 export type mark_all_topic_as_read_groupsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: mark_all_topic_as_read_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<mark_all_topic_as_read_groupsSearchParameters>;
-      strict?: false;
+      path: mark_all_topic_as_read_groupsPathParameters;
     }
   | {
-      searchParams: mark_all_topic_as_read_groupsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: mark_all_topic_as_read_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<mark_all_topic_as_read_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<mark_all_topic_as_read_groupsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<mark_all_topic_as_read_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: mark_all_topic_as_read_groupsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Mark all topic as read

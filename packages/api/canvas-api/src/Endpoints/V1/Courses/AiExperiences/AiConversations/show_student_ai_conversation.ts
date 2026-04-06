@@ -25,18 +25,29 @@ export type show_student_ai_conversationPathParameters = {
 
 export type show_student_ai_conversationSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_student_ai_conversationPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_student_ai_conversationSearchParameters>;
-      strict?: false;
+      path: show_student_ai_conversationPathParameters;
     }
   | {
-      searchParams: show_student_ai_conversationSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_student_ai_conversationPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_student_ai_conversationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_student_ai_conversationSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_student_ai_conversationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_student_ai_conversationSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show student AI conversation

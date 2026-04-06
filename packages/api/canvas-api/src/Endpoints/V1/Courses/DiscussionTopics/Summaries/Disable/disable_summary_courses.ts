@@ -18,18 +18,29 @@ export type disable_summary_coursesPathParameters = {
 
 export type disable_summary_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: disable_summary_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<disable_summary_coursesSearchParameters>;
-      strict?: false;
+      path: disable_summary_coursesPathParameters;
     }
   | {
-      searchParams: disable_summary_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: disable_summary_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<disable_summary_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<disable_summary_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<disable_summary_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: disable_summary_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Disable summary

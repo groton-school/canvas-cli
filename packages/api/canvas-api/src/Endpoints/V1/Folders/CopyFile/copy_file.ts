@@ -27,20 +27,35 @@ export type copy_fileFormParameters = Masquerade & {
   on_duplicate: string;
 };
 
-type Options = {
-  pathParams: copy_filePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<copy_fileSearchParameters>;
-      params?: Partial<copy_fileFormParameters>;
-      strict?: false;
+      path: copy_filePathParameters;
     }
   | {
-      searchParams: copy_fileSearchParameters;
-      params: copy_fileFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: copy_filePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<copy_fileSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<copy_fileSearchParameters>;
+        body?: Partial<copy_fileFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<copy_fileFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<copy_fileSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: copy_fileSearchParameters;
+        body?: Partial<copy_fileFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: copy_fileFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Copy a file

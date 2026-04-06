@@ -21,18 +21,29 @@ export type permissionsSearchParameters = Masquerade &
     permissions: string[];
   }>;
 
-type Options = {
-  pathParams: permissionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<permissionsSearchParameters>;
-      strict?: false;
+      path: permissionsPathParameters;
     }
   | {
-      searchParams: permissionsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: permissionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<permissionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<permissionsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<permissionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: permissionsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Permissions

@@ -37,20 +37,35 @@ export type update_grading_period_setFormParameters = Masquerade & {
     | string[];
 };
 
-type Options = {
-  pathParams: update_grading_period_setPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<update_grading_period_setSearchParameters>;
-      params?: Partial<update_grading_period_setFormParameters>;
-      strict?: false;
+      path: update_grading_period_setPathParameters;
     }
   | {
-      searchParams: update_grading_period_setSearchParameters;
-      params: update_grading_period_setFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: update_grading_period_setPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<update_grading_period_setSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<update_grading_period_setSearchParameters>;
+        body?: Partial<update_grading_period_setFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<update_grading_period_setFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<update_grading_period_setSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: update_grading_period_setSearchParameters;
+        body?: Partial<update_grading_period_setFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: update_grading_period_setFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Update a grading period set

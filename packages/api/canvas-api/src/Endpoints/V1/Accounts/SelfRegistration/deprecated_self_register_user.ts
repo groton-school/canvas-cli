@@ -49,20 +49,35 @@ export type deprecated_self_register_userFormParameters = Masquerade & {
   'communication_channel[address]': string;
 };
 
-type Options = {
-  pathParams: deprecated_self_register_userPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<deprecated_self_register_userSearchParameters>;
-      params?: Partial<deprecated_self_register_userFormParameters>;
-      strict?: false;
+      path: deprecated_self_register_userPathParameters;
     }
   | {
-      searchParams: deprecated_self_register_userSearchParameters;
-      params: deprecated_self_register_userFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: deprecated_self_register_userPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<deprecated_self_register_userSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<deprecated_self_register_userSearchParameters>;
+        body?: Partial<deprecated_self_register_userFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<deprecated_self_register_userFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<deprecated_self_register_userSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: deprecated_self_register_userSearchParameters;
+        body?: Partial<deprecated_self_register_userFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: deprecated_self_register_userFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * [DEPRECATED] Self register a user

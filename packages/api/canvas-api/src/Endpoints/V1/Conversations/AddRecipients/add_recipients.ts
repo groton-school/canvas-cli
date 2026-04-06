@@ -21,20 +21,35 @@ export type add_recipientsFormParameters = Masquerade & {
   recipients: string[];
 };
 
-type Options = {
-  pathParams: add_recipientsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<add_recipientsSearchParameters>;
-      params?: Partial<add_recipientsFormParameters>;
-      strict?: false;
+      path: add_recipientsPathParameters;
     }
   | {
-      searchParams: add_recipientsSearchParameters;
-      params: add_recipientsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: add_recipientsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<add_recipientsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<add_recipientsSearchParameters>;
+        body?: Partial<add_recipientsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<add_recipientsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<add_recipientsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: add_recipientsSearchParameters;
+        body?: Partial<add_recipientsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: add_recipientsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Add recipients

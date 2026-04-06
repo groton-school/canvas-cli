@@ -44,20 +44,35 @@ export type restore_workflow_states_of_sis_imported_itemsFormParameters =
     unconclude_only: boolean | string;
   };
 
-type Options = {
-  pathParams: restore_workflow_states_of_sis_imported_itemsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<restore_workflow_states_of_sis_imported_itemsSearchParameters>;
-      params?: Partial<restore_workflow_states_of_sis_imported_itemsFormParameters>;
-      strict?: false;
+      path: restore_workflow_states_of_sis_imported_itemsPathParameters;
     }
   | {
-      searchParams: restore_workflow_states_of_sis_imported_itemsSearchParameters;
-      params: restore_workflow_states_of_sis_imported_itemsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: restore_workflow_states_of_sis_imported_itemsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<restore_workflow_states_of_sis_imported_itemsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<restore_workflow_states_of_sis_imported_itemsSearchParameters>;
+        body?: Partial<restore_workflow_states_of_sis_imported_itemsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<restore_workflow_states_of_sis_imported_itemsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<restore_workflow_states_of_sis_imported_itemsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: restore_workflow_states_of_sis_imported_itemsSearchParameters;
+        body?: Partial<restore_workflow_states_of_sis_imported_itemsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: restore_workflow_states_of_sis_imported_itemsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Restore workflow_states of SIS imported items

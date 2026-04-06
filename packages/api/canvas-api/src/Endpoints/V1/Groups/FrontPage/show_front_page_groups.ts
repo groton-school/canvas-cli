@@ -13,18 +13,29 @@ export type show_front_page_groupsPathParameters = {
 
 export type show_front_page_groupsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_front_page_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_front_page_groupsSearchParameters>;
-      strict?: false;
+      path: show_front_page_groupsPathParameters;
     }
   | {
-      searchParams: show_front_page_groupsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_front_page_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_front_page_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_front_page_groupsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_front_page_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_front_page_groupsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show front page

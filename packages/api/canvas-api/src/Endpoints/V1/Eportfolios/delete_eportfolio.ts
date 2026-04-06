@@ -13,18 +13,29 @@ export type delete_eportfolioPathParameters = {
 
 export type delete_eportfolioSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_eportfolioPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_eportfolioSearchParameters>;
-      strict?: false;
+      path: delete_eportfolioPathParameters;
     }
   | {
-      searchParams: delete_eportfolioSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_eportfolioPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_eportfolioSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_eportfolioSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_eportfolioSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_eportfolioSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an ePortfolio

@@ -15,18 +15,29 @@ export type remove_feature_flag_usersPathParameters = {
 
 export type remove_feature_flag_usersSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: remove_feature_flag_usersPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<remove_feature_flag_usersSearchParameters>;
-      strict?: false;
+      path: remove_feature_flag_usersPathParameters;
     }
   | {
-      searchParams: remove_feature_flag_usersSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: remove_feature_flag_usersPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<remove_feature_flag_usersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<remove_feature_flag_usersSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<remove_feature_flag_usersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: remove_feature_flag_usersSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Remove feature flag

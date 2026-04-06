@@ -44,20 +44,35 @@ export type export_content_coursesFormParameters = Masquerade & {
   select: JSONObject;
 };
 
-type Options = {
-  pathParams: export_content_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<export_content_coursesSearchParameters>;
-      params?: Partial<export_content_coursesFormParameters>;
-      strict?: false;
+      path: export_content_coursesPathParameters;
     }
   | {
-      searchParams: export_content_coursesSearchParameters;
-      params: export_content_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: export_content_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<export_content_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<export_content_coursesSearchParameters>;
+        body?: Partial<export_content_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<export_content_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<export_content_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: export_content_coursesSearchParameters;
+        body?: Partial<export_content_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: export_content_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Export content

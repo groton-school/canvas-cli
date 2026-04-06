@@ -12,18 +12,29 @@ export type group_activity_streamPathParameters = {
 
 export type group_activity_streamSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: group_activity_streamPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<group_activity_streamSearchParameters>;
-      strict?: false;
+      path: group_activity_streamPathParameters;
     }
   | {
-      searchParams: group_activity_streamSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: group_activity_streamPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<group_activity_streamSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<group_activity_streamSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<group_activity_streamSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: group_activity_streamSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Group activity stream

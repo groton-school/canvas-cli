@@ -19,18 +19,29 @@ export type show_lti_registration_via_client_idPathParameters = {
 
 export type show_lti_registration_via_client_idSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_lti_registration_via_client_idPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_lti_registration_via_client_idSearchParameters>;
-      strict?: false;
+      path: show_lti_registration_via_client_idPathParameters;
     }
   | {
-      searchParams: show_lti_registration_via_client_idSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_lti_registration_via_client_idPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_lti_registration_via_client_idSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_lti_registration_via_client_idSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_lti_registration_via_client_idSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_lti_registration_via_client_idSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show an LTI Registration (via the client_id)

@@ -13,18 +13,29 @@ export type return_test_student_for_coursePathParameters = {
 
 export type return_test_student_for_courseSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: return_test_student_for_coursePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<return_test_student_for_courseSearchParameters>;
-      strict?: false;
+      path: return_test_student_for_coursePathParameters;
     }
   | {
-      searchParams: return_test_student_for_courseSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: return_test_student_for_coursePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<return_test_student_for_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<return_test_student_for_courseSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<return_test_student_for_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: return_test_student_for_courseSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Return test student for course

@@ -57,20 +57,35 @@ export type import_outcomes_coursesFormParameters = Masquerade & {
   extension: string;
 };
 
-type Options = {
-  pathParams: import_outcomes_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<import_outcomes_coursesSearchParameters>;
-      params?: Partial<import_outcomes_coursesFormParameters>;
-      strict?: false;
+      path: import_outcomes_coursesPathParameters;
     }
   | {
-      searchParams: import_outcomes_coursesSearchParameters;
-      params: import_outcomes_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: import_outcomes_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<import_outcomes_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<import_outcomes_coursesSearchParameters>;
+        body?: Partial<import_outcomes_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<import_outcomes_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<import_outcomes_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: import_outcomes_coursesSearchParameters;
+        body?: Partial<import_outcomes_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: import_outcomes_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Import Outcomes

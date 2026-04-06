@@ -27,18 +27,29 @@ export type mark_all_entries_as_unread_coursesSearchParameters = Masquerade &
     forced_read_state: boolean | string;
   }>;
 
-type Options = {
-  pathParams: mark_all_entries_as_unread_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<mark_all_entries_as_unread_coursesSearchParameters>;
-      strict?: false;
+      path: mark_all_entries_as_unread_coursesPathParameters;
     }
   | {
-      searchParams: mark_all_entries_as_unread_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: mark_all_entries_as_unread_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<mark_all_entries_as_unread_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<mark_all_entries_as_unread_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<mark_all_entries_as_unread_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: mark_all_entries_as_unread_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Mark all entries as unread

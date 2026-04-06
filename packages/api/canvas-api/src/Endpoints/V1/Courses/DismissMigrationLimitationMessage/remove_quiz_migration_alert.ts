@@ -12,18 +12,29 @@ export type remove_quiz_migration_alertPathParameters = {
 
 export type remove_quiz_migration_alertSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: remove_quiz_migration_alertPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<remove_quiz_migration_alertSearchParameters>;
-      strict?: false;
+      path: remove_quiz_migration_alertPathParameters;
     }
   | {
-      searchParams: remove_quiz_migration_alertSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: remove_quiz_migration_alertPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<remove_quiz_migration_alertSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<remove_quiz_migration_alertSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<remove_quiz_migration_alertSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: remove_quiz_migration_alertSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Remove quiz migration alert

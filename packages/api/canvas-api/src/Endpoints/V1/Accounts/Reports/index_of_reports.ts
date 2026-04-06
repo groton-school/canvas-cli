@@ -15,18 +15,29 @@ export type index_of_reportsPathParameters = {
 
 export type index_of_reportsSearchParameters = Masquerade & Paginated;
 
-type Options = {
-  pathParams: index_of_reportsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<index_of_reportsSearchParameters>;
-      strict?: false;
+      path: index_of_reportsPathParameters;
     }
   | {
-      searchParams: index_of_reportsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: index_of_reportsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<index_of_reportsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<index_of_reportsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<index_of_reportsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: index_of_reportsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Index of Reports

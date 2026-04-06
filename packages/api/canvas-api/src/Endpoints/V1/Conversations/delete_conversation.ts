@@ -12,18 +12,29 @@ export type delete_conversationPathParameters = {
 
 export type delete_conversationSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_conversationPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_conversationSearchParameters>;
-      strict?: false;
+      path: delete_conversationPathParameters;
     }
   | {
-      searchParams: delete_conversationSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_conversationPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_conversationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_conversationSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_conversationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_conversationSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a conversation

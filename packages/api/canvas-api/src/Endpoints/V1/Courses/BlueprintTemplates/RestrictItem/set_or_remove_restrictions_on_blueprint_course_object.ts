@@ -51,20 +51,35 @@ export type set_or_remove_restrictions_on_blueprint_course_objectFormParameters 
     restrictions: BlueprintRestriction;
   };
 
-type Options = {
-  pathParams: set_or_remove_restrictions_on_blueprint_course_objectPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<set_or_remove_restrictions_on_blueprint_course_objectSearchParameters>;
-      params?: Partial<set_or_remove_restrictions_on_blueprint_course_objectFormParameters>;
-      strict?: false;
+      path: set_or_remove_restrictions_on_blueprint_course_objectPathParameters;
     }
   | {
-      searchParams: set_or_remove_restrictions_on_blueprint_course_objectSearchParameters;
-      params: set_or_remove_restrictions_on_blueprint_course_objectFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: set_or_remove_restrictions_on_blueprint_course_objectPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<set_or_remove_restrictions_on_blueprint_course_objectSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<set_or_remove_restrictions_on_blueprint_course_objectSearchParameters>;
+        body?: Partial<set_or_remove_restrictions_on_blueprint_course_objectFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<set_or_remove_restrictions_on_blueprint_course_objectFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<set_or_remove_restrictions_on_blueprint_course_objectSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: set_or_remove_restrictions_on_blueprint_course_objectSearchParameters;
+        body?: Partial<set_or_remove_restrictions_on_blueprint_course_objectFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: set_or_remove_restrictions_on_blueprint_course_objectFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Set or remove restrictions on a blueprint course object

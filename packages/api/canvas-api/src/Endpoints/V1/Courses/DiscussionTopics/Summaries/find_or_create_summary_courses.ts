@@ -23,20 +23,35 @@ export type find_or_create_summary_coursesFormParameters = Masquerade & {
   userInput: string;
 };
 
-type Options = {
-  pathParams: find_or_create_summary_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<find_or_create_summary_coursesSearchParameters>;
-      params?: Partial<find_or_create_summary_coursesFormParameters>;
-      strict?: false;
+      path: find_or_create_summary_coursesPathParameters;
     }
   | {
-      searchParams: find_or_create_summary_coursesSearchParameters;
-      params: find_or_create_summary_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: find_or_create_summary_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<find_or_create_summary_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<find_or_create_summary_coursesSearchParameters>;
+        body?: Partial<find_or_create_summary_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<find_or_create_summary_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<find_or_create_summary_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: find_or_create_summary_coursesSearchParameters;
+        body?: Partial<find_or_create_summary_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: find_or_create_summary_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Find or Create Summary

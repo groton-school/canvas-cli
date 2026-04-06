@@ -13,18 +13,29 @@ export type delete_outcome_group_globalPathParameters = {
 
 export type delete_outcome_group_globalSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_outcome_group_globalPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_outcome_group_globalSearchParameters>;
-      strict?: false;
+      path: delete_outcome_group_globalPathParameters;
     }
   | {
-      searchParams: delete_outcome_group_globalSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_outcome_group_globalPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_outcome_group_globalSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_outcome_group_globalSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_outcome_group_globalSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_outcome_group_globalSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an outcome group

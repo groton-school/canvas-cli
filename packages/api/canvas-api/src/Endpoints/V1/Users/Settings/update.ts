@@ -68,18 +68,29 @@ export type updateSearchParameters = Masquerade &
     widget_dashboard_user_preference: boolean | string;
   }>;
 
-type Options = {
-  pathParams: updatePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<updateSearchParameters>;
-      strict?: false;
+      path: updatePathParameters;
     }
   | {
-      searchParams: updateSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: updatePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<updateSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<updateSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<updateSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: updateSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Update user settings.

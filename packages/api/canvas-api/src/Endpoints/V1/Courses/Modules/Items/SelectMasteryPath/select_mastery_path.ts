@@ -37,20 +37,35 @@ export type select_mastery_pathFormParameters = Masquerade & {
   student_id: string;
 };
 
-type Options = {
-  pathParams: select_mastery_pathPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<select_mastery_pathSearchParameters>;
-      params?: Partial<select_mastery_pathFormParameters>;
-      strict?: false;
+      path: select_mastery_pathPathParameters;
     }
   | {
-      searchParams: select_mastery_pathSearchParameters;
-      params: select_mastery_pathFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: select_mastery_pathPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<select_mastery_pathSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<select_mastery_pathSearchParameters>;
+        body?: Partial<select_mastery_pathFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<select_mastery_pathFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<select_mastery_pathSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: select_mastery_pathSearchParameters;
+        body?: Partial<select_mastery_pathFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: select_mastery_pathFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Select a mastery path

@@ -19,18 +19,29 @@ export type delete_ai_experiencePathParameters = {
 
 export type delete_ai_experienceSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_ai_experiencePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_ai_experienceSearchParameters>;
-      strict?: false;
+      path: delete_ai_experiencePathParameters;
     }
   | {
-      searchParams: delete_ai_experienceSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_ai_experiencePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_ai_experienceSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_ai_experienceSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_ai_experienceSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_ai_experienceSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an AI experience

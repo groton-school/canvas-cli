@@ -22,18 +22,29 @@ export type delete_calendar_eventSearchParameters = Masquerade &
     which: string;
   }>;
 
-type Options = {
-  pathParams: delete_calendar_eventPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_calendar_eventSearchParameters>;
-      strict?: false;
+      path: delete_calendar_eventPathParameters;
     }
   | {
-      searchParams: delete_calendar_eventSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_calendar_eventPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_calendar_eventSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_calendar_eventSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_calendar_eventSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_calendar_eventSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a calendar event

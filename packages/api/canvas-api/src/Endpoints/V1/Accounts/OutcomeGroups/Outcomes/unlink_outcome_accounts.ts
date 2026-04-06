@@ -25,18 +25,29 @@ export type unlink_outcome_accountsPathParameters = {
 
 export type unlink_outcome_accountsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: unlink_outcome_accountsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<unlink_outcome_accountsSearchParameters>;
-      strict?: false;
+      path: unlink_outcome_accountsPathParameters;
     }
   | {
-      searchParams: unlink_outcome_accountsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: unlink_outcome_accountsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<unlink_outcome_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<unlink_outcome_accountsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<unlink_outcome_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: unlink_outcome_accountsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Unlink an outcome

@@ -31,18 +31,29 @@ export type show_course_paceSearchParameters = Masquerade &
     course_pace_id: number | string;
   }>;
 
-type Options = {
-  pathParams: show_course_pacePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_course_paceSearchParameters>;
-      strict?: false;
+      path: show_course_pacePathParameters;
     }
   | {
-      searchParams: show_course_paceSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_course_pacePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_course_paceSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_course_paceSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_course_paceSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_course_paceSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show a Course pace

@@ -17,20 +17,35 @@ export type mark_bulk_submissions_as_read_coursesFormParameters = Masquerade & {
   submissionIds: string[];
 };
 
-type Options = {
-  pathParams: mark_bulk_submissions_as_read_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<mark_bulk_submissions_as_read_coursesSearchParameters>;
-      params?: Partial<mark_bulk_submissions_as_read_coursesFormParameters>;
-      strict?: false;
+      path: mark_bulk_submissions_as_read_coursesPathParameters;
     }
   | {
-      searchParams: mark_bulk_submissions_as_read_coursesSearchParameters;
-      params: mark_bulk_submissions_as_read_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: mark_bulk_submissions_as_read_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<mark_bulk_submissions_as_read_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<mark_bulk_submissions_as_read_coursesSearchParameters>;
+        body?: Partial<mark_bulk_submissions_as_read_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<mark_bulk_submissions_as_read_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<mark_bulk_submissions_as_read_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: mark_bulk_submissions_as_read_coursesSearchParameters;
+        body?: Partial<mark_bulk_submissions_as_read_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: mark_bulk_submissions_as_read_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Mark bulk submissions as read

@@ -19,18 +19,29 @@ export type delete_custom_gradebook_columnPathParameters = {
 
 export type delete_custom_gradebook_columnSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_custom_gradebook_columnPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_custom_gradebook_columnSearchParameters>;
-      strict?: false;
+      path: delete_custom_gradebook_columnPathParameters;
     }
   | {
-      searchParams: delete_custom_gradebook_columnSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_custom_gradebook_columnPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_custom_gradebook_columnSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_custom_gradebook_columnSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_custom_gradebook_columnSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_custom_gradebook_columnSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a custom gradebook column

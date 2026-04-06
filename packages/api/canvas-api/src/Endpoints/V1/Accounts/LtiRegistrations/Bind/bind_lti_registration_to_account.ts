@@ -27,20 +27,35 @@ export type bind_lti_registration_to_accountFormParameters = Masquerade & {
   workflow_state: string;
 };
 
-type Options = {
-  pathParams: bind_lti_registration_to_accountPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<bind_lti_registration_to_accountSearchParameters>;
-      params?: Partial<bind_lti_registration_to_accountFormParameters>;
-      strict?: false;
+      path: bind_lti_registration_to_accountPathParameters;
     }
   | {
-      searchParams: bind_lti_registration_to_accountSearchParameters;
-      params: bind_lti_registration_to_accountFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: bind_lti_registration_to_accountPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<bind_lti_registration_to_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<bind_lti_registration_to_accountSearchParameters>;
+        body?: Partial<bind_lti_registration_to_accountFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<bind_lti_registration_to_accountFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<bind_lti_registration_to_accountSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: bind_lti_registration_to_accountSearchParameters;
+        body?: Partial<bind_lti_registration_to_accountFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: bind_lti_registration_to_accountFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Bind an LTI Registration to an Account

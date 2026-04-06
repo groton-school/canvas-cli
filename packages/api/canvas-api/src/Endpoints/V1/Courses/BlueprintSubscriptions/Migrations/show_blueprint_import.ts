@@ -25,18 +25,29 @@ export type show_blueprint_importPathParameters = {
 
 export type show_blueprint_importSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_blueprint_importPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_blueprint_importSearchParameters>;
-      strict?: false;
+      path: show_blueprint_importPathParameters;
     }
   | {
-      searchParams: show_blueprint_importSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_blueprint_importPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_blueprint_importSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_blueprint_importSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_blueprint_importSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_blueprint_importSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show a blueprint import

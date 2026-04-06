@@ -18,18 +18,29 @@ export type bulk_select_provisional_gradesPathParameters = {
 
 export type bulk_select_provisional_gradesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: bulk_select_provisional_gradesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<bulk_select_provisional_gradesSearchParameters>;
-      strict?: false;
+      path: bulk_select_provisional_gradesPathParameters;
     }
   | {
-      searchParams: bulk_select_provisional_gradesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: bulk_select_provisional_gradesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<bulk_select_provisional_gradesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<bulk_select_provisional_gradesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<bulk_select_provisional_gradesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: bulk_select_provisional_gradesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Bulk select provisional grades

@@ -18,18 +18,29 @@ export type mark_topic_as_read_groupsPathParameters = {
 
 export type mark_topic_as_read_groupsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: mark_topic_as_read_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<mark_topic_as_read_groupsSearchParameters>;
-      strict?: false;
+      path: mark_topic_as_read_groupsPathParameters;
     }
   | {
-      searchParams: mark_topic_as_read_groupsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: mark_topic_as_read_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<mark_topic_as_read_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<mark_topic_as_read_groupsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<mark_topic_as_read_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: mark_topic_as_read_groupsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Mark topic as read

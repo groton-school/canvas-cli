@@ -29,20 +29,35 @@ export type reorder_quiz_itemsFormParameters = Masquerade & {
   'order[type]': string[];
 };
 
-type Options = {
-  pathParams: reorder_quiz_itemsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<reorder_quiz_itemsSearchParameters>;
-      params?: Partial<reorder_quiz_itemsFormParameters>;
-      strict?: false;
+      path: reorder_quiz_itemsPathParameters;
     }
   | {
-      searchParams: reorder_quiz_itemsSearchParameters;
-      params: reorder_quiz_itemsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: reorder_quiz_itemsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<reorder_quiz_itemsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<reorder_quiz_itemsSearchParameters>;
+        body?: Partial<reorder_quiz_itemsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<reorder_quiz_itemsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<reorder_quiz_itemsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: reorder_quiz_itemsSearchParameters;
+        body?: Partial<reorder_quiz_itemsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: reorder_quiz_itemsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Reorder quiz items

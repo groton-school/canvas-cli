@@ -5,10 +5,14 @@ export type retrieve_permission_groupsSearchParameters = Masquerade;
 
 type Options =
   | {
+      query?: Partial<retrieve_permission_groupsSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<retrieve_permission_groupsSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<retrieve_permission_groupsSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: retrieve_permission_groupsSearchParameters;
       strict: true;
     };

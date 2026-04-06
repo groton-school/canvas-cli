@@ -40,18 +40,29 @@ export type retrieve_assignments_enabled_for_grade_export_to_sis_coursesSearchPa
       include: string;
     }>;
 
-type Options = {
-  pathParams: retrieve_assignments_enabled_for_grade_export_to_sis_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<retrieve_assignments_enabled_for_grade_export_to_sis_coursesSearchParameters>;
-      strict?: false;
+      path: retrieve_assignments_enabled_for_grade_export_to_sis_coursesPathParameters;
     }
   | {
-      searchParams: retrieve_assignments_enabled_for_grade_export_to_sis_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: retrieve_assignments_enabled_for_grade_export_to_sis_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<retrieve_assignments_enabled_for_grade_export_to_sis_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<retrieve_assignments_enabled_for_grade_export_to_sis_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<retrieve_assignments_enabled_for_grade_export_to_sis_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: retrieve_assignments_enabled_for_grade_export_to_sis_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Retrieve assignments enabled for grade export to SIS

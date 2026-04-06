@@ -5,10 +5,14 @@ export type check_if_canvas_career_is_enabledSearchParameters = Masquerade;
 
 type Options =
   | {
+      query?: Partial<check_if_canvas_career_is_enabledSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<check_if_canvas_career_is_enabledSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<check_if_canvas_career_is_enabledSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: check_if_canvas_career_is_enabledSearchParameters;
       strict: true;
     };

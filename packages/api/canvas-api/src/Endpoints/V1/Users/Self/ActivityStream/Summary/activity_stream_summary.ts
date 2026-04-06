@@ -14,10 +14,14 @@ export type activity_stream_summarySearchParameters = Masquerade &
 
 type Options =
   | {
+      query?: Partial<activity_stream_summarySearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<activity_stream_summarySearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<activity_stream_summarySearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: activity_stream_summarySearchParameters;
       strict: true;
     };

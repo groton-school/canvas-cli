@@ -24,18 +24,29 @@ export type retrieve_assignment_overridden_dates_for_classic_quizzesSearchParame
       'quiz_assignment_overrides[quiz_ids]': number | string[];
     }>;
 
-type Options = {
-  pathParams: retrieve_assignment_overridden_dates_for_classic_quizzesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters>;
-      strict?: false;
+      path: retrieve_assignment_overridden_dates_for_classic_quizzesPathParameters;
     }
   | {
-      searchParams: retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: retrieve_assignment_overridden_dates_for_classic_quizzesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Retrieve assignment-overridden dates for Classic Quizzes

@@ -12,18 +12,29 @@ export type export_groups_in_and_users_in_categoryPathParameters = {
 
 export type export_groups_in_and_users_in_categorySearchParameters = Masquerade;
 
-type Options = {
-  pathParams: export_groups_in_and_users_in_categoryPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<export_groups_in_and_users_in_categorySearchParameters>;
-      strict?: false;
+      path: export_groups_in_and_users_in_categoryPathParameters;
     }
   | {
-      searchParams: export_groups_in_and_users_in_categorySearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: export_groups_in_and_users_in_categoryPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<export_groups_in_and_users_in_categorySearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<export_groups_in_and_users_in_categorySearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<export_groups_in_and_users_in_categorySearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: export_groups_in_and_users_in_categorySearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Export groups in and users in category

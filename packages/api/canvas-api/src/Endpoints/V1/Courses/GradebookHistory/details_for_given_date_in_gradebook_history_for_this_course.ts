@@ -19,18 +19,29 @@ export type details_for_given_date_in_gradebook_history_for_this_coursePathParam
 export type details_for_given_date_in_gradebook_history_for_this_courseSearchParameters =
   Masquerade & Paginated;
 
-type Options = {
-  pathParams: details_for_given_date_in_gradebook_history_for_this_coursePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<details_for_given_date_in_gradebook_history_for_this_courseSearchParameters>;
-      strict?: false;
+      path: details_for_given_date_in_gradebook_history_for_this_coursePathParameters;
     }
   | {
-      searchParams: details_for_given_date_in_gradebook_history_for_this_courseSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: details_for_given_date_in_gradebook_history_for_this_coursePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<details_for_given_date_in_gradebook_history_for_this_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<details_for_given_date_in_gradebook_history_for_this_courseSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<details_for_given_date_in_gradebook_history_for_this_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: details_for_given_date_in_gradebook_history_for_this_courseSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Details for a given date in gradebook history for this course

@@ -29,18 +29,29 @@ export type show_provisional_grade_status_for_studentSearchParameters =
       student_id: number | string;
     }>;
 
-type Options = {
-  pathParams: show_provisional_grade_status_for_studentPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_provisional_grade_status_for_studentSearchParameters>;
-      strict?: false;
+      path: show_provisional_grade_status_for_studentPathParameters;
     }
   | {
-      searchParams: show_provisional_grade_status_for_studentSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_provisional_grade_status_for_studentPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_provisional_grade_status_for_studentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_provisional_grade_status_for_studentSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_provisional_grade_status_for_studentSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_provisional_grade_status_for_studentSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show provisional grade status for a student

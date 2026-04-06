@@ -18,18 +18,29 @@ export type accept_course_invitationPathParameters = {
 
 export type accept_course_invitationSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: accept_course_invitationPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<accept_course_invitationSearchParameters>;
-      strict?: false;
+      path: accept_course_invitationPathParameters;
     }
   | {
-      searchParams: accept_course_invitationSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: accept_course_invitationPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<accept_course_invitationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<accept_course_invitationSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<accept_course_invitationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: accept_course_invitationSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Accept Course Invitation

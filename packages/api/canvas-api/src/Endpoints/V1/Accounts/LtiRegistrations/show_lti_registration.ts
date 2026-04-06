@@ -35,18 +35,29 @@ export type show_lti_registrationSearchParameters = Masquerade &
     include: string[];
   }>;
 
-type Options = {
-  pathParams: show_lti_registrationPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_lti_registrationSearchParameters>;
-      strict?: false;
+      path: show_lti_registrationPathParameters;
     }
   | {
-      searchParams: show_lti_registrationSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_lti_registrationPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_lti_registrationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_lti_registrationSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_lti_registrationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_lti_registrationSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show an LTI Registration

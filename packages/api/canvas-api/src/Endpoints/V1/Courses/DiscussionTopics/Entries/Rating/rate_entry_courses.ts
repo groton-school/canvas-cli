@@ -35,20 +35,35 @@ export type rate_entry_coursesFormParameters = Masquerade & {
   rating: number | string;
 };
 
-type Options = {
-  pathParams: rate_entry_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<rate_entry_coursesSearchParameters>;
-      params?: Partial<rate_entry_coursesFormParameters>;
-      strict?: false;
+      path: rate_entry_coursesPathParameters;
     }
   | {
-      searchParams: rate_entry_coursesSearchParameters;
-      params: rate_entry_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: rate_entry_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<rate_entry_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<rate_entry_coursesSearchParameters>;
+        body?: Partial<rate_entry_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<rate_entry_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<rate_entry_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: rate_entry_coursesSearchParameters;
+        body?: Partial<rate_entry_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: rate_entry_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Rate entry

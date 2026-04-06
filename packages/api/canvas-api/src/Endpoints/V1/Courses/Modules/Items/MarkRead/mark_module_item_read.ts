@@ -24,18 +24,29 @@ export type mark_module_item_readPathParameters = {
 
 export type mark_module_item_readSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: mark_module_item_readPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<mark_module_item_readSearchParameters>;
-      strict?: false;
+      path: mark_module_item_readPathParameters;
     }
   | {
-      searchParams: mark_module_item_readSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: mark_module_item_readPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<mark_module_item_readSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<mark_module_item_readSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<mark_module_item_readSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: mark_module_item_readSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Mark module item read

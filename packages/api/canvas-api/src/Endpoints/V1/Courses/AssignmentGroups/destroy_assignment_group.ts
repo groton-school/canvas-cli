@@ -32,18 +32,29 @@ export type destroy_assignment_groupSearchParameters = Masquerade &
     move_assignments_to: number | string;
   }>;
 
-type Options = {
-  pathParams: destroy_assignment_groupPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<destroy_assignment_groupSearchParameters>;
-      strict?: false;
+      path: destroy_assignment_groupPathParameters;
     }
   | {
-      searchParams: destroy_assignment_groupSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: destroy_assignment_groupPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<destroy_assignment_groupSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<destroy_assignment_groupSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<destroy_assignment_groupSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: destroy_assignment_groupSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Destroy an Assignment Group

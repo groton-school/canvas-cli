@@ -31,18 +31,29 @@ export type deactivate_roleSearchParameters = Masquerade &
     role: string;
   }>;
 
-type Options = {
-  pathParams: deactivate_rolePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<deactivate_roleSearchParameters>;
-      strict?: false;
+      path: deactivate_rolePathParameters;
     }
   | {
-      searchParams: deactivate_roleSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: deactivate_rolePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<deactivate_roleSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<deactivate_roleSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<deactivate_roleSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: deactivate_roleSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Deactivate a role

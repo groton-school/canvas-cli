@@ -16,18 +16,29 @@ export type days_in_gradebook_history_for_this_coursePathParameters = {
 export type days_in_gradebook_history_for_this_courseSearchParameters =
   Masquerade & Paginated;
 
-type Options = {
-  pathParams: days_in_gradebook_history_for_this_coursePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<days_in_gradebook_history_for_this_courseSearchParameters>;
-      strict?: false;
+      path: days_in_gradebook_history_for_this_coursePathParameters;
     }
   | {
-      searchParams: days_in_gradebook_history_for_this_courseSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: days_in_gradebook_history_for_this_coursePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<days_in_gradebook_history_for_this_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<days_in_gradebook_history_for_this_courseSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<days_in_gradebook_history_for_this_courseSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: days_in_gradebook_history_for_this_courseSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Days in gradebook history for this course

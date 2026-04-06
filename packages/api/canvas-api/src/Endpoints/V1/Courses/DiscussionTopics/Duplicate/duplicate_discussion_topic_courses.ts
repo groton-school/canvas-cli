@@ -19,18 +19,29 @@ export type duplicate_discussion_topic_coursesPathParameters = {
 
 export type duplicate_discussion_topic_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: duplicate_discussion_topic_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<duplicate_discussion_topic_coursesSearchParameters>;
-      strict?: false;
+      path: duplicate_discussion_topic_coursesPathParameters;
     }
   | {
-      searchParams: duplicate_discussion_topic_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: duplicate_discussion_topic_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<duplicate_discussion_topic_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<duplicate_discussion_topic_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<duplicate_discussion_topic_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: duplicate_discussion_topic_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Duplicate discussion topic

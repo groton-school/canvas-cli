@@ -19,18 +19,29 @@ export type delete_lti_resource_linkPathParameters = {
 
 export type delete_lti_resource_linkSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_lti_resource_linkPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_lti_resource_linkSearchParameters>;
-      strict?: false;
+      path: delete_lti_resource_linkPathParameters;
     }
   | {
-      searchParams: delete_lti_resource_linkSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_lti_resource_linkPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_lti_resource_linkSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_lti_resource_linkSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_lti_resource_linkSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_lti_resource_linkSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an LTI Resource Link

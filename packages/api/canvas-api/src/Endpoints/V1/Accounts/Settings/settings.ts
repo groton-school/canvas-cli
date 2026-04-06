@@ -12,18 +12,29 @@ export type settingsPathParameters = {
 
 export type settingsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: settingsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<settingsSearchParameters>;
-      strict?: false;
+      path: settingsPathParameters;
     }
   | {
-      searchParams: settingsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: settingsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<settingsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<settingsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<settingsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: settingsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Settings

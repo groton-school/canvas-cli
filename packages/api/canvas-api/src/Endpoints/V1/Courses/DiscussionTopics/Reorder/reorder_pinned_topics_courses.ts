@@ -22,20 +22,35 @@ export type reorder_pinned_topics_coursesFormParameters = Masquerade & {
   order: number | string[];
 };
 
-type Options = {
-  pathParams: reorder_pinned_topics_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<reorder_pinned_topics_coursesSearchParameters>;
-      params?: Partial<reorder_pinned_topics_coursesFormParameters>;
-      strict?: false;
+      path: reorder_pinned_topics_coursesPathParameters;
     }
   | {
-      searchParams: reorder_pinned_topics_coursesSearchParameters;
-      params: reorder_pinned_topics_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: reorder_pinned_topics_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<reorder_pinned_topics_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<reorder_pinned_topics_coursesSearchParameters>;
+        body?: Partial<reorder_pinned_topics_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<reorder_pinned_topics_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<reorder_pinned_topics_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: reorder_pinned_topics_coursesSearchParameters;
+        body?: Partial<reorder_pinned_topics_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: reorder_pinned_topics_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Reorder pinned topics

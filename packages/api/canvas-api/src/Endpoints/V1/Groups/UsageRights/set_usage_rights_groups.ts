@@ -42,20 +42,35 @@ export type set_usage_rights_groupsFormParameters = Masquerade & {
   'usage_rights[license]': string;
 };
 
-type Options = {
-  pathParams: set_usage_rights_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<set_usage_rights_groupsSearchParameters>;
-      params?: Partial<set_usage_rights_groupsFormParameters>;
-      strict?: false;
+      path: set_usage_rights_groupsPathParameters;
     }
   | {
-      searchParams: set_usage_rights_groupsSearchParameters;
-      params: set_usage_rights_groupsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: set_usage_rights_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<set_usage_rights_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<set_usage_rights_groupsSearchParameters>;
+        body?: Partial<set_usage_rights_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<set_usage_rights_groupsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<set_usage_rights_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: set_usage_rights_groupsSearchParameters;
+        body?: Partial<set_usage_rights_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: set_usage_rights_groupsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Set usage rights

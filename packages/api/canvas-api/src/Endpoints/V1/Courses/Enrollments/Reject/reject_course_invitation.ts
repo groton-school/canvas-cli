@@ -18,18 +18,29 @@ export type reject_course_invitationPathParameters = {
 
 export type reject_course_invitationSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: reject_course_invitationPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<reject_course_invitationSearchParameters>;
-      strict?: false;
+      path: reject_course_invitationPathParameters;
     }
   | {
-      searchParams: reject_course_invitationSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: reject_course_invitationPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<reject_course_invitationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<reject_course_invitationSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<reject_course_invitationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: reject_course_invitationSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Reject Course Invitation

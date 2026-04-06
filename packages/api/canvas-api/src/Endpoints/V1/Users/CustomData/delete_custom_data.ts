@@ -20,18 +20,29 @@ export type delete_custom_dataSearchParameters = Masquerade &
     ns: string;
   }>;
 
-type Options = {
-  pathParams: delete_custom_dataPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_custom_dataSearchParameters>;
-      strict?: false;
+      path: delete_custom_dataPathParameters;
     }
   | {
-      searchParams: delete_custom_dataSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_custom_dataPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_custom_dataSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_custom_dataSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_custom_dataSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_custom_dataSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete custom data

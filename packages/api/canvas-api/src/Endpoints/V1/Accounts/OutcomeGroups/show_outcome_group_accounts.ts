@@ -19,18 +19,29 @@ export type show_outcome_group_accountsPathParameters = {
 
 export type show_outcome_group_accountsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_outcome_group_accountsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_outcome_group_accountsSearchParameters>;
-      strict?: false;
+      path: show_outcome_group_accountsPathParameters;
     }
   | {
-      searchParams: show_outcome_group_accountsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_outcome_group_accountsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_outcome_group_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_outcome_group_accountsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_outcome_group_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_outcome_group_accountsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show an outcome group

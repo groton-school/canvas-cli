@@ -14,18 +14,29 @@ export type add_course_to_favoritesPathParameters = {
 
 export type add_course_to_favoritesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: add_course_to_favoritesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<add_course_to_favoritesSearchParameters>;
-      strict?: false;
+      path: add_course_to_favoritesPathParameters;
     }
   | {
-      searchParams: add_course_to_favoritesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: add_course_to_favoritesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<add_course_to_favoritesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<add_course_to_favoritesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<add_course_to_favoritesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: add_course_to_favoritesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Add course to favorites

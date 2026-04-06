@@ -37,18 +37,29 @@ export type show_moduleSearchParameters = Masquerade &
     student_id: string;
   }>;
 
-type Options = {
-  pathParams: show_modulePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_moduleSearchParameters>;
-      strict?: false;
+      path: show_modulePathParameters;
     }
   | {
-      searchParams: show_moduleSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_modulePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_moduleSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_moduleSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_moduleSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_moduleSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show module

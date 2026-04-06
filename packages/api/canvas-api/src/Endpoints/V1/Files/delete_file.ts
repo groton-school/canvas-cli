@@ -24,18 +24,29 @@ export type delete_fileSearchParameters = Masquerade &
     replace: boolean | string;
   }>;
 
-type Options = {
-  pathParams: delete_filePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_fileSearchParameters>;
-      strict?: false;
+      path: delete_filePathParameters;
     }
   | {
-      searchParams: delete_fileSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_filePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_fileSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_fileSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_fileSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_fileSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete file

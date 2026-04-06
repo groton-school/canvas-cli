@@ -29,20 +29,35 @@ export type submit_captured_eventsFormParameters = Masquerade & {
   quiz_submission_events: string[];
 };
 
-type Options = {
-  pathParams: submit_captured_eventsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<submit_captured_eventsSearchParameters>;
-      params?: Partial<submit_captured_eventsFormParameters>;
-      strict?: false;
+      path: submit_captured_eventsPathParameters;
     }
   | {
-      searchParams: submit_captured_eventsSearchParameters;
-      params: submit_captured_eventsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: submit_captured_eventsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<submit_captured_eventsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<submit_captured_eventsSearchParameters>;
+        body?: Partial<submit_captured_eventsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<submit_captured_eventsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<submit_captured_eventsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: submit_captured_eventsSearchParameters;
+        body?: Partial<submit_captured_eventsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: submit_captured_eventsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Submit captured events

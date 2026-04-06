@@ -5,10 +5,14 @@ export type mark_all_as_readSearchParameters = Masquerade;
 
 type Options =
   | {
+      query?: Partial<mark_all_as_readSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams?: Partial<mark_all_as_readSearchParameters>;
       strict?: false;
     }
   | {
+      query?: Partial<mark_all_as_readSearchParameters>;
+      /** @deprecated Use {Options.query} */
       searchParams: mark_all_as_readSearchParameters;
       strict: true;
     };

@@ -18,18 +18,29 @@ export type delete_access_tokenPathParameters = {
 
 export type delete_access_tokenSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_access_tokenPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_access_tokenSearchParameters>;
-      strict?: false;
+      path: delete_access_tokenPathParameters;
     }
   | {
-      searchParams: delete_access_tokenSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_access_tokenPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_access_tokenSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_access_tokenSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_access_tokenSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_access_tokenSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an access token

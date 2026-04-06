@@ -13,18 +13,29 @@ export type show_account_auth_settingsPathParameters = {
 
 export type show_account_auth_settingsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_account_auth_settingsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_account_auth_settingsSearchParameters>;
-      strict?: false;
+      path: show_account_auth_settingsPathParameters;
     }
   | {
-      searchParams: show_account_auth_settingsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_account_auth_settingsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_account_auth_settingsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_account_auth_settingsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_account_auth_settingsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_account_auth_settingsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show account auth settings

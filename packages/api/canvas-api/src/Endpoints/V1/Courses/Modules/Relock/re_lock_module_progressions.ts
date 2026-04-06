@@ -19,18 +19,29 @@ export type re_lock_module_progressionsPathParameters = {
 
 export type re_lock_module_progressionsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: re_lock_module_progressionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<re_lock_module_progressionsSearchParameters>;
-      strict?: false;
+      path: re_lock_module_progressionsPathParameters;
     }
   | {
-      searchParams: re_lock_module_progressionsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: re_lock_module_progressionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<re_lock_module_progressionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<re_lock_module_progressionsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<re_lock_module_progressionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: re_lock_module_progressionsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Re-lock module progressions

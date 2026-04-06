@@ -19,18 +19,29 @@ export type show_global_notificationPathParameters = {
 
 export type show_global_notificationSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: show_global_notificationPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_global_notificationSearchParameters>;
-      strict?: false;
+      path: show_global_notificationPathParameters;
     }
   | {
-      searchParams: show_global_notificationSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_global_notificationPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_global_notificationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_global_notificationSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_global_notificationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_global_notificationSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show a global notification

@@ -19,18 +19,29 @@ export type reset_lti_registration_to_defaultsPathParameters = {
 
 export type reset_lti_registration_to_defaultsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: reset_lti_registration_to_defaultsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<reset_lti_registration_to_defaultsSearchParameters>;
-      strict?: false;
+      path: reset_lti_registration_to_defaultsPathParameters;
     }
   | {
-      searchParams: reset_lti_registration_to_defaultsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: reset_lti_registration_to_defaultsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<reset_lti_registration_to_defaultsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<reset_lti_registration_to_defaultsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<reset_lti_registration_to_defaultsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: reset_lti_registration_to_defaultsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Reset an LTI Registration to Defaults

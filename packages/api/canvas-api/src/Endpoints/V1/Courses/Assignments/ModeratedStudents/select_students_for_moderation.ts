@@ -25,20 +25,35 @@ export type select_students_for_moderationFormParameters = Masquerade & {
   student_ids: number | string[];
 };
 
-type Options = {
-  pathParams: select_students_for_moderationPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<select_students_for_moderationSearchParameters>;
-      params?: Partial<select_students_for_moderationFormParameters>;
-      strict?: false;
+      path: select_students_for_moderationPathParameters;
     }
   | {
-      searchParams: select_students_for_moderationSearchParameters;
-      params: select_students_for_moderationFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: select_students_for_moderationPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<select_students_for_moderationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<select_students_for_moderationSearchParameters>;
+        body?: Partial<select_students_for_moderationFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<select_students_for_moderationFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<select_students_for_moderationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: select_students_for_moderationSearchParameters;
+        body?: Partial<select_students_for_moderationFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: select_students_for_moderationFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Select students for moderation

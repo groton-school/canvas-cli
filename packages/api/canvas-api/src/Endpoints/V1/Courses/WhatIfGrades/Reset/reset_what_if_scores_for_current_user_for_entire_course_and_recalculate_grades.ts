@@ -15,18 +15,29 @@ export type reset_what_if_scores_for_current_user_for_entire_course_and_recalcul
 export type reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters =
   Masquerade & Paginated;
 
-type Options = {
-  pathParams: reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters>;
-      strict?: false;
+      path: reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesPathParameters;
     }
   | {
-      searchParams: reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Reset the what-if scores for the current user for an entire course and

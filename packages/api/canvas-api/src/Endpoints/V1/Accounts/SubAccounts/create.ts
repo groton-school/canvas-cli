@@ -44,20 +44,35 @@ export type createFormParameters = Masquerade & {
   'account[default_group_storage_quota_mb]': number | string;
 };
 
-type Options = {
-  pathParams: createPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<createSearchParameters>;
-      params?: Partial<createFormParameters>;
-      strict?: false;
+      path: createPathParameters;
     }
   | {
-      searchParams: createSearchParameters;
-      params: createFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: createPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<createSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<createSearchParameters>;
+        body?: Partial<createFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<createFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<createSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: createSearchParameters;
+        body?: Partial<createFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: createFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Create a new sub-account

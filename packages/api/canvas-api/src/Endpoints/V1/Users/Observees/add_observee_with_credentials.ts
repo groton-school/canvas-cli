@@ -47,20 +47,35 @@ export type add_observee_with_credentialsFormParameters = Masquerade & {
   root_account_id: number | string;
 };
 
-type Options = {
-  pathParams: add_observee_with_credentialsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<add_observee_with_credentialsSearchParameters>;
-      params?: Partial<add_observee_with_credentialsFormParameters>;
-      strict?: false;
+      path: add_observee_with_credentialsPathParameters;
     }
   | {
-      searchParams: add_observee_with_credentialsSearchParameters;
-      params: add_observee_with_credentialsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: add_observee_with_credentialsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<add_observee_with_credentialsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<add_observee_with_credentialsSearchParameters>;
+        body?: Partial<add_observee_with_credentialsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<add_observee_with_credentialsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<add_observee_with_credentialsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: add_observee_with_credentialsSearchParameters;
+        body?: Partial<add_observee_with_credentialsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: add_observee_with_credentialsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Add an observee with credentials

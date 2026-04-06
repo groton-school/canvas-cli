@@ -25,18 +25,29 @@ export type merge_user_into_another_user_accountsPathParameters = {
 
 export type merge_user_into_another_user_accountsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: merge_user_into_another_user_accountsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<merge_user_into_another_user_accountsSearchParameters>;
-      strict?: false;
+      path: merge_user_into_another_user_accountsPathParameters;
     }
   | {
-      searchParams: merge_user_into_another_user_accountsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: merge_user_into_another_user_accountsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<merge_user_into_another_user_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<merge_user_into_another_user_accountsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<merge_user_into_another_user_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: merge_user_into_another_user_accountsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Merge user into another user

@@ -19,18 +19,29 @@ export type delete_rubricassociationPathParameters = {
 
 export type delete_rubricassociationSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_rubricassociationPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_rubricassociationSearchParameters>;
-      strict?: false;
+      path: delete_rubricassociationPathParameters;
     }
   | {
-      searchParams: delete_rubricassociationSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_rubricassociationPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_rubricassociationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_rubricassociationSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_rubricassociationSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_rubricassociationSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a RubricAssociation

@@ -19,18 +19,29 @@ export type delete_external_feed_groupsPathParameters = {
 
 export type delete_external_feed_groupsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_external_feed_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_external_feed_groupsSearchParameters>;
-      strict?: false;
+      path: delete_external_feed_groupsPathParameters;
     }
   | {
-      searchParams: delete_external_feed_groupsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_external_feed_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_external_feed_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_external_feed_groupsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_external_feed_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_external_feed_groupsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an external feed

@@ -35,20 +35,35 @@ export type bulk_manage_differentiation_tagsFormParameters = Masquerade & {
   group_category: JSONObject;
 };
 
-type Options = {
-  pathParams: bulk_manage_differentiation_tagsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<bulk_manage_differentiation_tagsSearchParameters>;
-      params?: Partial<bulk_manage_differentiation_tagsFormParameters>;
-      strict?: false;
+      path: bulk_manage_differentiation_tagsPathParameters;
     }
   | {
-      searchParams: bulk_manage_differentiation_tagsSearchParameters;
-      params: bulk_manage_differentiation_tagsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: bulk_manage_differentiation_tagsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<bulk_manage_differentiation_tagsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<bulk_manage_differentiation_tagsSearchParameters>;
+        body?: Partial<bulk_manage_differentiation_tagsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<bulk_manage_differentiation_tagsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<bulk_manage_differentiation_tagsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: bulk_manage_differentiation_tagsSearchParameters;
+        body?: Partial<bulk_manage_differentiation_tagsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: bulk_manage_differentiation_tagsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Bulk manage differentiation tags

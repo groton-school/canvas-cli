@@ -21,20 +21,35 @@ export type bulk_update_column_dataFormParameters = Masquerade & {
   column_data: string[];
 };
 
-type Options = {
-  pathParams: bulk_update_column_dataPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<bulk_update_column_dataSearchParameters>;
-      params?: Partial<bulk_update_column_dataFormParameters>;
-      strict?: false;
+      path: bulk_update_column_dataPathParameters;
     }
   | {
-      searchParams: bulk_update_column_dataSearchParameters;
-      params: bulk_update_column_dataFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: bulk_update_column_dataPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<bulk_update_column_dataSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<bulk_update_column_dataSearchParameters>;
+        body?: Partial<bulk_update_column_dataFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<bulk_update_column_dataFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<bulk_update_column_dataSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: bulk_update_column_dataSearchParameters;
+        body?: Partial<bulk_update_column_dataFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: bulk_update_column_dataFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Bulk update column data

@@ -17,18 +17,29 @@ export type delete_communication_channel_typePathParameters = {
 
 export type delete_communication_channel_typeSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_communication_channel_typePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_communication_channel_typeSearchParameters>;
-      strict?: false;
+      path: delete_communication_channel_typePathParameters;
     }
   | {
-      searchParams: delete_communication_channel_typeSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_communication_channel_typePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_communication_channel_typeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_communication_channel_typeSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_communication_channel_typeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_communication_channel_typeSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a communication channel

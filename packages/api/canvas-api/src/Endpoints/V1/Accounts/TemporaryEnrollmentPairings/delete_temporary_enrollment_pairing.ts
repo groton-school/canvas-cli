@@ -19,18 +19,29 @@ export type delete_temporary_enrollment_pairingPathParameters = {
 
 export type delete_temporary_enrollment_pairingSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_temporary_enrollment_pairingPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_temporary_enrollment_pairingSearchParameters>;
-      strict?: false;
+      path: delete_temporary_enrollment_pairingPathParameters;
     }
   | {
-      searchParams: delete_temporary_enrollment_pairingSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_temporary_enrollment_pairingPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_temporary_enrollment_pairingSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_temporary_enrollment_pairingSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_temporary_enrollment_pairingSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_temporary_enrollment_pairingSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete Temporary Enrollment Pairing

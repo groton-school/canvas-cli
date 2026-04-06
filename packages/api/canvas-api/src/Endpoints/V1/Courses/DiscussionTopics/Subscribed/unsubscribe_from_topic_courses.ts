@@ -18,18 +18,29 @@ export type unsubscribe_from_topic_coursesPathParameters = {
 
 export type unsubscribe_from_topic_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: unsubscribe_from_topic_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<unsubscribe_from_topic_coursesSearchParameters>;
-      strict?: false;
+      path: unsubscribe_from_topic_coursesPathParameters;
     }
   | {
-      searchParams: unsubscribe_from_topic_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: unsubscribe_from_topic_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<unsubscribe_from_topic_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<unsubscribe_from_topic_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<unsubscribe_from_topic_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: unsubscribe_from_topic_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Unsubscribe from a topic

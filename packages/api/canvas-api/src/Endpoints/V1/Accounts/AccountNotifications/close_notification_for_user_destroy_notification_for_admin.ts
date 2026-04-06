@@ -29,18 +29,29 @@ export type close_notification_for_user_destroy_notification_for_adminSearchPara
       remove: boolean | string;
     }>;
 
-type Options = {
-  pathParams: close_notification_for_user_destroy_notification_for_adminPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<close_notification_for_user_destroy_notification_for_adminSearchParameters>;
-      strict?: false;
+      path: close_notification_for_user_destroy_notification_for_adminPathParameters;
     }
   | {
-      searchParams: close_notification_for_user_destroy_notification_for_adminSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: close_notification_for_user_destroy_notification_for_adminPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<close_notification_for_user_destroy_notification_for_adminSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<close_notification_for_user_destroy_notification_for_adminSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<close_notification_for_user_destroy_notification_for_adminSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: close_notification_for_user_destroy_notification_for_adminSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Close notification for user. Destroy notification for admin

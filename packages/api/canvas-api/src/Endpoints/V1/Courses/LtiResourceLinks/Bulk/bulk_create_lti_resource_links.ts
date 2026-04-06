@@ -28,20 +28,35 @@ export type bulk_create_lti_resource_linksFormParameters = Masquerade & {
   custom: Hash[];
 };
 
-type Options = {
-  pathParams: bulk_create_lti_resource_linksPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<bulk_create_lti_resource_linksSearchParameters>;
-      params?: Partial<bulk_create_lti_resource_linksFormParameters>;
-      strict?: false;
+      path: bulk_create_lti_resource_linksPathParameters;
     }
   | {
-      searchParams: bulk_create_lti_resource_linksSearchParameters;
-      params: bulk_create_lti_resource_linksFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: bulk_create_lti_resource_linksPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<bulk_create_lti_resource_linksSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<bulk_create_lti_resource_linksSearchParameters>;
+        body?: Partial<bulk_create_lti_resource_linksFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<bulk_create_lti_resource_linksFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<bulk_create_lti_resource_linksSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: bulk_create_lti_resource_linksSearchParameters;
+        body?: Partial<bulk_create_lti_resource_linksFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: bulk_create_lti_resource_linksFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Bulk Create LTI Resource Links

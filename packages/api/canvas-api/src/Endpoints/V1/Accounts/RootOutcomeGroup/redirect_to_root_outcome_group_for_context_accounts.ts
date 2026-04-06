@@ -14,18 +14,29 @@ export type redirect_to_root_outcome_group_for_context_accountsPathParameters =
 export type redirect_to_root_outcome_group_for_context_accountsSearchParameters =
   Masquerade;
 
-type Options = {
-  pathParams: redirect_to_root_outcome_group_for_context_accountsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<redirect_to_root_outcome_group_for_context_accountsSearchParameters>;
-      strict?: false;
+      path: redirect_to_root_outcome_group_for_context_accountsPathParameters;
     }
   | {
-      searchParams: redirect_to_root_outcome_group_for_context_accountsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: redirect_to_root_outcome_group_for_context_accountsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<redirect_to_root_outcome_group_for_context_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<redirect_to_root_outcome_group_for_context_accountsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<redirect_to_root_outcome_group_for_context_accountsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: redirect_to_root_outcome_group_for_context_accountsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Redirect to root outcome group for context

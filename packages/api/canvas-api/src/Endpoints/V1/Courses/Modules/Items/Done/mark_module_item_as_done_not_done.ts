@@ -24,18 +24,29 @@ export type mark_module_item_as_done_not_donePathParameters = {
 
 export type mark_module_item_as_done_not_doneSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: mark_module_item_as_done_not_donePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<mark_module_item_as_done_not_doneSearchParameters>;
-      strict?: false;
+      path: mark_module_item_as_done_not_donePathParameters;
     }
   | {
-      searchParams: mark_module_item_as_done_not_doneSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: mark_module_item_as_done_not_donePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<mark_module_item_as_done_not_doneSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<mark_module_item_as_done_not_doneSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<mark_module_item_as_done_not_doneSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: mark_module_item_as_done_not_doneSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Mark module item as done/not done

@@ -28,20 +28,35 @@ export type enable_disable_or_clear_explicit_csp_setting_coursesFormParameters =
     status: string;
   };
 
-type Options = {
-  pathParams: enable_disable_or_clear_explicit_csp_setting_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<enable_disable_or_clear_explicit_csp_setting_coursesSearchParameters>;
-      params?: Partial<enable_disable_or_clear_explicit_csp_setting_coursesFormParameters>;
-      strict?: false;
+      path: enable_disable_or_clear_explicit_csp_setting_coursesPathParameters;
     }
   | {
-      searchParams: enable_disable_or_clear_explicit_csp_setting_coursesSearchParameters;
-      params: enable_disable_or_clear_explicit_csp_setting_coursesFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: enable_disable_or_clear_explicit_csp_setting_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<enable_disable_or_clear_explicit_csp_setting_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<enable_disable_or_clear_explicit_csp_setting_coursesSearchParameters>;
+        body?: Partial<enable_disable_or_clear_explicit_csp_setting_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<enable_disable_or_clear_explicit_csp_setting_coursesFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<enable_disable_or_clear_explicit_csp_setting_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: enable_disable_or_clear_explicit_csp_setting_coursesSearchParameters;
+        body?: Partial<enable_disable_or_clear_explicit_csp_setting_coursesFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: enable_disable_or_clear_explicit_csp_setting_coursesFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Enable, disable, or clear explicit CSP setting

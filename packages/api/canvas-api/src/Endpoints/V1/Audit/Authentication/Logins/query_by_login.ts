@@ -27,18 +27,29 @@ export type query_by_loginSearchParameters = Masquerade &
     end_time: string;
   }>;
 
-type Options = {
-  pathParams: query_by_loginPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<query_by_loginSearchParameters>;
-      strict?: false;
+      path: query_by_loginPathParameters;
     }
   | {
-      searchParams: query_by_loginSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: query_by_loginPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<query_by_loginSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<query_by_loginSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<query_by_loginSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: query_by_loginSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Query by login.

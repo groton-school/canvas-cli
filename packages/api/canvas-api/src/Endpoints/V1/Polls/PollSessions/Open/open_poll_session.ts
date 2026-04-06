@@ -18,18 +18,29 @@ export type open_poll_sessionPathParameters = {
 
 export type open_poll_sessionSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: open_poll_sessionPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<open_poll_sessionSearchParameters>;
-      strict?: false;
+      path: open_poll_sessionPathParameters;
     }
   | {
-      searchParams: open_poll_sessionSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: open_poll_sessionPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<open_poll_sessionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<open_poll_sessionSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<open_poll_sessionSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: open_poll_sessionSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Open a poll session

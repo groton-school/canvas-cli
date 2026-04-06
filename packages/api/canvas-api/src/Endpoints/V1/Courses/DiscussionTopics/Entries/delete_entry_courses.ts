@@ -24,18 +24,29 @@ export type delete_entry_coursesPathParameters = {
 
 export type delete_entry_coursesSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_entry_coursesPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_entry_coursesSearchParameters>;
-      strict?: false;
+      path: delete_entry_coursesPathParameters;
     }
   | {
-      searchParams: delete_entry_coursesSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_entry_coursesPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_entry_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_entry_coursesSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_entry_coursesSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_entry_coursesSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete an entry

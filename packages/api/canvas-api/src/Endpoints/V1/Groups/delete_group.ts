@@ -13,18 +13,29 @@ export type delete_groupPathParameters = {
 
 export type delete_groupSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: delete_groupPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<delete_groupSearchParameters>;
-      strict?: false;
+      path: delete_groupPathParameters;
     }
   | {
-      searchParams: delete_groupSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: delete_groupPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<delete_groupSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<delete_groupSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<delete_groupSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: delete_groupSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Delete a group

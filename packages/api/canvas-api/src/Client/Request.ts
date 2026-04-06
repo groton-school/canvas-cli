@@ -2,11 +2,18 @@ import { stringify } from '#utilities';
 import { JSONObject } from '@battis/typescript-tricks';
 
 type EndpointParameters = {
+  path?: JSONObject;
+  /** @deprecated Use {@link EndpointParameters.path} */
   pathParams?: JSONObject;
+
+  query?: JSONObject;
+  /** @deprecated Use {@link EndpointParameters.query} */
   searchParams?: JSONObject;
 };
 
 type RequestParameters = {
+  body?: JSONObject;
+  /** @deprecated Use {@link RequestParameters.body} */
   params?: JSONObject;
   access_token?: string;
 };
@@ -18,15 +25,17 @@ const headers = {
 
 export function flattenEndpoint(
   endpoint: string,
-  { pathParams, searchParams }: EndpointParameters
+  { path, query, pathParams, searchParams }: EndpointParameters
 ) {
-  if (pathParams) {
-    endpoint = Object.keys(pathParams || {}).reduce(
+  path = path || pathParams;
+  query = query || searchParams;
+  if (path) {
+    endpoint = Object.keys(path || {}).reduce(
       (populatedEndpoint, paramName) => {
-        if (pathParams[paramName]) {
+        if (path[paramName]) {
           return populatedEndpoint.replaceAll(
             `{${paramName}}`,
-            pathParams[paramName].toString()
+            path[paramName].toString()
           );
         }
         return populatedEndpoint;
@@ -34,18 +43,19 @@ export function flattenEndpoint(
       endpoint
     );
   }
-  if (searchParams) {
-    endpoint = `${endpoint}${endpoint.includes('?') ? '&' : '?'}${stringify(searchParams)}`;
+  if (query) {
+    endpoint = `${endpoint}${endpoint.includes('?') ? '&' : '?'}${stringify(query)}`;
   }
   return endpoint;
 }
 
 export function constructInit(
   init: RequestInit = {},
-  { params, access_token }: RequestParameters = {}
+  { body, params, access_token }: RequestParameters = {}
 ) {
-  if (params) {
-    init.body = stringify(params);
+  body = body || params;
+  if (body) {
+    init.body = stringify(body);
   }
   if (!init.headers) {
     init.headers = {};

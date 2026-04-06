@@ -24,20 +24,35 @@ export type assign_unassigned_membersFormParameters = Masquerade & {
   sync: boolean | string;
 };
 
-type Options = {
-  pathParams: assign_unassigned_membersPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<assign_unassigned_membersSearchParameters>;
-      params?: Partial<assign_unassigned_membersFormParameters>;
-      strict?: false;
+      path: assign_unassigned_membersPathParameters;
     }
   | {
-      searchParams: assign_unassigned_membersSearchParameters;
-      params: assign_unassigned_membersFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: assign_unassigned_membersPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<assign_unassigned_membersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<assign_unassigned_membersSearchParameters>;
+        body?: Partial<assign_unassigned_membersFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<assign_unassigned_membersFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<assign_unassigned_membersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: assign_unassigned_membersSearchParameters;
+        body?: Partial<assign_unassigned_membersFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: assign_unassigned_membersFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Assign unassigned members

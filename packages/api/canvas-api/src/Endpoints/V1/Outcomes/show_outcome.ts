@@ -23,18 +23,29 @@ export type show_outcomeSearchParameters = Masquerade &
     add_defaults: boolean | string;
   }>;
 
-type Options = {
-  pathParams: show_outcomePathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<show_outcomeSearchParameters>;
-      strict?: false;
+      path: show_outcomePathParameters;
     }
   | {
-      searchParams: show_outcomeSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: show_outcomePathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<show_outcomeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<show_outcomeSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<show_outcomeSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: show_outcomeSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Show an outcome

@@ -40,20 +40,35 @@ export type answering_questionsFormParameters = Masquerade & {
   quiz_questions: QuizSubmissionQuestion[];
 };
 
-type Options = {
-  pathParams: answering_questionsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<answering_questionsSearchParameters>;
-      params?: Partial<answering_questionsFormParameters>;
-      strict?: false;
+      path: answering_questionsPathParameters;
     }
   | {
-      searchParams: answering_questionsSearchParameters;
-      params: answering_questionsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: answering_questionsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<answering_questionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<answering_questionsSearchParameters>;
+        body?: Partial<answering_questionsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<answering_questionsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<answering_questionsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: answering_questionsSearchParameters;
+        body?: Partial<answering_questionsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: answering_questionsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Answering questions

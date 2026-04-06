@@ -21,18 +21,29 @@ export type remove_usage_rights_usersSearchParameters = Masquerade &
     folder_ids: string[];
   }>;
 
-type Options = {
-  pathParams: remove_usage_rights_usersPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<remove_usage_rights_usersSearchParameters>;
-      strict?: false;
+      path: remove_usage_rights_usersPathParameters;
     }
   | {
-      searchParams: remove_usage_rights_usersSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: remove_usage_rights_usersPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<remove_usage_rights_usersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<remove_usage_rights_usersSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<remove_usage_rights_usersSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: remove_usage_rights_usersSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Remove usage rights

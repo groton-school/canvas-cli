@@ -28,18 +28,29 @@ export type revert_to_revision_groupsPathParameters = {
 
 export type revert_to_revision_groupsSearchParameters = Masquerade;
 
-type Options = {
-  pathParams: revert_to_revision_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<revert_to_revision_groupsSearchParameters>;
-      strict?: false;
+      path: revert_to_revision_groupsPathParameters;
     }
   | {
-      searchParams: revert_to_revision_groupsSearchParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: revert_to_revision_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<revert_to_revision_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<revert_to_revision_groupsSearchParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<revert_to_revision_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: revert_to_revision_groupsSearchParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Revert to revision

@@ -34,20 +34,35 @@ export type post_reply_groupsFormParameters = Masquerade & {
   attachment: string;
 };
 
-type Options = {
-  pathParams: post_reply_groupsPathParameters;
-} & (
+type Options = (
   | {
-      searchParams?: Partial<post_reply_groupsSearchParameters>;
-      params?: Partial<post_reply_groupsFormParameters>;
-      strict?: false;
+      path: post_reply_groupsPathParameters;
     }
   | {
-      searchParams: post_reply_groupsSearchParameters;
-      params: post_reply_groupsFormParameters;
-      strict: true;
+      /** @deprecated Use {@link Options.path} */
+      pathParams: post_reply_groupsPathParameters;
     }
-);
+) &
+  (
+    | {
+        query?: Partial<post_reply_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams?: Partial<post_reply_groupsSearchParameters>;
+        body?: Partial<post_reply_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params?: Partial<post_reply_groupsFormParameters>;
+        strict?: false;
+      }
+    | {
+        query?: Partial<post_reply_groupsSearchParameters>;
+        /** @deprecated Use {Options.query} */
+        searchParams: post_reply_groupsSearchParameters;
+        body?: Partial<post_reply_groupsFormParameters>;
+        /** @deprecated Use {@link Options.body} */
+        params: post_reply_groupsFormParameters;
+        strict: true;
+      }
+  );
 
 /**
  * Post a reply
