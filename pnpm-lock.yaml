@@ -141,8 +141,8 @@ importers:
   packages/api/swagger-renderer:
     dependencies:
       '@1password/sdk':
-        specifier: ^0.3.1
-        version: 0.3.1
+        specifier: ^0.4.0
+        version: 0.4.0
       '@qui-cli/colors':
         specifier: ^3.2.4
         version: 3.2.4
@@ -151,7 +151,7 @@ importers:
         version: 6.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))
       '@qui-cli/env':
         specifier: ^5.1.2
-        version: 5.1.2(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))(@qui-cli/shell@3.1.4(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))
+        version: 5.1.2(@1password/sdk@0.4.0)(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))(@qui-cli/shell@3.1.4(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))
       '@qui-cli/log':
         specifier: ^4.0.4
         version: 4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))
@@ -575,14 +575,8 @@ importers:
 
 packages:
 
-  '@1password/sdk-core@0.3.1':
-    resolution: {integrity: sha512-zFkbRznmE47kpke10OpO/9R0AF5csNWS+naFbadgXuFX1LlxY+2C28NSKbCXhLTqmcuWifBfPdZQ728GJ1i5xg==}
-
   '@1password/sdk-core@0.4.0':
     resolution: {integrity: sha512-vjeI1o4wiONY+t1naA4dtUp6HktdLH1D2S+tN1Lh4l41S9XIUHxrljov9B5u6G+VHr7f2MUoxmzXA9zT3aokQQ==}
-
-  '@1password/sdk@0.3.1':
-    resolution: {integrity: sha512-20zbQfqsjcECT0gvnAw4zONJDt3XQgNH946pZR0NV1Qxukyaz/DKB0cBnBNCCEWZg93Bah8poaR6gJCyuNX14w==}
 
   '@1password/sdk@0.4.0':
     resolution: {integrity: sha512-RIypujc9R/UeUaobjyClTYokqRFpcaIkHq+EO/X9XoHId98Vg+SbjwGV+yygRC4MyHwYNo1KP1iEbZcqJ4ZTdw==}
@@ -7874,13 +7868,7 @@ packages:
 
 snapshots:
 
-  '@1password/sdk-core@0.3.1': {}
-
   '@1password/sdk-core@0.4.0': {}
-
-  '@1password/sdk@0.3.1':
-    dependencies:
-      '@1password/sdk-core': 0.3.1
 
   '@1password/sdk@0.4.0':
     dependencies:
@@ -9395,19 +9383,6 @@ snapshots:
       '@battis/import-package-json': 0.1.7
       '@qui-cli/env': 5.1.2(@1password/sdk@0.4.0)(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))(@qui-cli/shell@3.1.4(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))
       '@qui-cli/shell': 3.1.4(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))
-
-  '@qui-cli/env@5.1.2(@1password/sdk@0.3.1)(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))(@qui-cli/shell@3.1.4(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))':
-    dependencies:
-      '@battis/import-package-json': 0.1.7
-      '@qui-cli/colors': 3.2.4
-      '@qui-cli/log': 4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))
-      '@qui-cli/plugin': 4.1.1(@qui-cli/colors@3.2.4)
-      '@qui-cli/root': 3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))
-      '@qui-cli/shell': 3.1.4(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))
-      dotenv: 17.3.1
-      ora: 9.3.0
-    optionalDependencies:
-      '@1password/sdk': 0.3.1
 
   '@qui-cli/env@5.1.2(@1password/sdk@0.4.0)(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))(@qui-cli/shell@3.1.4(@qui-cli/colors@3.2.4)(@qui-cli/log@4.0.4(@qui-cli/colors@3.2.4)(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))(@qui-cli/root@3.1.1(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4))))(@qui-cli/plugin@4.1.1(@qui-cli/colors@3.2.4)))':
     dependencies:
