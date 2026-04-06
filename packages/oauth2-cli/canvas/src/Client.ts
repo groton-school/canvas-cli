@@ -1,6 +1,5 @@
 import { JSONValue } from '@battis/typescript-tricks';
 import * as Canvas from '@groton/canvas-api';
-import { isError } from '@groton/canvas-api.utilities';
 import * as OAuth2 from '@oauth2-cli/qui-cli/extendable/index.js';
 import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
@@ -78,7 +77,7 @@ export class Client
       case 201:
         if (confirm.headers.has('location')) {
           result = await this.fetchJSON<T>(confirm.headers.get('location')!);
-          if (!isError(result)) {
+          if (!Canvas.Utilities.isError(result)) {
             return result;
           }
         }

@@ -4,6 +4,7 @@ import * as RenderedPlanner from './Resources/Planner.js';
 export { client, init } from '#client';
 export * from './Endpoints/index.js';
 export * from './Resources/index.js';
+export * as Utilities from './Utilities/index.js';
 
 export * as Client from '#client';
 

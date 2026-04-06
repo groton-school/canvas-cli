@@ -1,5 +1,5 @@
+import { isError } from '#utilities';
 import { JSONObject } from '@battis/typescript-tricks';
-import { isError } from '@groton/canvas-api.utilities';
 import { Base } from './Base.js';
 import { constructInit, flattenEndpoint } from './Request.js';
 

@@ -1,5 +1,5 @@
+import { stringify } from '#utilities';
 import { JSONObject } from '@battis/typescript-tricks';
-import { stringify } from '@groton/canvas-api.utilities';
 
 type EndpointParameters = {
   pathParams?: JSONObject;

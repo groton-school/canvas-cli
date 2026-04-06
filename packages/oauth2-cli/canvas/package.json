@@ -32,7 +32,6 @@
     "@battis/descriptive-types": "^0.2.6",
     "@battis/typescript-tricks": "^0.8.2",
     "@groton/canvas-api": "workspace:*",
-    "@groton/canvas-api.utilities": "workspace:*",
     "@oauth2-cli/qui-cli": "^1.2.15",
     "ora": "^9.3.0",
     "requestish": "^0.1.12"

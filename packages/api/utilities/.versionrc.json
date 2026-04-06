@@ -1,5 +1,0 @@
-{
-  "path": ".",
-  "tag-prefix": "utilities/",
-  "releaseCommitMessageFormat": "chore: release @groton/canvas-api.utilities@{{currentTag}}"
-}
