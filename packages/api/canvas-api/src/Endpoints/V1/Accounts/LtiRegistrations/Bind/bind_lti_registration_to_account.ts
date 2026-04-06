@@ -39,7 +39,7 @@ type Options = (
   (
     | {
         query?: Partial<bind_lti_registration_to_accountSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<bind_lti_registration_to_accountSearchParameters>;
         body?: Partial<bind_lti_registration_to_accountFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -51,7 +51,7 @@ type Options = (
             query: bind_lti_registration_to_accountSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: bind_lti_registration_to_accountSearchParameters;
           }
       ) &

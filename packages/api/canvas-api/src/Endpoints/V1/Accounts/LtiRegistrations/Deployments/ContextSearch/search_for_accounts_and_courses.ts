@@ -46,7 +46,7 @@ type Options = (
   (
     | {
         query?: Partial<search_for_accounts_and_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<search_for_accounts_and_coursesSearchParameters>;
         strict?: false;
       }
@@ -55,7 +55,7 @@ type Options = (
             query: search_for_accounts_and_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: search_for_accounts_and_coursesSearchParameters;
           }
       ) & {

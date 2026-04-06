@@ -39,7 +39,7 @@ type Options = (
   (
     | {
         query?: Partial<query_by_accountSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<query_by_accountSearchParameters>;
         strict?: false;
       }
@@ -48,7 +48,7 @@ type Options = (
             query: query_by_accountSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: query_by_accountSearchParameters;
           }
       ) & {

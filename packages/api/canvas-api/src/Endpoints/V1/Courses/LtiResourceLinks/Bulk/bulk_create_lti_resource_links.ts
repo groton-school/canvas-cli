@@ -40,7 +40,7 @@ type Options = (
   (
     | {
         query?: Partial<bulk_create_lti_resource_linksSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<bulk_create_lti_resource_linksSearchParameters>;
         body?: Partial<bulk_create_lti_resource_linksFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -52,7 +52,7 @@ type Options = (
             query: bulk_create_lti_resource_linksSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: bulk_create_lti_resource_linksSearchParameters;
           }
       ) &

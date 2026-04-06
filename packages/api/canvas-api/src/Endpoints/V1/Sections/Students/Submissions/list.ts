@@ -114,7 +114,7 @@ type Options = (
   (
     | {
         query?: Partial<listSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<listSearchParameters>;
         strict?: false;
       }
@@ -123,7 +123,7 @@ type Options = (
             query: listSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: listSearchParameters;
           }
       ) & {

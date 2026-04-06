@@ -47,7 +47,7 @@ type Options = (
   (
     | {
         query?: Partial<import_outcome_group_globalSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<import_outcome_group_globalSearchParameters>;
         body?: Partial<import_outcome_group_globalFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -59,7 +59,7 @@ type Options = (
             query: import_outcome_group_globalSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: import_outcome_group_globalSearchParameters;
           }
       ) &

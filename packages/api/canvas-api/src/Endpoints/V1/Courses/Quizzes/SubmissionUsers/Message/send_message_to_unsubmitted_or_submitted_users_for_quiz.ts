@@ -39,7 +39,7 @@ type Options = (
   (
     | {
         query?: Partial<send_message_to_unsubmitted_or_submitted_users_for_quizSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<send_message_to_unsubmitted_or_submitted_users_for_quizSearchParameters>;
         body?: Partial<send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -51,7 +51,7 @@ type Options = (
             query: send_message_to_unsubmitted_or_submitted_users_for_quizSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: send_message_to_unsubmitted_or_submitted_users_for_quizSearchParameters;
           }
       ) &

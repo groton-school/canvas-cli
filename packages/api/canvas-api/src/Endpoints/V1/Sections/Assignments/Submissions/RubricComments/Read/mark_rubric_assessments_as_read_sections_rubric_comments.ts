@@ -38,7 +38,7 @@ type Options = (
   (
     | {
         query?: Partial<mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters>;
         strict?: false;
       }
@@ -47,7 +47,7 @@ type Options = (
             query: mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: mark_rubric_assessments_as_read_sections_rubric_commentsSearchParameters;
           }
       ) & {

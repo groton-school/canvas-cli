@@ -25,7 +25,7 @@ type Options = (
   (
     | {
         query?: Partial<resolve_path_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<resolve_path_groupsSearchParameters>;
         strict?: false;
       }
@@ -34,7 +34,7 @@ type Options = (
             query: resolve_path_groupsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: resolve_path_groupsSearchParameters;
           }
       ) & {

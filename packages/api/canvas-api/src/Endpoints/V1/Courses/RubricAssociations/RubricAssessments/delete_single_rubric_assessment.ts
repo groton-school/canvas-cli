@@ -37,7 +37,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_single_rubric_assessmentSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_single_rubric_assessmentSearchParameters>;
         strict?: false;
       }
@@ -46,7 +46,7 @@ type Options = (
             query: delete_single_rubric_assessmentSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_single_rubric_assessmentSearchParameters;
           }
       ) & {

@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<show_epub_exportSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<show_epub_exportSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: show_epub_exportSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: show_epub_exportSearchParameters;
           }
       ) & {

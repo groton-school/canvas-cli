@@ -145,7 +145,7 @@ type Options = (
   (
     | {
         query?: Partial<enroll_user_sectionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<enroll_user_sectionsSearchParameters>;
         body?: Partial<enroll_user_sectionsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -157,7 +157,7 @@ type Options = (
             query: enroll_user_sectionsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: enroll_user_sectionsSearchParameters;
           }
       ) &

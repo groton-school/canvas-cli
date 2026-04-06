@@ -24,7 +24,7 @@ type Options = (
   (
     | {
         query?: Partial<abort_all_pending_sis_importsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<abort_all_pending_sis_importsSearchParameters>;
         strict?: false;
       }
@@ -33,7 +33,7 @@ type Options = (
             query: abort_all_pending_sis_importsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: abort_all_pending_sis_importsSearchParameters;
           }
       ) & {

@@ -80,7 +80,7 @@ type Options = (
   (
     | {
         query?: Partial<updateSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<updateSearchParameters>;
         strict?: false;
       }
@@ -89,7 +89,7 @@ type Options = (
             query: updateSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: updateSearchParameters;
           }
       ) & {

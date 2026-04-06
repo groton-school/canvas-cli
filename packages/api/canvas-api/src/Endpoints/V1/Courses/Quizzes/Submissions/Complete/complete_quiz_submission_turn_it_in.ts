@@ -56,7 +56,7 @@ type Options = (
   (
     | {
         query?: Partial<complete_quiz_submission_turn_it_inSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<complete_quiz_submission_turn_it_inSearchParameters>;
         body?: Partial<complete_quiz_submission_turn_it_inFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -68,7 +68,7 @@ type Options = (
             query: complete_quiz_submission_turn_it_inSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: complete_quiz_submission_turn_it_inSearchParameters;
           }
       ) &

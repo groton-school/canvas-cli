@@ -44,7 +44,7 @@ type Options = (
   (
     | {
         query?: Partial<set_course_timetableSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<set_course_timetableSearchParameters>;
         body?: Partial<set_course_timetableFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -56,7 +56,7 @@ type Options = (
             query: set_course_timetableSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: set_course_timetableSearchParameters;
           }
       ) &

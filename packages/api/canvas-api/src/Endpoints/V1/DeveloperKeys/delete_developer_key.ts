@@ -25,7 +25,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_developer_keySearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_developer_keySearchParameters>;
         strict?: false;
       }
@@ -34,7 +34,7 @@ type Options = (
             query: delete_developer_keySearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_developer_keySearchParameters;
           }
       ) & {

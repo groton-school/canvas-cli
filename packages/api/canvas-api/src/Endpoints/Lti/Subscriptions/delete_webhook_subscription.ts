@@ -24,7 +24,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_webhook_subscriptionSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_webhook_subscriptionSearchParameters>;
         strict?: false;
       }
@@ -33,7 +33,7 @@ type Options = (
             query: delete_webhook_subscriptionSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_webhook_subscriptionSearchParameters;
           }
       ) & {

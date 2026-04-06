@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<translate_file_referenceSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<translate_file_referenceSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: translate_file_referenceSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: translate_file_referenceSearchParameters;
           }
       ) & {

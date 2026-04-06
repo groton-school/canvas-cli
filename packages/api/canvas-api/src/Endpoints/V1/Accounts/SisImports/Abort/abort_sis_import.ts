@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<abort_sis_importSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<abort_sis_importSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: abort_sis_importSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: abort_sis_importSearchParameters;
           }
       ) & {

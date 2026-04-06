@@ -36,7 +36,7 @@ type Options = (
   (
     | {
         query?: Partial<bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsSearchParameters>;
         strict?: false;
       }
@@ -45,7 +45,7 @@ type Options = (
             query: bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsSearchParameters;
           }
       ) & {

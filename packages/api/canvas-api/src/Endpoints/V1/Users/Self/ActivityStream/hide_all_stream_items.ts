@@ -6,7 +6,7 @@ export type hide_all_stream_itemsSearchParameters = Masquerade;
 type Options =
   | {
       query?: Partial<hide_all_stream_itemsSearchParameters>;
-      /** @deprecated Use {Options.query} */
+      /** @deprecated Use {@link Options.query} */
       searchParams?: Partial<hide_all_stream_itemsSearchParameters>;
       strict?: false;
     }
@@ -15,7 +15,7 @@ type Options =
           query: hide_all_stream_itemsSearchParameters;
         }
       | {
-          /** @deprecated Use {Options.query} */
+          /** @deprecated Use {@link Options.query} */
           searchParams: hide_all_stream_itemsSearchParameters;
         }
     ) & {

@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<show_global_notificationSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<show_global_notificationSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: show_global_notificationSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: show_global_notificationSearchParameters;
           }
       ) & {

@@ -49,7 +49,7 @@ type Options = (
   (
     | {
         query?: Partial<index_of_active_global_notification_for_userSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<index_of_active_global_notification_for_userSearchParameters>;
         strict?: false;
       }
@@ -58,7 +58,7 @@ type Options = (
             query: index_of_active_global_notification_for_userSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: index_of_active_global_notification_for_userSearchParameters;
           }
       ) & {

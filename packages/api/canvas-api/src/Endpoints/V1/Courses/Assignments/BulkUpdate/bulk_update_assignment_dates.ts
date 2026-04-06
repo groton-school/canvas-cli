@@ -25,7 +25,7 @@ type Options = (
   (
     | {
         query?: Partial<bulk_update_assignment_datesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<bulk_update_assignment_datesSearchParameters>;
         strict?: false;
       }
@@ -34,7 +34,7 @@ type Options = (
             query: bulk_update_assignment_datesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: bulk_update_assignment_datesSearchParameters;
           }
       ) & {

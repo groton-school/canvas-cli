@@ -28,7 +28,7 @@ type Options = (
   (
     | {
         query?: Partial<days_in_gradebook_history_for_this_courseSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<days_in_gradebook_history_for_this_courseSearchParameters>;
         strict?: false;
       }
@@ -37,7 +37,7 @@ type Options = (
             query: days_in_gradebook_history_for_this_courseSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: days_in_gradebook_history_for_this_courseSearchParameters;
           }
       ) & {

@@ -35,7 +35,7 @@ type Options = (
   (
     | {
         query?: Partial<batch_create_overrides_in_courseSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<batch_create_overrides_in_courseSearchParameters>;
         body?: Partial<batch_create_overrides_in_courseFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -47,7 +47,7 @@ type Options = (
             query: batch_create_overrides_in_courseSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: batch_create_overrides_in_courseSearchParameters;
           }
       ) &

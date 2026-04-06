@@ -59,7 +59,7 @@ type Options = (
   (
     | {
         query?: Partial<set_course_level_accommodationsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<set_course_level_accommodationsSearchParameters>;
         body?: Partial<set_course_level_accommodationsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -71,7 +71,7 @@ type Options = (
             query: set_course_level_accommodationsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: set_course_level_accommodationsSearchParameters;
           }
       ) &

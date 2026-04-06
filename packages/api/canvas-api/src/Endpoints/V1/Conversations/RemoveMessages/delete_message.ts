@@ -29,7 +29,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_messageSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_messageSearchParameters>;
         body?: Partial<delete_messageFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -41,7 +41,7 @@ type Options = (
             query: delete_messageSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_messageSearchParameters;
           }
       ) &

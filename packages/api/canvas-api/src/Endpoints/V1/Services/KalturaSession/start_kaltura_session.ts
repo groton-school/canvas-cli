@@ -6,7 +6,7 @@ export type start_kaltura_sessionSearchParameters = Masquerade;
 type Options =
   | {
       query?: Partial<start_kaltura_sessionSearchParameters>;
-      /** @deprecated Use {Options.query} */
+      /** @deprecated Use {@link Options.query} */
       searchParams?: Partial<start_kaltura_sessionSearchParameters>;
       strict?: false;
     }
@@ -15,7 +15,7 @@ type Options =
           query: start_kaltura_sessionSearchParameters;
         }
       | {
-          /** @deprecated Use {Options.query} */
+          /** @deprecated Use {@link Options.query} */
           searchParams: start_kaltura_sessionSearchParameters;
         }
     ) & {

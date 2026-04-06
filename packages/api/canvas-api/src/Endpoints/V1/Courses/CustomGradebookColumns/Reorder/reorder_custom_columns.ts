@@ -33,7 +33,7 @@ type Options = (
   (
     | {
         query?: Partial<reorder_custom_columnsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<reorder_custom_columnsSearchParameters>;
         body?: Partial<reorder_custom_columnsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -45,7 +45,7 @@ type Options = (
             query: reorder_custom_columnsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: reorder_custom_columnsSearchParameters;
           }
       ) &

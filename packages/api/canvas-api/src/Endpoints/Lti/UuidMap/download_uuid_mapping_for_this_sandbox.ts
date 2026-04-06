@@ -6,7 +6,7 @@ export type download_uuid_mapping_for_this_sandboxSearchParameters = Masquerade;
 type Options =
   | {
       query?: Partial<download_uuid_mapping_for_this_sandboxSearchParameters>;
-      /** @deprecated Use {Options.query} */
+      /** @deprecated Use {@link Options.query} */
       searchParams?: Partial<download_uuid_mapping_for_this_sandboxSearchParameters>;
       strict?: false;
     }
@@ -15,7 +15,7 @@ type Options =
           query: download_uuid_mapping_for_this_sandboxSearchParameters;
         }
       | {
-          /** @deprecated Use {Options.query} */
+          /** @deprecated Use {@link Options.query} */
           searchParams: download_uuid_mapping_for_this_sandboxSearchParameters;
         }
     ) & {

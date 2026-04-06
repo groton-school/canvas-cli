@@ -25,7 +25,7 @@ type Options = (
   (
     | {
         query?: Partial<show_planner_overrideSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<show_planner_overrideSearchParameters>;
         strict?: false;
       }
@@ -34,7 +34,7 @@ type Options = (
             query: show_planner_overrideSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: show_planner_overrideSearchParameters;
           }
       ) & {

@@ -26,7 +26,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_multiple_users_from_root_accountSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_multiple_users_from_root_accountSearchParameters>;
         strict?: false;
       }
@@ -35,7 +35,7 @@ type Options = (
             query: delete_multiple_users_from_root_accountSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_multiple_users_from_root_accountSearchParameters;
           }
       ) & {

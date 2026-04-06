@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<restore_deleted_user_from_root_accountSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<restore_deleted_user_from_root_accountSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: restore_deleted_user_from_root_accountSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: restore_deleted_user_from_root_accountSearchParameters;
           }
       ) & {

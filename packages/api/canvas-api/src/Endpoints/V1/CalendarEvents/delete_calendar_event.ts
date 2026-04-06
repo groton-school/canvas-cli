@@ -34,7 +34,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_calendar_eventSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_calendar_eventSearchParameters>;
         strict?: false;
       }
@@ -43,7 +43,7 @@ type Options = (
             query: delete_calendar_eventSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_calendar_eventSearchParameters;
           }
       ) & {

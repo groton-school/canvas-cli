@@ -17,7 +17,7 @@ export type save_enabled_account_calendarsFormParameters = Masquerade & {
 type Options =
   | {
       query?: Partial<save_enabled_account_calendarsSearchParameters>;
-      /** @deprecated Use {Options.query} */
+      /** @deprecated Use {@link Options.query} */
       searchParams?: Partial<save_enabled_account_calendarsSearchParameters>;
       body?: Partial<save_enabled_account_calendarsFormParameters>;
       /** @deprecated Use {@link Options.body} */
@@ -29,7 +29,7 @@ type Options =
           query: save_enabled_account_calendarsSearchParameters;
         }
       | {
-          /** @deprecated Use {Options.query} */
+          /** @deprecated Use {@link Options.query} */
           searchParams: save_enabled_account_calendarsSearchParameters;
         }
     ) &

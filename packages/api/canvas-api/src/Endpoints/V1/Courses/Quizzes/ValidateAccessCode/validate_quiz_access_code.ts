@@ -35,7 +35,7 @@ type Options = (
   (
     | {
         query?: Partial<validate_quiz_access_codeSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<validate_quiz_access_codeSearchParameters>;
         body?: Partial<validate_quiz_access_codeFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -47,7 +47,7 @@ type Options = (
             query: validate_quiz_access_codeSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: validate_quiz_access_codeSearchParameters;
           }
       ) &

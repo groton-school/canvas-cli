@@ -30,7 +30,7 @@ type Options = (
   (
     | {
         query?: Partial<unsubscribe_from_topic_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<unsubscribe_from_topic_groupsSearchParameters>;
         strict?: false;
       }
@@ -39,7 +39,7 @@ type Options = (
             query: unsubscribe_from_topic_groupsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: unsubscribe_from_topic_groupsSearchParameters;
           }
       ) & {

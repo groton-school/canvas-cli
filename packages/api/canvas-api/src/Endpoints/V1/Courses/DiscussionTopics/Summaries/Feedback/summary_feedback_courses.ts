@@ -52,7 +52,7 @@ type Options = (
   (
     | {
         query?: Partial<summary_feedback_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<summary_feedback_coursesSearchParameters>;
         body?: Partial<summary_feedback_coursesFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -64,7 +64,7 @@ type Options = (
             query: summary_feedback_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: summary_feedback_coursesSearchParameters;
           }
       ) &

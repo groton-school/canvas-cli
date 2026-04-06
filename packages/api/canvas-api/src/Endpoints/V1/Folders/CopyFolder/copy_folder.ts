@@ -30,7 +30,7 @@ type Options = (
   (
     | {
         query?: Partial<copy_folderSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<copy_folderSearchParameters>;
         body?: Partial<copy_folderFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -42,7 +42,7 @@ type Options = (
             query: copy_folderSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: copy_folderSearchParameters;
           }
       ) &

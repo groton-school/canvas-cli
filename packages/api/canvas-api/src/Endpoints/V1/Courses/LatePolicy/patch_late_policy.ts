@@ -65,7 +65,7 @@ type Options = (
   (
     | {
         query?: Partial<patch_late_policySearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<patch_late_policySearchParameters>;
         body?: Partial<patch_late_policyFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -77,7 +77,7 @@ type Options = (
             query: patch_late_policySearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: patch_late_policySearchParameters;
           }
       ) &

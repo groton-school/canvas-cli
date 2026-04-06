@@ -43,7 +43,7 @@ type Options = (
   (
     | {
         query?: Partial<beta_initiate_page_views_querySearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<beta_initiate_page_views_querySearchParameters>;
         body?: Partial<beta_initiate_page_views_queryFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -55,7 +55,7 @@ type Options = (
             query: beta_initiate_page_views_querySearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: beta_initiate_page_views_querySearchParameters;
           }
       ) &

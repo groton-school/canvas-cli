@@ -46,7 +46,7 @@ type Options = (
   (
     | {
         query?: Partial<submission_summary_sectionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<submission_summary_sectionsSearchParameters>;
         strict?: false;
       }
@@ -55,7 +55,7 @@ type Options = (
             query: submission_summary_sectionsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: submission_summary_sectionsSearchParameters;
           }
       ) & {

@@ -29,7 +29,7 @@ type Options = (
   (
     | {
         query?: Partial<moderate_all_eportfolios_for_userSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<moderate_all_eportfolios_for_userSearchParameters>;
         body?: Partial<moderate_all_eportfolios_for_userFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -41,7 +41,7 @@ type Options = (
             query: moderate_all_eportfolios_for_userSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: moderate_all_eportfolios_for_userSearchParameters;
           }
       ) &

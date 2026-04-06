@@ -25,7 +25,7 @@ type Options = (
   (
     | {
         query?: Partial<cancel_progressSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<cancel_progressSearchParameters>;
         strict?: false;
       }
@@ -34,7 +34,7 @@ type Options = (
             query: cancel_progressSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: cancel_progressSearchParameters;
           }
       ) & {

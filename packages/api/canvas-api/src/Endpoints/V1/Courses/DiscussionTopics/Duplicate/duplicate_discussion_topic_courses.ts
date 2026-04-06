@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<duplicate_discussion_topic_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<duplicate_discussion_topic_coursesSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: duplicate_discussion_topic_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: duplicate_discussion_topic_coursesSearchParameters;
           }
       ) & {

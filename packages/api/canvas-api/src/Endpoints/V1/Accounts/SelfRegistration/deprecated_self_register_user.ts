@@ -61,7 +61,7 @@ type Options = (
   (
     | {
         query?: Partial<deprecated_self_register_userSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<deprecated_self_register_userSearchParameters>;
         body?: Partial<deprecated_self_register_userFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -73,7 +73,7 @@ type Options = (
             query: deprecated_self_register_userSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: deprecated_self_register_userSearchParameters;
           }
       ) &

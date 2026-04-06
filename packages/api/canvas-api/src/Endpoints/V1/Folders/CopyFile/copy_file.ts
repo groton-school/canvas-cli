@@ -39,7 +39,7 @@ type Options = (
   (
     | {
         query?: Partial<copy_fileSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<copy_fileSearchParameters>;
         body?: Partial<copy_fileFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -51,7 +51,7 @@ type Options = (
             query: copy_fileSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: copy_fileSearchParameters;
           }
       ) &

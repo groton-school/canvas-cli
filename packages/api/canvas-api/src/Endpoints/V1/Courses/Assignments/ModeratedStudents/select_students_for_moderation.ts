@@ -37,7 +37,7 @@ type Options = (
   (
     | {
         query?: Partial<select_students_for_moderationSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<select_students_for_moderationSearchParameters>;
         body?: Partial<select_students_for_moderationFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -49,7 +49,7 @@ type Options = (
             query: select_students_for_moderationSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: select_students_for_moderationSearchParameters;
           }
       ) &

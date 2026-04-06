@@ -36,7 +36,7 @@ type Options = (
   (
     | {
         query?: Partial<retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters>;
         strict?: false;
       }
@@ -45,7 +45,7 @@ type Options = (
             query: retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: retrieve_assignment_overridden_dates_for_classic_quizzesSearchParameters;
           }
       ) & {

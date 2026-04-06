@@ -49,7 +49,7 @@ type Options = (
   (
     | {
         query?: Partial<import_differentiation_tagsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<import_differentiation_tagsSearchParameters>;
         body?: Partial<import_differentiation_tagsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -61,7 +61,7 @@ type Options = (
             query: import_differentiation_tagsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: import_differentiation_tagsSearchParameters;
           }
       ) &

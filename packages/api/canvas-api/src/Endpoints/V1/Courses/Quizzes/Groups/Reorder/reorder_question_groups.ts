@@ -47,7 +47,7 @@ type Options = (
   (
     | {
         query?: Partial<reorder_question_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<reorder_question_groupsSearchParameters>;
         body?: Partial<reorder_question_groupsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -59,7 +59,7 @@ type Options = (
             query: reorder_question_groupsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: reorder_question_groupsSearchParameters;
           }
       ) &

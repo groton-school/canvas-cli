@@ -36,7 +36,7 @@ type Options = (
   (
     | {
         query?: Partial<select_provisional_gradeSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<select_provisional_gradeSearchParameters>;
         strict?: false;
       }
@@ -45,7 +45,7 @@ type Options = (
             query: select_provisional_gradeSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: select_provisional_gradeSearchParameters;
           }
       ) & {

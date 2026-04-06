@@ -37,7 +37,7 @@ type Options = (
   (
     | {
         query?: Partial<show_blueprint_migrationSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<show_blueprint_migrationSearchParameters>;
         strict?: false;
       }
@@ -46,7 +46,7 @@ type Options = (
             query: show_blueprint_migrationSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: show_blueprint_migrationSearchParameters;
           }
       ) & {

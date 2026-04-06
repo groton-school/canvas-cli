@@ -30,7 +30,7 @@ type Options = (
   (
     | {
         query?: Partial<mark_topic_as_unread_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<mark_topic_as_unread_groupsSearchParameters>;
         strict?: false;
       }
@@ -39,7 +39,7 @@ type Options = (
             query: mark_topic_as_unread_groupsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: mark_topic_as_unread_groupsSearchParameters;
           }
       ) & {

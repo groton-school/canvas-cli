@@ -30,7 +30,7 @@ type Options = (
   (
     | {
         query?: Partial<mark_tool_as_rce_favoriteSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<mark_tool_as_rce_favoriteSearchParameters>;
         strict?: false;
       }
@@ -39,7 +39,7 @@ type Options = (
             query: mark_tool_as_rce_favoriteSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: mark_tool_as_rce_favoriteSearchParameters;
           }
       ) & {

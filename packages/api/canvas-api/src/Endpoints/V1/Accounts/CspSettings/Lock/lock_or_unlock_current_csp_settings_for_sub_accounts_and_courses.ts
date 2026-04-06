@@ -37,7 +37,7 @@ type Options = (
   (
     | {
         query?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters>;
         body?: Partial<lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -49,7 +49,7 @@ type Options = (
             query: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: lock_or_unlock_current_csp_settings_for_sub_accounts_and_coursesSearchParameters;
           }
       ) &

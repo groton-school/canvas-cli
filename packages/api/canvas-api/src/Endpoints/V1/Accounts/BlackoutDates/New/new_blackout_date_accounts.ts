@@ -25,7 +25,7 @@ type Options = (
   (
     | {
         query?: Partial<new_blackout_date_accountsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<new_blackout_date_accountsSearchParameters>;
         strict?: false;
       }
@@ -34,7 +34,7 @@ type Options = (
             query: new_blackout_date_accountsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: new_blackout_date_accountsSearchParameters;
           }
       ) & {

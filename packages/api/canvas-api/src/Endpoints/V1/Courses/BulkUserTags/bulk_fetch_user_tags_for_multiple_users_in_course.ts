@@ -37,7 +37,7 @@ type Options = (
   (
     | {
         query?: Partial<bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters>;
         strict?: false;
       }
@@ -46,7 +46,7 @@ type Options = (
             query: bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters;
           }
       ) & {

@@ -26,7 +26,7 @@ type Options = (
   (
     | {
         query?: Partial<add_group_to_favoritesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<add_group_to_favoritesSearchParameters>;
         strict?: false;
       }
@@ -35,7 +35,7 @@ type Options = (
             query: add_group_to_favoritesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: add_group_to_favoritesSearchParameters;
           }
       ) & {

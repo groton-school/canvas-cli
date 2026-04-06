@@ -26,7 +26,7 @@ type Options = (
   (
     | {
         query?: Partial<redirect_to_root_outcome_group_for_context_accountsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<redirect_to_root_outcome_group_for_context_accountsSearchParameters>;
         strict?: false;
       }
@@ -35,7 +35,7 @@ type Options = (
             query: redirect_to_root_outcome_group_for_context_accountsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: redirect_to_root_outcome_group_for_context_accountsSearchParameters;
           }
       ) & {

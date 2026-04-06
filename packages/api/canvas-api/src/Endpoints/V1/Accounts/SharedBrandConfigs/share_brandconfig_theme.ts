@@ -32,7 +32,7 @@ type Options = (
   (
     | {
         query?: Partial<share_brandconfig_themeSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<share_brandconfig_themeSearchParameters>;
         body?: Partial<share_brandconfig_themeFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -44,7 +44,7 @@ type Options = (
             query: share_brandconfig_themeSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: share_brandconfig_themeSearchParameters;
           }
       ) &

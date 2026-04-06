@@ -121,7 +121,7 @@ type Options = (
   (
     | {
         query?: Partial<submit_assignment_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<submit_assignment_coursesSearchParameters>;
         body?: Partial<submit_assignment_coursesFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -133,7 +133,7 @@ type Options = (
             query: submit_assignment_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: submit_assignment_coursesSearchParameters;
           }
       ) &

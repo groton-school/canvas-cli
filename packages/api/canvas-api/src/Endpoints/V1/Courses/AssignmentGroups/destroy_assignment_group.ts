@@ -44,7 +44,7 @@ type Options = (
   (
     | {
         query?: Partial<destroy_assignment_groupSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<destroy_assignment_groupSearchParameters>;
         strict?: false;
       }
@@ -53,7 +53,7 @@ type Options = (
             query: destroy_assignment_groupSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: destroy_assignment_groupSearchParameters;
           }
       ) & {

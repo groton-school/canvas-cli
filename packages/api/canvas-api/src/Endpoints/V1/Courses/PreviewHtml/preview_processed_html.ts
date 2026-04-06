@@ -29,7 +29,7 @@ type Options = (
   (
     | {
         query?: Partial<preview_processed_htmlSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<preview_processed_htmlSearchParameters>;
         body?: Partial<preview_processed_htmlFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -41,7 +41,7 @@ type Options = (
             query: preview_processed_htmlSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: preview_processed_htmlSearchParameters;
           }
       ) &

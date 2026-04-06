@@ -36,7 +36,7 @@ type Options = (
   (
     | {
         query?: Partial<assign_unassigned_membersSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<assign_unassigned_membersSearchParameters>;
         body?: Partial<assign_unassigned_membersFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -48,7 +48,7 @@ type Options = (
             query: assign_unassigned_membersSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: assign_unassigned_membersSearchParameters;
           }
       ) &

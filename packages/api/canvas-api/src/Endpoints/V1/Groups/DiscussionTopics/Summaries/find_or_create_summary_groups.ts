@@ -35,7 +35,7 @@ type Options = (
   (
     | {
         query?: Partial<find_or_create_summary_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<find_or_create_summary_groupsSearchParameters>;
         body?: Partial<find_or_create_summary_groupsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -47,7 +47,7 @@ type Options = (
             query: find_or_create_summary_groupsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: find_or_create_summary_groupsSearchParameters;
           }
       ) &

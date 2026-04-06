@@ -27,7 +27,7 @@ type Options = (
   (
     | {
         query?: Partial<index_of_reportsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<index_of_reportsSearchParameters>;
         strict?: false;
       }
@@ -36,7 +36,7 @@ type Options = (
             query: index_of_reportsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: index_of_reportsSearchParameters;
           }
       ) & {

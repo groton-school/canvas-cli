@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<clear_unread_status_for_all_submissions_sectionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<clear_unread_status_for_all_submissions_sectionsSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: clear_unread_status_for_all_submissions_sectionsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: clear_unread_status_for_all_submissions_sectionsSearchParameters;
           }
       ) & {

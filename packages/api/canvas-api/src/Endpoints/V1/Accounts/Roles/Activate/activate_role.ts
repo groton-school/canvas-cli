@@ -48,7 +48,7 @@ type Options = (
   (
     | {
         query?: Partial<activate_roleSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<activate_roleSearchParameters>;
         body?: Partial<activate_roleFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -60,7 +60,7 @@ type Options = (
             query: activate_roleSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: activate_roleSearchParameters;
           }
       ) &

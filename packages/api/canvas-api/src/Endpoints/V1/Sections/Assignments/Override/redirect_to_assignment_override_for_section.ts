@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<redirect_to_assignment_override_for_sectionSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<redirect_to_assignment_override_for_sectionSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: redirect_to_assignment_override_for_sectionSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: redirect_to_assignment_override_for_sectionSearchParameters;
           }
       ) & {

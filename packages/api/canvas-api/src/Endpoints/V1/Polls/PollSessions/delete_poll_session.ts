@@ -30,7 +30,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_poll_sessionSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_poll_sessionSearchParameters>;
         strict?: false;
       }
@@ -39,7 +39,7 @@ type Options = (
             query: delete_poll_sessionSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_poll_sessionSearchParameters;
           }
       ) & {

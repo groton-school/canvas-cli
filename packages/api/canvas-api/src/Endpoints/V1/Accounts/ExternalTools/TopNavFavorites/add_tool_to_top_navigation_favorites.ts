@@ -30,7 +30,7 @@ type Options = (
   (
     | {
         query?: Partial<add_tool_to_top_navigation_favoritesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<add_tool_to_top_navigation_favoritesSearchParameters>;
         strict?: false;
       }
@@ -39,7 +39,7 @@ type Options = (
             query: add_tool_to_top_navigation_favoritesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: add_tool_to_top_navigation_favoritesSearchParameters;
           }
       ) & {

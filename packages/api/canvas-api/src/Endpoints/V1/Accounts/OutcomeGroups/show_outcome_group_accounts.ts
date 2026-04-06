@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<show_outcome_group_accountsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<show_outcome_group_accountsSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: show_outcome_group_accountsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: show_outcome_group_accountsSearchParameters;
           }
       ) & {

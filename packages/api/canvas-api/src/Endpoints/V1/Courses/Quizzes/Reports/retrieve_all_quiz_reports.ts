@@ -41,7 +41,7 @@ type Options = (
   (
     | {
         query?: Partial<retrieve_all_quiz_reportsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<retrieve_all_quiz_reportsSearchParameters>;
         strict?: false;
       }
@@ -50,7 +50,7 @@ type Options = (
             query: retrieve_all_quiz_reportsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: retrieve_all_quiz_reportsSearchParameters;
           }
       ) & {

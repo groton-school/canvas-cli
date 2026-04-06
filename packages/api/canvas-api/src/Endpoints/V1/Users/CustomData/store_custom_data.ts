@@ -40,7 +40,7 @@ type Options = (
   (
     | {
         query?: Partial<store_custom_dataSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<store_custom_dataSearchParameters>;
         body?: Partial<store_custom_dataFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -52,7 +52,7 @@ type Options = (
             query: store_custom_dataSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: store_custom_dataSearchParameters;
           }
       ) &

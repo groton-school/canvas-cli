@@ -30,7 +30,7 @@ type Options = (
   (
     | {
         query?: Partial<show_access_tokenSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<show_access_tokenSearchParameters>;
         strict?: false;
       }
@@ -39,7 +39,7 @@ type Options = (
             query: show_access_tokenSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: show_access_tokenSearchParameters;
           }
       ) & {

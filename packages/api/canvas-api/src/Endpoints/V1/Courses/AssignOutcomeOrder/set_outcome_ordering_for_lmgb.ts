@@ -24,7 +24,7 @@ type Options = (
   (
     | {
         query?: Partial<set_outcome_ordering_for_lmgbSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<set_outcome_ordering_for_lmgbSearchParameters>;
         strict?: false;
       }
@@ -33,7 +33,7 @@ type Options = (
             query: set_outcome_ordering_for_lmgbSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: set_outcome_ordering_for_lmgbSearchParameters;
           }
       ) & {

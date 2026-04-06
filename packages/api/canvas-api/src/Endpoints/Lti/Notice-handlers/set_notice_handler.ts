@@ -40,7 +40,7 @@ type Options = (
   (
     | {
         query?: Partial<set_notice_handlerSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<set_notice_handlerSearchParameters>;
         body?: Partial<set_notice_handlerFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -52,7 +52,7 @@ type Options = (
             query: set_notice_handlerSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: set_notice_handlerSearchParameters;
           }
       ) &

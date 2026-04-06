@@ -183,7 +183,7 @@ type Options = (
   (
     | {
         query?: Partial<grade_or_comment_on_submission_sectionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<grade_or_comment_on_submission_sectionsSearchParameters>;
         body?: Partial<grade_or_comment_on_submission_sectionsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -195,7 +195,7 @@ type Options = (
             query: grade_or_comment_on_submission_sectionsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: grade_or_comment_on_submission_sectionsSearchParameters;
           }
       ) &

@@ -25,7 +25,7 @@ type Options = (
   (
     | {
         query?: Partial<creates_rubric_using_csv_file_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<creates_rubric_using_csv_file_coursesSearchParameters>;
         strict?: false;
       }
@@ -34,7 +34,7 @@ type Options = (
             query: creates_rubric_using_csv_file_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: creates_rubric_using_csv_file_coursesSearchParameters;
           }
       ) & {

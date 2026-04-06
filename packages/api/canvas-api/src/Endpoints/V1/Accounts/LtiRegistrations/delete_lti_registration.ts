@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_lti_registrationSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_lti_registrationSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: delete_lti_registrationSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_lti_registrationSearchParameters;
           }
       ) & {

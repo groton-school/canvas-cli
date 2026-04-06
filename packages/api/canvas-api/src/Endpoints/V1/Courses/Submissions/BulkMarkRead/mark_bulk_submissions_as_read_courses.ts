@@ -29,7 +29,7 @@ type Options = (
   (
     | {
         query?: Partial<mark_bulk_submissions_as_read_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<mark_bulk_submissions_as_read_coursesSearchParameters>;
         body?: Partial<mark_bulk_submissions_as_read_coursesFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -41,7 +41,7 @@ type Options = (
             query: mark_bulk_submissions_as_read_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: mark_bulk_submissions_as_read_coursesSearchParameters;
           }
       ) &

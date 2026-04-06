@@ -40,7 +40,7 @@ type Options = (
   (
     | {
         query?: Partial<mark_all_entries_as_read_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<mark_all_entries_as_read_groupsSearchParameters>;
         body?: Partial<mark_all_entries_as_read_groupsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -52,7 +52,7 @@ type Options = (
             query: mark_all_entries_as_read_groupsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: mark_all_entries_as_read_groupsSearchParameters;
           }
       ) &

@@ -38,7 +38,7 @@ type Options = (
   (
     | {
         query?: Partial<abort_generation_of_report_or_remove_previously_generated_oneSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<abort_generation_of_report_or_remove_previously_generated_oneSearchParameters>;
         strict?: false;
       }
@@ -47,7 +47,7 @@ type Options = (
             query: abort_generation_of_report_or_remove_previously_generated_oneSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: abort_generation_of_report_or_remove_previously_generated_oneSearchParameters;
           }
       ) & {

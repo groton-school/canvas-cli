@@ -25,7 +25,7 @@ type Options = (
   (
     | {
         query?: Partial<add_authentication_providerSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<add_authentication_providerSearchParameters>;
         strict?: false;
       }
@@ -34,7 +34,7 @@ type Options = (
             query: add_authentication_providerSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: add_authentication_providerSearchParameters;
           }
       ) & {

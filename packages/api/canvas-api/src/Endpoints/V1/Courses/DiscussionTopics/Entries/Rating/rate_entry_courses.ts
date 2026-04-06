@@ -47,7 +47,7 @@ type Options = (
   (
     | {
         query?: Partial<rate_entry_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<rate_entry_coursesSearchParameters>;
         body?: Partial<rate_entry_coursesFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -59,7 +59,7 @@ type Options = (
             query: rate_entry_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: rate_entry_coursesSearchParameters;
           }
       ) &

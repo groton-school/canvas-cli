@@ -25,7 +25,7 @@ type Options = (
   (
     | {
         query?: Partial<reset_link_verifierSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<reset_link_verifierSearchParameters>;
         strict?: false;
       }
@@ -34,7 +34,7 @@ type Options = (
             query: reset_link_verifierSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: reset_link_verifierSearchParameters;
           }
       ) & {

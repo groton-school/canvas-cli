@@ -211,7 +211,7 @@ type Options = (
   (
     | {
         query?: Partial<import_sis_dataSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<import_sis_dataSearchParameters>;
         body?: Partial<import_sis_dataFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -223,7 +223,7 @@ type Options = (
             query: import_sis_dataSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: import_sis_dataSearchParameters;
           }
       ) &

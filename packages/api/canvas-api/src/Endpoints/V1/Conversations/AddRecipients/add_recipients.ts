@@ -33,7 +33,7 @@ type Options = (
   (
     | {
         query?: Partial<add_recipientsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<add_recipientsSearchParameters>;
         body?: Partial<add_recipientsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -45,7 +45,7 @@ type Options = (
             query: add_recipientsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: add_recipientsSearchParameters;
           }
       ) &

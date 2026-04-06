@@ -24,7 +24,7 @@ type Options = (
   (
     | {
         query?: Partial<course_activity_streamSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<course_activity_streamSearchParameters>;
         strict?: false;
       }
@@ -33,7 +33,7 @@ type Options = (
             query: course_activity_streamSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: course_activity_streamSearchParameters;
           }
       ) & {

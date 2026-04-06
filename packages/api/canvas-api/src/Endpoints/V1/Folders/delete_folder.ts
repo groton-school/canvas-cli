@@ -32,7 +32,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_folderSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_folderSearchParameters>;
         strict?: false;
       }
@@ -41,7 +41,7 @@ type Options = (
             query: delete_folderSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_folderSearchParameters;
           }
       ) & {

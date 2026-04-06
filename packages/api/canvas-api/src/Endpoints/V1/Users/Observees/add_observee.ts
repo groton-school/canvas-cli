@@ -44,7 +44,7 @@ type Options = (
   (
     | {
         query?: Partial<add_observeeSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<add_observeeSearchParameters>;
         body?: Partial<add_observeeFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -56,7 +56,7 @@ type Options = (
             query: add_observeeSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: add_observeeSearchParameters;
           }
       ) &

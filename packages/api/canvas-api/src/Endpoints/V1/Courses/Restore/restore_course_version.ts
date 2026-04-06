@@ -34,7 +34,7 @@ type Options = (
   (
     | {
         query?: Partial<restore_course_versionSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<restore_course_versionSearchParameters>;
         strict?: false;
       }
@@ -43,7 +43,7 @@ type Options = (
             query: restore_course_versionSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: restore_course_versionSearchParameters;
           }
       ) & {

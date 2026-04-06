@@ -25,7 +25,7 @@ type Options = (
   (
     | {
         query?: Partial<restore_deleted_eportfolioSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<restore_deleted_eportfolioSearchParameters>;
         strict?: false;
       }
@@ -34,7 +34,7 @@ type Options = (
             query: restore_deleted_eportfolioSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: restore_deleted_eportfolioSearchParameters;
           }
       ) & {

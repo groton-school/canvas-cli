@@ -40,7 +40,7 @@ type Options = (
   (
     | {
         query?: Partial<revert_to_revision_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<revert_to_revision_groupsSearchParameters>;
         strict?: false;
       }
@@ -49,7 +49,7 @@ type Options = (
             query: revert_to_revision_groupsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: revert_to_revision_groupsSearchParameters;
           }
       ) & {

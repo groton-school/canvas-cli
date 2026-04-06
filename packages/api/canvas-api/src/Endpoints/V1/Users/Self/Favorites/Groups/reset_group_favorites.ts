@@ -6,7 +6,7 @@ export type reset_group_favoritesSearchParameters = Masquerade;
 type Options =
   | {
       query?: Partial<reset_group_favoritesSearchParameters>;
-      /** @deprecated Use {Options.query} */
+      /** @deprecated Use {@link Options.query} */
       searchParams?: Partial<reset_group_favoritesSearchParameters>;
       strict?: false;
     }
@@ -15,7 +15,7 @@ type Options =
           query: reset_group_favoritesSearchParameters;
         }
       | {
-          /** @deprecated Use {Options.query} */
+          /** @deprecated Use {@link Options.query} */
           searchParams: reset_group_favoritesSearchParameters;
         }
     ) & {

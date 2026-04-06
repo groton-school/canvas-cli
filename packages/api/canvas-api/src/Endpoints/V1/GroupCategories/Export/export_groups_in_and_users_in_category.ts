@@ -24,7 +24,7 @@ type Options = (
   (
     | {
         query?: Partial<export_groups_in_and_users_in_categorySearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<export_groups_in_and_users_in_categorySearchParameters>;
         strict?: false;
       }
@@ -33,7 +33,7 @@ type Options = (
             query: export_groups_in_and_users_in_categorySearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: export_groups_in_and_users_in_categorySearchParameters;
           }
       ) & {

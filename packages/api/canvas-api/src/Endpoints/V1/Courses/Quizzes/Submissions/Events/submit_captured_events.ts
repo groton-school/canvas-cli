@@ -41,7 +41,7 @@ type Options = (
   (
     | {
         query?: Partial<submit_captured_eventsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<submit_captured_eventsSearchParameters>;
         body?: Partial<submit_captured_eventsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -53,7 +53,7 @@ type Options = (
             query: submit_captured_eventsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: submit_captured_eventsSearchParameters;
           }
       ) &

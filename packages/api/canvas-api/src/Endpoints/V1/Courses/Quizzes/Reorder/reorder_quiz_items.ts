@@ -41,7 +41,7 @@ type Options = (
   (
     | {
         query?: Partial<reorder_quiz_itemsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<reorder_quiz_itemsSearchParameters>;
         body?: Partial<reorder_quiz_itemsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -53,7 +53,7 @@ type Options = (
             query: reorder_quiz_itemsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: reorder_quiz_itemsSearchParameters;
           }
       ) &

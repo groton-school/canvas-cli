@@ -46,7 +46,7 @@ type Options = (
   (
     | {
         query?: Partial<post_reply_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<post_reply_groupsSearchParameters>;
         body?: Partial<post_reply_groupsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -58,7 +58,7 @@ type Options = (
             query: post_reply_groupsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: post_reply_groupsSearchParameters;
           }
       ) &

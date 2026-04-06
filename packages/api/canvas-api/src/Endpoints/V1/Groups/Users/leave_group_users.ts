@@ -30,7 +30,7 @@ type Options = (
   (
     | {
         query?: Partial<leave_group_usersSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<leave_group_usersSearchParameters>;
         strict?: false;
       }
@@ -39,7 +39,7 @@ type Options = (
             query: leave_group_usersSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: leave_group_usersSearchParameters;
           }
       ) & {

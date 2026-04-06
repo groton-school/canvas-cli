@@ -289,7 +289,7 @@ type Options = (
   (
     | {
         query?: Partial<update_single_quizSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<update_single_quizSearchParameters>;
         body?: Partial<update_single_quizFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -301,7 +301,7 @@ type Options = (
             query: update_single_quizSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: update_single_quizSearchParameters;
           }
       ) &

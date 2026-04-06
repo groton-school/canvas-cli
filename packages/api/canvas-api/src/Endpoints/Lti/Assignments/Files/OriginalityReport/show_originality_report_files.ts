@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<show_originality_report_filesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<show_originality_report_filesSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: show_originality_report_filesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: show_originality_report_filesSearchParameters;
           }
       ) & {

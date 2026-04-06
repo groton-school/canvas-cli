@@ -15,7 +15,7 @@ export type refresh_jwtFormParameters = Masquerade & {
 type Options =
   | {
       query?: Partial<refresh_jwtSearchParameters>;
-      /** @deprecated Use {Options.query} */
+      /** @deprecated Use {@link Options.query} */
       searchParams?: Partial<refresh_jwtSearchParameters>;
       body?: Partial<refresh_jwtFormParameters>;
       /** @deprecated Use {@link Options.body} */
@@ -27,7 +27,7 @@ type Options =
           query: refresh_jwtSearchParameters;
         }
       | {
-          /** @deprecated Use {Options.query} */
+          /** @deprecated Use {@link Options.query} */
           searchParams: refresh_jwtSearchParameters;
         }
     ) &

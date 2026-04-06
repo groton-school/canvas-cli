@@ -24,7 +24,7 @@ type Options = (
   (
     | {
         query?: Partial<count_of_all_visible_account_calendarsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<count_of_all_visible_account_calendarsSearchParameters>;
         strict?: false;
       }
@@ -33,7 +33,7 @@ type Options = (
             query: count_of_all_visible_account_calendarsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: count_of_all_visible_account_calendarsSearchParameters;
           }
       ) & {

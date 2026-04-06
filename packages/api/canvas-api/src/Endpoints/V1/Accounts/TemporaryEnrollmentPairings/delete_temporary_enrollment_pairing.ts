@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_temporary_enrollment_pairingSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_temporary_enrollment_pairingSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: delete_temporary_enrollment_pairingSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_temporary_enrollment_pairingSearchParameters;
           }
       ) & {

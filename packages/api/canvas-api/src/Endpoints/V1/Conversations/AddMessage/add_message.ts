@@ -45,7 +45,7 @@ type Options = (
   (
     | {
         query?: Partial<add_messageSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<add_messageSearchParameters>;
         body?: Partial<add_messageFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -57,7 +57,7 @@ type Options = (
             query: add_messageSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: add_messageSearchParameters;
           }
       ) &

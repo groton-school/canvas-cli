@@ -36,7 +36,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_fileSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_fileSearchParameters>;
         strict?: false;
       }
@@ -45,7 +45,7 @@ type Options = (
             query: delete_fileSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_fileSearchParameters;
           }
       ) & {

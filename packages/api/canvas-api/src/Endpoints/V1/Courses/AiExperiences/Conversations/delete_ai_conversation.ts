@@ -37,7 +37,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_ai_conversationSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_ai_conversationSearchParameters>;
         strict?: false;
       }
@@ -46,7 +46,7 @@ type Options = (
             query: delete_ai_conversationSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_ai_conversationSearchParameters;
           }
       ) & {

@@ -29,7 +29,7 @@ type Options = (
   (
     | {
         query?: Partial<invite_others_to_groupSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<invite_others_to_groupSearchParameters>;
         body?: Partial<invite_others_to_groupFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -41,7 +41,7 @@ type Options = (
             query: invite_others_to_groupSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: invite_others_to_groupSearchParameters;
           }
       ) &

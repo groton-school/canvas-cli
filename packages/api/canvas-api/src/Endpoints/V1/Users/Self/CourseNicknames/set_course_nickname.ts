@@ -30,7 +30,7 @@ type Options = (
   (
     | {
         query?: Partial<set_course_nicknameSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<set_course_nicknameSearchParameters>;
         body?: Partial<set_course_nicknameFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -42,7 +42,7 @@ type Options = (
             query: set_course_nicknameSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: set_course_nicknameSearchParameters;
           }
       ) &

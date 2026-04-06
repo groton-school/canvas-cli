@@ -29,7 +29,7 @@ type Options = (
   (
     | {
         query?: Partial<add_allowed_domain_to_accountSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<add_allowed_domain_to_accountSearchParameters>;
         body?: Partial<add_allowed_domain_to_accountFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -41,7 +41,7 @@ type Options = (
             query: add_allowed_domain_to_accountSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: add_allowed_domain_to_accountSearchParameters;
           }
       ) &

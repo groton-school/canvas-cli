@@ -35,7 +35,7 @@ type Options = (
   (
     | {
         query?: Partial<find_or_create_summary_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<find_or_create_summary_coursesSearchParameters>;
         body?: Partial<find_or_create_summary_coursesFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -47,7 +47,7 @@ type Options = (
             query: find_or_create_summary_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: find_or_create_summary_coursesSearchParameters;
           }
       ) &

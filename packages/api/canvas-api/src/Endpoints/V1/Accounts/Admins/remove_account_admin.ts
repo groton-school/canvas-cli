@@ -44,7 +44,7 @@ type Options = (
   (
     | {
         query?: Partial<remove_account_adminSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<remove_account_adminSearchParameters>;
         strict?: false;
       }
@@ -53,7 +53,7 @@ type Options = (
             query: remove_account_adminSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: remove_account_adminSearchParameters;
           }
       ) & {

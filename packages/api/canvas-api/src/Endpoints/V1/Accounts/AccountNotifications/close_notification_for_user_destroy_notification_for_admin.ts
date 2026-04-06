@@ -41,7 +41,7 @@ type Options = (
   (
     | {
         query?: Partial<close_notification_for_user_destroy_notification_for_adminSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<close_notification_for_user_destroy_notification_for_adminSearchParameters>;
         strict?: false;
       }
@@ -50,7 +50,7 @@ type Options = (
             query: close_notification_for_user_destroy_notification_for_adminSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: close_notification_for_user_destroy_notification_for_adminSearchParameters;
           }
       ) & {

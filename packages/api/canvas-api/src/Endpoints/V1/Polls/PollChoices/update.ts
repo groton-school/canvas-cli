@@ -44,7 +44,7 @@ type Options = (
   (
     | {
         query?: Partial<updateSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<updateSearchParameters>;
         body?: Partial<updateFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -56,7 +56,7 @@ type Options = (
             query: updateSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: updateSearchParameters;
           }
       ) &

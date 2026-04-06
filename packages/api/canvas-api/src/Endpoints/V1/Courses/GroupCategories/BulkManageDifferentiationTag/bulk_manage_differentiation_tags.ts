@@ -47,7 +47,7 @@ type Options = (
   (
     | {
         query?: Partial<bulk_manage_differentiation_tagsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<bulk_manage_differentiation_tagsSearchParameters>;
         body?: Partial<bulk_manage_differentiation_tagsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -59,7 +59,7 @@ type Options = (
             query: bulk_manage_differentiation_tagsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: bulk_manage_differentiation_tagsSearchParameters;
           }
       ) &

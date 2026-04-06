@@ -40,7 +40,7 @@ type Options = (
   (
     | {
         query?: Partial<add_users_to_content_shareSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<add_users_to_content_shareSearchParameters>;
         body?: Partial<add_users_to_content_shareFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -52,7 +52,7 @@ type Options = (
             query: add_users_to_content_shareSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: add_users_to_content_shareSearchParameters;
           }
       ) &

@@ -42,7 +42,7 @@ type Options = (
   (
     | {
         query?: Partial<duplicate_assignmentSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<duplicate_assignmentSearchParameters>;
         body?: Partial<duplicate_assignmentFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -54,7 +54,7 @@ type Options = (
             query: duplicate_assignmentSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: duplicate_assignmentSearchParameters;
           }
       ) &

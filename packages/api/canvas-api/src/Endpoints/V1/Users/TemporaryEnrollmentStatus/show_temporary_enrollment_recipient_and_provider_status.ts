@@ -33,7 +33,7 @@ type Options = (
   (
     | {
         query?: Partial<show_temporary_enrollment_recipient_and_provider_statusSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<show_temporary_enrollment_recipient_and_provider_statusSearchParameters>;
         strict?: false;
       }
@@ -42,7 +42,7 @@ type Options = (
             query: show_temporary_enrollment_recipient_and_provider_statusSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: show_temporary_enrollment_recipient_and_provider_statusSearchParameters;
           }
       ) & {

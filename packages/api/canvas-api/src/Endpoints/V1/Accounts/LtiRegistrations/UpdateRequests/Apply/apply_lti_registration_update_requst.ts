@@ -56,7 +56,7 @@ type Options = (
   (
     | {
         query?: Partial<apply_lti_registration_update_requstSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<apply_lti_registration_update_requstSearchParameters>;
         body?: Partial<apply_lti_registration_update_requstFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -68,7 +68,7 @@ type Options = (
             query: apply_lti_registration_update_requstSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: apply_lti_registration_update_requstSearchParameters;
           }
       ) &

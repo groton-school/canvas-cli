@@ -41,7 +41,7 @@ type Options = (
   (
     | {
         query?: Partial<show_provisional_grade_status_for_studentSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<show_provisional_grade_status_for_studentSearchParameters>;
         strict?: false;
       }
@@ -50,7 +50,7 @@ type Options = (
             query: show_provisional_grade_status_for_studentSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: show_provisional_grade_status_for_studentSearchParameters;
           }
       ) & {

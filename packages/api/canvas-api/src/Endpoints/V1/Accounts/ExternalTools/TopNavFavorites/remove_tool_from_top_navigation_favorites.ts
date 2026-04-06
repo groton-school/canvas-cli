@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<remove_tool_from_top_navigation_favoritesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<remove_tool_from_top_navigation_favoritesSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: remove_tool_from_top_navigation_favoritesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: remove_tool_from_top_navigation_favoritesSearchParameters;
           }
       ) & {

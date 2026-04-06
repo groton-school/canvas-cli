@@ -33,7 +33,7 @@ type Options = (
   (
     | {
         query?: Partial<bulk_update_column_dataSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<bulk_update_column_dataSearchParameters>;
         body?: Partial<bulk_update_column_dataFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -45,7 +45,7 @@ type Options = (
             query: bulk_update_column_dataSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: bulk_update_column_dataSearchParameters;
           }
       ) &

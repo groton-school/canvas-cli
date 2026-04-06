@@ -157,7 +157,7 @@ type Options = (
   (
     | {
         query?: Partial<grade_or_comment_on_submission_by_anonymous_id_sectionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<grade_or_comment_on_submission_by_anonymous_id_sectionsSearchParameters>;
         body?: Partial<grade_or_comment_on_submission_by_anonymous_id_sectionsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -169,7 +169,7 @@ type Options = (
             query: grade_or_comment_on_submission_by_anonymous_id_sectionsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: grade_or_comment_on_submission_by_anonymous_id_sectionsSearchParameters;
           }
       ) &

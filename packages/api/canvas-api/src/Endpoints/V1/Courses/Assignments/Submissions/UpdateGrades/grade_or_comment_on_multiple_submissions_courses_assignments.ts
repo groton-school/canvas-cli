@@ -83,7 +83,7 @@ type Options = (
   (
     | {
         query?: Partial<grade_or_comment_on_multiple_submissions_courses_assignmentsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<grade_or_comment_on_multiple_submissions_courses_assignmentsSearchParameters>;
         body?: Partial<grade_or_comment_on_multiple_submissions_courses_assignmentsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -95,7 +95,7 @@ type Options = (
             query: grade_or_comment_on_multiple_submissions_courses_assignmentsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: grade_or_comment_on_multiple_submissions_courses_assignmentsSearchParameters;
           }
       ) &

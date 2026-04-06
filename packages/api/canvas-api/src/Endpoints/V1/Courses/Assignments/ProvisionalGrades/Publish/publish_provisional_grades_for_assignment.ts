@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<publish_provisional_grades_for_assignmentSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<publish_provisional_grades_for_assignmentSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: publish_provisional_grades_for_assignmentSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: publish_provisional_grades_for_assignmentSearchParameters;
           }
       ) & {

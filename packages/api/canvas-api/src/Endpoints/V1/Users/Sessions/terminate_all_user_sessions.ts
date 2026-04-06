@@ -24,7 +24,7 @@ type Options = (
   (
     | {
         query?: Partial<terminate_all_user_sessionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<terminate_all_user_sessionsSearchParameters>;
         strict?: false;
       }
@@ -33,7 +33,7 @@ type Options = (
             query: terminate_all_user_sessionsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: terminate_all_user_sessionsSearchParameters;
           }
       ) & {

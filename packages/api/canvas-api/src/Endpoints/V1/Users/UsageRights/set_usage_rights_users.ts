@@ -54,7 +54,7 @@ type Options = (
   (
     | {
         query?: Partial<set_usage_rights_usersSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<set_usage_rights_usersSearchParameters>;
         body?: Partial<set_usage_rights_usersFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -66,7 +66,7 @@ type Options = (
             query: set_usage_rights_usersSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: set_usage_rights_usersSearchParameters;
           }
       ) &

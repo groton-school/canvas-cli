@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<duplicate_pageSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<duplicate_pageSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: duplicate_pageSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: duplicate_pageSearchParameters;
           }
       ) & {

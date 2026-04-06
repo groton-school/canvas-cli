@@ -30,7 +30,7 @@ type Options = (
   (
     | {
         query?: Partial<bulk_select_provisional_gradesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<bulk_select_provisional_gradesSearchParameters>;
         strict?: false;
       }
@@ -39,7 +39,7 @@ type Options = (
             query: bulk_select_provisional_gradesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: bulk_select_provisional_gradesSearchParameters;
           }
       ) & {

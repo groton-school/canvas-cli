@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<beta_get_query_resultsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<beta_get_query_resultsSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: beta_get_query_resultsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: beta_get_query_resultsSearchParameters;
           }
       ) & {

@@ -34,7 +34,7 @@ type Options = (
   (
     | {
         query?: Partial<reorder_pinned_topics_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<reorder_pinned_topics_groupsSearchParameters>;
         body?: Partial<reorder_pinned_topics_groupsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -46,7 +46,7 @@ type Options = (
             query: reorder_pinned_topics_groupsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: reorder_pinned_topics_groupsSearchParameters;
           }
       ) &

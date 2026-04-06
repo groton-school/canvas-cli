@@ -15,7 +15,7 @@ export type log_users_out_of_all_mobile_apps_mobile_sessionsSearchParameters =
 type Options =
   | {
       query?: Partial<log_users_out_of_all_mobile_apps_mobile_sessionsSearchParameters>;
-      /** @deprecated Use {Options.query} */
+      /** @deprecated Use {@link Options.query} */
       searchParams?: Partial<log_users_out_of_all_mobile_apps_mobile_sessionsSearchParameters>;
       strict?: false;
     }
@@ -24,7 +24,7 @@ type Options =
           query: log_users_out_of_all_mobile_apps_mobile_sessionsSearchParameters;
         }
       | {
-          /** @deprecated Use {Options.query} */
+          /** @deprecated Use {@link Options.query} */
           searchParams: log_users_out_of_all_mobile_apps_mobile_sessionsSearchParameters;
         }
     ) & {

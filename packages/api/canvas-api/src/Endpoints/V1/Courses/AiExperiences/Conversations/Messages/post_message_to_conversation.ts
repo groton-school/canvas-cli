@@ -42,7 +42,7 @@ type Options = (
   (
     | {
         query?: Partial<post_message_to_conversationSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<post_message_to_conversationSearchParameters>;
         body?: Partial<post_message_to_conversationFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -54,7 +54,7 @@ type Options = (
             query: post_message_to_conversationSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: post_message_to_conversationSearchParameters;
           }
       ) &

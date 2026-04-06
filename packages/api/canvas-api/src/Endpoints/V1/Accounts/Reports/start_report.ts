@@ -63,7 +63,7 @@ type Options = (
   (
     | {
         query?: Partial<start_reportSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<start_reportSearchParameters>;
         body?: Partial<start_reportFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -75,7 +75,7 @@ type Options = (
             query: start_reportSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: start_reportSearchParameters;
           }
       ) &

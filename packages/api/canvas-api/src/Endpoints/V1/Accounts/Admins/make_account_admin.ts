@@ -56,7 +56,7 @@ type Options = (
   (
     | {
         query?: Partial<make_account_adminSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<make_account_adminSearchParameters>;
         body?: Partial<make_account_adminFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -68,7 +68,7 @@ type Options = (
             query: make_account_adminSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: make_account_adminSearchParameters;
           }
       ) &

@@ -45,7 +45,7 @@ type Options = (
   (
     | {
         query?: Partial<lists_submissionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<lists_submissionsSearchParameters>;
         strict?: false;
       }
@@ -54,7 +54,7 @@ type Options = (
             query: lists_submissionsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: lists_submissionsSearchParameters;
           }
       ) & {

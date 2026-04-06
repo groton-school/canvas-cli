@@ -50,7 +50,7 @@ type Options = (
   (
     | {
         query?: Partial<unflagging_questionSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<unflagging_questionSearchParameters>;
         body?: Partial<unflagging_questionFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -62,7 +62,7 @@ type Options = (
             query: unflagging_questionSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: unflagging_questionSearchParameters;
           }
       ) &

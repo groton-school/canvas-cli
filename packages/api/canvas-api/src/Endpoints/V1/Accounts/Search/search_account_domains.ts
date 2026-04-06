@@ -28,7 +28,7 @@ export type search_account_domainsSearchParameters = Masquerade &
 type Options =
   | {
       query?: Partial<search_account_domainsSearchParameters>;
-      /** @deprecated Use {Options.query} */
+      /** @deprecated Use {@link Options.query} */
       searchParams?: Partial<search_account_domainsSearchParameters>;
       strict?: false;
     }
@@ -37,7 +37,7 @@ type Options =
           query: search_account_domainsSearchParameters;
         }
       | {
-          /** @deprecated Use {Options.query} */
+          /** @deprecated Use {@link Options.query} */
           searchParams: search_account_domainsSearchParameters;
         }
     ) & {

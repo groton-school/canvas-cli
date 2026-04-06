@@ -24,7 +24,7 @@ type Options = (
   (
     | {
         query?: Partial<remove_quiz_migration_alertSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<remove_quiz_migration_alertSearchParameters>;
         strict?: false;
       }
@@ -33,7 +33,7 @@ type Options = (
             query: remove_quiz_migration_alertSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: remove_quiz_migration_alertSearchParameters;
           }
       ) & {

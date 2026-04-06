@@ -25,7 +25,7 @@ type Options = (
   (
     | {
         query?: Partial<show_account_auth_settingsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<show_account_auth_settingsSearchParameters>;
         strict?: false;
       }
@@ -34,7 +34,7 @@ type Options = (
             query: show_account_auth_settingsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: show_account_auth_settingsSearchParameters;
           }
       ) & {

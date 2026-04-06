@@ -28,7 +28,7 @@ type Options = (
   (
     | {
         query?: Partial<remove_domain_from_accountSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<remove_domain_from_accountSearchParameters>;
         strict?: false;
       }
@@ -37,7 +37,7 @@ type Options = (
             query: remove_domain_from_accountSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: remove_domain_from_accountSearchParameters;
           }
       ) & {

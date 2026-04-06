@@ -37,7 +37,7 @@ type Options = (
   (
     | {
         query?: Partial<merge_user_into_another_user_accountsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<merge_user_into_another_user_accountsSearchParameters>;
         strict?: false;
       }
@@ -46,7 +46,7 @@ type Options = (
             query: merge_user_into_another_user_accountsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: merge_user_into_another_user_accountsSearchParameters;
           }
       ) & {

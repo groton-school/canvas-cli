@@ -6,7 +6,7 @@ export type mark_all_as_readSearchParameters = Masquerade;
 type Options =
   | {
       query?: Partial<mark_all_as_readSearchParameters>;
-      /** @deprecated Use {Options.query} */
+      /** @deprecated Use {@link Options.query} */
       searchParams?: Partial<mark_all_as_readSearchParameters>;
       strict?: false;
     }
@@ -15,7 +15,7 @@ type Options =
           query: mark_all_as_readSearchParameters;
         }
       | {
-          /** @deprecated Use {Options.query} */
+          /** @deprecated Use {@link Options.query} */
           searchParams: mark_all_as_readSearchParameters;
         }
     ) & {

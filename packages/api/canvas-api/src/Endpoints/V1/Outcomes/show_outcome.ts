@@ -35,7 +35,7 @@ type Options = (
   (
     | {
         query?: Partial<show_outcomeSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<show_outcomeSearchParameters>;
         strict?: false;
       }
@@ -44,7 +44,7 @@ type Options = (
             query: show_outcomeSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: show_outcomeSearchParameters;
           }
       ) & {

@@ -56,7 +56,7 @@ type Options = (
   (
     | {
         query?: Partial<createSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<createSearchParameters>;
         body?: Partial<createFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -68,7 +68,7 @@ type Options = (
             query: createSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: createSearchParameters;
           }
       ) &

@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<re_lock_module_progressionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<re_lock_module_progressionsSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: re_lock_module_progressionsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: re_lock_module_progressionsSearchParameters;
           }
       ) & {

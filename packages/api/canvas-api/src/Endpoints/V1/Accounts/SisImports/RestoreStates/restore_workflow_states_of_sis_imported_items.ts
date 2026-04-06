@@ -56,7 +56,7 @@ type Options = (
   (
     | {
         query?: Partial<restore_workflow_states_of_sis_imported_itemsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<restore_workflow_states_of_sis_imported_itemsSearchParameters>;
         body?: Partial<restore_workflow_states_of_sis_imported_itemsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -68,7 +68,7 @@ type Options = (
             query: restore_workflow_states_of_sis_imported_itemsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: restore_workflow_states_of_sis_imported_itemsSearchParameters;
           }
       ) &

@@ -30,7 +30,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_grading_period_setSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_grading_period_setSearchParameters>;
         strict?: false;
       }
@@ -39,7 +39,7 @@ type Options = (
             query: delete_grading_period_setSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_grading_period_setSearchParameters;
           }
       ) & {

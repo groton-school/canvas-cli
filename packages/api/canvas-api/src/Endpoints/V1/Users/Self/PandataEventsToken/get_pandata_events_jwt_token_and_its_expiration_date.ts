@@ -13,7 +13,7 @@ export type get_pandata_events_jwt_token_and_its_expiration_dateFormParameters =
 type Options =
   | {
       query?: Partial<get_pandata_events_jwt_token_and_its_expiration_dateSearchParameters>;
-      /** @deprecated Use {Options.query} */
+      /** @deprecated Use {@link Options.query} */
       searchParams?: Partial<get_pandata_events_jwt_token_and_its_expiration_dateSearchParameters>;
       body?: Partial<get_pandata_events_jwt_token_and_its_expiration_dateFormParameters>;
       /** @deprecated Use {@link Options.body} */
@@ -25,7 +25,7 @@ type Options =
           query: get_pandata_events_jwt_token_and_its_expiration_dateSearchParameters;
         }
       | {
-          /** @deprecated Use {Options.query} */
+          /** @deprecated Use {@link Options.query} */
           searchParams: get_pandata_events_jwt_token_and_its_expiration_dateSearchParameters;
         }
     ) &

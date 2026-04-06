@@ -30,7 +30,7 @@ type Options = (
   (
     | {
         query?: Partial<moderate_eportfolioSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<moderate_eportfolioSearchParameters>;
         body?: Partial<moderate_eportfolioFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -42,7 +42,7 @@ type Options = (
             query: moderate_eportfolioSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: moderate_eportfolioSearchParameters;
           }
       ) &

@@ -40,7 +40,7 @@ type Options = (
   (
     | {
         query?: Partial<enable_disable_or_clear_explicit_csp_setting_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<enable_disable_or_clear_explicit_csp_setting_coursesSearchParameters>;
         body?: Partial<enable_disable_or_clear_explicit_csp_setting_coursesFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -52,7 +52,7 @@ type Options = (
             query: enable_disable_or_clear_explicit_csp_setting_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: enable_disable_or_clear_explicit_csp_setting_coursesSearchParameters;
           }
       ) &

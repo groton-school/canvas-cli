@@ -74,7 +74,7 @@ type Options = (
   (
     | {
         query?: Partial<set_extensions_for_student_quiz_submissionsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<set_extensions_for_student_quiz_submissionsSearchParameters>;
         body?: Partial<set_extensions_for_student_quiz_submissionsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -86,7 +86,7 @@ type Options = (
             query: set_extensions_for_student_quiz_submissionsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: set_extensions_for_student_quiz_submissionsSearchParameters;
           }
       ) &

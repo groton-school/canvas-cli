@@ -32,7 +32,7 @@ type Options = (
   (
     | {
         query?: Partial<load_custom_dataSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<load_custom_dataSearchParameters>;
         strict?: false;
       }
@@ -41,7 +41,7 @@ type Options = (
             query: load_custom_dataSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: load_custom_dataSearchParameters;
           }
       ) & {

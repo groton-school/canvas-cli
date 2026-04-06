@@ -47,7 +47,7 @@ type Options = (
   (
     | {
         query?: Partial<enroll_multiple_users_to_one_or_more_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<enroll_multiple_users_to_one_or_more_coursesSearchParameters>;
         body?: Partial<enroll_multiple_users_to_one_or_more_coursesFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -59,7 +59,7 @@ type Options = (
             query: enroll_multiple_users_to_one_or_more_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: enroll_multiple_users_to_one_or_more_coursesSearchParameters;
           }
       ) &

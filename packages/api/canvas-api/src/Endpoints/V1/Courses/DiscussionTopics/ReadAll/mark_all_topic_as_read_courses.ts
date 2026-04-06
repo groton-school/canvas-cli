@@ -24,7 +24,7 @@ type Options = (
   (
     | {
         query?: Partial<mark_all_topic_as_read_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<mark_all_topic_as_read_coursesSearchParameters>;
         strict?: false;
       }
@@ -33,7 +33,7 @@ type Options = (
             query: mark_all_topic_as_read_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: mark_all_topic_as_read_coursesSearchParameters;
           }
       ) & {

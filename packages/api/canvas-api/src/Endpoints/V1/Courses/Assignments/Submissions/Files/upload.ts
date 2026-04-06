@@ -103,7 +103,7 @@ type Options = (
   (
     | {
         query?: Partial<uploadSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<uploadSearchParameters>;
         body?: Partial<uploadFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -115,7 +115,7 @@ type Options = (
             query: uploadSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: uploadSearchParameters;
           }
       ) &

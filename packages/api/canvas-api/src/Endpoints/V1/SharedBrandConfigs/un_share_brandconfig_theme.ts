@@ -25,7 +25,7 @@ type Options = (
   (
     | {
         query?: Partial<un_share_brandconfig_themeSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<un_share_brandconfig_themeSearchParameters>;
         strict?: false;
       }
@@ -34,7 +34,7 @@ type Options = (
             query: un_share_brandconfig_themeSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: un_share_brandconfig_themeSearchParameters;
           }
       ) & {

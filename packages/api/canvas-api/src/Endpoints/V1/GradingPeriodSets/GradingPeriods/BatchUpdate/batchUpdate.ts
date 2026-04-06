@@ -63,7 +63,7 @@ type Options = (
   (
     | {
         query?: Partial<batchUpdateSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<batchUpdateSearchParameters>;
         body?: Partial<batchUpdateFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -75,7 +75,7 @@ type Options = (
             query: batchUpdateSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: batchUpdateSearchParameters;
           }
       ) &

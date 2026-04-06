@@ -32,7 +32,7 @@ type Options = (
   (
     | {
         query?: Partial<restore_deleted_authentication_providerSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<restore_deleted_authentication_providerSearchParameters>;
         strict?: false;
       }
@@ -41,7 +41,7 @@ type Options = (
             query: restore_deleted_authentication_providerSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: restore_deleted_authentication_providerSearchParameters;
           }
       ) & {

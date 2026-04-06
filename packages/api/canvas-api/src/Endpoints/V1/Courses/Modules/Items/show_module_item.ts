@@ -48,7 +48,7 @@ type Options = (
   (
     | {
         query?: Partial<show_module_itemSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<show_module_itemSearchParameters>;
         strict?: false;
       }
@@ -57,7 +57,7 @@ type Options = (
             query: show_module_itemSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: show_module_itemSearchParameters;
           }
       ) & {

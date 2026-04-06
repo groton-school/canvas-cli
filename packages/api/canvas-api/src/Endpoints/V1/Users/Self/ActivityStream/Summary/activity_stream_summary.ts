@@ -15,7 +15,7 @@ export type activity_stream_summarySearchParameters = Masquerade &
 type Options =
   | {
       query?: Partial<activity_stream_summarySearchParameters>;
-      /** @deprecated Use {Options.query} */
+      /** @deprecated Use {@link Options.query} */
       searchParams?: Partial<activity_stream_summarySearchParameters>;
       strict?: false;
     }
@@ -24,7 +24,7 @@ type Options =
           query: activity_stream_summarySearchParameters;
         }
       | {
-          /** @deprecated Use {Options.query} */
+          /** @deprecated Use {@link Options.query} */
           searchParams: activity_stream_summarySearchParameters;
         }
     ) & {

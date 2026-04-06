@@ -38,7 +38,7 @@ type Options = (
   (
     | {
         query?: Partial<mark_submission_item_as_read_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<mark_submission_item_as_read_coursesSearchParameters>;
         strict?: false;
       }
@@ -47,7 +47,7 @@ type Options = (
             query: mark_submission_item_as_read_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: mark_submission_item_as_read_coursesSearchParameters;
           }
       ) & {

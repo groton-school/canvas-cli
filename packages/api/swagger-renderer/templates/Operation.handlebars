@@ -56,7 +56,7 @@ type Options = {{#if tsPathParameters}}({
   pathParams: {{tsName}}PathParameters;
   }) & {{/if}}({
     query?: Partial<{{tsName}}SearchParameters>;
-    /** @deprecated Use {Options.query} */
+    /** @deprecated Use {@link Options.query} */
     searchParams?: Partial<{{tsName}}SearchParameters>;
     {{#if tsFormParameters}}   
       body?: Partial<{{tsName}}FormParameters>;
@@ -67,7 +67,7 @@ type Options = {{#if tsPathParameters}}({
   } | ({
     query: {{tsName}}SearchParameters;
   }|{
-    /** @deprecated Use {Options.query} */
+    /** @deprecated Use {@link Options.query} */
     searchParams: {{tsName}}SearchParameters;
   }) 
     {{#if tsFormParameters}} & ({

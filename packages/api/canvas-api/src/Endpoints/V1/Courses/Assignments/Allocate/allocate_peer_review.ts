@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<allocate_peer_reviewSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<allocate_peer_reviewSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: allocate_peer_reviewSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: allocate_peer_reviewSearchParameters;
           }
       ) & {

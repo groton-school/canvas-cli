@@ -40,7 +40,7 @@ type Options = (
   (
     | {
         query?: Partial<add_last_attended_dateSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<add_last_attended_dateSearchParameters>;
         body?: Partial<add_last_attended_dateFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -52,7 +52,7 @@ type Options = (
             query: add_last_attended_dateSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: add_last_attended_dateSearchParameters;
           }
       ) &

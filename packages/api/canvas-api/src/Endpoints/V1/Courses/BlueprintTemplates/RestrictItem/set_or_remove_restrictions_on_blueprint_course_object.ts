@@ -63,7 +63,7 @@ type Options = (
   (
     | {
         query?: Partial<set_or_remove_restrictions_on_blueprint_course_objectSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<set_or_remove_restrictions_on_blueprint_course_objectSearchParameters>;
         body?: Partial<set_or_remove_restrictions_on_blueprint_course_objectFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -75,7 +75,7 @@ type Options = (
             query: set_or_remove_restrictions_on_blueprint_course_objectSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: set_or_remove_restrictions_on_blueprint_course_objectSearchParameters;
           }
       ) &

@@ -6,7 +6,7 @@ export type unread_countSearchParameters = Masquerade;
 type Options =
   | {
       query?: Partial<unread_countSearchParameters>;
-      /** @deprecated Use {Options.query} */
+      /** @deprecated Use {@link Options.query} */
       searchParams?: Partial<unread_countSearchParameters>;
       strict?: false;
     }
@@ -15,7 +15,7 @@ type Options =
           query: unread_countSearchParameters;
         }
       | {
-          /** @deprecated Use {Options.query} */
+          /** @deprecated Use {@link Options.query} */
           searchParams: unread_countSearchParameters;
         }
     ) & {

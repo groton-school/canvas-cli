@@ -27,7 +27,7 @@ type Options = (
   (
     | {
         query?: Partial<remove_feature_flag_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<remove_feature_flag_coursesSearchParameters>;
         strict?: false;
       }
@@ -36,7 +36,7 @@ type Options = (
             query: remove_feature_flag_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: remove_feature_flag_coursesSearchParameters;
           }
       ) & {

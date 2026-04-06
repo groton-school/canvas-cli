@@ -40,7 +40,7 @@ type Options = (
   (
     | {
         query?: Partial<post_entry_groupsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<post_entry_groupsSearchParameters>;
         body?: Partial<post_entry_groupsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -52,7 +52,7 @@ type Options = (
             query: post_entry_groupsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: post_entry_groupsSearchParameters;
           }
       ) &

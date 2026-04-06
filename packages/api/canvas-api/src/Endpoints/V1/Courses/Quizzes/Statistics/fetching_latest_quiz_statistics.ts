@@ -38,7 +38,7 @@ type Options = (
   (
     | {
         query?: Partial<fetching_latest_quiz_statisticsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<fetching_latest_quiz_statisticsSearchParameters>;
         strict?: false;
       }
@@ -47,7 +47,7 @@ type Options = (
             query: fetching_latest_quiz_statisticsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: fetching_latest_quiz_statisticsSearchParameters;
           }
       ) & {

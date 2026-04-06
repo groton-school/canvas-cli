@@ -35,7 +35,7 @@ type Options = (
   (
     | {
         query?: Partial<add_multiple_allowed_domains_to_accountSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<add_multiple_allowed_domains_to_accountSearchParameters>;
         body?: Partial<add_multiple_allowed_domains_to_accountFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -47,7 +47,7 @@ type Options = (
             query: add_multiple_allowed_domains_to_accountSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: add_multiple_allowed_domains_to_accountSearchParameters;
           }
       ) &

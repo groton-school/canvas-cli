@@ -32,7 +32,7 @@ type Options = (
   (
     | {
         query?: Partial<batch_retrieve_overrides_in_courseSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<batch_retrieve_overrides_in_courseSearchParameters>;
         strict?: false;
       }
@@ -41,7 +41,7 @@ type Options = (
             query: batch_retrieve_overrides_in_courseSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: batch_retrieve_overrides_in_courseSearchParameters;
           }
       ) & {

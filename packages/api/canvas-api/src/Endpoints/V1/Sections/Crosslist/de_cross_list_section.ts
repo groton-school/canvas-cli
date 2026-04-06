@@ -35,7 +35,7 @@ type Options = (
   (
     | {
         query?: Partial<de_cross_list_sectionSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<de_cross_list_sectionSearchParameters>;
         strict?: false;
       }
@@ -44,7 +44,7 @@ type Options = (
             query: de_cross_list_sectionSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: de_cross_list_sectionSearchParameters;
           }
       ) & {

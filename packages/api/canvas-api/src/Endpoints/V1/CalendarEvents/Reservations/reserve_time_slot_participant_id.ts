@@ -44,7 +44,7 @@ type Options = (
   (
     | {
         query?: Partial<reserve_time_slot_participant_idSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<reserve_time_slot_participant_idSearchParameters>;
         body?: Partial<reserve_time_slot_participant_idFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -56,7 +56,7 @@ type Options = (
             query: reserve_time_slot_participant_idSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: reserve_time_slot_participant_idSearchParameters;
           }
       ) &

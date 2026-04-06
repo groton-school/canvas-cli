@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<unlink_outcome_globalSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<unlink_outcome_globalSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: unlink_outcome_globalSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: unlink_outcome_globalSearchParameters;
           }
       ) & {

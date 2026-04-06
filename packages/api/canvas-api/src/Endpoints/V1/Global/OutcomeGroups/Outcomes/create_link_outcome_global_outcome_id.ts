@@ -87,7 +87,7 @@ type Options = (
   (
     | {
         query?: Partial<create_link_outcome_global_outcome_idSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<create_link_outcome_global_outcome_idSearchParameters>;
         body?: Partial<create_link_outcome_global_outcome_idFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -99,7 +99,7 @@ type Options = (
             query: create_link_outcome_global_outcome_idSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: create_link_outcome_global_outcome_idSearchParameters;
           }
       ) &

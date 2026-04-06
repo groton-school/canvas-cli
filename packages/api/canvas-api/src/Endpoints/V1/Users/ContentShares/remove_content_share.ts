@@ -30,7 +30,7 @@ type Options = (
   (
     | {
         query?: Partial<remove_content_shareSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<remove_content_shareSearchParameters>;
         strict?: false;
       }
@@ -39,7 +39,7 @@ type Options = (
             query: remove_content_shareSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: remove_content_shareSearchParameters;
           }
       ) & {

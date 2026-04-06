@@ -68,7 +68,7 @@ type Options = (
   (
     | {
         query?: Partial<begin_migration_to_push_to_associated_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<begin_migration_to_push_to_associated_coursesSearchParameters>;
         body?: Partial<begin_migration_to_push_to_associated_coursesFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -80,7 +80,7 @@ type Options = (
             query: begin_migration_to_push_to_associated_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: begin_migration_to_push_to_associated_coursesSearchParameters;
           }
       ) &

@@ -40,7 +40,7 @@ type Options = (
   (
     | {
         query?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters>;
         body?: Partial<disable_assignments_currently_enabled_for_grade_export_to_sisFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -52,7 +52,7 @@ type Options = (
             query: disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: disable_assignments_currently_enabled_for_grade_export_to_sisSearchParameters;
           }
       ) &

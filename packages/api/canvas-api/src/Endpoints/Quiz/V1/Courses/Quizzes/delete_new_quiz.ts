@@ -35,7 +35,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_new_quizSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_new_quizSearchParameters>;
         strict?: false;
       }
@@ -44,7 +44,7 @@ type Options = (
             query: delete_new_quizSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_new_quizSearchParameters;
           }
       ) & {

@@ -145,7 +145,7 @@ type Options = (
   (
     | {
         query?: Partial<enroll_user_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<enroll_user_coursesSearchParameters>;
         body?: Partial<enroll_user_coursesFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -157,7 +157,7 @@ type Options = (
             query: enroll_user_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: enroll_user_coursesSearchParameters;
           }
       ) &

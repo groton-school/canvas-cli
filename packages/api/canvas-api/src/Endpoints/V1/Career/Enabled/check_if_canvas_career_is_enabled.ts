@@ -6,7 +6,7 @@ export type check_if_canvas_career_is_enabledSearchParameters = Masquerade;
 type Options =
   | {
       query?: Partial<check_if_canvas_career_is_enabledSearchParameters>;
-      /** @deprecated Use {Options.query} */
+      /** @deprecated Use {@link Options.query} */
       searchParams?: Partial<check_if_canvas_career_is_enabledSearchParameters>;
       strict?: false;
     }
@@ -15,7 +15,7 @@ type Options =
           query: check_if_canvas_career_is_enabledSearchParameters;
         }
       | {
-          /** @deprecated Use {Options.query} */
+          /** @deprecated Use {@link Options.query} */
           searchParams: check_if_canvas_career_is_enabledSearchParameters;
         }
     ) & {

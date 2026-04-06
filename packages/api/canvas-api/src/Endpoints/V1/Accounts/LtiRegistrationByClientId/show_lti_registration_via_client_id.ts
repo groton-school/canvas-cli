@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<show_lti_registration_via_client_idSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<show_lti_registration_via_client_idSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: show_lti_registration_via_client_idSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: show_lti_registration_via_client_idSearchParameters;
           }
       ) & {

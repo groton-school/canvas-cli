@@ -24,7 +24,7 @@ type Options = (
   (
     | {
         query?: Partial<course_todo_itemsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<course_todo_itemsSearchParameters>;
         strict?: false;
       }
@@ -33,7 +33,7 @@ type Options = (
             query: course_todo_itemsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: course_todo_itemsSearchParameters;
           }
       ) & {

@@ -26,7 +26,7 @@ type Options = (
   (
     | {
         query?: Partial<split_merged_users_into_separate_usersSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<split_merged_users_into_separate_usersSearchParameters>;
         strict?: false;
       }
@@ -35,7 +35,7 @@ type Options = (
             query: split_merged_users_into_separate_usersSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: split_merged_users_into_separate_usersSearchParameters;
           }
       ) & {

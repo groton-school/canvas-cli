@@ -59,7 +59,7 @@ type Options = (
   (
     | {
         query?: Partial<add_observee_with_credentialsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<add_observee_with_credentialsSearchParameters>;
         body?: Partial<add_observee_with_credentialsFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -71,7 +71,7 @@ type Options = (
             query: add_observee_with_credentialsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: add_observee_with_credentialsSearchParameters;
           }
       ) &

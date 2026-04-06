@@ -33,7 +33,7 @@ type Options = (
   (
     | {
         query?: Partial<abort_reportSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<abort_reportSearchParameters>;
         strict?: false;
       }
@@ -42,7 +42,7 @@ type Options = (
             query: abort_reportSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: abort_reportSearchParameters;
           }
       ) & {

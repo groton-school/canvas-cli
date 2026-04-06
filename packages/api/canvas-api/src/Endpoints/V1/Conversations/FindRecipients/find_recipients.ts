@@ -6,7 +6,7 @@ export type find_recipientsSearchParameters = Masquerade;
 type Options =
   | {
       query?: Partial<find_recipientsSearchParameters>;
-      /** @deprecated Use {Options.query} */
+      /** @deprecated Use {@link Options.query} */
       searchParams?: Partial<find_recipientsSearchParameters>;
       strict?: false;
     }
@@ -15,7 +15,7 @@ type Options =
           query: find_recipientsSearchParameters;
         }
       | {
-          /** @deprecated Use {Options.query} */
+          /** @deprecated Use {@link Options.query} */
           searchParams: find_recipientsSearchParameters;
         }
     ) & {

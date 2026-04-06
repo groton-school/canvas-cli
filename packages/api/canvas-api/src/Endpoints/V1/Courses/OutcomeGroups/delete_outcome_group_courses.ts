@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_outcome_group_coursesSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_outcome_group_coursesSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: delete_outcome_group_coursesSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_outcome_group_coursesSearchParameters;
           }
       ) & {

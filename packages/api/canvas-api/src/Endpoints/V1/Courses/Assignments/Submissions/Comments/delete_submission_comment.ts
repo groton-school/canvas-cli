@@ -43,7 +43,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_submission_commentSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_submission_commentSearchParameters>;
         strict?: false;
       }
@@ -52,7 +52,7 @@ type Options = (
             query: delete_submission_commentSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_submission_commentSearchParameters;
           }
       ) & {

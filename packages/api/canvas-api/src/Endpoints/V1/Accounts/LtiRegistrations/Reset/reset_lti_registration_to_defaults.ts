@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<reset_lti_registration_to_defaultsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<reset_lti_registration_to_defaultsSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: reset_lti_registration_to_defaultsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: reset_lti_registration_to_defaultsSearchParameters;
           }
       ) & {

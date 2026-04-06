@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_grading_standard_accountsSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_grading_standard_accountsSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: delete_grading_standard_accountsSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_grading_standard_accountsSearchParameters;
           }
       ) & {

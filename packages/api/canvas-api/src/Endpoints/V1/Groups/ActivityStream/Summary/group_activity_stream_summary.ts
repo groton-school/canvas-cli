@@ -24,7 +24,7 @@ type Options = (
   (
     | {
         query?: Partial<group_activity_stream_summarySearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<group_activity_stream_summarySearchParameters>;
         strict?: false;
       }
@@ -33,7 +33,7 @@ type Options = (
             query: group_activity_stream_summarySearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: group_activity_stream_summarySearchParameters;
           }
       ) & {

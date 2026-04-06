@@ -43,7 +43,7 @@ type Options = (
   (
     | {
         query?: Partial<show_course_paceSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<show_course_paceSearchParameters>;
         strict?: false;
       }
@@ -52,7 +52,7 @@ type Options = (
             query: show_course_paceSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: show_course_paceSearchParameters;
           }
       ) & {

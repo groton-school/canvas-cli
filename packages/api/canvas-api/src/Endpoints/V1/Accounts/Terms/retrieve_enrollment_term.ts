@@ -31,7 +31,7 @@ type Options = (
   (
     | {
         query?: Partial<retrieve_enrollment_termSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<retrieve_enrollment_termSearchParameters>;
         strict?: false;
       }
@@ -40,7 +40,7 @@ type Options = (
             query: retrieve_enrollment_termSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: retrieve_enrollment_termSearchParameters;
           }
       ) & {

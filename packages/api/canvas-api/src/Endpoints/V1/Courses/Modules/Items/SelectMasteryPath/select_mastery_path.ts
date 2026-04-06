@@ -49,7 +49,7 @@ type Options = (
   (
     | {
         query?: Partial<select_mastery_pathSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<select_mastery_pathSearchParameters>;
         body?: Partial<select_mastery_pathFormParameters>;
         /** @deprecated Use {@link Options.body} */
@@ -61,7 +61,7 @@ type Options = (
             query: select_mastery_pathSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: select_mastery_pathSearchParameters;
           }
       ) &

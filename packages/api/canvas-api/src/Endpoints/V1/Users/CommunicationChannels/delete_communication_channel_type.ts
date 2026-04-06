@@ -29,7 +29,7 @@ type Options = (
   (
     | {
         query?: Partial<delete_communication_channel_typeSearchParameters>;
-        /** @deprecated Use {Options.query} */
+        /** @deprecated Use {@link Options.query} */
         searchParams?: Partial<delete_communication_channel_typeSearchParameters>;
         strict?: false;
       }
@@ -38,7 +38,7 @@ type Options = (
             query: delete_communication_channel_typeSearchParameters;
           }
         | {
-            /** @deprecated Use {Options.query} */
+            /** @deprecated Use {@link Options.query} */
             searchParams: delete_communication_channel_typeSearchParameters;
           }
       ) & {
