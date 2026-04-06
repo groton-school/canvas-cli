@@ -17,7 +17,5 @@ import { Canvas } from '@oauth2-cli/canvas';
 import { Core } from '@qui-cli/core';
 
 await Core.run();
-console.log(
-  await Canvas.v1.Users.Profile.get({ pathParams: { user_id: 'self' } })
-);
+console.log(await Canvas.v1.Users.Profile.get({ path: { user_id: 'self' } }));
 ```

@@ -23,7 +23,7 @@ const content = document.getElementById('content');
 
 // pull a paginated list of typed users from the API
 for (const user of await Canvas.v1.Accounts.Users.list({
-  pathParams: { account_id: 1 }
+  path: { account_id: 1 }
 })) {
   const userDisplay = document.createElement('div');
   userDisplay.innerHTML = `<img src="${user.avatar_url}"/>${user.name}`;

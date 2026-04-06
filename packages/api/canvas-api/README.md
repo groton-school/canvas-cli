@@ -8,7 +8,7 @@ Typed access to Canvas LMS API with embedded documentation
 
 This started as a component of [@groton/canvas-cli](https://www.npmjs.com/package/@groton/canvas-cli), a command-line set of administrative scripts that I have banged together. However, access to the inline documentation and IntelliSense autocompletions in a few front-end applications evolved this package into an API-only package that depends on purpose-dependent clients for use:
 
-- [@groton/canvas-api.client.base](https://www.npmjs.com/package/@groton/canvas-api.client.base) provides interfaces and types to be used by any implementing packages.
+- [Canvas.Client.Base](./src//Client//Base.ts) provides interfaces and types to be used by any implementing packages.
 - [@oauth2-cli/canvas](https://www.npmjs.com/package/@oauth2-cli/canvas) is a client for use in Node command-line apps, which takes advantage of the [oauth2-cli](https://www.npmjs.com/package/oauth2-cli) to handle authentication to a Canvas LMS instance from the command-line, provides an easy-to-work-with `Canvas` object to call the API endpoints through, and can be used as a [@qui-cli/plugin](https://npmjs.com/package/@qui-cli/plugin) when building a CLI tool.
 - [@groton/canvas-api.client.web](https://www.npmjs.com/package/@groton/canvas-api.client.web) pairs with [groton-school/slim-canvas-api-proxy](https://packagist.org/packages/groton-school/slim-canvas-api-proxy) to support making browser-based calls to the Canvas LMS API (for example, as part of [an LTI tool](https://github.com/groton-school/planner-lti)).
 
@@ -29,7 +29,7 @@ import * as Canvas from '@groton/canvas-api';
 
 // pull a paginated list of typed users from the API
 for (const user of await Canvas.v1.Accounts.Users.list({
-  pathParams: { account_id: 1 }
+  path: { account_id: 1 }
 })) {
   console.log(user.name);
 }
@@ -65,11 +65,11 @@ GET /api/v1/accounts/{account_id}/outcome_groups/{id}/subgroups
 
 ```ts
 await Canvas.v1.Accounts.OutcomeGroups.Subgroups.list({
-  pathParams: {
+  path: {
     account_id: 123,
     id: 456
   },
-  searchParams: {
+  query: {
     as_user_id: 789,
     per_page: 20
   }
@@ -81,7 +81,7 @@ await Canvas.v1.Accounts.OutcomeGroups.Subgroups.list({
 - `snake_case` becomes `CamelCase` for namespaces and objects and `pascalCase` for methods.
 - Method names are shortened from their nicknames (`list_subgroups_accounts`) to remove redundancies in the TypeScript API.
 - All method calls are asynchronous.
-- Path parameters are passed as properties of the `pathParams` property, search/query parameters are passed as properties of the `searchParams` property, and body/form parameters are passed as properties of the `params` property.
+- Path parameters are passed as properties of the `path` property, search/query parameters are passed as properties of the `query` property, and body/form parameters are passed as properties of the `body` property.
 - Methods that upload files also require a `file` property, which may have either a `filePath` property or a `url` property. (Not all clients support both local and URL uploads).
 - All methods support masquerading via the `as_user_id` parameter passed as either in `searchParams` or the body `params` (if available).
 - Methods that return paginated responses can adjust the pagination via `per_pages` and will return the complete list as a result of the method.
