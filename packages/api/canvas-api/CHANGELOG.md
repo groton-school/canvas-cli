@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.9](https://github.com/groton-school/canvas-cli/compare/api/0.3.8...api/0.3.9) (2026-04-06)
+
+
+### Bug Fixes
+
+* restore strict param functionality ([e424e2e](https://github.com/groton-school/canvas-cli/commit/e424e2e820633e5c13f2ae622df8a359d872ddce))
+
 ## [0.3.8](https://github.com/groton-school/canvas-cli/compare/api/0.3.7...api/0.3.8) (2026-04-06)
 
 
