@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.8](https://github.com/groton-school/canvas-cli/compare/api/0.3.7...api/0.3.8) (2026-04-06)
+
+
+### Features
+
+* deprecate pathParams, searchParams, params in favor of path, query, body ([beceb0f](https://github.com/groton-school/canvas-cli/commit/beceb0f40a68cb22a2325c02b54d85e050643641))
+
+
+### Bug Fixes
+
+* explicitly (rather than implictly) target Node LTS version ([7140d44](https://github.com/groton-school/canvas-cli/commit/7140d446a12ad17b381a2a7c5427482260067a34))
+
 ## [0.3.7](https://github.com/groton-school/canvas-cli/compare/api/0.3.6...api/0.3.7) (2026-01-29)
 
 
