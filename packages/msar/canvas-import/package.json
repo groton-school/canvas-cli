@@ -44,6 +44,7 @@
     "@qui-cli/log": "^4.0.4",
     "@qui-cli/plugin": "^4.1.1",
     "@qui-cli/validators": "^3.0.5",
+    "change-case": "^5.4.4",
     "csv-parse": "^6.2.1",
     "ejs": "^5.0.1",
     "get-uri": "^7.0.0",

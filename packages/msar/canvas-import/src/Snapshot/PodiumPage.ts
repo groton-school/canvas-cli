@@ -27,6 +27,8 @@ type ToCanvasArgsOptions = {
   front_page?: boolean;
 };
 
+const untitledPages: Record<string, number> = {};
+
 export async function toCanvasArgs({
   user,
   course,
@@ -71,8 +73,16 @@ export async function toCanvasArgs({
     }
   }
 
+  if (!title || title.length === 0) {
+    if (!untitledPages[course.id]) {
+      untitledPages[course.id] = 0;
+    }
+    untitledPages[course.id]++;
+    title = `Untitled ${untitledPages[course.id]}`;
+  }
+
   return {
-    'wiki_page[title]': title && title.length > 0 ? title : 'Untitled',
+    'wiki_page[title]': title,
     'wiki_page[body]': await exportDataURIsToFiles(
       await Templates.render(Templates.Podium.Page, {
         instance_url: Canvas.client().instance_url,

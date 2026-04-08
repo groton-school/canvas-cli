@@ -1,6 +1,7 @@
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
+import { kebabCase } from 'change-case';
 import * as Snapshot from '../Snapshot/index.js';
 import { log } from './Courses.js';
 import * as Preferences from './Preferences.js';
@@ -131,18 +132,25 @@ export async function importTopics({ course, section }: Options) {
               `Created and published ${Colors.value('Topics')} module`
             );
           }
+          const prevUrl =
+            topic.canvas?.url ||
+            (topic.canvas?.args['wiki_page[title]']
+              ? kebabCase(topic.canvas.args['wiki_page[title]'] as string)
+              : undefined);
           topic.canvas = {
             id: canvasTopic.page_id.toString(),
             blackbaud_id: topic.TopicId,
             args: params,
-            created_at: canvasTopic.created_at
+            created_at: canvasTopic.created_at,
+            url: canvasTopic.url
           };
           const item = topicsModule.items?.find(
             (i) =>
               // @ts-expect-error 2339 it's there
-              i.module_item_type === 'Page' &&
-              'page_url' in i &&
-              i.page_url === canvasTopic.url
+              (i.module_item_type === 'Page' &&
+                'page_url' in i &&
+                i.page_url === topic.canvas?.url) ||
+              i.page_url === prevUrl
           );
           if (item) {
             log(
