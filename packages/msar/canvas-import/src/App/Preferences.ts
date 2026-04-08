@@ -81,3 +81,13 @@ export function setCanvasStudioIndex(value?: string) {
 export function canvasStudioIndex() {
   return _canvasStudioIndex;
 }
+
+let _groupIds: string[] | undefined = undefined;
+
+export function setGroupIds(value?: string[]) {
+  _groupIds = hydrate(value, _groupIds);
+}
+
+export function groupIds() {
+  return _groupIds;
+}
