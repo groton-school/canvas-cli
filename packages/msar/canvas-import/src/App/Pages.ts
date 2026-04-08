@@ -1,8 +1,11 @@
+import { JSONObject } from '@battis/typescript-tricks';
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import { kebabCase } from 'change-case';
+import path from 'node:path';
 import * as Snapshot from '../Snapshot/index.js';
+import * as Templates from '../Templates/index.js';
 import { log } from './Courses.js';
 import * as Preferences from './Preferences.js';
 
@@ -65,6 +68,9 @@ export async function importBulletinBoard({ course, section }: Options) {
 }
 
 export async function importTopics({ course, section }: Options) {
+  // @ts-expect-error 2339
+  const toc: Imported.CanvasData['toc']['entries'] = [];
+
   if (section.Topics) {
     // @ts-expect-error 2352 typing is wrong
     let topicsModule: Canvas.Modules.Module = (
@@ -116,6 +122,7 @@ export async function importTopics({ course, section }: Options) {
           });
           log(course, `Created page ${Colors.value(topic.Name)}`);
         }
+
         if (canvasTopic) {
           if (!topicsModule) {
             // @ts-expect-error 2740 typing is wrong
@@ -147,9 +154,8 @@ export async function importTopics({ course, section }: Options) {
           const item = topicsModule.items?.find(
             (i) =>
               // @ts-expect-error 2339 it's there
-              (i.module_item_type === 'Page' &&
-                'page_url' in i &&
-                i.page_url === topic.canvas?.url) ||
+              i.module_item_type === 'Page' &&
+              'page_url' in i &&
               i.page_url === prevUrl
           );
           if (item) {
@@ -171,6 +177,102 @@ export async function importTopics({ course, section }: Options) {
               `Added page ${Colors.value(canvasTopic.title)} to ${Colors.value('Topics')} module`
             );
           }
+        } else if (topic.canvas?.id && !topic.canvas?.url) {
+          const { url } = await Canvas.v1.Courses.Pages.show_page_courses({
+            path: { course_id: course.id, url_or_id: topic.canvas.id }
+          });
+          topic.canvas.url = url;
+        }
+
+        let thumb: Imported.Annotation['canvas'] | undefined = undefined;
+        if (topic.ThumbFilename && typeof topic.ThumbFilename === 'object') {
+          topic.ThumbFilename = (await Snapshot.Files.uploadLocalFiles({
+            course,
+            entry: topic.ThumbFilename as JSONObject,
+            folder: 'Topic Thumbnails',
+            overrideName:
+              (canvasTopic?.title ||
+                (topic.canvas!.args['wiki_page[title]'] as string)) +
+              path.extname(topic.ThumbFilename.filename)
+          })) as unknown as Imported.Annotation;
+          // @ts-expect-error 2339
+          thumb = topic.ThumbFilename.canvas;
+        }
+        toc.push({
+          thumb,
+          caption: topic.Description || undefined,
+          page: topic.canvas
+        });
+      }
+    }
+
+    if (toc.length) {
+      const body: Partial<Canvas.v1.Courses.Pages.createFormParameters> = {
+        'wiki_page[title]': 'Topics Table of Contents',
+        'wiki_page[body]': await Templates.render(Templates.Canvas.TopicsTOC, {
+          course_id: course.id,
+          toc
+        }),
+        'wiki_page[published]': true
+      };
+      let tocPage: Canvas.Pages.Page | undefined = undefined;
+      if (
+        section.SectionInfo?.canvas?.toc?.id &&
+        Preferences.duplicates() === 'update'
+      ) {
+        if (!Imported.isEqual(body, section.SectionInfo.canvas.toc.args)) {
+          tocPage = await Canvas.v1.Courses.Pages.update({
+            path: {
+              course_id: course.id,
+              url_or_id: section.SectionInfo.canvas.toc.id
+            },
+            body
+          });
+          log(course, `Topics table of conents has been updated`);
+        } else {
+          log(course, 'Topics table of contents is up-to-date');
+        }
+      } else {
+        tocPage = await Canvas.v1.Courses.Pages.create({
+          path: { course_id: course.id },
+          body
+        });
+        log(course, `Created topics table of contents`);
+      }
+      if (tocPage && section.SectionInfo?.canvas) {
+        section.SectionInfo.canvas.toc = {
+          id: tocPage.page_id.toString(),
+          args: body,
+          created_at: tocPage.created_at,
+          entries: toc
+        };
+
+        const item = topicsModule.items.find(
+          (i) =>
+            // @ts-expect-error 2339 it's there
+            i.module_item_type === 'Page' &&
+            'page_url' in i &&
+            i.page_url === kebabCase(tocPage.title || '')
+        );
+        if (item) {
+          log(
+            course,
+            `Table of contents is up-to-date in ${Colors.value('Topics')} module`
+          );
+        } else {
+          await Canvas.v1.Courses.Modules.Items.create({
+            path: { course_id: course.id, module_id: topicsModule.id },
+            body: {
+              'module_item[title]': 'Table of Contents',
+              'module_item[type]': 'Page',
+              'module_item[page_url]': tocPage.url,
+              'module_item[position]': 1
+            }
+          });
+          log(
+            course,
+            `Added table of contents to ${Colors.value('Topics')} module`
+          );
         }
       }
     }

@@ -1,0 +1,23 @@
+<div class="row">
+  <% for (const entry of toc) { %>
+  <div
+    class="col-md-2"
+    style="
+      display: block;
+      border-radius: 1em;
+      border: solid 1px lightgray;
+      margin: 1em;
+      padding: 1em;
+    "
+  >
+    <a href="/courses/<%= course_id %>/pages/<%= entry.page.url %>">
+      <% if (entry.thumb) { %> <%- include('Image', { course_id, image:
+      entry.thumb, size: 100, nowrap: true }); %> <% } %>
+      <h4><%= entry.page.args['wiki_page[title]'] %></h4>
+      <% if (entry.caption) { %>
+      <div><%- entry.caption %></div>
+      <% } %>
+    </a>
+  </div>
+  <% } %>
+</div>

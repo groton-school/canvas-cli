@@ -1,16 +1,31 @@
-import { DateTimeString, PathString } from '@battis/descriptive-types';
+import {
+  DateTimeString,
+  HTMLString,
+  PathString
+} from '@battis/descriptive-types';
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import * as Archive from '@msar/types.archive';
 import probe from 'probe-image-size';
 
-export type CanvasData = {
+type BaseCanvasData = {
   id?: string;
   blackbaud_id?: number;
   course_id?: string;
+  url?: string;
   args: JSONObject;
   created_at?: DateTimeString;
   modified_at?: DateTimeString;
   [key: string]: JSONValue | undefined;
+};
+
+export type CanvasData = BaseCanvasData & {
+  toc?: BaseCanvasData & {
+    entries: {
+      thumb?: BaseCanvasData;
+      caption?: HTMLString;
+      page: BaseCanvasData;
+    }[];
+  };
 };
 
 export type Annotation = Archive.Annotation & {

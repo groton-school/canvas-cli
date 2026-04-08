@@ -22,7 +22,9 @@ type Options = {
   user?: Canvas.Users.User;
   course: Canvas.Courses.Course;
   entry: JSONValue;
+  folder?: PathString;
   name?: string;
+  overrideName?: string;
   description?: HTMLString;
 };
 
@@ -34,7 +36,9 @@ export async function uploadLocalFiles({
   user,
   course,
   entry,
+  folder,
   name,
+  overrideName,
   description
 }: Options): Promise<JSONValue> {
   if (typeof entry !== 'object' || entry === null) {
@@ -63,9 +67,9 @@ export async function uploadLocalFiles({
       const body: Canvas.v1.Courses.Files.uploadFormParameters = {
         parent_folder_path: path.join(
           'Imported Files',
-          path.dirname(entry.localPath.replace(/^\//, ''))
+          folder || path.dirname(entry.localPath.replace(/^\//, ''))
         ),
-        name: filename || name || entry.filename,
+        name: overrideName || filename || name || entry.filename,
         size: fs.statSync(localPath).size,
         on_duplicate: 'overwrite'
       };
