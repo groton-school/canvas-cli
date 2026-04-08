@@ -334,6 +334,8 @@ export async function run() {
           );
         }
         if (course) {
+          const prevTermId = course.term.id;
+          const prevTermName = course.term.name;
           try {
             await Canvas.v1.Courses.update({
               path: { id: course.id },
@@ -418,25 +420,14 @@ export async function run() {
               await importTopics({ course, section });
             }
 
-            const sis_term_id = OneRoster.sis_term_id(section);
-            if (sis_term_id) {
-              await Canvas.v1.Courses.update({
-                path: { id: course.id.toString() },
-                body: {
-                  'course[term_id]': `sis_term_id:${sis_term_id}`
-                }
-              });
-              log(
-                course,
-                `Moved to term ${Colors.value(OneRoster.termName(sis_term_id))}`
-              );
-            } else {
-              log(
-                course,
-                `Could not be moved out of the ${Colors.path('Import Workspace')} term`,
-                'warning'
-              );
-            }
+            await Canvas.v1.Courses.update({
+              path: { id: course.id.toString() },
+              body: {
+                'course[term_id]': prevTermId
+              }
+            });
+            log(course, `Moved to term ${Colors.value(prevTermName)}`);
+
             if (Preferences.bulletinBoard()) {
               await Canvas.v1.Courses.update({
                 path: { id: course.id.toString() },
