@@ -4,7 +4,8 @@ dimensions.width; height = dimensions.height; if (width > height && width >
 size) { const ratio = size / width; width = size; height = height * ratio; }
 else if (height >= width && height > size / 1.618) { const ratio = (size /
 1.618) / height; height = size / 1.618; width = width * ratio; } } if
-(locals.zoom === undefined) { zoom = true; } %>
+(locals.zoom === undefined) { zoom = true; } if(locals.nowrap === undefined)
+{nowrap = false} %>
 <% if (!nowrap) { %>
 <div
   style="border-radius: 1em; border: solid 1px lightgray; margin: 1em; padding: 1em; min-width: calc(<%= width %>px + 1em); min-height: calc(<%= height %>px + 1em); <%= locals.style ? style : '' %>"
