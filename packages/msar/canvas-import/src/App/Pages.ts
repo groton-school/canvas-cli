@@ -73,7 +73,7 @@ export async function importTopics({ course, section }: Options) {
 
   if (section.Topics) {
     // @ts-expect-error 2352 typing is wrong
-    let topicsModule: Canvas.Modules.Module = (
+    let topicsModule: Canvas.Modules.Module | Canvas.CoursePace.Module = (
       await Canvas.v1.Courses.Modules.list({
         path: { course_id: course.id },
         query: { include: ['items'] }
@@ -86,6 +86,7 @@ export async function importTopics({ course, section }: Options) {
       });
       log(course, `Published ${Colors.value('Topics')} module`);
     }
+    const noTopicsModule = !topicsModule;
     for (const topic of section.Topics) {
       if (topic.Content) {
         const params = await Snapshot.PodiumPage.toCanvasArgs({
@@ -123,9 +124,18 @@ export async function importTopics({ course, section }: Options) {
           log(course, `Created page ${Colors.value(topic.Name)}`);
         }
 
-        if (canvasTopic) {
+        if (canvasTopic || (topic.canvas?.id && noTopicsModule)) {
+          if (!canvasTopic && topic.canvas?.id) {
+            canvasTopic = await Canvas.v1.Courses.Pages.show_page_courses({
+              path: { course_id: course.id, url_or_id: topic.canvas.id }
+            });
+          }
+          if (!canvasTopic) {
+            throw new Error(
+              'A canvas topic that was created, indexed, and just retrieved still does not exist'
+            );
+          }
           if (!topicsModule) {
-            // @ts-expect-error 2740 typing is wrong
             topicsModule = await Canvas.v1.Courses.Modules.create({
               path: { course_id: course.id },
               body: { 'module[name]': 'Topics' }
@@ -216,21 +226,32 @@ export async function importTopics({ course, section }: Options) {
         'wiki_page[published]': true
       };
       let tocPage: Canvas.Pages.Page | undefined = undefined;
-      if (
-        section.SectionInfo?.canvas?.toc?.id &&
-        Preferences.duplicates() === 'update'
-      ) {
-        if (!Imported.isEqual(body, section.SectionInfo.canvas.toc.args)) {
+      try {
+        tocPage = await Canvas.v1.Courses.Pages.show_page_courses({
+          path: { course_id: course.id, url_or_id: 'topics-table-of-contents' }
+        });
+      } catch (_) {
+        // ignore error if not found
+      }
+      if (tocPage && Preferences.duplicates() === 'update') {
+        if (section.SectionInfo?.canvas?.toc) {
+          if (!Imported.isEqual(body, section.SectionInfo.canvas.toc.args)) {
+            tocPage = await Canvas.v1.Courses.Pages.update({
+              path: {
+                course_id: course.id,
+                url_or_id: section.SectionInfo.canvas.toc.id || tocPage.page_id
+              },
+              body
+            });
+            log(course, `Topics table of conents has been updated`);
+          } else {
+            log(course, 'Topics table of contents is up-to-date');
+          }
+        } else {
           tocPage = await Canvas.v1.Courses.Pages.update({
-            path: {
-              course_id: course.id,
-              url_or_id: section.SectionInfo.canvas.toc.id
-            },
+            path: { course_id: course.id, url_or_id: tocPage.page_id },
             body
           });
-          log(course, `Topics table of conents has been updated`);
-        } else {
-          log(course, 'Topics table of contents is up-to-date');
         }
       } else {
         tocPage = await Canvas.v1.Courses.Pages.create({
@@ -239,22 +260,33 @@ export async function importTopics({ course, section }: Options) {
         });
         log(course, `Created topics table of contents`);
       }
-      if (tocPage && section.SectionInfo?.canvas) {
-        section.SectionInfo.canvas.toc = {
-          id: tocPage.page_id.toString(),
-          args: body,
-          created_at: tocPage.created_at,
-          entries: toc
+      if (tocPage) {
+        section.SectionInfo = {
+          ...section.SectionInfo,
+          // @ts-expect-error 2322
+          canvas: {
+            ...section.SectionInfo?.canvas,
+            toc: {
+              id: tocPage.page_id.toString(),
+              args: body,
+              created_at: tocPage.created_at,
+              entries: toc
+            }
+          }
         };
 
-        const item = topicsModule.items.find(
+        if (!topicsModule.items) {
+          topicsModule = await Canvas.v1.Courses.Modules.show_module({
+            path: { course_id: course.id, id: topicsModule.id },
+            query: { include: ['items'] }
+          });
+        }
+        const item = topicsModule.items?.find(
           (i) =>
             // @ts-expect-error 2339 it's there
-            i.module_item_type === 'Page' &&
-            'page_url' in i &&
-            i.page_url === kebabCase(tocPage.title || '')
+            i.type === 'Page' && 'page_url' in i && i.page_url == toc.url
         );
-        if (item) {
+        if (item || section.SectionInfo?.canvas?.toc?.id === tocPage.page_id) {
           log(
             course,
             `Table of contents is up-to-date in ${Colors.value('Topics')} module`

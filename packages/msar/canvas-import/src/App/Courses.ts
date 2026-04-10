@@ -72,7 +72,9 @@ export async function handleDuplicateCourse({ course, section }: Options) {
         path: { course_id: course.id.toString() }
       });
       if (section.SectionInfo) {
+        // @ts-expect-error 2322
         section.SectionInfo.canvas = {
+          ...section.SectionInfo.canvas,
           id: course.id.toString(),
           instance_url: Canvas.client().instance_url,
           args: {},
