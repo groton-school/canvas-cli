@@ -72,7 +72,7 @@ export function prefixes() {
   return _prefixes;
 }
 
-let _canvasStudioIndex: string = 'canvas-studio.json';
+let _canvasStudioIndex: string | undefined;
 
 export function setCanvasStudioIndex(value?: string) {
   _canvasStudioIndex = hydrate(value, _canvasStudioIndex);

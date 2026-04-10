@@ -75,7 +75,7 @@ Optional path to SIS ID Map CSV file, must contain at least `AssociationId` colu
 
 #### `--canvasStudioIndex=<canvasStudioIndex>`
 
-Path to a JSON index hashing SHA1 file hashes of videos to Canvas Studio media IDs (Default: `"canvas-studio.json"`)
+Path to a JSON index hashing SHA1 file hashes of videos to Canvas Studio media IDs. Defaults to environment variable `CANVAS_STUDIO_INDEX`.
 
 #### `--duplicates=<overwrite|update|reset|skip>`
 

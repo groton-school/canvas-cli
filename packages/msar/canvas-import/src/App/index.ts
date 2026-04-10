@@ -153,7 +153,10 @@ export function options(): Plugin.Options {
         hint: Colors.quotedValue(`"path/to/sis-id-map.csv"`)
       },
       canvasStudioIndex: {
-        description: `Path to a JSON index hashing SHA1 file hashes of videos to Canvas Studio media IDs`,
+        description:
+          `Path to a JSON index hashing SHA1 file hashes of videos ` +
+          `to Canvas Studio media IDs. Defaults to environment variable ` +
+          `${Colors.varName('CANVAS_STUDIO_INDEX')}.`,
         default: Preferences.canvasStudioIndex()
       },
       duplicates: {
@@ -189,6 +192,7 @@ export async function init(args: Plugin.ExpectedArguments<typeof options>) {
   const snapshotPath = Positionals.get('snapshotPath');
   const {
     values: {
+      canvasStudioIndex = await Env.get({ key: 'CANVAS_STUDIO_INDEX' }),
       blackbaudInstanceId = await Env.get({ key: 'BLACKBAUD_INSTANCE_ID' }),
       canvasInstanceUrl = await Env.get({ key: 'CANVAS_INSTANCE_URL' }),
       termsPath = await Env.get({ key: 'TERMS_CSV' }),
@@ -205,6 +209,7 @@ export async function init(args: Plugin.ExpectedArguments<typeof options>) {
   Canvas.plugin.configure({ reason: 'canvas-import' });
   CanvasStudio.plugin.configure({ reason: 'canvas-import' });
   configure({
+    canvasStudioIndex,
     blackbaudInstanceId,
     canvasInstanceUrl,
     termsPath,
