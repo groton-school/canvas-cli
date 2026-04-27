@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.4](https://github.com/groton-school/canvas-cli/compare/canvas-import/0.1.3...canvas-import/0.1.4) (2026-04-27)
+
+
+### Features
+
+* generate visual table of contents for topics module ([726a305](https://github.com/groton-school/canvas-cli/commit/726a305961a60d4af884ef22abd733eae764f10c))
+* number untitled topics pages ([a4f0933](https://github.com/groton-school/canvas-cli/commit/a4f09334421919eb5371e058ab4fbeced2236d1e))
+* read canvasStudioIndex from env var CANVAS_STUDIO_INDEX ([4c3736d](https://github.com/groton-school/canvas-cli/commit/4c3736ddf35a5a3950c56d619157829d8a04afdf))
+* select individual group(s) using --groupId option ([668327a](https://github.com/groton-school/canvas-cli/commit/668327a81f514998aed189935f0787a8baabbbfe))
+
+
+### Bug Fixes
+
+* addressed a number of logic errors in topics toc creation and updating ([1d0e919](https://github.com/groton-school/canvas-cli/commit/1d0e9191f04b29d3e2dd86ad98e17917a61b7cbf))
+* export types ([6ba30e2](https://github.com/groton-school/canvas-cli/commit/6ba30e2c604dc10ed7c1d4ad56fafdc3abac1c26))
+* image and topics TOC template fixes for consistency and resilience ([ecf6f64](https://github.com/groton-school/canvas-cli/commit/ecf6f64d3443b3d21a1964d57a3a2da619027b02))
+* move courses back to term they were found in ([46fe140](https://github.com/groton-school/canvas-cli/commit/46fe1402fb21d75b2a9cd6c56e4bdb1a323606a4))
+
 ## [0.1.3](https://github.com/groton-school/canvas-cli/compare/canvas-import/0.1.2...canvas-import/0.1.3) (2026-04-06)
 
 
