@@ -283,10 +283,11 @@ export async function importTopics({ course, section }: Options) {
         }
         const item = topicsModule.items?.find(
           (i) =>
-            // @ts-expect-error 2339 it's there
+            // FIXME module items contain a `type` field
+            // @ts-expect-error 2339
             i.type === 'Page' && 'page_url' in i && i.page_url == toc.url
         );
-        if (item || section.SectionInfo?.canvas?.toc?.id === tocPage.page_id) {
+        if (item) {
           log(
             course,
             `Table of contents is up-to-date in ${Colors.value('Topics')} module`
