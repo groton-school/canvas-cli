@@ -33,7 +33,7 @@
     "@battis/typescript-tricks": "^0.8.2",
     "@groton/canvas-api": "workspace:*",
     "@oauth2-cli/qui-cli": "^1.2.15",
-    "ora": "^9.3.0",
+    "ora": "^9.4.0",
     "requestish": "^0.1.12"
   },
   "devDependencies": {
@@ -46,8 +46,8 @@
   },
   "peerDependencies": {
     "@qui-cli/colors": ">=3.2",
-    "@qui-cli/log": ">=3",
-    "@qui-cli/plugin": ">=3"
+    "@qui-cli/log": ">=4",
+    "@qui-cli/plugin": ">=4"
   },
   "engines": {
     "node": ">=21"

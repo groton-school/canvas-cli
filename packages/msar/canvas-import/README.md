@@ -17,23 +17,23 @@
 - All files uploaded to `Imported Files` subfolder of course files
   - Files are de-duped before being uploaded, preferring images with `orig` or `large` in their filename if duplicates are encountered
 
-## Usage:
+Usage:
 
-```bash
-  canvas-import -h --o=<outputPath> --assignments --bulletinBoard --topics --skipTeacherless --pretty --commands --silent --logging --ignoreErrors --logRequests --blackbaudInstanceId=<`###`> --termsPath=<`"path/to/terms.csv"`> --departmentAccountMapPath=<`"path/to/dept-acct-map.csv"`> --coursesWithDepartmentsPath=<`"path/to/courses-dept.csv"`> --sisIdMapPath=<`"path/to/sis-id-map.csv"`> --canvasStudioIndex=<canvasStudioIndex> --duplicates=<overwrite|update|reset|skip> --prefix=<`"cls"`> --groupId=<`12345678`> --skipTo=<skipTo> --opAccount=<example.1password.com> --opItem=<1Password unique identifier> --opToken=<token value> --logFilePath=<logFilePath> --stdoutLevel=<all|trace|debug|info|warning|error|fatal|off> --fileLevel=<all|trace|debug|info|warning|error|fatal|off> `snapshotPath`
-```
+<pre lang="bash">canvas-import -h --o=&lt;outputPath&gt; --assignments --bulletinBoard --topics --skipTeacherless --pretty --commands --silent --logging --ignoreErrors --logRequests --blackbaudInstanceId=&lt;`###`&gt; --termsPath=&lt;`"path/to/terms.csv"`&gt; --departmentAccountMapPath=&lt;`"path/to/dept-acct-map.csv"`&gt; --coursesWithDepartmentsPath=&lt;`"path/to/courses-dept.csv"`&gt; --sisIdMapPath=&lt;`"path/to/sis-id-map.csv"`&gt; --canvasStudioIndex=&lt;canvasStudioIndex&gt; --duplicates=&lt;overwrite|update|reset|skip&gt; --prefix=&lt;`"cls"`&gt; --groupId=&lt;`12345678`&gt; --skipTo=&lt;skipTo&gt; --opAccount=&lt;example.1password.com&gt; --opItem=&lt;1Password unique identifier&gt; --opToken=&lt;token value&gt; --logFilePath=&lt;logFilePath&gt; --stdoutLevel=&lt;all|trace|debug|info|warning|error|fatal|off&gt; --fileLevel=&lt;all|trace|debug|info|warning|error|fatal|off&gt; <u>snapshotPath</u></pre>
 
-## Arguments
+
+
+### Positional arguments
+
+#### <u>`snapshotPath`</u>
+
+Path to a snapshot index JSON file
+
+### Arguments
 
 #### `-h --help`
 
 Show this usage information
-
-### Positional arguments
-
-#### `snapshotPath`
-
-Path to a snapshot index JSON file
 
 ### Import options
 

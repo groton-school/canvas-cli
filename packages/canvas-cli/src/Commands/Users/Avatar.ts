@@ -1,6 +1,6 @@
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
-import { Core } from '@qui-cli/core';
+import { Positionals } from '@qui-cli/core';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import { Root } from '@qui-cli/root';
@@ -19,7 +19,10 @@ export type Configuration = Plugin.Configuration & {
   csvPath?: string;
 };
 
-Core.configure({ core: { requirePositionals: true } });
+Positionals.require({
+  csvPath: { description: `Path to CSV file of avatar image paths` }
+});
+Positionals.allowOnlyNamedArgs();
 
 export const name = 'avatar';
 
@@ -39,14 +42,12 @@ export function options(): Plugin.Options {
   };
 }
 
-export function init(args: Plugin.ExpectedArguments<typeof options>) {
-  const {
-    positionals: [csvPath]
-  } = args;
+export function init({ values }: Plugin.ExpectedArguments<typeof options>) {
+  const csvPath = Positionals.get('csvPath');
   Canvas.plugin.configure({
     reason: path.basename(import.meta.filename, '.js')
   });
-  configure({ csvPath, ...args.values });
+  configure({ csvPath, ...values });
 }
 
 export async function run() {

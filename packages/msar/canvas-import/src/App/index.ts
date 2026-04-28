@@ -44,6 +44,13 @@ export type Configuration = Plugin.Configuration & {
   skipTo?: number;
 };
 
+Positionals.allowOnlyNamedArgs();
+Positionals.require({
+  snapshotPath: {
+    description: `Path to a snapshot index JSON file`
+  }
+});
+
 export const name = 'canvas-import';
 
 let skipTo: number | undefined = undefined;
@@ -66,12 +73,6 @@ export function configure(config: Configuration = {}) {
 }
 
 export function options(): Plugin.Options {
-  Positionals.allowOnlyNamedArgs();
-  Positionals.require({
-    snapshotPath: {
-      description: `Path to a snapshot index JSON file`
-    }
-  });
   return {
     man: [{ level: 1, text: 'Import options' }],
     flag: {
