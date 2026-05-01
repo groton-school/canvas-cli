@@ -47,7 +47,7 @@
     "change-case": "^5.4.4",
     "csv-parse": "^6.2.1",
     "ejs": "^5.0.2",
-    "get-uri": "^7.0.0",
+    "get-uri": "^8.0.0",
     "open": "^10.2.0",
     "ora": "^9.4.0",
     "probe-image-size": "^7.2.3",
