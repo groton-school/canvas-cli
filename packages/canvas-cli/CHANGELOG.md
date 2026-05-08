@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.9](https://github.com/groton-school/canvas-cli/compare/canvas-cli/0.0.8...canvas-cli/0.0.9) (2026-05-08)
+
+
+### Features
+
+* backup Canvas gradebook data with canvas courses backup ([3b65195](https://github.com/groton-school/canvas-cli/commit/3b651958131f7cb3273788a30d7955cbc33d8c74))
+
+
+### Bug Fixes
+
+* update to latest [@qui-cli](https://github.com/qui-cli) version ([bece837](https://github.com/groton-school/canvas-cli/commit/bece837e3debfe07462abefe69c2e26c1b7042c4))
+
 ## [0.0.8](https://github.com/groton-school/canvas-cli/compare/canvas-cli/0.0.7...canvas-cli/0.0.8) (2026-04-06)
 
 
