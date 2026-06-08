@@ -425,6 +425,7 @@ export async function run() {
                         'pseudonym[send_confirmation]': false
                       }
                     });
+                    users[user.sis_user_id] = user;
                     await Canvas.v1.Users.update({
                       path: { id: users[sis_user_id].id },
                       body: { 'user[event]': 'suspend' }
