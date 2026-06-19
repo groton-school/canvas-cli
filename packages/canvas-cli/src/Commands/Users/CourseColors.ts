@@ -9,19 +9,23 @@ import ora, { Ora } from 'ora';
 export type Configuration = Plugin.Configuration & {
   account_id?: string;
   term_id?: number;
+  pattern?: RegExp
   overwrite?: boolean;
 };
 
 export const name = 'course-colors';
 
-let account_id: string | undefined = undefined;
-let term_id: number | undefined = undefined;
-let overwrite = false;
+const config: Configuration = {
+pattern : /\(([A-Z]{1,2})[^)]*\)$/,
+overwrite: false
+}
 
-export function configure(config: Configuration = {}) {
-  account_id = Plugin.hydrate(config.account_id, account_id);
-  term_id = Plugin.hydrate(config.term_id, term_id);
-  overwrite = Plugin.hydrate(config.overwrite, overwrite);
+export function configure(proposal: Configuration = {}) {
+  for (const key in proposal) {
+    if (proposal[key] !== undefined) {
+      config[key] = proposal[key]
+    }
+  }
 }
 
 export function options(): Plugin.Options {
@@ -30,13 +34,17 @@ export function options(): Plugin.Options {
     flag: {
       overwrite: {
         description: 'Whether or not to overwrite existing colors',
-        default: overwrite
+        default: config.overwrite
       }
     },
     opt: {
       accountId: {
         description: `Canvas account ID to include`,
         default: '1'
+      },
+      pattern: {
+        description: `Regular expression that extracts the block abbreviation from a course or section title`,
+        default: config.pattern?.toString().replace(/^\/(.*)\/$/,'$1')
       }
     },
     num: {
@@ -49,7 +57,7 @@ export function options(): Plugin.Options {
 
 export function init(args: Plugin.ExpectedArguments<typeof options>) {
   const {
-    values: { accountId: account_id, termId: term_id, ...values }
+    values: { accountId: account_id, termId: term_id, pattern: str, ...values }
   } = args;
   Canvas.plugin.configure({
     reason: path.basename(import.meta.filename, '.js')
@@ -57,15 +65,16 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
   configure({
     account_id,
     term_id: term_id as unknown as number,
+    pattern: str?new RegExp(str): undefined,
     ...values
   });
 }
 
 export async function run() {
-  if (!account_id) {
+  if (!config.account_id) {
     throw new Error(`accountId must be defined`);
   }
-  if (!term_id) {
+  if (!config.term_id) {
     throw new Error(`termId must be defined`);
   }
 
@@ -79,7 +88,7 @@ export async function run() {
     course: Canvas.Courses.Course
   ) {
     for (const source of [section.name, course.name, course.course_code]) {
-      const blockMatches = course && /\(([A-Z]{1,2})[^)]*\)$/.exec(source);
+      const blockMatches = course && config.pattern?.exec(source);
       if (blockMatches && blockMatches.length >= 2) {
         return blockMatches[1];
       }
@@ -196,8 +205,8 @@ export async function run() {
 
   const per_page = 100;
   const courses = await Canvas.v1.Accounts.Courses.list({
-    path: { account_id },
-    query: { enrollment_term_id: term_id, per_page }
+    path: { account_id: config.account_id },
+    query: { enrollment_term_id: config.term_id, per_page }
   });
 
   for (const course of courses) {
@@ -244,7 +253,7 @@ export async function run() {
             }
             if (
               (!userCache[enrollments[i].user_id].custom_colors[asset_string] ||
-                overwrite) &&
+                config.overwrite) &&
               hexcode !==
                 userCache[enrollments[i].user_id].custom_colors[asset_string]
             ) {
