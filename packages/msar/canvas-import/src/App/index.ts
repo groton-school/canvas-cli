@@ -371,6 +371,13 @@ export async function run() {
             );
           }
           if (course) {
+            let completed = course.workflow_state === 'completed';
+            if (completed) {
+              await Canvas.v1.Courses.update({
+                path: { id: course.id },
+                body: { 'course[event]': 'offer' }
+              });
+            }
             const sis_term_id = OneRoster.sis_term_id(section);
             const prevTermId =
               course.term?.id ||
@@ -513,6 +520,12 @@ export async function run() {
               } else {
                 throw error;
               }
+            }
+            if (completed) {
+              await Canvas.v1.Courses.update({
+                path: { id: course.id },
+                body: { 'course[event]': 'conclude' }
+              });
             }
             writeIndex();
           }
