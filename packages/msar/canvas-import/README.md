@@ -19,7 +19,7 @@
 
 Usage:
 
-<pre lang="bash">canvas-import -h --o=&lt;outputPath&gt; --assignments --bulletinBoard --topics --skipTeacherless --pretty --commands --silent --logging --ignoreErrors --logRequests --blackbaudInstanceId=&lt;`###`&gt; --termsPath=&lt;`"path/to/terms.csv"`&gt; --departmentAccountMapPath=&lt;`"path/to/dept-acct-map.csv"`&gt; --coursesWithDepartmentsPath=&lt;`"path/to/courses-dept.csv"`&gt; --sisIdMapPath=&lt;`"path/to/sis-id-map.csv"`&gt; --canvasStudioIndex=&lt;canvasStudioIndex&gt; --duplicates=&lt;overwrite|update|reset|skip&gt; --prefix=&lt;`"cls"`&gt; --groupId=&lt;`12345678`&gt; --skipTo=&lt;skipTo&gt; --opAccount=&lt;example.1password.com&gt; --opItem=&lt;1Password unique identifier&gt; --opToken=&lt;token value&gt; --logFilePath=&lt;logFilePath&gt; --stdoutLevel=&lt;all|trace|debug|info|warning|error|fatal|off&gt; --fileLevel=&lt;all|trace|debug|info|warning|error|fatal|off&gt; <u>snapshotPath</u></pre>
+<pre lang="bash">canvas-import -h --o=&lt;outputPath&gt; --assignments --bulletinBoard --topics --reuseTeacher --skipTeacherless --pretty --commands --silent --logging --ignoreErrors --logRequests --blackbaudInstanceId=&lt;`###`&gt; --termsPath=&lt;`"path/to/terms.csv"`&gt; --departmentAccountMapPath=&lt;`"path/to/dept-acct-map.csv"`&gt; --coursesWithDepartmentsPath=&lt;`"path/to/courses-dept.csv"`&gt; --sisIdMapPath=&lt;`"path/to/sis-id-map.csv"`&gt; --canvasStudioIndex=&lt;canvasStudioIndex&gt; --duplicates=&lt;overwrite|update|reset|skip&gt; --prefix=&lt;`"cls"`&gt; --groupId=&lt;`12345678`&gt; --skipTo=&lt;skipTo&gt; --opAccount=&lt;example.1password.com&gt; --opItem=&lt;1Password unique identifier&gt; --opToken=&lt;token value&gt; --logFilePath=&lt;logFilePath&gt; --stdoutLevel=&lt;all|trace|debug|info|warning|error|fatal|off&gt; --fileLevel=&lt;all|trace|debug|info|warning|error|fatal|off&gt; <u>snapshotPath</u></pre>
 
 
 
@@ -48,6 +48,10 @@ Create bulletin board (Default: `true`, use `--no-bulletinBoard` to disable)
 #### `--topics`
 
 Create topics (Default: `true`, use `--no-topics` to disable)
+
+#### `--reuseTeacher`
+
+If a course already has an existing teacher in Canvas, re-use that teacher rather than trying to match the snapshot (Default: `true`, use `--no-reuseTeacher` to disable)
 
 #### `--skipTeacherless`
 

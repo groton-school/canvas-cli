@@ -91,3 +91,13 @@ export function setGroupIds(value?: string[]) {
 export function groupIds() {
   return _groupIds;
 }
+
+let _reuseTeacher = true;
+
+export function setReuseTeacher(value?: boolean) {
+  _reuseTeacher = hydrate(value, _reuseTeacher);
+}
+
+export function reuseTeacher() {
+  return _reuseTeacher;
+}

@@ -40,6 +40,7 @@ export type Configuration = Plugin.Configuration & {
   topics?: boolean;
   prefix?: string[];
   groupId?: string[];
+  reuseTeacher?: boolean;
   skipTeacherless?: boolean;
   skipTo?: number;
 };
@@ -87,6 +88,10 @@ export function options(): Plugin.Options {
       topics: {
         description: `Create topics`,
         default: Preferences.topics()
+      },
+      reuseTeacher: {
+        description: `If a course already has an existing teacher in Canvas, re-use that teacher rather than trying to match the snapshot`,
+        default: Preferences.reuseTeacher()
       },
       skipTeacherless: {
         description: `Include sections that have no teachers (likely community groups)`,
@@ -377,6 +382,7 @@ export async function run() {
                 path: { id: course.id },
                 body: { 'course[event]': 'offer' }
               });
+              log(course, `Made concluded course available for edits`);
             }
             const sis_term_id = OneRoster.sis_term_id(section);
             const prevTermId =
@@ -411,48 +417,77 @@ export async function run() {
               }
               // TODO cache enrollments for updating
               let user: Canvas.Users.User | undefined = undefined;
+              if (Preferences.reuseTeacher()) {
+                const teachers = await Canvas.v1.Courses.Users.list({
+                  path: { course_id: course.id },
+                  query: {
+                    enrollment_type: ['teacher'],
+                    enrollment_state: ['active', 'invited', 'completed']
+                  }
+                });
+                user = teachers.shift();
+                if (user) {
+                  log(
+                    course,
+                    `Reusing ${Colors.value(user.name)} (SIS ID ${Colors.value(user.sis_user_id)}) as teacher`
+                  );
+                }
+              }
               if (section.SectionInfo?.TeacherId === null) {
                 log(course, `No teacher in snapshot`, 'warning');
               } else {
                 const sis_user_id = OneRoster.sis_user_id(section);
-                user = users[sis_user_id];
                 if (!user) {
-                  try {
-                    user = await Canvas.v1.Users.show_user_details({
-                      path: { id: `sis_user_id:${sis_user_id}` }
-                    });
-                  } catch (_) {
-                    user = await Canvas.v1.Accounts.Users.create({
-                      path: { account_id: 1 },
-                      body: {
-                        'user[name]': section.SectionInfo?.Teacher,
-                        'pseudonym[sis_user_id]': sis_user_id,
-                        'pseudonym[unique_id]': sis_user_id,
-                        enable_sis_reactivation: true,
-                        'pseudonym[send_confirmation]': false
-                      }
-                    });
-                    users[user.sis_user_id] = user;
-                    await Canvas.v1.Users.update({
-                      path: { id: users[sis_user_id].id },
-                      body: { 'user[event]': 'suspend' }
-                    });
-                    log(
-                      course,
-                      `Added ${Colors.value(users[sis_user_id].name)} as a suspended user`
-                    );
+                  if (!user) {
+                    user = users[sis_user_id];
+                    if (user) {
+                      log(
+                        course,
+                        `Reusing cached user ${Colors.value(user.name)} (SIS ID ${Colors.value(user.sis_user_id)}, cache index ${Colors.value(sis_user_id)}) as teacher`
+                      );
+                    }
                   }
-                  users[sis_user_id] = user;
+                  if (!user) {
+                    try {
+                      user = await Canvas.v1.Users.show_user_details({
+                        path: { id: `sis_user_id:${sis_user_id}` }
+                      });
+                    } catch (_) {
+                      user = await Canvas.v1.Accounts.Users.create({
+                        path: { account_id: 1 },
+                        body: {
+                          'user[name]': section.SectionInfo?.Teacher,
+                          'pseudonym[sis_user_id]': sis_user_id,
+                          'pseudonym[unique_id]': sis_user_id,
+                          enable_sis_reactivation: true,
+                          'pseudonym[send_confirmation]': false
+                        }
+                      });
+                      users[user.sis_user_id] = user;
+                      await Canvas.v1.Users.update({
+                        path: { id: users[sis_user_id].id },
+                        body: { 'user[event]': 'suspend' }
+                      });
+                      log(
+                        course,
+                        `Added ${Colors.value(users[sis_user_id].name)} as a suspended user`
+                      );
+                    }
+                    users[sis_user_id] = user;
+                  }
+                  await Canvas.v1.Sections.Enrollments.enroll_user_sections({
+                    path: { section_id: `sis_section_id:${sis_course_id}` },
+                    body: {
+                      'enrollment[user_id]': user.id.toString(),
+                      'enrollment[type]': 'TeacherEnrollment',
+                      'enrollment[enrollment_state]': 'active'
+                    }
+                  });
+                  log(
+                    course,
+                    `Enrolled ${Colors.value(user.name)} (SIS ID ${Colors.value(user.sis_user_id)}, cache index ${Colors.value(sis_user_id)}) as teacher`
+                  );
                 }
-                await Canvas.v1.Courses.Enrollments.enroll_user_courses({
-                  path: { course_id: course.id.toString() },
-                  body: {
-                    'enrollment[user_id]': `sis_user_id:${sis_user_id}`,
-                    'enrollment[type]': 'TeacherEnrollment',
-                    'enrollment[enrollment_state]': 'active'
-                  }
-                });
-                log(course, `Enrolled ${Colors.value(user.name)} as teacher`);
               }
 
               if (Preferences.assignments()) {
@@ -526,6 +561,7 @@ export async function run() {
                 path: { id: course.id },
                 body: { 'course[event]': 'conclude' }
               });
+              log(course, `Re-concluded course`);
             }
             writeIndex();
           }
