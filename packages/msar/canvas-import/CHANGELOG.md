@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.6](https://github.com/groton-school/canvas-cli/compare/canvas-import/0.1.5...canvas-import/0.1.6) (2026-06-25)
+
+
+### Features
+
+* add option to reuse existing teacher enrollments on import ([10c267b](https://github.com/groton-school/canvas-cli/commit/10c267bdd5d40873a38c18b1a65773b2afbfb0dd))
+
+
+### Bug Fixes
+
+* add newly created user to cache ([21ead26](https://github.com/groton-school/canvas-cli/commit/21ead26ea3ab51d3f8beacedf308846aa4516e80))
+* offer (and then re-conclude) completed courses on import ([d9299d3](https://github.com/groton-school/canvas-cli/commit/d9299d3f4c8e4aa15743b3ad1c0496ac0ab4628b))
+
 ## [0.1.5](https://github.com/groton-school/canvas-cli/compare/canvas-import/0.1.4...canvas-import/0.1.5) (2026-04-28)
 
 
