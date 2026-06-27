@@ -17,15 +17,9 @@ allowBuilds:
   optipng-bin: true
   sharp: true
 
-ignoredBuiltDependencies:
-  - '@parcel/watcher'
-
 minimumReleaseAgeExclude:
   - '@groton/colors@0.4.3'
 
-onlyBuiltDependencies:
-  - gifsicle
-  - jpegtran-bin
-  - nx
-  - optipng-bin
-  - sharp
+publicHoistPattern:
+  - '*prettier*'
+  - '*eslint*'
