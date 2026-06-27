@@ -1,3 +1,18 @@
+publicHoistPattern:
+  - '*prettier*'
+  - '*eslint*'
+
+minimumReleaseAgeExclude:
+  - '@groton/colors@0.4.3'
+
+allowBuilds:
+  '@parcel/watcher': true
+  gifsicle: true
+  jpegtran-bin: true
+  nx: true
+  optipng-bin: true
+  sharp: true
+
 packages:
   - packages/*
   - '!packages/api'
@@ -8,18 +23,3 @@ packages:
   - packages/msar/*
   - '!packages/oauth2-cli'
   - packages/oauth2-cli/*
-
-allowBuilds:
-  '@parcel/watcher': true
-  gifsicle: true
-  jpegtran-bin: true
-  nx: true
-  optipng-bin: true
-  sharp: true
-
-minimumReleaseAgeExclude:
-  - '@groton/colors@0.4.3'
-
-publicHoistPattern:
-  - '*prettier*'
-  - '*eslint*'
