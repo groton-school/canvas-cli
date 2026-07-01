@@ -20,7 +20,8 @@
     "build:clean": "run-s clean",
     "build:compile": "tsc",
     "clean": "del ./dist",
-    "version": "commit-and-tag-version"
+    "prepack": "run-s build",
+    "release": "commit-and-tag-version --noBumpWhenEmptyChanges"
   },
   "dependencies": {
     "@groton/canvas-api": "workspace:*",
@@ -28,11 +29,11 @@
     "path-browserify": "^1.0.1"
   },
   "devDependencies": {
-    "@battis/typescript-tricks": "^0.8.2",
-    "@battis/webpack": "^2.1.1",
+    "@battis/typescript-tricks": "^0.8.4",
+    "@battis/webpack": "^2.1.5",
+    "@battis/workspace": "^0.0.5",
     "@tsconfig/recommended": "^1.0.13",
     "@types/path-browserify": "^1.0.3",
-    "commit-and-tag-version": "^12.7.3",
     "del-cli": "^7.0.0",
     "npm-run-all": "^4.1.5",
     "typescript": "^5.9.3"

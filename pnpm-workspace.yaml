@@ -1,25 +1,28 @@
 publicHoistPattern:
-  - '*prettier*'
-  - '*eslint*'
-
+  - "*prettier*"
+  - "*eslint*"
+  - "@commitlint/*"
+  - commit-and-tag-version
+  - lerna
+  - monorepo-package-paths
+  - npm-run-all
 minimumReleaseAgeExclude:
-  - '@groton/colors@0.4.3'
-
+  - "@battis/*"
+  - "@groton/*"
 allowBuilds:
-  '@parcel/watcher': true
+  "@parcel/watcher": true
   gifsicle: true
   jpegtran-bin: true
   nx: true
   optipng-bin: true
   sharp: true
-
 packages:
   - packages/*
-  - '!packages/api'
+  - "!packages/api"
   - packages/api/*
-  - '!packages/api/client'
+  - "!packages/api/client"
   - packages/api/client/*
-  - '!packages/msar'
+  - "!packages/msar"
   - packages/msar/*
-  - '!packages/oauth2-cli'
+  - "!packages/oauth2-cli"
   - packages/oauth2-cli/*

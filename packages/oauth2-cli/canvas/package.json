@@ -26,20 +26,21 @@
     "build": "run-s build:*",
     "build:clean": "run-s clean",
     "build:compile": "tsc",
-    "version": "commit-and-tag-version"
+    "prepack": "run-s build",
+    "release": "commit-and-tag-version --noBumpWhenEmptyChanges"
   },
   "dependencies": {
     "@battis/descriptive-types": "^0.2.6",
-    "@battis/typescript-tricks": "^0.8.2",
+    "@battis/typescript-tricks": "^0.8.4",
     "@groton/canvas-api": "workspace:*",
     "@oauth2-cli/qui-cli": "^1.2.15",
-    "ora": "^9.4.0",
+    "ora": "^9.4.1",
     "requestish": "^0.1.12"
   },
   "devDependencies": {
+    "@battis/workspace": "^0.0.5",
     "@tsconfig/node-lts": "^24.0.0",
     "@types/node": "^24.13.2",
-    "commit-and-tag-version": "^12.7.3",
     "del-cli": "^7.0.0",
     "npm-run-all": "^4.1.5",
     "typescript": "^5.9.3"
