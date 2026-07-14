@@ -22,7 +22,6 @@ packages:
   - packages/api/*
   - "!packages/api/client"
   - packages/api/client/*
-  - "!packages/msar"
-  - packages/msar/*
-  - "!packages/oauth2-cli"
+  - '!packages/msar'
+  - '!packages/oauth2-cli'
   - packages/oauth2-cli/*
