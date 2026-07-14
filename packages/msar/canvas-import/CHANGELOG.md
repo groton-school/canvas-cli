@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.7](https://github.com/groton-school/canvas-cli/compare/canvas-import/0.1.6...canvas-import/0.1.7) (2026-07-14)
+
+
+### Bug Fixes
+
+* prepare for deprecation ([0853c32](https://github.com/groton-school/canvas-cli/commit/0853c32e750f3f1ed38e822d8104d74e0127802d))
+
 ## [0.1.6](https://github.com/groton-school/canvas-cli/compare/canvas-import/0.1.5...canvas-import/0.1.6) (2026-06-25)
 
 
