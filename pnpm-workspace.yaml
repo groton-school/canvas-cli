@@ -1,16 +1,25 @@
 publicHoistPattern:
-  - "*prettier*"
-  - "*eslint*"
-  - "@commitlint/*"
+  - '*prettier*'
+  - '*eslint*'
+  - '@commitlint/*'
   - commit-and-tag-version
   - lerna
   - monorepo-package-paths
   - npm-run-all
+  - '*-loader'
+  - dotenv-webpack
+  - favicons
+  - imagemin*
+  - postcss*
+  - sass
+  - typescript
+  - '*-webpack-plugin'
+  - webpack*
 minimumReleaseAgeExclude:
-  - "@battis/*"
-  - "@groton/*"
+  - '@battis/*'
+  - '@groton/*'
 allowBuilds:
-  "@parcel/watcher": true
+  '@parcel/watcher': true
   gifsicle: true
   jpegtran-bin: true
   nx: true
@@ -18,10 +27,11 @@ allowBuilds:
   sharp: true
 packages:
   - packages/*
-  - "!packages/api"
+  - '!packages/api'
   - packages/api/*
-  - "!packages/api/client"
+  - '!packages/api/client'
   - packages/api/client/*
   - '!packages/msar'
   - '!packages/oauth2-cli'
   - packages/oauth2-cli/*
+  - '!packages/web'
