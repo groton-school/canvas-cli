@@ -38,7 +38,6 @@
     "requestish": "^0.1.12"
   },
   "devDependencies": {
-    "@battis/workspace": "^0.0.5",
     "@tsconfig/node-lts": "^24.0.0",
     "@types/node": "^24.13.2",
     "del-cli": "^7.0.0",

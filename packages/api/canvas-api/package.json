@@ -41,7 +41,6 @@
     "@battis/typescript-tricks": "^0.8.4"
   },
   "devDependencies": {
-    "@battis/workspace": "^0.0.5",
     "@groton/canvas-api.swagger-renderer": "workspace:*",
     "@tsconfig/node-lts": "^24.0.0",
     "@types/node": "^24.13.2",

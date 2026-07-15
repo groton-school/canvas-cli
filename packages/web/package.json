@@ -30,8 +30,7 @@
   },
   "devDependencies": {
     "@battis/typescript-tricks": "^0.8.4",
-    "@battis/webpack": "^2.1.5",
-    "@battis/workspace": "^0.0.5",
+    "@battis/webpack": "^2.1.6",
     "@tsconfig/recommended": "^1.0.13",
     "@types/path-browserify": "^1.0.3",
     "del-cli": "^7.0.0",

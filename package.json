@@ -23,13 +23,14 @@
     "setup": "run-s setup:*",
     "setup:prettier": "setup-prettier -f",
     "setup:eslint": "setup-eslint -f",
-    "setup:commit": "setup-commit -f"
+    "setup:commit": "setup-commit -f",
+    "setup:monorepo": "setup-monorepo -f"
   },
   "devDependencies": {
     "@battis/commit": "^0.0.4",
     "@battis/eslint": "^3.0.2",
     "@battis/monorepo": "^0.0.3",
-    "@battis/prettier": "^2.0.4",
+    "@battis/prettier": "^2.0.6",
     "@groton/canvas-cli": "workspace:*",
     "npm-run-all": "^4.1.5"
   },
