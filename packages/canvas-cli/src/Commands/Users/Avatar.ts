@@ -1,3 +1,4 @@
+import { confirm, input, select } from '@inquirer/prompts';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import { Positionals } from '@qui-cli/core';
@@ -15,55 +16,98 @@ type Data = {
 }[];
 
 export type Configuration = Plugin.Configuration & {
-  csvPath?: string;
+  filePath?: string;
+  user?: string;
 };
 
 Positionals.require({
-  csvPath: { description: `Path to CSV file of avatar image paths` }
+  filePath: {
+    description:
+      `Path to a CSV file ` +
+      `containing the columns ${Colors.quotedValue(`"user_id"`)} and/or ` +
+      `${Colors.quotedValue(`"sis_user_id"`)} and absolute ` +
+      `${Colors.quotedValue(`"path_to_avatar"`)} (or relative to the CSV ` +
+      `file).`
+  },
+  user: { description: `Optional user email` }
 });
 Positionals.allowOnlyNamedArgs();
+Positionals.requireAtLeast(1);
 
 export const name = 'avatar';
 
-let csvPath: string | undefined = undefined;
+const config: Configuration = {};
 
-export function configure(config: Configuration = {}) {
-  csvPath = Plugin.hydrate(config.csvPath, csvPath);
+export function configure(proposal: Configuration = {}) {
+  for (const key in proposal) {
+    if (proposal[key] !== undefined) {
+      config[key] = proposal[key];
+    }
+  }
 }
 
 export function options(): Plugin.Options {
   return {
-    man: [
-      {
-        text:
-          `${Colors.positionalArg('arg0')} must be the path to a CSV file ` +
-          `containing the columns ${Colors.quotedValue(`"user_id"`)} and/or ` +
-          `${Colors.quotedValue(`"sis_user_id"`)} and absolute ` +
-          `${Colors.quotedValue(`"path_to_avatar"`)} (or relative to the CSV ` +
-          `file).`
-      }
-    ]
+    man: [{ level: 1, text: 'Avatar Options' }]
   };
 }
 
 export function init({ values }: Plugin.ExpectedArguments<typeof options>) {
-  const csvPath = Positionals.get('csvPath');
+  const filePath = Positionals.get('filePath');
+  const user = Positionals.get('user');
   Canvas.plugin.configure({
     reason: path.basename(import.meta.filename, '.js')
   });
-  configure({ csvPath, ...values });
+  configure({ filePath, user, ...values });
 }
 
 export async function run() {
-  if (!csvPath) {
-    throw new Error(`${Colors.value('arg0')} CSV path must be defined`);
+  if (!config.filePath) {
+    throw new Error(`${Colors.positionalArg('filePath')} path must be defined`);
   }
-  const data: Data = parse(
-    fs.readFileSync(path.resolve(Root.path(), csvPath)),
-    {
-      columns: true
+  let data: Data = [];
+  do {
+    if (config.user) {
+      const choices = await Canvas.v1.Accounts.Users.list({
+        path: { account_id: 1 },
+        query: { search_term: config.user }
+      });
+      if (choices.length > 1) {
+        const sis_user_id = await select({
+          message: 'Choose yser',
+          choices: choices.map((c) => ({
+            name: `${c.name} (SIS ID ${c.sis_user_id})`,
+            value: c.sis_user_id
+          }))
+        });
+        data = [{ sis_user_id, path_to_avatar: config.filePath }];
+      } else if (choices.length === 1) {
+        const [user] = choices;
+        if (
+          await confirm({
+            message: `Set ${user.name} (SIS ID ${user.sis_user_id}) to ${config.filePath}`
+          })
+        ) {
+          data = [
+            { sis_user_id: user.sis_user_id, path_to_avatar: config.filePath }
+          ];
+        }
+      } else {
+        configure({
+          user: await input({
+            message: `"${config.user}" matched no users. Enter a different search term?`
+          })
+        });
+      }
+    } else {
+      data = parse(
+        fs.readFileSync(path.resolve(process.cwd(), config.filePath)),
+        {
+          columns: true
+        }
+      );
     }
-  );
+  } while (data.length === 0 && !(await confirm({ message: 'abort?' })));
 
   let spinner = ora(`Loading user list from Canvas`).start();
   const users = await Canvas.v1.Accounts.Users.list({
@@ -87,7 +131,7 @@ export async function run() {
     }
     const filePath = path.resolve(
       Root.path(),
-      path.dirname(csvPath),
+      path.dirname(config.filePath),
       path_to_avatar
     );
     const name = `avatar${path.extname(path_to_avatar)}`.toLowerCase();
