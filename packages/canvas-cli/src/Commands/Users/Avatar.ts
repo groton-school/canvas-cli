@@ -23,11 +23,11 @@ export type Configuration = Plugin.Configuration & {
 Positionals.require({
   filePath: {
     description:
-      `Path to a CSV file ` +
-      `containing the columns ${Colors.quotedValue(`"user_id"`)} and/or ` +
-      `${Colors.quotedValue(`"sis_user_id"`)} and absolute ` +
-      `${Colors.quotedValue(`"path_to_avatar"`)} (or relative to the CSV ` +
-      `file).`
+      `Path to either an avatar image (if ${Colors.positionalArg('user')} is ` +
+      `also provided) or a CSV file with columns ` +
+      `${Colors.varName('path_to_avatar')} (absolute or relative to CSV file ` +
+      `location) and either ${Colors.varName('user_id')} (a Canvas user ID) ` +
+      `or ${Colors.varName('sis_user_id')}`
   },
   user: { description: `Optional user email` }
 });
