@@ -9,21 +9,21 @@ import ora, { Ora } from 'ora';
 export type Configuration = Plugin.Configuration & {
   account_id?: string;
   term_id?: number;
-  pattern?: RegExp
+  pattern?: RegExp;
   overwrite?: boolean;
 };
 
 export const name = 'course-colors';
 
 const config: Configuration = {
-pattern : /\(([A-Z]{1,2})[^)]*\)$/,
-overwrite: false
-}
+  pattern: /\(([A-Z]{1,2})[^)]*\)$/,
+  overwrite: false
+};
 
 export function configure(proposal: Configuration = {}) {
   for (const key in proposal) {
     if (proposal[key] !== undefined) {
-      config[key] = proposal[key]
+      config[key] = proposal[key];
     }
   }
 }
@@ -44,7 +44,7 @@ export function options(): Plugin.Options {
       },
       pattern: {
         description: `Regular expression that extracts the block abbreviation from a course or section title`,
-        default: config.pattern?.toString().replace(/^\/(.*)\/$/,'$1')
+        default: config.pattern?.toString().replace(/^\/(.*)\/$/, '$1')
       }
     },
     num: {
@@ -65,7 +65,7 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
   configure({
     account_id,
     term_id: term_id as unknown as number,
-    pattern: str?new RegExp(str): undefined,
+    pattern: str ? new RegExp(str) : undefined,
     ...values
   });
 }
