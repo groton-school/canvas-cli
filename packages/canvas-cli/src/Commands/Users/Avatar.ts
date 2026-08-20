@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { confirm, input, select } from '@inquirer/prompts';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
@@ -5,8 +7,6 @@ import { Positionals } from '@qui-cli/core';
 import * as Plugin from '@qui-cli/plugin';
 import { Root } from '@qui-cli/root';
 import { parse } from 'csv-parse/sync';
-import fs from 'node:fs';
-import path from 'node:path';
 import ora from 'ora';
 
 type Data = {
@@ -46,7 +46,7 @@ export function configure(proposal: Configuration = {}) {
   }
 }
 
-export function options(): Plugin.Options {
+export function options() {
   return {
     man: [{ level: 1, text: 'Avatar Options' }]
   };
@@ -58,6 +58,12 @@ export function init({ values }: Plugin.ExpectedArguments<typeof options>) {
   Canvas.plugin.configure({
     reason: path.basename(import.meta.filename, '.js')
   });
+  /*
+   * FIXME ExpectedArguments type definition in @qui-cli/plugin
+   *   Apparently options() needs to set at least one of opt/optList/num/
+   *   numList/flag/FlagList for ExpectedArguments to correctly generate a type
+   */
+  // @ts-expect-error 2698 temporary fix until @qui-cli/plugin fixed
   configure({ filePath, user, ...values });
 }
 

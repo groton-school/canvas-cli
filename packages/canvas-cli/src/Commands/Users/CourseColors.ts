@@ -1,9 +1,9 @@
+import path from 'node:path';
 import * as Colors from '@groton/colors';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import chalk from 'chalk';
-import path from 'node:path';
 import ora, { Ora } from 'ora';
 
 export type Configuration = Plugin.Configuration & {
@@ -28,7 +28,7 @@ export function configure(proposal: Configuration = {}) {
   }
 }
 
-export function options(): Plugin.Options {
+export function options() {
   return {
     man: [{ level: 1, text: 'Course colors options' }],
     flag: {

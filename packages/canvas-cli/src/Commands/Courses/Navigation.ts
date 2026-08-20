@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { PathString, URLString } from '@battis/descriptive-types';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
@@ -5,8 +7,6 @@ import { Positionals } from '@qui-cli/core';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import { parse } from 'csv-parse/sync';
-import fs from 'node:fs';
-import path from 'node:path';
 import ora from 'ora';
 
 type LinkOptions = {
@@ -70,7 +70,7 @@ export function configure(proposal: Configuration = {}) {
   }
 }
 
-export function options(): Plugin.Options {
+export function options() {
   return {
     man: [{ level: 1, text: 'Course Navigation Options' }],
     opt: {

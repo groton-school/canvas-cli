@@ -1,8 +1,8 @@
+import path from 'node:path';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
-import path from 'node:path';
 import ora from 'ora';
 
 export type Configuration = {
@@ -20,7 +20,7 @@ export async function configure(config: Configuration = {}) {
   hide_in_gradebook = Plugin.hydrate(config.hideInGradebook, hide_in_gradebook);
 }
 
-export function options(): Plugin.Options {
+export function options() {
   return {
     flag: {
       hideInGradebook: {

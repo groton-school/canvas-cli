@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { PathString, URLString } from '@battis/descriptive-types';
 import * as Swagger from '@groton/swagger-spec-ts';
 import { Colors } from '@qui-cli/colors';
@@ -6,8 +8,6 @@ import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import { Root } from '@qui-cli/root';
 import fetch from 'node-fetch';
-import fs from 'node:fs';
-import path from 'node:path';
 import ora from 'ora';
 import PQueue from 'p-queue';
 
@@ -29,7 +29,7 @@ export function configure(config: Configuration = {}) {
   specPath = Plugin.hydrate(config.specPath, specPath);
 }
 
-export function options(): Plugin.Options {
+export function options() {
   return {
     man: [{ level: 1, text: 'Download Options' }],
     opt: {

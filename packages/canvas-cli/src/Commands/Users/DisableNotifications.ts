@@ -1,9 +1,9 @@
+import path from 'node:path';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import { kebabCase, snakeCase } from 'change-case';
-import path from 'node:path';
 import ora from 'ora';
 
 const availableEnrollmentTypes = [
@@ -81,7 +81,7 @@ export function configure(config: Configuration = {}) {
   categories = Plugin.hydrate(config.categories, categories);
 }
 
-export function options(): Plugin.Options {
+export function options() {
   return {
     opt: {
       accountId: {
@@ -126,15 +126,18 @@ export function init({
   configure({
     account_id: accountId,
     enrollment_types: enrollmentType,
-    categories: Object.keys(others).reduce((list, key) => {
-      if (others[key]) {
-        const category = snakeCase(key);
-        if (availableCategories.includes(category)) {
-          list.push(snakeCase(key));
+    categories: (Object.keys(others) as (keyof typeof others)[]).reduce(
+      (list, key) => {
+        if (others[key]) {
+          const category = snakeCase(key);
+          if (availableCategories.includes(category)) {
+            list.push(snakeCase(key));
+          }
         }
-      }
-      return list;
-    }, [] as string[])
+        return list;
+      },
+      [] as string[]
+    )
   });
 }
 

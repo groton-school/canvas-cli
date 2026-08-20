@@ -1,10 +1,10 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { PathString } from '@battis/descriptive-types';
 import { Colors } from '@qui-cli/colors';
 import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import { Root } from '@qui-cli/root';
-import fs from 'node:fs';
-import path from 'node:path';
 import ora from 'ora';
 import * as Models from './Models.js';
 import * as Operations from './Operations.js';
@@ -52,7 +52,7 @@ export function configure(config: Configuration = {}) {
   map = Plugin.hydrate(config.map, map);
 }
 
-export function options(): Plugin.Options {
+export function options() {
   return {
     man: [{ level: 1, text: 'Rendering Options' }],
     flag: {
@@ -96,7 +96,7 @@ export function init(args: Plugin.ExpectedArguments<typeof options>) {
 
 export async function run(results?: Plugin.AccumulatedResults) {
   const spinner = ora(`Looking for specs`).start();
-  let specPaths: PathString[] | undefined = undefined;
+  let specPaths: PathString[] | undefined;
   specPath = path.resolve(Root.path(), specPath);
   if (results && results['download'] && Array.isArray(results.download)) {
     specPaths = results.download;

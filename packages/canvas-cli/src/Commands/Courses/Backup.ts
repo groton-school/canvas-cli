@@ -1,10 +1,10 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { PathString } from '@battis/descriptive-types';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Positionals } from '@qui-cli/core';
 import * as Plugin from '@qui-cli/plugin';
 import { Root } from '@qui-cli/root';
-import fs from 'node:fs';
-import path from 'node:path';
 import ora from 'ora';
 
 export type Configuration = Plugin.Configuration & {
@@ -35,7 +35,7 @@ export function configure(proposal: Configuration = {}) {
   }
 }
 
-export function options(): Plugin.Options {
+export function options() {
   return {
     man: [{ level: 1, text: 'Course Backup Options' }],
     num: {
