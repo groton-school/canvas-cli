@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -45,10 +47,14 @@ type Options = (
  * Get department-level statistics
  *
  * Returns numeric statistics about the department and term (or filter).
+
+Shares the same variations on endpoint as the participation data.
  *
- * Shares the same variations on endpoint as the participation data.
+ * nickname: get_department_level_statistics_completed
  *
- * Nickname: get_department_level_statistics_completed
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

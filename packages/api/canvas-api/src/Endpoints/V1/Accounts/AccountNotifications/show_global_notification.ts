@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
 export type show_global_notificationPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -51,10 +55,14 @@ type Options = (
 /**
  * Show a global notification
  *
- * Returns a global notification for the current user A notification that has
- * been closed by the user will not be returned
+ * Returns a global notification for the current user
+A notification that has been closed by the user will not be returned
  *
- * Nickname: show_global_notification
+ * nickname: show_global_notification
+ *
+ * 
+ *
+ * 
  */
 export async function show_global_notification(options: Options) {
   const response = await client().fetchAs<AccountNotification>(

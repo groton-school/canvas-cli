@@ -1,19 +1,39 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { NotificationPreference } from '../../../../../Resources/NotificationPreferences.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   type: string;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   address: string;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   notification: string;
 };
 
@@ -51,10 +71,13 @@ type Options = (
 /**
  * Get a preference
  *
- * Fetch the preference for the given notification for the given communication
- * channel
+ * Fetch the preference for the given notification for the given communication channel
  *
- * Nickname: get_preference_type
+ * nickname: get_preference_type
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<NotificationPreference>(

@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { QuizReport } from '../../../../../Resources/QuizReports.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   quiz_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -27,9 +33,11 @@ export type getSearchParameters = Masquerade &
   Partial<{
     /**
      * Whether the output should include documents for the file and/or progress
-     * objects associated with this report. (Note: JSON-API only)
+objects associated with this report. (Note: JSON-API only)
      *
      * String[]
+     *
+     * 
      */
     include: string[];
   }>;
@@ -68,7 +76,11 @@ type Options = (
  *
  * Returns the data for a single quiz report.
  *
- * Nickname: get_quiz_report
+ * nickname: get_quiz_report
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<QuizReport>(

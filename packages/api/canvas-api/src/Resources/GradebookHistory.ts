@@ -1,149 +1,205 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type Grader = {
   /**
-   * The user_id of the user who graded the contained submissions
+   * the user_id of the user who graded the contained submissions
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
-  /** The name of the user who graded the contained submissions */
+  /**
+   * the name of the user who graded the contained submissions
+   *
+   *
+   */
   name: string;
   /**
-   * The assignment groups for all submissions in this response that were graded
-   * by this user. The details are not nested inside here, but the fact that an
-   * assignment is present here means that the grader did grade submissions for
-   * this assignment on the contextual date. You can use the id of a grader and
-   * of an assignment to make another API call to find all submissions for a
-   * grader/assignment combination on a given date.
+   * the assignment groups for all submissions in this response that were graded by this user.  The details are not nested inside here, but the fact that an assignment is present here means that the grader did grade submissions for this assignment on the contextual date. You can use the id of a grader and of an assignment to make another API call to find all submissions for a grader/assignment combination on a given date.
+   *
+   *
    */
   assignments: number | string[];
 };
 
+/**
+ *
+ */
 export type Day = {
   /**
-   * The date represented by this entry
+   * the date represented by this entry
    *
-   * Format: date-time
+   * format: date-time
    */
   date: string;
   /**
-   * An array of the graders who were responsible for the submissions in this
-   * response. the submissions are grouped according to the person who graded
-   * them and the assignment they were submitted for.
+   * an array of the graders who were responsible for the submissions in this response. the submissions are grouped according to the person who graded them and the assignment they were submitted for.
    *
-   * Type: integer
+   * type: integer
    */
   graders: number | string;
 };
 
 /**
- * A SubmissionVersion object contains all the fields that a Submission object
- * does, plus additional fields prefixed with current_* new_* and previous_*
- * described below.
+ * A SubmissionVersion object contains all the fields that a Submission object does, plus additional fields prefixed with current_* new_* and previous_* described below.
  */
 export type SubmissionVersion = {
   /**
-   * The id of the assignment this submissions is for
+   * the id of the assignment this submissions is for
    *
-   * Type: integer
+   * type: integer
    */
   assignment_id: number | string;
-  /** The name of the assignment this submission is for */
+  /**
+   * the name of the assignment this submission is for
+   *
+   *
+   */
   assignment_name: string;
-  /** The body text of the submission */
+  /**
+   * the body text of the submission
+   *
+   *
+   */
   body: string;
-  /** The most up to date grade for the current version of this submission */
+  /**
+   * the most up to date grade for the current version of this submission
+   *
+   *
+   */
   current_grade: string;
   /**
-   * The latest time stamp for the grading of this submission
+   * the latest time stamp for the grading of this submission
    *
-   * Format: date-time
+   * format: date-time
    */
   current_graded_at: string;
-  /** The name of the most recent grader for this submission */
+  /**
+   * the name of the most recent grader for this submission
+   *
+   *
+   */
   current_grader: string;
   /**
-   * Boolean indicating whether the grade is equal to the current submission
-   * grade
+   * boolean indicating whether the grade is equal to the current submission grade
    *
-   * Type: boolean
+   * type: boolean
    */
   grade_matches_current_submission: boolean | string;
   /**
-   * Time stamp for the grading of this version of the submission
+   * time stamp for the grading of this version of the submission
    *
-   * Format: date-time
+   * format: date-time
    */
   graded_at: string;
-  /** The name of the user who graded this version of the submission */
+  /**
+   * the name of the user who graded this version of the submission
+   *
+   *
+   */
   grader: string;
   /**
-   * The user id of the user who graded this version of the submission
+   * the user id of the user who graded this version of the submission
    *
-   * Type: integer
+   * type: integer
    */
   grader_id: number | string;
   /**
-   * The id of the submission of which this is a version
+   * the id of the submission of which this is a version
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
-  /** The updated grade provided in this version of the submission */
+  /**
+   * the updated grade provided in this version of the submission
+   *
+   *
+   */
   new_grade: string;
   /**
-   * The timestamp for the grading of this version of the submission (alias for
-   * graded_at)
+   * the timestamp for the grading of this version of the submission (alias for graded_at)
    *
-   * Format: date-time
+   * format: date-time
    */
   new_graded_at: string;
-  /** Alias for 'grader' */
+  /**
+   * alias for 'grader'
+   *
+   *
+   */
   new_grader: string;
-  /** The grade for the submission version immediately preceding this one */
+  /**
+   * the grade for the submission version immediately preceding this one
+   *
+   *
+   */
   previous_grade: string;
   /**
-   * The timestamp for the grading of the submission version immediately
-   * preceding this one
+   * the timestamp for the grading of the submission version immediately preceding this one
    *
-   * Format: date-time
+   * format: date-time
    */
   previous_graded_at: string;
   /**
-   * The name of the grader who graded the version of this submission
-   * immediately preceding this one
+   * the name of the grader who graded the version of this submission immediately preceding this one
+   *
+   *
    */
   previous_grader: string;
   /**
-   * The score for this version of the submission
+   * the score for this version of the submission
    *
-   * Type: integer
+   * type: integer
    */
   score: number | string;
-  /** The name of the student who created this submission */
+  /**
+   * the name of the student who created this submission
+   *
+   *
+   */
   user_name: string;
-  /** The type of submission */
+  /**
+   * the type of submission
+   *
+   *
+   */
   submission_type: string;
-  /** The url of the submission, if there is one */
+  /**
+   * the url of the submission, if there is one
+   *
+   *
+   */
   url: string;
   /**
-   * The user ID of the student who created this submission
+   * the user ID of the student who created this submission
    *
-   * Type: integer
+   * type: integer
    */
   user_id: number | string;
-  /** The state of the submission at this version */
+  /**
+   * the state of the submission at this version
+   *
+   *
+   */
   workflow_state: string;
 };
 
+/**
+ *
+ */
 export type SubmissionHistory = {
   /**
-   * The id of the submission
+   * the id of the submission
    *
-   * Type: integer
+   * type: integer
    */
   submission_id: number | string;
-  /** An array of all the versions of this submission */
+  /**
+   * an array of all the versions of this submission
+   *
+   *
+   */
   versions: SubmissionVersion[];
 };

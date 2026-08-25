@@ -1,11 +1,23 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { PermissionHelpText } from '../../../../Resources/Roles.js';
 
 export type getPathParameters = {
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   context_type: string;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   permission: string;
 };
 
@@ -43,10 +55,13 @@ type Options = (
 /**
  * Get help text for permissions
  *
- * Retrieve information about what Canvas permissions do and considerations for
- * their use.
+ * Retrieve information about what Canvas permissions do and considerations for their use.
  *
- * Nickname: get_help_text_for_permissions
+ * nickname: get_help_text_for_permissions
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<PermissionHelpText>(

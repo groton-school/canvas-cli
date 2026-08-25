@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type abort_all_pending_sis_importsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -46,7 +48,11 @@ type Options = (
  *
  * Abort already created but not processed or processing SIS imports.
  *
- * Nickname: abort_all_pending_sis_imports
+ * nickname: abort_all_pending_sis_imports
+ *
+ *
+ *
+ *
  */
 export async function abort_all_pending_sis_imports(options: Options) {
   const response = await client().fetchAs<boolean | string>(

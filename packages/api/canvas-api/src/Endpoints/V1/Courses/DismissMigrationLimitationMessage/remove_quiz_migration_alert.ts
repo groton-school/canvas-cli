@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type remove_quiz_migration_alertPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -44,12 +46,16 @@ type Options = (
 /**
  * Remove quiz migration alert
  *
- * Remove alert about the limitations of quiz migrations that is displayed to a
- * user in a course
+ * Remove alert about the limitations of quiz migrations that is displayed
+to a user in a course
+
+you must be logged in to use this endpoint
  *
- * You must be logged in to use this endpoint
+ * nickname: remove_quiz_migration_alert
  *
- * Nickname: remove_quiz_migration_alert
+ * 
+ *
+ * 
  */
 export async function remove_quiz_migration_alert(options: Options) {
   const response = await client().fetchAs<JSONValue>(

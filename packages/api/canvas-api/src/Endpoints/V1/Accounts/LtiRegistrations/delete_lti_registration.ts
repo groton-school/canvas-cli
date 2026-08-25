@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
 export type delete_lti_registrationPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Remove the specified LTI registration
  *
- * Nickname: delete_lti_registration
+ * nickname: delete_lti_registration
+ *
+ *
+ *
+ *
  */
 export async function delete_lti_registration(options: Options) {
   const response = await client().fetchAs<LtiRegistration>(

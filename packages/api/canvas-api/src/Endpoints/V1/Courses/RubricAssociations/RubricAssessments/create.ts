@@ -1,22 +1,26 @@
-import { client, Masquerade } from '#client';
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type createPathParameters = {
   /**
-   * The id of the course
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the course
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   course_id: number | string;
   /**
-   * The id of the object with which this rubric assessment is associated
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the object with which this rubric assessment is associated
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   rubric_association_id: number | string;
 };
 
@@ -24,35 +28,46 @@ export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
   /**
-   * (optional) Indicates whether this assessment is provisional, defaults to
-   * false.
+   * (optional) Indicates whether this assessment is provisional, defaults to false.
+   *
+   *
+   *
+   *
    */
   provisional: string;
   /**
-   * (optional) Indicates a provisional grade will be marked as final. It only
-   * takes effect if the provisional param is passed as true. Defaults to
-   * false.
+   * (optional) Indicates a provisional grade will be marked as final. It only takes effect if the provisional param is passed as true. Defaults to false.
+   *
+   *
+   *
+   *
    */
   final: string;
   /**
    * (optional) Defaults to false
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   graded_anonymously: boolean | string;
   /**
-   * A Hash of data to complement the rubric assessment: The user id that
-   * refers to the person being assessed rubric_assessment[user_id] Assessment
-   * type. There are only three valid types: 'grading', 'peer_review', or
-   * 'provisional_grade' rubric_assessment[assessment_type] The points awarded
-   * for this row. rubric_assessment[criterion_id][points] Comments to add for
-   * this row. rubric_assessment[criterion_id][comments] For each
-   * criterion_id, change the id by the criterion number, ex: criterion_123 If
-   * the criterion_id is not specified it defaults to false, and nothing is
-   * updated.
-   *
-   * Hash
-   */
+     * A Hash of data to complement the rubric assessment:
+The user id that refers to the person being assessed
+  rubric_assessment[user_id]
+Assessment type. There are only three valid types:  &#x27;grading&#x27;, &#x27;peer_review&#x27;, or &#x27;provisional_grade&#x27;
+  rubric_assessment[assessment_type]
+The points awarded for this row.
+  rubric_assessment[criterion_id][points]
+Comments to add for this row.
+  rubric_assessment[criterion_id][comments]
+For each criterion_id, change the id by the criterion number, ex: criterion_123
+If the criterion_id is not specified it defaults to false, and nothing is updated.
+     *
+     * Hash
+     *
+     * 
+     */
   rubric_assessment: JSONObject;
 };
 
@@ -100,11 +115,15 @@ type Options = (
 /**
  * Create a single rubric assessment
  *
- * Returns the rubric assessment with the given id. The returned object also
- * provides the information of :ratings, :assessor_name,
- * :related_group_submissions_and_assessments, :artifact
+ * Returns the rubric assessment with the given id.
+The returned object also provides the information of
+  :ratings, :assessor_name, :related_group_submissions_and_assessments, :artifact
  *
- * Nickname: create_single_rubric_assessment
+ * nickname: create_single_rubric_assessment
+ *
+ * 
+ *
+ * 
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<JSONValue>(

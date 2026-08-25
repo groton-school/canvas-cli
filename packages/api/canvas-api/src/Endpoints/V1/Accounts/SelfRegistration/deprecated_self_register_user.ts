@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { User } from '../../../../Resources/Users.js';
 
 export type deprecated_self_register_userPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -14,38 +16,80 @@ export type deprecated_self_register_userPathParameters = {
 export type deprecated_self_register_userSearchParameters = Masquerade;
 
 export type deprecated_self_register_userFormParameters = Masquerade & {
-  /** The full name of the user. This name will be used by teacher for grading. */
+  /**
+   * The full name of the user. This name will be used by teacher for grading.
+   *
+   *
+   *
+   *
+   */
   'user[name]': string;
   /**
-   * User's name as it will be displayed in discussions, messages, and
-   * comments.
+   * User&#x27;s name as it will be displayed in discussions, messages, and comments.
+   *
+   *
+   *
+   *
    */
   'user[short_name]': string;
-  /** User's name as used to sort alphabetically in lists. */
+  /**
+   * User&#x27;s name as used to sort alphabetically in lists.
+   *
+   *
+   *
+   *
+   */
   'user[sortable_name]': string;
   /**
-   * The time zone for the user. Allowed time zones are
-   * {http://www.iana.org/time-zones IANA time zones} or friendlier
-   * {http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on
-   * Rails time zones}.
-   */
+     * The time zone for the user. Allowed time zones are
+{http://www.iana.org/time-zones IANA time zones} or friendlier
+{http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.
+     *
+     * 
+     *
+     * 
+     */
   'user[time_zone]': string;
   /**
-   * The user's preferred language, from the list of languages Canvas
-   * supports. This is in RFC-5646 format.
-   */
+     * The user&#x27;s preferred language, from the list of languages Canvas supports.
+This is in RFC-5646 format.
+     *
+     * 
+     *
+     * 
+     */
   'user[locale]': string;
   /**
    * Whether the user accepts the terms of use.
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   'user[terms_of_use]': boolean | string;
-  /** User's login ID. Must be a valid email address. */
+  /**
+   * User&#x27;s login ID. Must be a valid email address.
+   *
+   *
+   *
+   *
+   */
   'pseudonym[unique_id]': string;
-  /** The communication channel type, e.g. 'email' or 'sms'. */
+  /**
+   * The communication channel type, e.g. &#x27;email&#x27; or &#x27;sms&#x27;.
+   *
+   *
+   *
+   *
+   */
   'communication_channel[type]': string;
-  /** The communication channel address, e.g. the user's email address. */
+  /**
+   * The communication channel address, e.g. the user&#x27;s email address.
+   *
+   *
+   *
+   *
+   */
   'communication_channel[address]': string;
 };
 
@@ -94,11 +138,15 @@ type Options = (
  * [DEPRECATED] Self register a user
  *
  * Self register and return a new user and pseudonym for an account.
+
+If self-registration is enabled on the account, you can use this
+endpoint to self register new users.
  *
- * If self-registration is enabled on the account, you can use this endpoint to
- * self register new users.
+ * nickname: deprecated_self_register_user
  *
- * Nickname: deprecated_self_register_user
+ * 
+ *
+ * 
  */
 export async function deprecated_self_register_user(options: Options) {
   const response = await client().fetchAs<User>(

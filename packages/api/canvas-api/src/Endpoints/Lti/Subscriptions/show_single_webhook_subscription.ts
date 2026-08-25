@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type show_single_webhook_subscriptionPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -44,7 +46,13 @@ type Options = (
 /**
  * Show a single Webhook Subscription
  *
- * Nickname: show_single_webhook_subscription
+ *
+ *
+ * nickname: show_single_webhook_subscription
+ *
+ *
+ *
+ *
  */
 export async function show_single_webhook_subscription(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,24 +1,34 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { CommMessage } from '../../../Resources/CommMessages.js';
 
 export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
-    /** The user id for whom you want to retrieve CommMessages */
+    /**
+     * The user id for whom you want to retrieve CommMessages
+     *
+     *
+     *
+     *
+     */
     user_id: string;
     /**
-     * The beginning of the time range you want to retrieve message from. Up to
-     * a year prior to the current date is available.
+     * The beginning of the time range you want to retrieve message from.
+Up to a year prior to the current date is available.
      *
-     * Format: date-time
+     * format: date-time
+     *
+     * 
      */
     start_time: string;
     /**
-     * The end of the time range you want to retrieve messages for. Up to a year
-     * prior to the current date is available.
+     * The end of the time range you want to retrieve messages for.
+Up to a year prior to the current date is available.
      *
-     * Format: date-time
+     * format: date-time
+     *
+     * 
      */
     end_time: string;
   }>;
@@ -47,7 +57,11 @@ type Options =
  *
  * Retrieve a paginated list of messages sent to a user.
  *
- * Nickname: list_of_commmessages_for_user
+ * nickname: list_of_commmessages_for_user
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<CommMessage[]>(

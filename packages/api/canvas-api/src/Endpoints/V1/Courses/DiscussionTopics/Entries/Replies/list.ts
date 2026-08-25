@@ -1,23 +1,29 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   entry_id: string | number;
 };
@@ -56,15 +62,20 @@ type Options = (
 /**
  * List entry replies
  *
- * Retrieve the (paginated) replies to a top-level entry in a discussion topic.
+ * Retrieve the (paginated) replies to a top-level entry in a discussion
+topic.
+
+May require (depending on the topic) that the user has posted in the topic.
+If it is required, and the user has not posted, will respond with a 403
+Forbidden status and the body 'require_initial_post'.
+
+Ordering of returned entries is newest-first by creation timestamp.
  *
- * May require (depending on the topic) that the user has posted in the topic.
- * If it is required, and the user has not posted, will respond with a 403
- * Forbidden status and the body 'require_initial_post'.
+ * nickname: list_entry_replies_courses
  *
- * Ordering of returned entries is newest-first by creation timestamp.
+ * 
  *
- * Nickname: list_entry_replies_courses
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

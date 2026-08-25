@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Progress } from '../../../../../Resources/CoursePace.js';
 
 export type restore_workflow_states_of_sis_imported_itemsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -25,21 +29,27 @@ export type restore_workflow_states_of_sis_imported_itemsFormParameters =
     /**
      * If set, will only restore items that were deleted from batch_mode.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     batch_mode: boolean | string;
     /**
      * If set, will only restore items that were deleted. This will ignore any
-     * items that were created or modified.
+items that were created or modified.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     undelete_only: boolean | string;
     /**
      * If set, will only restore enrollments that were concluded. This will
-     * ignore any items that were created or deleted.
+ignore any items that were created or deleted.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     unconclude_only: boolean | string;
   };
@@ -88,19 +98,24 @@ type Options = (
 /**
  * Restore workflow_states of SIS imported items
  *
- * This will restore the the workflow_state for all the items that changed their
- * workflow_state during the import being restored. This will restore states for
- * items imported with the following importers: accounts.csv terms.csv
- * courses.csv sections.csv group_categories.csv groups.csv users.csv admins.csv
- * This also restores states for other items that changed during the import. An
- * example would be if an enrollment was deleted from a sis import and the
- * group_membership was also deleted as a result of the enrollment deletion,
- * both items would be restored when the sis batch is restored.
+ * This will restore the the workflow_state for all the items that changed
+their workflow_state during the import being restored.
+This will restore states for items imported with the following importers:
+accounts.csv terms.csv courses.csv sections.csv group_categories.csv
+groups.csv users.csv admins.csv
+This also restores states for other items that changed during the import.
+An example would be if an enrollment was deleted from a sis import and the
+group_membership was also deleted as a result of the enrollment deletion,
+both items would be restored when the sis batch is restored.
+
+Restore data is retained for 30 days post-import. This endpoint is
+unavailable after that time.
  *
- * Restore data is retained for 30 days post-import. This endpoint is
- * unavailable after that time.
+ * nickname: restore_workflow_states_of_sis_imported_items
  *
- * Nickname: restore_workflow_states_of_sis_imported_items
+ * 
+ *
+ * 
  */
 export async function restore_workflow_states_of_sis_imported_items(
   options: Options

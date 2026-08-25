@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { SisImport } from '../../../../Resources/SisImports.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -52,12 +56,16 @@ type Options = (
  * Get SIS import status
  *
  * Get the status of an already created SIS import.
+
+  Examples:
+    curl https://<canvas>/api/v1/accounts/<account_id>/sis_imports/<sis_import_id> \
+        -H 'Authorization: Bearer <token>'
  *
- * Examples: curl
- * https://<canvas>/api/v1/accounts/<account_id>/sis_imports/<sis_import_id>\
- * -H 'Authorization: Bearer <token>'
+ * nickname: get_sis_import_status
  *
- * Nickname: get_sis_import_status
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<SisImport>(

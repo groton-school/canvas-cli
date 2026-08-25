@@ -27,7 +27,11 @@ type Options =
  *
  * Returns the paginated list of bookmarks.
  *
- * Nickname: list_bookmarks
+ * nickname: list_bookmarks
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<Bookmark[]>(

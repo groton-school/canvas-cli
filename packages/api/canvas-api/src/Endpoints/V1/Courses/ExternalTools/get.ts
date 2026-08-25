@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ContextExternalTool } from '../../../../Resources/ExternalTools.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   external_tool_id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Returns the specified external tool.
  *
- * Nickname: get_single_external_tool_courses
+ * nickname: get_single_external_tool_courses
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<ContextExternalTool>(

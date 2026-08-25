@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type retrieve_permission_groupsSearchParameters = Masquerade;
 
@@ -26,11 +26,15 @@ type Options =
  * Retrieve permission groups
  *
  * Retrieve information about groups of granular permissions
+
+The return value is a dictionary of permission group keys to objects
+containing +label+ and +subtitle+ keys.
  *
- * The return value is a dictionary of permission group keys to objects
- * containing +label+ and +subtitle+ keys.
+ * nickname: retrieve_permission_groups
  *
- * Nickname: retrieve_permission_groups
+ * 
+ *
+ * 
  */
 export async function retrieve_permission_groups(options: Options) {
   const response = await client().fetchAs<JSONValue>(

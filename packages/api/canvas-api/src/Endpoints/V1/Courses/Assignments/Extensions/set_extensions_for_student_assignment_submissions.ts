@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type set_extensions_for_student_assignment_submissionsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
@@ -24,14 +28,22 @@ export type set_extensions_for_student_assignment_submissionsFormParameters =
     /**
      * The ID of the user we want to add assignment extensions for.
      *
-     * Format: 'int64'
+     * 
+
+format: 'int64'
+     *
+     * 
      */
     'assignment_extensions[user_id]': number | string[];
     /**
      * Number of times the student is allowed to re-take the assignment over the
-     * limit.
+limit.
      *
-     * Format: 'int64'
+     * 
+
+format: 'int64'
+     *
+     * 
      */
     'assignment_extensions[extra_attempts]': number | string[];
   };
@@ -81,12 +93,16 @@ type Options = (
  * Set extensions for student assignment submissions
  *
  * <b>Responses</b>
+
+* <b>200 OK</b> if the request was successful
+* <b>403 Forbidden</b> if you are not allowed to extend assignments for this course
+* <b>400 Bad Request</b> if any of the extensions are invalid
  *
- * <b>200 OK</b> if the request was successful <b>403 Forbidden</b> if you are
- * not allowed to extend assignments for this course <b>400 Bad Request</b> if
- * any of the extensions are invalid
+ * nickname: set_extensions_for_student_assignment_submissions
  *
- * Nickname: set_extensions_for_student_assignment_submissions
+ * 
+ *
+ * 
  */
 export async function set_extensions_for_student_assignment_submissions(
   options: Options

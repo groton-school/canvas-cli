@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Assignment } from '../../../../Resources/Assignments.js';
 
 export type delete_assignmentPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Delete the given assignment.
  *
- * Nickname: delete_assignment
+ * nickname: delete_assignment
+ *
+ *
+ *
+ *
  */
 export async function delete_assignment(options: Options) {
   const response = await client().fetchAs<Assignment>(

@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { User } from '../../../../Resources/Users.js';
 
 export type remove_observeePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   observee_id: string | number;
 };
@@ -22,9 +26,11 @@ export type remove_observeeSearchParameters = Masquerade &
     /**
      * If specified, only removes the link for the given root account
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     root_account_id: number | string;
   }>;
@@ -63,7 +69,11 @@ type Options = (
  *
  * Unregisters a user as being observed by the given user.
  *
- * Nickname: remove_observee
+ * nickname: remove_observee
+ *
+ *
+ *
+ *
  */
 export async function remove_observee(options: Options) {
   const response = await client().fetchAs<User>(

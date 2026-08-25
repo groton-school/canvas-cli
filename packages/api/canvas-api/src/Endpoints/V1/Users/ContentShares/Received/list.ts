@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { ContentShare } from '../../../../../Resources/ContentShares.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -45,11 +47,15 @@ type Options = (
 /**
  * List content shares
  *
- * Return a paginated list of content shares a user has sent or received. Use
- * +self+ as the user_id to retrieve your own content shares. Only linked
- * observers and administrators may view other users' content shares.
+ * Return a paginated list of content shares a user has sent or received. Use +self+ as the user_id
+to retrieve your own content shares. Only linked observers and administrators may view other users'
+content shares.
  *
- * Nickname: list_content_shares_received
+ * nickname: list_content_shares_received
+ *
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<ContentShare[]>(

@@ -1,14 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   asset_string: string;
 };
 
@@ -46,13 +54,16 @@ type Options = (
 /**
  * Get custom color
  *
- * Returns the custom colors that have been saved for a user for a given
- * context.
+ * Returns the custom colors that have been saved for a user for a given context.
+
+The asset_string parameter should be in the format 'context_id', for example
+'course_42'.
  *
- * The asset_string parameter should be in the format 'context_id', for example
- * 'course_42'.
+ * nickname: get_custom_color
  *
- * Nickname: get_custom_color
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

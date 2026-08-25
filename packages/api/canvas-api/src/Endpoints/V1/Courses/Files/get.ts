@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { File } from '../../../../Resources/Files.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -21,37 +25,43 @@ export type getSearchParameters = Masquerade &
   Partial<{
     /**
      * Array of additional information to include.
+
+&quot;user&quot;:: the user who uploaded the file or last edited its content
+&quot;usage_rights&quot;:: copyright and license information for the file (see UsageRights)
      *
-     * "user":: the user who uploaded the file or last edited its content
-     * "usage_rights":: copyright and license information for the file (see
-     * UsageRights)
+     * 
+     *
+     * 
      */
     include: string[];
     /**
-     * When a user replaces a file during upload, Canvas keeps track of the
-     * "replacement chain."
+     * When a user replaces a file during upload, Canvas keeps track of the &quot;replacement chain.&quot;
+
+Include this parameter if you wish Canvas to follow the replacement chain if the requested
+file was deleted and replaced by another.
+
+Must be set to &#x27;course&#x27; or &#x27;account&#x27;. The &quot;replacement_chain_context_id&quot; parameter must
+also be included.
      *
-     * Include this parameter if you wish Canvas to follow the replacement chain
-     * if the requested file was deleted and replaced by another.
+     * 
      *
-     * Must be set to 'course' or 'account'. The "replacement_chain_context_id"
-     * parameter must also be included.
+     * 
      */
     replacement_chain_context_type: string;
     /**
-     * When a user replaces a file during upload, Canvas keeps track of the
-     * "replacement chain."
+     * When a user replaces a file during upload, Canvas keeps track of the &quot;replacement chain.&quot;
+
+Include this parameter if you wish Canvas to follow the replacement chain if the requested
+file was deleted and replaced by another.
+
+Indicates the context ID Canvas should use when following the &quot;replacement chain.&quot; The
+&quot;replacement_chain_context_type&quot; parameter must also be included.
      *
-     * Include this parameter if you wish Canvas to follow the replacement chain
-     * if the requested file was deleted and replaced by another.
+     * type: integer
+
+format: 'int64'
      *
-     * Indicates the context ID Canvas should use when following the
-     * "replacement chain." The "replacement_chain_context_type" parameter must
-     * also be included.
-     *
-     * Type: integer
-     *
-     * Format: 'int64'
+     * 
      */
     replacement_chain_context_id: number | string;
   }>;
@@ -90,7 +100,11 @@ type Options = (
  *
  * Returns the standard attachment json object
  *
- * Nickname: get_file_courses
+ * nickname: get_file_courses
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<File>(

@@ -1,18 +1,22 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { LtiOverlayVersion } from '../../../../../Resources/LtiRegistrations.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -21,12 +25,13 @@ export type getSearchParameters = Masquerade &
   Paginated &
   Partial<{
     /**
-     * The maximum number of history items to return. Defaults to 10. Maximum
-     * allowed is 100.
+     * The maximum number of history items to return. Defaults to 10. Maximum allowed is 100.
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     limit: number | string;
   }>;
@@ -65,7 +70,11 @@ type Options = (
  *
  * Returns the overlay history items for the specified LTI registration.
  *
- * Nickname: get_lti_registration_overlay_history
+ * nickname: get_lti_registration_overlay_history
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<LtiOverlayVersion[]>(

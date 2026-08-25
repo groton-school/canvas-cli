@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type invite_others_to_groupPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
 };
@@ -13,7 +15,13 @@ export type invite_others_to_groupPathParameters = {
 export type invite_others_to_groupSearchParameters = Masquerade;
 
 export type invite_others_to_groupFormParameters = Masquerade & {
-  /** An array of email addresses to be sent invitations. */
+  /**
+   * An array of email addresses to be sent invitations.
+   *
+   *
+   *
+   *
+   */
   invitees: string[];
 };
 
@@ -62,9 +70,13 @@ type Options = (
  * Invite others to a group
  *
  * Sends an invitation to all supplied email addresses which will allow the
- * receivers to join the group.
+receivers to join the group.
  *
- * Nickname: invite_others_to_group
+ * nickname: invite_others_to_group
+ *
+ * 
+ *
+ * 
  */
 export async function invite_others_to_group(options: Options) {
   const response = await client().fetchAs<JSONValue>(

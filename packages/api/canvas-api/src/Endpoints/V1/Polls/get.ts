@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -46,7 +48,11 @@ type Options = (
  *
  * Returns the poll with the given id
  *
- * Nickname: get_single_poll
+ * nickname: get_single_poll
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(`/api/v1/polls/{id}`, {

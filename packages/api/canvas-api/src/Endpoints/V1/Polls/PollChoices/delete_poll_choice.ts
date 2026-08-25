@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type delete_poll_choicePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   poll_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -50,10 +54,13 @@ type Options = (
 /**
  * Delete a poll choice
  *
- * <b>204 No Content</b> response code is returned if the deletion was
- * successful.
+ * <b>204 No Content</b> response code is returned if the deletion was successful.
  *
- * Nickname: delete_poll_choice
+ * nickname: delete_poll_choice
+ *
+ *
+ *
+ *
  */
 export async function delete_poll_choice(options: Options) {
   const response = await client().fetchAs<JSONValue>(

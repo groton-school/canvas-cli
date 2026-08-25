@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -19,20 +23,36 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** The purpose of the token. */
+  /**
+   * The purpose of the token.
+   *
+   *
+   *
+   *
+   */
   'token[purpose]': string;
   /**
    * The time at which the token will expire.
    *
-   * Format: date-time
+   * format: date-time
+   *
+   *
    */
   'token[expires_at]': string;
-  /** The scopes to associate with the token. */
+  /**
+   * The scopes to associate with the token.
+   *
+   *
+   *
+   *
+   */
   'token[scopes]': string[];
   /**
    * Regenerate the actual token.
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   'token[regenerate]': boolean | string;
 };
@@ -82,12 +102,16 @@ type Options = (
  * Update an access token
  *
  * Update an existing access token.
+
+The ID can be the actual database ID of the token, or the 'token_hint' value.
+
+Regenerating an expired token requires a new expiration date.
  *
- * The ID can be the actual database ID of the token, or the 'token_hint' value.
+ * nickname: update_access_token
  *
- * Regenerating an expired token requires a new expiration date.
+ * 
  *
- * Nickname: update_access_token
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(

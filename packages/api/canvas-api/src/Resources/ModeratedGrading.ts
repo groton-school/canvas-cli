@@ -1,39 +1,49 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type ProvisionalGrade = {
   /**
    * The identifier for the provisional grade
    *
-   * Type: integer
+   * type: integer
    */
   provisional_grade_id: number | string;
   /**
    * The numeric score
    *
-   * Type: integer
+   * type: integer
    */
   score: number | string;
-  /** The grade */
+  /**
+   * The grade
+   *
+   *
+   */
   grade: string;
   /**
-   * Whether the grade was applied to the most current submission (false if the
-   * student resubmitted after grading)
+   * Whether the grade was applied to the most current submission (false if the student resubmitted after grading)
    *
-   * Type: boolean
+   * type: boolean
    */
   grade_matches_current_submission: boolean | string;
   /**
    * When the grade was given
    *
-   * Format: date-time
+   * format: date-time
    */
   graded_at: string;
   /**
    * Whether this is the 'final' provisional grade created by the moderator
    *
-   * Type: boolean
+   * type: boolean
    */
   final: boolean | string;
-  /** A link to view this provisional grade in SpeedGrader */
+  /**
+   * A link to view this provisional grade in SpeedGrader
+   *
+   *
+   */
   speedgrader_url: string;
 };

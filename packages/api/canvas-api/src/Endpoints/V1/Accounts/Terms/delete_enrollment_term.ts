@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { EnrollmentTerm } from '../../../../Resources/EnrollmentTerms.js';
 
 export type delete_enrollment_termPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Delete the specified enrollment term.
  *
- * Nickname: delete_enrollment_term
+ * nickname: delete_enrollment_term
+ *
+ *
+ *
+ *
  */
 export async function delete_enrollment_term(options: Options) {
   const response = await client().fetchAs<EnrollmentTerm>(

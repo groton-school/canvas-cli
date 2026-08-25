@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Role } from '../../../../Resources/Roles.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -21,40 +25,51 @@ export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
   /**
-   * The label for the role. Can only change the label of a custom role that
-   * belongs directly to the account.
+   * The label for the role. Can only change the label of a custom role that belongs directly to the account.
+   *
+   *
+   *
+   *
    */
   label: string;
   /**
-   * No description
+   * no description
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   'permissions[<X>][explicit]': boolean | string;
   /**
-   * These arguments are described in the documentation for the
-   * {api:RoleOverridesController#add_role add_role method}. The list of
-   * available permissions can be found on the {file:file.permissions.html
-   * Permissions list page}.
-   *
-   * Type: boolean
-   */
+     * These arguments are described in the documentation for the
+{api:RoleOverridesController#add_role add_role method}.
+The list of available permissions can be found on the
+{file:file.permissions.html Permissions list page}.
+     *
+     * type: boolean
+     *
+     * 
+     */
   'permissions[<X>][enabled]': boolean | string;
   /**
-   * If the value is 1, permission <X> applies to the account this role is in.
-   * The default value is 1. Must be true if applies_to_descendants is false.
-   * This value is only returned if enabled is true.
-   *
-   * Type: boolean
-   */
+     * If the value is 1, permission &lt;X&gt; applies to the account this role is in.
+The default value is 1. Must be true if applies_to_descendants is false.
+This value is only returned if enabled is true.
+     *
+     * type: boolean
+     *
+     * 
+     */
   'permissions[<X>][applies_to_self]': boolean | string;
   /**
-   * If the value is 1, permission <X> cascades down to sub accounts of the
-   * account this role is in. The default value is 1. Must be true if
-   * applies_to_self is false.This value is only returned if enabled is true.
-   *
-   * Type: boolean
-   */
+     * If the value is 1, permission &lt;X&gt; cascades down to sub accounts of the
+account this role is in. The default value is 1.  Must be true if
+applies_to_self is false.This value is only returned if enabled is true.
+     *
+     * type: boolean
+     *
+     * 
+     */
   'permissions[<X>][applies_to_descendants]': boolean | string;
 };
 
@@ -103,12 +118,21 @@ type Options = (
  * Update a role
  *
  * Update permissions for an existing role.
+
+Recognized roles are:
+* TeacherEnrollment
+* StudentEnrollment
+* TaEnrollment
+* ObserverEnrollment
+* DesignerEnrollment
+* AccountAdmin
+* Any previously created custom role
  *
- * Recognized roles are: TeacherEnrollment StudentEnrollment TaEnrollment
- * ObserverEnrollment DesignerEnrollment AccountAdmin Any previously created
- * custom role
+ * nickname: update_role
  *
- * Nickname: update_role
+ * 
+ *
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<Role>(

@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type start_kaltura_sessionSearchParameters = Masquerade;
 
@@ -26,9 +26,13 @@ type Options =
  * Start Kaltura session
  *
  * Start a new Kaltura session, so that new media can be recorded and uploaded
- * to this Canvas instance's Kaltura instance.
+to this Canvas instance's Kaltura instance.
  *
- * Nickname: start_kaltura_session
+ * nickname: start_kaltura_session
+ *
+ * 
+ *
+ * 
  */
 export async function start_kaltura_session(options: Options) {
   const response = await client().fetchAs<JSONValue>(

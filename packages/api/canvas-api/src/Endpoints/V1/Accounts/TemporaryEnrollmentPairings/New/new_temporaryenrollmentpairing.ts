@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { TemporaryEnrollmentPairing } from '../../../../../Resources/TemporaryEnrollmentPairings.js';
 
 export type new_temporaryenrollmentpairingPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Initialize an unsaved Temporary Enrollment Pairing.
  *
- * Nickname: new_temporaryenrollmentpairing
+ * nickname: new_temporaryenrollmentpairing
+ *
+ *
+ *
+ *
  */
 export async function new_temporaryenrollmentpairing(options: Options) {
   const response = await client().fetchAs<TemporaryEnrollmentPairing>(

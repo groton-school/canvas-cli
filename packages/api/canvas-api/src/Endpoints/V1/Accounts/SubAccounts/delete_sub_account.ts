@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Account } from '../../../../Resources/Accounts.js';
 
 export type delete_sub_accountPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -51,10 +55,14 @@ type Options = (
 /**
  * Delete a sub-account
  *
- * Cannot delete an account with active courses or active sub_accounts. Cannot
- * delete a root_account
+ * Cannot delete an account with active courses or active sub_accounts.
+Cannot delete a root_account
  *
- * Nickname: delete_sub_account
+ * nickname: delete_sub_account
+ *
+ * 
+ *
+ * 
  */
 export async function delete_sub_account(options: Options) {
   const response = await client().fetchAs<Account>(

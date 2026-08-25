@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Page } from '../../../../../Resources/Pages.js';
 
 export type duplicate_pagePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   url_or_id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Duplicate a wiki page
  *
- * Nickname: duplicate_page
+ * nickname: duplicate_page
+ *
+ *
+ *
+ *
  */
 export async function duplicate_page(options: Options) {
   const response = await client().fetchAs<Page>(

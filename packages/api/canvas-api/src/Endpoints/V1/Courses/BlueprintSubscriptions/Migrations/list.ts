@@ -1,18 +1,22 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { BlueprintMigration } from '../../../../../Resources/BlueprintCourses.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   subscription_id: string | number;
 };
@@ -51,15 +55,16 @@ type Options = (
 /**
  * List blueprint imports
  *
- * Shows a paginated list of migrations imported into a course associated with a
- * blueprint, starting with the most recent. See also
- * {api:MasterCourses::MasterTemplatesController#migrations_index the blueprint
- * course side}.
+ * Shows a paginated list of migrations imported into a course associated with a blueprint, starting with the most recent. See also
+{api:MasterCourses::MasterTemplatesController#migrations_index the blueprint course side}.
+
+Use 'default' as the subscription_id to use the currently active blueprint subscription.
  *
- * Use 'default' as the subscription_id to use the currently active blueprint
- * subscription.
+ * nickname: list_blueprint_imports
  *
- * Nickname: list_blueprint_imports
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<BlueprintMigration[]>(

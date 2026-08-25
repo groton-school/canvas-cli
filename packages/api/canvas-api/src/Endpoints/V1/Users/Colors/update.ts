@@ -1,14 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   asset_string: string;
 };
 
@@ -16,10 +24,14 @@ export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
   /**
-   * The hexcode of the color to set for the context, if you choose to pass
-   * the hexcode as a query parameter rather than in the request body you
-   * should NOT include the '#' unless you escape it first.
-   */
+     * The hexcode of the color to set for the context, if you choose to pass the
+hexcode as a query parameter rather than in the request body you should
+NOT include the &#x27;#&#x27; unless you escape it first.
+     *
+     * 
+     *
+     * 
+     */
   hexcode: string;
 };
 
@@ -67,13 +79,17 @@ type Options = (
 /**
  * Update custom color
  *
- * Updates a custom color for a user for a given context. This allows colors for
- * the calendar and elsewhere to be customized on a user basis.
+ * Updates a custom color for a user for a given context.  This allows
+colors for the calendar and elsewhere to be customized on a user basis.
+
+The asset string parameter should be in the format 'context_id', for example
+'course_42'
  *
- * The asset string parameter should be in the format 'context_id', for example
- * 'course_42'
+ * nickname: update_custom_color
  *
- * Nickname: update_custom_color
+ * 
+ *
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(

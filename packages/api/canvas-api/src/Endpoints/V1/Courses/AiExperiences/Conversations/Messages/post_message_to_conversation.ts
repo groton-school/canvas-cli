@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ObjectHashwithidandupdatedmessagesarray } from '../../../../../../Overrides.js';
 
 export type post_message_to_conversationPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   ai_experience_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -26,7 +32,13 @@ export type post_message_to_conversationPathParameters = {
 export type post_message_to_conversationSearchParameters = Masquerade;
 
 export type post_message_to_conversationFormParameters = Masquerade & {
-  /** The user's message to send to the AI */
+  /**
+   * The user&#x27;s message to send to the AI
+   *
+   *
+   *
+   *
+   */
   message: string;
 };
 
@@ -76,7 +88,11 @@ type Options = (
  *
  * Send a message to an existing conversation and get the AI response
  *
- * Nickname: post_message_to_conversation
+ * nickname: post_message_to_conversation
+ *
+ *
+ *
+ *
  */
 export async function post_message_to_conversation(options: Options) {
   const response =

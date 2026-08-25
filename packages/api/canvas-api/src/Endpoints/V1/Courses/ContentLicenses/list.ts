@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { License } from '../../../../Resources/Files.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * A paginated list of licenses that can be applied
  *
- * Nickname: list_licenses_courses
+ * nickname: list_licenses_courses
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<License[]>(

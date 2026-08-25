@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { User } from '../../../../Resources/Users.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -46,11 +48,15 @@ type Options = (
  * List students
  *
  * Returns the paginated list of students enrolled in this course.
+
+DEPRECATED: Please use the {api:CoursesController#users course users} endpoint
+and pass "student" as the enrollment_type.
  *
- * DEPRECATED: Please use the {api:CoursesController#users course users}
- * endpoint and pass "student" as the enrollment_type.
+ * nickname: list_students
  *
- * Nickname: list_students
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<User[]>(

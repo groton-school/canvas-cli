@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Group } from '../../../../Resources/Groups.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_category_id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Returns a paginated list of groups in a group category
  *
- * Nickname: list_groups_in_group_category
+ * nickname: list_groups_in_group_category
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<Group[]>(

@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type set_outcome_ordering_for_lmgbPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -46,7 +48,11 @@ type Options = (
  *
  * Saves the ordering of outcomes in LMGB for a user
  *
- * Nickname: set_outcome_ordering_for_lmgb
+ * nickname: set_outcome_ordering_for_lmgb
+ *
+ *
+ *
+ *
  */
 export async function set_outcome_ordering_for_lmgb(options: Options) {
   const response = await client().fetchAs<JSONValue>(

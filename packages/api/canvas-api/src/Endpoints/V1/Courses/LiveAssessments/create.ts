@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -44,10 +46,14 @@ type Options = (
 /**
  * Create or find a live assessment
  *
- * Creates or finds an existing live assessment with the given key and aligns it
- * with the linked outcome
+ * Creates or finds an existing live assessment with the given key and aligns it with
+the linked outcome
  *
- * Nickname: create_or_find_live_assessment
+ * nickname: create_or_find_live_assessment
+ *
+ * 
+ *
+ * 
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<JSONValue>(

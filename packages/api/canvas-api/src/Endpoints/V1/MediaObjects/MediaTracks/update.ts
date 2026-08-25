@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { MediaTrack } from '../../../../Resources/MediaObjects.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   media_object_id: string | number;
 };
@@ -15,10 +17,14 @@ export type updateSearchParameters = Masquerade & Paginated;
 
 export type updateFormParameters = Masquerade & {
   /**
-   * By default, an update returns id, locale, kind, media_object_id, and
-   * user_id for each of the result MediaTracks. Use include[] to add
-   * additional fields. For example include[]=content
-   */
+     * By default, an update returns id, locale, kind, media_object_id, and user_id for each of the
+result MediaTracks. Use include[] to
+add additional fields. For example include[]&#x3D;content
+     *
+     * 
+     *
+     * 
+     */
   include: string[];
 };
 
@@ -67,11 +73,17 @@ type Options = (
  * Update Media Tracks
  *
  * Replace the media tracks associated with a media object or attachment with
- * the array of tracks provided in the body. Update will delete any existing
- * tracks not listed, leave untouched any tracks with no content field, and
- * update or create tracks with a content field.
+the array of tracks provided in the body.
+Update will
+delete any existing tracks not listed,
+leave untouched any tracks with no content field,
+and update or create tracks with a content field.
  *
- * Nickname: update_media_tracks_media_objects
+ * nickname: update_media_tracks_media_objects
+ *
+ * 
+ *
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<MediaTrack[]>(

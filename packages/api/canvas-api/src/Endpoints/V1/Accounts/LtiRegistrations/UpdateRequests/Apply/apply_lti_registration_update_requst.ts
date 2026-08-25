@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { LtiConfigurationOverlay } from '../../../../../../Overrides.js';
 import { LtiRegistration } from '../../../../../../Resources/LtiRegistrations.js';
 
@@ -7,24 +7,30 @@ export type apply_lti_registration_update_requstPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
-   * The id of the registration to update.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the registration to update.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   id: number | string;
   /**
-   * The id of the registration update request to apply.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the registration update request to apply.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   update_request_id: number | string;
 };
 
@@ -32,15 +38,28 @@ export type apply_lti_registration_update_requstSearchParameters = Masquerade;
 
 export type apply_lti_registration_update_requstFormParameters = Masquerade & {
   /**
-   * Whether to accept (true) or reject (false) the registration update
-   * request.
+   * Whether to accept (true) or reject (false) the registration update request.
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   accepted: boolean | string;
-  /** Optional overlay data to apply on top of the new configuration. */
+  /**
+   * Optional overlay data to apply on top of the new configuration.
+   *
+   *
+   *
+   *
+   */
   overlay: LtiConfigurationOverlay;
-  /** Optional comment explaining the reason for applying this update. */
+  /**
+   * Optional comment explaining the reason for applying this update.
+   *
+   *
+   *
+   *
+   */
   comment: string;
 };
 
@@ -88,11 +107,15 @@ type Options = (
 /**
  * Apply LTI Registration Update Requst
  *
- * Applies a registration update request to an existing registration, replacing
- * the existing configuration and overlay with the new values. If the request is
- * rejected, marks it as rejected without applying changes.
+ * Applies a registration update request to an existing registration,
+replacing the existing configuration and overlay with the new values.
+If the request is rejected, marks it as rejected without applying changes.
  *
- * Nickname: apply_lti_registration_update_requst
+ * nickname: apply_lti_registration_update_requst
+ *
+ * 
+ *
+ * 
  */
 export async function apply_lti_registration_update_requst(options: Options) {
   const response = await client().fetchAs<LtiRegistration>(

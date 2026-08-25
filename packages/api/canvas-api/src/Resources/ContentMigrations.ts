@@ -1,108 +1,169 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type MigrationIssue = {
   /**
-   * The unique identifier for the issue
+   * the unique identifier for the issue
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
-  /** API url to the content migration */
+  /**
+   * API url to the content migration
+   *
+   *
+   */
   content_migration_url: string;
-  /** Description of the issue for the end-user */
+  /**
+   * Description of the issue for the end-user
+   *
+   *
+   */
   description: string;
-  /** Current state of the issue: active, resolved */
+  /**
+   * Current state of the issue: active, resolved
+   *
+   *
+   */
   workflow_state: string;
-  /** HTML Url to the Canvas page to investigate the issue */
+  /**
+   * HTML Url to the Canvas page to investigate the issue
+   *
+   *
+   */
   fix_issue_html_url: string;
-  /** Severity of the issue: todo, warning, error */
+  /**
+   * Severity of the issue: todo, warning, error
+   *
+   *
+   */
   issue_type: string;
   /**
-   * Link to a Canvas error report if present (If the requesting user has
-   * permissions)
+   * Link to a Canvas error report if present (If the requesting user has permissions)
+   *
+   *
    */
   error_report_html_url: string;
-  /** Site administrator error message (If the requesting user has permissions) */
+  /**
+   * Site administrator error message (If the requesting user has permissions)
+   *
+   *
+   */
   error_message: string;
   /**
-   * Timestamp
+   * timestamp
    *
-   * Format: date-time
+   * format: date-time
    */
   created_at: string;
   /**
-   * Timestamp
+   * timestamp
    *
-   * Format: date-time
+   * format: date-time
    */
   updated_at: string;
 };
 
+/**
+ *
+ */
 export type ContentMigration = {
   /**
-   * The unique identifier for the migration
+   * the unique identifier for the migration
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
-  /** The type of content migration */
+  /**
+   * the type of content migration
+   *
+   *
+   */
   migration_type: string;
-  /** The name of the content migration type */
+  /**
+   * the name of the content migration type
+   *
+   *
+   */
   migration_type_title: string;
-  /** API url to the content migration's issues */
+  /**
+   * API url to the content migration's issues
+   *
+   *
+   */
   migration_issues_url: string;
   /**
-   * Attachment api object for the uploaded file may not be present for all
-   * migrations
+   * attachment api object for the uploaded file may not be present for all migrations
+   *
+   *
    */
   attachment: string;
-  /** The api endpoint for polling the current progress */
+  /**
+   * The api endpoint for polling the current progress
+   *
+   *
+   */
   progress_url: string;
   /**
    * The user who started the migration
    *
-   * Type: integer
+   * type: integer
    */
   user_id: number | string;
   /**
-   * Current state of the content migration: pre_processing, pre_processed,
-   * running, waiting_for_select, completed, failed
+   * Current state of the content migration: pre_processing, pre_processed, running, waiting_for_select, completed, failed
+   *
+   *
    */
   workflow_state: string;
   /**
-   * Timestamp
+   * timestamp
    *
-   * Format: date-time
+   * format: date-time
    */
   started_at: string;
   /**
-   * Timestamp
+   * timestamp
    *
-   * Format: date-time
+   * format: date-time
    */
   finished_at: string;
   /**
-   * File uploading data, see {file:file.file_uploads.html File Upload
-   * Documentation} for file upload workflow This works a little differently in
-   * that all the file data is in the pre_attachment hash if there is no
-   * upload_url then there was an attachment pre-processing error, the error
-   * message will be in the message key This data will only be here after a
-   * create or update call
+   * file uploading data, see {file:file.file_uploads.html File Upload Documentation} for file upload workflow This works a little differently in that all the file data is in the pre_attachment hash if there is no upload_url then there was an attachment pre-processing error, the error message will be in the message key This data will only be here after a create or update call
+   *
+   *
    */
   pre_attachment: string;
 };
 
+/**
+ *
+ */
 export type Migrator = {
-  /** The value to pass to the create endpoint */
+  /**
+   * The value to pass to the create endpoint
+   *
+   *
+   */
   type: string;
   /**
    * Whether this endpoint requires a file upload
    *
-   * Type: boolean
+   * type: boolean
    */
   requires_file_upload: boolean | string;
-  /** Description of the package type expected */
+  /**
+   * Description of the package type expected
+   *
+   *
+   */
   name: string;
-  /** A list of fields this system requires */
+  /**
+   * A list of fields this system requires
+   *
+   *
+   */
   required_settings: string[];
 };

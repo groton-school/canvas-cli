@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type unsubscribe_from_topic_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
 };
@@ -51,10 +55,14 @@ type Options = (
  * Unsubscribe from a topic
  *
  * Unsubscribe from a topic to stop receiving notifications about new entries
+
+On success, the response will be 204 No Content with an empty body
  *
- * On success, the response will be 204 No Content with an empty body
+ * nickname: unsubscribe_from_topic_courses
  *
- * Nickname: unsubscribe_from_topic_courses
+ * 
+ *
+ * 
  */
 export async function unsubscribe_from_topic_courses(options: Options) {
   const response = await client().fetchAs<JSONValue>(

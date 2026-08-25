@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
 export type show_lti_registration_via_client_idPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   client_id: string | number;
 };
@@ -52,9 +56,13 @@ type Options = (
  * Show an LTI Registration (via the client_id)
  *
  * Returns details about the specified LTI registration, including the
- * configuration and account binding.
+configuration and account binding.
  *
- * Nickname: show_lti_registration_via_client_id
+ * nickname: show_lti_registration_via_client_id
+ *
+ * 
+ *
+ * 
  */
 export async function show_lti_registration_via_client_id(options: Options) {
   const response = await client().fetchAs<LtiRegistration>(

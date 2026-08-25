@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type show_temporary_enrollment_recipient_and_provider_statusPathParameters =
   {
     /**
      * ID
      *
-     * Type: string
+     * type: string
+     *
+     *
      */
     user_id: string | number;
   };
@@ -15,9 +17,13 @@ export type show_temporary_enrollment_recipient_and_provider_statusSearchParamet
   Masquerade &
     Partial<{
       /**
-       * The ID of the account to check for temporary enrollment status. Defaults
-       * to the domain root account if not provided.
-       */
+     * The ID of the account to check for temporary enrollment status.
+Defaults to the domain root account if not provided.
+     *
+     * 
+     *
+     * 
+     */
       account_id: string;
     }>;
 
@@ -55,7 +61,11 @@ type Options = (
  *
  * Returns a JSON Object containing the temporary enrollment status for a user.
  *
- * Nickname: show_temporary_enrollment_recipient_and_provider_status
+ * nickname: show_temporary_enrollment_recipient_and_provider_status
+ *
+ *
+ *
+ *
  */
 export async function show_temporary_enrollment_recipient_and_provider_status(
   options: Options

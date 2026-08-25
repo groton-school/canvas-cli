@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type export_tags_and_users_in_coursePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -42,11 +44,15 @@ type Options = (
   );
 
 /**
- * Export tags and users in course
+ * export tags and users in course
  *
  * Returns a csv file of users in format ready to import.
  *
- * Nickname: export_tags_and_users_in_course
+ * nickname: export_tags_and_users_in_course
+ *
+ *
+ *
+ *
  */
 export async function export_tags_and_users_in_course(options: Options) {
   const response = await client().fetchAs<JSONValue>(

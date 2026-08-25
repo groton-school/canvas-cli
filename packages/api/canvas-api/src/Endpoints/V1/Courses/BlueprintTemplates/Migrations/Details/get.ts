@@ -1,24 +1,30 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { ChangeRecord } from '../../../../../../Resources/BlueprintCourses.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   template_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -57,12 +63,14 @@ type Options = (
 /**
  * Get migration details
  *
- * Show the changes that were propagated in a blueprint migration. This endpoint
- * can be called on a blueprint course. See also
- * {api:MasterCourses::MasterTemplatesController#import_details the associated
- * course side}.
+ * Show the changes that were propagated in a blueprint migration. This endpoint can be called on a
+blueprint course. See also {api:MasterCourses::MasterTemplatesController#import_details the associated course side}.
  *
- * Nickname: get_migration_details
+ * nickname: get_migration_details
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<ChangeRecord[]>(

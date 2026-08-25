@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { User } from '../../../../Resources/Users.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -16,41 +18,63 @@ export type listSearchParameters = Masquerade &
   Partial<{
     /**
      * The partial name or full ID of the users to match and return in the
-     * results list. Must be at least 3 characters.
+results list. Must be at least 3 characters.
+
+Note that the API will prefer matching on canonical user ID if the ID has
+a numeric form. It will only search against other fields if non-numeric
+in form, or if the numeric value doesn&#x27;t yield any matches. Queries by
+administrative users will search on SIS ID, Integration ID, login ID,
+name, or email address
      *
-     * Note that the API will prefer matching on canonical user ID if the ID has
-     * a numeric form. It will only search against other fields if non-numeric
-     * in form, or if the numeric value doesn't yield any matches. Queries by
-     * administrative users will search on SIS ID, Integration ID, login ID,
-     * name, or email address
+     * 
+     *
+     * 
      */
     search_term: string;
     /**
-     * When set, only return users enrolled with the specified course-level base
-     * role. This can be a base role type of 'student', 'teacher', 'ta',
-     * 'observer', or 'designer'.
+     * When set, only return users enrolled with the specified course-level base role.
+This can be a base role type of &#x27;student&#x27;, &#x27;teacher&#x27;,
+&#x27;ta&#x27;, &#x27;observer&#x27;, or &#x27;designer&#x27;.
+     *
+     * 
+     *
+     * 
      */
     enrollment_type: string;
     /**
-     * The column to sort results by. For efficiency, use +id+ if you intend to
-     * retrieve many pages of results. In the future, other sort options may be
-     * rate-limited after 50 pages.
+     * The column to sort results by. For efficiency, use +id+ if you intend to retrieve
+many pages of results. In the future, other sort options may be rate-limited
+after 50 pages.
+     *
+     * 
+     *
+     * 
      */
     sort: string;
-    /** The order to sort the given column by. */
+    /**
+     * The order to sort the given column by.
+     *
+     *
+     *
+     *
+     */
     order: string;
     /**
-     * When set to true and used with an account context, returns users who have
-     * deleted pseudonyms for the context
+     * When set to true and used with an account context, returns users who have deleted
+pseudonyms for the context
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     include_deleted_users: boolean | string;
     /**
-     * When set, only return users with the specified UUIDs. UUIDs after the
-     * first 100 are ignored.
+     * When set, only return users with the specified UUIDs. UUIDs after the first 100
+are ignored.
      *
      * Array
+     *
+     * 
      */
     uuids: string[];
   }>;
@@ -88,12 +112,17 @@ type Options = (
  * List users in account
  *
  * A paginated list of users associated with this account.
- *
- * @example_request curl https://<canvas>/api/v1/accounts/self/users?search_term=<search value> \
- *       -X GET \
- *       -H 'Authorization: Bearer <token>'
+
+ @example_request
+   curl https://<canvas>/api/v1/accounts/self/users?search_term=<search value> \
+      -X GET \
+      -H 'Authorization: Bearer <token>'
  *
  * nickname: list_users_in_account
+ *
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<User[]>(

@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ContextExternalTool } from '../../../../Resources/ExternalTools.js';
 
 export type delete_external_tool_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   external_tool_id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Remove the specified external tool
  *
- * Nickname: delete_external_tool_courses
+ * nickname: delete_external_tool_courses
+ *
+ *
+ *
+ *
  */
 export async function delete_external_tool_courses(options: Options) {
   const response = await client().fetchAs<ContextExternalTool>(

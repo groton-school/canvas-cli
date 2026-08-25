@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Role } from '../../../../Resources/Roles.js';
 
 export type deactivate_rolePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -22,12 +26,20 @@ export type deactivate_roleSearchParameters = Masquerade &
     /**
      * The unique identifier for the role
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     role_id: number | string;
-    /** The name for the role */
+    /**
+     * The name for the role
+     *
+     *
+     *
+     *
+     */
     role: string;
   }>;
 
@@ -63,12 +75,16 @@ type Options = (
 /**
  * Deactivate a role
  *
- * Deactivates a custom role. This hides it in the user interface and prevents
- * it from being assigned to new users. Existing users assigned to the role will
- * continue to function with the same permissions they had previously. Built-in
- * roles cannot be deactivated.
+ * Deactivates a custom role.  This hides it in the user interface and prevents it
+from being assigned to new users.  Existing users assigned to the role will
+continue to function with the same permissions they had previously.
+Built-in roles cannot be deactivated.
  *
- * Nickname: deactivate_role
+ * nickname: deactivate_role
+ *
+ * 
+ *
+ * 
  */
 export async function deactivate_role(options: Options) {
   const response = await client().fetchAs<Role>(

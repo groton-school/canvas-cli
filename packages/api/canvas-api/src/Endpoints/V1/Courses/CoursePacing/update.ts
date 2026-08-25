@@ -1,21 +1,25 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { CoursePace } from '../../../../Resources/CoursePace.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
   /**
-   * The id of the course
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the course
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   course_id: number | string;
 };
 
@@ -23,36 +27,63 @@ export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
   /**
-   * The id of the course pace
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the course pace
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   course_pace_id: number | string;
   /**
    * End date of the course pace
    *
-   * Format: date-time
+   * format: date-time
+   *
+   *
    */
   end_date: string;
   /**
    * Course pace dates excludes weekends if true
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   exclude_weekends: boolean | string;
-  /** [Array<String>] Course pace dates excludes weekends if true */
+  /**
+     * [Array&lt;String&gt;]
+Course pace dates excludes weekends if true
+     *
+     * 
+     *
+     * 
+     */
   selected_days_to_skip: string;
   /**
    * Course pace uess hard end dates if true
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   hard_end_dates: boolean | string;
-  /** The state of the course pace */
+  /**
+   * The state of the course pace
+   *
+   *
+   *
+   *
+   */
   workflow_state: string;
-  /** Module Items attributes */
+  /**
+   * Module Items attributes
+   *
+   *
+   *
+   *
+   */
   course_pace_module_item_attributes: string[];
 };
 
@@ -102,7 +133,11 @@ type Options = (
  *
  * Returns the updated course pace
  *
- * Nickname: update_course_pace
+ * nickname: update_course_pace
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<CoursePace>(

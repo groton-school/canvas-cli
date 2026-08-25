@@ -1,30 +1,42 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { PlannerOverride } from '../../../../Resources/Planner.js';
 
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** Type of the item that you are overriding in the planner */
+  /**
+   * Type of the item that you are overriding in the planner
+   *
+   *
+   *
+   *
+   */
   plannable_type: string;
   /**
-   * ID of the item that you are overriding in the planner
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * ID of the item that you are overriding in the planner
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   plannable_id: number | string;
   /**
    * If this is true, the item will show in the planner as completed
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   marked_complete: boolean | string;
   /**
    * If this is true, the item will not show in the opportunities list
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   dismissed: boolean | string;
 };
@@ -65,7 +77,11 @@ type Options =
  *
  * Create a planner override for the current user
  *
- * Nickname: create_planner_override
+ * nickname: create_planner_override
+ *
+ *
+ *
+ *
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<PlannerOverride>(

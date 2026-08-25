@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Quiz } from '../../../../Resources/Quizzes.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -14,7 +16,13 @@ export type listPathParameters = {
 export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
-    /** The partial title of the quizzes to match and return. */
+    /**
+     * The partial title of the quizzes to match and return.
+     *
+     *
+     *
+     *
+     */
     search_term: string;
   }>;
 
@@ -52,7 +60,11 @@ type Options = (
  *
  * Returns the paginated list of Quizzes in this course.
  *
- * Nickname: list_quizzes_in_course
+ * nickname: list_quizzes_in_course
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<Quiz[]>(

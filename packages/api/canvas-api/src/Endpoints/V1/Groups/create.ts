@@ -1,33 +1,60 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Group } from '../../../Resources/Groups.js';
 
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** The name of the group */
+  /**
+   * The name of the group
+   *
+   *
+   *
+   *
+   */
   name: string;
-  /** A description of the group */
+  /**
+   * A description of the group
+   *
+   *
+   *
+   *
+   */
   description: string;
   /**
-   * Whether the group is public (applies only to community groups)
+   * whether the group is public (applies only to community groups)
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   is_public: boolean | string;
-  /** No description */
+  /**
+   * no description
+   *
+   *
+   *
+   *
+   */
   join_level: string;
   /**
-   * The allowed file storage for the group, in megabytes. This parameter is
-   * ignored if the caller does not have the manage_storage_quotas
-   * permission.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The allowed file storage for the group, in megabytes. This parameter is
+ignored if the caller does not have the manage_storage_quotas permission.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   storage_quota_mb: number | string;
-  /** The sis ID of the group. Must have manage_sis permission to set. */
+  /**
+   * The sis ID of the group. Must have manage_sis permission to set.
+   *
+   *
+   *
+   *
+   */
   sis_group_id: string;
 };
 
@@ -65,10 +92,14 @@ type Options =
 /**
  * Create a group
  *
- * Creates a new group. Groups created using the "/api/v1/groups/" endpoint will
- * be community groups.
+ * Creates a new group. Groups created using the "/api/v1/groups/"
+endpoint will be community groups.
  *
- * Nickname: create_group_groups
+ * nickname: create_group_groups
+ *
+ * 
+ *
+ * 
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<Group>(`/api/v1/groups`, {

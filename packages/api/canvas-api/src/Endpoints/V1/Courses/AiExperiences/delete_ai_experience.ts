@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { AiExperience } from '../../../../Resources/AiExperiences.js';
 
 export type delete_ai_experiencePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Delete an AI experience (soft delete - marks as deleted)
  *
- * Nickname: delete_ai_experience
+ * nickname: delete_ai_experience
+ *
+ *
+ *
+ *
  */
 export async function delete_ai_experience(options: Options) {
   const response = await client().fetchAs<AiExperience>(

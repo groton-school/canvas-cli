@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -13,19 +15,31 @@ export type createPathParameters = {
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** The purpose of the token. */
+  /**
+   * The purpose of the token.
+   *
+   *
+   *
+   *
+   */
   'token[purpose]': string;
   /**
    * The time at which the token will expire.
    *
-   * Format: date-time
+   * format: date-time
+   *
+   *
    */
   'token[expires_at]': string;
   /**
-   * The scopes to associate with the token. Ignored if the default developer
-   * key does not have the "enable scopes" option enabled. In such cases, the
-   * token will inherit the user's permissions instead.
-   */
+     * The scopes to associate with the token.
+Ignored if the default developer key does not have the &quot;enable scopes&quot; option enabled.
+In such cases, the token will inherit the user&#x27;s permissions instead.
+     *
+     * 
+     *
+     * 
+     */
   'token[scopes]': string[];
 };
 
@@ -73,11 +87,15 @@ type Options = (
 /**
  * Create an access token
  *
- * Create a new access token for the specified user. If the user is not the
- * current user, the token will be created as "pending", and must be activated
- * by the user before it can be used.
+ * Create a new access token for the specified user.
+If the user is not the current user, the token will be created as "pending",
+and must be activated by the user before it can be used.
  *
- * Nickname: create_access_token
+ * nickname: create_access_token
+ *
+ * 
+ *
+ * 
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<JSONValue>(

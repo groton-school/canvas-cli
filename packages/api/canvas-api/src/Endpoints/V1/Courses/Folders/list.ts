@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Folder } from '../../../../Resources/Files.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -45,10 +47,14 @@ type Options = (
 /**
  * List all folders
  *
- * Returns the paginated list of all folders for the given context. This will be
- * returned as a flat list containing all subfolders as well.
+ * Returns the paginated list of all folders for the given context. This will
+be returned as a flat list containing all subfolders as well.
  *
- * Nickname: list_all_folders_courses
+ * nickname: list_all_folders_courses
+ *
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<Folder[]>(

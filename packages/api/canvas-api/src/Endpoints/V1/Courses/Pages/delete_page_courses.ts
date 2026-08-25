@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Page } from '../../../../Resources/Pages.js';
 
 export type delete_page_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   url_or_id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Delete a wiki page
  *
- * Nickname: delete_page_courses
+ * nickname: delete_page_courses
+ *
+ *
+ *
+ *
  */
 export async function delete_page_courses(options: Options) {
   const response = await client().fetchAs<Page>(

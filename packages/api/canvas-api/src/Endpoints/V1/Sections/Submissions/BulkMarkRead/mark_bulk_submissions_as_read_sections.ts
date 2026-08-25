@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type mark_bulk_submissions_as_read_sectionsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   section_id: string | number;
 };
@@ -14,7 +16,13 @@ export type mark_bulk_submissions_as_read_sectionsSearchParameters = Masquerade;
 
 export type mark_bulk_submissions_as_read_sectionsFormParameters =
   Masquerade & {
-    /** No description */
+    /**
+     * no description
+     *
+     *
+     *
+     *
+     */
     submissionIds: string[];
   };
 
@@ -62,12 +70,15 @@ type Options = (
 /**
  * Mark bulk submissions as read
  *
- * Accepts a string array of submission ids. Loops through and marks each
- * submission as read
+ * Accepts a string array of submission ids. Loops through and marks each submission as read
+
+On success, the response will be 204 No Content with an empty body.
  *
- * On success, the response will be 204 No Content with an empty body.
+ * nickname: mark_bulk_submissions_as_read_sections
  *
- * Nickname: mark_bulk_submissions_as_read_sections
+ * 
+ *
+ * 
  */
 export async function mark_bulk_submissions_as_read_sections(options: Options) {
   const response = await client().fetchAs<JSONValue>(

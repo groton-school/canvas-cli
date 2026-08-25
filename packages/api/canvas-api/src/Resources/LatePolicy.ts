@@ -1,66 +1,73 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type LatePolicy = {
   /**
-   * The unique identifier for the late policy
+   * the unique identifier for the late policy
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
   /**
-   * The unique identifier for the course
+   * the unique identifier for the course
    *
-   * Type: integer
+   * type: integer
    */
   course_id: number | string;
   /**
-   * Whether to enable missing submission deductions
+   * whether to enable missing submission deductions
    *
-   * Type: boolean
+   * type: boolean
    */
   missing_submission_deduction_enabled: boolean | string;
   /**
-   * Amount of percentage points to deduct
+   * amount of percentage points to deduct
    *
-   * Type: number
+   * type: number
    */
   missing_submission_deduction: number | string;
   /**
-   * Whether to enable late submission deductions
+   * whether to enable late submission deductions
    *
-   * Type: boolean
+   * type: boolean
    */
   late_submission_deduction_enabled: boolean | string;
   /**
-   * Amount of percentage points to deduct per late_submission_interval
+   * amount of percentage points to deduct per late_submission_interval
    *
-   * Type: number
+   * type: number
    */
   late_submission_deduction: number | string;
-  /** Time interval for late submission deduction */
+  /**
+   * time interval for late submission deduction
+   *
+   *
+   */
   late_submission_interval: string;
   /**
-   * Whether to enable late submission minimum percent
+   * whether to enable late submission minimum percent
    *
-   * Type: boolean
+   * type: boolean
    */
   late_submission_minimum_percent_enabled: boolean | string;
   /**
-   * The minimum score a submission can receive in percentage points
+   * the minimum score a submission can receive in percentage points
    *
-   * Type: number
+   * type: number
    */
   late_submission_minimum_percent: number | string;
   /**
-   * The time at which this late policy was originally created
+   * the time at which this late policy was originally created
    *
-   * Format: date-time
+   * format: date-time
    */
   created_at: string;
   /**
-   * The time at which this late policy was last modified in any way
+   * the time at which this late policy was last modified in any way
    *
-   * Format: date-time
+   * format: date-time
    */
   updated_at: string;
 };

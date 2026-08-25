@@ -1,624 +1,896 @@
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 import { User } from './Users.js';
 
-/** A registration of an LTI tool in Canvas */
+/**
+ * A registration of an LTI tool in Canvas
+ */
 export type LtiRegistration = {
   /**
-   * The Canvas ID of the Lti::Registration object
+   * the Canvas ID of the Lti::Registration object
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
-  /** Tool-provided registration name */
+  /**
+   * Tool-provided registration name
+   *
+   *
+   */
   name: string;
-  /** Admin-configured friendly display name */
+  /**
+   * Admin-configured friendly display name
+   *
+   *
+   */
   admin_nickname: string;
-  /** Tool-provided URL to the tool's icon */
+  /**
+   * Tool-provided URL to the tool's icon
+   *
+   *
+   */
   icon_url: string;
-  /** Tool-provided name of the tool vendor */
+  /**
+   * Tool-provided name of the tool vendor
+   *
+   *
+   */
   vendor: string;
   /**
    * The Canvas id of the account that owns this registration
    *
-   * Type: integer
+   * type: integer
    */
   account_id: number | string;
   /**
    * Flag indicating if registration is internally-owned
    *
-   * Type: boolean
+   * type: boolean
    */
   internal_service: boolean | string;
   /**
-   * Flag indicating if registration is owned by this account, or inherited from
-   * Site Admin
+   * Flag indicating if registration is owned by this account, or inherited from Site Admin
    *
-   * Type: boolean
+   * type: boolean
    */
   inherited: boolean | string;
-  /** LTI version of the registration, either 1.1 or 1.3 */
+  /**
+   * LTI version of the registration, either 1.1 or 1.3
+   *
+   *
+   */
   lti_version: string;
   /**
-   * Flag indicating if registration was created using LTI Dynamic Registration.
-   * Only present if lti_version is 1.3
+   * Flag indicating if registration was created using LTI Dynamic Registration. Only present if lti_version is 1.3
    *
-   * Type: boolean
+   * type: boolean
    */
   dynamic_registration: boolean | string;
-  /** The state of the registration */
+  /**
+   * The state of the registration
+   *
+   *
+   */
   workflow_state: string;
-  /** Timestamp of the registration's creation */
+  /**
+   * Timestamp of the registration's creation
+   *
+   *
+   */
   created_at: string;
-  /** Timestamp of the registration's last update */
+  /**
+   * Timestamp of the registration's last update
+   *
+   *
+   */
   updated_at: string;
   /**
-   * The user that created this registration. Not always present. If a string,
-   * this registration was created by Instructure.
+   * The user that created this registration. Not always present. If a string, this registration was created by Instructure.
+   *
+   *
    */
   created_by: User;
   /**
-   * The user that last updated this registration. Not always present. If a
-   * string, this registration was last updated by Instructure.
+   * The user that last updated this registration. Not always present. If a string, this registration was last updated by Instructure.
+   *
+   *
    */
   updated_by: User;
   /**
    * The Canvas id of the root account
    *
-   * Type: integer
+   * type: integer
    */
   root_account_id: number | string;
-  /** The binding for this registration and this account */
+  /**
+   * The binding for this registration and this account
+   *
+   *
+   */
   account_binding: LtiRegistrationAccountBinding;
-  /** The Canvas-style tool configuration for this registration */
+  /**
+   * The Canvas-style tool configuration for this registration
+   *
+   *
+   */
   configuration: LtiToolConfiguration;
 };
 
 /**
- * A binding between an LTI registration and an account, defining the
- * registration's availability in that account
+ * A binding between an LTI registration and an account, defining the registration's availability in that account
  */
 export type LtiRegistrationAccountBinding = {
   /**
-   * The Canvas ID of the Lti::RegistrationAccountBinding object
+   * the Canvas ID of the Lti::RegistrationAccountBinding object
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
   /**
    * The Canvas id of the account
    *
-   * Type: integer
+   * type: integer
    */
   account_id: number | string;
   /**
    * The Canvas id of the root account
    *
-   * Type: integer
+   * type: integer
    */
   root_account_id: number | string;
   /**
    * The Canvas id of the Lti::Registration
    *
-   * Type: integer
+   * type: integer
    */
   registration_id: number | string;
-  /** The state of the binding (on, off, allow, deleted) */
+  /**
+   * The state of the binding (on, off, allow, deleted)
+   *
+   *
+   */
   workflow_state: string;
-  /** Timestamp of the binding's creation */
+  /**
+   * Timestamp of the binding's creation
+   *
+   *
+   */
   created_at: string;
-  /** Timestamp of the binding's last update */
+  /**
+   * Timestamp of the binding's last update
+   *
+   *
+   */
   updated_at: string;
-  /** The user that created this binding */
+  /**
+   * The user that created this binding
+   *
+   *
+   */
   created_by: User;
-  /** The user that last updated this binding */
+  /**
+   * The user that last updated this binding
+   *
+   *
+   */
   updated_by: User;
 };
 
-/** A legacy configuration format for LTI 1.3 tools. */
+/**
+ * A legacy configuration format for LTI 1.3 tools.
+ */
 export type LtiLegacyConfiguration = {
-  /** The display name of the tool */
+  /**
+   * The display name of the tool
+   *
+   *
+   */
   title: string;
-  /** The description of the tool */
+  /**
+   * The description of the tool
+   *
+   *
+   */
   description: string;
   /**
    * A key-value listing of all custom fields the tool has requested
    *
-   * Object
+   * object
    */
   custom_fields: JSONObject;
-  /** The default launch URL for the tool. Overridable by placements. */
+  /**
+   * The default launch URL for the tool. Overridable by placements.
+   *
+   *
+   */
   target_link_uri: string;
-  /** 1.3 specific. URL used for initial login request */
+  /**
+   * 1.3 specific. URL used for initial login request
+   *
+   *
+   */
   oidc_initiation_url: string;
   /**
    * 1.3 specific. Region-specific login URLs for data protection compliance
    *
-   * Object
+   * object
    */
   oidc_initiation_urls: JSONObject;
   /**
-   * 1.3 specific. The tool's public JWK in JSON format. Discouraged in favor of
-   * a url hosting a JWK set.
+   * 1.3 specific. The tool's public JWK in JSON format. Discouraged in favor of a url hosting a JWK set.
    *
-   * Object
+   * object
    */
   public_jwk: JSONObject;
   /**
-   * 1.3 specific. The tool-hosted URL containing its public JWK keyset. Canvas
-   * may cache JWKs up to 5 minutes.
+   * 1.3 specific. The tool-hosted URL containing its public JWK keyset. Canvas may cache JWKs up to 5 minutes.
+   *
+   *
    */
   public_jwk_url: string;
-  /** 1.3 specific. List of LTI scopes requested by the tool */
+  /**
+   * 1.3 specific. List of LTI scopes requested by the tool
+   *
+   *
+   */
   scopes: string[];
-  /** Array of extensions for the tool */
+  /**
+   * Array of extensions for the tool
+   *
+   *
+   */
   extensions: JSONObject[];
 };
 
-/** A Registration's Canvas-specific tool configuration. */
+/**
+ * A Registration's Canvas-specific tool configuration.
+ */
 export type LtiToolConfiguration = {
-  /** The display name of the tool */
+  /**
+   * The display name of the tool
+   *
+   *
+   */
   title: string;
-  /** The description of the tool */
+  /**
+   * The description of the tool
+   *
+   *
+   */
   description: string;
   /**
    * A key-value listing of all custom fields the tool has requested
    *
-   * Object
+   * object
    */
   custom_fields: JSONObject;
-  /** The default launch URL for the tool. Overridable by placements. */
+  /**
+   * The default launch URL for the tool. Overridable by placements.
+   *
+   *
+   */
   target_link_uri: string;
   /**
-   * The tool's main domain. Highly recommended for deep linking, used to match
-   * links to the tool.
+   * The tool's main domain. Highly recommended for deep linking, used to match links to the tool.
+   *
+   *
    */
   domain: string;
-  /** Tool-provided identifier, can be anything */
+  /**
+   * Tool-provided identifier, can be anything
+   *
+   *
+   */
   tool_id: string;
-  /** Canvas-defined privacy level for the tool */
+  /**
+   * Canvas-defined privacy level for the tool
+   *
+   *
+   */
   privacy_level: string;
-  /** 1.3 specific. URL used for initial login request */
+  /**
+   * 1.3 specific. URL used for initial login request
+   *
+   *
+   */
   oidc_initiation_url: string;
   /**
    * 1.3 specific. Region-specific login URLs for data protection compliance
    *
-   * Object
+   * object
    */
   oidc_initiation_urls: JSONObject;
   /**
-   * 1.3 specific. The tool's public JWK in JSON format. Discouraged in favor of
-   * a url hosting a JWK set.
+   * 1.3 specific. The tool's public JWK in JSON format. Discouraged in favor of a url hosting a JWK set.
    *
-   * Object
+   * object
    */
   public_jwk: JSONObject;
   /**
-   * 1.3 specific. The tool-hosted URL containing its public JWK keyset. Canvas
-   * may cache JWKs up to 5 minutes.
+   * 1.3 specific. The tool-hosted URL containing its public JWK keyset. Canvas may cache JWKs up to 5 minutes.
+   *
+   *
    */
   public_jwk_url: string;
-  /** 1.3 specific. List of LTI scopes requested by the tool */
+  /**
+   * 1.3 specific. List of LTI scopes requested by the tool
+   *
+   *
+   */
   scopes: string[];
   /**
-   * 1.3 specific. List of possible launch URLs for after the Canvas authorize
-   * redirect step
+   * 1.3 specific. List of possible launch URLs for after the Canvas authorize redirect step
+   *
+   *
    */
   redirect_uris: string[];
-  /** Default launch settings for all placements */
+  /**
+   * Default launch settings for all placements
+   *
+   *
+   */
   launch_settings: LtiLaunchSettings;
-  /** List of placements configured by the tool */
+  /**
+   * List of placements configured by the tool
+   *
+   *
+   */
   placements: LtiPlacement[];
 };
 
-/** Default launch settings for all placements */
+/**
+ * Default launch settings for all placements
+ */
 export type LtiLaunchSettings = {
-  /** Default message type for all placements */
+  /**
+   * Default message type for all placements
+   *
+   *
+   */
   message_type: string;
-  /** The text of the link to the tool (if applicable). */
+  /**
+   * The text of the link to the tool (if applicable).
+   *
+   *
+   */
   text: string;
   /**
    * Canvas-specific i18n for placement text. See the Navigation Placement docs.
    *
-   * Object
+   * object
    */
   labels: JSONObject;
   /**
-   * Placement-specific custom fields to send in the launch. Merged with
-   * tool-level custom fields.
+   * Placement-specific custom fields to send in the launch. Merged with tool-level custom fields.
    *
-   * Object
+   * object
    */
   custom_fields: JSONObject;
   /**
-   * Default iframe height. Not valid for all placements. Overrides tool-level
-   * launch_height.
+   * Default iframe height. Not valid for all placements. Overrides tool-level launch_height.
    *
-   * Type: number
+   * type: number
    */
   selection_height: number | string;
   /**
-   * Default iframe width. Not valid for all placements. Overrides tool-level
-   * launch_width.
+   * Default iframe width. Not valid for all placements. Overrides tool-level launch_width.
    *
-   * Type: number
+   * type: number
    */
   selection_width: number | string;
   /**
-   * Default iframe height. Not valid for all placements. Overrides tool-level
-   * launch_height.
+   * Default iframe height. Not valid for all placements. Overrides tool-level launch_height.
    *
-   * Type: number
+   * type: number
    */
   launch_height: number | string;
   /**
-   * Default iframe width. Not valid for all placements. Overrides tool-level
-   * launch_width.
+   * Default iframe width. Not valid for all placements. Overrides tool-level launch_width.
    *
-   * Type: number
+   * type: number
    */
   launch_width: number | string;
   /**
-   * Default icon URL. Not valid for all placements. Overrides tool-level
-   * icon_url.
+   * Default icon URL. Not valid for all placements. Overrides tool-level icon_url.
+   *
+   *
    */
   icon_url: string;
   /**
-   * The HTML class name of an InstUI Icon. Used instead of an icon_url in
-   * select placements.
+   * The HTML class name of an InstUI Icon. Used instead of an icon_url in select placements.
+   *
+   *
    */
   canvas_icon_class: string;
   /**
-   * Comma-separated list of Canvas permission short names required for a user
-   * to launch from this placement.
+   * Comma-separated list of Canvas permission short names required for a user to launch from this placement.
+   *
+   *
    */
   required_permissions: string;
-  /** When set to '_blank', opens placement in a new tab. */
+  /**
+   * When set to '_blank', opens placement in a new tab.
+   *
+   *
+   */
   windowTarget: string;
   /**
-   * The Canvas layout to use when launching the tool. See the Navigation
-   * Placement docs.
+   * The Canvas layout to use when launching the tool. See the Navigation Placement docs.
+   *
+   *
    */
   display_type: string;
-  /** The 1.1 launch URL for this placement. Overrides tool-level url. */
+  /**
+   * The 1.1 launch URL for this placement. Overrides tool-level url.
+   *
+   *
+   */
   url: string;
   /**
-   * The 1.3 launch URL for this placement. Overrides tool-level
-   * target_link_uri.
+   * The 1.3 launch URL for this placement. Overrides tool-level target_link_uri.
+   *
+   *
    */
   target_link_uri: string;
   /**
-   * Specifies types of users that can see this placement. Only valid for some
-   * placements like course_navigation.
+   * Specifies types of users that can see this placement. Only valid for some placements like course_navigation.
+   *
+   *
    */
   visibility: string;
   /**
-   * 1.1 specific. If true, the tool will send the SIS email in the
-   * lis_person_contact_email_primary launch property
+   * 1.1 specific. If true, the tool will send the SIS email in the lis_person_contact_email_primary launch property
    *
-   * Type: boolean
+   * type: boolean
    */
   prefer_sis_email: boolean | string;
   /**
-   * 1.1 specific. If true, query parameters from the launch URL will not be
-   * copied to the POST body.
+   * 1.1 specific. If true, query parameters from the launch URL will not be copied to the POST body.
    *
-   * Type: boolean
+   * type: boolean
    */
   oauth_compliant: boolean | string;
-  /** An SVG to use instead of an icon_url. Only valid for global_navigation. */
+  /**
+   * An SVG to use instead of an icon_url. Only valid for global_navigation.
+   *
+   *
+   */
   icon_svg_path_64: string;
   /**
-   * Default display state for course_navigation. If 'enabled', will show in
-   * course sidebar. If 'disabled', will be hidden.
+   * Default display state for course_navigation. If 'enabled', will show in course sidebar. If 'disabled', will be hidden.
+   *
+   *
    */
   default: string;
   /**
-   * Comma-separated list of media types that the tool can accept. Only valid
-   * for file_item.
+   * Comma-separated list of media types that the tool can accept. Only valid for file_item.
+   *
+   *
    */
   accept_media_types: string;
   /**
-   * If true, the tool will be launched in the tray. Only used by the
-   * editor_button placement.
+   * If true, the tool will be launched in the tray. Only used by the editor_button placement.
    *
-   * Type: boolean
+   * type: boolean
    */
   use_tray: boolean | string;
 };
 
-/** The tool's configuration for a specific placement */
+/**
+ * The tool's configuration for a specific placement
+ */
 export type LtiPlacement = {
-  /** The name of the placement. */
+  /**
+   * The name of the placement.
+   *
+   *
+   */
   placement: string;
   /**
    * If true, the tool will show in this placement. If false, it will not.
    *
-   * Type: boolean
+   * type: boolean
    */
   enabled: boolean | string;
-  /** Default message type for all placements */
+  /**
+   * Default message type for all placements
+   *
+   *
+   */
   message_type: string;
-  /** The text of the link to the tool (if applicable). */
+  /**
+   * The text of the link to the tool (if applicable).
+   *
+   *
+   */
   text: string;
   /**
    * Canvas-specific i18n for placement text. See the Navigation Placement docs.
    *
-   * Object
+   * object
    */
   labels: JSONObject;
   /**
-   * Placement-specific custom fields to send in the launch. Merged with
-   * tool-level custom fields.
+   * Placement-specific custom fields to send in the launch. Merged with tool-level custom fields.
    *
-   * Object
+   * object
    */
   custom_fields: JSONObject;
   /**
-   * Default iframe height. Not valid for all placements. Overrides tool-level
-   * launch_height.
+   * Default iframe height. Not valid for all placements. Overrides tool-level launch_height.
    *
-   * Type: number
+   * type: number
    */
   selection_height: number | string;
   /**
-   * Default iframe width. Not valid for all placements. Overrides tool-level
-   * launch_width.
+   * Default iframe width. Not valid for all placements. Overrides tool-level launch_width.
    *
-   * Type: number
+   * type: number
    */
   selection_width: number | string;
   /**
-   * Default iframe height. Not valid for all placements. Overrides tool-level
-   * launch_height.
+   * Default iframe height. Not valid for all placements. Overrides tool-level launch_height.
    *
-   * Type: number
+   * type: number
    */
   launch_height: number | string;
   /**
-   * Default iframe width. Not valid for all placements. Overrides tool-level
-   * launch_width.
+   * Default iframe width. Not valid for all placements. Overrides tool-level launch_width.
    *
-   * Type: number
+   * type: number
    */
   launch_width: number | string;
   /**
-   * Default icon URL. Not valid for all placements. Overrides tool-level
-   * icon_url.
+   * Default icon URL. Not valid for all placements. Overrides tool-level icon_url.
+   *
+   *
    */
   icon_url: string;
   /**
-   * The HTML class name of an InstUI Icon. Used instead of an icon_url in
-   * select placements.
+   * The HTML class name of an InstUI Icon. Used instead of an icon_url in select placements.
+   *
+   *
    */
   canvas_icon_class: string;
   /**
-   * Comma-separated list of Canvas permission short names required for a user
-   * to launch from this placement.
+   * Comma-separated list of Canvas permission short names required for a user to launch from this placement.
+   *
+   *
    */
   required_permissions: string;
-  /** When set to '_blank', opens placement in a new tab. */
+  /**
+   * When set to '_blank', opens placement in a new tab.
+   *
+   *
+   */
   windowTarget: string;
   /**
-   * The Canvas layout to use when launching the tool. See the Navigation
-   * Placement docs.
+   * The Canvas layout to use when launching the tool. See the Navigation Placement docs.
+   *
+   *
    */
   display_type: string;
-  /** The 1.1 launch URL for this placement. Overrides tool-level url. */
+  /**
+   * The 1.1 launch URL for this placement. Overrides tool-level url.
+   *
+   *
+   */
   url: string;
   /**
-   * The 1.3 launch URL for this placement. Overrides tool-level
-   * target_link_uri.
+   * The 1.3 launch URL for this placement. Overrides tool-level target_link_uri.
+   *
+   *
    */
   target_link_uri: string;
   /**
-   * Specifies types of users that can see this placement. Only valid for some
-   * placements like course_navigation.
+   * Specifies types of users that can see this placement. Only valid for some placements like course_navigation.
+   *
+   *
    */
   visibility: string;
   /**
-   * 1.1 specific. If true, the tool will send the SIS email in the
-   * lis_person_contact_email_primary launch property
+   * 1.1 specific. If true, the tool will send the SIS email in the lis_person_contact_email_primary launch property
    *
-   * Type: boolean
+   * type: boolean
    */
   prefer_sis_email: boolean | string;
   /**
-   * 1.1 specific. If true, query parameters from the launch URL will not be
-   * copied to the POST body.
+   * 1.1 specific. If true, query parameters from the launch URL will not be copied to the POST body.
    *
-   * Type: boolean
+   * type: boolean
    */
   oauth_compliant: boolean | string;
-  /** An SVG to use instead of an icon_url. Only valid for global_navigation. */
+  /**
+   * An SVG to use instead of an icon_url. Only valid for global_navigation.
+   *
+   *
+   */
   icon_svg_path_64: string;
   /**
-   * Default display state for course_navigation. If 'enabled', will show in
-   * course sidebar. If 'disabled', will be hidden.
+   * Default display state for course_navigation. If 'enabled', will show in course sidebar. If 'disabled', will be hidden.
+   *
+   *
    */
   default: string;
   /**
-   * Comma-separated list of media types that the tool can accept. Only valid
-   * for file_item.
+   * Comma-separated list of media types that the tool can accept. Only valid for file_item.
+   *
+   *
    */
   accept_media_types: string;
   /**
-   * If true, the tool will be launched in the tray. Only used by the
-   * editor_button placement.
+   * If true, the tool will be launched in the tray. Only used by the editor_button placement.
    *
-   * Type: boolean
+   * type: boolean
    */
   use_tray: boolean | string;
 };
 
-/** Changes made by a Canvas admin to a tool's configuration. */
+/**
+ * Changes made by a Canvas admin to a tool's configuration.
+ */
 export type LtiOverlay = {
-  /** The display name of the tool */
+  /**
+   * The display name of the tool
+   *
+   *
+   */
   title: string;
-  /** The description of the tool */
+  /**
+   * The description of the tool
+   *
+   *
+   */
   description: string;
   /**
    * A key-value listing of all custom fields the tool has requested
    *
-   * Object
+   * object
    */
   custom_fields: JSONObject;
-  /** The default launch URL for the tool. Overridable by placements. */
+  /**
+   * The default launch URL for the tool. Overridable by placements.
+   *
+   *
+   */
   target_link_uri: string;
   /**
-   * The tool's main domain. Highly recommended for deep linking, used to match
-   * links to the tool.
+   * The tool's main domain. Highly recommended for deep linking, used to match links to the tool.
+   *
+   *
    */
   domain: string;
-  /** Canvas-defined privacy level for the tool */
+  /**
+   * Canvas-defined privacy level for the tool
+   *
+   *
+   */
   privacy_level: string;
-  /** 1.3 specific. URL used for initial login request */
+  /**
+   * 1.3 specific. URL used for initial login request
+   *
+   *
+   */
   oidc_initiation_url: string;
   /**
-   * 1.3 specific. List of LTI scopes that the tool has requested but an admin
-   * has disabled
+   * 1.3 specific. List of LTI scopes that the tool has requested but an admin has disabled
+   *
+   *
    */
   disabled_scopes: string[];
-  /** List of placements that the tool has requested but an admin has disabled */
+  /**
+   * List of placements that the tool has requested but an admin has disabled
+   *
+   *
+   */
   disabled_placements: string[];
   /**
    * Placement-specific settings changed by an admin
    *
-   * Object
+   * object
    */
   placements: JSONObject;
 };
 
-/** A single version of a tool's configuration overlay */
+/**
+ * A single version of a tool's configuration overlay
+ */
 export type LtiOverlayVersion = {
   /**
    * The Canvas id of the root account
    *
-   * Type: integer
+   * type: integer
    */
   root_account_id: number | string;
-  /** Timestamp of the version's creation */
+  /**
+   * Timestamp of the version's creation
+   *
+   *
+   */
   created_at: string;
-  /** Timestamp of the version's last update */
+  /**
+   * Timestamp of the version's last update
+   *
+   *
+   */
   updated_at: string;
   /**
-   * Whether or not this change was caused by a reset of the tool's
-   * configuration
+   * Whether or not this change was caused by a reset of the tool's configuration
    *
-   * Type: boolean
+   * type: boolean
    */
   caused_by_reset: boolean | string;
   /**
-   * The user that created this version. If a string, this registration was
-   * created by Instructure.
+   * The user that created this version. If a string, this registration was created by Instructure.
+   *
+   *
    */
   created_by: User;
-  /** A list of changes made in this version compared to the previous version */
+  /**
+   * A list of changes made in this version compared to the previous version
+   *
+   *
+   */
   diff: JSONObject[][];
   /**
    * The id of the overlay this version is for
    *
-   * Type: integer
+   * type: integer
    */
   lti_overlay_id: number | string;
   /**
    * The id of the account this version is for
    *
-   * Type: integer
+   * type: integer
    */
   account_id: number | string;
 };
 
 /**
- * Changes made by a Canvas admin to a tool's configuration for a specific
- * placement.
+ * Changes made by a Canvas admin to a tool's configuration for a specific placement.
  */
 export type LtiPlacementOverlay = {
-  /** The text of the link to the tool (if applicable). */
+  /**
+   * The text of the link to the tool (if applicable).
+   *
+   *
+   */
   text: string;
-  /** The default launch URL for the tool. Overridable by placements. */
+  /**
+   * The default launch URL for the tool. Overridable by placements.
+   *
+   *
+   */
   target_link_uri: string;
-  /** Default message type for all placements */
+  /**
+   * Default message type for all placements
+   *
+   *
+   */
   message_type: string;
   /**
-   * Default iframe height. Not valid for all placements. Overrides tool-level
-   * launch_height.
+   * Default iframe height. Not valid for all placements. Overrides tool-level launch_height.
    *
-   * Type: number
+   * type: number
    */
   launch_height: number | string;
   /**
-   * Default iframe width. Not valid for all placements. Overrides tool-level
-   * launch_width.
+   * Default iframe width. Not valid for all placements. Overrides tool-level launch_width.
    *
-   * Type: number
+   * type: number
    */
   launch_width: number | string;
   /**
-   * Default icon URL. Not valid for all placements. Overrides tool-level
-   * icon_url.
+   * Default icon URL. Not valid for all placements. Overrides tool-level icon_url.
+   *
+   *
    */
   icon_url: string;
   /**
-   * Default display state for course_navigation. If 'enabled', will show in
-   * course sidebar. If 'disabled', will be hidden.
+   * Default display state for course_navigation. If 'enabled', will show in course sidebar. If 'disabled', will be hidden.
+   *
+   *
    */
   default: string;
 };
 
-/** The response for the List LTI Registrations API endpoint */
+/**
+ * The response for the List LTI Registrations API endpoint
+ */
 export type ListLtiRegistrationsResponse = {
   /**
    * The total number of LTI registrations across all pages
    *
-   * Type: integer
+   * type: integer
    */
   total: number | string;
-  /** The paginated list of LTI::Registrations */
+  /**
+   * The paginated list of LTI::Registrations
+   *
+   *
+   */
   data: LtiRegistration[];
 };
 
-/** The response for the Search Accounts and Courses API endpoint */
+/**
+ * The response for the Search Accounts and Courses API endpoint
+ */
 export type ContextSearchResponse = {
-  /** Accounts that match the search query. Limited to 100. */
+  /**
+   * Accounts that match the search query. Limited to 100.
+   *
+   *
+   */
   accounts: SearchableAccount[];
-  /** Courses that match the search query. Limited to 100. */
+  /**
+   * Courses that match the search query. Limited to 100.
+   *
+   *
+   */
   courses: SearchableCourse[];
 };
 
-/** A minimal representation of an Account for Canvas Apps search purposes */
+/**
+ * A minimal representation of an Account for Canvas Apps search purposes
+ */
 export type SearchableAccount = {
-  /** The Canvas DB ID */
+  /**
+   * The Canvas DB ID
+   *
+   *
+   */
   id: string;
-  /** The account name */
+  /**
+   * The account name
+   *
+   *
+   */
   name: string;
   /**
-   * The SIS ID of the account, if any. Only present if user can read or manage
-   * SIS.
+   * The SIS ID of the account, if any. Only present if user can read or manage SIS.
+   *
+   *
    */
   sis_id: string;
   /**
-   * Names of the accounts in this account's hierarchy, excluding the root and
-   * this account.
+   * Names of the accounts in this account's hierarchy, excluding the root and this account.
+   *
+   *
    */
   display_path: string[];
 };
 
-/** A minimal representation of a Course for Canvas Apps search purposes */
+/**
+ * A minimal representation of a Course for Canvas Apps search purposes
+ */
 export type SearchableCourse = {
-  /** The Canvas DB ID */
+  /**
+   * The Canvas DB ID
+   *
+   *
+   */
   id: string;
-  /** The course name */
+  /**
+   * The course name
+   *
+   *
+   */
   name: string;
   /**
-   * The SIS ID of the course, if any. Only present if user can read or manage
-   * SIS.
+   * The SIS ID of the course, if any. Only present if user can read or manage SIS.
+   *
+   *
    */
   sis_id: string;
   /**
-   * Names of the accounts in this course's account hierarchy, excluding the
-   * root.
+   * Names of the accounts in this course's account hierarchy, excluding the root.
+   *
+   *
    */
   display_path: string[];
-  /** The course code */
+  /**
+   * The course code
+   *
+   *
+   */
   course_code: string;
 };

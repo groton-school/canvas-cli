@@ -1,23 +1,29 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -25,7 +31,13 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** The updated body of the entry. */
+  /**
+   * The updated body of the entry.
+   *
+   *
+   *
+   *
+   */
   message: string;
 };
 
@@ -74,12 +86,15 @@ type Options = (
  * Update an entry
  *
  * Update an existing discussion entry.
+
+The entry must have been created by the current user, or the current user
+must have admin rights to the discussion. If the edit is not allowed, a 401 will be returned.
  *
- * The entry must have been created by the current user, or the current user
- * must have admin rights to the discussion. If the edit is not allowed, a 401
- * will be returned.
+ * nickname: update_entry_groups
  *
- * Nickname: update_entry_groups
+ * 
+ *
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(

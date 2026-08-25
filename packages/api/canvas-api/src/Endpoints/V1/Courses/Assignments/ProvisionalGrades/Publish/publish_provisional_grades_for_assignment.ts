@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type publish_provisional_grades_for_assignmentPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
@@ -52,16 +56,18 @@ type Options = (
  * Publish provisional grades for an assignment
  *
  * Publish the selected provisional grade for all submissions to an assignment.
- * Use the "Select provisional grade" endpoint to choose which provisional grade
- * to publish for a particular submission.
+Use the "Select provisional grade" endpoint to choose which provisional grade to publish
+for a particular submission.
+
+Students not in the moderation set will have their one and only provisional grade published.
+
+WARNING: This is irreversible. This will overwrite existing grades in the gradebook.
  *
- * Students not in the moderation set will have their one and only provisional
- * grade published.
+ * nickname: publish_provisional_grades_for_assignment
  *
- * WARNING: This is irreversible. This will overwrite existing grades in the
- * gradebook.
+ * 
  *
- * Nickname: publish_provisional_grades_for_assignment
+ * 
  */
 export async function publish_provisional_grades_for_assignment(
   options: Options

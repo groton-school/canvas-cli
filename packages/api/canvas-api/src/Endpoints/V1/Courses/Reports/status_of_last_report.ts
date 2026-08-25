@@ -1,15 +1,23 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Report } from '../../../../Resources/AccountReports.js';
 
 export type status_of_last_reportPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   report_type: string;
 };
 
@@ -49,7 +57,11 @@ type Options = (
  *
  * Returns the status of the last report initiated by the current user.
  *
- * Nickname: status_of_last_report
+ * nickname: status_of_last_report
+ *
+ *
+ *
+ *
  */
 export async function status_of_last_report(options: Options) {
   const response = await client().fetchAs<Report>(

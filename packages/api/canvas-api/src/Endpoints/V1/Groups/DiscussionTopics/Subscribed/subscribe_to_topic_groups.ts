@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type subscribe_to_topic_groupsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
 };
@@ -51,10 +55,14 @@ type Options = (
  * Subscribe to a topic
  *
  * Subscribe to a topic to receive notifications about new entries
+
+On success, the response will be 204 No Content with an empty body
  *
- * On success, the response will be 204 No Content with an empty body
+ * nickname: subscribe_to_topic_groups
  *
- * Nickname: subscribe_to_topic_groups
+ * 
+ *
+ * 
  */
 export async function subscribe_to_topic_groups(options: Options) {
   const response = await client().fetchAs<JSONValue>(

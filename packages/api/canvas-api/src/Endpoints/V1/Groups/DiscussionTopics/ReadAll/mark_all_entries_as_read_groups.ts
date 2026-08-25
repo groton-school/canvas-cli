@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type mark_all_entries_as_read_groupsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
 };
@@ -20,11 +24,13 @@ export type mark_all_entries_as_read_groupsSearchParameters = Masquerade;
 
 export type mark_all_entries_as_read_groupsFormParameters = Masquerade & {
   /**
-   * A boolean value to set all of the entries' forced_read_state. No change
-   * is made if this argument is not specified.
-   *
-   * Type: boolean
-   */
+     * A boolean value to set all of the entries&#x27; forced_read_state. No change
+is made if this argument is not specified.
+     *
+     * type: boolean
+     *
+     * 
+     */
   forced_read_state: boolean | string;
 };
 
@@ -73,12 +79,16 @@ type Options = (
  * Mark all entries as read
  *
  * Mark the discussion topic and all its entries as read.
+
+No request fields are necessary.
+
+On success, the response will be 204 No Content with an empty body.
  *
- * No request fields are necessary.
+ * nickname: mark_all_entries_as_read_groups
  *
- * On success, the response will be 204 No Content with an empty body.
+ * 
  *
- * Nickname: mark_all_entries_as_read_groups
+ * 
  */
 export async function mark_all_entries_as_read_groups(options: Options) {
   const response = await client().fetchAs<JSONValue>(

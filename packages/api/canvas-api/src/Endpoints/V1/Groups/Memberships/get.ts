@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { GroupMembership } from '../../../../Resources/Groups.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   membership_id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Returns the group membership with the given membership id or user id.
  *
- * Nickname: get_single_group_membership_memberships
+ * nickname: get_single_group_membership_memberships
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<GroupMembership>(

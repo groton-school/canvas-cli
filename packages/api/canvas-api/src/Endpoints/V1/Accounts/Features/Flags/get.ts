@@ -1,15 +1,23 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { FeatureFlag } from '../../../../../Resources/FeatureFlags.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   feature: string;
 };
 
@@ -47,13 +55,17 @@ type Options = (
 /**
  * Get feature flag
  *
- * Get the feature flag that applies to a given Account, Course, or User. The
- * flag may be defined on the object, or it may be inherited from a parent
- * account. You can look at the context_id and context_type of the returned
- * object to determine which is the case. If these fields are missing, then the
- * object is the global Canvas default.
+ * Get the feature flag that applies to a given Account, Course, or User.
+The flag may be defined on the object, or it may be inherited from a parent
+account. You can look at the context_id and context_type of the returned object
+to determine which is the case. If these fields are missing, then the object
+is the global Canvas default.
  *
- * Nickname: get_feature_flag_accounts
+ * nickname: get_feature_flag_accounts
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<FeatureFlag>(

@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { BlueprintTemplate } from '../../../../Resources/BlueprintCourses.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   template_id: string | number;
 };
@@ -51,11 +55,14 @@ type Options = (
 /**
  * Get blueprint information
  *
- * Using 'default' as the template_id should suffice for the current
- * implmentation (as there should be only one template per course). However,
- * using specific template ids may become necessary in the future
+ * Using 'default' as the template_id should suffice for the current implmentation (as there should be only one template per course).
+However, using specific template ids may become necessary in the future
  *
- * Nickname: get_blueprint_information
+ * nickname: get_blueprint_information
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<BlueprintTemplate>(

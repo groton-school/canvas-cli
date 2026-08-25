@@ -1,21 +1,25 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { CoursePace } from '../../../../Resources/CoursePace.js';
 
 export type show_course_pacePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
   /**
-   * The id of the course
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the course
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   course_id: number | string;
 };
 
@@ -24,9 +28,11 @@ export type show_course_paceSearchParameters = Masquerade &
     /**
      * The id of the course_pace
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     course_pace_id: number | string;
   }>;
@@ -65,7 +71,11 @@ type Options = (
  *
  * Returns a course pace for the course and pace id provided
  *
- * Nickname: show_course_pace
+ * nickname: show_course_pace
+ *
+ *
+ *
+ *
  */
 export async function show_course_pace(options: Options) {
   const response = await client().fetchAs<CoursePace>(

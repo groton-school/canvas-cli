@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { RubricAssessment } from '../../../../../Resources/Rubrics.js';
 
 export type delete_single_rubric_assessmentPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   rubric_association_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -59,7 +65,11 @@ type Options = (
  *
  * Deletes a rubric assessment
  *
- * Nickname: delete_single_rubric_assessment
+ * nickname: delete_single_rubric_assessment
+ *
+ *
+ *
+ *
  */
 export async function delete_single_rubric_assessment(options: Options) {
   const response = await client().fetchAs<RubricAssessment>(

@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { QuizGroup } from '../../../../../Resources/QuizQuestionGroups.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   quiz_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -59,7 +65,11 @@ type Options = (
  *
  * Returns details of the quiz group with the given id.
  *
- * Nickname: get_single_quiz_group
+ * nickname: get_single_quiz_group
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<QuizGroup>(

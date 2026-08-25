@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Section } from '../../../Resources/Sections.js';
 
 export type delete_sectionPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -45,9 +47,13 @@ type Options = (
 /**
  * Delete a section
  *
- * Delete an existing section. Returns the former Section.
+ * Delete an existing section.  Returns the former Section.
  *
- * Nickname: delete_section
+ * nickname: delete_section
+ *
+ *
+ *
+ *
  */
 export async function delete_section(options: Options) {
   const response = await client().fetchAs<Section>(`/api/v1/sections/{id}`, {

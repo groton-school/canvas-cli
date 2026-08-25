@@ -1,23 +1,43 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Bookmark } from '../../../../../Resources/Bookmarks.js';
 
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** The name of the bookmark */
+  /**
+   * The name of the bookmark
+   *
+   *
+   *
+   *
+   */
   name: string;
-  /** The url of the bookmark */
+  /**
+   * The url of the bookmark
+   *
+   *
+   *
+   *
+   */
   url: string;
   /**
-   * The position of the bookmark. Defaults to the bottom.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The position of the bookmark. Defaults to the bottom.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   position: number | string;
-  /** The data associated with the bookmark */
+  /**
+   * The data associated with the bookmark
+   *
+   *
+   *
+   *
+   */
   data: string;
 };
 
@@ -57,7 +77,11 @@ type Options =
  *
  * Creates a bookmark.
  *
- * Nickname: create_bookmark
+ * nickname: create_bookmark
+ *
+ *
+ *
+ *
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<Bookmark>(

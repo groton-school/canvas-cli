@@ -1,23 +1,29 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   quiz_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -25,19 +31,33 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** The name of the question group. */
+  /**
+   * The name of the question group.
+   *
+   *
+   *
+   *
+   */
   'quiz_groups[name]': string[];
   /**
-   * The number of questions to randomly select for this group.
-   *
-   * Format: 'int64'
-   */
+     * The number of questions to randomly select for this group.
+     *
+     * 
+
+format: 'int64'
+     *
+     * 
+     */
   'quiz_groups[pick_count]': number | string[];
   /**
-   * The number of points to assign to each question in the group.
-   *
-   * Format: 'int64'
-   */
+     * The number of points to assign to each question in the group.
+     *
+     * 
+
+format: 'int64'
+     *
+     * 
+     */
   'quiz_groups[question_points]': number | string[];
 };
 
@@ -87,7 +107,11 @@ type Options = (
  *
  * Update a question group
  *
- * Nickname: update_question_group
+ * nickname: update_question_group
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(

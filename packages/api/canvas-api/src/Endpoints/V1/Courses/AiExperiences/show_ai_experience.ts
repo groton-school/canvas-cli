@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { AiExperience } from '../../../../Resources/AiExperiences.js';
 
 export type show_ai_experiencePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Retrieve an AI experience by ID
  *
- * Nickname: show_ai_experience
+ * nickname: show_ai_experience
+ *
+ *
+ *
+ *
  */
 export async function show_ai_experience(options: Options) {
   const response = await client().fetchAs<AiExperience>(

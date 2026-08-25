@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Collaborator } from '../../../../Resources/Collaborations.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -15,10 +17,14 @@ export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
     /**
-     * - "collaborator_lti_id": Optional information to include with each member.
-     *   Represents an identifier to be used for the member in an LTI context.
-     * - "avatar_image_url": Optional information to include with each member. The
-     *   url for the avatar of a collaborator with type 'user'.
+     * - &quot;collaborator_lti_id&quot;: Optional information to include with each member.
+  Represents an identifier to be used for the member in an LTI context.
+- &quot;avatar_image_url&quot;: Optional information to include with each member.
+  The url for the avatar of a collaborator with type &#x27;user&#x27;.
+     *
+     * 
+     *
+     * 
      */
     include: string[];
   }>;
@@ -57,7 +63,11 @@ type Options = (
  *
  * A paginated list of the collaborators of a given collaboration
  *
- * Nickname: list_members_of_collaboration
+ * nickname: list_members_of_collaboration
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<Collaborator[]>(

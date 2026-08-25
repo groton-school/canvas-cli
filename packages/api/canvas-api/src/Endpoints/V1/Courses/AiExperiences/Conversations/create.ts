@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ObjectHashwithconversation_idandinitialmessagesarray } from '../../../../../Overrides.js';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   ai_experience_id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Initialize a new conversation with the AI experience
  *
- * Nickname: create_ai_conversation
+ * nickname: create_ai_conversation
+ *
+ *
+ *
+ *
  */
 export async function create(options: Options) {
   const response =

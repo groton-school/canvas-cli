@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Proficiency } from '../../../../Resources/ProficiencyRatings.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -45,15 +47,19 @@ type Options = (
 /**
  * Get proficiency ratings
  *
- * Get account-level proficiency ratings. If not defined for this account, it
- * will return proficiency ratings for the nearest super-account with ratings
- * defined. Will return 404 if none found.
+ * Get account-level proficiency ratings. If not defined for this account,
+it will return proficiency ratings for the nearest super-account with ratings defined.
+Will return 404 if none found.
+
+  Examples:
+    curl https://<canvas>/api/v1/accounts/<account_id>/outcome_proficiency \
+        -H 'Authorization: Bearer <token>'
  *
- * Examples: curl
- * https://<canvas>/api/v1/accounts/<account_id>/outcome_proficiency\
- * -H 'Authorization: Bearer <token>'
+ * nickname: get_proficiency_ratings_accounts
  *
- * Nickname: get_proficiency_ratings_accounts
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<Proficiency>(

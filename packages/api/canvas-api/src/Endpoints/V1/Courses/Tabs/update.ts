@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Tab } from '../../../../Resources/Tabs.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   tab_id: string | number;
 };
@@ -21,17 +25,21 @@ export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
   /**
-   * The new position of the tab, 1-based
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The new position of the tab, 1-based
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   position: number | string;
   /**
-   * No description
+   * no description
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   hidden: boolean | string;
 };
@@ -81,10 +89,14 @@ type Options = (
  * Update a tab for a course
  *
  * Home and Settings tabs are not manageable, and can't be hidden or moved
+
+Returns a tab object
  *
- * Returns a tab object
+ * nickname: update_tab_for_course
  *
- * Nickname: update_tab_for_course
+ * 
+ *
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<Tab>(

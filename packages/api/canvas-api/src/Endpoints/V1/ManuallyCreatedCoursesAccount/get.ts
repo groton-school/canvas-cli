@@ -25,10 +25,13 @@ type Options =
 /**
  * Get the manually-created courses sub-account for the domain root account
  *
- * Returns the sub-account that contains manually created courses for the domain
- * root account.
+ * Returns the sub-account that contains manually created courses for the domain root account.
  *
- * Nickname: get_manually_created_courses_sub_account_for_domain_root_account
+ * nickname: get_manually_created_courses_sub_account_for_domain_root_account
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<Account>(

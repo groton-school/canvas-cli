@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type redirect_to_assignment_override_for_groupPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
@@ -51,10 +55,14 @@ type Options = (
 /**
  * Redirect to the assignment override for a group
  *
- * Responds with a redirect to the override for the given group, if any (404
- * otherwise).
+ * Responds with a redirect to the override for the given group, if any
+(404 otherwise).
  *
- * Nickname: redirect_to_assignment_override_for_group
+ * nickname: redirect_to_assignment_override_for_group
+ *
+ * 
+ *
+ * 
  */
 export async function redirect_to_assignment_override_for_group(
   options: Options

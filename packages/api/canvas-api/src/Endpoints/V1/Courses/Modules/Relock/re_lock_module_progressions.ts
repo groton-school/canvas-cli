@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Module } from '../../../../../Resources/CoursePace.js';
 
 export type re_lock_module_progressionsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -51,13 +55,17 @@ type Options = (
 /**
  * Re-lock module progressions
  *
- * Resets module progressions to their default locked state and recalculates
- * them based on the current requirements.
+ * Resets module progressions to their default locked state and
+recalculates them based on the current requirements.
+
+Adding progression requirements to an active course will not lock students
+out of modules they have already unlocked unless this action is called.
  *
- * Adding progression requirements to an active course will not lock students
- * out of modules they have already unlocked unless this action is called.
+ * nickname: re_lock_module_progressions
  *
- * Nickname: re_lock_module_progressions
+ * 
+ *
+ * 
  */
 export async function re_lock_module_progressions(options: Options) {
   const response = await client().fetchAs<Module>(

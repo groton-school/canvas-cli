@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Page } from '../../../../Resources/Pages.js';
 
 export type show_front_page_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Retrieve the content of the front page
  *
- * Nickname: show_front_page_courses
+ * nickname: show_front_page_courses
+ *
+ *
+ *
+ *
  */
 export async function show_front_page_courses(options: Options) {
   const response = await client().fetchAs<Page>(

@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { TemporaryEnrollmentPairing } from '../../../../Resources/TemporaryEnrollmentPairings.js';
 
 export type delete_temporary_enrollment_pairingPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Delete a temporary enrollment pairing
  *
- * Nickname: delete_temporary_enrollment_pairing
+ * nickname: delete_temporary_enrollment_pairing
+ *
+ *
+ *
+ *
  */
 export async function delete_temporary_enrollment_pairing(options: Options) {
   const response = await client().fetchAs<TemporaryEnrollmentPairing>(

@@ -1,5 +1,5 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { JSONForsingledeletionoktrueForbulkdeletionjsonmessageBulkdeletecompleteddeleted_user_ids123456unauthorized_user_ids789 } from '../../../../Overrides.js';
 
 export type bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_idsPathParameters =
@@ -7,7 +7,9 @@ export type bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_
     /**
      * ID
      *
-     * Type: string
+     * type: string
+     *
+     *
      */
     group_id: string | number;
   };
@@ -17,10 +19,14 @@ export type bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_
     Paginated &
     Partial<{
       /**
-       * - An array of user IDs to delete memberships in bulk.
-       *
-       * Format: 'int64'
-       */
+     * - An array of user IDs to delete memberships in bulk.
+     *
+     * 
+
+format: 'int64'
+     *
+     * 
+     */
       user_ids: number | string[];
     }>;
 
@@ -54,11 +60,16 @@ type Options = (
   );
 
 /**
- * Bulk delete memberships Bulk deletes memberships by providing an array of
- * user IDs.
+ * Bulk delete memberships
+Bulk deletes memberships by providing an array of user IDs.
  *
- * Nickname:
- * bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_ids
+ * 
+ *
+ * nickname: bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_ids
+ *
+ * 
+ *
+ * 
  */
 export async function bulk_delete_memberships_bulk_deletes_memberships_by_providing_array_of_user_ids(
   options: Options

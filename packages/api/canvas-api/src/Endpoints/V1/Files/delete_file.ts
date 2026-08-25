@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { File } from '../../../Resources/Files.js';
 
 export type delete_filePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -14,12 +16,15 @@ export type delete_filePathParameters = {
 export type delete_fileSearchParameters = Masquerade &
   Partial<{
     /**
-     * This action is irreversible. If replace is set to true the file contents
-     * will be replaced with a generic "file has been removed" file. This also
-     * destroys any previews that have been generated for the file. Must have
-     * manage files and become other users permissions
+     * This action is irreversible.
+If replace is set to true the file contents will be replaced with a
+generic &quot;file has been removed&quot; file. This also destroys any previews
+that have been generated for the file.
+Must have manage files and become other users permissions
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     replace: boolean | string;
   }>;
@@ -57,12 +62,16 @@ type Options = (
  * Delete file
  *
  * Remove the specified file. Unlike most other DELETE endpoints, using this
- * endpoint will result in comprehensive, irretrievable destruction of the file.
- * It should be used with the `replace` parameter set to true in cases where the
- * file preview also needs to be destroyed (such as to remove files that violate
- * privacy laws).
+endpoint will result in comprehensive, irretrievable destruction of the file.
+It should be used with the `replace` parameter set to true in cases where the
+file preview also needs to be destroyed (such as to remove files that violate
+privacy laws).
  *
- * Nickname: delete_file
+ * nickname: delete_file
+ *
+ * 
+ *
+ * 
  */
 export async function delete_file(options: Options) {
   const response = await client().fetchAs<File>(`/api/v1/files/{id}`, {

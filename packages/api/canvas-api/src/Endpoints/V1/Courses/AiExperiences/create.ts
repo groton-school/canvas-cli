@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { AiExperience } from '../../../../Resources/AiExperiences.js';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -14,20 +16,54 @@ export type createPathParameters = {
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** The title of the AI experience. */
+  /**
+   * The title of the AI experience.
+   *
+   *
+   *
+   *
+   */
   title: string;
-  /** The description of the AI experience. */
+  /**
+   * The description of the AI experience.
+   *
+   *
+   *
+   *
+   */
   description: string;
-  /** The AI facts for the experience. */
+  /**
+   * The AI facts for the experience.
+   *
+   *
+   *
+   *
+   */
   facts: string;
-  /** The learning objectives for this experience. */
+  /**
+   * The learning objectives for this experience.
+   *
+   *
+   *
+   *
+   */
   learning_objective: string;
-  /** The pedagogical guidance for the experience. */
+  /**
+   * The pedagogical guidance for the experience.
+   *
+   *
+   *
+   *
+   */
   pedagogical_guidance: string;
   /**
-   * The initial state of the experience. Defaults to 'unpublished'. Allowed
-   * values: published, unpublished
-   */
+     * The initial state of the experience. Defaults to &#x27;unpublished&#x27;.
+Allowed values: published, unpublished
+     *
+     * 
+     *
+     * 
+     */
   workflow_state: string;
 };
 
@@ -77,7 +113,11 @@ type Options = (
  *
  * Create a new AI experience for the specified course
  *
- * Nickname: create_ai_experience
+ * nickname: create_ai_experience
+ *
+ *
+ *
+ *
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<AiExperience>(

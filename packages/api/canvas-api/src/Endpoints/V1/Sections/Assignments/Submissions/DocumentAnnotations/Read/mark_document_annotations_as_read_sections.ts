@@ -1,23 +1,29 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type mark_document_annotations_as_read_sectionsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   section_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -57,13 +63,16 @@ type Options = (
 /**
  * Mark document annotations as read
  *
- * Indicate that annotations made on a submitted document have been read by the
- * student. Only the student who owns the submission can use this endpoint.
+ * Indicate that annotations made on a submitted document have been read by the student.
+Only the student who owns the submission can use this endpoint.
+
+NOTE: Document annotations will be marked as read automatically when they are viewed in Canvas web.
  *
- * NOTE: Document annotations will be marked as read automatically when they are
- * viewed in Canvas web.
+ * nickname: mark_document_annotations_as_read_sections
  *
- * Nickname: mark_document_annotations_as_read_sections
+ * 
+ *
+ * 
  */
 export async function mark_document_annotations_as_read_sections(
   options: Options

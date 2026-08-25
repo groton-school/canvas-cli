@@ -1,5 +1,5 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Conversation } from '../../../Resources/Conversations.js';
 
 export type listSearchParameters = Masquerade &
@@ -7,43 +7,62 @@ export type listSearchParameters = Masquerade &
   Partial<{
     /**
      * When set, only return conversations of the specified type. For example,
-     * set to "unread" to return only conversations that haven't been read. The
-     * default behavior is to return all non-archived conversations (i.e. read
-     * and unread).
+set to &quot;unread&quot; to return only conversations that haven&#x27;t been read.
+The default behavior is to return all non-archived conversations (i.e.
+read and unread).
+     *
+     * 
+     *
+     * 
      */
     scope: string;
     /**
-     * When set, only return conversations for the specified courses, groups or
-     * users. The id should be prefixed with its type, e.g. "user_123",
+     * When set, only return conversations for the specified courses, groups
+or users. The id should be prefixed with its type, e.g. &quot;user_123&quot;,
+     *
+     * 
+     *
+     * 
      */
     filter: string[];
     /**
      * When filter[] contains multiple filters, combine them with this mode,
-     * filtering conversations that at have at least all of the contexts ("and")
-     * or at least one of the contexts ("or")
+filtering conversations that at have at least all of the contexts (&quot;and&quot;)
+or at least one of the contexts (&quot;or&quot;)
+     *
+     * 
+     *
+     * 
      */
     filter_mode: string;
     /**
-     * (Obsolete) Submissions are no longer linked to conversations. This
-     * parameter is ignored.
+     * (Obsolete) Submissions are no
+longer linked to conversations. This parameter is ignored.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     interleave_submissions: boolean | string;
     /**
-     * Default is false. If true, the top-level element of the response will be
-     * an object rather than an array, and will have the keys "conversations"
-     * which will contain the paged conversation data, and "conversation_ids"
-     * which will contain the ids of all conversations under this scope/filter
-     * in the same order.
+     * Default is false. If true,
+the top-level element of the response will be an object rather than
+an array, and will have the keys &quot;conversations&quot; which will contain the
+paged conversation data, and &quot;conversation_ids&quot; which will contain the
+ids of all conversations under this scope/filter in the same order.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     include_all_conversation_ids: boolean | string;
     /**
-     * "participant_avatars":: Optionally include an "avatar_url" key for each
-     * user participating in the conversation "uuid":: Optionally include an
-     * "uuid" key for each user participating in the conversation
+     * &quot;participant_avatars&quot;:: Optionally include an &quot;avatar_url&quot; key for each user participating in the conversation
+&quot;uuid&quot;:: Optionally include an &quot;uuid&quot; key for each user participating in the conversation
+     *
+     * 
+     *
+     * 
      */
     include: string[];
   }>;
@@ -70,14 +89,18 @@ type Options =
 /**
  * List conversations
  *
- * Returns the paginated list of conversations for the current user, most recent
- * ones first.
+ * Returns the paginated list of conversations for the current user, most
+recent ones first.
+
+ "uuid:W9GQIcdoDTqwX8mxIunDQQVL6WZTaGmpa5xovmCB", or "course_456".
+ For users, you can use either their numeric ID or UUID prefixed with "uuid:".
+ Can be an array (by setting "filter[]") or single value (by setting "filter")
  *
- * "uuid:W9GQIcdoDTqwX8mxIunDQQVL6WZTaGmpa5xovmCB", or "course_456". For users,
- * you can use either their numeric ID or UUID prefixed with "uuid:". Can be an
- * array (by setting "filter[]") or single value (by setting "filter")
+ * nickname: list_conversations
  *
- * Nickname: list_conversations
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<Conversation[]>(

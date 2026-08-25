@@ -1,15 +1,17 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { OutcomeAlignment } from '../../../../Resources/OutcomeResults.js';
 
 export type getPathParameters = {
   /**
-   * The id of the course
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the course
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   course_id: number | string;
 };
 
@@ -17,24 +19,27 @@ export type getSearchParameters = Masquerade &
   Paginated &
   Partial<{
     /**
-     * The id of the student. Returns alignments filtered by student
-     * submissions. Can be combined with assignment_id to filter to a specific
-     * assignment.
+     * The id of the student. Returns alignments filtered by student submissions.
+Can be combined with assignment_id to filter to a specific assignment.
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     student_id: number | string;
     /**
      * The id of the assignment. When provided without student_id, returns all
-     * outcome alignments for the assignment (requires manage_grades or
-     * view_all_grades permission). When provided with student_id, filters to
-     * that student's submission.
+outcome alignments for the assignment (requires manage_grades or
+view_all_grades permission). When provided with student_id, filters to
+that student&#x27;s submission.
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     assignment_id: number | string;
   }>;
@@ -73,7 +78,11 @@ type Options = (
  *
  * Returns outcome alignments for a student or assignment in a course.
  *
- * Nickname: get_outcome_alignments_for_student_or_assignment
+ * nickname: get_outcome_alignments_for_student_or_assignment
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<OutcomeAlignment[]>(

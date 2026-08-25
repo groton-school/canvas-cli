@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   poll_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -20,18 +24,32 @@ export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
   /**
-   * The id of the course this session is associated with.
-   *
-   * Format: 'int64'
-   */
+     * The id of the course this session is associated with.
+     *
+     * 
+
+format: 'int64'
+     *
+     * 
+     */
   'poll_sessions[course_id]': number | string[];
   /**
-   * The id of the course section this session is associated with.
-   *
-   * Format: 'int64'
-   */
+     * The id of the course section this session is associated with.
+     *
+     * 
+
+format: 'int64'
+     *
+     * 
+     */
   'poll_sessions[course_section_id]': number | string[];
-  /** Whether or not results are viewable by students. */
+  /**
+   * Whether or not results are viewable by students.
+   *
+   *
+   *
+   *
+   */
   'poll_sessions[has_public_results]': boolean | string[];
 };
 
@@ -81,7 +99,11 @@ type Options = (
  *
  * Update an existing poll session for this poll
  *
- * Nickname: update_single_poll_session
+ * nickname: update_single_poll_session
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(

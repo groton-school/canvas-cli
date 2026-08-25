@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Hash } from '../../../../Overrides.js';
 import { Report } from '../../../../Resources/AccountReports.js';
 
@@ -7,10 +7,18 @@ export type start_reportPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   report: string;
 };
 
@@ -18,36 +26,46 @@ export type start_reportSearchParameters = Masquerade;
 
 export type start_reportFormParameters = Masquerade & {
   /**
-   * The parameters will vary for each report. To fetch a list of available
-   * parameters for each report, see
-   * {api:AccountReportsController#available_reports List Available Reports}.
-   * A few example parameters have been provided below. Note that the example
-   * parameters provided below may not be valid for every report.
-   */
+     * The parameters will vary for each report. To fetch a list
+of available parameters for each report, see {api:AccountReportsController#available_reports List Available Reports}.
+A few example parameters have been provided below. Note that the example
+parameters provided below may not be valid for every report.
+     *
+     * 
+     *
+     * 
+     */
   parameters: Hash[];
   /**
-   * If true, no message will be sent to the user upon completion of the
-   * report.
-   *
-   * Type: boolean
-   */
+     * If true, no message will be sent
+to the user upon completion of the report.
+     *
+     * type: boolean
+     *
+     * 
+     */
   'parameters[skip_message]': boolean | string;
   /**
-   * The id of the course to report on. Note: this parameter has been listed
-   * to serve as an example and may not be valid for every report.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the course to report on.
+Note: this parameter has been listed to serve as an example and may not be
+valid for every report.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   'parameters[course_id]': number | string;
   /**
-   * If true, user data will be included. If false, user data will be omitted.
-   * Note: this parameter has been listed to serve as an example and may not
-   * be valid for every report.
-   *
-   * Type: boolean
-   */
+     * If true, user data will be included. If
+false, user data will be omitted. Note: this parameter has been listed to
+serve as an example and may not be valid for every report.
+     *
+     * type: boolean
+     *
+     * 
+     */
   'parameters[users]': boolean | string;
 };
 
@@ -96,12 +114,16 @@ type Options = (
  * Start a Report
  *
  * Generates a report instance for the account. Note that "report" in the
- * request must match one of the available report names. To fetch a list of
- * available report names and parameters for each report (including whether or
- * not those parameters are required), see
- * {api:AccountReportsController#available_reports List Available Reports}.
+request must match one of the available report names. To fetch a list of
+available report names and parameters for each report (including whether or
+not those parameters are required), see
+{api:AccountReportsController#available_reports List Available Reports}.
  *
- * Nickname: start_report
+ * nickname: start_report
+ *
+ * 
+ *
+ * 
  */
 export async function start_report(options: Options) {
   const response = await client().fetchAs<Report>(

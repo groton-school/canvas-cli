@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { SisImport } from '../../../../../Resources/SisImports.js';
 
 export type abort_sis_importPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -52,12 +56,16 @@ type Options = (
  * Abort SIS import
  *
  * Abort a SIS import that has not completed.
+
+Aborting a sis batch that is running can take some time for every process to
+see the abort event. Subsequent sis batches begin to process 10 minutes
+after the abort to allow each process to clean up properly.
  *
- * Aborting a sis batch that is running can take some time for every process to
- * see the abort event. Subsequent sis batches begin to process 10 minutes after
- * the abort to allow each process to clean up properly.
+ * nickname: abort_sis_import
  *
- * Nickname: abort_sis_import
+ * 
+ *
+ * 
  */
 export async function abort_sis_import(options: Options) {
   const response = await client().fetchAs<SisImport>(

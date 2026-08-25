@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { SharedBrandConfig } from '../../../../Resources/SharedBrandConfigs.js';
 
 export type share_brandconfig_themePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -14,9 +16,21 @@ export type share_brandconfig_themePathParameters = {
 export type share_brandconfig_themeSearchParameters = Masquerade;
 
 export type share_brandconfig_themeFormParameters = Masquerade & {
-  /** Name to share this BrandConfig (theme) as. */
+  /**
+   * Name to share this BrandConfig (theme) as.
+   *
+   *
+   *
+   *
+   */
   'shared_brand_config[name]': string;
-  /** MD5 of brand_config to share */
+  /**
+   * MD5 of brand_config to share
+   *
+   *
+   *
+   *
+   */
   'shared_brand_config[brand_config_md5]': string;
 };
 
@@ -64,10 +78,14 @@ type Options = (
 /**
  * Share a BrandConfig (Theme)
  *
- * Create a SharedBrandConfig, which will give the given brand_config a name and
- * make it available to other users of this account.
+ * Create a SharedBrandConfig, which will give the given brand_config a name
+and make it available to other users of this account.
  *
- * Nickname: share_brandconfig_theme
+ * nickname: share_brandconfig_theme
+ *
+ * 
+ *
+ * 
  */
 export async function share_brandconfig_theme(options: Options) {
   const response = await client().fetchAs<SharedBrandConfig>(

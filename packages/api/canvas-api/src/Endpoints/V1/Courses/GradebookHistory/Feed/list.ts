@@ -1,15 +1,17 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { SubmissionVersion } from '../../../../../Resources/GradebookHistory.js';
 
 export type listPathParameters = {
   /**
-   * The id of the contextual course for this API call
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the contextual course for this API call
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   course_id: number | string;
 };
 
@@ -18,29 +20,35 @@ export type listSearchParameters = Masquerade &
   Partial<{
     /**
      * The ID of the assignment for which you want to see submissions. If
-     * absent, versions of submissions from any assignment in the course are
-     * included.
+absent, versions of submissions from any assignment in the course are
+included.
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     assignment_id: number | string;
     /**
      * The ID of the user for which you want to see submissions. If absent,
-     * versions of submissions from any user in the course are included.
+versions of submissions from any user in the course are included.
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     user_id: number | string;
     /**
      * Returns submission versions in ascending date order (oldest first). If
-     * absent, returns submission versions in descending date order (newest
-     * first).
+absent, returns submission versions in descending date order (newest
+first).
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     ascending: boolean | string;
   }>;
@@ -78,11 +86,15 @@ type Options = (
  * List uncollated submission versions
  *
  * Gives a paginated, uncollated list of submission versions for all matching
- * submissions in the context. This SubmissionVersion objects will not include
- * the +new_grade+ or +previous_grade+ keys, only the +grade+; same for
- * +graded_at+ and +grader+.
+submissions in the context. This SubmissionVersion objects will not include
+the +new_grade+ or +previous_grade+ keys, only the +grade+; same for
++graded_at+ and +grader+.
  *
- * Nickname: list_uncollated_submission_versions
+ * nickname: list_uncollated_submission_versions
+ *
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<SubmissionVersion[]>(

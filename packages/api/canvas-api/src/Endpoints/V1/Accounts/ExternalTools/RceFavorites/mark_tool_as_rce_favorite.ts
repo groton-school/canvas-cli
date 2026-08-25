@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type mark_tool_as_rce_favoritePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -50,13 +54,16 @@ type Options = (
 /**
  * Mark tool as RCE Favorite
  *
- * Mark the specified editor_button external tool as a favorite in the RCE
- * editor for courses in the given account and its subaccounts (if the
- * subaccounts haven't set their own RCE Favorites). This places the tool in a
- * preferred location in the RCE. Cannot mark more than 2 tools as RCE
- * Favorites.
+ * Mark the specified editor_button external tool as a favorite in the RCE editor
+for courses in the given account and its subaccounts (if the subaccounts
+haven't set their own RCE Favorites). This places the tool in a preferred location
+in the RCE. Cannot mark more than 2 tools as RCE Favorites.
  *
- * Nickname: mark_tool_as_rce_favorite
+ * nickname: mark_tool_as_rce_favorite
+ *
+ * 
+ *
+ * 
  */
 export async function mark_tool_as_rce_favorite(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,16 +1,25 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Group } from '../../../../../Resources/Groups.js';
 
 export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
-    /** Only include groups that are in this type of context. */
+    /**
+     * Only include groups that are in this type of context.
+     *
+     *
+     *
+     *
+     */
     context_type: string;
     /**
-     * - "tabs": Include the list of tabs configured for each group. See the
-     *   {api:TabsController#index List available tabs API} for more
-     *   information.
+     * - &quot;tabs&quot;: Include the list of tabs configured for each group.  See the
+  {api:TabsController#index List available tabs API} for more information.
+     *
+     * 
+     *
+     * 
      */
     include: string[];
   }>;
@@ -39,7 +48,11 @@ type Options =
  *
  * Returns a paginated list of active groups for the current user.
  *
- * Nickname: list_your_groups
+ * nickname: list_your_groups
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<Group[]>(

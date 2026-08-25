@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type reset_course_favoritesSearchParameters = Masquerade;
 
@@ -25,10 +25,14 @@ type Options =
 /**
  * Reset course favorites
  *
- * Reset the current user's course favorites to the default automatically
- * generated list of enrolled courses
+ * Reset the current user's course favorites to the default
+automatically generated list of enrolled courses
  *
- * Nickname: reset_course_favorites
+ * nickname: reset_course_favorites
+ *
+ * 
+ *
+ * 
  */
 export async function reset_course_favorites(options: Options) {
   const response = await client().fetchAs<JSONValue>(

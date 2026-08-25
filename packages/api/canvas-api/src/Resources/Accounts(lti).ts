@@ -1,28 +1,43 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type Account = {
   /**
-   * The ID of the Account object
+   * the ID of the Account object
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
-  /** The display name of the account */
+  /**
+   * The display name of the account
+   *
+   *
+   */
   name: string;
-  /** The UUID of the account */
+  /**
+   * The UUID of the account
+   *
+   *
+   */
   uuid: string;
   /**
    * The account's parent ID, or null if this is the root account
    *
-   * Type: integer
+   * type: integer
    */
   parent_account_id: number | string;
   /**
    * The ID of the root account, or null if this is the root account
    *
-   * Type: integer
+   * type: integer
    */
   root_account_id: number | string;
-  /** The state of the account. Can be 'active' or 'deleted'. */
+  /**
+   * The state of the account. Can be 'active' or 'deleted'.
+   *
+   *
+   */
   workflow_state: string;
 };

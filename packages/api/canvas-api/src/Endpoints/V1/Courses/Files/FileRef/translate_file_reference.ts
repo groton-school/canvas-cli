@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { File } from '../../../../../Resources/Files.js';
 
 export type translate_file_referencePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   migration_id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Get information about a file from a course copy file reference
  *
- * Nickname: translate_file_reference
+ * nickname: translate_file_reference
+ *
+ *
+ *
+ *
  */
 export async function translate_file_reference(options: Options) {
   const response = await client().fetchAs<File>(

@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { RubricImport } from '../../../../../Overrides.js';
 
 export type creates_rubric_using_csv_file_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Returns the rubric import object that was created
  *
- * Nickname: creates_rubric_using_csv_file_courses
+ * nickname: creates_rubric_using_csv_file_courses
+ *
+ *
+ *
+ *
  */
 export async function creates_rubric_using_csv_file_courses(options: Options) {
   const response = await client().fetchAs<RubricImport>(

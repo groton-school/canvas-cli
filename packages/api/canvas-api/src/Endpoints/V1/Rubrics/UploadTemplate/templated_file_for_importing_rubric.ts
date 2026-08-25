@@ -26,7 +26,11 @@ type Options =
  *
  * Returns a CSV template file that can be used to import rubrics into Canvas.
  *
- * Nickname: templated_file_for_importing_rubric
+ * nickname: templated_file_for_importing_rubric
+ *
+ *
+ *
+ *
  */
 export async function templated_file_for_importing_rubric(options: Options) {
   const response = await client().fetchAs<string>(

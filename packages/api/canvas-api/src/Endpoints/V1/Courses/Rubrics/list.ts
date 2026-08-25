@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -46,7 +48,11 @@ type Options = (
  *
  * Returns the paginated list of active rubrics for the current context.
  *
- * Nickname: list_rubrics_courses
+ * nickname: list_rubrics_courses
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

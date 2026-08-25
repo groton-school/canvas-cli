@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type set_course_timetablePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -14,21 +16,46 @@ export type set_course_timetableSearchParameters = Masquerade;
 
 export type set_course_timetableFormParameters = Masquerade & {
   /**
-   * An array of timetable objects for the course section specified by
-   * course_section_id. If course_section_id is set to "all", events will be
-   * created for the entire course.
-   */
+     * An array of timetable objects for the course section specified by course_section_id.
+If course_section_id is set to &quot;all&quot;, events will be created for the entire course.
+     *
+     * 
+     *
+     * 
+     */
   'timetables[course_section_id]': string[];
   /**
-   * A comma-separated list of abbreviated weekdays (Mon-Monday, Tue-Tuesday,
-   * Wed-Wednesday, Thu-Thursday, Fri-Friday, Sat-Saturday, Sun-Sunday)
-   */
+     * A comma-separated list of abbreviated weekdays
+(Mon-Monday, Tue-Tuesday, Wed-Wednesday, Thu-Thursday, Fri-Friday, Sat-Saturday, Sun-Sunday)
+     *
+     * 
+     *
+     * 
+     */
   'timetables[course_section_id][weekdays]': string[];
-  /** Time to start each event at (e.g. "9:00 am") */
+  /**
+   * Time to start each event at (e.g. &quot;9:00 am&quot;)
+   *
+   *
+   *
+   *
+   */
   'timetables[course_section_id][start_time]': string[];
-  /** Time to end each event at (e.g. "9:00 am") */
+  /**
+   * Time to end each event at (e.g. &quot;9:00 am&quot;)
+   *
+   *
+   *
+   *
+   */
   'timetables[course_section_id][end_time]': string[];
-  /** A location name to set for each event */
+  /**
+   * A location name to set for each event
+   *
+   *
+   *
+   *
+   */
   'timetables[course_section_id][location_name]': string[];
 };
 
@@ -76,14 +103,19 @@ type Options = (
 /**
  * Set a course timetable
  *
- * Creates and updates "timetable" events for a course. Can automaticaly
- * generate a series of calendar events based on simple schedules (e.g. "Monday
- * and Wednesday at 2:00pm" )
+ * Creates and updates "timetable" events for a course.
+Can automaticaly generate a series of calendar events based on simple schedules
+(e.g. "Monday and Wednesday at 2:00pm" )
+
+Existing timetable events for the course and course sections
+will be updated if they still are part of the timetable.
+Otherwise, they will be deleted.
  *
- * Existing timetable events for the course and course sections will be updated
- * if they still are part of the timetable. Otherwise, they will be deleted.
+ * nickname: set_course_timetable
  *
- * Nickname: set_course_timetable
+ * 
+ *
+ * 
  */
 export async function set_course_timetable(options: Options) {
   const response = await client().fetchAs<JSONValue>(

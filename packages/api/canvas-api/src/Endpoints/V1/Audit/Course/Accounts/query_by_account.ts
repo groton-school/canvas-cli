@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { CourseEvent } from '../../../../../Resources/CourseAuditLog.js';
 
 export type query_by_accountPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -17,13 +19,17 @@ export type query_by_accountSearchParameters = Masquerade &
     /**
      * The beginning of the time range from which you want events.
      *
-     * Format: date-time
+     * format: date-time
+     *
+     *
      */
     start_time: string;
     /**
      * The end of the time range from which you want events.
      *
-     * Format: date-time
+     * format: date-time
+     *
+     *
      */
     end_time: string;
   }>;
@@ -62,7 +68,11 @@ type Options = (
  *
  * List course change events for a given account.
  *
- * Nickname: query_by_account
+ * nickname: query_by_account
+ *
+ *
+ *
+ *
  */
 export async function query_by_account(options: Options) {
   const response = await client().fetchAs<CourseEvent[]>(

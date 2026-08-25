@@ -1,18 +1,22 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { ModuleAssignmentOverride } from '../../../../../Resources/Modules.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   context_module_id: string | number;
 };
@@ -49,12 +53,15 @@ type Options = (
   );
 
 /**
- * List a module's overrides
+ * List a module&#x27;s overrides
  *
- * Returns a paginated list of AssignmentOverrides that apply to the
- * ContextModule.
+ * Returns a paginated list of AssignmentOverrides that apply to the ContextModule.
  *
- * Nickname: list_module_s_overrides
+ * nickname: list_module_s_overrides
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<ModuleAssignmentOverride[]>(

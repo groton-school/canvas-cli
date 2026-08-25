@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -50,12 +54,15 @@ type Options = (
 /**
  * Get course copy status
  *
- * DEPRECATED: Please use the {api:ContentMigrationsController#create Content
- * Migrations API}
+ * DEPRECATED: Please use the {api:ContentMigrationsController#create Content Migrations API}
+
+Retrieve the status of a course copy
  *
- * Retrieve the status of a course copy
+ * nickname: get_course_copy_status
  *
- * Nickname: get_course_copy_status
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

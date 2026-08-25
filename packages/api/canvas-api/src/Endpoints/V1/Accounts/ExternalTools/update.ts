@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ContextExternalTool } from '../../../../Resources/ExternalTools.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   external_tool_id: string | number;
 };
@@ -51,15 +55,17 @@ type Options = (
 /**
  * Edit an external tool
  *
- * Update the specified external tool. Uses same parameters as create. Returns
- * the updated tool.
+ * Update the specified external tool. Uses same parameters as create. Returns the updated tool.
+
+NOTE: Any updates made to LTI 1.3 tools with this API will be overridden if any changes are
+made to the tool's associated LTI Registration/Developer Key configuration. In almost all cases,
+changes should be made to the tool's associated LTI Registration configuration, not individual tools.
  *
- * NOTE: Any updates made to LTI 1.3 tools with this API will be overridden if
- * any changes are made to the tool's associated LTI Registration/Developer Key
- * configuration. In almost all cases, changes should be made to the tool's
- * associated LTI Registration configuration, not individual tools.
+ * nickname: edit_external_tool_accounts
  *
- * Nickname: edit_external_tool_accounts
+ * 
+ *
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<ContextExternalTool>(

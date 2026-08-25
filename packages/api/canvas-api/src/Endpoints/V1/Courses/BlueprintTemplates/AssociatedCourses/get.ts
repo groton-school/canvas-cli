@@ -1,18 +1,22 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Course } from '../../../../../Resources/Courses.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   template_id: string | number;
 };
@@ -51,10 +55,13 @@ type Options = (
 /**
  * Get associated course information
  *
- * Returns a list of courses that are configured to receive updates from this
- * blueprint
+ * Returns a list of courses that are configured to receive updates from this blueprint
  *
- * Nickname: get_associated_course_information
+ * nickname: get_associated_course_information
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<Course[]>(

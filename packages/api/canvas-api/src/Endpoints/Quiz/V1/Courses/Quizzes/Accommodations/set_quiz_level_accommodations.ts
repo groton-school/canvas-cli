@@ -1,21 +1,25 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { AccommodationResponse } from '../../../../../../Resources/NewQuizzesAccommodations.js';
 
 export type set_quiz_level_accommodationsPathParameters = {
   /**
    * The ID of the course where the quiz is located.
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
-   * The ID of the assignment/quiz that needs accommodations.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The ID of the assignment/quiz that needs accommodations.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   assignment_id: number | string;
 };
 
@@ -23,36 +27,42 @@ export type set_quiz_level_accommodationsSearchParameters = Masquerade;
 
 export type set_quiz_level_accommodationsFormParameters = Masquerade & {
   /**
-   * The Canvas user ID of the student receiving accommodations.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The Canvas user ID of the student receiving accommodations.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   user_id: number | string;
   /**
-   * Amount of extra time in <b>minutes</b> granted for quiz submission.
-   * Allowed range: 0 to 10080 minutes (168 hours).
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * Amount of extra time in &lt;b&gt;minutes&lt;/b&gt; granted for quiz submission.
+Allowed range: 0 to 10080 minutes (168 hours).
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   extra_time: number | string;
   /**
-   * Number of times the student is allowed to re-take the quiz over the
-   * multiple-attempt limit.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * Number of times the student is allowed to re-take the quiz over the multiple-attempt limit.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   extra_attempts: number | string;
   /**
-   * If 'true', removes <b>one incorrect answer</b> from multiple-choice
-   * questions with <b>4 or more options</b>.
+   * If &#x27;true&#x27;, removes &lt;b&gt;one incorrect answer&lt;/b&gt; from multiple-choice questions with &lt;b&gt;4 or more options&lt;/b&gt;.
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   reduce_choices_enabled: boolean | string;
 };
@@ -101,21 +111,28 @@ type Options = (
 /**
  * Set Quiz-Level Accommodations
  *
- * Apply accommodations at the <b>quiz level</b> for students in a specific
- * assignment.
+ * Apply accommodations at the <b>quiz level</b> for students in a specific assignment.
+
+<b>Request Body Format:</b>
+  [{
+    "user_id": 3,
+    "extra_time": 60,
+    "extra_attempts": 1,
+    "reduce_choices_enabled": true
+  }]
+
+<b>Responses</b>
+
+* <code>200 OK</code>: Accommodations were processed with some successes and failures
+* <code>401 Unauthorized</code>: User does not have permission to update accommodations
+* <code>404 Not Found</code>: The course or assignment was not found
+* <code>400 Bad Request</code>: Validation error (e.g., invalid JSON, missing user IDs)
  *
- * <b>Request Body Format:</b> [{ "user_id": 3, "extra_time": 60,
- * "extra_attempts": 1, "reduce_choices_enabled": true }]
+ * nickname: set_quiz_level_accommodations
  *
- * <b>Responses</b>
+ * 
  *
- * <code>200 OK</code>: Accommodations were processed with some successes and
- * failures <code>401 Unauthorized</code>: User does not have permission to
- * update accommodations <code>404 Not Found</code>: The course or assignment
- * was not found <code>400 Bad Request</code>: Validation error (e.g., invalid
- * JSON, missing user IDs)
- *
- * Nickname: set_quiz_level_accommodations
+ * 
  */
 export async function set_quiz_level_accommodations(options: Options) {
   const response = await client().fetchAs<AccommodationResponse>(

@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { QueryResultsResponse } from '../../../../../../Overrides.js';
 
 export type beta_get_query_resultsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
   /**
    * The UUID of the completed query to retrieve results for
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   query_id: string | number;
 };
@@ -51,14 +55,17 @@ type Options = (
 /**
  * BETA - Get query results
  *
- * Retrieves the results of a completed page views query. Returns the data in
- * the format specified when the query was initiated (CSV or JSON). The response
- * may be compressed with gzip encoding.
+ * Retrieves the results of a completed page views query. Returns the data in the
+format specified when the query was initiated (CSV or JSON). The response may
+be compressed with gzip encoding.
+
+As this is a beta endpoint, it is subject to change or removal at any time without the standard notice periods outlined in the API policy.
  *
- * As this is a beta endpoint, it is subject to change or removal at any time
- * without the standard notice periods outlined in the API policy.
+ * nickname: beta_get_query_results
  *
- * Nickname: beta_get_query_results
+ * 
+ *
+ * 
  */
 export async function beta_get_query_results(options: Options) {
   const response = await client().fetchAs<QueryResultsResponse>(

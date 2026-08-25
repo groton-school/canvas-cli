@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Page } from '../../../../Resources/Pages.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
 };
@@ -14,22 +16,46 @@ export type listPathParameters = {
 export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
-    /** Sort results by this field. */
+    /**
+     * Sort results by this field.
+     *
+     *
+     *
+     *
+     */
     sort: string;
-    /** The sorting order. Defaults to 'asc'. */
+    /**
+     * The sorting order. Defaults to &#x27;asc&#x27;.
+     *
+     *
+     *
+     *
+     */
     order: string;
-    /** The partial title of the pages to match and return. */
+    /**
+     * The partial title of the pages to match and return.
+     *
+     *
+     *
+     *
+     */
     search_term: string;
     /**
-     * If true, include only published paqes. If false, exclude published pages.
-     * If not present, do not filter on published status.
+     * If true, include only published paqes. If false, exclude published
+pages. If not present, do not filter on published status.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     published: boolean | string;
     /**
-     * - "enrollments": Optionally include the page body with each Page. If this
-     *   is a block_editor page, returns the block_editor_attributes.
+     * - &quot;enrollments&quot;: Optionally include the page body with each Page.
+If this is a block_editor page, returns the block_editor_attributes.
+     *
+     * 
+     *
+     * 
      */
     include: string[];
   }>;
@@ -68,7 +94,11 @@ type Options = (
  *
  * A paginated list of the wiki pages associated with a course or group
  *
- * Nickname: list_pages_groups
+ * nickname: list_pages_groups
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<Page[]>(

@@ -1,42 +1,45 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type CourseQuizExtension = {
   /**
    * The ID of the Student that needs the quiz extension.
    *
-   * Type: integer
-   *
-   * Format: 'int64'
+   * type: integer
+
+format: 'int64'
    */
   user_id: number | string;
   /**
-   * Number of times the student is allowed to re-take the quiz over the
-   * multiple-attempt limit.
+   * Number of times the student is allowed to re-take the quiz over the multiple-attempt limit.
    *
-   * Type: integer
-   *
-   * Format: 'int64'
+   * type: integer
+
+format: 'int64'
    */
   extra_attempts: number | string;
   /**
    * Amount of extra time allowed for the quiz submission, in minutes.
    *
-   * Type: integer
-   *
-   * Format: 'int64'
+   * type: integer
+
+format: 'int64'
    */
   extra_time: number | string;
   /**
    * The student can take the quiz even if it's locked for everyone else
    *
-   * Type: boolean
+   * type: boolean
    */
   manually_unlocked: boolean | string;
   /**
-   * The time at which the quiz submission will be overdue, and be flagged as a
-   * late submission.
+   * The time at which the quiz submission will be overdue, and be flagged as a late submission.
    *
-   * Format: 'date-time'
+   * 
+
+format: 'date-time'
    */
   end_at: string;
 };

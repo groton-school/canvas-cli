@@ -1,15 +1,17 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { NewQuiz } from '../../../../../Resources/NewQuizzes.js';
 
 export type listPathParameters = {
   /**
-   * No description
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * no description
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   course_id: number | string;
 };
 
@@ -49,7 +51,11 @@ type Options = (
  *
  * Get a list of new quizzes.
  *
- * Nickname: list_new_quizzes
+ * nickname: list_new_quizzes
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<NewQuiz[]>(

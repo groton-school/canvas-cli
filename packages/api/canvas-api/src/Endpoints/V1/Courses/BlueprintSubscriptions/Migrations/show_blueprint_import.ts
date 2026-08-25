@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { BlueprintMigration } from '../../../../../Resources/BlueprintCourses.js';
 
 export type show_blueprint_importPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   subscription_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -57,11 +63,14 @@ type Options = (
 /**
  * Show a blueprint import
  *
- * Shows the status of an import into a course associated with a blueprint. See
- * also {api:MasterCourses::MasterTemplatesController#migrations_show the
- * blueprint course side}.
+ * Shows the status of an import into a course associated with a blueprint. See also
+{api:MasterCourses::MasterTemplatesController#migrations_show the blueprint course side}.
  *
- * Nickname: show_blueprint_import
+ * nickname: show_blueprint_import
+ *
+ * 
+ *
+ * 
  */
 export async function show_blueprint_import(options: Options) {
   const response = await client().fetchAs<BlueprintMigration>(

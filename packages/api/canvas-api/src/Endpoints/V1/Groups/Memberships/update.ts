@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { GroupMembership } from '../../../../Resources/Groups.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   membership_id: string | number;
 };
@@ -20,9 +24,21 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** Currently, the only allowed value is "accepted" */
+  /**
+   * Currently, the only allowed value is &quot;accepted&quot;
+   *
+   *
+   *
+   *
+   */
   workflow_state: string;
-  /** No description */
+  /**
+   * no description
+   *
+   *
+   *
+   *
+   */
   moderator: string;
 };
 
@@ -72,7 +88,11 @@ type Options = (
  *
  * Accept a membership request, or add/remove moderator rights.
  *
- * Nickname: update_membership_memberships
+ * nickname: update_membership_memberships
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<GroupMembership>(

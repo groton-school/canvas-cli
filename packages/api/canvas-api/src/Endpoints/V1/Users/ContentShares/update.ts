@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ContentShare } from '../../../../Resources/ContentShares.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -20,7 +24,13 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** Read state for the content share */
+  /**
+   * Read state for the content share
+   *
+   *
+   *
+   *
+   */
   read_state: string;
 };
 
@@ -70,7 +80,11 @@ type Options = (
  *
  * Mark a content share read or unread
  *
- * Nickname: update_content_share
+ * nickname: update_content_share
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<ContentShare>(

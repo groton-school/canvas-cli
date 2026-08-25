@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { File } from '../../../../Resources/Files.js';
 
 export type reset_link_verifierPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -45,12 +47,17 @@ type Options = (
 /**
  * Reset link verifier
  *
- * Resets the link verifier. Any existing links to the file using the previous
- * hard-coded "verifier" parameter will no longer automatically grant access.
+ * Resets the link verifier. Any existing links to the file using
+the previous hard-coded "verifier" parameter will no longer
+automatically grant access.
+
+Must have manage files and become other users permissions
  *
- * Must have manage files and become other users permissions
+ * nickname: reset_link_verifier
  *
- * Nickname: reset_link_verifier
+ * 
+ *
+ * 
  */
 export async function reset_link_verifier(options: Options) {
   const response = await client().fetchAs<File>(

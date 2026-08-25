@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Folder } from '../../../../../Resources/Files.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -14,19 +16,39 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** The name of the bookmark */
+  /**
+   * The name of the bookmark
+   *
+   *
+   *
+   *
+   */
   name: string;
-  /** The url of the bookmark */
+  /**
+   * The url of the bookmark
+   *
+   *
+   *
+   *
+   */
   url: string;
   /**
-   * The position of the bookmark. Defaults to the bottom.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The position of the bookmark. Defaults to the bottom.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   position: number | string;
-  /** The data associated with the bookmark */
+  /**
+   * The data associated with the bookmark
+   *
+   *
+   *
+   *
+   */
   data: string;
 };
 
@@ -76,7 +98,11 @@ type Options = (
  *
  * Updates a bookmark
  *
- * Nickname: update_bookmark
+ * nickname: update_bookmark
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<Folder>(

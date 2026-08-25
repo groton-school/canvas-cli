@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -44,10 +46,13 @@ type Options = (
 /**
  * List user logins
  *
- * Given a user ID, return a paginated list of that user's logins for the given
- * account.
+ * Given a user ID, return a paginated list of that user's logins for the given account.
  *
- * Nickname: list_user_logins_accounts
+ * nickname: list_user_logins_accounts
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

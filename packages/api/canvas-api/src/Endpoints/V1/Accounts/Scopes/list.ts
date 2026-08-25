@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Scope } from '../../../../Resources/ApiTokenScopes.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -14,7 +16,13 @@ export type listPathParameters = {
 export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
-    /** The attribute to group the scopes by. By default no grouping is done. */
+    /**
+     * The attribute to group the scopes by. By default no grouping is done.
+     *
+     *
+     *
+     *
+     */
     group_by: string;
   }>;
 
@@ -52,7 +60,11 @@ type Options = (
  *
  * A list of scopes that can be applied to developer keys and access tokens.
  *
- * Nickname: list_scopes
+ * nickname: list_scopes
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<Scope[]>(

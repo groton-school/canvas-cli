@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { OutcomeImport } from '../../../../Resources/OutcomeImports.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -51,16 +55,20 @@ type Options = (
 /**
  * Get Outcome import status
  *
- * Get the status of an already created Outcome import. Pass 'latest' for the
- * outcome import id for the latest import.
+ * Get the status of an already created Outcome import. Pass 'latest' for the outcome import id
+for the latest import.
+
+  Examples:
+    curl 'https://<canvas>/api/v1/accounts/<account_id>/outcome_imports/<outcome_import_id>' \
+        -H "Authorization: Bearer <token>"
+    curl 'https://<canvas>/api/v1/courses/<course_id>/outcome_imports/<outcome_import_id>' \
+        -H "Authorization: Bearer <token>"
  *
- * Examples: curl
- * 'https://<canvas>/api/v1/accounts/<account_id>/outcome_imports/<outcome_import_id>'\
- * -H "Authorization: Bearer <token>" curl
- * 'https://<canvas>/api/v1/courses/<course_id>/outcome_imports/<outcome_import_id>'\
- * -H "Authorization: Bearer <token>"
+ * nickname: get_outcome_import_status_courses
  *
- * Nickname: get_outcome_import_status_courses
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<OutcomeImport>(

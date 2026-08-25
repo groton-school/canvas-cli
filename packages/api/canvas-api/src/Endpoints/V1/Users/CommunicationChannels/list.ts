@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { CommunicationChannel } from '../../../../Resources/CommunicationChannels.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -46,9 +48,13 @@ type Options = (
  * List user communication channels
  *
  * Returns a paginated list of communication channels for the specified user,
- * sorted by position.
+sorted by position.
  *
- * Nickname: list_user_communication_channels
+ * nickname: list_user_communication_channels
+ *
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<CommunicationChannel[]>(

@@ -1,42 +1,53 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { JWT } from '../../../Resources/JwTs.js';
 
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
   /**
-   * Adds additional data to the JWT to be used by the consuming service
-   * workflow
+   * Adds additional data to the JWT to be used by the consuming service workflow
+   *
+   *
+   *
+   *
    */
   workflows: string[];
   /**
-   * The type of the context to generate the JWT for, in case the workflow
-   * requires it. Case insensitive.
+   * The type of the context to generate the JWT for, in case the workflow requires it. Case insensitive.
+   *
+   *
+   *
+   *
    */
   context_type: string;
   /**
-   * The id of the context to generate the JWT for, in case the workflow
-   * requires it.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the context to generate the JWT for, in case the workflow requires it.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   context_id: number | string;
   /**
-   * The uuid of the context to generate the JWT for, in case the workflow
-   * requires it. Note that context_id and context_uuid are mutually
-   * exclusive. If both are provided, an error will be returned.
-   */
+     * The uuid of the context to generate the JWT for, in case the workflow requires it. Note that context_id
+and context_uuid are mutually exclusive. If both are provided, an error will be returned.
+     *
+     * 
+     *
+     * 
+     */
   context_uuid: string;
   /**
-   * Defaults to true. If false, the JWT will be signed, but not encrypted,
-   * for use in downstream services. The default encrypted behaviour can be
-   * used to talk to Canvas itself.
-   *
-   * Type: boolean
-   */
+     * Defaults to true. If false, the JWT will be signed, but not encrypted, for use in downstream services. The
+default encrypted behaviour can be used to talk to Canvas itself.
+     *
+     * type: boolean
+     *
+     * 
+     */
   canvas_audience: boolean | string;
 };
 
@@ -75,11 +86,15 @@ type Options =
  * Create JWT
  *
  * Create a unique JWT for use with other Canvas services
+
+Generates a different JWT each time it's called. Each JWT expires
+after a short window (1 hour)
  *
- * Generates a different JWT each time it's called. Each JWT expires after a
- * short window (1 hour)
+ * nickname: create_jwt
  *
- * Nickname: create_jwt
+ * 
+ *
+ * 
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<JWT>(`/api/v1/jwts`, {

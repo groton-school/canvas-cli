@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -44,14 +46,17 @@ type Options = (
 /**
  * Get visible course navigation tools for a single course
  *
- * Get a list of external tools with the course_navigation placement that have
- * not been hidden in course settings and whose visibility settings apply to the
- * requesting user. These tools are the same that appear in the course
- * navigation.
+ * Get a list of external tools with the course_navigation placement that have not been hidden in
+course settings and whose visibility settings apply to the requesting user. These tools are the
+same that appear in the course navigation.
+
+The response format is the same as Get visible course navigation tools.
  *
- * The response format is the same as Get visible course navigation tools.
+ * nickname: get_visible_course_navigation_tools_for_single_course
  *
- * Nickname: get_visible_course_navigation_tools_for_single_course
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

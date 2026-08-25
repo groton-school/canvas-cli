@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type terminate_all_user_sessionsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -44,12 +46,17 @@ type Options = (
 /**
  * Terminate all user sessions
  *
- * Terminates all sessions for a user. This includes all browser-based sessions
- * and all access tokens, including manually generated ones. The user can
- * immediately re-authenticate to access Canvas again if they have the current
- * credentials. All integrations will need to be re-authorized.
+ * Terminates all sessions for a user. This includes all browser-based
+sessions and all access tokens, including manually generated ones.
+The user can immediately re-authenticate to access Canvas again if
+they have the current credentials. All integrations will need to
+be re-authorized.
  *
- * Nickname: terminate_all_user_sessions
+ * nickname: terminate_all_user_sessions
+ *
+ * 
+ *
+ * 
  */
 export async function terminate_all_user_sessions(options: Options) {
   const response = await client().fetchAs<JSONValue>(

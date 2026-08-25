@@ -1,15 +1,31 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type NotificationPreference = {
+  /**
+   *
+   *
+   *
+   */
   href: string;
-  /** The notification this preference belongs to */
+  /**
+   * The notification this preference belongs to
+   *
+   *
+   */
   notification: string;
-  /** The category of that notification */
+  /**
+   * The category of that notification
+   *
+   *
+   */
   category: string;
   /**
-   * How often to send notifications to this communication channel for the given
-   * notification. Possible values are 'immediately', 'daily', 'weekly', and
-   * 'never'
+   * How often to send notifications to this communication channel for the given notification. Possible values are 'immediately', 'daily', 'weekly', and 'never'
+   *
+   *
    */
   frequency: string;
 };

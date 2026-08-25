@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ContextSearchResponse } from '../../../../../../Resources/LtiRegistrations.js';
 
 export type search_for_accounts_and_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   registration_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   deployment_id: string | number;
 };
@@ -26,11 +32,20 @@ export type search_for_accounts_and_coursesPathParameters = {
 export type search_for_accounts_and_coursesSearchParameters = Masquerade &
   Partial<{
     /**
-     * Account ID. If provided, only searches within this account and only
-     * returns direct children of this account.
+     * Account ID. If provided, only searches within this account and only returns direct children of this account.
+     *
+     *
+     *
+     *
      */
     only_children_of: string;
-    /** String to search for in account names, SIS ids, or course codes. */
+    /**
+     * String to search for in account names, SIS ids, or course codes.
+     *
+     *
+     *
+     *
+     */
     search_term: string;
   }>;
 
@@ -66,16 +81,18 @@ type Options = (
 /**
  * Search for Accounts and Courses
  *
- * This is a utility endpoint used by the Canvas Apps UI and may not serve
- * general use cases.
+ * This is a utility endpoint used by the Canvas Apps UI and may not serve general use cases.
+
+Search for accounts and courses that match the search term on name, SIS id, or course code.
+Returns all matching accounts and courses, including those nested in sub-accounts.
+Returns bare-bones data about each account and course, and only up to 20 of each.
+Used to populate the search dropdowns when managing LTI registration availability.
  *
- * Search for accounts and courses that match the search term on name, SIS id,
- * or course code. Returns all matching accounts and courses, including those
- * nested in sub-accounts. Returns bare-bones data about each account and
- * course, and only up to 20 of each. Used to populate the search dropdowns when
- * managing LTI registration availability.
+ * nickname: search_for_accounts_and_courses
  *
- * Nickname: search_for_accounts_and_courses
+ * 
+ *
+ * 
  */
 export async function search_for_accounts_and_courses(options: Options) {
   const response = await client().fetchAs<ContextSearchResponse>(

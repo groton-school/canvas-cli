@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ContentShare } from '../../../../../Resources/ContentShares.js';
 
 export type add_users_to_content_sharePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -24,6 +28,8 @@ export type add_users_to_content_shareFormParameters = Masquerade & {
    * IDs of users to share the content with.
    *
    * Array
+   *
+   *
    */
   receiver_ids: string[];
 };
@@ -74,7 +80,11 @@ type Options = (
  *
  * Send a previously created content share to additional users
  *
- * Nickname: add_users_to_content_share
+ * nickname: add_users_to_content_share
+ *
+ *
+ *
+ *
  */
 export async function add_users_to_content_share(options: Options) {
   const response = await client().fetchAs<ContentShare>(

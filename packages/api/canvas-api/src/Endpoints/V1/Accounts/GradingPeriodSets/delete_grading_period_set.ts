@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type delete_grading_period_setPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -51,9 +55,13 @@ type Options = (
  * Delete a grading period set
  *
  * <b>204 No Content</b> response code is returned if the deletion was
- * successful.
+successful.
  *
- * Nickname: delete_grading_period_set
+ * nickname: delete_grading_period_set
+ *
+ * 
+ *
+ * 
  */
 export async function delete_grading_period_set(options: Options) {
   const response = await client().fetchAs<JSONValue>(

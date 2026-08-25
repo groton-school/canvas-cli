@@ -1,18 +1,26 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type remove_domain_from_accountPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
 
 export type remove_domain_from_accountSearchParameters = Masquerade &
   Partial<{
-    /** No description */
+    /**
+     * no description
+     *
+     *
+     *
+     *
+     */
     domain: string;
   }>;
 
@@ -50,7 +58,11 @@ type Options = (
  *
  * Removes an allowed domain from the current account.
  *
- * Nickname: remove_domain_from_account
+ * nickname: remove_domain_from_account
+ *
+ *
+ *
+ *
  */
 export async function remove_domain_from_account(options: Options) {
   const response = await client().fetchAs<JSONValue>(

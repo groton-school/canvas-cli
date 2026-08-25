@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -13,7 +15,13 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** The identifier for the editor. */
+  /**
+   * The identifier for the editor.
+   *
+   *
+   *
+   *
+   */
   text_editor_preference: string;
 };
 
@@ -61,10 +69,14 @@ type Options = (
 /**
  * Update text editor preference
  *
- * Updates a user's default choice for text editor. This allows the Choose an
- * Editor propmts to preload the user's preference.
+ * Updates a user's default choice for text editor.  This allows
+the Choose an Editor propmts to preload the user's preference.
  *
- * Nickname: update_text_editor_preference
+ * nickname: update_text_editor_preference
+ *
+ * 
+ *
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(

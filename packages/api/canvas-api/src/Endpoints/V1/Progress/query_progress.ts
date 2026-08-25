@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Progress } from '../../../Resources/CoursePace.js';
 
 export type query_progressPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Return completion and status information about an asynchronous job
  *
- * Nickname: query_progress
+ * nickname: query_progress
+ *
+ *
+ *
+ *
  */
 export async function query_progress(options: Options) {
   const response = await client().fetchAs<Progress>(`/api/v1/progress/{id}`, {

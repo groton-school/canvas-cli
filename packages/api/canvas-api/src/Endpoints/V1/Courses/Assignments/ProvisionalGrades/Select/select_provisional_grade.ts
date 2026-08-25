@@ -1,23 +1,29 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type select_provisional_gradePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   provisional_grade_id: string | number;
 };
@@ -57,10 +63,13 @@ type Options = (
  * Select provisional grade
  *
  * Choose which provisional grade the student should receive for a submission.
- * The caller must be the final grader for the assignment or an admin with
- * :select_final_grade rights.
+The caller must be the final grader for the assignment or an admin with :select_final_grade rights.
  *
- * Nickname: select_provisional_grade
+ * nickname: select_provisional_grade
+ *
+ * 
+ *
+ * 
  */
 export async function select_provisional_grade(options: Options) {
   const response = await client().fetchAs<JSONValue>(

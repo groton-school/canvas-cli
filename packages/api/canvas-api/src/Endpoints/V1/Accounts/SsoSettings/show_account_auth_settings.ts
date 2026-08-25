@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { SSOSettings } from '../../../../Resources/AuthenticationProviders.js';
 
 export type show_account_auth_settingsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -45,12 +47,16 @@ type Options = (
 /**
  * Show account auth settings
  *
- * The way to get the current state of each account level setting that's
- * relevant to Single Sign On configuration
+ * The way to get the current state of each account level setting
+that's relevant to Single Sign On configuration
+
+You can list the current state of each setting with "update_sso_settings"
  *
- * You can list the current state of each setting with "update_sso_settings"
+ * nickname: show_account_auth_settings
  *
- * Nickname: show_account_auth_settings
+ * 
+ *
+ * 
  */
 export async function show_account_auth_settings(options: Options) {
   const response = await client().fetchAs<SSOSettings>(

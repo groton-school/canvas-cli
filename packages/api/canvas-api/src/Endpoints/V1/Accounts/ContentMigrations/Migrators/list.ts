@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Migrator } from '../../../../../Resources/ContentMigrations.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Lists the currently available migration types. These values may change.
  *
- * Nickname: list_migration_systems_accounts
+ * nickname: list_migration_systems_accounts
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<Migrator[]>(

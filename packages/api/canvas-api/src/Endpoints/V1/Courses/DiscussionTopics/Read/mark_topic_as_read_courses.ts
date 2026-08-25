@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type mark_topic_as_read_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
 };
@@ -51,12 +55,16 @@ type Options = (
  * Mark topic as read
  *
  * Mark the initial text of the discussion topic as read.
+
+No request fields are necessary.
+
+On success, the response will be 204 No Content with an empty body.
  *
- * No request fields are necessary.
+ * nickname: mark_topic_as_read_courses
  *
- * On success, the response will be 204 No Content with an empty body.
+ * 
  *
- * Nickname: mark_topic_as_read_courses
+ * 
  */
 export async function mark_topic_as_read_courses(options: Options) {
   const response = await client().fetchAs<JSONValue>(

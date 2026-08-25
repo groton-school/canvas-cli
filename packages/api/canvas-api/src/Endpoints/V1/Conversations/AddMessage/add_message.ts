@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type add_messagePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -13,23 +15,55 @@ export type add_messagePathParameters = {
 export type add_messageSearchParameters = Masquerade;
 
 export type add_messageFormParameters = Masquerade & {
-  /** The message to be sent. */
+  /**
+   * The message to be sent.
+   *
+   *
+   *
+   *
+   */
   body: string;
   /**
-   * An array of attachments ids. These must be files that have been
-   * previously uploaded to the sender's "conversation attachments" folder.
-   */
+     * An array of attachments ids. These must be files that have been previously
+uploaded to the sender&#x27;s &quot;conversation attachments&quot; folder.
+     *
+     * 
+     *
+     * 
+     */
   attachment_ids: string[];
   /**
-   * Media comment id of an audio of video file to be associated with this
-   * message.
-   */
+     * Media comment id of an audio of video file to be associated with this
+message.
+     *
+     * 
+     *
+     * 
+     */
   media_comment_id: string;
-  /** Type of the associated media file. */
+  /**
+   * Type of the associated media file.
+   *
+   *
+   *
+   *
+   */
   media_comment_type: string;
-  /** No description */
+  /**
+   * no description
+   *
+   *
+   *
+   *
+   */
   recipients: string[];
-  /** No description */
+  /**
+   * no description
+   *
+   *
+   *
+   *
+   */
   included_messages: string[];
 };
 
@@ -78,18 +112,22 @@ type Options = (
  * Add a message
  *
  * Add a message to an existing conversation. Response is similar to the
- * GET/show action, except that only includes the latest message (i.e. what we
- * just sent)
+GET/show action, except that only includes the
+latest message (i.e. what we just sent)
+
+An array of user ids. Defaults to all of the current conversation
+recipients. To explicitly send a message to no other recipients,
+this array should consist of the logged-in user id.
+
+An array of message ids from this conversation to send to recipients
+of the new message. Recipients who already had a copy of included
+messages will not be affected.
  *
- * An array of user ids. Defaults to all of the current conversation recipients.
- * To explicitly send a message to no other recipients, this array should
- * consist of the logged-in user id.
+ * nickname: add_message
  *
- * An array of message ids from this conversation to send to recipients of the
- * new message. Recipients who already had a copy of included messages will not
- * be affected.
+ * 
  *
- * Nickname: add_message
+ * 
  */
 export async function add_message(options: Options) {
   const response = await client().fetchAs<JSONValue>(

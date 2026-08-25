@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { GroupCategory } from '../../../Resources/GroupCategories.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_category_id: string | number;
 };
@@ -45,10 +47,14 @@ type Options = (
 /**
  * Get a single group category
  *
- * Returns the data for a single group category, or a 401 if the caller doesn't
- * have the rights to see it.
+ * Returns the data for a single group category, or a 401 if the caller doesn't have
+the rights to see it.
  *
- * Nickname: get_single_group_category
+ * nickname: get_single_group_category
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<GroupCategory>(

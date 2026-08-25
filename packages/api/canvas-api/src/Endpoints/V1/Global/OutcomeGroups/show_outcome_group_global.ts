@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
 
 export type show_outcome_group_globalPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Returns detailed information about a specific outcome group.
  *
- * Nickname: show_outcome_group_global
+ * nickname: show_outcome_group_global
+ *
+ *
+ *
+ *
  */
 export async function show_outcome_group_global(options: Options) {
   const response = await client().fetchAs<OutcomeGroup>(

@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -46,7 +48,11 @@ type Options = (
  *
  * Returns the total and used storage quota for the course, group, or user.
  *
- * Nickname: get_quota_information_users
+ * nickname: get_quota_information_users
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

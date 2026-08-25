@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { User } from '../../../../Resources/Users.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -45,13 +47,17 @@ type Options = (
 /**
  * List potential members
  *
- * A paginated list of the users who can potentially be added to a collaboration
- * in the given context.
+ * A paginated list of the users who can potentially be added to a
+collaboration in the given context.
+
+For courses, this consists of all enrolled users.  For groups, it is comprised of the
+group members plus the admins of the course containing the group.
  *
- * For courses, this consists of all enrolled users. For groups, it is comprised
- * of the group members plus the admins of the course containing the group.
+ * nickname: list_potential_members_courses
  *
- * Nickname: list_potential_members_courses
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<User[]>(

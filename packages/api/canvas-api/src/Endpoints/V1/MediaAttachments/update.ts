@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   attachment_id: string | number;
 };
@@ -13,7 +15,13 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** The new title. */
+  /**
+   * The new title.
+   *
+   *
+   *
+   *
+   */
   user_entered_title: string;
 };
 
@@ -63,7 +71,11 @@ type Options = (
  *
  * Updates the title of a media object.
  *
- * Nickname: update_media_object_media_attachments
+ * nickname: update_media_object_media_attachments
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(

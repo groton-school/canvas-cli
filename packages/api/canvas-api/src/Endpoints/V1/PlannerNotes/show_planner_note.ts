@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { PlannerNote } from '../../../Resources/Planner.js';
 
 export type show_planner_notePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Retrieve a planner note for the current user
  *
- * Nickname: show_planner_note
+ * nickname: show_planner_note
+ *
+ *
+ *
+ *
  */
 export async function show_planner_note(options: Options) {
   const response = await client().fetchAs<PlannerNote>(

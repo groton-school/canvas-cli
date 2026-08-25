@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { SharedBrandConfig } from '../../../../Resources/SharedBrandConfigs.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -51,10 +55,14 @@ type Options = (
 /**
  * Update a shared theme
  *
- * Update the specified shared_brand_config with a new name or to point to a new
- * brand_config. Uses same parameters as create.
+ * Update the specified shared_brand_config with a new name or to point to a new brand_config.
+Uses same parameters as create.
  *
- * Nickname: update_shared_theme
+ * nickname: update_shared_theme
+ *
+ * 
+ *
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<SharedBrandConfig>(

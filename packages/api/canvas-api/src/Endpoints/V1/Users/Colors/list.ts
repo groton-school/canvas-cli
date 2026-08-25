@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -46,7 +48,11 @@ type Options = (
  *
  * Returns all custom colors that have been saved for a user.
  *
- * Nickname: get_custom_colors
+ * nickname: get_custom_colors
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

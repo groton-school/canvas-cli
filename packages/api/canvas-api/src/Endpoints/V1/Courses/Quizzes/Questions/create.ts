@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import {
   Answer,
   QuizQuestion
@@ -9,13 +9,17 @@ export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   quiz_id: string | number;
 };
@@ -23,50 +27,99 @@ export type createPathParameters = {
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** The name of the question. */
+  /**
+   * The name of the question.
+   *
+   *
+   *
+   *
+   */
   'question[question_name]': string;
-  /** The text of the question. */
+  /**
+   * The text of the question.
+   *
+   *
+   *
+   *
+   */
   'question[question_text]': string;
   /**
-   * The id of the quiz group to assign the question to.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the quiz group to assign the question to.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   'question[quiz_group_id]': number | string;
   /**
-   * The type of question. Multiple optional fields depend upon the type of
-   * question to be used.
+   * The type of question. Multiple optional fields depend upon the type of question to be used.
+   *
+   *
+   *
+   *
    */
   'question[question_type]': string;
   /**
-   * The order in which the question will be displayed in the quiz in relation
-   * to other questions.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The order in which the question will be displayed in the quiz in relation to other questions.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   'question[position]': number | string;
   /**
-   * The maximum amount of points received for answering this question
-   * correctly.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The maximum amount of points received for answering this question correctly.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   'question[points_possible]': number | string;
-  /** The comment to display if the student answers the question correctly. */
+  /**
+   * The comment to display if the student answers the question correctly.
+   *
+   *
+   *
+   *
+   */
   'question[correct_comments]': string;
-  /** The comment to display if the student answers incorrectly. */
+  /**
+   * The comment to display if the student answers incorrectly.
+   *
+   *
+   *
+   *
+   */
   'question[incorrect_comments]': string;
-  /** The comment to display regardless of how the student answered. */
+  /**
+   * The comment to display regardless of how the student answered.
+   *
+   *
+   *
+   *
+   */
   'question[neutral_comments]': string;
-  /** No description */
+  /**
+   * no description
+   *
+   *
+   *
+   *
+   */
   'question[text_after_answers]': string;
-  /** No description */
+  /**
+   * no description
+   *
+   *
+   *
+   *
+   */
   'question[answers]': Answer;
 };
 
@@ -116,7 +169,11 @@ type Options = (
  *
  * Create a new quiz question for this quiz
  *
- * Nickname: create_single_quiz_question
+ * nickname: create_single_quiz_question
+ *
+ *
+ *
+ *
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<QuizQuestion>(

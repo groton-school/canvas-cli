@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type unmark_tool_as_rce_favoritePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -50,11 +54,15 @@ type Options = (
 /**
  * Unmark tool as RCE Favorite
  *
- * Unmark the specified external tool as a favorite in the RCE editor for the
- * given account. The tool will remain available but will no longer appear in
- * the preferred favorites location.
+ * Unmark the specified external tool as a favorite in the RCE editor
+for the given account. The tool will remain available but will no longer
+appear in the preferred favorites location.
  *
- * Nickname: unmark_tool_as_rce_favorite
+ * nickname: unmark_tool_as_rce_favorite
+ *
+ * 
+ *
+ * 
  */
 export async function unmark_tool_as_rce_favorite(options: Options) {
   const response = await client().fetchAs<JSONValue>(

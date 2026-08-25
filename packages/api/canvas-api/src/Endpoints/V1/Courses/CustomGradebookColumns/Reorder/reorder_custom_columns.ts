@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type reorder_custom_columnsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -14,10 +16,14 @@ export type reorder_custom_columnsSearchParameters = Masquerade;
 
 export type reorder_custom_columnsFormParameters = Masquerade & {
   /**
-   * No description
-   *
-   * Format: 'int64'
-   */
+     * no description
+     *
+     * 
+
+format: 'int64'
+     *
+     * 
+     */
   order: number | string[];
 };
 
@@ -66,10 +72,14 @@ type Options = (
  * Reorder custom columns
  *
  * Puts the given columns in the specified order
+
+<b>200 OK</b> is returned if successful
  *
- * <b>200 OK</b> is returned if successful
+ * nickname: reorder_custom_columns
  *
- * Nickname: reorder_custom_columns
+ * 
+ *
+ * 
  */
 export async function reorder_custom_columns(options: Options) {
   const response = await client().fetchAs<JSONValue>(

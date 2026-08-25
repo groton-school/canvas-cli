@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { ContentMigration } from '../../../../Resources/ContentMigrations.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Returns paginated content migrations
  *
- * Nickname: list_content_migrations_groups
+ * nickname: list_content_migrations_groups
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<ContentMigration[]>(

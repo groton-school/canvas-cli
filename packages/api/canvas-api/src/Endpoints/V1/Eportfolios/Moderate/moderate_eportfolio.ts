@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ePortfolio } from '../../../../Resources/EPortfolios.js';
 
 export type moderate_eportfolioPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   eportfolio_id: string | number;
 };
@@ -14,7 +16,13 @@ export type moderate_eportfolioPathParameters = {
 export type moderate_eportfolioSearchParameters = Masquerade;
 
 export type moderate_eportfolioFormParameters = Masquerade & {
-  /** The spam status for the ePortfolio */
+  /**
+   * The spam status for the ePortfolio
+   *
+   *
+   *
+   *
+   */
   spam_status: string;
 };
 
@@ -63,9 +71,13 @@ type Options = (
  * Moderate an ePortfolio
  *
  * Update the spam_status of an eportfolio. Only available to admins who can
- * moderate_user_content.
+moderate_user_content.
  *
- * Nickname: moderate_eportfolio
+ * nickname: moderate_eportfolio
+ *
+ * 
+ *
+ * 
  */
 export async function moderate_eportfolio(options: Options) {
   const response = await client().fetchAs<ePortfolio>(

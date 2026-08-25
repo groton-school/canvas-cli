@@ -1,17 +1,21 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -50,16 +54,20 @@ type Options = (
 /**
  * Get IDs of outcome groups created after successful import
  *
- * Get the IDs of the outcome groups created after a successful import. Pass
- * 'latest' for the outcome import id for the latest import.
+ * Get the IDs of the outcome groups created after a successful import.
+Pass 'latest' for the outcome import id for the latest import.
+
+  Examples:
+    curl 'https://<canvas>/api/v1/accounts/<account_id>/outcome_imports/outcomes_group_ids/<outcome_import_id>' \
+        -H "Authorization: Bearer <token>"
+    curl 'https://<canvas>/api/v1/courses/<course_id>/outcome_imports/outcome_group_ids/<outcome_import_id>' \
+        -H "Authorization: Bearer <token>"
  *
- * Examples: curl
- * 'https://<canvas>/api/v1/accounts/<account_id>/outcome_imports/outcomes_group_ids/<outcome_import_id>'\
- * -H "Authorization: Bearer <token>" curl
- * 'https://<canvas>/api/v1/courses/<course_id>/outcome_imports/outcome_group_ids/<outcome_import_id>'\
- * -H "Authorization: Bearer <token>"
+ * nickname: get_ids_of_outcome_groups_created_after_successful_import_accounts
  *
- * Nickname: get_ids_of_outcome_groups_created_after_successful_import_accounts
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<string[]>(

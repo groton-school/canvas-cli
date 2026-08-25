@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Enrollment } from '../../../../../Resources/Enrollments.js';
 
 export type re_activate_enrollmentPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Activates an inactive enrollment
  *
- * Nickname: re_activate_enrollment
+ * nickname: re_activate_enrollment
+ *
+ *
+ *
+ *
  */
 export async function re_activate_enrollment(options: Options) {
   const response = await client().fetchAs<Enrollment>(

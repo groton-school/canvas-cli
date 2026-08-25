@@ -1,23 +1,27 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { QuizItem } from '../../../../../../Resources/NewQuizItems.js';
 
 export type listPathParameters = {
   /**
-   * No description
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * no description
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   course_id: number | string;
   /**
-   * No description
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * no description
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   assignment_id: number | string;
 };
 
@@ -57,7 +61,11 @@ type Options = (
  *
  * Get a list of items in a new quiz.
  *
- * Nickname: list_quiz_items
+ * nickname: list_quiz_items
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<QuizItem[]>(

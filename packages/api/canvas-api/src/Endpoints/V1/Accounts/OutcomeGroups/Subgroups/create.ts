@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { OutcomeGroup } from '../../../../../Resources/OutcomeGroups.js';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -20,11 +24,29 @@ export type createPathParameters = {
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** The title of the new outcome group. */
+  /**
+   * The title of the new outcome group.
+   *
+   *
+   *
+   *
+   */
   title: string;
-  /** The description of the new outcome group. */
+  /**
+   * The description of the new outcome group.
+   *
+   *
+   *
+   *
+   */
   description: string;
-  /** A custom GUID for the learning standard */
+  /**
+   * A custom GUID for the learning standard
+   *
+   *
+   *
+   *
+   */
   vendor_guid: string;
 };
 
@@ -72,10 +94,14 @@ type Options = (
 /**
  * Create a subgroup
  *
- * Creates a new empty subgroup under the outcome group with the given title and
- * description.
+ * Creates a new empty subgroup under the outcome group with the given title
+and description.
  *
- * Nickname: create_subgroup_accounts
+ * nickname: create_subgroup_accounts
+ *
+ * 
+ *
+ * 
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<OutcomeGroup>(

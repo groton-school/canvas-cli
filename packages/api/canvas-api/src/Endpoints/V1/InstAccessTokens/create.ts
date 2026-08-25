@@ -26,11 +26,15 @@ type Options =
  * Create InstAccess token
  *
  * Create a unique, encrypted InstAccess token.
+
+Generates a different InstAccess token each time it's called, each one expires
+after a short window (1 hour).
  *
- * Generates a different InstAccess token each time it's called, each one
- * expires after a short window (1 hour).
+ * nickname: create_instaccess_token
  *
- * Nickname: create_instaccess_token
+ * 
+ *
+ * 
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<InstAccessToken>(

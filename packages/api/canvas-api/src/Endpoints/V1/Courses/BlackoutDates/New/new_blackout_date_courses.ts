@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { BlackoutDate } from '../../../../../Resources/BlackoutDates.js';
 
 export type new_blackout_date_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Initialize an unsaved Blackout Date for the given context.
  *
- * Nickname: new_blackout_date_courses
+ * nickname: new_blackout_date_courses
+ *
+ *
+ *
+ *
  */
 export async function new_blackout_date_courses(options: Options) {
   const response = await client().fetchAs<BlackoutDate>(

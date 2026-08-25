@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -14,11 +16,15 @@ export type getSearchParameters = Masquerade &
   Partial<{
     /**
      * Array of additional information to include. See include[] argument of
-     * "List appointment groups" action.
+&quot;List appointment groups&quot; action.
+
+&quot;child_events&quot;:: reservations of time slots time slots
+&quot;appointments&quot;:: will always be returned
+&quot;all_context_codes&quot;:: all context codes associated with this appointment group
      *
-     * "child_events":: reservations of time slots time slots "appointments"::
-     * will always be returned "all_context_codes":: all context codes
-     * associated with this appointment group
+     * 
+     *
+     * 
      */
     include: string[];
   }>;
@@ -57,7 +63,11 @@ type Options = (
  *
  * Returns information for a single appointment group
  *
- * Nickname: get_single_appointment_group
+ * nickname: get_single_appointment_group
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

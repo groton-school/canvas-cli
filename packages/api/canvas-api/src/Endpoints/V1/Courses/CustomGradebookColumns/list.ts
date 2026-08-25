@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { CustomColumn } from '../../../../Resources/CustomGradebookColumns.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -17,7 +19,9 @@ export type listSearchParameters = Masquerade &
     /**
      * Include hidden parameters (defaults to false)
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     include_hidden: boolean | string;
   }>;
@@ -56,7 +60,11 @@ type Options = (
  *
  * A paginated list of all custom gradebook columns for a course
  *
- * Nickname: list_custom_gradebook_columns
+ * nickname: list_custom_gradebook_columns
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<CustomColumn[]>(

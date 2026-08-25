@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -14,13 +16,15 @@ export type getSearchParameters = Masquerade &
   Partial<{
     /**
      * If async is true, then the course_assignments call can happen asynch-
-     * ronously and MAY return a response containing a progress_url key instead
-     * of an assignments array. If it does, then it is the caller's
-     * responsibility to poll the API again to see if the progress is complete.
-     * If the data is ready (possibly even on the first async call) then it will
-     * be passed back normally, as documented in the example response.
+ronously and MAY return a response containing a progress_url key instead
+of an assignments array. If it does, then it is the caller&#x27;s
+responsibility to poll the API again to see if the progress is complete.
+If the data is ready (possibly even on the first async call) then it
+will be passed back normally, as documented in the example response.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     async: boolean | string;
   }>;
@@ -57,11 +61,15 @@ type Options = (
 /**
  * Get course-level assignment data
  *
- * Returns a list of assignments for the course sorted by due date. For each
- * assignment returns basic assignment information, the grade breakdown, and a
- * breakdown of on-time/late status of homework submissions.
+ * Returns a list of assignments for the course sorted by due date. For
+each assignment returns basic assignment information, the grade breakdown,
+and a breakdown of on-time/late status of homework submissions.
  *
- * Nickname: get_course_level_assignment_data
+ * nickname: get_course_level_assignment_data
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { DeveloperKeyAccountBinding } from '../../../../../Resources/DeveloperKeyAccountBindings.js';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   developer_key_id: string | number;
 };
@@ -21,9 +25,13 @@ export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
   /**
-   * The workflow state for the binding. Must be one of "on", "off", or
-   * "allow". Defaults to "off".
-   */
+     * The workflow state for the binding. Must be one of &quot;on&quot;, &quot;off&quot;, or &quot;allow&quot;.
+Defaults to &quot;off&quot;.
+     *
+     * 
+     *
+     * 
+     */
   workflow_state: string;
 };
 
@@ -71,12 +79,16 @@ type Options = (
 /**
  * Create a Developer Key Account Binding
  *
- * Create a new Developer Key Account Binding. The developer key specified in
- * the request URL must be available in the requested account or the requested
- * account's account chain. If the binding already exists for the specified
- * account/key combination it will be updated.
+ * Create a new Developer Key Account Binding. The developer key specified
+in the request URL must be available in the requested account or the
+requested account's account chain. If the binding already exists for the
+specified account/key combination it will be updated.
  *
- * Nickname: create_developer_key_account_binding
+ * nickname: create_developer_key_account_binding
+ *
+ * 
+ *
+ * 
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<DeveloperKeyAccountBinding>(

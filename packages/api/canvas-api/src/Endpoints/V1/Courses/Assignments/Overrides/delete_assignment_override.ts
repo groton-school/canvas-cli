@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
 export type delete_assignment_overridePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -59,7 +65,11 @@ type Options = (
  *
  * Deletes an override and returns its former details.
  *
- * Nickname: delete_assignment_override
+ * nickname: delete_assignment_override
+ *
+ *
+ *
+ *
  */
 export async function delete_assignment_override(options: Options) {
   const response = await client().fetchAs<AssignmentOverride>(

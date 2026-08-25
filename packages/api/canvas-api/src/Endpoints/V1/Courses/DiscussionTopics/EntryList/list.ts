@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
 };
@@ -20,7 +24,11 @@ export type listSearchParameters = Masquerade &
   Partial<{
     /**
      * A list of entry ids to retrieve. Entries will be returned in id order,
-     * smallest id first.
+smallest id first.
+     *
+     * 
+     *
+     * 
      */
     ids: string[];
   }>;
@@ -58,12 +66,16 @@ type Options = (
  * List entries
  *
  * Retrieve a paginated list of discussion entries, given a list of ids.
+
+May require (depending on the topic) that the user has posted in the topic.
+If it is required, and the user has not posted, will respond with a 403
+Forbidden status and the body 'require_initial_post'.
  *
- * May require (depending on the topic) that the user has posted in the topic.
- * If it is required, and the user has not posted, will respond with a 403
- * Forbidden status and the body 'require_initial_post'.
+ * nickname: list_entries_courses
  *
- * Nickname: list_entries_courses
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

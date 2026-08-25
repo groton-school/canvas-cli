@@ -1,29 +1,35 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { LtiRegistrationUpdateRequest } from '../../../../../Overrides.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
-   * The id of the registration.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the registration.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   id: number | string;
   /**
-   * The id of the registration update request to retrieve.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the registration update request to retrieve.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   update_request_id: number | string;
 };
 
@@ -63,7 +69,11 @@ type Options = (
  *
  * Retrieves details about a specific registration update request.
  *
- * Nickname: get_lti_registration_update_request
+ * nickname: get_lti_registration_update_request
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<LtiRegistrationUpdateRequest>(

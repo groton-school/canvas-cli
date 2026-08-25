@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { AuthenticationProvider } from '../../../../../Resources/AuthenticationProviders.js';
 
 export type restore_deleted_authentication_providerPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -52,11 +56,14 @@ type Options = (
 /**
  * Restore a deleted authentication provider
  *
- * Restore an authentication provider back to active that was previously
- * deleted. Only available to admins who can manage_account_settings for given
- * root account.
+ * Restore an authentication provider back to active that was previously deleted. Only
+available to admins who can manage_account_settings for given root account.
  *
- * Nickname: restore_deleted_authentication_provider
+ * nickname: restore_deleted_authentication_provider
+ *
+ * 
+ *
+ * 
  */
 export async function restore_deleted_authentication_provider(
   options: Options

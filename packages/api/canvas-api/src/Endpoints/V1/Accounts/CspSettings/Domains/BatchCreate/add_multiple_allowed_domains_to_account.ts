@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type add_multiple_allowed_domains_to_accountPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -16,9 +18,11 @@ export type add_multiple_allowed_domains_to_accountSearchParameters =
 export type add_multiple_allowed_domains_to_accountFormParameters =
   Masquerade & {
     /**
-     * No description
+     * no description
      *
      * Array
+     *
+     *
      */
     domains: string[];
   };
@@ -67,10 +71,14 @@ type Options = (
 /**
  * Add multiple allowed domains to an account
  *
- * Adds multiple allowed domains for the current account. Note: this will not
- * take effect unless CSP is explicitly enabled on this account.
+ * Adds multiple allowed domains for the current account. Note: this will not take effect
+unless CSP is explicitly enabled on this account.
  *
- * Nickname: add_multiple_allowed_domains_to_account
+ * nickname: add_multiple_allowed_domains_to_account
+ *
+ * 
+ *
+ * 
  */
 export async function add_multiple_allowed_domains_to_account(
   options: Options

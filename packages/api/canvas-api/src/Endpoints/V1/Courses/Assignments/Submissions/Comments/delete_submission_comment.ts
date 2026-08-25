@@ -1,30 +1,38 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { SubmissionComment } from '../../../../../../Resources/Submissions.js';
 
 export type delete_submission_commentPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -65,7 +73,11 @@ type Options = (
  *
  * Delete the given submission comment.
  *
- * Nickname: delete_submission_comment
+ * nickname: delete_submission_comment
+ *
+ *
+ *
+ *
  */
 export async function delete_submission_comment(options: Options) {
   const response = await client().fetchAs<SubmissionComment>(

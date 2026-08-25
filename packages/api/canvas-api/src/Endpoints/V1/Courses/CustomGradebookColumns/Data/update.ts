@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ColumnDatum } from '../../../../../Resources/CustomGradebookColumns.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -26,7 +32,13 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** Column content. Setting this to blank will delete the datum object. */
+  /**
+   * Column content.  Setting this to blank will delete the datum object.
+   *
+   *
+   *
+   *
+   */
   'column_data[content]': string;
 };
 
@@ -76,7 +88,11 @@ type Options = (
  *
  * Set the content of a custom column
  *
- * Nickname: update_column_data
+ * nickname: update_column_data
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<ColumnDatum>(

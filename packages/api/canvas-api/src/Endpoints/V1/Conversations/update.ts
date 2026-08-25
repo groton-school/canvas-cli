@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -13,38 +15,59 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** Change the state of this conversation */
+  /**
+   * Change the state of this conversation
+   *
+   *
+   *
+   *
+   */
   'conversation[workflow_state]': string;
   /**
-   * Toggle the current user's subscription to the conversation (only valid
-   * for group conversations). If unsubscribed, the user will still have
-   * access to the latest messages, but the conversation won't be
-   * automatically flagged as unread, nor will it jump to the top of the
-   * inbox.
-   *
-   * Type: boolean
-   */
+     * Toggle the current user&#x27;s subscription to the conversation (only valid for
+group conversations). If unsubscribed, the user will still have access to
+the latest messages, but the conversation won&#x27;t be automatically flagged
+as unread, nor will it jump to the top of the inbox.
+     *
+     * type: boolean
+     *
+     * 
+     */
   'conversation[subscribed]': boolean | string;
   /**
-   * Toggle the starred state of the current user's view of the conversation.
+   * Toggle the starred state of the current user&#x27;s view of the conversation.
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   'conversation[starred]': boolean | string;
   /**
-   * Used when generating "visible" in the API response. See the explanation
-   * under the {api:ConversationsController#index index API action}
-   */
+     * Used when generating &quot;visible&quot; in the API response. See the explanation
+under the {api:ConversationsController#index index API action}
+     *
+     * 
+     *
+     * 
+     */
   scope: string;
   /**
-   * Used when generating "visible" in the API response. See the explanation
-   * under the {api:ConversationsController#index index API action}
-   */
+     * Used when generating &quot;visible&quot; in the API response. See the explanation
+under the {api:ConversationsController#index index API action}
+     *
+     * 
+     *
+     * 
+     */
   filter: string[];
   /**
-   * Used when generating "visible" in the API response. See the explanation
-   * under the {api:ConversationsController#index index API action}
-   */
+     * Used when generating &quot;visible&quot; in the API response. See the explanation
+under the {api:ConversationsController#index index API action}
+     *
+     * 
+     *
+     * 
+     */
   filter_mode: string;
 };
 
@@ -94,7 +117,11 @@ type Options = (
  *
  * Updates attributes for a single conversation.
  *
- * Nickname: edit_conversation
+ * nickname: edit_conversation
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(

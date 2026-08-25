@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { AiExperience } from '../../../../Resources/AiExperiences.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -15,8 +17,12 @@ export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
     /**
-     * Only return experiences with the specified workflow state. Allowed
-     * values: published, unpublished, deleted
+     * Only return experiences with the specified workflow state.
+Allowed values: published, unpublished, deleted
+     *
+     * 
+     *
+     * 
      */
     workflow_state: string;
   }>;
@@ -55,7 +61,11 @@ type Options = (
  *
  * Retrieve the paginated list of AI experiences for a course
  *
- * Nickname: list_ai_experiences
+ * nickname: list_ai_experiences
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<AiExperience[]>(

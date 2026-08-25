@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { TermsOfService } from '../../../../Resources/Accounts.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Returns the terms of service for that account
  *
- * Nickname: get_terms_of_service
+ * nickname: get_terms_of_service
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<TermsOfService>(

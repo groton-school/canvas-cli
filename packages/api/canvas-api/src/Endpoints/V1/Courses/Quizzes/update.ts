@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Quiz } from '../../../../Resources/Quizzes.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -21,10 +25,13 @@ export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
   /**
-   * If true, notifies users that the quiz has changed. Defaults to true
-   *
-   * Type: boolean
-   */
+     * If true, notifies users that the quiz has changed.
+Defaults to true
+     *
+     * type: boolean
+     *
+     * 
+     */
   'quiz[notify_of_update]': boolean | string;
 };
 
@@ -73,10 +80,14 @@ type Options = (
  * Edit a quiz
  *
  * Modify an existing quiz. See the documentation for quiz creation.
+
+Additional arguments:
  *
- * Additional arguments:
+ * nickname: edit_quiz
  *
- * Nickname: edit_quiz
+ * 
+ *
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<Quiz>(

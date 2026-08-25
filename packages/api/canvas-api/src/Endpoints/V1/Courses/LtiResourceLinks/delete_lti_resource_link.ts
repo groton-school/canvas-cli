@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
 export type delete_lti_resource_linkPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -51,16 +55,19 @@ type Options = (
 /**
  * Delete an LTI Resource Link
  *
- * Delete the specified resource link. The ID can be in the standard Canvas
- * format ("1"), or in these special formats:
+ * Delete the specified resource link. The ID can be in the standard
+Canvas format ("1"), or in these special formats:
+
+- resource_link_uuid:<uuid> - Find the resource link by its resource_link_uuid
+- lookup_uuid:<uuid> - Find the resource link by its lookup_uuid
+
+Only links that are not associated with Assignments, Module Items, or Collaborations can be deleted.
  *
- * - Resource_link_uuid:<uuid> - Find the resource link by its resource_link_uuid
- * - Lookup_uuid:<uuid> - Find the resource link by its lookup_uuid
+ * nickname: delete_lti_resource_link
  *
- * Only links that are not associated with Assignments, Module Items, or
- * Collaborations can be deleted.
+ * 
  *
- * Nickname: delete_lti_resource_link
+ * 
  */
 export async function delete_lti_resource_link(options: Options) {
   const response = await client().fetchAs<LtiResourceLink>(

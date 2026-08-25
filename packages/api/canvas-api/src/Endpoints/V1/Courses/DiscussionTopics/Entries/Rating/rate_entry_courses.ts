@@ -1,23 +1,29 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type rate_entry_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   entry_id: string | number;
 };
@@ -26,12 +32,14 @@ export type rate_entry_coursesSearchParameters = Masquerade;
 
 export type rate_entry_coursesFormParameters = Masquerade & {
   /**
-   * A rating to set on this entry. Only 0 and 1 are accepted.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * A rating to set on this entry. Only 0 and 1 are accepted.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   rating: number | string;
 };
 
@@ -80,10 +88,14 @@ type Options = (
  * Rate entry
  *
  * Rate a discussion entry.
+
+On success, the response will be 204 No Content with an empty body.
  *
- * On success, the response will be 204 No Content with an empty body.
+ * nickname: rate_entry_courses
  *
- * Nickname: rate_entry_courses
+ * 
+ *
+ * 
  */
 export async function rate_entry_courses(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -46,7 +48,11 @@ type Options = (
  *
  * Update multiple modules in an account.
  *
- * Nickname: get_current_settings_for_account_or_course_accounts
+ * nickname: get_current_settings_for_account_or_course_accounts
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

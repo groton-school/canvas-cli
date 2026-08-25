@@ -1,32 +1,37 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type AuthenticationEvent = {
   /**
-   * Timestamp of the event
+   * timestamp of the event
    *
-   * Format: date-time
+   * format: date-time
    */
   created_at: string;
-  /** Authentication event type ('login' or 'logout') */
+  /**
+   * authentication event type ('login' or 'logout')
+   *
+   *
+   */
   event_type: string;
   /**
    * ID of the pseudonym (login) associated with the event
    *
-   * Type: integer
+   * type: integer
    */
   pseudonym_id: number | string;
   /**
-   * ID of the account associated with the event. will match the account_id in
-   * the associated pseudonym.
+   * ID of the account associated with the event. will match the account_id in the associated pseudonym.
    *
-   * Type: integer
+   * type: integer
    */
   account_id: number | string;
   /**
-   * ID of the user associated with the event will match the user_id in the
-   * associated pseudonym.
+   * ID of the user associated with the event will match the user_id in the associated pseudonym.
    *
-   * Type: integer
+   * type: integer
    */
   user_id: number | string;
 };

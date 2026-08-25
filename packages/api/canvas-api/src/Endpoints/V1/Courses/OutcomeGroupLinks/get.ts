@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { OutcomeLink } from '../../../../Resources/OutcomeGroups.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -15,13 +17,21 @@ export type getSearchParameters = Masquerade &
   Paginated &
   Partial<{
     /**
-     * The detail level of the outcomes. Defaults to "abbrev". Specify "full"
-     * for more information.
+     * The detail level of the outcomes. Defaults to &quot;abbrev&quot;.
+Specify &quot;full&quot; for more information.
+     *
+     * 
+     *
+     * 
      */
     outcome_style: string;
     /**
-     * The detail level of the outcome groups. Defaults to "abbrev". Specify
-     * "full" for more information.
+     * The detail level of the outcome groups. Defaults to &quot;abbrev&quot;.
+Specify &quot;full&quot; for more information.
+     *
+     * 
+     *
+     * 
      */
     outcome_group_style: string;
   }>;
@@ -60,7 +70,11 @@ type Options = (
  *
  * Returns a list of all outcome links in the specified context.
  *
- * Nickname: get_all_outcome_links_for_context_courses
+ * nickname: get_all_outcome_links_for_context_courses
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<OutcomeLink[]>(

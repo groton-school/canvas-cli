@@ -1,26 +1,42 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type search_account_domainsSearchParameters = Masquerade &
   Partial<{
-    /** Campus name */
+    /**
+     * campus name
+     *
+     *
+     *
+     *
+     */
     name: string;
-    /** No description */
+    /**
+     * no description
+     *
+     *
+     *
+     *
+     */
     domain: string;
     /**
-     * No description
+     * no description
      *
-     * Type: number
+     * type: number
+
+format: 'float'
      *
-     * Format: 'float'
+     * 
      */
     latitude: number | string;
     /**
-     * No description
+     * no description
      *
-     * Type: number
+     * type: number
+
+format: 'float'
      *
-     * Format: 'float'
+     * 
      */
     longitude: number | string;
   }>;
@@ -48,10 +64,14 @@ type Options =
  * Search account domains
  *
  * Returns a list of up to 5 matching account domains
+
+Partial match on name / domain are supported
  *
- * Partial match on name / domain are supported
+ * nickname: search_account_domains
  *
- * Nickname: search_account_domains
+ * 
+ *
+ * 
  */
 export async function search_account_domains(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ModuleItem } from '../../../../../Resources/CoursePace.js';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   module_id: string | number;
 };
@@ -20,80 +24,121 @@ export type createPathParameters = {
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** The name of the module item and associated content */
+  /**
+   * The name of the module item and associated content
+   *
+   *
+   *
+   *
+   */
   'module_item[title]': string;
-  /** The type of content linked to the item */
+  /**
+   * The type of content linked to the item
+   *
+   *
+   *
+   *
+   */
   'module_item[type]': string;
   /**
-   * The id of the content to link to the module item. Required, except for
-   * 'ExternalUrl', 'Page', and 'SubHeader' types.
-   */
+     * The id of the content to link to the module item. Required, except for
+&#x27;ExternalUrl&#x27;, &#x27;Page&#x27;, and &#x27;SubHeader&#x27; types.
+     *
+     * 
+     *
+     * 
+     */
   'module_item[content_id]': string;
   /**
-   * The position of this item in the module (1-based).
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The position of this item in the module (1-based).
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   'module_item[position]': number | string;
   /**
-   * 0-based indent level; module items may be indented to show a hierarchy
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * 0-based indent level; module items may be indented to show a hierarchy
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   'module_item[indent]': number | string;
   /**
-   * Suffix for the linked wiki page (e.g. 'front-page'). Required for 'Page'
-   * type.
-   */
+     * Suffix for the linked wiki page (e.g. &#x27;front-page&#x27;). Required for &#x27;Page&#x27;
+type.
+     *
+     * 
+     *
+     * 
+     */
   'module_item[page_url]': string;
   /**
-   * External url that the item points to. [Required for 'ExternalUrl' and
-   * 'ExternalTool' types.
-   */
+     * External url that the item points to. [Required for &#x27;ExternalUrl&#x27; and
+&#x27;ExternalTool&#x27; types.
+     *
+     * 
+     *
+     * 
+     */
   'module_item[external_url]': string;
   /**
-   * Whether the external tool opens in a new tab. Only applies to
-   * 'ExternalTool' type.
-   *
-   * Type: boolean
-   */
+     * Whether the external tool opens in a new tab. Only applies to
+&#x27;ExternalTool&#x27; type.
+     *
+     * type: boolean
+     *
+     * 
+     */
   'module_item[new_tab]': boolean | string;
   /**
-   * Completion requirement for this module item. "must_view": Applies to all
-   * item types "must_contribute": Only applies to "Assignment", "Discussion",
-   * and "Page" types "must_submit", "min_score": Only apply to "Assignment"
-   * and "Quiz" types "must_mark_done": Only applies to "Assignment" and
-   * "Page" types Inapplicable types will be ignored
-   */
+     * Completion requirement for this module item.
+&quot;must_view&quot;: Applies to all item types
+&quot;must_contribute&quot;: Only applies to &quot;Assignment&quot;, &quot;Discussion&quot;, and &quot;Page&quot; types
+&quot;must_submit&quot;, &quot;min_score&quot;: Only apply to &quot;Assignment&quot; and &quot;Quiz&quot; types
+&quot;must_mark_done&quot;: Only applies to &quot;Assignment&quot; and &quot;Page&quot; types
+Inapplicable types will be ignored
+     *
+     * 
+     *
+     * 
+     */
   'module_item[completion_requirement][type]': string;
   /**
-   * Minimum score required to complete. Required for completion_requirement
-   * type 'min_score'.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * Minimum score required to complete. Required for completion_requirement
+type &#x27;min_score&#x27;.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   'module_item[completion_requirement][min_score]': number | string;
   /**
-   * Width of the ExternalTool on launch
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * Width of the ExternalTool on launch
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   'module_item[iframe][width]': number | string;
   /**
-   * Height of the ExternalTool on launch
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * Height of the ExternalTool on launch
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   'module_item[iframe][height]': number | string;
 };
 
@@ -143,7 +188,11 @@ type Options = (
  *
  * Create and return a new module item
  *
- * Nickname: create_module_item
+ * nickname: create_module_item
+ *
+ *
+ *
+ *
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<ModuleItem>(

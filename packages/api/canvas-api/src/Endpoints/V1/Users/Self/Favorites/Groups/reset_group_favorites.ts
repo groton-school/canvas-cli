@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type reset_group_favoritesSearchParameters = Masquerade;
 
@@ -25,10 +25,14 @@ type Options =
 /**
  * Reset group favorites
  *
- * Reset the current user's group favorites to the default automatically
- * generated list of enrolled group
+ * Reset the current user's group favorites to the default
+automatically generated list of enrolled group
  *
- * Nickname: reset_group_favorites
+ * nickname: reset_group_favorites
+ *
+ * 
+ *
+ * 
  */
 export async function reset_group_favorites(options: Options) {
   const response = await client().fetchAs<JSONValue>(

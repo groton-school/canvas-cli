@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { DeveloperKey } from '../../../Resources/DeveloperKeys.js';
 
 export type delete_developer_keyPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -45,10 +47,13 @@ type Options = (
 /**
  * Delete a Developer Key
  *
- * Delete an existing Canvas API key. Deleting an LTI 1.3 registration should be
- * done via the LTI Registration API.
+ * Delete an existing Canvas API key. Deleting an LTI 1.3 registration should be done via the LTI Registration API.
  *
- * Nickname: delete_developer_key
+ * nickname: delete_developer_key
+ *
+ *
+ *
+ *
  */
 export async function delete_developer_key(options: Options) {
   const response = await client().fetchAs<DeveloperKey>(

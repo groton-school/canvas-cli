@@ -1,18 +1,26 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type delete_conclude_coursePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
 
 export type delete_conclude_courseSearchParameters = Masquerade &
   Partial<{
-    /** The action to take on the course. */
+    /**
+     * The action to take on the course.
+     *
+     *
+     *
+     *
+     */
     event: string;
   }>;
 
@@ -50,7 +58,11 @@ type Options = (
  *
  * Delete or conclude an existing course
  *
- * Nickname: delete_conclude_course
+ * nickname: delete_conclude_course
+ *
+ *
+ *
+ *
  */
 export async function delete_conclude_course(options: Options) {
   const response = await client().fetchAs<JSONValue>(`/api/v1/courses/{id}`, {

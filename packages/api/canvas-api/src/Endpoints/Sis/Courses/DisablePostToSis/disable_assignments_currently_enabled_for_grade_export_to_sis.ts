@@ -1,14 +1,16 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type disable_assignments_currently_enabled_for_grade_export_to_sisPathParameters =
   {
     /**
      * The ID of the course.
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     course_id: number | string;
   };
@@ -21,9 +23,11 @@ export type disable_assignments_currently_enabled_for_grade_export_to_sisFormPar
     /**
      * The ID of the grading period.
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     grading_period_id: number | string;
   };
@@ -72,17 +76,21 @@ type Options = (
 /**
  * Disable assignments currently enabled for grade export to SIS
  *
- * Disable all assignments flagged as "post_to_sis", with the option of making
- * it specific to a grading period, in a course.
+ * Disable all assignments flagged as "post_to_sis", with the option of making it
+specific to a grading period, in a course.
+
+On success, the response will be 204 No Content with an empty body.
+
+On failure, the response will be 400 Bad Request with a body of a specific
+message.
+
+For disabling assignments in a specific grading period
  *
- * On success, the response will be 204 No Content with an empty body.
+ * nickname: disable_assignments_currently_enabled_for_grade_export_to_sis
  *
- * On failure, the response will be 400 Bad Request with a body of a specific
- * message.
+ * 
  *
- * For disabling assignments in a specific grading period
- *
- * Nickname: disable_assignments_currently_enabled_for_grade_export_to_sis
+ * 
  */
 export async function disable_assignments_currently_enabled_for_grade_export_to_sis(
   options: Options

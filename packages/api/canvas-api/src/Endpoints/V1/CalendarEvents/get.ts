@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { CalendarEvent } from '../../../Resources/CalendarEvents.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Returns detailed information about a specific calendar event or assignment.
  *
- * Nickname: get_single_calendar_event_or_assignment
+ * nickname: get_single_calendar_event_or_assignment
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<CalendarEvent>(

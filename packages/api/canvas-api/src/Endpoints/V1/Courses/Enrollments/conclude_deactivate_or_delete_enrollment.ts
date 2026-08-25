@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
 export type conclude_deactivate_or_delete_enrollmentPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -21,10 +25,14 @@ export type conclude_deactivate_or_delete_enrollmentSearchParameters =
   Masquerade &
     Partial<{
       /**
-       * The action to take on the enrollment. When inactive, a user will still
-       * appear in the course roster to admins, but be unable to participate.
-       * ("inactivate" and "deactivate" are equivalent tasks)
-       */
+     * The action to take on the enrollment.
+When inactive, a user will still appear in the course roster to admins, but be unable to participate.
+(&quot;inactivate&quot; and &quot;deactivate&quot; are equivalent tasks)
+     *
+     * 
+     *
+     * 
+     */
       task: string;
     }>;
 
@@ -60,10 +68,14 @@ type Options = (
 /**
  * Conclude, deactivate, or delete an enrollment
  *
- * Conclude, deactivate, or delete an enrollment. If the +task+ argument isn't
- * given, the enrollment will be concluded.
+ * Conclude, deactivate, or delete an enrollment. If the +task+ argument isn't given, the enrollment
+will be concluded.
  *
- * Nickname: conclude_deactivate_or_delete_enrollment
+ * nickname: conclude_deactivate_or_delete_enrollment
+ *
+ * 
+ *
+ * 
  */
 export async function conclude_deactivate_or_delete_enrollment(
   options: Options

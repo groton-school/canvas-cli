@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listSearchParameters = Masquerade;
 
@@ -25,10 +25,14 @@ type Options =
 /**
  * List environment settings
  *
- * Return a hash of global settings for the root account This is the same
- * information supplied to the web interface as +ENV.SETTINGS+.
+ * Return a hash of global settings for the root account
+This is the same information supplied to the web interface as +ENV.SETTINGS+.
  *
- * Nickname: list_environment_settings
+ * nickname: list_environment_settings
+ *
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

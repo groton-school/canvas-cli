@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type group_activity_stream_summaryPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
 };
@@ -45,11 +47,15 @@ type Options = (
  * Group activity stream summary
  *
  * Returns a summary of the current user's group-specific activity stream.
+
+For full documentation, see the API documentation for the user activity
+stream summary, in the user api.
  *
- * For full documentation, see the API documentation for the user activity
- * stream summary, in the user api.
+ * nickname: group_activity_stream_summary
  *
- * Nickname: group_activity_stream_summary
+ * 
+ *
+ * 
  */
 export async function group_activity_stream_summary(options: Options) {
   const response = await client().fetchAs<JSONValue>(

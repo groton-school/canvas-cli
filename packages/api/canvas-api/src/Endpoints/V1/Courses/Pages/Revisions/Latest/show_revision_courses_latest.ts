@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { PageRevision } from '../../../../../../Resources/Pages.js';
 
 export type show_revision_courses_latestPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   url_or_id: string | number;
 };
@@ -22,7 +26,9 @@ export type show_revision_courses_latestSearchParameters = Masquerade &
     /**
      * If set, exclude page content from results
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     summary: boolean | string;
   }>;
@@ -59,10 +65,14 @@ type Options = (
 /**
  * Show revision
  *
- * Retrieve the metadata and optionally content of a revision of the page. Note
- * that retrieving historic versions of pages requires edit rights.
+ * Retrieve the metadata and optionally content of a revision of the page.
+Note that retrieving historic versions of pages requires edit rights.
  *
- * Nickname: show_revision_courses_latest
+ * nickname: show_revision_courses_latest
+ *
+ * 
+ *
+ * 
  */
 export async function show_revision_courses_latest(options: Options) {
   const response = await client().fetchAs<PageRevision>(

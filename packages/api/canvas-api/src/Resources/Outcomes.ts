@@ -1,111 +1,152 @@
 import { JSONValue } from '@battis/typescript-tricks';
 import { RubricRating } from './Rubrics.js';
 
+/**
+ *
+ */
 export type Outcome = {
   /**
-   * The ID of the outcome
+   * the ID of the outcome
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
-  /** The URL for fetching/updating the outcome. should be treated as opaque */
+  /**
+   * the URL for fetching/updating the outcome. should be treated as opaque
+   *
+   *
+   */
   url: string;
   /**
-   * The context owning the outcome. may be null for global outcomes
+   * the context owning the outcome. may be null for global outcomes
    *
-   * Type: integer
+   * type: integer
    */
   context_id: number | string;
+  /**
+   *
+   *
+   *
+   */
   context_type: string;
-  /** Title of the outcome */
+  /**
+   * title of the outcome
+   *
+   *
+   */
   title: string;
-  /** Optional friendly name for reporting */
+  /**
+   * Optional friendly name for reporting
+   *
+   *
+   */
   display_name: string;
-  /** Description of the outcome. omitted in the abbreviated form. */
+  /**
+   * description of the outcome. omitted in the abbreviated form.
+   *
+   *
+   */
   description: string;
-  /** A custom GUID for the learning standard. */
+  /**
+   * A custom GUID for the learning standard.
+   *
+   *
+   */
   vendor_guid: string;
   /**
-   * Maximum points possible. included only if the outcome embeds a rubric
-   * criterion. omitted in the abbreviated form.
+   * maximum points possible. included only if the outcome embeds a rubric criterion. omitted in the abbreviated form.
    *
-   * Type: integer
+   * type: integer
    */
   points_possible: number | string;
   /**
-   * Points necessary to demonstrate mastery outcomes. included only if the
-   * outcome embeds a rubric criterion. omitted in the abbreviated form.
+   * points necessary to demonstrate mastery outcomes. included only if the outcome embeds a rubric criterion. omitted in the abbreviated form.
    *
-   * Type: integer
+   * type: integer
    */
   mastery_points: number | string;
-  /** The method used to calculate a students score */
+  /**
+   * the method used to calculate a students score
+   *
+   *
+   */
   calculation_method: string;
   /**
-   * This defines the variable value used by the calculation_method. included
-   * only if calculation_method uses it
+   * this defines the variable value used by the calculation_method. included only if calculation_method uses it
    *
-   * Type: integer
+   * type: integer
    */
   calculation_int: number | string;
   /**
-   * Possible ratings for this outcome. included only if the outcome embeds a
-   * rubric criterion. omitted in the abbreviated form.
+   * possible ratings for this outcome. included only if the outcome embeds a rubric criterion. omitted in the abbreviated form.
+   *
+   *
    */
   ratings: RubricRating[];
   /**
-   * Whether the current user can update the outcome
+   * whether the current user can update the outcome
    *
-   * Type: boolean
+   * type: boolean
    */
   can_edit: boolean | string;
   /**
-   * Whether the outcome can be unlinked
+   * whether the outcome can be unlinked
    *
-   * Type: boolean
+   * type: boolean
    */
   can_unlink: boolean | string;
   /**
-   * Whether this outcome has been used to assess a student
+   * whether this outcome has been used to assess a student
    *
-   * Type: boolean
+   * type: boolean
    */
   assessed: boolean | string;
   /**
-   * Whether updates to this outcome will propagate to unassessed rubrics that
-   * have imported it
+   * whether updates to this outcome will propagate to unassessed rubrics that have imported it
    *
-   * Type: boolean
+   * type: boolean
    */
   has_updateable_rubrics: boolean | string;
 };
 
+/**
+ *
+ */
 export type OutcomeAlignment = {
   /**
-   * The id of the aligned learning outcome.
+   * the id of the aligned learning outcome.
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
   /**
-   * The id of the aligned assignment (null for live assessments).
+   * the id of the aligned assignment (null for live assessments).
    *
-   * Type: integer
+   * type: integer
    */
   assignment_id: number | string;
   /**
-   * The id of the aligned live assessment (null for assignments).
+   * the id of the aligned live assessment (null for assignments).
    *
-   * Type: integer
+   * type: integer
    */
   assessment_id: number | string;
   /**
-   * A string representing the different submission types of an aligned
-   * assignment.
+   * a string representing the different submission types of an aligned assignment.
+   *
+   *
    */
   submission_types: string;
-  /** The URL for the aligned assignment. */
+  /**
+   * the URL for the aligned assignment.
+   *
+   *
+   */
   url: string;
-  /** The title of the aligned assignment. */
+  /**
+   * the title of the aligned assignment.
+   *
+   *
+   */
   title: string;
 };

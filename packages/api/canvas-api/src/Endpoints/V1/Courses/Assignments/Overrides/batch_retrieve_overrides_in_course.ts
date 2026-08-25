@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
 export type batch_retrieve_overrides_in_coursePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -14,9 +16,21 @@ export type batch_retrieve_overrides_in_coursePathParameters = {
 export type batch_retrieve_overrides_in_courseSearchParameters = Masquerade &
   Paginated &
   Partial<{
-    /** Ids of overrides to retrieve */
+    /**
+     * Ids of overrides to retrieve
+     *
+     *
+     *
+     *
+     */
     'assignment_overrides[id]': string[];
-    /** Ids of assignments for each override */
+    /**
+     * Ids of assignments for each override
+     *
+     *
+     *
+     *
+     */
     'assignment_overrides[assignment_id]': string[];
   }>;
 
@@ -52,11 +66,15 @@ type Options = (
 /**
  * Batch retrieve overrides in a course
  *
- * Returns a list of specified overrides in this course, providing they target
- * sections/groups/students visible to the current user. Returns null elements
- * in the list for requests that were not found.
+ * Returns a list of specified overrides in this course, providing
+they target sections/groups/students visible to the current user.
+Returns null elements in the list for requests that were not found.
  *
- * Nickname: batch_retrieve_overrides_in_course
+ * nickname: batch_retrieve_overrides_in_course
+ *
+ * 
+ *
+ * 
  */
 export async function batch_retrieve_overrides_in_course(options: Options) {
   const response = await client().fetchAs<AssignmentOverride[]>(

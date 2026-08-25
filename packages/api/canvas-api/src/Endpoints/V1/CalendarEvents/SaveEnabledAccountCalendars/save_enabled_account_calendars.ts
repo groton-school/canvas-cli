@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type save_enabled_account_calendarsSearchParameters = Masquerade;
 
@@ -7,10 +7,18 @@ export type save_enabled_account_calendarsFormParameters = Masquerade & {
   /**
    * Flag to mark account calendars feature as seen
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   mark_feature_as_seen: boolean | string;
-  /** An array of account Ids to remember in the calendars list of the user */
+  /**
+   * An array of account Ids to remember in the calendars list of the user
+   *
+   *
+   *
+   *
+   */
   enabled_account_calendars: string[];
 };
 
@@ -48,10 +56,13 @@ type Options =
 /**
  * Save enabled account calendars
  *
- * Creates and updates the enabled_account_calendars and mark_feature_as_seen
- * user preferences
+ * Creates and updates the enabled_account_calendars and mark_feature_as_seen user preferences
  *
- * Nickname: save_enabled_account_calendars
+ * nickname: save_enabled_account_calendars
+ *
+ *
+ *
+ *
  */
 export async function save_enabled_account_calendars(options: Options) {
   const response = await client().fetchAs<JSONValue>(

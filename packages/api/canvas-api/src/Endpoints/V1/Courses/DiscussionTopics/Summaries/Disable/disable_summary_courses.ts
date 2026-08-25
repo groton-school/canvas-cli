@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type disable_summary_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
 };
@@ -50,10 +54,14 @@ type Options = (
 /**
  * Disable summary
  *
- * Deprecated, to remove after VICE-5047 gets merged Disables the summary for a
- * discussion topic.
+ * Deprecated, to remove after VICE-5047 gets merged
+Disables the summary for a discussion topic.
  *
- * Nickname: disable_summary_courses
+ * nickname: disable_summary_courses
+ *
+ * 
+ *
+ * 
  */
 export async function disable_summary_courses(options: Options) {
   const response = await client().fetchAs<JSONValue>(

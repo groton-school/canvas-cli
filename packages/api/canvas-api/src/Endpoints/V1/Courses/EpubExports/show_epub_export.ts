@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { EpubExport } from '../../../../Resources/EPubExports.js';
 
 export type show_epub_exportPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Get information about a single ePub export.
  *
- * Nickname: show_epub_export
+ * nickname: show_epub_export
+ *
+ *
+ *
+ *
  */
 export async function show_epub_export(options: Options) {
   const response = await client().fetchAs<EpubExport>(

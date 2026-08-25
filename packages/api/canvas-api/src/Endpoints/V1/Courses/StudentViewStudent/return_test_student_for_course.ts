@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { User } from '../../../../Resources/Users.js';
 
 export type return_test_student_for_coursePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -45,11 +47,15 @@ type Options = (
 /**
  * Return test student for course
  *
- * Returns information for a test student in this course. Creates a test student
- * if one does not already exist for the course. The caller must have permission
- * to access the course's student view.
+ * Returns information for a test student in this course. Creates a test
+student if one does not already exist for the course. The caller must have
+permission to access the course's student view.
  *
- * Nickname: return_test_student_for_course
+ * nickname: return_test_student_for_course
+ *
+ * 
+ *
+ * 
  */
 export async function return_test_student_for_course(options: Options) {
   const response = await client().fetchAs<User>(

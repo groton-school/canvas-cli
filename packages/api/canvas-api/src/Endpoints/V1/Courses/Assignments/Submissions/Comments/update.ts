@@ -1,30 +1,38 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { SubmissionComment } from '../../../../../../Resources/Submissions.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -32,7 +40,13 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** If this argument is present, edit the text of a comment. */
+  /**
+   * If this argument is present, edit the text of a comment.
+   *
+   *
+   *
+   *
+   */
   comment: string;
 };
 
@@ -82,7 +96,11 @@ type Options = (
  *
  * Edit the given submission comment.
  *
- * Nickname: edit_submission_comment
+ * nickname: edit_submission_comment
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<SubmissionComment>(

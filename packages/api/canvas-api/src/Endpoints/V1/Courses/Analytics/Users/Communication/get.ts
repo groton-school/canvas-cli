@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   student_id: string | number;
 };
@@ -51,12 +55,16 @@ type Options = (
  * Get user-in-a-course-level messaging data
  *
  * Returns messaging "hits" grouped by day through the entire history of the
- * course. Returns a hash containing the number of instructor-to-student
- * messages, and student-to-instructor messages, where the hash keys are dates
- * in the format "YYYY-MM-DD". Message hits include Conversation messages and
- * comments on homework submissions.
+course. Returns a hash containing the number of instructor-to-student messages,
+and student-to-instructor messages, where the hash keys are dates
+in the format "YYYY-MM-DD". Message hits include Conversation messages and
+comments on homework submissions.
  *
- * Nickname: get_user_in_a_course_level_messaging_data
+ * nickname: get_user_in_a_course_level_messaging_data
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

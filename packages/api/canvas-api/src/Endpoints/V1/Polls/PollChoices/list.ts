@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   poll_id: string | number;
 };
@@ -46,7 +48,11 @@ type Options = (
  *
  * Returns the paginated list of PollChoices in this poll.
  *
- * Nickname: list_poll_choices_in_poll
+ * nickname: list_poll_choices_in_poll
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

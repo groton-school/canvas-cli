@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type load_custom_dataPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -13,9 +15,12 @@ export type load_custom_dataPathParameters = {
 export type load_custom_dataSearchParameters = Masquerade &
   Partial<{
     /**
-     * The namespace from which to retrieve the data. This should be something
-     * other Canvas API apps aren't likely to use, such as a reverse DNS for
-     * your organization.
+     * The namespace from which to retrieve the data.  This should be something other
+Canvas API apps aren&#x27;t likely to use, such as a reverse DNS for your organization.
+     *
+     * 
+     *
+     * 
      */
     ns: string;
   }>;
@@ -53,18 +58,22 @@ type Options = (
  * Load custom data
  *
  * Load custom user data.
+
+Arbitrary JSON data can be stored for a User.  This API call
+retrieves that data for a (optional) given scope.
+See {api:UsersController#set_custom_data Store Custom Data} for details and
+examples.
+
+On success, this endpoint returns an object containing the data that was requested.
+
+Responds with status code 400 if the namespace parameter, +ns+, is missing or invalid,
+or if the specified scope does not contain any data.
  *
- * Arbitrary JSON data can be stored for a User. This API call retrieves that
- * data for a (optional) given scope. See {api:UsersController#set_custom_data
- * Store Custom Data} for details and examples.
+ * nickname: load_custom_data
  *
- * On success, this endpoint returns an object containing the data that was
- * requested.
+ * 
  *
- * Responds with status code 400 if the namespace parameter, +ns+, is missing or
- * invalid, or if the specified scope does not contain any data.
- *
- * Nickname: load_custom_data
+ * 
  */
 export async function load_custom_data(options: Options) {
   const response = await client().fetchAs<JSONValue>(

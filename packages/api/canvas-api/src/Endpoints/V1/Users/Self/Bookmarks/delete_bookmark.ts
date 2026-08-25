@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type delete_bookmarkPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -46,7 +48,11 @@ type Options = (
  *
  * Deletes a bookmark
  *
- * Nickname: delete_bookmark
+ * nickname: delete_bookmark
+ *
+ *
+ *
+ *
  */
 export async function delete_bookmark(options: Options) {
   const response = await client().fetchAs<JSONValue>(

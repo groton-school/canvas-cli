@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { PlannerOverride } from '../../../../Resources/Planner.js';
 
 export type show_planner_overridePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Retrieve a planner override for the current user
  *
- * Nickname: show_planner_override
+ * nickname: show_planner_override
+ *
+ *
+ *
+ *
  */
 export async function show_planner_override(options: Options) {
   const response = await client().fetchAs<PlannerOverride>(

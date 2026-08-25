@@ -1,13 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type activity_stream_summarySearchParameters = Masquerade &
   Partial<{
     /**
-     * If true, will only return objects for courses the user is actively
-     * participating in
+     * If true, will only return objects for courses the user is actively participating in
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     only_active_courses: boolean | string;
   }>;
@@ -36,7 +37,11 @@ type Options =
  *
  * Returns a summary of the current user's global activity stream.
  *
- * Nickname: activity_stream_summary
+ * nickname: activity_stream_summary
+ *
+ *
+ *
+ *
  */
 export async function activity_stream_summary(options: Options) {
   const response = await client().fetchAs<JSONValue>(

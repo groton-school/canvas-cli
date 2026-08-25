@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getSearchParameters = Masquerade;
 
@@ -27,7 +27,11 @@ type Options =
  *
  * Return the config information for the Kaltura plugin in json format.
  *
- * Nickname: get_kaltura_config
+ * nickname: get_kaltura_config
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

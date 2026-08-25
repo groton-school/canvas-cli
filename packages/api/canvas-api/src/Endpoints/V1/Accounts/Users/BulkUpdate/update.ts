@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Progress } from '../../../../../Resources/CoursePace.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -14,12 +16,21 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** [Array<Integer>] The IDs of the users to update. */
+  /**
+     * [Array&lt;Integer&gt;]
+The IDs of the users to update.
+     *
+     * 
+     *
+     * 
+     */
   user_ids: string;
   /**
    * The attributes to update for each user.
    *
    * Hash
+   *
+   *
    */
   user: JSONObject;
 };
@@ -70,7 +81,11 @@ type Options = (
  *
  * Updates multiple users in bulk.
  *
- * Nickname: update_multiple_users
+ * nickname: update_multiple_users
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<Progress>(

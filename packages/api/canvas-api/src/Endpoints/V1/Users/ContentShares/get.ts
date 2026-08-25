@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ContentShare } from '../../../../Resources/ContentShares.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -51,10 +55,13 @@ type Options = (
 /**
  * Get content share
  *
- * Return information about a single content share. You may use +self+ as the
- * user_id to retrieve your own content share.
+ * Return information about a single content share. You may use +self+ as the user_id to retrieve your own content share.
  *
- * Nickname: get_content_share
+ * nickname: get_content_share
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<ContentShare>(

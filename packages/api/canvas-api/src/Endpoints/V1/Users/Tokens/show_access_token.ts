@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type show_access_tokenPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -52,7 +56,11 @@ type Options = (
  *
  * The ID can be the actual database ID of the token, or the 'token_hint' value.
  *
- * Nickname: show_access_token
+ * nickname: show_access_token
+ *
+ *
+ *
+ *
  */
 export async function show_access_token(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { GroupMembership } from '../../../../Resources/Groups.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
 };
@@ -16,7 +18,11 @@ export type listSearchParameters = Masquerade &
   Partial<{
     /**
      * Only list memberships with the given workflow_states. By default it will
-     * return all memberships.
+return all memberships.
+     *
+     * 
+     *
+     * 
      */
     filter_states: string[];
   }>;
@@ -55,7 +61,11 @@ type Options = (
  *
  * A paginated list of the members of a group.
  *
- * Nickname: list_group_memberships
+ * nickname: list_group_memberships
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<GroupMembership[]>(

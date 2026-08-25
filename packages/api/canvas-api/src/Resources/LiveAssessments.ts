@@ -1,41 +1,79 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
-/** A pass/fail results for a student */
+/**
+ * A pass/fail results for a student
+ */
 export type Result = {
-  /** A unique identifier for this result */
+  /**
+   * A unique identifier for this result
+   *
+   *
+   */
   id: string;
   /**
    * Whether the user passed or not
    *
-   * Type: boolean
+   * type: boolean
    */
   passed: boolean | string;
   /**
    * When this result was recorded
    *
-   * Format: date-time
+   * format: date-time
    */
   assessed_at: string;
-  /** Unique identifiers of objects associated with this result */
+  /**
+   * Unique identifiers of objects associated with this result
+   *
+   *
+   */
   links: ResultLinks;
 };
 
-/** Unique identifiers of objects associated with a result */
+/**
+ * Unique identifiers of objects associated with a result
+ */
 export type ResultLinks = {
-  /** A unique identifier for the user to whom this result applies */
+  /**
+   * A unique identifier for the user to whom this result applies
+   *
+   *
+   */
   user: string;
-  /** A unique identifier for the user who created this result */
+  /**
+   * A unique identifier for the user who created this result
+   *
+   *
+   */
   assessor: string;
-  /** A unique identifier for the assessment that this result is for */
+  /**
+   * A unique identifier for the assessment that this result is for
+   *
+   *
+   */
   assessment: string;
 };
 
-/** A simple assessment that collects pass/fail results for a student */
+/**
+ * A simple assessment that collects pass/fail results for a student
+ */
 export type Assessment = {
-  /** A unique identifier for this live assessment */
+  /**
+   * A unique identifier for this live assessment
+   *
+   *
+   */
   id: string;
-  /** A client specified unique identifier for the assessment */
+  /**
+   * A client specified unique identifier for the assessment
+   *
+   *
+   */
   key: string;
-  /** A human readable title for the assessment */
+  /**
+   * A human readable title for the assessment
+   *
+   *
+   */
   title: string;
 };

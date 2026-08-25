@@ -1,17 +1,31 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { CommunicationChannel } from '../../../../Resources/CommunicationChannels.js';
 
 export type delete_communication_channel_typePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   type: string;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   address: string;
 };
 
@@ -51,7 +65,11 @@ type Options = (
  *
  * Delete an existing communication channel.
  *
- * Nickname: delete_communication_channel_type
+ * nickname: delete_communication_channel_type
+ *
+ *
+ *
+ *
  */
 export async function delete_communication_channel_type(options: Options) {
   const response = await client().fetchAs<CommunicationChannel>(

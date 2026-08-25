@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type hide_stream_itemPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -46,7 +48,11 @@ type Options = (
  *
  * Hide the given stream item.
  *
- * Nickname: hide_stream_item
+ * nickname: hide_stream_item
+ *
+ *
+ *
+ *
  */
 export async function hide_stream_item(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { AsyncQueryStatusResponse } from '../../../../../Resources/Users.js';
 
 export type beta_poll_query_statusPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
   /**
    * The UUID of the query to check status for
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   query_id: string | number;
 };
@@ -51,14 +55,16 @@ type Options = (
 /**
  * BETA - Poll query status
  *
- * Checks the status of a previously initiated page views query. Returns the
- * current processing status and provides a result URL when the query is
- * complete.
+ * Checks the status of a previously initiated page views query. Returns the current
+processing status and provides a result URL when the query is complete.
+
+As this is a beta endpoint, it is subject to change or removal at any time without the standard notice periods outlined in the API policy.
  *
- * As this is a beta endpoint, it is subject to change or removal at any time
- * without the standard notice periods outlined in the API policy.
+ * nickname: beta_poll_query_status
  *
- * Nickname: beta_poll_query_status
+ * 
+ *
+ * 
  */
 export async function beta_poll_query_status(options: Options) {
   const response = await client().fetchAs<AsyncQueryStatusResponse>(

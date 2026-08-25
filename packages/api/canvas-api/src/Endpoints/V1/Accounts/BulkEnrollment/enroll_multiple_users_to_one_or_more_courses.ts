@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
 export type enroll_multiple_users_to_one_or_more_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -19,18 +21,30 @@ export type enroll_multiple_users_to_one_or_more_coursesFormParameters =
     /**
      * The user IDs to enroll in the courses.
      *
-     * Format: 'int64'
+     * 
+
+format: 'int64'
+     *
+     * 
      */
     user_ids: number | string[];
     /**
      * The course IDs to enroll each user in.
      *
-     * Format: 'int64'
+     * 
+
+format: 'int64'
+     *
+     * 
      */
     course_ids: number | string[];
     /**
      * Enroll each user as a student, teacher, TA, observer, or designer. If no
-     * value is given, the type will be 'StudentEnrollment'.
+value is given, the type will be &#x27;StudentEnrollment&#x27;.
+     *
+     * 
+     *
+     * 
      */
     enrollment_type: string;
   };
@@ -81,7 +95,11 @@ type Options = (
  *
  * Enrolls multiple users in one or more courses in a single operation.
  *
- * Nickname: enroll_multiple_users_to_one_or_more_courses
+ * nickname: enroll_multiple_users_to_one_or_more_courses
+ *
+ *
+ *
+ *
  */
 export async function enroll_multiple_users_to_one_or_more_courses(
   options: Options

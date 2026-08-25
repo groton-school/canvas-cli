@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type find_recipientsSearchParameters = Masquerade;
 
@@ -25,10 +25,13 @@ type Options =
 /**
  * Find recipients
  *
- * Deprecated, see the {api:SearchController#recipients Find recipients
- * endpoint} in the Search API
+ * Deprecated, see the {api:SearchController#recipients Find recipients endpoint} in the Search API
  *
- * Nickname: find_recipients
+ * nickname: find_recipients
+ *
+ *
+ *
+ *
  */
 export async function find_recipients(options: Options) {
   const response = await client().fetchAs<JSONValue>(

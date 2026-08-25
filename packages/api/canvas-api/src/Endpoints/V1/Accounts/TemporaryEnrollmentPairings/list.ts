@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { TemporaryEnrollmentPairing } from '../../../../Resources/TemporaryEnrollmentPairings.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Returns the list of temporary enrollment pairings for a root account.
  *
- * Nickname: list_temporary_enrollment_pairings
+ * nickname: list_temporary_enrollment_pairings
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<TemporaryEnrollmentPairing[]>(

@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { GroupCategory } from '../../../../Resources/GroupCategories.js';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -14,56 +16,89 @@ export type createPathParameters = {
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** Name of the group category */
+  /**
+   * Name of the group category
+   *
+   *
+   *
+   *
+   */
   name: string;
   /**
-   * Can only be set by users with the Differentiation Tag - Add permission
-   *
-   * If set to true, groups in this category will be only be visible to users
-   * with the Differentiation Tag - Manage permission.
-   *
-   * Type: boolean
-   */
+     * Can only be set by users with the Differentiation Tag - Add permission
+
+If set to true, groups in this category will be only be visible to users with the
+Differentiation Tag - Manage permission.
+     *
+     * type: boolean
+     *
+     * 
+     */
   non_collaborative: boolean | string;
   /**
-   * Allow students to sign up for a group themselves (Course Only). valid
-   * values are: "enabled":: allows students to self sign up for any group in
-   * course "restricted":: allows students to self sign up only for groups in
-   * the same section null disallows self sign up
-   */
+     * Allow students to sign up for a group themselves (Course Only).
+valid values are:
+&quot;enabled&quot;:: allows students to self sign up for any group in course
+&quot;restricted&quot;:: allows students to self sign up only for groups in the
+               same section null disallows self sign up
+     *
+     * 
+     *
+     * 
+     */
   self_signup: string;
   /**
-   * Assigns group leaders automatically when generating and allocating
-   * students to groups Valid values are: "first":: the first student to be
-   * allocated to a group is the leader "random":: a random student from all
-   * members is chosen as the leader
-   */
+     * Assigns group leaders automatically when generating and allocating students to groups
+Valid values are:
+&quot;first&quot;:: the first student to be allocated to a group is the leader
+&quot;random&quot;:: a random student from all members is chosen as the leader
+     *
+     * 
+     *
+     * 
+     */
   auto_leader: string;
   /**
-   * Limit the maximum number of users in each group (Course Only). Requires
-   * self signup.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * Limit the maximum number of users in each group (Course Only). Requires
+self signup.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   group_limit: number | string;
-  /** The unique SIS identifier. */
+  /**
+   * The unique SIS identifier.
+   *
+   *
+   *
+   *
+   */
   sis_group_category_id: string;
   /**
-   * Create this number of groups (Course Only).
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * Create this number of groups (Course Only).
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   create_group_count: number | string;
   /**
-   * (Deprecated) Create this number of groups, and evenly distribute students
-   * among them. not allowed with "enable_self_signup". because the group
-   * assignment happens synchronously, it's recommended that you instead use
-   * the assign_unassigned_members endpoint. (Course Only)
-   */
+     * (Deprecated)
+Create this number of groups, and evenly distribute students
+among them. not allowed with &quot;enable_self_signup&quot;. because
+the group assignment happens synchronously, it&#x27;s recommended
+that you instead use the assign_unassigned_members endpoint.
+(Course Only)
+     *
+     * 
+     *
+     * 
+     */
   split_group_count: string;
 };
 
@@ -113,7 +148,11 @@ type Options = (
  *
  * Create a new group category
  *
- * Nickname: create_group_category_accounts
+ * nickname: create_group_category_accounts
+ *
+ *
+ *
+ *
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<GroupCategory>(

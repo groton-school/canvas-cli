@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { AuthenticationProvider } from '../../../../Resources/AuthenticationProviders.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Returns a paginated list of authentication providers
  *
- * Nickname: list_authentication_providers
+ * nickname: list_authentication_providers
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<AuthenticationProvider[]>(

@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   student_id: string | number;
 };
@@ -51,13 +55,16 @@ type Options = (
  * Get user-in-a-course-level participation data
  *
  * Returns page view hits grouped by hour, and participation details through the
- * entire history of the course.
+entire history of the course.
+
+`page_views` are returned as a hash, where the keys are iso8601 dates, bucketed by the hour.
+`participations` are returned as an array of hashes, sorted oldest to newest.
  *
- * `page_views` are returned as a hash, where the keys are iso8601 dates,
- * bucketed by the hour. `participations` are returned as an array of hashes,
- * sorted oldest to newest.
+ * nickname: get_user_in_a_course_level_participation_data
  *
- * Nickname: get_user_in_a_course_level_participation_data
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

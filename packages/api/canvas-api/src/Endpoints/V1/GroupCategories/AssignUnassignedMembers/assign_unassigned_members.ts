@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { GroupMembershipProgress } from '../../../../Overrides.js';
 
 export type assign_unassigned_membersPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_category_id: string | number;
 };
@@ -15,12 +17,14 @@ export type assign_unassigned_membersSearchParameters = Masquerade;
 
 export type assign_unassigned_membersFormParameters = Masquerade & {
   /**
-   * The assigning is done asynchronously by default. If you would like to
-   * override this and have the assigning done synchronously, set this value
-   * to true.
-   *
-   * Type: boolean
-   */
+     * The assigning is done asynchronously by default. If you would like to
+override this and have the assigning done synchronously, set this value
+to true.
+     *
+     * type: boolean
+     *
+     * 
+     */
   sync: boolean | string;
 };
 
@@ -69,9 +73,13 @@ type Options = (
  * Assign unassigned members
  *
  * Assign all unassigned members as evenly as possible among the existing
- * student groups.
+student groups.
  *
- * Nickname: assign_unassigned_members
+ * nickname: assign_unassigned_members
+ *
+ * 
+ *
+ * 
  */
 export async function assign_unassigned_members(options: Options) {
   const response = await client().fetchAs<GroupMembershipProgress>(

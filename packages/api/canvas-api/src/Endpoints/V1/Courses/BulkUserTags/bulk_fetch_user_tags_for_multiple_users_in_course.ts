@@ -1,15 +1,17 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { HashAmappingofuserIDstoarraysoftaggroupIDsExample35579345 } from '../../../../Overrides.js';
 
 export type bulk_fetch_user_tags_for_multiple_users_in_coursePathParameters = {
   /**
-   * The ID of the course context (from the route).
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The ID of the course context (from the route).
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   course_id: number | string;
 };
 
@@ -18,10 +20,14 @@ export type bulk_fetch_user_tags_for_multiple_users_in_courseSearchParameters =
     Paginated &
     Partial<{
       /**
-       * An array of user IDs to fetch tags for.
-       *
-       * Format: 'int64'
-       */
+     * An array of user IDs to fetch tags for.
+     *
+     * 
+
+format: 'int64'
+     *
+     * 
+     */
       user_ids: number | string[];
     }>;
 
@@ -57,10 +63,13 @@ type Options = (
 /**
  * Bulk fetch user tags for multiple users in a course
  *
- * Returns a mapping of user IDs to arrays of non-collaborative group (tag) IDs
- * for each user in the given course.
+ * Returns a mapping of user IDs to arrays of non-collaborative group (tag) IDs for each user in the given course.
  *
- * Nickname: bulk_fetch_user_tags_for_multiple_users_in_course
+ * nickname: bulk_fetch_user_tags_for_multiple_users_in_course
+ *
+ *
+ *
+ *
  */
 export async function bulk_fetch_user_tags_for_multiple_users_in_course(
   options: Options

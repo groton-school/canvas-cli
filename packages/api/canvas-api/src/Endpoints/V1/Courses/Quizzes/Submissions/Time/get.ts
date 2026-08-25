@@ -1,23 +1,29 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   quiz_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -57,13 +63,17 @@ type Options = (
  * Get current quiz submission times.
  *
  * Get the current timing data for the quiz attempt, both the end_at timestamp
- * and the time_left parameter.
+and the time_left parameter.
+
+<b>Responses</b>
+
+* <b>200 OK</b> if the request was successful
  *
- * <b>Responses</b>
+ * nickname: get_current_quiz_submission_times
  *
- * <b>200 OK</b> if the request was successful
+ * 
  *
- * Nickname: get_current_quiz_submission_times
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

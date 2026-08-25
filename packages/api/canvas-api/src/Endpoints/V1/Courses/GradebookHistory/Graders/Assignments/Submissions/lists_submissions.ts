@@ -1,33 +1,45 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { SubmissionHistory } from '../../../../../../../Resources/GradebookHistory.js';
 
 export type lists_submissionsPathParameters = {
   /**
-   * The id of the contextual course for this API call
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the contextual course for this API call
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   course_id: number | string;
-  /** The date for which you would like to see submissions */
+  /**
+   * The date for which you would like to see submissions
+   *
+   *
+   *
+   *
+   */
   date: string;
   /**
-   * The ID of the grader for which you want to see submissions
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The ID of the grader for which you want to see submissions
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   grader_id: number | string;
   /**
-   * The ID of the assignment for which you want to see submissions
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The ID of the assignment for which you want to see submissions
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   assignment_id: number | string;
 };
 
@@ -67,7 +79,11 @@ type Options = (
  *
  * Gives a nested list of submission versions
  *
- * Nickname: lists_submissions
+ * nickname: lists_submissions
+ *
+ *
+ *
+ *
  */
 export async function lists_submissions(options: Options) {
   const response = await client().fetchAs<SubmissionHistory[]>(

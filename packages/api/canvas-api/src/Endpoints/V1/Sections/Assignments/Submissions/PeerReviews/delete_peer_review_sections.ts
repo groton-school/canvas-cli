@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { PeerReview } from '../../../../../../Resources/PeerReviews.js';
 
 export type delete_peer_review_sectionsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   section_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   submission_id: string | number;
 };
@@ -26,11 +32,13 @@ export type delete_peer_review_sectionsPathParameters = {
 export type delete_peer_review_sectionsSearchParameters = Masquerade &
   Partial<{
     /**
-     * User_id to delete as reviewer on this assignment
+     * user_id to delete as reviewer on this assignment
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     user_id: number | string;
   }>;
@@ -69,7 +77,11 @@ type Options = (
  *
  * Delete a peer review for the assignment
  *
- * Nickname: delete_peer_review_sections
+ * nickname: delete_peer_review_sections
+ *
+ *
+ *
+ *
  */
 export async function delete_peer_review_sections(options: Options) {
   const response = await client().fetchAs<PeerReview>(

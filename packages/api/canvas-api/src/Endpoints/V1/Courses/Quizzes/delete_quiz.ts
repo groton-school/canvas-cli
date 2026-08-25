@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Quiz } from '../../../../Resources/Quizzes.js';
 
 export type delete_quizPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Deletes a quiz and returns the deleted quiz object.
  *
- * Nickname: delete_quiz
+ * nickname: delete_quiz
+ *
+ *
+ *
+ *
  */
 export async function delete_quiz(options: Options) {
   const response = await client().fetchAs<Quiz>(

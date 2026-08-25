@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { gradesGradessubmissionSubmission } from '../../../../Overrides.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -15,12 +17,14 @@ export type updateSearchParameters = Masquerade & Paginated;
 
 export type updateFormParameters = Masquerade & {
   /**
-   * The score the student wants to test
-   *
-   * Type: number
-   *
-   * Format: 'float'
-   */
+     * The score the student wants to test
+     *
+     * type: number
+
+format: 'float'
+     *
+     * 
+     */
   student_entered_score: number | string;
 };
 
@@ -66,13 +70,16 @@ type Options = (
   );
 
 /**
- * Update a submission's what-if score and calculate grades
+ * Update a submission&#x27;s what-if score and calculate grades
  *
  * Enter a what if score for a submission and receive the calculated grades
- * Grade calculation is a costly operation, so this API should be used
- * sparingly
+Grade calculation is a costly operation, so this API should be used sparingly
  *
- * Nickname: update_submission_s_what_if_score_and_calculate_grades
+ * nickname: update_submission_s_what_if_score_and_calculate_grades
+ *
+ * 
+ *
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<gradesGradessubmissionSubmission[]>(

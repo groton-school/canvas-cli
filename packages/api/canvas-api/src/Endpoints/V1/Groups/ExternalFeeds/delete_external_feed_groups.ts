@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ExternalFeed } from '../../../../Resources/AnnouncementExternalFeeds.js';
 
 export type delete_external_feed_groupsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   external_feed_id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Deletes the external feed.
  *
- * Nickname: delete_external_feed_groups
+ * nickname: delete_external_feed_groups
+ *
+ *
+ *
+ *
  */
 export async function delete_external_feed_groups(options: Options) {
   const response = await client().fetchAs<ExternalFeed>(

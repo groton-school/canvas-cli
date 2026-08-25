@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -21,39 +25,60 @@ export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
   /**
-   * The maximum score for the line item. Scores created for the Line Item may
-   * exceed this value.
-   *
-   * Type: number
-   *
-   * Format: 'float'
-   */
+     * The maximum score for the line item. Scores created for the Line Item may exceed this value.
+     *
+     * type: number
+
+format: 'float'
+     *
+     * 
+     */
   scoreMaximum: number | string;
   /**
-   * The label for the Line Item. If no resourceLinkId is specified this value
-   * will also be used as the name of the placeholder assignment.
-   */
+     * The label for the Line Item. If no resourceLinkId is specified this value will also be used
+as the name of the placeholder assignment.
+     *
+     * 
+     *
+     * 
+     */
   label: string;
   /**
-   * A Tool Provider specified id for the Line Item. Multiple line items may
-   * share the same resourceId within a given context.
-   */
+     * A Tool Provider specified id for the Line Item. Multiple line items may
+share the same resourceId within a given context.
+     *
+     * 
+     *
+     * 
+     */
   resourceId: string;
   /**
-   * A value used to qualify a line Item beyond its ids. Line Items may be
-   * queried by this value in the List endpoint. Multiple line items can share
-   * the same tag within a given context.
-   */
+     * A value used to qualify a line Item beyond its ids. Line Items may be queried
+by this value in the List endpoint. Multiple line items can share the same tag
+within a given context.
+     *
+     * 
+     *
+     * 
+     */
   tag: string;
   /**
-   * The ISO8601 date and time when the line item is made available.
-   * Corresponds to the assignment's unlock_at date.
-   */
+     * The ISO8601 date and time when the line item is made available. Corresponds
+to the assignment&#x27;s unlock_at date.
+     *
+     * 
+     *
+     * 
+     */
   startDateTime: string;
   /**
-   * The ISO8601 date and time when the line item stops receiving submissions.
-   * Corresponds to the assignment's due_at date.
-   */
+     * The ISO8601 date and time when the line item stops receiving submissions. Corresponds
+to the assignment&#x27;s due_at date.
+     *
+     * 
+     *
+     * 
+     */
   endDateTime: string;
 };
 
@@ -103,7 +128,11 @@ type Options = (
  *
  * Update new Line Item
  *
- * Nickname: update_line_item
+ * nickname: update_line_item
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<LineItem>(

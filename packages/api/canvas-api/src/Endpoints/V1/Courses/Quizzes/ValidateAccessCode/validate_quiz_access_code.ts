@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type validate_quiz_access_codePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -19,7 +23,13 @@ export type validate_quiz_access_codePathParameters = {
 export type validate_quiz_access_codeSearchParameters = Masquerade;
 
 export type validate_quiz_access_codeFormParameters = Masquerade & {
-  /** The access code being validated */
+  /**
+   * The access code being validated
+   *
+   *
+   *
+   *
+   */
   access_code: string;
 };
 
@@ -67,10 +77,13 @@ type Options = (
 /**
  * Validate quiz access code
  *
- * Accepts an access code and returns a boolean indicating whether that access
- * code is correct
+ * Accepts an access code and returns a boolean indicating whether that access code is correct
  *
- * Nickname: validate_quiz_access_code
+ * nickname: validate_quiz_access_code
+ *
+ *
+ *
+ *
  */
 export async function validate_quiz_access_code(options: Options) {
   const response = await client().fetchAs<boolean | string>(

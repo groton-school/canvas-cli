@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ModuleItem } from '../../../../../Resources/CoursePace.js';
 
 export type delete_module_itemPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   module_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -59,7 +65,11 @@ type Options = (
  *
  * Delete a module item
  *
- * Nickname: delete_module_item
+ * nickname: delete_module_item
+ *
+ *
+ *
+ *
  */
 export async function delete_module_item(options: Options) {
   const response = await client().fetchAs<ModuleItem>(

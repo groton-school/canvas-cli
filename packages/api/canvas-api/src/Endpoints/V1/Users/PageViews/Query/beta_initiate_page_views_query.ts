@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { AsyncQueryResponse } from '../../../../../Resources/Users.js';
 
 export type beta_initiate_page_views_queryPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -15,18 +17,27 @@ export type beta_initiate_page_views_querySearchParameters = Masquerade;
 
 export type beta_initiate_page_views_queryFormParameters = Masquerade & {
   /**
-   * The start date for the page views query in YYYY-MM-DD format. Must be the
-   * first day of a month.
+   * The start date for the page views query in YYYY-MM-DD format. Must be the first day of a month.
+   *
+   *
+   *
+   *
    */
   start_date: string;
   /**
-   * The end date for the page views query in YYYY-MM-DD format. Must be the
-   * first day of a month and after start_date.
+   * The end date for the page views query in YYYY-MM-DD format. Must be the first day of a month and after start_date.
+   *
+   *
+   *
+   *
    */
   end_date: string;
   /**
-   * The desired format for the query results. Supported formats: "csv",
-   * "jsonl"
+   * The desired format for the query results. Supported formats: &quot;csv&quot;, &quot;jsonl&quot;
+   *
+   *
+   *
+   *
    */
   results_format: string;
 };
@@ -75,15 +86,17 @@ type Options = (
 /**
  * BETA - Initiate page views query
  *
- * Initiates an asynchronous query for user page views data within a specified
- * date range. This method enqueues a background job to process the page views
- * query and returns a polling URL that can be used to check the query status
- * and retrieve results when ready.
+ * Initiates an asynchronous query for user page views data within a specified date range.
+This method enqueues a background job to process the page views query and returns
+a polling URL that can be used to check the query status and retrieve results when ready.
+
+As this is a beta endpoint, it is subject to change or removal at any time without the standard notice periods outlined in the API policy.
  *
- * As this is a beta endpoint, it is subject to change or removal at any time
- * without the standard notice periods outlined in the API policy.
+ * nickname: beta_initiate_page_views_query
  *
- * Nickname: beta_initiate_page_views_query
+ * 
+ *
+ * 
  */
 export async function beta_initiate_page_views_query(options: Options) {
   const response = await client().fetchAs<AsyncQueryResponse>(

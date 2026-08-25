@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { CourseProgress } from '../../../../../Resources/Courses.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -52,12 +56,15 @@ type Options = (
  * Get user progress
  *
  * Return progress information for the user and course
+
+You can supply +self+ as the user_id to query your own progress in a course. To query another user's progress,
+you must be a teacher in the course, an administrator, or a linked observer of the user.
  *
- * You can supply +self+ as the user_id to query your own progress in a course.
- * To query another user's progress, you must be a teacher in the course, an
- * administrator, or a linked observer of the user.
+ * nickname: get_user_progress
  *
- * Nickname: get_user_progress
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<CourseProgress>(

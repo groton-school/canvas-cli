@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -14,9 +16,13 @@ export type listSearchParameters = Masquerade &
   Partial<{
     /**
      * Array of additional information to include.
+
+&quot;description_html&quot;:: an HTML description of the report, with example output
+&quot;parameters_html&quot;:: an HTML form for the report parameters
      *
-     * "description_html":: an HTML description of the report, with example
-     * output "parameters_html":: an HTML form for the report parameters
+     * 
+     *
+     * 
      */
     include: string[];
   }>;
@@ -55,7 +61,11 @@ type Options = (
  *
  * Returns a paginated list of reports for the current context.
  *
- * Nickname: list_available_reports
+ * nickname: list_available_reports
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,44 +1,61 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type CustomColumn = {
   /**
    * The ID of the custom gradebook column
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
   /**
-   * When true, this column's visibility will be toggled in the Gradebook when a
-   * user selects to show or hide notes
+   * When true, this column's visibility will be toggled in the Gradebook when a user selects to show or hide notes
    *
-   * Type: boolean
+   * type: boolean
    */
   teacher_notes: boolean | string;
-  /** Header text */
+  /**
+   * header text
+   *
+   *
+   */
   title: string;
   /**
-   * Column order
+   * column order
    *
-   * Type: integer
+   * type: integer
    */
   position: number | string;
   /**
-   * Won't be displayed if hidden is true
+   * won't be displayed if hidden is true
    *
-   * Type: boolean
+   * type: boolean
    */
   hidden: boolean | string;
   /**
-   * Won't be editable in the gradebook UI
+   * won't be editable in the gradebook UI
    *
-   * Type: boolean
+   * type: boolean
    */
   read_only: boolean | string;
 };
 
-/** ColumnDatum objects contain the entry for a column for each user. */
+/**
+ * ColumnDatum objects contain the entry for a column for each user.
+ */
 export type ColumnDatum = {
+  /**
+   *
+   *
+   *
+   */
   content: string;
-  /** Type: integer */
+  /**
+   *
+   *
+   * type: integer
+   */
   user_id: number | string;
 };

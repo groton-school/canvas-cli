@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -45,10 +47,13 @@ type Options = (
  * Get course timetable
  *
  * Returns the last timetable set by the
- * {api:CalendarEventsApiController#set_course_timetable Set a course timetable}
- * endpoint
+{api:CalendarEventsApiController#set_course_timetable Set a course timetable} endpoint
  *
- * Nickname: get_course_timetable
+ * nickname: get_course_timetable
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

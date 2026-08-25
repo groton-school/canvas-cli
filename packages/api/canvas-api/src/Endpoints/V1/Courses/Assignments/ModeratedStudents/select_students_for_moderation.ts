@@ -1,18 +1,22 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { User } from '../../../../../Resources/Users.js';
 
 export type select_students_for_moderationPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
@@ -21,7 +25,13 @@ export type select_students_for_moderationSearchParameters = Masquerade &
   Paginated;
 
 export type select_students_for_moderationFormParameters = Masquerade & {
-  /** User ids for students to select for moderation */
+  /**
+   * user ids for students to select for moderation
+   *
+   *
+   *
+   *
+   */
   student_ids: number | string[];
 };
 
@@ -71,7 +81,11 @@ type Options = (
  *
  * Returns an array of users that were selected for moderation
  *
- * Nickname: select_students_for_moderation
+ * nickname: select_students_for_moderation
+ *
+ *
+ *
+ *
  */
 export async function select_students_for_moderation(options: Options) {
   const response = await client().fetchAs<User[]>(

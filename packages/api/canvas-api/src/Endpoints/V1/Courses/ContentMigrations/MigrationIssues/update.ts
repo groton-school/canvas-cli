@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { MigrationIssue } from '../../../../../Resources/ContentMigrations.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   content_migration_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -26,7 +32,13 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** Set the workflow_state of the issue. */
+  /**
+   * Set the workflow_state of the issue.
+   *
+   *
+   *
+   *
+   */
   workflow_state: string;
 };
 
@@ -76,7 +88,11 @@ type Options = (
  *
  * Update the workflow_state of a migration issue
  *
- * Nickname: update_migration_issue_courses
+ * nickname: update_migration_issue_courses
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<MigrationIssue>(

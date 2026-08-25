@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type moderate_all_eportfolios_for_userPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -13,7 +15,13 @@ export type moderate_all_eportfolios_for_userPathParameters = {
 export type moderate_all_eportfolios_for_userSearchParameters = Masquerade;
 
 export type moderate_all_eportfolios_for_userFormParameters = Masquerade & {
-  /** The spam status for all the ePortfolios */
+  /**
+   * The spam status for all the ePortfolios
+   *
+   *
+   *
+   *
+   */
   spam_status: string;
 };
 
@@ -61,10 +69,14 @@ type Options = (
 /**
  * Moderate all ePortfolios for a User
  *
- * Update the spam_status for all active eportfolios of a user. Only available
- * to admins who can moderate_user_content.
+ * Update the spam_status for all active eportfolios of a user. Only available to
+admins who can moderate_user_content.
  *
- * Nickname: moderate_all_eportfolios_for_user
+ * nickname: moderate_all_eportfolios_for_user
+ *
+ * 
+ *
+ * 
  */
 export async function moderate_all_eportfolios_for_user(options: Options) {
   const response = await client().fetchAs<JSONValue>(

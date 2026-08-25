@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type redirect_to_assignment_override_for_sectionPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_section_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
@@ -51,10 +55,14 @@ type Options = (
 /**
  * Redirect to the assignment override for a section
  *
- * Responds with a redirect to the override for the given section, if any (404
- * otherwise).
+ * Responds with a redirect to the override for the given section, if any
+(404 otherwise).
  *
- * Nickname: redirect_to_assignment_override_for_section
+ * nickname: redirect_to_assignment_override_for_section
+ *
+ * 
+ *
+ * 
  */
 export async function redirect_to_assignment_override_for_section(
   options: Options

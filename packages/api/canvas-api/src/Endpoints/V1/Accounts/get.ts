@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Account } from '../../../Resources/Accounts.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -46,9 +48,13 @@ type Options = (
  * Get a single account
  *
  * Retrieve information on an individual account, given by id or sis
- * sis_account_id.
+sis_account_id.
  *
- * Nickname: get_single_account
+ * nickname: get_single_account
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<Account>(`/api/v1/accounts/{id}`, {

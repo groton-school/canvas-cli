@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -50,11 +54,14 @@ type Options = (
 /**
  * List assignments for user
  *
- * Returns the paginated list of assignments for the specified user if the
- * current user has rights to view. See {api:AssignmentsApiController#index List
- * assignments} for valid arguments.
+ * Returns the paginated list of assignments for the specified user if the current user has rights to view.
+See {api:AssignmentsApiController#index List assignments} for valid arguments.
  *
- * Nickname: list_assignments_for_user
+ * nickname: list_assignments_for_user
+ *
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

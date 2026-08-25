@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { RubricImport } from '../../../../../Overrides.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -51,10 +55,13 @@ type Options = (
 /**
  * Get the status of a rubric import
  *
- * Can return the latest rubric import for an account or course, or a specific
- * import by id
+ * Can return the latest rubric import for an account or course, or a specific import by id
  *
- * Nickname: get_status_of_rubric_import_courses
+ * nickname: get_status_of_rubric_import_courses
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<RubricImport>(

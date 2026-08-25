@@ -25,10 +25,14 @@ type Options =
 /**
  * Get current and available experiences
  *
- * Returns the current user's active experience and available experiences they
- * can switch to.
+ * Returns the current user's active experience and available experiences
+they can switch to.
  *
- * Nickname: get_current_and_available_experiences
+ * nickname: get_current_and_available_experiences
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<ExperienceSummary>(

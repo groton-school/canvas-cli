@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -44,10 +46,14 @@ type Options = (
 /**
  * List enabled features
  *
- * A paginated list of all features that are enabled on a given Account, Course,
- * or User. Only the feature names are returned.
+ * A paginated list of all features that are enabled on a given Account, Course, or User.
+Only the feature names are returned.
  *
- * Nickname: list_enabled_features_accounts
+ * nickname: list_enabled_features_accounts
+ *
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

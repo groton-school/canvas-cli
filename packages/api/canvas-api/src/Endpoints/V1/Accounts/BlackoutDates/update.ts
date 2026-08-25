@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { BlackoutDate } from '../../../../Resources/BlackoutDates.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -23,16 +27,26 @@ export type updateFormParameters = Masquerade & {
   /**
    * The start date of the blackout date.
    *
-   * Format: date
+   * format: date
+   *
+   *
    */
   start_date: string;
   /**
    * The end date of the blackout date.
    *
-   * Format: date
+   * format: date
+   *
+   *
    */
   end_date: string;
-  /** The title of the blackout date. */
+  /**
+   * The title of the blackout date.
+   *
+   *
+   *
+   *
+   */
   event_title: string;
 };
 
@@ -82,7 +96,11 @@ type Options = (
  *
  * Update a blackout date for the given context.
  *
- * Nickname: update_blackout_date_accounts
+ * nickname: update_blackout_date_accounts
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<BlackoutDate>(

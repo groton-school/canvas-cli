@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Date } from '../../../../Overrides.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -20,17 +24,31 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** The date the grading period starts. */
+  /**
+   * The date the grading period starts.
+   *
+   *
+   *
+   *
+   */
   'grading_periods[start_date]': Date[];
-  /** No description */
+  /**
+   * no description
+   *
+   *
+   *
+   *
+   */
   'grading_periods[end_date]': Date[];
   /**
-   * A weight value that contributes to the overall weight of a grading period
-   * set which is used to calculate how much assignments in this period
-   * contribute to the total grade
-   *
-   * Format: 'float'
-   */
+     * A weight value that contributes to the overall weight of a grading period set which is used to calculate how much assignments in this period contribute to the total grade
+     *
+     * 
+
+format: 'float'
+     *
+     * 
+     */
   'grading_periods[weight]': number | string[];
 };
 
@@ -80,7 +98,11 @@ type Options = (
  *
  * Update an existing grading period.
  *
- * Nickname: update_single_grading_period
+ * nickname: update_single_grading_period
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(

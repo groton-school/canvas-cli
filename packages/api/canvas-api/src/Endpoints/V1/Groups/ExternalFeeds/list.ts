@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { ExternalFeed } from '../../../../Resources/AnnouncementExternalFeeds.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Returns the paginated list of External Feeds this course or group.
  *
- * Nickname: list_external_feeds_groups
+ * nickname: list_external_feeds_groups
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<ExternalFeed[]>(

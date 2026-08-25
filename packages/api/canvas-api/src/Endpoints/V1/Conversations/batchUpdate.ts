@@ -1,13 +1,25 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Progress } from '../../../Resources/CoursePace.js';
 
 export type batchUpdateSearchParameters = Masquerade;
 
 export type batchUpdateFormParameters = Masquerade & {
-  /** List of conversations to update. Limited to 500 conversations. */
+  /**
+   * List of conversations to update. Limited to 500 conversations.
+   *
+   *
+   *
+   *
+   */
   conversation_ids: string[];
-  /** The action to take on each conversation. */
+  /**
+   * The action to take on each conversation.
+   *
+   *
+   *
+   *
+   */
   event: string;
 };
 
@@ -45,11 +57,14 @@ type Options =
 /**
  * Batch update conversations
  *
- * Perform a change on a set of conversations. Operates asynchronously; use the
- * {api:ProgressController#show progress endpoint} to query the status of an
- * operation.
+ * Perform a change on a set of conversations. Operates asynchronously; use the {api:ProgressController#show progress endpoint}
+to query the status of an operation.
  *
- * Nickname: batch_update_conversations
+ * nickname: batch_update_conversations
+ *
+ * 
+ *
+ * 
  */
 export async function batchUpdate(options: Options) {
   const response = await client().fetchAs<Progress>(`/api/v1/conversations`, {

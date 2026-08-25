@@ -1,12 +1,18 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type get_pandata_events_jwt_token_and_its_expiration_dateSearchParameters =
   Masquerade;
 
 export type get_pandata_events_jwt_token_and_its_expiration_dateFormParameters =
   Masquerade & {
-    /** The pandata events appKey for this mobile app */
+    /**
+     * The pandata events appKey for this mobile app
+     *
+     *
+     *
+     *
+     */
     app_key: string;
   };
 
@@ -45,11 +51,15 @@ type Options =
  * Get a Pandata Events jwt token and its expiration date
  *
  * Returns a jwt auth and props token that can be used to send events to
- * Pandata.
+Pandata.
+
+NOTE: This is currently only available to the mobile developer keys.
  *
- * NOTE: This is currently only available to the mobile developer keys.
+ * nickname: get_pandata_events_jwt_token_and_its_expiration_date
  *
- * Nickname: get_pandata_events_jwt_token_and_its_expiration_date
+ * 
+ *
+ * 
  */
 export async function get_pandata_events_jwt_token_and_its_expiration_date(
   options: Options

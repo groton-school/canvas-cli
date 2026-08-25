@@ -1,18 +1,22 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { ChangeRecord } from '../../../../../Resources/BlueprintCourses.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   template_id: string | number;
 };
@@ -51,11 +55,14 @@ type Options = (
 /**
  * Get unsynced changes
  *
- * Retrieve a list of learning objects that have changed since the last
- * blueprint sync operation. If no syncs have been completed, a ChangeRecord
- * with a change_type of +initial_sync+ is returned.
+ * Retrieve a list of learning objects that have changed since the last blueprint sync operation.
+If no syncs have been completed, a ChangeRecord with a change_type of +initial_sync+ is returned.
  *
- * Nickname: get_unsynced_changes
+ * nickname: get_unsynced_changes
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<ChangeRecord[]>(

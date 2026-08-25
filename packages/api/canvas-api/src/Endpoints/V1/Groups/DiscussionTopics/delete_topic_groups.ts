@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type delete_topic_groupsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
 };
@@ -51,9 +55,13 @@ type Options = (
  * Delete a topic
  *
  * Deletes the discussion topic. This will also delete the assignment, if it's
- * an assignment discussion.
+an assignment discussion.
  *
- * Nickname: delete_topic_groups
+ * nickname: delete_topic_groups
+ *
+ * 
+ *
+ * 
  */
 export async function delete_topic_groups(options: Options) {
   const response = await client().fetchAs<JSONValue>(

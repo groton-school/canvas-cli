@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { PlannerOverride } from '../../../../Resources/Planner.js';
 
 export type delete_planner_overridePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Delete a planner override for the current user
  *
- * Nickname: delete_planner_override
+ * nickname: delete_planner_override
+ *
+ *
+ *
+ *
  */
 export async function delete_planner_override(options: Options) {
   const response = await client().fetchAs<PlannerOverride>(

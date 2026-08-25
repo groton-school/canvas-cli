@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { NoticeCatalog } from '../../../Resources/NoticeHandlers.js';
 
 export type show_notice_handlersPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   context_external_tool_id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * List all notice handlers for the tool
  *
- * Nickname: show_notice_handlers
+ * nickname: show_notice_handlers
+ *
+ *
+ *
+ *
  */
 export async function show_notice_handlers(options: Options) {
   const response = await client().fetchAs<NoticeCatalog>(

@@ -1,28 +1,35 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { PageRevision } from '../../../../../Resources/Pages.js';
 
 export type revert_to_revision_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   url_or_id: string | number;
   /**
-   * The revision to revert to (use the {api:WikiPagesApiController#revisions
-   * List Revisions API} to see available revisions)
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The revision to revert to (use the
+{api:WikiPagesApiController#revisions List Revisions API} to see
+available revisions)
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   revision_id: number | string;
 };
 
@@ -62,7 +69,11 @@ type Options = (
  *
  * Revert a page to a prior revision.
  *
- * Nickname: revert_to_revision_courses
+ * nickname: revert_to_revision_courses
+ *
+ *
+ *
+ *
  */
 export async function revert_to_revision_courses(options: Options) {
   const response = await client().fetchAs<PageRevision>(

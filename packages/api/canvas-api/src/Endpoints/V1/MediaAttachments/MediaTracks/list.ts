@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { MediaTrack } from '../../../../Resources/MediaObjects.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   attachment_id: string | number;
 };
@@ -15,9 +17,13 @@ export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
     /**
-     * By default, index returns id, locale, kind, media_object_id, and user_id
-     * for each of the result MediaTracks. Use include[] to add additional
-     * fields. For example include[]=content
+     * By default, index returns id, locale, kind, media_object_id, and user_id for each of the
+result MediaTracks. Use include[] to
+add additional fields. For example include[]&#x3D;content
+     *
+     * 
+     *
+     * 
      */
     include: string[];
   }>;
@@ -56,7 +62,11 @@ type Options = (
  *
  * List the media tracks associated with a media object or attachment
  *
- * Nickname: list_media_tracks_for_media_object_or_attachment_media_attachments
+ * nickname: list_media_tracks_for_media_object_or_attachment_media_attachments
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<MediaTrack[]>(

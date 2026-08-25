@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type redirect_to_root_outcome_group_for_context_accountsPathParameters =
   {
     /**
      * ID
      *
-     * Type: string
+     * type: string
+     *
+     *
      */
     account_id: string | number;
   };
@@ -46,10 +48,14 @@ type Options = (
 /**
  * Redirect to root outcome group for context
  *
- * Convenience redirect to find the root outcome group for a particular context.
- * Will redirect to the appropriate outcome group's URL.
+ * Convenience redirect to find the root outcome group for a particular
+context. Will redirect to the appropriate outcome group's URL.
  *
- * Nickname: redirect_to_root_outcome_group_for_context_accounts
+ * nickname: redirect_to_root_outcome_group_for_context_accounts
+ *
+ * 
+ *
+ * 
  */
 export async function redirect_to_root_outcome_group_for_context_accounts(
   options: Options

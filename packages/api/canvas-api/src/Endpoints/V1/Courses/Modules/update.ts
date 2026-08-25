@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Module } from '../../../../Resources/CoursePace.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -20,45 +24,65 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** The name of the module */
+  /**
+   * The name of the module
+   *
+   *
+   *
+   *
+   */
   'module[name]': string;
   /**
    * The date the module will unlock
    *
-   * Format: date-time
+   * format: date-time
+   *
+   *
    */
   'module[unlock_at]': string;
   /**
-   * The position of the module in the course (1-based)
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The position of the module in the course (1-based)
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   'module[position]': number | string;
   /**
    * Whether module items must be unlocked in order
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   'module[require_sequential_progress]': boolean | string;
   /**
-   * IDs of Modules that must be completed before this one is unlocked
-   * Prerequisite modules must precede this module (i.e. have a lower position
-   * value), otherwise they will be ignored
-   */
+     * IDs of Modules that must be completed before this one is unlocked
+Prerequisite modules must precede this module (i.e. have a lower position
+value), otherwise they will be ignored
+     *
+     * 
+     *
+     * 
+     */
   'module[prerequisite_module_ids]': string[];
   /**
-   * Whether to publish the student's final grade for the course upon
-   * completion of this module.
-   *
-   * Type: boolean
-   */
+     * Whether to publish the student&#x27;s final grade for the course upon
+completion of this module.
+     *
+     * type: boolean
+     *
+     * 
+     */
   'module[publish_final_grade]': boolean | string;
   /**
    * Whether the module is published and visible to students
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   'module[published]': boolean | string;
 };
@@ -109,7 +133,11 @@ type Options = (
  *
  * Update and return an existing module
  *
- * Nickname: update_module
+ * nickname: update_module
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<Module>(

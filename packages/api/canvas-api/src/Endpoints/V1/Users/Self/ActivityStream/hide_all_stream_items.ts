@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type hide_all_stream_itemsSearchParameters = Masquerade;
 
@@ -27,7 +27,11 @@ type Options =
  *
  * Hide all stream items for the user
  *
- * Nickname: hide_all_stream_items
+ * nickname: hide_all_stream_items
+ *
+ *
+ *
+ *
  */
 export async function hide_all_stream_items(options: Options) {
   const response = await client().fetchAs<JSONValue>(

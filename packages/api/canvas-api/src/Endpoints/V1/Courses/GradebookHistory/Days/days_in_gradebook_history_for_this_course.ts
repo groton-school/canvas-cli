@@ -1,15 +1,17 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Day } from '../../../../../Resources/GradebookHistory.js';
 
 export type days_in_gradebook_history_for_this_coursePathParameters = {
   /**
-   * The id of the contextual course for this API call
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the contextual course for this API call
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   course_id: number | string;
 };
 
@@ -50,7 +52,11 @@ type Options = (
  *
  * Returns a map of dates to grader/assignment groups
  *
- * Nickname: days_in_gradebook_history_for_this_course
+ * nickname: days_in_gradebook_history_for_this_course
+ *
+ *
+ *
+ *
  */
 export async function days_in_gradebook_history_for_this_course(
   options: Options

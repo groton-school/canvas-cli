@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { ContentExport } from '../../../../Resources/ContentExports.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -46,9 +48,13 @@ type Options = (
  * List content exports
  *
  * A paginated list of the past and pending content export jobs for a course,
- * group, or user. Exports are returned newest first.
+group, or user. Exports are returned newest first.
  *
- * Nickname: list_content_exports_courses
+ * nickname: list_content_exports_courses
+ *
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<ContentExport[]>(

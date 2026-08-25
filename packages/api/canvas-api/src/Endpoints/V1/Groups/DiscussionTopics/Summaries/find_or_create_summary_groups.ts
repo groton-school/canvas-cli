@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type find_or_create_summary_groupsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
 };
@@ -19,7 +23,13 @@ export type find_or_create_summary_groupsPathParameters = {
 export type find_or_create_summary_groupsSearchParameters = Masquerade;
 
 export type find_or_create_summary_groupsFormParameters = Masquerade & {
-  /** Areas or topics for the summary to focus on. */
+  /**
+   * Areas or topics for the summary to focus on.
+   *
+   *
+   *
+   *
+   */
   userInput: string;
 };
 
@@ -67,10 +77,13 @@ type Options = (
 /**
  * Find or Create Summary
  *
- * Generates a summary for a discussion topic. Returns the summary text and
- * usage information.
+ * Generates a summary for a discussion topic. Returns the summary text and usage information.
  *
- * Nickname: find_or_create_summary_groups
+ * nickname: find_or_create_summary_groups
+ *
+ *
+ *
+ *
  */
 export async function find_or_create_summary_groups(options: Options) {
   const response = await client().fetchAs<JSONValue>(

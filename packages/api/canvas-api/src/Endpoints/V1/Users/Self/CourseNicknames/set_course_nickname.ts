@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { CourseNickname } from '../../../../../Resources/Users.js';
 
 export type set_course_nicknamePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -14,7 +16,13 @@ export type set_course_nicknamePathParameters = {
 export type set_course_nicknameSearchParameters = Masquerade;
 
 export type set_course_nicknameFormParameters = Masquerade & {
-  /** The nickname to set. It must be non-empty and shorter than 60 characters. */
+  /**
+   * The nickname to set.  It must be non-empty and shorter than 60 characters.
+   *
+   *
+   *
+   *
+   */
   nickname: string;
 };
 
@@ -62,11 +70,15 @@ type Options = (
 /**
  * Set course nickname
  *
- * Set a nickname for the given course. This will replace the course's name in
- * output of API calls you make subsequently, as well as in selected places in
- * the Canvas web user interface.
+ * Set a nickname for the given course. This will replace the course's name
+in output of API calls you make subsequently, as well as in selected
+places in the Canvas web user interface.
  *
- * Nickname: set_course_nickname
+ * nickname: set_course_nickname
+ *
+ * 
+ *
+ * 
  */
 export async function set_course_nickname(options: Options) {
   const response = await client().fetchAs<CourseNickname>(

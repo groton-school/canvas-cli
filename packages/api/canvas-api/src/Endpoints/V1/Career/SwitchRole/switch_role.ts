@@ -1,11 +1,17 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { roleStringThenewlysetrole } from '../../../../Overrides.js';
 
 export type switch_roleSearchParameters = Masquerade;
 
 export type switch_roleFormParameters = Masquerade & {
-  /** The role to switch to. */
+  /**
+   * The role to switch to.
+   *
+   *
+   *
+   *
+   */
   role: string;
 };
 
@@ -45,7 +51,11 @@ type Options =
  *
  * Switch the current user's role within the current experience.
  *
- * Nickname: switch_role
+ * nickname: switch_role
+ *
+ *
+ *
+ *
  */
 export async function switch_role(options: Options) {
   const response = await client().fetchAs<roleStringThenewlysetrole>(

@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   poll_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   poll_session_id: string | number;
 };
@@ -20,10 +24,14 @@ export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
   /**
-   * The chosen poll choice for this submission.
-   *
-   * Format: 'int64'
-   */
+     * The chosen poll choice for this submission.
+     *
+     * 
+
+format: 'int64'
+     *
+     * 
+     */
   'poll_submissions[poll_choice_id]': number | string[];
 };
 
@@ -73,7 +81,11 @@ type Options = (
  *
  * Create a new poll submission for this poll session
  *
- * Nickname: create_single_poll_submission
+ * nickname: create_single_poll_submission
+ *
+ *
+ *
+ *
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<JSONValue>(

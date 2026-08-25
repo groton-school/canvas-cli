@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { User } from '../../../../Resources/Users.js';
 
 export type add_observee_with_credentialsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -15,35 +17,49 @@ export type add_observee_with_credentialsSearchParameters = Masquerade;
 
 export type add_observee_with_credentialsFormParameters = Masquerade & {
   /**
-   * The login id for the user to observe. Required if access_token is
-   * omitted.
+   * The login id for the user to observe.  Required if access_token is omitted.
+   *
+   *
+   *
+   *
    */
   'observee[unique_id]': string;
   /**
-   * The password for the user to observe. Required if access_token is
-   * omitted.
+   * The password for the user to observe. Required if access_token is omitted.
+   *
+   *
+   *
+   *
    */
   'observee[password]': string;
   /**
-   * The access token for the user to observe. Required if
-   * <tt>observee[unique_id]</tt> or <tt>observee[password]</tt> are omitted.
+   * The access token for the user to observe.  Required if &lt;tt&gt;observee[unique_id]&lt;/tt&gt; or &lt;tt&gt;observee[password]&lt;/tt&gt; are omitted.
+   *
+   *
+   *
+   *
    */
   access_token: string;
   /**
-   * A generated pairing code for the user to observe. Required if the
-   * Observer pairing code feature flag is enabled
+   * A generated pairing code for the user to observe. Required if the Observer pairing code feature flag is enabled
+   *
+   *
+   *
+   *
    */
   pairing_code: string;
   /**
-   * The ID for the root account to associate with the observation link.
-   * Defaults to the current domain account. If 'all' is specified, a link
-   * will be created for each root account associated to both the observer and
-   * observee.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The ID for the root account to associate with the observation link.
+Defaults to the current domain account.
+If &#x27;all&#x27; is specified, a link will be created for each root account associated
+to both the observer and observee.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   root_account_id: number | string;
 };
 
@@ -91,15 +107,17 @@ type Options = (
 /**
  * Add an observee with credentials
  *
- * Register the given user to observe another user, given the observee's
- * credentials.
+ * Register the given user to observe another user, given the observee's credentials.
+
+*Note:* all users are allowed to add their own observees, given the observee's
+credentials or access token are provided. Administrators can add observees given credentials, access token or
+the {api:UserObserveesController#update observee's id}.
  *
- * Note:* all users are allowed to add their own observees, given the observee's
- * credentials or access token are provided. Administrators can add observees
- * given credentials, access token or the {api:UserObserveesController#update
- * observee's id}.
+ * nickname: add_observee_with_credentials
  *
- * Nickname: add_observee_with_credentials
+ * 
+ *
+ * 
  */
 export async function add_observee_with_credentials(options: Options) {
   const response = await client().fetchAs<User>(

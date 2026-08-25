@@ -26,9 +26,13 @@ type Options =
  * Get accounts that users can create courses in
  *
  * A paginated list of accounts where the current user has permission to create
- * courses.
+courses.
  *
- * Nickname: get_accounts_that_users_can_create_courses_in
+ * nickname: get_accounts_that_users_can_create_courses_in
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<Account[]>(

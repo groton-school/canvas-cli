@@ -1,114 +1,145 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
-/** A planner note */
+/**
+ * A planner note
+ */
 export type PlannerNote = {
   /**
    * The ID of the planner note
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
-  /** The title for a planner note */
+  /**
+   * The title for a planner note
+   *
+   *
+   */
   title: string;
-  /** The description of the planner note */
+  /**
+   * The description of the planner note
+   *
+   *
+   */
   description: string;
   /**
    * The id of the associated user creating the planner note
    *
-   * Type: integer
+   * type: integer
    */
   user_id: number | string;
-  /** The current published state of the planner note */
+  /**
+   * The current published state of the planner note
+   *
+   *
+   */
   workflow_state: string;
   /**
    * The course that the note is in relation too, if applicable
    *
-   * Type: integer
+   * type: integer
    */
   course_id: number | string;
   /**
    * The datetime of when the planner note should show up on their planner
    *
-   * Format: date-time
+   * format: date-time
    */
   todo_date: string;
-  /** The type of the linked learning object */
+  /**
+   * the type of the linked learning object
+   *
+   *
+   */
   linked_object_type: string;
   /**
-   * The id of the linked learning object
+   * the id of the linked learning object
    *
-   * Type: integer
+   * type: integer
    */
   linked_object_id: number | string;
-  /** The Canvas web URL of the linked learning object */
+  /**
+   * the Canvas web URL of the linked learning object
+   *
+   *
+   */
   linked_object_html_url: string;
-  /** The API URL of the linked learning object */
+  /**
+   * the API URL of the linked learning object
+   *
+   *
+   */
   linked_object_url: string;
 };
 
 /**
- * User-controlled setting for whether an item should be displayed on the
- * planner or not
+ * User-controlled setting for whether an item should be displayed on the planner or not
  */
 export type PlannerOverride = {
   /**
    * The ID of the planner override
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
-  /** The type of the associated object for the planner override */
+  /**
+   * The type of the associated object for the planner override
+   *
+   *
+   */
   plannable_type: string;
   /**
    * The id of the associated object for the planner override
    *
-   * Type: integer
+   * type: integer
    */
   plannable_id: number | string;
   /**
    * The id of the associated user for the planner override
    *
-   * Type: integer
+   * type: integer
    */
   user_id: number | string;
   /**
    * The id of the plannable's associated assignment, if it has one
    *
-   * Type: integer
+   * type: integer
    */
   assignment_id: number | string;
-  /** The current published state of the item, synced with the associated object */
+  /**
+   * The current published state of the item, synced with the associated object
+   *
+   *
+   */
   workflow_state: string;
   /**
-   * Controls whether or not the associated plannable item is marked complete on
-   * the planner
+   * Controls whether or not the associated plannable item is marked complete on the planner
    *
-   * Type: boolean
+   * type: boolean
    */
   marked_complete: boolean | string;
   /**
-   * Controls whether or not the associated plannable item shows up in the
-   * opportunities list
+   * Controls whether or not the associated plannable item shows up in the opportunities list
    *
-   * Type: boolean
+   * type: boolean
    */
   dismissed: boolean | string;
   /**
    * The datetime of when the planner override was created
    *
-   * Format: date-time
+   * format: date-time
    */
   created_at: string;
   /**
    * The datetime of when the planner override was updated
    *
-   * Format: date-time
+   * format: date-time
    */
   updated_at: string;
   /**
    * The datetime of when the planner override was deleted, if applicable
    *
-   * Format: date-time
+   * format: date-time
    */
   deleted_at: string;
 };

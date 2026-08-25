@@ -1,55 +1,79 @@
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type Progress = {
   /**
-   * The ID of the Progress object
+   * the ID of the Progress object
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
   /**
-   * The context owning the job.
+   * the context owning the job.
    *
-   * Type: integer
+   * type: integer
    */
   context_id: number | string;
+  /**
+   *
+   *
+   *
+   */
   context_type: string;
   /**
-   * The id of the user who started the job
+   * the id of the user who started the job
    *
-   * Type: integer
+   * type: integer
    */
   user_id: number | string;
-  /** The type of operation */
+  /**
+   * the type of operation
+   *
+   *
+   */
   tag: string;
   /**
-   * Percent completed
+   * percent completed
    *
-   * Type: integer
+   * type: integer
    */
   completion: number | string;
-  /** The state of the job one of 'queued', 'running', 'completed', 'failed' */
+  /**
+   * the state of the job one of 'queued', 'running', 'completed', 'failed'
+   *
+   *
+   */
   workflow_state: string;
   /**
-   * The time the job was created
+   * the time the job was created
    *
-   * Format: date-time
+   * format: date-time
    */
   created_at: string;
   /**
-   * The time the job was last updated
+   * the time the job was last updated
    *
-   * Format: date-time
+   * format: date-time
    */
   updated_at: string;
-  /** Optional details about the job */
+  /**
+   * optional details about the job
+   *
+   *
+   */
   message: string;
   /**
-   * Optional results of the job. omitted when job is still pending
+   * optional results of the job. omitted when job is still pending
    *
-   * Object
+   * object
    */
   results: JSONObject;
-  /** Url where a progress update can be retrieved with an LTI access token */
+  /**
+   * url where a progress update can be retrieved with an LTI access token
+   *
+   *
+   */
   url: string;
 };

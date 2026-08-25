@@ -1,12 +1,24 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** The title of the poll. */
+  /**
+   * The title of the poll.
+   *
+   *
+   *
+   *
+   */
   'polls[question]': string[];
-  /** A brief description or instructions for the poll. */
+  /**
+   * A brief description or instructions for the poll.
+   *
+   *
+   *
+   *
+   */
   'polls[description]': string[];
 };
 
@@ -46,7 +58,11 @@ type Options =
  *
  * Create a new poll for the current user
  *
- * Nickname: create_single_poll
+ * nickname: create_single_poll
+ *
+ *
+ *
+ *
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<JSONValue>(`/api/v1/polls`, {

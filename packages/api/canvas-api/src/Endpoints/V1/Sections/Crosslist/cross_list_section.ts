@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Section } from '../../../../Resources/Sections.js';
 
 export type cross_list_sectionPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   new_course_id: string | number;
 };
@@ -21,12 +25,13 @@ export type cross_list_sectionSearchParameters = Masquerade;
 
 export type cross_list_sectionFormParameters = Masquerade & {
   /**
-   * Default is true. If false, any fields containing “sticky” changes will
-   * not be updated. See SIS CSV Format documentation for information on which
-   * fields can have SIS stickiness
-   *
-   * Type: boolean
-   */
+     * Default is true. If false, any fields containing “sticky” changes will not be updated.
+See SIS CSV Format documentation for information on which fields can have SIS stickiness
+     *
+     * type: boolean
+     *
+     * 
+     */
   override_sis_stickiness: boolean | string;
 };
 
@@ -74,11 +79,14 @@ type Options = (
 /**
  * Cross-list a Section
  *
- * Move the Section to another course. The new course may be in a different
- * account (department), but must belong to the same root account
- * (institution).
+ * Move the Section to another course.  The new course may be in a different account (department),
+but must belong to the same root account (institution).
  *
- * Nickname: cross_list_section
+ * nickname: cross_list_section
+ *
+ * 
+ *
+ * 
  */
 export async function cross_list_section(options: Options) {
   const response = await client().fetchAs<Section>(

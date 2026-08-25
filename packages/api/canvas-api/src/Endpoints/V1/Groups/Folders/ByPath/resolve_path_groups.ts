@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Folder } from '../../../../../Resources/Files.js';
 
 export type resolve_path_groupsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
 };
@@ -45,14 +47,18 @@ type Options = (
 /**
  * Resolve path
  *
- * Given the full path to a folder, returns a list of all Folders in the path
- * hierarchy, starting at the root folder, and ending at the requested folder.
- * The given path is relative to the context's root folder and does not include
- * the root folder's name (e.g., "course files"). If an empty path is given, the
- * context's root folder alone is returned. Otherwise, if no folder exists with
- * the given full path, a Not Found error is returned.
+ * Given the full path to a folder, returns a list of all Folders in the path hierarchy,
+starting at the root folder, and ending at the requested folder. The given path is
+relative to the context's root folder and does not include the root folder's name
+(e.g., "course files"). If an empty path is given, the context's root folder alone
+is returned. Otherwise, if no folder exists with the given full path, a Not Found
+error is returned.
  *
- * Nickname: resolve_path_groups
+ * nickname: resolve_path_groups
+ *
+ * 
+ *
+ * 
  */
 export async function resolve_path_groups(options: Options) {
   const response = await client().fetchAs<Folder[]>(

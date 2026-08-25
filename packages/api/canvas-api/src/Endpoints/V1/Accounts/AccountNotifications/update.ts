@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -19,31 +23,57 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** The subject of the notification. */
+  /**
+   * The subject of the notification.
+   *
+   *
+   *
+   *
+   */
   'account_notification[subject]': string;
-  /** The message body of the notification. */
+  /**
+   * The message body of the notification.
+   *
+   *
+   *
+   *
+   */
   'account_notification[message]': string;
   /**
-   * The start date and time of the notification in ISO8601 format. e.g.
-   * 2014-01-01T01:00Z
-   *
-   * Format: date-time
-   */
+     * The start date and time of the notification in ISO8601 format.
+e.g. 2014-01-01T01:00Z
+     *
+     * format: date-time
+     *
+     * 
+     */
   'account_notification[start_at]': string;
   /**
-   * The end date and time of the notification in ISO8601 format. e.g.
-   * 2014-01-01T01:00Z
-   *
-   * Format: date-time
-   */
+     * The end date and time of the notification in ISO8601 format.
+e.g. 2014-01-01T01:00Z
+     *
+     * format: date-time
+     *
+     * 
+     */
   'account_notification[end_at]': string;
-  /** The icon to display with the notification. */
+  /**
+   * The icon to display with the notification.
+   *
+   *
+   *
+   *
+   */
   'account_notification[icon]': string;
   /**
-   * The role(s) to send global notification to. Note: ommitting this field
-   * will send to everyone Example: account_notification_roles:
-   * ["StudentEnrollment", "TeacherEnrollment"]
-   */
+     * The role(s) to send global notification to.  Note:  ommitting this field will send to everyone
+Example:
+  account_notification_roles: [&quot;StudentEnrollment&quot;, &quot;TeacherEnrollment&quot;]
+     *
+     * 
+     *
+     * 
+     */
   account_notification_roles: string[];
 };
 
@@ -93,7 +123,11 @@ type Options = (
  *
  * Update global notification for an account.
  *
- * Nickname: update_global_notification
+ * nickname: update_global_notification
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(

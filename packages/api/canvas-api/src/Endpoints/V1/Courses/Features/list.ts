@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Feature } from '../../../../Resources/FeatureFlags.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -16,9 +18,11 @@ export type listSearchParameters = Masquerade &
   Partial<{
     /**
      * When true, feature flags that are enabled in a higher context and cannot
-     * be overridden will be omitted.
+be overridden will be omitted.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     hide_inherited_enabled: boolean | string;
   }>;
@@ -55,10 +59,13 @@ type Options = (
 /**
  * List features
  *
- * A paginated list of all features that apply to a given Account, Course, or
- * User.
+ * A paginated list of all features that apply to a given Account, Course, or User.
  *
- * Nickname: list_features_courses
+ * nickname: list_features_courses
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<Feature[]>(

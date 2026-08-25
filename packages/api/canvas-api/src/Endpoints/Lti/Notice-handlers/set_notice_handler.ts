@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { NoticeHandler } from '../../../Resources/NoticeHandlers.js';
 
 export type set_notice_handlerPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   context_external_tool_id: string | number;
 };
@@ -14,17 +16,31 @@ export type set_notice_handlerPathParameters = {
 export type set_notice_handlerSearchParameters = Masquerade;
 
 export type set_notice_handlerFormParameters = Masquerade & {
-  /** The type of notice */
+  /**
+   * The type of notice
+   *
+   *
+   *
+   *
+   */
   notice_type: string;
-  /** URL to receive the notice, or an empty string to unsubscribe */
+  /**
+   * URL to receive the notice, or an empty string to unsubscribe
+   *
+   *
+   *
+   *
+   */
   handler: string;
   /**
-   * The maximum number of notices to include in a single batch
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The maximum number of notices to include in a single batch
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   max_batch_size: number | string;
 };
 
@@ -74,7 +90,11 @@ type Options = (
  *
  * Subscribe (set) or unsubscribe (remove) a notice handler for the tool
  *
- * Nickname: set_notice_handler
+ * nickname: set_notice_handler
+ *
+ *
+ *
+ *
  */
 export async function set_notice_handler(options: Options) {
   const response = await client().fetchAs<NoticeHandler>(

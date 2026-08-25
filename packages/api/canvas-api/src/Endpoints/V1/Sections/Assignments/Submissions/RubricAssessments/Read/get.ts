@@ -1,23 +1,29 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   section_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -56,10 +62,13 @@ type Options = (
 /**
  * Get rubric assessments read state
  *
- * Return whether new rubric comments/grading made on a submission have been
- * seen by the student being assessed.
+ * Return whether new rubric comments/grading made on a submission have been seen by the student being assessed.
  *
- * Nickname: get_rubric_assessments_read_state_sections_rubric_assessments
+ * nickname: get_rubric_assessments_read_state_sections_rubric_assessments
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

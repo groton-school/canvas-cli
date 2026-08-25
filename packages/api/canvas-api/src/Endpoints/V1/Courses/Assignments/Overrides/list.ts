@@ -1,18 +1,22 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { AssignmentOverride } from '../../../../../Resources/Assignments.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
@@ -52,9 +56,13 @@ type Options = (
  * List assignment overrides
  *
  * Returns the paginated list of overrides for this assignment that target
- * sections/groups/students visible to the current user.
+sections/groups/students visible to the current user.
  *
- * Nickname: list_assignment_overrides
+ * nickname: list_assignment_overrides
+ *
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<AssignmentOverride[]>(

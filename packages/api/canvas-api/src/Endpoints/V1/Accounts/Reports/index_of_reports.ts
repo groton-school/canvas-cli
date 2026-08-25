@@ -1,15 +1,23 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Report } from '../../../../Resources/AccountReports.js';
 
 export type index_of_reportsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   report: string;
 };
 
@@ -49,7 +57,11 @@ type Options = (
  *
  * Shows all reports that have been run for the account of a specific type.
  *
- * Nickname: index_of_reports
+ * nickname: index_of_reports
+ *
+ *
+ *
+ *
  */
 export async function index_of_reports(options: Options) {
   const response = await client().fetchAs<Report[]>(

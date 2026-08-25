@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ePortfolio } from '../../../../Resources/EPortfolios.js';
 
 export type restore_deleted_eportfolioPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   eportfolio_id: string | number;
 };
@@ -46,9 +48,13 @@ type Options = (
  * Restore a deleted ePortfolio
  *
  * Restore an ePortfolio back to active that was previously deleted. Only
- * available to admins who can moderate_user_content.
+available to admins who can moderate_user_content.
  *
- * Nickname: restore_deleted_eportfolio
+ * nickname: restore_deleted_eportfolio
+ *
+ * 
+ *
+ * 
  */
 export async function restore_deleted_eportfolio(options: Options) {
   const response = await client().fetchAs<ePortfolio>(

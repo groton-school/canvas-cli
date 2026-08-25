@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -13,10 +15,13 @@ export type listPathParameters = {
 export type listSearchParameters = Masquerade &
   Partial<{
     /**
-     * - "course_subject_tabs": Optional flag to return the tabs associated with a
-     *   canvas_for_elementary subject course's home page instead of the typical
-     *   sidebar navigation. Only takes effect if this request is for a course
-     *   context in a canvas_for_elementary-enabled account or sub-account.
+     * - &quot;course_subject_tabs&quot;: Optional flag to return the tabs associated with a canvas_for_elementary subject course&#x27;s
+  home page instead of the typical sidebar navigation. Only takes effect if this request is for a course context
+  in a canvas_for_elementary-enabled account or sub-account.
+     *
+     * 
+     *
+     * 
      */
     include: string[];
   }>;
@@ -55,7 +60,11 @@ type Options = (
  *
  * Returns a paginated list of navigation tabs available in the current context.
  *
- * Nickname: list_available_tabs_for_course_or_group_accounts
+ * nickname: list_available_tabs_for_course_or_group_accounts
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

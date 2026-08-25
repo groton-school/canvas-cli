@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { CourseNickname } from '../../../../../Resources/Users.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Returns the nickname for a specific course.
  *
- * Nickname: get_course_nickname
+ * nickname: get_course_nickname
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<CourseNickname>(

@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Enrollment } from '../../../../../Resources/Enrollments.js';
 
 export type add_last_attended_datePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -23,7 +27,9 @@ export type add_last_attended_dateFormParameters = Masquerade & {
   /**
    * The last attended date of a student enrollment in a course.
    *
-   * Format: date
+   * format: date
+   *
+   *
    */
   date: string;
 };
@@ -74,7 +80,11 @@ type Options = (
  *
  * Add last attended date to student enrollment in course
  *
- * Nickname: add_last_attended_date
+ * nickname: add_last_attended_date
+ *
+ *
+ *
+ *
  */
 export async function add_last_attended_date(options: Options) {
   const response = await client().fetchAs<Enrollment>(

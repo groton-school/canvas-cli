@@ -27,7 +27,11 @@ type Options =
  *
  * Returns all course nicknames you have set.
  *
- * Nickname: list_course_nicknames
+ * nickname: list_course_nicknames
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<CourseNickname[]>(

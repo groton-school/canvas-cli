@@ -1,20 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Report } from '../../../../Resources/AccountReports.js';
 
 export type delete_reportPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   report: string;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -55,7 +65,11 @@ type Options = (
  *
  * Deletes a generated report instance.
  *
- * Nickname: delete_report
+ * nickname: delete_report
+ *
+ *
+ *
+ *
  */
 export async function delete_report(options: Options) {
   const response = await client().fetchAs<Report>(

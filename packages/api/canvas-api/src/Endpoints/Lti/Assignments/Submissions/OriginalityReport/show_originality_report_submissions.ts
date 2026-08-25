@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { OriginalityReport } from '../../../../../Resources/OriginalityReports.js';
 
 export type show_originality_report_submissionsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   submission_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -59,7 +65,11 @@ type Options = (
  *
  * Get a single originality report
  *
- * Nickname: show_originality_report_submissions
+ * nickname: show_originality_report_submissions
+ *
+ *
+ *
+ *
  */
 export async function show_originality_report_submissions(options: Options) {
   const response = await client().fetchAs<OriginalityReport>(

@@ -1,23 +1,29 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type mark_module_item_readPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   module_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -56,15 +62,17 @@ type Options = (
 /**
  * Mark module item read
  *
- * Fulfills "must view" requirement for a module item. It is generally not
- * necessary to do this explicitly, but it is provided for applications that
- * need to access external content directly (bypassing the html_url redirect
- * that normally allows Canvas to fulfill "must view" requirements).
+ * Fulfills "must view" requirement for a module item. It is generally not necessary to do this explicitly,
+but it is provided for applications that need to access external content directly (bypassing the html_url
+redirect that normally allows Canvas to fulfill "must view" requirements).
+
+This endpoint cannot be used to complete requirements on locked or unpublished module items.
  *
- * This endpoint cannot be used to complete requirements on locked or
- * unpublished module items.
+ * nickname: mark_module_item_read
  *
- * Nickname: mark_module_item_read
+ * 
+ *
+ * 
  */
 export async function mark_module_item_read(options: Options) {
   const response = await client().fetchAs<JSONValue>(

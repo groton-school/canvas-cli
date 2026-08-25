@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type remove_content_sharePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -50,10 +54,14 @@ type Options = (
 /**
  * Remove content share
  *
- * Remove a content share from your list. Use +self+ as the user_id. Note that
- * this endpoint does not delete other users' copies of the content share.
+ * Remove a content share from your list. Use +self+ as the user_id. Note that this endpoint does not delete other users'
+copies of the content share.
  *
- * Nickname: remove_content_share
+ * nickname: remove_content_share
+ *
+ * 
+ *
+ * 
  */
 export async function remove_content_share(options: Options) {
   const response = await client().fetchAs<JSONValue>(

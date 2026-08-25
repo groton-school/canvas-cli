@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type log_users_out_of_all_mobile_apps_mobile_sessionsSearchParameters =
   Masquerade &
@@ -7,7 +7,9 @@ export type log_users_out_of_all_mobile_apps_mobile_sessionsSearchParameters =
       /**
        * If true, will not expire mobile sessions for account administrators.
        *
-       * Type: boolean
+       * type: boolean
+       *
+       *
        */
       skip_admins: boolean | string;
     }>;
@@ -35,13 +37,16 @@ type Options =
  * Log users out of all mobile apps
  *
  * Permanently expires any active mobile sessions, forcing them to re-authorize.
+
+The route that takes a user id will expire mobile sessions for that user.
+The route that doesn't take a user id will expire mobile sessions for *all* users
+in the institution (except for account administrators if +skip_admins+ is given).
  *
- * The route that takes a user id will expire mobile sessions for that user. The
- * route that doesn't take a user id will expire mobile sessions for _all_ users
- * in the institution (except for account administrators if +skip_admins+ is
- * given).
+ * nickname: log_users_out_of_all_mobile_apps_mobile_sessions
  *
- * Nickname: log_users_out_of_all_mobile_apps_mobile_sessions
+ * 
+ *
+ * 
  */
 export async function log_users_out_of_all_mobile_apps_mobile_sessions(
   options: Options

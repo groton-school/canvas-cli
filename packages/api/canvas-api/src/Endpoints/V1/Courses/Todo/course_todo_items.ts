@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type course_todo_itemsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -45,11 +47,14 @@ type Options = (
  * Course TODO items
  *
  * Returns the current user's course-specific todo items.
+
+For full documentation, see the API documentation for the user todo items, in the user api.
  *
- * For full documentation, see the API documentation for the user todo items, in
- * the user api.
+ * nickname: course_todo_items
  *
- * Nickname: course_todo_items
+ * 
+ *
+ * 
  */
 export async function course_todo_items(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { GradeChangeEvent } from '../../../../../Resources/GradeChangeLog.js';
 
 export type query_by_studentPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   student_id: string | number;
 };
@@ -17,13 +19,17 @@ export type query_by_studentSearchParameters = Masquerade &
     /**
      * The beginning of the time range from which you want events.
      *
-     * Format: date-time
+     * format: date-time
+     *
+     *
      */
     start_time: string;
     /**
      * The end of the time range from which you want events.
      *
-     * Format: date-time
+     * format: date-time
+     *
+     *
      */
     end_time: string;
   }>;
@@ -62,7 +68,11 @@ type Options = (
  *
  * List grade change events for a given student.
  *
- * Nickname: query_by_student
+ * nickname: query_by_student
+ *
+ *
+ *
+ *
  */
 export async function query_by_student(options: Options) {
   const response = await client().fetchAs<GradeChangeEvent[]>(

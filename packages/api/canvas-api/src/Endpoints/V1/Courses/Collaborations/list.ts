@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Collaboration } from '../../../../Resources/Collaborations.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -46,12 +48,16 @@ type Options = (
  * List collaborations
  *
  * A paginated list of collaborations the current user has access to in the
- * context of the course provided in the url. NOTE: this only returns
- * ExternalToolCollaboration type collaborations.
+context of the course provided in the url. NOTE: this only returns
+ExternalToolCollaboration type collaborations.
+
+  curl https://<canvas>/api/v1/courses/1/collaborations/
  *
- * Curl https://<canvas>/api/v1/courses/1/collaborations/
+ * nickname: list_collaborations_courses
  *
- * Nickname: list_collaborations_courses
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<Collaboration[]>(

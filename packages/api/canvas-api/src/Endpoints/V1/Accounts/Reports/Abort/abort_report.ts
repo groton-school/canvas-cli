@@ -1,20 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Report } from '../../../../../Resources/AccountReports.js';
 
 export type abort_reportPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   report: string;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -55,7 +65,11 @@ type Options = (
  *
  * Abort a report in progress
  *
- * Nickname: abort_report
+ * nickname: abort_report
+ *
+ *
+ *
+ *
  */
 export async function abort_report(options: Options) {
   const response = await client().fetchAs<Report>(

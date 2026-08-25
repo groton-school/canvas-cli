@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { QuizAssignmentOverrideSetContainer } from '../../../../../Resources/QuizAssignmentOverrides.js';
 
 export type retrieve_assignment_overridden_dates_for_new_quizzesPathParameters =
@@ -7,7 +7,9 @@ export type retrieve_assignment_overridden_dates_for_new_quizzesPathParameters =
     /**
      * ID
      *
-     * Type: string
+     * type: string
+     *
+     *
      */
     course_id: string | number;
   };
@@ -16,11 +18,15 @@ export type retrieve_assignment_overridden_dates_for_new_quizzesSearchParameters
   Masquerade &
     Partial<{
       /**
-       * An array of quiz IDs. If omitted, overrides for all quizzes available to
-       * the operating user will be returned.
-       *
-       * Format: 'int64'
-       */
+     * An array of quiz IDs. If omitted, overrides for all quizzes available to
+the operating user will be returned.
+     *
+     * 
+
+format: 'int64'
+     *
+     * 
+     */
       'quiz_assignment_overrides[quiz_ids]': number | string[];
     }>;
 
@@ -57,9 +63,13 @@ type Options = (
  * Retrieve assignment-overridden dates for New Quizzes
  *
  * Retrieve the actual due-at, unlock-at, and available-at dates for quizzes
- * based on the assignment overrides active for the current API user.
+based on the assignment overrides active for the current API user.
  *
- * Nickname: retrieve_assignment_overridden_dates_for_new_quizzes
+ * nickname: retrieve_assignment_overridden_dates_for_new_quizzes
+ *
+ * 
+ *
+ * 
  */
 export async function retrieve_assignment_overridden_dates_for_new_quizzes(
   options: Options

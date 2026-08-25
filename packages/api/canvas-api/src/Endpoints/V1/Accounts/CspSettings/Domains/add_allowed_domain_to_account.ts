@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type add_allowed_domain_to_accountPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -13,7 +15,13 @@ export type add_allowed_domain_to_accountPathParameters = {
 export type add_allowed_domain_to_accountSearchParameters = Masquerade;
 
 export type add_allowed_domain_to_accountFormParameters = Masquerade & {
-  /** No description */
+  /**
+   * no description
+   *
+   *
+   *
+   *
+   */
   domain: string;
 };
 
@@ -61,10 +69,14 @@ type Options = (
 /**
  * Add an allowed domain to account
  *
- * Adds an allowed domain for the current account. Note: this will not take
- * effect unless CSP is explicitly enabled on this account.
+ * Adds an allowed domain for the current account. Note: this will not take effect
+unless CSP is explicitly enabled on this account.
  *
- * Nickname: add_allowed_domain_to_account
+ * nickname: add_allowed_domain_to_account
+ *
+ * 
+ *
+ * 
  */
 export async function add_allowed_domain_to_account(options: Options) {
   const response = await client().fetchAs<JSONValue>(

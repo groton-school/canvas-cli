@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type show_provisional_grade_status_for_studentPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
@@ -20,12 +24,14 @@ export type show_provisional_grade_status_for_studentSearchParameters =
   Masquerade &
     Partial<{
       /**
-       * The id of the student to show the status for
-       *
-       * Type: integer
-       *
-       * Format: 'int64'
-       */
+     * The id of the student to show the status for
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
       student_id: number | string;
     }>;
 
@@ -63,7 +69,11 @@ type Options = (
  *
  * Tell whether the student's submission needs one or more provisional grades.
  *
- * Nickname: show_provisional_grade_status_for_student
+ * nickname: show_provisional_grade_status_for_student
+ *
+ *
+ *
+ *
  */
 export async function show_provisional_grade_status_for_student(
   options: Options

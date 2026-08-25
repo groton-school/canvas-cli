@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Profile } from '../../../../Resources/Users.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -46,11 +48,15 @@ type Options = (
  * Get user profile
  *
  * Returns user profile data, including user id, name, and profile pic.
+
+When requesting the profile for the user accessing the API, the user's
+calendar feed URL and LTI user id will be returned as well.
  *
- * When requesting the profile for the user accessing the API, the user's
- * calendar feed URL and LTI user id will be returned as well.
+ * nickname: get_user_profile
  *
- * Nickname: get_user_profile
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<Profile>(

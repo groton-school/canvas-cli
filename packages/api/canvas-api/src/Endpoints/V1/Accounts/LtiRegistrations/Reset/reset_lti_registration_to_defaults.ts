@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { LtiRegistration } from '../../../../../Resources/LtiRegistrations.js';
 
 export type reset_lti_registration_to_defaultsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -51,11 +55,14 @@ type Options = (
 /**
  * Reset an LTI Registration to Defaults
  *
- * Reset the specified LTI registration to its default settings in this context.
- * This removes all customizations that were present in the overlay associated
- * with this context.
+ * Reset the specified LTI registration to its default settings in this context. This removes all customizations
+that were present in the overlay associated with this context.
  *
- * Nickname: reset_lti_registration_to_defaults
+ * nickname: reset_lti_registration_to_defaults
+ *
+ * 
+ *
+ * 
  */
 export async function reset_lti_registration_to_defaults(options: Options) {
   const response = await client().fetchAs<LtiRegistration>(

@@ -1,31 +1,37 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { QuizItem } from '../../../../../../Resources/NewQuizItems.js';
 
 export type delete_quiz_itemPathParameters = {
   /**
-   * No description
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * no description
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   course_id: number | string;
   /**
-   * The id of the assignment associated with the quiz.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the assignment associated with the quiz.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   assignment_id: number | string;
   /**
-   * The id of the item associated with the quiz.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the item associated with the quiz.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   item_id: number | string;
 };
 
@@ -65,7 +71,11 @@ type Options = (
  *
  * Delete a single quiz item in a new quiz.
  *
- * Nickname: delete_quiz_item
+ * nickname: delete_quiz_item
+ *
+ *
+ *
+ *
  */
 export async function delete_quiz_item(options: Options) {
   const response = await client().fetchAs<QuizItem>(

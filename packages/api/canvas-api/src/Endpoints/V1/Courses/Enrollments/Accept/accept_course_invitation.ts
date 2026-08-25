@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type accept_course_invitationPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -50,9 +54,13 @@ type Options = (
 /**
  * Accept Course Invitation
  *
- * Accepts a pending course invitation for the current user
+ * accepts a pending course invitation for the current user
  *
- * Nickname: accept_course_invitation
+ * nickname: accept_course_invitation
+ *
+ *
+ *
+ *
  */
 export async function accept_course_invitation(options: Options) {
   const response = await client().fetchAs<JSONValue>(

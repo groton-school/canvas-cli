@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type course_activity_stream_summaryPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -45,11 +47,15 @@ type Options = (
  * Course activity stream summary
  *
  * Returns a summary of the current user's course-specific activity stream.
+
+For full documentation, see the API documentation for the user activity
+stream summary, in the user api.
  *
- * For full documentation, see the API documentation for the user activity
- * stream summary, in the user api.
+ * nickname: course_activity_stream_summary
  *
- * Nickname: course_activity_stream_summary
+ * 
+ *
+ * 
  */
 export async function course_activity_stream_summary(options: Options) {
   const response = await client().fetchAs<JSONValue>(

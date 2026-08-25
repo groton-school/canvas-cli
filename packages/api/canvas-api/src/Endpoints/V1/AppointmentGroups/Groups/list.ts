@@ -1,18 +1,26 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
   Partial<{
-    /** Limits results to the a given participation status, defaults to "all" */
+    /**
+     * Limits results to the a given participation status, defaults to &quot;all&quot;
+     *
+     *
+     *
+     *
+     */
     registration_status: string;
   }>;
 
@@ -48,11 +56,15 @@ type Options = (
 /**
  * List student group participants
  *
- * A paginated list of student groups that are (or may be) participating in this
- * appointment group. Refer to the Groups API for the response fields. Returns
- * no results for appointment groups with the "User" participant_type.
+ * A paginated list of student groups that are (or may be) participating in
+this appointment group. Refer to the Groups API for the response fields.
+Returns no results for appointment groups with the "User" participant_type.
  *
- * Nickname: list_student_group_participants
+ * nickname: list_student_group_participants
+ *
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

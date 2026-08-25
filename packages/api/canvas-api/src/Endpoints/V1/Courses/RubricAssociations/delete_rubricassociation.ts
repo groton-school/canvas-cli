@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { RubricAssociation } from '../../../../Resources/Rubrics.js';
 
 export type delete_rubricassociationPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Delete the RubricAssociation with the given ID
  *
- * Nickname: delete_rubricassociation
+ * nickname: delete_rubricassociation
+ *
+ *
+ *
+ *
  */
 export async function delete_rubricassociation(options: Options) {
   const response = await client().fetchAs<RubricAssociation>(

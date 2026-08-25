@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type clear_course_nicknamesSearchParameters = Masquerade;
 
@@ -27,7 +27,11 @@ type Options =
  *
  * Remove all stored course nicknames.
  *
- * Nickname: clear_course_nicknames
+ * nickname: clear_course_nicknames
+ *
+ *
+ *
+ *
  */
 export async function clear_course_nicknames(options: Options) {
   const response = await client().fetchAs<JSONValue>(

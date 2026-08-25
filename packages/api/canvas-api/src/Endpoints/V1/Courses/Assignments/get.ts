@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Assignment } from '../../../../Resources/Assignments.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -20,31 +24,40 @@ export type getPathParameters = {
 export type getSearchParameters = Masquerade &
   Partial<{
     /**
-     * Associations to include with the assignment. The "assignment_visibility"
-     * option requires that the Differentiated Assignments course feature be
-     * turned on. If "observed_users" is passed, submissions for observed users
-     * will also be included. For "score_statistics" to be included, the
-     * "submission" option must also be set. The "peer_review" option requires
-     * that the Peer Review Allocation and Grading course feature be turned on.
+     * Associations to include with the assignment. The &quot;assignment_visibility&quot; option
+requires that the Differentiated Assignments course feature be turned on. If
+&quot;observed_users&quot; is passed, submissions for observed users will also be included.
+For &quot;score_statistics&quot; to be included, the &quot;submission&quot; option must also be set.
+The &quot;peer_review&quot; option requires that the Peer Review Allocation and Grading
+course feature be turned on.
+     *
+     * 
+     *
+     * 
      */
     include: string[];
     /**
      * Apply assignment overrides to the assignment, defaults to true.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     override_assignment_dates: boolean | string;
     /**
-     * Split up "needs_grading_count" by sections into the
-     * "needs_grading_count_by_section" key, defaults to false
+     * Split up &quot;needs_grading_count&quot; by sections into the &quot;needs_grading_count_by_section&quot; key, defaults to false
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     needs_grading_count_by_section: boolean | string;
     /**
      * All dates associated with the assignment, if applicable
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     all_dates: boolean | string;
   }>;
@@ -83,7 +96,11 @@ type Options = (
  *
  * Returns the assignment with the given id.
  *
- * Nickname: get_single_assignment
+ * nickname: get_single_assignment
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<Assignment>(

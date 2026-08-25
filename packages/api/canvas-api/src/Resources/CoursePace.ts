@@ -1,216 +1,289 @@
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type CoursePace = {
   /**
-   * The ID of the course pace
+   * the ID of the course pace
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
   /**
-   * The ID of the course
+   * the ID of the course
    *
-   * Type: integer
+   * type: integer
    */
   course_id: number | string;
   /**
-   * The ID of the user for this course pace
+   * the ID of the user for this course pace
    *
-   * Type: integer
+   * type: integer
    */
   user_id: number | string;
-  /** The state of the course pace */
+  /**
+   * the state of the course pace
+   *
+   *
+   */
   workflow_state: string;
   /**
-   * Boolean value depending on exclude weekends setting
+   * boolean value depending on exclude weekends setting
    *
-   * Type: boolean
+   * type: boolean
    */
   exclude_weekends: boolean | string;
-  /** Array of strings representing the days of the work week */
+  /**
+   * array of strings representing the days of the work week
+   *
+   *
+   */
   selected_days_to_skip: number | string[];
   /**
-   * Set if the end date is set from course
+   * set if the end date is set from course
    *
-   * Type: boolean
+   * type: boolean
    */
   hard_end_dates: boolean | string;
   /**
-   * Date when course pace is created
+   * date when course pace is created
    *
-   * Format: date-time
+   * format: date-time
    */
   created_at: string;
   /**
-   * Course end date
+   * course end date
    *
-   * Format: date-time
+   * format: date-time
    */
   end_date: string;
   /**
-   * Date when course pace is updated
+   * date when course pace is updated
    *
-   * Format: date-time
+   * format: date-time
    */
   updated_at: string;
   /**
-   * Date when course pace is published
+   * date when course pace is published
    *
-   * Format: date-time
+   * format: date-time
    */
   published_at: string;
   /**
-   * The root account ID for this course pace
+   * the root account ID for this course pace
    *
-   * Type: integer
+   * type: integer
    */
   root_account_id: number | string;
   /**
-   * Course start date
+   * course start date
    *
-   * Format: date-time
+   * format: date-time
    */
   start_date: string;
-  /** List of modules and items for this course pace */
+  /**
+   * list of modules and items for this course pace
+   *
+   *
+   */
   modules: JSONValue;
-  /** Progress of pace publishing */
+  /**
+   * progress of pace publishing
+   *
+   *
+   */
   progress: Progress;
 };
 
+/**
+ *
+ */
 export type Module = {
   /**
-   * The ID of the module
+   * the ID of the module
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
-  /** The name of the module */
+  /**
+   * the name of the module
+   *
+   *
+   */
   name: string;
   /**
-   * The position of the module
+   * the position of the module
    *
-   * Type: integer
+   * type: integer
    */
   position: number | string;
-  /** List of module items */
+  /**
+   * list of module items
+   *
+   *
+   */
   items: ModuleItem[];
   /**
-   * The ID of the context for this course pace
+   * the ID of the context for this course pace
    *
-   * Type: integer
+   * type: integer
    */
   context_id: number | string;
-  /** The given context for the course pace */
+  /**
+   * The given context for the course pace
+   *
+   *
+   */
   context_type: string;
 };
 
+/**
+ *
+ */
 export type ModuleItem = {
   /**
-   * The ID of the module item
+   * the ID of the module item
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
   /**
-   * The duration of the module item
+   * the duration of the module item
    *
-   * Type: integer
+   * type: integer
    */
   duration: number | string;
   /**
-   * The course pace id of the module item
+   * the course pace id of the module item
    *
-   * Type: integer
+   * type: integer
    */
   course_pace_id: number | string;
   /**
-   * The root account id of the module item
+   * the root account id of the module item
    *
-   * Type: integer
+   * type: integer
    */
   root_account_id: number | string;
   /**
-   * The module item id of the module item
+   * the module item id of the module item
    *
-   * Type: integer
+   * type: integer
    */
   module_item_id: number | string;
-  /** The title of the item assignment */
+  /**
+   * The title of the item assignment
+   *
+   *
+   */
   assignment_title: string;
   /**
    * The points of the item
    *
-   * Type: number
+   * type: number
    */
   points_possible: number | string;
-  /** The link of the item assignment */
+  /**
+   * The link of the item assignment
+   *
+   *
+   */
   assignment_link: string;
   /**
-   * The current position of the module item
+   * the current position of the module item
    *
-   * Type: integer
+   * type: integer
    */
   position: number | string;
-  /** The module item type of the item assignment */
+  /**
+   * The module item type of the item assignment
+   *
+   *
+   */
   module_item_type: string;
   /**
-   * Published boolean value for course pace
+   * published boolean value for course pace
    *
-   * Type: boolean
+   * type: boolean
    */
   published: boolean | string;
 };
 
+/**
+ *
+ */
 export type Progress = {
   /**
-   * The ID of the Progress object
+   * the ID of the Progress object
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
   /**
-   * The context owning the job.
+   * the context owning the job.
    *
-   * Type: integer
+   * type: integer
    */
   context_id: number | string;
+  /**
+   *
+   *
+   *
+   */
   context_type: string;
   /**
-   * The id of the user who started the job
+   * the id of the user who started the job
    *
-   * Type: integer
+   * type: integer
    */
   user_id: number | string;
-  /** The type of operation */
+  /**
+   * the type of operation
+   *
+   *
+   */
   tag: string;
   /**
-   * Percent completed
+   * percent completed
    *
-   * Type: integer
+   * type: integer
    */
   completion: number | string;
-  /** The state of the job one of 'queued', 'running', 'completed', 'failed' */
+  /**
+   * the state of the job one of 'queued', 'running', 'completed', 'failed'
+   *
+   *
+   */
   workflow_state: string;
   /**
-   * The time the job was created
+   * the time the job was created
    *
-   * Format: date-time
+   * format: date-time
    */
   created_at: string;
   /**
-   * The time the job was last updated
+   * the time the job was last updated
    *
-   * Format: date-time
+   * format: date-time
    */
   updated_at: string;
-  /** Optional details about the job */
+  /**
+   * optional details about the job
+   *
+   *
+   */
   message: string;
   /**
-   * Optional results of the job. omitted when job is still pending
+   * optional results of the job. omitted when job is still pending
    *
-   * Object
+   * object
    */
   results: JSONObject;
-  /** Url where a progress update can be retrieved */
+  /**
+   * url where a progress update can be retrieved
+   *
+   *
+   */
   url: string;
 };

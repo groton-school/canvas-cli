@@ -1,18 +1,22 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { QuizQuestion } from '../../../../../Resources/QuizQuestions.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   quiz_id: string | number;
 };
@@ -22,22 +26,27 @@ export type listSearchParameters = Masquerade &
   Partial<{
     /**
      * If specified, the endpoint will return the questions that were presented
-     * for that submission. This is useful if the quiz has been modified after
-     * the submission was created and the latest quiz version's set of questions
-     * does not match the submission's. NOTE: you must specify
-     * quiz_submission_attempt as well if you specify this parameter.
+for that submission. This is useful if the quiz has been modified after
+the submission was created and the latest quiz version&#x27;s set of questions
+does not match the submission&#x27;s.
+NOTE: you must specify quiz_submission_attempt as well if you specify this
+parameter.
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     quiz_submission_id: number | string;
     /**
      * The attempt of the submission you want the questions for.
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     quiz_submission_attempt: number | string;
   }>;
@@ -76,7 +85,11 @@ type Options = (
  *
  * Returns the paginated list of QuizQuestions in this quiz.
  *
- * Nickname: list_questions_in_quiz_or_submission
+ * nickname: list_questions_in_quiz_or_submission
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<QuizQuestion[]>(

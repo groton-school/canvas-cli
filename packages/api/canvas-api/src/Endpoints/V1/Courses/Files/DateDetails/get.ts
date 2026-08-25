@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { LearningObjectDates } from '../../../../../Resources/LearningObjectDates.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   attachment_id: string | number;
 };
@@ -20,31 +24,33 @@ export type getPathParameters = {
 export type getSearchParameters = Masquerade &
   Partial<{
     /**
-     * Array of strings indicating what additional data to include in the
-     * response. Valid values:
+     * Array of strings indicating what additional data to include in the response.
+Valid values:
+- &quot;peer_review&quot;: includes peer review sub assignment information and overrides in the response.
+  Requires the peer_review_allocation_and_grading feature flag to be enabled.
+- &quot;child_peer_review_override_dates&quot;: each assignment override will include a peer_review_dates
+  field containing the matched peer review override data (id, due_at, unlock_at, lock_at)
+  for that override. The field will be present as null if no matching peer review override exists.
      *
-     * - "peer_review": includes peer review sub assignment information and
-     *   overrides in the response. Requires the
-     *   peer_review_allocation_and_grading feature flag to be enabled.
-     * - "child_peer_review_override_dates": each assignment override will include
-     *   a peer_review_dates field containing the matched peer review override
-     *   data (id, due_at, unlock_at, lock_at) for that override. The field will
-     *   be present as null if no matching peer review override exists.
+     * 
+     *
+     * 
      */
     include: string[];
     /**
-     * Array of strings indicating what data to exclude from the response. Valid
-     * values:
+     * Array of strings indicating what data to exclude from the response.
+Valid values:
+- &quot;peer_review_overrides&quot;: when include[]&#x3D;peer_review is also specified, the
+  peer_review_sub_assignment object will not include the overrides array, reducing the
+  response payload size. This is useful when using include[]&#x3D;child_peer_review_override_dates
+  since the peer review override data is already embedded in the parent assignment overrides.
+- &quot;child_override_due_dates&quot;: prevents the sub_assignment_due_dates field from being included
+  in assignment override responses, even when discussion checkpoints are enabled. This reduces
+  response payload size when checkpoint due date information is not needed.
      *
-     * - "peer_review_overrides": when include[]=peer_review is also specified,
-     *   the peer_review_sub_assignment object will not include the overrides
-     *   array, reducing the response payload size. This is useful when using
-     *   include[]=child_peer_review_override_dates since the peer review
-     *   override data is already embedded in the parent assignment overrides.
-     * - "child_override_due_dates": prevents the sub_assignment_due_dates field
-     *   from being included in assignment override responses, even when
-     *   discussion checkpoints are enabled. This reduces response payload size
-     *   when checkpoint due date information is not needed.
+     * 
+     *
+     * 
      */
     exclude: string[];
   }>;
@@ -79,13 +85,16 @@ type Options = (
   );
 
 /**
- * Get a learning object's date information
+ * Get a learning object&#x27;s date information
  *
- * Get a learning object's date-related information, including due date,
- * availability dates, override status, and a paginated list of all assignment
- * overrides for the item.
+ * Get a learning object's date-related information, including due date, availability dates,
+override status, and a paginated list of all assignment overrides for the item.
  *
- * Nickname: get_learning_object_s_date_information_files
+ * nickname: get_learning_object_s_date_information_files
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<LearningObjectDates>(

@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { PeerReview } from '../../../../../../Resources/PeerReviews.js';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   submission_id: string | number;
 };
@@ -27,12 +33,14 @@ export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
   /**
-   * User_id to assign as reviewer on this assignment
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * user_id to assign as reviewer on this assignment
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   user_id: number | string;
 };
 
@@ -82,7 +90,11 @@ type Options = (
  *
  * Create a peer review for the assignment
  *
- * Nickname: create_peer_review_courses
+ * nickname: create_peer_review_courses
+ *
+ *
+ *
+ *
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<PeerReview>(

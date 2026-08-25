@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Course } from '../../../../Resources/Courses.js';
 
 export type reset_coursePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -45,10 +47,14 @@ type Options = (
 /**
  * Reset a course
  *
- * Deletes the current course, and creates a new equivalent course with no
- * content, but all sections and users moved over.
+ * Deletes the current course, and creates a new equivalent course with
+no content, but all sections and users moved over.
  *
- * Nickname: reset_course
+ * nickname: reset_course
+ *
+ * 
+ *
+ * 
  */
 export async function reset_course(options: Options) {
   const response = await client().fetchAs<Course>(

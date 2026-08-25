@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { GradingStandard } from '../../../../Resources/GradingStandards.js';
 
 export type delete_grading_standard_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   grading_standard_id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Deletes the grading standard with the given id
  *
- * Nickname: delete_grading_standard_courses
+ * nickname: delete_grading_standard_courses
+ *
+ *
+ *
+ *
  */
 export async function delete_grading_standard_courses(options: Options) {
   const response = await client().fetchAs<GradingStandard>(

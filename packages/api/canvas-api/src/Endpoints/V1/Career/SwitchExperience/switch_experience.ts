@@ -1,11 +1,17 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { experienceStringThenewlysetexperience } from '../../../../Overrides.js';
 
 export type switch_experienceSearchParameters = Masquerade;
 
 export type switch_experienceFormParameters = Masquerade & {
-  /** The experience to switch to. */
+  /**
+   * The experience to switch to.
+   *
+   *
+   *
+   *
+   */
   experience: string;
 };
 
@@ -45,7 +51,11 @@ type Options =
  *
  * Switch the current user's active experience to the specified one.
  *
- * Nickname: switch_experience
+ * nickname: switch_experience
+ *
+ *
+ *
+ *
  */
 export async function switch_experience(options: Options) {
   const response =

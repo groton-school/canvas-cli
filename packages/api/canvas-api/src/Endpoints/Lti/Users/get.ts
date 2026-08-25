@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { User } from '../../../Resources/Users.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -45,11 +47,14 @@ type Options = (
 /**
  * Get a single user (lti)
  *
- * Get a single Canvas user by Canvas id or LTI id. Tool providers may only
- * access users that have been assigned an assignment associated with their
- * tool.
+ * Get a single Canvas user by Canvas id or LTI id. Tool providers may only access
+users that have been assigned an assignment associated with their tool.
  *
- * Nickname: get_single_user_lti
+ * nickname: get_single_user_lti
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<User>(`/api/lti/users/{id}`, {

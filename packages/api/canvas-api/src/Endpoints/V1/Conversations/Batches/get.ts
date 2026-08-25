@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getSearchParameters = Masquerade;
 
@@ -26,11 +26,14 @@ type Options =
  * Get running batches
  *
  * Returns any currently running conversation batches for the current user.
- * Conversation batches are created when a bulk private message is sent
- * asynchronously (see the mode argument to the
- * {api:ConversationsController#create create API action}).
+Conversation batches are created when a bulk private message is sent
+asynchronously (see the mode argument to the {api:ConversationsController#create create API action}).
  *
- * Nickname: get_running_batches
+ * nickname: get_running_batches
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

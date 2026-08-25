@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { PairingCode } from '../../../../Resources/UserObservees.js';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -45,10 +47,14 @@ type Options = (
 /**
  * Create observer pairing code
  *
- * If the user is a student, will generate a code to be used with self
- * registration or observees APIs to link another user to this student.
+ * If the user is a student, will generate a code to be used with self registration
+or observees APIs to link another user to this student.
  *
- * Nickname: create_observer_pairing_code
+ * nickname: create_observer_pairing_code
+ *
+ * 
+ *
+ * 
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<PairingCode>(

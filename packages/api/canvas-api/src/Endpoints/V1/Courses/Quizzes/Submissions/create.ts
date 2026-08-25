@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   quiz_id: string | number;
 };
@@ -19,14 +23,22 @@ export type createPathParameters = {
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** Access code for the Quiz, if any. */
+  /**
+   * Access code for the Quiz, if any.
+   *
+   *
+   *
+   *
+   */
   access_code: string;
   /**
-   * Whether this should be a preview QuizSubmission and not count towards the
-   * user's course record. Teachers only.
-   *
-   * Type: boolean
-   */
+     * Whether this should be a preview QuizSubmission and not count towards
+the user&#x27;s course record. Teachers only.
+     *
+     * type: boolean
+     *
+     * 
+     */
   preview: boolean | string;
 };
 
@@ -75,16 +87,21 @@ type Options = (
  * Create the quiz submission (start a quiz-taking session)
  *
  * Start taking a Quiz by creating a QuizSubmission which you can use to answer
- * questions and submit your answers.
+questions and submit your answers.
+
+<b>Responses</b>
+
+* <b>200 OK</b> if the request was successful
+* <b>400 Bad Request</b> if the quiz is locked
+* <b>403 Forbidden</b> if an invalid access code is specified
+* <b>403 Forbidden</b> if the Quiz's IP filter restriction does not pass
+* <b>409 Conflict</b> if a QuizSubmission already exists for this user and quiz
  *
- * <b>Responses</b>
+ * nickname: create_quiz_submission_start_quiz_taking_session
  *
- * <b>200 OK</b> if the request was successful <b>400 Bad Request</b> if the
- * quiz is locked <b>403 Forbidden</b> if an invalid access code is specified
- * <b>403 Forbidden</b> if the Quiz's IP filter restriction does not pass <b>409
- * Conflict</b> if a QuizSubmission already exists for this user and quiz
+ * 
  *
- * Nickname: create_quiz_submission_start_quiz_taking_session
+ * 
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -44,12 +46,15 @@ type Options = (
 /**
  * Get department-level statistics, broken down by subaccount
  *
- * Returns numeric statistics about the department subaccounts and term (or
- * filter).
+ * Returns numeric statistics about the department subaccounts and term (or filter).
+
+Shares the same variations on endpoint as the participation data.
  *
- * Shares the same variations on endpoint as the participation data.
+ * nickname: get_department_level_statistics_broken_down_by_subaccount_current
  *
- * Nickname: get_department_level_statistics_broken_down_by_subaccount_current
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

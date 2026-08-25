@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -14,81 +16,136 @@ export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
   /**
-   * Context code of the course, group, user, or account to move this event
-   * to. Scheduler appointments and events with section-specific times cannot
-   * be moved between calendars.
-   */
+     * Context code of the course, group, user, or account to move this event to.
+Scheduler appointments and events with section-specific times cannot be moved between calendars.
+     *
+     * 
+     *
+     * 
+     */
   'calendar_event[context_code]': string;
-  /** Short title for the calendar event. */
+  /**
+   * Short title for the calendar event.
+   *
+   *
+   *
+   *
+   */
   'calendar_event[title]': string;
-  /** Longer HTML description of the event. */
+  /**
+   * Longer HTML description of the event.
+   *
+   *
+   *
+   *
+   */
   'calendar_event[description]': string;
   /**
    * Start date/time of the event.
    *
-   * Format: date-time
+   * format: date-time
+   *
+   *
    */
   'calendar_event[start_at]': string;
   /**
    * End date/time of the event.
    *
-   * Format: date-time
+   * format: date-time
+   *
+   *
    */
   'calendar_event[end_at]': string;
-  /** Location name of the event. */
+  /**
+   * Location name of the event.
+   *
+   *
+   *
+   *
+   */
   'calendar_event[location_name]': string;
-  /** Location address */
+  /**
+   * Location address
+   *
+   *
+   *
+   *
+   */
   'calendar_event[location_address]': string;
   /**
-   * Time zone of the user editing the event. Allowed time zones are
-   * {http://www.iana.org/time-zones IANA time zones} or friendlier
-   * {http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on
-   * Rails time zones}.
-   */
+     * Time zone of the user editing the event. Allowed time zones are
+{http://www.iana.org/time-zones IANA time zones} or friendlier
+{http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.
+     *
+     * 
+     *
+     * 
+     */
   'calendar_event[time_zone_edited]': string;
   /**
-   * When true event is considered to span the whole day and times are
-   * ignored.
+   * When true event is considered to span the whole day and times are ignored.
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   'calendar_event[all_day]': boolean | string;
   /**
-   * Section-level start time(s) if this is a course event. X can be any
-   * identifier, provided that it is consistent across the start_at, end_at
-   * and context_code
-   *
-   * Format: date-time
-   */
+     * Section-level start time(s) if this is a course event. X can be any
+identifier, provided that it is consistent across the start_at, end_at
+and context_code
+     *
+     * format: date-time
+     *
+     * 
+     */
   'calendar_event[child_event_data][X][start_at]': string;
   /**
    * Section-level end time(s) if this is a course event.
    *
-   * Format: date-time
+   * format: date-time
+   *
+   *
    */
   'calendar_event[child_event_data][X][end_at]': string;
-  /** Context code(s) corresponding to the section-level start and end time(s). */
+  /**
+   * Context code(s) corresponding to the section-level start and end time(s).
+   *
+   *
+   *
+   *
+   */
   'calendar_event[child_event_data][X][context_code]': string;
   /**
-   * Valid if the event whose ID is in the URL is part of a series. This
-   * defines the shape of the recurring event series after it's updated. Its
-   * value is the iCalendar RRULE. Unending series are not supported.
-   */
+     * Valid if the event whose ID is in the URL is part of a series.
+This defines the shape of the recurring event series after it&#x27;s updated.
+Its value is the iCalendar RRULE. Unending series are not supported.
+     *
+     * 
+     *
+     * 
+     */
   'calendar_event[rrule]': string;
   /**
-   * Valid if the event whose ID is in the URL is part of a series. Update
-   * just the event whose ID is in in the URL, all events in the series, or
-   * the given event and all those following. Some updates may create a new
-   * series. For example, changing the start time of this and all following
-   * events from the middle of a series.
-   */
+     * Valid if the event whose ID is in the URL is part of a series.
+Update just the event whose ID is in in the URL, all events
+in the series, or the given event and all those following.
+Some updates may create a new series. For example, changing the start time
+of this and all following events from the middle of a series.
+     *
+     * 
+     *
+     * 
+     */
   which: string;
   /**
-   * If the blackout_date is true, this event represents a holiday or some
-   * other special day that does not count in course pacing.
-   *
-   * Type: boolean
-   */
+     * If the blackout_date is true, this event represents a holiday or some
+other special day that does not count in course pacing.
+     *
+     * type: boolean
+     *
+     * 
+     */
   'calendar_event[blackout_date]': boolean | string;
 };
 
@@ -138,7 +195,11 @@ type Options = (
  *
  * Update and return a calendar event
  *
- * Nickname: update_calendar_event
+ * nickname: update_calendar_event
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(

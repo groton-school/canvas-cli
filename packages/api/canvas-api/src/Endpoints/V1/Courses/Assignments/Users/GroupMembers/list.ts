@@ -1,24 +1,30 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { BasicUser } from '../../../../../../Resources/Assignments.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -59,7 +65,11 @@ type Options = (
  *
  * Returns student ids and names for the group.
  *
- * Nickname: list_group_members_for_student_on_assignment
+ * nickname: list_group_members_for_student_on_assignment
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<BasicUser[]>(

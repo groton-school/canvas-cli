@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { SharedBrandConfig } from '../../../Resources/SharedBrandConfigs.js';
 
 export type un_share_brandconfig_themePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -46,9 +48,13 @@ type Options = (
  * Un-share a BrandConfig (Theme)
  *
  * Delete a SharedBrandConfig, which will unshare it so you nor anyone else in
- * your account will see it as an option to pick from.
+your account will see it as an option to pick from.
  *
- * Nickname: un_share_brandconfig_theme
+ * nickname: un_share_brandconfig_theme
+ *
+ * 
+ *
+ * 
  */
 export async function un_share_brandconfig_theme(options: Options) {
   const response = await client().fetchAs<SharedBrandConfig>(

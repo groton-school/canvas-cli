@@ -1,34 +1,37 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type DeveloperKeyAccountBinding = {
   /**
    * The Canvas ID of the binding
    *
-   * Type: number
+   * type: number
    */
   id: number | string;
   /**
    * The global Canvas ID of the account in the binding
    *
-   * Type: number
+   * type: number
    */
   account_id: number | string;
   /**
    * The global Canvas ID of the developer key in the binding
    *
-   * Type: number
+   * type: number
    */
   developer_key_id: number | string;
   /**
    * The workflow state of the binding. Will be one of 'on', 'off', or 'allow.'
    *
-   * Type: number
+   * type: number
    */
   workflow_state: number | string;
   /**
    * True if the requested context owns the binding
    *
-   * Type: boolean
+   * type: boolean
    */
   account_owns_binding: boolean | string;
 };

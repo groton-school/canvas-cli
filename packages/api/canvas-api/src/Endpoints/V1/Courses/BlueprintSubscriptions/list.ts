@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { BlueprintSubscription } from '../../../../Resources/BlueprintCourses.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -45,10 +47,13 @@ type Options = (
 /**
  * List blueprint subscriptions
  *
- * Returns a list of blueprint subscriptions for the given course. (Currently a
- * course may have no more than one.)
+ * Returns a list of blueprint subscriptions for the given course. (Currently a course may have no more than one.)
  *
- * Nickname: list_blueprint_subscriptions
+ * nickname: list_blueprint_subscriptions
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<BlueprintSubscription[]>(

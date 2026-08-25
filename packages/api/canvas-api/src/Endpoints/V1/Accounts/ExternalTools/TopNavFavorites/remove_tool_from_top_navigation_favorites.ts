@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type remove_tool_from_top_navigation_favoritesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -51,10 +55,13 @@ type Options = (
 /**
  * Remove tool from Top Navigation Favorites
  *
- * Removes the dedicated button in Top Navigation for the specified tool for the
- * given account.
+ * Removes the dedicated button in Top Navigation for the specified tool for the given account.
  *
- * Nickname: remove_tool_from_top_navigation_favorites
+ * nickname: remove_tool_from_top_navigation_favorites
+ *
+ *
+ *
+ *
  */
 export async function remove_tool_from_top_navigation_favorites(
   options: Options

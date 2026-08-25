@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
 export type close_notification_for_user_destroy_notification_for_adminPathParameters =
@@ -7,13 +7,17 @@ export type close_notification_for_user_destroy_notification_for_adminPathParame
     /**
      * ID
      *
-     * Type: string
+     * type: string
+     *
+     *
      */
     account_id: string | number;
     /**
      * ID
      *
-     * Type: string
+     * type: string
+     *
+     *
      */
     id: string | number;
   };
@@ -24,7 +28,9 @@ export type close_notification_for_user_destroy_notification_for_adminSearchPara
       /**
        * Destroy the account notification.
        *
-       * Type: boolean
+       * type: boolean
+       *
+       *
        */
       remove: boolean | string;
     }>;
@@ -61,14 +67,17 @@ type Options = (
 /**
  * Close notification for user. Destroy notification for admin
  *
- * If the current user no longer wants to see this account notification, it can
- * be closed with this call. This affects the current user only.
+ * If the current user no longer wants to see this account notification, it can be closed with this call.
+This affects the current user only.
+
+If the current user is an admin and they pass a remove parameter with a value of "true", the account notification
+will be destroyed. This affects all users.
  *
- * If the current user is an admin and they pass a remove parameter with a value
- * of "true", the account notification will be destroyed. This affects all
- * users.
+ * nickname: close_notification_for_user_destroy_notification_for_admin
  *
- * Nickname: close_notification_for_user_destroy_notification_for_admin
+ * 
+ *
+ * 
  */
 export async function close_notification_for_user_destroy_notification_for_admin(
   options: Options

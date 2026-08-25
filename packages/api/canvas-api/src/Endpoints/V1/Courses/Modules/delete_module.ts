@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Module } from '../../../../Resources/CoursePace.js';
 
 export type delete_modulePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Delete a module
  *
- * Nickname: delete_module
+ * nickname: delete_module
+ *
+ *
+ *
+ *
  */
 export async function delete_module(options: Options) {
   const response = await client().fetchAs<Module>(

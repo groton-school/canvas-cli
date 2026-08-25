@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { OutcomeGroup } from '../../../../../Resources/OutcomeGroups.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * A paginated list of the immediate OutcomeGroup children of the outcome group.
  *
- * Nickname: list_subgroups_global
+ * nickname: list_subgroups_global
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<OutcomeGroup[]>(

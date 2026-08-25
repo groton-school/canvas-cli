@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
 export type delete_line_itemPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Delete an existing Line Item
  *
- * Nickname: delete_line_item
+ * nickname: delete_line_item
+ *
+ *
+ *
+ *
  */
 export async function delete_line_item(options: Options) {
   const response = await client().fetchAs<LineItem>(

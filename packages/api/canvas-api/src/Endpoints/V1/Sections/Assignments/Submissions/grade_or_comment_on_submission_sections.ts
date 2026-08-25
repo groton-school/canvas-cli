@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { RubricAssessment } from '../../../../../Resources/Rubrics.js';
 
 export type grade_or_comment_on_submission_sectionsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   section_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -28,145 +34,214 @@ export type grade_or_comment_on_submission_sectionsSearchParameters =
 
 export type grade_or_comment_on_submission_sectionsFormParameters =
   Masquerade & {
-    /** Add a textual comment to the submission. */
+    /**
+     * Add a textual comment to the submission.
+     *
+     *
+     *
+     *
+     */
     'comment[text_comment]': string;
     /**
      * The attempt number (starts at 1) to associate the comment with.
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     'comment[attempt]': number | string;
     /**
      * Whether or not this comment should be sent to the entire group (defaults
-     * to false). Ignored if this is not a group assignment or if no
-     * text_comment is provided.
+to false). Ignored if this is not a group assignment or if no text_comment
+is provided.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     'comment[group_comment]': boolean | string;
     /**
      * Add an audio/video comment to the submission. Media comments can be added
-     * via this API, however, note that there is not yet an API to generate or
-     * list existing media comments, so this functionality is currently of
-     * limited use.
+via this API, however, note that there is not yet an API to generate or
+list existing media comments, so this functionality is currently of
+limited use.
+     *
+     * 
+     *
+     * 
      */
     'comment[media_comment_id]': string;
-    /** The type of media comment being added. */
+    /**
+     * The type of media comment being added.
+     *
+     *
+     *
+     *
+     */
     'comment[media_comment_type]': string;
     /**
      * Attach files to this comment that were previously uploaded using the
-     * Submission Comment API's files action
+Submission Comment API&#x27;s files action
      *
-     * Format: 'int64'
+     * 
+
+format: 'int64'
+     *
+     * 
      */
     'comment[file_ids]': number | string[];
     /**
-     * Associations to include with the submission. "submission_comments" is
-     * always included by default.
+     * Associations to include with the submission. &quot;submission_comments&quot; is always included by default.
+- &quot;submission_comments&quot;: Comments on the submission (always included)
+- &quot;visibility&quot;: Whether the assignment is visible to the owner of the submission
+- &quot;sub_assignment_submissions&quot;: Sub-assignment submissions for discussion checkpoints
+- &quot;peer_review_submissions&quot;: Peer review submission data when peer review allocation and grading is enabled
+- &quot;provisional_grades&quot;: Provisional grades (only available for moderated assignments)
+- &quot;group&quot;: Group information (id and name) for group assignments
      *
-     * - "submission_comments": Comments on the submission (always included)
-     * - "visibility": Whether the assignment is visible to the owner of the
-     *   submission
-     * - "sub_assignment_submissions": Sub-assignment submissions for discussion
-     *   checkpoints
-     * - "peer_review_submissions": Peer review submission data when peer review
-     *   allocation and grading is enabled
-     * - "provisional_grades": Provisional grades (only available for moderated
-     *   assignments)
-     * - "group": Group information (id and name) for group assignments
+     * 
+     *
+     * 
      */
     include: string[];
     /**
      * Treat posted_grade as points if the value matches a grading scheme value
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     prefer_points_over_scheme: boolean | string;
     /**
-     * Assign a score to the submission, updating both the "score" and "grade"
-     * fields on the submission record. This parameter can be passed in a few
-     * different formats:
+     * Assign a score to the submission, updating both the &quot;score&quot; and &quot;grade&quot;
+fields on the submission record. This parameter can be passed in a few
+different formats:
+
+points:: A floating point or integral value, such as &quot;13.5&quot;. The grade
+  will be interpreted directly as the score of the assignment.
+  Values above assignment.points_possible are allowed, for awarding
+  extra credit.
+percentage:: A floating point value appended with a percent sign, such as
+   &quot;40%&quot;. The grade will be interpreted as a percentage score on the
+   assignment, where 100% &#x3D;&#x3D; assignment.points_possible. Values above 100%
+   are allowed, for awarding extra credit.
+letter grade:: A letter grade, following the assignment&#x27;s defined letter
+   grading scheme. For example, &quot;A-&quot;. The resulting score will be the high
+   end of the defined range for the letter grade. For instance, if &quot;B&quot; is
+   defined as 86% to 84%, a letter grade of &quot;B&quot; will be worth 86%. The
+   letter grade will be rejected if the assignment does not have a defined
+   letter grading scheme. For more fine-grained control of scores, pass in
+   points or percentage rather than the letter grade.
+&quot;pass/complete/fail/incomplete&quot;:: A string value of &quot;pass&quot; or &quot;complete&quot;
+   will give a score of 100%. &quot;fail&quot; or &quot;incomplete&quot; will give a score of
+   0.
+
+Note that assignments with grading_type of &quot;pass_fail&quot; can only be
+assigned a score of 0 or assignment.points_possible, nothing inbetween. If
+a posted_grade in the &quot;points&quot; or &quot;percentage&quot; format is sent, the grade
+will only be accepted if the grade equals one of those two values.
      *
-     * Points:: A floating point or integral value, such as "13.5". The grade
-     * will be interpreted directly as the score of the assignment. Values above
-     * assignment.points_possible are allowed, for awarding extra credit.
-     * percentage:: A floating point value appended with a percent sign, such as
-     * "40%". The grade will be interpreted as a percentage score on the
-     * assignment, where 100% == assignment.points_possible. Values above 100%
-     * are allowed, for awarding extra credit. letter grade:: A letter grade,
-     * following the assignment's defined letter grading scheme. For example,
-     * "A-". The resulting score will be the high end of the defined range for
-     * the letter grade. For instance, if "B" is defined as 86% to 84%, a letter
-     * grade of "B" will be worth 86%. The letter grade will be rejected if the
-     * assignment does not have a defined letter grading scheme. For more
-     * fine-grained control of scores, pass in points or percentage rather than
-     * the letter grade. "pass/complete/fail/incomplete":: A string value of
-     * "pass" or "complete" will give a score of 100%. "fail" or "incomplete"
-     * will give a score of 0.
+     * 
      *
-     * Note that assignments with grading_type of "pass_fail" can only be
-     * assigned a score of 0 or assignment.points_possible, nothing inbetween.
-     * If a posted_grade in the "points" or "percentage" format is sent, the
-     * grade will only be accepted if the grade equals one of those two values.
+     * 
      */
     'submission[posted_grade]': string;
     /**
-     * Sets the "excused" status of an assignment.
+     * Sets the &quot;excused&quot; status of an assignment.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     'submission[excuse]': boolean | string;
     /**
-     * Sets the late policy status to either "late", "missing", "extended",
-     * "none", or null. NB: "extended" values can only be set in the UI when the
-     * "UI features for 'extended' Submissions" Account Feature is on
+     * Sets the late policy status to either &quot;late&quot;, &quot;missing&quot;, &quot;extended&quot;, &quot;none&quot;, or null.
+  NB: &quot;extended&quot; values can only be set in the UI when the &quot;UI features for &#x27;extended&#x27; Submissions&quot; Account Feature is on
+     *
+     * 
+     *
+     * 
      */
     'submission[late_policy_status]': string;
-    /** Sets the sticker for the submission. */
+    /**
+     * Sets the sticker for the submission.
+     *
+     *
+     *
+     *
+     */
     'submission[sticker]': string;
     /**
-     * Sets the seconds late if late policy status is "late"
+     * Sets the seconds late if late policy status is &quot;late&quot;
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     'submission[seconds_late_override]': number | string;
     /**
      * When true, updates the peer review sub assignment submission instead of
-     * the parent assignment submission. The parent assignment must have peer
-     * reviews enabled, the peer_review_allocation_and_grading feature flag must
-     * be enabled for the course, and the assignment must have an associated
-     * peer review sub assignment. If any of these conditions are not met, the
-     * API will return a 422 error.
+the parent assignment submission. The parent assignment must have peer reviews
+enabled, the peer_review_allocation_and_grading feature flag must be enabled
+for the course, and the assignment must have an associated peer review
+sub assignment. If any of these conditions are not met, the API will
+return a 422 error.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     'submission[peer_review]': boolean | string;
     /**
      * Assign a rubric assessment to this assignment submission. The
-     * sub-parameters here depend on the rubric for the assignment. The general
-     * format is, for each row in the rubric:
+sub-parameters here depend on the rubric for the assignment. The general
+format is, for each row in the rubric:
+
+The points awarded for this row.
+  rubric_assessment[criterion_id][points]
+
+The rating id for the row.
+  rubric_assessment[criterion_id][rating_id]
+
+Comments to add for this row.
+  rubric_assessment[criterion_id][comments]
+
+For example, if the assignment rubric is (in JSON format):
+  !!!javascript
+  [
+    {
+      &#x27;id&#x27;: &#x27;crit1&#x27;,
+      &#x27;points&#x27;: 10,
+      &#x27;description&#x27;: &#x27;Criterion 1&#x27;,
+      &#x27;ratings&#x27;:
+      [
+        { &#x27;id&#x27;: &#x27;rat1&#x27;, &#x27;description&#x27;: &#x27;Good&#x27;, &#x27;points&#x27;: 10 },
+        { &#x27;id&#x27;: &#x27;rat2&#x27;, &#x27;description&#x27;: &#x27;Poor&#x27;, &#x27;points&#x27;: 3 }
+      ]
+    },
+    {
+      &#x27;id&#x27;: &#x27;crit2&#x27;,
+      &#x27;points&#x27;: 5,
+      &#x27;description&#x27;: &#x27;Criterion 2&#x27;,
+      &#x27;ratings&#x27;:
+      [
+        { &#x27;id&#x27;: &#x27;rat1&#x27;, &#x27;description&#x27;: &#x27;Exemplary&#x27;, &#x27;points&#x27;: 5 },
+        { &#x27;id&#x27;: &#x27;rat2&#x27;, &#x27;description&#x27;: &#x27;Complete&#x27;, &#x27;points&#x27;: 5 },
+        { &#x27;id&#x27;: &#x27;rat3&#x27;, &#x27;description&#x27;: &#x27;Incomplete&#x27;, &#x27;points&#x27;: 0 }
+      ]
+    }
+  ]
+
+Then a possible set of values for rubric_assessment would be:
+    rubric_assessment[crit1][points]&#x3D;3&amp;rubric_assessment[crit1][rating_id]&#x3D;rat1&amp;rubric_assessment[crit2][points]&#x3D;5&amp;rubric_assessment[crit2][rating_id]&#x3D;rat2&amp;rubric_assessment[crit2][comments]&#x3D;Well%20Done.
      *
-     * The points awarded for this row. rubric_assessment[criterion_id][points]
+     * 
      *
-     * The rating id for the row. rubric_assessment[criterion_id][rating_id]
-     *
-     * Comments to add for this row. rubric_assessment[criterion_id][comments]
-     *
-     * For example, if the assignment rubric is (in JSON format): !!!javascript
-     * [ { 'id': 'crit1', 'points': 10, 'description': 'Criterion 1', 'ratings':
-     * [ { 'id': 'rat1', 'description': 'Good', 'points': 10 }, { 'id': 'rat2',
-     * 'description': 'Poor', 'points': 3 } ] }, { 'id': 'crit2', 'points': 5,
-     * 'description': 'Criterion 2', 'ratings': [ { 'id': 'rat1', 'description':
-     * 'Exemplary', 'points': 5 }, { 'id': 'rat2', 'description': 'Complete',
-     * 'points': 5 }, { 'id': 'rat3', 'description': 'Incomplete', 'points': 0 }
-     * ] } ]
-     *
-     * Then a possible set of values for rubric_assessment would be:
-     * rubric_assessment[crit1][points]=3&rubric_assessment[crit1][rating_id]=rat1&rubric_assessment[crit2][points]=5&rubric_assessment[crit2][rating_id]=rat2&rubric_assessment[crit2][comments]=Well%20Done.
+     * 
      */
     rubric_assessment: RubricAssessment;
   };
@@ -216,11 +291,15 @@ type Options = (
  * Grade or comment on a submission
  *
  * Comment on and/or update the grading for a student's assignment submission.
- * If any submission or rubric_assessment arguments are provided, the user must
- * have permission to manage grades in the appropriate context (course or
- * section).
+If any submission or rubric_assessment arguments are provided, the user
+must have permission to manage grades in the appropriate context (course or
+section).
  *
- * Nickname: grade_or_comment_on_submission_sections
+ * nickname: grade_or_comment_on_submission_sections
+ *
+ * 
+ *
+ * 
  */
 export async function grade_or_comment_on_submission_sections(
   options: Options

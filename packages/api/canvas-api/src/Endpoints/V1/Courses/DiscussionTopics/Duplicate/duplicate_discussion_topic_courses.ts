@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { DiscussionTopic } from '../../../../../Resources/DiscussionTopics.js';
 
 export type duplicate_discussion_topic_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Duplicate a discussion topic according to context (Course/Group)
  *
- * Nickname: duplicate_discussion_topic_courses
+ * nickname: duplicate_discussion_topic_courses
+ *
+ *
+ *
+ *
  */
 export async function duplicate_discussion_topic_courses(options: Options) {
   const response = await client().fetchAs<DiscussionTopic>(

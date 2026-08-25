@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { CourseNickname } from '../../../../../Resources/Users.js';
 
 export type remove_course_nicknamePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -45,10 +47,14 @@ type Options = (
 /**
  * Remove course nickname
  *
- * Remove the nickname for the given course. Subsequent course API calls will
- * return the actual name for the course.
+ * Remove the nickname for the given course.
+Subsequent course API calls will return the actual name for the course.
  *
- * Nickname: remove_course_nickname
+ * nickname: remove_course_nickname
+ *
+ * 
+ *
+ * 
  */
 export async function remove_course_nickname(options: Options) {
   const response = await client().fetchAs<CourseNickname>(

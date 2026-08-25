@@ -1,18 +1,22 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { ModuleItem } from '../../../../../Resources/CoursePace.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   module_id: string | number;
 };
@@ -22,14 +26,30 @@ export type listSearchParameters = Masquerade &
   Partial<{
     /**
      * If included, will return additional details specific to the content
-     * associated with each item. Refer to the {api:Modules:Module%20Item Module
-     * Item specification} for more details. Includes standard lock information
-     * for each item.
+associated with each item. Refer to the {api:Modules:Module%20Item Module
+Item specification} for more details.
+Includes standard lock information for each item.
+     *
+     * 
+     *
+     * 
      */
     include: string[];
-    /** The partial title of the items to match and return. */
+    /**
+     * The partial title of the items to match and return.
+     *
+     *
+     *
+     *
+     */
     search_term: string;
-    /** Returns module completion information for the student with this id. */
+    /**
+     * Returns module completion information for the student with this id.
+     *
+     *
+     *
+     *
+     */
     student_id: string;
   }>;
 
@@ -67,7 +87,11 @@ type Options = (
  *
  * A paginated list of the items in a module
  *
- * Nickname: list_module_items
+ * nickname: list_module_items
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<ModuleItem[]>(

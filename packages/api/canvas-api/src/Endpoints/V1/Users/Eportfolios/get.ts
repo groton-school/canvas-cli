@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { ePortfolio } from '../../../../Resources/EPortfolios.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -15,8 +17,12 @@ export type getSearchParameters = Masquerade &
   Paginated &
   Partial<{
     /**
-     * Deleted:: Include deleted ePortfolios. Only available to admins who can
-     * moderate_user_content.
+     * deleted:: Include deleted ePortfolios. Only available to admins who can
+moderate_user_content.
+     *
+     * 
+     *
+     * 
      */
     include: string[];
   }>;
@@ -55,7 +61,11 @@ type Options = (
  *
  * Get a list of all ePortfolios for the specified user.
  *
- * Nickname: get_all_eportfolios_for_user
+ * nickname: get_all_eportfolios_for_user
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<ePortfolio[]>(

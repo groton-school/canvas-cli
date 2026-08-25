@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type add_tool_to_top_navigation_favoritesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -50,10 +54,14 @@ type Options = (
 /**
  * Add tool to Top Navigation Favorites
  *
- * Adds a dedicated button in Top Navigation for the specified tool for the
- * given account. Cannot set more than 2 top_navigation Favorites.
+ * Adds a dedicated button in Top Navigation for the specified tool for the given account.
+Cannot set more than 2 top_navigation Favorites.
  *
- * Nickname: add_tool_to_top_navigation_favorites
+ * nickname: add_tool_to_top_navigation_favorites
+ *
+ * 
+ *
+ * 
  */
 export async function add_tool_to_top_navigation_favorites(options: Options) {
   const response = await client().fetchAs<JSONValue>(

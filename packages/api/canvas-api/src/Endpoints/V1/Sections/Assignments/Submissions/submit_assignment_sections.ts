@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type submit_assignment_sectionsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   section_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
@@ -19,92 +23,127 @@ export type submit_assignment_sectionsPathParameters = {
 export type submit_assignment_sectionsSearchParameters = Masquerade;
 
 export type submit_assignment_sectionsFormParameters = Masquerade & {
-  /** Include a textual comment with the submission. */
+  /**
+   * Include a textual comment with the submission.
+   *
+   *
+   *
+   *
+   */
   'comment[text_comment]': string;
   /**
-   * Whether or not this comment should be sent to the entire group (defaults
-   * to false). Ignored if this is not a group assignment or if no
-   * text_comment is provided.
-   *
-   * Type: boolean
-   */
+     * Whether or not this comment should be sent to the entire group (defaults
+to false). Ignored if this is not a group assignment or if no text_comment
+is provided.
+     *
+     * type: boolean
+     *
+     * 
+     */
   'submission[group_comment]': boolean | string;
   /**
-   * The type of submission being made. The assignment submission_types must
-   * include this submission type as an allowed option, or the submission will
-   * be rejected with a 400 error.
-   *
-   * The submission_type given determines which of the following parameters is
-   * used. For instance, to submit a URL, +submission[submission_type]+ must
-   * be set to "online_url", otherwise the +submission[url]+ parameter will be
-   * ignored.
-   *
-   * "basic_lti_launch" requires the assignment submission_type "online" or
-   * "external_tool"
-   */
+     * The type of submission being made. The assignment submission_types must
+include this submission type as an allowed option, or the submission will be rejected with a 400 error.
+
+The submission_type given determines which of the following parameters is
+used. For instance, to submit a URL, +submission[submission_type]+ must be
+set to &quot;online_url&quot;, otherwise the +submission[url]+ parameter will be
+ignored.
+
+&quot;basic_lti_launch&quot; requires the assignment submission_type &quot;online&quot; or &quot;external_tool&quot;
+     *
+     * 
+     *
+     * 
+     */
   'submission[submission_type]': string;
   /**
-   * Submit the assignment as an HTML document snippet. Note this HTML snippet
-   * will be sanitized using the same ruleset as a submission made from the
-   * Canvas web UI. The sanitized HTML will be returned in the response as the
-   * submission body. Requires a submission_type of "online_text_entry".
-   */
+     * Submit the assignment as an HTML document snippet. Note this HTML snippet
+will be sanitized using the same ruleset as a submission made from the
+Canvas web UI. The sanitized HTML will be returned in the response as the
+submission body. Requires a submission_type of &quot;online_text_entry&quot;.
+     *
+     * 
+     *
+     * 
+     */
   'submission[body]': string;
   /**
-   * Submit the assignment as a URL. The URL scheme must be "http" or "https",
-   * no "ftp" or other URL schemes are allowed. If no scheme is given (e.g.
-   * "www.example.com") then "http" will be assumed. Requires a
-   * submission_type of "online_url" or "basic_lti_launch".
-   */
+     * Submit the assignment as a URL. The URL scheme must be &quot;http&quot; or &quot;https&quot;,
+no &quot;ftp&quot; or other URL schemes are allowed. If no scheme is given (e.g.
+&quot;www.example.com&quot;) then &quot;http&quot; will be assumed. Requires a submission_type
+of &quot;online_url&quot; or &quot;basic_lti_launch&quot;.
+     *
+     * 
+     *
+     * 
+     */
   'submission[url]': string;
   /**
-   * Submit the assignment as a set of one or more previously uploaded files
-   * residing in the submitting user's files section (or the group's files
-   * section, for group assignments).
-   *
-   * To upload a new file to submit, see the submissions
-   * {api:SubmissionsApiController#create_file Upload a file API}.
-   *
-   * Requires a submission_type of "online_upload".
-   *
-   * Format: 'int64'
-   */
+     * Submit the assignment as a set of one or more previously uploaded files
+residing in the submitting user&#x27;s files section (or the group&#x27;s files
+section, for group assignments).
+
+To upload a new file to submit, see the submissions {api:SubmissionsApiController#create_file Upload a file API}.
+
+Requires a submission_type of &quot;online_upload&quot;.
+     *
+     * 
+
+format: 'int64'
+     *
+     * 
+     */
   'submission[file_ids]': number | string[];
   /**
-   * The media comment id to submit. Media comment ids can be submitted via
-   * this API, however, note that there is not yet an API to generate or list
-   * existing media comments, so this functionality is currently of limited
-   * use.
-   *
-   * Requires a submission_type of "media_recording".
-   */
+     * The media comment id to submit. Media comment ids can be submitted via
+this API, however, note that there is not yet an API to generate or list
+existing media comments, so this functionality is currently of limited use.
+
+Requires a submission_type of &quot;media_recording&quot;.
+     *
+     * 
+     *
+     * 
+     */
   'submission[media_comment_id]': string;
-  /** The type of media comment being submitted. */
+  /**
+   * The type of media comment being submitted.
+   *
+   *
+   *
+   *
+   */
   'submission[media_comment_type]': string;
   /**
-   * Submit on behalf of the given user. Requires grading permission.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * Submit on behalf of the given user. Requires grading permission.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   'submission[user_id]': number | string;
   /**
-   * The Attachment ID of the document being annotated. This should match the
-   * annotatable_attachment_id on the assignment.
-   *
-   * Requires a submission_type of "student_annotation".
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The Attachment ID of the document being annotated. This should match
+the annotatable_attachment_id on the assignment.
+
+Requires a submission_type of &quot;student_annotation&quot;.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   'submission[annotatable_attachment_id]': number | string;
   /**
-   * Choose the time the submission is listed as submitted at. Requires
-   * grading permission.
+   * Choose the time the submission is listed as submitted at.  Requires grading permission.
    *
-   * Format: date-time
+   * format: date-time
+   *
+   *
    */
   'submission[submitted_at]': string;
 };
@@ -153,20 +192,21 @@ type Options = (
 /**
  * Submit an assignment
  *
- * Make a submission for an assignment. You must be actively enrolled as a
- * student in the course/section to do this. Concluded and pending enrollments
- * are not permitted.
+ * Make a submission for an assignment. You must be actively enrolled as a student in
+the course/section to do this. Concluded and pending enrollments are not permitted.
+
+All online turn-in submission types are supported in this API. However,
+there are a few things that are not yet supported:
+
+* Files can be submitted based on a file ID of a user or group file or through the {api:SubmissionsApiController#create_file file upload API}. However, there is no API yet for listing the user and group files.
+* Media comments can be submitted, however, there is no API yet for creating a media comment to submit.
+* Integration with Google Docs is not yet supported.
  *
- * All online turn-in submission types are supported in this API. However, there
- * are a few things that are not yet supported:
+ * nickname: submit_assignment_sections
  *
- * Files can be submitted based on a file ID of a user or group file or through
- * the {api:SubmissionsApiController#create_file file upload API}. However,
- * there is no API yet for listing the user and group files. Media comments can
- * be submitted, however, there is no API yet for creating a media comment to
- * submit. Integration with Google Docs is not yet supported.
+ * 
  *
- * Nickname: submit_assignment_sections
+ * 
  */
 export async function submit_assignment_sections(options: Options) {
   const response = await client().fetchAs<JSONValue>(

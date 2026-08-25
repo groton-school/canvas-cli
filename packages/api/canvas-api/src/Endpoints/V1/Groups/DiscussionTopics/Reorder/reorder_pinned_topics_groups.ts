@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type reorder_pinned_topics_groupsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
 };
@@ -14,11 +16,15 @@ export type reorder_pinned_topics_groupsSearchParameters = Masquerade;
 
 export type reorder_pinned_topics_groupsFormParameters = Masquerade & {
   /**
-   * The ids of the pinned discussion topics in the desired order. (For
-   * example, "order=104,102,103".)
-   *
-   * Format: 'int64'
-   */
+     * The ids of the pinned discussion topics in the desired order.
+(For example, &quot;order&#x3D;104,102,103&quot;.)
+     *
+     * 
+
+format: 'int64'
+     *
+     * 
+     */
   order: number | string[];
 };
 
@@ -66,10 +72,14 @@ type Options = (
 /**
  * Reorder pinned topics
  *
- * Puts the pinned discussion topics in the specified order. All pinned topics
- * should be included.
+ * Puts the pinned discussion topics in the specified order.
+All pinned topics should be included.
  *
- * Nickname: reorder_pinned_topics_groups
+ * nickname: reorder_pinned_topics_groups
+ *
+ * 
+ *
+ * 
  */
 export async function reorder_pinned_topics_groups(options: Options) {
   const response = await client().fetchAs<JSONValue>(

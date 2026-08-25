@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type delete_conversationPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -44,12 +46,16 @@ type Options = (
 /**
  * Delete a conversation
  *
- * Delete this conversation and its messages. Note that this only deletes this
- * user's view of the conversation.
+ * Delete this conversation and its messages. Note that this only deletes
+this user's view of the conversation.
+
+Response includes same fields as UPDATE action
  *
- * Response includes same fields as UPDATE action
+ * nickname: delete_conversation
  *
- * Nickname: delete_conversation
+ * 
+ *
+ * 
  */
 export async function delete_conversation(options: Options) {
   const response = await client().fetchAs<JSONValue>(

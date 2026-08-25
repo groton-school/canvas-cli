@@ -1,11 +1,15 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getSearchParameters = Masquerade &
   Partial<{
     /**
-     * List of context_codes to retrieve visible course nav tools for (for
-     * example, +course_123+). Only courses are presently supported.
+     * List of context_codes to retrieve visible course nav tools for (for example, +course_123+). Only
+courses are presently supported.
+     *
+     * 
+     *
+     * 
      */
     context_codes: string[];
   }>;
@@ -32,15 +36,18 @@ type Options =
 /**
  * Get visible course navigation tools
  *
- * Get a list of external tools with the course_navigation placement that have
- * not been hidden in course settings and whose visibility settings apply to the
- * requesting user. These tools are the same that appear in the course
- * navigation.
+ * Get a list of external tools with the course_navigation placement that have not been hidden in
+course settings and whose visibility settings apply to the requesting user. These tools are the
+same that appear in the course navigation.
+
+The response format is the same as for List external tools, but with additional context_id and
+context_name fields on each element in the array.
  *
- * The response format is the same as for List external tools, but with
- * additional context_id and context_name fields on each element in the array.
+ * nickname: get_visible_course_navigation_tools
  *
- * Nickname: get_visible_course_navigation_tools
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

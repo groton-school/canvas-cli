@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type mark_all_as_readSearchParameters = Masquerade;
 
@@ -27,7 +27,11 @@ type Options =
  *
  * Mark all conversations as read.
  *
- * Nickname: mark_all_as_read
+ * nickname: mark_all_as_read
+ *
+ *
+ *
+ *
  */
 export async function mark_all_as_read(options: Options) {
   const response = await client().fetchAs<JSONValue>(

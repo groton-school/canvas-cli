@@ -1,18 +1,22 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { PageRevision } from '../../../../../Resources/Pages.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   url_or_id: string | number;
 };
@@ -51,10 +55,13 @@ type Options = (
 /**
  * List revisions
  *
- * A paginated list of the revisions of a page. Callers must have update rights
- * on the page in order to see page history.
+ * A paginated list of the revisions of a page. Callers must have update rights on the page in order to see page history.
  *
- * Nickname: list_revisions_courses
+ * nickname: list_revisions_courses
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<PageRevision[]>(

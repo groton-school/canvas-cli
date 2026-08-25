@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type delete_folderPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -13,9 +15,11 @@ export type delete_folderPathParameters = {
 export type delete_folderSearchParameters = Masquerade &
   Partial<{
     /**
-     * Set to 'true' to allow deleting a non-empty folder
+     * Set to &#x27;true&#x27; to allow deleting a non-empty folder
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     force: boolean | string;
   }>;
@@ -52,10 +56,14 @@ type Options = (
 /**
  * Delete folder
  *
- * Remove the specified folder. You can only delete empty folders unless you set
- * the 'force' flag
+ * Remove the specified folder. You can only delete empty folders unless you
+set the 'force' flag
  *
- * Nickname: delete_folder
+ * nickname: delete_folder
+ *
+ * 
+ *
+ * 
  */
 export async function delete_folder(options: Options) {
   const response = await client().fetchAs<JSONValue>(`/api/v1/folders/{id}`, {

@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ObjectHashwithconversationdetailsincludingmessages } from '../../../../../Overrides.js';
 
 export type show_conversationPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   ai_experience_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -57,10 +63,13 @@ type Options = (
 /**
  * Show conversation
  *
- * Get a specific conversation by ID (for teachers viewing student
- * conversations)
+ * Get a specific conversation by ID (for teachers viewing student conversations)
  *
- * Nickname: show_conversation
+ * nickname: show_conversation
+ *
+ *
+ *
+ *
  */
 export async function show_conversation(options: Options) {
   const response =

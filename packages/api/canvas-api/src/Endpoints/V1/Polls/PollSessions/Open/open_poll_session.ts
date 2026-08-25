@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type open_poll_sessionPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   poll_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -50,7 +54,13 @@ type Options = (
 /**
  * Open a poll session
  *
- * Nickname: open_poll_session
+ *
+ *
+ * nickname: open_poll_session
+ *
+ *
+ *
+ *
  */
 export async function open_poll_session(options: Options) {
   const response = await client().fetchAs<JSONValue>(

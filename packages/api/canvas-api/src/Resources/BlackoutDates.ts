@@ -1,35 +1,43 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
 /**
- * Blackout dates are used to prevent scheduling assignments on a given date in
- * course pacing.
+ * Blackout dates are used to prevent scheduling assignments on a given date in course pacing.
  */
 export type BlackoutDate = {
   /**
-   * The ID of the blackout date
+   * the ID of the blackout date
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
   /**
-   * The context owning the blackout date
+   * the context owning the blackout date
    *
-   * Type: integer
+   * type: integer
    */
   context_id: number | string;
+  /**
+   *
+   *
+   *
+   */
   context_type: string;
   /**
-   * The start date of the blackout date
+   * the start date of the blackout date
    *
-   * Format: date-time
+   * format: date-time
    */
   start_date: string;
   /**
-   * The end date of the blackout date
+   * the end date of the blackout date
    *
-   * Format: date-time
+   * format: date-time
    */
   end_date: string;
-  /** Title of the blackout date */
+  /**
+   * title of the blackout date
+   *
+   *
+   */
   event_title: string;
 };

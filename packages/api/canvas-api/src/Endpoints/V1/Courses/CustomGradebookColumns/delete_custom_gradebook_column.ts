@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { CustomColumn } from '../../../../Resources/CustomGradebookColumns.js';
 
 export type delete_custom_gradebook_columnPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Permanently deletes a custom column and its associated data
  *
- * Nickname: delete_custom_gradebook_column
+ * nickname: delete_custom_gradebook_column
+ *
+ *
+ *
+ *
  */
 export async function delete_custom_gradebook_column(options: Options) {
   const response = await client().fetchAs<CustomColumn>(

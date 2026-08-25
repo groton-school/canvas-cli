@@ -1,21 +1,25 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Enrollment } from '../../../../Resources/Enrollments.js';
 
 export type enrollment_by_idPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
-   * The ID of the enrollment object
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The ID of the enrollment object
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   id: number | string;
 };
 
@@ -55,7 +59,11 @@ type Options = (
  *
  * Get an Enrollment object by Enrollment ID
  *
- * Nickname: enrollment_by_id
+ * nickname: enrollment_by_id
+ *
+ *
+ *
+ *
  */
 export async function enrollment_by_id(options: Options) {
   const response = await client().fetchAs<Enrollment>(

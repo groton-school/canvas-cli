@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
 export type show_lti_registrationPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -20,17 +24,18 @@ export type show_lti_registrationPathParameters = {
 export type show_lti_registrationSearchParameters = Masquerade &
   Partial<{
     /**
-     * Array of additional data to include. Always includes [account_binding
-     * configuration].
+     * Array of additional data to include. Always includes [account_binding configuration].
+
+&quot;account_binding&quot;:: the registration&#x27;s binding to the given account
+&quot;configuration&quot;:: the registration&#x27;s Canvas-style tool configuration, without any overlays applied.
+&quot;overlaid_configuration&quot;:: the registration&#x27;s Canvas-style tool configuration, with all overlays applied.
+&quot;overlaid_legacy_configuration&quot;:: the registration&#x27;s legacy-style configuration, with all overlays applied.
+&quot;overlay&quot;:: the registration&#x27;s admin-defined configuration overlay
+&quot;overlay_versions&quot;:: the registration&#x27;s overlay&#x27;s edit history
      *
-     * "account_binding":: the registration's binding to the given account
-     * "configuration":: the registration's Canvas-style tool configuration,
-     * without any overlays applied. "overlaid_configuration":: the
-     * registration's Canvas-style tool configuration, with all overlays
-     * applied. "overlaid_legacy_configuration":: the registration's
-     * legacy-style configuration, with all overlays applied. "overlay":: the
-     * registration's admin-defined configuration overlay "overlay_versions"::
-     * the registration's overlay's edit history
+     * 
+     *
+     * 
      */
     include: string[];
   }>;
@@ -68,9 +73,13 @@ type Options = (
  * Show an LTI Registration
  *
  * Return details about the specified LTI registration, including the
- * configuration and account binding.
+configuration and account binding.
  *
- * Nickname: show_lti_registration
+ * nickname: show_lti_registration
+ *
+ * 
+ *
+ * 
  */
 export async function show_lti_registration(options: Options) {
   const response = await client().fetchAs<LtiRegistration>(

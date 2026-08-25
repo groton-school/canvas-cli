@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Folder } from '../../../../Resources/Files.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -52,11 +56,15 @@ type Options = (
  * Get folder
  *
  * Returns the details for a folder
+
+You can get the root folder from a context by using 'root' as the :id.
+For example, you could get the root folder for a course like:
  *
- * You can get the root folder from a context by using 'root' as the :id. For
- * example, you could get the root folder for a course like:
+ * nickname: get_folder_groups
  *
- * Nickname: get_folder_groups
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<Folder>(

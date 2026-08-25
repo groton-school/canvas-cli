@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type mark_rubric_assessments_as_read_sections_rubric_commentsPathParameters =
   {
     /**
      * ID
      *
-     * Type: string
+     * type: string
+     *
+     *
      */
     section_id: string | number;
     /**
      * ID
      *
-     * Type: string
+     * type: string
+     *
+     *
      */
     assignment_id: string | number;
     /**
      * ID
      *
-     * Type: string
+     * type: string
+     *
+     *
      */
     user_id: string | number;
   };
@@ -58,14 +64,16 @@ type Options = (
 /**
  * Mark rubric assessments as read
  *
- * Indicate that rubric comments/grading made on a submission have been read by
- * the student being assessed. Only the student who owns the submission can use
- * this endpoint.
+ * Indicate that rubric comments/grading made on a submission have been read by the student being assessed.
+Only the student who owns the submission can use this endpoint.
+
+NOTE: Rubric assessments will be marked as read automatically when they are viewed in Canvas web.
  *
- * NOTE: Rubric assessments will be marked as read automatically when they are
- * viewed in Canvas web.
+ * nickname: mark_rubric_assessments_as_read_sections_rubric_comments
  *
- * Nickname: mark_rubric_assessments_as_read_sections_rubric_comments
+ * 
+ *
+ * 
  */
 export async function mark_rubric_assessments_as_read_sections_rubric_comments(
   options: Options

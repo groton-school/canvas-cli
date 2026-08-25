@@ -1,78 +1,133 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** An array of recipient ids. These may be user ids */
+  /**
+   * An array of recipient ids. These may be user ids
+   *
+   *
+   *
+   *
+   */
   recipients: string[];
   /**
-   * The subject of the conversation. This is ignored when reusing a
-   * conversation. Maximum length is 255 characters.
-   */
+     * The subject of the conversation. This is ignored when reusing a
+conversation. Maximum length is 255 characters.
+     *
+     * 
+     *
+     * 
+     */
   subject: string;
-  /** The message to be sent */
+  /**
+   * The message to be sent
+   *
+   *
+   *
+   *
+   */
   body: string;
   /**
-   * Forces a new message to be created, even if there is an existing private
-   * conversation.
+   * Forces a new message to be created, even if there is an existing private conversation.
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   force_new: boolean | string;
   /**
-   * Defaults to false. When false, individual private conversations will be
-   * created with each recipient. If true, this will be a group conversation
-   * (i.e. all recipients may see all messages and replies). Must be set true
-   * if the number of recipients is over the set maximum (default is 100).
-   *
-   * Type: boolean
-   */
+     * Defaults to false.  When false, individual private conversations will be
+created with each recipient. If true, this will be a group conversation
+(i.e. all recipients may see all messages and replies). Must be set true if
+the number of recipients is over the set maximum (default is 100).
+     *
+     * type: boolean
+     *
+     * 
+     */
   group_conversation: boolean | string;
   /**
-   * An array of attachments ids. These must be files that have been
-   * previously uploaded to the sender's "conversation attachments" folder.
-   */
+     * An array of attachments ids. These must be files that have been previously
+uploaded to the sender&#x27;s &quot;conversation attachments&quot; folder.
+     *
+     * 
+     *
+     * 
+     */
   attachment_ids: string[];
   /**
-   * Media comment id of an audio or video file to be associated with this
-   * message.
-   */
+     * Media comment id of an audio or video file to be associated with this
+message.
+     *
+     * 
+     *
+     * 
+     */
   media_comment_id: string;
-  /** Type of the associated media file */
+  /**
+   * Type of the associated media file
+   *
+   *
+   *
+   *
+   */
   media_comment_type: string;
   /**
-   * Determines whether the messages will be created/sent synchronously or
-   * asynchronously. Defaults to sync, and this option is ignored if this is a
-   * group conversation or there is just one recipient (i.e. it must be a bulk
-   * private message). When sent async, the response will be an empty array
-   * (batch status can be queried via the {api:ConversationsController#batches
-   * batches API})
-   */
+     * Determines whether the messages will be created/sent synchronously or
+asynchronously. Defaults to sync, and this option is ignored if this is a
+group conversation or there is just one recipient (i.e. it must be a bulk
+private message). When sent async, the response will be an empty array
+(batch status can be queried via the {api:ConversationsController#batches batches API})
+     *
+     * 
+     *
+     * 
+     */
   mode: string;
   /**
-   * Used when generating "visible" in the API response. See the explanation
-   * under the {api:ConversationsController#index index API action}
-   */
+     * Used when generating &quot;visible&quot; in the API response. See the explanation
+under the {api:ConversationsController#index index API action}
+     *
+     * 
+     *
+     * 
+     */
   scope: string;
   /**
-   * Used when generating "visible" in the API response. See the explanation
-   * under the {api:ConversationsController#index index API action}
-   */
+     * Used when generating &quot;visible&quot; in the API response. See the explanation
+under the {api:ConversationsController#index index API action}
+     *
+     * 
+     *
+     * 
+     */
   filter: string[];
   /**
-   * Used when generating "visible" in the API response. See the explanation
-   * under the {api:ConversationsController#index index API action}
-   */
+     * Used when generating &quot;visible&quot; in the API response. See the explanation
+under the {api:ConversationsController#index index API action}
+     *
+     * 
+     *
+     * 
+     */
   filter_mode: string;
   /**
-   * The course or group that is the context for this conversation. Same
-   * format as courses or groups in the recipients argument.
-   */
+     * The course or group that is the context for this conversation. Same format
+as courses or groups in the recipients argument.
+     *
+     * 
+     *
+     * 
+     */
   context_code: string;
   /**
-   * "uuid":: Optionally include an "uuid" key for each user participating in
-   * the conversation
+   * &quot;uuid&quot;:: Optionally include an &quot;uuid&quot; key for each user participating in the conversation
+   *
+   *
+   *
+   *
    */
   include: string[];
 };
@@ -111,16 +166,21 @@ type Options =
 /**
  * Create a conversation
  *
- * Create a new conversation with one or more recipients. If there is already an
- * existing private conversation with the given recipients, it will be reused.
+ * Create a new conversation with one or more recipients. If there is already
+an existing private conversation with the given recipients, it will be
+reused.
+
+ (either numeric IDs or UUIDs prefixed with "uuid:"),
+  or course/group ids prefixed with "course_" or "group_" respectively, e.g.
+  recipients[]=1&recipients[]=uuid:W9GQIcdoDTqwX8mxIunDQQVL6WZTaGmpa5xovmCBx&recipients[]=course_3.
+  If the course/group has over 100 enrollments, 'bulk_message' and 'group_conversation' must be
+  set to true.
  *
- * (either numeric IDs or UUIDs prefixed with "uuid:"), or course/group ids
- * prefixed with "course_" or "group_" respectively, e.g.
- * recipients[]=1&recipients[]=uuid:W9GQIcdoDTqwX8mxIunDQQVL6WZTaGmpa5xovmCBx&recipients[]=course_3.
- * If the course/group has over 100 enrollments, 'bulk_message' and
- * 'group_conversation' must be set to true.
+ * nickname: create_conversation
  *
- * Nickname: create_conversation
+ * 
+ *
+ * 
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<JSONValue>(`/api/v1/conversations`, {

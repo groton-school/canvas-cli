@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { QuizReport } from '../../../../../Resources/QuizReports.js';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   quiz_id: string | number;
 };
@@ -20,21 +24,31 @@ export type createPathParameters = {
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** The type of report to be generated. */
+  /**
+   * The type of report to be generated.
+   *
+   *
+   *
+   *
+   */
   'quiz_report[report_type]': string;
   /**
-   * Whether the report should consider all submissions or only the most
-   * recent. Defaults to false, ignored for item_analysis.
-   *
-   * Type: boolean
-   */
+     * Whether the report should consider all submissions or only the most
+recent. Defaults to false, ignored for item_analysis.
+     *
+     * type: boolean
+     *
+     * 
+     */
   'quiz_report[includes_all_versions]': boolean | string;
   /**
-   * Whether the output should include documents for the file and/or progress
-   * objects associated with this report. (Note: JSON-API only)
-   *
-   * String[]
-   */
+     * Whether the output should include documents for the file and/or progress
+objects associated with this report. (Note: JSON-API only)
+     *
+     * String[]
+     *
+     * 
+     */
   include: string[];
 };
 
@@ -82,17 +96,21 @@ type Options = (
 /**
  * Create a quiz report
  *
- * Create and return a new report for this quiz. If a previously generated
- * report matches the arguments and is still current (i.e. there have been no
- * new submissions), it will be returned.
+ * Create and return a new report for this quiz. If a previously
+generated report matches the arguments and is still current (i.e.
+there have been no new submissions), it will be returned.
+
+*Responses*
+
+* <code>400 Bad Request</code> if the specified report type is invalid
+* <code>409 Conflict</code> if a quiz report of the specified type is already being
+  generated
  *
- * Responses*
+ * nickname: create_quiz_report
  *
- * <code>400 Bad Request</code> if the specified report type is invalid
- * <code>409 Conflict</code> if a quiz report of the specified type is already
- * being generated
+ * 
  *
- * Nickname: create_quiz_report
+ * 
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<QuizReport>(

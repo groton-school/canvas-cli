@@ -27,7 +27,11 @@ type Options =
  *
  * Retrieve a planner override for the current user
  *
- * Nickname: list_planner_overrides
+ * nickname: list_planner_overrides
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<PlannerOverride[]>(

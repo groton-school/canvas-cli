@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type preview_processed_htmlPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -13,7 +15,13 @@ export type preview_processed_htmlPathParameters = {
 export type preview_processed_htmlSearchParameters = Masquerade;
 
 export type preview_processed_htmlFormParameters = Masquerade & {
-  /** The html content to process */
+  /**
+   * The html content to process
+   *
+   *
+   *
+   *
+   */
   html: string;
 };
 
@@ -63,7 +71,11 @@ type Options = (
  *
  * Preview html content processed for this course
  *
- * Nickname: preview_processed_html
+ * nickname: preview_processed_html
+ *
+ *
+ *
+ *
  */
 export async function preview_processed_html(options: Options) {
   const response = await client().fetchAs<JSONValue>(

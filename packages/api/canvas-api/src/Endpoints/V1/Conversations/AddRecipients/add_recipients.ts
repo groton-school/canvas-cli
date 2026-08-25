@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type add_recipientsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -14,10 +16,14 @@ export type add_recipientsSearchParameters = Masquerade;
 
 export type add_recipientsFormParameters = Masquerade & {
   /**
-   * An array of recipient ids. These may be user ids or course/group ids
-   * prefixed with "course_" or "group_" respectively, e.g.
-   * recipients[]=1&recipients[]=2&recipients[]=course_3
-   */
+     * An array of recipient ids. These may be user ids or course/group ids
+prefixed with &quot;course_&quot; or &quot;group_&quot; respectively, e.g.
+recipients[]&#x3D;1&amp;recipients[]&#x3D;2&amp;recipients[]&#x3D;course_3
+     *
+     * 
+     *
+     * 
+     */
   recipients: string[];
 };
 
@@ -65,11 +71,15 @@ type Options = (
 /**
  * Add recipients
  *
- * Add recipients to an existing group conversation. Response is similar to the
- * GET/show action, except that only includes the latest message (e.g. "joe was
- * added to the conversation by bob")
+ * Add recipients to an existing group conversation. Response is similar to
+the GET/show action, except that only includes the
+latest message (e.g. "joe was added to the conversation by bob")
  *
- * Nickname: add_recipients
+ * nickname: add_recipients
+ *
+ * 
+ *
+ * 
  */
 export async function add_recipients(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { User } from '../../../../Resources/Users.js';
 
 export type show_observerPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   observer_id: string | number;
 };
@@ -52,10 +56,14 @@ type Options = (
  * Show an observer
  *
  * Gets information about an observer.
+
+*Note:* all users are allowed to view their own observers.
  *
- * Note:* all users are allowed to view their own observers.
+ * nickname: show_observer
  *
- * Nickname: show_observer
+ * 
+ *
+ * 
  */
 export async function show_observer(options: Options) {
   const response = await client().fetchAs<User>(

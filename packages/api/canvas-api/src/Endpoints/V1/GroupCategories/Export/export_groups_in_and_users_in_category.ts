@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type export_groups_in_and_users_in_categoryPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_category_id: string | number;
 };
@@ -42,11 +44,15 @@ type Options = (
   );
 
 /**
- * Export groups in and users in category
+ * export groups in and users in category
  *
  * Returns a csv file of users in format ready to import.
  *
- * Nickname: export_groups_in_and_users_in_category
+ * nickname: export_groups_in_and_users_in_category
+ *
+ *
+ *
+ *
  */
 export async function export_groups_in_and_users_in_category(options: Options) {
   const response = await client().fetchAs<JSONValue>(

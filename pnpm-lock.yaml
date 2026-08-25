@@ -142,6 +142,9 @@ importers:
       '@tsconfig/node-lts':
         specifier: ^24.0.1
         version: 24.0.1
+      '@types/node':
+        specifier: ^24.13.3
+        version: 24.13.3
       del-cli:
         specifier: ^7.0.0
         version: 7.0.0

@@ -1,34 +1,60 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
   Partial<{
-    /** If specified only Line Items with this tag will be included. */
+    /**
+     * If specified only Line Items with this tag will be included.
+     *
+     *
+     *
+     *
+     */
     tag: string;
-    /** If specified only Line Items with this resource_id will be included. */
+    /**
+     * If specified only Line Items with this resource_id will be included.
+     *
+     *
+     *
+     *
+     */
     resource_id: string;
     /**
-     * If specified only Line Items attached to the specified resource_link_id
-     * will be included.
+     * If specified only Line Items attached to the specified resource_link_id will be included.
+     *
+     *
+     *
+     *
      */
     resource_link_id: string;
-    /** May be used to limit the number of Line Items returned in a page */
+    /**
+     * May be used to limit the number of Line Items returned in a page
+     *
+     *
+     *
+     *
+     */
     limit: string;
     /**
      * Array of additional information to include.
+
+&quot;launch_url&quot;:: includes the launch URL for each line item using the &quot;https\://canvas.instructure.com/lti/launch_url&quot; extension
      *
-     * "launch_url":: includes the launch URL for each line item using the
-     * "https://canvas.instructure.com/lti/launch_url" extension
+     * 
+     *
+     * 
      */
     include: string[];
   }>;
@@ -67,7 +93,11 @@ type Options = (
  *
  * List all Line Items for a course
  *
- * Nickname: list_line_items
+ * nickname: list_line_items
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<LineItem>(

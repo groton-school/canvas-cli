@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listSearchParameters = Masquerade;
 
@@ -27,7 +27,11 @@ type Options =
  *
  * A paginated list of the current user's upcoming events.
  *
- * Nickname: list_upcoming_assignments_calendar_events
+ * nickname: list_upcoming_assignments_calendar_events
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

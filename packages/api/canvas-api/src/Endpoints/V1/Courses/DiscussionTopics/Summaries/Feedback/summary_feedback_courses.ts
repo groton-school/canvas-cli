@@ -1,23 +1,29 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type summary_feedback_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   summary_id: string | number;
 };
@@ -26,17 +32,20 @@ export type summary_feedback_coursesSearchParameters = Masquerade;
 
 export type summary_feedback_coursesFormParameters = Masquerade & {
   /**
-   * Required The action to take on the summary. Possible values are:
-   *
-   * - "seen": Marks the summary as seen. This action saves the feedback if it's
-   *   not already persisted.
-   * - "like": Marks the summary as liked.
-   * - "dislike": Marks the summary as disliked.
-   * - "reset_like": Resets the like status of the summary.
-   * - "regenerate": Regenerates the summary feedback.
-   * - "disable_summary": Disables the summary feedback. Any other value will
-   *   result in an error response.
-   */
+     * Required
+The action to take on the summary. Possible values are:
+- &quot;seen&quot;: Marks the summary as seen. This action saves the feedback if it&#x27;s not already persisted.
+- &quot;like&quot;: Marks the summary as liked.
+- &quot;dislike&quot;: Marks the summary as disliked.
+- &quot;reset_like&quot;: Resets the like status of the summary.
+- &quot;regenerate&quot;: Regenerates the summary feedback.
+- &quot;disable_summary&quot;: Disables the summary feedback.
+Any other value will result in an error response.
+     *
+     * 
+     *
+     * 
+     */
   _action: string;
 };
 
@@ -86,7 +95,11 @@ type Options = (
  *
  * Persists feedback on a discussion topic summary.
  *
- * Nickname: summary_feedback_courses
+ * nickname: summary_feedback_courses
+ *
+ *
+ *
+ *
  */
 export async function summary_feedback_courses(options: Options) {
   const response = await client().fetchAs<JSONValue>(

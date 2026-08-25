@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { User } from '../../../../Resources/Users.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
 };
@@ -45,10 +47,14 @@ type Options = (
 /**
  * Get all users in a group (lti)
  *
- * Get all Canvas users in a group. Tool providers may only access groups that
- * belong to the context the tool is installed in.
+ * Get all Canvas users in a group. Tool providers may only access
+groups that belong to the context the tool is installed in.
  *
- * Nickname: get_all_users_in_group_lti
+ * nickname: get_all_users_in_group_lti
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<User[]>(

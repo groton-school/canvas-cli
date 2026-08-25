@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Page } from '../../../../Resources/Pages.js';
 
 export type show_page_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   url_or_id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Retrieve the content of a wiki page
  *
- * Nickname: show_page_courses
+ * nickname: show_page_courses
+ *
+ *
+ *
+ *
  */
 export async function show_page_courses(options: Options) {
   const response = await client().fetchAs<Page>(

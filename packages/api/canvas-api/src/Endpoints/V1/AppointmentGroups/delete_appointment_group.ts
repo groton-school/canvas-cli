@@ -1,18 +1,26 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type delete_appointment_groupPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
 
 export type delete_appointment_groupSearchParameters = Masquerade &
   Partial<{
-    /** Reason for deleting/canceling the appointment group. */
+    /**
+     * Reason for deleting/canceling the appointment group.
+     *
+     *
+     *
+     *
+     */
     cancel_reason: string;
   }>;
 
@@ -48,10 +56,14 @@ type Options = (
 /**
  * Delete an appointment group
  *
- * Delete an appointment group (and associated time slots and reservations) and
- * return the deleted group
+ * Delete an appointment group (and associated time slots and reservations)
+and return the deleted group
  *
- * Nickname: delete_appointment_group
+ * nickname: delete_appointment_group
+ *
+ * 
+ *
+ * 
  */
 export async function delete_appointment_group(options: Options) {
   const response = await client().fetchAs<JSONValue>(

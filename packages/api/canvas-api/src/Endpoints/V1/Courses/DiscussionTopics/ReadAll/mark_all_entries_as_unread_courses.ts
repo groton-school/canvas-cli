@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type mark_all_entries_as_unread_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
 };
@@ -19,10 +23,12 @@ export type mark_all_entries_as_unread_coursesPathParameters = {
 export type mark_all_entries_as_unread_coursesSearchParameters = Masquerade &
   Partial<{
     /**
-     * A boolean value to set all of the entries' forced_read_state. No change
-     * is made if this argument is not specified.
+     * A boolean value to set all of the entries&#x27; forced_read_state. No change is
+made if this argument is not specified.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     forced_read_state: boolean | string;
   }>;
@@ -60,12 +66,16 @@ type Options = (
  * Mark all entries as unread
  *
  * Mark the discussion topic and all its entries as unread.
+
+No request fields are necessary.
+
+On success, the response will be 204 No Content with an empty body.
  *
- * No request fields are necessary.
+ * nickname: mark_all_entries_as_unread_courses
  *
- * On success, the response will be 204 No Content with an empty body.
+ * 
  *
- * Nickname: mark_all_entries_as_unread_courses
+ * 
  */
 export async function mark_all_entries_as_unread_courses(options: Options) {
   const response = await client().fetchAs<JSONValue>(

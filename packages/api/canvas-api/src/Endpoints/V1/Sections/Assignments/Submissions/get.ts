@@ -1,30 +1,42 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   section_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
   Partial<{
-    /** Associations to include with the group. */
+    /**
+     * Associations to include with the group.
+     *
+     *
+     *
+     *
+     */
     include: string[];
   }>;
 
@@ -62,7 +74,11 @@ type Options = (
  *
  * Get a single submission, based on user id.
  *
- * Nickname: get_single_submission_sections
+ * nickname: get_single_submission_sections
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

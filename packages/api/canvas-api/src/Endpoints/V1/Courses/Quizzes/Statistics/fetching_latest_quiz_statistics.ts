@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type fetching_latest_quiz_statisticsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   quiz_id: string | number;
 };
@@ -21,7 +25,9 @@ export type fetching_latest_quiz_statisticsSearchParameters = Masquerade &
     /**
      * Whether the statistics report should include all submissions attempts.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     all_versions: boolean | string;
   }>;
@@ -59,12 +65,16 @@ type Options = (
  * Fetching the latest quiz statistics
  *
  * This endpoint provides statistics for all quiz versions, or for a specific
- * quiz version, in which case the output is guaranteed to represent the
- * _latest_ and most current version of the quiz.
+quiz version, in which case the output is guaranteed to represent the
+_latest_ and most current version of the quiz.
+
+<b>200 OK</b> response code is returned if the request was successful.
  *
- * <b>200 OK</b> response code is returned if the request was successful.
+ * nickname: fetching_latest_quiz_statistics
  *
- * Nickname: fetching_latest_quiz_statistics
+ * 
+ *
+ * 
  */
 export async function fetching_latest_quiz_statistics(options: Options) {
   const response = await client().fetchAs<JSONValue>(

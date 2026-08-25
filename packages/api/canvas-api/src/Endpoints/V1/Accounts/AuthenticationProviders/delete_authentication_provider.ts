@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type delete_authentication_providerPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -52,7 +56,11 @@ type Options = (
  *
  * Delete the config
  *
- * Nickname: delete_authentication_provider
+ * nickname: delete_authentication_provider
+ *
+ *
+ *
+ *
  */
 export async function delete_authentication_provider(options: Options) {
   const response = await client().fetchAs<JSONValue>(

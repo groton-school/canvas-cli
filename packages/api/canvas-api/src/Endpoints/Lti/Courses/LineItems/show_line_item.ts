@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { LineItem } from '../../../../Resources/LineItems.js';
 
 export type show_line_itemPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -21,9 +25,12 @@ export type show_line_itemSearchParameters = Masquerade &
   Partial<{
     /**
      * Array of additional information to include.
+
+&quot;launch_url&quot;:: includes the launch URL for this line item using the &quot;https\://canvas.instructure.com/lti/launch_url&quot; extension
      *
-     * "launch_url":: includes the launch URL for this line item using the
-     * "https://canvas.instructure.com/lti/launch_url" extension
+     * 
+     *
+     * 
      */
     include: string[];
   }>;
@@ -62,7 +69,11 @@ type Options = (
  *
  * Show existing Line Item
  *
- * Nickname: show_line_item
+ * nickname: show_line_item
+ *
+ *
+ *
+ *
  */
 export async function show_line_item(options: Options) {
   const response = await client().fetchAs<LineItem>(

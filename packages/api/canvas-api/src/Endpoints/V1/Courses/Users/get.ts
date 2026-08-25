@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { User } from '../../../../Resources/Users.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -52,11 +56,15 @@ type Options = (
  * Get single user
  *
  * Return information on a single user.
+
+Accepts the same include[] parameters as the :users: action, and returns a
+single user with the same fields as that action.
  *
- * Accepts the same include[] parameters as the :users: action, and returns a
- * single user with the same fields as that action.
+ * nickname: get_single_user
  *
- * Nickname: get_single_user
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<User>(

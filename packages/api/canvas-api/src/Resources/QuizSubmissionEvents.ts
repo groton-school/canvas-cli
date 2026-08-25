@@ -1,19 +1,25 @@
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 
-/** An event passed from the Quiz Submission take page */
+/**
+ * An event passed from the Quiz Submission take page
+ */
 export type QuizSubmissionEvent = {
   /**
-   * A timestamp record of creation time
+   * a timestamp record of creation time
    *
-   * Format: date-time
+   * format: date-time
    */
   created_at: string;
-  /** The type of event being sent */
+  /**
+   * the type of event being sent
+   *
+   *
+   */
   event_type: string;
   /**
-   * Custom contextual data for the specific event type
+   * custom contextual data for the specific event type
    *
-   * Object
+   * object
    */
   event_data: JSONObject;
 };

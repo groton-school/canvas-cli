@@ -1,23 +1,29 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type mark_submission_as_unread_sectionsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   section_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -57,10 +63,14 @@ type Options = (
  * Mark submission as unread
  *
  * No request fields are necessary.
+
+On success, the response will be 204 No Content with an empty body.
  *
- * On success, the response will be 204 No Content with an empty body.
+ * nickname: mark_submission_as_unread_sections
  *
- * Nickname: mark_submission_as_unread_sections
+ * 
+ *
+ * 
  */
 export async function mark_submission_as_unread_sections(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listSearchParameters = Masquerade;
 
@@ -25,11 +25,15 @@ type Options =
 /**
  * List environment features
  *
- * Return a hash of global feature options that pertain to the Canvas user
- * interface. This is the same information supplied to the web interface as
- * +ENV.FEATURES+.
+ * Return a hash of global feature options that pertain to the
+Canvas user interface. This is the same information supplied to the
+web interface as +ENV.FEATURES+.
  *
- * Nickname: list_environment_features
+ * nickname: list_environment_features
+ *
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { AssignmentGroup } from '../../../../Resources/AssignmentGroups.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_group_id: string | number;
 };
@@ -20,37 +24,58 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** The assignment group's name */
+  /**
+   * The assignment group&#x27;s name
+   *
+   *
+   *
+   *
+   */
   name: string;
   /**
-   * The position of this assignment group in relation to the other assignment
-   * groups
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The position of this assignment group in relation to the other assignment groups
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   position: number | string;
   /**
-   * The percent of the total grade that this assignment group represents
-   *
-   * Type: number
-   *
-   * Format: 'float'
-   */
+     * The percent of the total grade that this assignment group represents
+     *
+     * type: number
+
+format: 'float'
+     *
+     * 
+     */
   group_weight: number | string;
-  /** The sis source id of the Assignment Group */
+  /**
+   * The sis source id of the Assignment Group
+   *
+   *
+   *
+   *
+   */
   sis_source_id: string;
   /**
    * The integration data of the Assignment Group
    *
    * Object
+   *
+   *
    */
   integration_data: JSONObject;
   /**
-   * The grading rules that are applied within this assignment group See the
-   * Assignment Group object definition for format
-   */
+     * The grading rules that are applied within this assignment group
+See the Assignment Group object definition for format
+     *
+     * 
+     *
+     * 
+     */
   rules: string;
 };
 
@@ -100,7 +125,11 @@ type Options = (
  *
  * Modify an existing Assignment Group.
  *
- * Nickname: edit_assignment_group
+ * nickname: edit_assignment_group
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<AssignmentGroup>(

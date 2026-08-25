@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { AuthenticationProvider } from '../../../../Resources/AuthenticationProviders.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -52,11 +56,14 @@ type Options = (
  * Update authentication provider
  *
  * Update an authentication provider using the same options as the
- * {api:AuthenticationProvidersController#create Add authentication provider}
- * endpoint. You cannot update an existing provider to a new authentication
- * type.
+{api:AuthenticationProvidersController#create Add authentication provider} endpoint.
+You cannot update an existing provider to a new authentication type.
  *
- * Nickname: update_authentication_provider
+ * nickname: update_authentication_provider
+ *
+ * 
+ *
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<AuthenticationProvider>(

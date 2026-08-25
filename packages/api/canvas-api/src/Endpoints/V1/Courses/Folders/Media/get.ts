@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Folder } from '../../../../../Resources/Files.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -45,13 +47,17 @@ type Options = (
 /**
  * Get uploaded media folder for user
  *
- * Returns the details for a designated upload folder that the user has rights
- * to upload to, and creates it if it doesn't exist.
+ * Returns the details for a designated upload folder that the user has rights to
+upload to, and creates it if it doesn't exist.
+
+If the current user does not have the permissions to manage files
+in the course or group, the folder will belong to the current user directly.
  *
- * If the current user does not have the permissions to manage files in the
- * course or group, the folder will belong to the current user directly.
+ * nickname: get_uploaded_media_folder_for_user_courses
  *
- * Nickname: get_uploaded_media_folder_for_user_courses
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<Folder>(

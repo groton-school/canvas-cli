@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type show_new_ai_experience_formPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -46,7 +48,11 @@ type Options = (
  *
  * Display the form for creating a new AI experience
  *
- * Nickname: show_new_ai_experience_form
+ * nickname: show_new_ai_experience_form
+ *
+ *
+ *
+ *
  */
 export async function show_new_ai_experience_form(options: Options) {
   const response = await client().fetchAs<JSONValue>(

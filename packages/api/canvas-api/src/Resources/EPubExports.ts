@@ -1,49 +1,68 @@
 import { JSONValue } from '@battis/typescript-tricks';
 import { File } from './Files.js';
 
-/** Combination of a Course & EpubExport. */
+/**
+ * Combination of a Course & EpubExport.
+ */
 export type CourseEpubExport = {
   /**
-   * The unique identifier for the course
+   * the unique identifier for the course
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
-  /** The name for the course */
+  /**
+   * the name for the course
+   *
+   *
+   */
   name: string;
-  /** EPub export API object */
+  /**
+   * ePub export API object
+   *
+   *
+   */
   epub_export: EpubExport;
 };
 
+/**
+ *
+ */
 export type EpubExport = {
   /**
-   * The unique identifier for the export
+   * the unique identifier for the export
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
   /**
-   * The date and time this export was requested
+   * the date and time this export was requested
    *
-   * Format: date-time
+   * format: date-time
    */
   created_at: string;
   /**
-   * Attachment api object for the export ePub (not present until the export
-   * completes)
+   * attachment api object for the export ePub (not present until the export completes)
+   *
+   *
    */
   attachment: File;
-  /** The api endpoint for polling the current progress */
+  /**
+   * The api endpoint for polling the current progress
+   *
+   *
+   */
   progress_url: string;
   /**
    * The ID of the user who started the export
    *
-   * Type: integer
+   * type: integer
    */
   user_id: number | string;
   /**
-   * Current state of the ePub export: created exporting exported generating
-   * generated failed
+   * Current state of the ePub export: created exporting exported generating generated failed
+   *
+   *
    */
   workflow_state: string;
 };

@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { BlockEditorTemplate } from '../../../../Resources/BlockEditorTemplate.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -14,20 +16,46 @@ export type listPathParameters = {
 export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
-    /** Sort results by this field. */
+    /**
+     * Sort results by this field.
+     *
+     *
+     *
+     *
+     */
     sort: string;
-    /** The sorting order. Defaults to 'asc'. */
+    /**
+     * The sorting order. Defaults to &#x27;asc&#x27;.
+     *
+     *
+     *
+     *
+     */
     order: string;
     /**
-     * If true, include draft templates. If false or omitted only published
-     * templates will be returned.
+     * If true, include draft templates. If false or omitted
+only published templates will be returned.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     drafts: boolean | string;
-    /** What type of templates should be returned. */
+    /**
+     * What type of templates should be returned.
+     *
+     *
+     *
+     *
+     */
     type: string[];
-    /** No description */
+    /**
+     * no description
+     *
+     *
+     *
+     *
+     */
     include: string[];
   }>;
 
@@ -65,7 +93,11 @@ type Options = (
  *
  * A list of the block templates available to the current user.
  *
- * Nickname: list_block_templates
+ * nickname: list_block_templates
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<BlockEditorTemplate[]>(

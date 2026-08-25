@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { LtiRegistration } from '../../../../Resources/LtiRegistrations.js';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -15,35 +17,69 @@ export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
   /**
-   * The name of the tool. If one isn't provided, it will be inferred from the
-   * configuration's title.
+   * The name of the tool. If one isn&#x27;t provided, it will be inferred from the configuration&#x27;s title.
+   *
+   *
+   *
+   *
    */
   name: string;
-  /** A friendly nickname set by admins to override the tool name */
+  /**
+   * A friendly nickname set by admins to override the tool name
+   *
+   *
+   *
+   *
+   */
   admin_nickname: string;
-  /** The vendor of the tool */
+  /**
+   * The vendor of the tool
+   *
+   *
+   *
+   *
+   */
   vendor: string;
-  /** A description of the tool. Cannot exceed 2048 bytes. */
+  /**
+   * A description of the tool. Cannot exceed 2048 bytes.
+   *
+   *
+   *
+   *
+   */
   description: string;
   /**
-   * [Required, Lti::ToolConfiguration | Lti::LegacyConfiguration] The LTI 1.3
-   * configuration for the tool
+   * [Required, Lti::ToolConfiguration | Lti::LegacyConfiguration] The LTI 1.3 configuration for the tool
+   *
+   *
+   *
+   *
    */
   configuration: string;
   /**
-   * [Lti::Overlay] The overlay configuration for the tool. Overrides values
-   * in the base configuration.
+   * [Lti::Overlay] The overlay configuration for the tool. Overrides values in the base configuration.
+   *
+   *
+   *
+   *
    */
   overlay: string;
   /**
-   * The unique identifier for the tool, used for analytics. If not provided,
-   * one will be generated.
+   * The unique identifier for the tool, used for analytics. If not provided, one will be generated.
+   *
+   *
+   *
+   *
    */
   unified_tool_id: string;
   /**
-   * The desired state for this registration/account binding. "allow" is only
-   * valid for Site Admin registrations. Defaults to "off".
-   */
+     * The desired state for this registration/account binding. &quot;allow&quot; is only valid for Site Admin registrations.
+Defaults to &quot;off&quot;.
+     *
+     * 
+     *
+     * 
+     */
   workflow_state: string;
 };
 
@@ -91,12 +127,16 @@ type Options = (
 /**
  * Create an LTI Registration
  *
- * Create a new LTI Registration, as well as an associated Tool Configuration,
- * Developer Key, and Registration Account binding. To install/create using
- * Dynamic Registration, please use the {file:file.registration.html Dynamic
- * Registration API}.
+ * Create a new LTI Registration, as well as an associated Tool Configuration, Developer Key, and Registration Account
+binding.
+To install/create using Dynamic Registration, please use the
+{file:file.registration.html Dynamic Registration API}.
  *
- * Nickname: create_lti_registration
+ * nickname: create_lti_registration
+ *
+ * 
+ *
+ * 
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<LtiRegistration>(

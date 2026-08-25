@@ -1,23 +1,55 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
-/** A Canvas assignment */
+/**
+ * A Canvas assignment
+ */
 export type LtiAssignment = {
-  /** Type: integer */
+  /**
+   *
+   *
+   * type: integer
+   */
   id: number | string;
+  /**
+   *
+   *
+   *
+   */
   name: string;
+  /**
+   *
+   *
+   *
+   */
   description: string;
-  /** Type: integer */
+  /**
+   *
+   *
+   * type: integer
+   */
   points_possible: number | string;
   /**
-   * The due date for the assignment. If a user id is supplied and an assignment
-   * override is in place this field will reflect the due date as it applies to
-   * the user.
+   * The due date for the assignment. If a user id is supplied and an assignment override is in place this field will reflect the due date as it applies to the user.
    *
-   * Format: date-time
+   * format: date-time
    */
   due_at: string;
+  /**
+   *
+   *
+   *
+   */
   lti_id: string;
-  /** Type: integer */
+  /**
+   *
+   *
+   * type: integer
+   */
   course_id: number | string;
+  /**
+   *
+   *
+   *
+   */
   lti_course_id: string;
 };

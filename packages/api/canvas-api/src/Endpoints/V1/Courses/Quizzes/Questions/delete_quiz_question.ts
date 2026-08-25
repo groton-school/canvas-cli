@@ -1,28 +1,34 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type delete_quiz_questionPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
-   * The associated quiz's unique identifier
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The associated quiz&#x27;s unique identifier
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   quiz_id: number | string;
   /**
-   * The quiz question's unique identifier
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The quiz question&#x27;s unique identifier
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   id: number | string;
 };
 
@@ -60,10 +66,13 @@ type Options = (
 /**
  * Delete a quiz question
  *
- * <b>204 No Content</b> response code is returned if the deletion was
- * successful.
+ * <b>204 No Content</b> response code is returned if the deletion was successful.
  *
- * Nickname: delete_quiz_question
+ * nickname: delete_quiz_question
+ *
+ *
+ *
+ *
  */
 export async function delete_quiz_question(options: Options) {
   const response = await client().fetchAs<JSONValue>(

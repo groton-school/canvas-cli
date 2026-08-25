@@ -1,5 +1,5 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Grader } from '../../../../Resources/GradebookHistory.js';
 
 export type details_for_given_date_in_gradebook_history_for_this_coursePathParameters =
@@ -7,12 +7,20 @@ export type details_for_given_date_in_gradebook_history_for_this_coursePathParam
     /**
      * The id of the contextual course for this API call
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     course_id: number | string;
-    /** The date for which you would like to see detailed information */
+    /**
+     * The date for which you would like to see detailed information
+     *
+     *
+     *
+     *
+     */
     date: string;
   };
 
@@ -51,11 +59,15 @@ type Options = (
 /**
  * Details for a given date in gradebook history for this course
  *
- * Returns the graders who worked on this day, along with the assignments they
- * worked on. More details can be obtained by selecting a grader and assignment
- * and calling the 'submissions' api endpoint for a given date.
+ * Returns the graders who worked on this day, along with the assignments they worked on.
+More details can be obtained by selecting a grader and assignment and calling the
+'submissions' api endpoint for a given date.
  *
- * Nickname: details_for_given_date_in_gradebook_history_for_this_course
+ * nickname: details_for_given_date_in_gradebook_history_for_this_course
+ *
+ * 
+ *
+ * 
  */
 export async function details_for_given_date_in_gradebook_history_for_this_course(
   options: Options

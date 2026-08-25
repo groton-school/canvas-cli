@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ePortfolio } from '../../../Resources/EPortfolios.js';
 
 export type delete_eportfolioPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -47,7 +49,11 @@ type Options = (
  *
  * Mark an ePortfolio as deleted.
  *
- * Nickname: delete_eportfolio
+ * nickname: delete_eportfolio
+ *
+ *
+ *
+ *
  */
 export async function delete_eportfolio(options: Options) {
   const response = await client().fetchAs<ePortfolio>(

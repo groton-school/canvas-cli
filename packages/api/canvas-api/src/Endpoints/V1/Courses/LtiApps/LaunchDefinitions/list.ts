@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -13,13 +15,19 @@ export type listPathParameters = {
 export type listSearchParameters = Masquerade &
   Partial<{
     /**
-     * The placements to return launch definitions for. If not provided, an
-     * empty list will be returned.
+     * The placements to return launch definitions for. If not provided, an empty list will be returned.
+     *
+     *
+     *
+     *
      */
     'placements[Array]': string;
     /**
-     * If true, only return launch definitions that are visible to the current
-     * user. Defaults to true.
+     * If true, only return launch definitions that are visible to the current user. Defaults to true.
+     *
+     *
+     *
+     *
      */
     'only_visible[Boolean]': string;
   }>;
@@ -56,12 +64,15 @@ type Options = (
 /**
  * List LTI Launch Definitions
  *
- * List all tools available in this context for the given placements, in the
- * form of Launch Definitions. Used primarily by the Canvas frontend. API users
- * should consider using the External Tools API instead. This endpoint is cached
- * for 10 minutes!
+ * List all tools available in this context for the given placements, in the form of Launch Definitions.
+Used primarily by the Canvas frontend. API users should consider using the External Tools API instead.
+This endpoint is cached for 10 minutes!
  *
- * Nickname: list_lti_launch_definitions_courses
+ * nickname: list_lti_launch_definitions_courses
+ *
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

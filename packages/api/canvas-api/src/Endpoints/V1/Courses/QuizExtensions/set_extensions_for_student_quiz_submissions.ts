@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type set_extensions_for_student_quiz_submissionsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -18,54 +20,67 @@ export type set_extensions_for_student_quiz_submissionsFormParameters =
     /**
      * The ID of the user we want to add quiz extensions for.
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     user_id: number | string;
     /**
      * Number of times the student is allowed to re-take the quiz over the
-     * multiple-attempt limit. This is limited to 1000 attempts or less.
+multiple-attempt limit. This is limited to 1000 attempts or less.
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     extra_attempts: number | string;
     /**
-     * The number of extra minutes to allow for all attempts. This will add to
-     * the existing time limit on the submission. This is limited to 10080
-     * minutes (1 week)
+     * The number of extra minutes to allow for all attempts. This will
+add to the existing time limit on the submission. This is limited to
+10080 minutes (1 week)
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     extra_time: number | string;
     /**
-     * Allow the student to take the quiz even if it's locked for everyone else.
+     * Allow the student to take the quiz even if it&#x27;s locked for
+everyone else.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     manually_unlocked: boolean | string;
     /**
      * The number of minutes to extend the quiz from the current time. This is
-     * mutually exclusive to extend_from_end_at. This is limited to 1440 minutes
-     * (24 hours)
+mutually exclusive to extend_from_end_at. This is limited to 1440
+minutes (24 hours)
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     extend_from_now: number | string;
     /**
-     * The number of minutes to extend the quiz beyond the quiz's current ending
-     * time. This is mutually exclusive to extend_from_now. This is limited to
-     * 1440 minutes (24 hours)
+     * The number of minutes to extend the quiz beyond the quiz&#x27;s current
+ending time. This is mutually exclusive to extend_from_now. This is
+limited to 1440 minutes (24 hours)
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     extend_from_end_at: number | string;
   };
@@ -115,11 +130,15 @@ type Options = (
  * Set extensions for student quiz submissions
  *
  * <b>Responses</b>
+
+* <b>200 OK</b> if the request was successful
+* <b>403 Forbidden</b> if you are not allowed to extend quizzes for this course
  *
- * <b>200 OK</b> if the request was successful <b>403 Forbidden</b> if you are
- * not allowed to extend quizzes for this course
+ * nickname: set_extensions_for_student_quiz_submissions
  *
- * Nickname: set_extensions_for_student_quiz_submissions
+ * 
+ *
+ * 
  */
 export async function set_extensions_for_student_quiz_submissions(
   options: Options

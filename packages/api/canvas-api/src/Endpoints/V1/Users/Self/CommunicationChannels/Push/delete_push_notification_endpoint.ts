@@ -24,7 +24,13 @@ type Options =
 /**
  * Delete a push notification endpoint
  *
- * Nickname: delete_push_notification_endpoint
+ *
+ *
+ * nickname: delete_push_notification_endpoint
+ *
+ *
+ *
+ *
  */
 export async function delete_push_notification_endpoint(options: Options) {
   const response = await client().fetchAs<{ success: true }>(

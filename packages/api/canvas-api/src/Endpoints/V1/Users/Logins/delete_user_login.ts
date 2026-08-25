@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type delete_user_loginPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -52,7 +56,11 @@ type Options = (
  *
  * Delete an existing login.
  *
- * Nickname: delete_user_login
+ * nickname: delete_user_login
+ *
+ *
+ *
+ *
  */
 export async function delete_user_login(options: Options) {
   const response = await client().fetchAs<JSONValue>(

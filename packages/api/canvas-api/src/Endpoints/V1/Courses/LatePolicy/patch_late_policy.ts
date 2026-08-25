@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type patch_late_policyPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -16,39 +18,57 @@ export type patch_late_policyFormParameters = Masquerade & {
   /**
    * Whether to enable the missing submission deduction late policy.
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   'late_policy[missing_submission_deduction_enabled]': boolean | string;
   /**
    * How many percentage points to deduct from a missing submission.
    *
-   * Type: number
+   * type: number
+   *
+   *
    */
   'late_policy[missing_submission_deduction]': number | string;
   /**
    * Whether to enable the late submission deduction late policy.
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   'late_policy[late_submission_deduction_enabled]': boolean | string;
   /**
    * How many percentage points to deduct per the late submission interval.
    *
-   * Type: number
+   * type: number
+   *
+   *
    */
   'late_policy[late_submission_deduction]': number | string;
-  /** The interval for late policies. */
+  /**
+   * The interval for late policies.
+   *
+   *
+   *
+   *
+   */
   'late_policy[late_submission_interval]': string;
   /**
    * Whether to enable the late submission minimum percent for a late policy.
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   'late_policy[late_submission_minimum_percent_enabled]': boolean | string;
   /**
    * The minimum grade a submissions can have in percentage points.
    *
-   * Type: number
+   * type: number
+   *
+   *
    */
   'late_policy[late_submission_minimum_percent]': number | string;
 };
@@ -99,7 +119,11 @@ type Options = (
  *
  * Patch a late policy. No body is returned upon success.
  *
- * Nickname: patch_late_policy
+ * nickname: patch_late_policy
+ *
+ *
+ *
+ *
  */
 export async function patch_late_policy(options: Options) {
   const response = await client().fetchAs<JSONValue>(

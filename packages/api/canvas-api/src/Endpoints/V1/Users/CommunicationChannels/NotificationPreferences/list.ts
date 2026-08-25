@@ -1,17 +1,31 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { NotificationPreference } from '../../../../../Resources/NotificationPreferences.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   type: string;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   address: string;
 };
 
@@ -51,7 +65,11 @@ type Options = (
  *
  * Fetch all preferences for the given communication channel
  *
- * Nickname: list_preferences_type
+ * nickname: list_preferences_type
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<NotificationPreference[]>(

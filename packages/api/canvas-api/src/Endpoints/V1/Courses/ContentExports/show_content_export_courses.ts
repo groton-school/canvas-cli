@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ContentExport } from '../../../../Resources/ContentExports.js';
 
 export type show_content_export_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Get information about a single content export.
  *
- * Nickname: show_content_export_courses
+ * nickname: show_content_export_courses
+ *
+ *
+ *
+ *
  */
 export async function show_content_export_courses(options: Options) {
   const response = await client().fetchAs<ContentExport>(

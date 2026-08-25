@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { GradingStandard } from '../../../../Resources/GradingStandards.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -45,10 +47,13 @@ type Options = (
 /**
  * List the grading standards available in a context.
  *
- * Returns the paginated list of grading standards for the given context that
- * are visible to the user.
+ * Returns the paginated list of grading standards for the given context that are visible to the user.
  *
- * Nickname: list_grading_standards_available_in_context_courses
+ * nickname: list_grading_standards_available_in_context_courses
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<GradingStandard[]>(

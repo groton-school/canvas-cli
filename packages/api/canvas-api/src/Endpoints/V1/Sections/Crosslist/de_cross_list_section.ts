@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Section } from '../../../../Resources/Sections.js';
 
 export type de_cross_list_sectionPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -14,11 +16,12 @@ export type de_cross_list_sectionPathParameters = {
 export type de_cross_list_sectionSearchParameters = Masquerade &
   Partial<{
     /**
-     * Default is true. If false, any fields containing “sticky” changes will
-     * not be updated. See SIS CSV Format documentation for information on which
-     * fields can have SIS stickiness
+     * Default is true. If false, any fields containing “sticky” changes will not be updated.
+See SIS CSV Format documentation for information on which fields can have SIS stickiness
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     override_sis_stickiness: boolean | string;
   }>;
@@ -57,7 +60,11 @@ type Options = (
  *
  * Undo cross-listing of a Section, returning it to its original course.
  *
- * Nickname: de_cross_list_section
+ * nickname: de_cross_list_section
+ *
+ *
+ *
+ *
  */
 export async function de_cross_list_section(options: Options) {
   const response = await client().fetchAs<Section>(

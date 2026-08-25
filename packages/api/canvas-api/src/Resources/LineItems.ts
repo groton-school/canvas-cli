@@ -1,33 +1,55 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type LineItem = {
-  /** The fully qualified URL for showing, updating, and deleting the Line Item */
+  /**
+   * The fully qualified URL for showing, updating, and deleting the Line Item
+   *
+   *
+   */
   id: string;
   /**
    * The maximum score of the Line Item
    *
-   * Type: number
+   * type: number
    */
   scoreMaximum: number | string;
-  /** The label of the Line Item. */
+  /**
+   * The label of the Line Item.
+   *
+   *
+   */
   label: string;
-  /** Tag used to qualify a line Item beyond its ids */
+  /**
+   * Tag used to qualify a line Item beyond its ids
+   *
+   *
+   */
   tag: string;
   /**
-   * A Tool Provider specified id for the Line Item. Multiple line items can
-   * share the same resourceId within a given context
+   * A Tool Provider specified id for the Line Item. Multiple line items can share the same resourceId within a given context
+   *
+   *
    */
   resourceId: string;
-  /** The resource link id the Line Item is attached to */
+  /**
+   * The resource link id the Line Item is attached to
+   *
+   *
+   */
   resourceLinkId: string;
   /**
-   * The extension that defines the submission_type of the line_item. Only
-   * returns if set through the line_item create endpoint.
+   * The extension that defines the submission_type of the line_item. Only returns if set through the line_item create endpoint.
+   *
+   *
    */
   'https://canvas.instructure.com/lti/submission_type': string;
   /**
-   * The launch url of the Line Item. Only returned if `include=launch_url`
-   * query parameter is passed, and only for Show and List actions.
+   * The launch url of the Line Item. Only returned if `include=launch_url` query parameter is passed, and only for Show and List actions.
+   *
+   *
    */
   'https://canvas.instructure.com/lti/launch_url': string;
 };

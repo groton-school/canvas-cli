@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type permissionsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -13,10 +15,12 @@ export type permissionsPathParameters = {
 export type permissionsSearchParameters = Masquerade &
   Partial<{
     /**
-     * List of permissions to check against the authenticated user. Permission
-     * names are documented in the
-     * {api:RoleOverridesController#manageable_permissions List assignable
-     * permissions} endpoint.
+     * List of permissions to check against the authenticated user.
+Permission names are documented in the {api:RoleOverridesController#manageable_permissions List assignable permissions} endpoint.
+     *
+     * 
+     *
+     * 
      */
     permissions: string[];
   }>;
@@ -54,14 +58,18 @@ type Options = (
  * Permissions
  *
  * Returns permission information for the calling user and the given account.
- * You may use `self` as the account id to check permissions against the domain
- * root account. The caller must have an account role or admin
- * (teacher/TA/designer) enrollment in a course in the account.
+You may use `self` as the account id to check permissions against the domain root account.
+The caller must have an account role or admin (teacher/TA/designer) enrollment in a course
+in the account.
+
+See also the {api:CoursesController#permissions Course} and {api:GroupsController#permissions Group}
+counterparts.
  *
- * See also the {api:CoursesController#permissions Course} and
- * {api:GroupsController#permissions Group} counterparts.
+ * nickname: permissions
  *
- * Nickname: permissions
+ * 
+ *
+ * 
  */
 export async function permissions(options: Options) {
   const response = await client().fetchAs<JSONValue>(

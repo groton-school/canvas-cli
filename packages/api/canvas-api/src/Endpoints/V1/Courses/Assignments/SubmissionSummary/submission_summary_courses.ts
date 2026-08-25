@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type submission_summary_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
@@ -19,17 +23,20 @@ export type submission_summary_coursesPathParameters = {
 export type submission_summary_coursesSearchParameters = Masquerade &
   Partial<{
     /**
-     * If this argument is true, the response will take into account student
-     * groups.
+     * If this argument is true, the response will take into account student groups.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     grouped: boolean | string;
     /**
-     * If this argument is true, the response will include deactivated students
-     * in the summary (defaults to false).
+     * If this argument is true, the response will include deactivated students in the summary
+(defaults to false).
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     include_deactivated: boolean | string;
   }>;
@@ -66,10 +73,14 @@ type Options = (
 /**
  * Submission Summary
  *
- * Returns the number of submissions for the given assignment based on gradeable
- * students that fall into three categories: graded, ungraded, not submitted.
+ * Returns the number of submissions for the given assignment based on gradeable students
+that fall into three categories: graded, ungraded, not submitted.
  *
- * Nickname: submission_summary_courses
+ * nickname: submission_summary_courses
+ *
+ * 
+ *
+ * 
  */
 export async function submission_summary_courses(options: Options) {
   const response = await client().fetchAs<JSONValue>(

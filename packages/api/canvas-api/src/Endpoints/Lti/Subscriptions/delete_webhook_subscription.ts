@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type delete_webhook_subscriptionPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -44,7 +46,13 @@ type Options = (
 /**
  * Delete a Webhook Subscription
  *
- * Nickname: delete_webhook_subscription
+ *
+ *
+ * nickname: delete_webhook_subscription
+ *
+ *
+ *
+ *
  */
 export async function delete_webhook_subscription(options: Options) {
   const response = await client().fetchAs<JSONValue>(

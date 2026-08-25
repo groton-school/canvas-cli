@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assessment_id: string | number;
 };
@@ -21,9 +25,11 @@ export type listSearchParameters = Masquerade &
     /**
      * If set, restrict results to those for this user
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     user_id: number | string;
   }>;
@@ -62,7 +68,11 @@ type Options = (
  *
  * Returns a paginated list of live assessment results
  *
- * Nickname: list_live_assessment_results
+ * nickname: list_live_assessment_results
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

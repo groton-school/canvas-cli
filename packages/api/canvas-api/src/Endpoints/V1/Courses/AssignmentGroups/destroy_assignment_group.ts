@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { AssignmentGroup } from '../../../../Resources/AssignmentGroups.js';
 
 export type destroy_assignment_groupPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_group_id: string | number;
 };
@@ -21,13 +25,15 @@ export type destroy_assignment_groupSearchParameters = Masquerade &
   Partial<{
     /**
      * The ID of an active Assignment Group to which the assignments that are
-     * currently assigned to the destroyed Assignment Group will be assigned.
-     * NOTE: If this argument is not provided, any assignments in this
-     * Assignment Group will be deleted.
+currently assigned to the destroyed Assignment Group will be assigned.
+NOTE: If this argument is not provided, any assignments in this Assignment
+Group will be deleted.
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     move_assignments_to: number | string;
   }>;
@@ -66,7 +72,11 @@ type Options = (
  *
  * Deletes the assignment group with the given id.
  *
- * Nickname: destroy_assignment_group
+ * nickname: destroy_assignment_group
+ *
+ *
+ *
+ *
  */
 export async function destroy_assignment_group(options: Options) {
   const response = await client().fetchAs<AssignmentGroup>(

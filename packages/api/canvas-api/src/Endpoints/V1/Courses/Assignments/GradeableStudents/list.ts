@@ -1,18 +1,26 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
 
 export type listSearchParameters = Masquerade &
   Partial<{
-    /** Assignments being requested */
+    /**
+     * Assignments being requested
+     *
+     *
+     *
+     *
+     */
     assignment_ids: string[];
   }>;
 
@@ -48,12 +56,16 @@ type Options = (
 /**
  * List multiple assignments gradeable students
  *
- * A paginated list of students eligible to submit a list of assignments. The
- * caller must have permission to view grades for the requested course.
+ * A paginated list of students eligible to submit a list of assignments. The caller must have
+permission to view grades for the requested course.
+
+Section-limited instructors will only see students in their own sections.
  *
- * Section-limited instructors will only see students in their own sections.
+ * nickname: list_multiple_assignments_gradeable_students
  *
- * Nickname: list_multiple_assignments_gradeable_students
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

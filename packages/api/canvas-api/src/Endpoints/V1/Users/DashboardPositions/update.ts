@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -44,14 +46,18 @@ type Options = (
 /**
  * Update dashboard positions
  *
- * Updates the dashboard positions for a user for a given context. This allows
- * positions for the dashboard cards and elsewhere to be customized on a per
- * user basis.
+ * Updates the dashboard positions for a user for a given context.  This allows
+positions for the dashboard cards and elsewhere to be customized on a per
+user basis.
+
+The asset string parameter should be in the format 'context_id', for example
+'course_42'
  *
- * The asset string parameter should be in the format 'context_id', for example
- * 'course_42'
+ * nickname: update_dashboard_positions
  *
- * Nickname: update_dashboard_positions
+ * 
+ *
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(

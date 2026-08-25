@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -44,17 +46,22 @@ type Options = (
 /**
  * Update several calendars
  *
- * Set visibility and/or auto_subscribe on many calendars simultaneously.
- * Requires the `manage_account_calendar_visibility` permission on the account.
+ * Set visibility and/or auto_subscribe on many calendars simultaneously. Requires
+the `manage_account_calendar_visibility` permission on the account.
+
+Accepts a JSON array of objects containing 2-3 keys each: `id`
+(the account's id, required), `visible` (a boolean indicating whether
+the account calendar is visible), and `auto_subscribe` (a boolean indicating
+whether users should see these events in their calendar without manually
+subscribing).
+
+Returns the count of updated accounts.
  *
- * Accepts a JSON array of objects containing 2-3 keys each: `id` (the account's
- * id, required), `visible` (a boolean indicating whether the account calendar
- * is visible), and `auto_subscribe` (a boolean indicating whether users should
- * see these events in their calendar without manually subscribing).
+ * nickname: update_several_calendars
  *
- * Returns the count of updated accounts.
+ * 
  *
- * Nickname: update_several_calendars
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,22 +1,33 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type remove_usage_rights_usersPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
 
 export type remove_usage_rights_usersSearchParameters = Masquerade &
   Partial<{
-    /** List of ids of files to remove associated usage rights from. */
+    /**
+     * List of ids of files to remove associated usage rights from.
+     *
+     *
+     *
+     *
+     */
     file_ids: string[];
     /**
-     * List of ids of folders. Usage rights will be removed from all files in
-     * these folders.
+     * List of ids of folders. Usage rights will be removed from all files in these folders.
+     *
+     *
+     *
+     *
      */
     folder_ids: string[];
   }>;
@@ -55,7 +66,11 @@ type Options = (
  *
  * Removes copyright and license information associated with one or more files
  *
- * Nickname: remove_usage_rights_users
+ * nickname: remove_usage_rights_users
+ *
+ *
+ *
+ *
  */
 export async function remove_usage_rights_users(options: Options) {
   const response = await client().fetchAs<JSONValue>(

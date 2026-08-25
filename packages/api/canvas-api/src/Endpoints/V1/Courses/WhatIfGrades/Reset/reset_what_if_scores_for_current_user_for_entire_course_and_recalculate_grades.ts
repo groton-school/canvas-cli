@@ -1,5 +1,5 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { gradesGrades } from '../../../../../Overrides.js';
 
 export type reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_gradesPathParameters =
@@ -7,7 +7,9 @@ export type reset_what_if_scores_for_current_user_for_entire_course_and_recalcul
     /**
      * ID
      *
-     * Type: string
+     * type: string
+     *
+     *
      */
     course_id: string | number;
   };
@@ -45,13 +47,15 @@ type Options = (
   );
 
 /**
- * Reset the what-if scores for the current user for an entire course and
- * recalculate grades
+ * Reset the what-if scores for the current user for an entire course and recalculate grades
  *
  * Resets all what-if scores for a student in a course and recalculates grades.
  *
- * Nickname:
- * reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_grades
+ * nickname: reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_grades
+ *
+ *
+ *
+ *
  */
 export async function reset_what_if_scores_for_current_user_for_entire_course_and_recalculate_grades(
   options: Options

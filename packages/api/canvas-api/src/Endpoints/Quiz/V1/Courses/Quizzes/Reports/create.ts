@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Progress } from '../../../../../../Resources/CoursePace.js';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
@@ -20,9 +24,21 @@ export type createPathParameters = {
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** The type of report to be generated. */
+  /**
+   * The type of report to be generated.
+   *
+   *
+   *
+   *
+   */
   'quiz_report[report_type]': string;
-  /** The format of report to be generated. */
+  /**
+   * The format of report to be generated.
+   *
+   *
+   *
+   *
+   */
   'quiz_report[format]': string;
 };
 
@@ -70,16 +86,20 @@ type Options = (
 /**
  * Create a quiz report
  *
- * Generate a new report for this quiz. Returns a progress object that can be
- * used to track the progress of the report generation.
+ * Generate a new report for this quiz. Returns a progress object that can be used to track
+the progress of the report generation.
+
+*Responses*
+
+* <code>400 Bad Request</code> if the specified report type or format is invalid
+* <code>409 Conflict</code> if a quiz report of the specified type is already being
+  generated
  *
- * Responses*
+ * nickname: create_quiz_report
  *
- * <code>400 Bad Request</code> if the specified report type or format is
- * invalid <code>409 Conflict</code> if a quiz report of the specified type is
- * already being generated
+ * 
  *
- * Nickname: create_quiz_report
+ * 
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<Progress>(

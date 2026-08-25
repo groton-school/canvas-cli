@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Group } from '../../../Resources/Groups.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
 };
@@ -14,53 +16,87 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** The name of the group */
+  /**
+   * The name of the group
+   *
+   *
+   *
+   *
+   */
   name: string;
-  /** A description of the group */
+  /**
+   * A description of the group
+   *
+   *
+   *
+   *
+   */
   description: string;
   /**
-   * Whether the group is public (applies only to community groups). Currently
-   * you cannot set a group back to private once it has been made public.
-   *
-   * Type: boolean
-   */
+     * Whether the group is public (applies only to community groups). Currently
+you cannot set a group back to private once it has been made public.
+     *
+     * type: boolean
+     *
+     * 
+     */
   is_public: boolean | string;
-  /** No description */
+  /**
+   * no description
+   *
+   *
+   *
+   *
+   */
   join_level: string;
   /**
-   * The id of the attachment previously uploaded to the group that you would
-   * like to use as the avatar image for this group.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the attachment previously uploaded to the group that you would
+like to use as the avatar image for this group.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   avatar_id: number | string;
   /**
-   * The allowed file storage for the group, in megabytes. This parameter is
-   * ignored if the caller does not have the manage_storage_quotas
-   * permission.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The allowed file storage for the group, in megabytes. This parameter is
+ignored if the caller does not have the manage_storage_quotas permission.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   storage_quota_mb: number | string;
   /**
-   * An array of user ids for users you would like in the group. Users not in
-   * the group will be sent invitations. Existing group members who aren't in
-   * the list will be removed from the group.
-   */
+     * An array of user ids for users you would like in the group.
+Users not in the group will be sent invitations. Existing group
+members who aren&#x27;t in the list will be removed from the group.
+     *
+     * 
+     *
+     * 
+     */
   members: string[];
-  /** The sis ID of the group. Must have manage_sis permission to set. */
+  /**
+   * The sis ID of the group. Must have manage_sis permission to set.
+   *
+   *
+   *
+   *
+   */
   sis_group_id: string;
   /**
-   * Default is true. If false, any fields containing “sticky” changes will
-   * not be updated. See SIS CSV Format documentation for information on which
-   * fields can have SIS stickiness
-   *
-   * Type: boolean
-   */
+     * Default is true. If false, any fields containing “sticky” changes will not be updated.
+See SIS CSV Format documentation for information on which fields can have SIS stickiness
+     *
+     * type: boolean
+     *
+     * 
+     */
   override_sis_stickiness: boolean | string;
 };
 
@@ -108,13 +144,17 @@ type Options = (
 /**
  * Edit a group
  *
- * Modifies an existing group. Note that to set an avatar image for the group,
- * you must first upload the image file to the group, and the use the id in the
- * response as the argument to this function. See the
- * {file:file.file_uploads.html File Upload Documentation} for details on the
- * file upload workflow.
+ * Modifies an existing group.  Note that to set an avatar image for the
+group, you must first upload the image file to the group, and the use the
+id in the response as the argument to this function.  See the
+{file:file.file_uploads.html File Upload Documentation} for details on the file
+upload workflow.
  *
- * Nickname: edit_group
+ * nickname: edit_group
+ *
+ * 
+ *
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<Group>(`/api/v1/groups/{group_id}`, {

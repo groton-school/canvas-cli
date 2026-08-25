@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type clear_unread_status_for_all_submissions_sectionsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   section_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -52,12 +56,16 @@ type Options = (
  * Clear unread status for all submissions.
  *
  * Site-admin-only endpoint.
+
+No request fields are necessary.
+
+On success, the response will be 204 No Content with an empty body.
  *
- * No request fields are necessary.
+ * nickname: clear_unread_status_for_all_submissions_sections
  *
- * On success, the response will be 204 No Content with an empty body.
+ * 
  *
- * Nickname: clear_unread_status_for_all_submissions_sections
+ * 
  */
 export async function clear_unread_status_for_all_submissions_sections(
   options: Options

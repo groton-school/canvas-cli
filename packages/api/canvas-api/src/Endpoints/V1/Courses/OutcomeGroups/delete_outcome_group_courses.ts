@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { OutcomeGroup } from '../../../../Resources/OutcomeGroups.js';
 
 export type delete_outcome_group_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -52,14 +56,18 @@ type Options = (
  * Delete an outcome group
  *
  * Deleting an outcome group deletes descendant outcome groups and outcome
- * links. The linked outcomes themselves are only deleted if all links to the
- * outcome were deleted.
+links. The linked outcomes themselves are only deleted if all links to the
+outcome were deleted.
+
+Aligned outcomes cannot be deleted; as such, if all remaining links to an
+aligned outcome are included in this group's descendants, the group
+deletion will fail.
  *
- * Aligned outcomes cannot be deleted; as such, if all remaining links to an
- * aligned outcome are included in this group's descendants, the group deletion
- * will fail.
+ * nickname: delete_outcome_group_courses
  *
- * Nickname: delete_outcome_group_courses
+ * 
+ *
+ * 
  */
 export async function delete_outcome_group_courses(options: Options) {
   const response = await client().fetchAs<OutcomeGroup>(

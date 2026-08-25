@@ -1,23 +1,29 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type delete_question_groupPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   quiz_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -57,11 +63,14 @@ type Options = (
  * Delete a question group
  *
  * Delete a question group
+
+<b>204 No Content<b> response code is returned if the deletion was successful.
  *
- * <b>204 No Content<b> response code is returned if the deletion was
- * successful.
+ * nickname: delete_question_group
  *
- * Nickname: delete_question_group
+ * 
+ *
+ * 
  */
 export async function delete_question_group(options: Options) {
   const response = await client().fetchAs<JSONValue>(

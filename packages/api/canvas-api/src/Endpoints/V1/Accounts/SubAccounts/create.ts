@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Account } from '../../../../Resources/Accounts.js';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -14,33 +16,51 @@ export type createPathParameters = {
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** The name of the new sub-account. */
+  /**
+   * The name of the new sub-account.
+   *
+   *
+   *
+   *
+   */
   'account[name]': string;
-  /** The account's identifier in the Student Information System. */
+  /**
+   * The account&#x27;s identifier in the Student Information System.
+   *
+   *
+   *
+   *
+   */
   'account[sis_account_id]': string;
   /**
-   * The default course storage quota to be used, if not otherwise specified.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The default course storage quota to be used, if not otherwise specified.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   'account[default_storage_quota_mb]': number | string;
   /**
-   * The default user storage quota to be used, if not otherwise specified.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The default user storage quota to be used, if not otherwise specified.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   'account[default_user_storage_quota_mb]': number | string;
   /**
-   * The default group storage quota to be used, if not otherwise specified.
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The default group storage quota to be used, if not otherwise specified.
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   'account[default_group_storage_quota_mb]': number | string;
 };
 
@@ -90,7 +110,11 @@ type Options = (
  *
  * Add a new sub-account to a given account.
  *
- * Nickname: create_new_sub_account
+ * nickname: create_new_sub_account
+ *
+ *
+ *
+ *
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<Account>(

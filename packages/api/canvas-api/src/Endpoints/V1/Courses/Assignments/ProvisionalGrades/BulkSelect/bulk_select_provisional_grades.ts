@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type bulk_select_provisional_gradesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
@@ -50,11 +54,14 @@ type Options = (
 /**
  * Bulk select provisional grades
  *
- * Choose which provisional grades will be received by associated students for
- * an assignment. The caller must be the final grader for the assignment or an
- * admin with :select_final_grade rights.
+ * Choose which provisional grades will be received by associated students for an assignment.
+The caller must be the final grader for the assignment or an admin with :select_final_grade rights.
  *
- * Nickname: bulk_select_provisional_grades
+ * nickname: bulk_select_provisional_grades
+ *
+ * 
+ *
+ * 
  */
 export async function bulk_select_provisional_grades(options: Options) {
   const response = await client().fetchAs<JSONValue>(

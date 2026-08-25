@@ -1,10 +1,25 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type QuizIPFilter = {
-  /** A unique name for the filter. */
+  /**
+   * A unique name for the filter.
+   *
+   *
+   */
   name: string;
-  /** Name of the Account (or Quiz) the IP filter is defined in. */
+  /**
+   * Name of the Account (or Quiz) the IP filter is defined in.
+   *
+   *
+   */
   account: string;
-  /** An IP address (or range mask) this filter embodies. */
+  /**
+   * An IP address (or range mask) this filter embodies.
+   *
+   *
+   */
   filter: string;
 };

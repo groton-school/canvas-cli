@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -45,12 +47,16 @@ type Options = (
  * Get course-level participation data
  *
  * Returns page view hits and participation numbers grouped by day through the
- * entire history of the course. Page views is returned as a hash, where the
- * hash keys are dates in the format "YYYY-MM-DD". The page_views result set
- * includes page views broken out by access category. Participations is returned
- * as an array of dates in the format "YYYY-MM-DD".
+entire history of the course. Page views is returned as a hash, where the
+hash keys are dates in the format "YYYY-MM-DD". The page_views result set
+includes page views broken out by access category. Participations is
+returned as an array of dates in the format "YYYY-MM-DD".
  *
- * Nickname: get_course_level_participation_data
+ * nickname: get_course_level_participation_data
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

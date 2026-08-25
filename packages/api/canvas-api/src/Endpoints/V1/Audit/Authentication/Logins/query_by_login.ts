@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type query_by_loginPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   login_id: string | number;
 };
@@ -13,16 +15,20 @@ export type query_by_loginPathParameters = {
 export type query_by_loginSearchParameters = Masquerade &
   Partial<{
     /**
-     * The beginning of the time range from which you want events. Events are
-     * stored for one year.
+     * The beginning of the time range from which you want events.
+Events are stored for one year.
      *
-     * Format: date-time
+     * format: date-time
+     *
+     * 
      */
     start_time: string;
     /**
      * The end of the time range from which you want events.
      *
-     * Format: date-time
+     * format: date-time
+     *
+     *
      */
     end_time: string;
   }>;
@@ -61,7 +67,11 @@ type Options = (
  *
  * List authentication events for a given login.
  *
- * Nickname: query_by_login
+ * nickname: query_by_login
+ *
+ *
+ *
+ *
  */
 export async function query_by_login(options: Options) {
   const response = await client().fetchAs<JSONValue>(

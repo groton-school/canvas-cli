@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -45,11 +47,14 @@ type Options = (
  * Get bulk user progress
  *
  * Returns progress information for all users enrolled in the given course.
+
+You must be a user who has permission to view all grades in the course (such as a teacher or administrator).
  *
- * You must be a user who has permission to view all grades in the course (such
- * as a teacher or administrator).
+ * nickname: get_bulk_user_progress
  *
- * Nickname: get_bulk_user_progress
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -13,22 +15,36 @@ export type createPathParameters = {
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** A list of associated term ids for the grading period set */
+  /**
+   * A list of associated term ids for the grading period set
+   *
+   *
+   *
+   *
+   */
   enrollment_term_ids: string[];
-  /** The title of the grading period set */
+  /**
+   * The title of the grading period set
+   *
+   *
+   *
+   *
+   */
   'grading_period_set[title]': string;
   /**
-   * A boolean to determine whether the grading periods in the set are
-   * weighted
+   * A boolean to determine whether the grading periods in the set are weighted
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   'grading_period_set[weighted]': boolean | string;
   /**
-   * A boolean to determine whether the totals for all grading periods in the
-   * set are displayed
+   * A boolean to determine whether the totals for all grading periods in the set are displayed
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   'grading_period_set[display_totals_for_all_grading_periods]':
     | boolean
@@ -81,7 +97,11 @@ type Options = (
  *
  * Create and return a new grading period set
  *
- * Nickname: create_grading_period_set
+ * nickname: create_grading_period_set
+ *
+ *
+ *
+ *
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<JSONValue>(

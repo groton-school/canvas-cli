@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { AiConversation } from '../../../../../Overrides.js';
 
 export type show_student_ai_conversationPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   conversation_id: string | number;
 };
@@ -57,10 +63,14 @@ type Options = (
 /**
  * Show student AI conversation
  *
- * Retrieve a specific student's AI conversation with full message history. Only
- * available to teachers and course managers.
+ * Retrieve a specific student's AI conversation with full message history.
+Only available to teachers and course managers.
  *
- * Nickname: show_student_ai_conversation
+ * nickname: show_student_ai_conversation
+ *
+ * 
+ *
+ * 
  */
 export async function show_student_ai_conversation(options: Options) {
   const response = await client().fetchAs<AiConversation>(

@@ -1,30 +1,42 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Rubric } from '../../../../Resources/Rubrics.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
   Partial<{
-    /** Related records to include in the response. */
+    /**
+     * Related records to include in the response.
+     *
+     *
+     *
+     *
+     */
     include: string[];
     /**
-     * Applicable only if assessments are being returned. If included, returns
-     * either all criteria data associated with the assessment, or just the
-     * comments. If not included, both data and comments are omitted.
+     * Applicable only if assessments are being returned. If included, returns either all criteria data associated with the assessment, or just the comments. If not included, both data and comments are omitted.
+     *
+     *
+     *
+     *
      */
     style: string;
   }>;
@@ -63,7 +75,11 @@ type Options = (
  *
  * Returns the rubric with the given id.
  *
- * Nickname: get_single_rubric_accounts
+ * nickname: get_single_rubric_accounts
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<Rubric>(

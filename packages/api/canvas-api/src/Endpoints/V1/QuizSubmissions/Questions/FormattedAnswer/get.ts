@@ -1,25 +1,35 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Numeric } from '../../../../../Overrides.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   quiz_submission_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
   Partial<{
-    /** No description */
+    /**
+     * no description
+     *
+     *
+     *
+     *
+     */
     answer: Numeric;
   }>;
 
@@ -56,9 +66,13 @@ type Options = (
  * Get a formatted student numerical answer.
  *
  * Matches the intended behavior of the UI when a numerical answer is entered
- * and returns the resulting formatted number
+and returns the resulting formatted number
  *
- * Nickname: get_formatted_student_numerical_answer
+ * nickname: get_formatted_student_numerical_answer
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

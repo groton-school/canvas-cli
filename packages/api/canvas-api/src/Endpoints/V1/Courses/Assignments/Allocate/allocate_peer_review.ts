@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { PeerReview } from '../../../../../Resources/PeerReviews.js';
 
 export type allocate_peer_reviewPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Allocates a submission for the current user to peer review
  *
- * Nickname: allocate_peer_review
+ * nickname: allocate_peer_review
+ *
+ *
+ *
+ *
  */
 export async function allocate_peer_review(options: Options) {
   const response = await client().fetchAs<PeerReview>(

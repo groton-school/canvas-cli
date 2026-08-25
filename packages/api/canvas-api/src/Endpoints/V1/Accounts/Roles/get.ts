@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Role } from '../../../../Resources/Roles.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
   /**
    * The id of the account containing the role
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -22,12 +26,20 @@ export type getSearchParameters = Masquerade &
     /**
      * The unique identifier for the role
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     role_id: number | string;
-    /** The name for the role */
+    /**
+     * The name for the role
+     *
+     *
+     *
+     *
+     */
     role: string;
   }>;
 
@@ -65,7 +77,11 @@ type Options = (
  *
  * Retrieve information about a single role
  *
- * Nickname: get_single_role
+ * nickname: get_single_role
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<Role>(

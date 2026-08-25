@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Section } from '../../../../Resources/Sections.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -15,21 +17,29 @@ export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
     /**
-     * - "students": Associations to include with the group. Note: this is only
-     *   available if you have permission to view users or grades in the course
-     * - "avatar_url": Include the avatar URLs for students returned.
-     * - "enrollments": If 'students' is also included, return the section
-     *   enrollment for each student
-     * - "total_students": Returns the total amount of active and invited students
-     *   for the course section
-     * - "passback_status": Include the grade passback status.
-     * - "permissions": Include whether section grants :manage_calendar permission
-     *   to the caller
+     * - &quot;students&quot;: Associations to include with the group. Note: this is only
+  available if you have permission to view users or grades in the course
+- &quot;avatar_url&quot;: Include the avatar URLs for students returned.
+- &quot;enrollments&quot;: If &#x27;students&#x27; is also included, return the section
+  enrollment for each student
+- &quot;total_students&quot;: Returns the total amount of active and invited students
+  for the course section
+- &quot;passback_status&quot;: Include the grade passback status.
+- &quot;permissions&quot;: Include whether section grants :manage_calendar permission
+  to the caller
+     *
+     * 
+     *
+     * 
      */
     include: string[];
     /**
-     * When included, searches course sections for the term. Returns only
-     * matching results. Term must be at least 2 characters.
+     * When included, searches course sections for the term. Returns only matching
+results. Term must be at least 2 characters.
+     *
+     * 
+     *
+     * 
      */
     search_term: string;
   }>;
@@ -68,7 +78,11 @@ type Options = (
  *
  * A paginated list of the list of sections for this course.
  *
- * Nickname: list_course_sections
+ * nickname: list_course_sections
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<Section[]>(

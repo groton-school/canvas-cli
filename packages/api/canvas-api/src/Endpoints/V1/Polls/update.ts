@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -13,9 +15,21 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** The title of the poll. */
+  /**
+   * The title of the poll.
+   *
+   *
+   *
+   *
+   */
   'polls[question]': string[];
-  /** A brief description or instructions for the poll. */
+  /**
+   * A brief description or instructions for the poll.
+   *
+   *
+   *
+   *
+   */
   'polls[description]': string[];
 };
 
@@ -65,7 +79,11 @@ type Options = (
  *
  * Update an existing poll belonging to the current user
  *
- * Nickname: update_single_poll
+ * nickname: update_single_poll
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(`/api/v1/polls/{id}`, {

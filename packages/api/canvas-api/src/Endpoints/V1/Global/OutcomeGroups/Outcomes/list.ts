@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { OutcomeLink } from '../../../../../Resources/OutcomeGroups.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -15,8 +17,12 @@ export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
     /**
-     * The detail level of the outcomes. Defaults to "abbrev". Specify "full"
-     * for more information.
+     * The detail level of the outcomes. Defaults to &quot;abbrev&quot;.
+Specify &quot;full&quot; for more information.
+     *
+     * 
+     *
+     * 
      */
     outcome_style: string;
   }>;
@@ -55,7 +61,11 @@ type Options = (
  *
  * A paginated list of the immediate OutcomeLink children of the outcome group.
  *
- * Nickname: list_linked_outcomes_global
+ * nickname: list_linked_outcomes_global
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<OutcomeLink[]>(

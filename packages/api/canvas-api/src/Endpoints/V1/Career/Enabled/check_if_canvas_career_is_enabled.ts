@@ -25,10 +25,14 @@ type Options =
 /**
  * Check if Canvas Career is enabled
  *
- * Returns whether the root account has Canvas Career (Horizon) enabled in at
- * least one subaccount.
+ * Returns whether the root account has Canvas Career (Horizon) enabled
+in at least one subaccount.
  *
- * Nickname: check_if_canvas_career_is_enabled
+ * nickname: check_if_canvas_career_is_enabled
+ *
+ * 
+ *
+ * 
  */
 export async function check_if_canvas_career_is_enabled(options: Options) {
   const response = await client().fetchAs<enabledboolean>(

@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type redirect_to_root_outcome_group_for_context_globalSearchParameters =
   Masquerade;
@@ -26,10 +26,14 @@ type Options =
 /**
  * Redirect to root outcome group for context
  *
- * Convenience redirect to find the root outcome group for a particular context.
- * Will redirect to the appropriate outcome group's URL.
+ * Convenience redirect to find the root outcome group for a particular
+context. Will redirect to the appropriate outcome group's URL.
  *
- * Nickname: redirect_to_root_outcome_group_for_context_global
+ * nickname: redirect_to_root_outcome_group_for_context_global
+ *
+ * 
+ *
+ * 
  */
 export async function redirect_to_root_outcome_group_for_context_global(
   options: Options

@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type count_of_all_visible_account_calendarsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -46,7 +48,11 @@ type Options = (
  *
  * Returns the number of visible account calendars.
  *
- * Nickname: count_of_all_visible_account_calendars
+ * nickname: count_of_all_visible_account_calendars
+ *
+ *
+ *
+ *
  */
 export async function count_of_all_visible_account_calendars(options: Options) {
   const response = await client().fetchAs<{ count: number }>(

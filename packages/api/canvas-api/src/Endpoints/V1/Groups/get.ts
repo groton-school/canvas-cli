@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Group } from '../../../Resources/Groups.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_id: string | number;
 };
@@ -14,10 +16,14 @@ export type getPathParameters = {
 export type getSearchParameters = Masquerade &
   Partial<{
     /**
-     * - "permissions": Include permissions the current user has for the group.
-     * - "tabs": Include the list of tabs configured for each group. See the
-     *   {api:TabsController#index List available tabs API} for more
-     *   information.
+     * - &quot;permissions&quot;: Include permissions the current user has
+  for the group.
+- &quot;tabs&quot;: Include the list of tabs configured for each group.  See the
+  {api:TabsController#index List available tabs API} for more information.
+     *
+     * 
+     *
+     * 
      */
     include: string[];
   }>;
@@ -54,10 +60,14 @@ type Options = (
 /**
  * Get a single group
  *
- * Returns the data for a single group, or a 401 if the caller doesn't have the
- * rights to see it.
+ * Returns the data for a single group, or a 401 if the caller doesn't have
+the rights to see it.
  *
- * Nickname: get_single_group
+ * nickname: get_single_group
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<Group>(`/api/v1/groups/{group_id}`, {

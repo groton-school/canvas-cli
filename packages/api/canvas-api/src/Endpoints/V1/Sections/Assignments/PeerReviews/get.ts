@@ -1,18 +1,22 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { PeerReview } from '../../../../../Resources/PeerReviews.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   section_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
@@ -20,7 +24,13 @@ export type getPathParameters = {
 export type getSearchParameters = Masquerade &
   Paginated &
   Partial<{
-    /** Associations to include with the peer review. */
+    /**
+     * Associations to include with the peer review.
+     *
+     *
+     *
+     *
+     */
     include: string[];
   }>;
 
@@ -58,7 +68,11 @@ type Options = (
  *
  * Get a list of all Peer Reviews for this assignment
  *
- * Nickname: get_all_peer_reviews_sections_peer_reviews
+ * nickname: get_all_peer_reviews_sections_peer_reviews
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<PeerReview[]>(

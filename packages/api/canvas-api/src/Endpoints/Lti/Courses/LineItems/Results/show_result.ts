@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Result } from '../../../../../Resources/LiveAssessments.js';
 
 export type show_resultPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   line_item_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -59,7 +65,11 @@ type Options = (
  *
  * Show existing Result of a line item.
  *
- * Nickname: show_result
+ * nickname: show_result
+ *
+ *
+ *
+ *
  */
 export async function show_result(options: Options) {
   const response = await client().fetchAs<Result>(

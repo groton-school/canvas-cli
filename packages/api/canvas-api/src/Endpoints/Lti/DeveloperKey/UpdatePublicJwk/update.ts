@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONObject } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { DeveloperKey } from '../../../../Resources/DeveloperKeys.js';
 
 export type updateSearchParameters = Masquerade;
@@ -8,7 +8,9 @@ export type updateFormParameters = Masquerade & {
   /**
    * The new public jwk that will be set to the tools current public jwk.
    *
-   * Json
+   * json
+   *
+   *
    */
   public_jwk: JSONObject;
 };
@@ -49,7 +51,11 @@ type Options =
  *
  * Rotate the public key in jwk format when using lti services
  *
- * Nickname: update_public_jwk
+ * nickname: update_public_jwk
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<DeveloperKey>(

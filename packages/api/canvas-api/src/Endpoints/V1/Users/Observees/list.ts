@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { User } from '../../../../Resources/Users.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
 };
@@ -14,7 +16,13 @@ export type listPathParameters = {
 export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
-    /** - "avatar_url": Optionally include avatar_url. */
+    /**
+     * - &quot;avatar_url&quot;: Optionally include avatar_url.
+     *
+     *
+     *
+     *
+     */
     include: string[];
   }>;
 
@@ -50,20 +58,23 @@ type Options = (
 /**
  * List linked observees
  *
- * A paginated list of users that the given user is observing. This endpoint
- * returns users linked to the observer at the account level (such that the
- * observer is automatically enrolled in observees' courses); it doesn't return
- * one-off observer enrollments from individual courses.
+ * A paginated list of users that the given user is observing. This endpoint returns
+users linked to the observer at the account level (such that the observer is automatically
+enrolled in observees' courses); it doesn't return one-off observer enrollments from
+individual courses.
+
+*Note:* all users are allowed to list their own observees. Administrators can list
+other users' observees.
+
+The returned observees will include an attribute "observation_link_root_account_ids", a list
+of ids for the root accounts the observer and observee are linked on. The observer will only be able to
+observe in courses associated with these root accounts.
  *
- * Note:* all users are allowed to list their own observees. Administrators can
- * list other users' observees.
+ * nickname: list_linked_observees
  *
- * The returned observees will include an attribute
- * "observation_link_root_account_ids", a list of ids for the root accounts the
- * observer and observee are linked on. The observer will only be able to
- * observe in courses associated with these root accounts.
+ * 
  *
- * Nickname: list_linked_observees
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<User[]>(

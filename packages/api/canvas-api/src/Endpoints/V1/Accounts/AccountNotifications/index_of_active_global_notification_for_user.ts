@@ -1,12 +1,14 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { AccountNotification } from '../../../../Resources/AccountNotifications.js';
 
 export type index_of_active_global_notification_for_userPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   account_id: string | number;
 };
@@ -18,21 +20,25 @@ export type index_of_active_global_notification_for_userSearchParameters =
       /**
        * Include past and dismissed global announcements.
        *
-       * Type: boolean
+       * type: boolean
+       *
+       *
        */
       include_past: boolean | string;
       /**
-       * Include all global announcements, regardless of user's role or
-       * availability date. Only available to account admins.
+       * Include all global announcements, regardless of user&#x27;s role or availability date. Only available to account admins.
        *
-       * Type: boolean
+       * type: boolean
+       *
+       *
        */
       include_all: boolean | string;
       /**
-       * Include a flag for each notification indicating whether it has been read
-       * by the user.
+       * Include a flag for each notification indicating whether it has been read by the user.
        *
-       * Type: boolean
+       * type: boolean
+       *
+       *
        */
       show_is_closed: boolean | string;
     }>;
@@ -69,13 +75,16 @@ type Options = (
 /**
  * Index of active global notification for the user
  *
- * Returns a list of all global notifications in the account for the current
- * user Any notifications that have been closed by the user will not be
- * returned, unless a include_past parameter is passed in as true. Admins can
- * request all global notifications for the account by passing in an include_all
- * parameter.
+ * Returns a list of all global notifications in the account for the current user
+Any notifications that have been closed by the user will not be returned, unless
+a include_past parameter is passed in as true. Admins can request all global
+notifications for the account by passing in an include_all parameter.
  *
- * Nickname: index_of_active_global_notification_for_user
+ * nickname: index_of_active_global_notification_for_user
+ *
+ * 
+ *
+ * 
  */
 export async function index_of_active_global_notification_for_user(
   options: Options

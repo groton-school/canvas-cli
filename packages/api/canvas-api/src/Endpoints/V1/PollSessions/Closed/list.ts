@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listSearchParameters = Masquerade;
 
@@ -27,7 +27,11 @@ type Options =
  *
  * A paginated list of all closed poll sessions available to the current user.
  *
- * Nickname: list_closed_poll_sessions
+ * nickname: list_closed_poll_sessions
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ObjectSuccessmessage } from '../../../../../Overrides.js';
 
 export type delete_ai_conversationPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   ai_experience_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -59,7 +65,11 @@ type Options = (
  *
  * Mark a conversation as completed/deleted
  *
- * Nickname: delete_ai_conversation
+ * nickname: delete_ai_conversation
+ *
+ *
+ *
+ *
  */
 export async function delete_ai_conversation(options: Options) {
   const response = await client().fetchAs<ObjectSuccessmessage>(

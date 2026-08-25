@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type find_or_create_summary_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
 };
@@ -19,7 +23,13 @@ export type find_or_create_summary_coursesPathParameters = {
 export type find_or_create_summary_coursesSearchParameters = Masquerade;
 
 export type find_or_create_summary_coursesFormParameters = Masquerade & {
-  /** Areas or topics for the summary to focus on. */
+  /**
+   * Areas or topics for the summary to focus on.
+   *
+   *
+   *
+   *
+   */
   userInput: string;
 };
 
@@ -67,10 +77,13 @@ type Options = (
 /**
  * Find or Create Summary
  *
- * Generates a summary for a discussion topic. Returns the summary text and
- * usage information.
+ * Generates a summary for a discussion topic. Returns the summary text and usage information.
  *
- * Nickname: find_or_create_summary_courses
+ * nickname: find_or_create_summary_courses
+ *
+ *
+ *
+ *
  */
 export async function find_or_create_summary_courses(options: Options) {
   const response = await client().fetchAs<JSONValue>(

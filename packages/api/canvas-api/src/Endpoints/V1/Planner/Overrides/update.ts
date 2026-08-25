@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { PlannerOverride } from '../../../../Resources/Planner.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -14,9 +16,21 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** Determines whether the planner item is marked as completed */
+  /**
+   * determines whether the planner item is marked as completed
+   *
+   *
+   *
+   *
+   */
   marked_complete: string;
-  /** Determines whether the planner item shows in the opportunities list */
+  /**
+   * determines whether the planner item shows in the opportunities list
+   *
+   *
+   *
+   *
+   */
   dismissed: string;
 };
 
@@ -66,7 +80,11 @@ type Options = (
  *
  * Update a planner override's visibilty for the current user
  *
- * Nickname: update_planner_override
+ * nickname: update_planner_override
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<PlannerOverride>(

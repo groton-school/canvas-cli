@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { BlackoutDate } from '../../../../Resources/BlackoutDates.js';
 
 export type delete_blackout_date_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Delete a blackout date for the given context.
  *
- * Nickname: delete_blackout_date_courses
+ * nickname: delete_blackout_date_courses
+ *
+ *
+ *
+ *
  */
 export async function delete_blackout_date_courses(options: Options) {
   const response = await client().fetchAs<BlackoutDate>(

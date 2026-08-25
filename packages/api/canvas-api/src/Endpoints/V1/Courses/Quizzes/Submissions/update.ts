@@ -1,24 +1,30 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Hash } from '../../../../../Overrides.js';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   quiz_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -27,24 +33,36 @@ export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
   /**
-   * The attempt number of the quiz submission that should be updated. This
-   * attempt MUST be already completed.
-   *
-   * Format: 'int64'
-   */
+     * The attempt number of the quiz submission that should be updated. This
+attempt MUST be already completed.
+     *
+     * 
+
+format: 'int64'
+     *
+     * 
+     */
   'quiz_submissions[attempt]': number | string[];
   /**
-   * Amount of positive or negative points to fudge the total score by.
-   *
-   * Format: 'float'
-   */
+     * Amount of positive or negative points to fudge the total score by.
+     *
+     * 
+
+format: 'float'
+     *
+     * 
+     */
   'quiz_submissions[fudge_points]': number | string[];
   /**
-   * A set of scores and comments for each question answered by the student.
-   * The keys are the question IDs, and the values are hashes of `score` and
-   * `comment` entries. See {Appendix: Manual Scoring} for more on this
-   * parameter.
-   */
+     * A set of scores and comments for each question answered by the student.
+The keys are the question IDs, and the values are hashes of &#x60;score&#x60; and
+&#x60;comment&#x60; entries. See {Appendix: Manual Scoring} for more on this
+parameter.
+     *
+     * 
+     *
+     * 
+     */
   'quiz_submissions[questions]': Hash[];
 };
 
@@ -93,17 +111,21 @@ type Options = (
  * Update student question scores and comments.
  *
  * Update the amount of points a student has scored for questions they've
- * answered, provide comments for the student about their answer(s), or simply
- * fudge the total score by a specific amount of points.
+answered, provide comments for the student about their answer(s), or simply
+fudge the total score by a specific amount of points.
+
+<b>Responses</b>
+
+* <b>200 OK</b> if the request was successful
+* <b>403 Forbidden</b> if you are not a teacher in this course
+* <b>400 Bad Request</b> if the attempt parameter is missing or invalid
+* <b>400 Bad Request</b> if the specified QS attempt is not yet complete
  *
- * <b>Responses</b>
+ * nickname: update_student_question_scores_and_comments
  *
- * <b>200 OK</b> if the request was successful <b>403 Forbidden</b> if you are
- * not a teacher in this course <b>400 Bad Request</b> if the attempt parameter
- * is missing or invalid <b>400 Bad Request</b> if the specified QS attempt is
- * not yet complete
+ * 
  *
- * Nickname: update_student_question_scores_and_comments
+ * 
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(

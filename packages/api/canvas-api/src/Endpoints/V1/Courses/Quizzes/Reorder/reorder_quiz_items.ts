@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type reorder_quiz_itemsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -20,12 +24,22 @@ export type reorder_quiz_itemsSearchParameters = Masquerade;
 
 export type reorder_quiz_itemsFormParameters = Masquerade & {
   /**
-   * The associated item's unique identifier
-   *
-   * Format: 'int64'
-   */
+     * The associated item&#x27;s unique identifier
+     *
+     * 
+
+format: 'int64'
+     *
+     * 
+     */
   'order[id]': number | string[];
-  /** The type of item is either 'question' or 'group' */
+  /**
+   * The type of item is either &#x27;question&#x27; or &#x27;group&#x27;
+   *
+   *
+   *
+   *
+   */
   'order[type]': string[];
 };
 
@@ -74,11 +88,14 @@ type Options = (
  * Reorder quiz items
  *
  * Change order of the quiz questions or groups within the quiz
+
+<b>204 No Content</b> response code is returned if the reorder was successful.
  *
- * <b>204 No Content</b> response code is returned if the reorder was
- * successful.
+ * nickname: reorder_quiz_items
  *
- * Nickname: reorder_quiz_items
+ * 
+ *
+ * 
  */
 export async function reorder_quiz_items(options: Options) {
   const response = await client().fetchAs<JSONValue>(

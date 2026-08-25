@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   outcome_id: string | number;
 };
@@ -20,23 +24,30 @@ export type getSearchParameters = Masquerade &
   Partial<{
     /**
      * If specified, only the users whose ids are given will be included in the
-     * results. It is an error to specify an id for a user who is not a student
-     * in the context.
+results. It is an error to specify an id for a user who is not a student in
+the context.
      *
-     * Format: 'int64'
+     * 
+
+format: 'int64'
+     *
+     * 
      */
     user_ids: number | string[];
     /**
      * If specified, only assignment alignments will be included in the results.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     only_assignment_alignments: boolean | string;
     /**
-     * If true, unpublished assignments will be included in the results.
-     * Defaults to false.
+     * If true, unpublished assignments will be included in the results. Defaults to false.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     show_unpublished_assignments: boolean | string;
   }>;
@@ -74,12 +85,16 @@ type Options = (
  * Get contributing scores
  *
  * Gets the contributing scores for a specific outcome and set of users.
- * Contributing scores are the individual assignment/quiz scores that
- * contributed to the outcome score for each user.
+Contributing scores are the individual assignment/quiz scores that
+contributed to the outcome score for each user.
+
+Returns all alignments for the outcome in the course context.
  *
- * Returns all alignments for the outcome in the course context.
+ * nickname: get_contributing_scores
  *
- * Nickname: get_contributing_scores
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

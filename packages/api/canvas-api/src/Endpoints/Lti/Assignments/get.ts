@@ -1,19 +1,27 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { LtiAssignment } from '../../../Resources/PlagiarismDetectionPlatformAssignments.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
   Partial<{
-    /** The id of the user. Can be a Canvas or LTI id for the user. */
+    /**
+     * The id of the user. Can be a Canvas or LTI id for the user.
+     *
+     *
+     *
+     *
+     */
     user_id: string;
   }>;
 
@@ -49,10 +57,14 @@ type Options = (
 /**
  * Get a single assignment (lti)
  *
- * Get a single Canvas assignment by Canvas id or LTI id. Tool providers may
- * only access assignments that are associated with their tool.
+ * Get a single Canvas assignment by Canvas id or LTI id. Tool providers may only access
+assignments that are associated with their tool.
  *
- * Nickname: get_single_assignment_lti
+ * nickname: get_single_assignment_lti
+ *
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<LtiAssignment>(

@@ -1,23 +1,29 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type mark_module_item_as_done_not_donePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   module_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -56,10 +62,14 @@ type Options = (
 /**
  * Mark module item as done/not done
  *
- * Mark a module item as done/not done. Use HTTP method PUT to mark as done, and
- * DELETE to mark as not done.
+ * Mark a module item as done/not done. Use HTTP method PUT to mark as done,
+and DELETE to mark as not done.
  *
- * Nickname: mark_module_item_as_done_not_done
+ * nickname: mark_module_item_as_done_not_done
+ *
+ * 
+ *
+ * 
  */
 export async function mark_module_item_as_done_not_done(options: Options) {
   const response = await client().fetchAs<JSONValue>(

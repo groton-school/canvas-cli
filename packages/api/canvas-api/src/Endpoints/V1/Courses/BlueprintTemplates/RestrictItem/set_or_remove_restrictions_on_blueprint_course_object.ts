@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { BlueprintRestriction } from '../../../../../Resources/BlueprintCourses.js';
 
 export type set_or_remove_restrictions_on_blueprint_course_objectPathParameters =
@@ -7,13 +7,17 @@ export type set_or_remove_restrictions_on_blueprint_course_objectPathParameters 
     /**
      * ID
      *
-     * Type: string
+     * type: string
+     *
+     *
      */
     course_id: string | number;
     /**
      * ID
      *
-     * Type: string
+     * type: string
+     *
+     *
      */
     template_id: string | number;
   };
@@ -24,29 +28,39 @@ export type set_or_remove_restrictions_on_blueprint_course_objectSearchParameter
 export type set_or_remove_restrictions_on_blueprint_course_objectFormParameters =
   Masquerade & {
     /**
-     * [String,
-     * "assignment"|"attachment"|"discussion_topic"|"external_tool"|"lti-quiz"|"quiz"|"wiki_page"]
-     * The type of the object.
+     * [String, &quot;assignment&quot;|&quot;attachment&quot;|&quot;discussion_topic&quot;|&quot;external_tool&quot;|&quot;lti-quiz&quot;|&quot;quiz&quot;|&quot;wiki_page&quot;]
+The type of the object.
+     *
+     * 
+     *
+     * 
      */
     content_type: string;
     /**
      * The ID of the object.
      *
-     * Type: integer
+     * type: integer
+
+format: 'int64'
      *
-     * Format: 'int64'
+     * 
      */
     content_id: number | string;
     /**
      * Whether to apply restrictions.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     restricted: boolean | string;
     /**
-     * (Optional) If the object is restricted, this specifies a set of
-     * restrictions. If not specified, the course-level restrictions will be
-     * used. See {api:CoursesController#update Course API update documentation}
+     * (Optional) If the object is restricted, this specifies a set of restrictions. If not specified,
+the course-level restrictions will be used. See {api:CoursesController#update Course API update documentation}
+     *
+     * 
+     *
+     * 
      */
     restrictions: BlueprintRestriction;
   };
@@ -95,10 +109,13 @@ type Options = (
 /**
  * Set or remove restrictions on a blueprint course object
  *
- * If a blueprint course object is restricted, editing will be limited for
- * copies in associated courses.
+ * If a blueprint course object is restricted, editing will be limited for copies in associated courses.
  *
- * Nickname: set_or_remove_restrictions_on_blueprint_course_object
+ * nickname: set_or_remove_restrictions_on_blueprint_course_object
+ *
+ *
+ *
+ *
  */
 export async function set_or_remove_restrictions_on_blueprint_course_object(
   options: Options

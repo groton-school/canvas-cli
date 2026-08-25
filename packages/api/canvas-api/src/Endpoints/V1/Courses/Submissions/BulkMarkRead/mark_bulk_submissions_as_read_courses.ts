@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type mark_bulk_submissions_as_read_coursesPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -13,7 +15,13 @@ export type mark_bulk_submissions_as_read_coursesPathParameters = {
 export type mark_bulk_submissions_as_read_coursesSearchParameters = Masquerade;
 
 export type mark_bulk_submissions_as_read_coursesFormParameters = Masquerade & {
-  /** No description */
+  /**
+   * no description
+   *
+   *
+   *
+   *
+   */
   submissionIds: string[];
 };
 
@@ -61,12 +69,15 @@ type Options = (
 /**
  * Mark bulk submissions as read
  *
- * Accepts a string array of submission ids. Loops through and marks each
- * submission as read
+ * Accepts a string array of submission ids. Loops through and marks each submission as read
+
+On success, the response will be 204 No Content with an empty body.
  *
- * On success, the response will be 204 No Content with an empty body.
+ * nickname: mark_bulk_submissions_as_read_courses
  *
- * Nickname: mark_bulk_submissions_as_read_courses
+ * 
+ *
+ * 
  */
 export async function mark_bulk_submissions_as_read_courses(options: Options) {
   const response = await client().fetchAs<JSONValue>(

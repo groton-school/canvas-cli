@@ -1,5 +1,5 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { QuizUserConversation } from '../../../../../../Overrides.js';
 
 export type send_message_to_unsubmitted_or_submitted_users_for_quizPathParameters =
@@ -7,13 +7,17 @@ export type send_message_to_unsubmitted_or_submitted_users_for_quizPathParameter
     /**
      * ID
      *
-     * Type: string
+     * type: string
+     *
+     *
      */
     course_id: string | number;
     /**
      * ID
      *
-     * Type: string
+     * type: string
+     *
+     *
      */
     id: string | number;
   };
@@ -23,7 +27,13 @@ export type send_message_to_unsubmitted_or_submitted_users_for_quizSearchParamet
 
 export type send_message_to_unsubmitted_or_submitted_users_for_quizFormParameters =
   Masquerade & {
-    /** - Body and recipients to send the message to. */
+    /**
+     * - Body and recipients to send the message to.
+     *
+     *
+     *
+     *
+     */
     conversations: QuizUserConversation;
   };
 
@@ -71,14 +81,29 @@ type Options = (
 /**
  * Send a message to unsubmitted or submitted users for the quiz
  *
- * { "body": { "type": "string", "description": "message body of the
- * conversation to be created", "example": "Please take the quiz." },
- * "recipients": { "type": "string", "description": "Who to send the message to.
- * May be either 'submitted' or 'unsubmitted'", "example": "submitted" },
- * "subject": { "type": "string", "description": "Subject of the new
- * Conversation created", "example": "ATTN: Quiz 101 Students" } }
+ * {
+  "body": {
+    "type": "string",
+    "description": "message body of the conversation to be created",
+    "example": "Please take the quiz."
+  },
+  "recipients": {
+    "type": "string",
+    "description": "Who to send the message to. May be either 'submitted' or 'unsubmitted'",
+    "example": "submitted"
+  },
+  "subject": {
+    "type": "string",
+    "description": "Subject of the new Conversation created",
+    "example": "ATTN: Quiz 101 Students"
+  }
+}
  *
- * Nickname: send_message_to_unsubmitted_or_submitted_users_for_quiz
+ * nickname: send_message_to_unsubmitted_or_submitted_users_for_quiz
+ *
+ * 
+ *
+ * 
  */
 export async function send_message_to_unsubmitted_or_submitted_users_for_quiz(
   options: Options

@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Progress } from '../../../../Resources/CoursePace.js';
 
 export type cancel_progressPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -45,12 +47,16 @@ type Options = (
 /**
  * Cancel progress
  *
- * Cancel an asynchronous job associated with a Progress object If you include
- * "message" in the POSTed data, it will be set on the Progress and returned.
- * This is handy to distinguish between cancel and fail for a workflow_state of
- * "failed".
+ * Cancel an asynchronous job associated with a Progress object
+If you include "message" in the POSTed data, it will be set on
+the Progress and returned. This is handy to distinguish between
+cancel and fail for a workflow_state of "failed".
  *
- * Nickname: cancel_progress
+ * nickname: cancel_progress
+ *
+ * 
+ *
+ * 
  */
 export async function cancel_progress(options: Options) {
   const response = await client().fetchAs<Progress>(

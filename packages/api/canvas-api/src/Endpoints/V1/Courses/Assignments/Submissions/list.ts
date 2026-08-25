@@ -1,18 +1,22 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { Submission } from '../../../../../Resources/Submissions.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
@@ -21,14 +25,19 @@ export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
     /**
-     * Associations to include with the group. "group" will add group_id and
-     * group_name.
+     * Associations to include with the group.  &quot;group&quot; will add group_id and group_name.
+     *
+     *
+     *
+     *
      */
     include: string[];
     /**
      * If this argument is true, the response will be grouped by student groups.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     grouped: boolean | string;
   }>;
@@ -67,7 +76,11 @@ type Options = (
  *
  * A paginated list of all existing submissions for an assignment.
  *
- * Nickname: list_assignment_submissions_courses
+ * nickname: list_assignment_submissions_courses
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<Submission[]>(

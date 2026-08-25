@@ -1,26 +1,41 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { MediaObject } from '../../../Resources/MediaObjects.js';
 
 export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
     /**
-     * Field to sort on. Default is "title"
+     * Field to sort on. Default is &quot;title&quot;
+
+title:: sorts on user_entered_title if available, title if not.
+
+created_at:: sorts on the object&#x27;s creation time.
      *
-     * Title:: sorts on user_entered_title if available, title if not.
+     * 
      *
-     * Created_at:: sorts on the object's creation time.
+     * 
      */
     sort: string;
-    /** Sort direction. Default is "asc" */
+    /**
+     * Sort direction. Default is &quot;asc&quot;
+     *
+     *
+     *
+     *
+     */
     order: string;
     /**
-     * Array of data to exclude. By excluding "sources" and "tracks", the api
-     * will not need to query kaltura, which greatly speeds up its response.
+     * Array of data to exclude. By excluding &quot;sources&quot; and &quot;tracks&quot;,
+the api will not need to query kaltura, which greatly
+speeds up its response.
+
+sources:: Do not query kaltura for media_sources
+tracks:: Do not query kaltura for media_tracks
      *
-     * Sources:: Do not query kaltura for media_sources tracks:: Do not query
-     * kaltura for media_tracks
+     * 
+     *
+     * 
      */
     exclude: string[];
   }>;
@@ -47,10 +62,15 @@ type Options =
 /**
  * List Media Objects
  *
- * Returns media objects created by the user making the request. When using the
- * second version, returns media objects associated with the given course.
+ * Returns media objects created by the user making the request. When
+using the second version, returns media objects associated with
+the given course.
  *
- * Nickname: list_media_objects_media_objects
+ * nickname: list_media_objects_media_objects
+ *
+ * 
+ *
+ * 
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<MediaObject[]>(

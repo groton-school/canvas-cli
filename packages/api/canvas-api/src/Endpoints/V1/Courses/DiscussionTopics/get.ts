@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   topic_id: string | number;
 };
@@ -19,16 +23,21 @@ export type getPathParameters = {
 export type getSearchParameters = Masquerade &
   Partial<{
     /**
-     * If "all_dates" is passed, all dates associated with graded discussions'
-     * assignments will be included. if "sections" is passed, includes the
-     * course sections that are associated with the topic, if the topic is
-     * specific to certain sections of the course. If "sections_user_count" is
-     * passed, then: (a) If sections were asked for _and_ the topic is specific
-     * to certain course sections, includes the number of users in each section.
-     * (as part of the section json asked for above) (b) Else, includes at the
-     * root level the total number of users in the topic's context (group or
-     * course) that the topic applies to. If "overrides" is passed, the
-     * overrides for the assignment will be included
+     * If &quot;all_dates&quot; is passed, all dates associated with graded discussions&#x27;
+assignments will be included.
+if &quot;sections&quot; is passed, includes the course sections that are associated
+with the topic, if the topic is specific to certain sections of the course.
+If &quot;sections_user_count&quot; is passed, then:
+  (a) If sections were asked for *and* the topic is specific to certain
+      course sections, includes the number of users in each
+      section. (as part of the section json asked for above)
+  (b) Else, includes at the root level the total number of users in the
+      topic&#x27;s context (group or course) that the topic applies to.
+If &quot;overrides&quot; is passed, the overrides for the assignment will be included
+     *
+     * 
+     *
+     * 
      */
     include: string[];
   }>;
@@ -65,10 +74,13 @@ type Options = (
 /**
  * Get a single topic
  *
- * Returns data on an individual discussion topic. See the List action for the
- * response formatting.
+ * Returns data on an individual discussion topic. See the List action for the response formatting.
  *
- * Nickname: get_single_topic_courses
+ * nickname: get_single_topic_courses
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

@@ -1,18 +1,26 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   quiz_submission_id: string | number;
 };
 
 export type getSearchParameters = Masquerade &
   Partial<{
-    /** Associations to include with the quiz submission question. */
+    /**
+     * Associations to include with the quiz submission question.
+     *
+     *
+     *
+     *
+     */
     include: string[];
   }>;
 
@@ -49,10 +57,14 @@ type Options = (
  * Get all quiz submission questions.
  *
  * Get a list of all the question records for this quiz submission.
+
+<b>200 OK</b> response code is returned if the request was successful.
  *
- * <b>200 OK</b> response code is returned if the request was successful.
+ * nickname: get_all_quiz_submission_questions
  *
- * Nickname: get_all_quiz_submission_questions
+ * 
+ *
+ * 
  */
 export async function get(options: Options) {
   const response = await client().fetchAs<JSONValue>(

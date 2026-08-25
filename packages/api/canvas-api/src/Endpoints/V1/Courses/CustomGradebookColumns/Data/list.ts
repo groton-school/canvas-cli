@@ -1,18 +1,22 @@
-import { client, Masquerade, Paginated } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade, Paginated } from '#client';
 import { ColumnDatum } from '../../../../../Resources/CustomGradebookColumns.js';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -21,10 +25,13 @@ export type listSearchParameters = Masquerade &
   Paginated &
   Partial<{
     /**
-     * If true, hidden columns will be included in the result. If false or
-     * absent, only visible columns will be returned.
+     * If true, hidden columns will be included in the
+result. If false or absent, only visible columns
+will be returned.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     include_hidden: boolean | string;
   }>;
@@ -63,7 +70,11 @@ type Options = (
  *
  * This does not list entries for students without associated data.
  *
- * Nickname: list_entries_for_column
+ * nickname: list_entries_for_column
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<ColumnDatum[]>(

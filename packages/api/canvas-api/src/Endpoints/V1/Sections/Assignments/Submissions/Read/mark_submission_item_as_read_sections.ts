@@ -1,26 +1,38 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type mark_submission_item_as_read_sectionsPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   section_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
-  /** ID */
+  /**
+   * ID
+   *
+   *
+   *
+   *
+   */
   item: string;
 };
 
@@ -59,12 +71,16 @@ type Options = (
  * Mark submission item as read
  *
  * No request fields are necessary.
+
+A submission item can be "grade", "comment" or "rubric"
+
+On success, the response will be 204 No Content with an empty body.
  *
- * A submission item can be "grade", "comment" or "rubric"
+ * nickname: mark_submission_item_as_read_sections
  *
- * On success, the response will be 204 No Content with an empty body.
+ * 
  *
- * Nickname: mark_submission_item_as_read_sections
+ * 
  */
 export async function mark_submission_item_as_read_sections(options: Options) {
   const response = await client().fetchAs<JSONValue>(

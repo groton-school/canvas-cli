@@ -1,15 +1,17 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { CoursePace } from '../../../../Resources/CoursePace.js';
 
 export type createPathParameters = {
   /**
-   * The id of the course
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * The id of the course
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   course_id: number | string;
 };
 
@@ -19,46 +21,93 @@ export type createFormParameters = Masquerade & {
   /**
    * End date of the course pace
    *
-   * Format: date-time
+   * format: date-time
+   *
+   *
    */
   end_date: string;
-  /** End date context (course, section, hupothetical) */
+  /**
+   * End date context (course, section, hupothetical)
+   *
+   *
+   *
+   *
+   */
   end_date_context: string;
   /**
    * Start date of the course pace
    *
-   * Format: date-time
+   * format: date-time
+   *
+   *
    */
   start_date: string;
-  /** Start date context (course, section, hupothetical) */
+  /**
+   * Start date context (course, section, hupothetical)
+   *
+   *
+   *
+   *
+   */
   start_date_context: string;
   /**
    * Course pace dates excludes weekends if true
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   exclude_weekends: boolean | string;
-  /** [Array<String>] Course pace dates excludes weekends if true */
+  /**
+     * [Array&lt;String&gt;]
+Course pace dates excludes weekends if true
+     *
+     * 
+     *
+     * 
+     */
   selected_days_to_skip: string;
   /**
    * Course pace uess hard end dates if true
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   hard_end_dates: boolean | string;
-  /** The state of the course pace */
+  /**
+   * The state of the course pace
+   *
+   *
+   *
+   *
+   */
   workflow_state: string;
-  /** Module Items attributes */
+  /**
+   * Module Items attributes
+   *
+   *
+   *
+   *
+   */
   course_pace_module_item_attributes: string[];
   /**
-   * Pace Context ID
-   *
-   * Type: integer
-   *
-   * Format: 'int64'
-   */
+     * Pace Context ID
+     *
+     * type: integer
+
+format: 'int64'
+     *
+     * 
+     */
   context_id: number | string;
-  /** Pace Context Type (Course, Section, User) */
+  /**
+   * Pace Context Type (Course, Section, User)
+   *
+   *
+   *
+   *
+   */
   context_type: string;
 };
 
@@ -108,7 +157,11 @@ type Options = (
  *
  * Creates a new course pace with specified parameters.
  *
- * Nickname: create_course_pace
+ * nickname: create_course_pace
+ *
+ *
+ *
+ *
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<CoursePace>(

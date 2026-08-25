@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { LtiResourceLink } from '../../../../Resources/LtiResourceLinks.js';
 
 export type show_lti_resource_linkPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -22,7 +26,9 @@ export type show_lti_resource_linkSearchParameters = Masquerade &
     /**
      * Include deleted resource links in search. Default is false.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     include_deleted: boolean | string;
   }>;
@@ -59,13 +65,17 @@ type Options = (
 /**
  * Show an LTI Resource Link
  *
- * Return details about the specified resource link. The ID can be in the
- * standard Canvas format ("1"), or in these special formats:
+ * Return details about the specified resource link. The ID can be in the standard
+Canvas format ("1"), or in these special formats:
+
+- resource_link_uuid:<uuid> - Find the resource link by its resource_link_uuid
+- lookup_uuid:<uuid> - Find the resource link by its lookup_uuid
  *
- * - Resource_link_uuid:<uuid> - Find the resource link by its resource_link_uuid
- * - Lookup_uuid:<uuid> - Find the resource link by its lookup_uuid
+ * nickname: show_lti_resource_link
  *
- * Nickname: show_lti_resource_link
+ * 
+ *
+ * 
  */
 export async function show_lti_resource_link(options: Options) {
   const response = await client().fetchAs<LtiResourceLink>(

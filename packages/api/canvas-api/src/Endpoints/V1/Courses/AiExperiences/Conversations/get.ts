@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ObjectHashwithidandmessagesarrayoremptyobjectifnoactiveconversation } from '../../../../../Overrides.js';
 
 export type getPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   ai_experience_id: string | number;
 };
@@ -53,7 +57,11 @@ type Options = (
  *
  * Get the active conversation for the current user and AI experience
  *
- * Nickname: get_active_conversation
+ * nickname: get_active_conversation
+ *
+ *
+ *
+ *
  */
 export async function get(options: Options) {
   const response =

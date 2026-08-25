@@ -1,12 +1,14 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { ExternalFeed } from '../../../../Resources/AnnouncementExternalFeeds.js';
 
 export type createPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
 };
@@ -14,16 +16,29 @@ export type createPathParameters = {
 export type createSearchParameters = Masquerade;
 
 export type createFormParameters = Masquerade & {
-  /** The url to the external rss or atom feed */
+  /**
+   * The url to the external rss or atom feed
+   *
+   *
+   *
+   *
+   */
   url: string;
   /**
-   * If given, only feed entries that contain this string in their title will
-   * be imported
+   * If given, only feed entries that contain this string in their title will be imported
    *
-   * Type: boolean
+   * type: boolean
+   *
+   *
    */
   header_match: boolean | string;
-  /** Defaults to "full" */
+  /**
+   * Defaults to &quot;full&quot;
+   *
+   *
+   *
+   *
+   */
   verbosity: string;
 };
 
@@ -73,7 +88,11 @@ type Options = (
  *
  * Create a new external feed for the course or group.
  *
- * Nickname: create_external_feed_courses
+ * nickname: create_external_feed_courses
+ *
+ *
+ *
+ *
  */
 export async function create(options: Options) {
   const response = await client().fetchAs<ExternalFeed>(

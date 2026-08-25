@@ -1,66 +1,87 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type Token = {
   /**
    * The internal database ID of the token.
    *
-   * Type: integer
+   * type: integer
    */
   id: number | string;
   /**
    * The time the token was created.
    *
-   * Format: 'date-time'
+   * 
+
+format: 'date-time'
    */
   created_at: string;
   /**
-   * The time the token will permanently expire, or null if it does not
-   * permanently expire.
+   * The time the token will permanently expire, or null if it does not permanently expire.
+   *
+   *
    */
   expires_at: string | null;
   /**
-   * The current state of the token. One of 'active', 'pending', 'disabled', or
-   * 'deleted'.
+   * The current state of the token. One of 'active', 'pending', 'disabled', or 'deleted'.
+   *
+   *
    */
   workflow_state: string;
   /**
-   * Whether the token should be remembered across sessions. Only applicable for
-   * OAuth tokens.
+   * Whether the token should be remembered across sessions. Only applicable for OAuth tokens.
    *
-   * Type: boolean
+   * type: boolean
    */
   remember_access: boolean | string;
   /**
-   * The scopes associated with the token. If empty, there are no scope
-   * limitations.
+   * The scopes associated with the token. If empty, there are no scope limitations.
+   *
+   *
    */
   scopes: string[];
   /**
-   * If the token was created while masquerading, this is the ID of the real
-   * user. Otherwise, null.
+   * If the token was created while masquerading, this is the ID of the real user. Otherwise, null.
+   *
+   *
    */
   real_user_id: number | string | null;
-  /** The actual access token. Only included when the token is first created. */
+  /**
+   * The actual access token. Only included when the token is first created.
+   *
+   *
+   */
   token: string;
-  /** A short, unique string that can be used to look up the token. */
+  /**
+   * A short, unique string that can be used to look up the token.
+   *
+   *
+   */
   token_hint: string;
   /**
    * The ID of the user the token belongs to.
    *
-   * Type: integer
+   * type: integer
    */
   user_id: number | string;
-  /** The purpose of the token. */
+  /**
+   * The purpose of the token.
+   *
+   *
+   */
   purpose: string;
   /**
-   * If the token was created by an OAuth application, this is the name of that
-   * application. Otherwise, null.
+   * If the token was created by an OAuth application, this is the name of that application. Otherwise, null.
+   *
+   *
    */
   app_name: string | null;
   /**
    * Whether the current user can manually regenerate this token.
    *
-   * Type: boolean
+   * type: boolean
    */
   can_manually_regenerate: boolean | string;
 };

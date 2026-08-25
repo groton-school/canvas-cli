@@ -1,28 +1,43 @@
 import { JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type ProficiencyRating = {
-  /** The description of the rating */
+  /**
+   * The description of the rating
+   *
+   *
+   */
   description: string;
   /**
    * A non-negative number of points for the rating
    *
-   * Type: number
+   * type: number
    */
   points: number | string;
   /**
    * Indicates the rating where mastery is first achieved
    *
-   * Type: boolean
+   * type: boolean
    */
   mastery: boolean | string;
-  /** The hex color code of the rating */
+  /**
+   * The hex color code of the rating
+   *
+   *
+   */
   color: string;
 };
 
+/**
+ *
+ */
 export type Proficiency = {
   /**
-   * An array of proficiency ratings. See the ProficiencyRating specification
-   * above.
+   * An array of proficiency ratings. See the ProficiencyRating specification above.
+   *
+   *
    */
   ratings: JSONValue;
 };

@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   id: string | number;
 };
@@ -13,57 +15,73 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade &
   Partial<{
     /**
-     * If true, require user to manually mark discussion posts as read (don't
-     * auto-mark as read).
+     * If true, require user to manually mark discussion posts as read (don&#x27;t
+auto-mark as read).
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     manual_mark_as_read: boolean | string;
     /**
      * If true, hide the badge for new release notes.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     release_notes_badge_disabled: boolean | string;
     /**
-     * If true, the user's page loads with the global navigation collapsed
+     * If true, the user&#x27;s page loads with the global navigation collapsed
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     collapse_global_nav: boolean | string;
     /**
-     * If true, the user's course pages will load with the course navigation
-     * collapsed.
+     * If true, the user&#x27;s course pages will load with the course navigation
+collapsed.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     collapse_course_nav: boolean | string;
     /**
-     * If true, images on course cards will be presented without being tinted to
-     * match the course color.
+     * If true, images on course cards will be presented without being tinted
+to match the course color.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     hide_dashcard_color_overlays: boolean | string;
     /**
      * If true, suggestions within the comment library will be shown.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     *
      */
     comment_library_suggestions_enabled: boolean | string;
     /**
-     * If true, will display the user's preferred class Canvas dashboard view
-     * instead of the canvas for elementary view.
+     * If true, will display the user&#x27;s preferred class Canvas dashboard
+view instead of the canvas for elementary view.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     elementary_dashboard_disabled: boolean | string;
     /**
-     * If true, enables the widget dashboard for the user. Only applies when the
-     * widget_dashboard feature is enabled at the account level. Defaults to
-     * true when the feature becomes available.
+     * If true, enables the widget dashboard for the user. Only applies
+when the widget_dashboard feature is enabled at the account level.
+Defaults to true when the feature becomes available.
      *
-     * Type: boolean
+     * type: boolean
+     *
+     * 
      */
     widget_dashboard_user_preference: boolean | string;
   }>;
@@ -102,7 +120,11 @@ type Options = (
  *
  * Update an existing user's settings.
  *
- * Nickname: update_user_settings
+ * nickname: update_user_settings
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(

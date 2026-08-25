@@ -1,18 +1,22 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 import { Assignment } from '../../../../../Resources/Assignments.js';
 
 export type duplicate_assignmentPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   course_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   assignment_id: string | number;
 };
@@ -21,12 +25,17 @@ export type duplicate_assignmentSearchParameters = Masquerade;
 
 export type duplicate_assignmentFormParameters = Masquerade & {
   /**
-   * Optional information: When the root account has the feature
-   * `newquizzes_on_quiz_page` enabled and this argument is set to "Quiz" the
-   * response will be serialized into a quiz
-   * format({file:doc/api/quizzes.html#Quiz}); When this argument isn't
-   * specified the response will be serialized into an assignment format;
-   */
+     * Optional information:
+When the root account has the feature &#x60;newquizzes_on_quiz_page&#x60; enabled
+and this argument is set to &quot;Quiz&quot; the response will be serialized into a
+quiz format({file:doc/api/quizzes.html#Quiz});
+When this argument isn&#x27;t specified the response will be serialized into an
+assignment format;
+     *
+     * 
+     *
+     * 
+     */
   result_type: string;
 };
 
@@ -76,7 +85,11 @@ type Options = (
  *
  * Duplicate an assignment and return a json based on result_type argument.
  *
- * Nickname: duplicate_assignment
+ * nickname: duplicate_assignment
+ *
+ *
+ *
+ *
  */
 export async function duplicate_assignment(options: Options) {
   const response = await client().fetchAs<Assignment>(

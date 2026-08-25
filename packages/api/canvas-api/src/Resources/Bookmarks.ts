@@ -1,12 +1,37 @@
 import { JSONObject, JSONValue } from '@battis/typescript-tricks';
 
+/**
+ *
+ */
 export type Bookmark = {
-  /** Type: integer */
+  /**
+   *
+   *
+   * type: integer
+   */
   id: number | string;
+  /**
+   *
+   *
+   *
+   */
   name: string;
+  /**
+   *
+   *
+   *
+   */
   url: string;
-  /** Type: integer */
+  /**
+   *
+   *
+   * type: integer
+   */
   position: number | string;
-  /** Object */
+  /**
+   *
+   *
+   * object
+   */
   data: JSONObject;
 };

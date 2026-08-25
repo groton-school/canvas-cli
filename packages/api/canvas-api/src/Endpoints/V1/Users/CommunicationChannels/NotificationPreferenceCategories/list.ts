@@ -1,17 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type listPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   user_id: string | number;
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   communication_channel_id: string | number;
 };
@@ -50,10 +54,13 @@ type Options = (
 /**
  * List of preference categories
  *
- * Fetch all notification preference categories for the given communication
- * channel
+ * Fetch all notification preference categories for the given communication channel
  *
- * Nickname: list_of_preference_categories
+ * nickname: list_of_preference_categories
+ *
+ *
+ *
+ *
  */
 export async function list(options: Options) {
   const response = await client().fetchAs<JSONValue>(

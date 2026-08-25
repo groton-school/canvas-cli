@@ -1,11 +1,13 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type delete_group_categoryPathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   group_category_id: string | number;
 };
@@ -44,10 +46,14 @@ type Options = (
 /**
  * Delete a Group Category
  *
- * Deletes a group category and all groups under it. Protected group categories
- * can not be deleted, i.e. "communities" and "student_organized".
+ * Deletes a group category and all groups under it. Protected group
+categories can not be deleted, i.e. "communities" and "student_organized".
  *
- * Nickname: delete_group_category
+ * nickname: delete_group_category
+ *
+ * 
+ *
+ * 
  */
 export async function delete_group_category(options: Options) {
   const response = await client().fetchAs<JSONValue>(

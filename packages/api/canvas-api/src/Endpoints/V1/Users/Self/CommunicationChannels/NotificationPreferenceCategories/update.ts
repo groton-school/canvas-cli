@@ -1,16 +1,21 @@
-import { client, Masquerade } from '#client';
 import { JSONValue } from '@battis/typescript-tricks';
+import { client, Masquerade } from '#client';
 
 export type updatePathParameters = {
   /**
    * ID
    *
-   * Type: string
+   * type: string
+   *
+   *
    */
   communication_channel_id: string | number;
   /**
-   * The name of the category. Must be parameterized (e.g. The category
-   * "Course Content" should be "course_content")
+   * The name of the category. Must be parameterized (e.g. The category &quot;Course Content&quot; should be &quot;course_content&quot;)
+   *
+   *
+   *
+   *
    */
   category: string;
 };
@@ -18,7 +23,13 @@ export type updatePathParameters = {
 export type updateSearchParameters = Masquerade;
 
 export type updateFormParameters = Masquerade & {
-  /** The desired frequency for each notification in the category */
+  /**
+   * The desired frequency for each notification in the category
+   *
+   *
+   *
+   *
+   */
   'notification_preferences[frequency]': string;
 };
 
@@ -66,10 +77,13 @@ type Options = (
 /**
  * Update preferences by category
  *
- * Change the preferences for multiple notifications based on the category for a
- * single communication channel
+ * Change the preferences for multiple notifications based on the category for a single communication channel
  *
- * Nickname: update_preferences_by_category
+ * nickname: update_preferences_by_category
+ *
+ *
+ *
+ *
  */
 export async function update(options: Options) {
   const response = await client().fetchAs<JSONValue>(
