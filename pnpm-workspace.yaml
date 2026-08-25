@@ -24,6 +24,7 @@ allowBuilds:
   jpegtran-bin: true
   nx: true
   optipng-bin: true
+  puppeteer: true
   sharp: true
 packages:
   - packages/*
