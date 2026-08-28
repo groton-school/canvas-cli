@@ -124,7 +124,7 @@ export function init({
 
 export async function run() {
   const configs: LinkOptions[] = [];
-  if (config.id) {
+  if (config.course_id) {
     configs.push(config);
   }
   if (config.pathToCsv) {
