@@ -13,40 +13,56 @@ export type Configuration = {
 
 export const name = 'favorites';
 
-let user: string[] = [];
-let all = false;
-let accountId: string | undefined = undefined;
+const config: Configuration = {
+  all: false
+};
 
-export function configure(config: Configuration = {}) {
-  user = Plugin.hydrate(config.user, user);
-  all = Plugin.hydrate(config.all, all);
-  accountId = Plugin.hydrate(config.accountId, accountId);
+export function configure(proposal: Configuration = {}) {
+  for (const key in proposal) {
+    if (proposal[key] !== undefined) {
+      config[key] = proposal[key];
+    }
+  }
 }
 
 export function options() {
   return {
     man: [
       {
-        text: `Set user favorites to only courses in which they are not enrolled as an advisor and which end after the current date.`
+        text:
+          `Set user favorites to only courses in which they are not ` +
+          `enrolled as an advisor and which end after the current date.`
       },
       { level: 1, text: 'Warning' },
       {
-        text: 'This script will overwrite any existing favorite course settings for the affected users.'
+        text:
+          'This script will overwrite any existing favorite course ' +
+          'settings for the affected users.'
       }
     ],
     optList: {
       user: {
-        description: `User ID of individual Canvas users whose favories should be reset. May be set multiple times and may use sis_user_id or Canvas ID values`
+        description:
+          `User ID of individual Canvas users whose favories should ` +
+          `be reset. May be set multiple times and may use sis_user_id ` +
+          `or Canvas ID values`,
+        default: config.user
       }
     },
     flag: {
       all: {
-        description: `Reset favorites for all users enrolled in currently active courses, ${Colors.optionArg('--accountId')} MUST be set`
+        description:
+          `Reset favorites for all users enrolled in currently ` +
+          `active courses, ${Colors.optionArg('--accountId')} MUST be set`,
+        default: config.all
       }
     },
     opt: {
       accountId: {
-        description: `Account ID in which to reset favorites of all users (ignored unless ${Colors.flagArg('--all')} is set)`
+        description:
+          `Account ID in which to reset favorites of all users ` +
+          `(ignored unless ${Colors.flagArg('--all')} is set)`,
+        default: config.accountId
       }
     }
   };
@@ -65,18 +81,18 @@ export async function run() {
     // build list of affected users
     let spinner = ora('Collecting user information').start();
     let users: Canvas.Users.User[] = [];
-    if (all) {
-      if (!accountId) {
+    if (config.all) {
+      if (!config.accountId) {
         spinner.fail(
           `${Colors.value('--accountId')} must be set in order to reset all users`
         );
         throw new Error();
       }
       users = await Canvas.v1.Accounts.Users.list({
-        path: { account_id: accountId }
+        path: { account_id: config.accountId }
       });
     } else {
-      for (const id of user) {
+      for (const id of config.user || []) {
         users.push(await Canvas.v1.Users.show_user_details({ path: { id } }));
       }
     }
