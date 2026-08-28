@@ -9,6 +9,7 @@ export type Configuration = {
   user?: string[];
   all?: boolean;
   accountId?: string;
+  suppress?: number[];
 } & Plugin.Configuration;
 
 export const name = 'favorites';
@@ -64,6 +65,12 @@ export function options() {
           `(ignored unless ${Colors.flagArg('--all')} is set)`,
         default: config.accountId
       }
+    },
+    numList: {
+      suppress: {
+        description: `Canvas Course IDs to suppress from favorite lists`,
+        default: config.suppress
+      }
     }
   };
 }
@@ -98,6 +105,13 @@ export async function run() {
     }
     spinner.succeed(`${users.length} users`);
 
+    if (config.suppress) {
+      for (const id of config.suppress) {
+        const course = await Canvas.v1.Courses.get({ path: { id } });
+        spinner.info(`${Colors.value(course.name)} will be suppressed`);
+      }
+    }
+
     for (const user of users) {
       spinner = ora(user.name).start();
 
@@ -128,6 +142,7 @@ export async function run() {
           course.enrollments.find(
             (enrollment) => enrollment.type !== 'observer'
           ) &&
+          !config.suppress?.includes(parseInt(`${course.id}`)) &&
           new Date(course.term.end_at) > now
         ) {
           await Canvas.v1.Users.Self.Favorites.Courses.add_course_to_favorites({
