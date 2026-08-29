@@ -41,9 +41,9 @@ const configTemplate = `<?xml version="1.0" encoding="UTF-8"?>
     http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0.xsd
     http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd
     http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd">
-    <blti:launch_url>{{url}}</blti:launch_url>
-    <blti:title>{{title}}</blti:title>
-    <blti:description>{{description}}</blti:description>
+    <blti:launch_url><![CDATA[{{url}}]]></blti:launch_url>
+    <blti:title><![CDATA[{{title}}]]></blti:title>
+    <blti:description><![CDATA[{{description}}]]></blti:description>
     <blti:extensions platform="canvas.instructure.com">
       <lticm:property name="privacy_level">anonymous</lticm:property>
       <lticm:options name="course_navigation">
