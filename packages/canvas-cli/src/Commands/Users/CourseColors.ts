@@ -16,7 +16,8 @@ export type Configuration = Plugin.Configuration & {
 export const name = 'course-colors';
 
 const config: Configuration = {
-  pattern: /\(([A-Z]{1,2})[^)]*\)$/,
+  account_id: '1',
+  pattern: /\((RD|OR|YL|GR|LB|DB|PR|W|X|Y|Z)/,
   overwrite: false
 };
 
@@ -34,22 +35,27 @@ export function options() {
     flag: {
       overwrite: {
         description: 'Whether or not to overwrite existing colors',
+        short: 'o',
         default: config.overwrite
       }
     },
     opt: {
       accountId: {
         description: `Canvas account ID to include`,
-        default: '1'
+        short: 'a',
+        default: config.account_id
       },
       pattern: {
         description: `Regular expression that extracts the block abbreviation from a course or section title`,
+        short: 'p',
         default: config.pattern?.toString().replace(/^\/(.*)\/$/, '$1')
       }
     },
     numList: {
       termId: {
-        description: `Canvas term ID to include`
+        description: `Canvas term ID to include`,
+        short: 't',
+        default: config.term_ids
       }
     }
   };
