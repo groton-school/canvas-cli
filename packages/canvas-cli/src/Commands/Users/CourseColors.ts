@@ -17,7 +17,7 @@ export const name = 'course-colors';
 
 const config: Configuration = {
   account_id: '1',
-  pattern: /\((RD|OR|YL|GR|LB|DB|PR|W|X|Y|Z)/,
+  pattern: /\(([A-Z]{2})/,
   overwrite: false
 };
 
