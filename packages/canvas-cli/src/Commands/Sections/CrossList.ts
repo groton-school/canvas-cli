@@ -232,6 +232,12 @@ export async function run() {
                 // @ts-expect-error 2353 API spec does not include body docs
                 body: { url: `${base}${internal_class_ids.join('_')}` }
               });
+              // FIXME low rent hack to update portal links
+              internal_class_ids.forEach((internal_class_id) =>
+                open(
+                  `https://portals.groton.org/facstaff/class/${internal_class_id}/website`
+                )
+              );
               spinner.succeed();
             } else if (tool.name === 'Learning Plans') {
               spinner.start(
@@ -323,6 +329,8 @@ export async function run() {
               }
             }
           }
+
+          // FIXME low rent hack to get major commitments mapped to SIS
           open(
             `${Canvas.plugin.client.instance_url}/courses/${course.id}/assignments`
           );
