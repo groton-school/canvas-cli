@@ -95,10 +95,11 @@ export async function run() {
       include: ['enrollments']
     }
   })) {
-    spinner.start(course.name);
+    spinner.start(Colors.value(course.name));
     if (course.id in history) {
       spinner.info(
-        `${Colors.value(course.name)} previously triggered ${history[course.id].timestamp}`
+        `${Colors.value(course.name)} previously triggered ` +
+          `${new Date(history[course.id].timestamp).toLocaleString()}`
       );
     } else {
       const enrollment = (
@@ -108,6 +109,7 @@ export async function run() {
         })
       ).shift();
       if (enrollment) {
+        spinner.text = `Creating trigger assignment in ${Colors.value(course.name)}`;
         const trigger_assignment = await Canvas.v1.Courses.Assignments.create({
           path: { course_id: course.id },
           body: {
@@ -119,8 +121,9 @@ export async function run() {
             'assignment[published]': true
           }
         });
-        spinner.text = `${spinner.text} / Assignment ${trigger_assignment.id}`;
-        spinner.text = `${spinner.text} / ${enrollment.name}`;
+        spinner.text =
+          `Posting grade for ${Colors.value(enrollment.name)} on trigger ` +
+          `assignment in ${Colors.value(course.name)}`;
         await Canvas.v1.Courses.Assignments.Submissions.grade_or_comment_on_submission_courses(
           {
             path: {
@@ -131,6 +134,9 @@ export async function run() {
             body: { 'submission[posted_grade]': '10' }
           }
         );
+        spinner.text =
+          `Erasing grade for ${Colors.value(enrollment.name)} on trigger ` +
+          `assignment in ${Colors.value(course.name)}`;
         await Canvas.v1.Courses.Assignments.delete_assignment({
           path: { course_id: course.id, id: trigger_assignment.id }
         });
@@ -142,7 +148,11 @@ export async function run() {
         if (historyPath) {
           fs.writeFileSync(historyPath, JSON.stringify(history));
         }
-        spinner.succeed();
+        spinner.succeed(
+          `${Colors.value(course.name)} triggered (assignment ID ` +
+            `${Colors.command('' + trigger_assignment.id)}, ` +
+            `${Colors.value(enrollment.name)} graded)`
+        );
       } else {
         spinner.fail();
       }
