@@ -270,6 +270,37 @@ export async function run() {
                 body: { url: `${base}${internal_class_ids.join('_')}` }
               });
               spinner.succeed();
+            } else if (tool.name === 'Medical Alerts') {
+              spinner.start(
+                `Computing ${Colors.command('Medical Alerts')} launch URL`
+              );
+              const [, base, internal_class_id_path] =
+                tool.url.match(/^(.+\/)(\d+_?)+/) || [];
+              let internal_class_ids = internal_class_id_path.split('_');
+              for (const section of crosslisted) {
+                const id = toolsBySection[section.course_id]
+                  .filter((tool) => tool.name === 'Medical Alerts')
+                  .reduce((id_path: string | undefined, tool) => {
+                    if (!id_path) {
+                      return tool.url.replace(/^.*\/(\d+)$/, '$1');
+                    }
+                    return id_path;
+                  }, undefined);
+                if (id) {
+                  const i = order.indexOf(section.id);
+                  internal_class_ids = [
+                    ...internal_class_ids.slice(0, i),
+                    id,
+                    ...internal_class_ids.slice(i)
+                  ];
+                }
+              }
+              await Canvas.v1.Courses.ExternalTools.update({
+                path: { course_id: course.id, external_tool_id: tool.id },
+                // @ts-expect-error 2353 API spec does not include body docs
+                body: { url: `${base}${internal_class_ids.join('_')}` }
+              });
+              spinner.succeed();
             } else if (tool.name === 'Attendance') {
               spinner.start(
                 `Computing ${Colors.command('Attendance')} launch URL`
