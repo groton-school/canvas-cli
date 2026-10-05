@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { PathString } from '@battis/descriptive-types';
 import { JSONObject } from '@battis/typescript-tricks';
 import { input } from '@inquirer/prompts';
@@ -12,8 +14,6 @@ import { Log } from '@qui-cli/log';
 import * as Plugin from '@qui-cli/plugin';
 import { Root } from '@qui-cli/root';
 import { Validators } from '@qui-cli/validators';
-import fs from 'node:fs';
-import path from 'node:path';
 import ora from 'ora';
 import * as OneRoster from '../OneRoster.js';
 import * as Snapshot from '../Snapshot/index.js';
@@ -209,6 +209,7 @@ export async function init(args: Plugin.ExpectedArguments<typeof options>) {
         key: 'COURSES_WITH_DEPARTMENTS_CSV'
       }),
       sisIdMapPath = await Env.get({ key: 'SIS_ID_MAP_CSV' }),
+      // @ts-expect-error 2700
       ...values
     }
   } = args;
@@ -474,7 +475,7 @@ export async function run() {
                       );
                     }
                     users[sis_user_id] = user;
-                  }
+                  } /*
                   await Canvas.v1.Sections.Enrollments.enroll_user_sections({
                     path: { section_id: `sis_section_id:${sis_course_id}` },
                     body: {
@@ -486,7 +487,7 @@ export async function run() {
                   log(
                     course,
                     `Enrolled ${Colors.value(user.name)} (SIS ID ${Colors.value(user.sis_user_id)}, cache index ${Colors.value(sis_user_id)}) as teacher`
-                  );
+                  );*/
                 }
               }
 

@@ -25,81 +25,81 @@ Usage:
 
 
 
-### Positional arguments
+######## Positional arguments
 
-#### <u>`snapshotPath`</u>
+######## <u>`snapshotPath`</u>
 
 Path to a snapshot index JSON file
 
-### Arguments
+####### Arguments
 
 #### `-h --help`
 
 Show this usage information
 
-### Import options
+######## Import options
 
-#### `--assignments`
+######### `--assignments`
 
 Create assignments (Default: `true`, use `--no-assignments` to disable)
 
-#### `--bulletinBoard`
+######### `--bulletinBoard`
 
 Create bulletin board (Default: `true`, use `--no-bulletinBoard` to disable)
 
-#### `--topics`
+######### `--topics`
 
 Create topics (Default: `true`, use `--no-topics` to disable)
 
-#### `--reuseTeacher`
+######### `--reuseTeacher`
 
 If a course already has an existing teacher in Canvas, re-use that teacher rather than trying to match the snapshot (Default: `true`, use `--no-reuseTeacher` to disable)
 
-#### `--skipTeacherless`
+######### `--skipTeacherless`
 
 Include sections that have no teachers (likely community groups) (Default: `true`, use `--no-skipTeacherless` to disable)
 
-#### `--blackbaudInstanceId=<`###`>`
+######### `--blackbaudInstanceId=<`###`>`
 
 MySchoolApp instance identifier, may be inferred by OneRoster `sourcedId` values, where the first numeric component is the instance identifier (e.g. `cls-123-12345678` identifies the instance ID as `123`). Defaults to environment variable `BLACKBAUD_INSTANCE_ID`, if present.
 
-#### `--termsPath=<`"path/to/terms.csv"`>`
+######### `--termsPath=<`"path/to/terms.csv"`>`
 
 Path to All Terms CSV file, must contain at least `Term ID`, `Length`, `term_id`, `name` columns, where `Term ID` and `Length` are Blackbaud term/duration IDs and Length is a duration (number of terms) and `term_id` and `name` are as defined in the `https://developerdocs.instructure.com/services/canvas/sis/file.sis_csv#terms.csv`. Defaults to environment variable `TERMS_CSV`, if present.
 
-#### `--departmentAccountMapPath=<`"path/to/dept-acct-map.csv"`>`
+######### `--departmentAccountMapPath=<`"path/to/dept-acct-map.csv"`>`
 
 Path to Department Account Map CSV file, must contain at least `Department Id` and `Canvas Account ID` columns which refer to a Blackbaud academic department ID value and a Canvas sub-account ID respectively. Defaults to environment variable `DEPARTMENT_ACCOUNT_MAP_CSV`, if present.
 
-#### `--coursesWithDepartmentsPath=<`"path/to/courses-dept.csv"`>`
+######### `--coursesWithDepartmentsPath=<`"path/to/courses-dept.csv"`>`
 
 Path to Courses with Departments CSV file, must contain at least `Course ID` and `Department ID`, referring to Blackbaud course and academic department ID values. Defaults to environment variable `COURSES_WITH_DEPARTMENTS_CSV`, if present.
 
-#### `--sisIdMapPath=<`"path/to/sis-id-map.csv"`>`
+######### `--sisIdMapPath=<`"path/to/sis-id-map.csv"`>`
 
 Optional path to SIS ID Map CSV file, must contain at least `AssociationId` column and optionally either or both `prefix` and `SIS Account ID` columns. Used for generating custom SIS course IDs and assigning courses to sub-account by department. The default prefix is `cls` and the departments are mapped at `--departmentAccountMapPath`. `AccountId` values are interpreted here: `https://github.com/groton-school/msar/blob/7bf001d100b25e5c9c5d23cf765f85cfb5d3c6a4/packages/datadirect/src/api/datadirect/SectionInfoView/Response.ts#L8-L21`. Defaults to environment variable `SIS_ID_MAP_CSV`, if present.
 
-#### `--canvasStudioIndex=<canvasStudioIndex>`
+######### `--canvasStudioIndex=<canvasStudioIndex>`
 
 Path to a JSON index hashing SHA1 file hashes of videos to Canvas Studio media IDs. Defaults to environment variable `CANVAS_STUDIO_INDEX`.
 
-#### `--duplicates=<overwrite|update|reset|skip>`
+######### `--duplicates=<overwrite|update|reset|skip>`
 
 Specify a duplicate course handling option
 
-#### `--prefix=<`"cls"`>`
+######### `--prefix=<`"cls"`>`
 
 SIS course ID prefixes to include in import -- normally all courses would be included. Can be set multiple times
 
-#### `--groupId=<`12345678`>`
+######### `--groupId=<`12345678`>`
 
 Blackbaud `Group ID` for specific courses to import. Can be set multiple times
 
-#### `--skipTo=<n>`
+######### `--skipTo=<n>`
 
 Skip forward to a specific Group ID in the snapshot index
 
-### Canvas Studio options
+######## Canvas Studio options
 
 The OpenID **issuer** URL is set from the environment variable `STUDIO_ISSUER`, if present. The `STUDIO_ISSUER` is also used as a base URL for any relative URL in API requests, unless `BASE_URL` is defined. (e.g. `"https://example.instructuremedia.com"`)
 
@@ -115,7 +115,7 @@ Canvas Studio does not permit localhost **redirect_uri** registration. `gcrtl` (
 
 Once authorized, the app will store the Canvas Studio refresh token for reuse in the local environment as `STUDIO_REFRESH_TOKEN`.
 
-### Canvas options
+######## Canvas options
 
 The OpenID **issuer** URL is set from the environment variable `CANVAS_ISSUER`, if present. The `CANVAS_ISSUER` is also used as a base URL for any relative URL in API requests, unless `BASE_URL` is defined. (e.g. `"https://example.instructure.com"`)
 
@@ -129,66 +129,66 @@ The OAuth 2.0 **redirect_uri**, which must at least redirect to `localhost`, is 
 
 Once authorized, the app will store the Canvas refresh token for reuse in the local environment as `CANVAS_REFRESH_TOKEN`.
 
-### Output options
+######## Output options
 
-#### `-o<outputPath> --outputPath=<outputPath>`
+######### `-o<outputPath> --outputPath=<outputPath>`
 
 Path to output directory or file to save command output, will use the value in environment variable `OUTPUT_PATH` if present
 
-#### `--pretty`
+######### `--pretty`
 
 Pretty print output to file (if `--outputPath` option is used)
 
-### 1Password environment integration
+######## 1Password environment integration
 
 If 1Password secret references are stored in the environment, a 1Password service account token is required to access the secret values.
 
-#### `--opAccount=<example.1password.com>`
+######### `--opAccount=<example.1password.com>`
 
-1Password account to use (if signed into multiple); will use environment variable `OP_ACCOUNT` if present
+1Password account to use (if signed into multiple); falls back to environment variable `OP_ACCOUNT`, if present
 
-#### `--opItem=<1Password unique identifier>`
+######### `--opItem=<1Password unique identifier>`
 
-Name or ID of the 1Password API Credential item storing the 1Password service account token; will use environment variable `OP_ITEM` if present. Requires the 1Password CLI tool (`https://developer.1password.com/docs/cli`)
+Name or ID of the 1Password API Credential item storing the 1Password service account token. Requires the 1Password CLI tool (`https://developer.1password.com/docs/cli`); falls back to environment variable `OP_ITEM`, if present
 
-#### `--opToken=<token value>`
+######### `--opToken=<token value>`
 
-1Password service account token; will use environment variable `OP_TOKEN` if present
+1Password service account token; falls back to environment variable `OP_TOKEN`, if present
 
-### Shell command options
+######## Shell command options
 
-#### `--commands`
+######### `--commands`
 
 Include shell commands in log (Default: `true`, use `--no-commands` to disable)
 
-#### `--silent`
+######### `--silent`
 
 Hide command output (Default: `false`)
 
-#### `--logging`
+######### `--logging`
 
 Log commands and output at level `debug` (Default: `true`, use `--no-logging` to disable)
 
-### Logging options
+######## Logging options
 
-#### `--logFilePath=<logFilePath>`
+######### `--logFilePath=<logFilePath>`
 
 Path to log file (optional)
 
-#### `--stdoutLevel=<all|trace|debug|info|warning|error|fatal|off>`
+######### `--stdoutLevel=<all|trace|debug|info|warning|error|fatal|off>`
 
 Log level to console stdout (Default: `"info"`)
 
-#### `--fileLevel=<all|trace|debug|info|warning|error|fatal|off>`
+######### `--fileLevel=<all|trace|debug|info|warning|error|fatal|off>`
 
 Log level to log file if `--logFilePath` provided (Default: `"all"`)
 
-### Workflow behavior options
+######## Workflow behavior options
 
-#### `--ignoreErrors`
+######### `--ignoreErrors`
 
 Continue run even if errors are encountered (Default: `true`, use `--no-ignoreErrors` to disable)
 
-#### `--logRequests`
+######### `--logRequests`
 
 Log fetch requests and responses for analysis and debugging (Default: `false`)
