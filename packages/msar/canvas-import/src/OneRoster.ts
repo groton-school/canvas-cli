@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { PathString } from '@battis/descriptive-types';
 import * as Imported from '@msar/types.import';
 import { Canvas } from '@oauth2-cli/canvas';
@@ -6,8 +8,6 @@ import { Log } from '@qui-cli/log';
 import { hydrate } from '@qui-cli/plugin';
 import { Root } from '@qui-cli/root';
 import { parse } from 'csv-parse/sync';
-import fs from 'node:fs';
-import path from 'node:path';
 import * as Workspace from './App/Workspace/index.js';
 
 type TermImportRecord = {
@@ -81,7 +81,8 @@ function terms(): TermImportRecord[] {
       throw new Error(`termsPath uninitialized`);
     }
     _terms = parse(fs.readFileSync(path.resolve(Root.path(), _termsPath)), {
-      columns: true
+      columns: true,
+      bom: true
     }) as TermImportRecord[];
   }
   return _terms;
@@ -95,7 +96,7 @@ function departmentAccountMap() {
     }
     _departmentAccountMap = parse(
       fs.readFileSync(path.resolve(Root.path(), _departmentAccountMapPath)),
-      { columns: true }
+      { columns: true, bom: true }
     ) as DepartmentAccountMapRecord[];
   }
   return _departmentAccountMap;
@@ -110,7 +111,7 @@ function coursesWithDepartments() {
     }
     _coursesWithDepartments = parse(
       fs.readFileSync(path.resolve(Root.path(), _coursesWithDepartmentsPath)),
-      { columns: true }
+      { columns: true, bom: true }
     ) as CoursesWithDepartmentsRecord[];
   }
   return _coursesWithDepartments;
@@ -124,7 +125,7 @@ function sisIdMap() {
     } else {
       _sisIdMap = parse(
         fs.readFileSync(path.resolve(Root.path(), _sisIdMapPath)),
-        { columns: true }
+        { columns: true, bom: true }
       ) as SisIdMapRecord[];
     }
   }

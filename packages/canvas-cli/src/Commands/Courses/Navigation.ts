@@ -133,6 +133,7 @@ export async function run() {
         fs.readFileSync(path.resolve(process.cwd(), config.pathToCsv), 'utf8'),
         {
           columns: true,
+          bom: true,
           cast: (value, context) => {
             switch (context.column) {
               case 'enable':

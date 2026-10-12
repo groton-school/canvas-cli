@@ -109,7 +109,8 @@ export async function run() {
       data = parse(
         fs.readFileSync(path.resolve(process.cwd(), config.filePath)),
         {
-          columns: true
+          columns: true,
+          bom: true
         }
       );
     }
