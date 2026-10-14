@@ -49,7 +49,8 @@ export function options() {
     },
     opt: {
       due: {
-        description: 'When the trigger assignment should be due',
+        description:
+          'Fallback due date for the trigger assignment (if no course or term end date present)',
         default: config.due
       },
       history: {
@@ -68,9 +69,6 @@ export function init({ values }: Plugin.ExpectedArguments<typeof options>) {
 export async function run() {
   if (!config.account) {
     throw new Error(`${Colors.optionArg('account')} must be defined`);
-  }
-  if (!config.due) {
-    throw new Error(`${Colors.optionArg('due')} must be defined`);
   }
 
   const spinner = ora();
@@ -98,7 +96,7 @@ export async function run() {
       published: true,
       completed: false,
       hide_enrollmentless_courses: true,
-      include: ['enrollments']
+      include: ['enrollments', 'term']
     }
   })) {
     spinner.start(Colors.value(course.name));
@@ -121,50 +119,61 @@ export async function run() {
         })
       ).shift();
       if (enrollment) {
-        spinner.text = `Creating trigger assignment in ${Colors.value(course.name)}`;
-        const trigger_assignment = await Canvas.v1.Courses.Assignments.create({
-          path: { course_id: course.id },
-          body: {
-            'assignment[name]': 'Grade Sync Trigger',
-            'assignment[notify_of_update]': false,
-            'assignment[submission_types]': ['none'],
-            'assignment[due_at]': config.due,
-            'assignment[points_possible]': 10,
-            'assignment[published]': true
+        if (course.end_at || course.term.end_at || config.due) {
+          spinner.text = `Creating trigger assignment in ${Colors.value(course.name)}`;
+          const trigger_assignment = await Canvas.v1.Courses.Assignments.create(
+            {
+              path: { course_id: course.id },
+              body: {
+                'assignment[name]': 'Grade Sync Trigger',
+                'assignment[notify_of_update]': false,
+                'assignment[submission_types]': ['none'],
+                'assignment[due_at]':
+                  DateTime.fromISO(course.end_at || course.term.end_at)
+                    .minus({ hour: 1 })
+                    .toISO() || config.due,
+                'assignment[points_possible]': 10,
+                'assignment[published]': true
+              }
+            }
+          );
+          spinner.text =
+            `Posting grade for ${Colors.value(enrollment.name)} on trigger ` +
+            `assignment in ${Colors.value(course.name)}`;
+          await Canvas.v1.Courses.Assignments.Submissions.grade_or_comment_on_submission_courses(
+            {
+              path: {
+                course_id: course.id,
+                assignment_id: trigger_assignment.id,
+                user_id: enrollment?.id
+              },
+              body: { 'submission[posted_grade]': '10' }
+            }
+          );
+          spinner.text =
+            `Erasing grade for ${Colors.value(enrollment.name)} on trigger ` +
+            `assignment in ${Colors.value(course.name)}`;
+          await Canvas.v1.Courses.Assignments.delete_assignment({
+            path: { course_id: course.id, id: trigger_assignment.id }
+          });
+          history[course.id] = {
+            timestamp: new Date().toISOString(),
+            assignment: trigger_assignment,
+            student: enrollment
+          };
+          if (historyPath) {
+            fs.writeFileSync(historyPath, JSON.stringify(history));
           }
-        });
-        spinner.text =
-          `Posting grade for ${Colors.value(enrollment.name)} on trigger ` +
-          `assignment in ${Colors.value(course.name)}`;
-        await Canvas.v1.Courses.Assignments.Submissions.grade_or_comment_on_submission_courses(
-          {
-            path: {
-              course_id: course.id,
-              assignment_id: trigger_assignment.id,
-              user_id: enrollment?.id
-            },
-            body: { 'submission[posted_grade]': '10' }
-          }
-        );
-        spinner.text =
-          `Erasing grade for ${Colors.value(enrollment.name)} on trigger ` +
-          `assignment in ${Colors.value(course.name)}`;
-        await Canvas.v1.Courses.Assignments.delete_assignment({
-          path: { course_id: course.id, id: trigger_assignment.id }
-        });
-        history[course.id] = {
-          timestamp: new Date().toISOString(),
-          assignment: trigger_assignment,
-          student: enrollment
-        };
-        if (historyPath) {
-          fs.writeFileSync(historyPath, JSON.stringify(history));
+          spinner.succeed(
+            `${Colors.value(course.name)} triggered (assignment ID ` +
+              `${Colors.command('' + trigger_assignment.id)}, ` +
+              `${Colors.value(enrollment.name)} graded)`
+          );
+        } else {
+          spinner.fail(
+            `${spinner.text} has no end date and no fallback due date was configured`
+          );
         }
-        spinner.succeed(
-          `${Colors.value(course.name)} triggered (assignment ID ` +
-            `${Colors.command('' + trigger_assignment.id)}, ` +
-            `${Colors.value(enrollment.name)} graded)`
-        );
       } else {
         spinner.warn(`${spinner.text} has no enrollment`);
       }
