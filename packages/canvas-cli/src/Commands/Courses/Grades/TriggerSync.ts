@@ -4,6 +4,7 @@ import { DateTimeString, PathString } from '@battis/descriptive-types';
 import { Canvas } from '@oauth2-cli/canvas';
 import { Colors } from '@qui-cli/colors';
 import * as Plugin from '@qui-cli/plugin';
+import { DateTime, Interval } from 'luxon';
 import ora from 'ora';
 
 export type Configuration = Plugin.Configuration & {
@@ -33,7 +34,11 @@ export function options() {
     man: [
       { level: 1, text: 'Trigger Sync Options' },
       {
-        text: 'Create fake grade activity in active courses to trigger the overnight grade sync.'
+        text:
+          'Create fake grade activity in active courses to trigger the ' +
+          'overnight grade sync. This fake grade activity will cause the ' +
+          'gradebook to be synced for the subsequent two weeks, barring any ' +
+          'further gradebook updates.'
       }
     ],
     num: {
@@ -86,6 +91,7 @@ export async function run() {
   }
 
   spinner.start('Loading active courses');
+  const now = DateTime.now();
   for (const course of await Canvas.v1.Accounts.Courses.list({
     path: { account_id: config.account },
     query: {
@@ -96,7 +102,13 @@ export async function run() {
     }
   })) {
     spinner.start(Colors.value(course.name));
-    if (course.id in history) {
+    if (
+      course.id in history &&
+      Interval.fromDateTimes(
+        DateTime.fromISO(history[course.id].timestamp),
+        now
+      ).length('days') < 12
+    ) {
       spinner.info(
         `${Colors.value(course.name)} previously triggered ` +
           `${new Date(history[course.id].timestamp).toLocaleString()}`

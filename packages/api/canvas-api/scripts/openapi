@@ -1,0 +1,9 @@
+#!/bin/bash
+
+git clone https://github.com/instructure/canvas-lms.git var/canvas-lms
+cd var/canvas-lms
+./script/docker_dev_setup.sh
+    - y
+    - migrate
+bundle install
+bundle exec rake doc:openapi
