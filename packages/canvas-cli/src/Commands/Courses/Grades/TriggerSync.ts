@@ -166,7 +166,7 @@ export async function run() {
             `${Colors.value(enrollment.name)} graded)`
         );
       } else {
-        spinner.fail();
+        spinner.warn(`${spinner.text} has no enrollment`);
       }
     }
   }
