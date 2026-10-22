@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.8](https://github.com/groton-school/canvas-cli/compare/canvas-import/0.1.7...canvas-import/0.1.8) (2026-10-22)
+
+
+### Bug Fixes
+
+* strop BOM as-needed ([e8aad0a](https://github.com/groton-school/canvas-cli/commit/e8aad0aaac13ac7369f426fab8f41a22171e9242)), closes [#150](https://github.com/groton-school/canvas-cli/issues/150)
+
 ## [0.1.7](https://github.com/groton-school/canvas-cli/compare/canvas-import/0.1.6...canvas-import/0.1.7) (2026-07-14)
 
 
