@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.3](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/canvas-studio/0.1.2...oauth2-cli/canvas-studio/0.1.3) (2026-10-22)
+
+
+### Bug Fixes
+
+* update to latest [@qui-cli](https://github.com/qui-cli) version ([bece837](https://github.com/groton-school/canvas-cli/commit/bece837e3debfe07462abefe69c2e26c1b7042c4))
+
 ## [0.1.2](https://github.com/groton-school/canvas-cli/compare/oauth2-cli/canvas-studio/0.1.1...oauth2-cli/canvas-studio/0.1.2) (2026-04-06)
 
 
