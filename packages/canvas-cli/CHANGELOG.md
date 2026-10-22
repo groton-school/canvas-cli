@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.10](https://github.com/groton-school/canvas-cli/compare/canvas-cli/0.0.9...canvas-cli/0.0.10) (2026-10-22)
+
+
+### Features
+
+* add second positional argument to set individual avatars without CSV ([a9adc51](https://github.com/groton-school/canvas-cli/commit/a9adc510f5036f57ee5078777c16944c0013a311))
+* also merge Medical Alerts links ([bff8374](https://github.com/groton-school/canvas-cli/commit/bff837444ba4a2b3dda12167d894b7f830fbcc59))
+* configurable pattern matching for course colors ([34aaa2e](https://github.com/groton-school/canvas-cli/commit/34aaa2eb7f3e19ae1750c38b33cd802480cd0fa6))
+* courseColors can now process multiple termIds ([c4f6382](https://github.com/groton-school/canvas-cli/commit/c4f638244c6ee21b16c67d4968ffb1f02873f12b))
+* cross list sections and update Groton LTI launch URLs ([fc53e62](https://github.com/groton-school/canvas-cli/commit/fc53e625314e6910de9d7c6fd7e575ec7cf161c1))
+* customizable pattern to identify color blocks ([5ead4c8](https://github.com/groton-school/canvas-cli/commit/5ead4c871ce25fe31803994d262e59374f3d26e8))
+* default to end of course or term, `--due` is now optional ([2c117e6](https://github.com/groton-school/canvas-cli/commit/2c117e611104b82f26c7555b555b675a2c98e502))
+* enable/disable nightly grade sync ([1775737](https://github.com/groton-school/canvas-cli/commit/17757373ad715b2009aa80511f5ec65d87e97ee4))
+* short option names for courseColors and simplified pattern ([df007e8](https://github.com/groton-school/canvas-cli/commit/df007e8e8d5c98bd027b3819d17595449b7fd78b))
+* suppress specific courses from favorites ([e2ebcd7](https://github.com/groton-school/canvas-cli/commit/e2ebcd716480643800f719f9ed3820724f8a9bde))
+* trigger grade sync ([9562160](https://github.com/groton-school/canvas-cli/commit/9562160fbca963486937869600de9b651bac5066))
+* use canvas courses navigation to install custom navigation links in batch ([4bf3c62](https://github.com/groton-school/canvas-cli/commit/4bf3c620ccde915240dfdb0fa832af5d7fd1df6f))
+* write history of grade sync triggers to avoid repetitive calls ([f65483b](https://github.com/groton-school/canvas-cli/commit/f65483b80ff75a85c6719118414ddce0a2d6dea0))
+
+
+### Bug Fixes
+
+* 14-day window for "dirty" gradebook sync requires re-triggering ([fe9fe40](https://github.com/groton-school/canvas-cli/commit/fe9fe4094a05eb73d1f626a4f4f4254f2cf95c1b))
+* clarify warning message ([e721700](https://github.com/groton-school/canvas-cli/commit/e7217004dac0b87eb11a1f478972101a8ccc3f7b))
+* clean up output ([5577544](https://github.com/groton-school/canvas-cli/commit/5577544a7c4e12a153f6ba728979ad4e9ea5e5ba)), closes [#146](https://github.com/groton-school/canvas-cli/issues/146)
+* filter for actual course_id in command line args ([53339cf](https://github.com/groton-school/canvas-cli/commit/53339cf1c6cd2263822fbae0414ff4a98ceb3c75))
+* open Portal webpage management to manually update links ([24e2ca4](https://github.com/groton-school/canvas-cli/commit/24e2ca409cf1935bddffadc5db7adfcf55e02b48))
+* rewrite canvas users avatar to be more reliable ([44b7cb1](https://github.com/groton-school/canvas-cli/commit/44b7cb12f598ea8d03f4d4a424ac833bf9b949df))
+* simplify pattern ([20f9797](https://github.com/groton-school/canvas-cli/commit/20f9797411e41410394bf468a8396b0478dd929a))
+* strop BOM as-needed ([e8aad0a](https://github.com/groton-school/canvas-cli/commit/e8aad0aaac13ac7369f426fab8f41a22171e9242)), closes [#150](https://github.com/groton-school/canvas-cli/issues/150)
+* surround user-entered XML text with CDATA tag for safety ([b05c4bc](https://github.com/groton-school/canvas-cli/commit/b05c4bc644b83f90bd7e91834068d19b6712e656))
+
 ## [0.0.9](https://github.com/groton-school/canvas-cli/compare/canvas-cli/0.0.8...canvas-cli/0.0.9) (2026-05-08)
 
 
