@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.8](https://github.com/groton-school/canvas-cli/compare/swagger-renderer/0.1.7...swagger-renderer/0.1.8) (2026-10-22)
+
+
+### Bug Fixes
+
+* update to latest [@qui-cli](https://github.com/qui-cli) version ([bece837](https://github.com/groton-school/canvas-cli/commit/bece837e3debfe07462abefe69c2e26c1b7042c4))
+
 ## [0.1.7](https://github.com/groton-school/canvas-cli/compare/swagger-renderer/0.1.6...swagger-renderer/0.1.7) (2026-04-06)
 
 
