@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.11](https://github.com/groton-school/canvas-cli/compare/api/0.3.10...api/0.3.11) (2026-10-22)
+
+
+### Bug Fixes
+
+* 14-day window for "dirty" gradebook sync requires re-triggering ([fe9fe40](https://github.com/groton-school/canvas-cli/commit/fe9fe4094a05eb73d1f626a4f4f4254f2cf95c1b))
+* include node types ([161d679](https://github.com/groton-school/canvas-cli/commit/161d67939ab88b28941d86ee98f1021811db8949))
+
 ## [0.3.10](https://github.com/groton-school/canvas-cli/compare/api/0.3.9...api/0.3.10) (2026-04-06)
 
 
