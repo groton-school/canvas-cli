@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@1password/sdk": "^0.4.1",
-    "@groton/colors": "^0.4.3",
+    "@groton/colors": "groton-school/colors#v0.4.3",
     "@inquirer/prompts": "^8.5.2",
     "@oauth2-cli/canvas": "workspace:*",
     "@qui-cli/colors": "^3.2.5",

@@ -176,8 +176,8 @@ importers:
         specifier: ^0.4.1
         version: 0.4.1
       '@groton/colors':
-        specifier: ^0.4.3
-        version: 0.4.3
+        specifier: groton-school/colors#v0.4.3
+        version: https://codeload.github.com/groton-school/colors/tar.gz/4b62844e0b8aecbb01e3e8c3c3d56f10ac7309c0
       '@inquirer/prompts':
         specifier: ^8.5.2
         version: 8.5.2(@types/node@24.13.3)
@@ -695,8 +695,9 @@ packages:
     resolution: {integrity: sha512-GmzA9ckNokPypTg10pgpeHNQe7ph+iIKKmhKu3Ob9ANkswreCx7R3cKmY781K8QK3AqVL3xVh9A42JvIAbkkSA==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  '@groton/colors@0.4.3':
-    resolution: {integrity: sha512-VKVucD52nOAZ/vJiPhF7tajHDVMoeEzb8NFI6xA/H0GK9DXV0s10dC6VNjGEEu1J8uNfnjPYYa5vPeVROoky9A==}
+  '@groton/colors@https://codeload.github.com/groton-school/colors/tar.gz/4b62844e0b8aecbb01e3e8c3c3d56f10ac7309c0':
+    resolution: {gitHosted: true, integrity: sha512-CShHO1twg57BMCEGi9jyTG6WDl0AHbPOdvfo9n7WSqLCAj9ZIh2JOfEg+jXC/vuR0Wk1mPKlWSS/PCFu8snotA==, tarball: https://codeload.github.com/groton-school/colors/tar.gz/4b62844e0b8aecbb01e3e8c3c3d56f10ac7309c0}
+    version: 0.0.0
 
   '@gwhitney/detect-indent@7.0.1':
     resolution: {integrity: sha512-7bQW+gkKa2kKZPeJf6+c6gFK9ARxQfn+FKy9ScTBppyKRWH2KzsmweXUoklqeEiHiNVWaeP5csIdsNq6w7QhzA==}
@@ -5524,7 +5525,7 @@ snapshots:
 
   '@gar/promise-retry@1.0.3': {}
 
-  '@groton/colors@0.4.3': {}
+  '@groton/colors@https://codeload.github.com/groton-school/colors/tar.gz/4b62844e0b8aecbb01e3e8c3c3d56f10ac7309c0': {}
 
   '@gwhitney/detect-indent@7.0.1': {}
 
