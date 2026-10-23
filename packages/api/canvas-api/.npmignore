@@ -1,5 +1,7 @@
 .*
+/scripts/
 /spec/
 /overrides.json
 /tsconfig.json
 /src/
+/var/
